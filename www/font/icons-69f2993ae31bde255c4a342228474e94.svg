@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2014-1-26: Created.
+-->
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20120731 at Sun Jan 26 10:00:41 2014
+ By Stefan Thomas,,,
+Created by Stefan Thomas,,, with FontForge 2.0 (http://fontforge.sf.net)
+</metadata>
+<defs>
+<font id="icons" horiz-adv-x="473" >
+  <font-face 
+    font-family="icons"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="512"
+    panose-1="2 0 6 9 0 0 0 0 0 0"
+    ascent="448"
+    descent="-64"
+    bbox="-0.0615463 -63.9077 472.908 447.837"
+    underline-thickness="25.6"
+    underline-position="-51.2"
+    unicode-range="U+E001-E001"
+  />
+    <missing-glyph />
+    <glyph glyph-name="uniE001" unicode="&#xe001;" 
+d="M272 -8v0c-18 34 -16 73 1 104c10 13 12 30 4 45c-6 12 -18 19 -30 21c-2 0 -5 1 -7 1c-17 0 -32 -10 -39 -25v0c-19 -34 -56 -56 -97 -55c-59 2 -106 51 -104 110s51 106 110 104c38 -1 71 -22 89 -52v-1v0c6 -15 20 -25 37 -25c23 -1 42 17 43 40c0 7 -1 12 -4 18v1v0
+c-1 3 -2 5 -4 8v0c-20 33 -21 76 1 111c31 50 97 66 147 35s66 -97 35 -147c-20 -32 -55 -51 -90 -51c-16 2 -32 -5 -41 -19c-11 -18 -7 -42 10 -55c9 -7 20 -11 31 -10v0c39 1 76 -20 96 -56c28 -52 9 -117 -43 -145s-117 -9 -145 43z" />
+  </font>
+</defs></svg>
