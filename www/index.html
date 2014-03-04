@@ -18,7 +18,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal</title>
+  <title>Ripple Web Client</title>
 
   <!-- Flatdoc -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -41,8 +41,8 @@
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.github('n0rmz/ripple-dev-portal', 'API.md')
-      // fetcher: Flatdoc.file('API.md')
+      // fetcher: Flatdoc.github('n0rmz/ripple-dev-portal', 'API.md')
+      fetcher: Flatdoc.file('API.md')
     });
   </script>
 </head>
@@ -54,6 +54,7 @@
       <ul>
         <li class="active"><a href='#'>Documentation</a></li>
         <li><a href='#'>Developer blog</a></li>
+        <li><a href='#'>API tool</a></li>
       </ul>
     </div>
     <div class='right'>
