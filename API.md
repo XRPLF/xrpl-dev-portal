@@ -387,7 +387,7 @@ More information about transaction errors can be found on the [Ripple Wiki](http
 
 ### Confirming a Payment
 
-#### `GET /api/v1/addresses/:address/next_notification/:tx_hash'
+#### `GET /api/v1/addresses/:address/next_notification/:tx_hash`
 
 A payment can be confirmed by retrieving a notification with the transaction hash 
 
@@ -407,7 +407,7 @@ It is important to be able to check on the status of the `ripple-rest` server an
 
 ## Check 'rippled' Status
 
-#### `GET /api/v1/status'
+#### `GET /api/v1/status`
 
 Will return the status of the current `rippled` server that the `ripple-rest` server is configured to communicate with. The response body looks like this:
 
