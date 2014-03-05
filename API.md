@@ -310,8 +310,7 @@ If there are no new notifications, the empty `Notification` object will be retur
 + `POST /api/v1/addresses/:address/payments`
 + `GET /api/v1/addresses/:address/payments/:hash`
 + `GET /api/v1/addresses/:address/txs/:hash`
-+ `GET /api/v1/status`
-+ `GET /api/v1/server/connected`
++ [`GET /api/v1/status`](#check-rippled-status)
 
 # PAYMENTS
 
@@ -388,7 +387,7 @@ More information about transaction errors can be found on the [Ripple Wiki](http
 
 ### Confirming a Payment
 
-#### `GET /api/v1/addresses/:address/next_notification/:tx_hash
+#### `GET /api/v1/addresses/:address/next_notification/:tx_hash'
 
 A payment can be confirmed by retrieving a notification with the transaction hash 
 
@@ -401,14 +400,46 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-#RIPPLE TRANSACTIONS
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 #RIPPLED SERVER STATUS
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+It is important to be able to check on the status of the `ripple-rest` server and the connected `rippled` server that it is currently connected to.
 
 ## Check 'rippled' Status
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#### `GET /api/v1/status'
+
+Will return the status of the current `rippled` server that the `ripple-rest` server is configured to communicate with. The response body looks like this:
+
+```js
+{
+  "api_server_status": "online",
+  "rippled_server_url": "wss://s_west.ripple.com:443",
+  "rippled_server_status": {
+    "info": {
+      "build_version": "0.21.0-rc2",
+      "complete_ledgers": "32570-4805506",
+      "hostid": "BUSH",
+      "last_close": {
+        "converge_time_s": 2.011,
+        "proposers": 5
+      },
+      "load_factor": 1,
+      "peers": 51,
+      "pubkey_node": "n9KNUUntNaDqvMVMKZLPHhGaWZDnx7soeUiHjeQE8ejR45DmHyfx",
+      "server_state": "full",
+      "validated_ledger": {
+        "age": 2,
+        "base_fee_xrp": 0.00001,
+        "hash": "2B79CECB06A500A2FB92F4FB610D33A20CF8D7FB39F2C2C7C3A6BD0D75A1884A",
+        "reserve_base_xrp": 20,
+        "reserve_inc_xrp": 5,
+        "seq": 4805506
+      },
+      "validation_quorum": 3
+    }
+  },
+  "api_documentation_url": "https://github.com/ripple/ripple-rest"
+}
+```
+
