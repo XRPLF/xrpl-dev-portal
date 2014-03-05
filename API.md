@@ -8,7 +8,9 @@ The `ripple-rest` API makes it easy to access the Ripple system via a RESTful we
 
 While there are different APIs that you can use, for example by accessing the `rippled` server directly via a web socket, this documentation focuses on the `ripple-rest` API as this is the high-level API recommended for working with the Ripple system.
 
-A test version of the `ripple-rest` server is up and running at <a href="https://ripple-rest.herokuapp.com" target="_blank">https://ripple-rest.herokuapp.com</a>
+A test version of the `ripple-rest` server is up and running at:
+
+<a href="https://ripple-rest.herokuapp.com" target="_blank">`https://ripple-rest.herokuapp.com`</a>
 
 ## Available API Routes
 
