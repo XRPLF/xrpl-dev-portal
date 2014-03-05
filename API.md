@@ -303,7 +303,7 @@ If there are no new notifications, the empty `Notification` object will be retur
 ## Available API Routes
 
 + [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
-+ [`GET /api/v1/addresses/:address/next_notification`](#Most-recent-notification)
++ [`GET /api/v1/addresses/:address/next_notification`](#most-recent-notification)
 + [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#checking-next-notification)
 + [`GET /api/v1/addresses/:address/payments/:hash`](#retrieving-a-payment)
 + [`GET /api/v1/status`](#check-rippled-status)
@@ -313,7 +313,7 @@ If there are no new notifications, the empty `Notification` object will be retur
 
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
-## Preparing a Payment
+### Preparing a Payment
 
 #### `GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`
 
@@ -345,7 +345,7 @@ The `:dst_amount` parameter uses `+` to separate the `value`, `currency`, and `i
 
 __NOTE:__ This command may be quite slow. If the command times out, please try it again.
 
-## Submitting a Payment
+### Submitting a Payment
 
 #### `POST /api/v1/addresses/:address/payments`
 
@@ -382,7 +382,7 @@ More information about transaction errors can be found on the [Ripple Wiki](http
 
 Save the `confirmation_token` to check for transaction confirmation by matching that against new `notification`'s. Payments cannot be cancelled once they are submitted.
 
-## Confirming a Payment
+### Confirming a Payment
 
 #### `GET /api/v1/addresses/:address/next_notification/:tx_hash`
 
@@ -460,7 +460,7 @@ Because the `type` is `none` and the `tx_state` is `empty`, that means there is 
 
 If there is a newer notification than the one you are checking on, than the response will contain a new notification object.
 
-### Retrieving a Payment
+## Retrieving a Payment
 
 #### `GET /api/v1/addresses/:address/payments/:tx_hash`
 
