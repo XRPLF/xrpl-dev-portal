@@ -2,11 +2,13 @@
 
 ## Ripple-REST API (BETA)
 
+_`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the_ <a href="https://github.com/ripple/ripple-rest" target="_blank">`ripple-rest`</a> _github repo for the most up-to-date versions and documentation. Feel free to poke around the branches to see what we're working on changing as well._
+
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
 
 While there are different APIs that you can use, for example by accessing the `rippled` server directly via a web socket, this documentation focuses on the `ripple-rest` API as this is the high-level API recommended for working with the Ripple system.
 
-`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the [`ripple-rest`](https://github.com/ripple/ripple-rest) github repo for the most up-to-date versions and documentation.
+A test version of the `ripple-rest` server is up and running at <a href="https://ripple-rest.herokuapp.com" target="_blank">https://ripple-rest.herokuapp.com</a>
 
 ## Available API Routes
 
@@ -23,7 +25,7 @@ While there are different APIs that you can use, for example by accessing the `r
 
 Ripple is a system for making financial transactions.  You can use Ripple to send money anywhere in the world, in any currency, instantly and for free.
 
-In the Ripple world, each account is identified by a [Ripple Address](https://ripple.com/wiki/Account).  A ripple address is a string that uniquely identifies an account, for example: `rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`
+In the Ripple world, each account is identified by a <a href="https://ripple.com/wiki/Account" target="_blank">Ripple Address</a>.  A Ripple address is a string that uniquely identifies an account, for example: `rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`
 
 A Ripple ___payment___ can be sent using Ripple's native currency, XRP, directly from one account to another.  Payments can also be sent in other currencies, for example US dollars, Euros, Pounds or Bitcoins, though the process is slightly more complicated.
 
@@ -58,9 +60,9 @@ The Ripple protocol supports multiple types of transactions other than just paym
 
 Before you can use the `ripple-rest` API, you will need to have two things:
 
- * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the [Client manual](https://ripple.com/wiki/Client_Manual).  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking on the __Receive__ tab in the web client.
+ * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://ripple.com/wiki/Client_Manual" target="_blank">Client Manual</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking on the __Receive__ tab in the web client.
  
- * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is running at [https://ripple-rest.herokuapp.com](https://ripple-rest.herokuapp.com), which is the URL for a test version of the server.  When you follow the examples below, make sure that you replace this with the URL for the server you want to access. Please remember to only use 
+ * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is running at <a href="https://ripple-rest.herokuapp.com" target="_blank">https://ripple-rest.herokuapp.com</a>, which is the URL for a test version of the server.  When you follow the examples below, make sure that you replace this with the URL for the server you want to access. Please remember to only use 
  
 As a programmer, you will also need to have a suitable HTTP client library that allows you to make secure HTTP (`HTTPS`) requests.  To follow the examples below, you will need to have access to the `curl` command-line tool.
 
@@ -69,7 +71,7 @@ As a programmer, you will also need to have a suitable HTTP client library that 
 
 Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal window:
 
-`curl https://ripple-rest.herokuapp.com/api/v1/status`
+<a href="https://ripple-rest.herokuapp.com/api/v1/status" target="_blank">`curl https://ripple-rest.herokuapp.com/api/v1/status`</a>
 
 After a short delay, the following response should be displayed:
 
@@ -128,7 +130,9 @@ Errors can be represented by general HTTP response codes. Errors specific to `ri
 
 All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `"issuer"` field may be omitted or set to `""`. Otherwise, the `"issuer"` must be a valid Ripple address of the gateway that issues the currency.
 
-For more information about XRP see [the Ripple Wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple Wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
+For more information about XRP see  <a href="https://ripple.com/wiki/XRP" target="_blank">the Ripple wiki page on XRP</a>. For more information about using currencies other than XRP on the Ripple Network see <a href="https://ripple.com/wiki/Ripple_for_Gateways" target="_blank">the Ripple wiki page for gateways</a>.
+
+Note that the `value` can either be specified as a string or a number. Internally this API uses a BigNumber library to retain higher precision if numbers are inputted as strings.
 
 `Amount Object:`
 
@@ -148,11 +152,6 @@ For more information about XRP see [the Ripple Wiki page on XRP](https://ripple.
   "issuer": ""
 }
 ```
-All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `"issuer"` field may be omitted or set to `""`. Otherwise, the `"issuer"` must be a valid Ripple address of the gateway that issues the currency.
-
-Note that the `value` can either be specified as a string or a number. Internally this API uses a BigNumber library to retain higher precision if numbers are inputted as strings.
-
-For more information about XRP see [the Ripple Wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple Wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
 
 #### 2. Payment
 
