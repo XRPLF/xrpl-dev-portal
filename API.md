@@ -109,11 +109,9 @@ The `ripple-rest` API conforms to the following general behavior for a web inter
 
 * The returned JSON object will include a `success` field indicating whether the request was successful or not.
 
-* If an error occurred, the returned object will include `error` and `message` fields, where `error` is a short string identifying the error that occurred, and `message` will be a longer human-readable string explaining what went wrong.
-
 ### Errors
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Errors can be represented by general HTTP response codes. Errors specific to `ripple-rest` will return a 200 status but will include `error` and `message` fields, where `error` is a short string identifying the error that occurred, and `message` will be a longer human-readable string explaining what went wrong.
 
 ### API Objects
 
@@ -304,12 +302,11 @@ If there are no new notifications, the empty `Notification` object will be retur
 
 ## Available API Routes
 
++ [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
++ [`POST /api/v1/addresses/:address/payments`](#submitting-a-payment)
 + [`GET /api/v1/addresses/:address/next_notification`](#preparing-a-payment)
 + [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#submitting-a-payment)
-+ `GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`
-+ `POST /api/v1/addresses/:address/payments`
-+ `GET /api/v1/addresses/:address/payments/:hash`
-+ `GET /api/v1/addresses/:address/txs/:hash`
++ [`GET /api/v1/addresses/:address/payments/:hash`](#confirming-a-payment)
 + [`GET /api/v1/status`](#check-rippled-status)
 
 # PAYMENTS
@@ -383,13 +380,15 @@ Or if there is a problem with the transaction:
   "message": "Path could not send partial amount. Please ensure that the src_address has sufficient funds (in the src_amount currency, if specified) to execute this transaction."
 }
 ```
-More information about transaction errors can be found on the [Ripple Wiki](https://ripple.com/wiki/Transaction_errors). Save the `confirmation_token` to check for transaction confirmation by matching that against new `notification`'s. Payments cannot be cancelled once they are submitted.
+More information about transaction errors can be found on the [Ripple Wiki](https://ripple.com/wiki/Transaction_errors).
+
+Save the `confirmation_token` to check for transaction confirmation by matching that against new `notification`'s. Payments cannot be cancelled once they are submitted.
 
 ### Confirming a Payment
 
 #### `GET /api/v1/addresses/:address/next_notification/:tx_hash`
 
-A payment can be confirmed by retrieving a notification with the transaction hash 
+A payment can be confirmed by retrieving a notification with the `confirmation_token` from the sucessfully submited payment. 
 
 
 #PAYMENT MONITORING
