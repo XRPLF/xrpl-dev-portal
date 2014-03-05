@@ -303,11 +303,11 @@ If there are no new notifications, the empty `Notification` object will be retur
 ## Available API Routes
 
 + [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
-+ [`POST /api/v1/addresses/:address/payments`](#submitting-a-payment)
-+ [`GET /api/v1/addresses/:address/next_notification`](#preparing-a-payment)
-+ [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#submitting-a-payment)
-+ [`GET /api/v1/addresses/:address/payments/:hash`](#confirming-a-payment)
++ [`GET /api/v1/addresses/:address/next_notification`](#Most-recent-notification)
++ [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#checking-next-notification)
++ [`GET /api/v1/addresses/:address/payments/:hash`](#retrieving-a-payment)
 + [`GET /api/v1/status`](#check-rippled-status)
++ [`POST /api/v1/addresses/:address/payments`](#submitting-a-payment)
 
 # PAYMENTS
 
@@ -410,12 +410,62 @@ A payment can be confirmed by retrieving a notification with the `confirmation_t
 
 #PAYMENT MONITORING
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Applications will not only need to submit payments but monitor all incoming transactions that our occuring against the Ripple address. The general rule of thumb for monitoring your account should be the following:
 
-## Retrieving a Payment
+1. Checking the most recent notification
+2. Checking the next notification
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## Checking Notifications
 
+### Most recent notification
+
+#### `GET /api/v1/addresses/:address/next_notification`
+
+Use this to retrieve the most recent notification on the account:
+
+```js
+{
+  "success": true,
+  "notification": {
+    "address": "rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz",
+    "type": "payment",
+    "tx_direction": "incoming",
+    "tx_state": "confirmed",
+    "tx_result": "tesSUCCESS",
+    "tx_ledger": 4716034,
+    "tx_hash": "EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302",
+    "tx_timestamp": 1391130630000,
+    "tx_timestamp_human": "2014-01-31T01:10:30.000Z",
+    "tx_url": "http://ripple-rest.herokuapp.com:49598/api/v1/addresses/rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz/payments/EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302?ledger=4716034",
+    "next_notification_url": "http://ripple-rest.herokuapp.com:49598/api/v1/addresses/rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz/next_notification/EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302?ledger=4716034"
+    "confirmation_token": ""
+  }
+}
+```
+(See the API Reference for details on the [`Notification` object format](REF.md#3-notification))
+
+To find out more information about that payment follow the link at `tx_url`. Otherwise follow the `next_notification_url` and check for the next notification.
+
+If notifications are being retrieved from a `rippled` server that does not have a full historical database, the response may have serveral blank fields.
+
+### Checking next notification
+
+#### `GET /api/v1/addresses/:address/next_notification/:prev_tx_hash`
+
+By checking for the most recent notification above, take the hash from the most recent notification to monitor if another notification has arrived. If there is no notifications newer than the most recent, than you will receive the notification object with:
+
+`"type": "none"`
+`"tx_state": "empty"`
+
+Because the `type` is `none` and the `tx_state` is `empty`, that means there is no next notification (yet) and there are no transactions pending in the outgoing queue. A `tx_state` of `pending` would indicate that there are still transactions waiting for confirmation.
+
+If there is a newer notification than the one you are checking on, than the response will contain a new notification object.
+
+### Retrieving a Payment
+
+#### `GET /api/v1/addresses/:address/payments/:tx_hash`
+
+Use this to retrieve the details of a specfic payment with the transaction hash. A [`Payment` object format](#2-payment) will be returned with the details of the payment filled out including the path of the payment.
 
 #RIPPLED SERVER STATUS
 
