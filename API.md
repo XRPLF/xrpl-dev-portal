@@ -423,6 +423,10 @@ Applications will not only need to submit payments but monitor all incoming tran
 
 Use this to retrieve the most recent notification on the account:
 
+To find out more information about that payment follow the link at `tx_url`. Otherwise follow the `next_notification_url` and check for the next notification.
+
+If notifications are being retrieved from a `rippled` server that does not have a full historical database, the response may have serveral blank fields.
+
 ```js
 {
   "success": true,
@@ -442,11 +446,6 @@ Use this to retrieve the most recent notification on the account:
   }
 }
 ```
-(See the API Reference for details on the [`Notification` object format](REF.md#3-notification))
-
-To find out more information about that payment follow the link at `tx_url`. Otherwise follow the `next_notification_url` and check for the next notification.
-
-If notifications are being retrieved from a `rippled` server that does not have a full historical database, the response may have serveral blank fields.
 
 ### Checking next notification
 
