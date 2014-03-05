@@ -104,14 +104,25 @@ body:not(.no-literate) .content pre:after {
   line-height: 0;
   height: 0;
 }
+body:not(.no-literate) .content pre code {
+  color: #fff;
+  word-wrap: break-word;
+}
 body:not(.no-literate) .content ul + pre {
   width: -moz-calc(100% - 570px);
   width: -webkit-calc(100% - 570px);
   width: -o-calc(100% - 570px);
   width: calc(100% - 570px);
 }
+body:not(.no-literate) .content li {
+  position: relative;
+}
 body:not(.no-literate) .content li pre {
-  padding-left: 112%;
+  width: -moz-calc(100% - 620px);
+  width: -webkit-calc(100% - 620px);
+  width: -o-calc(100% - 620px);
+  width: calc(100% + 620px);
+  padding-left: calc(100% + 40px);
   overflow: inherit;
 }
 a {
