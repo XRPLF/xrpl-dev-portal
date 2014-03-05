@@ -8,6 +8,15 @@ While there are different APIs that you can use, for example by accessing the `r
 
 `ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the [`ripple-rest`](https://github.com/ripple/ripple-rest) github repo for the most up-to-date versions and documentation.
 
+## Available API Routes
+
++ [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
++ [`GET /api/v1/addresses/:address/next_notification`](#most-recent-notification)
++ [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#checking-next-notification)
++ [`GET /api/v1/addresses/:address/payments/:hash`](#retrieving-a-payment)
++ [`GET /api/v1/status`](#check-rippled-status)
++ [`POST /api/v1/addresses/:address/payments`](#submitting-a-payment)
+
 ## Ripple Concepts
 
 ### Ripple Address
@@ -299,15 +308,6 @@ If there are no new notifications, the empty `Notification` object will be retur
   "confirmation_token": ""
 }
 ```
-
-## Available API Routes
-
-+ [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
-+ [`GET /api/v1/addresses/:address/next_notification`](#most-recent-notification)
-+ [`GET /api/v1/addresses/:address/next_notification/:prev-hash`](#checking-next-notification)
-+ [`GET /api/v1/addresses/:address/payments/:hash`](#retrieving-a-payment)
-+ [`GET /api/v1/status`](#check-rippled-status)
-+ [`POST /api/v1/addresses/:address/payments`](#submitting-a-payment)
 
 # PAYMENTS
 
