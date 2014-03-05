@@ -311,11 +311,9 @@ If there are no new notifications, the empty `Notification` object will be retur
 
 # PAYMENTS
 
-## Outgoing Payments
-
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
-### Preparing a Payment
+## Preparing a Payment
 
 #### `GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`
 
@@ -339,7 +337,7 @@ A payment needs to be formatted in the following order with the payment object t
 
 The payment object itself can be prepared manually for any transactions that are occuring directly with XRP or if there are already established trustlines between the two parties for the currency being transferred. In most cases, a payment object can be created automatically by performing a `GET` on the payments endpoint.
 
-This call generates possible payments for a given set of parameters. This is a wrapper around the [Ripple path-find command](https://ripple.com/wiki/RPC_API#path_find) that returns an array of [`Payment Objects`](#2-payment), which can be submitted directly to [`POST /api/v1/addresses/:address/payments`](#post-apiv1addressesaddresspayments).
+This call generates possible payments for a given set of parameters. This is a wrapper around the [Ripple path-find command](https://ripple.com/wiki/RPC_API#path_find) that returns an array of [`Payment Objects`](#2-payment), which can be submitted directly.
 
 This uses the [`Payment` Object format](#2-payment).
 
@@ -347,7 +345,7 @@ The `:dst_amount` parameter uses `+` to separate the `value`, `currency`, and `i
 
 __NOTE:__ This command may be quite slow. If the command times out, please try it again.
 
-### Submitting a Payment
+## Submitting a Payment
 
 #### `POST /api/v1/addresses/:address/payments`
 
@@ -384,12 +382,31 @@ More information about transaction errors can be found on the [Ripple Wiki](http
 
 Save the `confirmation_token` to check for transaction confirmation by matching that against new `notification`'s. Payments cannot be cancelled once they are submitted.
 
-### Confirming a Payment
+## Confirming a Payment
 
 #### `GET /api/v1/addresses/:address/next_notification/:tx_hash`
 
-A payment can be confirmed by retrieving a notification with the `confirmation_token` from the sucessfully submited payment. 
+A payment can be confirmed by retrieving a notification with the `confirmation_token` from the sucessfully submited payment. The tx_state will be "confirmed" if the payment has successfully gone through.
 
+```js
+{
+  "success": true,
+  "notification": {
+    "address": "rNw4ozCG514KEjPs5cDrqEcdsi31Jtfm5r",
+    "type": "payment",
+    "tx_direction": "outgoing",
+    "tx_state": "confirmed",
+    "tx_result": "tesSUCCESS",
+    "tx_ledger": 4850743,
+    "tx_hash": "81D48826FA84B0B83902CA3BFE49E2503A5BA1069B214D492AE6AB145B6C4781",
+    "tx_timestamp": 1391792990000,
+    "tx_timestamp_human": "2014-02-07T17:09:50.000Z",
+    "tx_url": "https://api/v1/addresses/r../payments/81..?ledger=4850743",
+    "next_notification_url": "https://api/v1/addresses/r../next_notification/81..?ledger=4850743"
+    "confirmation_token": "81D48826FA84B0B83902CA3BFE49E2503A5BA1069B214D492AE6AB145B6C4781"
+  }
+}
+```
 
 #PAYMENT MONITORING
 
@@ -441,4 +458,3 @@ Will return the status of the current `rippled` server that the `ripple-rest` se
   "api_documentation_url": "https://github.com/ripple/ripple-rest"
 }
 ```
-
