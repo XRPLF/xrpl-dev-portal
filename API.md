@@ -313,6 +313,8 @@ If there are no new notifications, the empty `Notification` object will be retur
 
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
+## Making Payments
+
 ### Preparing a Payment
 
 #### `GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`
@@ -408,7 +410,7 @@ A payment can be confirmed by retrieving a notification with the `confirmation_t
 }
 ```
 
-#PAYMENT MONITORING
+#MONITORING
 
 Applications will not only need to submit payments but monitor all incoming transactions that our occuring against the Ripple address. The general rule of thumb for monitoring your account should be the following:
 
