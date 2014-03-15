@@ -12,6 +12,8 @@ A test version of the `ripple-rest` server is up and running at:
 
 <a href="https://ripple-rest.herokuapp.com" target="_blank">`https://ripple-rest.herokuapp.com`</a>
 
+_The test server may be unavailable at certain times due to periodic maintenance._
+
 ## Available API Routes
 
 + [`GET /api/v1/addresses/:address/payments/:dst_address/:dst_amount`](#preparing-a-payment)
