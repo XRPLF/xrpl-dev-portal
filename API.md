@@ -2,17 +2,14 @@
 
 ## Ripple-REST API (BETA)
 
-_`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the_ <a href="https://github.com/ripple/ripple-rest" target="_blank">`ripple-rest`</a> _github repo for the most up-to-date versions and documentation. Feel free to poke around the branches to see what we're working on changing as well._
+`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the_ <a href="https://github.com/ripple/ripple-rest" target="_blank">`ripple-rest`</a> _github repo for the most up-to-date versions and documentation. Feel free to poke around the branches to see what we're working on changing as well.
 
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
 
 While there are different APIs that you can use, for example by accessing the `rippled` server directly via a web socket, this documentation focuses on the `ripple-rest` API as this is the high-level API recommended for working with the Ripple system.
 
-A test version of the `ripple-rest` server is up and running at:
+**The test version of the `ripple-rest` server has been temporarily taken down to enhance security around a sandboxed environment. We encourage you to install a local version of `ripple-rest` to test for the meantime. Instructions can be found <a href="https://github.com/ripple.com/ripple-rest" target="_blank">here</a>**
 
-<a href="https://ripple-rest.herokuapp.com" target="_blank">`https://ripple-rest.herokuapp.com`</a>
-
-_The test server may be unavailable at certain times due to periodic maintenance._
 
 ## Available API Routes
 
