@@ -2,7 +2,7 @@
 
 ## Ripple-REST API (BETA)
 
-`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the_ <a href="https://github.com/ripple/ripple-rest" target="_blank">`ripple-rest`</a> _github repo for the most up-to-date versions and documentation. Feel free to poke around the branches to see what we're working on changing as well.
+`ripple-rest` API is currently in BETA and subject to multiple changes and iterations as it is being finalized. Please double check with the <a href="https://github.com/ripple/ripple-rest" target="_blank">`ripple-rest`</a> github repo for the most up-to-date versions and documentation. Feel free to poke around the branches to see what we're working on changing as well.
 
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
 
@@ -63,7 +63,7 @@ Before you can use the `ripple-rest` API, you will need to have two things:
 
  * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://ripple.com/wiki/Client_Manual" target="_blank">Client Manual</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking on the __Receive__ tab in the web client.
  
- * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is running at <a href="https://ripple-rest.herokuapp.com" target="_blank">https://ripple-rest.herokuapp.com</a>, which is the URL for a test version of the server.  When you follow the examples below, make sure that you replace this with the URL for the server you want to access. Please remember to only use 
+ * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is installed and running on a server you have connectivity to. 
  
 As a programmer, you will also need to have a suitable HTTP client library that allows you to make secure HTTP (`HTTPS`) requests.  To follow the examples below, you will need to have access to the `curl` command-line tool.
 
@@ -72,7 +72,7 @@ As a programmer, you will also need to have a suitable HTTP client library that 
 
 Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal window:
 
-<a href="https://ripple-rest.herokuapp.com/api/v1/status" target="_blank">`curl https://ripple-rest.herokuapp.com/api/v1/status`</a>
+<a href="https://[ripple-rest_estserver]/api/v1/status" target="_blank">`curl https://[ripple-rest_server]/api/v1/status`</a>
 
 After a short delay, the following response should be displayed:
 
@@ -442,7 +442,7 @@ If notifications are being retrieved from a `rippled` server that does not have 
     "tx_hash": "EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302",
     "tx_timestamp": 1391130630000,
     "tx_timestamp_human": "2014-01-31T01:10:30.000Z",
-    "tx_url": "http://ripple-rest.herokuapp.com:49598/api/v1/addresses/rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz/payments/EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302?ledger=4716034",
+    "tx_url": "http://api/v1/addresses/rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz/payments/EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302?ledger=4716034",
     "next_notification_url": "http://ripple-rest.herokuapp.com:49598/api/v1/addresses/rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz/next_notification/EC19E24AA51D39E809597A5DCF3A7E253F98C27FE3287CB919319A5C59AD8302?ledger=4716034"
     "confirmation_token": ""
   }
