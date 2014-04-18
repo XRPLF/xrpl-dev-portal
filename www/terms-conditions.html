@@ -21,7 +21,7 @@
     <title>Ripple Web Client</title>
 
     <!-- Flatdoc -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    
     <!-- Custom Js -->
 
@@ -29,31 +29,29 @@
     <script src="js/bootstrap-modal.js"></script>
 
 
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/legacy.js'></script>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/flatdoc.js'></script>
+    <script src='vendor/flatdoc/v/0.8.0/legacy.js'></script>
+    <script src='vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
 
     <!-- Flatdoc theme -->
-    <link  href='http://rstacruz.github.io/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-    <script src='http://rstacruz.github.io/flatdoc/v/0.8.0/theme-white/script.js'></script>
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src='vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
 
     <!-- Meta -->
     <meta content="Ripple Web Client" property="og:title">
     <meta content="Ripple Web Client description goes here." name="description">
 
     <!-- Custom Stylesheet -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
     <link  href='css/main.css' rel='stylesheet'>
-
-    <!-- Custom Js -->
-
- 
-  <!-- Initializer -->
-    <script>
-        Flatdoc.run({
-          // fetcher: Flatdoc.github('n0rmz/ripple-dev-portal', 'API.md')
-            fetcher: Flatdoc.file('API.md')
-        });
-    </script>
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("132d42885e094171f34467fc54da6fab");
+  </script>
+    
+  <script>mixpanel.track("terms");</script>    
+  <!-- end Mixpanel -->
 </head>
 <body role='flatdoc'>
 
@@ -61,10 +59,10 @@
         <div class='left'>
           <h1>{<i class="icon-ripple-logo"></i>}</h1>
           <ul>
-            <li><a href='#'>Documentation</a></li>
-            <li><a href='#'>Developer blog</a></li>
-            <li><a href='#'>API tool</a></li>
-            <li class="active"><a href="#">Brand Guidelines</a></li>
+        <li><a href='index.html'>Documentation</a></li>
+        <li><a href='https://ripple.com/dev/blog'>Developer blog</a></li>
+        <li><a href='https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98' target='_blank'>Developer Forum</a></li>
+        <li><a href='guidelines.html'>Brand Guidelines</a></li>  
           </ul>
 
           <a href="" class="header-menu-button">
@@ -73,8 +71,9 @@
 
         </div>
         <div class='right'>
-              <!-- GitHub buttons: see http://ghbtns.com -->
-            <iframe src="http://ghbtns.com/github-btn.html?ripple=ripple&amp;ripple-client=ripple-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+              <!-- GitHub buttons: see http://ghbtns.com 
+            <iframe src="http://ghbtns.com/github-btn.html?ripple=ripple&amp;ripple-client=ripple-client&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20">
+    </iframe> -->
         </div>
     </div>
 
