@@ -95,7 +95,7 @@ body:not(.no-literate) .content pre {
   width: -webkit-calc(100% - 550px);
   width: -o-calc(100% - 550px);
   width: calc(100% - 550px);
-  overflow-x: auto;
+  overflow-x: auto;   
 }
 body:not(.no-literate) .content pre:after {
   content: ".";
@@ -105,7 +105,7 @@ body:not(.no-literate) .content pre:after {
   height: 0;
 }
 body:not(.no-literate) .content pre code {
-  color: #fff;
+  color: #C0BFBF;
   word-wrap: break-word;
 }
 body:not(.no-literate) .content ul + pre {
@@ -116,6 +116,7 @@ body:not(.no-literate) .content ul + pre {
 }
 body:not(.no-literate) .content li {
   position: relative;
+  padding-right: 20px;
 }
 body:not(.no-literate) .content li pre {
   width: -moz-calc(100% - 620px);
