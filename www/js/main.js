@@ -18,6 +18,7 @@ $(function(){
 		if($(this).hasClass("btn-disabled")){
 			return false;
 		}
+		$(".modal .close").click();
 	});
 	$(".logo-download-link").click(function(){
 		var filename = $(this).data("src");

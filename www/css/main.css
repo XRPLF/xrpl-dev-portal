@@ -251,7 +251,7 @@ body:not(.no-literate) .content pre:after {
   height: 0;
 }
 body:not(.no-literate) .content pre code {
-  color: #EBEBEB;
+  color: #fff;
   word-wrap: break-word;
 }
 body:not(.no-literate) .content ul + pre {
@@ -369,32 +369,36 @@ body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container 
   padding-bottom: 90%;
   position: relative;
 }
-body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container img {
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container {
+  padding-top: 23%;
   position: absolute;
-  top: 10%;
-  max-width: 100%;
   left: 0;
+  top: 0;
+  width: 100%;
+  height: -webkit-calc(100% - 50px);
+  height: -moz-calc(100% - 50px);
+  height: calc(100% - 50px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
 }
-body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container img.logo-triskelion {
-  max-width: 50%;
-  left: 25%;
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.logo-triskelion {
+  background-image: url(../img/ripple-triskelion.png);
+  background-size: 50%;
 }
-body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container img.logo-logotype {
-  margin-top: 20px;
-  max-width: 90%;
-  left: 5%;
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.logotype {
+  background-image: url(../img/logotype.png);
 }
-body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container img.logo-full {
-  max-width: 95%;
-  left: 2.5%;
-  margin-top: 35px;
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.logo-full {
+  background-image: url(../img/logo-lg.png);
 }
-body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container span {
-  position: absolute;
-  top: 18%;
-  width: 70%;
-  left: 15%;
-  height: 100px;
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.badge-blue,
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.badge-gray {
+  background-size: 52%;
+}
+body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container.bg-badge-white {
+  background-image: url(../img/badge-white.png);
+  background-size: 80%;
 }
 body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-download-link {
   position: absolute;
@@ -843,6 +847,11 @@ body:not(.no-literate) .guidelines-content .badge-example .badge-location:after 
     line-height: 40px;
     height: 40px;
   }
+  body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container {
+    height: -webkit-calc(100% - 40px);
+    height: -moz-calc(100% - 40px);
+    height: calc(100% - 40px);
+  }
   body:not(.no-literate) .guidelines-content .guidelines-graphics-part {
     margin-bottom: 30px;
     width: 100%;
@@ -951,6 +960,11 @@ body:not(.no-literate) .guidelines-content .badge-example .badge-location:after 
   body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo a.logo-download-link {
     line-height: 50px;
     height: 50px;
+  }
+  body:not(.no-literate) .guidelines-content .xrp-logos .xrp-logo .logo-container .bg-container {
+    height: -webkit-calc(100% - 50px);
+    height: -moz-calc(100% - 50px);
+    height: calc(100% - 50px);
   }
   body:not(.no-literate) .guidelines-content .brand-usage-types hr {
     width: 100%;

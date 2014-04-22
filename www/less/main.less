@@ -239,33 +239,36 @@ body{
 					.logo-container {						
 						padding-bottom: 90%;
 						position: relative;
-						img {
+						.bg-container {
+							padding-top: 23%;
 							position: absolute;
-							top: 10%;
-							max-width: 100%;
 							left: 0;
+							top: 0;
+							width: 100%;
+							height: -webkit-calc(~"100% - 50px");
+							height: -moz-calc(~"100% - 50px");
+							height: calc(~"100% - 50px");
+							background-position: center;
+							background-repeat: no-repeat;
+							background-size: 90%;
 							&.logo-triskelion {
-								max-width: 50%;
-								left: 25%;
+								background-image: url(../img/ripple-triskelion.png);
+								background-size: 50%;
 							}
-							&.logo-logotype {
-								margin-top: 20px;
-								max-width: 90%;
-								left: 5%;
+							&.logotype {
+								background-image: url(../img/logotype.png);
+								
 							}	
 							&.logo-full {
-								max-width: 95%;
-								left: 2.5%;
-								margin-top: 35px;
-							}					
-
-						}
-						span {
-							position: absolute;
-							top: 18%;
-							width: 70%;
-							left: 15%;
-							height: 100px;
+								background-image: url(../img/logo-lg.png);
+							}
+							&.badge-blue, &.badge-gray {
+								background-size: 52%;
+							}
+							&.bg-badge-white {
+								background-image: url(../img/badge-white.png);
+								background-size: 80%;
+							}
 						}
 					}
 					.logo-download-link {
@@ -774,6 +777,12 @@ body{
 							line-height: 40px;
 							height: 40px;
 						}
+
+						.logo-container .bg-container {
+							height: -webkit-calc(~"100% - 40px");
+							height: -moz-calc(~"100% - 40px");
+							height: calc(~"100% - 40px");
+						}
 					}
 				}
 				.guidelines-graphics-part{
@@ -921,8 +930,12 @@ body{
 						a.logo-download-link {
 							line-height: 50px;
 							height: 50px;
-						}					
-
+						}
+						.logo-container .bg-container {
+							height: -webkit-calc(~"100% - 50px");
+							height: -moz-calc(~"100% - 50px");
+							height: calc(~"100% - 50px");
+						}
 					}
 				}
 				.brand-usage-types {
