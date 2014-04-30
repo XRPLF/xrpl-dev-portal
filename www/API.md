@@ -10,7 +10,7 @@ While there are other API's to use with Ripple (i.e. Accessing the `rippled` ser
 
 Installation instructions and source code can be found in the `ripple-rest` repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>. 
 
-Older versions of the `ripple-rest` documentation will archived <a href="https://github.com/ripple/ripple-dev-portal/archive" target="_blank">here</a>.
+Older versions of the `ripple-rest` documentation will archived <a href="https://github.com/ripple/ripple-dev-portal/tree/master/archive" target="_blank">here</a>.
 
 
 ## Available API Routes ##
