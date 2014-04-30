@@ -644,13 +644,12 @@ __`POST /v1/accounts/{account}/settings`__
 {
   "secret": "s...",
   "settings": {
-    "transfer_rate": 100,
+    "transfer_rate": 0,
     "password_spent": false,
     "require_destination_tag": false,
     "require_authorization": false,
     "disallow_xrp": false,
-    "disable_master": false,
-    "transaction_sequence": 22
+    "disable_master": false
   }
 }
 ```
