@@ -1,6 +1,6 @@
 # INTRODUCTION #
 
-`ripple-rest : v1.000`
+`ripple-rest : v1.0.0`
 
 ## Ripple-REST API ##
 
