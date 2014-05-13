@@ -18,7 +18,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal: Web Sockets API</title>
+  <title>Ripple Developer Portal: Introduction</title>
 
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -68,7 +68,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
   
   <!-- syntax selection js -->
-  <script src='toggle_formats.js'></script>
+  <script src='js/toggle_formats.js'></script>
   
   <!-- Temporary shims until I modify the css directly -->
     <style type='text/css'>
@@ -110,9 +110,9 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     <div class='menubar'>
     
       <ul class='subnav section'>
-          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')});">Introduction</a></li>
-          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')});">Ripple-REST API</a></li>
-          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')});">Web Sockets API</a></li>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')}); document.title='Ripple Developer Portal: Introduction'">Introduction</a></li>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
       </ul>
       <form class='section'>
 		  <label for="syntax_mode">Show Syntax for:</label>
