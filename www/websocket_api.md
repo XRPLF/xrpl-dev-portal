@@ -291,7 +291,7 @@ A successful response includes the address of the account and an array of trust-
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "result" or "error"
+| type | String | Generally "response or "error"
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address of the account this request corresponds to |
 | result.lines | Array | Array of trust-line objects, as described below. |
@@ -375,7 +375,7 @@ A successful response includes the following fields:
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "result" or "error"
+| type | String | Generally "response or "error"
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address identifying the account that made the offers |
 | result.offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
@@ -435,14 +435,14 @@ There is a legacy variation of the `account_tx` method that is used instead when
 | Field | Type | Description |
 |-------|------|-------------|
 | offset | Integer | (Optional, defaults to 0) The number of values to skip over without returning. Use to iterate over data sets larger than the `limit` value. |
-| count | Integer | (Optional)  |
-| descending | Boolean |
-| ledger_max | Integer or String |
-| ledger_min | Integer or String |
+| count | Integer | (Optional) Number of transactions to skip over before retrieving. To iterate over the entire set, send multiple requests with this parameter set to the number of transactions you've already seen. |
+| descending | Boolean | (Optional, defaults to False) If true, results are sorted in descending order.
+| ledger_max | Integer or String | The newest ledger version to search for transactions, or `-1` to use the newest available. (See [Specifying a ledger](#specifying-a-ledger) |
+| ledger_min | Integer or String | Theh oldest ledger version to search for transactions, or `-1` to use the oldest available. (See [Specifying a ledger](#specifying-a-ledger) | 
 
 ##### Iterating over queried data ######
 
-If you want to retrieve an amount of data that is higher than the server's maximum `limit` value, or you want to break up your request into multiple smaller requests, you can use the `marker` field to pick up in the same place you left off. For each subsequent request, pass the `marker` value equal to the number of transactions you've already read. (The second request will probably have an `offset` value equal to the `limit` value of the first one.)
+If you want to retrieve an amount of data that is higher than the server's maximum `limit` value, or you want to break up your request into multiple smaller requests, you can use the `marker` field to pick up in the same place you left off. For each subsequent request, pass the `marker` value from the previous request to instruct rippled to resume from the point where you left off.
 
 However, in the time between requests, things may change so that `"ledger_index_min": -1` and `"ledger_index_max": -1` may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the `ledger_index_min` and `ledger_index_max` values provided in the first response, and use those values for all subsequent requests.
 
@@ -691,7 +691,7 @@ A successful response includes the following fields:
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "result" or "error"
+| type | String | Generally "response or "error"
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address identifying the related account |
 | ledger_index_min | Integer | The sequence number of the earliest ledger with transactions <span class='draft-comment'>(actually or potentially?)</span> included in the response. |
@@ -709,3 +709,67 @@ Each transaction object includes the following fields, depending on whether it w
 | tx | Object | (JSON mode only) JSON object defining the transaction |
 | tx_blob | String | (Binary mode only) Unique hashed String representing the transaction. |
 | validated | Boolean | Whether or not the transaction was validated <span class='draft-comment'>by/for what? (Included in a validated ledger?)</span> |
+
+## wallet_propose ##
+
+<span class='draft-comment'>(My speculation/impression of this method:</span> Use the `wallet_propose` method to provisionally create a new account. The account created this way will become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. 
+
+*The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+
+An example of the request format:
+
+```cli
+wallet_propose [passphrase]
+```
+
+```js-websocket
+{
+    "passphrase": "test"
+}
+```
+
+The request contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will generate a random passphrase. Outside of testing purposes, passphrases should always be randomly generated. |
+f"re
+#### Response Format ####
+
+A successful response includes various important information about the new account. An example of a successful response:
+
+```js
+{
+    "id": 2,
+    "status": "success",
+    "type": "response",
+    "results": {
+        "master_seed":
+        "master_seed_hex":
+        "master_key":
+        "account_id":
+        "public_key":
+        "public_key_hex": 
+    }
+}
+```
+
+A succcessful response contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error"
+| result | Object | Object containing with the main contents of the response |
+| result.master_seed | <span class='draft-comment'>?</span> | <span class='draft-comment'>Master seed? Is that like a private key?</span> |
+| result.master_seed_hex | String | <span class='draft-comment'>Master seed represented as a hex string?</span> |
+| result.master_key | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
+| result.account_id | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
+| result.public_key | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
+| result.public_key_hex | String | <span class='draft-comment'>Public key represented as a hex string?</span> |
+
+
