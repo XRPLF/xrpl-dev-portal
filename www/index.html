@@ -18,7 +18,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal</title>
+  <title>Ripple Developer Portal: Web Sockets API</title>
 
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -26,20 +26,16 @@
 
   <!-- Flatdoc -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src='vendor/flatdoc/v/0.8.0/legacy.js'></script>
-  <script src='vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
+  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/legacy.js'></script>
+  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
 
   <!-- Flatdoc theme -->
-  <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-  <script src='vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
-
-  <!-- Meta -->
-  <meta content="Ripple Web Client" property="og:title">
-  <meta content="Ripple Web Client description goes here." name="description">
+  <link  href='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
 
   <!-- Custom Stylesheet -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
-  <link  href='css/main.css' rel='stylesheet'>
+  <link  href='https://dev.ripple.com/css/main.css' rel='stylesheet'>
 
   <!-- start Mixpanel -->
   <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
@@ -67,11 +63,31 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('API.md')
+      fetcher: Flatdoc.file('websocket_api.md')
     });
   </script>
+  
+  <!-- syntax selection js -->
+  <script src='toggle_formats.js'></script>
+  
+  <!-- Temporary shims until I modify the css directly -->
+    <style type='text/css'>
+    .draft-comment {background: #faa; border: 1px solid #d88; padding: 2px;}
+     * {text-transform: none !important;}
+     td {border: 1px solid #DBDDE2 !important; padding: .2em;}
+     table { border-collapse: collapse; clear: left; width: 550px}
+     th { padding: .2em; }
+     
+     body .content-root {
+        background-color: #F3F6FB;
+        box-shadow: 930px 0 #FFFFFF inset, 931px 0 #DFE2E7 inset, 940px 0 5px -10px rgba(0, 0, 0, 0.1) inset;
+    }
+	code { max-height: 14em; overflow: auto;}
+	.expanded { max-height: none; overflow: none;}
+     </style>
+  
 </head>
-<body role='flatdoc'>
+<body role='flatdoc' class='no-literate'>
 
   <div class='header'>
     <div class='left'>
@@ -81,17 +97,24 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         <li><a href='https://ripple.com/dev/blog'>Developer blog</a></li>
         <li><a href='https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98' target='_blank'>Developer Forum</a></li>
         <li><a href='guidelines.html'>Brand Guidelines</a></li>
-        <li><a href='https://ripple.com/forum/viewforum.php?f=20'target='_blank'>Bounties</a></li>  
+        <li><a href='https://ripple.com/forum/viewforum.php?f=20' target='_blank'>Bounties</a></li>  
       </ul>
     </div>
     <div class='right'>
       <!-- GitHub buttons: ghbtn.html -->
-      <iframe src="vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+      <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
 
   <div class='content-root'>
     <div class='menubar'>
+      <form class='section'>
+		  <label for="syntax_mode">Show Syntax for:</label>
+		  <select id="syntax_mode">
+		  	<option value="js-websocket" default="default">Web Sockets</option>
+		  	<option value="js-jsonrpc">JSON-RPC</option>
+		  	<option value="cli">Commandline</option>
+	  </select></form>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
     <div role='flatdoc-content' class='content'></div>
