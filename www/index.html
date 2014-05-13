@@ -63,7 +63,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('websocket_api.md')
+      fetcher: Flatdoc.file('intro.md')
     });
   </script>
   
@@ -108,6 +108,12 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 
   <div class='content-root'>
     <div class='menubar'>
+    
+      <ul class='subnav section'>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')});">Introduction</a></li>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')});">Ripple-REST API</a></li>
+          <li><a href='#' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')});">Web Sockets API</a></li>
+      </ul>
       <form class='section'>
 		  <label for="syntax_mode">Show Syntax for:</label>
 		  <select id="syntax_mode">

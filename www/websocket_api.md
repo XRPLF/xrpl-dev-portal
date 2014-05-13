@@ -1,5 +1,5 @@
-#INTRODUCTION#
-The Web Socket and JSON-RPC APIs are two methods of communicating with a `rippled` server in the Ripple network. Both APIs use the same JSON data format, although not all features are available on both APIs. Unlike the [Ripple-REST API](https://dev.ripple.com/index.html), the Websocket and JSON-RPC APIs are more difficult to use, but also provide the full power of Ripple.
+# Web Sockets API #
+The Web Sockets API and JSON-RPC APIs are two methods of communicating with a `rippled` server in the Ripple network. Both APIs use the same JSON data format, although not all features are available on both APIs. Unlike the [Ripple-REST API](https://dev.ripple.com/index.html), the Websocket and JSON-RPC APIs are more difficult to use, but also provide the full power of Ripple.
 
 In general, we recommend using Web Sockets, for several reasons:
 
