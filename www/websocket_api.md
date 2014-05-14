@@ -19,9 +19,9 @@ In the Web Sockets model, each request is a JSON-formatted message sent over the
 
 However, the requests on both the Web Sockets API and the JSON-RPC API use the same [JSON](http://www.w3schools.com/json/) object format.
 
-## Specifying a Ledger Version ##
+## Specifying a Ledger Instance ##
 
-Many API methods require you to specify a version of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular ledger version. All such APIs work the same way. There are three ways you can specify which ledger version you want to use:
+Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. All such APIs work the same way. There are three ways you can specify which ledger you want to use:
 
 1. Specify a ledger by its Sequence Number in the `ledger_index` parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)
 2. Specify a ledger by its hash value in the `ledger_hash` parameter. 
@@ -118,7 +118,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`wallet_propose`](#wallet-propose)
 * [`wallet_seed`](#wallet-seed)
 
-# Dealing with Accounts #
+# Managing Accounts #
 Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (This value fluctuates with the load on the network; spamming new account creations increases the necessary reserve. <span class='draft-comment'>Does it really fluctuate dynamically?</span>) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
 
 ## account_info ##
@@ -772,4 +772,22 @@ A succcessful response contains the following fields:
 | result.public_key | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
 | result.public_key_hex | String | <span class='draft-comment'>Public key represented as a hex string?</span> |
 
+# Managing Ledgers #
 
+## ledger ##
+<span class='draft-comment'>stub</span>
+
+## ledger_closed ##
+<span class='draft-comment'>stub</span>
+
+## ledger_current ##
+<span class='draft-comment'>stub</span>
+
+## ledger_data ##
+<span class='draft-comment'>stub</span>
+
+## ledger_entry ##
+<span class='draft-comment'>stub</span>
+
+## ledger_accept ##
+<span class='draft-comment'>stub</span>
