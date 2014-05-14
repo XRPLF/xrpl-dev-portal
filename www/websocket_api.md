@@ -159,7 +159,7 @@ account_info account [ledger_index] [strict]
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | ident | String | (Optional, Deprecated) Alias for `account`. Will only be used if `account` is omitted. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
-| account_index | Unsigned Integer | (Optional) <span class='draft-comment'>Somethig to do with the account's public key??!</span> |
+| account_index | Unsigned Integer | (Optional) Return data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
 | ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
@@ -234,8 +234,8 @@ The request can include any of the following fields:
 | ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
-| peer | String | A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
-| peer_index | Number | <span class='draft-comment'>?</span> |
+| peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
+| peer_index | Number | (Optional) Return data on another deterministic wallet derived from the specified peer. This feature is not widely supported and may be dropped in the future. |
 
 
 #### Response Format ####
