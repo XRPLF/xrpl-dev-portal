@@ -128,7 +128,9 @@ The `account_info` command retrieves information about an account, its activity,
 #### Request Format ####
 
 An example of an account_info request:
-```js-websocket
+<div class='multicode'>
+*Web Sockets*
+```
 {
   "id": 2,
   "command": "account_info",
@@ -137,7 +139,9 @@ An example of an account_info request:
   "ledger_index": "validated"
 }
 ```
-```js-jsonrpc
+
+*JSON-RPC*
+```
 {
     "command": "account_info",
     "params": [
@@ -149,9 +153,11 @@ An example of an account_info request:
     ]
 }
 ```
-```cli
+*Commandline*
+```
 account_info account [ledger_index] [strict]
 ```
+</div>
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -167,7 +173,7 @@ account_info account [ledger_index] [strict]
 #### Response Format ####
 
 An example of a successful response:
-```js-websocket
+```js
 {
   "id": 5,
   "status": "success",
@@ -216,7 +222,9 @@ The `account_lines` method returns information about the account's lines of trus
 
 An example of the request format:
 
-```js-websocket 
+<div class='multicode'>
+*Web Sockets*
+```
 {
   "id": 1,
   "command": "account_lines",
@@ -224,6 +232,7 @@ An example of the request format:
   "ledger": "current"
 }
 ```
+</div>
 
 The request can include any of the following fields:
 
@@ -242,7 +251,7 @@ The request can include any of the following fields:
 
 An example of a successful response:
 
-```js-websocket
+```
 {
     "id": 1,
     "status": "success",
@@ -319,7 +328,9 @@ The `account_offers` method retrieves a list of offers made by a given account t
 
 An example of the request format:
 
-```js-websocket
+<div class='multicode'>
+*WebSockets*
+```
 {
   "id": 2,
   "command": "account_offers",
@@ -327,9 +338,12 @@ An example of the request format:
   "ledger_index": "current"
 }
 ```
-```cli
+
+*Commandline*
+```
 account_offers account|nickname|seed|pass_phrase|key [ledger_index]
 ```
+</div>
 
 A request can include the following fields:
 
@@ -397,7 +411,9 @@ The `account_tx` method retrieves a list of transactions that involved the speci
 
 An example of the request format:
 
-```js-websocket
+<div class='multicode'>
+*WebSockets*
+```
 {
   "id": 2,
   "command": "account_tx",
@@ -412,9 +428,12 @@ An example of the request format:
   "forward": false
 }
 ```
-```cli
+
+*Commandline*
+```
 account_tx accountID [ledger_min [ledger_max [limit]]] [binary] [count] [descending]
 ```
+</div>
 
 A request can include the following fields:
 
@@ -720,15 +739,20 @@ Each transaction object includes the following fields, depending on whether it w
 
 An example of the request format:
 
-```cli
+<div class='multicode'>
+*Commandline*
+```
 wallet_propose [passphrase]
 ```
 
-```js-websocket
+*WebSockets*
+```
 {
+    "command": "wallet_propose",
     "passphrase": "test"
 }
 ```
+</div>
 
 The request contains the following fields:
 
@@ -736,7 +760,7 @@ The request contains the following fields:
 |-------|------|-------------|
 | id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will generate a random passphrase. Outside of testing purposes, passphrases should always be randomly generated. |
-f"re
+
 #### Response Format ####
 
 A successful response includes various important information about the new account. An example of a successful response:
@@ -775,7 +799,29 @@ A succcessful response contains the following fields:
 # Managing Ledgers #
 
 ## ledger ##
-<span class='draft-comment'>stub</span>
+
+Retrieve information about the public ledger.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*Commandline*
+```
+ledger ledger_selector [full]
+```
+
+*WebSockets*
+```
+{
+    "command": "ledger",
+    "full": false,
+    "accounts": false,
+    "transactions": false,
+    
+}
+```
+</div>
 
 ## ledger_closed ##
 <span class='draft-comment'>stub</span>

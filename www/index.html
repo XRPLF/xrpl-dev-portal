@@ -76,23 +76,12 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
   
   <!-- syntax selection js -->
-  <script src='js/toggle_formats.js'></script>
-  
+  <script src='js/multicodetab.js'></script>
+  <script>
+    $(document).on('flatdoc:ready', $().multicode_tabs);
+  </script>
   <!-- Temporary shims until I modify the css directly -->
-    <style type='text/css'>
-    .draft-comment {background: #faa; border: 1px solid #d88; padding: 2px;}
-     * {text-transform: none !important;}
-     td {border: 1px solid #DBDDE2 !important; padding: .2em;}
-     table { border-collapse: collapse; clear: left; width: 550px}
-     th { padding: .2em; }
-     
-     body .content-root {
-        background-color: #F3F6FB;
-        box-shadow: 930px 0 #FFFFFF inset, 931px 0 #DFE2E7 inset, 940px 0 5px -10px rgba(0, 0, 0, 0.1) inset;
-    }
-	code { max-height: 14em; overflow: auto;}
-	.expanded { max-height: none; overflow: none;}
-     </style>
+    <link type='text/css' rel='stylesheet' href='css/mod.css' />
   
 </head>
 <body role='flatdoc' class='no-literate'>
@@ -122,13 +111,6 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
           <li><a href='#ripple-rest-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
           <li><a href='#web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
       </ul>
-      <form class='section'>
-		  <label for="syntax_mode">Show Syntax for:</label>
-		  <select id="syntax_mode">
-		  	<option value="js-websocket" default="default">Web Sockets</option>
-		  	<option value="js-jsonrpc">JSON-RPC</option>
-		  	<option value="cli">Commandline</option>
-	  </select></form>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
     <div role='flatdoc-content' class='content'></div>
