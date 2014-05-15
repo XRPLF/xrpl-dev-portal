@@ -153,6 +153,7 @@ An example of an account_info request:
     ]
 }
 ```
+
 *Commandline*
 ```
 account_info account [ledger_index] [strict]
@@ -300,7 +301,7 @@ A successful response includes the address of the account and an array of trust-
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error"
+| type | String | Generally "response or "error" |
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address of the account this request corresponds to |
 | result.lines | Array | Array of trust-line objects, as described below. |
@@ -351,9 +352,9 @@ A request can include the following fields:
 |-------|------|-------------|
 | id | (Arbitrary) | Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
-| ledger | Unsigned integer, or String | A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
+| ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
-| ledger_index | Unsigned integer, or String constant | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
+| ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
 
 
 #### Response Format ####
@@ -389,7 +390,7 @@ A successful response includes the following fields:
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error"
+| type | String | Generally "response or "error" |
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address identifying the account that made the offers |
 | result.offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
@@ -448,16 +449,17 @@ A request can include the following fields:
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hashed hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values sorted with the oldest ledger first. Otherwise, the results are sorted with the newest ledger first. |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
+| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
 
 There is a legacy variation of the `account_tx` method that is used instead whenever any of the following fields are found. This mode is deprecated, and we recommend *not using any of the following fields*:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| offset | Integer | (Optional, defaults to 0) The number of values to skip over without returning. Use to iterate over data sets larger than the `limit` value. |
-| count | Integer | (Optional) Number of transactions to skip over before retrieving. To iterate over the entire set, send multiple requests with this parameter set to the number of transactions you've already seen. |
-| descending | Boolean | (Optional, defaults to False) If true, results are sorted in descending order.
-| ledger_max | Integer or String | The newest ledger version to search for transactions, or `-1` to use the newest available. (See [Specifying a ledger](#specifying-a-ledger) |
-| ledger_min | Integer or String | Theh oldest ledger version to search for transactions, or `-1` to use the oldest available. (See [Specifying a ledger](#specifying-a-ledger) | 
+| offset | Integer | (Deprecated, Optional, defaults to 0) The number of values to skip over without returning. Use to iterate over data sets larger than the `limit` value. |
+| count | Integer | (Deprecated, Optional) Number of transactions to skip over before retrieving. To iterate over the entire set, send multiple requests with this parameter set to the number of transactions you've already seen. |
+| descending | Boolean | (Deprecated, Optional, defaults to False) If true, results are sorted in descending order.
+| ledger_max | Integer or String | (Deprecated) The newest ledger version to search for transactions, or `-1` to use the newest available. (See [Specifying a ledger](#specifying-a-ledger) |
+| ledger_min | Integer or String | (Deprecated) Theh oldest ledger version to search for transactions, or `-1` to use the oldest available. (See [Specifying a ledger](#specifying-a-ledger) | 
 
 ##### Iterating over queried data ######
 
@@ -710,7 +712,7 @@ A successful response includes the following fields:
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error"
+| type | String | Generally "response or "error" |
 | result | Object | Object containing with the main contents of the response |
 | result.account | String | Unique address identifying the related account |
 | ledger_index_min | Integer | The sequence number of the earliest ledger with transactions <span class='draft-comment'>(actually or potentially?)</span> included in the response. |
@@ -740,11 +742,6 @@ Each transaction object includes the following fields, depending on whether it w
 An example of the request format:
 
 <div class='multicode'>
-*Commandline*
-```
-wallet_propose [passphrase]
-```
-
 *WebSockets*
 ```
 {
@@ -752,6 +749,11 @@ wallet_propose [passphrase]
     "passphrase": "test"
 }
 ```
+*Commandline*
+```
+wallet_propose [passphrase]
+```
+
 </div>
 
 The request contains the following fields:
@@ -787,7 +789,7 @@ A succcessful response contains the following fields:
 |-------|------|-------------|
 | id | (Varies) | Unique ID of the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error"
+| type | String | Generally "response or "error" |
 | result | Object | Object containing with the main contents of the response |
 | result.master_seed | <span class='draft-comment'>?</span> | <span class='draft-comment'>Master seed? Is that like a private key?</span> |
 | result.master_seed_hex | String | <span class='draft-comment'>Master seed represented as a hex string?</span> |
@@ -806,11 +808,6 @@ Retrieve information about the public ledger.
 An example of the request format:
 
 <div class='multicode'>
-*Commandline*
-```
-ledger ledger_selector [full]
-```
-
 *WebSockets*
 ```
 {
@@ -818,22 +815,351 @@ ledger ledger_selector [full]
     "full": false,
     "accounts": false,
     "transactions": false,
-    
+    "expand": false,
+    "ledger_index": "current"
 }
+```
+
+*Commandline*
+```
+ledger ledger_selector [full]
 ```
 </div>
 
+The request contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| accounts | Boolean | (Optional, defaults to false) If true, return information on accounts in the ledger. *Admin required* |
+| transactions | Boolean | (Optional, defaults to false) If true, return information on transactions. |
+| full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
+| expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes *Admin required<span class='draft-comment'>?</span>* |
+| ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
+| ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
+| ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
+
+#### Response Format ####
+
+A successful response includes various information about the ledger.
+
+```js
+{
+  "id": 14,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger": {
+      "accepted": true,
+      "account_hash": "03AC618315876C2B1F50EBB570C84BB11AB7FFE571CFE173E898326C8281C623",
+      "close_time": 453452750,
+      "close_time_human": "2014-May-15 07:05:50",
+      "close_time_resolution": 10,
+      "closed": true,
+      "hash": "957034715D2A4065820E3EC1413FCE23AB4A6496C150A355C691B1F9A985416C",
+      "ledger_hash": "957034715D2A4065820E3EC1413FCE23AB4A6496C150A355C691B1F9A985416C",
+      "ledger_index": "6636643",
+      "parent_hash": "22128FF378D06A0040B9C67D38EBBB2C175CB7ACDDA1F8772266338E97D90BAF",
+      "seqNum": "6636643",
+      "totalCoins": "99999990220863890",
+      "total_coins": "99999990220863890",
+      "transaction_hash": "D5B2F85496B00841A9FE16BFB91CBA4DA1C3D337CAD9F4EE13A0D7D8F198D02C"
+    }
+  }
+}
+```
+
+A succcessful response contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error" |
+| result | Object | Object containing with the main contents of the response |
+| result.accepted | Boolean |
+| result.account_hash | String | <span class='draft-comment'>Hash of the account information in this ledger?</span> |
+| result.close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
+| result.close_time_human | String | The time this ledger was closed, in human-readable format |
+| result.close_time_resolution | Integer | <span class='draft-comment'>?</span> |
+| result.closed | Boolean | Whether or not this ledger has been closed |
+| result.hash | String | Unique identifying hash of the entire ledger. |
+| result.ledger_hash | String | Alias for `result.hash` |
+| result.ledger_index | String | Ledger sequence number as a quoted integer |
+| result.parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
+| result.seqNum | String | Alias for `result.ledger_index` |
+| result.totalCoins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| result.total_coins | String | Alias for `result.totalCoins` |
+| result.transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger?</span> |
+
+
 ## ledger_closed ##
-<span class='draft-comment'>stub</span>
+
+The `ledger_closed` method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSockets*
+```
+{
+   "id": 2,
+   "command": "ledger_closed"
+}
+```
+
+*Commandline*
+```
+ledger_closed
+```
+</div>
+
+The request contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+
+
+#### Response Format ####
+An example of a successful response:
+```js
+{
+  "id": 1,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_hash": "17ACB57A0F73B5160713E81FE72B2AC9F6064541004E272BD09F257D57C30C02",
+    "ledger_index": 6643099
+  }
+}
+```
+
+A successful response includes the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error" |
+| result | Object | Object containing with the main contents of the response |
+| result.ledger_hash | String | 20-byte hex string with a unique hash of the ledger |
+| result.ledger_index | Unsigned Integer | Sequence number of this ledger |
 
 ## ledger_current ##
-<span class='draft-comment'>stub</span>
+The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger is still in flux.
+
+#### Request Format ####
+
+An example of the request format:
+
+<div class='multicode'>
+*WebSockets*
+```
+{
+   "id": 2,
+   "command": "ledger_current"
+}
+```
+
+*Commandline*
+```
+ledger_current
+```
+</div>
+
+The request contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+
+
+#### Response Format ####
+An example of a successful response:
+```js
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 6643240
+  }
+}
+```
+
+A successful response includes the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error" |
+| result | Object | Object containing with the main contents of the response |
+| result.ledger_current_index | Unsigned Integer | Sequence number of this ledger |
+
+A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 
 ## ledger_data ##
-<span class='draft-comment'>stub</span>
+The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls in order to retrieve the entire contents of a single ledger version.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSockets*
+```
+{
+   "id": 2,
+   "command": "ledger_data",
+   "limit": 5,
+   "binary": true
+}
+```
+
+</div>
+
+A request can include the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (WebSockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
+| binary | Boolean | (Optional, defaults to False) If set to True, return data nodes as hashed hex strings instead of JSON. |
+| limit | Integer | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
+| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
+
+#### Response Format ####
+
+An example of a successful response:
+<span class='draft-comment'>Example needed</span>
+
+A successful response includes the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error" |
+| result | Object | Object containing with the main contents of the response |
+| result.ledger_index | Unsigned Integer | Sequence number of this ledger |
+| result.ledger_hash | String | Unique identifying hash of the entire ledger. |
+| result.state | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
+| result.data | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
+| result.index | String | <span class='draft-comment'>?</span> |
+| result.marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
 
 ## ledger_entry ##
-<span class='draft-comment'>stub</span>
+The `ledger_entry` method returns a single entry from the specified ledger. <span class='draft-comment'>Some more information on this would be good</span>
+
+#### Request Format ####
+
+An example of the request format:
+
+<div class='multicode'>
+*WebSockets*
+```
+{
+  "id": 3,
+  "command": "ledger_entry",
+  "type": "account_root",
+  "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "ledger_index": "validated"
+}
+```
+
+</div>
+
+This method has several modes that retrieve different things. You can select modes by passing the appropriate parameters, but you can only use one mode at a time. If you request multiple items, the server will perform whichever operation is first on the following list:
+
+1. `account_root`
+2. `directory`
+3. `generator`
+4. `offer`
+5. `ripple_state`
+
+The full list of parameters recognized by this method is as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| index | String | <span class='draft-comment'>Hex code for something related to proof?</span> |
+| account_root | String | (Optional) <span class='draft-comment'>Specify an account to retrieve from the ledger? Is this different from `account_info`?</span> |
+| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. <span class='draft-comment'>... whatever a directory node is.</span> If a string, interpret as a <span class='draft-comment'>hex hash of something?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| directory.sub_index | Unsigned Integer | (Optional) <span class='draft-comment'>?</span> |
+| directory.dir_root | String |  (Optional) <span class='draft-comment'>?</span> |
+| directory.owner | String | (Optional) Unique Account address of <span class='draft-comment'>the directory?</span> |
+| generator | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-field `regular_seed` |
+| generator.regular_seed | String | <span class='draft-comment'>?</span> |
+| offer | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-fields `account` and `seq`. |
+| offer.account | String | (Required if `offer` specified) The unique address of the account <span class='draft-comment'>making the offer?</span> |
+| offer.seq | Unsigned Integer | (Required if `offer` specified)  <span class='draft-comment'>?</span> |
+| ripple_state | Object | (Optional) <span class='draft-comment'>Information about the potential path between two accounts?</span> |
+| ripple_state.accounts | Array | (Required if `ripple_state` specified) 2-length array of account address strings |
+| ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency <span class='draft-comment'>(like, the 3-letter or hex code?)</span> |
+| binary | Boolean | (Optional, defaults to false) If true, return data as <span class='draft-comment'>"binary"?</span> Otherwise, return data in JSON format. |
+
+#### Response Format ####
+
+An example of a successful response:
+<span class='draft-comment'>Example(s) needed</span>
 
 ## ledger_accept ##
-<span class='draft-comment'>stub</span>
+The `ledger_accept` method forces the server to close the current-working ledger <span class='draft-comment'>and validate it?</span>. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
+
+*The `ledger_accept` method is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+
+An example of the request format:
+An example of the request format:
+
+<div class='multicode'>
+*WebSockets*
+```
+{
+   "id": "Accept my ledger!",
+   "command": "ledger_accept"
+}
+```
+
+*Commandline*
+```
+ledger_accept
+```
+</div>
+
+The request contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+
+#### Response Format ####
+
+An example of a successful response:
+```js
+{
+  "id": "Accept my ledger!",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 6643240
+  }
+}
+```
+
+A successful response includes the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| status | String | "success" if the request successfully completed |
+| type | String | Generally "response or "error" |
+| result | Object | Object containing with the main contents of the response |
+| result.ledger_current_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
+
+
