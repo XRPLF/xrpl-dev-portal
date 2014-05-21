@@ -17,7 +17,36 @@ In the JSON-RPC model, each request is an HTTP POST request to the server that p
 
 In the Web Sockets model, each request is a JSON-formatted message sent over the socket to the server. However, there is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. 
 
-However, the requests on both the Web Sockets API and the JSON-RPC API use the same [JSON](http://www.w3schools.com/json/) object format.
+Both the Web Sockets API and the JSON-RPC API use [JSON](http://www.w3schools.com/json/) for requests and responses. The methods and parameters available on both APIs are generally the same, but the exact formatting is slightly different between the two.
+
+In general, a Web Sockets request puts the command name and the command's parameters both at the top level of the JSON object, with an optional `"id"` field to identify requests in case the responses come back out of order. Meanwhile, JSON-RPC puts the parameters in a separate object, as the first member of a `"params"` array. Compare the following two calls, identical except that one is formatted for Web Sockets and the other is formatted for JSON-RPC:
+
+<div class='multicode'>
+*Web Sockets*
+```
+{
+  "id": 2,
+  "command": "account_info",
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "strict": True,
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+```
+{
+    "command": "account_info",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "strict": True,
+            "ledger_index": "validated"
+        }
+    ]
+}
+```
+</div>
 
 ## Specifying a Ledger Instance ##
 
@@ -119,7 +148,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`wallet_seed`](#wallet-seed)
 
 # Managing Accounts #
-Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (This value fluctuates with the load on the network; spamming new account creations increases the necessary reserve. <span class='draft-comment'>Does it really fluctuate dynamically?</span>) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
+Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
 
 ## account_info ##
 
@@ -162,11 +191,11 @@ account_info account [ledger_index] [strict]
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (Web Sockets only) A value to return as the `id` field in the response to this request; use to identify responses in case they are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | ident | String | (Optional, Deprecated) Alias for `account`. Will only be used if `account` is omitted. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
-| account_index | Unsigned Integer | (Optional) Return data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
+| account_index | Unsigned Integer | (Optional, Deprecated) Return data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
 | ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
@@ -200,20 +229,22 @@ The response contains the requested account, its data, and a ledger to which it 
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
+| id | (Varies) | ID provided in the Web Socket request that prompted this response |
 | status | String | "success" if the request successfully completed |
 | type | String | The type of response this is, usually either "response" or "error". |
 | result | Object | The result of the query |
 | result.account_data | Object | Information about the requested account |
 | result.account_data.Account | String | Address of the requested account |
-| result.account_data.Balance | String | <span class='draft-comment'>XRP balance in "drops" represented as a string?</span> |
-| result.account_data.Flags | 32-bit unsigned integer | <span class='draft-comment'>?</span> |
-| result.account_data.LedgerEntryType | String | <span class='draft-comment'>?</span> |
-| result.account_data.OwnerCount | Integer | <span class='draft-comment'>?</span> |
-| result.account_data.PreviousTxnID | String | Hash value representing the most recent transaction involving<span class='draft-comment'>(initiated by?)</span> this account |
-| result.account_data.Sequence | Integer | <span class='draft-comment'>?</span> |
-| result.account_data.index | String | <span class='draft-comment'>?</span> |
-| result.ledger_current_index | Integer | The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.<span class='draft-comment'>Right?</span> |
+| result.account_data.Balance | String | XRP balance in "drops" represented as a string |
+| result.account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](https://ripple.com/wiki/Transactions#AccountSet_.283.29) |
+| result.account_data.LedgerEntryType | String | "AccountRoot" specifies that this is an Account  |
+| result.account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This affects the total reserve required to use the account. |
+| result.account_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account |
+| result.account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
+| result.account_data.index | String | (Deprecated) Data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
+| result.ledger_current_index | Integer | The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
+| result.ledger_index | Integer | The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.<span class='draft-comment'>Right?</span> |
+| result.validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 
 ## account_lines ##
 
@@ -314,12 +345,12 @@ Each trust-line object has some combination of the following fields, although no
 | account | String | The unique address of the account this line applies to. |
 | balance | String | Representation of the numeric balance currently held against this line |
 | currency | String | The currency this line applies to |
-| limit | String | The maximum amount of currency that the account for this line <span class='draft-comment'>can spend? borrow?</span> |
-| limit_peer | String | <span class='draft-comment'>?</span> |
+| limit | String | The maximum amount of the given currency that the account is willing to owe the peer |
+| limit_peer | String | The maximum amount of currency that the peer is willing to owe the account |
 | no_ripple | Boolean | <span class='draft-comment'>Don't use as an intermediary for transactions?</span> |
-| no_ripple_peer | String | <span class='draft-comment'>?</span> |
-| quality_in | String | <span class='draft-comment'>Fee to charge?</span> |
-| quality_out | String | <span class='draft-comment'>Fee to charge?</span> |
+| no_ripple_peer | Boolean | <span class='draft-comment'>?</span> |
+| quality_in | Unsigned Integer | <span class='draft-comment'>Fee to charge?</span> |
+| quality_out | Unsigned Integer | <span class='draft-comment'>Fee to charge?</span> |
 
 ## account_offers ##
 
@@ -733,7 +764,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 ## wallet_propose ##
 
-<span class='draft-comment'>(My speculation/impression of this method:</span> Use the `wallet_propose` method to provisionally create a new account. The account created this way will become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. 
+Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
 
 *The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!*
 
@@ -769,17 +800,15 @@ A successful response includes various important information about the new accou
 
 ```js
 {
-    "id": 2,
-    "status": "success",
-    "type": "response",
-    "results": {
-        "master_seed":
-        "master_seed_hex":
-        "master_key":
-        "account_id":
-        "public_key":
-        "public_key_hex": 
-    }
+   "result" : {
+      "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
+      "master_key" : "AHOY CLAD JUDD NOON MINI CHAD CUBA JAN KANT AMID DEL LETS",
+      "master_seed" : "ssyXjRurNo75TjXjubby65cD96ak8",
+      "master_seed_hex" : "5BDD10A694F2E36CCAC0CBE28CE2AC49",
+      "public_key" : "aBPXjfsA7fY2LLPxRuZ7Sj2ADzoSEGDW4Atd5MgxdHz5FQvGPbqU",
+      "public_key_hex" : "02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F",
+      "status" : "success"
+   }
 }
 ```
 
@@ -799,6 +828,8 @@ A succcessful response contains the following fields:
 | result.public_key_hex | String | <span class='draft-comment'>Public key represented as a hex string?</span> |
 
 # Managing Ledgers #
+
+The shared ledger is the core of the Ripple Network. Each `rippled` server keeps an entire copy of the ledger, which contains all the accounts, transactions, and offers in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its working copy of the ledger, closes it periodically, and volunteers the recently-closed ledgers to become the globally canonical version. Once concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger go into the working copy, to be included in the next closed version proposed for validation.
 
 ## ledger ##
 
@@ -1162,4 +1193,8 @@ A successful response includes the following fields:
 | result | Object | Object containing with the main contents of the response |
 | result.ledger_current_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
 
+# Managing Transactions #
 
+Transactions are the most important aspect of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
+
+Transactions are a tricky beast. After 
