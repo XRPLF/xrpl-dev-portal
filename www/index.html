@@ -62,9 +62,10 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     
   <!-- Initializer -->
   <script>
-    if (window.location.hash == "#web-sockets-api") {
+    var GET_VARS = window.location.search.replace("?","").split("&");
+    if (GET_VARS.indexOf("p=web-sockets-api")>-1) {
         var fdfile = "websocket_api.md";
-    } else if (window.location.hash == "#ripple-rest-api") {
+    } else if (GET_VARS.indexOf("p=ripple-rest-api")>-1) {
         var fdfile = "ripplerest_api.md";
     } else {
         var fdfile = "intro.md";
@@ -107,9 +108,9 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     <div class='menubar'>
     
       <ul class='subnav section'>
-          <li><a href='#introduction' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')}); document.title='Ripple Developer Portal: Introduction'">Introduction</a></li>
-          <li><a href='#ripple-rest-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
-          <li><a href='#web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
+          <li><a href='?p=introduction' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')}); document.title='Ripple Developer Portal: Introduction'">Introduction</a></li>
+          <li><a href='?p=ripple-rest-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
+          <li><a href='?p=web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
       </ul>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
