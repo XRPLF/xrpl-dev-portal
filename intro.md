@@ -2,13 +2,13 @@
 
 Ripple is a decentralized, peer-to-peer network for moving money using cryptographic technology. For more on the big picture, consult [ripple.com](https://ripple.com/) and check out [our blog](https://ripple.com/blog/).
 
-To get started using Ripple, you can try running a few calls to retrieve public information from the [Ripple API Tool](https://ripple.com/tools/api) or you can start by downloading and running your own instance of `rippled`, the Ripple server. In order to get an account on the network, you will have to find someone to send you some amount of XRP in excess of the reserve requirement. 
+To get started using Ripple, you can try running a few calls to retrieve public information from the [Ripple API Tool](https://ripple.com/tools/api) or you can start by downloading and running your own instance of `rippled`, the Ripple server. In order to get an account on the network, you will have to find someone to give or sell you some amount of XRP in excess of the reserve requirement. 
 
 # Ripple Client Applications #
 
 The official web client for the Ripple Network is available at [https://ripple.com/client/](). You can also try signing up for [Ripple Trade](https://rippletrade.com/), which is still in development. In the future, official downloadable clients will also be available.
 
-If you intend to act as a gateway, you will probably want to build custom client applications that your customers can use to manage their funds within the Ripple Network. To do that, you will need to integrate against the [Ripple APIs](#ripple-apis).
+If you intend to act as a gateway, you will probably want to build custom client applications that your customers can use to manage their funds within the Ripple Network. To do that, you will need to integrate with one of the [Ripple APIs](#ripple-apis).
 
 # Ripple APIs #
 

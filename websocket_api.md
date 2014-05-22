@@ -15,11 +15,13 @@ Alternatively, and recommended if you are going to do heavy development work, yo
 
 ### WebSocket API ###
 
-If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run under a browser or possibly [Node.js](https://github.com/einaros/ws).
+If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run in a browser or possibly [Node.js](https://github.com/einaros/ws).
 
 Currently Ripple Labs maintains a set of public WebSocket servers at:
 
-`s1.ripple.com:443`
+```
+s1.ripple.com:443
+```
 
 ### JSON-RPC ###
 
@@ -27,9 +29,11 @@ You can use any HTTP client (like [Poster for Firefox](https://addons.mozilla.or
 
 Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
 
-`s1.ripple.com:51234`
+```
+s1.ripple.com:51234
+```
 
-If you are running your own `rippled` server, make sure that you have enabled the JSON-RPC interface, since it is disabled by default. For example:
+If you are running your own `rippled` server, make sure that you have enabled the JSON-RPC interface in your [rippled.cfg](https://ripple.com/wiki/Rippled.cfg) file, since JSON-RPC is disabled by default. The relevant section is something like this example:
 
 ```
 # [rpc_ip]:
@@ -301,7 +305,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 }
 ```
 
-## API Methods ##
+# API Methods #
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public commands are not necessarily meant for the general public, but they are used by any client attached to the server. Public commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, logging, and creating new accounts.
 
@@ -403,16 +407,17 @@ account_info account [ledger_index] [strict]
 ```
 </div>
 
+The request contains the following fields:
+
 | Field | Type | Description |
 |-------|------|-------------|
 | id | (Arbitrary) | (WebSocket only) A value to return as the `id` field in the response to this request; use to identify responses in case they are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
-| ident | String | (Optional, Deprecated) Alias for `account`. Will only be used if `account` is omitted. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
-| account_index | Unsigned Integer | (Optional, Deprecated) Return data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
-| ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
+
+The following fields are deprecated and should not be provided: `ident`, `account_index`, `ledger`.
 
 #### Response Format ####
 
@@ -439,26 +444,22 @@ An example of a successful response:
 }
 ```
 
-The response contains the requested account, its data, and a ledger to which it applies, including the following fields:
+The response follows the [standard format](#response-formatting), with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | ID provided in the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | The type of response this is, usually either "response" or "error". |
-| result | Object | The result of the query |
-| result.account_data | Object | Information about the requested account |
-| result.account_data.Account | String | Address of the requested account |
-| result.account_data.Balance | String | XRP balance in "drops" represented as a string |
-| result.account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](https://ripple.com/wiki/Transactions#AccountSet_.283.29) |
-| result.account_data.LedgerEntryType | String | "AccountRoot" specifies that this is an Account  |
-| result.account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This affects the total reserve required to use the account. |
-| result.account_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account |
-| result.account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
-| result.account_data.index | String | (Deprecated) Data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
-| result.ledger_current_index | Integer | The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
-| result.ledger_index | Integer | The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.<span class='draft-comment'>Right?</span> |
-| result.validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
+| account_data | Object | Information about the requested account |
+| account_data.Account | String | Address of the requested account |
+| account_data.Balance | String | XRP balance in "drops" represented as a string |
+| account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](https://ripple.com/wiki/Transactions#AccountSet_.283.29) |
+| account_data.LedgerEntryType | String | "AccountRoot" specifies that this is an Account  |
+| account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This affects the total reserve required to use the account. |
+| account_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account |
+| account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
+| account_data.index | String | (Deprecated) Data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
+| ledger_current_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
+| ledger_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.<span class='draft-comment'>Right?</span> |
+| validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 
 ## account_lines ##
 
