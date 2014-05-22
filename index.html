@@ -82,7 +82,8 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     $(document).on('flatdoc:ready', $().multicode_tabs);
   </script>
   <!-- Temporary shims until I modify the css directly -->
-    <link type='text/css' rel='stylesheet' href='css/mod.css' />
+  <link type='text/css' rel='stylesheet' href='css/mod.css' />
+  <script src='js/expandcode.js'></script>
   
 </head>
 <body role='flatdoc' class='no-literate'>
@@ -111,7 +112,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
       <ul class='subnav section'>
           <li><a href='?p=introduction' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')}); document.title='Ripple Developer Portal: Introduction'">Introduction</a></li>
           <li><a href='?p=ripple-rest-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
-          <li><a href='?p=web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
+          <li><a href='?p=web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">WebSocket &amp; JSON-RPC APIs</a></li>
       </ul>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
