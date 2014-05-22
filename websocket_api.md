@@ -406,6 +406,7 @@ An example of an account_info request:
 account_info account [ledger_index] [strict]
 ```
 </div>
+
 <span class='draft-comment'>(Does the commandline accept a ledger_hash instead of ledger_index?)</span>
 
 The request contains the following parameters:
@@ -1364,11 +1365,7 @@ ledger_accept
 ```
 </div>
 
-The request contains the following fields:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+The request accepts no parameters.
 
 #### Response Format ####
 
