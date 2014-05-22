@@ -1,52 +1,266 @@
-# Web Sockets API #
-The Web Sockets API and JSON-RPC APIs are two methods of communicating with a `rippled` server in the Ripple network. Both APIs use the same JSON data format, although not all features are available on both APIs. Unlike the [Ripple-REST API](https://dev.ripple.com/index.html), the Websocket and JSON-RPC APIs are more difficult to use, but also provide the full power of Ripple.
+# WebSocket and JSON-RPC APIs #
+If you want to communicate directly with the `rippled` server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the [Ripple-REST API](?p=ripple-rest-api) provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:
 
-In general, we recommend using Web Sockets, for several reasons:
+* The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. 
+* The JSON-RPC API relies on simple request-response communication via HTTP. For commands that prompt multiple responses, you can provide a callback URL.
+* The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server.
 
-*  Web Sockets' push paradigm has less latency and less network overhead. JSON-RPC's polling paradigm includes opening and closing an HTTP connection for each individual message.
-*  Web Sockets are more reliable; you have less to worry about missing messages and establishing multiple connections.
-*  Some functionality is not available in JSON-RPC
+In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. JSON-RPC must open and close an HTTP connection for each individual message. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. However, all three have valid use cases and will continue to be supported for the foreseeable future.
 
-There is also a third way of accessing the same methods, which is to use the `rippled` command line, but that is not recommended.
+## Connecting to rippled ##
 
-## Understanding Web Sockets ##
+Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Web Sockets are a Javascript feature that allows modern web browsers to open a persistent, two-way connection with a server from within a webpage. If you are just looking to try out some methods on the Ripple network, you can skip writing your own web sockets code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/) first. Later on, when you want to connect to your own `rippled` server, you can find some [good tutorials on Web Sockets](http://www.html5rocks.com/en/tutorials/websockets/basics/) to read.
+Alternatively, and recommended if you are going to do heavy development work, you can run your own local copy of [`rippled`](https://ripple.com/wiki/Rippled). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
 
-In the JSON-RPC model, each request is an HTTP POST request to the server that prompts a direct response. The details of the request are in the request body.
+### WebSocket API ###
 
-In the Web Sockets model, each request is a JSON-formatted message sent over the socket to the server. However, there is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. 
+If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run under a browser or possibly [Node.js](https://github.com/einaros/ws).
 
-Both the Web Sockets API and the JSON-RPC API use [JSON](http://www.w3schools.com/json/) for requests and responses. The methods and parameters available on both APIs are generally the same, but the exact formatting is slightly different between the two.
+Currently Ripple Labs maintains a set of public WebSocket servers at:
 
-In general, a Web Sockets request puts the command name and the command's parameters both at the top level of the JSON object, with an optional `"id"` field to identify requests in case the responses come back out of order. Meanwhile, JSON-RPC puts the parameters in a separate object, as the first member of a `"params"` array. Compare the following two calls, identical except that one is formatted for Web Sockets and the other is formatted for JSON-RPC:
+`s1.ripple.com:443`
 
+### JSON-RPC ###
+
+You can use any HTTP client (like [Poster for Firefox](https://addons.mozilla.org/en-US/firefox/addon/poster/) or [Postman for Chrome](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en)) to make JSON-RPC calls a `rippled` server. 
+
+Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
+
+`s1.ripple.com:51234`
+
+If you are running your own `rippled` server, make sure that you have enabled the JSON-RPC interface, since it is disabled by default. For example:
+
+```
+# [rpc_ip]:
+#   IP address or domain to bind to allow insecure RPC connections.
+#   Defaults to not allow RPC connections.
+#
+# [rpc_port]:
+#   Port to bind to if allowing insecure RPC connections.
+[rpc_ip]
+127.0.0.1
+
+[rpc_port]
+8088
+```
+
+### Commandline ###
+
+The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, `rippled` connects to the local instance; however, you can specify the server to connect to with the `--rpc-ip` commandline argument. For example:
+
+```
+rippled --rpc_ip=s1.ripple.com:51234 server_info
+```
+
+## Request Formatting ##
+
+Both the WebSocket API and the JSON-RPC API use [JSON](http://www.w3schools.com/json/) for requests and responses. The methods and parameters available on both APIs are generally the same, but the exact formatting is slightly different between the two. The commandline interface supports the same commands, with the parameters in the commandline as well.
+
+* A WebSocket request puts the command name in the `"command"` field alongside the command's parameters at the top level of the JSON object, with an optional `"id"` field that will be returned with the response, so you can identify responses that come back out of order. 
+* A JSON-RPC request puts the command in the `"method"` field, with parameters in a separate object, as the first member of a `"params"` array. There is no `"id"` field, since all responses are direct replies to the requests.
+* The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. 
+
+
+#### Example Request ####
 <div class='multicode'>
-*Web Sockets*
+*WebSocket*
 ```
 {
   "id": 2,
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "strict": True,
+  "strict": true,
   "ledger_index": "validated"
 }
 ```
 
 *JSON-RPC*
 ```
+POST http://s1.ripple.com:51234/
 {
-    "command": "account_info",
+    "method": "account_info",
     "params": [
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "strict": True,
+            "strict": true,
             "ledger_index": "validated"
         }
     ]
 }
 ```
+*Commandline*
+```
+rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
+```
 </div>
+
+## Response Formatting ##
+
+#### Example Successful Response ####
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account_data": {
+      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "Balance": "27389517749",
+      "Flags": 0,
+      "LedgerEntryType": "AccountRoot",
+      "OwnerCount": 18,
+      "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
+      "PreviousTxnLgrSeq": 6592159,
+      "Sequence": 1400,
+      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+    },
+    "ledger_index": 6760970
+  }
+}
+```
+
+*JSON-RPC*
+```
+HTTP Status: 200 OK
+{
+    "result": {
+        "account_data": {
+            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "Balance": "27389517749",
+            "Flags": 0,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 18,
+            "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
+            "PreviousTxnLgrSeq": 6592159,
+            "Sequence": 1400,
+            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+        },
+        "ledger_index": 6761012,
+        "status": "success"
+    }
+}
+```
+*Commandline*
+```
+{
+    "result": {
+        "account_data": {
+            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "Balance": "27389517749",
+            "Flags": 0,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 18,
+            "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
+            "PreviousTxnLgrSeq": 6592159,
+            "Sequence": 1400,
+            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+        },
+        "ledger_index": 6761012,
+        "status": "success"
+    }
+}
+```
+</div>
+
+The fields of a successful response include:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
+| `status` (WebSocket) <br\> `result.status` (JSON-RPC and Commandline) | String | `"success"` if the request successfully completed. In the WebSocket API responses, this is included at the top level; in JSON-RPC and Commandline responses, this is included as a sub-field of the `"result"` object. |
+| `type` | String | (WebSocket only) Typically `"response"`, which indicates a successful response to a command. Asynchronous notifications use a different value such as `"ledgerClosed"` or `"transaction"`. |
+| `result` | Object | The result of the query; contents vary depending on the command. |
+
+#### Commandline ####
+The response format for commandline methods is identical to JSON-RPC responses, because they use the same interface.
+
+## Error Responses ##
+It is impossible to enumerate all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results will vary depending on what client you are using. However, if the `rippled` server successfully receives your request, it will try to respond in a standardized error format.
+
+Some example errors:
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 3,
+  "status": "error",
+  "type": "response",
+  "error": "ledgerIndexMalformed",
+  "request": {
+    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "command": "account_info",
+    "id": 3,
+    "ledger_index": "-",
+    "strict": true
+  }
+}
+```
+
+*JSON-RPC*
+```
+HTTP Status: 200 OK
+{
+    "result": {
+        "error": "ledgerIndexMalformed",
+        "request": {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "command": "account_info",
+            "ledger_index": "-",
+            "strict": true
+        },
+        "status": "error"
+    }
+}
+```
+
+*Commandline*
+```
+{
+    "result": {
+        "error": "ledgerIndexMalformed",
+        "request": {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "command": "account_info",
+            "ledger_index": "-",
+            "strict": true
+        },
+        "status": "error"
+    }
+}
+```
+</div>
+
+#### WebSocket API Error Response Format ####
+| Field | Type | Description |
+|-------|------|-------------|
+| id | (Varies) | ID provided in the Web Socket request that prompted this response |
+| status | String | `"error"` if the request caused an error |
+| type | String | Typically `"response"`, which indicates a successful response to a command. |
+| error | String | A unique code for the type of error that occurred |
+| request | Object | A copy of the request that prompted this error, in JSON format. |
+
+#### JSON-RPC API Error Response Format ####
+Some JSON-RPC requests will respond with an error code on the HTTP layer. In these cases, the response is a plain-text explanation in the response body. For example, if you forgot to specify the command in the `method` parameter, the response is like this:
+```
+HTTP Status: 400 Bad Request
+Null method
+```
+
+For other errors that returned with HTTP status code 200 OK, the responses are formatted in JSON
+
+| Field | Type | Description |
+|-------|------|-------------|
+| result | Object | Object containing the response to the query |
+| result.error | String | A unique code for the type of error that occurred |
+| result.status | String | `"error"` if the request caused an error |
+| result.request | Object | A copy of the request that prompted this error, in JSON format. Note that the request is re-formatted in WebSocket format. <span class='draft-comment'>(I think that's a bug...)</span> |
+
+### Caution on Errors ###
+
+When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. Be very careful when sharing error messages not to accidentally expose important account secrets to others.
 
 ## Specifying a Ledger Instance ##
 
@@ -158,7 +372,7 @@ The `account_info` command retrieves information about an account, its activity,
 
 An example of an account_info request:
 <div class='multicode'>
-*Web Sockets*
+*WebSocket*
 ```
 {
   "id": 2,
@@ -191,7 +405,7 @@ account_info account [ledger_index] [strict]
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) A value to return as the `id` field in the response to this request; use to identify responses in case they are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) A value to return as the `id` field in the response to this request; use to identify responses in case they are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | ident | String | (Optional, Deprecated) Alias for `account`. Will only be used if `account` is omitted. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
@@ -255,7 +469,7 @@ The `account_lines` method returns information about the account's lines of trus
 An example of the request format:
 
 <div class='multicode'>
-*Web Sockets*
+*WebSocket*
 ```
 {
   "id": 1,
@@ -270,7 +484,7 @@ The request can include any of the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Optional, Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (Optional, WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
@@ -361,7 +575,7 @@ The `account_offers` method retrieves a list of offers made by a given account t
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
   "id": 2,
@@ -444,7 +658,7 @@ The `account_tx` method retrieves a list of transactions that involved the speci
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
   "id": 2,
@@ -773,7 +987,7 @@ Use the `wallet_propose` method to generate the keys needed for a new account. T
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
     "command": "wallet_propose",
@@ -791,7 +1005,7 @@ The request contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will generate a random passphrase. Outside of testing purposes, passphrases should always be randomly generated. |
 
 #### Response Format ####
@@ -839,7 +1053,7 @@ Retrieve information about the public ledger.
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
     "command": "ledger",
@@ -861,7 +1075,7 @@ The request contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | accounts | Boolean | (Optional, defaults to false) If true, return information on accounts in the ledger. *Admin required* |
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions. |
 | full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
@@ -932,7 +1146,7 @@ The `ledger_closed` method returns the unique identifiers of the most recently c
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
    "id": 2,
@@ -950,7 +1164,7 @@ The request contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 
 
 #### Response Format ####
@@ -986,7 +1200,7 @@ The `ledger_current` method returns the unique identifiers of the current in-pro
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
    "id": 2,
@@ -1004,7 +1218,7 @@ The request contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 
 
 #### Response Format ####
@@ -1039,7 +1253,7 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
    "id": 2,
@@ -1055,7 +1269,7 @@ A request can include the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (WebSockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
@@ -1091,7 +1305,7 @@ The `ledger_entry` method returns a single entry from the specified ledger. <spa
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
   "id": 3,
@@ -1116,7 +1330,7 @@ The full list of parameters recognized by this method is as follows:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | index | String | <span class='draft-comment'>Hex code for something related to proof?</span> |
 | account_root | String | (Optional) <span class='draft-comment'>Specify an account to retrieve from the ledger? Is this different from `account_info`?</span> |
 | directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. <span class='draft-comment'>... whatever a directory node is.</span> If a string, interpret as a <span class='draft-comment'>hex hash of something?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
@@ -1149,7 +1363,7 @@ An example of the request format:
 An example of the request format:
 
 <div class='multicode'>
-*WebSockets*
+*WebSocket*
 ```
 {
    "id": "Accept my ledger!",
@@ -1167,7 +1381,7 @@ The request contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Web Sockets only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
+| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 
 #### Response Format ####
 
