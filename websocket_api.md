@@ -406,12 +406,12 @@ An example of an account_info request:
 account_info account [ledger_index] [strict]
 ```
 </div>
+<span class='draft-comment'>(Does the commandline accept a ledger_hash instead of ledger_index?)</span>
 
-The request contains the following fields:
+The request contains the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (WebSocket only) A value to return as the `id` field in the response to this request; use to identify responses in case they are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
@@ -422,7 +422,10 @@ The following fields are deprecated and should not be provided: `ident`, `accoun
 #### Response Format ####
 
 An example of a successful response:
-```js
+
+<div class='multicode'>
+*WebSocket*
+```
 {
   "id": 5,
   "status": "success",
@@ -443,6 +446,7 @@ An example of a successful response:
   }
 }
 ```
+</div>
 
 The response follows the [standard format](#response-formatting), with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
 
@@ -481,23 +485,23 @@ An example of the request format:
 ```
 </div>
 
-The request can include any of the following fields:
+The request accepts the following paramters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (Optional, WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
-| ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
-| peer_index | Number | (Optional) Return data on another deterministic wallet derived from the specified peer. This feature is not widely supported and may be dropped in the future. |
 
+The following parameters are deprecated and should not be used: `ledger` and `peer_index`.
 
 #### Response Format ####
 
 An example of a successful response:
 
+<div class='multicode'>
+*WebSocket*
 ```
 {
     "id": 1,
@@ -540,20 +544,16 @@ An example of a successful response:
     }
 }
 ```
+</div>
 
-A successful response includes the address of the account and an array of trust-line objects. Specifically, the top-level response contains the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.account | String | Unique address of the account this request corresponds to |
-| result.lines | Array | Array of trust-line objects, as described below. |
+| account | String | Unique address of the account this request corresponds to |
+| lines | Array | Array of trust-line objects, as described below. |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
-
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -592,24 +592,27 @@ account_offers account|nickname|seed|pass_phrase|key [ledger_index]
 ```
 </div>
 
-A request can include the following fields:
+A request can include the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | account | String | A unique identifier for the account, most commonly the account's address. |
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
+
+The following parameter is deprecated and should not be used: `ledger`.
 
 
 #### Response Format ####
 
 An example of a successful response:
 
+<div class='multicode'>
+*WebSocket*
 ```
 {
-  "id": 1,
+  "id": 2,
   "status": "success",
   "type": "response",
   "result": {
@@ -629,17 +632,14 @@ An example of a successful response:
   }
 }
 ```
+</div>
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.account | String | Unique address identifying the account that made the offers |
-| result.offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
+| account | String | Unique address identifying the account that made the offers |
+| offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
 
 Each offer object contains the following fields:
 
@@ -717,7 +717,9 @@ However, in the time between requests, things may change so that `"ledger_index_
 
 An example of a successful response:
 
-```js
+<div class='multicode'>
+*WebSocket*
+```
 {
     "id": 2,
     "status": "success",
@@ -951,16 +953,13 @@ An example of a successful response:
     }
 }
 ```
+</div>
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.account | String | Unique address identifying the related account |
+| account | String | Unique address identifying the related account |
 | ledger_index_min | Integer | The sequence number of the earliest ledger with transactions <span class='draft-comment'>(actually or potentially?)</span> included in the response. |
 | ledger_index_max | Integer | The sequence number of the most recent ledger with transactions <span class='draft-comment'>(actually or potentially?)</span> included in the response. |
 | limit | Integer | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
@@ -1002,18 +1001,18 @@ wallet_propose [passphrase]
 
 </div>
 
-The request contains the following fields:
+The request can contain the following parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will generate a random passphrase. Outside of testing purposes, passphrases should always be randomly generated. |
 
 #### Response Format ####
 
-A successful response includes various important information about the new account. An example of a successful response:
-
-```js
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
 {
    "result" : {
       "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
@@ -1026,21 +1025,18 @@ A successful response includes various important information about the new accou
    }
 }
 ```
+</div>
 
-A succcessful response contains the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new account, including the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.master_seed | <span class='draft-comment'>?</span> | <span class='draft-comment'>Master seed? Is that like a private key?</span> |
-| result.master_seed_hex | String | <span class='draft-comment'>Master seed represented as a hex string?</span> |
-| result.master_key | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
-| result.account_id | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
-| result.public_key | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
-| result.public_key_hex | String | <span class='draft-comment'>Public key represented as a hex string?</span> |
+| master_seed | String | The master seed from which all other information about this account is derived, in encoded string <span class='draft-comment'>(how exactly?)</span> format. |
+| master_seed_hex | String | The master seed, in hex format. |
+| master_key | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
+| account_id | String | The public address of the account. |
+| public_key | String | The public key of the account, in encoded string format. |
+| public_key_hex | String | The public key of the account, in hex format. |
 
 # Managing Ledgers #
 
@@ -1068,28 +1064,30 @@ An example of the request format:
 
 *Commandline*
 ```
-ledger ledger_selector [full]
+ledger ledger_index|ledger_hash [full]
 ```
 </div>
 
-The request contains the following fields:
+The request can contain the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | accounts | Boolean | (Optional, defaults to false) If true, return information on accounts in the ledger. *Admin required* |
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions. |
 | full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes *Admin required<span class='draft-comment'>?</span>* |
-| ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
 
+The `ledger` field is deprecated and should not be used.
+
 #### Response Format ####
 
-A successful response includes various information about the ledger.
+An example of a successful response:
 
-```js
+<div class='multicode'>
+*WebSocket*
+```
 {
   "id": 14,
   "status": "success",
@@ -1114,29 +1112,26 @@ A successful response includes various information about the ledger.
   }
 }
 ```
+</div>
 
-A succcessful response contains the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing information about the ledger, including the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.accepted | Boolean |
-| result.account_hash | String | <span class='draft-comment'>Hash of the account information in this ledger?</span> |
-| result.close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
-| result.close_time_human | String | The time this ledger was closed, in human-readable format |
-| result.close_time_resolution | Integer | <span class='draft-comment'>?</span> |
-| result.closed | Boolean | Whether or not this ledger has been closed |
-| result.hash | String | Unique identifying hash of the entire ledger. |
-| result.ledger_hash | String | Alias for `result.hash` |
-| result.ledger_index | String | Ledger sequence number as a quoted integer |
-| result.parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| result.seqNum | String | Alias for `result.ledger_index` |
-| result.totalCoins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
-| result.total_coins | String | Alias for `result.totalCoins` |
-| result.transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger?</span> |
+| accepted | Boolean |
+| account_hash | String | <span class='draft-comment'>Hash of the account information in this ledger?</span> |
+| close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
+| close_time_human | String | The time this ledger was closed, in human-readable format |
+| close_time_resolution | Integer | <span class='draft-comment'>?</span> |
+| closed | Boolean | Whether or not this ledger has been closed |
+| hash | String | Unique identifying hash of the entire ledger. |
+| ledger_hash | String | Alias for `hash` |
+| ledger_index | String | Ledger sequence number as a quoted integer |
+| parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
+| seqNum | String | Alias for `ledger_index` |
+| totalCoins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| total_coins | String | Alias for `totalCoins` |
+| transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger?</span> |
 
 
 ## ledger_closed ##
@@ -1161,16 +1156,14 @@ ledger_closed
 ```
 </div>
 
-The request contains the following fields:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
-
+This method accepts no parameters.
 
 #### Response Format ####
 An example of a successful response:
-```js
+
+<div class='multicode'>
+*WebSocket*
+```
 {
   "id": 1,
   "status": "success",
@@ -1181,17 +1174,14 @@ An example of a successful response:
   }
 }
 ```
+</div>
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.ledger_hash | String | 20-byte hex string with a unique hash of the ledger |
-| result.ledger_index | Unsigned Integer | Sequence number of this ledger |
+| ledger_hash | String | 20-byte hex string with a unique hash of the ledger |
+| ledger_index | Unsigned Integer | Sequence number of this ledger |
 
 ## ledger_current ##
 The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger is still in flux.
@@ -1224,7 +1214,10 @@ The request contains the following fields:
 
 #### Response Format ####
 An example of a successful response:
-```js
+
+<div class='multicode'>
+*WebSocket*
+```
 {
   "id": 2,
   "status": "success",
@@ -1234,16 +1227,13 @@ An example of a successful response:
   }
 }
 ```
+</div>
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.ledger_current_index | Unsigned Integer | Sequence number of this ledger |
+| ledger_current_index | Unsigned Integer | Sequence number of this ledger |
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 
@@ -1283,20 +1273,16 @@ A request can include the following fields:
 An example of a successful response:
 <span class='draft-comment'>Example needed</span>
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.ledger_index | Unsigned Integer | Sequence number of this ledger |
-| result.ledger_hash | String | Unique identifying hash of the entire ledger. |
-| result.state | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
-| result.data | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
-| result.index | String | <span class='draft-comment'>?</span> |
-| result.marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| ledger_index | Unsigned Integer | Sequence number of this ledger |
+| ledger_hash | String | Unique identifying hash of the entire ledger. |
+| state | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
+| data | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
+| index | String | <span class='draft-comment'>?</span> |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
 
 ## ledger_entry ##
 The `ledger_entry` method returns a single entry from the specified ledger. <span class='draft-comment'>Some more information on this would be good</span>
@@ -1398,18 +1384,14 @@ An example of a successful response:
 }
 ```
 
-A successful response includes the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | (Varies) | Unique ID of the Web Socket request that prompted this response |
-| status | String | "success" if the request successfully completed |
-| type | String | Generally "response or "error" |
-| result | Object | Object containing with the main contents of the response |
-| result.ledger_current_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
+| ledger_current_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
 
 # Managing Transactions #
 
 Transactions are the most important aspect of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
 
-Transactions are a tricky beast. After 
+Transactions are a tricky beast. <span class='draft-comment'>... in progress</span>
