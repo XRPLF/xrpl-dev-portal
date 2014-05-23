@@ -309,7 +309,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public commands are not necessarily meant for the general public, but they are used by any client attached to the server. Public commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, logging, and creating new accounts.
 
-### List of Public Commands ###
+## List of Public Commands ##
 * [`account_info`](#account-info)
 * [`account_lines`](#account-lines)
 * [`account_offers`](#account-offers)
@@ -338,7 +338,8 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`tx_history`](#tx-history)
 * [`unsubscribe`](#unsubscribe)
 * [`wallet_accounts`](#wallet-accounts)
-### List of Admin Commands ###
+
+## List of Admin Commands ##
 * [`connect`](#connect)
 * [`data_delete`](#data-delete)
 * [`data_fetch`](#data-fetch)
@@ -390,7 +391,7 @@ An example of an account_info request:
 *JSON-RPC*
 ```
 {
-    "command": "account_info",
+    "method": "account_info",
     "params": [
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -403,11 +404,9 @@ An example of an account_info request:
 
 *Commandline*
 ```
-account_info account [ledger_index] [strict]
+account_info account [ledger_index|ledger_hash] [strict]
 ```
 </div>
-
-<span class='draft-comment'>(Does the commandline accept a ledger_hash instead of ledger_index?)</span>
 
 The request contains the following parameters:
 
@@ -463,7 +462,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | account_data.index | String | (Deprecated) Data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
 | ledger_current_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
-| ledger_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.<span class='draft-comment'>Right?</span> |
+| ledger_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 
 ## account_lines ##
