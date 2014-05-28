@@ -264,7 +264,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 
 ### Caution on Errors ###
 
-When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. Be very careful when sharing error messages not to accidentally expose important account secrets to others.
+When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.
 
 ## Specifying a Ledger Instance ##
 
@@ -279,11 +279,11 @@ Many API methods require you to specify an instance of the ledger, with the data
 	
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. For the sake of clarity and correctness, we recommend *not using* it.
 
-If you do not specify a ledger, the `current` (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the `ledger` field will be used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present.
+If you do not specify a ledger, the `current` (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated `ledger` field will be used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present.
 
 ## Specifying Currency Amounts ##
 
-Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (also known as IOUs), the style for specifying it is very different.
+Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (sometimes referred to as IOUs), the style for specifying it is very different.
 
 If you are specifying an amount of XRP in JSON, you should provide it in string format. (JSON integers are limited to 32 bits, so integer overflows are possible.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write `"1000000"`.
 
@@ -383,7 +383,7 @@ An example of an account_info request:
   "id": 2,
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "strict": True,
+  "strict": true,
   "ledger_index": "validated"
 }
 ```
@@ -395,7 +395,7 @@ An example of an account_info request:
     "params": [
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "strict": True,
+            "strict": true,
             "ledger_index": "validated"
         }
     ]
