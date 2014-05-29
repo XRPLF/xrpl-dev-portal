@@ -645,8 +645,8 @@ Each offer object contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| flags | Unsigned integer | <span class='draft-comment'>?</span> |
-| seq | Unsigned integer | <span class='draft-comment'>Sequence number of the ledger that this offer was first included in?</span> |
+| flags | Unsigned integer | Options set for this offer entry as bit-flags. |
+| seq | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction sequence numbers are relative to accounts.) |
 | taker_gets | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | taker_pays | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 
@@ -697,15 +697,7 @@ A request can include the following fields:
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
 
-There is a legacy variation of the `account_tx` method that is used instead whenever any of the following fields are found. This mode is deprecated, and we recommend *not using any of the following fields*:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| offset | Integer | (Deprecated, Optional, defaults to 0) The number of values to skip over without returning. Use to iterate over data sets larger than the `limit` value. |
-| count | Integer | (Deprecated, Optional) Number of transactions to skip over before retrieving. To iterate over the entire set, send multiple requests with this parameter set to the number of transactions you've already seen. |
-| descending | Boolean | (Deprecated, Optional, defaults to False) If true, results are sorted in descending order.
-| ledger_max | Integer or String | (Deprecated) The newest ledger version to search for transactions, or `-1` to use the newest available. (See [Specifying a ledger](#specifying-a-ledger) |
-| ledger_min | Integer or String | (Deprecated) Theh oldest ledger version to search for transactions, or `-1` to use the oldest available. (See [Specifying a ledger](#specifying-a-ledger) | 
+There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`
 
 ##### Iterating over queried data ######
 
@@ -965,7 +957,7 @@ The response follows the [standard format](#response-formatting), with a success
 | limit | Integer | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | offset | Integer | The `offset` value used in the request. |
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
-| validated | Boolean | Whether or not <span class='draft-comment'>something? (the ledger?)</span> was validated. |
+| validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hash string (`"binary":true`) format.
 
@@ -974,7 +966,7 @@ Each transaction object includes the following fields, depending on whether it w
 | meta | Object (JSON) or String (Binary) | If `binary` is True, then this is a hash string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
 | tx | Object | (JSON mode only) JSON object defining the transaction |
 | tx_blob | String | (Binary mode only) Unique hashed String representing the transaction. |
-| validated | Boolean | Whether or not the transaction was validated <span class='draft-comment'>by/for what? (Included in a validated ledger?)</span> |
+| validated | Boolean | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
 ## wallet_propose ##
 
@@ -1031,7 +1023,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| master_seed | String | The master seed from which all other information about this account is derived, in encoded string <span class='draft-comment'>(how exactly?)</span> format. |
+| master_seed | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. |
 | master_seed_hex | String | The master seed, in hex format. |
 | master_key | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
 | account_id | String | The public address of the account. |
@@ -1124,14 +1116,14 @@ The response follows the [standard format](#response-formatting), with a success
 | close_time_human | String | The time this ledger was closed, in human-readable format |
 | close_time_resolution | Integer | <span class='draft-comment'>?</span> |
 | closed | Boolean | Whether or not this ledger has been closed |
-| hash | String | Unique identifying hash of the entire ledger. |
-| ledger_hash | String | Alias for `hash` |
+| ledger_hash | String | Unique identifying hash of the entire ledger. |
 | ledger_index | String | Ledger sequence number as a quoted integer |
 | parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| seqNum | String | Alias for `ledger_index` |
 | totalCoins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
 | total_coins | String | Alias for `totalCoins` |
 | transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger?</span> |
+
+The following fields are deprecated and should not be used: `hash`, `seqNum`.
 
 
 ## ledger_closed ##
@@ -1248,6 +1240,7 @@ An example of the request format:
 ```
 {
    "id": 2,
+   "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
    "command": "ledger_data",
    "limit": 5,
    "binary": true
@@ -1261,17 +1254,152 @@ A request can include the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
-| ledger | String or Unsigned Integer | (Optional, Deprecated) Hash, index, or shortcut value for the ledger to use. (See [Specifying a Ledger](#specifying-a-ledger))
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
-| binary | Boolean | (Optional, defaults to False) If set to True, return data nodes as hashed hex strings instead of JSON. |
+| binary | Boolean | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
 | limit | Integer | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
 | marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
+
+The `ledger` field is deprecated and should not be used.
 
 #### Response Format ####
 
 An example of a successful response:
-<span class='draft-comment'>Example needed</span>
+<div class='multicode'>
+*WebSocket (binary:true)*
+```
+{
+    "id": 2,
+    "result": {
+        "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+        "ledger_index": "6885842",
+        "marker": "0002A590029B53BE7857EFF9985F770EC792CE483720EB5E963C4D6A607D43DF",
+        "state": [
+            {
+                "data": "11006122000000002400000001250062FEA42D0000000055C204A65CF2542946289A3358C67D991B5E135FABFA89F271DBA7A150C08CA0466240000000354540208114C909F42250CFE8F12A7A1A0DFBD3CBD20F32CD79",
+                "index": "00001A2969BE1FC85F1D7A55282FA2E6D95C71D2E4B9C0FDD3D9994F3C00FF8F"
+            },
+            {
+                "data": "11006F22000000002400000003250035788533000000000000000034000000000000000055555B93628BF3EC318892BB7C7CDCB6732FF53D12B6EEC4FAF60DD1AEE1C6101F501071633D7DE1B6AEB32F87F1A73258B13FC8CC32942D53A66D4F038D7EA4C6800064D4838D7EA4C68000000000000000000000000000425443000000000035DD7DF146893456296BF4061FBE68735D28F3286540000000000F42408114A4B8F5F7B644AEDC3447F9459C132EEB016A133B",
+                "index": "000037C6659BB98F8D09F2F4CFEB27DE8EFEAFE54DD9E1C13AECDF5794B0C0F5"
+            },
+            {
+                "data": "11006F2200020000240000000A250067395C33000000000000000034000000000000000055A160BC41A45B6BB118DF23D77E4FF23C723431B917F50DCB41319ECC2821F34C5010DFA3B6DDAB58C7E8E5D944E736DA4B7046C30E4F460FD9DE4C1AA535D3D0C00064D554C88B43EFA00000000000000000000000000055534400000000000A20B3C85F482532A9578DBB3950B85CA06594D165400000B59B9F780081148366FB9ACD2A0FD822E31112D2EB6F98C317C2C1",
+                "index": "0000A8791F78CC9B39200E12A9BDAACCF40A72A512FA815525CFC9BA772990F7"
+            },
+            {
+                "data": "1100612200000000240000000125003E742F2D0000000055286498B513710CFEB2D723A554C7557983D1952DF4DEE342C40DCB43067C9A21624000000306DC42008114225BAB89C4A4B94624BB069D6DB3C819F934991C",
+                "index": "0000B717320558E2DE1A3B9FDB24E9A695BF05D1A44E4A4683212BB1DD0FBA23"
+            },
+            {
+                "data": "110072220002000025000B65783700000000000000003800000000000000005587591A63051645F37B85D1FBA55EE69B1C96BFF16904F5C99F03FB93D42D03756280000000000000000000000000000000000000004254430000000000000000000000000000000000000000000000000166800000000000000000000000000000000000000042544300000000000A20B3C85F482532A9578DBB3950B85CA06594D167D4C38D7EA4C680000000000000000000000000004254430000000000C795FDF8A637BCAAEDAD1C434033506236C82A2D",
+                "index": "000103996A3BAD918657F86E12A67D693E8FC8A814DA4B958A244B5F14D93E58"
+            }
+        ]
+    },
+    "status": "success",
+    "type": "response"
+}
+```
+
+*WebSocket (binary:false)*
+```
+{
+    "id": 2,
+    "result": {
+        "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+        "ledger_index": "6885842",
+        "marker": "0002A590029B53BE7857EFF9985F770EC792CE483720EB5E963C4D6A607D43DF",
+        "state": [
+            {
+                "Account": "rKKzk9ghA2iuy3imqMXUHJqdRPMtNDGf4c",
+                "Balance": "893730848",
+                "Flags": 0,
+                "LedgerEntryType": "AccountRoot",
+                "OwnerCount": 0,
+                "PreviousTxnID": "C204A65CF2542946289A3358C67D991B5E135FABFA89F271DBA7A150C08CA046",
+                "PreviousTxnLgrSeq": 6487716,
+                "Sequence": 1,
+                "index": "00001A2969BE1FC85F1D7A55282FA2E6D95C71D2E4B9C0FDD3D9994F3C00FF8F"
+            },
+            {
+                "Account": "rGryPmNWFognBgMtr9k4quqPbbEcCrhNmD",
+                "BookDirectory": "71633D7DE1B6AEB32F87F1A73258B13FC8CC32942D53A66D4F038D7EA4C68000",
+                "BookNode": "0000000000000000",
+                "Flags": 0,
+                "LedgerEntryType": "Offer",
+                "OwnerNode": "0000000000000000",
+                "PreviousTxnID": "555B93628BF3EC318892BB7C7CDCB6732FF53D12B6EEC4FAF60DD1AEE1C6101F",
+                "PreviousTxnLgrSeq": 3504261,
+                "Sequence": 3,
+                "TakerGets": "1000000",
+                "TakerPays": {
+                    "currency": "BTC",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "1"
+                },
+                "index": "000037C6659BB98F8D09F2F4CFEB27DE8EFEAFE54DD9E1C13AECDF5794B0C0F5"
+            },
+            {
+                "Account": "rUy8tW38MW9ma7kSjRgB2GHtTkQAFRyrN8",
+                "BookDirectory": "DFA3B6DDAB58C7E8E5D944E736DA4B7046C30E4F460FD9DE4C1AA535D3D0C000",
+                "BookNode": "0000000000000000",
+                "Flags": 131072,
+                "LedgerEntryType": "Offer",
+                "OwnerNode": "0000000000000000",
+                "PreviousTxnID": "A160BC41A45B6BB118DF23D77E4FF23C723431B917F50DCB41319ECC2821F34C",
+                "PreviousTxnLgrSeq": 6764892,
+                "Sequence": 10,
+                "TakerGets": "780000000000",
+                "TakerPays": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "5850"
+                },
+                "index": "0000A8791F78CC9B39200E12A9BDAACCF40A72A512FA815525CFC9BA772990F7"
+            },
+            {
+                "Account": "rh3C81VfNDhhWPQWCU8ZGgknvdgNUvRtM9",
+                "Balance": "13000000000",
+                "Flags": 0,
+                "LedgerEntryType": "AccountRoot",
+                "OwnerCount": 0,
+                "PreviousTxnID": "286498B513710CFEB2D723A554C7557983D1952DF4DEE342C40DCB43067C9A21",
+                "PreviousTxnLgrSeq": 4092975,
+                "Sequence": 1,
+                "index": "0000B717320558E2DE1A3B9FDB24E9A695BF05D1A44E4A4683212BB1DD0FBA23"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "rKUK9omZqVEnraCipKNFb5q4tuNTeqEDZS",
+                    "value": "10"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "87591A63051645F37B85D1FBA55EE69B1C96BFF16904F5C99F03FB93D42D0375",
+                "PreviousTxnLgrSeq": 746872,
+                "index": "000103996A3BAD918657F86E12A67D693E8FC8A814DA4B958A244B5F14D93E58"
+            }
+        ]
+    },
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -1279,13 +1407,21 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | ledger_index | Unsigned Integer | Sequence number of this ledger |
 | ledger_hash | String | Unique identifying hash of the entire ledger. |
-| state | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
-| data | <span class='draft-comment'>?</span> | <span class='draft-comment'>Actual node data from the ledger tree?</span> |
-| index | String | <span class='draft-comment'>?</span> |
+| state | Array | Array of JSON objects containing data from the tree, as defined below |
 | marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
 
+The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| data | String | (`"binary":true` only) String hash of the requested data |
+| LedgerEntryType | String | (`"binary":false` only) String indicating what type of object this is. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) |
+| (Additional fields) | (Various) | (`"binary":false` only) Additional fields describing this object, depending on which LedgerEntryType it is. |
+| index | String | Hex string <span class='draft-comment'>representing what?</span> |
+
+
 ## ledger_entry ##
-The `ledger_entry` method returns a single entry from the specified ledger. <span class='draft-comment'>Some more information on this would be good</span>
+The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve.
 
 #### Request Format ####
 
@@ -1305,39 +1441,73 @@ An example of the request format:
 
 </div>
 
-This method has several modes that retrieve different things. You can select modes by passing the appropriate parameters, but you can only use one mode at a time. If you request multiple items, the server will perform whichever operation is first on the following list:
+This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
-1. `account_root`
-2. `directory`
-3. `generator`
-4. `offer`
-5. `ripple_state`
+1. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
+2. `directory` - Retrieve a directory node, which contains a list of IDs linking things
+3. `generator` - <span class='draft-comment'>"generator map node" secret-key thing?!?</span>
+4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
+5. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
+
+If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
 The full list of parameters recognized by this method is as follows:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | id | (Arbitrary) | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
-| index | String | <span class='draft-comment'>Hex code for something related to proof?</span> |
-| account_root | String | (Optional) <span class='draft-comment'>Specify an account to retrieve from the ledger? Is this different from `account_info`?</span> |
-| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. <span class='draft-comment'>... whatever a directory node is.</span> If a string, interpret as a <span class='draft-comment'>hex hash of something?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| index | String | <span class='draft-comment'>?</span> |
+| account_root | String | (Optional) Specify the unique address of an account object to retrieve. |
+| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as a <span class='draft-comment'>hex hash of the node?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. <span class='draft-comment'>Why?</span> |
 | directory.sub_index | Unsigned Integer | (Optional) <span class='draft-comment'>?</span> |
-| directory.dir_root | String |  (Optional) <span class='draft-comment'>?</span> |
-| directory.owner | String | (Optional) Unique Account address of <span class='draft-comment'>the directory?</span> |
+| directory.dir_root | String |  (<span class='draft-comment'>Required if `directory` is specified as an object</span>) <span class='draft-comment'>?</span> |
+| directory.owner | String | (<span class='draft-comment'>Required if `directory` is specified as an object</span>) Unique Account address of <span class='draft-comment'>the directory owner?</span> |
 | generator | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-field `regular_seed` |
 | generator.regular_seed | String | <span class='draft-comment'>?</span> |
-| offer | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-fields `account` and `seq`. |
-| offer.account | String | (Required if `offer` specified) The unique address of the account <span class='draft-comment'>making the offer?</span> |
-| offer.seq | Unsigned Integer | (Required if `offer` specified)  <span class='draft-comment'>?</span> |
-| ripple_state | Object | (Optional) <span class='draft-comment'>Information about the potential path between two accounts?</span> |
-| ripple_state.accounts | Array | (Required if `ripple_state` specified) 2-length array of account address strings |
-| ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency <span class='draft-comment'>(like, the 3-letter or hex code?)</span> |
-| binary | Boolean | (Optional, defaults to false) If true, return data as <span class='draft-comment'>"binary"?</span> Otherwise, return data in JSON format. |
+| offer | Object or String | (Optional) Specify an offer to retrieve. If a string, interpret as a <span class='draft-comment'>hex(?) hash of the whole offer?</span>. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| offer.account | String | (Required if `offer` specified) The unique address of the account making the offer to retrieve. |
+| offer.seq | Unsigned Integer | (Required if `offer` specified) The sequence number of the transaction making the offer to retrieve. |
+| ripple_state | Object | (Optional) Object specifying the RippleState entry to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
+| ripple_state.accounts | Array | (Required if `ripple_state` specified) 2-length array of account address strings, defining the two accounts linked by this RippleState entry |
+| ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency that this RippleState entry relates to <span class='draft-comment'>(like, either the 3-letter or hex code?)</span> |
+| binary | Boolean | (Optional, defaults to false) If true, return hashed data as hex strings. Otherwise, return data in JSON format. |
 
 #### Response Format ####
 
 An example of a successful response:
-<span class='draft-comment'>Example(s) needed</span>
+<div class='multicode'>
+*WebSocket*
+```{
+    "id": 3,
+    "result": {
+        "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+        "ledger_index": 6889347,
+        "node": {
+            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "Balance": "27389517749",
+            "Flags": 0,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 18,
+            "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
+            "PreviousTxnLgrSeq": 6592159,
+            "Sequence": 1400,
+            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+        }
+    },
+    "status": "success",
+    "type": "response"
+}```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| index | String | Hex <span class='draft-comment'>hash of something?</span> |
+| ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
+| node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
+| node_binary | String | (`"binary":true` only) Hex hashed string of the ledger node retrieved. |
+
 
 ## ledger_accept ##
 The `ledger_accept` method forces the server to close the current-working ledger <span class='draft-comment'>and validate it?</span>. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
