@@ -260,7 +260,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 | result | Object | Object containing the response to the query |
 | result.error | String | A unique code for the type of error that occurred |
 | result.status | String | `"error"` if the request caused an error |
-| result.request | Object | A copy of the request that prompted this error, in JSON format. Note that the request is re-formatted in WebSocket format. <span class='draft-comment'>(I think that's a bug...)</span> |
+| result.request | Object | A copy of the request that prompted this error, in JSON format. <span class='draft-comment'>Note that the request is re-formatted in WebSocket format, regardless of the request made. This is a bug: See [RIPD-279](https://ripplelabs.atlassian.net/browse/RIPD-279).</span> |
 
 ### Caution on Errors ###
 
@@ -1067,7 +1067,7 @@ The request can contain the following parameters:
 | accounts | Boolean | (Optional, defaults to false) If true, return information on accounts in the ledger. *Admin required* |
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions. |
 | full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
-| expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes *Admin required<span class='draft-comment'>?</span>* |
+| expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
 
@@ -1110,7 +1110,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| accepted | Boolean |
+| accepted | Boolean | Whether or not this ledger has been validated by concensus <span class='draft-comment'>although there's apparently some caveats?</span> |
 | account_hash | String | <span class='draft-comment'>Hash of the account information in this ledger?</span> |
 | close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
 | close_time_human | String | The time this ledger was closed, in human-readable format |
@@ -1119,9 +1119,9 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_hash | String | Unique identifying hash of the entire ledger. |
 | ledger_index | String | Ledger sequence number as a quoted integer |
 | parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| totalCoins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
-| total_coins | String | Alias for `totalCoins` |
-| transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger?</span> |
+| total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| totalCoins | String | Alias for `total_coins` |
+| transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger, in hex?</span> |
 
 The following fields are deprecated and should not be used: `hash`, `seqNum`.
 
@@ -1453,13 +1453,13 @@ The full list of parameters recognized by this method is as follows:
 |-------|------|-------------|
 | index | String | <span class='draft-comment'>?</span> |
 | account_root | String | (Optional) Specify the unique address of an account object to retrieve. |
-| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as a <span class='draft-comment'>hex hash of the node?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. <span class='draft-comment'>Why?</span> |
+| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as a <span class='draft-comment'>full hex representation of the node?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. <span class='draft-comment'>Why?</span> |
 | directory.sub_index | Unsigned Integer | (Optional) <span class='draft-comment'>?</span> |
 | directory.dir_root | String |  (<span class='draft-comment'>Required if `directory` is specified as an object</span>) <span class='draft-comment'>?</span> |
 | directory.owner | String | (<span class='draft-comment'>Required if `directory` is specified as an object</span>) Unique Account address of <span class='draft-comment'>the directory owner?</span> |
 | generator | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-field `regular_seed` |
 | generator.regular_seed | String | <span class='draft-comment'>?</span> |
-| offer | Object or String | (Optional) Specify an offer to retrieve. If a string, interpret as a <span class='draft-comment'>hex(?) hash of the whole offer?</span>. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| offer | Object or String | (Optional) Specify an offer to retrieve. If a string, interpret as a <span class='draft-comment'>hex(?) hash(?) of the whole offer?</span>. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | offer.account | String | (Required if `offer` specified) The unique address of the account making the offer to retrieve. |
 | offer.seq | Unsigned Integer | (Required if `offer` specified) The sequence number of the transaction making the offer to retrieve. |
 | ripple_state | Object | (Optional) Object specifying the RippleState entry to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
@@ -1498,7 +1498,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| index | String | Hex <span class='draft-comment'>hash of something?</span> |
+| index | String | Hex <span class='draft-comment'>of something?</span> |
 | ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
 | node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
 | node_binary | String | (`"binary":true` only) Hex hashed string of the ledger node retrieved. |
@@ -1732,7 +1732,7 @@ An example of a successful response:
 ```
 </div>
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing a [Transaction object](https://ripple.com/wiki/Transaction_Format) and some metadata. The response can include the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
