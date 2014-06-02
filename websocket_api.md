@@ -2254,11 +2254,117 @@ The fields included in each transaction object vary slightly depending on the ty
 
 *WebSocket API only!* The `path_find` method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account without trust. 
 
+There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the `subcommand` parameter:
+
+* `create` - Start sending pathfinding information 
+* `close` - Stop sending pathfinding information
+* `status` - Get the current information of <span class='draft-comment'>the (most recent / only?)</span> pathfinding request
+
+### path_find create ###
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 8,
+    "command": "path_find",
+    "subcommand": "create",
+    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_amount": {
+        "value": "0.001",
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+}
+```
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| source_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
+| destination_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
+| destination_amount | String (XRP)<br/>Object (Otherwise) | The amount of currency that needs to arrive at the destination. |
+| source_currencies | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
+
+<span class='draft-comment'>(Incomplete)</span>
+
+
 ## ripple_path_find ##
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response to be used for a transaction.
 
+<span class='draft-comment'>(Incomplete)</span>
+
 ## sign ##
+
+The `sign` method 
+
+<span class='draft-comment'>(Incomplete)</span>
+
+| offline | Boolean | (Optional, defaults to false) If true, do not verify the account 
+
 
 ## submit ##
 
+The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply raw JSON along with your secret key, or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign)) and submit it as-is.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 5,
+  "command": "submit",
+  "tx_json" : {
+      "TransactionType" : "Payment",
+      "Account" : "rMmTCjGFRWPz8S2zAUUoNVSQHxtRQD4eCx",
+      "Destination" : "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+      "Amount" : { 
+         "currency" : "USD",
+         "value" : "1",
+         "issuer" : "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
+      }
+   },
+   "secret" : "sssssssssssssssssssssssssssss"
+}
+
+```
+
+*Commandline*
+```
+submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
+```
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| tx_blob | String | (Do not include if tx_json and secret are supplied) Hex representation of the signed transaction to submit. |
+| tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format) in JSON format |
+| secret | String | (Required if tx_json is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
+| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
+| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. <span class='draft-comment'>Note to self: check whether this applies to tx_blob mode</span> |
+
+The JSON format for the Transaction definition can have several different fields depending on the type of transaction it is. If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. In the case of sending non-XRP currency (IOUs), a `Paths` field can be obtained from either `find_path` or `ripple_find_path`.
+
+#### Response Format ####
+
+An example of a successful response:
+
+*WebSocket*
+<span class='draft-comment'>(Example needed)</span>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+<span class='draft-comment'>(Incomplete)</span>
