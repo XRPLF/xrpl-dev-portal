@@ -489,7 +489,7 @@ The request accepts the following paramters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| account | String | A unique identifier for the account, most commonly the account's address. |
+| account | String | A unique identifier for the account, most commonly the account's address as a base-58 string. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
@@ -588,7 +588,7 @@ An example of the request format:
 
 *Commandline*
 ```
-account_offers account|nickname|seed|pass_phrase|key [ledger_index]
+account_offers account [ledger_index]
 ```
 </div>
 
@@ -596,7 +596,7 @@ A request can include the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| account | String | A unique identifier for the account, most commonly the account's address. |
+| account | String | A unique identifier for the account, most commonly the account's address as a base-58 string. |
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
@@ -1111,17 +1111,17 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | accepted | Boolean | Whether or not this ledger has been validated by concensus <span class='draft-comment'>although there's apparently some caveats?</span> |
-| account_hash | String | <span class='draft-comment'>Hash of the account information in this ledger?</span> |
+| account_hash | String | Hash of all account information in this ledger, as hex |
 | close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
 | close_time_human | String | The time this ledger was closed, in human-readable format |
-| close_time_resolution | Integer | <span class='draft-comment'>?</span> |
+| close_time_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
 | closed | Boolean | Whether or not this ledger has been closed |
 | ledger_hash | String | Unique identifying hash of the entire ledger. |
 | ledger_index | String | Ledger sequence number as a quoted integer |
 | parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
 | total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
 | totalCoins | String | Alias for `total_coins` |
-| transaction_hash | String | <span class='draft-comment'>Hash of the transaction information included in this ledger, in hex?</span> |
+| transaction_hash | String | Hash of the transaction information included in this ledger, as hex |
 
 The following fields are deprecated and should not be used: `hash`, `seqNum`.
 
@@ -1176,7 +1176,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | Unsigned Integer | Sequence number of this ledger |
 
 ## ledger_current ##
-The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger is still in flux.
+The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.
 
 #### Request Format ####
 
@@ -1413,7 +1413,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 | data | String | (`"binary":true` only) String hash of the requested data |
 | LedgerEntryType | String | (`"binary":false` only) String indicating what type of object this is. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) |
 | (Additional fields) | (Various) | (`"binary":false` only) Additional fields describing this object, depending on which LedgerEntryType it is. |
-| index | String | Hex string <span class='draft-comment'>representing what?</span> |
+| index | String | Unique identifier for this ledger entry, as hex. |
 
 
 ## ledger_entry ##
@@ -1439,11 +1439,12 @@ An example of the request format:
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
-1. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
-2. `directory` - Retrieve a directory node, which contains a list of IDs linking things
-3. `generator` - <span class='draft-comment'>"generator map node" secret-key thing?!?</span>
-4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
-5. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
+1. `index` - Retrieve an individual ledger entry by its unique index
+2. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
+3. `directory` - Retrieve a directory node, which contains a list of IDs linking things
+4. `generator` - <span class='draft-comment'>"generator map node" secret-key thing?!?</span>
+5. `offer` - Retrieve an offer node, which defines an offer to exchange currency
+6. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
 
 If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
@@ -1451,7 +1452,7 @@ The full list of parameters recognized by this method is as follows:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| index | String | <span class='draft-comment'>?</span> |
+| index | String | (Optional) Specify the unique identifier of a single ledger entry to retrieve. |
 | account_root | String | (Optional) Specify the unique address of an account object to retrieve. |
 | directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as a <span class='draft-comment'>full hex representation of the node?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. <span class='draft-comment'>Why?</span> |
 | directory.sub_index | Unsigned Integer | (Optional) <span class='draft-comment'>?</span> |
@@ -1597,7 +1598,7 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| transaction | String | The SHA-512 hash of the transaction, represented as a hex string. |
+| transaction | String | The SHA-512 hash of the transaction, as hex. |
 | binary | Boolean | (Optional, defaults to false) If true, return transaction data and metadata as hex strings instead of JSON |
 
 #### Response Format ####
@@ -1751,7 +1752,46 @@ The response follows the [standard format](#response-formatting), with a success
 | inLedger | Unsigned Integer | (Deprecated) Alias for `ledger_index`. |
 | ledger_index | Unsigned Integer | The sequence number of the ledger that includes this transaction.
 | meta | Object | Various metadata about the transaction. |
-| validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
+| validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
+
+## transaction_entry ##
+
+The `tx` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction.)
+
+#### Request Format ####
+
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 4,
+  "command": "transaction_entry",
+  "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+  "ledger_index": 348734
+}
+```
+*JSON-RPC*
+```
+{
+    "method": "tx",
+    "params": [
+        {
+            "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+            "ledger_index": 348734
+        }
+    ]
+}
+```
+*Commandline*
+```
+tx transaction_hash ledger_index|ledger_hash
+```
+</div>
+
+<span class='draft-comment'>(Incomplete. params are ledger_index/ledger_hash/ledger as per usual)</span>
+
 
 ## tx_history ##
 
@@ -1795,7 +1835,7 @@ An example of a successful response:
   "status": "success",
   "type": "response",
   "result": {
-    "index": 1,
+    "index": 0,
     "txs": [
       {
         "Account": "r9bf8V4ae5xReYnKPXgnwERDFPoW34FhGy",
@@ -2321,16 +2361,16 @@ An example of the request format:
 *WebSocket*
 ```
 {
-  "id": 5,
+  "id": 2,
   "command": "submit",
   "tx_json" : {
       "TransactionType" : "Payment",
-      "Account" : "rMmTCjGFRWPz8S2zAUUoNVSQHxtRQD4eCx",
-      "Destination" : "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
       "Amount" : { 
          "currency" : "USD",
          "value" : "1",
-         "issuer" : "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
+         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
       }
    },
    "secret" : "sssssssssssssssssssssssssssss"
@@ -2349,22 +2389,60 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_blob | String | (Do not include if tx_json and secret are supplied) Hex representation of the signed transaction to submit. |
-| tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format) in JSON format |
+| tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](https://ripple.com/wiki/Transaction_Format) in JSON format |
 | secret | String | (Required if tx_json is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. <span class='draft-comment'>Note to self: check whether this applies to tx_blob mode</span> |
 
-The JSON format for the Transaction definition can have several different fields depending on the type of transaction it is. If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. In the case of sending non-XRP currency (IOUs), a `Paths` field can be obtained from either `find_path` or `ripple_find_path`.
+The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain an appropriate value for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. 
+
+To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, store it somewhere that you can access even in case of a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction. Additionally, you should provide a [LastLedgerSequence](https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format) field in your transaction to make sure that it expires quickly in the case that it does not succeed.
 
 #### Response Format ####
 
 An example of a successful response:
 
+<div class='multicode'>
 *WebSocket*
-<span class='draft-comment'>(Example needed)</span>
+```
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied.",
+    "tx_blob": "1200002280000000240000000161D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100F8A650C1D58325FE8D74634C1DC0802BB2271EB84773793EF34085CFC7E32B1302206ECE43AFE94B7F9F0359D53E6B195C2D526DFDFBBBF328D6FE3A598F1D51DEBA81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Amount": {
+        "currency": "USD",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "value": "1"
+      },
+      "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 1,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "Payment",
+      "TxnSignature": "3045022100F8A650C1D58325FE8D74634C1DC0802BB2271EB84773793EF34085CFC7E32B1302206ECE43AFE94B7F9F0359D53E6B195C2D526DFDFBBBF328D6FE3A598F1D51DEBA",
+      "hash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E"
+    }
+  }
+}
+```
+</div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-<span class='draft-comment'>(Incomplete)</span>
+| engine_result | String | Code indicating the status of the transaction, for example `tesSUCCESS` |
+| engine_result_code | Integer | Numeric code indicating the status of the transaction, directly correlated to `engine_result` |
+| engine_result_message | String | Human-readable explanation of the status of the transaction |
+| tx_blob | String | The complete transaction in hex string format |
+| tx_json | Object | The complete transaction in JSON format |
+
+*Important:* Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
