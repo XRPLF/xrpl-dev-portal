@@ -1756,7 +1756,9 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## transaction_entry ##
 
-The `tx` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction.)
+The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction.)
+
+<span class='draft-comment'>I still don't know why you'd use this instead of tx...</span>
 
 #### Request Format ####
 
@@ -1768,17 +1770,17 @@ An example of the request format:
 {
   "id": 4,
   "command": "transaction_entry",
-  "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+  "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
   "ledger_index": 348734
 }
 ```
 *JSON-RPC*
 ```
 {
-    "method": "tx",
+    "method": "transaction_entry",
     "params": [
         {
-            "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+            "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
             "ledger_index": 348734
         }
     ]
@@ -1790,8 +1792,157 @@ tx transaction_hash ledger_index|ledger_hash
 ```
 </div>
 
-<span class='draft-comment'>(Incomplete. params are ledger_index/ledger_hash/ledger as per usual)</span>
+The request includes the following parameters:
 
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger))|
+| tx_hash | String | Unique hash of the transaction you are looking up |
+
+*Note:* This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 4,
+    "result": {
+        "ledger_index": 348734,
+        "metadata": {
+            "AffectedNodes": [
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                            "Balance": "59328999119",
+                            "Flags": 0,
+                            "OwnerCount": 11,
+                            "Sequence": 89
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "E0D7BDE68B468FF0B8D948FD865576517DA987569833A05374ADB9A72E870A06",
+                        "PreviousFields": {
+                            "Balance": "59328999129",
+                            "Sequence": 88
+                        },
+                        "PreviousTxnID": "C26AA6B4F7C3B9F55E17CD0D11F12032A1C7AD2757229FFD277C9447A8815E6E",
+                        "PreviousTxnLgrSeq": 348700
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Balance": {
+                                "currency": "USD",
+                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                "value": "-1"
+                            },
+                            "Flags": 131072,
+                            "HighLimit": {
+                                "currency": "USD",
+                                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                                "value": "100"
+                            },
+                            "HighNode": "0000000000000000",
+                            "LowLimit": {
+                                "currency": "USD",
+                                "issuer": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                                "value": "0"
+                            },
+                            "LowNode": "0000000000000000"
+                        },
+                        "LedgerEntryType": "RippleState",
+                        "LedgerIndex": "EA4BF03B4700123CDFFB6EB09DC1D6E28D5CEB7F680FB00FC24BC1C3BB2DB959",
+                        "PreviousFields": {
+                            "Balance": {
+                                "currency": "USD",
+                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                "value": "0"
+                            }
+                        },
+                        "PreviousTxnID": "53354D84BAE8FDFC3F4DA879D984D24B929E7FEB9100D2AD9EFCD2E126BCCDC8",
+                        "PreviousTxnLgrSeq": 343570
+                    }
+                }
+            ],
+            "TransactionIndex": 0,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "tx_json": {
+            "Account": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "value": "1"
+            },
+            "Destination": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "Fee": "10",
+            "Flags": 0,
+            "Paths": [
+                [
+                    {
+                        "account": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                        "currency": "USD",
+                        "issuer": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                        "type": 49,
+                        "type_hex": "0000000000000031"
+                    }
+                ],
+                [
+                    {
+                        "account": "rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x",
+                        "currency": "USD",
+                        "issuer": "rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x",
+                        "type": 49,
+                        "type_hex": "0000000000000031"
+                    },
+                    {
+                        "account": "rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY",
+                        "currency": "USD",
+                        "issuer": "rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY",
+                        "type": 49,
+                        "type_hex": "0000000000000031"
+                    },
+                    {
+                        "account": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                        "currency": "USD",
+                        "issuer": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                        "type": 49,
+                        "type_hex": "0000000000000031"
+                    }
+                ]
+            ],
+            "SendMax": {
+                "currency": "USD",
+                "issuer": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                "value": "1.01"
+            },
+            "Sequence": 88,
+            "SigningPubKey": "02EAE5DAB54DD8E1C49641D848D5B97D1B29149106174322EDF98A1B2CCE5D7F8E",
+            "TransactionType": "Payment",
+            "TxnSignature": "30440220791B6A3E036ECEFFE99E8D4957564E8C84D1548C8C3E80A87ED1AA646ECCFB16022037C5CAC97E34E3021EBB426479F2ACF3ACA75DB91DCC48D1BCFB4CF547CFEAA0",
+            "hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+            "inLedger": 348734,
+            "ledger_index": 348734
+        }
+    },
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger_index | Unsigned Integer | Sequence number of the ledger version the transaction was found in; this is the same as the one from the request. |
+| ledger_hash | String | (May be omitted) Unique hash of the ledger version the transaction was found in; this is the same as the one from the request. |
+| metadata | Object | Various metadata about the transaction. |
 
 ## tx_history ##
 
@@ -2330,7 +2481,9 @@ The request includes the following parameters:
 | source_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | destination_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
 | destination_amount | String (XRP)<br/>Object (Otherwise) | The amount of currency that needs to arrive at the destination. |
-| source_currencies | <span class='draft-comment'>?</span> | <span class='draft-comment'>?</span> |
+| source_currencies | <span class='draft-comment'>?</span> | <span class='draft-comment'>Array of currencies that the source account might want to spend to reach the destination account?</span> |
+| paths | Array | Array of arrays of objects, representing paths <span class='draft-comment'>... why provide paths when you're searching for them?</span> |
+| bridges | Array | Array of arrays of Ripple bridges <span class='draft-comment'>(what are those?)</span> |
 
 <span class='draft-comment'>(Incomplete)</span>
 
@@ -2343,16 +2496,96 @@ The `ripple_path_find` method is a simplified version of [`path_find`](#path-fin
 
 ## sign ##
 
-The `sign` method 
+The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.
 
-<span class='draft-comment'>(Incomplete)</span>
+<span class='draft-comment'>I seem to recall hearing something about ripple-lib being able to sign a transaction without connecting to a rippled server. Is that true?</span>
 
-| offline | Boolean | (Optional, defaults to false) If true, do not verify the account 
+#### Request Format ####
+An example of the request format:
 
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 2,
+  "command": "sign",
+  "tx_json" : {
+      "TransactionType" : "Payment",
+      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Amount" : { 
+         "currency" : "USD",
+         "value" : "1",
+         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      }
+   },
+   "secret" : "sssssssssssssssssssssssssssss",
+   "offline": false
+}
+```
+
+*Commandline*
+```
+sign secret tx_json [offline]
+```
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| tx_json | Object | [Transaction definition](https://ripple.com/wiki/Transaction_Format) in JSON format |
+| secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
+| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
+
+The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields are automatic:
+
+* `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. 
+* `Fee` - The server automatically fills in the current default transaction fee (in drops of XRP). <span class='draft-comment'>I'd love a chat about the total details of this</span>
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 2,
+    "result": {
+        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100BF06B6C01646005DEDD8F4F6D458AF4EE4006205A623FF31E0B5BCCE42564BA1022063C372D476379C109E3C22C5C04071594CD9EF64615C00B048AFFA5D7D6701F981144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 3,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100BF06B6C01646005DEDD8F4F6D458AF4EE4006205A623FF31E0B5BCCE42564BA1022063C372D476379C109E3C22C5C04071594CD9EF64615C00B048AFFA5D7D6701F9",
+            "hash": "B4CBEBBA9E65A5BED25205806797600149599AAF2FD8103B3B75AE97B1B5F3E2"
+        }
+    },
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| tx_blob | String | Binary representation of the fully-qualified, signed transaction, as hex |
+| tx_json | Object | JSON specification of the [complete transaction](https://ripple.com/wiki/Transaction_Format) as signed, including any fields that were automatically filled in |
 
 ## submit ##
 
-The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply raw JSON along with your secret key, or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign)) and submit it as-is.
+The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key, or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign)) and submit it as-is.
 
 #### Request Format ####
 An example of the request format:
@@ -2375,7 +2608,6 @@ An example of the request format:
    },
    "secret" : "sssssssssssssssssssssssssssss"
 }
-
 ```
 
 *Commandline*
