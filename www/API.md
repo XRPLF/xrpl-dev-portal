@@ -1,6 +1,10 @@
 # INTRODUCTION #
 
+<<<<<<< HEAD
 `ripple-rest : v1.0.0`
+=======
+`ripple-rest : v1.0.1`
+>>>>>>> 4479228664a0584f84513fed2696df4a55332308
 
 ## Ripple-REST API ##
 
