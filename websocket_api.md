@@ -338,31 +338,6 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`unsubscribe`](#unsubscribe)
 * [`wallet_accounts`](#wallet-accounts)
 
-## List of Admin Commands ##
-* [`connect`](#connect)
-* [`data_delete`](#data-delete)
-* [`data_fetch`](#data-fetch)
-* [`data_store`](#data-store)
-* [`ledger_accept`](#ledger-accept)
-* [`log_level`](#log-level)
-* [`logrotate`](#logrotate)
-* [`peers`](#peers)
-* [`proof_create`](#proof-create)
-* [`proof_solve`](#proof-solve)
-* [`proof_verify`](#proof-verify)
-* [`sms`](#sms)
-* [`stop`](#stop)
-* [`unl_add`](#unl-add)
-* [`unl_delete`](#unl-delete)
-* [`unl_list`](#unl-list)
-* [`unl_load`](#unl-load)
-* [`unl_network`](#unl-network)
-* [`unl_reset`](#unl-reset)
-* [`validation_create`](#validation-create)
-* [`validation_seed`](#validation-seed)
-* [`wallet_propose`](#wallet-propose)
-* [`wallet_seed`](#wallet-seed)
-
 # Managing Accounts #
 Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
 
@@ -401,7 +376,8 @@ An example of an account_info request:
 
 *Commandline*
 ```
-account_info account [ledger_index|ledger_hash] [strict]
+#Syntax: account_info account [ledger_index|ledger_hash] [strict]
+rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 </div>
 
@@ -460,7 +436,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | account_data.index | String | (Deprecated) Data on another deterministic wallet that can be derived from the account's secret. (Not widely supported; this feature may be dropped in the future.) |
 | ledger_current_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
-| validated | Boolean | (Upcoming) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
+| validated | Boolean | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-275)) True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 
 ## account_lines ##
 
@@ -1439,9 +1415,8 @@ This method can retrieve several different types of data. You can select which t
 1. `index` - Retrieve an individual ledger entry by its unique index
 2. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
 3. `directory` - Retrieve a directory node, which contains a list of IDs linking things
-4. `generator` - <span class='draft-comment'>"generator map node" secret-key thing?!?</span>
-5. `offer` - Retrieve an offer node, which defines an offer to exchange currency
-6. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
+4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
+5. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
 
 If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
@@ -1451,19 +1426,19 @@ The full list of parameters recognized by this method is as follows:
 |-------|------|-------------|
 | index | String | (Optional) Specify the unique identifier of a single ledger entry to retrieve. |
 | account_root | String | (Optional) Specify the unique address of an account object to retrieve. |
-| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as a <span class='draft-comment'>full hex representation of the node?</span>. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. <span class='draft-comment'>Why?</span> |
-| directory.sub_index | Unsigned Integer | (Optional) <span class='draft-comment'>?</span> |
-| directory.dir_root | String |  (<span class='draft-comment'>Required if `directory` is specified as an object</span>) <span class='draft-comment'>?</span> |
-| directory.owner | String | (<span class='draft-comment'>Required if `directory` is specified as an object</span>) Unique Account address of <span class='draft-comment'>the directory owner?</span> |
-| generator | Object or String | (Optional) If a string, interpret as a <span class='draft-comment'>hex hash of something?</span> If an object, requires the sub-field `regular_seed` |
-| generator.regular_seed | String | <span class='draft-comment'>?</span> |
-| offer | Object or String | (Optional) Specify an offer to retrieve. If a string, interpret as a <span class='draft-comment'>hex(?) hash(?) of the whole offer?</span>. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| directory | Object or String | (Optional) Specify a directory node to retrieve from the tree. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the unique key to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| directory.sub_index | Unsigned Integer | (Optional) If provided, jumps to a further sub-node in the directory linked-list. |
+| directory.dir_root | String | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |
+| directory.owner | String | (Required if `directory` is specified as an object and `directory.dir_root` is not provided) Unique address of the account associated with this directory |
+| offer | Object or String | (Optional) Specify an offer to retrieve. If a string, interpret as a 256-key hex hash. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | offer.account | String | (Required if `offer` specified) The unique address of the account making the offer to retrieve. |
 | offer.seq | Unsigned Integer | (Required if `offer` specified) The sequence number of the transaction making the offer to retrieve. |
 | ripple_state | Object | (Optional) Object specifying the RippleState entry to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | ripple_state.accounts | Array | (Required if `ripple_state` specified) 2-length array of account address strings, defining the two accounts linked by this RippleState entry |
-| ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency that this RippleState entry relates to <span class='draft-comment'>(like, either the 3-letter or hex code?)</span> |
+| ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency that this RippleState entry relates to, as either a 3-letter currency code or a 40-character hex code |
 | binary | Boolean | (Optional, defaults to false) If true, return hashed data as hex strings. Otherwise, return data in JSON format. |
+
+The `generator` parameter is deprecated and should not be used.
 
 #### Response Format ####
 
@@ -1496,10 +1471,10 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| index | String | Hex <span class='draft-comment'>of something?</span> |
+| index | String | Unique identifying key for this ledger_entry |
 | ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
 | node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
-| node_binary | String | (`"binary":true` only) Hex hashed string of the ledger node retrieved. |
+| node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
 
 
 ## ledger_accept ##
@@ -1509,7 +1484,6 @@ The `ledger_accept` method forces the server to close the current-working ledger
 
 #### Request Format ####
 
-An example of the request format:
 An example of the request format:
 
 <div class='multicode'>
@@ -1557,7 +1531,7 @@ There are several sources of complication in transactions. Unlike traditional ba
 
 ## tx ##
 
-The `tx` method retrieves information on a single transaction.
+The `tx` method retrieves information on a single transaction. <span class='draft-comment'>(If the local rippled doesn't have the transaction in any of its ledger versions, does it ask the network?)</span>
 
 #### Request Format ####
 
@@ -1755,7 +1729,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction.)
 
-<span class='draft-comment'>I still don't know why you'd use this instead of tx...</span>
+<span class='draft-comment'>(Does rippled go and retrieve the answer from the network if it doesn't have the specified ledger on-hand?)</span>
 
 #### Request Format ####
 
@@ -1785,7 +1759,7 @@ An example of the request format:
 ```
 *Commandline*
 ```
-tx transaction_hash ledger_index|ledger_hash
+transaction_entry transaction_hash ledger_index|ledger_hash
 ```
 </div>
 
@@ -2485,7 +2459,7 @@ The request includes the following parameters:
 | destination_amount | String (XRP)<br/>Object (Otherwise) | The amount of currency that needs to arrive at the destination. |
 | source_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
 | paths | Array | (Optional) Array of arrays of objects, representing paths <span class='draft-comment'>... why provide paths when you're searching for them?</span> |
-| bridges | Array | (Optional) Array of arrays of Ripple bridges <span class='draft-comment'>(what are those?)</span> |
+| bridges | Array | (Optional) Array of arrays of automated bridges to other systems (e.g. Bitcoin-to-Ripple) <span class='draft-comment'>(how do you specify these and what happens when you do?)</span> |
 
 #### Response Format ####
 
@@ -4254,4 +4228,85 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | Integer | (Omitted if ledger_current_index provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. |
 | ledger_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. |
 | offers | Array | Array of offer objects, each of which has the fields of an [offer transaction](https://ripple.com/wiki/Transaction_Format#OfferCreate_.287.29) |
+
+
+# Subscriptions #
+
+Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know right away and react accordingly. If you are using the WebSocket API, you can receive subsequent subscription responses in the same channel; for JSON-RPC, you can provide a callback URL to receive additional updates after the initial request.
+
+## subscribe ##
+
+The `subscribe` method requests periodic notifications from the server when certain events happen. 
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": "Example watch Bitstamp's hot wallet",
+  "command": "subscribe",
+  "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
+}
+```
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| streams | Array | (Optional) Array of string names of generic streams to subscribe to, as explained below |
+| accounts | Array | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
+| accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized and transactions that may fail. |
+| books | Array | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updatesm, as detailed below. |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| url | String | (Optional for WebSocket; Required otherwise) URL where the server will send a JSON-RPC callback with each event <span class='draft-comment'>[Admin only?](https://github.com/ripple/rippled/blob/develop/src/ripple/module/rpc/handlers/Subscribe.cpp#L44)</span> |
+| url_username | String | (Optional) Username to provide for authentication at the callback URL |
+| url_password | String | (Optional) Password to provide for authentication at the callback URL |
+
+The following parameters are deprecated and should not be used: `user`, `password`, `rt_accounts`.
+
+The `streams` parameter provides access to the following default streams of information:
+
+* `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
+* `ledger` - Sends a message whenever a new ledger version closes
+* `transactions` - Sends a message whenever a transaction is included in a closed ledger
+* `transactions_proposed` - Sends a message whenever a transaction is included in an in-progress ledger.
+
+Each member of the `books` array, if provided, is an object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
+| taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
+| taker | String | Unique base-58 account address <span class='draft-comment'>of what, exactly?</span> |
+| snapshot | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
+| both | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
+| proof | Boolean | <span class='draft-comment'>(Not implemented?)</span> |
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": "Example watch Bitstamp's hot wallet",
+  "status": "success",
+  "type": "response",
+  "result": {}
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting). The fields contained in the response vary depending on what subscriptions were included in the request.
+
+* `accounts` and `accounts_proposed` - No fields returned
+* *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change. 
+* *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
+* *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions), `fee_ref` (<span class='draft-comment'>?</span>), `ledger_hash` (hash of the latest <span class='draft-comment'>current?</span> ledger), `reserve_base` (minimum reserve for accounts), and more.
+
+
 
