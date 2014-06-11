@@ -4242,12 +4242,30 @@ The `subscribe` method requests periodic notifications from the server when cert
 An example of the request format:
 
 <div class='multicode'>
-*WebSocket*
+*WebSocket - accounts*
 ```
 {
   "id": "Example watch Bitstamp's hot wallet",
   "command": "subscribe",
   "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
+}
+```
+*WebSocket - offer book*
+```
+{
+    "command": "subscribe",
+    "books": [
+        {
+            "taker_pays": {
+                "currency": "XRP"
+            },
+            "taker_gets": {
+                "currency": "USD",
+                "issuer": "rUQTpMqAF5jhykj4FExVeXakrZpiKF6cQV"
+            },
+            "snapshot": true
+        }
+    ]
 }
 ```
 </div>
@@ -4258,7 +4276,7 @@ The request includes the following parameters:
 |-------|------|-------------|
 | streams | Array | (Optional) Array of string names of generic streams to subscribe to, as explained below |
 | accounts | Array | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
-| accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized and transactions that may fail. |
+| accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
 | books | Array | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updatesm, as detailed below. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
@@ -4273,7 +4291,7 @@ The `streams` parameter provides access to the following default streams of info
 * `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
 * `ledger` - Sends a message whenever a new ledger version closes
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
-* `transactions_proposed` - Sends a message whenever a transaction is included in an in-progress ledger.
+* `transactions_proposed` - Sends a message whenever a transaction is included in an in-progress ledger _or_ a closed ledger. (Note that [even failed transactions are included](https://ripple.com/wiki/Transaction_errors#Claimed_fee_only) in validated ledgers, because they take the anti-spam transaction fee.)
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -4307,6 +4325,169 @@ The response follows the [standard format](#response-formatting). The fields con
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change. 
 * *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions), `fee_ref` (<span class='draft-comment'>?</span>), `ledger_hash` (hash of the latest <span class='draft-comment'>current?</span> ledger), `reserve_base` (minimum reserve for accounts), and more.
+* `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
 
+### Subscription Stream Messages ###
+
+When you subscribe to a particular stream, you will receive periodic responses on that stream until you close the connection (for WebSockets) or unsubscribe. The content of those responses depends on what you subscribed to. Here are some examples:
+
+#### Stream: ledger Message ####
+
+```
+{
+  "type": "ledgerClosed",
+  "fee_base": 10,
+  "fee_ref": 10,
+  "ledger_hash": "687F604EF6B2F67319E8DCC8C66EF49D84D18A1E18F948421FC24D2C7C3DB464",
+  "ledger_index": 7125358,
+  "ledger_time": 455751310,
+  "reserve_base": 20000000,
+  "reserve_inc": 5000000,
+  "txn_count": 7,
+  "validated_ledgers": "32570-7125358"
+}
+```
+
+The fields from a ledger stream message are as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| type | String | `ledgerClosed` indicates this is from the ledger stream |
+| fee_base | Unsigned Integer | The minimum fee, in drops of XRP, that is destroyed to send a transactioin |
+| fee_ref | Unsigned<span class='draft-comment'>?</span> Integer | <span class='draft-comment'>?</span> |
+| ledger_hash | String | Unique hash of the ledger that was closed, as hex |
+| ledger_index | Unsigned Integer | Sequence number of the ledger that was closed |
+| ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
+| reserve_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account |
+| reserve_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines |
+| txn_count | Unsigned Integer | 
+| validated_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
+
+#### Transaction Messages ####
+
+Most other subscriptions result in messages about transactions. The `transactions_proposed` stream, strictly speaking, is a superset of the `transactions` stream: it includes all validated transactions, as well as suggested transactions that have not yet been included in a validated ledger and may never be. You can identify these "in-flight" transactions by their fields:
+
+* The `validated` field is missing or has a value of `false`.
+* There is no `meta` or `metadata` field.
+* Instead of `ledger_hash` and `ledger_index` fields specifying in which ledger version the transactions were finalized, there is a `ledger_current_index` field specifying in which ledger version they are currently proposed.
+
+Otherwise, the messages from the `transactions_proposed` stream are identical to ones from the `transactions` stream.
+
+Since the only thing that can modify an account or an order book is a transaction, the messages that are sent as a result of subscribing to particular `accounts` or `books` take the form of transaction messages, the same as the ones in the `transactions` stream. The only difference is that you only receive messages for transactions that affect the accounts or order books you're watching.
+
+The `accounts_proposed` subscription works the same way, except it also includes unconfirmed transactions, like the `transactions_proposed` stream, for the accounts you're watching.
+
+```
+{
+  "status": "closed",
+  "type": "transaction",
+  "engine_result": "tesSUCCESS",
+  "engine_result_code": 0,
+  "engine_result_message": "The transaction was applied.",
+  "ledger_hash": "989AFBFD65D820C6BD85301B740F5D592F060668A90EEF5EC1815EBA27D58FE8",
+  "ledger_index": 7125442,
+  "meta": {
+    "AffectedNodes": [
+      {
+        "ModifiedNode": {
+          "FinalFields": {
+            "Flags": 0,
+            "IndexPrevious": "0000000000000000",
+            "Owner": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
+            "RootIndex": "ABD8CE2D1205D0C062876E9E1F3CBDC902ED8EF4E8D3D071B962C7ED0E113E68"
+          },
+          "LedgerEntryType": "DirectoryNode",
+          "LedgerIndex": "0BBDEE7D0BE120F7BF27640B5245EBFE0C5FD5281988BA823C44477A70262A4D"
+        }
+      },
+      {
+        "DeletedNode": {
+          "FinalFields": {
+            "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
+            "BookDirectory": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE",
+            "BookNode": "0000000000000000",
+            "Flags": 0,
+            "OwnerNode": "000000000000006E",
+            "PreviousTxnID": "58A17D95770F8D07E08B81A85896F4032A328B6C2BDCDEC0A00F3EF3914DCF0A",
+            "PreviousTxnLgrSeq": 7125330,
+            "Sequence": 540691,
+            "TakerGets": "4401967683",
+            "TakerPays": {
+              "currency": "BTC",
+              "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+              "value": "0.04424"
+            }
+          },
+          "LedgerEntryType": "Offer",
+          "LedgerIndex": "386B7803A9210747941B0D079BB408F31ACB1CB98832184D0287A1CBF4FE6D00"
+        }
+      },
+      {
+        "DeletedNode": {
+          "FinalFields": {
+            "ExchangeRate": "4A03920BFC5E99BE",
+            "Flags": 0,
+            "RootIndex": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE",
+            "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+            "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+            "TakerPaysCurrency": "0000000000000000000000004254430000000000",
+            "TakerPaysIssuer": "92D705968936C419CE614BF264B5EEB1CEA47FF4"
+          },
+          "LedgerEntryType": "DirectoryNode",
+          "LedgerIndex": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE"
+        }
+      },
+      {
+        "ModifiedNode": {
+          "FinalFields": {
+            "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
+            "Balance": "11133297300",
+            "Flags": 0,
+            "OwnerCount": 9,
+            "Sequence": 540706
+          },
+          "LedgerEntryType": "AccountRoot",
+          "LedgerIndex": "A6C2532E1008A513B3F822A92B8E5214BD0D413DC20AD3631C1A39AD6B36CD07",
+          "PreviousFields": {
+            "Balance": "11133297310",
+            "OwnerCount": 10,
+            "Sequence": 540705
+          },
+          "PreviousTxnID": "484D57DFC4E446DA83B4540305F0CE836D4E007361542EC12CC0FFB5F0A1BE3A",
+          "PreviousTxnLgrSeq": 7125358
+        }
+      }
+    ],
+    "TransactionIndex": 1,
+    "TransactionResult": "tesSUCCESS"
+  },
+  "transaction": {
+    "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
+    "Fee": "10",
+    "Flags": 2147483648,
+    "OfferSequence": 540691,
+    "Sequence": 540705,
+    "SigningPubKey": "030BB49C591C9CD65C945D4B78332F27633D7771E6CF4D4B942D26BA40748BB8B4",
+    "TransactionType": "OfferCancel",
+    "TxnSignature": "30450221008223604A383F3AED25D53CE7C874700619893A6EEE4336508312217850A9722302205E0614366E174F2DFF78B879F310DB0B3F6DA1967E52A32F65E25DCEC622CD68",
+    "date": 455751680,
+    "hash": "94CF924C774DFDBE474A2A7E40AEA70E7E15D130C8CBEF8AF1D2BE97A8269F14"
+  },
+  "validated": true
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| type | String | `transaction` indicates this is the notification of a transaction, which could come from the `transactions` or `transactions_proposed` streams, or from watching a particular account |
+| engine_result | String | String [transaction response code](https://ripple.com/wiki/Transaction_errors) |
+| engine_result_code | Number | Numeric [transaction response code](https://ripple.com/wiki/Transaction_errors) |
+| engine_result_message | String | Human-readable explanation for the transaction response |
+| ledger_current_index | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
+| ledger_hash | String | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
+| ledger_index | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
+| meta | Object | (Omitted for unvalidated transactions) Various metadata about the transaction, including which ledger entries it affected |
+| transaction | Object | The [definition of the transaction](https://ripple.com/wiki/Transaction_Format) in JSON format |
+| validated | Boolean | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
 
 
