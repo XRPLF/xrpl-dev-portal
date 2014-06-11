@@ -4278,8 +4278,6 @@ The request includes the following parameters:
 | accounts | Array | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
 | accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
 | books | Array | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updatesm, as detailed below. |
-| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | url | String | (Optional for WebSocket; Required otherwise) URL where the server will send a JSON-RPC callback with each event <span class='draft-comment'>[Admin only?](https://github.com/ripple/rippled/blob/develop/src/ripple/module/rpc/handlers/Subscribe.cpp#L44)</span> |
 | url_username | String | (Optional) Username to provide for authentication at the callback URL |
 | url_password | String | (Optional) Password to provide for authentication at the callback URL |
@@ -4360,7 +4358,7 @@ The fields from a ledger stream message are as follows:
 | ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
 | reserve_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account |
 | reserve_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines |
-| txn_count | Unsigned Integer | 
+| txn_count | Unsigned Integer | <span class='draft-comment'>Number of transactions newly included in this ledger?</span> |
 | validated_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
 
 #### Transaction Messages ####
@@ -4373,7 +4371,7 @@ Most other subscriptions result in messages about transactions. The `transaction
 
 Otherwise, the messages from the `transactions_proposed` stream are identical to ones from the `transactions` stream.
 
-Since the only thing that can modify an account or an order book is a transaction, the messages that are sent as a result of subscribing to particular `accounts` or `books` take the form of transaction messages, the same as the ones in the `transactions` stream. The only difference is that you only receive messages for transactions that affect the accounts or order books you're watching.
+Since the only thing that can modify an account or an order book is a transaction, the messages that are sent as a result of subscribing to particular `accounts` or `books` also take the form of transaction messages, the same as the ones in the `transactions` stream. The only difference is that you only receive messages for transactions that affect the accounts or order books you're watching.
 
 The `accounts_proposed` subscription works the same way, except it also includes unconfirmed transactions, like the `transactions_proposed` stream, for the accounts you're watching.
 
@@ -4491,3 +4489,187 @@ The `accounts_proposed` subscription works the same way, except it also includes
 | validated | Boolean | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
 
 
+## unsubscribe ##
+
+The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": "Unsubscribe a lot of stuff",
+    "command": "unsubscribe",
+    "streams": ["ledger","server","transactions","transactions_proposed"],
+    "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"],
+    "accounts_proposed": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"],
+    "books": [
+        {
+            "taker_pays": {
+                "currency": "XRP"
+            },
+            "taker_gets": {
+                "currency": "USD",
+                "issuer": "rUQTpMqAF5jhykj4FExVeXakrZpiKF6cQV"
+            },
+            "both": true
+        }
+    ]
+}
+```
+</div>
+
+The parameters in the request are specified almost exactly like the parameters to [`subscribe`](#subscribe), except that they are used to define which subscriptions to end instead. The parameters are:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| streams | Array | (Optional) Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
+| accounts | Array | (Optional) Array of unique base-58 account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| accounts_proposed | Array | (Optional) Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
+| books | Array | (Optional) Array of objects defining order books to unsubscribe from, as explained below. |
+| url | String | (Required for non-WebSocket requests) Callback URL to stop sending subscription messages to |
+
+The `rt_accounts` parameter and the `rt_transactions` stream name are deprecated and should not be used.
+
+The objects in the `books` array are defined almost like the ones from subscribe, except that they don't have all the fields. The fields they have are as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
+| taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
+| both | Boolean | (Optional, defaults to false) If true, remove a subscription for both sides of the order book. |
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": "Unsubscribe a lot of stuff",
+    "result": {},
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing no fields.
+
+# Convenience Functions #
+
+The rippled server also provides a few simple commands purely for convenience.
+
+## ping ##
+
+The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 1,
+    "command": "ping"
+}
+```
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 1,
+    "result": {},
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
+
+## random ##
+
+The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 1,
+    "command": "random"
+}
+```
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 1,
+    "result": {
+        "random": "8ED765AEBBD6767603C2C9375B2679AEC76E6A8133EF59F04F9FC1AAA70E41AF"
+    },
+    "status": "success",
+    "type": "response"
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| random | String | Random 256-bit hex value. |
+
+## json ##
+
+The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client* <span class='draft-comment'>right?</span>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. 
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*Commandline*
+```
+# Syntax: json [method] [json]
+rippled -q -- json ledger_closed '{}'
+```
+</div>
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+   "result" : {
+      "ledger_hash" : "8047C3ECF1FA66326C1E57694F6814A1C32867C04D3D68A851367EE2F89BBEF3",
+      "ledger_index" : 390308,
+      "status" : "success"
+   }
+}
+
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
