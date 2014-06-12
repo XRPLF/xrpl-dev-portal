@@ -253,7 +253,7 @@ HTTP Status: 400 Bad Request
 Null method
 ```
 
-For other errors that returned with HTTP status code 200 OK, the responses are formatted in JSON
+For other errors that returned with HTTP status code 200 OK, the responses are formatted in JSON, with the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -268,7 +268,7 @@ When your request results in an error, the entire request is copied back as part
 
 ## Specifying a Ledger Instance ##
 
-Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. All such APIs work the same way. There are three ways you can specify which ledger you want to use:
+Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:
 
 1. Specify a ledger by its Sequence Number in the `ledger_index` parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)
 2. Specify a ledger by its hash value in the `ledger_hash` parameter. 
@@ -305,38 +305,50 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 }
 ```
 
+There are some cases where it is appropriate to omit one or more of the fields. For example, when specifying a currency but not an amount, you should omit the `value` field. When specifying XRP as a currency (for example, as part of a currency exchange offer), you should omit the `issuer` field.
+
 # API Methods #
 
-API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public commands are not necessarily meant for the general public, but they are used by any client attached to the server. Public commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, logging, and creating new accounts.
+API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.
+
+This page deals with all the Public Commands available. 
 
 ## List of Public Commands ##
-* [`account_info`](#account-info)
-* [`account_lines`](#account-lines)
-* [`account_offers`](#account-offers)
-* [`account_tx`](#account-tx)
-* [`book_offers`](#book-offers)
-* [`json`](#json)
-* [`ledger`](#ledger)
-* [`ledger_closed`](#ledger-closed)
-* [`ledger_current`](#ledger-current)
-* [`ledger_data`](#ledger-data)
-* [`ledger_entry`](#ledger-entry)
-* [`path_find`](#path-find)
-* [`ping`](#ping)
-* [`random`](#random)
-* [`ripple_path_find`](#ripple-path-find)
-* [`sign`](#sign)
-* [`submit`](#submit)
-* [`subscribe`](#subscribe)
-* [`ledger`](#ledger)
-* [`server_info`](#server-info)
-* [`server_state`](#server-state)
-* [`transactions`](#transactions)
-* [`transaction_entry`](#transaction-entry)
-* [`tx`](#tx)
-* [`tx_history`](#tx-history)
-* [`unsubscribe`](#unsubscribe)
-* [`wallet_accounts`](#wallet-accounts)
+* [`account_info` - Get basic data about an account](#account-info)
+* [`account_lines` - Get info about an account's trust lines](#account-lines)
+* [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
+* [`account_tx` - Get info about an account's transactions](#account-tx)
+* [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
+* [`json` - Pass JSON through the commandline](#json)
+* [`ledger` - Get info about a ledger version](#ledger)
+* [`ledger_closed` - Get the latest closed ledger version](#ledger-closed)
+* [`ledger_current` - Get the current working ledger version](#ledger-current)
+* [`ledger_data` - Get the raw contents of a ledger version](#ledger-data)
+* [`ledger_entry` - Get one element from a ledger version](#ledger-entry)
+* [`path_find` - Find a path for a payment between two accounts and receive updates](#path-find)
+* [`ping` - Confirm connectivity with the server](#ping)
+* [`random` - Generate a random number](#random)
+* [`ripple_path_find` - Find a path for payment between two accounts, once](#ripple-path-find)
+* [`server_info` - Get information about the server](#server-info)
+* [`server_state` - Get more information about the server](#server-state)
+* [`sign` - Cryptographically sign a transaction](#sign)
+* [`submit` - Send a transaction to the network](#submit)
+* [`subscribe` - Listen for updates about a particular subject](#subscribe)
+* [`transaction_entry` - Retrieve info about a transaction from a particular ledger version](#transaction-entry)
+* [`tx` - Retrieve info about a transaction from all the ledgers on hand](#tx)
+* [`tx_history` - Retrieve info about all recent transactions](#tx-history)
+* [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
+
+The `wallet_accounts` command is deprecated and should not be used.
+
+## Admin Commands ##
+
+Additionally, this page contains an explanation of the following important admin-only command:
+
+* [`wallet_propose` - Generate keys for a new account](#wallet-propose)
+
+For information about other Admin Commands, consult [the old wiki documentation](https://ripple.com/wiki/JSON_Messages).
+
 
 # Managing Accounts #
 Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
@@ -561,7 +573,8 @@ An example of the request format:
 
 *Commandline*
 ```
-account_offers account [ledger_index]
+#Syntax: account_offers account [ledger_index]
+rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 </div>
 
@@ -651,7 +664,8 @@ An example of the request format:
 
 *Commandline*
 ```
-account_tx accountID [ledger_min [ledger_max [limit]]] [binary] [count] [descending]
+#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
+rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
 </div>
 
@@ -961,7 +975,8 @@ An example of the request format:
 ```
 *Commandline*
 ```
-wallet_propose [passphrase]
+#Syntax: wallet_propose [passphrase]
+rippled -- wallet_propose test
 ```
 
 </div>
@@ -970,7 +985,7 @@ The request can contain the following parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will generate a random passphrase. Outside of testing purposes, passphrases should always be randomly generated. |
+| passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will use a random number to generate the master key. Outside of testing purposes, keys should always be randomly generated. |
 
 #### Response Format ####
 
@@ -1029,7 +1044,8 @@ An example of the request format:
 
 *Commandline*
 ```
-ledger ledger_index|ledger_hash [full]
+#Syntax: ledger ledger_index|ledger_hash [full]
+rippled -- ledger current false
 ```
 </div>
 
@@ -1083,7 +1099,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| accepted | Boolean | Whether or not this ledger has been validated by concensus <span class='draft-comment'>although there's apparently some caveats?</span> |
+| accepted | Boolean | This designation is for internal protocol use, and should not be used. It does *not* mean the same as `validated` |
 | account_hash | String | Hash of all account information in this ledger, as hex |
 | close_time | Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
 | close_time_human | String | The time this ledger was closed, in human-readable format |
@@ -1117,7 +1133,8 @@ An example of the request format:
 
 *Commandline*
 ```
-ledger_closed
+#Syntax: ledger_closed
+rippled -- ledger_closed
 ```
 </div>
 
@@ -1166,7 +1183,8 @@ An example of the request format:
 
 *Commandline*
 ```
-ledger_current
+#Syntax: ledger_current
+rippled -- ledger_current
 ```
 </div>
 
@@ -1215,8 +1233,8 @@ An example of the request format:
    "binary": true
 }
 ```
-
 </div>
+<span class='draft-comment'>(Is there no commandline syntax for `ledger_data`?)</span>
 
 A request can include the following fields:
 
@@ -1407,8 +1425,8 @@ An example of the request format:
   "ledger_index": "validated"
 }
 ```
-
 </div>
+<span class='draft-comment'>Again, is there not a commandline version?</span>
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
@@ -1477,52 +1495,6 @@ The response follows the [standard format](#response-formatting), with a success
 | node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
 
 
-## ledger_accept ##
-The `ledger_accept` method forces the server to close the current-working ledger <span class='draft-comment'>and validate it?</span>. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
-
-*The `ledger_accept` method is an admin command that cannot be run by unpriviledged users!*
-
-#### Request Format ####
-
-An example of the request format:
-
-<div class='multicode'>
-*WebSocket*
-```
-{
-   "id": "Accept my ledger!",
-   "command": "ledger_accept"
-}
-```
-
-*Commandline*
-```
-ledger_accept
-```
-</div>
-
-The request accepts no parameters.
-
-#### Response Format ####
-
-An example of a successful response:
-```js
-{
-  "id": "Accept my ledger!",
-  "status": "success",
-  "type": "response",
-  "result": {
-    "ledger_current_index": 6643240
-  }
-}
-```
-
-The response follows the [standard format](#response-formatting), with a successful result containing the following field:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| ledger_current_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
-
 # Managing Transactions #
 
 Transactions are one of the most crucial, but complex, aspects of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
@@ -1561,6 +1533,7 @@ An example of the request format:
 ```
 *Commandline*
 ```
+#Syntax: tx transaction [binary]
 tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 </div>
@@ -1569,7 +1542,7 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| transaction | String | The SHA-512 hash of the transaction, as hex. |
+| transaction | String | The 256-bit hash of the transaction, as hex. |
 | binary | Boolean | (Optional, defaults to false) If true, return transaction data and metadata as hex strings instead of JSON |
 
 #### Response Format ####
@@ -1711,7 +1684,7 @@ The response follows the [standard format](#response-formatting), with a success
 | Account | String | The unique address of the account that initiated the transaction |
 | Amount | String (XRP)<br/>Object (Otherwise) | The amount of currency sent as part of this transaction. |
 | Destination | String | The unique address of the account receiving the transaction. |
-| Fee | String | <span class='draft-comment'>Amount of XRP in drops destroyed by this transaction as a fee?</span>
+| Fee | String |Amount of XRP in drops to be destroyed by this transaction as a fee. <span class='draft-comment'>Why would you set this manually? What happens if your setting doesn't match the server's?</span> |
 | Flags | Unsigned Integer | Set of bit-flags for this transaction |
 | Paths | Array | Array of arrays, specifying [payment paths](https://ripple.com/wiki/Payment_paths) for this transaction. |
 | SendMax | String/Object | (See [Specifying Currency Amounts](#specifying-currency-amounts)) Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). |
@@ -1759,7 +1732,8 @@ An example of the request format:
 ```
 *Commandline*
 ```
-transaction_entry transaction_hash ledger_index|ledger_hash
+#Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
+rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 </div>
 
@@ -1935,7 +1909,8 @@ An example of the request format:
 
 *Commandline*
 ```
-tx_history 0
+#Syntax: tx_history [start]
+rippled -- tx_history 0
 ```
 </div>
 
@@ -2414,7 +2389,7 @@ The fields included in each transaction object vary slightly depending on the ty
 
 ## path_find ##
 
-*WebSocket API only!* The `path_find` method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). <span class='draft-comment'>I remember hearing something about RPC being able to provide URLs for callbacks. I guess that doesn't apply here?</span> For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account without trust. 
+*WebSocket API only!* The `path_find` method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account without trust. 
 
 There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the `subcommand` parameter:
 
@@ -3786,7 +3761,8 @@ An example of the request format:
 ```
 *Commandline*
 ```
-ripple_path_find json_here ledger_index|ledger_hash
+#Syntax ripple_path_find json ledger_index|ledger_hash
+rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
 ```
 </div>
 
@@ -3963,7 +3939,8 @@ An example of the request format:
 
 *Commandline*
 ```
-sign secret tx_json [offline]
+#Syntax: sign secret tx_json [offline]
+rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 ```
 </div>
 
@@ -3978,7 +3955,7 @@ The request includes the following parameters:
 The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields are automatic:
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. 
-* `Fee` - The server automatically fills in the current default transaction fee (in drops of XRP). <span class='draft-comment'>I'd love a chat about the total details of this</span>
+* `Fee` - The server automatically fills in the current transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee.
 
 #### Response Format ####
 
@@ -4049,6 +4026,7 @@ An example of the request format:
 
 *Commandline*
 ```
+#Syntax: submit secret json [offline]
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
 ```
 </div>
@@ -4061,7 +4039,7 @@ The request includes the following parameters:
 | tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](https://ripple.com/wiki/Transaction_Format) in JSON format |
 | secret | String | (Required if tx_json is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
-| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. <span class='draft-comment'>Note to self: check whether this applies to tx_blob mode</span> |
+| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. <span class='draft-comment'>Does this apply to tx_blob mode?</span> |
 
 The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. The Paths field is not required for sending XRP. <span class='draft-comment'>How exactly does the server respect paths? If 5 paths are possible and you send 3 of them, does it only choose from those 3 supplied?</span> If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. 
 
@@ -4141,6 +4119,11 @@ An example of the request format:
     "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
   }
 }
+```
+*Commandline*
+```
+#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
+rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 </div>
 
@@ -4577,6 +4560,11 @@ An example of the request format:
     "command": "ping"
 }
 ```
+*Commandline*
+```
+#Syntax: ping
+rippled -- ping
+```
 </div>
 
 The request includes no parameters.
@@ -4612,6 +4600,11 @@ An example of the request format:
     "id": 1,
     "command": "random"
 }
+```
+*Commandline*
+```
+#Syntax: ping
+rippled -- random
 ```
 </div>
 
@@ -4650,7 +4643,7 @@ An example of the request format:
 <div class='multicode'>
 *Commandline*
 ```
-# Syntax: json [method] [json]
+# Syntax: json method json_stanza
 rippled -q -- json ledger_closed '{}'
 ```
 </div>
