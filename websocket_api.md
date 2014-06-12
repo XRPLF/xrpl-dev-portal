@@ -1684,7 +1684,7 @@ The response follows the [standard format](#response-formatting), with a success
 | Account | String | The unique address of the account that initiated the transaction |
 | Amount | String (XRP)<br/>Object (Otherwise) | The amount of currency sent as part of this transaction. |
 | Destination | String | The unique address of the account receiving the transaction. |
-| Fee | String |Amount of XRP in drops to be destroyed by this transaction as a fee. <span class='draft-comment'>Why would you set this manually? What happens if your setting doesn't match the server's?</span> |
+| Fee | String |Amount of XRP in drops to be destroyed from the sendering account's balance as a fee for redistributing this transaction to the network. (See [Transaction Fees](https://ripple.com/wiki/Transaction_Fee) |
 | Flags | Unsigned Integer | Set of bit-flags for this transaction |
 | Paths | Array | Array of arrays, specifying [payment paths](https://ripple.com/wiki/Payment_paths) for this transaction. |
 | SendMax | String/Object | (See [Specifying Currency Amounts](#specifying-currency-amounts)) Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). |
@@ -3955,7 +3955,7 @@ The request includes the following parameters:
 The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields are automatic:
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. 
-* `Fee` - The server automatically fills in the current transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee.
+* `Fee` - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee.
 
 #### Response Format ####
 
