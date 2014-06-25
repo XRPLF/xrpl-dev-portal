@@ -678,7 +678,7 @@ The request includes the following parameters:
 | ledger_index_max | Integer | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent one available. |
 | ledger_hash | String | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hashed hex strings instead of JSON. |
+| binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values sorted with the oldest ledger first. Otherwise, the results are sorted with the newest ledger first. |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
@@ -945,12 +945,12 @@ The response follows the [standard format](#response-formatting), with a success
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-Each transaction object includes the following fields, depending on whether it was requested in JSON or hash string (`"binary":true`) format.
+Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
 | Field | Type | Description |
 |-------|------|-------------|
 | ledger_index | Integer | The sequence number of the ledger version that included this transaction. |
-| meta | Object (JSON) or String (Binary) | If `binary` is True, then this is a hash string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
+| meta | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
 | tx | Object | (JSON mode only) JSON object defining the transaction |
 | tx_blob | String | (Binary mode only) Unique hashed String representing the transaction. |
 | validated | Boolean | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
@@ -1020,7 +1020,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Managing Ledgers #
 
-The shared ledger is the core of the Ripple Network. Each `rippled` server keeps an entire copy of the ledger, which contains all the accounts, transactions, and offers in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its working copy of the ledger, closes it periodically, and volunteers the recently-closed ledgers to become the globally canonical version. Once concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger go into the working copy, to be included in the next closed version proposed for validation.
+The shared ledger is the core of the Ripple Network. Each `rippled` server keeps an entire copy of the ledger, which contains all the accounts, transactions, and offers in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its working copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-canonical version. Once concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger go into the working copy, to be included in the next closed version proposed for validation.
 
 ## ledger ##
 
@@ -1109,10 +1109,9 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | String | Ledger sequence number as a quoted integer |
 | parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
 | total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
-| totalCoins | String | Alias for `total_coins` |
 | transaction_hash | String | Hash of the transaction information included in this ledger, as hex |
 
-The following fields are deprecated and should not be used: `hash`, `seqNum`.
+The following fields are deprecated and should not be used: `hash`, `seqNum`, `totalCoins`.
 
 
 ## ledger_closed ##
@@ -1234,7 +1233,8 @@ An example of the request format:
 }
 ```
 </div>
-<span class='draft-comment'>(Is there no commandline syntax for `ledger_data`?)</span>
+
+*Note:* There is no commandline syntax for `ledger_data`.
 
 A request can include the following fields:
 
@@ -1401,7 +1401,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 
 | Field | Type | Description |
 |-------|------|-------------|
-| data | String | (`"binary":true` only) String hash of the requested data |
+| data | String | (`"binary":true` only) Hex representation of the requested data |
 | LedgerEntryType | String | (`"binary":false` only) String indicating what type of object this is. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) |
 | (Additional fields) | (Various) | (`"binary":false` only) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | index | String | Unique identifier for this ledger entry, as hex. |
@@ -2399,9 +2399,9 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 
 ### path_find create ###
 
-The `create` subcommand of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains all<span class='draft-comment'>?</span> possible paths between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. <span class='draft-comment'>(How often? Is this only in response to changes? It seems like the updates get sent every second or so regardless of whether anything is different.)</span>
+The `create` subcommand of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
 
-If another pathfinding request is already open on the same connection, <span class='draft-comment'>it is automatically closed(?) and replaced with the new request.</span>
+A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.
 
 #### Request Format ####
 An example of the request format:
@@ -2432,9 +2432,9 @@ The request includes the following parameters:
 | source_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | destination_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
 | destination_amount | String (XRP)<br/>Object (Otherwise) | The amount of currency that needs to arrive at the destination. |
-| source_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
-| paths | Array | (Optional) Array of arrays of objects, representing paths <span class='draft-comment'>... why provide paths when you're searching for them?</span> |
-| bridges | Array | (Optional) Array of arrays of automated bridges to other systems (e.g. Bitcoin-to-Ripple) <span class='draft-comment'>(how do you specify these and what happens when you do?)</span> |
+| paths | Array | (Optional) Array of arrays of objects, representing paths to confirm. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+
+The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
 #### Response Format ####
 
@@ -2811,7 +2811,7 @@ The initial response follows the [standard format](#response-formatting), with a
 
 | Field | Type | Description |
 |-------|------|-------------|
-| alternatives | Array | Array of objects with possible paths to take, as described below. If empty, then there are no paths connecting the source and destination accounts. |
+| alternatives | Array | Array of objects with suggested paths to take, as described below. If empty, then there are no paths connecting the source and destination accounts. |
 | destination_account | String | Unique address of the account that would receive a transaction |
 | destination_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
 | id | (Various) | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
@@ -3674,7 +3674,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
 
 ### path_find close ###
 
-The `close` subcommand of `path_find` instructs the server to stop sending information about the <span class='draft-comment'>(only?)</span> open pathfinding request.
+The `close` subcommand of `path_find` instructs the server to stop sending information about the current open pathfinding request.
 
 #### Request Format ####
 An example of the request format:
@@ -3903,15 +3903,15 @@ Each element in the `alternatives` array is an object that represents a path fro
 | Field | Type | Description |
 |-------|------|-------------|
 | paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
-| paths_canonical | Array | (May be omitted) Similar to paths_computed, but <span class='draft-comment'>somehow "better" and more "canonical" whatever that means.</span> |
-| paths_expanded | Array | (May be omitted) Detailed expanded paths, for informational purposes. <span class='draft-comment'>(Different from paths_computed/canonical how?)</span> |
 | source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+
+The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
 
 ## sign ##
 
 The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.
 
-<span class='draft-comment'>I seem to recall hearing something about ripple-lib being able to sign a transaction without connecting to a rippled server. Is that true?</span>
+*Note:* It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, [ripple-lib's rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
 
 #### Request Format ####
 An example of the request format:
@@ -4039,7 +4039,7 @@ The request includes the following parameters:
 | tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](https://ripple.com/wiki/Transaction_Format) in JSON format |
 | secret | String | (Required if tx_json is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
-| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. <span class='draft-comment'>Does this apply to tx_blob mode?</span> |
+| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. (No effect when specifying the transaction as tx_blob.) |
 
 The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. The Paths field is not required for sending XRP. <span class='draft-comment'>How exactly does the server respect paths? If 5 paths are possible and you send 3 of them, does it only choose from those 3 supplied?</span> If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. 
 
@@ -4134,9 +4134,8 @@ The request includes the following parameters:
 | taker | String | (Optional, defaults to [ACCOUNT_ONE](https://ripple.com/wiki/Accounts#ACCOUNT_ONE)) Unique base-58 address of an account to use as point-of-view. (This may affect funding of offers after transfer fees are included.) 
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
-| marker | (Not Specified) | (Optional) Server-provided value to specify where to resume retrieving data from. |
 
-<span class='draft-comment'>All the other parameters of this command -- `limit`, `proof`, and `autobridge` -- appear to be either not implemented or buggy (see [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).</span>
+<span class='draft-comment'>The other parameters of this command -- `marker`, `limit`, `proof`, and `autobridge` -- are not yet fully implemented. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).</span>
 
 #### Response Format ####
 
@@ -4215,8 +4214,9 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Subscriptions #
 
-Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know right away and react accordingly. If you are using the WebSocket API, you can receive subsequent subscription responses in the same channel; for JSON-RPC, you can provide a callback URL to receive additional updates after the initial request.
+Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know right away and react accordingly. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel.
 
+JSON-RPC support for subscription callbacks is deprecated and may not work as expected.
 ## subscribe ##
 
 The `subscribe` method requests periodic notifications from the server when certain events happen. 
@@ -4261,11 +4261,8 @@ The request includes the following parameters:
 | accounts | Array | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
 | accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
 | books | Array | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updatesm, as detailed below. |
-| url | String | (Optional for WebSocket; Required otherwise) URL where the server will send a JSON-RPC callback with each event <span class='draft-comment'>[Admin only?](https://github.com/ripple/rippled/blob/develop/src/ripple/module/rpc/handlers/Subscribe.cpp#L44)</span> |
-| url_username | String | (Optional) Username to provide for authentication at the callback URL |
-| url_password | String | (Optional) Password to provide for authentication at the callback URL |
 
-The following parameters are deprecated and should not be used: `user`, `password`, `rt_accounts`.
+The following parameters are deprecated and should not be used: `user`, `password`, `rt_accounts`, `url`, `url_username`, `url_password`.
 
 The `streams` parameter provides access to the following default streams of information:
 
@@ -4280,7 +4277,7 @@ Each member of the `books` array, if provided, is an object with the following f
 |-------|------|-------------|
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
-| taker | String | Unique base-58 account address <span class='draft-comment'>of what, exactly?</span> |
+| taker | String | Unique base-58 account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
 | snapshot | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | both | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
 | proof | Boolean | <span class='draft-comment'>(Not implemented?)</span> |
@@ -4305,7 +4302,7 @@ The response follows the [standard format](#response-formatting). The fields con
 * `accounts` and `accounts_proposed` - No fields returned
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change. 
 * *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
-* *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions), `fee_ref` (<span class='draft-comment'>?</span>), `ledger_hash` (hash of the latest <span class='draft-comment'>current?</span> ledger), `reserve_base` (minimum reserve for accounts), and more.
+* *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
 
 ### Subscription Stream Messages ###
@@ -4334,14 +4331,14 @@ The fields from a ledger stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `ledgerClosed` indicates this is from the ledger stream |
-| fee_base | Unsigned Integer | The minimum fee, in drops of XRP, that is destroyed to send a transactioin |
-| fee_ref | Unsigned<span class='draft-comment'>?</span> Integer | <span class='draft-comment'>?</span> |
+| fee_base | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| fee_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ledger_hash | String | Unique hash of the ledger that was closed, as hex |
 | ledger_index | Unsigned Integer | Sequence number of the ledger that was closed |
 | ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
 | reserve_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account |
 | reserve_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines |
-| txn_count | Unsigned Integer | <span class='draft-comment'>Number of transactions newly included in this ledger?</span> |
+| txn_count | Unsigned Integer | Number of transactions newly included in this ledger |
 | validated_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
 
 #### Transaction Messages ####
@@ -4512,9 +4509,8 @@ The parameters in the request are specified almost exactly like the parameters t
 | accounts | Array | (Optional) Array of unique base-58 account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
 | accounts_proposed | Array | (Optional) Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
 | books | Array | (Optional) Array of objects defining order books to unsubscribe from, as explained below. |
-| url | String | (Required for non-WebSocket requests) Callback URL to stop sending subscription messages to |
 
-The `rt_accounts` parameter and the `rt_transactions` stream name are deprecated and should not be used.
+The `rt_accounts` and `url` parameters, and the `rt_transactions` stream name, are deprecated and should not be used.
 
 The objects in the `books` array are defined almost like the ones from subscribe, except that they don't have all the fields. The fields they have are as follows:
 
@@ -4635,7 +4631,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## json ##
 
-The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client* <span class='draft-comment'>right?</span>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. 
+The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client*, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. 
 
 #### Request Format ####
 An example of the request format:

@@ -10,7 +10,7 @@ The official web client for the Ripple Network is available at [https://ripple.c
 
 If you intend to act as a gateway, or if you are a developer with great ideas of how to use the Ripple Network, you will probably want to build a custom client application that you or your customers can use to send, receive, or observe funds on the Ripple Network.
 
-Connecting to the Ripple Network generally means connecting to [`rippled`](https://github.com/ripple/rippled) (pronounced "ripple-dee"), the Ripple server software, sending it requests and commands, and listening to the responses. To get started, you can try running a few calls to retrieve public information from the [Ripple API Tool](https://ripple.com/tools/api) or you try downloading and running your own instance of `rippled`. 
+Connecting to the Ripple Network generally means communicating with the Ripple Server software, [`rippled`](https://github.com/ripple/rippled) (pronounced "ripple-dee"). To get started, you can try running a few calls to retrieve information from public servers using the [Ripple API Tool](https://ripple.com/tools/api) or you try downloading and running your own instance of `rippled`. 
 
 If you are building your own client, you have several options of interfaces that you can use to interact with the Ripple Network:
 
