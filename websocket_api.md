@@ -305,7 +305,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 }
 ```
 
-There are some cases where it is appropriate to omit one or more of the fields. For example, when specifying a currency but not an amount, you should omit the `value` field. When specifying XRP as a currency (for example, as part of a currency exchange offer), you should omit the `issuer` field.
+There are some cases where it is appropriate to omit one or more of the fields. For example, when specifying a currency but not an amount, you should omit the `value` field. When specifying XRP as a currency with no amount (for example, in describing a currency exchange), you should make it an object with a `currency` field, but omit the `issuer` field.
 
 # API Methods #
 
@@ -689,7 +689,7 @@ There is also a deprecated legacy variation of the `account_tx` method. For that
 
 If you want to retrieve an amount of data that is higher than the server's maximum `limit` value, or you want to break up your request into multiple smaller requests, you can use the `marker` field to pick up in the same place you left off. For each subsequent request, pass the `marker` value from the previous request to instruct rippled to resume from the point where you left off.
 
-However, in the time between requests, things may change so that `"ledger_index_min": -1` and `"ledger_index_max": -1` may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the `ledger_index_min` and `ledger_index_max` values provided in the first response, and use those values for all subsequent requests.
+However, in the time between requests, things may change so that `"ledger_index_min": -1` and `"ledger_index_max": -1` may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the `ledger_index_min` and `ledger_index_max` values provided in the first response, and use those values for all subsequent requests. 
 
 #### Response Format ####
 
@@ -938,12 +938,14 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address identifying the related account |
-| ledger_index_min | Integer | The sequence number of the earliest ledger searched for transactions. |
-| ledger_index_max | Integer | The sequence number of the most recent ledger searched for transactions. |
+| ledger_index_min | Integer | The sequence number of the earliest ledger actually searched for transactions. |
+| ledger_index_max | Integer | The sequence number of the most recent ledger actually searched for transactions. |
 | limit | Integer | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | offset | Integer | The `offset` value used in the request. |
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
+
+*Note:* The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hash string (`"binary":true`) format.
 
