@@ -329,8 +329,7 @@ This page deals with all the Public Commands available.
 * [`ping` - Confirm connectivity with the server](#ping)
 * [`random` - Generate a random number](#random)
 * [`ripple_path_find` - Find a path for payment between two accounts, once](#ripple-path-find)
-* [`server_info` - Get information about the server](#server-info)
-* [`server_state` - Get more information about the server](#server-state)
+c
 * [`sign` - Cryptographically sign a transaction](#sign)
 * [`submit` - Send a transaction to the network](#submit)
 * [`subscribe` - Listen for updates about a particular subject](#subscribe)
