@@ -945,13 +945,9 @@ The response follows the [standard format](#response-formatting), with a success
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-<<<<<<< HEAD
 *Note:* The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
 
-Each transaction object includes the following fields, depending on whether it was requested in JSON or hash string (`"binary":true`) format.
-=======
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
->>>>>>> 319a4bd2f3eba51b40541b4acc4b01d26e0f967d
 
 | Field | Type | Description |
 |-------|------|-------------|
