@@ -3,25 +3,45 @@ If you want to communicate directly with the `rippled` server, you have three fa
 
 * The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. 
 * The JSON-RPC API relies on simple request-response communication via HTTP. For commands that prompt multiple responses, you can provide a callback URL.
-* The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server.
+* The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server. This is only intended for administrative purposes, and is not a supported API.
 
 In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. JSON-RPC must open and close an HTTP connection for each individual message. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. However, all three have valid use cases and will continue to be supported for the foreseeable future.
+
+## Changes to the APIs ##
+
+The WebSocket and JSON-RPC APIs are still in development, and are subject to change. If you want to be notified of upcoming changes and future versions of `rippled`, subscribe to the Ripple Server mailing list:
+
+https://groups.google.com/forum/#!forum/ripple-server
 
 ## Connecting to rippled ##
 
 Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Alternatively, and recommended if you are going to do heavy development work, you can run your own local copy of [`rippled`](https://ripple.com/wiki/Rippled). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
+Alternatively, you can run your own local copy of [`rippled`](https://ripple.com/wiki/Rippled). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
+
+### Reasons to Run Your Own rippled ###
+
+It is important that you can trust the `rippled` you use, so you can be certain that the software you are running will behave in the manner specified in its source code. Of course, you must also practice good network security to protect your server from malicious hackers. If you connect to a malicious server, there are myriad ways that it can take advantage of you or cause you to lose money. For example:
+
+* A malicious server could report that you were paid when no such payment was made
+* It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal
+* If you sent it your account's secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account's balances.
+
+Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. 
+
+
 
 ### WebSocket API ###
 
-If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run in a browser or possibly [Node.js](https://github.com/einaros/ws).
+If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](https://ripple.com/tools/api/). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run in a browser (See [this example](http://www.websocket.org/echo.html) ) or possibly [Node.js](https://github.com/einaros/ws).
 
 Currently Ripple Labs maintains a set of public WebSocket servers at:
 
-```
-s1.ripple.com:443
-```
+| Domain | Port |
+| ------- | ------- |
+| s1.ripple.com | 443 |
+
+These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
 ### JSON-RPC ###
 
@@ -29,9 +49,11 @@ You can use any HTTP client (like [Poster for Firefox](https://addons.mozilla.or
 
 Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
 
-```
-s1.ripple.com:51234
-```
+| Domain | Port |
+| ------- | ------- |
+| s1.ripple.com | 51234 |
+
+These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
 If you are running your own `rippled` server, make sure that you have enabled the JSON-RPC interface in your [rippled.cfg](https://ripple.com/wiki/Rippled.cfg) file, since JSON-RPC is disabled by default. The relevant section is something like this example:
 
@@ -51,7 +73,7 @@ If you are running your own `rippled` server, make sure that you have enabled th
 
 ### Commandline ###
 
-The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, `rippled` connects to the local instance; however, you can specify the server to connect to with the `--rpc-ip` commandline argument. For example:
+The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, `rippled` connects to the local instance; however, you can specify the server to connect to in the configuration file or with the `--rpc-ip` commandline argument. For example:
 
 ```
 rippled --rpc_ip=s1.ripple.com:51234 server_info
@@ -4270,8 +4292,11 @@ The request includes the following parameters:
 | accounts | Array | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
 | accounts_proposed | Array | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
 | books | Array | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updatesm, as detailed below. |
+| url | String | (Optional for Websocket; Required otherwise) URL where the server will send a JSON-RPC callback with each event. Admin-only. |
+| url_username | String | (Optional) Username to provide for basic authentication at the callback URL. |
+| url_password | String | (Optional) Password to provide for basic authentication at the callback URL. |
 
-The following parameters are deprecated and should not be used: `user`, `password`, `rt_accounts`, `url`, `url_username`, `url_password`.
+The following parameters are deprecated and should not be used: `user`, `password`, `rt_accounts`.
 
 The `streams` parameter provides access to the following default streams of information:
 
