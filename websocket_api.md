@@ -307,8 +307,6 @@ If you do not specify a ledger, the `current` (in-progress) ledger will be chose
 
 Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (sometimes referred to as IOUs), the style for specifying it is very different.
 
-If you are specifying an amount of XRP in JSON, you should provide it in string format. (JSON integers are limited to 32 bits, so integer overflows are possible.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write `"1000000"`.
-
 If you are specifying non-XRP currency (including fiat dollars, precious metals, cryptocurrencies, or other custom currency) you must specify it with a currency specification object. This is a JSON object with three fields:
 
 | Field | Type | Description |
@@ -327,7 +325,15 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 }
 ```
 
-There are some cases where it is appropriate to omit one or more of the fields. For example, when specifying a currency but not an amount, you should omit the `value` field. When specifying XRP as a currency with no amount (for example, in describing a currency exchange), you should make it an object with a `currency` field, but omit the `issuer` field.
+If you are specifying an amount of XRP in JSON, you should provide it in string format. (JSON integers are limited to 32 bits, so integer overflows are possible.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write `"1000000"`.
+
+### Specifying Currencies Without Amounts ###
+
+If you are specifying a non-XRP currency without an amount -- typically for defining an order book of currency exchange offers, you should specify it as above, but omit the `value` field.
+
+If you are specifying XRP without an amount -- also typically for defining an order book -- you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
+
+Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that all issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
 
 # API Methods #
 
@@ -341,7 +347,6 @@ This page deals with all the Public Commands available.
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
 * [`account_tx` - Get info about an account's transactions](#account-tx)
 * [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
-* [`json` - Pass JSON through the commandline](#json)
 * [`ledger` - Get info about a ledger version](#ledger)
 * [`ledger_closed` - Get the latest closed ledger version](#ledger-closed)
 * [`ledger_current` - Get the current working ledger version](#ledger-current)
@@ -370,9 +375,15 @@ Additionally, this page contains an explanation of the following important admin
 
 For information about other Admin Commands, consult [the old wiki documentation](https://ripple.com/wiki/JSON_Messages).
 
+## Commandline Access ##
+
+The `rippled` application, in addition to acting as a server, can be run (as a separate instance) to act as a JSON-RPC client. In this mode, it has syntax for triggering most API methods with a single line from the command prompt, as described in each method. However, some methods don't have a commandline shortcut, so it also provides the following catch-all method for performing commands:
+
+* [`json` - Pass JSON through the commandline](#json)
+
 
 # Managing Accounts #
-Accounts are the core identity in the Ripple Network. Each account can hold balances in multiple currencies. In order to be a valid account, however, there is a minimum reserve in XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. An account is similar to a Bitcoin wallet, except that it is not limited strictly to holding digital crypto-currency.
+Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
 
 ## account_info ##
 
@@ -566,10 +577,10 @@ Each trust-line object has some combination of the following fields, although no
 | account | String | The unique address of the account this line applies to. |
 | balance | String | Representation of the numeric balance currently held against this line |
 | currency | String | The currency this line applies to |
-| limit | String | The maximum amount of the given currency that the account is willing to owe the peer |
-| limit_peer | String | The maximum amount of currency that the peer is willing to owe the account |
+| limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
+| limit_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
 | no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for this line |
-| no_ripple_peer | Boolean | Whether or not the peer has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
+| no_ripple_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
 | quality_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 
@@ -1431,7 +1442,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 
 
 ## ledger_entry ##
-The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve.
+The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. *Note:* There is no commandline version of this method. You can use the [`json`](#json) command to access this method from the commandline instead.
 
 #### Request Format ####
 
@@ -1449,7 +1460,6 @@ An example of the request format:
 }
 ```
 </div>
-<span class='draft-comment'>Again, is there not a commandline version?</span>
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
@@ -1520,9 +1530,9 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Managing Transactions #
 
-Transactions are one of the most crucial, but complex, aspects of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
+Transactions are the only thing that can modify the shared global ledger of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
 
-There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House)) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. If you use the Ripple Network for only transacting in XRP, then it functions very similarly to Bitcoin, except with faster confirmations and no mining. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports credit and balances in any currency. This brings far more power, but it also means that the system must account for [counterparty risk](http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk), currency conversions, and other issues. Additionally, network failures are always a possibility, so the Ripple Network has to be robust to avoid losing track of which transactions have finished when the power comes back on.
+There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House)) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. Sending XRP, the Ripple Network's native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports credit and balances in any currency. This brings far more power, but it also means that the system must account for [counterparty risk](http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk), currency conversions, and other issues. The Ripple Network has to be robust to avoid losing track of transaction data when subject to attack or natural disasters.
 
 ## tx ##
 
@@ -1700,28 +1710,18 @@ An example of a successful response:
 ```
 </div>
 
-The response follows the [standard format](#response-formatting), with a successful result containing a [Transaction object](https://ripple.com/wiki/Transaction_Format) and some metadata. The response can include the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the fields of the [Transaction object](https://ripple.com/wiki/Transaction_Format) as well as the following additional data:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| Account | String | The unique address of the account that initiated the transaction |
-| Amount | String (XRP)<br/>Object (Otherwise) | The amount of currency sent as part of this transaction. |
-| Destination | String | The unique address of the account receiving the transaction. |
-| Fee | String |Amount of XRP in drops to be destroyed from the sendering account's balance as a fee for redistributing this transaction to the network. (See [Transaction Fees](https://ripple.com/wiki/Transaction_Fee) |
-| Flags | Unsigned Integer | Set of bit-flags for this transaction |
-| Paths | Array | Array of arrays, specifying [payment paths](https://ripple.com/wiki/Payment_paths) for this transaction. |
-| SendMax | String/Object | (See [Specifying Currency Amounts](#specifying-currency-amounts)) Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). |
-| Sequence | Unsigned Integer | The sequence number, relative to the initiating account, of this transaction. |
-| SigningPubKey | String | Hex representation of the public key that corresponds to the private key used to sign this transaction. |
-| TransactionType | String | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
-| TxnSignature | String | The signature that verifies this transaction as originating from the account it says it is from |
 | hash | String | The SHA-512 hash of the transaction |
 | inLedger | Unsigned Integer | (Deprecated) Alias for `ledger_index`. |
-| ledger_index | Unsigned Integer | The sequence number of the ledger that includes this transaction.
+| ledger_index | Unsigned Integer | The sequence number of the ledger that includes this transaction. |
 | meta | Object | Various metadata about the transaction. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
+| (Various) | (Various) | Other fields from the [Transaction object](https://ripple.com/wiki/Transaction_Format) |
 
-*Note:* If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have happened in an older ledger version that the rippled does not have on hand anymore.
+*Note:* If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the `rippled` does not have on hand anymore.
 
 ## transaction_entry ##
 
@@ -1765,7 +1765,7 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | tx_hash | String | Unique hash of the transaction you are looking up |
 
 *Note:* This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`. 
@@ -1911,6 +1911,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | Unsigned Integer | Sequence number of the ledger version the transaction was found in; this is the same as the one from the request. |
 | ledger_hash | String | (May be omitted) Unique hash of the ledger version the transaction was found in; this is the same as the one from the request. |
 | metadata | Object | Various metadata about the transaction. |
+| tx_json | Object | JSON representation of the [Transaction object](https://ripple.com/wiki/Transaction_Format) |
 
 There are a couple possible reasons the server may fail to find the transaction:
 
@@ -2424,7 +2425,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 
 * `create` - Start sending pathfinding information 
 * `close` - Stop sending pathfinding information
-* `status` - Get the current information of <span class='draft-comment'>the (most recent / only?)</span> pathfinding request
+* `status` - Get the information of the currently-open pathfinding request
 
 ### path_find create ###
 
@@ -2860,6 +2861,7 @@ In addition to the initial response, the server sends more messages in a similar
 Here is an example of an asychronous follow-up from a path_find create request:
 
 <div class='multicode'>
+*WebSocket*
 ```
 {
     "id": 1,
@@ -4026,6 +4028,12 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | Binary representation of the fully-qualified, signed transaction, as hex |
 | tx_json | Object | JSON specification of the [complete transaction](https://ripple.com/wiki/Transaction_Format) as signed, including any fields that were automatically filled in |
 
+*Warning:* If this command results in an error messages, the message can contain the account secret from the request. Make sure that these errors are not visible to others, including:
+
+* Do not write this error to a log file that can be seen by multiple people
+* Do not paste this error to a public place for debugging
+* Do not display the error message on a website, even by accident
+
 ## submit ##
 
 The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key, or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign)) and submit it as-is.
@@ -4070,11 +4078,15 @@ The request includes the following parameters:
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. (No effect when specifying the transaction as tx_blob.) |
 
-The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. The `Paths` field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server chooses between them according to its own criteria. You can omit the `Paths` field, but that leaves it up to the server to choose a path, with the total cost of making the payment automatically getting deducted from the sending account, so you should avoid that whenever possible. (By default, rippled tries to compute the cheapest path, but it may not have the resources to find the best option. An untrustworthy server could be modified to choose paths maliciously.)
+The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. The `Paths` field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the `Paths` field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. 
+
+By default, `rippled` tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. 
 
 If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. 
 
-To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, store it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction. Additionally, you should provide a [LastLedgerSequence](https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format) field in your transaction to make sure that it expires quickly in the case that it does not succeed.
+To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, store it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction. 
+
+You should provide a [LastLedgerSequence](https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format) field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.
 
 #### Response Format ####
 
@@ -4124,6 +4136,12 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_json | Object | The complete transaction in JSON format |
 
 *Important:* Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+
+*Warning:* If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
+
+* Do not write this error to a log file that can be seen by multiple people
+* Do not paste this error to a public place for debugging
+* Do not display the error message on a website, even by accident
 
 ## book_offers ##
 
