@@ -1,28 +1,24 @@
 # Introduction #
 
-Ripple is a decentralized, peer-to-peer network for moving money using cryptographic technology. For more on the big picture, consult [ripple.com](https://ripple.com/) and check out [our blog](https://ripple.com/blog/).
-
-To get started using Ripple, you can try running a few calls to retrieve public information from the [Ripple API Tool](https://ripple.com/tools/api) or you can start by downloading and running your own instance of `rippled`, the Ripple server. In order to get an account on the network, you will have to find someone to send you some amount of XRP in excess of the reserve requirement. 
+Ripple is a decentralized, peer-to-peer network for moving value using cryptographic technology. For more on the big picture, consult [ripple.com](https://ripple.com/) and check out [our blog](https://ripple.com/blog/). 
 
 # Ripple Client Applications #
 
-The official web client for the Ripple Network is available at [https://ripple.com/client/](). You can also try signing up for [Ripple Trade](https://rippletrade.com/), which is still in development. In the future, official downloadable clients will also be available.
-
-If you intend to act as a gateway, you will probably want to build custom client applications that your customers can use to manage their funds within the Ripple Network. To do that, you will need to integrate against the [Ripple APIs](#ripple-apis).
+The official web client for the Ripple Network is available at [https://ripple.com/client/](). In order to get an account on the network, you will have to find someone to give or sell you some amount of XRP in excess of the reserve requirement. In the future, official downloadable clients will also be available.
 
 # Ripple APIs #
 
-Connecting to the Ripple Network generally means connecting to a `rippled` server, sending it requests and commands, and listening to the responses. Depending on your situation, there are several different interfaces you can use to do this:
+If you intend to act as a gateway, or if you are a developer with great ideas of how to use the Ripple Network, you will probably want to build a custom client application that you or your customers can use to send, receive, or observe funds on the Ripple Network.
 
-* The `rippled` commandline interface provides a quick way to control a local instance for testing purposes
-* The Web Sockets API provides a robust, full-featured system for running commands and receiving data asynchronously from a web browser, Node.js instance, or any other environment that supports Web Sockets.
-* The JSON-RPC API provides a powerful, synchronous (call-response) system for running commands and receiving data using any HTTP client; however, it does not support the asynchronous features of Web Sockets.
-* The Ripple-REST API is a simpler, more intuitive method for connecting to the network; however, it requires a separate node.js server running the REST API software as a proxy between the REST-client application and the `rippled` server. This proxy can run on the same server as the rippled instance, or on the same computer as the ripple client application.
+Connecting to the Ripple Network generally means communicating with the Ripple Server software, [`rippled`](https://github.com/ripple/rippled) (pronounced "ripple-dee"). To get started, you can try running a few calls to retrieve information from public servers using the [Ripple API Tool](https://ripple.com/tools/api) or you try downloading and running your own instance of `rippled`. 
 
-## Choosing a `rippled` server ##
+If you are building your own client, you have several options of interfaces that you can use to interact with the Ripple Network:
 
-In any case (except commandline), it is your choice which `rippled` server you connect to. There are a few public servers currently available, including:
+| Tool | Summary | Interface | Abstraction Level | Pros | Cons |
+|------|---------|-----------------------|-------------------|------|------|
+| [gatewayd](https://github.com/ripple/gatewayd) | Skeleton for implementing gateway functionality as a Node.js application | HTTP | Very high | ✓ Most functionality needed to operate a gateway is already implemented | ✗ Only intended for gateways <br> ✗ Requires Node.js |
+| [Ripple-REST](?p=ripple-rest-api) | RESTful interface to `rippled` as a Node.js application | HTTP | High | ✓ Simple robust transaction submission <br> ✓ Broad HTTP-client support | ✗ Lacks access to a few features like viewing currency exchange offers <br> ✗ Requires Node.js |
+| [ripple-lib](https://github.com/ripple/ripple-lib) | Reference implementation for accessing the WebSocket API | Javascript | Moderate | ✓ Simple robust transaction submission<span class='draft-comment'>(Confirm this)</span> <br> ✓ Good balance of simplicity and power | ✗ Javascript only (Clients for other languages are in progress) |
+| [rippled WebSocket API](?p=web-sockets-api) | Powerful, asynchronous API built on the WebSocket protocol | [WebSocket](http://en.wikipedia.org/wiki/Websocket) | Low | ✓ Access to all Ripple functionality <br> ✓ Can be pushed ordered stream data | ✗ Fewer convenient abstractions <br> ✗ WebSocket clients are rare outside of Javascript |
+| [rippled JSON-RPC API](?p=web-sockets-api) <!--note: that's not a typo, the websocket and json-rpc docs are on the same page--> | Powerful, synchronous API built on the [JSON-RPC convention](http://json-rpc.org/) | HTTP | Low | ✓ Access to almost all Ripple functionality <br> ✓ Broad HTTP-client support | ✗ Fewer convenient abstractions <br> ✗ Callbacks may arrive out of order <br> ✗ No incremental pathfinding |
 
-[s1.ripple.com:443]
-
-Alternatively, you can run your own server. (If you intend to integrate your business with the Ripple Network, you will probably want to do this, so that you aren't depending on an outside source for everything.)

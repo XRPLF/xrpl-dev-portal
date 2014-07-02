@@ -1,17 +1,4 @@
 <!doctype html>
-<!--
-
-  Instructions:
-
-  - Save this file.
-  - Replace "ripple" with your GitHub ripplename.
-  - Replace "ripple-client" with your GitHub ripple-client name.
-  - Replace "Ripple Web Client" with Ripple Web Client name.
-  - Upload this file (or commit to GitHub Pages).
-
-  Customize as you see fit!
-
--->
 <html>
 <head>
   <meta charset='utf-8'>
@@ -65,10 +52,16 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     var GET_VARS = window.location.search.replace("?","").split("&");
     if (GET_VARS.indexOf("p=web-sockets-api")>-1) {
         var fdfile = "websocket_api.md";
+        $('.header-subnav').removeClass('active');
+        $('#subnav-websocket').addClass('active');
     } else if (GET_VARS.indexOf("p=ripple-rest-api")>-1) {
         var fdfile = "ripplerest_api.md";
+        $('.header-subnav').removeClass('active');
+        $('#subnav-rest').addClass('active');
     } else {
         var fdfile = "intro.md";
+        $('.header-subnav').removeClass('active');
+        $('#subnav-intro').addClass('active');
     }
     
     Flatdoc.run({
@@ -82,11 +75,13 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     $(document).on('flatdoc:ready', $().multicode_tabs);
   </script>
   <!-- Temporary shims until I modify the css directly -->
-    <link type='text/css' rel='stylesheet' href='css/mod.css' />
+  <link type='text/css' rel='stylesheet' href='css/mod.css' />
+  <script src='js/expandcode.js'></script>
   
 </head>
 <body role='flatdoc' class='no-literate'>
 
+  <div style='background-color: #d55;position:fixed;top:0;right:150px; color:white;padding:1em;font-size:15pt;z-index:1000;'>Draft</div>
   <div class='header'>
     <div class='left'>
       <h1>{<i class="icon-ripple-logo"></i>}</h1>
@@ -103,15 +98,17 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
       <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
+  <div class='header-subnav'>
+    <ul>
+        <li><a href='?p=introduction' id='subnav-intro'>Introduction</a></li>
+        <li><a href='?p=ripple-rest-api' id='subnav-rest'>Ripple-REST API</a></li>
+        <li><a href='?p=web-sockets-api' id='subnav-websocket'>WebSocket &amp; JSON-RPC APIs</a></li>
+    </ul>
+    <div class='clearer'>&nbsp;</div>
+  </div>
 
   <div class='content-root'>
     <div class='menubar'>
-    
-      <ul class='subnav section'>
-          <li><a href='?p=introduction' onclick="Flatdoc.run({fetcher: Flatdoc.file('intro.md')}); document.title='Ripple Developer Portal: Introduction'">Introduction</a></li>
-          <li><a href='?p=ripple-rest-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('ripplerest_api.md')}); document.title='Ripple Developer Portal: Ripple-REST API'">Ripple-REST API</a></li>
-          <li><a href='?p=web-sockets-api' onclick="Flatdoc.run({fetcher: Flatdoc.file('websocket_api.md')}); document.title='Ripple Developer Portal: Web Sockets API'">Web Sockets API</a></li>
-      </ul>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
     <div role='flatdoc-content' class='content'></div>
