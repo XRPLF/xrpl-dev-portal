@@ -1,8 +1,0 @@
-{
-  "name": "ripple-docs",
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.8.2",
-    "grunt-contrib-watch": "~0.5.3"
-  }
-}

@@ -1,7 +1,3 @@
-# INTRODUCTION #
-
-`ripple-rest : v1.0.1`
-
 ## Ripple-REST API ##
 
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
@@ -10,7 +6,7 @@ While there are other API's to use with Ripple (i.e. Accessing the `rippled` ser
 
 Installation instructions and source code can be found in the `ripple-rest` repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>. 
 
-Older versions of the `ripple-rest` documentation will archived <a href="https://github.com/ripple/ripple-dev-portal/tree/master/archive" target="_blank">here</a>.
+Older versions of the `ripple-rest` documentation will archived <a href="https://github.com/ripple/ripple-dev-portal/archive" target="_blank">here</a>.
 
 
 ## Available API Routes ##
@@ -644,12 +640,13 @@ __`POST /v1/accounts/{account}/settings`__
 {
   "secret": "s...",
   "settings": {
-    "transfer_rate": 0,
+    "transfer_rate": 100,
     "password_spent": false,
     "require_destination_tag": false,
     "require_authorization": false,
     "disallow_xrp": false,
-    "disable_master": false
+    "disable_master": false,
+    "transaction_sequence": 22
   }
 }
 ```
