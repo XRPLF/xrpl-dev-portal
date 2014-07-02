@@ -54,14 +54,17 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         var fdfile = "websocket_api.md";
         $('.header-subnav').removeClass('active');
         $('#subnav-websocket').addClass('active');
+        document.title = "Ripple Dev Portal: WebSocket and JSON-RPC APIs";
     } else if (GET_VARS.indexOf("p=ripple-rest-api")>-1) {
         var fdfile = "ripplerest_api.md";
         $('.header-subnav').removeClass('active');
         $('#subnav-rest').addClass('active');
+        document.title = "Ripple Dev Portal: Ripple-REST API";
     } else {
         var fdfile = "intro.md";
         $('.header-subnav').removeClass('active');
         $('#subnav-intro').addClass('active');
+        document.title = "Ripple Dev Portal: Introduction";
     }
     
     Flatdoc.run({
