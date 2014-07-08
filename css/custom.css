@@ -21,7 +21,26 @@
 	max-width: 1024px;
 	margin: auto;
 }
+@media (min-width: 1745px) {
+	.menubar.fixed {
+		left: 20.7%;
+	}
+}
 
-.menubar.fixed {
-	left: 20.7%;
+@media (max-width: 1744px) {
+	.menubar.fixed {
+		left: 10%;
+	}
+}
+
+@media (max-width: 1244px) {
+	.menubar.fixed {
+		left: 5%;
+	}
+}
+
+@media (max-width: 1130px){
+	.menubar {
+		display: none;
+	}
 }
