@@ -1,5 +1,10 @@
 /* Additional Styling */
 
+body .content-root {
+	background: none !important;
+	box-shadow: none !important;
+}
+
 .header .left {
 	float: none;
 	max-width: 1024px;
