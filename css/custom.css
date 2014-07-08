@@ -21,6 +21,7 @@
 	max-width: 1024px;
 	margin: auto;
 }
+/* 
 @media (min-width: 1745px) {
 	.menubar.fixed {
 		left: 20.7%;
@@ -44,3 +45,16 @@
 		display: none;
 	}
 }
+ */
+ 
+ .menubar.fixed {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+.menubar {
+right: 794px;
+}
+}
+
