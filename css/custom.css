@@ -1,0 +1,40 @@
+/* Additional Styling */
+
+body .content-root {
+	background: none !important;
+	box-shadow: none !important;
+}
+
+.header .left {
+	float: none;
+	max-width: 1024px;
+	margin: auto;
+}
+
+.header-subnav-wrapper {
+	background: #f3f6fb;
+	border-bottom: solid 1px #dfe2e7;
+}
+
+.header-subnav {
+	max-width: 1024px;
+	margin: auto;
+	border-bottom: none !important;
+}
+
+.content-root {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.menubar.fixed {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+	.menubar {
+		right: 794px;
+	}
+}
+
