@@ -282,7 +282,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 | result | Object | Object containing the response to the query |
 | result.error | String | A unique code for the type of error that occurred |
 | result.status | String | `"error"` if the request caused an error |
-| result.request | Object | A copy of the request that prompted this error, in JSON format. *Caution:* If the request contained any account secrets, they are copied here! <span class='draft-comment'>Note that the request is re-formatted in WebSocket format, regardless of the request made. This is a bug: See [RIPD-279](https://ripplelabs.atlassian.net/browse/RIPD-279).</span> |
+| result.request | Object | A copy of the request that prompted this error, in JSON format. *Caution:* If the request contained any account secrets, they are copied here! *Note:* The request is re-formatted in WebSocket format, regardless of the request made. This may be changed in the future: See [RIPD-279](https://ripplelabs.atlassian.net/browse/RIPD-279). |
 
 ### Caution on Errors ###
 
@@ -3766,7 +3766,7 @@ The request includes the following parameters:
 
 #### Response Format ####
 
-If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is <span class='draft-comment'>(supposed to be)</span> returned instead. <span class='draft-comment'>(See [the bug report](https://ripplelabs.atlassian.net/browse/RIPD-293) for status)</span>
+If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See [RIPD-293](https://ripplelabs.atlassian.net/browse/RIPD-293) for more information.)
 
 
 ## ripple_path_find ##
