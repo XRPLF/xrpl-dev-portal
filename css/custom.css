@@ -33,11 +33,10 @@ body .content-root {
 }
 
 /* Brand Guidelines */
-
 .brand_guidelines .content-root {
 	margin: 0 auto;
 	padding: 0 !important;
-}
+} 
 
 @media (min-width: 768px) {
 	.menubar {
