@@ -61,6 +61,7 @@ body .content-root {
 	table, thead, tbody, th, td, tr { 
 		display: block; 
 		max-width: 300px;
+		margin: auto;
 	}
 	
 	thead tr { 
