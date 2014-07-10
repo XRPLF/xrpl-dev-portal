@@ -38,3 +38,45 @@ body .content-root {
 	}
 }
 
+@media (max-width: 480px) {
+	body {
+		overflow-x: hidden;
+	}
+	
+	.header-subnav ul {
+		margin: auto;
+		max-width: 480px;
+	}
+	
+	.header-subnav li {
+		width: 350px;
+	}
+	
+	.header-subnav li a {
+		padding: 10px 5px !important;
+		font-size: .8em;
+	}
+	
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+		max-width: 300px;
+		margin: auto;
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+}
+
