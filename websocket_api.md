@@ -4611,6 +4611,183 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
 
+# Server Information #
+
+There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.
+
+## server_info ##
+
+The `server_info` command asks the server for a human-readable version of server information.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 11,
+  "command": "server_info"
+}
+```
+</div>
+
+The request does not takes any parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 11,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "info": {
+      "build_version": "0.25.2",
+      "complete_ledgers": "32570-7695432",
+      "hostid": "AIR",
+      "io_latency_ms": 1,
+      "last_close": {
+        "converge_time_s": 2.037,
+        "proposers": 5
+      },
+      "load_factor": 1,
+      "peers": 56,
+      "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
+      "server_state": "full",
+      "validated_ledger": {
+        "age": 3,
+        "base_fee_xrp": 0.00001,
+        "hash": "274C27799A91DF08603AF9B5CB03372ECF844B6D643CAF69F25205C9509E212F",
+        "reserve_base_xrp": 20,
+        "reserve_inc_xrp": 5,
+        "seq": 7695432
+      },
+      "validation_quorum": 3
+    }
+  }
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing an `info` object as its only field.
+
+The `info` object may have some arrangement of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| build_version | String | The version number of the running `rippled` version. |
+| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions available. It is also possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432" <span class='draft-comment'>(I'd love confirmation on that disjoint sequence thing.)</span> |
+| hostid | String | On an admin request, returns the hostname of the server running the `rippled` instance; otherwise, returns a unique four letter word. |
+| io_latency_ms | Number | <span class='draft-comment'>Amount of time the server is waiting for I/O devices (to do what exactly?), in milliseconds.</span> |
+| last_close | Object | <span class='draft-comment'>Something to do with the last ledger closed?</span> |
+| load | Object | *Admin only* Detailed information about the current load state of the server |
+| load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
+| load.threads | Number | *Admin only* Number of threads <span class='draft-comment'>running at all in the server?</span> |
+| load_factor | Number | <span class='draft-comment'>Something to do with load?</span> |
+| peers | Number | How many other `rippled` servers the node is currently connected to. |
+| pubkey_node | String | <span class='draft-common'>Public key used to verify this node's signatures?</span> |
+| pubkey_validator | String | *Admin only* <span class='draft-common'>???</span> |
+| server_state | String | <span class='draft-common'>"full"???</span> |
+| validated_ledger | Object | Information about the <span class='draft-comment'>most recently(?)</span> validated ledger version, including its unique hash and sequence number, the minimum account reserve, <span class='draft-comment'>age/time since validation in seconds?</span> and more. |
+| validated_ledger.age | Unsigned Integer | <span class='draft-comment'>Seconds since ledger was validated?</span> |
+| validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
+| validated_ledger.hash | String | Unique hash for the ledger, as hex |
+| validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
+| validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
+| validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
+| validation_quorum | Number | <span class='draft-comment'>Number of peer nodes required in order to validate a ledger version?</span> |
+
+## server_state ##
+
+The `server_state` command asks the server for various machine-readable information about the server's current state. The results are very similar to [`server_info`](#server-info), but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 12,
+  "command": "server_state"
+}
+```
+</div>
+
+The request does not takes any parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+
+```
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "state": {
+      "build_version": "0.25.2",
+      "complete_ledgers": "32570-7696746",
+      "io_latency_ms": 1,
+      "last_close": {
+        "converge_time": 2097,
+        "proposers": 4
+      },
+      "load_base": 256,
+      "load_factor": 256,
+      "peers": 61,
+      "pubkey_node": "n9L4DuE6NsZiVWyYdHcYbKoELTXr4fs32VY8bdic5c4uVrfrADmX",
+      "server_state": "full",
+      "validated_ledger": {
+        "base_fee": 10,
+        "close_time": 458432860,
+        "hash": "95A05F232C8C4B4DC313CB91A4C823A221120DD8692395150A3012876C8CD772",
+        "reserve_base": 20000000,
+        "reserve_inc": 5000000,
+        "seq": 7696746
+      },
+      "validation_quorum": 3
+    }
+  }
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing a `state` object as its only field.
+
+The `state` object may have some arrangement of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| build_version | String | The version number of the running `rippled` version. |
+| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions available. It is also possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432" <span class='draft-comment'>(I'd love confirmation on that disjoint sequence thing.)</span> |
+| io_latency_ms | Number | <span class='draft-comment'>Amount of time the server is waiting for I/O devices (to do what exactly?), in milliseconds.</span> |
+| load | Object | *Admin only* Detailed information about the current load state of the server |
+| load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
+| load.threads | Number | *Admin only* Number of threads <span class='draft-comment'>running at all in the server?</span> |
+| peers | Number | How many other `rippled` servers the node is currently connected to. |
+| load_base | Number | <span class='draft-comment'>Something to do with load?</span> |
+| load_factor | Number | <span class='draft-comment'>Something to do with load?</span> |
+| peers | Number | How many other `rippled` servers the node is currently connected to. |
+| pubkey_node | String | <span class='draft-comment'>Public key used to verify this node's signatures?</span> |
+| pubkey_validator | String | *Admin only* <span class='draft-comment'>???</span> |
+| server_state | String | <span class='draft-comment'>"full"???</span> |
+| validated_ledger | Object | Information about the <span class='draft-comment'>most recently(?)</span> validated ledger version |
+| validated_ledger.base_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
+| validated_ledger.close_time | Number | <span class='draft-comment'>Time this ledger was closed, in seconds since the Ripple Epoch?</span> |
+| validated_ledger.hash | String | Unique hash of this ledger version, as hex |
+| validated_ledger.reserve_base | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
+| validated_ledger.reserve_inc | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
+| validated_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
+| validation_quorum | Unsigned Integer | <span class='draft-comment'>Number of peer nodes required in order to validate a ledger version?</span> |
+
 # Convenience Functions #
 
 The rippled server also provides a few simple commands purely for convenience.
