@@ -4617,7 +4617,7 @@ There are also commands that retrieve information about the current state of the
 
 ## server_info ##
 
-The `server_info` command asks the server for a human-readable version of server information.
+The `server_info` command asks the server for a human-readable version of various information about the `rippled` server being queried.
 
 #### Request Format ####
 An example of the request format:
@@ -4680,30 +4680,30 @@ The `info` object may have some arrangement of the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | build_version | String | The version number of the running `rippled` version. |
-| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions available. It is also possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432" <span class='draft-comment'>(I'd love confirmation on that disjoint sequence thing.)</span> |
+| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
 | hostid | String | On an admin request, returns the hostname of the server running the `rippled` instance; otherwise, returns a unique four letter word. |
-| io_latency_ms | Number | <span class='draft-comment'>Amount of time the server is waiting for I/O devices (to do what exactly?), in milliseconds.</span> |
-| last_close | Object | <span class='draft-comment'>Something to do with the last ledger closed?</span> |
+| io_latency_ms | Number | Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| last_close | Object | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
 | load | Object | *Admin only* Detailed information about the current load state of the server |
 | load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
-| load.threads | Number | *Admin only* Number of threads <span class='draft-comment'>running at all in the server?</span> |
-| load_factor | Number | <span class='draft-comment'>Something to do with load?</span> |
+| load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
+| load_factor | Number | The load factor the server is currently enforcing, which affects transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey_node | String | <span class='draft-common'>Public key used to verify this node's signatures?</span> |
 | pubkey_validator | String | *Admin only* <span class='draft-common'>???</span> |
 | server_state | String | <span class='draft-common'>"full"???</span> |
-| validated_ledger | Object | Information about the <span class='draft-comment'>most recently(?)</span> validated ledger version, including its unique hash and sequence number, the minimum account reserve, <span class='draft-comment'>age/time since validation in seconds?</span> and more. |
-| validated_ledger.age | Unsigned Integer | <span class='draft-comment'>Seconds since ledger was validated?</span> |
+| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
+| validated_ledger.age | Unsigned Integer | The time since the ledger was closed, in seconds |
 | validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
 | validated_ledger.hash | String | Unique hash for the ledger, as hex |
 | validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
 | validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
 | validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
-| validation_quorum | Number | <span class='draft-comment'>Number of peer nodes required in order to validate a ledger version?</span> |
+| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
 ## server_state ##
 
-The `server_state` command asks the server for various machine-readable information about the server's current state. The results are very similar to [`server_info`](#server-info), but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
+The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The results are very similar to [`server_info`](#server-info), but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
 
 #### Request Format ####
 An example of the request format:
