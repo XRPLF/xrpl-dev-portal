@@ -542,121 +542,138 @@ Response Body:
 __`GET /v1/payments/outgoing`__
 
 Ripple transaction records that are marked as "outgoing" are picked up
-and sent to the ripple network. List Outoing Payments returns a list of the
+and sent to the Ripple network. This method returns a list of the
 queued "outgoing" payments. All deposit records are eventually placed in the
 outgoing payments queue after fees are subtracted.
 
-    RESPONSE:
+Response Body:
+
+```
+{
+  "payments": [
     {
-      "payments": [
-        {
-          "data": null,
-          "id": 1,
-          "to_address_id": 647,
-          "from_address_id": 623,
-          "transaction_state": null,
-          "transaction_hash": null,
-          "to_amount": "10.593",
-          "to_currency": "BTC",
-          "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "from_amount": "10.593",
-          "from_currency": "BTC",
-          "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "createdAt": "2014-06-12T00:48:02.302Z",
-          "updatedAt": "2014-06-12T00:48:02.302Z",
-          "uid": null,
-          "client_resource_id": "false",
-          "state": "outgoing",
-          "external_transaction_id": 1
-        },
-        {
-          "data": null,
-          "id": 2,
-          "to_address_id": 647,
-          "from_address_id": 623,
-          "transaction_state": null,
-          "transaction_hash": null,
-          "to_amount": "278.388",
-          "to_currency": "XAG",
-          "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "from_amount": "278.388",
-          "from_currency": "XAG",
-          "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "createdAt": "2014-06-12T00:48:02.324Z",
-          "updatedAt": "2014-06-12T00:48:02.324Z",
-          "uid": null,
-          "client_resource_id": "false",
-          "state": "outgoing",
-          "external_transaction_id": 2
-        }
-      ]
+      "data": null,
+      "id": 1,
+      "to_address_id": 647,
+      "from_address_id": 623,
+      "transaction_state": null,
+      "transaction_hash": null,
+      "to_amount": "10.593",
+      "to_currency": "BTC",
+      "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "from_amount": "10.593",
+      "from_currency": "BTC",
+      "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "createdAt": "2014-06-12T00:48:02.302Z",
+      "updatedAt": "2014-06-12T00:48:02.302Z",
+      "uid": null,
+      "client_resource_id": "false",
+      "state": "outgoing",
+      "external_transaction_id": 1
+    },
+    {
+      "data": null,
+      "id": 2,
+      "to_address_id": 647,
+      "from_address_id": 623,
+      "transaction_state": null,
+      "transaction_hash": null,
+      "to_amount": "278.388",
+      "to_currency": "XAG",
+      "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "from_amount": "278.388",
+      "from_currency": "XAG",
+      "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "createdAt": "2014-06-12T00:48:02.324Z",
+      "updatedAt": "2014-06-12T00:48:02.324Z",
+      "uid": null,
+      "client_resource_id": "false",
+      "state": "outgoing",
+      "external_transaction_id": 2
     }
+  ]
+}
+```
 
 ### Listing Failed Payments ###
 __`GET /v1/payments/failed`__
 
-Outgoing payments are often rejected from ripple, such as when there is
+Outgoing payments are often rejected from Ripple, such as when there is
 insufficient trust from the recipient account to the gateway account, or
-when the gateway hot wallet account has insufficient funds to process the
-payment. In the case that a payment will never make it into the ripple
-ledger the outgoing payment is marked as "failed".
+when the gateway's hot wallet account has insufficient funds to process the
+payment. In the case that a payment will never make it into the Ripple
+ledger the outgoing payment is marked as "failed". This method lists the
+history of such payments.
 
-    RESPONSE:
+<span class='draft-comment'>Does this array just grow indefinitely? Is there a
+way to limit the amount of data in the response, to expire old failures, or 
+anything to that effect? If not, it seems it'll be necessary eventually.</span>
+
+Request Body:
+
+```
+{
+  "payments": [
     {
-      "payments": [
-        {
-          "data": null,
-          "id": 2,
-          "to_address_id": 647,
-          "from_address_id": 623,
-          "transaction_state": null,
-          "transaction_hash": null,
-          "to_amount": "278.388",
-          "to_currency": "XAG",
-          "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "from_amount": "278.388",
-          "from_currency": "XAG",
-          "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "createdAt": "2014-07-28T02:48:02.324Z",
-          "updatedAt": "2014-06-13T00:38:03.086Z",
-          "uid": null,
-          "client_resource_id": "false",
-          "state": "failed",
-          "external_transaction_id": 2
-        },
-        {
-          "data": null,
-          "id": 3,
-          "to_address_id": 25,
-          "from_address_id": 623,
-          "transaction_state": null,
-          "transaction_hash": null,
-          "to_amount": "9899999999.01",
-          "to_currency": "XAG",
-          "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "from_amount": "9899999999.01",
-          "from_currency": "XAG",
-          "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "createdAt": "2014-06-16T12:37:39.985Z",
-          "updatedAt": "2014-06-13T00:38:04.184Z",
-          "uid": null,
-          "client_resource_id": "false",
-          "state": "failed",
-          "external_transaction_id": 3
-        }
-      ]
+      "data": null,
+      "id": 2,
+      "to_address_id": 647,
+      "from_address_id": 623,
+      "transaction_state": null,
+      "transaction_hash": null,
+      "to_amount": "278.388",
+      "to_currency": "XAG",
+      "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "from_amount": "278.388",
+      "from_currency": "XAG",
+      "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "createdAt": "2014-07-28T02:48:02.324Z",
+      "updatedAt": "2014-06-13T00:38:03.086Z",
+      "uid": null,
+      "client_resource_id": "false",
+      "state": "failed",
+      "external_transaction_id": 2
+    },
+    {
+      "data": null,
+      "id": 3,
+      "to_address_id": 25,
+      "from_address_id": 623,
+      "transaction_state": null,
+      "transaction_hash": null,
+      "to_amount": "9899999999.01",
+      "to_currency": "XAG",
+      "to_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "from_amount": "9899999999.01",
+      "from_currency": "XAG",
+      "from_issuer": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "createdAt": "2014-06-16T12:37:39.985Z",
+      "updatedAt": "2014-06-13T00:38:04.184Z",
+      "uid": null,
+      "client_resource_id": "false",
+      "state": "failed",
+      "external_transaction_id": 3
     }
+  ]
+}
+```
 
 ### Retrying A Failed Payment ###
 __`POST /v1/payments/failed/{:id}/retry`__
 
 A payment that failed due to insufficient funds or lack of trust lines
 may be successfully retried once funds are increased or an appropriate
-line of trust is established. Retrying a payment simply changes the 
+line of trust is established. After taking the appropriate action in Ripple, 
+use this method to retrying a payment. This method simply changes the 
 payment's state from "failed" to "outgoing", effectively enqueueing the 
-transaction to be re-submitted to ripple.
+transaction to be re-submitted to Ripple.
 
-    RESPONSE:
+Request Body:
+<span class='draft-comment'>(Apparently ignored?)</span>
+
+Response Body:
+
+```
     {
       "payment": {
         "data": null,
@@ -679,17 +696,20 @@ transaction to be re-submitted to ripple.
         "external_transaction_id": null
       }
     }
+```
 
 ### Listing Incoming Payments ###
 __`GET /v1/payments/incoming`__
 
-Gatewayd monitors the gateway's account for inbound payments made to the gateway,
-and records the payments in the Ripple Transactions database table. Newly recorded
-incoming ripple transactions are always marked as "incoming" until the gatewayd
-"withdrawals" process picks them up and, after applying fees, enqueues a withdrawal
-record in the external transactions table.
+Gatewayd monitors the gateway's Ripple account for inbound payments made to the
+gateway, and records the payments in the Ripple Transactions database table. Newly recorded incoming Ripple transactions are always marked as "incoming" until the gatewayd "withdrawals" process picks them up and, after applying fees, enqueues a withdrawal record in the external transactions table.
 
-    RESPONSE:
+This method shows an array of incoming payments that have not yet been 
+processed into withdrawals.
+
+Response Body:
+
+```
     {
       "incoming_payments": [
         {
@@ -714,23 +734,48 @@ record in the external transactions table.
         }
       ]
     }
+```
     
 ### Setting The Last Payment Hash ###
 __`POST /v1/config/last_payment_hash`__
 
-Gatewayd polls the ripple network for notifications of inbound and outbound
-payments beginning with the last known transaction hash. Manually set that hash.
+Gatewayd polls the Ripple Network for notifications of inbound and outbound
+payments beginning with the last known transaction hash. 
+
+This method manually sets that hash. Gatewayd will skip any payments older 
+than the transaction identified by the given hash. 
+
+Request Body:
+
+```
+{
+    "payment_hash": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
+}
+```
+
+Response Body:
+
+```
+{
+    "LAST_PAYMENT_HASH": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
+}
+```
 
 ### Showing The Last Payment Hash ###
 __`GET /v1/config/last_payment_hash`__
 
 Gatewayd polls the ripple network for notifications of inbound and outbound
-payments beginning with the last known transaction hash. Returns that hash.
+payments beginning with the last known transaction hash. 
 
-    RESPONSE:
+This method returns the transaction hash currently being used.
+
+Response Body:
+
+```
     {
       "LAST_PAYMENT_HASH": "12AE1B1843D886D7D6783DA02AB5F43C32579212853CF3CEFD6DBDF29F03BC80"
     }
+```
 
 ## Managing Deposits and Withdrawals ##
 
