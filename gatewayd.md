@@ -178,7 +178,7 @@ a "independent" ripple address record with the address provided, a "hosted" ripp
 record for making withdrawals, and a "default" external account for recording deposits and
 withdrawals.
 
-Request:
+Request Body:
 ```
     {
       "name": "steven@ripple.com",
@@ -187,7 +187,7 @@ Request:
     }
 ```
 
-Response:
+Response Body:
 ```
     {
       "user": {
@@ -250,57 +250,75 @@ Response:
 ### Activating A User ###
 __`POST /v1/users/{:id}/activate`__
 
-By default a user is marked as "inactive", and to activate the user run this
-command. No separate action is taken by gatewayd to prevent inactive users from
-operating, and for now it is simply informational.
+By default a user is marked as "inactive", although no action is taken to 
+enforce this status. To mark a user as active, run this command with the user's
+ID.
 
-    RESPONSE:
-    {
-      "user": {
-        "id": 508,
-        "name": "steven@ripple.com",
-        "salt": "63a5f6fc48addb712ec8940ff591d742f57f0c4f7058d2040714bd260c4d93e0",
-        "federation_tag": null,
-        "admin": null,
-        "federation_name": null,
-        "password_hash": "86e3b615a72b6f6c56f36dc6657d3133c747a59e8da8e6304c20f3229098f21e",
-        "bank_account_id": null,
-        "kyc_id": null,
-        "createdAt": "2014-06-12T07:43:17.572Z",
-        "updatedAt": "2014-06-12T00:44:05.786Z",
-        "external_id": null,
-        "data": null,
-        "uid": null,
-        "active": true
-      }
-    }
+Request Body:
+
+```
+{}
+```
+
+Response Body:
+
+```
+{
+  "user": {
+    "id": 508,
+    "name": "steven@ripple.com",
+    "salt": "63a5f6fc48addb712ec8940ff591d742f57f0c4f7058d2040714bd260c4d93e0",
+    "federation_tag": null,
+    "admin": null,
+    "federation_name": null,
+    "password_hash": "86e3b615a72b6f6c56f36dc6657d3133c747a59e8da8e6304c20f3229098f21e",
+    "bank_account_id": null,
+    "kyc_id": null,
+    "createdAt": "2014-06-12T07:43:17.572Z",
+    "updatedAt": "2014-06-12T00:44:05.786Z",
+    "external_id": null,
+    "data": null,
+    "uid": null,
+    "active": true
+  }
+}
+```
 
 ### Deactivating a User ###
 __`POST /v1/users/{:id}/deactivate`__
 
-Mark a user an "inactive", which is a flag purely for informational purposes and has no
-explicit effect on the user's interaction with gatewayd.
+To mark a user an "inactive", run this command with the user's ID. This flag is
+purely for informational purposes and is not enforced in any way.
 
-    RESPONSE:
-    {
-      "user": {
-        "id": 508,
-        "name": "steven@ripple.com",
-        "salt": "63a5f6fc48addb712ec8940ff591d742f57f0c4f7058d2040714bd260c4d93e0",
-        "federation_tag": null,
-        "admin": null,
-        "federation_name": null,
-        "password_hash": "86e3b615a72b6f6c56f36dc6657d3133c747a59e8da8e6304c20f3229098f21e",
-        "bank_account_id": null,
-        "kyc_id": null,
-        "createdAt": "2014-06-12T14:43:17.572Z",
-        "updatedAt": "2014-06-12T00:44:52.919Z",
-        "external_id": null,
-        "data": null,
-        "uid": null,
-        "active": false
-      }
-    }
+Request Body:
+
+```
+{}
+```
+
+Response Body:
+
+```
+{
+  "user": {
+    "id": 508,
+    "name": "steven@ripple.com",
+    "salt": "63a5f6fc48addb712ec8940ff591d742f57f0c4f7058d2040714bd260c4d93e0",
+    "federation_tag": null,
+    "admin": null,
+    "federation_name": null,
+    "password_hash": "86e3b615a72b6f6c56f36dc6657d3133c747a59e8da8e6304c20f3229098f21e",
+    "bank_account_id": null,
+    "kyc_id": null,
+    "createdAt": "2014-06-12T14:43:17.572Z",
+    "updatedAt": "2014-06-12T00:44:52.919Z",
+    "external_id": null,
+    "data": null,
+    "uid": null,
+    "active": false
+  }
+}
+```
 
 ### Logging In A User ###
 __`POST /v1/users/login`__
@@ -308,181 +326,215 @@ __`POST /v1/users/login`__
 Verifies that a user has the correct username and password combination. Used
 for the web application and requires user credentials in place of an API key.
 
+Naturally, since this includes sensitive credentials, do not run this command 
+over an unsecure connection.
+
+Request Body:
+
+```
+{
+    "name": "steven@ripple.com",
+    "password": "s0m3supe&$3cretp@s$w0r*"
+}
+```
+
+Response Body:
+<span class='draft-comment'>Not sure if res.send({ user: user }); indicates 
+that only the username is returned?</span>
+
 ### Showing A User ###
 __`GET /v1/users/{:id}`__
 
-Return the database record for a given user.
+To retrieve a user's base account information, pass the user's ID to this 
+method.
 
-    RESPONSE:
-    {
-      "success": true,
-      "users": {
-        "id": 8,
-        "name": "steven@ripple.com",
-        "salt": "1366f14307850818afddd1509f329fdc1a73fb93919d92d5b44c91f07560c999",
-        "federation_tag": null,
-        "admin": null,
-        "federation_name": null,
-        "password_hash": "dd1d5a0ba63c63a117ff811f14040fa87dcbfedd7e37b5df506bfc4e8014c8e5",
-        "bank_account_id": null,
-        "kyc_id": null,
-        "createdAt": "2014-06-10T22:37:19.647Z",
-        "updatedAt": "2014-06-10T22:37:19.647Z",
-        "external_id": null,
-        "data": null,
-        "uid": null,
-        "active": false
-      }
-    }
+Response Body:
+
+```
+{
+  "success": true,
+  "users": {
+    "id": 8,
+    "name": "steven@ripple.com",
+    "salt": "1366f14307850818afddd1509f329fdc1a73fb93919d92d5b44c91f07560c999",
+    "federation_tag": null,
+    "admin": null,
+    "federation_name": null,
+    "password_hash": "dd1d5a0ba63c63a117ff811f14040fa87dcbfedd7e37b5df506bfc4e8014c8e5",
+    "bank_account_id": null,
+    "kyc_id": null,
+    "createdAt": "2014-06-10T22:37:19.647Z",
+    "updatedAt": "2014-06-10T22:37:19.647Z",
+    "external_id": null,
+    "data": null,
+    "uid": null,
+    "active": false
+  }
+}
+```
 
 ### Listing User External Accounts ###
 __`GET /v1/users/{:id}/external_accounts`__
 
-List all external account records for a given user.
+To list all external (non-Ripple) account records for a user, pass the user's 
+ID to this method.
   
-    RESPONSE:
+Response Body:
+
+```
+{
+  "external_accounts": [
     {
-      "external_accounts": [
-        {
-          "data": null,
-          "id": 8,
-          "name": "default",
-          "user_id": 8,
-          "createdAt": "2014-06-10T22:37:19.835Z",
-          "updatedAt": "2014-06-10T22:37:19.835Z",
-          "uid": null
-        }
-      ]
+      "data": null,
+      "id": 8,
+      "name": "default",
+      "user_id": 8,
+      "createdAt": "2014-06-10T22:37:19.835Z",
+      "updatedAt": "2014-06-10T22:37:19.835Z",
+      "uid": null
     }
+  ]
+}
+```
 
 ### Listing User External Transactions ###
 __`GET /v1/users/{:id}/external_transactions`__
 
-List all external transaction records for a given user. Withdrawals and 
-deposits are the two types of external transaction records.
+List all external (non-Ripple) transaction records for a given user. 
+Withdrawals and deposits are the two types of external transaction records.
 
-    RESPONSE:
+Response Body:
+
+```
+{
+  "externalTransactions": [
     {
-      "externalTransactions": [
-        {
-          "id": 80,
-          "currency": "SWD",
-          "amount": "1",
-          "deposit": true,
-          "ripple_transaction_id": 81,
-          "external_account_id": 8,
-          "status": "processed"
-        },
-        {
-          "id": 81,
-          "currency": "SWD",
-          "amount": "1.5999",
-          "deposit": true,
-          "ripple_transaction_id": 82,
-          "external_account_id": 8,
-          "status": "processed"
-        }
-      ]
+      "id": 80,
+      "currency": "SWD",
+      "amount": "1",
+      "deposit": true,
+      "ripple_transaction_id": 81,
+      "external_account_id": 8,
+      "status": "processed"
+    },
+    {
+      "id": 81,
+      "currency": "SWD",
+      "amount": "1.5999",
+      "deposit": true,
+      "ripple_transaction_id": 82,
+      "external_account_id": 8,
+      "status": "processed"
     }
+  ]
+}
+```
 
 ### Listing User Ripple Addresses ###
 __`GET /v1/users/{:id}/ripple_addresses`__
 
-List all ripple addresses for a given user. Most users will have at least one
-independent address and one hosted address.
+To list all ripple addresses for a given user, pass the user's ID to this 
+method. Most users will have at least one independent address and one hosted 
+address.
 
-    RESPONSE:
+Response Body:
+
+```
+{
+  "rippleAddresses": [
     {
-      "rippleAddresses": [
-        {
-          "data": null,
-          "id": 16,
-          "managed": false,
-          "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "type": "independent",
-          "user_id": 8,
-          "tag": null,
-          "secret": null,
-          "previous_transaction_hash": null,
-          "createdAt": "2014-06-10T22:37:19.825Z",
-          "updatedAt": "2014-06-10T22:37:19.825Z",
-          "uid": null
-        },
-        {
-          "data": null,
-          "id": 17,
-          "managed": true,
-          "address": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "type": "hosted",
-          "user_id": 8,
-          "tag": 8,
-          "secret": null,
-          "previous_transaction_hash": null,
-          "createdAt": "2014-06-10T22:37:19.844Z",
-          "updatedAt": "2014-06-10T22:37:19.844Z",
-          "uid": null
-        }
-      ]
+      "data": null,
+      "id": 16,
+      "managed": false,
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "type": "independent",
+      "user_id": 8,
+      "tag": null,
+      "secret": null,
+      "previous_transaction_hash": null,
+      "createdAt": "2014-06-10T22:37:19.825Z",
+      "updatedAt": "2014-06-10T22:37:19.825Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 17,
+      "managed": true,
+      "address": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "type": "hosted",
+      "user_id": 8,
+      "tag": 8,
+      "secret": null,
+      "previous_transaction_hash": null,
+      "createdAt": "2014-06-10T22:37:19.844Z",
+      "updatedAt": "2014-06-10T22:37:19.844Z",
+      "uid": null
     }
+  ]
+}
+```
 
 ### Listing User Ripple Transactions ###
 __`GET /v1/users/{:id}/ripple_transactions`__
 
-List all ripple transactions for a given user, which represent transactions
-made to or from all of the users's ripple addresses.
+To list all Ripple transactions for a given user, pass the user's ID to this
+method. The response includes an array of transactions made to or from any of 
+the users's Ripple addresses.
 
-    RESPONSE:
+Response Body:
+
+```
+{
+  "rippleTransactions": [
     {
-      "rippleTransactions": [
-        {
-          "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "tag": null,
-          "ripple_address_id": 16,
-          "id": 81,
-          "to_address_id": 16,
-          "from_address_id": 1,
-          "transaction_state": "tesSUCCESS",
-          "transaction_hash": "F0737576A4E7D064BF00145FAD6E6BAD19115C7739A3C8CDB6D1FD38888C8364",
-          "to_amount": "1",
-          "to_currency": "SWD",
-          "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "from_amount": "1",
-          "from_currency": "SWD",
-          "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "createdAt": "2014-06-10T22:41:14.258Z",
-          "updatedAt": "2014-06-10T22:41:16.717Z",
-          "uid": "505a336f-4ff9-473d-862b-164b3ad63b73",
-          "data": null,
-          "client_resource_id": "false",
-          "state": "succeeded",
-          "external_transaction_id": 80
-        },
-        {
-          "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-          "tag": null,
-          "ripple_address_id": 16,
-          "id": 82,
-          "to_address_id": 16,
-          "from_address_id": 1,
-          "transaction_state": "tesSUCCESS",
-          "transaction_hash": "7DEEF3BBAEEA3FEECF7819D3FAA53C580ED4A790A98DD2E761E8D747EAFB1969",
-          "to_amount": "1.5999",
-          "to_currency": "SWD",
-          "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "from_amount": "1.5999",
-          "from_currency": "SWD",
-          "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "createdAt": "2014-06-10T22:43:57.090Z",
-          "updatedAt": "2014-06-10T22:43:59.364Z",
-          "uid": "5205d9b4-f1c2-4273-b656-78e908e94210",
-          "data": null,
-          "client_resource_id": "false",
-          "state": "succeeded",
-          "external_transaction_id": 81
-        }
-      ]
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "tag": null,
+      "ripple_address_id": 16,
+      "id": 81,
+      "to_address_id": 16,
+      "from_address_id": 1,
+      "transaction_state": "tesSUCCESS",
+      "transaction_hash": "F0737576A4E7D064BF00145FAD6E6BAD19115C7739A3C8CDB6D1FD38888C8364",
+      "to_amount": "1",
+      "to_currency": "SWD",
+      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "from_amount": "1",
+      "from_currency": "SWD",
+      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "createdAt": "2014-06-10T22:41:14.258Z",
+      "updatedAt": "2014-06-10T22:41:16.717Z",
+      "uid": "505a336f-4ff9-473d-862b-164b3ad63b73",
+      "data": null,
+      "client_resource_id": "false",
+      "state": "succeeded",
+      "external_transaction_id": 80
+    },
+    {
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "tag": null,
+      "ripple_address_id": 16,
+      "id": 82,
+      "to_address_id": 16,
+      "from_address_id": 1,
+      "transaction_state": "tesSUCCESS",
+      "transaction_hash": "7DEEF3BBAEEA3FEECF7819D3FAA53C580ED4A790A98DD2E761E8D747EAFB1969",
+      "to_amount": "1.5999",
+      "to_currency": "SWD",
+      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "from_amount": "1.5999",
+      "from_currency": "SWD",
+      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "createdAt": "2014-06-10T22:43:57.090Z",
+      "updatedAt": "2014-06-10T22:43:59.364Z",
+      "uid": "5205d9b4-f1c2-4273-b656-78e908e94210",
+      "data": null,
+      "client_resource_id": "false",
+      "state": "succeeded",
+      "external_transaction_id": 81
     }
-
+  ]
+}
+```
 
 ## Managing Payments ##
 
