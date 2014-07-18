@@ -1,8 +1,8 @@
-# Ripple Gateway Framework #
+# gatewayd #
 
-The Ripple Gateway Framework, also known as `gatewayd`, provides the basic functionality of a gateway on the Ripple Network, so that you can extend it to build your own gateway. The system includes a core database that manages accounting for deposits and withdrawals of assets to the Ripple network. The Ripple Gateway Framework provides a standard interface for issuing any currency on the Ripple network and exchange, with the goal of completely abstracting interaction with Ripple.
+Gatewayd (pronounced "gateway-dee"), also known as the Ripple Gateway Framework, provides the basic functionality of a gateway on the Ripple Network, so that you can extend it to build your own gateway. The system includes a core database that manages accounting for deposits and withdrawals of assets to the Ripple network. Gatewayd provides a standard interface for issuing any currency on the Ripple network and exchange, with the goal of completely abstracting interaction with Ripple.
 
-Interact with the Ripple Gateway Framework by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. A HTTP/JSON server, Javascript library, and commandline interface are provided as interfaces to the Ripple Gateway Framework software.
+Interact with the gatewayd by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. A HTTP/JSON server, Javascript library, and commandline interface are provided as interfaces to the gatewayd software.
 
 The Ripple Gateway's features include: 
 
@@ -39,7 +39,7 @@ The gateway server software requires git, g++, make, nodejs, postgres, and sever
 Once ripple-gateway is installed, [configure your gateway](https://github.com/ripple/gatewayd/blob/master/doc/setup.md) wallets and server
 
 
-# Gateway Framework Usage #
+# Gatewayd Usage #
 
 ## Running the Ripple Gateway
 
@@ -49,49 +49,49 @@ After installation, start the gateway processes by running the command:
 
 ## Ripple Gateway Processes
 
-A Gateway acts as a link between the Ripple Network and activities outside of the network, such as traditional banking activities. Thus, the Ripple Gateway Framework sits between the `rippled` server (which participates in the network) and some source of information about external activities. (This could be custom banking software that is aware of deposits and withdrawals, or it could even be manually monitored.) 
+A Gateway acts as a link between the Ripple Network and activities outside of the network, such as traditional banking activities. Thus, gatewayd sits between the `rippled` server (which participates in the network) and some source of information about external activities. (This could be custom banking software that is aware of deposits and withdrawals, or it could even be manually monitored.) 
 
 The Ripple Gateway software is composed of a backed data store which serves as a queue for many types of processes that handle deposits and withdrawals of assets, and issuance and receipt of digital currency on ripple. In this post I will explain the various processes of a ripple gateway that together form an automated machine of gateway transaction processing. 
 
-![Ripple Gateway Process Diagram](Ripple_Gateway_Framework_Overview.svg)
+![Ripple Gateway Process Diagram](gatewayd_overview.svg)
 
 In the diagram above each process is represented by a circle, and should be designed to scale horizontally, that is enable N processes of each type all operating on the same queues. Queues, represented by rectangles are actually SQL database tables maintained by the gateway data store.
 
 ## Process Flow of a Gateway Deposit
 
-- Process 1: Recording Deposits
+### Process 1: Recording Deposits ###
 
 A banking API integration or manual human gateway operator receives the deposit of an asset and records the deposit in the ripple gateway data store. This process is designed to be implemented externally, and example implementations are provided by the command line interface and the http/json express.js server.
 
-API calls: record_deposit
+API calls: [Create Deposit](#create-deposit)
 
-- Process 2: Deposit Business Logic
+### Process 2: Deposit Business Logic ###
     
 A newly recorded deposit is handed to the business logic, which performs some function, ultimately en-queuing a corresponding ripple payment. This process is designed to be modified and customized.
 
     node processes/deposits.js
 
-API calls: list_deposits, enqueue_payment
+API calls: [List Deposits](#list-deposits), <span class='draft-comment'>[Enqueue Payment](#enqueue-payment) (missing??)</span>
 
--  Process 3: Send Outgoing Ripple Payments
+###  Process 3: Send Outgoing Ripple Payments ###
 
 A payment record resulting from the deposit business logic process is sent to the Ripple REST server, ultimately propagating to the network. This process is standard and should not be modified.
 
     node processes/outgoing.js
 
-API calls: send_payment
+API calls: <span class='draft-comment'>[Send Payment](#send-payment) (also missing??)</span>
 
 ## Process Flow of a Gateway Withdrawal
 
-- Process 1: Record inbound Ripple payments
+### Process 1: Record inbound Ripple payments ###
 
 Poll the Ripple REST server for new payment notifications to the gateway, and record the incoming payments in the ripple gateway data store. This process is standard and should not be modified.
 
     node processes/incoming.js
 
-API calls: get_payment_notification, record_payment
+API calls: [List Incoming Payments](#list-incoming-payments) <span class='draft-comment'>(aka get_payment_notification??)</span>, <span class='draft-comment'>record_payment(??)</span>
 
-- Process 2: Withdrawal Business Logic
+### Process 2: Withdrawal Business Logic ###
 
 A newly recorded incoming ripple payment is handed to the business logic, which performs some function, ultimately en-queuing a corresponding asset withdrawal record. This process is designed to be modified and customized.
 
@@ -99,7 +99,7 @@ A newly recorded incoming ripple payment is handed to the business logic, which 
 
 API calls: enqueue_withdrawal
 
-- Process 3: Clear Withdrawals
+### Process 3: Clear Withdrawals ###
 
 A banking API integration or manual human gateway operator reads the queue of pending withdrawals from the gateway data store, redeems the corresponding asset, and finally clears the withdrawal from the queue by updating the gateway data store. This process is designed to be implemented externally, and example implementations are provided by the command line interface and the http/json express.js server.
 
@@ -170,8 +170,9 @@ Alternatively one can provide a WITHDRAWALS_CALLBACK_URL in the configuration, a
 
 ## Managing Users ##
 
-### Registering A User ###
+### Register User ###
 __`POST /v1/registrations`__
+
 Register a user with the gatewayd. A username, password, and ripple address are required. Upon
 registration several records are created in the gatewayd database, including a user record,
 a "independent" ripple address record with the address provided, a "hosted" ripple address
@@ -247,7 +248,7 @@ Response Body:
     }
 ```
 
-### Activating A User ###
+### Activate User ###
 __`POST /v1/users/{:id}/activate`__
 
 By default a user is marked as "inactive", although no action is taken to 
@@ -284,7 +285,7 @@ Response Body:
 }
 ```
 
-### Deactivating a User ###
+### Deactivate User ###
 __`POST /v1/users/{:id}/deactivate`__
 
 To mark a user an "inactive", run this command with the user's ID. This flag is
@@ -320,7 +321,7 @@ Response Body:
 }
 ```
 
-### Logging In A User ###
+### Log In User ###
 __`POST /v1/users/login`__
 
 Verifies that a user has the correct username and password combination. Used
@@ -342,7 +343,7 @@ Response Body:
 <span class='draft-comment'>Not sure if res.send({ user: user }); indicates 
 that only the username is returned?</span>
 
-### Showing A User ###
+### Retrieve User ###
 __`GET /v1/users/{:id}`__
 
 To retrieve a user's base account information, pass the user's ID to this 
@@ -373,7 +374,7 @@ Response Body:
 }
 ```
 
-### Listing User External Accounts ###
+### List User External Accounts ###
 __`GET /v1/users/{:id}/external_accounts`__
 
 To list all external (non-Ripple) account records for a user, pass the user's 
@@ -397,11 +398,11 @@ Response Body:
 }
 ```
 
-### Listing User External Transactions ###
+### List User External Transactions ###
 __`GET /v1/users/{:id}/external_transactions`__
 
-List all external (non-Ripple) transaction records for a given user. 
-Withdrawals and deposits are the two types of external transaction records.
+List all external (non-Ripple) transaction records for a given user. These 
+records are the user's deposits into the gateway and withdrawals from it.
 
 Response Body:
 
@@ -430,7 +431,7 @@ Response Body:
 }
 ```
 
-### Listing User Ripple Addresses ###
+### List User Ripple Addresses ###
 __`GET /v1/users/{:id}/ripple_addresses`__
 
 To list all ripple addresses for a given user, pass the user's ID to this 
@@ -474,7 +475,7 @@ Response Body:
 }
 ```
 
-### Listing User Ripple Transactions ###
+### List User Ripple Transactions ###
 __`GET /v1/users/{:id}/ripple_transactions`__
 
 To list all Ripple transactions for a given user, pass the user's ID to this
@@ -536,9 +537,9 @@ Response Body:
 }
 ```
 
-## Managing Payments ##
+## Managing Transactions ##
 
-### Listing Outgoing Payments ###
+### List Outgoing Payments ###
 __`GET /v1/payments/outgoing`__
 
 Ripple transaction records that are marked as "outgoing" are picked up
@@ -595,7 +596,7 @@ Response Body:
 }
 ```
 
-### Listing Failed Payments ###
+### List Failed Payments ###
 __`GET /v1/payments/failed`__
 
 Outgoing payments are often rejected from Ripple, such as when there is
@@ -658,7 +659,7 @@ Request Body:
 }
 ```
 
-### Retrying A Failed Payment ###
+### Retry Failed Payment ###
 __`POST /v1/payments/failed/{:id}/retry`__
 
 A payment that failed due to insufficient funds or lack of trust lines
@@ -698,7 +699,7 @@ Response Body:
     }
 ```
 
-### Listing Incoming Payments ###
+### List Incoming Payments ###
 __`GET /v1/payments/incoming`__
 
 Gatewayd monitors the gateway's Ripple account for inbound payments made to the
@@ -736,7 +737,7 @@ Response Body:
     }
 ```
     
-### Setting The Last Payment Hash ###
+### Set Last Payment Hash ###
 __`POST /v1/config/last_payment_hash`__
 
 Gatewayd polls the Ripple Network for notifications of inbound and outbound
@@ -761,7 +762,7 @@ Response Body:
 }
 ```
 
-### Showing The Last Payment Hash ###
+### Retrieve Last Payment Hash ###
 __`GET /v1/config/last_payment_hash`__
 
 Gatewayd polls the ripple network for notifications of inbound and outbound
@@ -777,25 +778,29 @@ Response Body:
     }
 ```
 
-## Managing Deposits and Withdrawals ##
-
-### Creating a Deposit ###
+### Create Deposit ###
 __`POST /v1/deposits`__
 
-Upon receipt of an asset from a user, record the asset in gatewayd's database with
-a "deposit" record, which creates an entry in the external transactions database
-table. By default a deposit is marked as "queued", and the gatewayd "deposit" process
-will take the queued deposit, apply fees, and enqueue a corresponding outbound ripple
-payment.
+This method is the entry point to creating Ripple balances. When you receive 
+an asset outside the Ripple Network from a user, you can call this method to 
+create a "deposit" record in gatewayd's database tracking it. By default, the 
+deposit record is marked as "queued", which means that gatewayd's deposit 
+process will automatically apply fees and then enqueue an outgoing Ripple 
+payment to the user's Ripple address.
 
-    REQUEST:
+Request Body:
+
+```
     {
       "external_account_id": 307,
       "currency": "BTC"
       "amount": "10.7"
     }
+```
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "deposit": {
         "data": null,
@@ -811,14 +816,18 @@ payment.
         "uid": null
       }
     }
+```
 
-### Listing Deposits ###
+### List Queued Deposits ###
 __`GET /v1/deposits`__
 
-List all deposits that are currently queued, ie they have not been processed
-yet nor sent to ripple.
+This method retrieves a list of all deposits that are currently queued. These 
+deposits represent incoming assets that have not yet been processed and sent 
+out as balances on the Ripple network.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "deposits": [
         {
@@ -849,19 +858,24 @@ yet nor sent to ripple.
         }
       ]
     }
+```
 
-
-### Listing Withdrawals ###
+### List Pending Withdrawals ###
 __`GET /v1/withdrawals`__
 
-To retrieve assets from the gateway a user sends funds back to the gateway's account.
-Once the incoming payment has been received and processed (fees subtracted) it is
-placed in the pending withdrawals queue, which is a list of external transaction withdrawal
-records with a state of "pending". If the gateway administrator has registered a withdrawal 
-callback url, the withdrawal callbacks process will read withdrawals from this list and
+To retrieve assets from the gateway, a user sends funds back to the gateway's 
+Ripple account. After the incoming payment has been received and processed 
+(fees subtracted), it is placed in the pending withdrawals queue, which is a 
+list of external transaction withdrawal records with a state of "pending". If 
+the gateway administrator has registered a withdrawal callback url, the 
+withdrawal callbacks process will read withdrawals from this list and
 POST their data to the callback url provided.
 
-    RESPONSE:
+This method retrieves the list of pending withdrawals.
+
+Response Body:
+
+```
     {
       "withdrawals": [
         {
@@ -892,15 +906,19 @@ POST their data to the callback url provided.
         }
       ]
     }
+```
 
-### Clearing A Withdrawal ###
+### Clear Pending Withdrawal ###
 __`POST /v1/withdrawals/{:id}/clear`__
 
 A pending withdrawal record indicates to the gateway operator that a
 user wishes to withdraw a given asset. Once the operator processes the withdrawal
-by sending the asset to the user, mark the withdrawal as "cleared".
+by sending the asset to the user, mark the withdrawal as "cleared" by calling
+this method.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "withdrawal": {
         "data": null,
@@ -916,13 +934,18 @@ by sending the asset to the user, mark the withdrawal as "cleared".
         "uid": null
       }
     }
+```
 
-### Listing Cleared External Transactions ###
+### List Cleared External Transactions ###
 __`GET /v1/cleared`__
 
-List all deposits and withdrawals that have been completed, ie are no longer pending.
+This method retrieves the list of all external transactions that are no longer 
+considered pending. This includes all deposits that have been issued as a 
+balance with a Ripple payment, and all withdrawals that have been cleared.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "deposits": [
         {
@@ -953,16 +976,19 @@ List all deposits and withdrawals that have been completed, ie are no longer pen
         }
       ]
     }
+```
 
 ## Managing Wallets ##
 
-### Listing Hot Wallet Balances ###
+### List Hot Wallet Balances ###
 __`GET /v1/balances`__
 
 The hot wallet holds limited funds issued by the cold wallet, and the current
 balance thereof is represented as hot wallet balances.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "success": true,
       "balances": [
@@ -983,8 +1009,9 @@ balance thereof is represented as hot wallet balances.
         }
       ]
     }
+```
 
-### Listing Cold Wallet Liabilities ###
+### List Cold Wallet Liabilities ###
 __`GET /v1/liabilities`__
 
 Every asset that the gateway holds and for which it issues currency is
@@ -1029,42 +1056,42 @@ for each asset type.
     }
 
 
-### Funding the Hot Wallet ###
+### Fund the Hot Wallet ###
 __`POST /v1/wallets/hot/fund`__
 
 Issue funds from the cold wallet to the hot wallet, specifying the amount, currency, and
 the cold wallet secret key.
 
-### Setting the Cold Wallet ###
+### Set Cold Wallet ###
 __`POST /v1/config/wallets/cold`__
 
 Set the gateway cold wallet, from which funds are issued.
 
-### Showing the Cold Wallet ###
+### Retrieve Cold Wallet ###
 __`GET /v1/config/wallets/cold`__
 
 Show the gatewayd cold wallet, from which funds are issued.
 
-### Generating a Ripple Wallet ###
+### Generate Ripple Wallet ###
 __`POST /v1/config/wallets/generate`__
 
 Generate a random ripple address and secret key pair, which
 represents an unfunded ripple account.
 
-### Setting the Hot Wallet ###
+### Set Hot Wallet ###
 __`POST /v1/config/wallets/cold`__
 
 Set the gatewayd hot wallet, which is used to automatically send
 funds, and which maintains trust to and balances of the cold wallet.
 
-### Showing the Hot Wallet ###
+### Retrieve Hot Wallet ###
 __`POST /v1/config/wallets/cold`__
 
 Show the gatewayd hot wallet, which is used to automatically send
 funds, and which maintains trust to and balances of the cold wallet.
 
 
-### Setting Trust From Hot Wallet To Cold Wallet ###
+### Set Trust from Hot Wallet to Cold Wallet ###
 __`POST /v1/trust`__
 
 Set a line of trust from the gateway hot wallet to the gateway cold
@@ -1072,7 +1099,7 @@ wallet. The line of trust represents the total amount of each asset
 that gatewayd can hold and automatically send out without a manual
 refunding by a gateway operator.
 
-### Listing Trust From Hot Wallet To Cold Wallet ###
+### Show Trust from Hot Wallet to Cold Wallet ###
 __`GET /v1/trust`__
 
 List lines of trust from the gateway hot wallet to the gateway cold
@@ -1095,11 +1122,6 @@ refunding by a gateway operator.
       ]
     }
 
-### Funding The Hot Wallet ###
-__`POST /v1/wallets/hot/fund`__
-
-Issue funds from the cold wallet to the hot wallet. The cold wallet secret
-is required.
 
 ### Sending Funds From Hot Wallet To Cold Wallet ###
 __`POST /v1/wallets/cold/refund`__
@@ -1108,12 +1130,12 @@ If a hot wallet is potentially compromised, send the remaining funds back to the
 
 ## Configuring gatewayd ##
 
-### Setting the Database Url ###
+### Set Database URL ###
 __`POST /v1/config/database`__
 
 Set the database url for in gatewayd configuration.
 
-### Showing the Database Url ###
+### Retrieve Database URL ###
 __`GET /v1/config/database`__
 
 Show the database url from the gatewayd configuration.
@@ -1123,12 +1145,12 @@ Show the database url from the gatewayd configuration.
       "DATABASE_URL": "postgres://postgres:password@localhost:5432/ripple_gateway"
     }
 
-### Setting The Ripple Rest Url ###
+### Set Ripple-REST URL ###
 __`POST /v1/config/ripple/rest`__
 
 Set the ripple rest url in the gatewayd configuration.
 
-### Showing The Ripple Rest Url ###
+### Retrieve Ripple-REST URL ###
 __`GET /v1/config/ripple/rest`__
 
 Show the ripple rest url from the gatewayd configuration.
@@ -1138,7 +1160,7 @@ Show the ripple rest url from the gatewayd configuration.
       "RIPPLE_REST_API": "http://localhost:5990/"
     }
 
-### Setting The Domain ###
+### Set Gateway Domain ###
 __`POST /v1/config/domain`__
 
 Set the domain of the gateway, which is automatically added to the gateway's ripple.txt.
@@ -1153,7 +1175,7 @@ Set the domain of the gateway, which is automatically added to the gateway's rip
       "DOMAIN": "stevenzeiler.com"
     }
 
-### Showing The Domain ###
+### Retrieve Domain ###
 __`GET /v1/config/domain`__
 
 Show the domain of the gateway, which is shown in the gateway's ripple.txt.
@@ -1163,7 +1185,7 @@ Show the domain of the gateway, which is shown in the gateway's ripple.txt.
       "DOMAIN": "stroopgate.com"
     }
 
-### Setting The Api Key ###
+### Set API Key ###
 __`POST /v1/config/key`__
 
 Reset the gateway api key, which generates, saves, and returns a new api key.
@@ -1178,7 +1200,7 @@ Reset the gateway api key, which generates, saves, and returns a new api key.
       "KEY": "1234578dddd"
     }
 
-### Showing The Api Key ###
+### Retrieve API Key ###
 __`GET /v1/config/key`__
 
 Show the current api key.
@@ -1188,7 +1210,7 @@ Show the current api key.
       "KEY": "ebdb883d5723a71c59fb8ecefbb65476a6923f2a69b49b53cffe212c817cab92"
     }
 
-### Listing Currencies ###
+### List Supported Currencies ###
 __`GET /v1/currencies`__
 
 List currencies supported by the gateway, which are shown in the gateway's ripple.txt
@@ -1201,7 +1223,7 @@ manifest file.
       }
     }
 
-### Setting Currencies ###
+### Set Supported Currencies ###
 __`POST /v1/currencies`__
 
 Add a currency to be supported by the gateway. This currency is shown in the gateway's
@@ -1220,15 +1242,15 @@ ripple.txt manifest file.
       }
     }
 
-## Managing gateway Processes
+## Managing Gateway Processes ##
 
-### Starting Worker Processes ###
+### Start Worker Processes ###
 __`POST /v1/start`__
 
 Start one or more gateway processes, including but not limited to "deposits", "outgoing",
 "incoming", "withdrawals", "callbacks", etc.
 
-### Listing Current Processes ###
+### List Current Processes ###
 __`GET /v1/processes`__
 
 List information about the currently-running gateway daemon processes.
