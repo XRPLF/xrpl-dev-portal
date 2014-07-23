@@ -1015,8 +1015,8 @@ Response Body:
 __`GET /v1/liabilities`__
 
 Every asset that the gateway holds and for which it issues currency is
-a liability of the gateway. Listed here are the total gateway liabilities
-for each asset type.
+a liability of the gateway. This method lists total liabilities for each type of
+currency and the other Ripple account holding that currency on the network.
 
     RESPONSE:
     {
@@ -1081,23 +1081,54 @@ represents an unfunded ripple account.
 ### Set Hot Wallet ###
 __`POST /v1/config/wallets/cold`__
 
-Set the gatewayd hot wallet, which is used to automatically send
-funds, and which maintains trust to and balances of the cold wallet.
+The hot wallet holds and sends funds to customers automatically. This method 
+sets the Ripple account to use as the hot wallet.
+
+Request Body:
+
+```
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
+}
+```
+
+*Caution:* This method request contains account secrets! Be especially careful not to transmit this data over insecure channels.
+
+Response Body:
+
+<span class='draft-comment'>(Example needed)</span>
 
 ### Retrieve Hot Wallet ###
-__`POST /v1/config/wallets/cold`__
+__`GET /v1/config/wallets/hot`__
 
 Show the gatewayd hot wallet, which is used to automatically send
 funds, and which maintains trust to and balances of the cold wallet.
 
+Response Body:
+
+<span class='draft-comment'>(Example needed)</span>
 
 ### Set Trust from Hot Wallet to Cold Wallet ###
 __`POST /v1/trust`__
 
-Set a line of trust from the gateway hot wallet to the gateway cold
-wallet. The line of trust represents the total amount of each asset
-that gatewayd can hold and automatically send out without a manual
-refunding by a gateway operator.
+This method sets a line of trust from the gateway hot wallet to the gateway 
+cold wallet. The line of trust represents the total amount of one type of 
+currency that gatewayd's hot wallet can hold and automatically send out without 
+the gateway operator manually adding more funds to the hot wallet.
+
+Request Body:
+
+```
+{
+    "currency": "USD",
+    "amount": 1000
+}
+```
+
+Response Body:
+
+<span class='draft-comment'>(Example needed)</span>
 
 ### Show Trust from Hot Wallet to Cold Wallet ###
 __`GET /v1/trust`__
@@ -1107,7 +1138,9 @@ wallet. The line of trust represents the total amount of each asset
 that gatewayd can hold and automatically send out without a manual
 refunding by a gateway operator.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "lines": [
         {
@@ -1121,94 +1154,160 @@ refunding by a gateway operator.
         }
       ]
     }
-
+```
 
 ### Sending Funds From Hot Wallet To Cold Wallet ###
 __`POST /v1/wallets/cold/refund`__
 
-If a hot wallet is potentially compromised, send the remaining funds back to the cold wallet.
+This method returns funds from the hot wallet back to the cold wallet. This is 
+an important step in phasing out a hot wallet, especially if its security may 
+be compromised.
+
+Request Body:
+
+```
+{
+    "currency": "USD",
+    "amount": 1000
+}
+```
+
+Response Body:
+
+<span class='draft-comment'>(Example needed)</span>
 
 ## Configuring gatewayd ##
 
 ### Set Database URL ###
 __`POST /v1/config/database`__
 
-Set the database url for in gatewayd configuration.
+This method tells gatewayd which Postgres database to use. 
+
+Request Body:
+
+```
+{
+      "database_url": "postgres://postgres:password@localhost:5432/ripple_gateway"
+}
+```
+
+*Caution:* This method contains sensitive database credentials. Do not use it on unsafe channels!
 
 ### Retrieve Database URL ###
 __`GET /v1/config/database`__
 
-Show the database url from the gatewayd configuration.
+This method shows the URL that gatewayd uses to access the Postgres database.
 
-    RESPONSE:
-    {
-      "DATABASE_URL": "postgres://postgres:password@localhost:5432/ripple_gateway"
-    }
+Response Body:
+
+```
+{
+    "DATABASE_URL": "postgres://postgres:password@localhost:5432/ripple_gateway"
+}
+```
+
+*Caution:* This method contains sensitive database credentials. Do not use it on unsafe channels!
 
 ### Set Ripple-REST URL ###
 __`POST /v1/config/ripple/rest`__
 
-Set the ripple rest url in the gatewayd configuration.
+This method tells gatewayd what Ripple-REST server to use in order to access 
+the Ripple Network.
+
+Request Body: <span class='draft-comment'>(Mock example, need confirmation)</span>
+
+```
+{
+    "url": "https://localhost:5990"
+}
+```
+
+Response Body:
+
+<span class='draft-comment'>(Example needed)</span>
 
 ### Retrieve Ripple-REST URL ###
 __`GET /v1/config/ripple/rest`__
 
-Show the ripple rest url from the gatewayd configuration.
+This method shows the URL that gatewayd is configured to use for accessing Ripple-REST.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "RIPPLE_REST_API": "http://localhost:5990/"
     }
+```
 
 ### Set Gateway Domain ###
 __`POST /v1/config/domain`__
 
-Set the domain of the gateway, which is automatically added to the gateway's ripple.txt.
+This method sets the domain that gatewayd uses to identify itself. This domain
+is included in the gateway's ripple.txt.
 
-    REQUEST:
+Request Body:
+
+```
     {
       "domain": "stevenzeiler.com"
     }
+```
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "DOMAIN": "stevenzeiler.com"
     }
+```
 
 ### Retrieve Domain ###
 __`GET /v1/config/domain`__
 
 Show the domain of the gateway, which is shown in the gateway's ripple.txt.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "DOMAIN": "stroopgate.com"
     }
+```
 
 ### Set API Key ###
 __`POST /v1/config/key`__
 
-Reset the gateway api key, which generates, saves, and returns a new api key.
+This method reset's the gateway's API key; it generates, saves, and returns a 
+new key.
 
-    REQUEST:
+Request Body:
+
+```
     {
       "key": "1234578dddd"
     }
+```
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "KEY": "1234578dddd"
     }
+```
 
 ### Retrieve API Key ###
 __`GET /v1/config/key`__
 
-Show the current api key.
+This method shows the gateway API key currently in use.
 
-    RESPONSE:
+Response Body:
+
+```
     {
       "KEY": "ebdb883d5723a71c59fb8ecefbb65476a6923f2a69b49b53cffe212c817cab92"
     }
+```
 
 ### List Supported Currencies ###
 __`GET /v1/currencies`__
