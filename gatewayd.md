@@ -1,10 +1,10 @@
 # gatewayd #
 
-Gatewayd (pronounced "gateway-dee"), also known as the Ripple Gateway Framework, provides the basic functionality of a gateway on the Ripple Network, so that you can extend it to build your own gateway. The system includes a core database that manages accounting for deposits and withdrawals of assets to the Ripple network. Gatewayd provides a standard interface for issuing any currency on the Ripple network and exchange, with the goal of completely abstracting interaction with Ripple.
+Gatewayd (pronounced "gateway-dee"), provides a framework you can extend to build a gateway on the Ripple Network. The system includes a core database that manages accounting for deposits and withdrawals of assets, linking the network with your holdings in the outside world. Gatewayd provides a standard interface for issuing any currency on the Ripple network and exchange, with the goal of completely abstracting interaction with Ripple.
 
 Interact with the gatewayd by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. A HTTP/JSON server, Javascript library, and commandline interface are provided as interfaces to the gatewayd software.
 
-The Ripple Gateway's features include: 
+Gatewayd's features include: 
 
   - user registration 
   - deposits and withdrawals
@@ -15,22 +15,29 @@ The Ripple Gateway's features include:
 
 ## Dependencies
 
-1. Node.js
+1. [Node.js](http://nodejs.org/)
   - The express web module is used to serve HTTP/JSON endpoints
   - A Basic Auth strategy is used for authentication of users, admin.
   - Several NPM modules must be globally installed: db-migrate, pg, forever, and mocha
 
-2. Postgres
+2. [Postgres](http://www.postgresql.org/)
   - The easiest way to get started with Postgres is by launching a [free database hosted by Heroku](https://postgres.heroku.com/databases)
   - For local development on Mac the simplest installation is via the [Postgres App](http://postgresapp.com/) by Heroku.
-  - On Ubuntu, [install and configure Postgres](https://help.ubuntu.com/community/PostgreSQL) using the aptitude package manager and the psql tool.
+  - On Linux, you can generally install Postgres from your distro's package manager. See instructions for:
+    - [Ubuntu](https://help.ubuntu.com/community/PostgreSQL)
+    - [Debian](http://www.postgresql.org/download/linux/debian/)
+    - [Red Hat, Fedora, CentOS](http://www.postgresql.org/download/linux/redhat/)
+    - [SuSE](http://www.postgresql.org/download/linux/suse/)
+    - [Arch Linux](https://wiki.archlinux.org/index.php/Postgres)
 
 3. [Ripple REST API](https://github.com/ripple/ripple-rest.git)
   - The Ripple REST API provides a simplified HTTP/JSON interface to all the Ripple protocol network operations, such as payments and other transactions.
 
+4. [git](http://git-scm.com/) is required for installation and updating. It is not used during general operation.
+
 ## Installation
 
-The gateway server software requires git, g++, make, nodejs, postgres, and several npm modules.
+Installing gatewayd requires git, g++, make, nodejs, postgres, and several npm modules. 
 
 - Comprehensive [installation script](https://github.com/ripple/gatewayd/blob/master/doc/install.md) for Ubuntu
 
@@ -38,10 +45,26 @@ The gateway server software requires git, g++, make, nodejs, postgres, and sever
 
 Once ripple-gateway is installed, [configure your gateway](https://github.com/ripple/gatewayd/blob/master/doc/setup.md) wallets and server
 
+## Updating
+
+The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
+
+<span class='draft-comment'>(Not totally sure about the commandline syntax for all of these</span>
+
+1. Use git to pull the `master` branch [from Github](https://github.com/ripple/gatewayd.git). (This assumes you created it by using `git clone` on the repository first.)<br/>
+    `git pull`
+2. Install any new npm modules needed by the new version<br/>
+    `sudo npm install --global`
+3. Disable the current gateway processes. (This starts downtime)<br/>
+    `pm2 kill`
+4. Apply schema changes to the database, if the new version includes any.<br/>
+    `grunt migrate`
+5. Restart the gatewayd processes. (This ends downtime)<br/>
+    `bin/gateway start`
 
 # Gatewayd Usage #
 
-## Running the Ripple Gateway
+## Running gatewayd
 
 After installation, start the gateway processes by running the command:
 
@@ -130,6 +153,55 @@ API calls: list_withdrawals, clear_withdrawal
 Alternatively one can provide a WITHDRAWALS_CALLBACK_URL in the configuration, and then start the withdrawal_callbacks process to receive POST notifications whenever a new withdrawal comes in the gateway from the Ripple network. This process is currently not starte by default.
 
 
+## Command Line Interface ##
+
+```
+bin/gateway [options] [command]
+```
+
+The available *options* are as follows:
+
+```
+-h, --help     output usage information
+```
+  
+The available commands are as follows:
+  
+| Command Syntax | Description |
+|----------------|-------------|
+| `register_user <username> <password> <ripple_address> ` | create a user with a ripple address |
+| `list_users` | list registered users |
+| `record_deposit <amount> <currency> <external_account_id>` | record a deposit in the deposit processing queue |
+| `list_deposits` | list deposits in the deposit processing queue |
+| `list_outgoing_payments` | list the outgoing ripple payments. |
+| `list_incoming_payments` | list unprocesses incoming ripple payments |
+| `list_withdrawals` | get pending withdrawals to external accounts |
+| `clear_withdrawal <external_transaction_id>` | clear pending withdrawal to external account |
+| `generate_wallet` | generate a random ripple wallet |
+| `set_hot_wallet <address> <secret>` | set the gateway hot wallet |
+| `get_hot_wallet` | get the address of the gateway hot wallet |
+| `get_hot_wallet_secret` | get the secret of the gateway hot wallet |
+| `fund_hot_wallet <amount> <currency>` | issue funds from cold wallet to hot wallet |
+| `set_cold_wallet <account>` | set the gateway hot wallet |
+| `get_cold_wallet` | get the gateway cold wallet |
+| `refund_cold_wallet <amount> <currency>` | send back funds from the hot wallet to cold wallet |
+| `set_trust <amount> <currency>` | set level of trust from hot to cold wallet |
+| `get_trust_lines` | get the trust lines from hot wallet to cold wallet |
+| `list_currencies` | List all currencies supported by the gateway |
+| `add_currency <currency>` | add support for a currency |
+| `remove_currency <currency>` | remove support for a currency |
+| `set_domain <domain>` | set the domain name of the gateway |
+| `get_domain` | get the domain name of the gateway |
+| `set_postgres_url <url>` | set the url of the postgres database |
+| `get_postgres_url` | get the url of the postgres database |
+| `set_ripple_rest_url <url>` | set the url of the Ripple-REST api |
+| `get_ripple_rest_url` | get the url of the Ripple-REST api |
+| `set_key` | set the admin api key |
+| `get_key` | get the admin api key |
+| `set_last_payment_hash <hash>` | set the last encountered payment hash for incoming processing. |
+| `get_last_payment_hash` | get the last encountered payment hash for incoming processing. |
+    
+
 # Gatewayd API #
 
 `gatewayd : v3.20.0`
@@ -188,7 +260,7 @@ Alternatively one can provide a WITHDRAWALS_CALLBACK_URL in the configuration, a
 * [`POST /v1/start`](#starting-worker-processes)
 * [`POST /v1/processes`](#listing-current-processes)
 
-# API Overview #
+# API Method Reference #
 
 ## Managing Users ##
 
@@ -1305,17 +1377,17 @@ new key.
 Request Body:
 
 ```
-    {
-      "key": "1234578dddd"
-    }
+{
+  "key": "1234578dddd"
+}
 ```
 
 Response Body:
 
 ```
-    {
-      "KEY": "1234578dddd"
-    }
+{
+  "KEY": "1234578dddd"
+}
 ```
 
 ### Retrieve API Key ###
@@ -1326,9 +1398,9 @@ This method shows the gateway API key currently in use.
 Response Body:
 
 ```
-    {
-      "KEY": "ebdb883d5723a71c59fb8ecefbb65476a6923f2a69b49b53cffe212c817cab92"
-    }
+{
+  "KEY": "ebdb883d5723a71c59fb8ecefbb65476a6923f2a69b49b53cffe212c817cab92"
+}
 ```
 
 ### List Supported Currencies ###
@@ -1337,12 +1409,15 @@ __`GET /v1/currencies`__
 List currencies supported by the gateway, which are shown in the gateway's ripple.txt
 manifest file.
 
-    RESPONSE:
-    {
-      "CURRENCIES": {
-        "SWD": 10000
-      }
-    }
+Response Body:
+
+```
+{
+  "CURRENCIES": {
+    "SWD": 10000
+  }
+}
+```
 
 ### Set Supported Currencies ###
 __`POST /v1/currencies`__
@@ -1350,19 +1425,24 @@ __`POST /v1/currencies`__
 Add a currency to be supported by the gateway. This currency is shown in the gateway's
 ripple.txt manifest file.
 
-    REQUEST:
-    {
-      currency: "XAG"
-    }
+Request Body:
 
-    RESPONSE:
-    {
-      "CURRENCIES": {
-        "SWD": 10000,
-        "XAG": 0
-      }
-    }
+```
+{
+  currency: "XAG"
+}
+```
 
+Response Body
+
+```
+{
+  "CURRENCIES": {
+    "SWD": 10000,
+    "XAG": 0
+  }
+}
+```
 ## Managing Gateway Processes ##
 
 ### Start Worker Processes ###
@@ -1376,298 +1456,253 @@ __`GET /v1/processes`__
 
 List information about the currently-running gateway daemon processes.
 
-    RESPONSE:
-    [ { pid: 26269,
-        name: 'ripplerest',
-        pm2_env: 
-         { name: 'ripplerest',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/ripple-rest/server.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/ripplerest-out-0.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/ripplerest-err-0.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/ripplerest.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/gatewayd',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: '/usr/bin/pm2',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/ripple-rest',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/ripple-rest',
-           pm_id: 0,
-           restart_time: 0,
-           unstable_restarts: 0,
-           created_at: 1402602962147,
-           pm_uptime: 1402602962147,
-           status: 'online' },
-        pm_id: 0,
-        monit: { memory: 142966784, cpu: 4 } },
-      { pid: 27633,
-        name: 'deposits',
-        pm2_env: 
-         { name: 'deposits',
-           cron_restart: '0 * * * *',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/gatewayd/processes/deposits.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/deposits-out-1.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/deposits-err-1.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/deposits.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/ripple-rest',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: 'bin/gateway',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/gatewayd',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/gatewayd',
-           pm_id: 1,
-           restart_time: 1,
-           unstable_restarts: 0,
-           created_at: 1402602983124,
-           pm_uptime: 1402603201351,
-           status: 'online' },
-        pm_id: 1,
-        monit: { memory: 78327808, cpu: 0 } },
-      { pid: 27628,
-        name: 'outgoing',
-        pm2_env: 
-         { name: 'outgoing',
-           cron_restart: '0 * * * *',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/gatewayd/processes/outgoing.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/outgoing-out-2.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/outgoing-err-2.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/outgoing.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/ripple-rest',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: 'bin/gateway',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/gatewayd',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/gatewayd',
-           pm_id: 2,
-           restart_time: 1,
-           unstable_restarts: 0,
-           created_at: 1402602985180,
-           pm_uptime: 1402603200575,
-           status: 'online' },
-        pm_id: 2,
-        monit: { memory: 79495168, cpu: 1 } },
-      { pid: 27621,
-        name: 'incoming',
-        pm2_env: 
-         { name: 'incoming',
-           cron_restart: '0 * * * *',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/gatewayd/processes/incoming.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/incoming-out-3.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/incoming-err-3.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/incoming.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/ripple-rest',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: 'bin/gateway',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/gatewayd',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/gatewayd',
-           pm_id: 3,
-           restart_time: 1,
-           unstable_restarts: 0,
-           created_at: 1402602985949,
-           pm_uptime: 1402603200180,
-           status: 'online' },
-        pm_id: 3,
-        monit: { memory: 79024128, cpu: 0 } },
-      { pid: 29812,
-        name: 'server',
-        pm2_env: 
-         { name: 'server',
-           cron_restart: '0 * * * *',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/gatewayd/processes/server.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/server-out-4.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/server-err-4.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/server.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/ripple-rest',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: 'bin/gateway',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/gatewayd',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/gatewayd',
-           pm_id: 4,
-           restart_time: 2,
-           unstable_restarts: 0,
-           created_at: 1402602986623,
-           pm_uptime: 1402603773423,
-           status: 'online' },
-        pm_id: 4,
-        monit: { memory: 78049280, cpu: 0 } },
-      { pid: 0,
-        name: 'withdrawals',
-        pm2_env: 
-         { name: 'withdrawals',
-           cron_restart: '0 * * * *',
-           exec_mode: 'cluster_mode',
-           exec_interpreter: 'node',
-           env: [Object],
-           pm_exec_path: '/home/ubuntu/gatewayd/processes/withdrawals.js',
-           pm_out_log_path: '/home/ubuntu/.pm2/logs/withdrawals-out-5.log',
-           pm_err_log_path: '/home/ubuntu/.pm2/logs/withdrawals-err-5.log',
-           pm_pid_path: '/home/ubuntu/.pm2/pids/withdrawals.pid',
-           LESSOPEN: '| /usr/bin/lesspipe %s',
-           MAIL: '/var/mail/ubuntu',
-           SSH_CLIENT: '208.90.215.186 61957 22',
-           USER: 'ubuntu',
-           DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-           SHLVL: '1',
-           HOME: '/home/ubuntu',
-           OLDPWD: '/home/ubuntu/ripple-rest',
-           SSH_TTY: '/dev/pts/0',
-           LOGNAME: 'ubuntu',
-           _: 'bin/gateway',
-           TERM: 'xterm-256color',
-           PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-           LANG: 'en_US.UTF-8',
-           LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
-           SHELL: '/bin/bash',
-           NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
-           LESSCLOSE: '/usr/bin/lesspipe %s %s',
-           PWD: '/home/ubuntu/gatewayd',
-           SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
-           pm_cwd: '/home/ubuntu/gatewayd',
-           pm_id: 5,
-           restart_time: 0,
-           unstable_restarts: 0,
-           created_at: 1402602987366,
-           pm_uptime: 1402602987366,
-           status: 'stopped' },
-        pm_id: 5,
-        monit: { memory: 0, cpu: 0 } } ]
-
-# Command Line Interface #
+Response Body:
 
 ```
-bin/gateway [options] [command]
+[ { pid: 26269,
+    name: 'ripplerest',
+    pm2_env: 
+     { name: 'ripplerest',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/ripple-rest/server.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/ripplerest-out-0.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/ripplerest-err-0.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/ripplerest.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/gatewayd',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: '/usr/bin/pm2',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/ripple-rest',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/ripple-rest',
+       pm_id: 0,
+       restart_time: 0,
+       unstable_restarts: 0,
+       created_at: 1402602962147,
+       pm_uptime: 1402602962147,
+       status: 'online' },
+    pm_id: 0,
+    monit: { memory: 142966784, cpu: 4 } },
+  { pid: 27633,
+    name: 'deposits',
+    pm2_env: 
+     { name: 'deposits',
+       cron_restart: '0 * * * *',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/gatewayd/processes/deposits.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/deposits-out-1.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/deposits-err-1.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/deposits.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/ripple-rest',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: 'bin/gateway',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/gatewayd',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/gatewayd',
+       pm_id: 1,
+       restart_time: 1,
+       unstable_restarts: 0,
+       created_at: 1402602983124,
+       pm_uptime: 1402603201351,
+       status: 'online' },
+    pm_id: 1,
+    monit: { memory: 78327808, cpu: 0 } },
+  { pid: 27628,
+    name: 'outgoing',
+    pm2_env: 
+     { name: 'outgoing',
+       cron_restart: '0 * * * *',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/gatewayd/processes/outgoing.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/outgoing-out-2.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/outgoing-err-2.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/outgoing.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/ripple-rest',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: 'bin/gateway',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/gatewayd',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/gatewayd',
+       pm_id: 2,
+       restart_time: 1,
+       unstable_restarts: 0,
+       created_at: 1402602985180,
+       pm_uptime: 1402603200575,
+       status: 'online' },
+    pm_id: 2,
+    monit: { memory: 79495168, cpu: 1 } },
+  { pid: 27621,
+    name: 'incoming',
+    pm2_env: 
+     { name: 'incoming',
+       cron_restart: '0 * * * *',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/gatewayd/processes/incoming.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/incoming-out-3.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/incoming-err-3.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/incoming.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/ripple-rest',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: 'bin/gateway',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/gatewayd',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/gatewayd',
+       pm_id: 3,
+       restart_time: 1,
+       unstable_restarts: 0,
+       created_at: 1402602985949,
+       pm_uptime: 1402603200180,
+       status: 'online' },
+    pm_id: 3,
+    monit: { memory: 79024128, cpu: 0 } },
+  { pid: 29812,
+    name: 'server',
+    pm2_env: 
+     { name: 'server',
+       cron_restart: '0 * * * *',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/gatewayd/processes/server.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/server-out-4.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/server-err-4.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/server.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/ripple-rest',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: 'bin/gateway',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/gatewayd',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/gatewayd',
+       pm_id: 4,
+       restart_time: 2,
+       unstable_restarts: 0,
+       created_at: 1402602986623,
+       pm_uptime: 1402603773423,
+       status: 'online' },
+    pm_id: 4,
+    monit: { memory: 78049280, cpu: 0 } },
+  { pid: 0,
+    name: 'withdrawals',
+    pm2_env: 
+     { name: 'withdrawals',
+       cron_restart: '0 * * * *',
+       exec_mode: 'cluster_mode',
+       exec_interpreter: 'node',
+       env: [Object],
+       pm_exec_path: '/home/ubuntu/gatewayd/processes/withdrawals.js',
+       pm_out_log_path: '/home/ubuntu/.pm2/logs/withdrawals-out-5.log',
+       pm_err_log_path: '/home/ubuntu/.pm2/logs/withdrawals-err-5.log',
+       pm_pid_path: '/home/ubuntu/.pm2/pids/withdrawals.pid',
+       LESSOPEN: '| /usr/bin/lesspipe %s',
+       MAIL: '/var/mail/ubuntu',
+       SSH_CLIENT: '208.90.215.186 61957 22',
+       USER: 'ubuntu',
+       DATABASE_URL: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+       SHLVL: '1',
+       HOME: '/home/ubuntu',
+       OLDPWD: '/home/ubuntu/ripple-rest',
+       SSH_TTY: '/dev/pts/0',
+       LOGNAME: 'ubuntu',
+       _: 'bin/gateway',
+       TERM: 'xterm-256color',
+       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+       LANG: 'en_US.UTF-8',
+       LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+       SHELL: '/bin/bash',
+       NODE_PATH: '/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript',
+       LESSCLOSE: '/usr/bin/lesspipe %s %s',
+       PWD: '/home/ubuntu/gatewayd',
+       SSH_CONNECTION: '208.90.215.186 61957 10.151.118.93 22',
+       pm_cwd: '/home/ubuntu/gatewayd',
+       pm_id: 5,
+       restart_time: 0,
+       unstable_restarts: 0,
+       created_at: 1402602987366,
+       pm_uptime: 1402602987366,
+       status: 'stopped' },
+    pm_id: 5,
+    monit: { memory: 0, cpu: 0 } } ]
 ```
 
-The available *options* are as follows:
-
-```
--h, --help     output usage information
-```
-  
-The available commands are as follows:
-  
-| Command Syntax | Description |
-|----------------|-------------|
-| `register_user <username> <password> <ripple_address> ` | create a user with a ripple address |
-| `list_users` | list registered users |
-| `record_deposit <amount> <currency> <external_account_id>` | record a deposit in the deposit processing queue |
-| `list_deposits` | list deposits in the deposit processing queue |
-| `list_outgoing_payments` | list the outgoing ripple payments. |
-| `list_incoming_payments` | list unprocesses incoming ripple payments |
-| `list_withdrawals` | get pending withdrawals to external accounts |
-| `clear_withdrawal <external_transaction_id>` | clear pending withdrawal to external account |
-| `generate_wallet` | generate a random ripple wallet |
-| `set_hot_wallet <address> <secret>` | set the gateway hot wallet |
-| `get_hot_wallet` | get the address of the gateway hot wallet |
-| `get_hot_wallet_secret` | get the secret of the gateway hot wallet |
-| `fund_hot_wallet <amount> <currency>` | issue funds from cold wallet to hot wallet |
-| `set_cold_wallet <account>` | set the gateway hot wallet |
-| `get_cold_wallet` | get the gateway cold wallet |
-| `refund_cold_wallet <amount> <currency>` | send back funds from the hot wallet to cold wallet |
-| `set_trust <amount> <currency>` | set level of trust from hot to cold wallet |
-| `get_trust_lines` | get the trust lines from hot wallet to cold wallet |
-| `list_currencies` | List all currencies supported by the gateway |
-| `add_currency <currency>` | add support for a currency |
-| `remove_currency <currency>` | remove support for a currency |
-| `set_domain <domain>` | set the domain name of the gateway |
-| `get_domain` | get the domain name of the gateway |
-| `set_postgres_url <url>` | set the url of the postgres database |
-| `get_postgres_url` | get the url of the postgres database |
-| `set_ripple_rest_url <url>` | set the url of the ripple rest api |
-| `get_ripple_rest_url` | get the url of the ripple rest api |
-| `set_key` | set the admin api key |
-| `get_key` | get the admin api key |
-| `set_last_payment_hash <hash>` | set the last encountered payment hash for incoming processing. |
-| `get_last_payment_hash` | get the last encountered payment hash for incoming processing. |
-    
