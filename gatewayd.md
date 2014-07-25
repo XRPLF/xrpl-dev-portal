@@ -47,15 +47,37 @@ After installation, start the gateway processes by running the command:
 
     bin/gateway start
 
-## Ripple Gateway Processes
+## Gatewayd Architecture
 
-A Gateway acts as a link between the Ripple Network and activities outside of the network, such as traditional banking activities. Thus, gatewayd sits between the `rippled` server (which participates in the network) and some source of information about external activities. (This could be custom banking software that is aware of deposits and withdrawals, or it could even be manually monitored.) 
+A gateway acts as a link between the Ripple Network and activities outside of the network, such as traditional banking activities. Thus, gatewayd sits between the `rippled` server (which participates in the network) and some source of information about external activities. (This could be custom banking software that is aware of deposits and withdrawals, or it could even be manually monitored.) 
 
-The Ripple Gateway software is composed of a backed data store which serves as a queue for many types of processes that handle deposits and withdrawals of assets, and issuance and receipt of digital currency on ripple. In this post I will explain the various processes of a ripple gateway that together form an automated machine of gateway transaction processing. 
+Gatewayd is implemented as a [Node.js](http://nodejs.org/) web application that keeps track of transactions that are entering and leaving the Ripple Network, and exposes a RESTful API for configuring and controlling its behavior. It persists transactions to a [Postgres database](http://www.postgresql.org/). This application has 6 main processes that comprise its operation:
 
-![Ripple Gateway Process Diagram](gatewayd_overview.svg)
+| Process | Purpose |
+|---------|---------|
+| server  | Provides the RESTful API for controlling gatewayd and querying about its status; also serves a ripple.txt file to identify the gateway. |
+| ripple-rest | Provides a [Ripple-REST](?p=ripple-rest-api) service that communicates with a `rippled` server. |
+| incoming | Monitors the Ripple Network for incoming Ripple payments |
+| withdrawals | Converts records of incoming Ripple payments into pending withdrawal records |
+| outgoing | Sends pending Ripple payments out to the network to issue balances |
+| deposits | Converts records of external deposits into pending Ripple payments |
 
-In the diagram above each process is represented by a circle, and should be designed to scale horizontally, that is enable N processes of each type all operating on the same queues. Queues, represented by rectangles are actually SQL database tables maintained by the gateway data store.
+In essence, the `server` and `ripple-rest` processes are infrastructure, while the other four processes form two thirds of a complete two-way link between an outside network and the Ripple Network. The missing piece: integrations with the outside network. Naturally, these vary depending on the gateway and how it accepts outside payment. In other words: that part, you must build for yourself.
+
+Fortunately, all the pieces are here already. When you receive information about an external transaction, you can use gatewayd's API to record it as a deposit in your system. You can use gatewayd's API to look for new withdrawals, so that you can process them; and when you're done, just call gatewayd's API again to clear them. You can perform these calls manually (not recommended), you can write software that depends on gatewayd's API to do them, or you can skip the API and write to the Postgres database directly (also not recommended). If you like, you can even write the processes as additional Node.js services and incorporate them into gatewayd, to be run alongside the build-in processes.
+
+Conceptually, gatewayd processes two flows in opposite directions:
+
+* Outside world -> External Transaction Inbox -> Ripple Transaction Outbox -> Ripple
+* Ripple -> Ripple Transaction Inbox -> External Transaction Outbox -> Outside world
+
+However, the implementation combines the inboxes and outboxes for like objects into a single database table each, so one database table contains external transactions that are ingoing alongside ones that are outgoing; and another database table contains Ripple transactions in both states.
+
+That means that the overall process looks like this:
+
+![Ripple Gateway Process Diagram](img/gatewayd_overview.svg)
+
+<span class='draft-comment'>(Probably need to revise this diagram somewhat.)</span>
 
 ## Process Flow of a Gateway Deposit
 
