@@ -37,13 +37,21 @@ Gatewayd's features include:
 
 ## Installation
 
-Installing gatewayd requires git, g++, make, nodejs, postgres, and several npm modules. 
-
 - Comprehensive [installation script](https://github.com/ripple/gatewayd/blob/master/doc/install.md) for Ubuntu
 
-## Setup
+## Configuration ##
 
-Once ripple-gateway is installed, [configure your gateway](https://github.com/ripple/gatewayd/blob/master/doc/setup.md) wallets and server
+Before you can run gatewayd, you need to set up the appropriate accounts that will be used to store and send funds in the Ripple network. You also need to define which currencies your gateway issues. Beyond that, there are some options you can set if they set your needs.
+
+The defaults for all of gatewayd's settings are found in the file `config/config.js`. You can override any of those settings with your own values by editing them in the file `config/config.json`. Don't mix up these two files!
+
+### Hot Wallet, Cold Wallet, Trust ###
+
+When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost, so it is important to take proper precautions to minimize the risk of losses. To accomplish this, gatewayd uses the concept of a "hot wallet" and a "cold wallet". 
+
+The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators.
+
+The hot wallet is like your cash register. It holds a small amount of funds at a time, 
 
 ## Updating
 
