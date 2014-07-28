@@ -335,6 +335,22 @@ If you are specifying XRP without an amount -- also typically for defining an or
 
 Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
 
+## Possible Server States ##
+
+Depending on how the `rippled` server is configured, how long it has been running, and other factors, a server may be participating in the global Ripple Network to different degrees. This is represented as the `server_state` field in the responses to the [`server_info`](#server-info) and [`server_state`](#server-state) commands. The possible responses follow a range of ascending interaction, with each subsequent value superseding the previous one. Their definitions are as follows (in order of increasing priority):
+
+| Value | Description |
+|-------|-------------|
+| disconnected | The server is not connected to the Ripple Network whatsoever. It may be running in offline mode, or it may not be able to access the network for whatever reason. |
+| connected | The server believes it is connected to the network. |
+| syncing | The server is currently behind on ledger versions. (It is normal for a server to spend a few minutes catching up after you start it.) |
+| tracking | The server is in agreement with the network |
+| full | The server is fully caught-up with the network and could participate in validation, but is not doing so (possibly because it has not been configured as a validator). |
+| validating | The server is currently participating in validation of the ledger |
+| proposing | The server is participating in validation of the ledger and currently proposing its own version. |
+
+*Note:* The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
+
 # API Methods #
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.
@@ -4610,6 +4626,182 @@ An example of a successful response:
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
+
+# Server Information #
+
+There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.
+
+## server_info ##
+
+The `server_info` command asks the server for a human-readable version of various information about the `rippled` server being queried.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 11,
+  "command": "server_info"
+}
+```
+</div>
+
+The request does not takes any parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 11,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "info": {
+      "build_version": "0.25.2",
+      "complete_ledgers": "32570-7695432",
+      "hostid": "AIR",
+      "io_latency_ms": 1,
+      "last_close": {
+        "converge_time_s": 2.037,
+        "proposers": 5
+      },
+      "load_factor": 1,
+      "peers": 56,
+      "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
+      "server_state": "full",
+      "validated_ledger": {
+        "age": 3,
+        "base_fee_xrp": 0.00001,
+        "hash": "274C27799A91DF08603AF9B5CB03372ECF844B6D643CAF69F25205C9509E212F",
+        "reserve_base_xrp": 20,
+        "reserve_inc_xrp": 5,
+        "seq": 7695432
+      },
+      "validation_quorum": 3
+    }
+  }
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing an `info` object as its only field.
+
+The `info` object may have some arrangement of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| build_version | String | The version number of the running `rippled` version. |
+| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
+| hostid | String | On an admin request, returns the hostname of the server running the `rippled` instance; otherwise, returns a unique four letter word. |
+| io_latency_ms | Number | Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| last_close | Object | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
+| load | Object | *Admin only* Detailed information about the current load state of the server |
+| load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
+| load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
+| load_factor | Number | The load factor the server is currently enforcing, which affects transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. See [Calculating Transaction Fees](https://ripple.com/wiki/Calculating_the_Transaction_Fee) for more details. |
+| peers | Number | How many other `rippled` servers the node is currently connected to. |
+| pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.) |
+| pubkey_validator | String | *Admin only* Public key used by this node to sign ledger validations; . |
+| server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
+| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
+| validated_ledger.age | Unsigned Integer | The time since the ledger was closed, in seconds |
+| validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
+| validated_ledger.hash | String | Unique hash for the ledger, as hex |
+| validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
+| validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
+| validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
+| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
+
+## server_state ##
+
+The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The results are very similar to [`server_info`](#server-info), but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+  "id": 12,
+  "command": "server_state"
+}
+```
+</div>
+
+The request does not takes any parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+*WebSocket*
+
+```
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "state": {
+      "build_version": "0.25.2",
+      "complete_ledgers": "32570-7696746",
+      "io_latency_ms": 1,
+      "last_close": {
+        "converge_time": 2097,
+        "proposers": 4
+      },
+      "load_base": 256,
+      "load_factor": 256,
+      "peers": 61,
+      "pubkey_node": "n9L4DuE6NsZiVWyYdHcYbKoELTXr4fs32VY8bdic5c4uVrfrADmX",
+      "server_state": "full",
+      "validated_ledger": {
+        "base_fee": 10,
+        "close_time": 458432860,
+        "hash": "95A05F232C8C4B4DC313CB91A4C823A221120DD8692395150A3012876C8CD772",
+        "reserve_base": 20000000,
+        "reserve_inc": 5000000,
+        "seq": 7696746
+      },
+      "validation_quorum": 3
+    }
+  }
+}
+```
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing a `state` object as its only field.
+
+The `state` object may have some arrangement of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| build_version | String | The version number of the running `rippled` version. |
+| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
+| io_latency_ms | Number | Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| load | Object | *Admin only* Detailed information about the current load state of the server |
+| load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
+| load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
+| load_base | Number | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction fees are doubled. See [Calculating Transaction Fees](https://ripple.com/wiki/Calculating_the_Transaction_Fee) for more details. |
+| load_factor | Number | The load factor the server is currently enforcing, which affects transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
+| peers | Number | How many other `rippled` servers the node is currently connected to. |
+| pubkey_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in rippled's local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
+| pubkey_validator | String | *Admin only* Public key used by this server (along with the corresponding private key) to sign proposed ledgers for validation. |
+| server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
+| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
+| validated_ledger.base_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
+| validated_ledger.close_time | Number | Time this ledger was closed, in seconds since the Ripple Epoch |
+| validated_ledger.hash | String | Unique hash of this ledger version, as hex |
+| validated_ledger.reserve_base | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
+| validated_ledger.reserve_inc | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
+| validated_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
+| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
 # Convenience Functions #
 

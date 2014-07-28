@@ -24,7 +24,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
   <link  href='https://dev.ripple.com/css/main.css' rel='stylesheet'>
   <link  href='css/custom.css' rel='stylesheet'>
-
+  
   <!-- start Mixpanel -->
   <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
 typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
@@ -48,30 +48,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
   <!-- end google analytics -->  
     
-  <!-- Initializer -->
-  <script>
-    var GET_VARS = window.location.search.replace("?","").split("&");
-    if (GET_VARS.indexOf("p=web-sockets-api")>-1) {
-        var fdfile = "websocket_api.md";
-        $('.header-subnav').removeClass('active');
-        $('#subnav-websocket').addClass('active');
-        document.title = "Ripple Dev Portal: WebSocket and JSON-RPC APIs";
-    } else if (GET_VARS.indexOf("p=ripple-rest-api")>-1) {
-        var fdfile = "ripplerest_api.md";
-        $('.header-subnav').removeClass('active');
-        $('#subnav-rest').addClass('active');
-        document.title = "Ripple Dev Portal: Ripple-REST API";
-    } else {
-        var fdfile = "intro.md";
-        $('.header-subnav').removeClass('active');
-        $('#subnav-intro').addClass('active');
-        document.title = "Ripple Dev Portal: Introduction";
-    }
-    
-    Flatdoc.run({
-      fetcher: Flatdoc.file(fdfile)
-    });
-  </script>
+
   
   <!-- syntax selection js -->
   <script src='js/multicodetab.js'></script>
@@ -84,7 +61,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   
 </head>
 <body role='flatdoc' class='no-literate'>
-<!--Draft warning would go here-->
+  <div style='background-color: #d55;position:fixed;top:0;right:150px; color:white;padding:1em;font-size:15pt;z-index:1000;'>Draft</div>
   <div class='header'>
     <div class='left'>
       <h1>{<i class="icon-ripple-logo"></i>}</h1>
@@ -98,25 +75,45 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     </div>
     <div class='right'>
       <!-- GitHub buttons: ghbtn.html -->
-      <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+      <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&amp;repo=ripple-dev-portal&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
     </div>
   </div>
   <div class="header-subnav-wrapper">
-  <div class='header-subnav'>
-    <ul>
-        <li><a href='?p=introduction' id='subnav-intro'>Introduction</a></li>
-        <li><a href='?p=ripple-rest-api' id='subnav-rest'>Ripple-REST API</a></li>
-        <li><a href='?p=web-sockets-api' id='subnav-websocket'>WebSocket &amp; JSON-RPC APIs</a></li>
-    </ul>
-    <div class='clearer'>&nbsp;</div>
+      <div class="header-subnav">
+        <ul>
+
+        </ul>
+        <div class='clearer'>&nbsp;</div>
+      </div>
   </div>
-</div>
   <div class='content-root'>
     <div class='menubar'>
       <div class='menu section' role='flatdoc-menu'></div>
     </div>
     <div role='flatdoc-content' class='content'></div>
   </div>
+  
+  <!-- Initializer -->
+  <script src='js/toc.js' type='text/javascript'></script>
+  <script type='text/javascript'>
+    var GET_VARS = window.location.search.replace("?","").split("&");
+    var doc_to_load = toc[0]; // Default
+    for (i=0; i < toc.length; i+=1) {
+        //Create a link in the sub-nav. TEMPORARY UNTIL BREADCRUMBS
+        //Note: this doesn't work if this script is in the header, before the HTML it modifies
+        $(".header-subnav ul").append("<li><a href='?p="+toc[i].slug+"' id='subnav-"+toc[i].slug+"'>"+toc[i].title+"</a></li>");
 
+        if (GET_VARS.indexOf("p="+toc[i].slug)>-1) {
+            doc_to_load = toc[i];
+            $("#subnav-"+toc[i].slug).addClass("active");
+        }
+    }
+    //Now actually load it
+    document.title = doc_to_load.title + " - Ripple Dev Portal";
+    
+    Flatdoc.run({
+      fetcher: Flatdoc.file(doc_to_load.file)
+    });
+  </script>
 </body>
 </html>

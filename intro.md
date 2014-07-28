@@ -4,7 +4,7 @@ Ripple is a decentralized, peer-to-peer network for moving value using cryptogra
 
 # Ripple Client Applications #
 
-The official web client for the Ripple Network is available at [https://ripple.com/client/](). In order to get an account on the network, you will have to find someone to give or sell you some amount of XRP in excess of the reserve requirement. In the future, official downloadable clients will also be available.
+The official web client for the Ripple Network is available at [https://rippletrade.com/](). In order to get an account on the network, you will have to find someone to give or sell you some amount of XRP in excess of the reserve requirement. In the future, official downloadable clients will also be available.
 
 # Ripple APIs #
 
@@ -16,9 +16,9 @@ If you are building your own client, you have several options of interfaces that
 
 | Tool | Summary | Interface | Abstraction Level | Pros | Cons |
 |------|---------|-----------------------|-------------------|------|------|
-| [gatewayd](https://github.com/ripple/gatewayd) | Skeleton for implementing gateway functionality as a Node.js application | HTTP | Very high | ✓ Most functionality needed to operate a gateway is already implemented | ✗ Only intended for gateways <br> ✗ Requires Node.js |
-| [Ripple-REST](?p=ripple-rest-api) | RESTful interface to `rippled` as a Node.js application | HTTP | High | ✓ Simple robust transaction submission <br> ✓ Broad HTTP-client support | ✗ Lacks access to a few features like viewing currency exchange offers <br> ✗ Requires Node.js |
-| [ripple-lib](https://github.com/ripple/ripple-lib) | Reference implementation for accessing the WebSocket API | Javascript | Moderate | ✓ Simple robust transaction submission<span class='draft-comment'>(Confirm this)</span> <br> ✓ Good balance of simplicity and power | ✗ Javascript only (Clients for other languages are in progress) |
-| [rippled WebSocket API](?p=web-sockets-api) | Powerful, asynchronous API built on the WebSocket protocol | [WebSocket](http://en.wikipedia.org/wiki/Websocket) | Low | ✓ Access to all Ripple functionality <br> ✓ Can be pushed ordered stream data | ✗ Fewer convenient abstractions <br> ✗ WebSocket clients are rare outside of Javascript |
-| [rippled JSON-RPC API](?p=web-sockets-api) <!--note: that's not a typo, the websocket and json-rpc docs are on the same page--> | Powerful, synchronous API built on the [JSON-RPC convention](http://json-rpc.org/) | HTTP | Low | ✓ Access to almost all Ripple functionality <br> ✓ Broad HTTP-client support | ✗ Fewer convenient abstractions <br> ✗ Callbacks may arrive out of order <br> ✗ No incremental pathfinding |
+| [gatewayd](https://github.com/ripple/gatewayd) | Skeleton for implementing gateway functionality as a Node.js application | HTTP interface | Very high abstraction | ✓ Most functionality needed to operate a gateway is already implemented | ✗ Only intended for gateways <br> ✗ Requires Node.js |
+| [Ripple-REST](?p=ripple-rest-api) | RESTful interface to `rippled` as a Node.js application | HTTP interface | High abstraction | ✓ Simple robust transaction submission <br> ✓ Broad HTTP-client support | ✗ Lacks access to a few features like viewing currency exchange offers <br> ✗ Requires Node.js |
+| [ripple-lib](https://github.com/ripple/ripple-lib) | Reference implementation for accessing the WebSocket API | Javascript library | Moderate abstraction | ✓ Simple robust transaction submission<br> ✓ Good balance of simplicity and power | ✗ Javascript only (Clients for other languages are in progress) |
+| [rippled WebSocket API](?p=web-sockets-api) | Powerful, asynchronous API built on the WebSocket protocol | [WebSocket](http://en.wikipedia.org/wiki/Websocket) interface | Low abstraction | ✓ Access to all Ripple functionality <br> ✓ Can be pushed ordered stream data | ✗ Fewer convenient abstractions <br> ✗ WebSocket clients are rare outside of Javascript |
+| [rippled JSON-RPC API](?p=web-sockets-api) <!--note: that's not a typo, the websocket and json-rpc docs are on the same page--> | Powerful, synchronous API built on the [JSON-RPC convention](http://json-rpc.org/) | HTTP interface | Low abstraction | ✓ Access to almost all Ripple functionality <br> ✓ Broad HTTP-client support | ✗ Fewer convenient abstractions <br> ✗ Callbacks may arrive out of order <br> ✗ No incremental pathfinding |
 
