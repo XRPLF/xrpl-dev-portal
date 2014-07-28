@@ -51,7 +51,11 @@ When a gateway issues balances of non-XRP currencies on the Ripple Network, thos
 
 The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators.
 
-The hot wallet is like your cash register. It holds a small amount of funds at a time, 
+The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet.
+
+All Issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received from external transfers. Consequently, all Ripple accounts must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.)
+
+Although you could send the Issuances directly from the cold wallet to customers, that exposes you to risk.
 
 ## Updating
 
