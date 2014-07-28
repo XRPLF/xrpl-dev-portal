@@ -208,7 +208,6 @@ body:not(.no-literate) .content > h2,
 body:not(.no-literate) .content > h3 {
   color: #474648;
   font-family: 'Open Sans', sans-serif;
-  text-transform: capitalize;
 }
 body:not(.no-literate) .content h1,
 body:not(.no-literate) .content h2,
@@ -335,7 +334,6 @@ body:not(.no-literate) .guidelines-content .brand-guidelines-row p strong {
 }
 body:not(.no-literate) .guidelines-content .brand-guidelines-title {
   color: #474648;
-  text-transform: inherit;
   font-weight: 600;
   font-family: 'Open sans' sans-serif;
   border: 0;
@@ -684,14 +682,12 @@ body:not(.no-literate) .guidelines-content .badge-example .badge-location:after 
   color: #474648;
   font-size: 13px;
   font-family: 'Open Sans', sans-serif;
-  text-transform: capitalize;
 }
 .menu a.level-2 {
   padding-left: 25px;
   color: #466db2;
   font-size: 13px;
   font-family: 'Open Sans', sans-serif;
-  text-transform: capitalize;
 }
 .menu a.level-2.active {
   color: #517ab8 !important;

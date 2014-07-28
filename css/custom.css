@@ -1,0 +1,88 @@
+/* Additional Styling */
+
+body .content-root {
+	background: none !important;
+	box-shadow: none !important;
+}
+
+.header .left {
+	float: none;
+	max-width: 1024px;
+	margin: auto;
+}
+
+.header-subnav-wrapper {
+	background: #f3f6fb;
+	border-bottom: solid 1px #dfe2e7;
+}
+
+.header-subnav {
+	max-width: 1024px;
+	margin: auto;
+	border-bottom: none !important;
+}
+
+.content-root {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.menubar.fixed {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Brand Guidelines */
+.brand_guidelines .content-root {
+	margin: 0 auto;
+	padding: 0 !important;
+} 
+
+@media (min-width: 768px) {
+	.menubar {
+		right: 794px;
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		overflow-x: hidden;
+	}
+	
+	.header-subnav ul {
+		margin: auto;
+		max-width: 480px;
+	}
+	
+	.header-subnav li {
+		width: 350px;
+	}
+	
+	.header-subnav li a {
+		padding: 10px 5px !important;
+		font-size: .8em;
+	}
+	
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+		max-width: 300px;
+		margin: auto;
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+}
+
