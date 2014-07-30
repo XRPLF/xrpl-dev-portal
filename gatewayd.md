@@ -47,15 +47,55 @@ The defaults for all of gatewayd's settings are found in the file `config/config
 
 ### Hot Wallet, Cold Wallet, Trust ###
 
-When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost, so it is important to take proper precautions to minimize the risk of losses. To accomplish this, gatewayd uses the concept of a "hot wallet" and a "cold wallet". 
+When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost, so it is important to take proper precautions to minimize the risk of losses. To accomplish this, gatewayd uses the concept of a "hot wallet" and a "cold wallet". (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
 
-The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators.
+The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators. Every now and then, the cold wallet is used to refill the stores in the hot wallet.
 
-The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet.
+The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet. The hot wallet can be replaced without affecting the balances already issued 
 
-All Issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received from external transfers. Consequently, all Ripple accounts must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.)
+All Issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not.
 
-Although you could send the Issuances directly from the cold wallet to customers, that exposes you to risk.
+Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited Issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
+
+### Setting Up Wallets for gatewayd
+
+The actual process of configuring gatewayd with the appropriate accounts is easy. First, generate a set of account keys for a cold wallet. You can use the official Ripple client to do so:
+
+[Ripple Client](https://ripple.com/client/#/register) *Note:* The key generation process happens on your local machine, and is never sent to Ripple or anyone else. You can even go offline while you generate the key (as long as you've fully loaded the page first).
+
+Save the secret key somewhere that it will be completely safe. Never send it unencrypted to an untrusted entity such as your web host. 
+
+Now, set the address of the cold wallet in gatewayd using the commandline:
+
+    bin/gateway set_cold_wallet rsnCCioK33L19UwywUPoHK3ucTcQR2fpfm
+
+Next, generate a new key pair for the hot wallet account.
+    
+    bin/gateway generate_wallet
+
+Set the address _and_ the secret key for the hot wallet in gatewayd using the commandline:
+
+    bin/gateway set_hot_wallet rhfyVnzjPvvtdnZNSiNufRCZhHpc9yh1rA ssmgxde6ozSViVkuWvsC6HJxpLvH4
+    
+(*Tip:* Ripple addresses always start with `r`; Ripple secrets always start with `s`.)
+
+Define which currencies your gateway will support. (This does not include XRP, which is necessary for every Ripple account and gateway.) You can do this with the commandline as well. Run the `add_currency` command with the 3-letter ISO 4217 currency codes for whichever currencies you want to support:
+
+    bin/gateway add_currency USD
+    bin/gateway add_currency XAU
+
+Fund both accounts. This requires some outside source of XRP to send a payment to the address of each one. For now, we recommend at least 50 XRP. (Because it requires outside intervention, you cannot do this step with gatewayd.)
+
+At this point, you need to create trustlines between the hot and cold wallet accounts. You can also do this with the gatewayd commandline. Run the `set_trust` command, with reasonable maximum quantities that you want your hot wallet to hold at a time, for each currency you support.
+
+    bin/gateway set_trust USD 1000
+    bin/gateway set_trust XAU 2
+    
+(*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.)
+
+The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. <span class='draft-comment'>(Any advice on what payment hash to use?</span>
+
+
 
 ## Updating
 
