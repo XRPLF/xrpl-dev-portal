@@ -1058,9 +1058,13 @@ Response Body:
 __`POST /v1/withdrawals/{:id}/clear`__
 
 A pending withdrawal record indicates to the gateway operator that a
-user wishes to withdraw a given asset. Once the operator processes the withdrawal
-by sending the asset to the user, mark the withdrawal as "cleared" by calling
-this method.
+user wishes to withdraw a given asset. Once the operator processes the 
+withdrawal by sending the asset to the user, mark the withdrawal as "cleared" 
+by calling this method.
+
+Request Body:
+
+<span class='draft-comment'>example needed</span>
 
 Response Body:
 
@@ -1129,8 +1133,8 @@ Response Body:
 ### List Hot Wallet Balances ###
 __`GET /v1/balances`__
 
-The hot wallet holds limited funds issued by the cold wallet, and the current
-balance thereof is represented as hot wallet balances.
+This method lists the funds that are held by the hot wallet, ready to be 
+distributed to clients. 
 
 Response Body:
 
