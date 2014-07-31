@@ -47,13 +47,13 @@ The defaults for all of gatewayd's settings are found in the file `config/config
 
 ### Hot Wallet, Cold Wallet, Trust ###
 
-When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost, so it is important to take proper precautions to minimize the risk of losses. To accomplish this, gatewayd uses the concept of a "hot wallet" and a "cold wallet". (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
+When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost. Gatewayd uses the concept of a "hot wallet" and a "cold wallet" to minimize the risk of losses. (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
 
 The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators. Every now and then, the cold wallet is used to refill the stores in the hot wallet.
 
-The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet. The hot wallet can be replaced without affecting the balances already issued 
+The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet. The hot wallet can be replaced without affecting the balances already issued by the cold wallet and held by users.
 
-All Issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not.
+All issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not. 
 
 Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited Issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
 
@@ -1462,43 +1462,61 @@ Response Body:
 ### List Supported Currencies ###
 __`GET /v1/currencies`__
 
-List currencies supported by the gateway, which are shown in the gateway's ripple.txt
-manifest file.
+This method lists currencies officially supported by the gateway. These currencies are also listed
+in the gateway's `ripple.txt` manifest file.
 
 Response Body:
 
 ```
 {
   "CURRENCIES": {
-    "SWD": 10000
+    "SWD": 0
   }
 }
 ```
 
-### Set Supported Currencies ###
+### Add Supported Currency ###
 __`POST /v1/currencies`__
 
-Add a currency to be supported by the gateway. This currency is shown in the gateway's
-ripple.txt manifest file.
+This method adds a currency to the gateway's list of supported currencies, which is shown in the 
+gateway's `ripple.txt` manifest file.
 
 Request Body:
 
 ```
 {
-  currency: "XAG"
+  "currency": "XAG"
 }
 ```
 
-Response Body
+Response Body:
 
 ```
 {
   "CURRENCIES": {
-    "SWD": 10000,
-    "XAG": 0
+    "USD": 0,
+    "XAG": 0,
+    "XAU": 0
   }
 }
 ```
+
+### Remove Supported Currency ###
+__`DELETE /v1/currencies/{:currency}`__
+
+This method removes a currency (defined by the URL) from the list of supported currencies.
+
+Response Body:
+
+```
+{
+    "CURRENCIES": {
+        "USD": 0,
+        "XAU": 0
+    }
+}
+```
+
 ## Managing Gateway Processes ##
 
 ### Start Worker Processes ###
