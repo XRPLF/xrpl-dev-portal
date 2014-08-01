@@ -260,13 +260,13 @@ The available commands are as follows:
 
 ## Available API Routes ##
 
-* [`POST /v1/registrations`](#registering-a-user)
-* [`POST /v1/users/{:id}/activate`](#activating-a-user)
-* [`POST /v1/users/{:id}`](#deactivating-a-user)
-* [`POST /v1/deposits/`](#creating-a-deposit)
-* [`GET /v1/deposits`](#listing-deposits)
-* [`GET /v1/payments/outgoing`](#listing-outgoing-payments)
-* [`GET /v1/payments/failed`](#listing-failed-payments)
+* [`POST /v1/registrations`](#register-user)
+* [`POST /v1/users/{:id}/activate`](#activate-user)
+* [`POST /v1/users/{:id}`](#deactivate-user)
+* [`POST /v1/deposits/`](#create-deposit)
+* [`GET /v1/deposits`](#list-deposits)
+* [`GET /v1/payments/outgoing`](#list-outgoing-payments)
+* [`GET /v1/payments/failed`](#list-failed-payments)
 * [`POST /v1/payments/failed/{:id}/retry`](#retrying-a-failed-payment)
 * [`GET /v1/payments/incoming`](#listing-incoming-payments)
 * [`GET /v1/withdrawals`](#listing-withdrawals)
@@ -317,22 +317,40 @@ The available commands are as follows:
 ## Managing Users ##
 
 ### Register User ###
-__`POST /v1/registrations`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/register_user.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/registrations
+{
+  "name": "steven@ripple.com",
+  "password": "s0m3supe&$3cretp@s$w0r*",
+  "ripple_address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk"
+}
+```
+
+*Commandline*
+
+```
+#Syntax: register_user <username> <password> <ripple_address> 
+$ bin/gateway register_user steven@ripple.com s0m3supe&$3cretp@s$w0r* r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk 
+```
+
+*Javascript*
+```
+//options: object with "name", "password", and "address" fields
+//callback: function f(err, user) to run on callback
+gateway.api.registerUser(options, callback);
+```
+</div>
 
 Register a user with the gatewayd. A username, password, and ripple address are required. Upon
 registration several records are created in the gatewayd database, including a user record,
 a "independent" ripple address record with the address provided, a "hosted" ripple address
 record for making withdrawals, and a "default" external account for recording deposits and
 withdrawals.
-
-Request Body:
-```
-    {
-      "name": "steven@ripple.com",
-      "password": "s0m3supe&$3cretp@s$w0r*",
-      "ripple_address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk"
-    }
-```
 
 Response Body:
 ```
@@ -395,17 +413,36 @@ Response Body:
 ```
 
 ### Activate User ###
-__`POST /v1/users/{:id}/activate`__
+[[Source<br>]](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/activate_user.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/users/{:id}/activate
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: activate_user <id>
+$ bin/gateway activate_user 508
+```
+
+*Javascript*
+
+```
+//id: string account ID
+//callback: function f(err, user) to run on callback
+gateway.api.activateUser(id, callback)
+```
+
+</div>
 
 By default a user is marked as "inactive", although no action is taken to 
 enforce this status. To mark a user as active, run this command with the user's
 ID.
-
-Request Body:
-
-```
-{}
-```
 
 Response Body:
 

@@ -32,6 +32,10 @@ body .content-root {
 	margin-left: auto;
 }
 
+.content a[title="Source"] {
+    float:right;
+}
+
 /* Brand Guidelines */
 .brand_guidelines .content-root {
 	margin: 0 auto;
