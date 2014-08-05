@@ -4,7 +4,13 @@ Ripple is a decentralized, peer-to-peer network for moving value using cryptogra
 
 # Ripple Client Applications #
 
-The official web client for the Ripple Network is available at [https://rippletrade.com/](). In order to get an account on the network, you will have to find someone to give or sell you some amount of XRP in excess of the reserve requirement. In the future, official downloadable clients will also be available.
+The official web client for the Ripple Network is available at [https://rippletrade.com/](). There is also an official downloadable client at [http://download.ripple.com/](). 
+
+In order to activate your account, you must fund it with enough XRP to meet the account reserve (currently 20 XRP). You can do this in a few different ways:
+
+* You can buy XRP with Bitcoins in the Ripple Trade client, under the [Fund](https://www.rippletrade.com/#/fund) tab.
+* You can have someone who is already on the network send a payment to your account's address. 
+* Keep an eye out for promotions that give away free XRP to developers.
 
 # Ripple APIs #
 
