@@ -413,7 +413,7 @@ Response Body:
 ```
 
 ### Activate User ###
-[[Source<br>]](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/activate_user.js "Source")
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/activate_user.js "Source")
 
 <div class='multicode'>
 *REST*
@@ -433,7 +433,7 @@ $ bin/gateway activate_user 508
 *Javascript*
 
 ```
-//id: string account ID
+//id: integer account ID
 //callback: function f(err, user) to run on callback
 gateway.api.activateUser(id, callback)
 ```
@@ -469,16 +469,35 @@ Response Body:
 ```
 
 ### Deactivate User ###
-__`POST /v1/users/{:id}/deactivate`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/deactivate_user.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/users/{:id}/deactivate
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: deactivate user <id>
+$ bin/gateway deactivate_user 508
+```
+
+*Javascript*
+
+```
+//id: integer account ID
+//callback: function f(err, user) to run on callback
+gateway.api.deactivateUser(id, callback)
+```
+</div>
+
 
 To mark a user an "inactive", run this command with the user's ID. This flag is
 purely for informational purposes and is not enforced in any way.
-
-Request Body:
-
-```
-{}
-```
 
 Response Body:
 
@@ -505,6 +524,8 @@ Response Body:
 ```
 
 ### Log In User ###
+<span class='draft-comment'>This method appears not to exist in the usual places in the [source code](https://github.com/ripple/gatewayd/blob/master/lib/http/routers/api_router.js) [[2]](https://github.com/ripple/gatewayd/blob/master/bin/gateway)?</span>
+
 __`POST /v1/users/login`__
 
 Verifies that a user has the correct username and password combination. Used
@@ -523,10 +544,11 @@ Request Body:
 ```
 
 Response Body:
-<span class='draft-comment'>Not sure if res.send({ user: user }); indicates 
-that only the username is returned?</span>
+<span class='draft-comment'>No example yet</span>
 
 ### Retrieve User ###
+<span class='draft-comment'>Can't find this in the source either</span>
+
 __`GET /v1/users/{:id}`__
 
 To retrieve a user's base account information, pass the user's ID to this 
