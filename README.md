@@ -5,6 +5,8 @@ This Ripple Developer Portal is focused solely on documentation for the [`ripple
 
 The documentation is stored in the "API.md" file in the root of the `ripple-dev-portal` repository. Versioning for the documentation will match the tagged release version for `ripple-rest`.
 
-### The ripple-dev-portal is currently hosted at https://dev.ripple.com ###
+### The ripple-dev-portal is currently hosted at https://dev.ripple.com  ###
+
+
 
 
