@@ -59,6 +59,9 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <!-- syntax selection js -->
   <script src='js/multicodetab.js'></script>
   <script>
+    $(document).on('flatdoc:ready', $().multicode_tabs);
+  </script>
+  <script>
     Flatdoc.run({
       fetcher: Flatdoc.file('ripplerest_api.md')
     });
