@@ -1,117 +1,57 @@
-/* Additional Styling */
+/************
+  global
+*********** */
 
-html, body, h1, td, textarea, input {
-	font-family: 'Open Sans', sans-serif !important;
+body {
+	background-color: #f5f5f5;
+	font-family: 'Open Sans', sans-serif;
 }
 
-body .content-root {
-	background: none !important;
-	box-shadow: none !important;
+.wrapper {
+	background-color: #fff;
 }
 
-.header {
-	background: #346AA9;
-	height: 50px;
-	-webkit-box-shadow: none;
-	box-shadow: none;
+a:hover {
+	text-decoration: none;
 }
 
-.header .left {
-	float: none;
-	max-width: 1170px;
-	margin: auto;
+
+/************
+  jumbotron
+*********** */
+
+.jumbotron {
+ 	margin-top: 50px;
+ 	background: #f5f5f5;
 }
 
-.header-subnav-wrapper {
-	background: #f3f6fb;
-	border-bottom: solid 1px #dfe2e7;
-	margin-top: 50px;
+.jumbotron p {
+ 	font-size: 14px;
+	font-weight: 400; 	
 }
 
-.header-subnav {
-	max-width: 1170px;
-	margin: auto;
-	border-bottom: none !important;
-	position: fixed !important;
+.main_callout {
+	padding-top:10px;
+}
+
+.join {
+	font-weight: 500 !important;
+}
+
+img.large_logo {
+	padding: 10px 20px 10px 10px;
 	width: 100%;
-	margin-top: 51px;
 }
 
-.content-root {
-	max-width: 1024px;
-	margin: auto;
-	margin-top: 50px;
-	padding-top: 10px;
-}
 
-.menubar {
-	padding-top: 10px;
-}
+@media (min-width: 992px) {
 
-.menubar.fixed {
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 50px;
-	margin-bottom: 181px;
-}
-.header-subnav li a:active {
-color: #f09 !important;
-}
-/* Brand Guidelines */
-
-.brand_guidelines .content-root {
-	margin: 0 auto;
-	padding: 0 !important;
-}
-
-@media (min-width: 768px) {
-	.menubar {
-		right: 794px;
-	}
-}
-
-@media (max-width: 480px) {
-	body {
-		overflow-x: hidden;
-	}
-	
-	.header-subnav ul {
-		margin: auto;
-		max-width: 480px;
-	}
-	
-	.header-subnav li {
-		width: 350px;
-	}
-	
-	.header-subnav li a {
-		padding: 10px 5px !important;
-		font-size: .8em;
-	}
-	
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-		max-width: 300px;
-		margin: auto;
-	}
-	
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	tr { border: 1px solid #ccc; }
-	
-	td { 
-		border: none;
-		position: relative;
-		padding-left: 50%; 
+	.jumbotron .col-md-6 {
+		padding-left: 60px;
 	}
 	
 }
-
+  
 /************
   	nav
 *********** */
@@ -155,10 +95,6 @@ color: #f09 !important;
 	margin-top: 15px;
 }
 
-.nav>li {
-	font-size: 14px;
-}
-
 @media (max-width: 768px) {
 
 	.right {
@@ -167,16 +103,16 @@ color: #f09 !important;
 	}
 
 }
-
+ 
 /************
   footer
 *********** */
 .footer {
 	width: 100%;
+	height: 100%;
 	background-color: #f5f5f5;
 	margin-top:20px;
 	color: #878787;
-	padding-bottom: 20px;
 }
 
 .container .text-muted {
@@ -186,15 +122,10 @@ color: #f09 !important;
 ul.footer_links {
 	list-style: none;
 	padding: 10px 0 0 0;
-	font-size: 14px;
 }
 
 ul.footer_links a {
 	color: #878787;
-}
-
-ul.footer_links a:hover {
-	text-decoration: underline;
 }
 
 /************
@@ -215,7 +146,7 @@ input#mce-EMAIL {
 	display: inline-block !important;
 	height: 34px !important;
 	width: 26% !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 }
 
 input#mc-embedded-subscribe {
@@ -227,7 +158,44 @@ input#mc-embedded-subscribe {
 	padding: 0 !important;
 }
 
-.mail_chimp p {
-	margin-bottom: 10px;
-	font-size: 14px;
+/************
+Main content
+*********** */
+
+.main_title {
+	font-size: 30px;
+	font-weight: 300;
+	margin-top:10px;
 }
+
+.description h2{
+	font-size: 24px;
+	font-weight: 600;
+	margin: 20px 0 15px 0;
+}
+
+.resources li {
+	display: inline;
+	margin-right: 15px;
+}
+
+ul.resources {
+	padding: 0;
+}
+
+.last {
+	margin-bottom: 40px;
+}
+
+.description.highlight {
+	background: #f5f5f5;
+	padding-bottom: 15px;
+	margin: 22px 0;
+}
+
+@media (max-width: 992px) {
+	.description.highlight {
+		padding-top: 10px;
+	}
+}
+
