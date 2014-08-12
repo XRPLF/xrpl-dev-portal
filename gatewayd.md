@@ -41,13 +41,13 @@ Gatewayd's features include:
 
 ## Configuration ##
 
-Before you can run gatewayd, you need to set up the appropriate accounts that will be used to store and send funds in the Ripple network. You also need to define which currencies your gateway issues. Beyond that, there are some options you can set if they set your needs.
+Before you can run gatewayd, you need to set up the appropriate accounts that will be used to store and send funds in the Ripple network. You also need to define which currencies your gateway issues. Beyond that, there are some options you can set if they fit your needs.
 
-The defaults for all of gatewayd's settings are found in the file `config/config.js`. You can override any of those settings with your own values by editing them in the file `config/config.json`. Don't mix up these two files!
+The defaults for all of gatewayd's settings are found in the file `config/config.js`. You can override any of those settings with your own values by editing them in the file `config/config.json`, or by using the API methods for setting the configuration. (The API methods result in editing the `config/config.json` file anyway.) You don't need to edit the `config/config.js` file, since that only contains the defaults, and gets overridden in a software update.
 
 ### Hot Wallet, Cold Wallet, Trust ###
 
-When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost. Gatewayd uses the concept of a "hot wallet" and a "cold wallet" to minimize the risk of losses. (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
+When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost. Gatewayd uses the concept of a "hot wallet" and a "cold wallet" to minimize the risk of losses for both categories. (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
 
 The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators. Every now and then, the cold wallet is used to refill the stores in the hot wallet.
 
@@ -55,7 +55,7 @@ The hot wallet is like your cash register. It holds a small amount of funds at a
 
 All issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not. 
 
-Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited Issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
+Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
 
 ### Setting Up Wallets for gatewayd
 
@@ -101,7 +101,7 @@ The last step before you can start your gateway is to set the last payment hash.
 
 The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
 
-<span class='draft-comment'>(Not totally sure about the commandline syntax for all of these</span>
+<span class='draft-comment'>(Need to confirm that this is the correct commandline syntax for all of these)</span>
 
 1. Use git to pull the `master` branch [from Github](https://github.com/ripple/gatewayd.git). (This assumes you created it by using `git clone` on the repository first.)<br/>
     `git pull`
@@ -124,14 +124,16 @@ After installation, start the gateway processes by running the command:
 
 ## Gatewayd Architecture
 
-A gateway acts as a link between the Ripple Network and activities outside of the network, such as traditional banking activities. Thus, gatewayd sits between the `rippled` server (which participates in the network) and some source of information about external activities. (This could be custom banking software that is aware of deposits and withdrawals, or it could even be manually monitored.) 
+A gateway acts as a link between Ripple's shared global Ledger and value outside of the network, such as traditional banking balances, other virtual currencies, or more. Thus, gatewayd sits between the `rippled` server (which participates in the network that defines the Ripple global ledger) and some source of information about external activities. Gatewayd's main job is to monitor each side for transactions and translate them into the appropriate actions on the other side.
+
+In short, you can 
 
 Gatewayd is implemented as a [Node.js](http://nodejs.org/) web application that keeps track of transactions that are entering and leaving the Ripple Network, and exposes a RESTful API for configuring and controlling its behavior. It persists transactions to a [Postgres database](http://www.postgresql.org/). This application has 6 main processes that comprise its operation:
 
 | Process | Purpose |
 |---------|---------|
 | server  | Provides the RESTful API for controlling gatewayd and querying about its status; also serves a ripple.txt file to identify the gateway. |
-| ripple-rest | Provides a [Ripple-REST](?p=ripple-rest-api) service that communicates with a `rippled` server. |
+| ripple-rest | Provides a [Ripple-REST](?p=ripple-rest) service that communicates with a `rippled` server. |
 | incoming | Monitors the Ripple Network for incoming Ripple payments |
 | withdrawals | Converts records of incoming Ripple payments into pending withdrawal records |
 | outgoing | Sends pending Ripple payments out to the network to issue balances |
@@ -491,7 +493,7 @@ $ bin/gateway deactivate_user 508
 ```
 //id: integer account ID
 //callback: function f(err, user) to run on callback
-gateway.api.deactivateUser(id, callback)
+gateway.api.deactivateUser(id, callback);
 ```
 </div>
 
@@ -524,9 +526,21 @@ Response Body:
 ```
 
 ### Log In User ###
-<span class='draft-comment'>This method appears not to exist in the usual places in the [source code](https://github.com/ripple/gatewayd/blob/master/lib/http/routers/api_router.js) [[2]](https://github.com/ripple/gatewayd/blob/master/bin/gateway)?</span>
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/public/login_user.js "Source")
 
-__`POST /v1/users/login`__
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/users/login
+{
+    "name": "steven@ripple.com",
+    "password": "s0m3supe&$3cretp@s$w0r*"
+}
+```
+</div>
+
+<span class='draft-comment'>Seemingly no commandline for this; also, not exactly applicable for JS?</span>
 
 Verifies that a user has the correct username and password combination. Used
 for the web application and requires user credentials in place of an API key.
@@ -534,22 +548,33 @@ for the web application and requires user credentials in place of an API key.
 Naturally, since this includes sensitive credentials, do not run this command 
 over an unsecure connection.
 
-Request Body:
-
-```
-{
-    "name": "steven@ripple.com",
-    "password": "s0m3supe&$3cretp@s$w0r*"
-}
-```
-
 Response Body:
-<span class='draft-comment'>No example yet</span>
+<span class='draft-comment'>No example yet -- should be a user object</span>
 
 ### Retrieve User ###
-<span class='draft-comment'>Can't find this in the source either</span>
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/resources/users_controller.js#L38 "Source")
 
-__`GET /v1/users/{:id}`__
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}
+```
+
+*Commandline*
+
+```
+// no commandline equivalent?
+```
+
+*Javascript*
+```
+//requires User data model
+//user_id: Integer user ID
+//callback: function f(err, user) to run on callback
+User.find({ where: { id: user_id }}).complete(callback);
+```
+</div>
 
 To retrieve a user's base account information, pass the user's ID to this 
 method.
@@ -580,7 +605,29 @@ Response Body:
 ```
 
 ### List User External Accounts ###
-__`GET /v1/users/{:id}/external_accounts`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_user_external_accounts.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/external_accounts
+```
+
+*Commandline*
+
+```
+# Syntax: list_user_external_accounts <id>
+bin/gateway list_user_external_accounts 508
+```
+
+*Javascript*
+```
+//id: integer ID of account to get external accounts from
+//callback: function f(err, accounts) to run on callback
+gateway.api.listUserExternalAccounts(id, callback);
+```
+</div>
 
 To list all external (non-Ripple) account records for a user, pass the user's 
 ID to this method.
@@ -604,7 +651,25 @@ Response Body:
 ```
 
 ### List User External Transactions ###
-__`GET /v1/users/{:id}/external_transactions`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L24 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/external_transactions
+```
+
+*Javascript*
+
+```
+//id: Integer user ID of user to find transactions of
+//callback: function f(err, transactions) to run on callback
+gateway.data.externalTransactions.forUser(id, callback);
+```
+</div>
+
+<span class='draft-comment'>Apparently no commandline for this one?</span>
 
 List all external (non-Ripple) transaction records for a given user. These 
 records are the user's deposits into the gateway and withdrawals from it.
@@ -637,7 +702,25 @@ Response Body:
 ```
 
 ### List User Ripple Addresses ###
-__`GET /v1/users/{:id}/ripple_addresses`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L36 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+/v1/users/{:id}/ripple_addresses
+```
+
+*Javascript*
+
+```
+//id = Integer ID of user to retrieve Ripple addresses of
+//callback: function f(err, addresses) to run on callback
+gateway.data.rippleAddresses.readAll({ user_id: id }, callback);
+```
+</div>
+
+<span class='draft-comment'>No commandline for this one?</span>
 
 To list all ripple addresses for a given user, pass the user's ID to this 
 method. Most users will have at least one independent address and one hosted 
@@ -681,7 +764,25 @@ Response Body:
 ```
 
 ### List User Ripple Transactions ###
-__`GET /v1/users/{:id}/ripple_transactions`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L46 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/ripple_transactions
+```
+
+*Javascript*
+
+```
+//id: Integer user ID of the user to retrieve transactions of
+//callback: function f(err, transactions) to run on callback
+gateway.data.rippleTransactions.forUser(id, callback);
+```
+</div>
+
+<span class='draft-comment'>No commandline for this one either?</span>
 
 To list all Ripple transactions for a given user, pass the user's ID to this
 method. The response includes an array of transactions made to or from any of 
