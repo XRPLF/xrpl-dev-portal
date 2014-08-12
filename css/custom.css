@@ -193,6 +193,10 @@ ul.footer_links a {
 	color: #878787;
 }
 
+ul.footer_links a:hover {
+	text-decoration: underline;
+}
+
 /************
 Mail chimp
 *********** */
