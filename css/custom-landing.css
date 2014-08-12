@@ -131,30 +131,30 @@ ul.footer_links a {
 /************
 Mail chimp
 *********** */
-input#mce-EMAIL {
+input#mce-EMAIL, input#mce-EMAIL2 {
 	height: 34px !important;
 	border: 1px solid #ccc !important;
 }
 
-#mc_embed_signup input.email {
+#mc_embed_signup input.email, #mc_embed_signup input.email2 {
 	width: 38% !important;
 	display: inline-block !important;
 	margin-right: 2% !important;
 }
 
-#mc_embed_signup input.button {
+#mc_embed_signup input.button, #mc_embed_signup input.button2 {
 	display: inline-block !important;
 	height: 34px !important;
 	width: 26% !important;
 	font-weight: 300 !important;
 }
 
-input#mc-embedded-subscribe {
+input#mc-embedded-subscribe, input#mc-embedded-subscribe2 {
 	background-color: #346AA9 !important;
 	vertical-align: bottom !important;
 }
 
-#mc_embed_signup form {
+#mc_embed_signup form, #mc_embed_signup form2 {
 	padding: 0 !important;
 }
 
