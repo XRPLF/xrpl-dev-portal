@@ -93,15 +93,11 @@ At this point, you need to create trustlines between the hot and cold wallet acc
     
 (*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.)
 
-The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. <span class='draft-comment'>(Any advice on what payment hash to use?</span>
-
-
+The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. To get a good starting value, look up the transaction history for the cold wallet and choose the most recent transaction. 
 
 ## Updating
 
 The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
-
-<span class='draft-comment'>(Need to confirm that this is the correct commandline syntax for all of these)</span>
 
 1. Use git to pull the `master` branch [from Github](https://github.com/ripple/gatewayd.git). (This assumes you created it by using `git clone` on the repository first.)<br/>
     `git pull`
@@ -113,208 +109,130 @@ The update process for gatewayd may change in the future, but for now, updating 
     `grunt migrate`
 5. Restart the gatewayd processes. (This ends downtime)<br/>
     `bin/gateway start`
+    
+If you are using the Gateway Appliance virtual machine from Ripple Labs, there is a script to automatically update Gatewayd. <span class='draft-comment'>(Where?)</span>
 
 # Gatewayd Usage #
 
-## Running gatewayd
+## Running gatewayd ##
 
 After installation, start the gateway processes by running the command:
 
     bin/gateway start
 
-## Gatewayd Architecture
+## Gatewayd Architecture ##
 
 A gateway acts as a link between Ripple's shared global Ledger and value outside of the network, such as traditional banking balances, other virtual currencies, or more. Thus, gatewayd sits between the `rippled` server (which participates in the network that defines the Ripple global ledger) and some source of information about external activities. Gatewayd's main job is to monitor each side for transactions and translate them into the appropriate actions on the other side.
 
-In short, you can 
+Gatewayd has effectively 4 queues: an inbox and outbox for transactions going from the outside world into the Ripple Network; and a corresponding inbox and outbox for transactions going the opposite direction. It has 2 software services for sending and receiving Ripple transactions, and 2 more services for converting between Ripple transactions and external transactions. In order to have a fully functional gateway, you must add custom code for sending and receiving transactions in the outside world. Naturally, these vary depending on how your gateway accepts outside payment.
+
+You can visualize Gatewayd's architecture according to the following diagram:
+
+![Gatewayd Architecture](img/gatewayd_architecture.png)
+
+The external connector has three tasks: submitting external deposits to gatewayd, monitoring gatewayd for outgoing withdrawals, and clearing outgoing withdrawals when finished. You can build a connector that handles those functions in a few different ways. Feel free to choose whichever suits your needs best:
+
+* You can build a process plugin in Javascript that runs as part of gatewayd. The [gatewayd Github project] maintains a list of existing plugins, including ones for existing payment networks.
+* You can build your own service that consumes [Gatewayd's REST API](#gatewayd-api). In that case, you'll use the [Create Deposit](#create-deposit), [List Pending Withdrawals](#list-pending-withdrawals), and [Clear Pending Withdrawal](#clear-pending-withdrawal) API methods.
+* You can access Gatewayd's database directly. This may be convenient if your existing software already manages SQL databases. You should have a good understanding of Gatewayd's [Data Models](#data-models) if you do this.
+
+### Gatewayd Services ###
 
 Gatewayd is implemented as a [Node.js](http://nodejs.org/) web application that keeps track of transactions that are entering and leaving the Ripple Network, and exposes a RESTful API for configuring and controlling its behavior. It persists transactions to a [Postgres database](http://www.postgresql.org/). This application has 6 main processes that comprise its operation:
 
 | Process | Purpose |
 |---------|---------|
 | server  | Provides the RESTful API for controlling gatewayd and querying about its status; also serves a ripple.txt file to identify the gateway. |
-| ripple-rest | Provides a [Ripple-REST](?p=ripple-rest) service that communicates with a `rippled` server. |
+| ripple-rest | The [Ripple-REST](ripple-rest.html) service that communicates with a `rippled` server. |
 | incoming | Monitors the Ripple Network for incoming Ripple payments |
 | withdrawals | Converts records of incoming Ripple payments into pending withdrawal records |
 | outgoing | Sends pending Ripple payments out to the network to issue balances |
 | deposits | Converts records of external deposits into pending Ripple payments |
 
-In essence, the `server` and `ripple-rest` processes are infrastructure, while the other four processes form two thirds of a complete two-way link between an outside network and the Ripple Network. The missing piece: integrations with the outside network. Naturally, these vary depending on the gateway and how it accepts outside payment. In other words: that part, you must build for yourself.
+You can get a list of services and their status by running the following command:
 
-Fortunately, all the pieces are here already. When you receive information about an external transaction, you can use gatewayd's API to record it as a deposit in your system. You can use gatewayd's API to look for new withdrawals, so that you can process them; and when you're done, just call gatewayd's API again to clear them. You can perform these calls manually (not recommended), you can write software that depends on gatewayd's API to do them, or you can skip the API and write to the Postgres database directly (also not recommended). If you like, you can even write the processes as additional Node.js services and incorporate them into gatewayd, to be run alongside the build-in processes.
+    pm2 list
 
-Conceptually, gatewayd processes two flows in opposite directions:
+[Plugins](https://github.com/gatewayd/) may provide additional services that also appear in this list.
 
-* Outside world -> External Transaction Inbox -> Ripple Transaction Outbox -> Ripple
-* Ripple -> Ripple Transaction Inbox -> External Transaction Outbox -> Outside world
+## Authentication ##
 
-However, the implementation combines the inboxes and outboxes for like objects into a single database table each, so one database table contains external transactions that are ingoing alongside ones that are outgoing; and another database table contains Ripple transactions in both states.
-
-That means that the overall process looks like this:
-
-![Ripple Gateway Process Diagram](img/gatewayd_overview.svg)
-
-<span class='draft-comment'>(Probably need to revise this diagram somewhat.)</span>
-
-## Process Flow of a Gateway Deposit
-
-### Process 1: Recording Deposits ###
-
-A banking API integration or manual human gateway operator receives the deposit of an asset and records the deposit in the ripple gateway data store. This process is designed to be implemented externally, and example implementations are provided by the command line interface and the http/json express.js server.
-
-API calls: [Create Deposit](#create-deposit)
-
-### Process 2: Deposit Business Logic ###
-    
-A newly recorded deposit is handed to the business logic, which performs some function, ultimately en-queuing a corresponding ripple payment. This process is designed to be modified and customized.
-
-    node processes/deposits.js
-
-API calls: [List Deposits](#list-deposits), <span class='draft-comment'>[Enqueue Payment](#enqueue-payment) (missing??)</span>
-
-###  Process 3: Send Outgoing Ripple Payments ###
-
-A payment record resulting from the deposit business logic process is sent to the Ripple REST server, ultimately propagating to the network. This process is standard and should not be modified.
-
-    node processes/outgoing.js
-
-API calls: <span class='draft-comment'>[Send Payment](#send-payment) (also missing??)</span>
-
-## Process Flow of a Gateway Withdrawal
-
-### Process 1: Record inbound Ripple payments ###
-
-Poll the Ripple REST server for new payment notifications to the gateway, and record the incoming payments in the ripple gateway data store. This process is standard and should not be modified.
-
-    node processes/incoming.js
-
-API calls: [List Incoming Payments](#list-incoming-payments) <span class='draft-comment'>(aka get_payment_notification??)</span>, <span class='draft-comment'>record_payment(??)</span>
-
-### Process 2: Withdrawal Business Logic ###
-
-A newly recorded incoming ripple payment is handed to the business logic, which performs some function, ultimately en-queuing a corresponding asset withdrawal record. This process is designed to be modified and customized.
-
-    node processes/withdrawals.js
-
-API calls: enqueue_withdrawal
-
-### Process 3: Clear Withdrawals ###
-
-A banking API integration or manual human gateway operator reads the queue of pending withdrawals from the gateway data store, redeems the corresponding asset, and finally clears the withdrawal from the queue by updating the gateway data store. This process is designed to be implemented externally, and example implementations are provided by the command line interface and the http/json express.js server.
-
-API calls: list_withdrawals, clear_withdrawal
-
-Alternatively one can provide a WITHDRAWALS_CALLBACK_URL in the configuration, and then start the withdrawal_callbacks process to receive POST notifications whenever a new withdrawal comes in the gateway from the Ripple network. This process is currently not starte by default.
-
+<span class='draft-comment'>(TODO)</span>
 
 ## Command Line Interface ##
 
-```
-bin/gateway [options] [command]
-```
+In addition to the REST interface, many pieces of Gatewayd can be controlled directly through the commandline. This is done by running the `gateway` script (`bin/gateway` from the project's top level directory) with the relevant commands.
 
-The available *options* are as follows:
+You can get usage information for the commandline as follows:
 
 ```
--h, --help     output usage information
+bin/gateway -h
 ```
-  
-The available commands are as follows:
-  
-| Command Syntax | Description |
-|----------------|-------------|
-| `register_user <username> <password> <ripple_address> ` | create a user with a ripple address |
-| `list_users` | list registered users |
-| `record_deposit <amount> <currency> <external_account_id>` | record a deposit in the deposit processing queue |
-| `list_deposits` | list deposits in the deposit processing queue |
-| `list_outgoing_payments` | list the outgoing ripple payments. |
-| `list_incoming_payments` | list unprocesses incoming ripple payments |
-| `list_withdrawals` | get pending withdrawals to external accounts |
-| `clear_withdrawal <external_transaction_id>` | clear pending withdrawal to external account |
-| `generate_wallet` | generate a random ripple wallet |
-| `set_hot_wallet <address> <secret>` | set the gateway hot wallet |
-| `get_hot_wallet` | get the address of the gateway hot wallet |
-| `get_hot_wallet_secret` | get the secret of the gateway hot wallet |
-| `fund_hot_wallet <amount> <currency>` | issue funds from cold wallet to hot wallet |
-| `set_cold_wallet <account>` | set the gateway hot wallet |
-| `get_cold_wallet` | get the gateway cold wallet |
-| `refund_cold_wallet <amount> <currency>` | send back funds from the hot wallet to cold wallet |
-| `set_trust <amount> <currency>` | set level of trust from hot to cold wallet |
-| `get_trust_lines` | get the trust lines from hot wallet to cold wallet |
-| `list_currencies` | List all currencies supported by the gateway |
-| `add_currency <currency>` | add support for a currency |
-| `remove_currency <currency>` | remove support for a currency |
-| `set_domain <domain>` | set the domain name of the gateway |
-| `get_domain` | get the domain name of the gateway |
-| `set_postgres_url <url>` | set the url of the postgres database |
-| `get_postgres_url` | get the url of the postgres database |
-| `set_ripple_rest_url <url>` | set the url of the Ripple-REST api |
-| `get_ripple_rest_url` | get the url of the Ripple-REST api |
-| `set_key` | set the admin api key |
-| `get_key` | get the admin api key |
-| `set_last_payment_hash <hash>` | set the last encountered payment hash for incoming processing. |
-| `get_last_payment_hash` | get the last encountered payment hash for incoming processing. |
-    
 
-# Gatewayd API #
+# Gatewayd API Reference #
 
 `gatewayd : v3.20.0`
 
-## Available API Routes ##
+## Available API Methods ##
 
-* [`POST /v1/registrations`](#register-user)
-* [`POST /v1/users/{:id}/activate`](#activate-user)
-* [`POST /v1/users/{:id}`](#deactivate-user)
-* [`POST /v1/deposits/`](#create-deposit)
-* [`GET /v1/deposits`](#list-deposits)
-* [`GET /v1/payments/outgoing`](#list-outgoing-payments)
-* [`GET /v1/payments/failed`](#list-failed-payments)
-* [`POST /v1/payments/failed/{:id}/retry`](#retrying-a-failed-payment)
-* [`GET /v1/payments/incoming`](#listing-incoming-payments)
-* [`GET /v1/withdrawals`](#listing-withdrawals)
-* [`POST /v1/withdrawals/{:id}/clear`](#clearing-a-withdrawal)
-* [`GET /v1/cleared`](#listing-cleared-external-transactions)
-* [`GET /v1/balances`](#listing-hot-wallet-balances)
-* [`GET /v1/liabilities`](#listing-cold-wallet-liabilities)
+These methods are available to anyone who has access to the API. (See [Authentication](#authentication) for more details.)
 
-## User-Auth API Routes
-
-* [`POST /v1/register`](#registering-a-user)
-* [`POST /v1/users/login`](#logging-in-a-user)
-* [`GET /v1/users/{:id}`](#showing-a-user)
-* [`GET /v1/users/{:id}/external_accounts`](#listing-user-external-accounts)
-* [`GET /v1/users/{:id}/external_transactions`](#listing-user-external-transactions)
-* [`GET /v1/users/{:id}/ripple_addresses`](#listing-user-ripple-addresses)
-* [`GET /v1/users/{:id}/ripple_transactions`](#listing-user-ripple-transactions)
+* [Register User - `POST /v1/registrations`](#register-user)
+* [Activate User - `POST /v1/users/{:id}/activate`](#activate-user)
+* [Deactivate User - `POST /v1/users/{:id}`](#deactivate-user)
+* [Create Deposit - `POST /v1/deposits/`](#create-deposit)
+* [List Deposits - `GET /v1/deposits`](#list-deposits)
+* [List Outgoing Payments - `GET /v1/payments/outgoing`](#list-outgoing-payments)
+* [List Failed Payments - `GET /v1/payments/failed`](#list-failed-payments)
+* [Retry Failed Payments - `POST /v1/payments/failed/{:id}/retry`](#retry-failed-payment)
+* [List Incoming Payments - `GET /v1/payments/incoming`](#list-incoming-payments)
+* [List Withdrawals - `GET /v1/withdrawals`](#list-withdrawals)
+* [Clear Withdrawal - `POST /v1/withdrawals/{:id}/clear`](#clear-withdrawal)
+* [List Cleared External Transactions - `GET /v1/cleared`](#list-cleared-external-transactions)
+* [List Hot Wallet Balances - `GET /v1/balances`](#list-hot-wallet-balances)
+* [List Cold Wallet Liabilities - `GET /v1/liabilities`](#list-cold-wallet-liabilities)
 
 ## Admin Configuration API Routes
 
-* [`POST /v1/wallets/hot/fund`](#funding-the-hot-wallet)
-* [`POST /v1/config/database`](#setting-the-database-url)
-* [`GET /v1/config/database`](#showing-the-database-url)
-* [`POST /v1/config/ripple/rest`](#setting-the-ripple-rest-url)
-* [`GET /v1/config/ripple/rest`](#showing-the-ripple-rest-url)
-* [`POST /v1/config/wallets/cold`](#setting-the-cold-wallet)
-* [`GET /v1/config/wallets/cold`](#showing-the-cold-wallet)
-* [`POST /v1/config/wallets/generate`](#generating-a-ripple-wallet)
-* [`POST /v1/config/wallets/hot`](#setting-the-hot-wallet)
-* [`GET /v1/config/wallets/hot`](#showing-the-hot-wallet)
-* [`POST /v1/trust`](#setting-trust-from-hot-wallet-to-cold-wallet)
-* [`GET /v1/trust`](#listing-trust-from-hot-wallet-to-cold-wallet)
-* [`POST /v1/wallets/hot/fund`](#funding-the-hot-wallet)
-* [`POST /v1/config/last_payment_hash`](#setting-the-last-payment-hash)
-* [`GET /v1/config/last_payment_hash`](#showing-the-last-payment-hash)
-* [`POST /v1/config/domin`](#setting-the-domain)
-* [`GET /v1/config/domain`](#showing-the-domain)
-* [`POST /v1/config/key`](#setting-the-api-key)
-* [`GET /v1/config/key`](#showing-the-api-key)
-* [`POST /v1/currencies`](#setting-currencies)
-* [`GET /v1/currencies`](#listing-currencies)
-* [`POST /v1/wallets/cold/refund`](#sending-funds-from-hot-wallet-to-cold-wallet)
-* [`POST /v1/start`](#starting-worker-processes)
-* [`POST /v1/processes`](#listing-current-processes)
+These methods are only available to users who have authenticated as an administrator. (See [Authentication](#authentication) for more details.)
 
-# API Method Reference #
+* [Fund Hot Wallet - `POST /v1/wallets/hot/fund`](#funding-the-hot-wallet)
+* [Set Database URL - `POST /v1/config/database`](#setting-the-database-url)
+* [Retrieve Database URL - `GET /v1/config/database`](#show-the-database-url)
+* [Set Ripple-REST URL - `POST /v1/config/ripple/rest`](#set-ripple-rest-url)
+* [Retrieve Ripple-REST URL - `GET /v1/config/ripple/rest`](#retrieve-ripple-rest-url)
+* [Set Cold Wallet - `POST /v1/config/wallets/cold`](#set-cold-wallet)
+* [Retrieve Cold Wallet - `GET /v1/config/wallets/cold`](#retrieve-cold-wallet)
+* [Generate Ripple Wallet - `POST /v1/config/wallets/generate`](#generate-ripple-wallet)
+* [Set Hot Wallet - `POST /v1/config/wallets/hot`](#set-hot-wallet)
+* [Retrieve Hot Wallet - `GET /v1/config/wallets/hot`](#retrieve-hot-wallet)
+* [Set Trust from Hot Wallet to Cold Wallet - `POST /v1/trust`](#set-trust-from-hot-wallet-to-cold-wallet)
+* [Show Trust from Hot Wallet to Cold Wallet - `GET /v1/trust`](#show-trust-from-hot-wallet-to-cold-wallet)
+* [Fund Hot Wallet - `POST /v1/wallets/hot/fund`](#fund-hot-wallet)
+* [Set Last Payment Hash - `POST /v1/config/last_payment_hash`](#setting-the-last-payment-hash)
+* [Retrieve Last Payment Hash - `GET /v1/config/last_payment_hash`](#showing-the-last-payment-hash)
+* [Set Gateway Domain - `POST /v1/config/domin`](#set-gateway-domain)
+* [Retrieve Domain - `GET /v1/config/domain`](#retrieve-domain)
+* [Set API Key - `POST /v1/config/key`](#set-api-key)
+* [Retrieve API Key - `GET /v1/config/key`](#retrieve-api-key)
+* [Add Supported Currency - `POST /v1/currencies`](#add-supported-currency)
+* [List Supported Currencies - `GET /v1/currencies`](#list-supported-currencies)
+* [Remove Supported Currency - `DELETE /v1/currencies/{:currency}`](#remove-supported-currency)
+* [Return Funds from Hot Wallet to Cold Wallet - `POST /v1/wallets/cold/refund`](#return-funds-from-hot-wallet-to-cold-wallet)
+* [Start Worker Processes - `POST /v1/start`](#start-worker-processes)
+* [List Current Processes - `POST /v1/processes`](#list-current-processes)
+
+## User-Auth API Routes
+
+All these routes are **DEPRECATED**.
+
+* [`POST /v1/register`](#register-user)
+* [`POST /v1/users/login`](#log-in-user)
+* [`GET /v1/users/{:id}`](#retrieve-user)
+* [`GET /v1/users/{:id}/external_accounts`](#list-user-external-accounts)
+* [`GET /v1/users/{:id}/external_transactions`](#list-user-external-transactions)
+* [`GET /v1/users/{:id}/ripple_addresses`](#list-user-ripple-addresses)
+* [`GET /v1/users/{:id}/ripple_transactions`](#list-user-ripple-transactions)
 
 ## Managing Users ##
 
@@ -1366,7 +1284,7 @@ currency and the other Ripple account holding that currency on the network.
     }
 
 
-### Fund the Hot Wallet ###
+### Fund Hot Wallet ###
 __`POST /v1/wallets/hot/fund`__
 
 Issue funds from the cold wallet to the hot wallet, specifying the amount, currency, and
@@ -1466,7 +1384,7 @@ Response Body:
     }
 ```
 
-### Sending Funds From Hot Wallet To Cold Wallet ###
+### Return Funds from Hot Wallet to Cold Wallet ###
 __`POST /v1/wallets/cold/refund`__
 
 This method returns funds from the hot wallet back to the cold wallet. This is 
