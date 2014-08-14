@@ -1,16 +1,16 @@
 $(function(){
-	$('.header > .left > .header-menu-button').on("click", function(e){
-
-	    e.preventDefault();
-
-	    $('.header > .left > ul').toggleClass('active');
-	});
-
-	$(".content-root").on('click', function(){
-
-	  $('.header > .left > ul').removeClass('active');
-
-	});
+// 	$('.header > .left > .header-menu-button').on("click", function(e){
+// 
+// 	    e.preventDefault();
+// 
+// 	    $('.header > .left > ul').toggleClass('active');
+// 	});
+// 
+// 	$(".content-root").on('click', function(){
+// 
+// 	  $('.header > .left > ul').removeClass('active');
+// 
+// 	});
 	$(".modal-checkbox input").on("change",function(){
 		$("#btn-download").toggleClass("btn-download btn-disabled");
 	});
