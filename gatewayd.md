@@ -59,9 +59,11 @@ Although you could send the issuances directly to customers from the account iss
 
 ### Setting Up Wallets for gatewayd
 
-The actual process of configuring gatewayd with the appropriate accounts is easy. First, generate a set of account keys for a cold wallet. You can use the official Ripple client to do so:
+The actual process of configuring gatewayd with the appropriate accounts is easy. First, generate an account key pair for a cold wallet. You can use the official Ripple client to do so:
 
-[Ripple Client](https://ripple.com/client/#/register) *Note:* The key generation process happens on your local machine, and is never sent to Ripple or anyone else. You can even go offline while you generate the key (as long as you've fully loaded the page first).
+[Ripple Client](https://ripple.com/client/#/register) 
+
+*Note:* The key generation process in the Ripple Client happens on your local machine, and is never sent to Ripple or anyone else. You can even go offline while you generate the key (as long as you've fully loaded the page first).
 
 Save the secret key somewhere that it will be completely safe. Never send it unencrypted to an untrusted entity such as your web host. 
 
@@ -91,7 +93,7 @@ At this point, you need to create trustlines between the hot and cold wallet acc
     bin/gateway set_trust USD 1000
     bin/gateway set_trust XAU 2
     
-(*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.)
+*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.
 
 The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. To get a good starting value, look up the transaction history for the cold wallet and choose the most recent transaction. 
 
@@ -154,6 +156,68 @@ You can get a list of services and their status by running the following command
     pm2 list
 
 [Plugins](https://github.com/gatewayd/) may provide additional services that also appear in this list.
+
+### Data Models ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/tree/master/lib/data/models "Source")
+
+One of the key aspects of Gatewayd is that it keeps records of all the transactions that go in and out of the gateway, which get persisted to the database. Gatewayd is intentionally designed so that you can manually view and modify the database records if you want to. The important data models are defined as in the following diagram:
+
+![Data Models chart](img/gatewayd-datamodel_current.png)
+
+In short, the key data models are: External Account, Ripple Address, User, External Transaction, and Ripple Transaction. It's important to note that incoming and outgoing transactions of the same type (Ripple or External) are persisted to a single, shared database table.
+
+All tables have the following common fields:
+
+| Field | Type | Description |
+| ----- | -----| ----------- |
+| `id` | Integer (auto-increment) | A unique identifier for each row |
+| `uid`| String (unique) | A unique string identifier, which can be arbitrarily set. |
+| `data` | String | Any arbitrary data. If the contents of this field can be parsed as JSON, then it is represented as JSON in Gatewayd; otherwise, it is treated as a string. |
+
+#### User, Ripple Address, and External Account Models ####
+
+A user is a fundamental unit of identity for your gateway's customers; these persist to the *User* table. Each user is linked to any number of External Accounts as well as any number of Ripple Addresses, which are persisted to their own tables. 
+
+The [Register User](#register-user) API method creates new users, along with their corresponding external account and Ripple account records.
+
+#### External Transaction Model ####
+
+The External Transactions table holds both incoming deposits and outgoing withdrawals. In addition to the common fields, it has the following:
+
+| Field | Type | Description |
+| ----- | -----| ----------- |
+| `deposit` | boolean | Defines which type of transaction this is (*true* means deposit, *false* means withdrawal). 
+| `amount` | Decimal | The size of the external payment |
+| `currency` | String | The currency of the external payment 
+| `status` | String (Enum) | What state the transaction is in, such as pending or completed. 
+| `ripple_transaction_id` | Integer | Reference to a corresponding Ripple transaction. |
+
+The [Record Deposit API method](#record-deposit) creates new deposit records; the [withdrawals process](#gatewayd-services) automatically creates new withdrawal records when it finds unprocessed incoming Ripple payments.
+
+#### Ripple Transaction Model ####
+
+The Ripple Transactions table holds incoming and outgoing Ripple payments. The direction of the payment is determined by which of the `to_address_id` and `from_address_id` fields references a Gateway wallet (hot or cold). In addition to the common fields, it has the following:
+
+| Field | Type | Description |
+| ----- | -----| ----------- |
+| `to_address_id` | Integer | Reference to the Ripple address receiving the payment |
+| `from_address_id` | Ineger | Reference to the Ripple address sending the payment |
+| `to_amount` | Decimal | Amount of money the recipient got |
+| `to_currency` | String | What currency the recipient got |
+| `to_issuer` | String | The Ripple Account that issued the currency received on the Ripple Network. (In the case of outgoing payments, this would be the cold wallet | 
+| `from_amount` | Decimal | Amount of money the sender spent |
+| `from_currency`| String | What currency the sender used |
+| `from_issuer` | String | The Ripple Account that issued the currency sent on the Ripple Network. (This may be different than the currency received if there were other parties in the middle of the transaction.) | 
+| `transaction_state` | String (Enum) | What state a transaction is in, such as pending or completed. 
+| `transaction_hash` | String | The unique identifier of the transaction in the Ripple Network. |
+| `external_transaction_id` | Integer | Reference to a corresponding external transaction. |
+
+The [incoming process](#gatewayd-services) automatically creates records for new Ripple transactions by polling the Ripple-REST server; the [deposits process](#gatewayd-services) automatically creates new outgoing Ripple payments when it finds unprocessed external deposits.
+
+#### Future Models ####
+
+*Note:* As development on Gatewayd continues, the data model is expected to change. In particular, we expect to create a "Gateway Transaction" object to link External and Ripple transactions, and a "Policy" object that links a Gateway Transaction to the business logic of executing it (for example, setting custom fees for different types of actions or different customers). 
 
 ## Authentication ##
 
@@ -1567,7 +1631,7 @@ Response Body:
 
 ### Fund Hot Wallet ###
 
-[[Source]<br>]( "Source")
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/fund_hot_wallet.js "Source")
 
 <div class='multicode'>
 *REST*
@@ -1602,6 +1666,16 @@ gateway.api.fundHotWallet(options, callback);
 
 Issue funds from the cold wallet to the hot wallet, specifying the amount, 
 currency, and the *cold wallet* secret key. 
+
+Response Body:
+
+```
+{
+    "success": true,
+    "hot_wallet": ???
+}
+```
+<span class='draft-comment'>(Example needed)</span>
 
 ### Set Cold Wallet ###
 
@@ -1682,18 +1756,85 @@ Response Body:
 ```
 
 ### Generate Ripple Wallet ###
-__`POST /v1/config/wallets/generate`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/generate_wallet.js "Source")
 
-Generate a random ripple address and secret key pair, which
-represents an unfunded ripple account.
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/wallets/generate
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: generate_wallet
+$ bin/gateway generate_wallet
+```
+
+*Javascript*
+
+```
+//options: object with 
+//callback: function(err, ) to run on callback
+gateway.api.generateWallet(callback);
+```
+</div>
+
+Generate a random Ripple address and secret key. Together, these represent an 
+unfunded Ripple account. After it receives enough XRP to meet the account 
+reserve, the account is included in the Ripple Ledger.
+
+Response Body:
+
+```
+{
+    "wallet": {
+        "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+        "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
+    }
+}
+```
 
 ### Set Hot Wallet ###
-__`POST /v1/config/wallets/cold`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_hot_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/wallets/cold
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_hot_wallet <address> <secret>
+$ bin/gateway set_hot_wallet rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr ssuBBapjuJ2hE5wto254aNWERa8VV
+```
+
+*Javascript*
+
+```
+//address: String address of account to use
+//secret: String secret of account to use
+//callback: function(err, wallet) to run on callback
+gateway.api.setHotWallet(address, secret, callback);
+```
+</div>
 
 The hot wallet holds and sends funds to customers automatically. This method 
-sets the Ripple account to use as the hot wallet.
+sets the Ripple account to use as the hot wallet. If the *address* and *secret* fields are omitted from the REST or commandline versions, then a new wallet address and secret are generated on the fly. (You still need to fund the hot wallet with at least the account reserve in XRP before you can use it.)
 
-Request Body:
+*Caution:* This method request contains account secrets! Be especially careful not to transmit this data over insecure channels.
+
+Response Body:
 
 ```
 {
@@ -1702,84 +1843,202 @@ Request Body:
 }
 ```
 
-*Caution:* This method request contains account secrets! Be especially careful not to transmit this data over insecure channels.
-
-Response Body:
-
-<span class='draft-comment'>(Example needed)</span>
-
 ### Retrieve Hot Wallet ###
-__`GET /v1/config/wallets/hot`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_hot_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/wallets/hot
+```
+
+*Commandline*
+
+```
+# Syntax: get_hot_wallet
+$ bin/gateway get_hot_wallet
+```
+
+*Javascript*
+
+```
+//may return null if hot wallet isn't set
+gateway.config.get('HOT_WALLET');
+```
+</div>
 
 Show the gatewayd hot wallet, which is used to automatically send
 funds, and which maintains trust to and balances of the cold wallet.
 
 Response Body:
 
-<span class='draft-comment'>(Example needed)</span>
+```
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr"
+}
+```
 
 ### Set Trust from Hot Wallet to Cold Wallet ###
-__`POST /v1/trust`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_trust_line.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/trust
+{
+    "currency": "USD",
+    "amount": 1000
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_trust <currency> <amount>
+$ bin/gateway USD 1000
+```
+
+*Javascript*
+
+```
+//currency: string currency definition, e.g. "USD"
+//amount: numeric amount of trust to extent, e.g. 1000
+//callback: function(err, lines) to run on callback
+gateway.api.setTrustLine(currency, amount, callback);
+```
+</div>
 
 This method sets a line of trust from the gateway hot wallet to the gateway 
 cold wallet. The line of trust represents the total amount of one type of 
 currency that gatewayd's hot wallet can hold and automatically send out without 
 the gateway operator manually adding more funds to the hot wallet.
 
-Request Body:
-
-```
-{
-    "currency": "USD",
-    "amount": 1000
-}
-```
 
 Response Body:
 
-<span class='draft-comment'>(Example needed)</span>
+```
+{
+    "lines": [
+        {
+          "account": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD",
+          "balance": "324.765",
+          "currency": "USD",
+          "limit": "1000",
+          "limit_peer": "0",
+          "quality_in": 0,
+          "quality_out": 0
+        },
+        {
+          "account": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD",
+          "balance": "0.0139",
+          "currency": "XAU",
+          "limit": "2",
+          "limit_peer": "0",
+          "quality_in": 0,
+          "quality_out": 0
+        }
+      ]
+}
+```
 
 ### Show Trust from Hot Wallet to Cold Wallet ###
-__`GET /v1/trust`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_trust_lines.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/trust
+```
+
+*Commandline*
+
+```
+# Syntax: get_trust_lines
+$ bin/gateway get_trust_lines
+```
+
+*Javascript*
+
+```
+//callback: function(err, lines) to run on callback
+gateway.api.getTrustLines(callback);
+```
+</div>
 
 List lines of trust from the gateway hot wallet to the gateway cold
 wallet. The line of trust represents the total amount of each asset
 that gatewayd can hold and automatically send out without a manual
 refunding by a gateway operator.
 
+
 Response Body:
 
 ```
-    {
-      "lines": [
+{
+    "lines": [
         {
-          "account": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-          "balance": "8776.3012",
-          "currency": "SWD",
-          "limit": "10000",
+          "account": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD",
+          "balance": "324.765",
+          "currency": "USD",
+          "limit": "1000",
+          "limit_peer": "0",
+          "quality_in": 0,
+          "quality_out": 0
+        },
+        {
+          "account": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD",
+          "balance": "0.0139",
+          "currency": "XAU",
+          "limit": "2",
           "limit_peer": "0",
           "quality_in": 0,
           "quality_out": 0
         }
       ]
-    }
+}
 ```
 
 ### Return Funds from Hot Wallet to Cold Wallet ###
-__`POST /v1/wallets/cold/refund`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/refund_cold_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/wallets/cold/refund
+{
+    "currency": "USD",
+    "amount": 324.765
+}
+```
+
+*Commandline*
+
+```
+# Syntax: 
+$ bin/gateway 
+```
+
+*Javascript*
+
+```
+//currency: String definition of currency to return, e.g. "USD"
+//amount: Numeric amount to send back to the cold wallet
+//callback: function(err, transaction) to run on callback
+gateway.api.refundColdWallet(currency, amount, callback);
+```
+</div>
 
 This method returns funds from the hot wallet back to the cold wallet. This is 
 an important step in phasing out a hot wallet, especially if its security may 
 be compromised.
-
-Request Body:
-
-```
-{
-    "currency": "USD",
-    "amount": 1000
-}
-```
 
 Response Body:
 
@@ -1788,22 +2047,72 @@ Response Body:
 ## Configuring gatewayd ##
 
 ### Set Database URL ###
-__`POST /v1/config/database`__
 
-This method tells gatewayd which Postgres database to use. 
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_database_url.js "Source")
 
-Request Body:
+<div class='multicode'>
+*REST*
 
 ```
+POST /v1/config/database
 {
       "database_url": "postgres://postgres:password@localhost:5432/ripple_gateway"
 }
 ```
 
+*Commandline*
+
+```
+# Syntax: set_postgres_url <url>
+$ bin/gateway set_postgres_url postgres://postgres:password@localhost:5432/ripple_gateway
+```
+
+*Javascript*
+
+```
+//database_url: string database URL to set
+gateway.config.set('DATABASE_URL', database_url);
+//callback: function() to call on completion
+gateway.config.save(callback);
+```
+</div>
+
+This method tells gatewayd which Postgres database to use. 
+
 *Caution:* This method contains sensitive database credentials. Do not use it on unsafe channels!
 
+Response Body:
+
+```
+{
+    "DATABASE_URL": "postgres://postgres:password@localhost:5432/ripple_gateway"
+}
+```
+
 ### Retrieve Database URL ###
-__`GET /v1/config/database`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_database_url.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/database
+```
+
+*Commandline*
+
+```
+# Syntax: get_postgres_url
+$ bin/gateway get_postgres_url
+```
+
+*Javascript*
+
+```
+gateway.config.get('DATABASE_URL')
+```
+</div>
 
 This method shows the URL that gatewayd uses to access the Postgres database.
 
@@ -1818,84 +2127,194 @@ Response Body:
 *Caution:* This method contains sensitive database credentials. Do not use it on unsafe channels!
 
 ### Set Ripple-REST URL ###
-__`POST /v1/config/ripple/rest`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_ripple_rest_url.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/ripple/rest
+{
+    "url": "http://localhost:5990/"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_ripple_rest_url <url>
+$ bin/gateway http://localhost:5990/
+```
+
+*Javascript*
+
+```
+//ripple_rest_url: string URL of Ripple-REST instance to use
+//callback: function(err, url) to call on completion
+gateway.api.setRippleRestUrl(ripple_rest_url, callback);
+```
+</div>
 
 This method tells gatewayd what Ripple-REST server to use in order to access 
 the Ripple Network.
 
-Request Body: <span class='draft-comment'>(Mock example, need confirmation)</span>
+Response Body:
 
 ```
 {
-    "url": "https://localhost:5990"
+    "RIPPLE_REST_API": "https://localhost:5990"
 }
 ```
 
-Response Body:
-
-<span class='draft-comment'>(Example needed)</span>
-
 ### Retrieve Ripple-REST URL ###
-__`GET /v1/config/ripple/rest`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_ripple_rest_url.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/ripple/rest
+```
+
+*Commandline*
+
+```
+# Syntax: get_ripple_rest_url
+$ bin/gateway get_ripple_rest_url
+```
+
+*Javascript*
+
+```
+gateway.config.get('RIPPLE_REST_API');
+```
+</div>
 
 This method shows the URL that gatewayd is configured to use for accessing Ripple-REST.
 
 Response Body:
 
 ```
-    {
-      "RIPPLE_REST_API": "http://localhost:5990/"
-    }
+{
+  "RIPPLE_REST_API": "http://localhost:5990/"
+}
 ```
 
 ### Set Gateway Domain ###
-__`POST /v1/config/domain`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_domain.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/domain
+{
+    "domain": "stevenzeiler.com"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_domain <DOMAIN>
+$ bin/gateway set_domain stevenzeiler.com
+```
+
+*Javascript*
+
+```
+//domain: string domain to set
+gateway.config.set('DOMAIN', domain);
+//callback: function() to call on completion
+gateway.config.save(callback);
+```
+</div>
 
 This method sets the domain that gatewayd uses to identify itself. This domain
 is included in the gateway's ripple.txt.
 
-Request Body:
-
-```
-    {
-      "domain": "stevenzeiler.com"
-    }
-```
-
 Response Body:
 
 ```
-    {
-      "DOMAIN": "stevenzeiler.com"
-    }
+{
+  "DOMAIN": "stevenzeiler.com"
+}
 ```
 
 ### Retrieve Domain ###
-__`GET /v1/config/domain`__
 
-Show the domain of the gateway, which is shown in the gateway's ripple.txt.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_domain.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/domain
+```
+
+*Commandline*
+
+```
+# Syntax: get_domain
+$ bin/gateway get_domain
+```
+
+*Javascript*
+
+```
+gateway.config.get('DOMAIN');
+```
+</div>
+
+Show the domain of the gateway, which is shown in the gateway's `ripple.txt`.
 
 Response Body:
 
 ```
-    {
-      "DOMAIN": "stroopgate.com"
-    }
+{
+  "DOMAIN": "stevenzeiler.com"
+}
 ```
 
 ### Set API Key ###
-__`POST /v1/config/key`__
 
-This method reset's the gateway's API key; it generates, saves, and returns a 
-new key.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_key.js "Source")
 
-Request Body:
+<div class='multicode'>
+*REST*
 
 ```
+POST /v1/config/key
 {
   "key": "1234578dddd"
 }
 ```
+
+*Commandline*
+
+```
+# Syntax: set_key
+$ bin/gateway set_key
+```
+
+*Javascript*
+
+```
+//key: string API key to set. Optionally, generate a key randomly:
+//          key = crypto.randomBytes(32).toString('hex')
+gateway.config.set('KEY', key);
+//callback: function() to call on completion
+gateway.config.save(callback);
+```
+</div>
+
+This method reset's the gateway's API key, which is used for authenticating to the REST API. (See [Authentication](#authentication) for more details.)
+
+The REST version accepts a key parameter, which it sets as the API key. The commandline version generates and returns a new key randomly. (*Note:* This behavior may be changed to be more uniform. See [Issue #245](https://github.com/ripple/gatewayd/issues/245) for more details.)
+
 
 Response Body:
 
@@ -1906,7 +2325,29 @@ Response Body:
 ```
 
 ### Retrieve API Key ###
-__`GET /v1/config/key`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_key.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/key
+```
+
+*Commandline*
+
+```
+# Syntax: get_key
+$ bin/gateway get_key
+```
+
+*Javascript*
+
+```
+gateway.config.get('KEY');
+```
+</div>
 
 This method shows the gateway API key currently in use.
 
@@ -1919,34 +2360,32 @@ Response Body:
 ```
 
 ### List Supported Currencies ###
-__`GET /v1/currencies`__
 
-This method lists currencies officially supported by the gateway. These currencies are also listed
-in the gateway's `ripple.txt` manifest file.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_currencies.js "Source")
 
-Response Body:
-
-```
-{
-  "CURRENCIES": {
-    "SWD": 0
-  }
-}
-```
-
-### Add Supported Currency ###
-__`POST /v1/currencies`__
-
-This method adds a currency to the gateway's list of supported currencies, which is shown in the 
-gateway's `ripple.txt` manifest file.
-
-Request Body:
+<div class='multicode'>
+*REST*
 
 ```
-{
-  "currency": "XAG"
-}
+GET /v1/currencies
 ```
+
+*Commandline*
+
+```
+# Syntax: list_currencies
+$ bin/gateway list_currencies
+```
+
+*Javascript*
+
+```
+gateway.config.get('CURRENCIES');
+```
+</div>
+
+This method lists currencies officially supported by the gateway. These 
+currencies are also listed in the gateway's `ripple.txt` manifest file.
 
 Response Body:
 
@@ -1954,22 +2393,91 @@ Response Body:
 {
   "CURRENCIES": {
     "USD": 0,
-    "XAG": 0,
+    "XAU": 0
+  }
+}
+```
+
+*Note:* The amounts for each currency do not currently mean anything. If you [add supported currencies](#add-supported-currency) using the REST API, they will always be set to 0. You can manually set the values by editing the `config/config.json` file, but there is no meaningful effect.
+
+### Add Supported Currency ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/add_currency.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/currencies
+{
+    "currency": "XAG"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: add_currency <currency>
+$ bin/gateway add_currency XAG
+```
+
+*Javascript*
+
+```
+//currency: string currency to add, for example "USD"
+//callback: function(err, currencies) to run on callback
+gateway.api.addCurrency(currency, callback);
+```
+</div>
+
+This method adds a currency to the gateway's list of supported currencies,
+which is shown in the gateway's `ripple.txt` manifest file.
+
+Response Body:
+
+```
+{
+  "currencies": {
+    "USD": 0,
     "XAU": 0
   }
 }
 ```
 
 ### Remove Supported Currency ###
-__`DELETE /v1/currencies/{:currency}`__
 
-This method removes a currency (defined by the URL) from the list of supported currencies.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/remove_currency.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+DELETE /v1/currencies/{:currency}
+```
+
+*Commandline*
+
+```
+# Syntax: remove_currency <currency>
+$ bin/gateway remove_currency XAG
+```
+
+*Javascript*
+
+```
+//currency: string currency to remove, for example "USD"
+//callback: function(err, currencies) to run on callback
+gateway.api.removeCurrency(currency, callback);
+```
+</div>
+
+This method removes a currency (usually defined by its 3-letter code) from the list of supported currencies.
 
 Response Body:
 
 ```
 {
-    "CURRENCIES": {
+    "currencies": {
         "USD": 0,
         "XAU": 0
     }
@@ -1979,15 +2487,75 @@ Response Body:
 ## Managing Gateway Processes ##
 
 ### Start Worker Processes ###
-__`POST /v1/start`__
 
-Start one or more gateway processes, including but not limited to "deposits", "outgoing",
-"incoming", "withdrawals", "callbacks", etc.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/start_gateway.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/start
+{
+    "processes": ["outgoing","incoming"]
+}
+```
+
+*Commandline*
+
+```
+# Syntax: 
+$ bin/gateway start
+```
+
+*Javascript*
+
+```
+//processes: Array of strings representing the processes to start
+gateway.api.startGateway(processes);
+```
+</div>
+
+Start one or more gateway processes, including but not limited to "deposits", 
+"outgoing", "incoming", "withdrawals", "callbacks", etc. (See [Gatewayd Services](#gatewayd-services) for more details.)
+
+Response Body:
+
+```
+{
+    "processes": ???
+}
+```
+<span class='draft-comment'>Need example response</span>
 
 ### List Current Processes ###
-__`GET /v1/processes`__
 
-List information about the currently-running gateway daemon processes.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_processes.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/processes
+```
+
+*Commandline*
+
+```
+# Syntax: list_processes
+$ bin/gateway list_processes
+```
+
+*Javascript*
+
+```
+//options: object with the following field:
+//      - json: boolean, if true return in JSON format
+//callback: function(err, ) to run on callback
+gateway.api.listProcesses(options, callback);
+```
+</div>
+
+List information about the currently-running gateway daemon processes. (See [Gatewayd Processes](#gatewayd-processes) for more details.)
 
 Response Body:
 
