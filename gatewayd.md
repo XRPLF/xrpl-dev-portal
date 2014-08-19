@@ -133,7 +133,7 @@ You can visualize Gatewayd's architecture according to the following diagram:
 The external connector has three tasks: submitting external deposits to gatewayd, monitoring gatewayd for outgoing withdrawals, and clearing outgoing withdrawals when finished. You can build a connector that handles those functions in a few different ways. Feel free to choose whichever suits your needs best:
 
 * You can build a process plugin in Javascript that runs as part of gatewayd. The [gatewayd Github project] maintains a list of existing plugins, including ones for existing payment networks.
-* You can build your own service that consumes [Gatewayd's REST API](#gatewayd-api). In that case, you'll use the [Create Deposit](#create-deposit), [List Pending Withdrawals](#list-pending-withdrawals), and [Clear Pending Withdrawal](#clear-pending-withdrawal) API methods.
+* You can build your own service that consumes [Gatewayd's REST API](#gatewayd-api). In that case, you'll use the [Record Deposit](#record-deposit), [List Pending Withdrawals](#list-pending-withdrawals), and [Clear Pending Withdrawal](#clear-pending-withdrawal) API methods.
 * You can access Gatewayd's database directly. This may be convenient if your existing software already manages SQL databases. You should have a good understanding of Gatewayd's [Data Models](#data-models) if you do this.
 
 ### Gatewayd Services ###
@@ -180,7 +180,7 @@ These methods are available to anyone who has access to the API. (See [Authentic
 * [Register User - `POST /v1/registrations`](#register-user)
 * [Activate User - `POST /v1/users/{:id}/activate`](#activate-user)
 * [Deactivate User - `POST /v1/users/{:id}`](#deactivate-user)
-* [Create Deposit - `POST /v1/deposits/`](#create-deposit)
+* [Record Deposit - `POST /v1/deposits/`](#record-deposit)
 * [List Deposits - `GET /v1/deposits`](#list-deposits)
 * [List Outgoing Payments - `GET /v1/payments/outgoing`](#list-outgoing-payments)
 * [List Failed Payments - `GET /v1/payments/failed`](#list-failed-payments)
@@ -261,7 +261,7 @@ $ bin/gateway register_user steven@ripple.com s0m3supe&$3cretp@s$w0r* r4EwBWxrx5
 *Javascript*
 ```
 //options: object with "name", "password", and "address" fields
-//callback: function f(err, user) to run on callback
+//callback: function(err, user) to run on callback
 gateway.api.registerUser(options, callback);
 ```
 </div>
@@ -354,7 +354,7 @@ $ bin/gateway activate_user 508
 
 ```
 //id: integer account ID
-//callback: function f(err, user) to run on callback
+//callback: function(err, user) to run on callback
 gateway.api.activateUser(id, callback)
 ```
 
@@ -410,7 +410,7 @@ $ bin/gateway deactivate_user 508
 
 ```
 //id: integer account ID
-//callback: function f(err, user) to run on callback
+//callback: function(err, user) to run on callback
 gateway.api.deactivateUser(id, callback);
 ```
 </div>
@@ -489,7 +489,7 @@ GET /v1/users/{:id}
 ```
 //requires User data model
 //user_id: Integer user ID
-//callback: function f(err, user) to run on callback
+//callback: function(err, user) to run on callback
 User.find({ where: { id: user_id }}).complete(callback);
 ```
 </div>
@@ -542,7 +542,7 @@ bin/gateway list_user_external_accounts 508
 *Javascript*
 ```
 //id: integer ID of account to get external accounts from
-//callback: function f(err, accounts) to run on callback
+//callback: function(err, accounts) to run on callback
 gateway.api.listUserExternalAccounts(id, callback);
 ```
 </div>
@@ -582,7 +582,7 @@ GET /v1/users/{:id}/external_transactions
 
 ```
 //id: Integer user ID of user to find transactions of
-//callback: function f(err, transactions) to run on callback
+//callback: function(err, transactions) to run on callback
 gateway.data.externalTransactions.forUser(id, callback);
 ```
 </div>
@@ -633,7 +633,7 @@ Response Body:
 
 ```
 //id = Integer ID of user to retrieve Ripple addresses of
-//callback: function f(err, addresses) to run on callback
+//callback: function(err, addresses) to run on callback
 gateway.data.rippleAddresses.readAll({ user_id: id }, callback);
 ```
 </div>
@@ -695,7 +695,7 @@ GET /v1/users/{:id}/ripple_transactions
 
 ```
 //id: Integer user ID of the user to retrieve transactions of
-//callback: function f(err, transactions) to run on callback
+//callback: function(err, transactions) to run on callback
 gateway.data.rippleTransactions.forUser(id, callback);
 ```
 </div>
@@ -764,7 +764,30 @@ Response Body:
 ## Managing Transactions ##
 
 ### List Outgoing Payments ###
-__`GET /v1/payments/outgoing`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_outgoing_payments.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/payments/outgoing
+```
+
+*Commandline*
+
+```
+# Syntax: 
+$ bin/gateway list_outgoing_payments
+```
+
+*Javascript*
+
+```
+//callback: function(err, payments) to run on callback
+gateway.api.listOutgoingPayments(callback);
+```
+</div>
 
 Ripple transaction records that are marked as "outgoing" are picked up
 and sent to the Ripple network. This method returns a list of the
@@ -821,7 +844,30 @@ Response Body:
 ```
 
 ### List Failed Payments ###
-__`GET /v1/payments/failed`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_failed_payments.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/payments/failed
+```
+
+*Commandline*
+
+```
+# Syntax: list_failed_payments
+$ bin/gateway list_failed_payments
+```
+
+*Javascript*
+
+```
+//callback: function(err, payments) to run on callback
+gateway.api.listFailedPayments(callback);
+```
+</div>
 
 Outgoing payments are often rejected from Ripple, such as when there is
 insufficient trust from the recipient account to the gateway account, or
@@ -830,11 +876,11 @@ payment. In the case that a payment will never make it into the Ripple
 ledger the outgoing payment is marked as "failed". This method lists the
 history of such payments.
 
-<span class='draft-comment'>Does this array just grow indefinitely? Is there a
-way to limit the amount of data in the response, to expire old failures, or 
-anything to that effect? If not, it seems it'll be necessary eventually.</span>
+*Note:* Currently, a payment is removed from this list if you [retry](#retry-failed-payment) it. In the future, this behavior may change so that old failures remain until manually deleted, and retrying creates a separate transaction, in order to preserve historical data on transaction failure for analysis. (See [Issue #239](https://github.com/ripple/gatewayd/issues/239) for status.)
 
-Request Body:
+If you want to remove a failed payment without retrying it, you can delete the corresponding record from the database.
+
+Response Body:
 
 ```
 {
@@ -884,7 +930,31 @@ Request Body:
 ```
 
 ### Retry Failed Payment ###
-__`POST /v1/payments/failed/{:id}/retry`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/retry_failed_payment.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/payments/failed/{:id}/retry
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: retry_failed_payment <ripple_transaction_id>
+$ bin/gateway retry_failed_payment 6
+```
+
+*Javascript*
+
+```
+//ripple_transaction_id: Integer ID of transaction to retry
+//callback: function(err, payment) to run on callback
+gateway.api.retryFailedPayment(ripple_transaction_id, callback);
+```
+</div>
 
 A payment that failed due to insufficient funds or lack of trust lines
 may be successfully retried once funds are increased or an appropriate
@@ -893,8 +963,7 @@ use this method to retrying a payment. This method simply changes the
 payment's state from "failed" to "outgoing", effectively enqueueing the 
 transaction to be re-submitted to Ripple.
 
-Request Body:
-<span class='draft-comment'>(Apparently ignored?)</span>
+*Note:* In the future, this behavior may change to preserve the old, failed transaction for historical purposes and create a new, separate transaction to be submitted to Ripple. See [Issue #239](https://github.com/ripple/gatewayd/issues/239) for details.
 
 Response Body:
 
@@ -924,7 +993,30 @@ Response Body:
 ```
 
 ### List Incoming Payments ###
-__`GET /v1/payments/incoming`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_incoming_payments.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/payments/incoming
+```
+
+*Commandline*
+
+```
+# Syntax: list_incoming_payments
+$ bin/gateway list_incoming_payments
+```
+
+*Javascript*
+
+```
+//callback: function(err, payments) to run on callback
+gateway.api.listIncomingPayments(callback);
+```
+</div>
 
 Gatewayd monitors the gateway's Ripple account for inbound payments made to the
 gateway, and records the payments in the Ripple Transactions database table. Newly recorded incoming Ripple transactions are always marked as "incoming" until the gatewayd "withdrawals" process picks them up and, after applying fees, enqueues a withdrawal record in the external transactions table.
@@ -962,21 +1054,39 @@ Response Body:
 ```
     
 ### Set Last Payment Hash ###
-__`POST /v1/config/last_payment_hash`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_last_payment_hash.js "Source")
 
-Gatewayd polls the Ripple Network for notifications of inbound and outbound
-payments beginning with the last known transaction hash. 
-
-This method manually sets that hash. Gatewayd will skip any payments older 
-than the transaction identified by the given hash. 
-
-Request Body:
+<div class='multicode'>
+*REST*
 
 ```
+POST /v1/config/last_payment_hash
 {
     "payment_hash": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
 }
 ```
+
+*Commandline*
+
+```
+# Syntax: set_last_payment_hash <hash>
+$ bin/gateway set_last_payment_hash 4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8
+```
+
+*Javascript*
+
+```
+//options: object with field hash: string of last payment hash to use
+//callback: function(err) to run on callback
+gateway.api.setLastPaymentHash(options, callback);
+```
+</div>
+
+Gatewayd polls the Ripple Network for notifications of inbound payments to the 
+cold wallet beginning with the last known transaction hash. 
+
+This method manually sets that hash. Gatewayd will skip any payments older 
+than the transaction identified by the given hash. Generally you do this one time, during setup, choosing the latest transaction in the cold wallet's history at that time, and never set it manually again.
 
 Response Body:
 
@@ -987,10 +1097,31 @@ Response Body:
 ```
 
 ### Retrieve Last Payment Hash ###
-__`GET /v1/config/last_payment_hash`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_last_payment_hash.js "Source")
 
-Gatewayd polls the ripple network for notifications of inbound and outbound
-payments beginning with the last known transaction hash. 
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/last_payment_hash
+```
+
+*Commandline*
+
+```
+# Syntax: get_last_payment_hash
+$ bin/gateway get_last_payment_hash
+```
+
+*Javascript*
+
+```
+gateway.config.get('LAST_PAYMENT_HASH');
+```
+</div>
+
+Gatewayd polls the Ripple Network for notifications of inbound payments to the 
+cold wallet beginning with the last known transaction hash. 
 
 This method returns the transaction hash currently being used.
 
@@ -1002,8 +1133,42 @@ Response Body:
     }
 ```
 
-### Create Deposit ###
-__`POST /v1/deposits`__
+### Record Deposit ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/record_deposit.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/deposits
+{
+  "external_account_id": 307,
+  "currency": "BTC"
+  "amount": "10.7"
+  "data": "(This field is optional.)"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: record_deposit <amount> <currency> <external_account_id>
+$ bin/gateway record_deposit 95.29 USD 13
+```
+
+*Javascript*
+
+```
+//options: object with the following fields:
+//      - external_account_id: unique ID of the depositor's external account record
+//      - amount: numeric deposit amount
+//      - currency: currency string (e.g. "USD")
+//      - data: Arbitrary data in JSON/string format
+//callback: function(err, deposit) to run on callback
+gateway.api.recordDeposit(options, callback);
+```
+</div>
 
 This method is the entry point to creating Ripple balances. When you receive 
 an asset outside the Ripple Network from a user, you can call this method to 
@@ -1012,38 +1177,50 @@ deposit record is marked as "queued", which means that gatewayd's deposit
 process will automatically apply fees and then enqueue an outgoing Ripple 
 payment to the user's Ripple address.
 
-Request Body:
-
-```
-    {
-      "external_account_id": 307,
-      "currency": "BTC"
-      "amount": "10.7"
-    }
-```
-
 Response Body:
 
 ```
-    {
-      "deposit": {
-        "data": null,
-        "external_account_id": 307,
-        "currency": "BTC",
-        "amount": "10.7",
-        "deposit": true,
-        "status": "queued",
-        "updatedAt": "2014-06-12T00:46:02.080Z",
-        "createdAt": "2014-06-12T00:46:02.080Z",
-        "id": 1,
-        "ripple_transaction_id": null,
-        "uid": null
-      }
-    }
+{
+  "deposit": {
+    "data": null,
+    "external_account_id": 307,
+    "currency": "BTC",
+    "amount": "10.7",
+    "deposit": true,
+    "status": "queued",
+    "updatedAt": "2014-06-12T00:46:02.080Z",
+    "createdAt": "2014-06-12T00:46:02.080Z",
+    "id": 1,
+    "ripple_transaction_id": null,
+    "uid": null
+  }
+}
 ```
 
 ### List Queued Deposits ###
-__`GET /v1/deposits`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_deposits.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/deposits
+```
+
+*Commandline*
+
+```
+# Syntax: list_queued_deposits
+$ bin/gateway list_queued_deposits
+```
+
+*Javascript*
+
+```
+//callback: function(err, deposits) to run on callback
+gateway.api.listQueuedDeposits(callback);
+```
+</div>
 
 This method retrieves a list of all deposits that are currently queued. These 
 deposits represent incoming assets that have not yet been processed and sent 
@@ -1052,40 +1229,62 @@ out as balances on the Ripple network.
 Response Body:
 
 ```
+{
+  "deposits": [
     {
-      "deposits": [
-        {
-          "data": null,
-          "id": 1,
-          "amount": "10.7",
-          "currency": "BTC",
-          "deposit": true,
-          "external_account_id": 307,
-          "status": "queued",
-          "ripple_transaction_id": null,
-          "createdAt": "2014-06-12T00:46:02.080Z",
-          "updatedAt": "2014-06-12T00:46:02.080Z",
-          "uid": null
-        },
-        {
-          "data": null,
-          "id": 2,
-          "amount": "281.2",
-          "currency": "XAG",
-          "deposit": true,
-          "external_account_id": 307,
-          "status": "queued",
-          "ripple_transaction_id": null,
-          "createdAt": "2014-06-12T00:47:24.754Z",
-          "updatedAt": "2014-06-12T00:47:24.754Z",
-          "uid": null
-        }
-      ]
+      "data": null,
+      "id": 1,
+      "amount": "10.7",
+      "currency": "BTC",
+      "deposit": true,
+      "external_account_id": 307,
+      "status": "queued",
+      "ripple_transaction_id": null,
+      "createdAt": "2014-06-12T00:46:02.080Z",
+      "updatedAt": "2014-06-12T00:46:02.080Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 2,
+      "amount": "281.2",
+      "currency": "XAG",
+      "deposit": true,
+      "external_account_id": 307,
+      "status": "queued",
+      "ripple_transaction_id": null,
+      "createdAt": "2014-06-12T00:47:24.754Z",
+      "updatedAt": "2014-06-12T00:47:24.754Z",
+      "uid": null
     }
+  ]
+}
 ```
 
 ### List Pending Withdrawals ###
-__`GET /v1/withdrawals`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_withdrawals.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/withdrawals
+```
+
+*Commandline*
+
+```
+# Syntax: list_queued_withdrawals
+$ bin/gateway list_queued_withdrawals
+```
+
+*Javascript*
+
+```
+//callback: function(err, withdrawals) to run on callback
+gateway.api.listQueuedWithdrawals(callback);
+```
+</div>
 
 To retrieve assets from the gateway, a user sends funds back to the gateway's 
 Ripple account. After the incoming payment has been received and processed 
@@ -1133,16 +1332,36 @@ Response Body:
 ```
 
 ### Clear Pending Withdrawal ###
-__`POST /v1/withdrawals/{:id}/clear`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/clear_withdrawal.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/withdrawals/{:id}/clear
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: clear_withdrawal <external_transaction_id>
+$ bin/gateway clear_withdrawal 9
+```
+
+*Javascript*
+
+```
+//id: Unique integer ID of withdrawal to clear
+//callback: function(err, withdrawal) to run on callback
+gateway.api.clearWithdrawal(id, callback);
+```
+</div>
 
 A pending withdrawal record indicates to the gateway operator that a
 user wishes to withdraw a given asset. Once the operator processes the 
 withdrawal by sending the asset to the user, mark the withdrawal as "cleared" 
 by calling this method.
-
-Request Body:
-
-<span class='draft-comment'>example needed</span>
 
 Response Body:
 
@@ -1165,51 +1384,93 @@ Response Body:
 ```
 
 ### List Cleared External Transactions ###
-__`GET /v1/cleared`__
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_cleared.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/cleared
+```
+
+*Commandline*
+
+```
+# Syntax: list_cleared
+$ bin/gateway list_cleared
+```
+
+*Javascript*
+
+```
+//callback: function(err, transactions) to run on callback
+gateway.api.listCleared(callback);
+```
+</div>
 
 This method retrieves the list of all external transactions that are no longer 
 considered pending. This includes all deposits that have been issued as a 
 balance with a Ripple payment, and all withdrawals that have been cleared.
 
+<span class='draft-comment'>(See [Issue #240](https://github.com/ripple/gatewayd/issues/240), doc/code mismatch here.)</span>
+
 Response Body:
 
 ```
+{
+  "deposits": [
     {
-      "deposits": [
-        {
-          "data": null,
-          "id": 3,
-          "amount": "4.95",
-          "currency": "SWD",
-          "deposit": false,
-          "external_account_id": 1,
-          "status": "cleared",
-          "ripple_transaction_id": 3,
-          "createdAt": "2014-05-13T23:10:20.803Z",
-          "updatedAt": "2014-05-13T23:11:26.323Z",
-          "uid": null
-        },
-        {
-          "data": null,
-          "id": 5,
-          "amount": "2.9699999999999998",
-          "currency": "SWD",
-          "deposit": false,
-          "external_account_id": 1,
-          "status": "cleared",
-          "ripple_transaction_id": 5,
-          "createdAt": "2014-05-14T19:45:05.244Z",
-          "updatedAt": "2014-05-14T21:19:54.231Z",
-          "uid": null
-        }
-      ]
+      "data": null,
+      "id": 3,
+      "amount": "4.95",
+      "currency": "SWD",
+      "deposit": false,
+      "external_account_id": 1,
+      "status": "cleared",
+      "ripple_transaction_id": 3,
+      "createdAt": "2014-05-13T23:10:20.803Z",
+      "updatedAt": "2014-05-13T23:11:26.323Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 5,
+      "amount": "2.9699999999999998",
+      "currency": "SWD",
+      "deposit": false,
+      "external_account_id": 1,
+      "status": "cleared",
+      "ripple_transaction_id": 5,
+      "createdAt": "2014-05-14T19:45:05.244Z",
+      "updatedAt": "2014-05-14T21:19:54.231Z",
+      "uid": null
     }
+  ]
+}
 ```
 
 ## Managing Wallets ##
 
 ### List Hot Wallet Balances ###
-__`GET /v1/balances`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_balance.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/balances
+```
+
+*Javascript*
+
+```
+//callback: function(err, balances) to run on callback
+balance.getAccountBalance(null, callback);
+```
+</div>
+
+<span class='draft-comment'>Seems there's no commandline version of this?</span>
 
 This method lists the funds that are held by the hot wallet, ready to be 
 distributed to clients. 
@@ -1217,88 +1478,208 @@ distributed to clients.
 Response Body:
 
 ```
+{
+  "success": true,
+  "balances": [
     {
-      "success": true,
-      "balances": [
-        {
-          "value": "29.999358",
-          "currency": "XRP",
-          "counterparty": ""
-        },
-        {
-          "value": "8776.3012",
-          "currency": "SWD",
-          "counterparty": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6"
-        },
-        {
-          "value": "0",
-          "currency": "USD",
-          "counterparty": "rNoc7mZg54TkSd1mENAtEi65c9afYMBuTu"
-        }
-      ]
+      "value": "29.999358",
+      "currency": "XRP",
+      "counterparty": ""
+    },
+    {
+      "value": "8776.3012",
+      "currency": "SWD",
+      "counterparty": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6"
+    },
+    {
+      "value": "0",
+      "currency": "USD",
+      "counterparty": "rNoc7mZg54TkSd1mENAtEi65c9afYMBuTu"
     }
+  ]
+}
 ```
 
 ### List Cold Wallet Liabilities ###
-__`GET /v1/liabilities`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_liabilities.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/liabilities
+```
+
+*Javascript*
+
+```
+//callback: function(err, balance) to run on callback
+balance.getLiabilities(callback);
+```
+</div>
+
+<span class='draft-comment'>No commandline for this one either?</span>
 
 Every asset that the gateway holds and for which it issues currency is
-a liability of the gateway. This method lists total liabilities for each type of
-currency and the other Ripple account holding that currency on the network.
+a liability of the gateway. This method lists total liabilities for each type 
+of currency and the other Ripple account holding that currency on the network.
 
-    RESPONSE:
+Response Body:
+
+```
+{
+  "success": true,
+  "balances": [
     {
-      "success": true,
-      "balances": [
-        {
-          "value": "29.999985",
-          "currency": "XRP",
-          "counterparty": ""
-        },
-        {
-          "value": "-8776.3012",
-          "currency": "SWD",
-          "counterparty": "rEmFrbcZvNR9i2fkBkLxDzB4X85aB4qwyZ"
-        },
-        {
-          "value": "-63.1843",
-          "currency": "SWD",
-          "counterparty": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk"
-        },
-        {
-          "value": "0",
-          "currency": "SWD",
-          "counterparty": "rNoc7mZg54TkSd1mENAtEi65c9afYMBuTu"
-        },
-        {
-          "value": "0",
-          "currency": "SWD",
-          "counterparty": "rwNJY1jnzXHCyfKRyCyVyt8UcSZfAo7z68"
-        },
-        {
-          "value": "0",
-          "currency": "SWD",
-          "counterparty": "raj7HbHuG4da8bm5eNA8dAD19t8Kj8G4NR"
-        }
-      ]
+      "value": "29.999985",
+      "currency": "XRP",
+      "counterparty": ""
+    },
+    {
+      "value": "-8776.3012",
+      "currency": "SWD",
+      "counterparty": "rEmFrbcZvNR9i2fkBkLxDzB4X85aB4qwyZ"
+    },
+    {
+      "value": "-63.1843",
+      "currency": "SWD",
+      "counterparty": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk"
+    },
+    {
+      "value": "0",
+      "currency": "SWD",
+      "counterparty": "rNoc7mZg54TkSd1mENAtEi65c9afYMBuTu"
+    },
+    {
+      "value": "0",
+      "currency": "SWD",
+      "counterparty": "rwNJY1jnzXHCyfKRyCyVyt8UcSZfAo7z68"
+    },
+    {
+      "value": "0",
+      "currency": "SWD",
+      "counterparty": "raj7HbHuG4da8bm5eNA8dAD19t8Kj8G4NR"
     }
-
+  ]
+}
+```
 
 ### Fund Hot Wallet ###
-__`POST /v1/wallets/hot/fund`__
 
-Issue funds from the cold wallet to the hot wallet, specifying the amount, currency, and
-the cold wallet secret key.
+[[Source]<br>]( "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/wallets/hot/fund
+{
+    "amount": 500.35,
+    "currency": "USD",
+    "secret": "snYYdj7vo4ouWZboLfNhTd4YaUJ4r"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: fund_hot_wallet <amount> <currency> <cold_wallet_secret>
+$ bin/gateway 500.35 USD snYYdj7vo4ouWZboLfNhTd4YaUJ4r
+```
+
+*Javascript*
+
+```
+//options: object with the following fields:
+//      - amount: numeric amount to send
+//      - currency: string currency
+//      - secret: string cold wallet secret
+//callback: function(err, hot_wallet) to run on callback
+gateway.api.fundHotWallet(options, callback);
+```
+</div>
+
+Issue funds from the cold wallet to the hot wallet, specifying the amount, 
+currency, and the *cold wallet* secret key. 
 
 ### Set Cold Wallet ###
-__`POST /v1/config/wallets/cold`__
 
-Set the gateway cold wallet, from which funds are issued.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_cold_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/wallets/cold
+{
+    "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_cold_wallet <address>
+$ bin/gateway set_cold_wallet rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD
+```
+
+*Javascript*
+
+```
+gateway.config.set('COLD_WALLET', "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD");
+```
+</div>
+
+Set the gateway cold wallet, from which funds are issued. 
+
+*Note:* If the cold wallet is already set, the REST version returns 304 Not Modified.
+
+Response Body:
+
+```
+{
+    "COLD_WALLET": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+}
+```
 
 ### Retrieve Cold Wallet ###
-__`GET /v1/config/wallets/cold`__
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_cold_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/wallets/cold
+```
+
+*Commandline*
+
+```
+# Syntax: get_cold_wallet
+$ bin/gateway get_cold_wallet
+```
+
+*Javascript*
+
+```
+// May return null if cold wallet has not been set
+gateway.config.get('COLD_WALLET');
+```
+</div>
 
 Show the gatewayd cold wallet, from which funds are issued.
+
+Response Body:
+
+```
+{
+    "COLD_WALLET": {
+        "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+    }
+}
+```
 
 ### Generate Ripple Wallet ###
 __`POST /v1/config/wallets/generate`__
