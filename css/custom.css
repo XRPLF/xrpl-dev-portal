@@ -44,6 +44,10 @@ body .content-root {
 	padding-top: 10px;
 }
 
+.content img {
+    width: 100%;
+}
+
 .menubar {
 	padding-top: 10px;
 }
