@@ -1,17 +1,17 @@
-# gatewayd #
+# About Gatewayd #
 
 Gatewayd (pronounced "gateway-dee"), provides a framework you can extend to build a gateway on the Ripple Network. The system includes a core database that manages accounting for deposits and withdrawals of assets, linking the network with your holdings in the outside world. Gatewayd provides a standard interface for issuing any currency on the Ripple network and exchange, with the goal of completely abstracting interaction with Ripple.
 
-Interact with the gatewayd by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. A HTTP/JSON server, Javascript library, and commandline interface are provided as interfaces to the gatewayd software.
+Interact with the gatewayd by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. Gatewayd includes a REST API, Javascript library, and commandline interface; developers can also interact with Gatewayd by directly modifying the database records it monitors.
 
 Gatewayd's features include: 
 
-  - user registration 
   - deposits and withdrawals
   - issuing currency
-  - robust Ripple payment sending 
+  - robust Ripple payment sending
   - incoming Ripple payment monitoring
   - gateway administration
+  - support for custom plugins
 
 ## Dependencies
 
@@ -25,7 +25,7 @@ Gatewayd's features include:
   - For local development on Mac the simplest installation is via the [Postgres App](http://postgresapp.com/) by Heroku.
   - On Linux, you can generally install Postgres from your distro's package manager. See instructions for:
     - [Ubuntu](https://help.ubuntu.com/community/PostgreSQL)
-    - [Debian](http://www.postgresql.org/download/linux/debian/)
+    - [Debian](https://wiki.debian.org/PostgreSql)
     - [Red Hat, Fedora, CentOS](http://www.postgresql.org/download/linux/redhat/)
     - [SuSE](http://www.postgresql.org/download/linux/suse/)
     - [Arch Linux](https://wiki.archlinux.org/index.php/Postgres)
@@ -34,94 +34,6 @@ Gatewayd's features include:
   - The Ripple REST API provides a simplified HTTP/JSON interface to all the Ripple protocol network operations, such as payments and other transactions.
 
 4. [git](http://git-scm.com/) is required for installation and updating. It is not used during general operation.
-
-## Installation
-
-- Comprehensive [installation script](https://github.com/ripple/gatewayd/blob/master/doc/install.md) for Ubuntu
-
-## Configuration ##
-
-Before you can run gatewayd, you need to set up the appropriate accounts that will be used to store and send funds in the Ripple network. You also need to define which currencies your gateway issues. Beyond that, there are some options you can set if they fit your needs.
-
-The defaults for all of gatewayd's settings are found in the file `config/config.js`. You can override any of those settings with your own values by editing them in the file `config/config.json`, or by using the API methods for setting the configuration. (The API methods result in editing the `config/config.json` file anyway.) You don't need to edit the `config/config.js` file, since that only contains the defaults, and gets overridden in a software update.
-
-### Hot Wallet, Cold Wallet, Trust ###
-
-When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost. Gatewayd uses the concept of a "hot wallet" and a "cold wallet" to minimize the risk of losses for both categories. (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
-
-The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators. Every now and then, the cold wallet is used to refill the stores in the hot wallet.
-
-The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet. The hot wallet can be replaced without affecting the balances already issued by the cold wallet and held by users.
-
-All issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not. 
-
-Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
-
-### Setting Up Wallets for gatewayd
-
-The actual process of configuring gatewayd with the appropriate accounts is easy. First, generate an account key pair for a cold wallet. You can use the official Ripple client to do so:
-
-[Ripple Client](https://ripple.com/client/#/register) 
-
-*Note:* The key generation process in the Ripple Client happens on your local machine, and is never sent to Ripple or anyone else. You can even go offline while you generate the key (as long as you've fully loaded the page first).
-
-Save the secret key somewhere that it will be completely safe. Never send it unencrypted to an untrusted entity such as your web host. 
-
-Now, set the address of the cold wallet in gatewayd using the commandline:
-
-    bin/gateway set_cold_wallet rsnCCioK33L19UwywUPoHK3ucTcQR2fpfm
-
-Next, generate a new key pair for the hot wallet account.
-    
-    bin/gateway generate_wallet
-
-Set the address _and_ the secret key for the hot wallet in gatewayd using the commandline:
-
-    bin/gateway set_hot_wallet rhfyVnzjPvvtdnZNSiNufRCZhHpc9yh1rA ssmgxde6ozSViVkuWvsC6HJxpLvH4
-    
-(*Tip:* Ripple addresses always start with `r`; Ripple secrets always start with `s`.)
-
-Define which currencies your gateway will support. (This does not include XRP, which is necessary for every Ripple account and gateway.) You can do this with the commandline as well. Run the `add_currency` command with the 3-letter ISO 4217 currency codes for whichever currencies you want to support:
-
-    bin/gateway add_currency USD
-    bin/gateway add_currency XAU
-
-Fund both accounts. This requires some outside source of XRP to send a payment to the address of each one. For now, we recommend at least 50 XRP. (Because it requires outside intervention, you cannot do this step with gatewayd.)
-
-At this point, you need to create trustlines between the hot and cold wallet accounts. You can also do this with the gatewayd commandline. Run the `set_trust` command, with reasonable maximum quantities that you want your hot wallet to hold at a time, for each currency you support.
-
-    bin/gateway set_trust USD 1000
-    bin/gateway set_trust XAU 2
-    
-*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.
-
-The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. To get a good starting value, look up the transaction history for the cold wallet and choose the most recent transaction. 
-
-## Updating
-
-The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
-
-1. Use git to pull the `master` branch [from Github](https://github.com/ripple/gatewayd.git). (This assumes you created it by using `git clone` on the repository first.)<br/>
-    `git pull`
-2. Install any new npm modules needed by the new version<br/>
-    `sudo npm install --global`
-3. Disable the current gateway processes. (This starts downtime)<br/>
-    `pm2 kill`
-4. Apply schema changes to the database, if the new version includes any.<br/>
-    `grunt migrate`
-5. Restart the gatewayd processes. (This ends downtime)<br/>
-    `bin/gateway start`
-    
-If you are using the Gateway Appliance virtual machine from Ripple Labs, there is a script to automatically update Gatewayd. <span class='draft-comment'>(Where?)</span>
-
-# Gatewayd Usage #
-
-## Running gatewayd ##
-
-After installation, start the gateway processes by running the command:
-
-    bin/gateway start
-
 ## Gatewayd Architecture ##
 
 A gateway acts as a link between Ripple's shared global Ledger and value outside of the network, such as traditional banking balances, other virtual currencies, or more. Thus, gatewayd sits between the `rippled` server (which participates in the network that defines the Ripple global ledger) and some source of information about external activities. Gatewayd's main job is to monitor each side for transactions and translate them into the appropriate actions on the other side.
@@ -132,9 +44,13 @@ You can visualize Gatewayd's architecture according to the following diagram:
 
 ![Gatewayd Architecture](img/gatewayd_architecture.png)
 
+### External Connector ###
+
+The external connector is a piece of custom code that ties Gatewayd to the outside system that is specific to you, the gateway operator. It might connect to your unique in-house banking system, or it might just be a script that monitors your PayPal account. As far as Gatewayd is concerned, it does not matter.
+
 The external connector has three tasks: submitting external deposits to gatewayd, monitoring gatewayd for outgoing withdrawals, and clearing outgoing withdrawals when finished. You can build a connector that handles those functions in a few different ways. Feel free to choose whichever suits your needs best:
 
-* You can build a process plugin in Javascript that runs as part of gatewayd. The [gatewayd Github project] maintains a list of existing plugins, including ones for existing payment networks.
+* You can build a process plugin in Javascript that runs as part of gatewayd. The [gatewayd Github organization](https://github.com/gatewayd/) maintains a list of existing plugins, including ones for existing payment networks.
 * You can build your own service that consumes [Gatewayd's REST API](#gatewayd-api). In that case, you'll use the [Record Deposit](#record-deposit), [List Pending Withdrawals](#list-pending-withdrawals), and [Clear Pending Withdrawal](#clear-pending-withdrawal) API methods.
 * You can access Gatewayd's database directly. This may be convenient if your existing software already manages SQL databases. You should have a good understanding of Gatewayd's [Data Models](#data-models) if you do this.
 
@@ -179,6 +95,21 @@ All tables have the following common fields:
 
 A user is a fundamental unit of identity for your gateway's customers; these persist to the *User* table. Each user is linked to any number of External Accounts as well as any number of Ripple Addresses, which are persisted to their own tables. 
 
+*Note:* The User model is expected to change dramatically in future versions of of Gatewayd. The current model should be considered DEPRECATED.
+
+In addition to the common fields, the User model has the following:
+
+| Field | Type | Description |
+| ----- | -----| ----------- |
+| `active` | Boolean | Whether or not this user is marked as activated. (This status is not currently enforced in any way.) |
+| `admin` | Boolean | Unused. |
+| `external_id` | String | Arbitrary value used to identify this user in an external system |
+| `federation_name` | String | Federation name for the user. |
+| `federation_tag` | String | Federation tag for the user. |
+| `kyc_id` | Integer | Reference to entry in KYC table with info about this customer |
+| `password_hash` | String | Hashed version of this user's password (Optional) |
+| `salt` | String | Cryptographic salt used when hashing this user's password. |
+
 The [Register User](#register-user) API method creates new users, along with their corresponding external account and Ripple account records.
 
 #### External Transaction Model ####
@@ -221,7 +152,120 @@ The [incoming process](#gatewayd-services) automatically creates records for new
 
 ## Authentication ##
 
-<span class='draft-comment'>(TODO)</span>
+Gatewayd has a powerful API, so it's important to keep it secure from unauthorized access: customers should not access Gatewayd directly. We expect that you will access Gatewayd's REST API through an application server that also provides a customer-facing interface. This could be an existing mobile app or website, or it could be entirely new. If you're building a new one, you could even build it as a process plugin that uses the same Node.js server as Gatewayd. You might also access the API from a simple HTTP client for testing and development purposes. You might not even use the API at all. 
+
+Depending on your situation, there are some configuration variables you can set:
+
+* The `HTTP_SERVER` option (on by default) defines whether or not Gatewayd runs a REST API. If you don't use the REST API at all, you can turn it off entirely to reduce your risk profile.
+* The `HOST` option defines the interface where Gatewayd's REST API should listen for connections. This can be the hostname or IP address of the server if you are connecting externally, or "localhost" or "127.0.0.1" to listen only to connections on the same machine (either by a local proxy or directly for development).
+* The `SSL` option (on by default) defines whether or not the REST API communicates over an encrypted transport, e.g. HTTPS instead of simple HTTP. We recommend *always* using SSL, unless you are only listening on localhost. 
+ * Gatewayd comes with a self-signed certificate for SSL pre-configured. This is adequate for development use. 
+ * For production use, you should set the `SSL_KEY_PATH` and `SSL_CERTIFICATE_PATH` settings to point at a certificate purchased from a trusted [CA](http://en.wikipedia.org/wiki/Certificate_authority).
+* The `BASIC_AUTH` option (on by default) defines whether or not the REST API requires a password to connect. We recommend *always* using this. 
+ * The `KEY` option (not defined by default) sets the API key used for Basic Auth. You can authenticate by sending this API key as either the username or the password. (Previously, the username was required to be "admin@yourdomain.com", based Gatewayd's `DOMAIN` setting, and the API key was only accepted as the password.)
+ * You can generate a new `KEY` value with the [Set API Key](#set-api-key) method. (Use the commandline version if it's your first time.)
+
+*Exception:* Gatewayd's HTTP server also serves a `ripple.txt` response that imitates a text file, but is actually dynamically generated based on its current configuration. This route is intended to be public, and is not protected even when BASIC_AUTH is enabled. However, it is disabled if the `HTTP_SERVER` option is disabled.
+
+Gatewayd implements authentication using the [Passport Node.js Module](http://passportjs.org/), so if you are familiar with Passport, you can easily customize the authentication scheme for Gatewayd to fit your needs.
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/passport_auth.js "Source")
+
+### Production ###
+
+In a production environment, you will probably send requests to Gatewayd through a proxy server like [Nginx](http://nginx.com/), which could run on the same machine as Gatewayd. If the proxy is not on the same machine, you might need to configure Nginx and Gatewayd to share the same SSL cert. Alternatively, you could terminate SSL at Nginx or a load balancer and use HTTP over your internal network for the remaining hops, but we recommend [encrypting everything as a "defense-in-depth" strategy](http://arstechnica.com/information-technology/2013/11/googlers-say-f-you-to-nsa-company-encrypts-internal-network/).
+
+### Deprecated User-Auth Routes ###
+
+The User-Auth routes are deprecated and may be removed without further notice. These routes are available only if the `USER_AUTH` config option is enabled. In this case, the name and password associated with a user account are used for Basic-Auth on the User-Auth Routes instead of using the API key.
+
+## Hot Wallet, Cold Wallet, Trust ##
+
+When a gateway issues balances of non-XRP currencies on the Ripple Network, those balances become liabilities in the real world that must be covered when people redeem those balances as external withdrawals. Additionally, actual XRP balances are digital assets that can be stolen or lost. Gatewayd uses the concept of a "hot wallet" and a "cold wallet" to minimize the risk of losses for both categories. (In practice, there is no difference between the term "wallet" and "account" on Ripple.)
+
+The cold wallet is like your vault. It issues all your funds, and holds the bulk of your XRP assets. The secret key that is used for this wallet is kept offline, accessible to a few trusted operators. Every now and then, the cold wallet is used to refill the stores in the hot wallet.
+
+The hot wallet is like your cash register. It holds a small amount of funds at a time, and customers deal with it directly. The secret key for this wallet is, by necessity, stored on a server that is connected to the outside internet. (Specifically, it is stored in Gatewayd's config file.) The hot wallet can be replaced without affecting the balances already issued by the cold wallet and held by users.
+
+All issuances of non-XRP currency and assets come from the cold wallet; it effectively 'creates' the currency on the Ripple Network to mirror the deposits received via external transactions. Consequently, Ripple accounts (customers as well as the hot wallet) must trust the cold wallet account in order to hold currency issued by that gateway. (Trusting a gateway means that you believe its issuances are worth something.) Customers do not need to trust the hot wallet, and should not. 
+
+Although you could send the issuances directly to customers from the account issuing them, that exposes you to risk: if the account issuing the currency is compromised, potentially unlimited issuances could be made on your behalf. Using a hot/cold wallet distinction decreases the chances that your issuing account will be compromised, because you can keep it safely offline while day-to-day business is happening. The hot wallet, which is exposed to the most risk, can only lose as much money as it holds.
+
+# Gatewayd Usage #
+
+## Installation
+
+- Comprehensive [installation script](https://github.com/ripple/gatewayd/blob/master/doc/install.md) for Ubuntu
+
+- The Gateway Appliance virtual machine comes with Gatewayd already installed. <span class='draft-comment'>(Update when the VM is public: How do you get the appliance and where is Gatewayd installed?)</span>
+
+## Updating ##
+
+The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
+
+1. Use git to pull the `master` branch [from Github](https://github.com/ripple/gatewayd.git). (This assumes you created it by using `git clone` on the repository first.)<br/>
+    `git pull`
+2. Install any new npm modules needed by the new version<br/>
+    `sudo npm install --global`
+3. Disable the current gateway processes. (This starts downtime)<br/>
+    `pm2 kill`
+4. Apply schema changes to the database, if the new version includes any.<br/>
+    `grunt migrate`
+5. Restart the gatewayd processes. (This ends downtime)<br/>
+    `bin/gateway start`
+    
+If you are using the Gateway Appliance virtual machine from Ripple Labs, there is a script to automatically update Gatewayd. <span class='draft-comment'>(Where?)</span>
+
+## Configuration ##
+
+Before you can run gatewayd, you need to set up the appropriate accounts that will be used to store and send funds in the Ripple network. You also need to define which currencies your gateway issues. Beyond that, there are some options you can set if they fit your needs.
+
+The defaults for all of gatewayd's settings are found in the file `config/config.js`. You can override any of those settings with your own values by editing them in the file `config/config.json`, or by using the API methods for setting the configuration. (The API methods result in editing the `config/config.json` file anyway.) Don't edit the `config/config.js` file, since that only contains the defaults, and gets overridden in a software update.
+
+### Setting Up Wallets for gatewayd ###
+
+The actual process of configuring gatewayd with the appropriate accounts is easy. First, generate an account key pair for a cold wallet. You can use the official Ripple client to do so:
+
+[Ripple Client](https://ripple.com/client/#/register) 
+
+*Note:* The key generation process in the Ripple Client happens on your local machine, and is never sent to Ripple or anyone else. You can even go offline while you generate the key (as long as you've fully loaded the page first).
+
+Save the secret key somewhere that it will be completely safe. Never send it unencrypted to an untrusted entity such as your web host. 
+
+Now, set the address of the cold wallet in gatewayd using the commandline:
+
+    bin/gateway set_cold_wallet rsnCCioK33L19UwywUPoHK3ucTcQR2fpfm
+
+Next, generate a new key pair for the hot wallet account.
+    
+    bin/gateway generate_wallet
+
+Set the address _and_ the secret key for the hot wallet in gatewayd using the commandline:
+
+    bin/gateway set_hot_wallet rhfyVnzjPvvtdnZNSiNufRCZhHpc9yh1rA ssmgxde6ozSViVkuWvsC6HJxpLvH4
+    
+(*Tip:* Ripple addresses always start with `r`; Ripple secrets always start with `s`.)
+
+Define which currencies your gateway will support. (This does not include XRP, which is necessary for every Ripple account and gateway.) You can do this with the commandline as well. Run the `add_currency` command with the 3-letter ISO 4217 currency codes for whichever currencies you want to support:
+
+    bin/gateway add_currency USD
+    bin/gateway add_currency XAU
+
+Fund both accounts. This requires some outside source of XRP to send a payment to the address of each one. For now, we recommend at least 50 XRP. (Because it requires outside intervention, you cannot do this step with gatewayd.)
+
+At this point, you need to create trustlines between the hot and cold wallet accounts. You can also do this with the gatewayd commandline. Run the `set_trust` command, with reasonable maximum quantities that you want your hot wallet to hold at a time, for each currency you support.
+
+    bin/gateway set_trust USD 1000
+    bin/gateway set_trust XAU 2
+    
+*Aside:* Keep in mind the very different values for currencies. In this example, the two troy ounces of gold (XAU 2) are, at the time of writing, worth approximately $2600 USD.) Fortunately, gatewayd supports very large and small numbers.
+
+The last step before you can start your gateway is to set the last payment hash. This indicates a cutoff point in time, where the gateway should monitor Ripple for payments that are newer and try to process them, but ignore payments that are older. To get a good starting value, look up the transaction history for the cold wallet and choose the most recent transaction. 
+
+## Running gatewayd ##
+
+After installation, start the gateway processes by running the command:
+
+    bin/gateway start
 
 ## Command Line Interface ##
 
@@ -235,46 +279,54 @@ bin/gateway -h
 
 # Gatewayd API Reference #
 
+<span class='draft-comment'>(Update this version number with the right one!)</span>
 `gatewayd : v3.20.0`
 
-## Available API Methods ##
+The API serves several purposes: it provides an easy way to customize settings without having to edit the config files directly; it provides access to status and historical information about all transactions made in the gateway; and it provides one avenue for building an [external connector](#external-connector). 
 
-These methods are available to anyone who has access to the API. (See [Authentication](#authentication) for more details.)
+#### External Transactions ####
+
+* [Record Deposit - `POST /v1/deposits/`](#record-deposit)
+* [List Queued Deposits - `GET /v1/deposits`](#list-queued-deposits)
+* [List Pending Withdrawals - `GET /v1/withdrawals`](#list-pending-withdrawals)
+* [Clear Pending Withdrawal - `POST /v1/withdrawals/{:id}/clear`](#clear-pending-withdrawal)
+* [List Cleared External Transactions - `GET /v1/cleared`](#list-cleared-external-transactions)
+
+#### User Management ####
 
 * [Register User - `POST /v1/registrations`](#register-user)
 * [Activate User - `POST /v1/users/{:id}/activate`](#activate-user)
 * [Deactivate User - `POST /v1/users/{:id}`](#deactivate-user)
-* [Record Deposit - `POST /v1/deposits/`](#record-deposit)
-* [List Deposits - `GET /v1/deposits`](#list-deposits)
+
+#### Ripple Transactions ####
+
 * [List Outgoing Payments - `GET /v1/payments/outgoing`](#list-outgoing-payments)
 * [List Failed Payments - `GET /v1/payments/failed`](#list-failed-payments)
 * [Retry Failed Payments - `POST /v1/payments/failed/{:id}/retry`](#retry-failed-payment)
 * [List Incoming Payments - `GET /v1/payments/incoming`](#list-incoming-payments)
-* [List Withdrawals - `GET /v1/withdrawals`](#list-withdrawals)
-* [Clear Withdrawal - `POST /v1/withdrawals/{:id}/clear`](#clear-withdrawal)
-* [List Cleared External Transactions - `GET /v1/cleared`](#list-cleared-external-transactions)
+
+#### Ripple Management ####
+
+* [Generate Ripple Wallet - `POST /v1/config/wallets/generate`](#generate-ripple-wallet)
 * [List Hot Wallet Balances - `GET /v1/balances`](#list-hot-wallet-balances)
 * [List Cold Wallet Liabilities - `GET /v1/liabilities`](#list-cold-wallet-liabilities)
+* [Fund Hot Wallet - `POST /v1/wallets/hot/fund`](#fund-hot-wallet)
+* [Return Funds from Hot Wallet to Cold Wallet - `POST /v1/wallets/cold/refund`](#return-funds-from-hot-wallet-to-cold-wallet)
+* [Set Trust from Hot Wallet to Cold Wallet - `POST /v1/trust`](#set-trust-from-hot-wallet-to-cold-wallet)
+* [Show Trust from Hot Wallet to Cold Wallet - `GET /v1/trust`](#show-trust-from-hot-wallet-to-cold-wallet)
 
-## Admin Configuration API Routes
+#### Gatewayd Configuration ####
 
-These methods are only available to users who have authenticated as an administrator. (See [Authentication](#authentication) for more details.)
-
-* [Fund Hot Wallet - `POST /v1/wallets/hot/fund`](#funding-the-hot-wallet)
-* [Set Database URL - `POST /v1/config/database`](#setting-the-database-url)
-* [Retrieve Database URL - `GET /v1/config/database`](#show-the-database-url)
+* [Set Database URL - `POST /v1/config/database`](#set-database-url)
+* [Retrieve Database URL - `GET /v1/config/database`](#retrieve-database-url)
 * [Set Ripple-REST URL - `POST /v1/config/ripple/rest`](#set-ripple-rest-url)
 * [Retrieve Ripple-REST URL - `GET /v1/config/ripple/rest`](#retrieve-ripple-rest-url)
 * [Set Cold Wallet - `POST /v1/config/wallets/cold`](#set-cold-wallet)
 * [Retrieve Cold Wallet - `GET /v1/config/wallets/cold`](#retrieve-cold-wallet)
-* [Generate Ripple Wallet - `POST /v1/config/wallets/generate`](#generate-ripple-wallet)
 * [Set Hot Wallet - `POST /v1/config/wallets/hot`](#set-hot-wallet)
 * [Retrieve Hot Wallet - `GET /v1/config/wallets/hot`](#retrieve-hot-wallet)
-* [Set Trust from Hot Wallet to Cold Wallet - `POST /v1/trust`](#set-trust-from-hot-wallet-to-cold-wallet)
-* [Show Trust from Hot Wallet to Cold Wallet - `GET /v1/trust`](#show-trust-from-hot-wallet-to-cold-wallet)
-* [Fund Hot Wallet - `POST /v1/wallets/hot/fund`](#fund-hot-wallet)
-* [Set Last Payment Hash - `POST /v1/config/last_payment_hash`](#setting-the-last-payment-hash)
-* [Retrieve Last Payment Hash - `GET /v1/config/last_payment_hash`](#showing-the-last-payment-hash)
+* [Set Last Payment Hash - `POST /v1/config/last_payment_hash`](#set-last-payment-hash)
+* [Retrieve Last Payment Hash - `GET /v1/config/last_payment_hash`](#retrieve-last-payment-hash)
 * [Set Gateway Domain - `POST /v1/config/domin`](#set-gateway-domain)
 * [Retrieve Domain - `GET /v1/config/domain`](#retrieve-domain)
 * [Set API Key - `POST /v1/config/key`](#set-api-key)
@@ -282,15 +334,16 @@ These methods are only available to users who have authenticated as an administr
 * [Add Supported Currency - `POST /v1/currencies`](#add-supported-currency)
 * [List Supported Currencies - `GET /v1/currencies`](#list-supported-currencies)
 * [Remove Supported Currency - `DELETE /v1/currencies/{:currency}`](#remove-supported-currency)
-* [Return Funds from Hot Wallet to Cold Wallet - `POST /v1/wallets/cold/refund`](#return-funds-from-hot-wallet-to-cold-wallet)
+
+#### Gatewayd Processes ####
+
 * [Start Worker Processes - `POST /v1/start`](#start-worker-processes)
 * [List Current Processes - `POST /v1/processes`](#list-current-processes)
 
-## User-Auth API Routes
+#### User-Auth API Routes #####
 
-All these routes are **DEPRECATED**.
+All these routes are **DEPRECATED**. Authentication for these routes works differently. See [Deprecated User-Auth Routes](#deprecated-user-auth-routes) for details.
 
-* [`POST /v1/register`](#register-user)
 * [`POST /v1/users/login`](#log-in-user)
 * [`GET /v1/users/{:id}`](#retrieve-user)
 * [`GET /v1/users/{:id}/external_accounts`](#list-user-external-accounts)
@@ -298,7 +351,329 @@ All these routes are **DEPRECATED**.
 * [`GET /v1/users/{:id}/ripple_addresses`](#list-user-ripple-addresses)
 * [`GET /v1/users/{:id}/ripple_transactions`](#list-user-ripple-transactions)
 
-## Managing Users ##
+## External Transactions ##
+
+### Record Deposit ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/record_deposit.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/deposits
+{
+  "external_account_id": 307,
+  "currency": "BTC"
+  "amount": "10.7"
+  "data": "(This field is optional.)"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: record_deposit <amount> <currency> <external_account_id>
+$ bin/gateway record_deposit 95.29 USD 13
+```
+
+*Javascript*
+
+```
+//options: object with the following fields:
+//      - external_account_id: unique ID of the depositor's external account record
+//      - amount: numeric deposit amount
+//      - currency: currency string (e.g. "USD")
+//      - data: Arbitrary data in JSON/string format
+//callback: function(err, deposit) to run on callback
+gateway.api.recordDeposit(options, callback);
+```
+</div>
+
+This method is the entry point to creating Ripple balances. When you receive 
+an asset outside the Ripple Network from a user, you can call this method to 
+create a "deposit" record in gatewayd's database tracking it. By default, the 
+deposit record is marked as "queued", which means that gatewayd's deposit 
+process will automatically apply fees and then enqueue an outgoing Ripple 
+payment to the user's Ripple address.
+
+The most important field is the `external_account_id`, which references the 
+external account record for the user making this deposit. This value is returned
+by the [Register User](#register-user) method when a user is created.
+
+Response Body:
+
+```
+{
+  "deposit": {
+    "data": null,
+    "external_account_id": 307,
+    "currency": "BTC",
+    "amount": "10.7",
+    "deposit": true,
+    "status": "queued",
+    "updatedAt": "2014-06-12T00:46:02.080Z",
+    "createdAt": "2014-06-12T00:46:02.080Z",
+    "id": 1,
+    "ripple_transaction_id": null,
+    "uid": null
+  }
+}
+```
+
+### List Queued Deposits ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_deposits.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/deposits
+```
+
+*Commandline*
+
+```
+# Syntax: list_queued_deposits
+$ bin/gateway list_queued_deposits
+```
+
+*Javascript*
+
+```
+//callback: function(err, deposits) to run on callback
+gateway.api.listQueuedDeposits(callback);
+```
+</div>
+
+This method retrieves a list of all deposits that are currently queued. These 
+deposits represent incoming assets that have not yet been processed and sent 
+out as balances on the Ripple network.
+
+Response Body:
+
+```
+{
+  "deposits": [
+    {
+      "data": null,
+      "id": 1,
+      "amount": "10.7",
+      "currency": "BTC",
+      "deposit": true,
+      "external_account_id": 307,
+      "status": "queued",
+      "ripple_transaction_id": null,
+      "createdAt": "2014-06-12T00:46:02.080Z",
+      "updatedAt": "2014-06-12T00:46:02.080Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 2,
+      "amount": "281.2",
+      "currency": "XAG",
+      "deposit": true,
+      "external_account_id": 307,
+      "status": "queued",
+      "ripple_transaction_id": null,
+      "createdAt": "2014-06-12T00:47:24.754Z",
+      "updatedAt": "2014-06-12T00:47:24.754Z",
+      "uid": null
+    }
+  ]
+}
+```
+
+### List Pending Withdrawals ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_withdrawals.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/withdrawals
+```
+
+*Commandline*
+
+```
+# Syntax: list_queued_withdrawals
+$ bin/gateway list_queued_withdrawals
+```
+
+*Javascript*
+
+```
+//callback: function(err, withdrawals) to run on callback
+gateway.api.listQueuedWithdrawals(callback);
+```
+</div>
+
+To retrieve assets from the gateway, a user sends funds back to the gateway's 
+Ripple account. After the incoming payment has been received and processed 
+(fees subtracted), it is placed in the pending withdrawals queue, which is a 
+list of external transaction withdrawal records with a state of "pending". If 
+the gateway administrator has registered a withdrawal callback url, the 
+withdrawal callbacks process will read withdrawals from this list and
+POST their data to the callback url provided.
+
+This method retrieves the list of pending withdrawals.
+
+Response Body:
+
+```
+    {
+      "withdrawals": [
+        {
+          "data": null,
+          "id": 79,
+          "amount": "1001",
+          "currency": "SWD",
+          "deposit": false,
+          "external_account_id": 6,
+          "status": "queued",
+          "ripple_transaction_id": 80,
+          "createdAt": "2014-05-30T19:23:48.390Z",
+          "updatedAt": "2014-05-30T19:23:48.390Z",
+          "uid": null
+        },
+        {
+          "data": null,
+          "id": 84,
+          "amount": "8.5",
+          "currency": "SWD",
+          "deposit": false,
+          "external_account_id": 6,
+          "status": "queued",
+          "ripple_transaction_id": 85,
+          "createdAt": "2014-06-11T00:23:56.992Z",
+          "updatedAt": "2014-06-11T00:23:56.992Z",
+          "uid": null
+        }
+      ]
+    }
+```
+
+### Clear Pending Withdrawal ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/clear_withdrawal.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/withdrawals/{:id}/clear
+{}
+```
+
+*Commandline*
+
+```
+# Syntax: clear_withdrawal <external_transaction_id>
+$ bin/gateway clear_withdrawal 9
+```
+
+*Javascript*
+
+```
+//id: Unique integer ID of withdrawal to clear
+//callback: function(err, withdrawal) to run on callback
+gateway.api.clearWithdrawal(id, callback);
+```
+</div>
+
+A pending withdrawal record indicates to the gateway operator that a
+user wishes to withdraw a given asset. Once the operator processes the 
+withdrawal by sending the asset to the user, mark the withdrawal as "cleared" 
+by calling this method.
+
+Response Body:
+
+```
+    {
+      "withdrawal": {
+        "data": null,
+        "id": 84,
+        "amount": "8.5",
+        "currency": "SWD",
+        "deposit": false,
+        "external_account_id": 6,
+        "status": "cleared",
+        "ripple_transaction_id": 85,
+        "createdAt": "2014-06-11T00:23:56.992Z",
+        "updatedAt": "2014-06-12T20:01:29.663Z",
+        "uid": null
+      }
+    }
+```
+
+### List Cleared External Transactions ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_cleared.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/cleared
+```
+
+*Commandline*
+
+```
+# Syntax: list_cleared
+$ bin/gateway list_cleared
+```
+
+*Javascript*
+
+```
+//callback: function(err, transactions) to run on callback
+gateway.api.listCleared(callback);
+```
+</div>
+
+This method retrieves the list of all external transactions that are no longer 
+considered pending. This includes all deposits that have been issued as a 
+balance with a Ripple payment, and all withdrawals that have been cleared.
+
+*Note:* There is an apparent bug with this method, where both deposits and withdrawals are returned in the "deposits" field. (See [Issue #240](https://github.com/ripple/gatewayd/issues/240) for details and status.)
+
+Response Body:
+
+```
+{
+  "deposits": [
+    {
+      "data": null,
+      "id": 3,
+      "amount": "4.95",
+      "currency": "SWD",
+      "deposit": false,
+      "external_account_id": 1,
+      "status": "cleared",
+      "ripple_transaction_id": 3,
+      "createdAt": "2014-05-13T23:10:20.803Z",
+      "updatedAt": "2014-05-13T23:11:26.323Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 5,
+      "amount": "2.9699999999999998",
+      "currency": "SWD",
+      "deposit": false,
+      "external_account_id": 1,
+      "status": "cleared",
+      "ripple_transaction_id": 5,
+      "createdAt": "2014-05-14T19:45:05.244Z",
+      "updatedAt": "2014-05-14T21:19:54.231Z",
+      "uid": null
+    }
+  ]
+}
+```
+
+## User Management ##
 
 ### Register User ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/register_user.js "Source")
@@ -330,11 +705,14 @@ gateway.api.registerUser(options, callback);
 ```
 </div>
 
-Register a user with the gatewayd. A username, password, and ripple address are required. Upon
-registration several records are created in the gatewayd database, including a user record,
-a "independent" ripple address record with the address provided, a "hosted" ripple address
-record for making withdrawals, and a "default" external account for recording deposits and
-withdrawals.
+Register a user with the gatewayd. A username, password, and ripple address 
+are required. Upon registration several records are created in the gatewayd 
+database, including a user record, a "independent" ripple address record with 
+the address provided, a "hosted" ripple address record for making withdrawals, 
+and a "default" external account for recording deposits and withdrawals.
+
+Use the `user.external_account.id` field of the response to link a future 
+deposit to this user.
 
 Response Body:
 ```
@@ -507,325 +885,7 @@ Response Body:
 }
 ```
 
-### Log In User ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/public/login_user.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/users/login
-{
-    "name": "steven@ripple.com",
-    "password": "s0m3supe&$3cretp@s$w0r*"
-}
-```
-</div>
-
-<span class='draft-comment'>Seemingly no commandline for this; also, not exactly applicable for JS?</span>
-
-Verifies that a user has the correct username and password combination. Used
-for the web application and requires user credentials in place of an API key.
-
-Naturally, since this includes sensitive credentials, do not run this command 
-over an unsecure connection.
-
-Response Body:
-<span class='draft-comment'>No example yet -- should be a user object</span>
-
-### Retrieve User ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/resources/users_controller.js#L38 "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/users/{:id}
-```
-
-*Commandline*
-
-```
-// no commandline equivalent?
-```
-
-*Javascript*
-```
-//requires User data model
-//user_id: Integer user ID
-//callback: function(err, user) to run on callback
-User.find({ where: { id: user_id }}).complete(callback);
-```
-</div>
-
-To retrieve a user's base account information, pass the user's ID to this 
-method.
-
-Response Body:
-
-```
-{
-  "success": true,
-  "users": {
-    "id": 8,
-    "name": "steven@ripple.com",
-    "salt": "1366f14307850818afddd1509f329fdc1a73fb93919d92d5b44c91f07560c999",
-    "federation_tag": null,
-    "admin": null,
-    "federation_name": null,
-    "password_hash": "dd1d5a0ba63c63a117ff811f14040fa87dcbfedd7e37b5df506bfc4e8014c8e5",
-    "bank_account_id": null,
-    "kyc_id": null,
-    "createdAt": "2014-06-10T22:37:19.647Z",
-    "updatedAt": "2014-06-10T22:37:19.647Z",
-    "external_id": null,
-    "data": null,
-    "uid": null,
-    "active": false
-  }
-}
-```
-
-### List User External Accounts ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_user_external_accounts.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/users/{:id}/external_accounts
-```
-
-*Commandline*
-
-```
-# Syntax: list_user_external_accounts <id>
-bin/gateway list_user_external_accounts 508
-```
-
-*Javascript*
-```
-//id: integer ID of account to get external accounts from
-//callback: function(err, accounts) to run on callback
-gateway.api.listUserExternalAccounts(id, callback);
-```
-</div>
-
-To list all external (non-Ripple) account records for a user, pass the user's 
-ID to this method.
-  
-Response Body:
-
-```
-{
-  "external_accounts": [
-    {
-      "data": null,
-      "id": 8,
-      "name": "default",
-      "user_id": 8,
-      "createdAt": "2014-06-10T22:37:19.835Z",
-      "updatedAt": "2014-06-10T22:37:19.835Z",
-      "uid": null
-    }
-  ]
-}
-```
-
-### List User External Transactions ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L24 "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/users/{:id}/external_transactions
-```
-
-*Javascript*
-
-```
-//id: Integer user ID of user to find transactions of
-//callback: function(err, transactions) to run on callback
-gateway.data.externalTransactions.forUser(id, callback);
-```
-</div>
-
-<span class='draft-comment'>Apparently no commandline for this one?</span>
-
-List all external (non-Ripple) transaction records for a given user. These 
-records are the user's deposits into the gateway and withdrawals from it.
-
-Response Body:
-
-```
-{
-  "externalTransactions": [
-    {
-      "id": 80,
-      "currency": "SWD",
-      "amount": "1",
-      "deposit": true,
-      "ripple_transaction_id": 81,
-      "external_account_id": 8,
-      "status": "processed"
-    },
-    {
-      "id": 81,
-      "currency": "SWD",
-      "amount": "1.5999",
-      "deposit": true,
-      "ripple_transaction_id": 82,
-      "external_account_id": 8,
-      "status": "processed"
-    }
-  ]
-}
-```
-
-### List User Ripple Addresses ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L36 "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-/v1/users/{:id}/ripple_addresses
-```
-
-*Javascript*
-
-```
-//id = Integer ID of user to retrieve Ripple addresses of
-//callback: function(err, addresses) to run on callback
-gateway.data.rippleAddresses.readAll({ user_id: id }, callback);
-```
-</div>
-
-<span class='draft-comment'>No commandline for this one?</span>
-
-To list all ripple addresses for a given user, pass the user's ID to this 
-method. Most users will have at least one independent address and one hosted 
-address.
-
-Response Body:
-
-```
-{
-  "rippleAddresses": [
-    {
-      "data": null,
-      "id": 16,
-      "managed": false,
-      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-      "type": "independent",
-      "user_id": 8,
-      "tag": null,
-      "secret": null,
-      "previous_transaction_hash": null,
-      "createdAt": "2014-06-10T22:37:19.825Z",
-      "updatedAt": "2014-06-10T22:37:19.825Z",
-      "uid": null
-    },
-    {
-      "data": null,
-      "id": 17,
-      "managed": true,
-      "address": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-      "type": "hosted",
-      "user_id": 8,
-      "tag": 8,
-      "secret": null,
-      "previous_transaction_hash": null,
-      "createdAt": "2014-06-10T22:37:19.844Z",
-      "updatedAt": "2014-06-10T22:37:19.844Z",
-      "uid": null
-    }
-  ]
-}
-```
-
-### List User Ripple Transactions ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L46 "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/users/{:id}/ripple_transactions
-```
-
-*Javascript*
-
-```
-//id: Integer user ID of the user to retrieve transactions of
-//callback: function(err, transactions) to run on callback
-gateway.data.rippleTransactions.forUser(id, callback);
-```
-</div>
-
-<span class='draft-comment'>No commandline for this one either?</span>
-
-To list all Ripple transactions for a given user, pass the user's ID to this
-method. The response includes an array of transactions made to or from any of 
-the users's Ripple addresses.
-
-Response Body:
-
-```
-{
-  "rippleTransactions": [
-    {
-      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-      "tag": null,
-      "ripple_address_id": 16,
-      "id": 81,
-      "to_address_id": 16,
-      "from_address_id": 1,
-      "transaction_state": "tesSUCCESS",
-      "transaction_hash": "F0737576A4E7D064BF00145FAD6E6BAD19115C7739A3C8CDB6D1FD38888C8364",
-      "to_amount": "1",
-      "to_currency": "SWD",
-      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-      "from_amount": "1",
-      "from_currency": "SWD",
-      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-      "createdAt": "2014-06-10T22:41:14.258Z",
-      "updatedAt": "2014-06-10T22:41:16.717Z",
-      "uid": "505a336f-4ff9-473d-862b-164b3ad63b73",
-      "data": null,
-      "client_resource_id": "false",
-      "state": "succeeded",
-      "external_transaction_id": 80
-    },
-    {
-      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
-      "tag": null,
-      "ripple_address_id": 16,
-      "id": 82,
-      "to_address_id": 16,
-      "from_address_id": 1,
-      "transaction_state": "tesSUCCESS",
-      "transaction_hash": "7DEEF3BBAEEA3FEECF7819D3FAA53C580ED4A790A98DD2E761E8D747EAFB1969",
-      "to_amount": "1.5999",
-      "to_currency": "SWD",
-      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-      "from_amount": "1.5999",
-      "from_currency": "SWD",
-      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
-      "createdAt": "2014-06-10T22:43:57.090Z",
-      "updatedAt": "2014-06-10T22:43:59.364Z",
-      "uid": "5205d9b4-f1c2-4273-b656-78e908e94210",
-      "data": null,
-      "client_resource_id": "false",
-      "state": "succeeded",
-      "external_transaction_id": 81
-    }
-  ]
-}
-```
-
-## Managing Transactions ##
+## Ripple Transactions ##
 
 ### List Outgoing Payments ###
 
@@ -1116,404 +1176,50 @@ Response Body:
       ]
     }
 ```
-    
-### Set Last Payment Hash ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_last_payment_hash.js "Source")
+
+## Ripple Management ##
+
+### Generate Ripple Wallet ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/generate_wallet.js "Source")
 
 <div class='multicode'>
 *REST*
 
 ```
-POST /v1/config/last_payment_hash
-{
-    "payment_hash": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
-}
-```
-
-*Commandline*
-
-```
-# Syntax: set_last_payment_hash <hash>
-$ bin/gateway set_last_payment_hash 4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8
-```
-
-*Javascript*
-
-```
-//options: object with field hash: string of last payment hash to use
-//callback: function(err) to run on callback
-gateway.api.setLastPaymentHash(options, callback);
-```
-</div>
-
-Gatewayd polls the Ripple Network for notifications of inbound payments to the 
-cold wallet beginning with the last known transaction hash. 
-
-This method manually sets that hash. Gatewayd will skip any payments older 
-than the transaction identified by the given hash. Generally you do this one time, during setup, choosing the latest transaction in the cold wallet's history at that time, and never set it manually again.
-
-Response Body:
-
-```
-{
-    "LAST_PAYMENT_HASH": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
-}
-```
-
-### Retrieve Last Payment Hash ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_last_payment_hash.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/config/last_payment_hash
-```
-
-*Commandline*
-
-```
-# Syntax: get_last_payment_hash
-$ bin/gateway get_last_payment_hash
-```
-
-*Javascript*
-
-```
-gateway.config.get('LAST_PAYMENT_HASH');
-```
-</div>
-
-Gatewayd polls the Ripple Network for notifications of inbound payments to the 
-cold wallet beginning with the last known transaction hash. 
-
-This method returns the transaction hash currently being used.
-
-Response Body:
-
-```
-    {
-      "LAST_PAYMENT_HASH": "12AE1B1843D886D7D6783DA02AB5F43C32579212853CF3CEFD6DBDF29F03BC80"
-    }
-```
-
-### Record Deposit ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/record_deposit.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/deposits
-{
-  "external_account_id": 307,
-  "currency": "BTC"
-  "amount": "10.7"
-  "data": "(This field is optional.)"
-}
-```
-
-*Commandline*
-
-```
-# Syntax: record_deposit <amount> <currency> <external_account_id>
-$ bin/gateway record_deposit 95.29 USD 13
-```
-
-*Javascript*
-
-```
-//options: object with the following fields:
-//      - external_account_id: unique ID of the depositor's external account record
-//      - amount: numeric deposit amount
-//      - currency: currency string (e.g. "USD")
-//      - data: Arbitrary data in JSON/string format
-//callback: function(err, deposit) to run on callback
-gateway.api.recordDeposit(options, callback);
-```
-</div>
-
-This method is the entry point to creating Ripple balances. When you receive 
-an asset outside the Ripple Network from a user, you can call this method to 
-create a "deposit" record in gatewayd's database tracking it. By default, the 
-deposit record is marked as "queued", which means that gatewayd's deposit 
-process will automatically apply fees and then enqueue an outgoing Ripple 
-payment to the user's Ripple address.
-
-Response Body:
-
-```
-{
-  "deposit": {
-    "data": null,
-    "external_account_id": 307,
-    "currency": "BTC",
-    "amount": "10.7",
-    "deposit": true,
-    "status": "queued",
-    "updatedAt": "2014-06-12T00:46:02.080Z",
-    "createdAt": "2014-06-12T00:46:02.080Z",
-    "id": 1,
-    "ripple_transaction_id": null,
-    "uid": null
-  }
-}
-```
-
-### List Queued Deposits ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_deposits.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/deposits
-```
-
-*Commandline*
-
-```
-# Syntax: list_queued_deposits
-$ bin/gateway list_queued_deposits
-```
-
-*Javascript*
-
-```
-//callback: function(err, deposits) to run on callback
-gateway.api.listQueuedDeposits(callback);
-```
-</div>
-
-This method retrieves a list of all deposits that are currently queued. These 
-deposits represent incoming assets that have not yet been processed and sent 
-out as balances on the Ripple network.
-
-Response Body:
-
-```
-{
-  "deposits": [
-    {
-      "data": null,
-      "id": 1,
-      "amount": "10.7",
-      "currency": "BTC",
-      "deposit": true,
-      "external_account_id": 307,
-      "status": "queued",
-      "ripple_transaction_id": null,
-      "createdAt": "2014-06-12T00:46:02.080Z",
-      "updatedAt": "2014-06-12T00:46:02.080Z",
-      "uid": null
-    },
-    {
-      "data": null,
-      "id": 2,
-      "amount": "281.2",
-      "currency": "XAG",
-      "deposit": true,
-      "external_account_id": 307,
-      "status": "queued",
-      "ripple_transaction_id": null,
-      "createdAt": "2014-06-12T00:47:24.754Z",
-      "updatedAt": "2014-06-12T00:47:24.754Z",
-      "uid": null
-    }
-  ]
-}
-```
-
-### List Pending Withdrawals ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_queued_withdrawals.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/withdrawals
-```
-
-*Commandline*
-
-```
-# Syntax: list_queued_withdrawals
-$ bin/gateway list_queued_withdrawals
-```
-
-*Javascript*
-
-```
-//callback: function(err, withdrawals) to run on callback
-gateway.api.listQueuedWithdrawals(callback);
-```
-</div>
-
-To retrieve assets from the gateway, a user sends funds back to the gateway's 
-Ripple account. After the incoming payment has been received and processed 
-(fees subtracted), it is placed in the pending withdrawals queue, which is a 
-list of external transaction withdrawal records with a state of "pending". If 
-the gateway administrator has registered a withdrawal callback url, the 
-withdrawal callbacks process will read withdrawals from this list and
-POST their data to the callback url provided.
-
-This method retrieves the list of pending withdrawals.
-
-Response Body:
-
-```
-    {
-      "withdrawals": [
-        {
-          "data": null,
-          "id": 79,
-          "amount": "1001",
-          "currency": "SWD",
-          "deposit": false,
-          "external_account_id": 6,
-          "status": "queued",
-          "ripple_transaction_id": 80,
-          "createdAt": "2014-05-30T19:23:48.390Z",
-          "updatedAt": "2014-05-30T19:23:48.390Z",
-          "uid": null
-        },
-        {
-          "data": null,
-          "id": 84,
-          "amount": "8.5",
-          "currency": "SWD",
-          "deposit": false,
-          "external_account_id": 6,
-          "status": "queued",
-          "ripple_transaction_id": 85,
-          "createdAt": "2014-06-11T00:23:56.992Z",
-          "updatedAt": "2014-06-11T00:23:56.992Z",
-          "uid": null
-        }
-      ]
-    }
-```
-
-### Clear Pending Withdrawal ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/clear_withdrawal.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/withdrawals/{:id}/clear
+POST /v1/config/wallets/generate
 {}
 ```
 
 *Commandline*
 
 ```
-# Syntax: clear_withdrawal <external_transaction_id>
-$ bin/gateway clear_withdrawal 9
+# Syntax: generate_wallet
+$ bin/gateway generate_wallet
 ```
 
 *Javascript*
 
 ```
-//id: Unique integer ID of withdrawal to clear
-//callback: function(err, withdrawal) to run on callback
-gateway.api.clearWithdrawal(id, callback);
+//options: object with 
+//callback: function(err, ) to run on callback
+gateway.api.generateWallet(callback);
 ```
 </div>
 
-A pending withdrawal record indicates to the gateway operator that a
-user wishes to withdraw a given asset. Once the operator processes the 
-withdrawal by sending the asset to the user, mark the withdrawal as "cleared" 
-by calling this method.
-
-Response Body:
-
-```
-    {
-      "withdrawal": {
-        "data": null,
-        "id": 84,
-        "amount": "8.5",
-        "currency": "SWD",
-        "deposit": false,
-        "external_account_id": 6,
-        "status": "cleared",
-        "ripple_transaction_id": 85,
-        "createdAt": "2014-06-11T00:23:56.992Z",
-        "updatedAt": "2014-06-12T20:01:29.663Z",
-        "uid": null
-      }
-    }
-```
-
-### List Cleared External Transactions ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_cleared.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/cleared
-```
-
-*Commandline*
-
-```
-# Syntax: list_cleared
-$ bin/gateway list_cleared
-```
-
-*Javascript*
-
-```
-//callback: function(err, transactions) to run on callback
-gateway.api.listCleared(callback);
-```
-</div>
-
-This method retrieves the list of all external transactions that are no longer 
-considered pending. This includes all deposits that have been issued as a 
-balance with a Ripple payment, and all withdrawals that have been cleared.
-
-<span class='draft-comment'>(See [Issue #240](https://github.com/ripple/gatewayd/issues/240), doc/code mismatch here.)</span>
+Generate a random Ripple address and secret key. Together, these represent an 
+unfunded Ripple account. After it receives enough XRP to meet the account 
+reserve, the account is included in the Ripple Ledger.
 
 Response Body:
 
 ```
 {
-  "deposits": [
-    {
-      "data": null,
-      "id": 3,
-      "amount": "4.95",
-      "currency": "SWD",
-      "deposit": false,
-      "external_account_id": 1,
-      "status": "cleared",
-      "ripple_transaction_id": 3,
-      "createdAt": "2014-05-13T23:10:20.803Z",
-      "updatedAt": "2014-05-13T23:11:26.323Z",
-      "uid": null
-    },
-    {
-      "data": null,
-      "id": 5,
-      "amount": "2.9699999999999998",
-      "currency": "SWD",
-      "deposit": false,
-      "external_account_id": 1,
-      "status": "cleared",
-      "ripple_transaction_id": 5,
-      "createdAt": "2014-05-14T19:45:05.244Z",
-      "updatedAt": "2014-05-14T21:19:54.231Z",
-      "uid": null
+    "wallet": {
+        "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+        "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
     }
-  ]
 }
 ```
-
-## Managing Wallets ##
 
 ### List Hot Wallet Balances ###
 
@@ -1534,7 +1240,7 @@ balance.getAccountBalance(null, callback);
 ```
 </div>
 
-<span class='draft-comment'>Seems there's no commandline version of this?</span>
+*Note:* There is no commandline version for this method yet.
 
 This method lists the funds that are held by the hot wallet, ready to be 
 distributed to clients. 
@@ -1583,7 +1289,7 @@ balance.getLiabilities(callback);
 ```
 </div>
 
-<span class='draft-comment'>No commandline for this one either?</span>
+*Note:* There is no commandline version for this method yet.
 
 Every asset that the gateway holds and for which it issues currency is
 a liability of the gateway. This method lists total liabilities for each type 
@@ -1667,218 +1373,45 @@ gateway.api.fundHotWallet(options, callback);
 Issue funds from the cold wallet to the hot wallet, specifying the amount, 
 currency, and the *cold wallet* secret key. 
 
-Response Body:
 
-```
-{
-    "success": true,
-    "hot_wallet": ???
-}
-```
-<span class='draft-comment'>(Example needed)</span>
 
-### Set Cold Wallet ###
+### Return Funds from Hot Wallet to Cold Wallet ###
 
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_cold_wallet.js "Source")
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/refund_cold_wallet.js "Source")
 
 <div class='multicode'>
 *REST*
 
 ```
-POST /v1/config/wallets/cold
+POST /v1/wallets/cold/refund
 {
-    "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+    "currency": "USD",
+    "amount": 324.765
 }
 ```
 
 *Commandline*
 
 ```
-# Syntax: set_cold_wallet <address>
-$ bin/gateway set_cold_wallet rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD
+# Syntax: 
+$ bin/gateway 
 ```
 
 *Javascript*
 
 ```
-gateway.config.set('COLD_WALLET', "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD");
+//currency: String definition of currency to return, e.g. "USD"
+//amount: Numeric amount to send back to the cold wallet
+//callback: function(err, transaction) to run on callback
+gateway.api.refundColdWallet(currency, amount, callback);
 ```
 </div>
 
-Set the gateway cold wallet, from which funds are issued. 
+This method returns funds from the hot wallet back to the cold wallet. This is 
+an important step in phasing out a hot wallet, especially if its security may 
+be compromised.
 
-*Note:* If the cold wallet is already set, the REST version returns 304 Not Modified.
 
-Response Body:
-
-```
-{
-    "COLD_WALLET": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
-}
-```
-
-### Retrieve Cold Wallet ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_cold_wallet.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/config/wallets/cold
-```
-
-*Commandline*
-
-```
-# Syntax: get_cold_wallet
-$ bin/gateway get_cold_wallet
-```
-
-*Javascript*
-
-```
-// May return null if cold wallet has not been set
-gateway.config.get('COLD_WALLET');
-```
-</div>
-
-Show the gatewayd cold wallet, from which funds are issued.
-
-Response Body:
-
-```
-{
-    "COLD_WALLET": {
-        "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
-    }
-}
-```
-
-### Generate Ripple Wallet ###
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/generate_wallet.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/config/wallets/generate
-{}
-```
-
-*Commandline*
-
-```
-# Syntax: generate_wallet
-$ bin/gateway generate_wallet
-```
-
-*Javascript*
-
-```
-//options: object with 
-//callback: function(err, ) to run on callback
-gateway.api.generateWallet(callback);
-```
-</div>
-
-Generate a random Ripple address and secret key. Together, these represent an 
-unfunded Ripple account. After it receives enough XRP to meet the account 
-reserve, the account is included in the Ripple Ledger.
-
-Response Body:
-
-```
-{
-    "wallet": {
-        "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
-        "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
-    }
-}
-```
-
-### Set Hot Wallet ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_hot_wallet.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/config/wallets/cold
-{
-    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
-    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
-}
-```
-
-*Commandline*
-
-```
-# Syntax: set_hot_wallet <address> <secret>
-$ bin/gateway set_hot_wallet rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr ssuBBapjuJ2hE5wto254aNWERa8VV
-```
-
-*Javascript*
-
-```
-//address: String address of account to use
-//secret: String secret of account to use
-//callback: function(err, wallet) to run on callback
-gateway.api.setHotWallet(address, secret, callback);
-```
-</div>
-
-The hot wallet holds and sends funds to customers automatically. This method 
-sets the Ripple account to use as the hot wallet. If the *address* and *secret* fields are omitted from the REST or commandline versions, then a new wallet address and secret are generated on the fly. (You still need to fund the hot wallet with at least the account reserve in XRP before you can use it.)
-
-*Caution:* This method request contains account secrets! Be especially careful not to transmit this data over insecure channels.
-
-Response Body:
-
-```
-{
-    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
-    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
-}
-```
-
-### Retrieve Hot Wallet ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_hot_wallet.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/config/wallets/hot
-```
-
-*Commandline*
-
-```
-# Syntax: get_hot_wallet
-$ bin/gateway get_hot_wallet
-```
-
-*Javascript*
-
-```
-//may return null if hot wallet isn't set
-gateway.config.get('HOT_WALLET');
-```
-</div>
-
-Show the gatewayd hot wallet, which is used to automatically send
-funds, and which maintains trust to and balances of the cold wallet.
-
-Response Body:
-
-```
-{
-    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr"
-}
-```
 
 ### Set Trust from Hot Wallet to Cold Wallet ###
 
@@ -2004,47 +1537,7 @@ Response Body:
 }
 ```
 
-### Return Funds from Hot Wallet to Cold Wallet ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/refund_cold_wallet.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-POST /v1/wallets/cold/refund
-{
-    "currency": "USD",
-    "amount": 324.765
-}
-```
-
-*Commandline*
-
-```
-# Syntax: 
-$ bin/gateway 
-```
-
-*Javascript*
-
-```
-//currency: String definition of currency to return, e.g. "USD"
-//amount: Numeric amount to send back to the cold wallet
-//callback: function(err, transaction) to run on callback
-gateway.api.refundColdWallet(currency, amount, callback);
-```
-</div>
-
-This method returns funds from the hot wallet back to the cold wallet. This is 
-an important step in phasing out a hot wallet, especially if its security may 
-be compromised.
-
-Response Body:
-
-<span class='draft-comment'>(Example needed)</span>
-
-## Configuring gatewayd ##
+## Gatewayd Configuration ##
 
 ### Set Database URL ###
 
@@ -2200,6 +1693,247 @@ Response Body:
 {
   "RIPPLE_REST_API": "http://localhost:5990/"
 }
+```
+
+### Set Cold Wallet ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_cold_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/wallets/cold
+{
+    "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_cold_wallet <address>
+$ bin/gateway set_cold_wallet rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD
+```
+
+*Javascript*
+
+```
+gateway.config.set('COLD_WALLET', "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD");
+```
+</div>
+
+Set the gateway cold wallet, from which funds are issued. 
+
+*Note:* If the cold wallet is already set, the REST version returns 304 Not Modified.
+
+Response Body:
+
+```
+{
+    "COLD_WALLET": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+}
+```
+
+### Retrieve Cold Wallet ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_cold_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/wallets/cold
+```
+
+*Commandline*
+
+```
+# Syntax: get_cold_wallet
+$ bin/gateway get_cold_wallet
+```
+
+*Javascript*
+
+```
+// May return null if cold wallet has not been set
+gateway.config.get('COLD_WALLET');
+```
+</div>
+
+Show the gatewayd cold wallet, from which funds are issued.
+
+Response Body:
+
+```
+{
+    "COLD_WALLET": {
+        "address": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+    }
+}
+```
+
+### Set Hot Wallet ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_hot_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/wallets/cold
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_hot_wallet <address> <secret>
+$ bin/gateway set_hot_wallet rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr ssuBBapjuJ2hE5wto254aNWERa8VV
+```
+
+*Javascript*
+
+```
+//address: String address of account to use
+//secret: String secret of account to use
+//callback: function(err, wallet) to run on callback
+gateway.api.setHotWallet(address, secret, callback);
+```
+</div>
+
+The hot wallet holds and sends funds to customers automatically. This method 
+sets the Ripple account to use as the hot wallet. If the *address* and *secret* fields are omitted from the REST or commandline versions, then a new wallet address and secret are generated on the fly. (You still need to fund the hot wallet with at least the account reserve in XRP before you can use it.)
+
+*Caution:* This method request contains account secrets! Be especially careful not to transmit this data over insecure channels.
+
+Response Body:
+
+```
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr",
+    "secret": "ssuBBapjuJ2hE5wto254aNWERa8VV"
+}
+```
+
+### Retrieve Hot Wallet ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_hot_wallet.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/wallets/hot
+```
+
+*Commandline*
+
+```
+# Syntax: get_hot_wallet
+$ bin/gateway get_hot_wallet
+```
+
+*Javascript*
+
+```
+//may return null if hot wallet isn't set
+gateway.config.get('HOT_WALLET');
+```
+</div>
+
+Show the gatewayd hot wallet, which is used to automatically send
+funds, and which maintains trust to and balances of the cold wallet.
+
+Response Body:
+
+```
+{
+    "address": "rscJF4TWS2jBe43MvUomTtCcyrbtTRMSNr"
+}
+```
+
+### Set Last Payment Hash ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/set_last_payment_hash.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/config/last_payment_hash
+{
+    "payment_hash": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
+}
+```
+
+*Commandline*
+
+```
+# Syntax: set_last_payment_hash <hash>
+$ bin/gateway set_last_payment_hash 4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8
+```
+
+*Javascript*
+
+```
+//options: object with field hash: string of last payment hash to use
+//callback: function(err) to run on callback
+gateway.api.setLastPaymentHash(options, callback);
+```
+</div>
+
+Gatewayd polls the Ripple Network for notifications of inbound payments to the 
+cold wallet beginning with the last known transaction hash. 
+
+This method manually sets that hash. Gatewayd will skip any payments older 
+than the transaction identified by the given hash. Generally you do this one time, during setup, choosing the latest transaction in the cold wallet's history at that time, and never set it manually again.
+
+Response Body:
+
+```
+{
+    "LAST_PAYMENT_HASH": "4394DB1CDB591CFE697C50EAB974E7BDD6826F18B8660DACC50A88EEC98E0CD8"
+}
+```
+
+### Retrieve Last Payment Hash ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/get_last_payment_hash.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/config/last_payment_hash
+```
+
+*Commandline*
+
+```
+# Syntax: get_last_payment_hash
+$ bin/gateway get_last_payment_hash
+```
+
+*Javascript*
+
+```
+gateway.config.get('LAST_PAYMENT_HASH');
+```
+</div>
+
+Gatewayd polls the Ripple Network for notifications of inbound payments to the 
+cold wallet beginning with the last known transaction hash. 
+
+This method returns the transaction hash currently being used.
+
+Response Body:
+
+```
+    {
+      "LAST_PAYMENT_HASH": "12AE1B1843D886D7D6783DA02AB5F43C32579212853CF3CEFD6DBDF29F03BC80"
+    }
 ```
 
 ### Set Gateway Domain ###
@@ -2359,47 +2093,6 @@ Response Body:
 }
 ```
 
-### List Supported Currencies ###
-
-[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_currencies.js "Source")
-
-<div class='multicode'>
-*REST*
-
-```
-GET /v1/currencies
-```
-
-*Commandline*
-
-```
-# Syntax: list_currencies
-$ bin/gateway list_currencies
-```
-
-*Javascript*
-
-```
-gateway.config.get('CURRENCIES');
-```
-</div>
-
-This method lists currencies officially supported by the gateway. These 
-currencies are also listed in the gateway's `ripple.txt` manifest file.
-
-Response Body:
-
-```
-{
-  "CURRENCIES": {
-    "USD": 0,
-    "XAU": 0
-  }
-}
-```
-
-*Note:* The amounts for each currency do not currently mean anything. If you [add supported currencies](#add-supported-currency) using the REST API, they will always be set to 0. You can manually set the values by editing the `config/config.json` file, but there is no meaningful effect.
-
 ### Add Supported Currency ###
 
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/add_currency.js "Source")
@@ -2444,6 +2137,47 @@ Response Body:
 }
 ```
 
+### List Supported Currencies ###
+
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_currencies.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/currencies
+```
+
+*Commandline*
+
+```
+# Syntax: list_currencies
+$ bin/gateway list_currencies
+```
+
+*Javascript*
+
+```
+gateway.config.get('CURRENCIES');
+```
+</div>
+
+This method lists currencies officially supported by the gateway. These 
+currencies are also listed in the gateway's `ripple.txt` manifest file.
+
+Response Body:
+
+```
+{
+  "CURRENCIES": {
+    "USD": 0,
+    "XAU": 0
+  }
+}
+```
+
+*Note:* The amounts for each currency do not currently mean anything. If you [add supported currencies](#add-supported-currency) using the REST API, they will always be set to 0. You can manually set the values by editing the `config/config.json` file, but there is no meaningful effect.
+
 ### Remove Supported Currency ###
 
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/remove_currency.js "Source")
@@ -2484,7 +2218,7 @@ Response Body:
 }
 ```
 
-## Managing Gateway Processes ##
+## Gatewayd Processes ##
 
 ### Start Worker Processes ###
 
@@ -2518,14 +2252,7 @@ gateway.api.startGateway(processes);
 Start one or more gateway processes, including but not limited to "deposits", 
 "outgoing", "incoming", "withdrawals", "callbacks", etc. (See [Gatewayd Services](#gatewayd-services) for more details.)
 
-Response Body:
 
-```
-{
-    "processes": ???
-}
-```
-<span class='draft-comment'>Need example response</span>
 
 ### List Current Processes ###
 
@@ -2805,5 +2532,324 @@ Response Body:
        status: 'stopped' },
     pm_id: 5,
     monit: { memory: 0, cpu: 0 } } ]
+```
+
+## User-Auth Methods ##
+
+### Log In User ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/public/login_user.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/users/login
+{
+    "name": "steven@ripple.com",
+    "password": "s0m3supe&$3cretp@s$w0r*"
+}
+```
+</div>
+
+*Note:* This method intentionally lacks commandline and Javascript versions.
+
+Verifies that a user has the correct username and password combination. Used
+for the web application and requires user credentials in place of an API key.
+
+Naturally, since this includes sensitive credentials, do not run this command 
+over an unsecure connection.
+
+
+
+### Retrieve User ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/resources/users_controller.js#L38 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}
+```
+
+*Commandline*
+
+```
+// no commandline equivalent?
+```
+
+*Javascript*
+```
+//requires User data model
+//user_id: Integer user ID
+//callback: function(err, user) to run on callback
+User.find({ where: { id: user_id }}).complete(callback);
+```
+</div>
+
+To retrieve a user's base account information, pass the user's ID to this 
+method.
+
+Response Body:
+
+```
+{
+  "success": true,
+  "users": {
+    "id": 8,
+    "name": "steven@ripple.com",
+    "salt": "1366f14307850818afddd1509f329fdc1a73fb93919d92d5b44c91f07560c999",
+    "federation_tag": null,
+    "admin": null,
+    "federation_name": null,
+    "password_hash": "dd1d5a0ba63c63a117ff811f14040fa87dcbfedd7e37b5df506bfc4e8014c8e5",
+    "bank_account_id": null,
+    "kyc_id": null,
+    "createdAt": "2014-06-10T22:37:19.647Z",
+    "updatedAt": "2014-06-10T22:37:19.647Z",
+    "external_id": null,
+    "data": null,
+    "uid": null,
+    "active": false
+  }
+}
+```
+
+### List User External Accounts ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_user_external_accounts.js "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/external_accounts
+```
+
+*Commandline*
+
+```
+# Syntax: list_user_external_accounts <id>
+bin/gateway list_user_external_accounts 508
+```
+
+*Javascript*
+```
+//id: integer ID of account to get external accounts from
+//callback: function(err, accounts) to run on callback
+gateway.api.listUserExternalAccounts(id, callback);
+```
+</div>
+
+To list all external (non-Ripple) account records for a user, pass the user's 
+ID to this method.
+  
+Response Body:
+
+```
+{
+  "external_accounts": [
+    {
+      "data": null,
+      "id": 8,
+      "name": "default",
+      "user_id": 8,
+      "createdAt": "2014-06-10T22:37:19.835Z",
+      "updatedAt": "2014-06-10T22:37:19.835Z",
+      "uid": null
+    }
+  ]
+}
+```
+
+### List User External Transactions ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L24 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/external_transactions
+```
+
+*Javascript*
+
+```
+//id: Integer user ID of user to find transactions of
+//callback: function(err, transactions) to run on callback
+gateway.data.externalTransactions.forUser(id, callback);
+```
+</div>
+
+*Note:* This method intentionally lacks a commandline version.
+
+List all external (non-Ripple) transaction records for a given user. These 
+records are the user's deposits into the gateway and withdrawals from it.
+
+Response Body:
+
+```
+{
+  "externalTransactions": [
+    {
+      "id": 80,
+      "currency": "SWD",
+      "amount": "1",
+      "deposit": true,
+      "ripple_transaction_id": 81,
+      "external_account_id": 8,
+      "status": "processed"
+    },
+    {
+      "id": 81,
+      "currency": "SWD",
+      "amount": "1.5999",
+      "deposit": true,
+      "ripple_transaction_id": 82,
+      "external_account_id": 8,
+      "status": "processed"
+    }
+  ]
+}
+```
+
+### List User Ripple Addresses ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L36 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+/v1/users/{:id}/ripple_addresses
+```
+
+*Javascript*
+
+```
+//id = Integer ID of user to retrieve Ripple addresses of
+//callback: function(err, addresses) to run on callback
+gateway.data.rippleAddresses.readAll({ user_id: id }, callback);
+```
+</div>
+
+*Note:* This method intentionally lacks a commandline version.
+
+To list all ripple addresses for a given user, pass the user's ID to this 
+method. Most users will have at least one independent address and one hosted 
+address.
+
+Response Body:
+
+```
+{
+  "rippleAddresses": [
+    {
+      "data": null,
+      "id": 16,
+      "managed": false,
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "type": "independent",
+      "user_id": 8,
+      "tag": null,
+      "secret": null,
+      "previous_transaction_hash": null,
+      "createdAt": "2014-06-10T22:37:19.825Z",
+      "updatedAt": "2014-06-10T22:37:19.825Z",
+      "uid": null
+    },
+    {
+      "data": null,
+      "id": 17,
+      "managed": true,
+      "address": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "type": "hosted",
+      "user_id": 8,
+      "tag": 8,
+      "secret": null,
+      "previous_transaction_hash": null,
+      "createdAt": "2014-06-10T22:37:19.844Z",
+      "updatedAt": "2014-06-10T22:37:19.844Z",
+      "uid": null
+    }
+  ]
+}
+```
+
+### List User Ripple Transactions ###
+[[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L46 "Source")
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/users/{:id}/ripple_transactions
+```
+
+*Javascript*
+
+```
+//id: Integer user ID of the user to retrieve transactions of
+//callback: function(err, transactions) to run on callback
+gateway.data.rippleTransactions.forUser(id, callback);
+```
+</div>
+
+*Note:* This method intentionally lacks a commandline version.
+
+To list all Ripple transactions for a given user, pass the user's ID to this
+method. The response includes an array of transactions made to or from any of 
+the users's Ripple addresses.
+
+Response Body:
+
+```
+{
+  "rippleTransactions": [
+    {
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "tag": null,
+      "ripple_address_id": 16,
+      "id": 81,
+      "to_address_id": 16,
+      "from_address_id": 1,
+      "transaction_state": "tesSUCCESS",
+      "transaction_hash": "F0737576A4E7D064BF00145FAD6E6BAD19115C7739A3C8CDB6D1FD38888C8364",
+      "to_amount": "1",
+      "to_currency": "SWD",
+      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "from_amount": "1",
+      "from_currency": "SWD",
+      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "createdAt": "2014-06-10T22:41:14.258Z",
+      "updatedAt": "2014-06-10T22:41:16.717Z",
+      "uid": "505a336f-4ff9-473d-862b-164b3ad63b73",
+      "data": null,
+      "client_resource_id": "false",
+      "state": "succeeded",
+      "external_transaction_id": 80
+    },
+    {
+      "address": "r4EwBWxrx5HxYRyisfGzMto3AT8FZiYdWk",
+      "tag": null,
+      "ripple_address_id": 16,
+      "id": 82,
+      "to_address_id": 16,
+      "from_address_id": 1,
+      "transaction_state": "tesSUCCESS",
+      "transaction_hash": "7DEEF3BBAEEA3FEECF7819D3FAA53C580ED4A790A98DD2E761E8D747EAFB1969",
+      "to_amount": "1.5999",
+      "to_currency": "SWD",
+      "to_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "from_amount": "1.5999",
+      "from_currency": "SWD",
+      "from_issuer": "rDNP5C7Vjt2mLushCmUPwm6dvwNzNiuND6",
+      "createdAt": "2014-06-10T22:43:57.090Z",
+      "updatedAt": "2014-06-10T22:43:59.364Z",
+      "uid": "5205d9b4-f1c2-4273-b656-78e908e94210",
+      "data": null,
+      "client_resource_id": "false",
+      "state": "succeeded",
+      "external_transaction_id": 81
+    }
+  ]
+}
 ```
 
