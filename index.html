@@ -32,7 +32,7 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
     
-  <script>mixpanel.track("View");</script>    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("View"); }</script>    
   <!-- end Mixpanel -->
     
     <!-- start google analytics -->
