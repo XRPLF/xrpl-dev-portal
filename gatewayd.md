@@ -162,7 +162,7 @@ Depending on your situation, there are some configuration variables you can set:
  * Gatewayd comes with a self-signed certificate for SSL pre-configured. This is adequate for development use. 
  * For production use, you should set the `SSL_KEY_PATH` and `SSL_CERTIFICATE_PATH` settings to point at a certificate purchased from a trusted [CA](http://en.wikipedia.org/wiki/Certificate_authority).
 * The `BASIC_AUTH` option (on by default) defines whether or not the REST API requires a password to connect. We recommend *always* using this. 
- * The `KEY` option (not defined by default) sets the API key used for Basic Auth. You can authenticate by sending this API key as either the username or the password. (Previously, the username was required to be "admin@yourdomain.com", based Gatewayd's `DOMAIN` setting, and the API key was only accepted as the password.)
+ * The `KEY` option (not defined by default) sets the API key used for Basic Auth. The username is required to be "admin@<em>yourdomain.com</em>", based Gatewayd's `DOMAIN` setting, and the API key is the password. [In the future](https://github.com/ripple/gatewayd/compare/no-username-auth), you will be able to authenticate by sending the API key as either the username or the password and leaving the other field blank.
  * You can generate a new `KEY` value with the [Set API Key](#set-api-key) method. (Use the commandline version if it's your first time.)
 
 *Exception:* Gatewayd's HTTP server also serves a `ripple.txt` response that imitates a text file, but is actually dynamically generated based on its current configuration. This route is intended to be public, and is not protected even when BASIC_AUTH is enabled. However, it is disabled if the `HTTP_SERVER` option is disabled.
@@ -196,8 +196,6 @@ Although you could send the issuances directly to customers from the account iss
 
 - Comprehensive [installation script](https://github.com/ripple/gatewayd/blob/master/doc/install.md) for Ubuntu
 
-- The Gateway Appliance virtual machine comes with Gatewayd already installed. <span class='draft-comment'>(Update when the VM is public: How do you get the appliance and where is Gatewayd installed?)</span>
-
 ## Updating ##
 
 The update process for gatewayd may change in the future, but for now, updating to a new version follows this process:
@@ -212,8 +210,6 @@ The update process for gatewayd may change in the future, but for now, updating 
     `grunt migrate`
 5. Restart the gatewayd processes. (This ends downtime)<br/>
     `bin/gateway start`
-    
-If you are using the Gateway Appliance virtual machine from Ripple Labs, there is a script to automatically update Gatewayd. <span class='draft-comment'>(Where?)</span>
 
 ## Configuration ##
 
@@ -279,8 +275,7 @@ bin/gateway -h
 
 # Gatewayd API Reference #
 
-<span class='draft-comment'>(Update this version number with the right one!)</span>
-`gatewayd : v3.20.0`
+`gatewayd : v3.25.0`
 
 The API serves several purposes: it provides an easy way to customize settings without having to edit the config files directly; it provides access to status and historical information about all transactions made in the gateway; and it provides one avenue for building an [external connector](#external-connector). 
 
@@ -2539,6 +2534,8 @@ Response Body:
 ### Log In User ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/public/login_user.js "Source")
 
+*Caution:* This method is deprecated, and may be removed without further notice.
+
 <div class='multicode'>
 *REST*
 
@@ -2563,6 +2560,8 @@ over an unsecure connection.
 
 ### Retrieve User ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/resources/users_controller.js#L38 "Source")
+
+*Caution:* This method is deprecated, and may be removed without further notice.
 
 <div class='multicode'>
 *REST*
@@ -2617,6 +2616,8 @@ Response Body:
 ### List User External Accounts ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/list_user_external_accounts.js "Source")
 
+*Caution:* This method is deprecated, and may be removed without further notice.
+
 <div class='multicode'>
 *REST*
 
@@ -2662,6 +2663,8 @@ Response Body:
 
 ### List User External Transactions ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L24 "Source")
+
+*Caution:* This method is deprecated, and may be removed without further notice.
 
 <div class='multicode'>
 *REST*
@@ -2713,6 +2716,8 @@ Response Body:
 
 ### List User Ripple Addresses ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L36 "Source")
+
+*Caution:* This method is deprecated, and may be removed without further notice.
 
 <div class='multicode'>
 *REST*
@@ -2775,6 +2780,8 @@ Response Body:
 
 ### List User Ripple Transactions ###
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/users/index.js#L46 "Source")
+
+*Caution:* This method is deprecated, and may be removed without further notice.
 
 <div class='multicode'>
 *REST*
