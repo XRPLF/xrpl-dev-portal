@@ -48,6 +48,12 @@ body .content-root {
     width: 100%;
 }
 
+.content h4, body:not(.big-h3) .content h3 {
+/* Fix for anchor links hiding under fixed header */
+    padding-top: 80px;
+    margin-top: -50px;
+}
+
 .menubar {
 	padding-top: 10px;
 }
