@@ -298,11 +298,11 @@ All field names are case-sensitive. In responses, fields that are taken directly
 
 Different types of objects are uniquely identified in different ways:
 
-*Accounts* are identified by their *address*, a base-58-encoded string, for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`". Addresses always start with "r". You can also provide an un-encoded hex representation instead.
+*Accounts* are identified by their *address*, a [base-58-encoded](https://wiki.ripple.com/Encodings) string, for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". You can also provide an un-encoded hex representation instead.
 
-Transactions are identified by their *hash*, which is a [SHA-512](http://en.wikipedia.org/wiki/Sha512) hash of the transaction's binary format. Transaction hashes are represented as hex strings.
+*Transactions* are identified by their *hash*, which is a [SHA-512](http://en.wikipedia.org/wiki/Sha512) hash of the transaction's binary format. Transaction hashes are represented as hex strings.
 
-Each instance of the Ripple Ledger has a sequence number and a hash value. See [Specifying a Ledger Instance](#specifying-a-ledger-instance) for details.
+Each instance of the Ripple *Ledger* has a sequence number and a hash value. See [Specifying a Ledger Instance](#specifying-a-ledger-instance) for details.
 
 ### Specifying a Ledger Instance ###
 
