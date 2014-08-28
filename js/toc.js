@@ -16,5 +16,11 @@ var toc = [
         "title": "Ripple-REST API",
         "slug": "ripple-rest",
         "breadcrumbs": []
+    },
+    {
+        "file": "gatewayd.md",
+        "title": "gatewayd",
+        "slug": "gatewayd",
+        "breadcrumbs": []
     }
 ];

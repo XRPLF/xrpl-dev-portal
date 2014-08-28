@@ -44,6 +44,10 @@ body .content-root {
 	padding-top: 10px;
 }
 
+.content img {
+    width: 100%;
+}
+
 .menubar {
 	padding-top: 10px;
 }
@@ -57,6 +61,11 @@ body .content-root {
 .header-subnav li a:active {
 color: #f09 !important;
 }
+
+.content a[title="Source"] {
+    float:right;
+}
+
 /* Brand Guidelines */
 
 .brand_guidelines .content-root {
