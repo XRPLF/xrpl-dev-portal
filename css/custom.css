@@ -44,6 +44,16 @@ body .content-root {
 	padding-top: 10px;
 }
 
+.content img {
+    width: 100%;
+}
+
+.content h4, body:not(.big-h3) .content h3 {
+/* Fix for anchor links hiding under fixed header */
+    padding-top: 80px;
+    margin-top: -50px;
+}
+
 .menubar {
 	padding-top: 10px;
 }
@@ -57,6 +67,11 @@ body .content-root {
 .header-subnav li a:active {
 color: #f09 !important;
 }
+
+.content a[title="Source"] {
+    float:right;
+}
+
 /* Brand Guidelines */
 
 .brand_guidelines .content-root {
@@ -229,4 +244,14 @@ input#mc-embedded-subscribe {
 .mail_chimp p {
 	margin-bottom: 10px;
 	font-size: 14px;
+}
+
+/************
+consensus whitepaper
+*********** */
+
+.download_consensus {
+	font-size: 24px;
+	text-align: center;
+	padding: 5px;
 }

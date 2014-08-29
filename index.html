@@ -32,7 +32,7 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
     
-  <script>mixpanel.track("View");</script>    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("View"); }</script>    
   <!-- end Mixpanel -->
     
     <!-- start google analytics -->
@@ -166,6 +166,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					<p>Framework software for building a gateway—just add the connections to your payment system.</p>
 						<ul class="resources">
 							<li>Resources:</li>
+							<li><a href="gatewayd.html"><i class="fa fa-cubes"></i> API Reference </a></li>
 							<li><a href="https://github.com/ripple/gatewayd"><i class="fa fa-code"></i> Source </a></li>
 							<li><a href="https://www.bountysource.com/trackers/552820-gatewayd"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
 						</ul>
@@ -176,7 +177,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					<p>Easily connect with a rippled server using REST: check balances, set trust lines, and more.</p>
 						<ul class="resources">
 							<li>Resources:</li>
-							<li><a href="ripple-rest.html"><i class="fa fa-file"></i> Documentation </a></li>
+							<li><a href="ripple-rest.html"><i class="fa fa-cubes"></i> API Reference </a></li>
 							<li><a href="https://github.com/ripple/ripple-rest"><i class="fa fa-code"></i> Source </a></li>
 							<li><a href="https://www.bountysource.com/trackers/500333-ripple-rest-api"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
 						</ul>
@@ -199,9 +200,10 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					<p>The core server that makes the Ripple network possible.</p>
 						<ul class="resources">
 							<li>Resources:</li>
-							<li><a href="rippled-apis.html"><i class="fa fa-file"></i> Documentation </a></li>
+							<li><a href="rippled-apis.html"><i class="fa fa-cubes"></i> API Reference </a></li>
 							<li><a href="https://github.com/ripple/rippled"><i class="fa fa-code"></i> Source </a></li>
 							<li><a href="https://www.bountysource.com/trackers/304896-rippled"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+							<li><a href="consensus-whitepaper.html"><i class="fa fa-file"></i> Consensus Whitepaper </a></li>
 						</ul>
 			</div>
 			
@@ -224,7 +226,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 				<div class="col-md-2">
 					
 						<ul class="footer_links middleware">
-							<li><a href="https://github.com/ripple/gatewayd">Gatewayd</a>
+							<li><a href="gatewayd.html">Gatewayd</a>
 							<li><a href="ripple-rest.html">Ripple REST</a>
 							<li><a href="https://github.com/ripple/ripple-lib">Ripple Lib</a>
 						</ul>
