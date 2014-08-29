@@ -1049,7 +1049,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
 
-*The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!*
+*The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!* (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)
 
 #### Request Format ####
 
