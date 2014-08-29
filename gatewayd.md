@@ -42,7 +42,7 @@ Gatewayd has effectively 4 queues: an inbox and outbox for transactions going fr
 
 You can visualize Gatewayd's architecture according to the following diagram:
 
-![Gatewayd Architecture](img/gatewayd_architecture.png)
+[![Gatewayd Architecture](img/gatewayd_architecture.png)](img/gatewayd_architecture.png)
 
 ### External Connector ###
 
@@ -79,7 +79,7 @@ You can get a list of services and their status by running the following command
 
 One of the key aspects of Gatewayd is that it keeps records of all the transactions that go in and out of the gateway, which get persisted to the database. Gatewayd is intentionally designed so that you can manually view and modify the database records if you want to. The important data models are defined as in the following diagram:
 
-![Data Models chart](img/gatewayd-datamodel_current.png)
+[![Data Models chart](img/gatewayd-datamodel_current.png)](img/gatewayd-datamodel_current.png)
 
 In short, the key data models are: External Account, Ripple Address, User, External Transaction, and Ripple Transaction. It's important to note that incoming and outgoing transactions of the same type (Ripple or External) are persisted to a single, shared database table.
 
