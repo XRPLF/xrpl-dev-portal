@@ -288,7 +288,23 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 
 When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.
 
-## Specifying a Ledger Instance ##
+## Formatting Conventions ##
+
+The WebSocket and JSON-RPC APIs generally take the same arguments, although they're provided in a different way (See [Request Formatting](#request-formatting) for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.
+
+All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.
+
+### Unique Identifiers ###
+
+Different types of objects are uniquely identified in different ways:
+
+*Accounts* are identified by their *address*, a [base-58-encoded](https://wiki.ripple.com/Encodings) string, for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". You can also provide an un-encoded hex representation instead.
+
+*Transactions* are identified by their *hash*, which is a [SHA-512](http://en.wikipedia.org/wiki/Sha512) hash of the transaction's binary format. Transaction hashes are represented as hex strings.
+
+Each instance of the Ripple *Ledger* has a sequence number and a hash value. See [Specifying a Ledger Instance](#specifying-a-ledger-instance) for details.
+
+### Specifying a Ledger Instance ###
 
 Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:
 
@@ -303,15 +319,28 @@ There is also a deprecated `ledger` parameter which accepts any of the above thr
 
 If you do not specify a ledger, the `current` (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated `ledger` field will be used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present. *Note:* Do not rely on this default behavior; it is subject to change. Instead, you should always specify a ledger version in each call.
 
-## Specifying Currency Amounts ##
+The sequence number indicates the order of the ledgers; the hash value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For closed ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:
+
+* Two different rippled servers may have different contents for a current ledger with the same sequence number, due to transactions not being fully propagated throughout the network.
+* A current ledger's contents change over time, which would cause its hash to change, even though its sequence number stays the same. Therefore, the hash of a ledger is not calculated until it is closed.
+
+### Specifying Currency Amounts ###
 
 Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (sometimes referred to as IOUs), the style for specifying it is very different.
+
+#### XRP ####
+
+Amounts of XRP are represented as strings. (JSON integers are limited to 32 bits, so integer overflows are possible.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write `"1000000"`.
+
+Unit tests are permitted to submit values of XRP (not drops) with a decimal point - for example, "1.23" meaning 1.23 XRP. All other cases should always specify XRP in drops, with no decimal point: e.g. "1230000" meaning 1.23 XRP.
+
+#### Non-XRP ####
 
 If you are specifying non-XRP currency (including fiat dollars, precious metals, cryptocurrencies, or other custom currency) you must specify it with a currency specification object. This is a JSON object with three fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| currency | String | Three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or an unsigned 160-bit hex value. ("XRP" is invalid) |
+| currency | String | Three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) string ("XRP" is invalid). Alternatively, an unsigned 160-bit hex value according to the [Currency format](https://wiki.ripple.com/Currency_format). |
 | value | String | Quoted decimal representation of the amount of currency |
 | issuer | String | Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed. |
 
@@ -325,17 +354,23 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 }
 ```
 
-If you are specifying an amount of XRP in JSON, you should provide it in string format. (JSON integers are limited to 32 bits, so integer overflows are possible.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write `"1000000"`.
+Unit tests are permitted to submit amounts of non-XRP currencies as a slash-separated string in the format `"amount/currency/issuer"`. All other cases should use the JSON object format above.
 
-### Specifying Currencies Without Amounts ###
+#### Specifying Currencies Without Amounts ####
 
-If you are specifying a non-XRP currency without an amount -- typically for defining an order book of currency exchange offers, you should specify it as above, but omit the `value` field.
+If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the `value` field.
 
 If you are specifying XRP without an amount -- also typically for defining an order book -- you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
 
 Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
 
-## Possible Server States ##
+### Specifying Time ###
+
+The `rippled` server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is similar to the way the [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.
+
+Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
+
+### Possible Server States ###
 
 Depending on how the `rippled` server is configured, how long it has been running, and other factors, a server may be participating in the global Ripple Network to different degrees. This is represented as the `server_state` field in the responses to the [`server_info`](#server-info) and [`server_state`](#server-state) commands. The possible responses follow a range of ascending interaction, with each subsequent value superseding the previous one. Their definitions are as follows (in order of increasing priority):
 
@@ -1014,7 +1049,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
 
-*The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!*
+*The `wallet_propose` request is an admin command that cannot be run by unpriviledged users!* (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)
 
 #### Request Format ####
 
@@ -1066,14 +1101,14 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| master_seed | String | The [master seed|https://ripple.com/wiki/Master_Key] from which all other information about this account is derived, in Ripple's base-58 encoded string format. |
+| master_seed | String | The [master seed](https://ripple.com/wiki/Master_Key) from which all other information about this account is derived, in Ripple's base-58 encoded string format. |
 | master_seed_hex | String | The master seed, in hex format. |
 | master_key | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
 | account_id | String | The public address of the account. |
 | public_key | String | The public key of the account, in encoded string format. |
 | public_key_hex | String | The public key of the account, in hex format. |
 
-The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type|https://ripple.com/wiki/index.php/API_Example_Transactions#Set_Regular_Key] to do so.
+The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](https://ripple.com/wiki/index.php/API_Example_Transactions#Set_Regular_Key) to do so.
 
 # Managing Ledgers #
 
@@ -1158,7 +1193,7 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | accepted | Boolean | This designation is for internal protocol use, and should not be used. It does *not* mean the same as `validated` |
 | account_hash | String | Hash of all account state information in this ledger, as hex |
-| close_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](https://ripple.com/wiki/JSON_format#time) |
+| close_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
 | close_time_human | String | The time this ledger was closed, in human-readable format |
 | close_time_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
 | closed | Boolean | Whether or not this ledger has been closed |
@@ -4427,7 +4462,7 @@ The fields from a ledger stream message are as follows:
 | fee_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ledger_hash | String | Unique hash of the ledger that was closed, as hex |
 | ledger_index | Unsigned Integer | Sequence number of the ledger that was closed |
-| ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the Ripple Epoch |
+| ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
 | reserve_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account |
 | reserve_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines |
 | txn_count | Unsigned Integer | Number of transactions newly included in this ledger |
@@ -4798,7 +4833,7 @@ The `state` object may have some arrangement of the following fields:
 | server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
 | validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
 | validated_ledger.base_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
-| validated_ledger.close_time | Number | Time this ledger was closed, in seconds since the Ripple Epoch |
+| validated_ledger.close_time | Number | Time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
 | validated_ledger.hash | String | Unique hash of this ledger version, as hex |
 | validated_ledger.reserve_base | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
 | validated_ledger.reserve_inc | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
