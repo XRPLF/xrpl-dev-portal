@@ -45,8 +45,8 @@ img.large_logo {
 
 
 .jumbotron p.api_btn {
-	text-align: center;
-	padding: 20px;
+	/* text-align: center; 
+	padding: 20px;*/
 }
 
 
@@ -55,6 +55,7 @@ button.api {
 	font-size: 24px;
 	letter-spacing: 2px;
 	background-color: #346AA9;
+	margin-top:20px;
 }
 
 button.api:hover {
