@@ -54,6 +54,11 @@ button.api {
 	padding: 6px 30px;
 	font-size: 24px;
 	letter-spacing: 2px;
+	background-color: #346AA9;
+}
+
+button.api:hover {
+background-color: #428bca;
 }
 
 @media (min-width: 992px) {
