@@ -49,6 +49,9 @@ img.large_logo {
 	padding: 20px;*/
 }
 
+.jumbotron h4 {
+	font-weight: 800;
+}
 
 button.api {
 	padding: 6px 30px;
