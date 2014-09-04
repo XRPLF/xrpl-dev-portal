@@ -101,14 +101,16 @@ The only flag that applies globally to all transactions is as follows:
 
 ## Payment ##
 
-| Field | Type | Description |
-|-------|------|-------------|
-| Amount | String (XRP)<br/>Object (Otherwise) | The amount of currency sent as part of this transaction. (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
-| Destination | String | The unique address of the account receiving the payment. |
-| DestinationTag | Unsigned Integer | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
-| InvoiceID | String | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
+A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
+
+| Field | JSON Type | Internal Type | Description |
+|-------|-----------|---------------|-------------|
+| Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency sent as part of this transaction. (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
+| Destination | String | Account | The unique address of the account receiving the payment. |
+| DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
+| InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the paths are chosen by the server. |
-| SendMax | String/Object |  Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
+| SendMax | String/Object | Amount | Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
 
 ### Paths ###
 
@@ -127,18 +129,22 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | tfNoDirectRipple | 0x00010000 | 65536 | Do not use a direct path, if available. This is intended to force the transaction to take arbitrage opportunities. Most clients will not need this. |
 | tfPartialPayment | 0x00020000 | 131072 | Instead of deducting transfer and exchange fees from the sending account's balance, reduce the received amount by the fee amounts. This is useful for refunding payments. Note, the transaction fee is still subtracted from the sender's account. |
 
+
+
 ## AccountSet ##
 
-| Field | Type | Description |
-|-------|------|-------------|
-| ClearFlag | Unsigned Integer | (Optional) Unique identifier of a flag to disable for this account. |
-| Domain | String | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
-| EmailHash | String | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| MessageKey | String | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
-| SetFlag | Unsigned Integer | (Optional) Unique identifier of a flag to enable for this account. |
-| TransferRate | Unsigned Integer | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
-| WalletLocator | String | (Optional) Not used. |
-| WalletSize | Unsigned Integer | (Optional) Not used. |
+An AccountSet transaction modifies the properties of an account object in the global ledger.
+
+| Field | JSON Type | Internal Type | Description |
+|-------|-----------|---------------|-------------|
+| ClearFlag | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
+| Domain | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
+| EmailHash | String | Hash128 | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
+| MessageKey | String | PubKey | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
+| SetFlag | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to enable for this account. |
+| TransferRate | Unsigned Integer | UInt32 | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
+| WalletLocator | String | Hash256 | (Optional) Not used. |
+| WalletSize | Unsigned Integer | UInt32 | (Optional) Not used. |
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction fee). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
 
@@ -192,9 +198,11 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 ## SetRegularKey ##
 
-| Field | Type | Description |
-|-------|------|-------------|
-| RegularKey | String | Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; or the value `0` to remove the existing regular key. |
+A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
+
+| Field | JSON Type | Internal Type | Description |
+|-------|-----------|---------------|-------------|
+| RegularKey | String | PubKey | <span class='draft-comment'>(Optional?)</span> Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; or the value `0` to remove the existing regular key. |
 
 Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too.) 
 
@@ -206,9 +214,50 @@ When the Regular Key is compromised, you can use the this transaction type to ch
 
 ## OfferCreate ##
 
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and typically creates an Offer node in the global ledger. Offers can be partially fulfilled.
+
+| Field | JSON Type | Internal Type | Description |
+|-------|-----------|---------------|-------------|
+| Expiration | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in seconds since the Ripple Epoch. |
+| OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. |
+| TakerGets | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being provided by the offer creator. |
+| TakerPays | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being requested by the offer creator. |
+
+### Lifecycle of an Offer ###
+
+When an OfferCreate transaction is processed, it automatically consumes matching offers to the extent possible. If that does not completely fulfill the `TakerPays` amount, then the offer becomes a passive offer object in the ledger.
+
+After that, an offer can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. 
+
+It is possible for an offer to become temporarily *unfunded*:
+
+* Other transactions result in the creator of the offer not having enough currency to fulfill the remainder of the `TakerGets` parameter. (This means that offers cannot place anyone in debt.)
+* If the currency required to fund the offer is held in a frozen trust line.
+* <span class='draft-comment'>(Some other circumstances, including fees somehow?)</span>
+
+An offer becomes *permanently* inactive when any of the following happen:
+
+* It becomes fully claimed.
+* The Expiration date included in the offer is prior to the most recently-closed ledger. (See [Expiration](#expiration).)
+* A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
+
+### Offer Preference ###
+
+Existing offers are grouped by "quality", which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.
+
+When offers of the same quality are placed in the same ledger version, the "canonical order" of the transactions, as agreed by consensus, determines which is taken first. <span class='draft-comment'>(Confirm what determines canonical order. This behavior has to be well-defined so that independent servers can remain in sync.)</span>
+
+### Expiration ###
+
+Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time occurs prior to the most-recently validated ledger. In other words, an offer with an `Expiration` field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.
+
+You can determine the final disposition of an offer with an `Expiration` as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.
+
 <span class='draft-comment'>(TODO)</span>
 
 ## OfferCancel ##
+
+An OfferCancel transaction removes an Offer node from the global ledger.
 
 <span class='draft-comment'>(TODO)</span>
 
