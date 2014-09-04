@@ -95,7 +95,7 @@ For sending XRP, `Paths` can be an empty array, indicating a direct transfer.
 | EmailHash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | WalletLocator | String | Not used. |
 | WalletSize | Unsigned Integer | Not used. |
-| MessageKey | String | Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
+| MessageKey | String | Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple, but it could be any type of key. |
 | Domain | String | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
 | TransferRate | Unsigned Integer | The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
 | SetFlag | Unsigned Integer | Unique identifier of a flag to enable for this account. |
@@ -156,6 +156,8 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 ## TrustSet ##
 
 <span class='draft-comment'>(TODO)</span>
+
+# Pseudo-Transactions #
 
 ## Feature ##
 
