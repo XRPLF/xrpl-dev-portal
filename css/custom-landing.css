@@ -44,6 +44,18 @@ img.large_logo {
 }
 
 
+.jumbotron p.api_btn {
+	text-align: center;
+	padding: 20px;
+}
+
+
+button.api {
+	padding: 6px 30px;
+	font-size: 24px;
+	letter-spacing: 2px;
+}
+
 @media (min-width: 992px) {
 
 	.jumbotron .col-md-6 {
