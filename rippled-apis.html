@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
 
   <title>Ripple Developer Portal: rippled APIs</title>
 
   <!-- favicon -->
-  <link type="image/x-icon" href="favicon.ico" rel="icon"> 
-  <link type="image/x-icon" href="favicon.ico" rel="shortcut icon"> 
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 
-  <script type="text/javascript" async="" src="http://cdn.mxpnl.com/libs/mixpanel-2.2.min.js"></script>
+  <script src="http://cdn.mxpnl.com/libs/mixpanel-2.2.min.js" async="" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   
   <!-- Flatdoc -->
@@ -20,26 +20,26 @@
   
    <!-- Bootstrap -->
  
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="js/bootstrap.min.js"></script>
 
   <!-- Flatdoc theme -->
-  <link rel="stylesheet" href="vendor/flatdoc/v/0.8.0/theme-white/style.css">
+  <link href="vendor/flatdoc/v/0.8.0/theme-white/style.css" rel="stylesheet">
   <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
 
   <!-- Custom Stylesheets -->
-  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300" rel="stylesheet" type="text/css">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
   
-	<link type="image/x-icon" href="favicon.ico?v=2" rel="shortcut icon">
-	<link type="image/x-icon" href="favicon.ico?v=2" rel="icon">
+	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
 
   
   <!-- start Mixpanel -->
-  <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&amp;&amp;(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
-typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&amp;&amp;(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g&lt;i.length;g++)f(c,i[g]);
+  <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&amp;amp;&amp;amp;(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&amp;amp;&amp;amp;(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g&amp;lt;i.length;g++)f(c,i[g]);
 b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
@@ -64,8 +64,8 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   
   <!-- syntax selection js -->
   <script src="js/multicodetab.js"></script>
-<!-- Code to load Flatdoc; commented out on compiled page  
-<script>
+  <!-- Code to load Flatdoc; commented out on compiled page  
+  <script>
     $(document).on('flatdoc:ready', $().multicode_tabs);
   </script>
     <script>
@@ -73,22 +73,28 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
       fetcher: Flatdoc.file('websocket_api.md')
     });
   </script>-->
-  <link href="css/mod.css" rel="stylesheet" type="text/css">
+  <!-- Alternate multicode tabs for compiled page: -->
+  <script>
+    $(document).ready(function() {
+        $(".multicode").minitabs()
+    });
+  </script>
+  <link type="text/css" rel="stylesheet" href="css/mod.css">
   <script src="js/expandcode.js"></script>
   <script src="js/fixsidebarscroll.js"></script>
   
 </head>
-<body class="no-literate" role="flatdoc">
- 	<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+<body role="flatdoc" class="no-literate">
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="https://dev.ripple.com/" class="navbar-brand"><img src="assets/img/ripple_logo_small.png" class="small_logo"></a>
+          <a class="navbar-brand" href="https://dev.ripple.com/"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -100,7 +106,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
           </ul>
           	<div class="right">
 		 	 <!-- GitHub buttons -->
-		 		 <iframe width="110" height="20" frameborder="0" scrolling="0" allowtransparency="true" src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&amp;repo=ripple-dev-portal&amp;type=watch&amp;count=true"></iframe>
+		 		 <iframe width="110" height="20" frameborder="0" src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&amp;repo=ripple-dev-portal&amp;type=watch&amp;count=true" allowtransparency="true" scrolling="0"></iframe>
 			</div>
         </div><!--/.nav-collapse -->
       </div>
@@ -119,9 +125,9 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
  -->
   <div class="content-root">
     <div class="menubar">
-      <div role="flatdoc-menu" class="menu section"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="websocket-and-json-rpc-apis-item" class="level-1"><a id="websocket-and-json-rpc-apis-link" href="#websocket-and-json-rpc-apis" class="level-1">WebSocket and JSON-RPC APIs</a><ul class="level-2" id="websocket-and-json-rpc-apis-list"><li id="changes-to-the-apis-item" class="level-2"><a id="changes-to-the-apis-link" href="#changes-to-the-apis" class="level-2 active">Changes to the APIs</a></li><li id="connecting-to-rippled-item" class="level-2"><a id="connecting-to-rippled-link" href="#connecting-to-rippled" class="level-2">Connecting to rippled</a><ul class="level-3" id="connecting-to-rippled-list"><li id="reasons-to-run-your-own-rippled-item" class="level-3"><a id="reasons-to-run-your-own-rippled-link" href="#reasons-to-run-your-own-rippled" class="level-3">Reasons to Run Your Own rippled</a></li><li id="websocket-api-item" class="level-3"><a id="websocket-api-link" href="#websocket-api" class="level-3">WebSocket API</a></li><li id="json-rpc-item" class="level-3"><a id="json-rpc-link" href="#json-rpc" class="level-3">JSON-RPC</a></li><li id="commandline-item" class="level-3"><a id="commandline-link" href="#commandline" class="level-3">Commandline</a></li></ul></li><li id="request-formatting-item" class="level-2"><a id="request-formatting-link" href="#request-formatting" class="level-2">Request Formatting</a></li><li id="response-formatting-item" class="level-2"><a id="response-formatting-link" href="#response-formatting" class="level-2">Response Formatting</a></li><li id="error-responses-item" class="level-2"><a id="error-responses-link" href="#error-responses" class="level-2">Error Responses</a><ul class="level-3" id="error-responses-list"><li id="caution-on-errors-item" class="level-3"><a id="caution-on-errors-link" href="#caution-on-errors" class="level-3">Caution on Errors</a></li></ul></li><li id="formatting-conventions-item" class="level-2"><a id="formatting-conventions-link" href="#formatting-conventions" class="level-2">Formatting Conventions</a><ul class="level-3" id="formatting-conventions-list"><li id="unique-identifiers-item" class="level-3"><a id="unique-identifiers-link" href="#unique-identifiers" class="level-3">Unique Identifiers</a></li><li id="specifying-a-ledger-instance-item" class="level-3"><a id="specifying-a-ledger-instance-link" href="#specifying-a-ledger-instance" class="level-3">Specifying a Ledger Instance</a></li><li id="specifying-currency-amounts-item" class="level-3"><a id="specifying-currency-amounts-link" href="#specifying-currency-amounts" class="level-3">Specifying Currency Amounts</a></li><li id="specifying-time-item" class="level-3"><a id="specifying-time-link" href="#specifying-time" class="level-3">Specifying Time</a></li><li id="possible-server-states-item" class="level-3"><a id="possible-server-states-link" href="#possible-server-states" class="level-3">Possible Server States</a></li></ul></li></ul></li><li id="api-methods-item" class="level-1"><a id="api-methods-link" href="#api-methods" class="level-1">API Methods</a><ul class="level-2" id="api-methods-list"><li id="list-of-public-commands-item" class="level-2"><a id="list-of-public-commands-link" href="#list-of-public-commands" class="level-2">List of Public Commands</a></li><li id="admin-commands-item" class="level-2"><a id="admin-commands-link" href="#admin-commands" class="level-2">Admin Commands</a></li><li id="commandline-access-item" class="level-2"><a id="commandline-access-link" href="#commandline-access" class="level-2">Commandline Access</a></li></ul></li><li id="managing-accounts-item" class="level-1"><a id="managing-accounts-link" href="#managing-accounts" class="level-1">Managing Accounts</a><ul class="level-2" id="managing-accounts-list"><li id="account-info-item" class="level-2"><a id="account-info-link" href="#account-info" class="level-2">account_info</a></li><li id="account-lines-item" class="level-2"><a id="account-lines-link" href="#account-lines" class="level-2">account_lines</a></li><li id="account-offers-item" class="level-2"><a id="account-offers-link" href="#account-offers" class="level-2">account_offers</a></li><li id="account-tx-item" class="level-2"><a id="account-tx-link" href="#account-tx" class="level-2">account_tx</a></li><li id="wallet-propose-item" class="level-2"><a id="wallet-propose-link" href="#wallet-propose" class="level-2">wallet_propose</a></li></ul></li><li id="managing-ledgers-item" class="level-1"><a id="managing-ledgers-link" href="#managing-ledgers" class="level-1">Managing Ledgers</a><ul class="level-2" id="managing-ledgers-list"><li id="ledger-item" class="level-2"><a id="ledger-link" href="#ledger" class="level-2">ledger</a></li><li id="ledger-closed-item" class="level-2"><a id="ledger-closed-link" href="#ledger-closed" class="level-2">ledger_closed</a></li><li id="ledger-current-item" class="level-2"><a id="ledger-current-link" href="#ledger-current" class="level-2">ledger_current</a></li><li id="ledger-data-item" class="level-2"><a id="ledger-data-link" href="#ledger-data" class="level-2">ledger_data</a></li><li id="ledger-entry-item" class="level-2"><a id="ledger-entry-link" href="#ledger-entry" class="level-2">ledger_entry</a></li></ul></li><li id="managing-transactions-item" class="level-1"><a id="managing-transactions-link" href="#managing-transactions" class="level-1">Managing Transactions</a><ul class="level-2" id="managing-transactions-list"><li id="tx-item" class="level-2"><a id="tx-link" href="#tx" class="level-2">tx</a></li><li id="transaction-entry-item" class="level-2"><a id="transaction-entry-link" href="#transaction-entry" class="level-2">transaction_entry</a></li><li id="tx-history-item" class="level-2"><a id="tx-history-link" href="#tx-history" class="level-2">tx_history</a></li><li id="path-find-item" class="level-2"><a id="path-find-link" href="#path-find" class="level-2">path_find</a><ul class="level-3" id="path-find-list"><li id="path-find-create-item" class="level-3"><a id="path-find-create-link" href="#path-find-create" class="level-3">path_find create</a></li><li id="path-find-close-item" class="level-3"><a id="path-find-close-link" href="#path-find-close" class="level-3">path_find close</a></li><li id="path-find-status-item" class="level-3"><a id="path-find-status-link" href="#path-find-status" class="level-3">path_find status</a></li></ul></li><li id="ripple-path-find-item" class="level-2"><a id="ripple-path-find-link" href="#ripple-path-find" class="level-2">ripple_path_find</a></li><li id="sign-item" class="level-2"><a id="sign-link" href="#sign" class="level-2">sign</a></li><li id="submit-item" class="level-2"><a id="submit-link" href="#submit" class="level-2">submit</a></li><li id="book-offers-item" class="level-2"><a id="book-offers-link" href="#book-offers" class="level-2">book_offers</a></li></ul></li><li id="subscriptions-item" class="level-1"><a id="subscriptions-link" href="#subscriptions" class="level-1">Subscriptions</a><ul class="level-2" id="subscriptions-list"><li id="subscribe-item" class="level-2"><a id="subscribe-link" href="#subscribe" class="level-2">subscribe</a><ul class="level-3" id="subscribe-list"><li id="subscription-stream-messages-item" class="level-3"><a id="subscription-stream-messages-link" href="#subscription-stream-messages" class="level-3">Subscription Stream Messages</a></li></ul></li><li id="unsubscribe-item" class="level-2"><a id="unsubscribe-link" href="#unsubscribe" class="level-2">unsubscribe</a></li></ul></li><li id="server-information-item" class="level-1"><a id="server-information-link" href="#server-information" class="level-1">Server Information</a><ul class="level-2" id="server-information-list"><li id="server-info-item" class="level-2"><a id="server-info-link" href="#server-info" class="level-2">server_info</a></li><li id="server-state-item" class="level-2"><a id="server-state-link" href="#server-state" class="level-2">server_state</a></li></ul></li><li id="convenience-functions-item" class="level-1"><a id="convenience-functions-link" href="#convenience-functions" class="level-1">Convenience Functions</a><ul class="level-2" id="convenience-functions-list"><li id="ping-item" class="level-2"><a id="ping-link" href="#ping" class="level-2">ping</a></li><li id="random-item" class="level-2"><a id="random-link" href="#random" class="level-2">random</a></li><li id="json-item" class="level-2"><a id="json-link" href="#json" class="level-2">json</a></li></ul></li></ul></li></ul></div>
+      <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="websocket-and-json-rpc-apis-item" class="level-1"><a id="websocket-and-json-rpc-apis-link" href="#websocket-and-json-rpc-apis" class="level-1">WebSocket and JSON-RPC APIs</a><ul class="level-2" id="websocket-and-json-rpc-apis-list"><li id="changes-to-the-apis-item" class="level-2"><a id="changes-to-the-apis-link" href="#changes-to-the-apis" class="level-2 active">Changes to the APIs</a></li><li id="connecting-to-rippled-item" class="level-2"><a id="connecting-to-rippled-link" href="#connecting-to-rippled" class="level-2">Connecting to rippled</a><ul class="level-3" id="connecting-to-rippled-list"><li id="reasons-to-run-your-own-rippled-item" class="level-3"><a id="reasons-to-run-your-own-rippled-link" href="#reasons-to-run-your-own-rippled" class="level-3">Reasons to Run Your Own rippled</a></li><li id="websocket-api-item" class="level-3"><a id="websocket-api-link" href="#websocket-api" class="level-3">WebSocket API</a></li><li id="json-rpc-item" class="level-3"><a id="json-rpc-link" href="#json-rpc" class="level-3">JSON-RPC</a></li><li id="commandline-item" class="level-3"><a id="commandline-link" href="#commandline" class="level-3">Commandline</a></li></ul></li><li id="request-formatting-item" class="level-2"><a id="request-formatting-link" href="#request-formatting" class="level-2">Request Formatting</a></li><li id="response-formatting-item" class="level-2"><a id="response-formatting-link" href="#response-formatting" class="level-2">Response Formatting</a></li><li id="error-responses-item" class="level-2"><a id="error-responses-link" href="#error-responses" class="level-2">Error Responses</a><ul class="level-3" id="error-responses-list"><li id="caution-on-errors-item" class="level-3"><a id="caution-on-errors-link" href="#caution-on-errors" class="level-3">Caution on Errors</a></li></ul></li><li id="formatting-conventions-item" class="level-2"><a id="formatting-conventions-link" href="#formatting-conventions" class="level-2">Formatting Conventions</a><ul class="level-3" id="formatting-conventions-list"><li id="unique-identifiers-item" class="level-3"><a id="unique-identifiers-link" href="#unique-identifiers" class="level-3">Unique Identifiers</a></li><li id="specifying-a-ledger-instance-item" class="level-3"><a id="specifying-a-ledger-instance-link" href="#specifying-a-ledger-instance" class="level-3">Specifying a Ledger Instance</a></li><li id="specifying-currency-amounts-item" class="level-3"><a id="specifying-currency-amounts-link" href="#specifying-currency-amounts" class="level-3">Specifying Currency Amounts</a></li><li id="specifying-time-item" class="level-3"><a id="specifying-time-link" href="#specifying-time" class="level-3">Specifying Time</a></li><li id="possible-server-states-item" class="level-3"><a id="possible-server-states-link" href="#possible-server-states" class="level-3">Possible Server States</a></li></ul></li></ul></li><li id="api-methods-item" class="level-1"><a id="api-methods-link" href="#api-methods" class="level-1">API Methods</a><ul class="level-2" id="api-methods-list"><li id="list-of-public-commands-item" class="level-2"><a id="list-of-public-commands-link" href="#list-of-public-commands" class="level-2">List of Public Commands</a></li><li id="admin-commands-item" class="level-2"><a id="admin-commands-link" href="#admin-commands" class="level-2">Admin Commands</a></li><li id="commandline-access-item" class="level-2"><a id="commandline-access-link" href="#commandline-access" class="level-2">Commandline Access</a></li></ul></li><li id="managing-accounts-item" class="level-1"><a id="managing-accounts-link" href="#managing-accounts" class="level-1">Managing Accounts</a><ul class="level-2" id="managing-accounts-list"><li id="account-info-item" class="level-2"><a id="account-info-link" href="#account-info" class="level-2">account_info</a></li><li id="account-lines-item" class="level-2"><a id="account-lines-link" href="#account-lines" class="level-2">account_lines</a></li><li id="account-offers-item" class="level-2"><a id="account-offers-link" href="#account-offers" class="level-2">account_offers</a></li><li id="account-tx-item" class="level-2"><a id="account-tx-link" href="#account-tx" class="level-2">account_tx</a></li><li id="wallet-propose-item" class="level-2"><a id="wallet-propose-link" href="#wallet-propose" class="level-2">wallet_propose</a></li></ul></li><li id="managing-ledgers-item" class="level-1"><a id="managing-ledgers-link" href="#managing-ledgers" class="level-1">Managing Ledgers</a><ul class="level-2" id="managing-ledgers-list"><li id="ledger-item" class="level-2"><a id="ledger-link" href="#ledger" class="level-2">ledger</a></li><li id="ledger-closed-item" class="level-2"><a id="ledger-closed-link" href="#ledger-closed" class="level-2">ledger_closed</a></li><li id="ledger-current-item" class="level-2"><a id="ledger-current-link" href="#ledger-current" class="level-2">ledger_current</a></li><li id="ledger-data-item" class="level-2"><a id="ledger-data-link" href="#ledger-data" class="level-2">ledger_data</a></li><li id="ledger-entry-item" class="level-2"><a id="ledger-entry-link" href="#ledger-entry" class="level-2">ledger_entry</a></li></ul></li><li id="managing-transactions-item" class="level-1"><a id="managing-transactions-link" href="#managing-transactions" class="level-1">Managing Transactions</a><ul class="level-2" id="managing-transactions-list"><li id="tx-item" class="level-2"><a id="tx-link" href="#tx" class="level-2">tx</a></li><li id="transaction-entry-item" class="level-2"><a id="transaction-entry-link" href="#transaction-entry" class="level-2">transaction_entry</a></li><li id="tx-history-item" class="level-2"><a id="tx-history-link" href="#tx-history" class="level-2">tx_history</a></li><li id="path-find-item" class="level-2"><a id="path-find-link" href="#path-find" class="level-2">path_find</a><ul class="level-3" id="path-find-list"><li id="path-find-create-item" class="level-3"><a id="path-find-create-link" href="#path-find-create" class="level-3">path_find create</a></li><li id="path-find-close-item" class="level-3"><a id="path-find-close-link" href="#path-find-close" class="level-3">path_find close</a></li><li id="path-find-status-item" class="level-3"><a id="path-find-status-link" href="#path-find-status" class="level-3">path_find status</a></li></ul></li><li id="ripple-path-find-item" class="level-2"><a id="ripple-path-find-link" href="#ripple-path-find" class="level-2">ripple_path_find</a></li><li id="sign-item" class="level-2"><a id="sign-link" href="#sign" class="level-2">sign</a></li><li id="submit-item" class="level-2"><a id="submit-link" href="#submit" class="level-2">submit</a></li><li id="book-offers-item" class="level-2"><a id="book-offers-link" href="#book-offers" class="level-2">book_offers</a></li></ul></li><li id="subscriptions-item" class="level-1"><a id="subscriptions-link" href="#subscriptions" class="level-1">Subscriptions</a><ul class="level-2" id="subscriptions-list"><li id="subscribe-item" class="level-2"><a id="subscribe-link" href="#subscribe" class="level-2">subscribe</a><ul class="level-3" id="subscribe-list"><li id="subscription-stream-messages-item" class="level-3"><a id="subscription-stream-messages-link" href="#subscription-stream-messages" class="level-3">Subscription Stream Messages</a></li></ul></li><li id="unsubscribe-item" class="level-2"><a id="unsubscribe-link" href="#unsubscribe" class="level-2">unsubscribe</a></li></ul></li><li id="server-information-item" class="level-1"><a id="server-information-link" href="#server-information" class="level-1">Server Information</a><ul class="level-2" id="server-information-list"><li id="server-info-item" class="level-2"><a id="server-info-link" href="#server-info" class="level-2">server_info</a></li><li id="server-state-item" class="level-2"><a id="server-state-link" href="#server-state" class="level-2">server_state</a></li></ul></li><li id="convenience-functions-item" class="level-1"><a id="convenience-functions-link" href="#convenience-functions" class="level-1">Convenience Functions</a><ul class="level-2" id="convenience-functions-list"><li id="ping-item" class="level-2"><a id="ping-link" href="#ping" class="level-2">ping</a></li><li id="random-item" class="level-2"><a id="random-link" href="#random" class="level-2">random</a></li><li id="json-item" class="level-2"><a id="json-link" href="#json" class="level-2">json</a></li></ul></li></ul></li></ul></div>
     </div>
-    <div class="content" role="flatdoc-content"><h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1><p>If you want to communicate directly with the <code title="Double-click to expand/collapse">rippled</code> server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the <a href="?p=ripple-rest-api">Ripple-REST API</a> provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:</p><ul>
+    <div role="flatdoc-content" class="content"><h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1><p>If you want to communicate directly with the <code title="Double-click to expand/collapse">rippled</code> server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the <a href="?p=ripple-rest-api">Ripple-REST API</a> provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:</p><ul>
 <li>The WebSocket API uses the <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSocket protocol</a>, available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. </li>
 <li>The JSON-RPC API relies on simple request-response communication via HTTP. For commands that prompt multiple responses, you can provide a callback URL.</li>
 <li>The <code title="Double-click to expand/collapse">rippled</code> program can also be used as a quick commandline client to make JSON-RPC requests to a running <code title="Double-click to expand/collapse">rippled</code> server. This is only intended for administrative purposes, and is not a supported API.</li>
@@ -392,7 +398,7 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 <td>A copy of the request that prompted this error, in JSON format. <em>Caution:</em> If the request contained any account secrets, they are copied here! <em>Note:</em> The request is re-formatted in WebSocket format, regardless of the request made. This may be changed in the future: See <a href="https://ripplelabs.atlassian.net/browse/RIPD-279">RIPD-279</a>.</td>
 </tr>
 </tbody>
-</table><h3 id="caution-on-errors">Caution on Errors</h3><p>When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.</p><h2 id="formatting-conventions">Formatting Conventions</h2><p>The WebSocket and JSON-RPC APIs generally take the same arguments, although they’re provided in a different way (See <a href="#request-formatting" class="">Request Formatting</a> for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.</p><p>All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.</p><h3 id="unique-identifiers">Unique Identifiers</h3><p>Different types of objects are uniquely identified in different ways:</p><p><em>Accounts</em> are identified by their <em>address</em>, a <a href="https://wiki.ripple.com/Encodings">base-58-encoded</a> string, for example <code title="Double-click to expand/collapse">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with “r”. You can also provide an un-encoded hex representation instead.</p><p><em>Transactions</em> are identified by their <em>hash</em>, which is a <a href="http://en.wikipedia.org/wiki/Sha512">SHA-512</a> hash of the transaction’s binary format. Transaction hashes are represented as hex strings.</p><p>Each instance of the Ripple <em>Ledger</em> has a sequence number and a hash value. See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger Instance</a> for details.</p><h3 id="specifying-a-ledger-instance">Specifying a Ledger Instance</h3><p>Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:</p><ol>
+</table><h3 id="caution-on-errors">Caution on Errors</h3><p>When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.</p><h2 id="formatting-conventions">Formatting Conventions</h2><p>The WebSocket and JSON-RPC APIs generally take the same arguments, although they’re provided in a different way (See <a href="#request-formatting">Request Formatting</a> for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.</p><p>All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.</p><h3 id="unique-identifiers">Unique Identifiers</h3><p>Different types of objects are uniquely identified in different ways:</p><p><em>Accounts</em> are identified by their <em>address</em>, a <a href="https://wiki.ripple.com/Encodings">base-58-encoded</a> string, for example <code title="Double-click to expand/collapse">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with “r”. You can also provide an un-encoded hex representation instead.</p><p><em>Transactions</em> are identified by their <em>hash</em>, which is a <a href="http://en.wikipedia.org/wiki/Sha512">SHA-512</a> hash of the transaction’s binary format. Transaction hashes are represented as hex strings.</p><p>Each instance of the Ripple <em>Ledger</em> has a sequence number and a hash value. See <a href="#specifying-a-ledger-instance">Specifying a Ledger Instance</a> for details.</p><h3 id="specifying-a-ledger-instance">Specifying a Ledger Instance</h3><p>Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:</p><ol>
 <li>Specify a ledger by its Sequence Number in the <code title="Double-click to expand/collapse">ledger_index</code> parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)</li>
 <li>Specify a ledger by its hash value in the <code title="Double-click to expand/collapse">ledger_hash</code> parameter. </li>
 <li>Specify a ledger by one of the following shortcuts, in the <code title="Double-click to expand/collapse">ledger_index</code> parameter:<ul>
@@ -471,31 +477,31 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 </tr>
 </tbody>
 </table><p><em>Note:</em> The distinction between <code title="Double-click to expand/collapse">full</code>, <code title="Double-click to expand/collapse">validating</code>, and <code title="Double-click to expand/collapse">proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p><h1 id="api-methods">API Methods</h1><p>API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.</p><p>This page deals with all the Public Commands available. </p><h2 id="list-of-public-commands">List of Public Commands</h2><ul>
-<li><a href="#account-info" class=""><code title="Double-click to expand/collapse">account_info</code> - Get basic data about an account</a></li>
-<li><a href="#account-lines" class=""><code title="Double-click to expand/collapse">account_lines</code> - Get info about an account’s trust lines</a></li>
-<li><a href="#account-offers" class=""><code title="Double-click to expand/collapse">account_offers</code> - Get info about an account’s currency exchange offers</a></li>
-<li><a href="#account-tx" class=""><code title="Double-click to expand/collapse">account_tx</code> - Get info about an account’s transactions</a></li>
+<li><a href="#account-info"><code title="Double-click to expand/collapse">account_info</code> - Get basic data about an account</a></li>
+<li><a href="#account-lines"><code title="Double-click to expand/collapse">account_lines</code> - Get info about an account’s trust lines</a></li>
+<li><a href="#account-offers"><code title="Double-click to expand/collapse">account_offers</code> - Get info about an account’s currency exchange offers</a></li>
+<li><a href="#account-tx"><code title="Double-click to expand/collapse">account_tx</code> - Get info about an account’s transactions</a></li>
 <li><a href="#book-offers"><code title="Double-click to expand/collapse">book_offers</code> - Get info about offers to exchange two currencies</a></li>
-<li><a href="#ledger" class=""><code title="Double-click to expand/collapse">ledger</code> - Get info about a ledger version</a></li>
-<li><a href="#ledger-closed" class=""><code title="Double-click to expand/collapse">ledger_closed</code> - Get the latest closed ledger version</a></li>
-<li><a href="#ledger-current" class=""><code title="Double-click to expand/collapse">ledger_current</code> - Get the current working ledger version</a></li>
-<li><a href="#ledger-data" class=""><code title="Double-click to expand/collapse">ledger_data</code> - Get the raw contents of a ledger version</a></li>
-<li><a href="#ledger-entry" class=""><code title="Double-click to expand/collapse">ledger_entry</code> - Get one element from a ledger version</a></li>
+<li><a href="#ledger"><code title="Double-click to expand/collapse">ledger</code> - Get info about a ledger version</a></li>
+<li><a href="#ledger-closed"><code title="Double-click to expand/collapse">ledger_closed</code> - Get the latest closed ledger version</a></li>
+<li><a href="#ledger-current"><code title="Double-click to expand/collapse">ledger_current</code> - Get the current working ledger version</a></li>
+<li><a href="#ledger-data"><code title="Double-click to expand/collapse">ledger_data</code> - Get the raw contents of a ledger version</a></li>
+<li><a href="#ledger-entry"><code title="Double-click to expand/collapse">ledger_entry</code> - Get one element from a ledger version</a></li>
 <li><a href="#path-find"><code title="Double-click to expand/collapse">path_find</code> - Find a path for a payment between two accounts and receive updates</a></li>
 <li><a href="#ping"><code title="Double-click to expand/collapse">ping</code> - Confirm connectivity with the server</a></li>
 <li><a href="#random"><code title="Double-click to expand/collapse">random</code> - Generate a random number</a></li>
-<li><a href="#ripple-path-find" class=""><code title="Double-click to expand/collapse">ripple_path_find</code> - Find a path for payment between two accounts, once</a></li>
+<li><a href="#ripple-path-find"><code title="Double-click to expand/collapse">ripple_path_find</code> - Find a path for payment between two accounts, once</a></li>
 <li><a href="#server-info"><code title="Double-click to expand/collapse">server_info</code> - Retrieve status of the server in human-readable format</a></li>
 <li><a href="#server-state"><code title="Double-click to expand/collapse">server_state</code> - Retrieve status of the server in machine-readable format</a></li>
 <li><a href="#sign"><code title="Double-click to expand/collapse">sign</code> - Cryptographically sign a transaction</a></li>
 <li><a href="#submit"><code title="Double-click to expand/collapse">submit</code> - Send a transaction to the network</a></li>
 <li><a href="#subscribe"><code title="Double-click to expand/collapse">subscribe</code> - Listen for updates about a particular subject</a></li>
-<li><a href="#transaction-entry" class=""><code title="Double-click to expand/collapse">transaction_entry</code> - Retrieve info about a transaction from a particular ledger version</a></li>
-<li><a href="#tx" class=""><code title="Double-click to expand/collapse">tx</code> - Retrieve info about a transaction from all the ledgers on hand</a></li>
-<li><a href="#tx-history" class=""><code title="Double-click to expand/collapse">tx_history</code> - Retrieve info about all recent transactions</a></li>
+<li><a href="#transaction-entry"><code title="Double-click to expand/collapse">transaction_entry</code> - Retrieve info about a transaction from a particular ledger version</a></li>
+<li><a href="#tx"><code title="Double-click to expand/collapse">tx</code> - Retrieve info about a transaction from all the ledgers on hand</a></li>
+<li><a href="#tx-history"><code title="Double-click to expand/collapse">tx_history</code> - Retrieve info about all recent transactions</a></li>
 <li><a href="#unsubscribe"><code title="Double-click to expand/collapse">unsubscribe</code> - Stop listening for updates about a particular subject</a></li>
 </ul><p>The <code title="Double-click to expand/collapse">wallet_accounts</code> command is deprecated and may be removed without further notice.</p><h2 id="admin-commands">Admin Commands</h2><p>Additionally, this page contains an explanation of the following important admin-only command:</p><ul>
-<li><a href="#wallet-propose" class=""><code title="Double-click to expand/collapse">wallet_propose</code> - Generate keys for a new account</a></li>
+<li><a href="#wallet-propose"><code title="Double-click to expand/collapse">wallet_propose</code> - Generate keys for a new account</a></li>
 </ul><p>For information about other Admin Commands, consult <a href="https://ripple.com/wiki/JSON_Messages">the old wiki documentation</a>.</p><h2 id="commandline-access">Commandline Access</h2><p>The <code title="Double-click to expand/collapse">rippled</code> application, in addition to acting as a server, can be run (as a separate instance) to act as a JSON-RPC client. In this mode, it has syntax for triggering most API methods with a single line from the command prompt, as described in each method. However, some methods don’t have a commandline shortcut, so it also provides the following catch-all method for performing commands:</p><ul>
 <li><a href="#json"><code title="Double-click to expand/collapse">json</code> - Pass JSON through the commandline</a></li>
 </ul><h1 id="managing-accounts">Managing Accounts</h1><p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="https://ripple.com/wiki/Reserves">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p><h2 id="account-info">account_info</h2><p>The <code title="Double-click to expand/collapse">account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger. </p><h4>Request Format</h4><p>An example of an account_info request:</p><div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0" class="current">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
@@ -545,12 +551,12 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table><p>The following fields are deprecated and should not be provided: <code title="Double-click to expand/collapse">ident</code>, <code title="Double-click to expand/collapse">account_index</code>, <code title="Double-click to expand/collapse">ledger</code>.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0" class="current">WebSocket</a></li></ul>
@@ -574,7 +580,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
     "ledger_current_index": 6507948
   }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -680,12 +686,12 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>peer</td>
@@ -978,7 +984,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1140,7 +1146,7 @@ Response:
     }
 }</code></pre></div>
 
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1182,12 +1188,12 @@ Response:
 <tr>
 <td>taker_gets</td>
 <td>String or Object</td>
-<td>The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts" class="">Specifying Currency Amounts</a>)</td>
+<td>The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a>)</td>
 </tr>
 <tr>
 <td>taker_pays</td>
 <td>String or Object</td>
-<td>The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts" class="">Specifying Currency Amounts</a>)</td>
+<td>The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a>)</td>
 </tr>
 </tbody>
 </table><h2 id="account-tx">account_tx</h2><p>The <code title="Double-click to expand/collapse">account_tx</code> method retrieves a list of transactions that involved the specified account.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0" class="current">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
@@ -1254,12 +1260,12 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>binary</td>
@@ -1750,7 +1756,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
     }
 }</code></pre></div>
 
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1884,7 +1890,7 @@ rippled -- wallet_propose test</code></pre></div>
       "status" : "success"
    }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing various important information about the new account, including the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing various important information about the new account, including the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2031,7 +2037,7 @@ rippled -- ledger current false</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing information about the ledger, including the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing information about the ledger, including the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2135,7 +2141,7 @@ rippled -- ledger_closed</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2192,7 +2198,7 @@ rippled -- ledger_current</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following field:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following field:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2245,12 +2251,12 @@ rippled -- ledger_current</code></pre></div>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>binary</td>
@@ -2431,7 +2437,7 @@ rippled -- ledger_current</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2514,7 +2520,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 </div><p><a href="https://ripple.com/tools/api/#ledger_entry" class="button">Try it!</a></p><p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p><ol>
 <li><code title="Double-click to expand/collapse">index</code> - Retrieve an individual ledger entry by its unique index</li>
-<li><code title="Double-click to expand/collapse">account_root</code> - Retrieve an account node, similar to the <a href="#account-info" class="">account_info</a> command</li>
+<li><code title="Double-click to expand/collapse">account_root</code> - Retrieve an account node, similar to the <a href="#account-info">account_info</a> command</li>
 <li><code title="Double-click to expand/collapse">directory</code> - Retrieve a directory node, which contains a list of IDs linking things</li>
 <li><code title="Double-click to expand/collapse">offer</code> - Retrieve an offer node, which defines an offer to exchange currency</li>
 <li><code title="Double-click to expand/collapse">ripple_state</code> - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts</li>
@@ -2637,7 +2643,7 @@ rippled -- ledger_current</code></pre></div>
         "validated": true
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2833,7 +2839,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
     "status": "success",
     "type": "response"
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the fields of the <a href="https://ripple.com/wiki/Transaction_Format">Transaction object</a> as well as the following additional fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the fields of the <a href="https://ripple.com/wiki/Transaction_Format">Transaction object</a> as well as the following additional fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2873,7 +2879,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
 <td>Other fields from the <a href="https://ripple.com/wiki/Transaction_Format">Transaction object</a></td>
 </tr>
 </tbody>
-</table><p><em>Note:</em> If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the <code title="Double-click to expand/collapse">rippled</code> does not have on hand anymore.</p><h2 id="transaction-entry">transaction_entry</h2><p>The <code title="Double-click to expand/collapse">transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx" class=""><code title="Double-click to expand/collapse">tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0" class="current">WebSocket</a></li><li><a href="#code-25-1">JSON-RPC</a></li><li><a href="#code-25-2">Commandline</a></li></ul>
+</table><p><em>Note:</em> If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the <code title="Double-click to expand/collapse">rippled</code> does not have on hand anymore.</p><h2 id="transaction-entry">transaction_entry</h2><p>The <code title="Double-click to expand/collapse">transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0" class="current">WebSocket</a></li><li><a href="#code-25-1">JSON-RPC</a></li><li><a href="#code-25-2">Commandline</a></li></ul>
 
 <div id="code-25-0"><pre><code title="Double-click to expand/collapse">{
   "id": 4,
@@ -2906,12 +2912,12 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>tx_hash</td>
@@ -3046,7 +3052,7 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
     "status": "success",
     "type": "response"
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -3930,7 +3936,7 @@ rippled -- tx_history 0</code></pre></div>
         ]
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -3950,7 +3956,7 @@ rippled -- tx_history 0</code></pre></div>
 <td>Array of transaction objects.</td>
 </tr>
 </tbody>
-</table><p>The fields included in each transaction object vary slightly depending on the type of transaction. See <a href="https://ripple.com/wiki/Transaction_Format">Transaction Format</a> for details.</p><h2 id="path-find">path_find</h2><p><em>WebSocket API only!</em> The <code title="Double-click to expand/collapse">path_find</code> method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find" class=""><code title="Double-click to expand/collapse">ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p><p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code title="Double-click to expand/collapse">subcommand</code> parameter:</p><ul>
+</table><p>The fields included in each transaction object vary slightly depending on the type of transaction. See <a href="https://ripple.com/wiki/Transaction_Format">Transaction Format</a> for details.</p><h2 id="path-find">path_find</h2><p><em>WebSocket API only!</em> The <code title="Double-click to expand/collapse">path_find</code> method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code title="Double-click to expand/collapse">ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p><p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code title="Double-click to expand/collapse">subcommand</code> parameter:</p><ul>
 <li><code title="Double-click to expand/collapse">create</code> - Start sending pathfinding information </li>
 <li><code title="Double-click to expand/collapse">close</code> - Stop sending pathfinding information</li>
 <li><code title="Double-click to expand/collapse">status</code> - Get the information of the currently-open pathfinding request</li>
@@ -3995,7 +4001,7 @@ rippled -- tx_history 0</code></pre></div>
 <tr>
 <td>destination_amount</td>
 <td>String (XRP)<br>Object (Otherwise)</td>
-<td>The amount of currency that needs to arrive at the destination. (See <a href="#specifying-currency-amounts" class="">Specifying Currency Amounts</a>. Set the issuer to the destination account’s address to use any issuer the destination accepts.)</td>
+<td>The amount of currency that needs to arrive at the destination. (See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a>. Set the issuer to the destination account’s address to use any issuer the destination accepts.)</td>
 </tr>
 <tr>
 <td>paths</td>
@@ -4367,7 +4373,7 @@ rippled -- tx_history 0</code></pre></div>
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
   }
 }</code></pre></div>
-</div><p>The initial response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The initial response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -4389,7 +4395,7 @@ rippled -- tx_history 0</code></pre></div>
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts" class="">Currency amount</a> that the destination would receive in a transaction</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination would receive in a transaction</td>
 </tr>
 <tr>
 <td>id</td>
@@ -4419,7 +4425,7 @@ rippled -- tx_history 0</code></pre></div>
 <tr>
 <td>source_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts" class="">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
 </tr>
 </tbody>
 </table><h4>Asynchronous Follow-ups</h4><p>In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the <code title="Double-click to expand/collapse">id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code title="Double-click to expand/collapse">"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p><p>Here is an example of an asychronous follow-up from a path_find create request:</p><div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0" class="current">WebSocket</a></li></ul>
@@ -5376,22 +5382,22 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts" class="">Currency amount</a> that the destination account would receive in a transaction</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction</td>
 </tr>
 <tr>
 <td>source_currencies</td>
 <td>Array</td>
-<td>(Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code title="Double-click to expand/collapse">currency</code> field and optional <code title="Double-click to expand/collapse">issuer</code> field, similar to <a href="#specifying-currency-amounts" class="">currency amounts</a>.</td>
+<td>(Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code title="Double-click to expand/collapse">currency</code> field and optional <code title="Double-click to expand/collapse">issuer</code> field, similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>String or Unsigned Integer</td>
-<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance" class="">Specifying a Ledger</a>)</td>
+<td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0" class="current">WebSocket</a></li><li><a href="#code-35-1">JSON-RPC</a></li></ul>
@@ -5605,7 +5611,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -5647,7 +5653,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 <tr>
 <td>source_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts" class="">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
 </tr>
 </tbody>
 </table><p>The following fields are deprecated, and may be omitted: <code title="Double-click to expand/collapse">paths_canonical</code>, and <code title="Double-click to expand/collapse">paths_expanded</code>. If they appear, you should disregard them.</p><h2 id="sign">sign</h2><p>The <code title="Double-click to expand/collapse">sign</code> method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.</p><p><em>Note:</em> It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, <a href="https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js">ripple-lib’s rsign.js</a> demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0" class="current">WebSocket</a></li><li><a href="#code-36-1">JSON-RPC</a></li><li><a href="#code-36-2">Commandline</a></li></ul>
@@ -5772,7 +5778,7 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
         }
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -5862,7 +5868,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <td>(Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. (No effect when specifying the transaction as tx_blob.)</td>
 </tr>
 </tbody>
-</table><p>The JSON format for <code title="Double-click to expand/collapse">tx_json</code> varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the <code title="Double-click to expand/collapse">Paths</code> field by doing a <code title="Double-click to expand/collapse">find_path</code> or <code title="Double-click to expand/collapse">ripple_find_path</code> command first. The <code title="Double-click to expand/collapse">Paths</code> field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the <code title="Double-click to expand/collapse">Paths</code> field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment, including transit fees, is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. </p><p>By default, <code title="Double-click to expand/collapse">rippled</code> tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. </p><p>If <code title="Double-click to expand/collapse">offline</code> is not set to true, then the server tries to automatically fill the <code title="Double-click to expand/collapse">Sequence</code> and <code title="Double-click to expand/collapse">Fee</code> parameters appropriately. </p><p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code title="Double-click to expand/collapse">submit</code> it as a <code title="Double-click to expand/collapse">tx_blob</code>. After submission, monitor the network with the <a href="#tx" class=""><code title="Double-click to expand/collapse">tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code title="Double-click to expand/collapse">tx_blob</code> transaction: it won’t be applied twice since it has the same sequence number as the old transaction. </p><p>You should provide a <a href="https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format">LastLedgerSequence</a> field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0" class="current">WebSocket</a></li><li><a href="#code-39-1">JSON-RPC</a></li></ul>
+</table><p>The JSON format for <code title="Double-click to expand/collapse">tx_json</code> varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the <code title="Double-click to expand/collapse">Paths</code> field by doing a <code title="Double-click to expand/collapse">find_path</code> or <code title="Double-click to expand/collapse">ripple_find_path</code> command first. The <code title="Double-click to expand/collapse">Paths</code> field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the <code title="Double-click to expand/collapse">Paths</code> field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment, including transit fees, is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. </p><p>By default, <code title="Double-click to expand/collapse">rippled</code> tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. </p><p>If <code title="Double-click to expand/collapse">offline</code> is not set to true, then the server tries to automatically fill the <code title="Double-click to expand/collapse">Sequence</code> and <code title="Double-click to expand/collapse">Fee</code> parameters appropriately. </p><p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code title="Double-click to expand/collapse">submit</code> it as a <code title="Double-click to expand/collapse">tx_blob</code>. After submission, monitor the network with the <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code title="Double-click to expand/collapse">tx_blob</code> transaction: it won’t be applied twice since it has the same sequence number as the old transaction. </p><p>You should provide a <a href="https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format">LastLedgerSequence</a> field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0" class="current">WebSocket</a></li><li><a href="#code-39-1">JSON-RPC</a></li></ul>
 
 <div id="code-39-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -5918,7 +5924,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         }
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6016,12 +6022,12 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <tr>
 <td>taker_gets</td>
 <td>Object</td>
-<td>Specification of which currency the account taking the offer would receive, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts" class="">currency amounts</a>.</td>
+<td>Specification of which currency the account taking the offer would receive, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 <tr>
 <td>taker_pays</td>
 <td>Object</td>
-<td>Specification of which currency the account taking the offer would pay, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts" class="">currency amounts</a>.</td>
+<td>Specification of which currency the account taking the offer would pay, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 </tbody>
 </table><p><em>Note:</em> The other parameters of this command &mdash; <code title="Double-click to expand/collapse">marker</code>, <code title="Double-click to expand/collapse">limit</code>, <code title="Double-click to expand/collapse">proof</code>, and <code title="Double-click to expand/collapse">autobridge</code> &mdash; are not yet fully implemented. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-295">RIPD-295</a>).</p><p>Normally, offers that are not funded are omitted; however, offers made by the specified <code title="Double-click to expand/collapse">taker</code> account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0" class="current">WebSocket</a></li><li><a href="#code-41-1">JSON-RPC</a></li></ul>
@@ -6093,7 +6099,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
         "validated": false
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6264,7 +6270,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
   "type": "response",
   "result": {}
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>. The fields contained in the response vary depending on what subscriptions were included in the request.</p><ul>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>. The fields contained in the response vary depending on what subscriptions were included in the request.</p><ul>
 <li><code title="Double-click to expand/collapse">accounts</code> and <code title="Double-click to expand/collapse">accounts_proposed</code> - No fields returned</li>
 <li><em>Stream: server</em> - Information about the server status, such as <code title="Double-click to expand/collapse">load_base</code> (the current load level of the server), <code title="Double-click to expand/collapse">random</code> (a randomly-generated value), and others, subject to change. </li>
 <li><em>Stream: transactions</em> and <em>Stream: transactions_proposed</em> - No fields returned</li>
@@ -6564,12 +6570,12 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <tr>
 <td>taker_gets</td>
 <td>Object</td>
-<td>Specification of which currency the account taking the offer would receive, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts" class="">currency amounts</a>.</td>
+<td>Specification of which currency the account taking the offer would receive, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 <tr>
 <td>taker_pays</td>
 <td>Object</td>
-<td>Specification of which currency the account taking the offer would pay, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts" class="">currency amounts</a>.</td>
+<td>Specification of which currency the account taking the offer would pay, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 <tr>
 <td>both</td>
@@ -6585,7 +6591,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
     "status": "success",
     "type": "response"
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing no fields.</p><h1 id="server-information">Server Information</h1><p>There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.</p><h2 id="server-info">server_info</h2><p>The <code title="Double-click to expand/collapse">server_info</code> command asks the server for a human-readable version of various information about the <code title="Double-click to expand/collapse">rippled</code> server being queried.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0" class="current">WebSocket</a></li><li><a href="#code-46-1">JSON-RPC</a></li></ul>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields.</p><h1 id="server-information">Server Information</h1><p>There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.</p><h2 id="server-info">server_info</h2><p>The <code title="Double-click to expand/collapse">server_info</code> command asks the server for a human-readable version of various information about the <code title="Double-click to expand/collapse">rippled</code> server being queried.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0" class="current">WebSocket</a></li><li><a href="#code-46-1">JSON-RPC</a></li></ul>
 
 <div id="code-46-0"><pre><code title="Double-click to expand/collapse">{
   "id": 11,
@@ -6662,7 +6668,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing an <code title="Double-click to expand/collapse">info</code> object as its only field.</p><p>The <code title="Double-click to expand/collapse">info</code> object may have some arrangement of the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing an <code title="Double-click to expand/collapse">info</code> object as its only field.</p><p>The <code title="Double-click to expand/collapse">info</code> object may have some arrangement of the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6734,7 +6740,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <tr>
 <td>server_state</td>
 <td>String</td>
-<td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states" class="">Possible Server States</a> for more details.</td>
+<td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states">Possible Server States</a> for more details.</td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -6856,7 +6862,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
     }
 }</code></pre></div>
 
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing a <code title="Double-click to expand/collapse">state</code> object as its only field.</p><p>The <code title="Double-click to expand/collapse">state</code> object may have some arrangement of the following fields:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a <code title="Double-click to expand/collapse">state</code> object as its only field.</p><p>The <code title="Double-click to expand/collapse">state</code> object may have some arrangement of the following fields:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6923,7 +6929,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <tr>
 <td>server_state</td>
 <td>String</td>
-<td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states" class="">Possible Server States</a> for more details.</td>
+<td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states">Possible Server States</a> for more details.</td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -7000,7 +7006,7 @@ rippled -- ping</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p><h2 id="random">random</h2><p>The <code title="Double-click to expand/collapse">random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-52"><ul class="codetabs"><li><a href="#code-52-0" class="current">WebSocket</a></li><li><a href="#code-52-1">JSON-RPC</a></li><li><a href="#code-52-2">Commandline</a></li></ul>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p><h2 id="random">random</h2><p>The <code title="Double-click to expand/collapse">random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-52"><ul class="codetabs"><li><a href="#code-52-0" class="current">WebSocket</a></li><li><a href="#code-52-1">JSON-RPC</a></li><li><a href="#code-52-2">Commandline</a></li></ul>
 
 <div id="code-52-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -7037,7 +7043,7 @@ rippled -- random</code></pre></div>
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with a successful result containing the following field:</p><table>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following field:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -7065,7 +7071,7 @@ rippled -q -- json ledger_closed '{}'</code></pre></div>
       "status" : "success"
    }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting" class="">standard format</a>, with whichever fields are appropriate to the type of command made.</p></div>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with whichever fields are appropriate to the type of command made.</p></div>
   </div>
 <div class="footer">
       <div class="container">
@@ -7111,27 +7117,27 @@ rippled -q -- json ledger_closed '{}'</code></pre></div>
 				<p>Join the mailing list!</p>
 				<label for="mce-EMAIL">Email address</label>
 					<!-- Begin MailChimp Signup Form -->
-						<link type="text/css" rel="stylesheet" href="//cdn-images.mailchimp.com/embedcode/slim-081711.css">
+						<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
 						<style type="text/css">
 							#mc_embed_signup{clear:left; font:14px; }
 	
 						</style>
 						<div id="mc_embed_signup">
-						<form novalidate="" target="_blank" class="validate" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post" action="//ripple.us4.list-manage.com/subscribe/post?u=245dbc1c47849f034390dc5bf&amp;id=4dfbe160d0">
+						<form action="//ripple.us4.list-manage.com/subscribe/post?u=245dbc1c47849f034390dc5bf&amp;id=4dfbe160d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
 	
-							<input type="email" required="" placeholder="" id="mce-EMAIL" class="email" name="EMAIL" value="">
+							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="" required="">
 							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-							<div style="position: absolute; left: -5000px; top: -50px;"><input type="text" value="" tabindex="-1" name="b_245dbc1c47849f034390dc5bf_4dfbe160d0"></div>
-							<input type="submit" class="button btn btn-primary" id="mc-embedded-subscribe" name="subscribe" value="Submit">
+							<div style="position: absolute; left: -5000px; top: -50px;"><input type="text" name="b_245dbc1c47849f034390dc5bf_4dfbe160d0" tabindex="-1" value=""></div>
+							<input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
 						</form>
 						</div>
 
 					<!--End mc_embed_signup-->
 				</div>
       		</div>
-        <p></p>
       </div>
     </div>
+
 
 
 </body></html>
