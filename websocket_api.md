@@ -477,6 +477,8 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 </div>
 
+[Try it! >](https://ripple.com/tools/api/#account_info)
+
 The request contains the following parameters:
 
 | Field | Type | Description |
@@ -552,7 +554,22 @@ An example of the request format:
   "ledger": "current"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "account_lines",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger": "current"
+        }
+    ]
+}
+```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#account_lines)
 
 The request accepts the following paramters:
 
@@ -615,6 +632,250 @@ An example of a successful response:
     }
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "lines": [
+            {
+                "account": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                "balance": "0",
+                "currency": "ASP",
+                "limit": "0",
+                "limit_peer": "10",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                "balance": "0",
+                "currency": "XAU",
+                "limit": "0",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "no_ripple_peer": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                "balance": "5",
+                "currency": "USD",
+                "limit": "5",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                "balance": "481.992867407479",
+                "currency": "MXN",
+                "limit": "1000",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                "balance": "0.793598266778297",
+                "currency": "EUR",
+                "limit": "1",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                "balance": "0",
+                "currency": "CNY",
+                "limit": "3",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                "balance": "1.326889190631542",
+                "currency": "DYM",
+                "limit": "3",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "balance": "0.3488146605801446",
+                "currency": "CHF",
+                "limit": "0",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "balance": "0",
+                "currency": "BTC",
+                "limit": "3",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "balance": "10.06051402019741",
+                "currency": "USD",
+                "limit": "5000",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rpgKWEmNqSDAGFhy5WDnsyPqfQxbWxKeVd",
+                "balance": "-0.00111",
+                "currency": "BTC",
+                "limit": "0",
+                "limit_peer": "10",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rBJ3YjwXi2MGbg7GVLuTXUWQ8DjL7tDXh4",
+                "balance": "-0.0008744482690504699",
+                "currency": "BTC",
+                "limit": "0",
+                "limit_peer": "10",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                "balance": "0.982191732527743",
+                "currency": "USD",
+                "limit": "1",
+                "limit_peer": "0",
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
+                "balance": "9.07619790068559",
+                "currency": "CNY",
+                "limit": "100",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "balance": "7.292695098901099",
+                "currency": "JPY",
+                "limit": "0",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                "balance": "0",
+                "currency": "AUX",
+                "limit": "0",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "no_ripple_peer": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+                "balance": "0",
+                "currency": "USD",
+                "limit": "1",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "balance": "12.41688780720394",
+                "currency": "EUR",
+                "limit": "100",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rfF3PNkwkq1DygW2wum2HK3RGfgkJjdPVD",
+                "balance": "35",
+                "currency": "USD",
+                "limit": "500",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rwUVoVMSURqNyvocPCcvLu3ygJzZyw8qwp",
+                "balance": "-5",
+                "currency": "JOE",
+                "limit": "0",
+                "limit_peer": "50",
+                "no_ripple_peer": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2",
+                "balance": "0",
+                "currency": "USD",
+                "limit": "0",
+                "limit_peer": "100",
+                "no_ripple_peer": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2",
+                "balance": "0",
+                "currency": "JOE",
+                "limit": "0",
+                "limit_peer": "100",
+                "no_ripple_peer": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx",
+                "balance": "0",
+                "currency": "015841551A748AD2C1F76FF6ECB0CCCD00000000",
+                "limit": "10.01037626125837",
+                "limit_peer": "0",
+                "no_ripple": true,
+                "quality_in": 0,
+                "quality_out": 0
+            },
+            {
+                "account": "rEhDDUUNxpXgEHVJtC2cjXAgyx5VCFxdMF",
+                "balance": "0",
+                "currency": "USD",
+                "limit": "0",
+                "limit_peer": "1",
+                "quality_in": 0,
+                "quality_out": 0
+            }
+        ],
+        "status": "success"
+    }
+}```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
@@ -657,12 +918,27 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "account_offers",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "current"
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: account_offers account [ledger_index]
 rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#account_offers)
 
 A request can include the following parameters:
 
@@ -705,6 +981,20 @@ An example of a successful response:
   }
 }
 ```
+
+Response:
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "offers": [],
+        "status": "success"
+    }
+}
+```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -749,12 +1039,34 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "account_tx",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "binary": false,
+            "count": false,
+            "descending": false,
+            "forward": false,
+            "ledger_index_max": -1,
+            "ledger_index_min": -1,
+            "limit": 2,
+            "offset": 1
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#account_tx)
 
 The request includes the following parameters:
 
@@ -1018,6 +1330,242 @@ An example of a successful response:
     }
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "ledger_index_max": 8696227,
+        "ledger_index_min": 32570,
+        "limit": 2,
+        "offset": 1,
+        "status": "success",
+        "transactions": [
+            {
+                "meta": {
+                    "AffectedNodes": [
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                                    "Balance": "9999999980",
+                                    "Flags": 0,
+                                    "OwnerCount": 2,
+                                    "Sequence": 3
+                                },
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+                                "PreviousFields": {
+                                    "Balance": "9999999990",
+                                    "OwnerCount": 1,
+                                    "Sequence": 2
+                                },
+                                "PreviousTxnID": "389720F6FD8A144F171708F9ECB334D704CBCFEFBCDA152D931AC34FB5F9E32B",
+                                "PreviousTxnLgrSeq": 95405
+                            }
+                        },
+                        {
+                            "CreatedNode": {
+                                "LedgerEntryType": "RippleState",
+                                "LedgerIndex": "718C6D58DD3BBAAAEBFE48B8FBE3C32C9F6F2EBC395233BA95D0057078EE07DB",
+                                "NewFields": {
+                                    "Balance": {
+                                        "currency": "USD",
+                                        "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                        "value": "0"
+                                    },
+                                    "Flags": 131072,
+                                    "HighLimit": {
+                                        "currency": "USD",
+                                        "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                                        "value": "100"
+                                    },
+                                    "LowLimit": {
+                                        "currency": "USD",
+                                        "issuer": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                                        "value": "0"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Flags": 0,
+                                    "Owner": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                                    "RootIndex": "77F65EFF930ED7E93C6CC839C421E394D6B1B6A47CEA8A140D63EC9C712F46F5"
+                                },
+                                "LedgerEntryType": "DirectoryNode",
+                                "LedgerIndex": "77F65EFF930ED7E93C6CC839C421E394D6B1B6A47CEA8A140D63EC9C712F46F5"
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Account": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                                    "Balance": "78991384535796",
+                                    "Flags": 0,
+                                    "OwnerCount": 3,
+                                    "Sequence": 188
+                                },
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "B33FDD5CF3445E1A7F2BE9B06336BEBD73A5E3EE885D3EF93F7E3E2992E46F1A",
+                                "PreviousTxnID": "E9E1988A0F061679E5D14DE77DB0163CE0BBDC00F29E396FFD1DA0366E7D8904",
+                                "PreviousTxnLgrSeq": 195455
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "ExchangeRate": "4E11C37937E08000",
+                                    "Flags": 0,
+                                    "RootIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93",
+                                    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+                                    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+                                    "TakerPaysCurrency": "0000000000000000000000004254430000000000",
+                                    "TakerPaysIssuer": "5E7B112523F68D2F5E879DB4EAC51C6698A69304"
+                                },
+                                "LedgerEntryType": "DirectoryNode",
+                                "LedgerIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93"
+                            }
+                        }
+                    ],
+                    "TransactionIndex": 0,
+                    "TransactionResult": "tesSUCCESS"
+                },
+                "tx": {
+                    "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "Fee": "10",
+                    "Flags": 0,
+                    "LimitAmount": {
+                        "currency": "USD",
+                        "issuer": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+                        "value": "100"
+                    },
+                    "Sequence": 2,
+                    "SigningPubKey": "02BC8C02199949B15C005B997E7C8594574E9B02BA2D0628902E0532989976CF9D",
+                    "TransactionType": "TrustSet",
+                    "TxnSignature": "304402200EF81EC32E0DFA9BE376B20AFCA11765ED9FEA04CA8B77C7178DAA699F7F5AFF02202DA484DBD66521AC317D84F7717EC4614E2F5DB743E313E8B48440499CC0DBA4",
+                    "date": 413620090,
+                    "hash": "002AA492496A1543DBD3680BF8CF21B6D6A078CE4A01D2C1A4B63778033792CE",
+                    "inLedger": 195480,
+                    "ledger_index": 195480
+                },
+                "validated": true
+            },
+            {
+                "meta": {
+                    "AffectedNodes": [
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                                    "Balance": "9999999970",
+                                    "Flags": 0,
+                                    "OwnerCount": 3,
+                                    "Sequence": 4
+                                },
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+                                "PreviousFields": {
+                                    "Balance": "9999999980",
+                                    "OwnerCount": 2,
+                                    "Sequence": 3
+                                },
+                                "PreviousTxnID": "002AA492496A1543DBD3680BF8CF21B6D6A078CE4A01D2C1A4B63778033792CE",
+                                "PreviousTxnLgrSeq": 195480
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Flags": 0,
+                                    "Owner": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                                    "RootIndex": "A39F044D860C5B5846AA7E0FAAD44DC8897F0A62B2F628AA073B21B3EC146010"
+                                },
+                                "LedgerEntryType": "DirectoryNode",
+                                "LedgerIndex": "A39F044D860C5B5846AA7E0FAAD44DC8897F0A62B2F628AA073B21B3EC146010"
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "E0D7BDE68B468FF0B8D948FD865576517DA987569833A05374ADB9A72E870A06",
+                                "PreviousTxnID": "0222B59280D165D40C464EA75AAD08A4D152C46A38C0625DEECF6EE87FC5B9E1",
+                                "PreviousTxnLgrSeq": 343555
+                            }
+                        },
+                        {
+                            "CreatedNode": {
+                                "LedgerEntryType": "RippleState",
+                                "LedgerIndex": "EA4BF03B4700123CDFFB6EB09DC1D6E28D5CEB7F680FB00FC24BC1C3BB2DB959",
+                                "NewFields": {
+                                    "Balance": {
+                                        "currency": "USD",
+                                        "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                                        "value": "0"
+                                    },
+                                    "Flags": 131072,
+                                    "HighLimit": {
+                                        "currency": "USD",
+                                        "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                                        "value": "100"
+                                    },
+                                    "LowLimit": {
+                                        "currency": "USD",
+                                        "issuer": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                                        "value": "0"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "ExchangeRate": "4E11C37937E08000",
+                                    "Flags": 0,
+                                    "RootIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93",
+                                    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+                                    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+                                    "TakerPaysCurrency": "0000000000000000000000004254430000000000",
+                                    "TakerPaysIssuer": "5E7B112523F68D2F5E879DB4EAC51C6698A69304"
+                                },
+                                "LedgerEntryType": "DirectoryNode",
+                                "LedgerIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93"
+                            }
+                        }
+                    ],
+                    "TransactionIndex": 0,
+                    "TransactionResult": "tesSUCCESS"
+                },
+                "tx": {
+                    "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "Fee": "10",
+                    "Flags": 0,
+                    "LimitAmount": {
+                        "currency": "USD",
+                        "issuer": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
+                        "value": "100"
+                    },
+                    "Sequence": 3,
+                    "SigningPubKey": "02BC8C02199949B15C005B997E7C8594574E9B02BA2D0628902E0532989976CF9D",
+                    "TransactionType": "TrustSet",
+                    "TxnSignature": "3044022058A89552068D1A274EE72BA71363E33E54E6608BC28A84DEC6EE530FC2B5C979022029F4D1EA1237A1F717C5F5EC526E6CFB6DF54C30BADD25EDDE7D2FDBC8F17E34",
+                    "date": 416347560,
+                    "hash": "53354D84BAE8FDFC3F4DA879D984D24B929E7FEB9100D2AD9EFCD2E126BCCDC8",
+                    "inLedger": 343570,
+                    "ledger_index": 343570
+                },
+                "validated": true
+            }
+        ],
+        "validated": true
+    }
+}
+```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -1063,6 +1611,19 @@ An example of the request format:
     "passphrase": "test"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "wallet_propose",
+    "params": [
+        {
+            "passphrase": "test"
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: wallet_propose [passphrase]
@@ -1110,6 +1671,8 @@ The response follows the [standard format](#response-formatting), with a success
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](https://ripple.com/wiki/index.php/API_Example_Transactions#Set_Regular_Key) to do so.
 
+
+
 # Managing Ledgers #
 
 The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
@@ -1134,12 +1697,30 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "ledger",
+    "params": [
+        {
+            "accounts": false,
+            "expand": false,
+            "full": false,
+            "ledger_index": "current",
+            "transactions": false
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: ledger ledger_index|ledger_hash [full]
 rippled -- ledger current false
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#ledger)
 
 The request can contain the following parameters:
 
@@ -1185,6 +1766,22 @@ An example of a successful response:
   }
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "ledger": {
+            "closed": false,
+            "ledger_index": "8696231",
+            "parent_hash": "A9008337AA9441B8961D9F97183B8BFB3EECFAA7D2FA65545B4CB552AEA65909",
+            "seqNum": "8696231"
+        },
+        "status": "success"
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing information about the ledger, including the following fields:
@@ -1222,12 +1819,24 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "ledger_closed",
+    "params": [
+        {}
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: ledger_closed
 rippled -- ledger_closed
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#ledger_current)
 
 This method accepts no parameters.
 
@@ -1245,6 +1854,18 @@ An example of a successful response:
     "ledger_hash": "17ACB57A0F73B5160713E81FE72B2AC9F6064541004E272BD09F257D57C30C02",
     "ledger_index": 6643099
   }
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "ledger_hash": "8B5A0C5F6B198254A6E411AF55C29EE40AA86251D2E78DD0BB17647047FA9C24",
+        "ledger_index": 8696231,
+        "status": "success"
+    }
 }
 ```
 </div>
@@ -1272,12 +1893,24 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "ledger_current",
+    "params": [
+        {}
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: ledger_current
 rippled -- ledger_current
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#ledger_current)
 
 The request contains no parameters.
 
@@ -1295,6 +1928,17 @@ An example of a successful response:
   "result": {
     "ledger_current_index": 6643240
   }
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "ledger_current_index": 8696233,
+        "status": "success"
+    }
 }
 ```
 </div>
@@ -1322,6 +1966,20 @@ An example of the request format:
    "command": "ledger_data",
    "limit": 5,
    "binary": true
+}
+```
+
+*JSON-RPC*
+```
+{
+    "method": "ledger_data",
+    "params": [
+        {
+            "binary": true,
+            "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+            "limit": 5
+        }
+    ]
 }
 ```
 </div>
@@ -1478,6 +2136,41 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
+*JSON-RPC (binary:true)*
+```
+200 OK
+{
+    "result": {
+        "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+        "ledger_index": "6885842",
+        "marker": "0002A590029B53BE7857EFF9985F770EC792CE483720EB5E963C4D6A607D43DF",
+        "state": [
+            {
+                "data": "11006122000000002400000001250062FEA42D0000000055C204A65CF2542946289A3358C67D991B5E135FABFA89F271DBA7A150C08CA0466240000000354540208114C909F42250CFE8F12A7A1A0DFBD3CBD20F32CD79",
+                "index": "00001A2969BE1FC85F1D7A55282FA2E6D95C71D2E4B9C0FDD3D9994F3C00FF8F"
+            },
+            {
+                "data": "11006F22000000002400000003250035788533000000000000000034000000000000000055555B93628BF3EC318892BB7C7CDCB6732FF53D12B6EEC4FAF60DD1AEE1C6101F501071633D7DE1B6AEB32F87F1A73258B13FC8CC32942D53A66D4F038D7EA4C6800064D4838D7EA4C68000000000000000000000000000425443000000000035DD7DF146893456296BF4061FBE68735D28F3286540000000000F42408114A4B8F5F7B644AEDC3447F9459C132EEB016A133B",
+                "index": "000037C6659BB98F8D09F2F4CFEB27DE8EFEAFE54DD9E1C13AECDF5794B0C0F5"
+            },
+            {
+                "data": "11006F2200020000240000000A250067395C33000000000000000034000000000000000055A160BC41A45B6BB118DF23D77E4FF23C723431B917F50DCB41319ECC2821F34C5010DFA3B6DDAB58C7E8E5D944E736DA4B7046C30E4F460FD9DE4C1AA535D3D0C00064D554C88B43EFA00000000000000000000000000055534400000000000A20B3C85F482532A9578DBB3950B85CA06594D165400000B59B9F780081148366FB9ACD2A0FD822E31112D2EB6F98C317C2C1",
+                "index": "0000A8791F78CC9B39200E12A9BDAACCF40A72A512FA815525CFC9BA772990F7"
+            },
+            {
+                "data": "1100612200000000240000000125003E742F2D0000000055286498B513710CFEB2D723A554C7557983D1952DF4DEE342C40DCB43067C9A21624000000306DC42008114225BAB89C4A4B94624BB069D6DB3C819F934991C",
+                "index": "0000B717320558E2DE1A3B9FDB24E9A695BF05D1A44E4A4683212BB1DD0FBA23"
+            },
+            {
+                "data": "110072220002000025000B65783700000000000000003800000000000000005587591A63051645F37B85D1FBA55EE69B1C96BFF16904F5C99F03FB93D42D03756280000000000000000000000000000000000000004254430000000000000000000000000000000000000000000000000166800000000000000000000000000000000000000042544300000000000A20B3C85F482532A9578DBB3950B85CA06594D167D4C38D7EA4C680000000000000000000000000004254430000000000C795FDF8A637BCAAEDAD1C434033506236C82A2D",
+                "index": "000103996A3BAD918657F86E12A67D693E8FC8A814DA4B958A244B5F14D93E58"
+            }
+        ],
+        "status": "success"
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -1517,7 +2210,23 @@ An example of the request format:
   "ledger_index": "validated"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "validated",
+            "type": "account_root"
+        }
+    ]
+}
+```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#ledger_entry)
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
@@ -1574,6 +2283,30 @@ An example of a successful response:
     "status": "success",
     "type": "response"
 }```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+        "ledger_index": 8696234,
+        "node": {
+            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "Balance": "13176802787",
+            "Flags": 0,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 17,
+            "PreviousTxnID": "E5D0235A236F7CD162C1AB87A0325056AE61CFC63D92D1494AB5D826AAD0CDCA",
+            "PreviousTxnLgrSeq": 8554742,
+            "Sequence": 1406,
+            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+        },
+        "status": "success",
+        "validated": true
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -1628,6 +2361,8 @@ An example of the request format:
 tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#tx)
 
 The request includes the following parameters:
 
@@ -1818,6 +2553,8 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 ```
 </div>
 
+[Try it! >](https://ripple.com/tools/api/#transaction_entry)
+
 The request includes the following parameters:
 
 | Field | Type | Description |
@@ -2003,6 +2740,8 @@ An example of the request format:
 rippled -- tx_history 0
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#tx_history)
 
 The request includes the following parameters:
 
@@ -2515,6 +3254,8 @@ An example of the request format:
 }
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#path_find)
 
 The request includes the following parameters:
 
@@ -3861,6 +4602,8 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 ```
 </div>
 
+[Try it! >](https://ripple.com/tools/api/#ripple_path_find)
+
 The request includes the following parameters:
 
 | Field | Type | Description |
@@ -4240,11 +4983,13 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 ```
 </div>
 
+[Try it! >](https://ripple.com/tools/api/#book_offers)
+
 The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| taker | String | (Optional, defaults to [ACCOUNT_ONE](https://ripple.com/wiki/Accounts#ACCOUNT_ONE)) Unique base-58 address of an account to use as point-of-view. (This may affect funding of offers after transfer fees are included.) 
+| taker | String | (Optional, defaults to [ACCOUNT_ONE](https://ripple.com/wiki/Accounts#ACCOUNT_ONE)) Unique base-58 address of an account to use as point-of-view. (This affects which unfunded offers are returned.) 
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
@@ -4375,6 +5120,8 @@ An example of the request format:
 }
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#subscribe)
 
 The request includes the following parameters:
 
@@ -4628,6 +5375,8 @@ An example of the request format:
 ```
 </div>
 
+[Try it! >](https://ripple.com/tools/api/#unsubscribe)
+
 The parameters in the request are specified almost exactly like the parameters to [`subscribe`](#subscribe), except that they are used to define which subscriptions to end instead. The parameters are:
 
 | Field | Type | Description |
@@ -4684,6 +5433,8 @@ An example of the request format:
 }
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#server_info)
 
 The request does not takes any parameters.
 
@@ -4770,6 +5521,8 @@ An example of the request format:
 }
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#server_state)
 
 The request does not takes any parameters.
 
@@ -4865,6 +5618,8 @@ An example of the request format:
 rippled -- ping
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#ping)
 
 The request includes no parameters.
 

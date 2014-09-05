@@ -12,7 +12,7 @@ A *Transaction* is the only way to modify the Ripple Ledger. There are several d
 Every transaction has the same basic fields, and each type adds a few additional fields that are relevant to that type of transaction. Transactions can exist in a signed or unsigned state, but only signed transactions can be submitted to the network and included in ledgers. You can either:
 
 * Construct and sign a transaction yourself before submitting it, or
-* Construct a transaction and submit it, along with your signature, to a `rippled` server to sign and submit all at once. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and/or encrypted sub-net.)
+* Construct a transaction and submit it, along with your account secret, to a `rippled` server to sign and submit all at once. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and/or encrypted sub-net.)
 
 Multi-signature transactions are [in development](https://wiki.ripple.com/Multisign).
 
@@ -28,16 +28,16 @@ Every transaction has a the same set of fundamental properties:
 | Field | JSON Type | Internal Type | Description |
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction |
-| Fee | String | Amount of XRP in drops to be destroyed from the sendering account's balance as a fee for redistributing this transaction to the network. (See [Transaction Fees](https://ripple.com/wiki/Transaction_Fee) |
-| Flags | Unsigned Integer | (Optional) Set of bit-flags for this transaction |
-| LastLedgerSequence | Number | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. If this is specified, and the transaction is not included by the time the specified ledger sequence number is closed and validated, then the transaction is considered to have failed and will no longer be valid. |
-| Memos | Array of Objects | (Optional) Additional arbitrary information used to identify this transaction. See [Memos](#memos) for more details. |
-| PreviousTxnID | String | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
-| Sequence | Unsigned Integer | The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
-| SigningPubKey | String | (Omitted until signed) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
-| SourceTag | Unsigned Integer | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| TransactionType | String | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
-| TxnSignature | String | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from |
+| [Fee](#transaction-fees) | String | Amount | Amount of XRP in drops to be destroyed as a fee for redistributing this transaction to the network. |
+| Flags | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction |
+| [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
+| [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
+| [PreviousTxnID](#previoustxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
+| [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
+| SigningPubKey | String | PubKey | (Omitted until signed) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
+| SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
+| TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
+| TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from |
 
 ### Transaction Fees ###
 
@@ -95,7 +95,7 @@ The only flag that applies globally to all transactions is as follows:
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| <span class='draft-comment'>(Unnamed?)</span> | 0x80000000 | 2147483648 | Require a fully-canonical signature, to protect a transaction from [transaction malleability](https://wiki.ripple.com/Transaction_Malleability) exploits. |
+| tfFullyCanonicalSig | 0x80000000 | 2147483648 | Require a fully-canonical signature, to protect a transaction from [transaction malleability](https://wiki.ripple.com/Transaction_Malleability) exploits. |
 
 
 
@@ -137,12 +137,12 @@ An AccountSet transaction modifies the properties of an account object in the gl
 
 | Field | JSON Type | Internal Type | Description |
 |-------|-----------|---------------|-------------|
-| ClearFlag | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
-| Domain | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
+| [ClearFlag](#account-set-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
+| [Domain](#domain) | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
 | EmailHash | String | Hash128 | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | MessageKey | String | PubKey | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
-| SetFlag | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to enable for this account. |
-| TransferRate | Unsigned Integer | UInt32 | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
+| [SetFlag](#account-set-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to enable for this account. |
+| [TransferRate](#transferrate) | Unsigned Integer | UInt32 | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
 | WalletLocator | String | Hash256 | (Optional) Not used. |
 | WalletSize | Unsigned Integer | UInt32 | (Optional) Not used. |
 
@@ -170,8 +170,8 @@ The available AccountSet flags are:
 
 | Flag Name | Decimal Value | Description | Corresponding Ledger Flag |
 |-----------|---------------|-------------|---------------------------|
-| asfRequireDest | 1 | Requires a destination tag to send transactions to this account. | lsfRequireDestTag |
-| asfRequireAuth | 2 | Requires authorization for users to extend trust to this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
+| asfRequireDest | 1 | Require a destination tag to send transactions to this account. | lsfRequireDestTag |
+| asfRequireAuth | 2 | Require authorization for users to extend trust to this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key <span class='draft-comment'>(Are there exceptions to this?)</span> | lsfDisableMaster |
 | asfAccountTxnID | 5 | Enable/disable <span class='draft-comment'>transaction tracking (??!)</span> | <span class='draft-comment'>???</span> |
@@ -197,6 +197,8 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 
 ## SetRegularKey ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/module/app/transactors/SetRegularKey.cpp "Source")
 
 A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
 
@@ -267,7 +269,7 @@ An OfferCancel transaction removes an Offer node from the global ledger.
 
 # Pseudo-Transactions #
 
-## Feature ##
+## Amendment ##
 
 <span class='draft-comment'>(TODO)</span>
 
