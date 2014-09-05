@@ -62,8 +62,13 @@ body .content-root {
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 50px;
-	margin-bottom: 181px;
+	margin-bottom: 0;
 }
+
+.menubar.fixed.leaveroomforfooter {
+	margin-bottom: 183px;
+}
+
 .header-subnav li a:active {
 color: #f09 !important;
 }
@@ -78,7 +83,7 @@ color: #f09 !important;
 	padding: 0 !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 720px) {
 	.menubar {
 		right: 794px;
 	}
@@ -173,7 +178,7 @@ color: #f09 !important;
 	font-size: 14px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
 
 	.right {
 		float: left;
