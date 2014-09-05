@@ -685,12 +685,12 @@ a.big.button:hover:visited {
     border-bottom: solid 1px #dfe2e7;
   }
 }
-@media (max-width: 768px) /* Mobile and tablet */ {
+@media (max-width: 990px) /* Mobile and tablet */ {
   .menubar {
     display: none;
   }
 }
-@media (min-width: 768px) /* Desktop */ {
+@media (min-width: 990px) /* Desktop */ {
   .content-root {
     padding-left: 230px;
   }
