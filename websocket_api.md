@@ -1836,7 +1836,7 @@ rippled -- ledger_closed
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ledger_current)
+[Try it! >](https://ripple.com/tools/api/#ledger_closed)
 
 This method accepts no parameters.
 
@@ -2731,7 +2731,18 @@ An example of the request format:
   "command": "tx_history",
   "start": 0
 }
+```
 
+*JSON-RPC*
+```
+{
+    "method": "tx_history",
+    "params": [
+        {
+            "start": 0
+        }
+    ]
+}
 ```
 
 *Commandline*
@@ -3203,6 +3214,372 @@ An example of a successful response:
       }
     ]
   }
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "index": 0,
+        "status": "success",
+        "txs": [
+            {
+                "Account": "rPJnufUfjS22swpE7mWRkn2VRNGnHxUSYc",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 567546,
+                "SigningPubKey": "0317766BFFC0AAF5DB4AFDE23236624304AC4BC903AA8B172AE468F6B512616D6A",
+                "TakerGets": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "1.12582"
+                },
+                "TakerPays": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "1981.893528"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3045022100C66F3EE8F955724D750D148E3BB9DCAC16A002F9E4FC612C03AFBE9D8C13888902202607508AD0546C496093C9743B13FD596A1F5BE2B778EFE85BDB99F0E5B1D55F",
+                "hash": "A95C701F6120061BC40323AE846BBDA51576E67EC38105030BE75C1D32231B61",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rwpxNWdpKu2QVgrh5LQXEygYLshhgnRL1Y",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 1865518,
+                "SigningPubKey": "02BD6F0CFD0182F2F408512286A0D935C58FF41169DAC7E721D159D711695DFF85",
+                "TakerGets": {
+                    "currency": "LTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "1.12095"
+                },
+                "TakerPays": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "20.77526133899999"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "304402203F7435A2587A71878B09129A1F4C05066CE6E6463A4A10CD5C40C15FCBD9E42502207E0CB8421FEA4CE8FC052E5A63ACD2444ADAE253B174A153A1DBE901E21B3695",
+                "hash": "A8C79DF180167E4D1281247325E2869984F54CBFA68631C1AF13DA346E6B3370",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rMWUykAmNQDaM9poSes8VLDZDDKEbmo7MX",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 1886203,
+                "SigningPubKey": "0256C64F0378DCCCB4E0224B36F7ED1E5586455FF105F760245ADB35A8B03A25FD",
+                "TakerGets": {
+                    "currency": "LTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "24.154"
+                },
+                "TakerPays": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.26907556"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "30440220102CF96A86AF56BA11698C70D60F22436D763634FEA179D2FF45EB329CFF1CF8022029BF9301B11D09B38EBD4E8EB445ECC53B98C4F0CA7E19BE895272085ED6DBA2",
+                "hash": "9EE340379612529F308CA1E4619EC0C8842C1D4308FCA136E25316CE28C28189",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rJJksugQDMVu12NrZyw3C55fEUmPtRYVRC",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 119205,
+                "SigningPubKey": "03B918730C9FA2451284A00B1EFD08E9BEFD735D84CE09C6B3D7CB8FB0D1F9A84F",
+                "TakerGets": "10136500000",
+                "TakerPays": {
+                    "currency": "USD",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "50"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3044022044DB48A760AA7FBA2B1840E1357EF6B1EA9CC9DBBFFB5415C6BE301597B66766022021AA86070416330312E3AFC938376AD0A67A28195D7CD92EC8B03A6039D5C86C",
+                "hash": "8149067582081FA1499A53841642345D21FE0750E29C61C6DC3C914E0D1819AB",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rLPrL6KUtVZZbDfJMjDXzTKkwH39Udfw6e",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 428775,
+                "SigningPubKey": "03B2B67209DBDE2FA68555FB10BD791C4732C685349979FDC47D0DEF2B27EFA364",
+                "TakerGets": {
+                    "currency": "PPC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "8.0635"
+                },
+                "TakerPays": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.01355474349999999"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3045022100EDDC17FE2C32DEAD8ED5D9540B2ECE25D6CD1C65414211D2E4F98FC5BDABB99E0220389D6B3DE8BA50D27406BCE28E67D1E270C6A3A854CDEF25F042BBA52CDB53F8",
+                "hash": "70B7DB8E2BD65E554CBF418D591E050A6FD0A387E9500ED0B79BEB775019D9CA",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rM7WN56kktEkE5qKwNkQ1af4BZ56bynVUf",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 435008,
+                "SigningPubKey": "0256AE48790FEF5F61C1AB3765287EABCBE6B47C5098271F596A576DF7CFA15720",
+                "TakerGets": {
+                    "currency": "PPC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.365"
+                },
+                "TakerPays": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.9977421"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3044022057ECAE71B36746AA1574936B03016DC5747EB7DBBA7D85533063E8D35DD2BAF402204F37BCA51CB0D943758BCA89641C2655FB76F20B8AD1883A3ABF232D1E964E80",
+                "hash": "572B0B2E96F4A9A88C7EDBDEB6D90AD2975528478186D9179AEC0E366D2778FC",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rLjhDX8zT6vy8T7hjUDvK48wTy5SYFpfwZ",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 432536,
+                "Sequence": 432561,
+                "SigningPubKey": "03892D08CE3CE600369BA83A92C3C7785FEA162739643358F1F35F8BE672AFD4A3",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "3045022100C25CE3756EB273F6ADD219E951DB7585ADFAF28090BEA3510458785D2EB91866022057A480F167F6D7263CDBFB0E13D571041313F6476176FFE2645CE867BA85DC2D",
+                "hash": "521D7F2CF76DEAC8ED695AC5570DFF1E445EB8C599158A351BD46F1D34528373",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rn694SpeUFw3VJwapyRKx6bpru3ZpDHzji",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 396235,
+                "SigningPubKey": "03896496732D098F2D8EE22D65ED9A88C0FF116785AE448EA1F521534C7C5BC6E3",
+                "TakerGets": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.700491"
+                },
+                "TakerPays": {
+                    "currency": "NMC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.22"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "30440220218B5B90AB26EAE9FC9833E580653B20A15CEE86E8F1166F626FCDF4EFD4146902207FD99E35EE67E45142776CCD8F910A9E6E1A3C498737B59F182C73183C63D51F",
+                "hash": "454479D7EEE4081CF25378571D74858C01B0B43D3A2530781647BD40CD0465E5",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 676061,
+                "SigningPubKey": "030BB49C591C9CD65C945D4B78332F27633D7771E6CF4D4B942D26BA40748BB8B4",
+                "TakerGets": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.09675"
+                },
+                "TakerPays": "10527647107",
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3044022014196BC5867AC2689F7EF31F23E4B2D1D1B7755465AC388B20F8E7721333EEE302201575263F381755E47AFCD37C1D5CCA4C012D624E7947140B40ABF1975959AA78",
+                "hash": "22B2F477ADE9C22599EB5CEF70B3377C0478D708D74A47866D9E59B7A2CF57CF",
+                "inLedger": 8696235,
+                "ledger_index": 8696235
+            },
+            {
+                "Account": "rJJksugQDMVu12NrZyw3C55fEUmPtRYVRC",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 119183,
+                "Sequence": 119204,
+                "SigningPubKey": "03B918730C9FA2451284A00B1EFD08E9BEFD735D84CE09C6B3D7CB8FB0D1F9A84F",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "30440220481760ED4F771F960F37FDF32DDEC70D10F9D5F9868571A58D6F5C09D75B71DE022049B35BEA448686D0929271E64EADA684D7684A9195D22826288AD9D9526B4FE9",
+                "hash": "5E0E42BDDC7A929875F5E9214AB00C3673CC047833C0EFC093532F2EE1F790C2",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rM7WN56kktEkE5qKwNkQ1af4BZ56bynVUf",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 434977,
+                "Sequence": 435007,
+                "SigningPubKey": "0256AE48790FEF5F61C1AB3765287EABCBE6B47C5098271F596A576DF7CFA15720",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "304402204B04325A39F3D394A7EBC91CE3A1232E538EFFC80014473C97E84310886A19B302205B2D18C544086BB99E49A1037B65ADDF4864DA60545E33E4116A41599EEE63E3",
+                "hash": "E8E55606C757219A740AFA0700506FE99781797E2F54A5144EF43582C65BF0F2",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rLPrL6KUtVZZbDfJMjDXzTKkwH39Udfw6e",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 428744,
+                "Sequence": 428774,
+                "SigningPubKey": "03B2B67209DBDE2FA68555FB10BD791C4732C685349979FDC47D0DEF2B27EFA364",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "304402202BCB4FCE73C3417AD3E67D795077DE025E766A9136CA20D5B07DA28EA717643E0220579CA32A7BB225DA01999637B316BF7D3902059F9A8DDB2D721F8A62685E5BB7",
+                "hash": "E86788EC72CA9CFBBAE4C399744C6B7495E3F6443FE87D7A4118F16FA4A316DB",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rHsZHqa5oMQNL5hFm4kfLd47aEMYjPstpg",
+                "Fee": "64",
+                "Flags": 0,
+                "Sequence": 4216371,
+                "SigningPubKey": "025718736160FA6632F48EA4354A35AB0340F8D7DC7083799B9C57C3E937D71851",
+                "TakerGets": "12566721624",
+                "TakerPays": {
+                    "currency": "USD",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "74.999999999"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3045022100D0FA06A78D3333D35C798B45590CD47BD844164ED25FCA4149F5F0CF24BE9A380220243EB636C656D1FBA6888CE8E2873CDA40FE6DE5987BE2FF1C418610D8BDC300",
+                "hash": "DD4CAD3EBCF67CE9B184A917FF2C78A80F0FE40A01187840E0EBC6B479DBFE1A",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rJJksugQDMVu12NrZyw3C55fEUmPtRYVRC",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 119182,
+                "Sequence": 119203,
+                "SigningPubKey": "03B918730C9FA2451284A00B1EFD08E9BEFD735D84CE09C6B3D7CB8FB0D1F9A84F",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "304402202F13D25C82240ABBBEE0D7E8BC2351C49FD6FDD62359EA232233C5A6C989BFAA022005A521A2C5A67BAC27218A6AD9E6917689CBD2F9BB9CE884B6B0EAAEDDEC2057",
+                "hash": "C9D8A2ECE636057E8255A231E6C6B6464A730155BA0E75B5111A81EA769FBC89",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rGJrzrNBfv6ndJmzt1hTUJVx7z8o2bg3of",
+                "Fee": "15",
+                "Flags": 2147483648,
+                "LastLedgerSequence": 8696241,
+                "OfferSequence": 1579754,
+                "Sequence": 1579755,
+                "SigningPubKey": "03325EB29A014DDE22289D0EA989861D481D54D54C727578AB6C2F18BC342D3829",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "3045022100C9F283D461F8A56575A56F8AA31F84683AB0B44D58C9EFD5DC20D448D8AC13E3022012E0A8726BE2D900C4FB7A61AB8FBFEBEBE1F12B2A9880A2BA2AB8D3EC61CB8C",
+                "hash": "C4953FE328D54E9104F66253AF50AEBC26E30D5826B433465A795262DFA75B48",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rn694SpeUFw3VJwapyRKx6bpru3ZpDHzji",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 396234,
+                "SigningPubKey": "03896496732D098F2D8EE22D65ED9A88C0FF116785AE448EA1F521534C7C5BC6E3",
+                "TakerGets": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.3335471399999999"
+                },
+                "TakerPays": {
+                    "currency": "NMC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.102"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3045022100DEA2B6D5B0D555D54A4EB7A8FADC187F44C6A9CF7282A1D5491538200DFC97DA022033A52D1EC219553C86DB829108BB5A52B49ED7EF0A566941665DE7FFF70917ED",
+                "hash": "A6BE633AECE9FF9CA83D67D09E7EF67F614A9D8B952D7AFB5CB630D03C54C9FC",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rwpxNWdpKu2QVgrh5LQXEygYLshhgnRL1Y",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 1865490,
+                "Sequence": 1865517,
+                "SigningPubKey": "02BD6F0CFD0182F2F408512286A0D935C58FF41169DAC7E721D159D711695DFF85",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "3044022074A4E9859A5A94169B2C902F074AA964C45E2B86EABEA73E83E083E1EC7549A402203E8F4D46705AFEDFC78C2D40FAA036792E6485AF8CADF7445EA3D427E9DC2474",
+                "hash": "A49285E2CA7C5765B68A41EF4A8A65AD5CC7D4EF6C7B7F6D5040B2DE429E0125",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rPJnufUfjS22swpE7mWRkn2VRNGnHxUSYc",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 567545,
+                "SigningPubKey": "0317766BFFC0AAF5DB4AFDE23236624304AC4BC903AA8B172AE468F6B512616D6A",
+                "TakerGets": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "0.66099"
+                },
+                "TakerPays": {
+                    "currency": "ILS",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "1157.5521276"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "3045022100CABC7C1F9FB42C8498E1E9C6C5E8482F325D39B15D9DAE4BD9878D5E508B8FDD0220407B059A22BBBF4FC4AE18BEDCD2DDA80109EE7226D679A8A3BBFC108EFDD3AB",
+                "hash": "A0BED2F5A85C48A2AFBA252FF91FD2D5C90A6D6B769068B18891B031812E2AC0",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rLLq27Wat93Gxkq5mV5GxtKkT146Su949V",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "Sequence": 722529,
+                "SigningPubKey": "02A1BC1CCFACECD00ADC6EE990E2E27148E00D5386A99791F25B6A880BCEC94EC9",
+                "TakerGets": "130272502088",
+                "TakerPays": {
+                    "currency": "BTC",
+                    "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
+                    "value": "1.3177"
+                },
+                "TransactionType": "OfferCreate",
+                "TxnSignature": "30440220436C4A368D534FE1E9A2596C51D1D54931432B789F249E312877FF9B38A3F4D502202A2DBF9517358C009FBEA61EE927DAF72A065A840C7B9136B10C125F25FCD175",
+                "hash": "9627AEFC735A848AAE6C36D1089CB8797373DBE95B60E89F5412508CA907243A",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            },
+            {
+                "Account": "rMWUykAmNQDaM9poSes8VLDZDDKEbmo7MX",
+                "Fee": "10",
+                "Flags": 2147483648,
+                "OfferSequence": 1886173,
+                "Sequence": 1886202,
+                "SigningPubKey": "0256C64F0378DCCCB4E0224B36F7ED1E5586455FF105F760245ADB35A8B03A25FD",
+                "TransactionType": "OfferCancel",
+                "TxnSignature": "304402202C7BD2C125A0B837CBD2E2FF568AEA1E0EE94615B22564A51C0434460C506C6F02204E39A7BD49086AA794B20F4EE28656217561909ECFBB18636CD400AB33AB0B17",
+                "hash": "57277F527B8EBD68FE85906E613338D68F8F8BC4EB3D1748D9A204D7CDC3E174",
+                "inLedger": 8696234,
+                "ledger_index": 8696234
+            }
+        ]
+    }
 }
 ```
 </div>
@@ -4595,6 +4972,33 @@ An example of the request format:
     }
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "ripple_path_find",
+    "params": [
+        {
+            "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "destination_amount": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "value": "0.001"
+            },
+            "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "source_currencies": [
+                {
+                    "currency": "XRP"
+                },
+                {
+                    "currency": "USD"
+                }
+            ]
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax ripple_path_find json ledger_index|ledger_hash
@@ -4726,6 +5130,113 @@ An example of a successful response:
     }
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "alternatives": [
+            {
+                "paths_canonical": [],
+                "paths_computed": [
+                    [
+                        {
+                            "currency": "USD",
+                            "issuer": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2",
+                            "type": 48,
+                            "type_hex": "0000000000000030"
+                        },
+                        {
+                            "account": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        },
+                        {
+                            "account": "rfDeu7TPUmyvUrffexjMjq3mMcSQHZSYyA",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        },
+                        {
+                            "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        }
+                    ],
+                    [
+                        {
+                            "currency": "USD",
+                            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                            "type": 48,
+                            "type_hex": "0000000000000030"
+                        },
+                        {
+                            "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        }
+                    ],
+                    [
+                        {
+                            "currency": "USD",
+                            "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                            "type": 48,
+                            "type_hex": "0000000000000030"
+                        },
+                        {
+                            "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        },
+                        {
+                            "account": "raspZSGNiTKi5jmvFxUYCuYXPv1V8WhL5g",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        },
+                        {
+                            "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        }
+                    ],
+                    [
+                        {
+                            "currency": "USD",
+                            "issuer": "rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT",
+                            "type": 48,
+                            "type_hex": "0000000000000030"
+                        },
+                        {
+                            "account": "rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        },
+                        {
+                            "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                            "type": 1,
+                            "type_hex": "0000000000000001"
+                        }
+                    ]
+                ],
+                "source_amount": "207414"
+            }
+        ],
+        "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "destination_currencies": [
+            "USD",
+            "JOE",
+            "BTC",
+            "DYM",
+            "CNY",
+            "EUR",
+            "015841551A748AD2C1F76FF6ECB0CCCD00000000",
+            "MXN",
+            "XRP"
+        ],
+        "status": "success"
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -4772,6 +5283,29 @@ An example of the request format:
    },
    "secret" : "sssssssssssssssssssssssssssss",
    "offline": false
+}
+```
+
+*JSON-RPC*
+```
+{
+    "method": "sign",
+    "params": [
+        {
+            "offline": false,
+            "secret": "sssssssssssssssssssssssssssss",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Amount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": "1"
+                },
+                "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "TransactionType": "Payment"
+            }
+        }
+    ]
 }
 ```
 
@@ -4826,6 +5360,33 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "status": "success",
+        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 3,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE",
+            "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208"
+        }
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -4843,7 +5404,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## submit ##
 
-The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key, or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign)) and submit it as-is.
+The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key (not recommended), or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign), or better yet, something [signed offline](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js)) and submit it as-is.
 
 #### Request Format ####
 An example of the request format:
@@ -4868,12 +5429,26 @@ An example of the request format:
 }
 ```
 
+*JSON-RPC*
+```
+{
+    "method": "submit",
+    "params": [
+        {
+            "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: submit secret json [offline]
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
 ```
 </div>
+
+[Try it! >](https://ripple.com/tools/api/#submit)
 
 The request includes the following parameters:
 
@@ -4930,6 +5505,35 @@ An example of a successful response:
   }
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied.",
+        "status": "success",
+        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 3,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE",
+            "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208"
+        }
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -4976,6 +5580,30 @@ An example of the request format:
   }
 }
 ```
+
+Request:
+*JSON-RPC*
+```
+{
+    "method": "book_offers",
+    "params": [
+        {
+            "taker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "taker_gets": {
+                "currency": "EUR",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "value": "1"
+            },
+            "taker_pays": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                "value": "1"
+            }
+        }
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
@@ -5058,6 +5686,19 @@ An example of a successful response:
       }
     ]
   }
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "ledger_current_index": 8696243,
+        "offers": [],
+        "status": "success",
+        "validated": false
+    }
 }
 ```
 </div>
@@ -5432,6 +6073,16 @@ An example of the request format:
   "command": "server_info"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "server_info",
+    "params": [
+        {}
+    ]
+}
+```
 </div>
 
 [Try it! >](https://ripple.com/tools/api/#server_info)
@@ -5473,6 +6124,39 @@ An example of a successful response:
       "validation_quorum": 3
     }
   }
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "info": {
+            "build_version": "0.26.3",
+            "complete_ledgers": "32570-8696244",
+            "hostid": "AIR",
+            "io_latency_ms": 1,
+            "last_close": {
+                "converge_time_s": 3.123,
+                "proposers": 5
+            },
+            "load_factor": 1,
+            "peers": 62,
+            "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
+            "server_state": "full",
+            "validated_ledger": {
+                "age": 3,
+                "base_fee_xrp": 1e-05,
+                "hash": "43660857C8FD74D8D5B9D6D9E3D4BE11FAD92985F6B8C9A406DC1F87FF6CB77F",
+                "reserve_base_xrp": 20,
+                "reserve_inc_xrp": 5,
+                "seq": 8696244
+            },
+            "validation_quorum": 3
+        },
+        "status": "success"
+    }
 }
 ```
 </div>
@@ -5520,6 +6204,16 @@ An example of the request format:
   "command": "server_state"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "server_state",
+    "params": [
+        {}
+    ]
+}
+```
 </div>
 
 [Try it! >](https://ripple.com/tools/api/#server_state)
@@ -5564,6 +6258,40 @@ An example of a successful response:
   }
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "state": {
+            "build_version": "0.26.3",
+            "complete_ledgers": "32570-8696244",
+            "io_latency_ms": 1,
+            "last_close": {
+                "converge_time": 2120,
+                "proposers": 5
+            },
+            "load_base": 256,
+            "load_factor": 256,
+            "peers": 58,
+            "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
+            "server_state": "full",
+            "validated_ledger": {
+                "base_fee": 10,
+                "close_time": 463192610,
+                "hash": "43660857C8FD74D8D5B9D6D9E3D4BE11FAD92985F6B8C9A406DC1F87FF6CB77F",
+                "reserve_base": 20000000,
+                "reserve_inc": 5000000,
+                "seq": 8696244
+            },
+            "validation_quorum": 3
+        },
+        "status": "success"
+    }
+}
+```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing a `state` object as its only field.
@@ -5612,6 +6340,17 @@ An example of the request format:
     "command": "ping"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "ping",
+    "params": [
+        {}
+    ]
+}
+```
+
 *Commandline*
 ```
 #Syntax: ping
@@ -5636,6 +6375,16 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "status": "success"
+    }
+}
+```
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
@@ -5655,9 +6404,20 @@ An example of the request format:
     "command": "random"
 }
 ```
+
+*JSON-RPC*
+```
+{
+    "method": "random",
+    "params": [
+        {}
+    ]
+}
+```
+
 *Commandline*
 ```
-#Syntax: ping
+#Syntax: random
 rippled -- random
 ```
 </div>
@@ -5677,6 +6437,17 @@ An example of a successful response:
     },
     "status": "success",
     "type": "response"
+}
+```
+
+*JSON-RPC*
+```
+200 OK
+{
+    "result": {
+        "random": "4E57146AA47BC6E88FDFE8BAA235B900126C916B6CC521550996F590487B837A",
+        "status": "success"
+    }
 }
 ```
 </div>
