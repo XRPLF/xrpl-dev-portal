@@ -25,7 +25,7 @@ Additionally, there are *Psuedo-Transactions* that are not created and submitted
 
 Every transaction has a the same set of fundamental properties:
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction |
 | [Fee](#transaction-fees) | String | Amount | Amount of XRP in drops to be destroyed as a fee for redistributing this transaction to the network. |
@@ -103,13 +103,13 @@ The only flag that applies globally to all transactions is as follows:
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency sent as part of this transaction. (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| Paths | Array of path arrays | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the paths are chosen by the server. |
+| Paths | Array of path arrays | PathSet | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the paths are chosen by the server. |
 | SendMax | String/Object | Amount | Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
 
 ### Paths ###
@@ -135,7 +135,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 An AccountSet transaction modifies the properties of an account object in the global ledger.
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | [ClearFlag](#account-set-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
 | [Domain](#domain) | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
@@ -202,7 +202,7 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | RegularKey | String | PubKey | <span class='draft-comment'>(Optional?)</span> Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; or the value `0` to remove the existing regular key. |
 
@@ -218,7 +218,7 @@ When the Regular Key is compromised, you can use the this transaction type to ch
 
 An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and typically creates an Offer node in the global ledger. Offers can be partially fulfilled.
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | [Expiration](#expiration) | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in seconds since the Ripple Epoch. |
 | OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. |
@@ -281,7 +281,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 An OfferCancel transaction removes an Offer node from the global ledger.
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | OfferSequence | Unsigned Integer | UInt32 | The sequence number of the offer to cancel. |
 
@@ -294,7 +294,7 @@ The OfferCancel method returns [tesSUCCESS](https://ripple.com/wiki/Transaction_
 
 Create or modify a trust line linking two accounts.
 
-| Field | JSON Type | Internal Type | Description |
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | LimitAmount | Object | Amount | The maximum amount of currency, issued by the other party, that that the account is willing to hold. |
 | QualityIn | Unsigned Integer | UInt32 | (Optional) <span class='draft-comment'>% fee for incoming value on this line, represented as an integer over 1,000,000,000</span> |
@@ -334,14 +334,37 @@ Trust lines are conceptualized as one-directional lines controlled by a single p
 
 Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.
 
+Some of the fields that are mandatory for normal transactions do not make sense for psuedo-transactions. In those cases, the pseudo-transaction has the following default values:
+
+| Field | Default Value |
+|-------|---------------|
+| Account | [ACCOUNT_ZERO](https://wiki.ripple.com/Accounts#ACCOUNT_ZERO) |
+| Sequence | 0 |
+| Fee | 0 |
+| SigningPubKey | "" |
+| Signature | "" |
+
 ## Amendment ##
 
-A new feature.
+A new feature. <span class='draft-comment'>Not implemented?</span>
+
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+|-------|-----------|---------------|-------------|
+| Amendment | N/A | Hash256 | A unique identifier for the new feature or rule change to be applied. |
+
+<span class='draft-comment'>(Supposedly there's a several-weeks-long waiting period before an Amendment applies. How is that determined? Based on closed ledger time, presumably?)</span>
 
 <span class='draft-comment'>(TODO)</span>
 
 ## Fee ##
 
 A change in transaction or account fees. This is typically in response to changes in the load on the network.
+
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+|-------|-----------|---------------|-------------|
+| BaseFee | <span class='draft-comment'>String (quoted integer?)</span> | UInt64 | The charge, in drops, for the reference transaction |
+| ReferenceFeeUnits | <span class='draft-comment'>Unsigned Integer?</span> | UInt32 | The cost, in fee units, of the reference transaction |
+| ReserveBase | <span class='draft-comment'>Unsigned Integer?</span> | UInt32 | The base reserve, in drops |
+| ReserveIncrement | <span class='draft-comment'>Unsigned Integer?</span> |UInt32 | The incremental reserve, in drops |
 
 <span class='draft-comment'>(TODO)</span>
