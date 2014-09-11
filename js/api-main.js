@@ -92,17 +92,17 @@
 
   Request('server_info', {
     _description: 'Returns information about the state of the server for human consumption. Results are subject to change without notice.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#server_info'
+    _link: 'rippled-apis.html#server-info'
   });
 
   Request('server_state', {
     _description: 'Returns information about the state of the server for machine consumption.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#server_state'
+    _link: 'rippled-apis.html#server-state'
   });
 
   Request('ping', {
     _description: 'This command is used to check connectivity for clients. Websocket clients can use this to determine turn around time and actively discover loss of connectivity to a server.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ping'
+    _link: 'rippled-apis.html#ping'
   });
 
   /* ---- ---- */
@@ -111,14 +111,14 @@
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Start receiving selected streams from the server.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#subscribe'
+    _link: 'rippled-apis.html#subscribe'
   });
 
   Request('unsubscribe', {
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Stop receiving selected streams from the server.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#unsubscribe'
+    _link: 'rippled-apis.html#unsubscribe'
   });
 
   /* ---- ---- */
@@ -131,26 +131,26 @@
     transactions:  true,
     accounts:      true,
     _description: 'Returns ledger information.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ledger'
+    _link: 'rippled-apis.html#ledger'
   });
 
   Request('ledger_entry', {
     type:          'account_root',
     account_root:  sample_address,
-    ledger_hash:   'validated',
-    ledger_index:  void(0),
+    ledger_index:   'validated',
+    ledger_hash:  void(0),
     _description: 'Returns a ledger entry. For untrusted servers, the index option provides raw access to ledger entries and proof.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ledger_entry'
+    _link: 'rippled-apis.html#ledger-entry'
   });
 
   Request('ledger_closed', {
     _description: 'Returns the most recent closed ledger index. If a validation list has been provided, then validations should be available.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ledger_closed'
+    _link: 'rippled-apis.html#ledger-closed'
   });
 
   Request('ledger_current', {
     _description: 'Returns the current proposed ledger index. Proof is not possible for the current ledger. This command is primarily useful for testing.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ledger_current'
+    _link: 'rippled-apis.html#ledger-current'
   });
 
   /* ---- ---- */
@@ -158,7 +158,7 @@
   Request('account_info', {
     account: sample_address,
     _description: 'Returns information about the specified account.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#account_info'
+    _link: 'rippled-apis.html#account-info'
   });
 
   Request('account_lines', {
@@ -166,7 +166,7 @@
     account_index:  void(0),
     ledger:         'current',
     _description: 'Returns information about the ripple credit lines for the specified account.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#account_lines'
+    _link: 'rippled-apis.html#account-lines'
   });
 
   Request('account_offers', {
@@ -174,7 +174,7 @@
     account_index:  void(0),
     ledger:         'current',
     _description: 'Returns the outstanding offers for a specified account.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#account_offers'
+    _link: 'rippled-apis.html#account-offers'
   });
 
   Request('account_tx', {
@@ -189,7 +189,7 @@
     forward:           false,
     marker:            void(0),
     _description: 'Returns a list of transactions that applied to a specified account.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#account_tx'
+    _link: 'rippled-apis.html#account-tx'
   });
 
   /* ---- ---- */
@@ -199,19 +199,19 @@
     ledger_index:  348734,
     ledger_hash:   void(0),
     _description: 'Returns information about a specified transaction.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#transaction_entry'
+    _link: 'rippled-apis.html#transaction-entry'
   });
 
   Request('tx', {
     transaction: sample_tx,
     _description: 'Returns information about a specified transaction.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#tx'
+    _link: 'rippled-apis.html#tx'
   });
 
   Request('tx_history', {
     start: 10,
     _description: 'Returns the last N transactions starting from start index, in descending order, by ledger sequence number. Server sets N.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#tx_history'
+    _link: 'rippled-apis.html#tx-history'
   });
 
   Request('book_offers', {
@@ -221,7 +221,7 @@
     taker_gets: ripple.Amount.from_json('1/EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
     taker_pays: ripple.Amount.from_json('1/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
     _description: 'Returns the offers for an order book as one or more pages.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#book_offers'
+    _link: 'rippled-apis.html#book-offers'
   });
 
   Request('path_find', {
@@ -230,7 +230,7 @@
     destination_account: 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
     destination_amount: ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
     _description: 'Find or modify a payment pathway between specified accounts.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#path_find'
+    _link: 'rippled-apis.html#path-find'
   });
 
   Request('ripple_path_find', {
@@ -240,8 +240,8 @@
     source_currencies : [ { currency : 'USD' } ],
     destination_account : 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
     destination_amount : ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
-    _description: 'Find a path and estimated costs.For non-interactive use, such as automated payment sending from business integrations, ripple_path_find gives you single response that you can use immediately. However, for uses that need updated paths as new ledgers close, repeated calls becomes expensive. In those cases, when possible, use the RPC path_find in place of this API.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#ripple_path_find'
+    _description: 'Find a path and estimated costs. For non-interactive use, such as automated payment sending from business integrations, ripple_path_find gives you single response that you can use immediately. However, for uses that need updated paths as new ledgers close, repeated calls becomes expensive. In those cases, when possible, use the RPC path_find in place of this API.',
+    _link: 'rippled-apis.html#ripple-path-find'
   });
 
   Request('submit', {
@@ -255,7 +255,7 @@
       Flags: 0
     },
     _description: 'Submits a transaction to the network.',
-    _link: 'https://ripple.com/wiki/JSON_Messages#submit'
+    _link: 'rippled-apis.html#submit'
   });
 
   /* ---- ---- ---- ---- ---- */

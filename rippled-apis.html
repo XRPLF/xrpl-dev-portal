@@ -10,8 +10,6 @@
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
-
-  <script src="http://cdn.mxpnl.com/libs/mixpanel-2.2.min.js" async="" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   
   <!-- Flatdoc -->
@@ -44,7 +42,7 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
     
-  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rippled-apis"); }</script>    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rippled-apis"); } else if (window.location.host == "localhost") { mixpanel.track("localhost-rippled-apis"); }</script>    
   <!-- end Mixpanel -->
 
   <!-- start google analytics -->
@@ -106,6 +104,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
             <li><a href="https://ripple.com/forum/viewforum.php?f=2&amp;sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
+            <li><a href="ripple-api-tool.html">API Tool</a></li>
           </ul>
           	<div class="right">
 		 	 <!-- GitHub buttons -->
@@ -141,7 +140,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 <li>A malicious server could report that you were paid when no such payment was made</li>
 <li>It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal</li>
 <li>If you sent it your account’s secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account’s balances.</li>
-</ul><p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server’s computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code title="Double-click to expand/collapse">rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p><h3 id="websocket-api">WebSocket API</h3><p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="https://ripple.com/tools/api/">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code title="Double-click to expand/collapse">rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p><p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p><table>
+</ul><p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server’s computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code title="Double-click to expand/collapse">rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p><h3 id="websocket-api">WebSocket API</h3><p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="ripple-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code title="Double-click to expand/collapse">rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p><p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p><table>
 <thead>
 <tr>
 <th>Domain</th>
