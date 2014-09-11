@@ -54,6 +54,10 @@ body .content-root {
     margin-top: -50px;
 }
 
+.content pre code {
+    white-space: pre;
+}
+
 .menubar {
 	padding-top: 10px;
 }
