@@ -137,8 +137,8 @@
   Request('ledger_entry', {
     type:          'account_root',
     account_root:  sample_address,
-    ledger_hash:   'validated',
-    ledger_index:  void(0),
+    ledger_index:   'validated',
+    ledger_hash:  void(0),
     _description: 'Returns a ledger entry. For untrusted servers, the index option provides raw access to ledger entries and proof.',
     _link: 'rippled-apis.html#ledger-entry'
   });
