@@ -477,7 +477,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#account_info)
+[Try it! >](ripple-api-tool.html#account_info)
 
 The request contains the following parameters:
 
@@ -569,7 +569,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#account_lines)
+[Try it! >](ripple-api-tool.html#account_lines)
 
 The request accepts the following paramters:
 
@@ -938,7 +938,7 @@ rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#account_offers)
+[Try it! >](ripple-api-tool.html#account_offers)
 
 A request can include the following parameters:
 
@@ -1066,7 +1066,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#account_tx)
+[Try it! >](ripple-api-tool.html#account_tx)
 
 The request includes the following parameters:
 
@@ -1720,7 +1720,7 @@ rippled -- ledger current false
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ledger)
+[Try it! >](ripple-api-tool.html#ledger)
 
 The request can contain the following parameters:
 
@@ -1836,7 +1836,7 @@ rippled -- ledger_closed
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ledger_closed)
+[Try it! >](ripple-api-tool.html#ledger_closed)
 
 This method accepts no parameters.
 
@@ -1910,7 +1910,7 @@ rippled -- ledger_current
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ledger_current)
+[Try it! >](ripple-api-tool.html#ledger_current)
 
 The request contains no parameters.
 
@@ -2226,7 +2226,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ledger_entry)
+[Try it! >](ripple-api-tool.html#ledger_entry)
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
@@ -2362,7 +2362,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#tx)
+[Try it! >](ripple-api-tool.html#tx)
 
 The request includes the following parameters:
 
@@ -2553,7 +2553,7 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#transaction_entry)
+[Try it! >](ripple-api-tool.html#transaction_entry)
 
 The request includes the following parameters:
 
@@ -2752,7 +2752,7 @@ rippled -- tx_history 0
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#tx_history)
+[Try it! >](ripple-api-tool.html#tx_history)
 
 The request includes the following parameters:
 
@@ -3632,7 +3632,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#path_find)
+[Try it! >](ripple-api-tool.html#path_find)
 
 The request includes the following parameters:
 
@@ -5006,7 +5006,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ripple_path_find)
+[Try it! >](ripple-api-tool.html#ripple_path_find)
 
 The request includes the following parameters:
 
@@ -5448,7 +5448,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#submit)
+[Try it! >](ripple-api-tool.html#submit)
 
 The request includes the following parameters:
 
@@ -5611,7 +5611,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#book_offers)
+[Try it! >](ripple-api-tool.html#book_offers)
 
 The request includes the following parameters:
 
@@ -5762,7 +5762,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#subscribe)
+[Try it! >](ripple-api-tool.html#subscribe)
 
 The request includes the following parameters:
 
@@ -6016,7 +6016,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#unsubscribe)
+[Try it! >](ripple-api-tool.html#unsubscribe)
 
 The parameters in the request are specified almost exactly like the parameters to [`subscribe`](#subscribe), except that they are used to define which subscriptions to end instead. The parameters are:
 
@@ -6085,7 +6085,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#server_info)
+[Try it! >](ripple-api-tool.html#server_info)
 
 The request does not takes any parameters.
 
@@ -6216,7 +6216,7 @@ An example of the request format:
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#server_state)
+[Try it! >](ripple-api-tool.html#server_state)
 
 The request does not takes any parameters.
 
@@ -6358,7 +6358,7 @@ rippled -- ping
 ```
 </div>
 
-[Try it! >](https://ripple.com/tools/api/#ping)
+[Try it! >](ripple-api-tool.html#ping)
 
 The request includes no parameters.
 
