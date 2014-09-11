@@ -482,11 +482,11 @@
     };
   });
 
-  $(document.body).delegate('a', 'click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.open($(this).attr('href'));
-  });
+ //  $(document.body).delegate('a', 'click', function(e) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     window.open($(this).attr('href'));
+//   });
 
   var tooltip = $('#tooltip');
   var mousedown = false;
