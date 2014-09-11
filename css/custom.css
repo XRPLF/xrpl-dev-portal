@@ -54,9 +54,15 @@ body .content-root {
     margin-top: -50px;
 }
 
+/* Undo some of bootstrap's code styling that clashes */
 .content pre code {
     white-space: pre;
 }
+
+.content pre {
+    background: none;
+}
+/* end bootstrap code styling fix */
 
 .menubar {
 	padding-top: 10px;
@@ -79,6 +85,10 @@ color: #f09 !important;
 
 .content a[title="Source"] {
     float:right;
+}
+
+#selected_command a:hover {
+    text-decoration: underline;
 }
 
 /* Brand Guidelines */
