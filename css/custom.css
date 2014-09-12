@@ -97,6 +97,7 @@ color: #f09 !important;
 	padding: 0 !important;
 }
 
+
 @media (min-width: 720px) {
 	.menubar {
 		right: 794px;
@@ -141,6 +142,18 @@ color: #f09 !important;
 		border: none;
 		position: relative;
 		padding-left: 50%; 
+	}
+	
+	#command_wrapper {
+	    display: block !important;
+	}
+	
+	#command_wrapper #command_list {
+	    display: block;
+	}
+	
+	#online_state {
+	    top: 50px !important;
 	}
 	
 }
