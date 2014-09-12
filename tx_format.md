@@ -294,7 +294,7 @@ Example AccountSet:
     "Fee": "12",
     "Sequence": 5,
     "Domain": "6D64756F31332E636F6D",
-    "LastLedgerIndex": 8804105,
+    "LastLedgerIndex": 8804315,
     "SetFlag": 5,
     "MessageKey": "rQD4SqHJtDxn5DDL7xNnojNa3vxS1Jx5gv"
 }
