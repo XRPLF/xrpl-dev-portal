@@ -10,8 +10,6 @@
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
-
-  <script src="http://cdn.mxpnl.com/libs/mixpanel-2.2.min.js" async="" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   
   <!-- Flatdoc -->
@@ -44,7 +42,7 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
     
-  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rippled-apis"); }</script>    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rippled-apis"); } else if (window.location.host == "localhost") { mixpanel.track("localhost-rippled-apis"); }</script>    
   <!-- end Mixpanel -->
 
   <!-- start google analytics -->
@@ -66,19 +64,22 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <script src="js/multicodetab.js"></script>
   <!-- Code to load Flatdoc; commented out on compiled page  
   <script>
-    $(document).on('flatdoc:ready', $().multicode_tabs);
-  </script>
-    <script>
+    $(".flatdoc-content").empty();
+    $(".content-root .menubar .menu").empty();
     Flatdoc.run({
       fetcher: Flatdoc.file('websocket_api.md')
     });
-  </script>-->
+    $(document).on('flatdoc:ready', $().multicode_tabs);
+  </script>
+  <!-- end flatdoc load -->
   <!-- Alternate multicode tabs for compiled page: -->
   <script>
     $(document).ready(function() {
         $(".multicode").minitabs()
+        make_code_expandable();
     });
   </script>
+  <!--end alt code for compiled page -->
   <link type="text/css" rel="stylesheet" href="css/mod.css">
   <script src="js/expandcode.js"></script>
   <script src="js/fixsidebarscroll.js"></script>
@@ -103,6 +104,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
             <li><a href="https://ripple.com/forum/viewforum.php?f=2&amp;sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
+            <li><a href="ripple-api-tool.html">API Tool</a></li>
           </ul>
           	<div class="right">
 		 	 <!-- GitHub buttons -->
@@ -125,9 +127,12 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
  -->
   <div class="content-root">
     <div class="menubar">
-      <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="websocket-and-json-rpc-apis-item" class="level-1"><a id="websocket-and-json-rpc-apis-link" href="#websocket-and-json-rpc-apis" class="level-1">WebSocket and JSON-RPC APIs</a><ul class="level-2" id="websocket-and-json-rpc-apis-list"><li id="changes-to-the-apis-item" class="level-2"><a id="changes-to-the-apis-link" href="#changes-to-the-apis" class="level-2 active">Changes to the APIs</a></li><li id="connecting-to-rippled-item" class="level-2"><a id="connecting-to-rippled-link" href="#connecting-to-rippled" class="level-2">Connecting to rippled</a><ul class="level-3" id="connecting-to-rippled-list"><li id="reasons-to-run-your-own-rippled-item" class="level-3"><a id="reasons-to-run-your-own-rippled-link" href="#reasons-to-run-your-own-rippled" class="level-3">Reasons to Run Your Own rippled</a></li><li id="websocket-api-item" class="level-3"><a id="websocket-api-link" href="#websocket-api" class="level-3">WebSocket API</a></li><li id="json-rpc-item" class="level-3"><a id="json-rpc-link" href="#json-rpc" class="level-3">JSON-RPC</a></li><li id="commandline-item" class="level-3"><a id="commandline-link" href="#commandline" class="level-3">Commandline</a></li></ul></li><li id="request-formatting-item" class="level-2"><a id="request-formatting-link" href="#request-formatting" class="level-2">Request Formatting</a></li><li id="response-formatting-item" class="level-2"><a id="response-formatting-link" href="#response-formatting" class="level-2">Response Formatting</a></li><li id="error-responses-item" class="level-2"><a id="error-responses-link" href="#error-responses" class="level-2">Error Responses</a><ul class="level-3" id="error-responses-list"><li id="caution-on-errors-item" class="level-3"><a id="caution-on-errors-link" href="#caution-on-errors" class="level-3">Caution on Errors</a></li></ul></li><li id="formatting-conventions-item" class="level-2"><a id="formatting-conventions-link" href="#formatting-conventions" class="level-2">Formatting Conventions</a><ul class="level-3" id="formatting-conventions-list"><li id="unique-identifiers-item" class="level-3"><a id="unique-identifiers-link" href="#unique-identifiers" class="level-3">Unique Identifiers</a></li><li id="specifying-a-ledger-instance-item" class="level-3"><a id="specifying-a-ledger-instance-link" href="#specifying-a-ledger-instance" class="level-3">Specifying a Ledger Instance</a></li><li id="specifying-currency-amounts-item" class="level-3"><a id="specifying-currency-amounts-link" href="#specifying-currency-amounts" class="level-3">Specifying Currency Amounts</a></li><li id="specifying-time-item" class="level-3"><a id="specifying-time-link" href="#specifying-time" class="level-3">Specifying Time</a></li><li id="possible-server-states-item" class="level-3"><a id="possible-server-states-link" href="#possible-server-states" class="level-3">Possible Server States</a></li></ul></li></ul></li><li id="api-methods-item" class="level-1"><a id="api-methods-link" href="#api-methods" class="level-1">API Methods</a><ul class="level-2" id="api-methods-list"><li id="list-of-public-commands-item" class="level-2"><a id="list-of-public-commands-link" href="#list-of-public-commands" class="level-2">List of Public Commands</a></li><li id="admin-commands-item" class="level-2"><a id="admin-commands-link" href="#admin-commands" class="level-2">Admin Commands</a></li><li id="commandline-access-item" class="level-2"><a id="commandline-access-link" href="#commandline-access" class="level-2">Commandline Access</a></li></ul></li><li id="managing-accounts-item" class="level-1"><a id="managing-accounts-link" href="#managing-accounts" class="level-1">Managing Accounts</a><ul class="level-2" id="managing-accounts-list"><li id="account-info-item" class="level-2"><a id="account-info-link" href="#account-info" class="level-2">account_info</a></li><li id="account-lines-item" class="level-2"><a id="account-lines-link" href="#account-lines" class="level-2">account_lines</a></li><li id="account-offers-item" class="level-2"><a id="account-offers-link" href="#account-offers" class="level-2">account_offers</a></li><li id="account-tx-item" class="level-2"><a id="account-tx-link" href="#account-tx" class="level-2">account_tx</a></li><li id="wallet-propose-item" class="level-2"><a id="wallet-propose-link" href="#wallet-propose" class="level-2">wallet_propose</a></li></ul></li><li id="managing-ledgers-item" class="level-1"><a id="managing-ledgers-link" href="#managing-ledgers" class="level-1">Managing Ledgers</a><ul class="level-2" id="managing-ledgers-list"><li id="ledger-item" class="level-2"><a id="ledger-link" href="#ledger" class="level-2">ledger</a></li><li id="ledger-closed-item" class="level-2"><a id="ledger-closed-link" href="#ledger-closed" class="level-2">ledger_closed</a></li><li id="ledger-current-item" class="level-2"><a id="ledger-current-link" href="#ledger-current" class="level-2">ledger_current</a></li><li id="ledger-data-item" class="level-2"><a id="ledger-data-link" href="#ledger-data" class="level-2">ledger_data</a></li><li id="ledger-entry-item" class="level-2"><a id="ledger-entry-link" href="#ledger-entry" class="level-2">ledger_entry</a></li></ul></li><li id="managing-transactions-item" class="level-1"><a id="managing-transactions-link" href="#managing-transactions" class="level-1">Managing Transactions</a><ul class="level-2" id="managing-transactions-list"><li id="tx-item" class="level-2"><a id="tx-link" href="#tx" class="level-2">tx</a></li><li id="transaction-entry-item" class="level-2"><a id="transaction-entry-link" href="#transaction-entry" class="level-2">transaction_entry</a></li><li id="tx-history-item" class="level-2"><a id="tx-history-link" href="#tx-history" class="level-2">tx_history</a></li><li id="path-find-item" class="level-2"><a id="path-find-link" href="#path-find" class="level-2">path_find</a><ul class="level-3" id="path-find-list"><li id="path-find-create-item" class="level-3"><a id="path-find-create-link" href="#path-find-create" class="level-3">path_find create</a></li><li id="path-find-close-item" class="level-3"><a id="path-find-close-link" href="#path-find-close" class="level-3">path_find close</a></li><li id="path-find-status-item" class="level-3"><a id="path-find-status-link" href="#path-find-status" class="level-3">path_find status</a></li></ul></li><li id="ripple-path-find-item" class="level-2"><a id="ripple-path-find-link" href="#ripple-path-find" class="level-2">ripple_path_find</a></li><li id="sign-item" class="level-2"><a id="sign-link" href="#sign" class="level-2">sign</a></li><li id="submit-item" class="level-2"><a id="submit-link" href="#submit" class="level-2">submit</a></li><li id="book-offers-item" class="level-2"><a id="book-offers-link" href="#book-offers" class="level-2">book_offers</a></li></ul></li><li id="subscriptions-item" class="level-1"><a id="subscriptions-link" href="#subscriptions" class="level-1">Subscriptions</a><ul class="level-2" id="subscriptions-list"><li id="subscribe-item" class="level-2"><a id="subscribe-link" href="#subscribe" class="level-2">subscribe</a><ul class="level-3" id="subscribe-list"><li id="subscription-stream-messages-item" class="level-3"><a id="subscription-stream-messages-link" href="#subscription-stream-messages" class="level-3">Subscription Stream Messages</a></li></ul></li><li id="unsubscribe-item" class="level-2"><a id="unsubscribe-link" href="#unsubscribe" class="level-2">unsubscribe</a></li></ul></li><li id="server-information-item" class="level-1"><a id="server-information-link" href="#server-information" class="level-1">Server Information</a><ul class="level-2" id="server-information-list"><li id="server-info-item" class="level-2"><a id="server-info-link" href="#server-info" class="level-2">server_info</a></li><li id="server-state-item" class="level-2"><a id="server-state-link" href="#server-state" class="level-2">server_state</a></li></ul></li><li id="convenience-functions-item" class="level-1"><a id="convenience-functions-link" href="#convenience-functions" class="level-1">Convenience Functions</a><ul class="level-2" id="convenience-functions-list"><li id="ping-item" class="level-2"><a id="ping-link" href="#ping" class="level-2">ping</a></li><li id="random-item" class="level-2"><a id="random-link" href="#random" class="level-2">random</a></li><li id="json-item" class="level-2"><a id="json-link" href="#json" class="level-2">json</a></li></ul></li></ul></li></ul></div>
+
+      <div class="menu section" role="flatdoc-menu"><ul><li class="level-0" id="root-item"><ul id="root-list" class="level-1"><li class="level-1" id="websocket-and-json-rpc-apis-item"><a class="level-1" href="#websocket-and-json-rpc-apis" id="websocket-and-json-rpc-apis-link">WebSocket and JSON-RPC APIs</a><ul id="websocket-and-json-rpc-apis-list" class="level-2"><li class="level-2" id="changes-to-the-apis-item"><a class="level-2" href="#changes-to-the-apis" id="changes-to-the-apis-link">Changes to the APIs</a></li><li class="level-2" id="connecting-to-rippled-item"><a class="level-2" href="#connecting-to-rippled" id="connecting-to-rippled-link">Connecting to rippled</a><ul id="connecting-to-rippled-list" class="level-3"><li class="level-3" id="reasons-to-run-your-own-rippled-item"><a class="level-3" href="#reasons-to-run-your-own-rippled" id="reasons-to-run-your-own-rippled-link">Reasons to Run Your Own rippled</a></li><li class="level-3" id="websocket-api-item"><a class="level-3" href="#websocket-api" id="websocket-api-link">WebSocket API</a></li><li class="level-3" id="json-rpc-item"><a class="level-3" href="#json-rpc" id="json-rpc-link">JSON-RPC</a></li><li class="level-3" id="commandline-item"><a class="level-3" href="#commandline" id="commandline-link">Commandline</a></li></ul></li><li class="level-2" id="request-formatting-item"><a class="level-2" href="#request-formatting" id="request-formatting-link">Request Formatting</a></li><li class="level-2" id="response-formatting-item"><a class="level-2" href="#response-formatting" id="response-formatting-link">Response Formatting</a></li><li class="level-2" id="error-responses-item"><a class="level-2" href="#error-responses" id="error-responses-link">Error Responses</a><ul id="error-responses-list" class="level-3"><li class="level-3" id="caution-on-errors-item"><a class="level-3" href="#caution-on-errors" id="caution-on-errors-link">Caution on Errors</a></li></ul></li><li class="level-2" id="formatting-conventions-item"><a class="level-2" href="#formatting-conventions" id="formatting-conventions-link">Formatting Conventions</a><ul id="formatting-conventions-list" class="level-3"><li class="level-3" id="unique-identifiers-item"><a class="level-3" href="#unique-identifiers" id="unique-identifiers-link">Unique Identifiers</a></li><li class="level-3" id="specifying-a-ledger-instance-item"><a class="level-3" href="#specifying-a-ledger-instance" id="specifying-a-ledger-instance-link">Specifying a Ledger Instance</a></li><li class="level-3" id="specifying-currency-amounts-item"><a class="level-3" href="#specifying-currency-amounts" id="specifying-currency-amounts-link">Specifying Currency Amounts</a></li><li class="level-3" id="specifying-time-item"><a class="level-3" href="#specifying-time" id="specifying-time-link">Specifying Time</a></li><li class="level-3" id="possible-server-states-item"><a class="level-3" href="#possible-server-states" id="possible-server-states-link">Possible Server States</a></li></ul></li></ul></li><li class="level-1" id="api-methods-item"><a class="level-1" href="#api-methods" id="api-methods-link">API Methods</a><ul id="api-methods-list" class="level-2"><li class="level-2" id="list-of-public-commands-item"><a class="level-2" href="#list-of-public-commands" id="list-of-public-commands-link">List of Public Commands</a></li><li class="level-2" id="admin-commands-item"><a class="level-2" href="#admin-commands" id="admin-commands-link">Admin Commands</a></li><li class="level-2" id="commandline-access-item"><a class="level-2" href="#commandline-access" id="commandline-access-link">Commandline Access</a></li></ul></li><li class="level-1" id="managing-accounts-item"><a class="level-1" href="#managing-accounts" id="managing-accounts-link">Managing Accounts</a><ul id="managing-accounts-list" class="level-2"><li class="level-2" id="account-info-item"><a class="level-2 active" href="#account-info" id="account-info-link">account_info</a></li><li class="level-2" id="account-lines-item"><a class="level-2" href="#account-lines" id="account-lines-link">account_lines</a></li><li class="level-2" id="account-offers-item"><a class="level-2" href="#account-offers" id="account-offers-link">account_offers</a></li><li class="level-2" id="account-tx-item"><a class="level-2" href="#account-tx" id="account-tx-link">account_tx</a></li><li class="level-2" id="wallet-propose-item"><a class="level-2" href="#wallet-propose" id="wallet-propose-link">wallet_propose</a></li></ul></li><li class="level-1" id="managing-ledgers-item"><a class="level-1" href="#managing-ledgers" id="managing-ledgers-link">Managing Ledgers</a><ul id="managing-ledgers-list" class="level-2"><li class="level-2" id="ledger-item"><a class="level-2" href="#ledger" id="ledger-link">ledger</a></li><li class="level-2" id="ledger-closed-item"><a class="level-2" href="#ledger-closed" id="ledger-closed-link">ledger_closed</a></li><li class="level-2" id="ledger-current-item"><a class="level-2" href="#ledger-current" id="ledger-current-link">ledger_current</a></li><li class="level-2" id="ledger-data-item"><a class="level-2" href="#ledger-data" id="ledger-data-link">ledger_data</a></li><li class="level-2" id="ledger-entry-item"><a class="level-2" href="#ledger-entry" id="ledger-entry-link">ledger_entry</a></li></ul></li><li class="level-1" id="managing-transactions-item"><a class="level-1" href="#managing-transactions" id="managing-transactions-link">Managing Transactions</a><ul id="managing-transactions-list" class="level-2"><li class="level-2" id="tx-item"><a class="level-2" href="#tx" id="tx-link">tx</a></li><li class="level-2" id="transaction-entry-item"><a class="level-2" href="#transaction-entry" id="transaction-entry-link">transaction_entry</a></li><li class="level-2" id="tx-history-item"><a class="level-2" href="#tx-history" id="tx-history-link">tx_history</a></li><li class="level-2" id="path-find-item"><a class="level-2" href="#path-find" id="path-find-link">path_find</a><ul id="path-find-list" class="level-3"><li class="level-3" id="path-find-create-item"><a class="level-3" href="#path-find-create" id="path-find-create-link">path_find create</a></li><li class="level-3" id="path-find-close-item"><a class="level-3" href="#path-find-close" id="path-find-close-link">path_find close</a></li><li class="level-3" id="path-find-status-item"><a class="level-3" href="#path-find-status" id="path-find-status-link">path_find status</a></li></ul></li><li class="level-2" id="ripple-path-find-item"><a class="level-2" href="#ripple-path-find" id="ripple-path-find-link">ripple_path_find</a></li><li class="level-2" id="sign-item"><a class="level-2" href="#sign" id="sign-link">sign</a></li><li class="level-2" id="submit-item"><a class="level-2" href="#submit" id="submit-link">submit</a></li><li class="level-2" id="book-offers-item"><a class="level-2" href="#book-offers" id="book-offers-link">book_offers</a></li></ul></li><li class="level-1" id="subscriptions-item"><a class="level-1" href="#subscriptions" id="subscriptions-link">Subscriptions</a><ul id="subscriptions-list" class="level-2"><li class="level-2" id="subscribe-item"><a class="level-2" href="#subscribe" id="subscribe-link">subscribe</a><ul id="subscribe-list" class="level-3"><li class="level-3" id="subscription-stream-messages-item"><a class="level-3" href="#subscription-stream-messages" id="subscription-stream-messages-link">Subscription Stream Messages</a></li></ul></li><li class="level-2" id="unsubscribe-item"><a class="level-2" href="#unsubscribe" id="unsubscribe-link">unsubscribe</a></li></ul></li><li class="level-1" id="server-information-item"><a class="level-1" href="#server-information" id="server-information-link">Server Information</a><ul id="server-information-list" class="level-2"><li class="level-2" id="server-info-item"><a class="level-2" href="#server-info" id="server-info-link">server_info</a></li><li class="level-2" id="server-state-item"><a class="level-2" href="#server-state" id="server-state-link">server_state</a></li></ul></li><li class="level-1" id="convenience-functions-item"><a class="level-1" href="#convenience-functions" id="convenience-functions-link">Convenience Functions</a><ul id="convenience-functions-list" class="level-2"><li class="level-2" id="ping-item"><a class="level-2" href="#ping" id="ping-link">ping</a></li><li class="level-2" id="random-item"><a class="level-2" href="#random" id="random-link">random</a></li><li class="level-2" id="json-item"><a class="level-2" href="#json" id="json-link">json</a></li></ul></li></ul></li></ul></div>
+    
     </div>
-    <div role="flatdoc-content" class="content"><h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1><p>If you want to communicate directly with the <code title="Double-click to expand/collapse">rippled</code> server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the <a href="?p=ripple-rest-api">Ripple-REST API</a> provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:</p><ul>
+    <div role="flatdoc-content" class="content">
+    <h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1><p>If you want to communicate directly with the <code title="Double-click to expand/collapse">rippled</code> server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the <a href="?p=ripple-rest-api">Ripple-REST API</a> provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:</p><ul>
 <li>The WebSocket API uses the <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSocket protocol</a>, available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. </li>
 <li>The JSON-RPC API relies on simple request-response communication via HTTP. For commands that prompt multiple responses, you can provide a callback URL.</li>
 <li>The <code title="Double-click to expand/collapse">rippled</code> program can also be used as a quick commandline client to make JSON-RPC requests to a running <code title="Double-click to expand/collapse">rippled</code> server. This is only intended for administrative purposes, and is not a supported API.</li>
@@ -135,7 +140,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 <li>A malicious server could report that you were paid when no such payment was made</li>
 <li>It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal</li>
 <li>If you sent it your account’s secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account’s balances.</li>
-</ul><p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server’s computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code title="Double-click to expand/collapse">rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p><h3 id="websocket-api">WebSocket API</h3><p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="https://ripple.com/tools/api/">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code title="Double-click to expand/collapse">rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p><p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p><table>
+</ul><p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server’s computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code title="Double-click to expand/collapse">rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p><h3 id="websocket-api">WebSocket API</h3><p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="ripple-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code title="Double-click to expand/collapse">rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p><p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p><table>
 <thead>
 <tr>
 <th>Domain</th>
@@ -175,7 +180,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 <li>A WebSocket request puts the command name in the <code title="Double-click to expand/collapse">"command"</code> field alongside the command’s parameters at the top level of the JSON object, with an optional <code title="Double-click to expand/collapse">"id"</code> field that will be returned with the response, so you can identify responses that come back out of order. </li>
 <li>A JSON-RPC request puts the command in the <code title="Double-click to expand/collapse">"method"</code> field, with parameters in a separate object, as the first member of a <code title="Double-click to expand/collapse">"params"</code> array. There is no <code title="Double-click to expand/collapse">"id"</code> field, since all responses are direct replies to the requests.</li>
 <li>The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. </li>
-</ul><h4>Example Request</h4><div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0" class="current">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+</ul><h4>Example Request</h4><div id="code-0" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
 <div id="code-0-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -186,7 +191,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 }</code></pre></div>
 
 
-<div id="code-0-1" style="display: none;"><pre><code title="Double-click to expand/collapse">POST http://s1.ripple.com:51234/
+<div style="display: none;" id="code-0-1"><pre><code title="Double-click to expand/collapse">POST http://s1.ripple.com:51234/
 {
     "method": "account_info",
     "params": [
@@ -198,8 +203,8 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     ]
 }</code></pre></div>
 
-<div id="code-0-2" style="display: none;"><pre><code title="Double-click to expand/collapse">rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true</code></pre></div>
-</div><h2 id="response-formatting">Response Formatting</h2><h4>Example Successful Response</h4><div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0" class="current">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+<div style="display: none;" id="code-0-2"><pre><code title="Double-click to expand/collapse">rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true</code></pre></div>
+</div><h2 id="response-formatting">Response Formatting</h2><h4>Example Successful Response</h4><div id="code-1" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
 <div id="code-1-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -222,7 +227,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 }</code></pre></div>
 
 
-<div id="code-1-1" style="display: none;"><pre><code title="Double-click to expand/collapse">HTTP Status: 200 OK
+<div style="display: none;" id="code-1-1"><pre><code title="Double-click to expand/collapse">HTTP Status: 200 OK
 {
     "result": {
         "account_data": {
@@ -241,7 +246,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     }
 }</code></pre></div>
 
-<div id="code-1-2" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-1-2"><pre><code title="Double-click to expand/collapse">{
     "result": {
         "account_data": {
             "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -288,7 +293,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 <td>The result of the query; contents vary depending on the command.</td>
 </tr>
 </tbody>
-</table><h4>Commandline</h4><p>The response format for commandline methods is identical to JSON-RPC responses, because they use the same interface.</p><h2 id="error-responses">Error Responses</h2><p>It is impossible to enumerate all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results will vary depending on what client and transport you are using. However, if the <code title="Double-click to expand/collapse">rippled</code> server successfully receives your request, it will try to respond in a standardized error format.</p><p>Some example errors:</p><div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0" class="current">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
+</table><h4>Commandline</h4><p>The response format for commandline methods is identical to JSON-RPC responses, because they use the same interface.</p><h2 id="error-responses">Error Responses</h2><p>It is impossible to enumerate all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results will vary depending on what client and transport you are using. However, if the <code title="Double-click to expand/collapse">rippled</code> server successfully receives your request, it will try to respond in a standardized error format.</p><p>Some example errors:</p><div id="code-2" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
 
 <div id="code-2-0"><pre><code title="Double-click to expand/collapse">{
   "id": 3,
@@ -305,7 +310,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 }</code></pre></div>
 
 
-<div id="code-2-1" style="display: none;"><pre><code title="Double-click to expand/collapse">HTTP Status: 200 OK
+<div style="display: none;" id="code-2-1"><pre><code title="Double-click to expand/collapse">HTTP Status: 200 OK
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -320,7 +325,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 }</code></pre></div>
 
 
-<div id="code-2-2" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-2-2"><pre><code title="Double-click to expand/collapse">{
     "result": {
         "error": "ledgerIndexMalformed",
         "request": {
@@ -435,11 +440,11 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 <td>Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed.</td>
 </tr>
 </tbody>
-</table><p>For example, to represent $153.75 US dollars issued by account <code title="Double-click to expand/collapse">r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</code>, you would specify:</p><pre><code class="lang-js" title="Double-click to expand/collapse">{
+</table><p>For example, to represent $153.75 US dollars issued by account <code title="Double-click to expand/collapse">r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</code>, you would specify:</p><pre><code title="Double-click to expand/collapse" class="lang-js">{
     <span class="string">"currency"</span>: <span class="string">"USD"</span>,
     <span class="string">"value"</span>: <span class="string">"<span class="number"><span class="number">153</span>.<span class="number">75</span></span>"</span>,
     <span class="string">"issuer"</span>: <span class="string">"r<span class="number">9</span>cZA<span class="number">1</span>mLK<span class="number">5</span>R<span class="number">5</span>Am<span class="number">25</span>ArfXFmqgNwjZgnfk<span class="number">59</span>"</span>
-}</code></pre><p>Unit tests are permitted to submit amounts of non-XRP currencies as a slash-separated string in the format <code title="Double-click to expand/collapse">"amount/currency/issuer"</code>. All other cases should use the JSON object format above.</p><h4>Specifying Currencies Without Amounts</h4><p>If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the <code title="Double-click to expand/collapse">value</code> field.</p><p>If you are specifying XRP without an amount &mdash; also typically for defining an order book &mdash; you should specify it as a JSON object with <em>only</em> a <code title="Double-click to expand/collapse">currency</code> field. Never include an <code title="Double-click to expand/collapse">issuer</code> field for XRP.</p><p>Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account’s address as the <code title="Double-click to expand/collapse">issuer</code> value in the JSON object.</p><h3 id="specifying-time">Specifying Time</h3><p>The <code title="Double-click to expand/collapse">rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the “Ripple Epoch” of January 1, 2000 (00:00 UTC). This is similar to the way the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p><p>Don’t convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.</p><h3 id="possible-server-states">Possible Server States</h3><p>Depending on how the <code title="Double-click to expand/collapse">rippled</code> server is configured, how long it has been running, and other factors, a server may be participating in the global Ripple Network to different degrees. This is represented as the <code title="Double-click to expand/collapse">server_state</code> field in the responses to the <a href="#server-info"><code title="Double-click to expand/collapse">server_info</code></a> and <a href="#server-state"><code title="Double-click to expand/collapse">server_state</code></a> commands. The possible responses follow a range of ascending interaction, with each subsequent value superseding the previous one. Their definitions are as follows (in order of increasing priority):</p><table>
+}</code></pre><p>Unit tests are permitted to submit amounts of non-XRP currencies as a slash-separated string in the format <code title="Double-click to expand/collapse">"amount/currency/issuer"</code>. All other cases should use the JSON object format above.</p><h4>Specifying Currencies Without Amounts</h4><p>If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the <code title="Double-click to expand/collapse">value</code> field.</p><p>If you are specifying XRP without an amount — also typically for defining an order book — you should specify it as a JSON object with <em>only</em> a <code title="Double-click to expand/collapse">currency</code> field. Never include an <code title="Double-click to expand/collapse">issuer</code> field for XRP.</p><p>Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account’s address as the <code title="Double-click to expand/collapse">issuer</code> value in the JSON object.</p><h3 id="specifying-time">Specifying Time</h3><p>The <code title="Double-click to expand/collapse">rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the “Ripple Epoch” of January 1, 2000 (00:00 UTC). This is similar to the way the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p><p>Don’t convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.</p><h3 id="possible-server-states">Possible Server States</h3><p>Depending on how the <code title="Double-click to expand/collapse">rippled</code> server is configured, how long it has been running, and other factors, a server may be participating in the global Ripple Network to different degrees. This is represented as the <code title="Double-click to expand/collapse">server_state</code> field in the responses to the <a href="#server-info"><code title="Double-click to expand/collapse">server_info</code></a> and <a href="#server-state"><code title="Double-click to expand/collapse">server_state</code></a> commands. The possible responses follow a range of ascending interaction, with each subsequent value superseding the previous one. Their definitions are as follows (in order of increasing priority):</p><table>
 <thead>
 <tr>
 <th>Value</th>
@@ -477,7 +482,7 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 </tr>
 </tbody>
 </table><p><em>Note:</em> The distinction between <code title="Double-click to expand/collapse">full</code>, <code title="Double-click to expand/collapse">validating</code>, and <code title="Double-click to expand/collapse">proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p><h1 id="api-methods">API Methods</h1><p>API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.</p><p>This page deals with all the Public Commands available. </p><h2 id="list-of-public-commands">List of Public Commands</h2><ul>
-<li><a href="#account-info"><code title="Double-click to expand/collapse">account_info</code> - Get basic data about an account</a></li>
+<li><a class="active" href="#account-info"><code title="Double-click to expand/collapse">account_info</code> - Get basic data about an account</a></li>
 <li><a href="#account-lines"><code title="Double-click to expand/collapse">account_lines</code> - Get info about an account’s trust lines</a></li>
 <li><a href="#account-offers"><code title="Double-click to expand/collapse">account_offers</code> - Get info about an account’s currency exchange offers</a></li>
 <li><a href="#account-tx"><code title="Double-click to expand/collapse">account_tx</code> - Get info about an account’s transactions</a></li>
@@ -504,7 +509,7 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 <li><a href="#wallet-propose"><code title="Double-click to expand/collapse">wallet_propose</code> - Generate keys for a new account</a></li>
 </ul><p>For information about other Admin Commands, consult <a href="https://ripple.com/wiki/JSON_Messages">the old wiki documentation</a>.</p><h2 id="commandline-access">Commandline Access</h2><p>The <code title="Double-click to expand/collapse">rippled</code> application, in addition to acting as a server, can be run (as a separate instance) to act as a JSON-RPC client. In this mode, it has syntax for triggering most API methods with a single line from the command prompt, as described in each method. However, some methods don’t have a commandline shortcut, so it also provides the following catch-all method for performing commands:</p><ul>
 <li><a href="#json"><code title="Double-click to expand/collapse">json</code> - Pass JSON through the commandline</a></li>
-</ul><h1 id="managing-accounts">Managing Accounts</h1><p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="https://ripple.com/wiki/Reserves">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p><h2 id="account-info">account_info</h2><p>The <code title="Double-click to expand/collapse">account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger. </p><h4>Request Format</h4><p>An example of an account_info request:</p><div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0" class="current">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
+</ul><h1 id="managing-accounts">Managing Accounts</h1><p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="https://ripple.com/wiki/Reserves">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p><h2 id="account-info">account_info</h2><p>The <code title="Double-click to expand/collapse">account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger. </p><h4>Request Format</h4><p>An example of an account_info request:</p><div id="code-3" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
 
 <div id="code-3-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -515,7 +520,7 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 }</code></pre></div>
 
 
-<div id="code-3-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-3-1"><pre><code title="Double-click to expand/collapse">{
     "method": "account_info",
     "params": [
         {
@@ -527,9 +532,9 @@ Null method</code></pre><p>For other errors that returned with HTTP status code 
 }</code></pre></div>
 
 
-<div id="code-3-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: account_info account [ledger_index|ledger_hash] [strict]
+<div style="display: none;" id="code-3-2"><pre><code title="Double-click to expand/collapse">#Syntax: account_info account [ledger_index|ledger_hash] [strict]
 rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#account_info" class="button">Try it!</a></p><p>The request contains the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#account_info">Try it!</a></p><p>The request contains the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -559,7 +564,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
-</table><p>The following fields are deprecated and should not be provided: <code title="Double-click to expand/collapse">ident</code>, <code title="Double-click to expand/collapse">account_index</code>, <code title="Double-click to expand/collapse">ledger</code>.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0" class="current">WebSocket</a></li></ul>
+</table><p>The following fields are deprecated and should not be provided: <code title="Double-click to expand/collapse">ident</code>, <code title="Double-click to expand/collapse">account_index</code>, <code title="Double-click to expand/collapse">ledger</code>.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-4" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-4-0">WebSocket</a></li></ul>
 
 <div id="code-4-0"><pre><code title="Double-click to expand/collapse">{
   "id": 5,
@@ -650,7 +655,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <td>(<a href="https://ripplelabs.atlassian.net/browse/RIPD-275">Upcoming</a>) True if this data is from a validated ledger version; if omitted or set to false, this data is not final.</td>
 </tr>
 </tbody>
-</table><h2 id="account-lines">account_lines</h2><p>The <code title="Double-click to expand/collapse">account_lines</code> method returns information about the account’s lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0" class="current">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li></ul>
+</table><h2 id="account-lines">account_lines</h2><p>The <code title="Double-click to expand/collapse">account_lines</code> method returns information about the account’s lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-5" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li></ul>
 
 <div id="code-5-0"><pre><code title="Double-click to expand/collapse">{
   "id": 1,
@@ -660,7 +665,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 }</code></pre></div>
 
 
-<div id="code-5-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-5-1"><pre><code title="Double-click to expand/collapse">{
     "method": "account_lines",
     "params": [
         {
@@ -669,7 +674,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
         }
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#account_lines" class="button">Try it!</a></p><p>The request accepts the following paramters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#account_lines">Try it!</a></p><p>The request accepts the following paramters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -699,7 +704,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <td>(Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts.</td>
 </tr>
 </tbody>
-</table><p>The following parameters are deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">ledger</code> and <code title="Double-click to expand/collapse">peer_index</code>.</p><p>This method may be changed in the future to provide better scalability. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-343">RIPD-343</a> for details and status.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0" class="current">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li></ul>
+</table><p>The following parameters are deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">ledger</code> and <code title="Double-click to expand/collapse">peer_index</code>.</p><p>This method may be changed in the future to provide better scalability. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-343">RIPD-343</a> for details and status.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-6" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-6-0">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li></ul>
 
 <div id="code-6-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -743,7 +748,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 }</code></pre></div>
 
 
-<div id="code-6-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-6-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -1059,7 +1064,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 <td>Ratio for outgoing <a href="https://ripple.com/wiki/Transit_Fees">transit fees</a> represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio.</td>
 </tr>
 </tbody>
-</table><h2 id="account-offers">account_offers</h2><p>The <code title="Double-click to expand/collapse">account_offers</code> method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0" class="current">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li><li><a href="#code-7-2">Commandline</a></li></ul>
+</table><h2 id="account-offers">account_offers</h2><p>The <code title="Double-click to expand/collapse">account_offers</code> method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-7" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-7-0">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li><li><a href="#code-7-2">Commandline</a></li></ul>
 
 <div id="code-7-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -1069,7 +1074,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 }</code></pre></div>
 
 
-<div id="code-7-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-7-1"><pre><code title="Double-click to expand/collapse">{
     "method": "account_offers",
     "params": [
         {
@@ -1080,9 +1085,9 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true</code></pre></di
 }</code></pre></div>
 
 
-<div id="code-7-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: account_offers account [ledger_index]
+<div style="display: none;" id="code-7-2"><pre><code title="Double-click to expand/collapse">#Syntax: account_offers account [ledger_index]
 rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#account_offers" class="button">Try it!</a></p><p>A request can include the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#account_offers">Try it!</a></p><p>A request can include the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1112,7 +1117,7 @@ rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current</code></pre
 <td>(Optional, defaults to <code title="Double-click to expand/collapse">current</code>) The sequence number of the ledger to use, or “current”, “closed”, or “validated” to select a ledger dynamically. (See Ledger Indexes.)</td>
 </tr>
 </tbody>
-</table><p>The following parameter is deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">ledger</code>.</p><p><em>Note:</em> This method may be changed in the future to support better scalability. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-344">RIPD-344</a> for details and status.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0" class="current">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li></ul>
+</table><p>The following parameter is deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">ledger</code>.</p><p><em>Note:</em> This method may be changed in the future to support better scalability. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-344">RIPD-344</a> for details and status.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-8" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-8-0">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li></ul>
 
 <div id="code-8-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -1137,7 +1142,7 @@ rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current</code></pre
 
 Response:
 
-<div id="code-8-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-8-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -1196,7 +1201,7 @@ Response:
 <td>The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a>)</td>
 </tr>
 </tbody>
-</table><h2 id="account-tx">account_tx</h2><p>The <code title="Double-click to expand/collapse">account_tx</code> method retrieves a list of transactions that involved the specified account.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0" class="current">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
+</table><h2 id="account-tx">account_tx</h2><p>The <code title="Double-click to expand/collapse">account_tx</code> method retrieves a list of transactions that involved the specified account.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-9" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-9-0">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
 
 <div id="code-9-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -1213,7 +1218,7 @@ Response:
 }</code></pre></div>
 
 
-<div id="code-9-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-9-1"><pre><code title="Double-click to expand/collapse">{
     "method": "account_tx",
     "params": [
         {
@@ -1231,9 +1236,9 @@ Response:
 }</code></pre></div>
 
 
-<div id="code-9-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
+<div style="display: none;" id="code-9-2"><pre><code title="Double-click to expand/collapse">#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#account_tx" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#account_tx">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1288,7 +1293,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 <td>Server-provided value to specify where to resume retrieving data from.</td>
 </tr>
 </tbody>
-</table><p>There is also a deprecated legacy variation of the <code title="Double-click to expand/collapse">account_tx</code> method. For that reason, we recommend <em>not using any of the following fields</em>: <code title="Double-click to expand/collapse">offset</code>, <code title="Double-click to expand/collapse">count</code>, <code title="Double-click to expand/collapse">descending</code>, <code title="Double-click to expand/collapse">ledger_max</code>, <code title="Double-click to expand/collapse">ledger_min</code></p><h5>Iterating over queried data</h5><p>If you want to retrieve an amount of data that is higher than the server’s maximum <code title="Double-click to expand/collapse">limit</code> value, or you want to break up your request into multiple smaller requests, you can use the <code title="Double-click to expand/collapse">marker</code> field to pick up in the same place you left off. For each subsequent request, pass the <code title="Double-click to expand/collapse">marker</code> value from the previous request to instruct rippled to resume from the point where you left off.</p><p>However, in the time between requests, things may change so that <code title="Double-click to expand/collapse">"ledger_index_min": -1</code> and <code title="Double-click to expand/collapse">"ledger_index_max": -1</code> may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the <code title="Double-click to expand/collapse">ledger_index_min</code> and <code title="Double-click to expand/collapse">ledger_index_max</code> values provided in the first response, and use those values for all subsequent requests. </p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0" class="current">WebSocket</a></li><li><a href="#code-10-1">JSON-RPC</a></li></ul>
+</table><p>There is also a deprecated legacy variation of the <code title="Double-click to expand/collapse">account_tx</code> method. For that reason, we recommend <em>not using any of the following fields</em>: <code title="Double-click to expand/collapse">offset</code>, <code title="Double-click to expand/collapse">count</code>, <code title="Double-click to expand/collapse">descending</code>, <code title="Double-click to expand/collapse">ledger_max</code>, <code title="Double-click to expand/collapse">ledger_min</code></p><h5>Iterating over queried data</h5><p>If you want to retrieve an amount of data that is higher than the server’s maximum <code title="Double-click to expand/collapse">limit</code> value, or you want to break up your request into multiple smaller requests, you can use the <code title="Double-click to expand/collapse">marker</code> field to pick up in the same place you left off. For each subsequent request, pass the <code title="Double-click to expand/collapse">marker</code> value from the previous request to instruct rippled to resume from the point where you left off.</p><p>However, in the time between requests, things may change so that <code title="Double-click to expand/collapse">"ledger_index_min": -1</code> and <code title="Double-click to expand/collapse">"ledger_index_max": -1</code> may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the <code title="Double-click to expand/collapse">ledger_index_min</code> and <code title="Double-click to expand/collapse">ledger_index_max</code> values provided in the first response, and use those values for all subsequent requests. </p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-10" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-10-0">WebSocket</a></li><li><a href="#code-10-1">JSON-RPC</a></li></ul>
 
 <div id="code-10-0"><pre><code title="Double-click to expand/collapse">{
     "id": 2,
@@ -1524,7 +1529,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 }</code></pre></div>
 
 
-<div id="code-10-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-10-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -1841,7 +1846,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 <td>Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change.</td>
 </tr>
 </tbody>
-</table><h2 id="wallet-propose">wallet_propose</h2><p>Use the <code title="Double-click to expand/collapse">wallet_propose</code> method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The <code title="Double-click to expand/collapse">wallet_propose</code> command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)</p><p><em>The <code title="Double-click to expand/collapse">wallet_propose</code> request is an admin command that cannot be run by unpriviledged users!</em> (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0" class="current">WebSocket</a></li><li><a href="#code-11-1">JSON-RPC</a></li><li><a href="#code-11-2">Commandline</a></li></ul>
+</table><h2 id="wallet-propose">wallet_propose</h2><p>Use the <code title="Double-click to expand/collapse">wallet_propose</code> method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The <code title="Double-click to expand/collapse">wallet_propose</code> command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)</p><p><em>The <code title="Double-click to expand/collapse">wallet_propose</code> request is an admin command that cannot be run by unpriviledged users!</em> (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-11" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-11-0">WebSocket</a></li><li><a href="#code-11-1">JSON-RPC</a></li><li><a href="#code-11-2">Commandline</a></li></ul>
 
 <div id="code-11-0"><pre><code title="Double-click to expand/collapse">{
     "command": "wallet_propose",
@@ -1849,7 +1854,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 }</code></pre></div>
 
 
-<div id="code-11-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-11-1"><pre><code title="Double-click to expand/collapse">{
     "method": "wallet_propose",
     "params": [
         {
@@ -1859,7 +1864,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false fal
 }</code></pre></div>
 
 
-<div id="code-11-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: wallet_propose [passphrase]
+<div style="display: none;" id="code-11-2"><pre><code title="Double-click to expand/collapse">#Syntax: wallet_propose [passphrase]
 rippled -- wallet_propose test</code></pre></div>
 
 </div><p>The request can contain the following parameter:</p><table>
@@ -1877,7 +1882,7 @@ rippled -- wallet_propose test</code></pre></div>
 <td>(Optional) Specify a passphrase, for testing purposes. If omitted, the server will use a random number to generate the master key. Outside of testing purposes, keys should always be randomly generated. Some values, which resemble Ripple addresses and some other formats, are prohibited.</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0" class="current">WebSocket</a></li></ul>
+</table><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-12" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-12-0">WebSocket</a></li></ul>
 
 <div id="code-12-0"><pre><code title="Double-click to expand/collapse">{
    "result" : {
@@ -1930,7 +1935,7 @@ rippled -- wallet_propose test</code></pre></div>
 <td>The public key of the account, in hex format.</td>
 </tr>
 </tbody>
-</table><p>The key generated by this method can also be used as a regular key for an account if you use the <a href="https://ripple.com/wiki/index.php/API_Example_Transactions#Set_Regular_Key">SetRegularKey transaction type</a> to do so.</p><h1 id="managing-ledgers">Managing Ledgers</h1><p>The globally-shared ledger is the core of the Ripple Network. Each <code title="Double-click to expand/collapse">rippled</code> server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.</p><h2 id="ledger">ledger</h2><p>Retrieve information about the public ledger.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0" class="current">WebSocket</a></li><li><a href="#code-13-1">JSON-RPC</a></li><li><a href="#code-13-2">Commandline</a></li></ul>
+</table><p>The key generated by this method can also be used as a regular key for an account if you use the <a href="https://ripple.com/wiki/index.php/API_Example_Transactions#Set_Regular_Key">SetRegularKey transaction type</a> to do so.</p><h1 id="managing-ledgers">Managing Ledgers</h1><p>The globally-shared ledger is the core of the Ripple Network. Each <code title="Double-click to expand/collapse">rippled</code> server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.</p><h2 id="ledger">ledger</h2><p>Retrieve information about the public ledger.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-13" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-13-0">WebSocket</a></li><li><a href="#code-13-1">JSON-RPC</a></li><li><a href="#code-13-2">Commandline</a></li></ul>
 
 <div id="code-13-0"><pre><code title="Double-click to expand/collapse">{
     "command": "ledger",
@@ -1942,7 +1947,7 @@ rippled -- wallet_propose test</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-13-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-13-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ledger",
     "params": [
         {
@@ -1956,9 +1961,9 @@ rippled -- wallet_propose test</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-13-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: ledger ledger_index|ledger_hash [full]
+<div style="display: none;" id="code-13-2"><pre><code title="Double-click to expand/collapse">#Syntax: ledger ledger_index|ledger_hash [full]
 rippled -- ledger current false</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ledger" class="button">Try it!</a></p><p>The request can contain the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#ledger">Try it!</a></p><p>The request can contain the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -1998,7 +2003,7 @@ rippled -- ledger current false</code></pre></div>
 <td>(Optional, defaults to <code title="Double-click to expand/collapse">current</code>) The sequence number of the ledger to use, or “current”, “closed”, or “validated” to select a ledger dynamically. (See Ledger Indexes.)</td>
 </tr>
 </tbody>
-</table><p>The <code title="Double-click to expand/collapse">ledger</code> field is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0" class="current">WebSocket</a></li><li><a href="#code-14-1">JSON-RPC</a></li></ul>
+</table><p>The <code title="Double-click to expand/collapse">ledger</code> field is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-14" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-14-0">WebSocket</a></li><li><a href="#code-14-1">JSON-RPC</a></li></ul>
 
 <div id="code-14-0"><pre><code title="Double-click to expand/collapse">{
   "id": 14,
@@ -2025,7 +2030,7 @@ rippled -- ledger current false</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-14-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-14-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "ledger": {
@@ -2102,7 +2107,7 @@ rippled -- ledger current false</code></pre></div>
 <td>Hash of the transaction information included in this ledger, as hex</td>
 </tr>
 </tbody>
-</table><p>The following fields are deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">hash</code>, <code title="Double-click to expand/collapse">seqNum</code>, <code title="Double-click to expand/collapse">totalCoins</code>.</p><h2 id="ledger-closed">ledger_closed</h2><p>The <code title="Double-click to expand/collapse">ledger_closed</code> method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-15"><ul class="codetabs"><li><a href="#code-15-0" class="current">WebSocket</a></li><li><a href="#code-15-1">JSON-RPC</a></li><li><a href="#code-15-2">Commandline</a></li></ul>
+</table><p>The following fields are deprecated and may be removed without further notice: <code title="Double-click to expand/collapse">hash</code>, <code title="Double-click to expand/collapse">seqNum</code>, <code title="Double-click to expand/collapse">totalCoins</code>.</p><h2 id="ledger-closed">ledger_closed</h2><p>The <code title="Double-click to expand/collapse">ledger_closed</code> method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-15" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-15-0">WebSocket</a></li><li><a href="#code-15-1">JSON-RPC</a></li><li><a href="#code-15-2">Commandline</a></li></ul>
 
 <div id="code-15-0"><pre><code title="Double-click to expand/collapse">{
    "id": 2,
@@ -2110,7 +2115,7 @@ rippled -- ledger current false</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-15-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-15-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ledger_closed",
     "params": [
         {}
@@ -2118,9 +2123,9 @@ rippled -- ledger current false</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-15-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: ledger_closed
+<div style="display: none;" id="code-15-2"><pre><code title="Double-click to expand/collapse">#Syntax: ledger_closed
 rippled -- ledger_closed</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ledger_closed" class="button">Try it!</a></p><p>This method accepts no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-16"><ul class="codetabs"><li><a href="#code-16-0" class="current">WebSocket</a></li><li><a href="#code-16-1">JSON-RPC</a></li></ul>
+</div><p><a class="button" href="ripple-api-tool.html#ledger_closed">Try it!</a></p><p>This method accepts no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-16" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-16-0">WebSocket</a></li><li><a href="#code-16-1">JSON-RPC</a></li></ul>
 
 <div id="code-16-0"><pre><code title="Double-click to expand/collapse">{
   "id": 1,
@@ -2133,7 +2138,7 @@ rippled -- ledger_closed</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-16-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-16-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "ledger_hash": "8B5A0C5F6B198254A6E411AF55C29EE40AA86251D2E78DD0BB17647047FA9C24",
@@ -2161,7 +2166,7 @@ rippled -- ledger_closed</code></pre></div>
 <td>Sequence number of this ledger</td>
 </tr>
 </tbody>
-</table><h2 id="ledger-current">ledger_current</h2><p>The <code title="Double-click to expand/collapse">ledger_current</code> method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0" class="current">WebSocket</a></li><li><a href="#code-17-1">JSON-RPC</a></li><li><a href="#code-17-2">Commandline</a></li></ul>
+</table><h2 id="ledger-current">ledger_current</h2><p>The <code title="Double-click to expand/collapse">ledger_current</code> method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-17" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-17-0">WebSocket</a></li><li><a href="#code-17-1">JSON-RPC</a></li><li><a href="#code-17-2">Commandline</a></li></ul>
 
 <div id="code-17-0"><pre><code title="Double-click to expand/collapse">{
    "id": 2,
@@ -2169,7 +2174,7 @@ rippled -- ledger_closed</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-17-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-17-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ledger_current",
     "params": [
         {}
@@ -2177,9 +2182,9 @@ rippled -- ledger_closed</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-17-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: ledger_current
+<div style="display: none;" id="code-17-2"><pre><code title="Double-click to expand/collapse">#Syntax: ledger_current
 rippled -- ledger_current</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ledger_current" class="button">Try it!</a></p><p>The request contains no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-18"><ul class="codetabs"><li><a href="#code-18-0" class="current">WebSocket</a></li><li><a href="#code-18-1">JSON-RPC</a></li></ul>
+</div><p><a class="button" href="ripple-api-tool.html#ledger_current">Try it!</a></p><p>The request contains no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-18" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-18-0">WebSocket</a></li><li><a href="#code-18-1">JSON-RPC</a></li></ul>
 
 <div id="code-18-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -2191,7 +2196,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-18-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-18-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "ledger_current_index": 8696233,
@@ -2213,7 +2218,7 @@ rippled -- ledger_current</code></pre></div>
 <td>Sequence number of this ledger</td>
 </tr>
 </tbody>
-</table><p>A <code title="Double-click to expand/collapse">ledger_hash</code> field is not provided, because the hash of the current ledger is constantly changing along with its contents.</p><h2 id="ledger-data">ledger_data</h2><p>The <code title="Double-click to expand/collapse">ledger_data</code> method retrieves contents of the specified ledger. You can iterate through several calls in order to retrieve the entire contents of a single ledger version.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0" class="current">WebSocket</a></li><li><a href="#code-19-1">JSON-RPC</a></li></ul>
+</table><p>A <code title="Double-click to expand/collapse">ledger_hash</code> field is not provided, because the hash of the current ledger is constantly changing along with its contents.</p><h2 id="ledger-data">ledger_data</h2><p>The <code title="Double-click to expand/collapse">ledger_data</code> method retrieves contents of the specified ledger. You can iterate through several calls in order to retrieve the entire contents of a single ledger version.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-19" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-19-0">WebSocket</a></li><li><a href="#code-19-1">JSON-RPC</a></li></ul>
 
 <div id="code-19-0"><pre><code title="Double-click to expand/collapse">{
    "id": 2,
@@ -2224,7 +2229,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-19-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-19-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ledger_data",
     "params": [
         {
@@ -2274,7 +2279,7 @@ rippled -- ledger_current</code></pre></div>
 <td>Server-provided value to specify where to resume retrieving data from.</td>
 </tr>
 </tbody>
-</table><p>The <code title="Double-click to expand/collapse">ledger</code> field is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-20"><ul class="codetabs"><li><a href="#code-20-0" class="current">WebSocket (binary:true)</a></li><li><a href="#code-20-1">WebSocket (binary:false)</a></li><li><a href="#code-20-2">JSON-RPC (binary:true)</a></li></ul>
+</table><p>The <code title="Double-click to expand/collapse">ledger</code> field is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-20" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-20-0">WebSocket (binary:true)</a></li><li><a href="#code-20-1">WebSocket (binary:false)</a></li><li><a href="#code-20-2">JSON-RPC (binary:true)</a></li></ul>
 
 <div id="code-20-0"><pre><code title="Double-click to expand/collapse">{
     "id": 2,
@@ -2310,7 +2315,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-20-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-20-1"><pre><code title="Double-click to expand/collapse">{
     "id": 2,
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -2406,7 +2411,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-20-2" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-20-2"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -2497,7 +2502,7 @@ rippled -- ledger_current</code></pre></div>
 <td>Unique identifier for this ledger entry, as hex.</td>
 </tr>
 </tbody>
-</table><h2 id="ledger-entry">ledger_entry</h2><p>The <code title="Double-click to expand/collapse">ledger_entry</code> method returns a single entry from the specified ledger. See <a href="https://ripple.com/wiki/Ledger_Format#Entries">LedgerEntryType</a> for information on the different types of objects you can retrieve. <em>Note:</em> There is no commandline version of this method. You can use the <a href="#json"><code title="Double-click to expand/collapse">json</code></a> command to access this method from the commandline instead.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-21"><ul class="codetabs"><li><a href="#code-21-0" class="current">WebSocket</a></li><li><a href="#code-21-1">JSON-RPC</a></li></ul>
+</table><h2 id="ledger-entry">ledger_entry</h2><p>The <code title="Double-click to expand/collapse">ledger_entry</code> method returns a single entry from the specified ledger. See <a href="https://ripple.com/wiki/Ledger_Format#Entries">LedgerEntryType</a> for information on the different types of objects you can retrieve. <em>Note:</em> There is no commandline version of this method. You can use the <a href="#json"><code title="Double-click to expand/collapse">json</code></a> command to access this method from the commandline instead.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-21" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-21-0">WebSocket</a></li><li><a href="#code-21-1">JSON-RPC</a></li></ul>
 
 <div id="code-21-0"><pre><code title="Double-click to expand/collapse">{
   "id": 3,
@@ -2508,7 +2513,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-21-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-21-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ledger_entry",
     "params": [
         {
@@ -2518,9 +2523,9 @@ rippled -- ledger_current</code></pre></div>
         }
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ledger_entry" class="button">Try it!</a></p><p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p><ol>
+</div><p><a class="button" href="ripple-api-tool.html#ledger_entry">Try it!</a></p><p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p><ol>
 <li><code title="Double-click to expand/collapse">index</code> - Retrieve an individual ledger entry by its unique index</li>
-<li><code title="Double-click to expand/collapse">account_root</code> - Retrieve an account node, similar to the <a href="#account-info">account_info</a> command</li>
+<li><code title="Double-click to expand/collapse">account_root</code> - Retrieve an account node, similar to the <a class="active" href="#account-info">account_info</a> command</li>
 <li><code title="Double-click to expand/collapse">directory</code> - Retrieve a directory node, which contains a list of IDs linking things</li>
 <li><code title="Double-click to expand/collapse">offer</code> - Retrieve an offer node, which defines an offer to exchange currency</li>
 <li><code title="Double-click to expand/collapse">ripple_state</code> - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts</li>
@@ -2599,7 +2604,7 @@ rippled -- ledger_current</code></pre></div>
 <td>(Optional, defaults to false) If true, return hashed data as hex strings. Otherwise, return data in JSON format.</td>
 </tr>
 </tbody>
-</table><p>The <code title="Double-click to expand/collapse">generator</code> parameter is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0" class="current">WebSocket</a></li><li><a href="#code-22-1">JSON-RPC</a></li></ul>
+</table><p>The <code title="Double-click to expand/collapse">generator</code> parameter is deprecated and may be removed without further notice.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-22" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-22-0">WebSocket</a></li><li><a href="#code-22-1">JSON-RPC</a></li></ul>
 
 <div id="code-22-0"><pre><code title="Double-click to expand/collapse">{
     "id": 3,
@@ -2623,7 +2628,7 @@ rippled -- ledger_current</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-22-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-22-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
@@ -2673,7 +2678,7 @@ rippled -- ledger_current</code></pre></div>
 <td>(<code title="Double-click to expand/collapse">"binary":true</code> only) Binary data of the ledger node retrieved, as hex.</td>
 </tr>
 </tbody>
-</table><h1 id="managing-transactions">Managing Transactions</h1><p>Transactions are the only thing that can modify the shared global ledger of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).</p><p>There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the <a href="http://en.wikipedia.org/wiki/Automated_Clearing_House">ACH</a>) verifies the participants’ identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. Sending XRP, the Ripple Network’s native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports balances in any currency. This brings far more power, but it also means that the system must account for <a href="http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk">counterparty risk</a>, currency conversions, and other issues. The Ripple Network must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.</p><h2 id="tx">tx</h2><p>The <code title="Double-click to expand/collapse">tx</code> method retrieves information on a single transaction. </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-23"><ul class="codetabs"><li><a href="#code-23-0" class="current">WebSocket</a></li><li><a href="#code-23-1">JSON-RPC</a></li><li><a href="#code-23-2">Commandline</a></li></ul>
+</table><h1 id="managing-transactions">Managing Transactions</h1><p>Transactions are the only thing that can modify the shared global ledger of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).</p><p>There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the <a href="http://en.wikipedia.org/wiki/Automated_Clearing_House">ACH</a>) verifies the participants’ identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. Sending XRP, the Ripple Network’s native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports balances in any currency. This brings far more power, but it also means that the system must account for <a href="http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk">counterparty risk</a>, currency conversions, and other issues. The Ripple Network must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.</p><h2 id="tx">tx</h2><p>The <code title="Double-click to expand/collapse">tx</code> method retrieves information on a single transaction. </p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-23" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-23-0">WebSocket</a></li><li><a href="#code-23-1">JSON-RPC</a></li><li><a href="#code-23-2">Commandline</a></li></ul>
 
 <div id="code-23-0"><pre><code title="Double-click to expand/collapse">{
   "id": 1,
@@ -2682,7 +2687,7 @@ rippled -- ledger_current</code></pre></div>
   "binary": false
 }</code></pre></div>
 
-<div id="code-23-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-23-1"><pre><code title="Double-click to expand/collapse">{
     "method": "tx",
     "params": [
         {
@@ -2692,9 +2697,9 @@ rippled -- ledger_current</code></pre></div>
     ]
 }</code></pre></div>
 
-<div id="code-23-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: tx transaction [binary]
+<div style="display: none;" id="code-23-2"><pre><code title="Double-click to expand/collapse">#Syntax: tx transaction [binary]
 tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#tx" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#tx">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2714,7 +2719,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
 <td>(Optional, defaults to false) If true, return transaction data and metadata as hex strings instead of JSON</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0" class="current">WebSocket</a></li></ul>
+</table><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-24" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-24-0">WebSocket</a></li></ul>
 
 <div id="code-24-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -2879,7 +2884,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
 <td>Other fields from the <a href="https://ripple.com/wiki/Transaction_Format">Transaction object</a></td>
 </tr>
 </tbody>
-</table><p><em>Note:</em> If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the <code title="Double-click to expand/collapse">rippled</code> does not have on hand anymore.</p><h2 id="transaction-entry">transaction_entry</h2><p>The <code title="Double-click to expand/collapse">transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0" class="current">WebSocket</a></li><li><a href="#code-25-1">JSON-RPC</a></li><li><a href="#code-25-2">Commandline</a></li></ul>
+</table><p><em>Note:</em> If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the <code title="Double-click to expand/collapse">rippled</code> does not have on hand anymore.</p><h2 id="transaction-entry">transaction_entry</h2><p>The <code title="Double-click to expand/collapse">transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) </p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-25" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-25-0">WebSocket</a></li><li><a href="#code-25-1">JSON-RPC</a></li><li><a href="#code-25-2">Commandline</a></li></ul>
 
 <div id="code-25-0"><pre><code title="Double-click to expand/collapse">{
   "id": 4,
@@ -2888,7 +2893,7 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
   "ledger_index": 348734
 }</code></pre></div>
 
-<div id="code-25-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-25-1"><pre><code title="Double-click to expand/collapse">{
     "method": "transaction_entry",
     "params": [
         {
@@ -2898,9 +2903,9 @@ tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false</code>
     ]
 }</code></pre></div>
 
-<div id="code-25-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
+<div style="display: none;" id="code-25-2"><pre><code title="Double-click to expand/collapse">#Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#transaction_entry" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#transaction_entry">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -2925,7 +2930,7 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 <td>Unique hash of the transaction you are looking up</td>
 </tr>
 </tbody>
-</table><p><em>Note:</em> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code title="Double-click to expand/collapse">ledger_index</code> or <code title="Double-click to expand/collapse">ledger_hash</code>. </p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0" class="current">WebSocket</a></li></ul>
+</table><p><em>Note:</em> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code title="Double-click to expand/collapse">ledger_index</code> or <code title="Double-click to expand/collapse">ledger_hash</code>. </p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-26" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-26-0">WebSocket</a></li></ul>
 
 <div id="code-26-0"><pre><code title="Double-click to expand/collapse">{
     "id": 4,
@@ -3086,7 +3091,7 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 <li>The transaction just does not exist</li>
 <li>The transaction exists, but not in the specified ledger version</li>
 <li>The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.</li>
-</ul><h2 id="tx-history">tx_history</h2><p>The <code title="Double-click to expand/collapse">tx_history</code> method retrieves a selection of the most recent transactions made.</p><p><em>Caution:</em> This method is deprecated, and may be removed without further notice.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-27"><ul class="codetabs"><li><a href="#code-27-0" class="current">WebSocket</a></li><li><a href="#code-27-1">JSON-RPC</a></li><li><a href="#code-27-2">Commandline</a></li></ul>
+</ul><h2 id="tx-history">tx_history</h2><p>The <code title="Double-click to expand/collapse">tx_history</code> method retrieves a selection of the most recent transactions made.</p><p><em>Caution:</em> This method is deprecated, and may be removed without further notice.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-27" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-27-0">WebSocket</a></li><li><a href="#code-27-1">JSON-RPC</a></li><li><a href="#code-27-2">Commandline</a></li></ul>
 
 <div id="code-27-0"><pre><code title="Double-click to expand/collapse">{
   "id": 5,
@@ -3095,7 +3100,7 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 }</code></pre></div>
 
 
-<div id="code-27-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-27-1"><pre><code title="Double-click to expand/collapse">{
     "method": "tx_history",
     "params": [
         {
@@ -3105,9 +3110,9 @@ rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1B
 }</code></pre></div>
 
 
-<div id="code-27-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: tx_history [start]
+<div style="display: none;" id="code-27-2"><pre><code title="Double-click to expand/collapse">#Syntax: tx_history [start]
 rippled -- tx_history 0</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#tx_history" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#tx_history">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -3122,7 +3127,7 @@ rippled -- tx_history 0</code></pre></div>
 <td>Number of transactions to skip over.</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0" class="current">WebSocket</a></li><li><a href="#code-28-1">JSON-RPC</a></li></ul>
+</table><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-28" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-28-0">WebSocket</a></li><li><a href="#code-28-1">JSON-RPC</a></li></ul>
 
 <div id="code-28-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -3574,7 +3579,7 @@ rippled -- tx_history 0</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-28-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-28-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "index": 0,
@@ -3960,7 +3965,7 @@ rippled -- tx_history 0</code></pre></div>
 <li><code title="Double-click to expand/collapse">create</code> - Start sending pathfinding information </li>
 <li><code title="Double-click to expand/collapse">close</code> - Stop sending pathfinding information</li>
 <li><code title="Double-click to expand/collapse">status</code> - Get the information of the currently-open pathfinding request</li>
-</ul><p>Although the <code title="Double-click to expand/collapse">rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<em>Note:</em> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p><h3 id="path-find-create">path_find create</h3><p>The <code title="Double-click to expand/collapse">create</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with <code title="Double-click to expand/collapse">"type": "path_find"</code>, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.</p><p>A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0" class="current">WebSocket</a></li></ul>
+</ul><p>Although the <code title="Double-click to expand/collapse">rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<em>Note:</em> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p><h3 id="path-find-create">path_find create</h3><p>The <code title="Double-click to expand/collapse">create</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with <code title="Double-click to expand/collapse">"type": "path_find"</code>, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.</p><p>A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-29" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-29-0">WebSocket</a></li></ul>
 
 <div id="code-29-0"><pre><code title="Double-click to expand/collapse">{
     "id": 8,
@@ -3974,7 +3979,7 @@ rippled -- tx_history 0</code></pre></div>
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
     }
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#path_find" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#path_find">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -4009,7 +4014,7 @@ rippled -- tx_history 0</code></pre></div>
 <td>(Optional) Array of arrays of objects, representing paths to confirm. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
 </tr>
 </tbody>
-</table><p>The server also recognizes the following fields, but the results of using them are not guaranteed: <code title="Double-click to expand/collapse">source_currencies</code>, <code title="Double-click to expand/collapse">bridges</code>. These fields should be considered reserved for future use.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0" class="current">WebSocket</a></li></ul>
+</table><p>The server also recognizes the following fields, but the results of using them are not guaranteed: <code title="Double-click to expand/collapse">source_currencies</code>, <code title="Double-click to expand/collapse">bridges</code>. These fields should be considered reserved for future use.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-30" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-30-0">WebSocket</a></li></ul>
 
 <div id="code-30-0"><pre><code title="Double-click to expand/collapse">{
   "id": 1,
@@ -4428,7 +4433,7 @@ rippled -- tx_history 0</code></pre></div>
 <td><a href="#specifying-currency-amounts">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
 </tr>
 </tbody>
-</table><h4>Asynchronous Follow-ups</h4><p>In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the <code title="Double-click to expand/collapse">id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code title="Double-click to expand/collapse">"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p><p>Here is an example of an asychronous follow-up from a path_find create request:</p><div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0" class="current">WebSocket</a></li></ul>
+</table><h4>Asynchronous Follow-ups</h4><p>In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the <code title="Double-click to expand/collapse">id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code title="Double-click to expand/collapse">"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p><p>Here is an example of an asychronous follow-up from a path_find create request:</p><div id="code-31" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-31-0">WebSocket</a></li></ul>
 
 <div id="code-31-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -5267,7 +5272,7 @@ rippled -- tx_history 0</code></pre></div>
     },
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }</code></pre></div>
-</div><h3 id="path-find-close">path_find close</h3><p>The <code title="Double-click to expand/collapse">close</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> instructs the server to stop sending information about the current open pathfinding request.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0" class="current">WebSocket</a></li></ul>
+</div><h3 id="path-find-close">path_find close</h3><p>The <code title="Double-click to expand/collapse">close</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> instructs the server to stop sending information about the current open pathfinding request.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-32" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-32-0">WebSocket</a></li></ul>
 
 <div id="code-32-0"><pre><code title="Double-click to expand/collapse">{
   "id": 57,
@@ -5289,7 +5294,7 @@ rippled -- tx_history 0</code></pre></div>
 <td>Use <code title="Double-click to expand/collapse">"close"</code> to send the close subcommand</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>If a pathfinding request was successfully closed, the response follows the same format as the initial response to <a href="#path_find-create"><code title="Double-click to expand/collapse">path_find create</code></a>. If there was no outstanding pathfinding request, an error is returned instead.</p><h3 id="path-find-status">path_find status</h3><p>The <code title="Double-click to expand/collapse">status</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> requests an immediate update about the client’s currently-open pathfinding request.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0" class="current">WebSocket</a></li></ul>
+</table><h4>Response Format</h4><p>If a pathfinding request was successfully closed, the response follows the same format as the initial response to <a href="#path_find-create"><code title="Double-click to expand/collapse">path_find create</code></a>. If there was no outstanding pathfinding request, an error is returned instead.</p><h3 id="path-find-status">path_find status</h3><p>The <code title="Double-click to expand/collapse">status</code> subcommand of <code title="Double-click to expand/collapse">path_find</code> requests an immediate update about the client’s currently-open pathfinding request.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-33" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-33-0">WebSocket</a></li></ul>
 
 <div id="code-33-0"><pre><code title="Double-click to expand/collapse">{
   "id": 58,
@@ -5311,7 +5316,7 @@ rippled -- tx_history 0</code></pre></div>
 <td>Use <code title="Double-click to expand/collapse">"status"</code> to send the status subcommand</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>If a pathfinding request is open, the response follows the same format as the initial response to <a href="#path_find-create"><code title="Double-click to expand/collapse">path_find create</code></a>. If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-293">RIPD-293</a> for more information.)</p><h2 id="ripple-path-find">ripple_path_find</h2><p>The <code title="Double-click to expand/collapse">ripple_path_find</code> method is a simplified version of <a href="#path-find"><code title="Double-click to expand/collapse">path_find</code></a> that provides a single response to be used to make a payment transaction immediately. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code title="Double-click to expand/collapse">path_find</code></a> instead where possible.</p><p>Although the <code title="Double-click to expand/collapse">rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<em>Note:</em> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-34"><ul class="codetabs"><li><a href="#code-34-0" class="current">WebSocket</a></li><li><a href="#code-34-1">JSON-RPC</a></li><li><a href="#code-34-2">Commandline</a></li></ul>
+</table><h4>Response Format</h4><p>If a pathfinding request is open, the response follows the same format as the initial response to <a href="#path_find-create"><code title="Double-click to expand/collapse">path_find create</code></a>. If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-293">RIPD-293</a> for more information.)</p><h2 id="ripple-path-find">ripple_path_find</h2><p>The <code title="Double-click to expand/collapse">ripple_path_find</code> method is a simplified version of <a href="#path-find"><code title="Double-click to expand/collapse">path_find</code></a> that provides a single response to be used to make a payment transaction immediately. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code title="Double-click to expand/collapse">path_find</code></a> instead where possible.</p><p>Although the <code title="Double-click to expand/collapse">rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<em>Note:</em> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-34" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-34-0">WebSocket</a></li><li><a href="#code-34-1">JSON-RPC</a></li><li><a href="#code-34-2">Commandline</a></li></ul>
 
 <div id="code-34-0"><pre><code title="Double-click to expand/collapse">{
     "id": 8,
@@ -5334,7 +5339,7 @@ rippled -- tx_history 0</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-34-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-34-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ripple_path_find",
     "params": [
         {
@@ -5358,9 +5363,9 @@ rippled -- tx_history 0</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-34-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax ripple_path_find json ledger_index|ledger_hash
+<div style="display: none;" id="code-34-2"><pre><code title="Double-click to expand/collapse">#Syntax ripple_path_find json ledger_index|ledger_hash
 rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ripple_path_find" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#ripple_path_find">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -5400,7 +5405,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 <td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-a-ledger-instance">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0" class="current">WebSocket</a></li><li><a href="#code-35-1">JSON-RPC</a></li></ul>
+</table><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-35" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-35-0">WebSocket</a></li><li><a href="#code-35-1">JSON-RPC</a></li></ul>
 
 <div id="code-35-0"><pre><code title="Double-click to expand/collapse">{
     "id": 8,
@@ -5508,7 +5513,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 }</code></pre></div>
 
 
-<div id="code-35-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-35-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "alternatives": [
@@ -5656,7 +5661,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 <td><a href="#specifying-currency-amounts">Currency amount</a> that the source would have to send along this path in order for the destination to receive the desired amount</td>
 </tr>
 </tbody>
-</table><p>The following fields are deprecated, and may be omitted: <code title="Double-click to expand/collapse">paths_canonical</code>, and <code title="Double-click to expand/collapse">paths_expanded</code>. If they appear, you should disregard them.</p><h2 id="sign">sign</h2><p>The <code title="Double-click to expand/collapse">sign</code> method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.</p><p><em>Note:</em> It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, <a href="https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js">ripple-lib’s rsign.js</a> demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0" class="current">WebSocket</a></li><li><a href="#code-36-1">JSON-RPC</a></li><li><a href="#code-36-2">Commandline</a></li></ul>
+</table><p>The following fields are deprecated, and may be omitted: <code title="Double-click to expand/collapse">paths_canonical</code>, and <code title="Double-click to expand/collapse">paths_expanded</code>. If they appear, you should disregard them.</p><h2 id="sign">sign</h2><p>The <code title="Double-click to expand/collapse">sign</code> method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.</p><p><em>Note:</em> It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, <a href="https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js">ripple-lib’s rsign.js</a> demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-36" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-36-0">WebSocket</a></li><li><a href="#code-36-1">JSON-RPC</a></li><li><a href="#code-36-2">Commandline</a></li></ul>
 
 <div id="code-36-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -5676,7 +5681,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 }</code></pre></div>
 
 
-<div id="code-36-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-36-1"><pre><code title="Double-click to expand/collapse">{
     "method": "sign",
     "params": [
         {
@@ -5697,7 +5702,7 @@ rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnf
 }</code></pre></div>
 
 
-<div id="code-36-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: sign secret tx_json [offline]
+<div style="display: none;" id="code-36-2"><pre><code title="Double-click to expand/collapse">#Syntax: sign secret tx_json [offline]
 rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false</code></pre></div>
 </div><p>The request includes the following parameters:</p><table>
 <thead>
@@ -5727,7 +5732,7 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
 </table><p>The server automatically attempts to fill in certain fields from the <code title="Double-click to expand/collapse">tx_json</code> object if they are omitted, unless you specified <code title="Double-click to expand/collapse">offline</code> as true. Otherwise, the following fields are automatic:</p><ul>
 <li><code title="Double-click to expand/collapse">Sequence</code> - The server automatically uses the next Sequence number from the sender’s account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. </li>
 <li><code title="Double-click to expand/collapse">Fee</code> - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified <code title="Double-click to expand/collapse">offline</code> as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee.</li>
-</ul><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0" class="current">WebSocket</a></li><li><a href="#code-37-1">JSON-RPC</a></li></ul>
+</ul><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-37" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-37-0">WebSocket</a></li><li><a href="#code-37-1">JSON-RPC</a></li></ul>
 
 <div id="code-37-0"><pre><code title="Double-click to expand/collapse">{
     "id": 2,
@@ -5755,7 +5760,7 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
 }</code></pre></div>
 
 
-<div id="code-37-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-37-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "status": "success",
@@ -5802,7 +5807,7 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
 <li>Do not write this error to a log file that can be seen by multiple people</li>
 <li>Do not paste this error to a public place for debugging</li>
 <li>Do not display the error message on a website, even by accident</li>
-</ul><h2 id="submit">submit</h2><p>The <code title="Double-click to expand/collapse">submit</code> method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key (not recommended), or you can take a pre-signed transaction blob (for example, one created with <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a>, or better yet, something <a href="https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js">signed offline</a>) and submit it as-is.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0" class="current">WebSocket</a></li><li><a href="#code-38-1">JSON-RPC</a></li><li><a href="#code-38-2">Commandline</a></li></ul>
+</ul><h2 id="submit">submit</h2><p>The <code title="Double-click to expand/collapse">submit</code> method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key (not recommended), or you can take a pre-signed transaction blob (for example, one created with <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a>, or better yet, something <a href="https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js">signed offline</a>) and submit it as-is.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-38" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-38-0">WebSocket</a></li><li><a href="#code-38-1">JSON-RPC</a></li><li><a href="#code-38-2">Commandline</a></li></ul>
 
 <div id="code-38-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -5821,7 +5826,7 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
 }</code></pre></div>
 
 
-<div id="code-38-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-38-1"><pre><code title="Double-click to expand/collapse">{
     "method": "submit",
     "params": [
         {
@@ -5831,9 +5836,9 @@ rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "A
 }</code></pre></div>
 
 
-<div id="code-38-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: submit secret json [offline]
+<div style="display: none;" id="code-38-2"><pre><code title="Double-click to expand/collapse">#Syntax: submit secret json [offline]
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#submit" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#submit">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -5868,7 +5873,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <td>(Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. (No effect when specifying the transaction as tx_blob.)</td>
 </tr>
 </tbody>
-</table><p>The JSON format for <code title="Double-click to expand/collapse">tx_json</code> varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the <code title="Double-click to expand/collapse">Paths</code> field by doing a <code title="Double-click to expand/collapse">find_path</code> or <code title="Double-click to expand/collapse">ripple_find_path</code> command first. The <code title="Double-click to expand/collapse">Paths</code> field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the <code title="Double-click to expand/collapse">Paths</code> field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment, including transit fees, is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. </p><p>By default, <code title="Double-click to expand/collapse">rippled</code> tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. </p><p>If <code title="Double-click to expand/collapse">offline</code> is not set to true, then the server tries to automatically fill the <code title="Double-click to expand/collapse">Sequence</code> and <code title="Double-click to expand/collapse">Fee</code> parameters appropriately. </p><p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code title="Double-click to expand/collapse">submit</code> it as a <code title="Double-click to expand/collapse">tx_blob</code>. After submission, monitor the network with the <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code title="Double-click to expand/collapse">tx_blob</code> transaction: it won’t be applied twice since it has the same sequence number as the old transaction. </p><p>You should provide a <a href="https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format">LastLedgerSequence</a> field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0" class="current">WebSocket</a></li><li><a href="#code-39-1">JSON-RPC</a></li></ul>
+</table><p>The JSON format for <code title="Double-click to expand/collapse">tx_json</code> varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the <code title="Double-click to expand/collapse">Paths</code> field by doing a <code title="Double-click to expand/collapse">find_path</code> or <code title="Double-click to expand/collapse">ripple_find_path</code> command first. The <code title="Double-click to expand/collapse">Paths</code> field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the <code title="Double-click to expand/collapse">Paths</code> field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment, including transit fees, is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. </p><p>By default, <code title="Double-click to expand/collapse">rippled</code> tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. </p><p>If <code title="Double-click to expand/collapse">offline</code> is not set to true, then the server tries to automatically fill the <code title="Double-click to expand/collapse">Sequence</code> and <code title="Double-click to expand/collapse">Fee</code> parameters appropriately. </p><p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code title="Double-click to expand/collapse">sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code title="Double-click to expand/collapse">submit</code> it as a <code title="Double-click to expand/collapse">tx_blob</code>. After submission, monitor the network with the <a href="#tx"><code title="Double-click to expand/collapse">tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code title="Double-click to expand/collapse">tx_blob</code> transaction: it won’t be applied twice since it has the same sequence number as the old transaction. </p><p>You should provide a <a href="https://ripple.com/wiki/Transaction_Format#Basic_Transaction_Format">LastLedgerSequence</a> field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-39" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-39-0">WebSocket</a></li><li><a href="#code-39-1">JSON-RPC</a></li></ul>
 
 <div id="code-39-0"><pre><code title="Double-click to expand/collapse">{
   "id": 2,
@@ -5899,7 +5904,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 }</code></pre></div>
 
 
-<div id="code-39-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-39-1"><pre><code title="Double-click to expand/collapse">{
     "result": {
         "engine_result": "tesSUCCESS",
         "engine_result_code": 0,
@@ -5963,7 +5968,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <li>Do not write this error to a log file that can be seen by multiple people</li>
 <li>Do not paste this error to a public place for debugging</li>
 <li>Do not display the error message on a website, even by accident</li>
-</ul><h2 id="book-offers">book_offers</h2><p>The <code title="Double-click to expand/collapse">book_offers</code> method retrieves a list of offers, also known as the <a href="http://www.investopedia.com/terms/o/order-book.asp">order book</a>, between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-40"><ul class="codetabs"><li><a href="#code-40-0" class="current">WebSocket</a></li><li><a href="#code-40-1">JSON-RPC</a></li><li><a href="#code-40-2">Commandline</a></li></ul>
+</ul><h2 id="book-offers">book_offers</h2><p>The <code title="Double-click to expand/collapse">book_offers</code> method retrieves a list of offers, also known as the <a href="http://www.investopedia.com/terms/o/order-book.asp">order book</a>, between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-40" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-40-0">WebSocket</a></li><li><a href="#code-40-1">JSON-RPC</a></li><li><a href="#code-40-2">Commandline</a></li></ul>
 
 <div id="code-40-0"><pre><code title="Double-click to expand/collapse">{
   "id": 4,
@@ -5983,7 +5988,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 
 Request:
 
-<div id="code-40-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-40-1"><pre><code title="Double-click to expand/collapse">{
     "method": "book_offers",
     "params": [
         {
@@ -6003,9 +6008,9 @@ Request:
 }</code></pre></div>
 
 
-<div id="code-40-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
+<div style="display: none;" id="code-40-2"><pre><code title="Double-click to expand/collapse">#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
 rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#book_offers" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#book_offers">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6030,7 +6035,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>Specification of which currency the account taking the offer would pay, as an object with <code title="Double-click to expand/collapse">currency</code> and <code title="Double-click to expand/collapse">issuer</code> fields (omit issuer for XRP), similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 </tbody>
-</table><p><em>Note:</em> The other parameters of this command &mdash; <code title="Double-click to expand/collapse">marker</code>, <code title="Double-click to expand/collapse">limit</code>, <code title="Double-click to expand/collapse">proof</code>, and <code title="Double-click to expand/collapse">autobridge</code> &mdash; are not yet fully implemented. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-295">RIPD-295</a>).</p><p>Normally, offers that are not funded are omitted; however, offers made by the specified <code title="Double-click to expand/collapse">taker</code> account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0" class="current">WebSocket</a></li><li><a href="#code-41-1">JSON-RPC</a></li></ul>
+</table><p><em>Note:</em> The other parameters of this command — <code title="Double-click to expand/collapse">marker</code>, <code title="Double-click to expand/collapse">limit</code>, <code title="Double-click to expand/collapse">proof</code>, and <code title="Double-click to expand/collapse">autobridge</code> — are not yet fully implemented. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-295">RIPD-295</a>).</p><p>Normally, offers that are not funded are omitted; however, offers made by the specified <code title="Double-click to expand/collapse">taker</code> account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-41" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-41-0">WebSocket</a></li><li><a href="#code-41-1">JSON-RPC</a></li></ul>
 
 <div id="code-41-0"><pre><code title="Double-click to expand/collapse">{
   "id": 11,
@@ -6090,7 +6095,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-41-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-41-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "ledger_current_index": 8696243,
@@ -6154,7 +6159,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>The exchange rate, as the ratio <code title="Double-click to expand/collapse">taker_pays</code> divided by <code title="Double-click to expand/collapse">taker_gets</code>. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.)</td>
 </tr>
 </tbody>
-</table><h1 id="subscriptions">Subscriptions</h1><p>Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know right away and react accordingly. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel.</p><p>JSON-RPC support for subscription callbacks is deprecated and may not work as expected.</p><h2 id="subscribe">subscribe</h2><p>The <code title="Double-click to expand/collapse">subscribe</code> method requests periodic notifications from the server when certain events happen. </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-42"><ul class="codetabs"><li><a href="#code-42-0" class="current">WebSocket - accounts</a></li><li><a href="#code-42-1">WebSocket - offer book</a></li></ul>
+</table><h1 id="subscriptions">Subscriptions</h1><p>Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know right away and react accordingly. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel.</p><p>JSON-RPC support for subscription callbacks is deprecated and may not work as expected.</p><h2 id="subscribe">subscribe</h2><p>The <code title="Double-click to expand/collapse">subscribe</code> method requests periodic notifications from the server when certain events happen. </p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-42" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-42-0">WebSocket - accounts</a></li><li><a href="#code-42-1">WebSocket - offer book</a></li></ul>
 
 <div id="code-42-0"><pre><code title="Double-click to expand/collapse">{
   "id": "Example watch Bitstamp's hot wallet",
@@ -6162,7 +6167,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
   "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
 }</code></pre></div>
 
-<div id="code-42-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-42-1"><pre><code title="Double-click to expand/collapse">{
     "command": "subscribe",
     "books": [
         {
@@ -6177,7 +6182,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
         }
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#subscribe" class="button">Try it!</a></p><p>The request includes the following parameters:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#subscribe">Try it!</a></p><p>The request includes the following parameters:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6262,7 +6267,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>(Optional, defaults to false) If true, return both sides of the order book.</td>
 </tr>
 </tbody>
-</table><p>The field <code title="Double-click to expand/collapse">proof</code> is reserved for future use.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-43"><ul class="codetabs"><li><a href="#code-43-0" class="current">WebSocket</a></li></ul>
+</table><p>The field <code title="Double-click to expand/collapse">proof</code> is reserved for future use.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-43" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-43-0">WebSocket</a></li></ul>
 
 <div id="code-43-0"><pre><code title="Double-click to expand/collapse">{
   "id": "Example watch Bitstamp's hot wallet",
@@ -6507,7 +6512,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>If true, this transaction is included in a validated ledger. Responses from the <code title="Double-click to expand/collapse">transaction</code> stream should always be validated.</td>
 </tr>
 </tbody>
-</table><h2 id="unsubscribe">unsubscribe</h2><p>The <code title="Double-click to expand/collapse">unsubscribe</code> command tells the server to stop sending messages for a particular subscription or set of subscriptions.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-44"><ul class="codetabs"><li><a href="#code-44-0" class="current">WebSocket</a></li></ul>
+</table><h2 id="unsubscribe">unsubscribe</h2><p>The <code title="Double-click to expand/collapse">unsubscribe</code> command tells the server to stop sending messages for a particular subscription or set of subscriptions.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-44" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-44-0">WebSocket</a></li></ul>
 
 <div id="code-44-0"><pre><code title="Double-click to expand/collapse">{
     "id": "Unsubscribe a lot of stuff",
@@ -6528,7 +6533,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
         }
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#unsubscribe" class="button">Try it!</a></p><p>The parameters in the request are specified almost exactly like the parameters to <a href="#subscribe"><code title="Double-click to expand/collapse">subscribe</code></a>, except that they are used to define which subscriptions to end instead. The parameters are:</p><table>
+</div><p><a class="button" href="ripple-api-tool.html#unsubscribe">Try it!</a></p><p>The parameters in the request are specified almost exactly like the parameters to <a href="#subscribe"><code title="Double-click to expand/collapse">subscribe</code></a>, except that they are used to define which subscriptions to end instead. The parameters are:</p><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -6583,7 +6588,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>(Optional, defaults to false) If true, remove a subscription for both sides of the order book.</td>
 </tr>
 </tbody>
-</table><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0" class="current">WebSocket</a></li></ul>
+</table><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-45" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-45-0">WebSocket</a></li></ul>
 
 <div id="code-45-0"><pre><code title="Double-click to expand/collapse">{
     "id": "Unsubscribe a lot of stuff",
@@ -6591,7 +6596,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
     "status": "success",
     "type": "response"
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields.</p><h1 id="server-information">Server Information</h1><p>There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.</p><h2 id="server-info">server_info</h2><p>The <code title="Double-click to expand/collapse">server_info</code> command asks the server for a human-readable version of various information about the <code title="Double-click to expand/collapse">rippled</code> server being queried.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0" class="current">WebSocket</a></li><li><a href="#code-46-1">JSON-RPC</a></li></ul>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields.</p><h1 id="server-information">Server Information</h1><p>There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.</p><h2 id="server-info">server_info</h2><p>The <code title="Double-click to expand/collapse">server_info</code> command asks the server for a human-readable version of various information about the <code title="Double-click to expand/collapse">rippled</code> server being queried.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-46" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-46-0">WebSocket</a></li><li><a href="#code-46-1">JSON-RPC</a></li></ul>
 
 <div id="code-46-0"><pre><code title="Double-click to expand/collapse">{
   "id": 11,
@@ -6599,13 +6604,13 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-46-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-46-1"><pre><code title="Double-click to expand/collapse">{
     "method": "server_info",
     "params": [
         {}
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#server_info" class="button">Try it!</a></p><p>The request does not takes any parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0" class="current">WebSocket</a></li><li><a href="#code-47-1">JSON-RPC</a></li></ul>
+</div><p><a class="button" href="ripple-api-tool.html#server_info">Try it!</a></p><p>The request does not takes any parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-47" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-47-0">WebSocket</a></li><li><a href="#code-47-1">JSON-RPC</a></li></ul>
 
 <div id="code-47-0"><pre><code title="Double-click to expand/collapse">{
   "id": 11,
@@ -6639,7 +6644,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-47-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-47-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "info": {
@@ -6783,7 +6788,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations.</td>
 </tr>
 </tbody>
-</table><h2 id="server-state">server_state</h2><p>The <code title="Double-click to expand/collapse">server_state</code> command asks the server for various machine-readable information about the <code title="Double-click to expand/collapse">rippled</code> server’s current state. The results are very similar to <a href="#server-info"><code title="Double-click to expand/collapse">server_info</code></a>, but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0" class="current">WebSocket</a></li><li><a href="#code-48-1">JSON-RPC</a></li></ul>
+</table><h2 id="server-state">server_state</h2><p>The <code title="Double-click to expand/collapse">server_state</code> command asks the server for various machine-readable information about the <code title="Double-click to expand/collapse">rippled</code> server’s current state. The results are very similar to <a href="#server-info"><code title="Double-click to expand/collapse">server_info</code></a>, but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-48" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-48-0">WebSocket</a></li><li><a href="#code-48-1">JSON-RPC</a></li></ul>
 
 <div id="code-48-0"><pre><code title="Double-click to expand/collapse">{
   "id": 12,
@@ -6791,13 +6796,13 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-48-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-48-1"><pre><code title="Double-click to expand/collapse">{
     "method": "server_state",
     "params": [
         {}
     ]
 }</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#server_state" class="button">Try it!</a></p><p>The request does not takes any parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-49"><ul class="codetabs"><li><a href="#code-49-0" class="current">WebSocket</a></li><li><a href="#code-49-1">JSON-RPC</a></li></ul>
+</div><p><a class="button" href="ripple-api-tool.html#server_state">Try it!</a></p><p>The request does not takes any parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-49" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-49-0">WebSocket</a></li><li><a href="#code-49-1">JSON-RPC</a></li></ul>
 
 
 <div id="code-49-0"><pre><code title="Double-click to expand/collapse">{
@@ -6832,7 +6837,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-49-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-49-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "state": {
@@ -6972,7 +6977,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 <td>Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations.</td>
 </tr>
 </tbody>
-</table><h1 id="convenience-functions">Convenience Functions</h1><p>The rippled server also provides a few simple commands purely for convenience.</p><h2 id="ping">ping</h2><p>The <code title="Double-click to expand/collapse">ping</code> command returns an acknowledgement, so that clients can test the connection status and latency.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-50"><ul class="codetabs"><li><a href="#code-50-0" class="current">WebSocket</a></li><li><a href="#code-50-1">JSON-RPC</a></li><li><a href="#code-50-2">Commandline</a></li></ul>
+</table><h1 id="convenience-functions">Convenience Functions</h1><p>The rippled server also provides a few simple commands purely for convenience.</p><h2 id="ping">ping</h2><p>The <code title="Double-click to expand/collapse">ping</code> command returns an acknowledgement, so that clients can test the connection status and latency.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-50" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-50-0">WebSocket</a></li><li><a href="#code-50-1">JSON-RPC</a></li><li><a href="#code-50-2">Commandline</a></li></ul>
 
 <div id="code-50-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -6980,7 +6985,7 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-50-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-50-1"><pre><code title="Double-click to expand/collapse">{
     "method": "ping",
     "params": [
         {}
@@ -6988,9 +6993,9 @@ rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67
 }</code></pre></div>
 
 
-<div id="code-50-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: ping
+<div style="display: none;" id="code-50-2"><pre><code title="Double-click to expand/collapse">#Syntax: ping
 rippled -- ping</code></pre></div>
-</div><p><a href="https://ripple.com/tools/api/#ping" class="button">Try it!</a></p><p>The request includes no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-51"><ul class="codetabs"><li><a href="#code-51-0" class="current">WebSocket</a></li><li><a href="#code-51-1">JSON-RPC</a></li></ul>
+</div><p><a class="button" href="ripple-api-tool.html#ping">Try it!</a></p><p>The request includes no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-51" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-51-0">WebSocket</a></li><li><a href="#code-51-1">JSON-RPC</a></li></ul>
 
 <div id="code-51-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -7000,13 +7005,13 @@ rippled -- ping</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-51-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-51-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "status": "success"
     }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p><h2 id="random">random</h2><p>The <code title="Double-click to expand/collapse">random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-52"><ul class="codetabs"><li><a href="#code-52-0" class="current">WebSocket</a></li><li><a href="#code-52-1">JSON-RPC</a></li><li><a href="#code-52-2">Commandline</a></li></ul>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p><h2 id="random">random</h2><p>The <code title="Double-click to expand/collapse">random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-52" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-52-0">WebSocket</a></li><li><a href="#code-52-1">JSON-RPC</a></li><li><a href="#code-52-2">Commandline</a></li></ul>
 
 <div id="code-52-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -7014,7 +7019,7 @@ rippled -- ping</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-52-1" style="display: none;"><pre><code title="Double-click to expand/collapse">{
+<div style="display: none;" id="code-52-1"><pre><code title="Double-click to expand/collapse">{
     "method": "random",
     "params": [
         {}
@@ -7022,9 +7027,9 @@ rippled -- ping</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-52-2" style="display: none;"><pre><code title="Double-click to expand/collapse">#Syntax: random
+<div style="display: none;" id="code-52-2"><pre><code title="Double-click to expand/collapse">#Syntax: random
 rippled -- random</code></pre></div>
-</div><p>The request includes no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-53"><ul class="codetabs"><li><a href="#code-53-0" class="current">WebSocket</a></li><li><a href="#code-53-1">JSON-RPC</a></li></ul>
+</div><p>The request includes no parameters.</p><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-53" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-53-0">WebSocket</a></li><li><a href="#code-53-1">JSON-RPC</a></li></ul>
 
 <div id="code-53-0"><pre><code title="Double-click to expand/collapse">{
     "id": 1,
@@ -7036,7 +7041,7 @@ rippled -- random</code></pre></div>
 }</code></pre></div>
 
 
-<div id="code-53-1" style="display: none;"><pre><code title="Double-click to expand/collapse">200 OK
+<div style="display: none;" id="code-53-1"><pre><code title="Double-click to expand/collapse">200 OK
 {
     "result": {
         "random": "4E57146AA47BC6E88FDFE8BAA235B900126C916B6CC521550996F590487B837A",
@@ -7058,11 +7063,11 @@ rippled -- random</code></pre></div>
 <td>Random 256-bit hex value.</td>
 </tr>
 </tbody>
-</table><h2 id="json">json</h2><p>The <code title="Double-click to expand/collapse">json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. </p><h4>Request Format</h4><p>An example of the request format:</p><div class="multicode" id="code-54"><ul class="codetabs"><li><a href="#code-54-0" class="current">Commandline</a></li></ul>
+</table><h2 id="json">json</h2><p>The <code title="Double-click to expand/collapse">json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. </p><h4>Request Format</h4><p>An example of the request format:</p><div id="code-54" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-54-0">Commandline</a></li></ul>
 
 <div id="code-54-0"><pre><code title="Double-click to expand/collapse"># Syntax: json method json_stanza
 rippled -q -- json ledger_closed '{}'</code></pre></div>
-</div><h4>Response Format</h4><p>An example of a successful response:</p><div class="multicode" id="code-55"><ul class="codetabs"><li><a href="#code-55-0" class="current">WebSocket</a></li></ul>
+</div><h4>Response Format</h4><p>An example of a successful response:</p><div id="code-55" class="multicode"><ul class="codetabs"><li><a class="current" href="#code-55-0">WebSocket</a></li></ul>
 
 <div id="code-55-0"><pre><code title="Double-click to expand/collapse">{
    "result" : {
@@ -7071,7 +7076,8 @@ rippled -q -- json ledger_closed '{}'</code></pre></div>
       "status" : "success"
    }
 }</code></pre></div>
-</div><p>The response follows the <a href="#response-formatting">standard format</a>, with whichever fields are appropriate to the type of command made.</p></div>
+</div><p>The response follows the <a href="#response-formatting">standard format</a>, with whichever fields are appropriate to the type of command made.</p>
+    </div>
   </div>
 <div class="footer">
       <div class="container">
