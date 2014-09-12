@@ -245,18 +245,35 @@
   });
 
   Request('submit', {
-    secret: '',
+    secret: 'sssssssssssssssssssssssssssss',
     tx_json: {
       Flags: 0,
       TransactionType: 'AccountSet',
-      Account: '',
+      Account: 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn',
       Sequence: void(0),
       Fee: '15',
       Flags: 0
     },
-    _description: 'Submits a transaction to the network.',
+    _description: 'Submits a transaction to the network. Please, only use test accounts here.',
     _link: 'rippled-apis.html#submit'
   });
+  
+  Request('sign', {
+  tx_json : {
+      "TransactionType" : "Payment",
+      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Amount" : { 
+         "currency" : "USD",
+         "value" : "1",
+         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      }
+   },
+   secret : "sssssssssssssssssssssssssssss",
+   offline: false,
+   _description: 'Sends a transaction to be signed by the server. Please, only use test accounts here.',
+   _link: 'rippled-apis.html#sign'
+});
 
   /* ---- ---- ---- ---- ---- */
 
@@ -362,11 +379,13 @@
     selected_request.message.id = id();
     selected_request.message = rewrite_obj(selected_request.message);
     set_input(selected_request);
+    
+    //Remove sign button & sequence number lookup
 
-    if (selected_request.name !== 'submit') {
-      $('#sign_button').hide();
-      return;
-    }
+//    if (selected_request.name !== 'submit') {
+//      $('#sign_button').hide();
+//      return;
+//    }
 
     if (!remote._connected) {
       remote.once('connected', function() {
@@ -375,18 +394,18 @@
       return;
     }
 
-    $('#sign_button').show();
+//    $('#sign_button').show();
 
-    var tx_json = selected_request.message.tx_json;
+//    var tx_json = selected_request.message.tx_json;
 
-    if (ripple.UInt160.is_valid(tx_json.Account)) {
-      selected_request.message.id = id._c;
-      remote.request_account_info(tx_json.Account, function(err, info) {
-        id.reset();
-        tx_json.Sequence = info.account_data.Sequence;
-        set_input(selected_request);
-      });
-    }
+//    if (ripple.UInt160.is_valid(tx_json.Account)) {
+//      selected_request.message.id = id._c;
+//      remote.request_account_info(tx_json.Account, function(err, info) {
+//        id.reset();
+//        tx_json.Sequence = info.account_data.Sequence;
+//        set_input(selected_request);
+//      });
+//    }
   };
 
   /* ---- ---- ---- ---- ---- */
@@ -418,6 +437,7 @@
   /* ---- ---- ---- ---- ---- */
 
   function prepare_request(request) {
+  
     var isArray = Array.isArray(request);
     var result  = isArray ? [ ] : { };
 
@@ -482,11 +502,12 @@
     };
   });
 
-  $(document.body).delegate('a', 'click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.open($(this).attr('href'));
-  });
+//stop opening all links in new tabs
+//  $(document.body).delegate('a', 'click', function(e) {
+//    e.preventDefault();
+//    e.stopPropagation();
+//    window.open($(this).attr('href'));
+//  });
 
   var tooltip = $('#tooltip');
   var mousedown = false;
@@ -494,62 +515,63 @@
   $(window).mousedown(function() { mousedown = true; });
   $(window).mouseup(function() { mousedown = false; });
 
-  $('#sign_button').click(function() {
-    if (selected_request._signed) return;
-
-    var self = this;
-    var message = cm_request.getValue();
-
-    try {
-      message = JSON.parse(message);
-    } catch(e) {
-      alert('Invalid JSON');
-      return;
-    }
-
-    var tx_json = message.tx_json;
-
-    if (!ripple.UInt160.is_valid(tx_json.Account)) {
-      alert('Account is invalid');
-      return;
-    }
-
-    if (!message.secret) {
-      alert('Transacting account must have specified secret');
-      return;
-    }
-
-    $(this).addClass('depressed');
-
-    remote.account(tx_json.Account).get_next_sequence(function(e, s) {
-      id.reset();
-      tx_json.Sequence = s;
-
-      try {
-        var tx = remote.transaction();
-        tx.tx_json = tx_json;
-        tx._secret = message.secret;
-        tx.complete();
-        tx.sign();
-      } catch(e) {
-        alert('Unable to sign transaction ' + e.message);
-        $(self).removeClass('depressed');
-        return;
-      }
-
-      message.tx_blob = tx.serialize().to_hex();
-
-      delete message.secret;
-      delete message.tx_json;
-
-      selected_request.message = message;
-      selected_request._signed = true;
-
-      set_input(selected_request);
-
-      $(self).removeClass('depressed');
-    });
-  });
+//get rid of sign button
+//  $('#sign_button').click(function() {
+//    if (selected_request._signed) return;
+//
+//    var self = this;
+//    var message = cm_request.getValue();
+//
+//    try {
+//      message = JSON.parse(message);
+//    } catch(e) {
+//      alert('Invalid JSON');
+//      return;
+//    }
+//
+//    var tx_json = message.tx_json;
+//
+//    if (!ripple.UInt160.is_valid(tx_json.Account)) {
+//      alert('Account is invalid');
+//      return;
+//    }
+//
+//    if (!message.secret) {
+//      alert('Transacting account must have specified secret');
+//      return;
+//    }
+//
+//    $(this).addClass('depressed');
+//
+//    remote.account(tx_json.Account).get_next_sequence(function(e, s) {
+//      id.reset();
+//      tx_json.Sequence = s;
+//
+//      try {
+//        var tx = remote.transaction();
+//        tx.tx_json = tx_json;
+//        tx._secret = message.secret;
+//        tx.complete();
+//        tx.sign();
+//      } catch(e) {
+//        alert('Unable to sign transaction ' + e.message);
+//        $(self).removeClass('depressed');
+//        return;
+//      }
+//
+//      message.tx_blob = tx.serialize().to_hex();
+//
+//      delete message.secret;
+//      delete message.tx_json;
+//
+//      selected_request.message = message;
+//      selected_request._signed = true;
+//
+//      set_input(selected_request);
+//
+//      $(self).removeClass('depressed');
+//    });
+//  });
 
   function send_request() {
     var request = remote.request_server_info();
