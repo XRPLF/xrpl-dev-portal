@@ -254,7 +254,7 @@
       Fee: '15',
       Flags: 0
     },
-    _description: 'Submits a transaction to the network. Please, only use test accounts here.',
+    _description: 'Submits a transaction to the network. <span class="btn-danger">Please, only use test accounts here.</span>',
     _link: 'rippled-apis.html#submit'
   });
   
@@ -271,7 +271,7 @@
    },
    secret : "sssssssssssssssssssssssssssss",
    offline: false,
-   _description: 'Sends a transaction to be signed by the server. Please, only use test accounts here.',
+   _description: 'Sends a transaction to be signed by the server. <span class="btn-danger">Please, only use test accounts here.</span>',
    _link: 'rippled-apis.html#sign'
 });
 
@@ -314,7 +314,8 @@
     var message = command.message;
 
     if (command._description) {
-      $(description).text(command._description).show();
+      //$(description).html(command._description).show();
+      $(description).html($('<a>').attr('href', command._link).html(command._description));
     } else {
       $(description).hide();
     }
