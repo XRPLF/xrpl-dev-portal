@@ -54,6 +54,16 @@ body .content-root {
     margin-top: -50px;
 }
 
+/* Undo some of bootstrap's code styling that clashes */
+.content pre code {
+    white-space: pre;
+}
+
+.content pre {
+    background: none;
+}
+/* end bootstrap code styling fix */
+
 .menubar {
 	padding-top: 10px;
 }
@@ -77,11 +87,16 @@ color: #f09 !important;
     float:right;
 }
 
+#selected_command a:hover {
+    text-decoration: underline;
+}
+
 /* Brand Guidelines */
 
 .brand_guidelines .content-root {
 	padding: 0 !important;
 }
+
 
 @media (min-width: 720px) {
 	.menubar {
@@ -127,6 +142,18 @@ color: #f09 !important;
 		border: none;
 		position: relative;
 		padding-left: 50%; 
+	}
+	
+	#command_wrapper {
+	    display: block !important;
+	}
+	
+	#command_wrapper #command_list {
+	    display: block;
+	}
+	
+	#online_state {
+	    top: 50px !important;
 	}
 	
 }

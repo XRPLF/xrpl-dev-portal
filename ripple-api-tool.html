@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal: Gatewayd</title>
+  <title>Ripple Developer Portal: Ripple API Tool</title>
 
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -21,15 +21,17 @@
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="js/bootstrap.min.js"></script>
 
-  <!-- Flatdoc theme -->
-  <link  href='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
 
   <!-- Custom Stylesheet -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
   <link  href='css/main.css' rel='stylesheet'>
   <link  href='css/custom.css' rel='stylesheet'>
+  
+	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+  
+  
   
   <!-- start Mixpanel -->
   <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
@@ -38,7 +40,7 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
     
-  <script> if (window.location.host == "dev.ripple.com") {mixpanel.track("gatewayd");}</script>    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("ripple-api-tool"); }</script>    
   <!-- end Mixpanel -->
 
   <!-- start google analytics -->
@@ -56,22 +58,14 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     
 
   
-  <!-- syntax selection js -->
-  <script src='js/multicodetab.js'></script>
-   <script>
-    $(document).on('flatdoc:ready', $().multicode_tabs);
-  </script>
-    <script>
-    Flatdoc.run({
-      fetcher: Flatdoc.file('gatewayd.md')
-    });
-  </script>
+
+  <!-- Temporary shims until I modify the css directly -->
   <link type='text/css' rel='stylesheet' href='css/mod.css' />
   <script src='js/expandcode.js'></script>
-  <script src="js/fixsidebarscroll.js"></script>
   
 </head>
 <body role='flatdoc' class='no-literate'>
+<!--Draft warning would go here-->
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -85,12 +79,12 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-			<li class="active"><a href="/">Resources</a></li>
+			<li><a href="/">Resources</a></li>
             <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
             <li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
-            <li><a target="_self" href="ripple-api-tool.html">API Tool</a></li>
+            <li class="active"><a target="_self" href="ripple-api-tool.html">API Tool</a></li>
           </ul>
           	<div class='right'>
 		 	 <!-- GitHub buttons -->
@@ -99,13 +93,71 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         </div><!--/.nav-collapse -->
       </div>
     </div>
-    
   <div class='content-root'>
-    <div class='menubar'>
-      <div class='menu section' role='flatdoc-menu'></div>
+   <div id='wrapper'>
+    <h1>Ripple WebSocket API tool</h1>
+    <div id='online_state'>Offline</div>
+    <div style="clear:both;"></div>
+    <div id='command_wrapper'>
+      <ul id='command_list'>
+        <li class='selected'>server_info</li>
+        <li>server_state</li>
+        <li>ping</li>
+        <br/>
+        <li>subscribe</li>
+        <li>unsubscribe</li>
+        <br/>
+        <li>ledger</li>
+        <li>ledger_closed</li>
+        <li>ledger_current</li>
+        <li>ledger_entry</li>
+        <br/>
+        <li>account_info</li>
+        <li>account_lines</li>
+        <li>account_offers</li>
+        <li>account_tx</li>
+        <br/>
+        <li>transaction_entry</li>
+        <li>tx</li>
+        <li>tx_history</li>
+        <br/>
+        <li>sign</li>
+        <li>submit</li>
+        <br/>
+        <li>ripple_path_find</li>
+        <li>path_find</li>
+        <li>book_offers</li>
+      </ul>
+      <div id='command_table'>
+        <div id='io_wrapper'>
+          <div id='input' class='io'>
+            <h2>Request</h2>
+            <div id='request_options'>
+              <div class="button btn btn-primary api" id='request_button'>Send request</div>
+            </div>
+            <div style="clear:both;"></div>
+            <h3 id='selected_command' title='Reference information'>server_info</h3>
+            <p id='description'></p>
+            <div id='invalid'>Invalid JSON</div>
+            <p>JSON</p>
+            <div id='request'></div>
+          </div>
+          <div id='output' class='io'>
+            <h2>Response</h2>
+            <p>Stream output</p>
+            <ul class='toolbar'>
+              <li id='stream_show'>show</li>
+              <li id='stream_pause'>pause</li>
+            </ul>
+            <div id='status'></div>
+            <p id='info'></p>
+            <div id='response'></div>
+            <div id='tooltip'></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div role='flatdoc-content' class='content'>
-    </div>
+  </div>
   </div>
 <div class="footer">
       <div class="container">
@@ -169,7 +221,18 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					<!--End mc_embed_signup-->
 				</div>
       		</div>
+        
       </div>
     </div>
+  
+  <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
+  <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
+  <script type='text/javascript' src='js/es5-shim.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js'></script>
+  <script type='text/javascript' src='js/cm-javascript.min.js'></script>
+  <script type='text/javascript' src='js/api-ripple.min.js'></script>
+  <script type='text/javascript' src='js/api-main.js'></script>
+
+
 </body>
 </html>
