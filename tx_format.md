@@ -15,7 +15,6 @@ There are several different types of transactions that perform different actions
 
 Additionally, there are *Psuedo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
 
-* [Amendment - Adopt a new feature in the network](#amendment)
 * [Fee - Adjust the minimum transaction fee or account reserve](#fee)
 
 ## Signing Transactions ##
@@ -159,7 +158,7 @@ Every transaction has a the same set of fundamental properties:
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction |
 | [Fee](#transaction-fees) | String | Amount | (Required, but auto-fillable) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
-| Flags | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction |
+| [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [PreviousTxnID](#previoustxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
@@ -233,6 +232,8 @@ The only flag that applies globally to all transactions is as follows:
 
 ## Payment ##
 
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/Payment.cpp "Source")
+
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
 
 Example payment:
@@ -282,6 +283,8 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 
 ## AccountSet ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an account object in the global ledger.
 
@@ -367,13 +370,15 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
 
+<span class='draft-comment'>(SetRegularKey example here)</span>
+
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| RegularKey | String | PubKey | <span class='draft-comment'>(Optional?)</span> Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; or the value `0` to remove the existing regular key. |
+| RegularKey | String | PubKey | (Optional) Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; if omitted, removes the existing regular key. |
 
-Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too.) 
+Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the [asfDisableMaster account flag](#accountset-flags).)
 
-A Regular Key pair can be changed, but a Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key whenever possible is beneficial to security.
+A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
 When the Regular Key is compromised, you can use the this transaction type to change it. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee exactly one time ever. To do so, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's master key. (This way, you can potentially take back your account even if an attacker has already used up all the account's spare XRP.) <span class='draft-comment'>(Note: confirm that this is still exactly how that works.)</span>
 
@@ -381,7 +386,26 @@ When the Regular Key is compromised, you can use the this transaction type to ch
 
 ## OfferCreate ##
 
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CreateOffer.cpp "Source")
+
 An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and typically creates an Offer node in the global ledger. Offers can be partially fulfilled.
+
+```
+{
+    "TransactionType": "OfferCreate",
+    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "12",
+    "Flags": 0,
+    "LastLedgerSequence": 7108682,
+    "Sequence": 8,
+    "TakerGets": "6000000",
+    "TakerPays": {
+      "currency": "GKO",
+      "issuer": "ruazs5h1qEsqpke88pcqnaseXdm6od2xc",
+      "value": "2"
+    }
+}
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
@@ -392,28 +416,37 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 ### Lifecycle of an Offer ###
 
-When an OfferCreate transaction is processed, it automatically consumes matching offers to the extent possible. (These matching offers may even provide a better exchange rate than specified in the offer; if so, the offer creator could pay less than the full `TakerGets` amount in order to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes a passive offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
+When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (Crossing offers provide a better exchange rate than specified in the offer, so the offer creator could pay less than the full `TakerGets` amount in order to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes a passive offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
 
 An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded.
 
-<span class='draft-comment'>Offer fulfillment ignores trust limits and creates a trust lines with a zero limit as necessary. If an insufficient reserve from the offer maker is available to create the line, the offer is considered unfunded. (Explanation needed)</span>
+You can create an Offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. Any amount of that currency you have, up to the `TakerGets` amount, will be sold until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
 
-You can create an Offer so long as you have at least some <span class='draft-comment'>(details needed)</span> of the currency specified by the `TakerGets` parameter of the offer. Any amount of that currency you have, up to the `TakerGets` amount, will be sold until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
+It is possible for an offer to become temporarily or permanently *unfunded*:
 
-It is possible for an offer to become temporarily *unfunded*:
-
-* The creator no longer has any of the `TakerGets` currency.
-  * The offer will become funded again when the creator obtains more of that currency.
+* If the creator no longer has any of the `TakerGets` currency.
+  * The offer becomes funded again when the creator obtains more of that currency.
 * If the currency required to fund the offer is held in a [frozen trust line](https://wiki.ripple.com/Freeze).
-  * The offer will become funded again when the trust line is no longer frozen.
+  * The offer becomes funded again when the trust line is no longer frozen.
+* If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
+  * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
+* If the Expiration date included in the offer is prior to the most recently-closed ledger. (See [Expiration](#expiration).)
 
-An offer becomes *permanently* inactive when any of the following happen:
-
+An unfunded transaction can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
-* The Expiration date included in the offer is prior to the most recently-closed ledger. (See [Expiration](#expiration).)
 * A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
-* <span class='draft-comment'>The creator of the offer places a new offer that crosses it (categorically? or just if the two offers cancel out? Does tfPassive matter?)</span>
-* <span class='draft-comment'>Unfunded offers are deleted when encountered during transaction processing. (Even if they might become funded later?)</span>
+* A subsequent OfferCreate from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)
+* An offer is found to be unfunded during transaction processing.
+  * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports. <span class='draft-comment'>(Not sure on the wording for this exactly.)</span>
+* *Note:* there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See [RIPD-456](https://ripplelabs.atlassian.net/browse/RIPD-456) for status.)
+
+### Offers and Trust ###
+
+The limit values of trust lines (See [TrustSet](#trustset)) do not affect offer. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.
+
+However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](https://wiki.ripple.com/Reserves), any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.
+
+A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers intentionally let you go beyond that limit 
 
 ### Offer Preference ###
 
@@ -435,16 +468,32 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfPassive | 0x00010000 | 65536 | If enabled, the offer will go straight to being a node in the ledger, without trying to consume matching offers first. |
+| tfPassive | 0x00010000 | 65536 | If enabled, the offer will not consume offers that exactly match it, and instead becomes a passive node in the ledger. |
 | tfImmediateOrCancel | 0x00020000 | 131072 | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer will never become a ledger node: it only attempts to match existing offers in the ledger. |
 | tfFillOrKill | 0x00040000 | 262144 | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only attempt to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. |
 | tfSell | 0x00080000 | 524288 | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
 
-<span class='draft-comment'>(Some combinations of these are disallowed, right? For example, tfPassive vs. tfImmediateOrCancel seem mutually exclusive.)</span>
+The following invalid flag combination prompts a temINVALID_FLAG error:
+
+* tfImmediateOrCancel and tfFillOrKill
 
 ## OfferCancel ##
 
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CancelOffer.cpp "Source")
+
 An OfferCancel transaction removes an Offer node from the global ledger.
+
+```
+{
+    "TransactionType": "OfferCancel",
+    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "12",
+    "Flags": 0,
+    "LastLedgerSequence": 7108629,
+    "OfferSequence": 6,
+    "Sequence": 7
+}
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
@@ -457,27 +506,46 @@ The OfferCancel method returns [tesSUCCESS](https://ripple.com/wiki/Transaction_
 
 ## TrustSet ##
 
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/SetTrust.cpp "Source")
+
 Create or modify a trust line linking two accounts.
+
+```
+{
+    "TransactionType": "TrustSet",
+    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "12",
+    "Flags": 262144,
+    "LastLedgerSequence": 8007750,
+    "LimitAmount": {
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+      "value": "100"
+    },
+    "Sequence": 12
+}
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| LimitAmount | Object | Amount | The maximum amount of currency, issued by the other party, that that the account is willing to hold. |
-| QualityIn | Unsigned Integer | UInt32 | (Optional) <span class='draft-comment'>% fee for incoming value on this line, represented as an integer over 1,000,000,000</span> |
-| QualityOut | Unsigned Integer | UInt32 | (Optional) <span class='draft-comment'>% fee for outgoing value on this line, represented as an integer over 1,000,000,000</span> |
-
-<span class='draft-comment'>(Where do you specify which account you're extending trust to? In the LimitAmount object?</span>
+| [LimitAmount](#trust-limits) | Object | Amount | Object defining the trust line to create or modify, in the same format as [currency amounts](rippled-apis.html#specifying-currency-amounts). |
+| LimitAmount.currency | String | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
+| LimitAmount.value | String | (Amount.value) | Quoted decimal representation of the limit to set on this trust line. |
+| LimitAmount.issuer | String | (Amount.issuer) | The address of the account to extend trust to. |
+| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000 <br\>*Note:* This feature is considered experimental. |
+| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000 <br\>*Note:* This feature is considered experimental. |
 
 ### Trust Limits ###
 
-All balances on the Ripple Network, except for XRP, represent money owed in the real world. The account that issues those funds in Ripple (identified by the `issuer` field of the currency object) is responsible for paying money back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account. 
+All balances on the Ripple Network, except for XRP, represent money owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is responsible for paying money back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account. 
 
-Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing account defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network.
+Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing gateway defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network. (The Ripple Ledger will still reflect that you possess the same balance with that issuing gateway, but you won't be able to redeem, making it unlikely to be worth anything.)
 
-A trust line with a limit of 0 is equivalent to no trust line.
+There are two cases where you can hold a balance on a trust line that is *greater* than your limit: when you acquire more of that currency through [trading](#offercreate), or when you decrease the limit on your trust line.
 
-### Quality ###
+Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it. 
 
-<span class='draft-comment'>(TODO)</span>
+A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
 
 ### TrustSet Flags ###
 
@@ -486,14 +554,10 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfSetAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. |
-| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. |
+| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
+| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
 | tfSetFreeze | 0x00100000 | 1048572 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
 | tfClearFreeze | 0x00200000 | 2097152 | Unfreeze the trustline. |
-
-### High Account, Low Account ###
-
-Trust lines are conceptualized as one-directional lines controlled by a single party; however, for optimization purposes, they are represented in the ledger as a single trust two-way trust line. Each account that is a party to a trust line is arbitrarily deemed either the "High" or "Low" account (depending on which one has higher the numerical representation of their account address). Flags and values generally apply to one or the other side of the trust line. <span class='draft-comment'>(This section should probably be rewritten or removed. It doesn't feel useful right now. Maybe more relevant in the ledger format page?)</span>
 
 # Pseudo-Transactions #
 
@@ -509,18 +573,6 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 | SigningPubKey | "" |
 | Signature | "" |
 
-## Amendment ##
-
-A new feature. <span class='draft-comment'>Not implemented?</span>
-
-| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
-| Amendment | N/A | Hash256 | A unique identifier for the new feature or rule change to be applied. |
-
-<span class='draft-comment'>(Supposedly there's a several-weeks-long waiting period before an Amendment applies. How is that determined? Based on closed ledger time, presumably?)</span>
-
-<span class='draft-comment'>(TODO)</span>
-
 ## Fee ##
 
 A change in transaction or account fees. This is typically in response to changes in the load on the network.
@@ -532,4 +584,4 @@ A change in transaction or account fees. This is typically in response to change
 | ReserveBase | <span class='draft-comment'>Unsigned Integer?</span> | UInt32 | The base reserve, in drops |
 | ReserveIncrement | <span class='draft-comment'>Unsigned Integer?</span> |UInt32 | The incremental reserve, in drops |
 
-<span class='draft-comment'>(TODO)</span>
+<span class='draft-comment'>(TODO: find a historical example of a real one)</span>
