@@ -309,7 +309,7 @@ Example AccountSet:
 | [Domain](#domain) | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
 | EmailHash | String | Hash128 | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | MessageKey | String | PubKey | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
-| [SetFlag](#accountset-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to enable for this account. |
+| [SetFlag](#accountset-flags) | Unsigned Integer | UInt32 | (Optional) Integer flag to enable for this account. |
 | [TransferRate](#transferrate) | Unsigned Integer | UInt32 | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
 | WalletLocator | String | Hash256 | (Optional) Not used. |
 | WalletSize | Unsigned Integer | UInt32 | (Optional) Not used. |
@@ -370,7 +370,15 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
 
-<span class='draft-comment'>(SetRegularKey example here)</span>
+```
+{
+    "Flags": 0,
+    "TransactionType": "SetRegularKey",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "12",
+    "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+}
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
@@ -380,7 +388,7 @@ Instead of using an account's master key to sign transactions, you can set an al
 
 A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
-When the Regular Key is compromised, you can use the this transaction type to change it. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee exactly one time ever. To do so, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's master key. (This way, you can potentially take back your account even if an attacker has already used up all the account's spare XRP.) <span class='draft-comment'>(Note: confirm that this is still exactly how that works.)</span>
+If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](https://wiki.ripple.com/Ledger_Format#AccountRoot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
 
 
 
