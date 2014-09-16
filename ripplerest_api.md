@@ -2,7 +2,7 @@
 
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
 
-While there are other API's to use with Ripple (i.e. Accessing the `rippled` server directly via a web socket), this documentation is meant only for the `ripple-rest` API as this is the high-level API recommended for working with Ripple and some of the endpoints provide abstractions to make it much easier to use than the traditional websocket API's.
+While there are other APIs to use with Ripple (i.e. Accessing the `rippled` server directly via a web socket), this documentation is meant only for the `ripple-rest` API as this is the high-level API recommended for working with Ripple and some of the endpoints provide abstractions to make it much easier to use than the traditional websocket APIs.
 
 Installation instructions and source code can be found in the `ripple-rest` repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>. 
 
@@ -11,6 +11,7 @@ Older versions of the `ripple-rest` documentation will archived <a href="https:/
 
 ## Available API Routes ##
 
+* [`GET /v1/accounts/new`](#generating-accounts)
 * [`GET /v1/accounts/{:address}/payments/paths`](#preparing-a-payment)
 * [`GET /v1/accounts/{:address}/payments`](#confirming-a-payment) 
 * [`GET /v1/accounts/{:address}/balances`](#account-balances)
@@ -73,7 +74,7 @@ Before you can use the `ripple-rest` API, you will need to have three things:
 
  * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the readme.md file in the Github Repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>.
 
- * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://ripple.com/wiki/Client_Manual" target="_blank">Client Manual</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking on the __Receive__ tab in the web client.
+ * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation" target="_blank">online support</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking the *Show Address* button in the __Fund__ tab of the [web client](https://rippletrade.com/).
  
  * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is installed and running on a server you have connectivity to. 
  
@@ -82,7 +83,7 @@ As a programmer, you will also need to have a suitable HTTP client library that 
 
 ### Exploring the API ###
 
-Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal window:
+Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal:
 
 `curl http://[ripple-rest-server]/v1/server`
 
@@ -138,9 +139,9 @@ There are two different ways in which errors are returned by the `ripple-rest` A
 
 Low-level errors are indicated by the server returning an appropriate HTTP status code.  The following status codes are currently supported:
 
-+ `Bad Request (400)` The JSON body submitted is malformed or invalid.  
-+ `Method Not Accepted (404)` The endpoint is not allowed.  
-+ `Gateway Timeout (502)` The rippled server is taking to long to respond.  
++ `Bad Request (400)` The JSON body submitted is malformed or invalid. 
++ `Method Not Accepted (404)` The endpoint is not allowed. 
++ `Gateway Timeout (502)` The rippled server is taking to long to respond. 
 + `Bad Gateway (504)` The rippled server is non-responsive.
 
 Application-level errors are described further in the body of the JSON response with the following fields:
@@ -476,7 +477,7 @@ This will return the most recent payments (both incoming and outgoing will be de
     { /* payment */ }.
     { /* payment */ }.
     { /* payment */ }
-  ]    
+  ]
 }
 ```
 __`GET /v1/accounts/{:address}/payments?direction=incoming`__
@@ -559,6 +560,30 @@ Note that the `ripple-rest` API has to retrieve the full list of payments from t
 
 `ripple-rest` provides the ability to review and confirm on information regarding your Ripple account. You can view your current balances and settings, as well as the ability to set your account setting flags.
 
+## Generating Accounts ##
+
+There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
+
+Generating the keys can be done offline, since it does not affect the network at all. To make it easy, Ripple-REST can generate account keys for you.
+
+*Caution:* Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There *are* bad actors who are sniffing around for account keys so they can steal your money!
+
+__`GET /v1/accounts/new`__
+
+The response is an object with the address and the secret for a potential new account:
+
+```js
+{
+    "success": true,
+    "account": {
+        "address": "raqFu9wswvHYS4q5hZqZxVSYei73DQnKL8",
+        "secret": "shUzHiYxoXX2FgA54j42cXCZ9dTVT"
+    }
+}
+```
+
+These values are enough to be able to receive XRP; however, before you can do anything else, you must receive a payment of XRP, enough to meet the account reserve. Until then, the potential account is valid but is not actually recorded in the shared global ledger.
+
 ## Account Balances ##
 
 __`GET /v1/accounts/{:address}/balances`__
@@ -581,7 +606,7 @@ The `account` parameter should be set to the Ripple address of the desired accou
       "amount": "512.79",
       "issuer": "r...",
     }
-    ...  
+    ... 
   ]
 }
 ```
