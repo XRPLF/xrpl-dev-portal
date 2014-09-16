@@ -43,9 +43,9 @@ Typically, you create a transaction in JSON format first. Here is an example of 
 
 After doing that, you generate the signed binary format for the transaction. There are two ways to do this:
 
-* Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
+1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
   * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is the reference implementation for offline signing. 
-* Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net.)
+2. Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net.)
   * As a shortcut, you can use the [submit command](rippled-apis.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes. 
 
 In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](rippled-apis.html#submit). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
@@ -218,7 +218,7 @@ The memos field is currently limited to no more than 1KB in size.
 
 ### Flags ###
 
-The Flags field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be bitwise-or added to set multiple flags at once.
+The Flags field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
@@ -231,7 +231,6 @@ The only flag that applies globally to all transactions is as follows:
 
 
 ## Payment ##
-
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
