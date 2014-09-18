@@ -1737,8 +1737,8 @@ The request can contain the following parameters:
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions in the specified ledger version. |
 | full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes |
-| ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
-| ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -2244,11 +2244,11 @@ An example of the request format:
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
-1. `index` - Retrieve an individual ledger entry by its unique index
+1. `index` - Retrieve an individual ledger node by its unique index
 2. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
 3. `directory` - Retrieve a directory node, which contains a list of IDs linking things
 4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
-5. `ripple_state` - Retrieve a RippleState node, which defines currency (IOU) balances and credit limits between accounts
+5. `ripple_state` - Retrieve a RippleState node, which a trust line along which non-XRP balances are held
 
 If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
@@ -2269,8 +2269,10 @@ The full list of parameters recognized by this method is as follows:
 | ripple_state.accounts | Array | (Required if `ripple_state` specified) 2-length array of account address strings, defining the two accounts linked by this RippleState entry |
 | ripple_state.currency | String | (Required if `ripple_state` specified) String representation of a currency that this RippleState entry relates to, as either a 3-letter currency code or a 40-character hex code |
 | binary | Boolean | (Optional, defaults to false) If true, return hashed data as hex strings. Otherwise, return data in JSON format. |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 
-The `generator` parameter is deprecated and may be removed without further notice.
+The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
 #### Response Format ####
 
