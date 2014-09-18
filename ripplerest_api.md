@@ -823,33 +823,32 @@ This endpoint takes no parameters, and returns a JSON object with information on
 
 ```js
 {
-  "api_server_status": "online",
-  "rippled_server_url": "wss://s_west.ripple.com:443",
+  "success": true,
+  "api_documentation_url": "https://github.com/ripple/ripple-rest",
+  "rippled_server_url": "wss://s1.ripple.com:443",
   "rippled_server_status": {
-    "info": {
-      "build_version": "0.21.0-rc2",
-      "complete_ledgers": "32570-4805506",
-      "hostid": "BUSH",
-      "last_close": {
-        "converge_time_s": 2.011,
-        "proposers": 5
-      },
-      "load_factor": 1,
-      "peers": 51,
-      "pubkey_node": "n9KNUUntNaDqvMVMKZLPHhGaWZDnx7soeUiHjeQE8ejR45DmHyfx",
-      "server_state": "full",
-      "validated_ledger": {
-        "age": 2,
-        "base_fee_xrp": 0.00001,
-        "hash": "2B79CECB06A500A2FB92F4FB610D33A20CF8D7FB39F2C2C7C3A6BD0D75A1884A",
-        "reserve_base_xrp": 20,
-        "reserve_inc_xrp": 5,
-        "seq": 4805506
-      },
-      "validation_quorum": 3
-    }
-  },
-  "api_documentation_url": "https://github.com/ripple/ripple-rest"
+    "build_version": "0.26.3-sp1",
+    "complete_ledgers": "32570-8926343",
+    "hostid": "LIED",
+    "io_latency_ms": 1,
+    "last_close": {
+      "converge_time_s": 3.068,
+      "proposers": 5
+    },
+    "load_factor": 1,
+    "peers": 52,
+    "pubkey_node": "n9LpxYuMx4Epz4Wz8Kg2kH3eBTx1mUtHnYwtCdLoj3HC85L2pvBm",
+    "server_state": "full",
+    "validated_ledger": {
+      "age": 10,
+      "base_fee_xrp": 0.00001,
+      "hash": "5A24FC580674F444BAA72B897C906FF1E167227869BF3D2971C2D87272B038EF",
+      "reserve_base_xrp": 20,
+      "reserve_inc_xrp": 5,
+      "seq": 8926343
+    },
+    "validation_quorum": 3
+  }
 }
 ```
 
