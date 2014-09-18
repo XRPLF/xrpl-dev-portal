@@ -2,7 +2,7 @@
 
 A *Transaction* is the only way to modify the Ripple Ledger. All transactions have certain fields in common:
 
-* [All Transactions](#all-transactions)
+* [Common Fields](#common-fields)
 
 There are several different types of transactions that perform different actions, each with additional fields relevant to that type of action:
 
@@ -17,9 +17,11 @@ Additionally, there are *Psuedo-Transactions* that are not created and submitted
 
 * [Fee - Adjust the minimum transaction fee or account reserve](#fee)
 
-## Signing Transactions ##
+## Signing and Sending Transactions ##
 
-Signing a transaction cryptographically proves that the person in charge of the account sending the transaction really means to do so. Only signed transactions can be submitted to the network and included in ledgers.  network, and possibly included in a validated ledger. A signed transaction is immutable: if any of the contents of the transaction change, the signature is not valid.
+Signing a transaction cryptographically proves that the person in charge of the account sending the transaction is authorized to do so. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.
+
+You can sign a transaction using a secret key: either the master secret, or a regular secret if the account has a regular key pair associated with it. (See [SetRegularKey](#setregularkey) for details.)
 
 Multi-signature transactions are [in development](https://wiki.ripple.com/Multisign).
 
@@ -44,8 +46,8 @@ Typically, you create a transaction in JSON format first. Here is an example of 
 After doing that, you generate the signed binary format for the transaction. There are two ways to do this:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-  * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is the reference implementation for offline signing. 
-2. Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net.)
+  * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is a JavaScript implementation of offline signing. 
+2. Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)
   * As a shortcut, you can use the [submit command](rippled-apis.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes. 
 
 In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](rippled-apis.html#submit). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
@@ -148,29 +150,42 @@ After a transaction has been submitted, if it gets accepted into a validated led
 }
 ```
 
-*Note:* The `"hash"` value needed to look up the transaction is in the response from the server when you submit the transaction, or you can find the relevant transaction by looking through an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
+### Identifying Transactions ###
 
-## All Transactions ##
+The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction by in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
 
-Every transaction has a the same set of fundamental properties:
+The transaction hash can be used as a "proof of payment" since anyone can look up the transaction using the hash and verify its final status.
+
+## Common Fields ##
+
+Every transaction has a the same set of fundamental fields:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| Account | String | Account | The unique address of the account that initiated the transaction |
-| [Fee](#transaction-fees) | String | Amount | (Required, but auto-fillable) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
-| [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction |
+| Account | String | Account | The unique address of the account that initiated the transaction. |
+| [Fee](#transaction-fees) | String | Amount | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
+| [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [PreviousTxnID](#previoustxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
-| [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but auto-fillable) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
+| [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey | String | PubKey | (Omitted until signed) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
-| TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from |
+| TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from. |
+
+### Auto-fillable Fields ###
+
+Some fields can be automatically filled in before the transaction is signed, either by a `rippled` server or by the library used for offline signing. Both [ripple-lib](https://github.com/ripple/ripple-lib) and `rippled` can automatically provide the following values:
+
+* `Fee` - Automatically use the current base network fee.
+* `Sequence` - Automatically use the next sequence number for the account sending the transaction.
+
+For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
 
 ### Transaction Fees ###
 
-The `Fee` field specifies an amount, in drops of XRP, that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
+The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
 
 Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an admin connection, it relays the transaction even under high load, so long as the fee meets the global base.)
 
@@ -188,7 +203,7 @@ For example, if you attempted to submit 3 transactions with sequence numbers 11,
 
 This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.
 
-In this way, an AccountSet transaction with no options is the canonical "no-op" transaction.
+In this way, an AccountSet transaction with no options is the canonical "[no-op](http://en.wikipedia.org/wiki/NOP)" transaction.
 
 ### LastLedgerSequence ###
 
@@ -210,9 +225,8 @@ The Memos field allows for arbitrary messaging data that can accompany the trans
 
 | Field | Type | Description |
 |-------|------|-------------|
-| MemoType | String | Arbitrary descriptor of the memo's format. We recommend using MIME types. |
-| MemoData | (Variable) | Any data representing the memo's content. |
-| (...) | (Variable) | Arbitrary additional fields such as `Account`, `RegularKey`, etc. that can be used to support features such as encryption. |
+| MemoType | String | A unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| (...) | (Variable) | Arbitrary additional fields defined by the MemoType, including the contents of the memo, any values needed to decrypt it or verify its signature, etc. |
 
 The memos field is currently limited to no more than 1KB in size.
 
@@ -255,20 +269,25 @@ Example payment:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency sent as part of this transaction. (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
+| Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency to deliver. *Note:* If the [*tfPartialPayment* flag](#payment-flags) is set, this is not the amount actually received. (Formatted as per [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts).) |
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| Paths | Array of path arrays | PathSet | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the paths are chosen by the server. |
-| SendMax | String/Object | Amount | Highest amount of currency this transaction is allowed to cost; this is to compensate for [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) |
+| Paths | Array of path arrays | PathSet | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the server chooses a path. Must be omitted for XRP-to-XRP transactions. |
+| SendMax | String/Object | Amount | (Optional) Highest amount of currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) If omitted, do not send more than the `Amount` to be received. Must be omitted or empty for XRP-to-XRP transactions. |
 
 ### Paths ###
 
-The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from the path array because they are part of the transaction definition.
+The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path.
 
 You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. We recommend always including looking up the paths and including them as part of the transaction, because there are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
 
-An empty `Paths` array indicates a direct transfer: either because the sending and receiving accounts are directly linked by a trust line in the currency being transferred, or because the transaction is sending XRP.
+An empty `Paths` array indicates that the server should decide which paths to use, or there is a direct path connecting the source and destination accounts.
+
+A direct path could be:
+
+* An XRP-to-XRP transfer.
+* A payment along a single trust line that connects the two accounts in the currency being transferred.
 
 ### Payment Flags ###
 
@@ -277,7 +296,21 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfNoDirectRipple | 0x00010000 | 65536 | Do not use a direct path, if available. This is intended to force the transaction to take arbitrage opportunities. Most clients will not need this. |
-| tfPartialPayment | 0x00020000 | 131072 | Instead of deducting transfer and exchange fees from the sending account's balance, reduce the received amount by the fee amounts. This is useful for refunding payments. Note, the transaction fee is still subtracted from the sender's account. |
+| tfPartialPayment | 0x00020000 | 131072 | Instead of deducting transfer and exchange fees from the sending account's balance, reduce the received amount by the fee amounts. See [Partial Payments](#partial-payments) for more details. |
+
+### Partial Payments ###
+
+A partial payment subtracts fees from the amount received instead of adding to the amount sent. Partial payments are useful for [returning payments](https://wiki.ripple.com/Returning_payments) without incurring additional costs to oneself. 
+
+By default, the `Amount` field of a Payment transaction specifies the amount of currency that is *received* by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account, up to the `SendMax` amount. (If `SendMax` is not specified, and fees are necessary to make the transaction the transaction fails.)
+
+The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers. 
+
+Validated partial payment transactions have a `meta.DestinationAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
+
+A partial payment cannot provide the initial XRP to fund an account; this case returns the error code telNO_DST_PARTIAL. Direct XRP-to-XRP payments also cannot be partial payments temBAD_SEND_XRP_PARTIAL.
+
+*Note:* The amount of XRP used for the [transaction fee](#transaction-fee) is always deducted from the sender's account, regardless of the *tfPartialPayment* flag.
 
 
 
@@ -285,7 +318,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an account object in the global ledger.
+An AccountSet transaction modifies the properties of an [account in the global ledger]((https://wiki.ripple.com/Ledger_Format#AccountRoot).
 
 Example AccountSet:
 
@@ -307,7 +340,7 @@ Example AccountSet:
 | [ClearFlag](#accountset-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
 | [Domain](#domain) | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
 | EmailHash | String | Hash128 | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| MessageKey | String | PubKey | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple |
+| MessageKey | String | PubKey | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple. |
 | [SetFlag](#accountset-flags) | Unsigned Integer | UInt32 | (Optional) Integer flag to enable for this account. |
 | [TransferRate](#transferrate) | Unsigned Integer | UInt32 | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
 | WalletLocator | String | Hash256 | (Optional) Not used. |
@@ -319,14 +352,16 @@ If none of these options are provided, then the AccountSet transaction has no ef
 
 The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain *example.com* would be represented as `"6578616d706c652e636f6d"`.
 
-Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain.
+To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
+
+Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain. *Note:* We expect the *host-meta* component of [Gateway Services](https://wiki.ripple.com/Gateway_Services) to replace ripple.txt for this purpose.
 
 ### AccountSet Flags ###
 
-There are several options which can be either enabled or disabled for an account. Account Options are represented by different types of flags depending on the situation:
+There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:
 
 * The `AccountSet` transaction type has several "AccountSet Flags" (prefixed *asf*) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter.
-* The `AccountSet` transaction type has several **DEPRECATED** transaction flags (prefixed *tf*) that can be used to enable or disable specific account options when passed in the `Flags` parameter. This style is deprecated, and new account options will not have new corresponding transaction flags.
+* The `AccountSet` transaction type has several transaction flags (prefixed *tf*) that can be used to enable or disable specific account options when passed in the `Flags` parameter. This style is discouraged, and new account options will not have new corresponding transaction flags.
 * The `AccountRoot` ledger node type has several ledger-specific-flags (prefixed *lsf*) which represent the state of particular account options within a particular ledger. Naturally, the values apply until a later ledger version changes them.
 
 The preferred way to enable and disable Account Flags is using the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with *asf*.
@@ -338,14 +373,25 @@ The available AccountSet flags are:
 | Flag Name | Decimal Value | Description | Corresponding Ledger Flag |
 |-----------|---------------|-------------|---------------------------|
 | asfRequireDest | 1 | Require a destination tag to send transactions to this account. | lsfRequireDestTag |
-| asfRequireAuth | 2 | Require authorization for users to extend trust to this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
+| asfRequireAuth | 2 | Require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [PreviousTxnID](#previoustxnid) | (None) |
 | asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be cleared. | lsfNoFreeze |
-| asfGlobalFreeze | 7 | Freeze/Unfreeze all assets issued by this account | lsfGlobalFreeze |
+| asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
 
-The following [Transaction flags](#flags), specific to the AccountSet transaction type, are **DEPRECATED**: *tfRequireDestTag*, *tfOptionalDestTag*, *tfRequireAuth*, *tfOptionalAuth*, *tfDisallowXRP*, *tfAllowXRP*.
+The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
+
+| Flag Name | Hex Value | Decimal Value | Replaced by AccountSet Flag |
+|-----------|-----------|---------------|-----------------------------|
+| tfRequireDestTag | 0x00010000 | 65536 | asfRequireDest (SetFlag) |
+| tfOptionalDestTag | 0x00020000 | 131072 | asfRequireDest (ClearFlag) |
+| tfRequireAuth | 0x00040000 | 262144 | asfRequireAuth (SetFlag) |
+| tfOptionalAuth | 0x00080000 | 524288 | asfRequireAuth (ClearFlag) |
+| tfDisallowXRP | 0x00100000 | 1048576 | asfDisallowXRP (SetFlag) |
+| tfAllowXRP | 0x00200000 | 2097152 | asfDisallowXRP (ClearFlag) |
+
+
 
 #### Blocking Incoming Transactions ####
 
@@ -395,7 +441,7 @@ If your regular key is compromised, but the master key is not, you can use this 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CreateOffer.cpp "Source")
 
-An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and typically creates an Offer node in the global ledger. Offers can be partially fulfilled.
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the global ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
 ```
 {
@@ -416,14 +462,14 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| [Expiration](#expiration) | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in seconds since the Ripple Epoch. |
-| OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. |
+| [Expiration](#expiration) | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in [seconds since the Ripple Epoch](rippled-apis.html#specifying-time). |
+| OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 | TakerGets | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being provided by the offer creator. |
 | TakerPays | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being requested by the offer creator. |
 
 ### Lifecycle of an Offer ###
 
-When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (Crossing offers provide a better exchange rate than specified in the offer, so the offer creator could pay less than the full `TakerGets` amount in order to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes a passive offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
+When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full `TakerGets` amount in order to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes an Offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
 
 An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded.
 
@@ -437,14 +483,15 @@ It is possible for an offer to become temporarily or permanently *unfunded*:
   * The offer becomes funded again when the trust line is no longer frozen.
 * If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
   * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
-* If the Expiration date included in the offer is prior to the most recently-closed ledger. (See [Expiration](#expiration).)
+* If the Expiration time included in the offer is later than the close time of the most recently-closed ledger. (See [Expiration](#expiration).)
 
 An unfunded transaction can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
+
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
 * A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
 * A subsequent OfferCreate from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)
-* An offer is found to be unfunded during transaction processing.
-  * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports. <span class='draft-comment'>(Not sure on the wording for this exactly.)</span>
+* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook and 
+  * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports.
 * *Note:* there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See [RIPD-456](https://ripplelabs.atlassian.net/browse/RIPD-456) for status.)
 
 ### Offers and Trust ###
@@ -453,7 +500,7 @@ The limit values of trust lines (See [TrustSet](#trustset)) do not affect offer.
 
 However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](https://wiki.ripple.com/Reserves), any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.
 
-A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers intentionally let you go beyond that limit 
+A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.
 
 ### Offer Preference ###
 
@@ -475,7 +522,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfPassive | 0x00010000 | 65536 | If enabled, the offer will not consume offers that exactly match it, and instead becomes a passive node in the ledger. |
+| tfPassive | 0x00010000 | 65536 | If enabled, the offer will not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It will still consume offers that cross it. |
 | tfImmediateOrCancel | 0x00020000 | 131072 | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer will never become a ledger node: it only attempts to match existing offers in the ledger. |
 | tfFillOrKill | 0x00040000 | 262144 | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only attempt to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. |
 | tfSell | 0x00080000 | 524288 | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
@@ -539,12 +586,12 @@ Create or modify a trust line linking two accounts.
 | LimitAmount.currency | String | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
 | LimitAmount.value | String | (Amount.value) | Quoted decimal representation of the limit to set on this trust line. |
 | LimitAmount.issuer | String | (Amount.issuer) | The address of the account to extend trust to. |
-| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000 <br\>*Note:* This feature is considered experimental. |
-| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000 <br\>*Note:* This feature is considered experimental. |
+| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. <br\>*Note:* This feature is considered experimental. <span class="draft-comment">(Disagreement between AHBritto & JoelKatz here)</span> |
+| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. <br\>*Note:* This feature is considered experimental. |
 
 ### Trust Limits ###
 
-All balances on the Ripple Network, except for XRP, represent money owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is responsible for paying money back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account. 
+All balances on the Ripple Network, except for XRP, represent value owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is responsible for paying the balance back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account. 
 
 Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing gateway defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network. (The Ripple Ledger will still reflect that you possess the same balance with that issuing gateway, but you won't be able to redeem, making it unlikely to be worth anything.)
 
