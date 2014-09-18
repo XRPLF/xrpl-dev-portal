@@ -562,9 +562,13 @@ Note that the `ripple-rest` API has to retrieve the full list of payments from t
 
 ## Generating Accounts ##
 
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc1))
+
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
 Generating the keys can be done offline, since it does not affect the network at all. To make it easy, Ripple-REST can generate account keys for you.
+
+The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.)
 
 *Caution:* Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There *are* bad actors who are sniffing around for account keys so they can steal your money!
 
