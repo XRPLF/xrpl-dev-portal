@@ -2,7 +2,7 @@
 
 The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
 
-While there are other API's to use with Ripple (i.e. Accessing the `rippled` server directly via a web socket), this documentation is meant only for the `ripple-rest` API as this is the high-level API recommended for working with Ripple and some of the endpoints provide abstractions to make it much easier to use than the traditional websocket API's.
+While there are other APIs to use with Ripple (i.e. Accessing the `rippled` server directly via a web socket), this documentation is meant only for the `ripple-rest` API as this is the high-level API recommended for working with Ripple and some of the endpoints provide abstractions to make it much easier to use than the traditional websocket APIs.
 
 Installation instructions and source code can be found in the `ripple-rest` repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>. 
 
@@ -11,6 +11,7 @@ Older versions of the `ripple-rest` documentation will archived <a href="https:/
 
 ## Available API Routes ##
 
+* [`GET /v1/accounts/new`](#generating-accounts)
 * [`GET /v1/accounts/{:address}/payments/paths`](#preparing-a-payment)
 * [`GET /v1/accounts/{:address}/payments`](#confirming-a-payment) 
 * [`GET /v1/accounts/{:address}/balances`](#account-balances)
@@ -73,7 +74,7 @@ Before you can use the `ripple-rest` API, you will need to have three things:
 
  * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the readme.md file in the Github Repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>.
 
- * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://ripple.com/wiki/Client_Manual" target="_blank">Client Manual</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking on the __Receive__ tab in the web client.
+ * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation" target="_blank">online support</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking the *Show Address* button in the __Fund__ tab of the [web client](https://rippletrade.com/).
  
  * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is installed and running on a server you have connectivity to. 
  
@@ -82,7 +83,7 @@ As a programmer, you will also need to have a suitable HTTP client library that 
 
 ### Exploring the API ###
 
-Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal window:
+Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal:
 
 `curl http://[ripple-rest-server]/v1/server`
 
@@ -138,9 +139,9 @@ There are two different ways in which errors are returned by the `ripple-rest` A
 
 Low-level errors are indicated by the server returning an appropriate HTTP status code.  The following status codes are currently supported:
 
-+ `Bad Request (400)` The JSON body submitted is malformed or invalid.  
-+ `Method Not Accepted (404)` The endpoint is not allowed.  
-+ `Gateway Timeout (502)` The rippled server is taking to long to respond.  
++ `Bad Request (400)` The JSON body submitted is malformed or invalid. 
++ `Method Not Accepted (404)` The endpoint is not allowed. 
++ `Gateway Timeout (502)` The rippled server is taking to long to respond. 
 + `Bad Gateway (504)` The rippled server is non-responsive.
 
 Application-level errors are described further in the body of the JSON response with the following fields:
@@ -476,7 +477,7 @@ This will return the most recent payments (both incoming and outgoing will be de
     { /* payment */ }.
     { /* payment */ }.
     { /* payment */ }
-  ]    
+  ]
 }
 ```
 __`GET /v1/accounts/{:address}/payments?direction=incoming`__
@@ -559,6 +560,33 @@ Note that the `ripple-rest` API has to retrieve the full list of payments from t
 
 `ripple-rest` provides the ability to review and confirm on information regarding your Ripple account. You can view your current balances and settings, as well as the ability to set your account setting flags.
 
+## Generating Accounts ##
+
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc1))
+
+There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
+
+Generating the keys can be done offline, since it does not affect the network at all. To make it easy, Ripple-REST can generate account keys for you.
+
+*Caution:* Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There *are* bad actors who are sniffing around for account keys so they can steal your money!
+
+__`GET /v1/accounts/new`__
+
+The response is an object with the address and the secret for a potential new account:
+
+```js
+{
+    "success": true,
+    "account": {
+        "address": "raqFu9wswvHYS4q5hZqZxVSYei73DQnKL8",
+        "secret": "shUzHiYxoXX2FgA54j42cXCZ9dTVT"
+    }
+}
+```
+
+The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
+
+
 ## Account Balances ##
 
 __`GET /v1/accounts/{:address}/balances`__
@@ -581,7 +609,7 @@ The `account` parameter should be set to the Ripple address of the desired accou
       "amount": "512.79",
       "issuer": "r...",
     }
-    ...  
+    ... 
   ]
 }
 ```
@@ -798,33 +826,32 @@ This endpoint takes no parameters, and returns a JSON object with information on
 
 ```js
 {
-  "api_server_status": "online",
-  "rippled_server_url": "wss://s_west.ripple.com:443",
+  "success": true,
+  "api_documentation_url": "https://github.com/ripple/ripple-rest",
+  "rippled_server_url": "wss://s1.ripple.com:443",
   "rippled_server_status": {
-    "info": {
-      "build_version": "0.21.0-rc2",
-      "complete_ledgers": "32570-4805506",
-      "hostid": "BUSH",
-      "last_close": {
-        "converge_time_s": 2.011,
-        "proposers": 5
-      },
-      "load_factor": 1,
-      "peers": 51,
-      "pubkey_node": "n9KNUUntNaDqvMVMKZLPHhGaWZDnx7soeUiHjeQE8ejR45DmHyfx",
-      "server_state": "full",
-      "validated_ledger": {
-        "age": 2,
-        "base_fee_xrp": 0.00001,
-        "hash": "2B79CECB06A500A2FB92F4FB610D33A20CF8D7FB39F2C2C7C3A6BD0D75A1884A",
-        "reserve_base_xrp": 20,
-        "reserve_inc_xrp": 5,
-        "seq": 4805506
-      },
-      "validation_quorum": 3
-    }
-  },
-  "api_documentation_url": "https://github.com/ripple/ripple-rest"
+    "build_version": "0.26.3-sp1",
+    "complete_ledgers": "32570-8926343",
+    "hostid": "LIED",
+    "io_latency_ms": 1,
+    "last_close": {
+      "converge_time_s": 3.068,
+      "proposers": 5
+    },
+    "load_factor": 1,
+    "peers": 52,
+    "pubkey_node": "n9LpxYuMx4Epz4Wz8Kg2kH3eBTx1mUtHnYwtCdLoj3HC85L2pvBm",
+    "server_state": "full",
+    "validated_ledger": {
+      "age": 10,
+      "base_fee_xrp": 0.00001,
+      "hash": "5A24FC580674F444BAA72B897C906FF1E167227869BF3D2971C2D87272B038EF",
+      "reserve_base_xrp": 20,
+      "reserve_inc_xrp": 5,
+      "seq": 8926343
+    },
+    "validation_quorum": 3
+  }
 }
 ```
 
