@@ -568,8 +568,6 @@ There are two steps to making a new account on the Ripple network: randomly crea
 
 Generating the keys can be done offline, since it does not affect the network at all. To make it easy, Ripple-REST can generate account keys for you.
 
-The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.)
-
 *Caution:* Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There *are* bad actors who are sniffing around for account keys so they can steal your money!
 
 __`GET /v1/accounts/new`__
@@ -586,7 +584,8 @@ The response is an object with the address and the secret for a potential new ac
 }
 ```
 
-These values are enough to be able to receive XRP; however, before you can do anything else, you must receive a payment of XRP, enough to meet the account reserve. Until then, the potential account is valid but is not actually recorded in the shared global ledger.
+The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
+
 
 ## Account Balances ##
 
