@@ -158,6 +158,18 @@ color: #f09 !important;
 	
 }
 
+
+/************
+  api tool(s)
+*********** */
+
+body #online_state {
+    position: absolute;
+    right: 50px;
+    top: 70px;
+}
+
+
 /************
   	nav
 *********** */
