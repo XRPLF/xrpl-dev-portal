@@ -586,8 +586,8 @@ Create or modify a trust line linking two accounts.
 | LimitAmount.currency | String | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
 | LimitAmount.value | String | (Amount.value) | Quoted decimal representation of the limit to set on this trust line. |
 | LimitAmount.issuer | String | (Amount.issuer) | The address of the account to extend trust to. |
-| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. <br\>*Note:* This feature is considered experimental. <span class="draft-comment">(Disagreement between AHBritto & JoelKatz here)</span> |
-| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. <br\>*Note:* This feature is considered experimental. |
+| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
+| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
 
 ### Trust Limits ###
 
@@ -633,9 +633,9 @@ A change in transaction or account fees. This is typically in response to change
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| BaseFee | <span class='draft-comment'>String (quoted integer?)</span> | UInt64 | The charge, in drops, for the reference transaction |
-| ReferenceFeeUnits | <span class='draft-comment'>Unsigned Integer?</span> | UInt32 | The cost, in fee units, of the reference transaction |
-| ReserveBase | <span class='draft-comment'>Unsigned Integer?</span> | UInt32 | The base reserve, in drops |
-| ReserveIncrement | <span class='draft-comment'>Unsigned Integer?</span> |UInt32 | The incremental reserve, in drops |
+| BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction |
+| ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
+| ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
+| ReserveIncrement | Unsigned Integer |UInt32 | The incremental reserve, in drops |
 
 <span class='draft-comment'>(TODO: find a historical example of a real one)</span>
