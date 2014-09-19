@@ -582,7 +582,7 @@ The request accepts the following paramters:
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
 | limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | [Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343) Server-provided value to specify where to resume retrieving data from. |
+| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-provided value to specify where to resume retrieving data from. |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -886,6 +886,7 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique address of the account this request corresponds to |
 | lines | Array | Array of trust-line objects, as described below. |
+| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -900,6 +901,7 @@ Each trust-line object has some combination of the following fields, although no
 | no_ripple_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
 | quality_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+
 
 ## account_offers ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountOffers.cpp "Source")
@@ -951,8 +953,8 @@ A request can include the following parameters:
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
-| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-provided value to specify where to resume retrieving data from. |
+| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
+| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-provided value to specify where to resume retrieving data from. |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1006,6 +1008,8 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique address identifying the account that made the offers |
 | offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
+| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
+
 
 Each offer object contains the following fields:
 
@@ -1806,6 +1810,7 @@ The response follows the [standard format](#response-formatting), with a success
 | parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
 | total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
 | transaction_hash | String | Hash of the transaction information included in this ledger, as hex |
+| validated | Boolean | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-569)) If included and set to `true`, the information in this request describes a validated ledger version. Otherwise, the information is subject to change. |
 
 The following fields are deprecated and may be removed without further notice: `hash`, `seqNum`, `totalCoins`.
 
