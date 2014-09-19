@@ -96,6 +96,59 @@ Request('Prepare Payment', {
     link: 'ripple-rest.html#preparing-a-payment'
 });
 
+Request('Submit Payment', {
+    method: POST,
+    path: '/v1/payments',
+    description: 'Send a prepared payment to the network.',
+    link: 'ripple-rest.html#submitting-a-payment',
+    body: {
+        "secret": "s...",
+        "client_resource_id": "...",
+        "payment": {
+            "source_account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+            "source_tag": "",
+            "source_amount": {
+                "value": "1",
+                "currency": "XRP",
+                "issuer": ""
+            },
+            "source_slippage": "0",
+            "destination_account": "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
+            "destination_tag": "",
+            "destination_amount": {
+                "value": "1",
+                "currency": "XRP",
+                "issuer": ""
+            },
+            "invoice_id": "",
+            "paths": "[]",
+            "no_direct_ripple": false,
+            "partial_payment": false,
+            "direction": "outgoing",
+            "state": "validated",
+            "result": "tesSUCCESS",
+            "ledger": "6141074",
+            "hash": "85C5E6762DE7969DC1BD69B3C8C7387A5B8FCE6A416AA1F74C0ED5D10F08EADD",
+            "timestamp": "2014-04-18T01:21:00.000Z",
+            "fee": "0.000012",
+            "source_balance_changes": [
+                {
+                    "value": "-1.000012",
+                    "currency": "XRP",
+                    "issuer": ""
+                }
+            ],
+            "destination_balance_changes": [
+                {
+                    "value": "1",
+                    "currency": "XRP",
+                    "issuer": ""
+                }
+            ]
+        }
+    }
+});
+
 //---------- End req. List ---------------------------//
 
 var cm_request = CodeMirror($("#request_body").get(0), {
