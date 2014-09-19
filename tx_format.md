@@ -506,7 +506,7 @@ A trust line indicates an issuer you trust enough to accept their issuances as p
 
 Existing offers are grouped by "quality", which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.
 
-When offers of the same quality are placed in the same ledger version, the "canonical order" of the transactions, as agreed by consensus, determines which is taken first. <span class='draft-comment'>(Confirm what determines canonical order. This behavior has to be well-defined so that independent servers can remain in sync.)</span>
+When offers of the same quality are placed in the same ledger version, the "canonical order" of the transactions, as agreed by consensus, determines which is taken first. This behavior is designed to be deterministic, efficient, and hard to game.
 
 ### Expiration ###
 
@@ -631,11 +631,11 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 
 A change in transaction or account fees. This is typically in response to changes in the load on the network.
 
+*Note:* There have been very few, if any, Fee psuedo-transactions, ever. It is possible, but very unlikely, that you may encounter one in a historical ledger.
+
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
-| ReserveIncrement | Unsigned Integer |UInt32 | The incremental reserve, in drops |
-
-<span class='draft-comment'>(TODO: find a historical example of a real one)</span>
+| ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
