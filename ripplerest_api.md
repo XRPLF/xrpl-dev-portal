@@ -17,7 +17,7 @@ Older versions of the `ripple-rest` documentation will archived <a href="https:/
 * [`GET /v1/accounts/{:address}/balances`](#account-balances)
 * [`GET /v1/accounts/{:address}/settings`](#account-settings)
 * [`GET /v1/accounts/{:address}/trustlines`](#reviewing-trustlines)
-* [`GET /v1/accounts/{:address}/notifications`](#checking-notifications)
+* [`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#checking-notifications)
 * [`GET /v1/server/connected`](#check-connection-state)
 * [`GET /v1/server`](#get-server-status)
 * [`GET /v1/tx`](#retrieve-ripple-transaction)
@@ -60,11 +60,11 @@ Note that when you submit a payment for processing, you have to assign a unique 
 
 The Ripple protocol supports multiple types of transactions other than just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
 
-+ Payment: Payment transaction is an authorized transfer of balance from one address to another.
++ Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's [Payment transaction type](transactions.html#payment))
 
-+ Trustline: Trustline transaction is an authorized grant of trust between two addresses.
++ Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#payment))
 
-+ Setting: Setting transaction is an authorized update of account flags under a Ripple Account.
++ Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#payment))
 
 ## Getting Started ##
 
@@ -72,7 +72,7 @@ The Ripple protocol supports multiple types of transactions other than just paym
 
 Before you can use the `ripple-rest` API, you will need to have three things:
 
- * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the readme.md file in the Github Repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>.
+ * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the [readme.md file in the Github Repository](https://github.com/ripple/ripple-rest).
 
  * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation" target="_blank">online support</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking the *Show Address* button in the __Fund__ tab of the [web client](https://rippletrade.com/).
 
@@ -159,7 +159,7 @@ Application-level errors are described further in the body of the JSON response 
 
 All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address of the gateway that issues the currency.
 
-For more information about XRP see  <a href="https://ripple.com/wiki/XRP" target="_blank">the Ripple wiki page on XRP</a>. For more information about using currencies other than XRP on the Ripple Network see <a href="https://ripple.com/wiki/Ripple_for_Gateways" target="_blank">the Ripple wiki page for gateways</a>.
+For more information about XRP see [the Ripple wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
 
 Amount Object:
 
@@ -262,8 +262,9 @@ Payment Object:
 
 ### Preparing a Payment ###
 
-__GET /v1/accounts/{:address}/payments/paths/{destination_account}/{destination_amount}__
+__GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}__
 
+[Try it! >](rest-api-tool.html#prepare-payment)
 
 To prepare a payment, you first make an HTTP `GET` call to the above endpoint.  This will generate a list of possible payments between the two parties for the desired amount, taking into account the established trustlines between the two parties for the currency being transferred.  You can then choose one of the returned payments, modify it if necessary (for example, to set slippage values or tags), and then submit the payment for processing.
 
@@ -340,6 +341,8 @@ This HTTP `POST` request must have a content-type of `application/json`, and the
 }
 ```
 
+[Try it! >](rest-api-tool.html#submit-payment)
+
 Upon completion, the server will return a JSON object which looks like the following:
 
 ```js
@@ -350,7 +353,7 @@ Upon completion, the server will return a JSON object which looks like the follo
 }
 ```
 
-The `status_url` value is a URL that can be queried to get the current status for this payment.  This will be a reference to the `GET /v1/accounts/{account}/payments` endpoint, with the client resource ID filled in to retrieve the details of the payment.  More information on this endpoint can be found in the section on [confirming a payment](#confirming-a-payment).
+The `status_url` value is a URL that can be queried to get the current status for this payment.  This will be a reference to the `GET /v1/accounts/{:address}/payments` endpoint, with the client resource ID filled in to retrieve the details of the payment.  More information on this endpoint can be found in the section on [confirming a payment](#confirming-a-payment).
 
 If an error occurred that prevented the payment from being submitted, the response object will look like this:
 
@@ -368,7 +371,11 @@ Note that payments cannot be cancelled once they have been submitted.
 
 ### Confirming a Payment ###
 
-__`GET /v1/accounts/{:address}/payments/{:hash} or {:client_resource_id}`__
+__`GET /v1/accounts/{:address}/payments/{:id}`__
+
+The `{:id}` value can be either a client resource identifier or a transaction hash value.
+
+[Try it! >](rest-api-tool.html#confirm-payment)
 
 To confirm that your payment has been submitted successfully, you can call this API endpoint.  The `hash` value can either be the transaction hash for the desired payment, or the payment's client resource ID.
 
@@ -443,6 +450,8 @@ As well as sending payments, your application will need to know when incoming pa
 
 __`GET /v1/accounts/{:address}/payments`__
 
+[Try it! >](rest-api-tool.html#get-payment-history)
+
 This will return the most recent payments (both incoming and outgoing will be denoted in the direction)
 
 ```js
@@ -483,6 +492,8 @@ Using this approach, you can regularly poll for new incoming payments, confident
 ## Payment History ##
 
 __`GET /v1/accounts/{:address}/payments`__
+
+[Try it! >](rest-api-tool.html#get-payment-history)
 
 This API endpoint can be used to browse through an account's payment history and also used to confirm specific payments after a payment has been submitted. The following query string parameters can be used to filter the list of returned payments:
 
@@ -549,6 +560,8 @@ Generating the keys can be done offline, since it does not affect the network at
 
 __`GET /v1/accounts/new`__
 
+[Try it! >](rest-api-tool.html#generate-account)
+
 The response is an object with the address and the secret for a potential new account:
 
 ```js
@@ -567,6 +580,8 @@ The second step is [making a payment](#making-payments) of XRP to the new accoun
 ## Account Balances ##
 
 __`GET /v1/accounts/{:address}/balances`__
+
+[Try it! >](rest-api-tool.html#get-account-balances)
 
 Retrieve the current balances for the given Ripple account.
 
@@ -597,7 +612,9 @@ There will be one entry in the `balances` array for the account's XRP balance, a
 
 You can retrieve an account's settings by using the following endpoint:
 
-__`GET /v1/accounts/{account}/settings`__
+__`GET /v1/accounts/{:address}/settings`__
+
+[Try it! >](rest-api-tool.html#get-account-settings)
 
 The server will return a list of the current settings in force for the given account, in the form of a JSON object:
 
@@ -639,7 +656,7 @@ The following account settings are currently supported:
 
 To change an account's settings, make an HTTP `POST` request to the above endpoint.  The request must have a content-type of `application/json`, and the body of the request should look like this:
 
-__`POST /v1/accounts/{account}/settings`__
+__`POST /v1/accounts/{:address}/settings`__
 
 ```js
 {
@@ -656,13 +673,17 @@ __`POST /v1/accounts/{account}/settings`__
 }
 ```
 
+[Try it! >](rest-api-tool.html#update-account-settings)
+
 The given settings will be updated.
 
 # TRUSTLINES #
 
 ## Reviewing Trustlines ##
 
-__`GET /v1/account/{:address}/trustlines`__
+__`GET /v1/accounts/{:address}/trustlines`__
+
+[Try it! >](rest-api-tool.html#get-trustlines)
 
 Retrieves all trustlines associated with the Ripple address. Upon completion, the server will return a JSON object which represents each trustline individually along with the currency, limit, and counterparty.
 
@@ -671,7 +692,7 @@ The following query string parameters are supported to provide additional filter
 + `currency` Three letter currency denominations (i.e. USD, BTC).
 + `counterparty` Ripple address of the counterparty trusted.
 
-__`GET /v1/account/{:address}/trustlines?currency=USD&counterparty=rPs723Dsd...`__
+__`GET /v1/accounts/{:address}/trustlines?currency=USD&counterparty=rPs723Dsd...`__
 
 The object returned looks like this:
 
@@ -696,10 +717,7 @@ The object returned looks like this:
       "reciprocated_trust_limit": "0",
       "account_allows_rippling": false,
       "counterparty_allows_rippling": true
-    },
-    { /* trustline */ },
-    { /* trustline */ },
-    { /* trustline */ }
+    }
   ]
 }
 ```
@@ -721,6 +739,10 @@ A trustline can also updated and simply set with a currency,amount,counterparty 
   }
 }
 ```
+
+[Try it! >](rest-api-tool.html#grant-trustline)
+
+
 A successful submission will result in a returning JSON object that includes a transaction hash to the trustline transaction.
 
 ```js
@@ -744,6 +766,8 @@ Notifications can be used as a looping mechanism to monitor any transactions aga
 ## Checking Notifications ##
 
 __`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`__
+
+[Try it! >](rest-api-tool.html#check-notifications)
 
 This endpoint will grab the notification based on the specific transaction hash specified. Once called the notification object retreived will provide information on the type of transaction and also the previous and next notifications will be shown as well. The `previous_notification_url` and `next_notification_url` can be used to walk up and down the notification queue. Once the `next_notification_url` is empty that means you have the most current notification, this applies for the `previous_notification_url` similarly when it's empty as it means you are holding the earliest notification available on the `rippled` you are connecting to.
 
@@ -779,8 +803,10 @@ The earliest notification available on the `rippled` server will show `previous_
 The following two endpoints can be used to check if the `ripple-rest` API is currently connected to a `rippled` server, and to retrieve information about the current status of the API.
 
 ## Check Connection State ##
-<span></span>
+
 __`GET /v1/server/connected`__
+
+[Try it! >](rest-api-tool.html#check-connection)
 
 Checks to see if the `ripple-rest` API is currently connected to a `rippled` server, and is ready to be used.  This provides a quick and easy way to check to see if the API is up and running, before attempting to process transactions.
 
@@ -794,8 +820,10 @@ No additional parameters are required.  Upon completion, the server will return 
 ```
 
 ## Get Server Status ##
-<span></span>
+
 __`GET /v1/server`__
+
+[Try it! >](rest-api-tool.html#get-server-status)
 
 Retrieve information about the current status of the `ripple-rest` API and the `rippled` server it is connected to.
 
@@ -849,6 +877,8 @@ While the `ripple-rest` API is a high-level API built on top of the `rippled` se
 
 __`GET /v1/tx/{:transaction_hash}`__
 
+[Try it! >](rest-api-tool.html#retrieve-ripple-transaction)
+
 This retrieves the underlying Ripple transaction with the given transaction hash value.  Upon completion, the server will return following JSON object:
 
 ```js
@@ -872,8 +902,10 @@ If the given transaction could not be found in the `rippled` server's historical
 
 
 ## Create Client Resource ID ##
-<span></span>
+
 __`GET /v1/uuid`__
+
+[Try it! >](rest-api-tool.html#generate-uuid)
 
 This endpoint creates a universally unique identifier (UUID) value which can be used to calculate a client resource ID for a payment.  This can be useful if the application does not have a UUID generator handy.
 
@@ -882,6 +914,6 @@ This API endpoint takes no parameters, and returns a JSON object which looks lik
 ```js
 {
   "success": true,
-  "uuid": "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+  "uuid": "a5a8fe40-3795-4b10-b2b6-f05f3ca31db9"
 }
 ```
