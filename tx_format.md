@@ -506,7 +506,7 @@ A trust line indicates an issuer you trust enough to accept their issuances as p
 
 Existing offers are grouped by "quality", which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.
 
-When offers of the same quality are placed in the same ledger version, the "canonical order" of the transactions, as agreed by consensus, determines which is taken first. This behavior is designed to be deterministic, efficient, and hard to game.
+When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the [canonical order](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp "Source: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/develop/src/ripple/app/consensus/LedgerConsensus.cpp#L1404-L1507 "Source: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
 
 ### Expiration ###
 
@@ -635,7 +635,7 @@ A change in transaction or account fees. This is typically in response to change
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction |
+| BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
