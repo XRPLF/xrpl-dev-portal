@@ -6,6 +6,7 @@ var response_code = $("#rest_responsecode");
 var rest_url = $('#rest_url');
 var rest_method = $("#rest_method");
 var selected_command = $("#selected_command");
+var spinner = $(".loader");
 
 var GET = "GET";
 var POST = "POST";
@@ -291,6 +292,8 @@ function send_request() {
             url: URL_BASE + path
         }).done(success_output).fail(error_output).always(reset_sending_status);
     }
+    
+    spinner.show();
 }
 
 function error_output(xhr,status,statusText) {
@@ -306,6 +309,7 @@ function success_output(body,status,xhr) {
 function reset_sending_status() {
     response_body.removeClass('obscured');
     request_button.removeClass('depressed');
+    spinner.hide();
 }
 
 function reset_response_area() {
