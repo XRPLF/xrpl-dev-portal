@@ -87,7 +87,7 @@ h2 {
   margin:0;
   padding:0;
 }
-#response {
+#response, #response_body {
   min-height:100px;
   border-top-left-radius:0px !important;
   border-top-right-radius:0px !important;
@@ -264,8 +264,9 @@ ul.toolbar li {
 
 
 /* JSON syntax highlighting */
-#request,
-#response {
+#request, #request_body,
+#response, #response_body,
+#rest_url_wrapper {
   font-family:'inconsolata',monospace;
   font-size:13px;
   line-height:20px;
@@ -342,4 +343,79 @@ span.cm-number {
 
 span.cm-atom {
   color:#66327C !important;
+}
+
+/* Progress spinner animation */
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+.loader {
+    -webkit-animation: rotating 1s linear infinite;
+    -moz-animation: rotating 1s linear infinite;
+    -ms-animation: rotating 1s linear infinite;
+    -o-animation: rotating 1s linear infinite;
+    animation: rotating 1s linear infinite;
+    width: 25px;height:25px;
+}
+
+
+/* Rest-tool-specific stuff */
+
+#rest_method {
+    display: inline-block;
+    padding: 6px;
+    vertical-align: middle;
+    border: 1px dotted #aaa;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin-bottom: 3px;
+    background-color: #c7254e;
+    color: white;
+    appearance: none;
+    -moz-appearance: none;
+}
+
+#rest_url_wrapper {
+    font-family: sans-serif;
+    display: inline-block;
+    margin-bottom: -11px;
+}
+
+#rest_url {
+    width: auto;
+    border: 0;
+    background: none;
+    font-size:13px;
 }

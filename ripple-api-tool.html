@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal: Ripple API Tool</title>
+  <title>Ripple Developer Portal: Websocket API Tool</title>
 
   <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -25,11 +25,12 @@
   <!-- Custom Stylesheet -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
-  <link  href='css/main.css' rel='stylesheet'>
-  <link  href='css/custom.css' rel='stylesheet'>
+  <link href='css/main.css' rel='stylesheet'>
+  <link href='css/custom.css' rel='stylesheet'>
+  <link href='css/mod.css' type='text/css' rel='stylesheet' />
   
-	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
-	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+  <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
   
   
   
@@ -58,14 +59,8 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     
 
   
-
-  <!-- Temporary shims until I modify the css directly -->
-  <link type='text/css' rel='stylesheet' href='css/mod.css' />
-  <script src='js/expandcode.js'></script>
-  
 </head>
 <body role='flatdoc' class='no-literate'>
-<!--Draft warning would go here-->
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -84,7 +79,13 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
             <li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
-            <li class="active"><a target="_self" href="ripple-api-tool.html">API Tool</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tool <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="active"><a href="ripple-api-tool.html">WebSocket Tool</a></li>
+                <li><a href="rest-api-tool.html">REST Tool</a></li>
+              </ul>
+            </li>
           </ul>
           	<div class='right'>
 		 	 <!-- GitHub buttons -->
@@ -95,7 +96,6 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     </div>
   <div class='content-root'>
    <div id='wrapper'>
-    <h1>Ripple WebSocket API tool</h1>
     <div id='online_state'>Offline</div>
     <div style="clear:both;"></div>
     <div id='command_wrapper'>
@@ -131,7 +131,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
       <div id='command_table'>
         <div id='io_wrapper'>
           <div id='input' class='io'>
-            <h2>Request</h2>
+            <h2>WebSocket Request</h2>
             <div id='request_options'>
               <div class="button btn btn-primary api" id='request_button'>Send request</div>
             </div>
@@ -149,7 +149,10 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
               <li id='stream_show'>show</li>
               <li id='stream_pause'>pause</li>
             </ul>
-            <div id='status'></div>
+            <div>
+                <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                <p id='status'></p>
+            </div>
             <p id='info'></p>
             <div id='response'></div>
             <div id='tooltip'></div>
@@ -185,6 +188,8 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					
 						<ul class="footer_links core_network">
 							<li><a href="rippled-apis.html">rippled</a>
+							<li><a href="transactions.html">Transactions</a>
+							<li><a href="consensus-whitepaper.html">Consensus</a>
 						</ul>
 				
 				</div>
