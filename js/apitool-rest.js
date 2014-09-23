@@ -263,6 +263,11 @@ function select_request(request) {
     reset_response_area();
 };
 
+//helper to fill the default payment with a new UUID
+function get_uuid(callback) {
+    $.get(URL_BASE + "/v1/uuid").done(callback);
+}
+
 
 function send_request() {
     var method = rest_method.val();
@@ -320,6 +325,17 @@ function reset_response_area() {
 $(document).ready(function() {
     request_button.click(send_request);
     rest_method.change(update_method);
+    
+    get_uuid(function(resp,status,xhr) {
+        requests["submit-payment"].body.client_resource_id = resp.uuid;
+        if (window.location.hash == "#submit-payment") {
+            //we might have already loaded the call by the time the AJAX
+            // completes, so refresh the default body.
+            // Debatably a bad idea, because if the AJAX takes so long that the
+            // user has already started editing the call, it'll reset it.
+            select_request("submit-payment");
+        }
+    });
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
