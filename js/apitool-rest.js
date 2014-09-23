@@ -80,18 +80,16 @@ Request('Get Account Settings', {
 Request('Update Account Settings', {
     method: POST,
     path: '/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings',
-    description: 'Change the current settings for the given Ripple account',
+    description: 'Change the current settings for the given Ripple account. <span class="btn-danger">Please, only use test accounts here.</span>',
     link: 'ripple-rest.html#updating-account-settings',
     body: {
         secret: "sssssssssssssssssssssssssssss",
         settings: {
-            transfer_rate: 100,
-            password_spent: false,
             require_destination_tag: false,
             require_authorization: false,
             disallow_xrp: false,
             disable_master: false,
-            transaction_sequence: 22
+            email_hash: "98b4375e1d753e5b91627516f6d70977"
         } 
     }
 });
@@ -106,52 +104,31 @@ Request('Prepare Payment', {
 Request('Submit Payment', {
     method: POST,
     path: '/v1/payments',
-    description: 'Send a prepared payment to the network.',
+    description: 'Send a prepared payment to the network. <span class="btn-danger">Please, only use test accounts here.</span>',
     link: 'ripple-rest.html#submitting-a-payment',
     body: {
-        "secret": "s...",
-        "client_resource_id": "...",
-        "payment": {
-            "source_account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
-            "source_tag": "",
-            "source_amount": {
-                "value": "1",
-                "currency": "XRP",
-                "issuer": ""
-            },
-            "source_slippage": "0",
-            "destination_account": "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
-            "destination_tag": "",
-            "destination_amount": {
-                "value": "1",
-                "currency": "XRP",
-                "issuer": ""
-            },
-            "invoice_id": "",
-            "paths": "[]",
-            "no_direct_ripple": false,
-            "partial_payment": false,
-            "direction": "outgoing",
-            "state": "validated",
-            "result": "tesSUCCESS",
-            "ledger": "6141074",
-            "hash": "85C5E6762DE7969DC1BD69B3C8C7387A5B8FCE6A416AA1F74C0ED5D10F08EADD",
-            "timestamp": "2014-04-18T01:21:00.000Z",
-            "fee": "0.000012",
-            "source_balance_changes": [
-                {
-                    "value": "-1.000012",
-                    "currency": "XRP",
-                    "issuer": ""
-                }
-            ],
-            "destination_balance_changes": [
-                {
-                    "value": "1",
-                    "currency": "XRP",
-                    "issuer": ""
-                }
-            ]
+      "secret": "sssssssssssssssssssssssssssss",
+      "client_resource_id": "348170b9-16b9-4927-854d-7f9d4a2a692d",
+      "payment":     {
+          "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "source_tag": "",
+          "source_amount": {
+            "value": "1",
+            "currency": "USD",
+            "issuer": ""
+          },
+          "source_slippage": "0",
+          "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+          "destination_tag": "",
+          "destination_amount": {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          },
+          "invoice_id": "",
+          "paths": "[]",
+          "partial_payment": false,
+          "no_direct_ripple": false
         }
     }
 });
@@ -180,7 +157,7 @@ Request("Get Trustlines", {
 Request("Grant Trustline", {
     method: POST,
     path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/trustlines",
-    description: "Add or modify a trustline from this account",
+    description: "Add or modify a trustline from this account. <span class='btn-danger'>Please, only use test accounts here.</span>",
     link: "ripple-rest.html#granting-a-trustline",
     body: {
         "secret": "sneThnzgBgxc3zXPG....",
@@ -300,11 +277,14 @@ function send_request() {
 
     if (method == PUT || method == POST) {
         var body   = cm_request.getValue();
+        console.log(body);
         $.ajax({
             type: method,
             url: URL_BASE + path,
-            data: body
-        }).done(set_output).fail(error_output);
+            data: body,
+            contentType: 'application/json',
+            processData: false
+        }).done(success_output).fail(error_output).always(reset_sending_status);
     } else {
         $.ajax({
             type: method,
