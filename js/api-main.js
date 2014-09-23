@@ -15,6 +15,7 @@
   var request         = $(command_wrapper).find('#request');
   var status          = $(command_wrapper).find('#status');
   var info            = $(command_wrapper).find('#info');
+  var spinner = $(".loader");
 
   var remote = new ripple.Remote({
     trusted:        true,
@@ -339,6 +340,7 @@
     if (is_response && parsed.id === id._c) {
       if (!WAITING) return;
       else WAITING = false;
+      spinner.hide();
 
       var request_header = '<span class="request_name">'
       + selected_request.name;
@@ -591,6 +593,7 @@
     WAITING                  = true;
     selected_request.message = message;
     selected_request.t       = Date.now();
+    spinner.show();
 
     request.message = prepare_request(message);
     request.request();
