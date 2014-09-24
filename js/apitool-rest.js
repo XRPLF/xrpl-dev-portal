@@ -255,7 +255,6 @@ function select_request(request) {
     rest_method.change();
     
     if (command.method == POST || command.method == PUT) {
-        //first show the request, then set its contents
         cm_request.setValue(JSON.stringify(command.body, null, 2));
     } else {
         //No body, so wipe out the current contents.
