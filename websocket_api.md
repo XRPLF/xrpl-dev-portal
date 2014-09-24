@@ -5356,7 +5356,7 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| tx_json | Object | [Transaction definition](https://ripple.com/wiki/Transaction_Format) in JSON format |
+| tx_json | Object | [Transaction definition](transactions.html) in JSON format |
 | secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 

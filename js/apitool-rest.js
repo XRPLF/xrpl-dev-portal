@@ -227,6 +227,7 @@ function update_method() {
         request_body.hide();
     } else {
         request_body.show();
+        cm_request.refresh();
     }
 }
 
@@ -249,6 +250,7 @@ function select_request(request) {
     //rest_url.val(command.path);
     rest_url.text(command.path);
 
+    
     rest_method.val(command.method);
     rest_method.change();
     
