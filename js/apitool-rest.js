@@ -227,6 +227,7 @@ function update_method() {
         request_body.hide();
     } else {
         request_body.show();
+        cm_request.refresh();
     }
 }
 
@@ -250,21 +251,16 @@ function select_request(request) {
     rest_url.text(command.path);
 
     
+    rest_method.val(command.method);
+    rest_method.change();
     
     if (command.method == POST || command.method == PUT) {
         //first show the request, then set its contents
-        rest_method.val(command.method);
-        rest_method.change();
         cm_request.setValue(JSON.stringify(command.body, null, 2));
     } else {
         //No body, so wipe out the current contents.
         //This prevents confusion if the user toggles the HTTP method dropdown
         cm_request.setValue("");
-        
-        //cm_request.setValue() doesn't work if the element is hidden, 
-        // so wait until now to hide cm_request
-        rest_method.val(command.method);
-        rest_method.change();
     }
     
     reset_response_area();
