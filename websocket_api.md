@@ -5296,7 +5296,7 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 
 The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction and secret key.
 
-*Note:* It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, [ripple-lib's rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
+*Note:* It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, [ripple-lib's rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
 
 #### Request Format ####
 An example of the request format:
