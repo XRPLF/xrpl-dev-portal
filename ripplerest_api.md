@@ -1,32 +1,48 @@
 # Ripple-REST API #
 
-The `ripple-rest` API makes it easy to access the Ripple system via a RESTful web interface.  In this section, we will cover the concepts you need to understand, and get you started accessing the API and learning how to use it.
+The Ripple-REST API provides a simplified, easy-to-use interface to the Ripple Network via a RESTful API. This page explains how to use the API to send and receive payments on Ripple.
 
-While there are other APIs to use with Ripple (i.e. Accessing the `rippled` server directly via a web socket), this documentation is meant only for the `ripple-rest` API as this is the high-level API recommended for working with Ripple and some of the endpoints provide abstractions to make it much easier to use than the traditional websocket APIs.
+We recommend Ripple-REST for users just getting started with Ripple, since it provides high-level abstractions and convenient simplifications in the data format. If you prefer to access a `rippled` server directly, you can use [rippled's WebSocket or JSON-RPC APIs](rippled-apis.html) instead, which provide the full power of Ripple at the cost of more complexity.
 
-Installation instructions and source code can be found in the `ripple-rest` repository <a href="https://github.com/ripple/ripple-rest" target="_blank">here</a>.
-
-Older versions of the `ripple-rest` documentation will archived <a href="https://github.com/ripple/ripple-dev-portal/archive" target="_blank">here</a>.
+Installation instructions and source code can be found in the [Ripple-REST repository](https://github.com/ripple/ripple-rest).
 
 
 ## Available API Routes ##
 
-* [`GET /v1/accounts/new`](#generating-accounts)
-* [`GET /v1/accounts/{:address}/payments/paths`](#preparing-a-payment)
-* [`GET /v1/accounts/{:address}/payments`](#confirming-a-payment)
-* [`GET /v1/accounts/{:address}/balances`](#account-balances)
-* [`GET /v1/accounts/{:address}/settings`](#account-settings)
-* [`GET /v1/accounts/{:address}/trustlines`](#reviewing-trustlines)
-* [`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#checking-notifications)
-* [`GET /v1/server/connected`](#check-connection-state)
-* [`GET /v1/server`](#get-server-status)
-* [`GET /v1/tx`](#retrieve-ripple-transaction)
-* [`GET /v1/uuid`](#create-client-resource-id)
+#### Accounts ####
+
+* [Generate Account - `GET /v1/accounts/new`](#generating-accounts)
+* [Get Account Balances - `GET /v1/accounts/{:address}/balances`](#account-balances)
+* [Get Account Settings - `GET /v1/accounts/{:address}/settings`](#account-settings)
+* [Update Account Settings - `POST /v1/accounts/{:address}/settings`](#updating-account-settings)
+
+#### Payments ####
+
+* [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#preparing-a-payment)
+* [Submit Payment - `POST /v1/payments`](#submitting-a-payment)
+* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirming-a-payment)
+* [Get Payment History - `GET /v1/accounts/{:address}/payments`](#confirming-a-payment)
+
+#### Trustlines ####
+
+* [Get Trustlines - `GET /v1/accounts/{:address}/trustlines`](#reviewing-trustlines)
+* [Grant Trustline - `POST /v1/accounts/{:address}/trustlines`](#granting-a-trustline)
+
+#### Notifications ####
+
+* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#checking-notifications)
+
+#### Status ####
+
+* [Check Connection - `GET /v1/server/connected`](#check-connection-state)
+* [Get Server Status - `GET /v1/server`](#get-server-status)
+
+#### Utilities ####
+
+* [Retrieve Ripple Transaction - `GET /v1/tx`](#retrieve-ripple-transaction)
+* [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
 
-* [`POST /v1/payments`](#submitting-a-payment)
-* [`POST /v1/accounts/{:address}/settings`](#updating-account-settings)
-* [`POST /v1/accounts/{:address}/trustlines`](#granting-a-trustline)
 
 ## API Overview ##
 
@@ -34,7 +50,7 @@ Older versions of the `ripple-rest` documentation will archived <a href="https:/
 
 Ripple is a system for making financial transactions.  You can use Ripple to send money anywhere in the world, in any currency, instantly and for free.
 
-In the Ripple world, each account is identified by a <a href="https://ripple.com/wiki/Account" target="_blank">Ripple Address</a>.  A Ripple address is a string that uniquely identifies an account, for example: `rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`
+In the Ripple world, each account is identified by a [Ripple Address](https://ripple.com/wiki/Account).  A Ripple address is a string that uniquely identifies an account, for example: `rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`
 
 A Ripple ___payment___ can be sent using Ripple's native currency, XRP, directly from one account to another.  Payments can also be sent in other currencies, for example US dollars, Euros, Pounds or Bitcoins, though the process is slightly more complicated.
 
@@ -70,24 +86,36 @@ The Ripple protocol supports multiple types of transactions other than just paym
 
 ### Setup ###
 
-Before you can use the `ripple-rest` API, you will need to have three things:
+You don't need to do any setup to retrieve information from a public Ripple-REST server. Ripple Labs hosts a public Ripple-REST server here:
 
- * An installed version of `ripple-rest` running locally or remotely. Instructions on installing `ripple-rest` can be found in the [readme.md file in the Github Repository](https://github.com/ripple/ripple-rest).
+`https://api.ripple.com`
 
- * An activated Ripple account.  If you don't have a Ripple account, you can use the Ripple web client to create one, as described in the <a href="https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation" target="_blank">online support</a>.  Make sure you have a copy of the Ripple address for your account; the address can be found by clicking the *Show Address* button in the __Fund__ tab of the [web client](https://rippletrade.com/).
+However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/). 
 
- * The URL of the server running the `ripple-rest` API that you wish to use.  In this documentation, we will assume that the server is installed and running on a server you have connectivity to.
+Make sure you know both the account address and the account secret for your account:
+ * The *address* can be found by clicking the *Show Address* button in the __Fund__ tab of Ripple Trade
+ * The *secret* is provided when you first create your account. **WARNING: If you submit your secret to a server you do not control, your account can be stolen, along with all the money in it.** We recommend using a test account with very limited funds on the public Ripple-REST server.
 
-As a programmer, you will also need to have a suitable HTTP client library that allows you to make secure HTTP (`HTTPS`) requests.  To follow the examples below, you will need to have access to the `curl` command-line tool.
+If you want to run your own Ripple-REST server, see the [installation instructions](https://github.com/ripple/ripple-rest/#installing-and-running).
+
+
+As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. There are lots of options, including:
+ * The [`curl`](http://curl.haxx.se/) commandline utility
+ * The [Poster Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/poster/)
+ * The [Postman Chrome extension](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en)
+ 
+You can also use the [REST API Tool](rest-api-tool.html) here on the Dev Portal to try out the API.
+
+[Try it! >](rest-api-tool.html)
 
 
 ### Exploring the API ###
 
-Let's start by using `curl` to see if the `ripple-rest` API is currently running.  Type the following into a terminal:
+A REST API makes resources available via HTTP, the same protocol used by your browser to access the web. This means you can even use your browser to get a response from the API. Try visiting the following URL:
 
-`curl http://[ripple-rest-server]/v1/server`
+https://api.ripple.com/v1/server
 
-After a short delay, the following response should be displayed:
+The response should be a page with content similar to the following:
 
 ```js
 {
@@ -120,42 +148,48 @@ After a short delay, the following response should be displayed:
 }
 ```
 
-The `ripple-rest` API conforms to the following general behavior for a web interface:
+The `ripple-rest` API conforms to the following general behavior for [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer):
 
 * The HTTP method identifies what you are trying to do.  Generally, HTTP `GET` requests are used to retrieve information, while HTTP `POST` requests are used to make changes or submit information.
-
-* You make HTTP (or HTTPS) requests to the API endpoint, including the desired resources within the URL itself.
-
+* You make HTTP (or HTTPS) requests to the API endpoint, indicating the desired resources within the URL itself. (The public server, for the sake of security, only accepts HTTPS requests.)
 * If more complicated information needs to be sent, it will be included as JSON-formatted data within the body of the HTTP POST request.
+* Upon successful completion, the server returns an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) of 200 OK, and a `Content-Type` value of `application/json`.  The body of the response will be a JSON-formatted object containing the information returned by the endpoint.
 
-* Upon completion, the server will return an HTTP status code of 200 (OK), and a `Content-Type` value of `application/json`.  The body of the response will be a JSON-formatted object containing the information returned by the endpoint.
-
-* The returned JSON object will include a `success` field indicating whether the request was successful or not.
+As an additional convention, all responses from Ripple-REST contain a `"success"` field with a boolean value indicating whether or not the success 
 
 
 ### Errors ###
 
-There are two different ways in which errors are returned by the `ripple-rest` API:
+When errors occur, the server returns an HTTP status code in the 400-599 range, depending on the type of error. The body of the response contains more detailed information on the cause of the problem. (*Note:* Old versions of Ripple-REST return 200 OK regardless of the outcome.)
 
-Low-level errors are indicated by the server returning an appropriate HTTP status code.  The following status codes are currently supported:
+In general, the HTTP status code is indicative of where the problem occurred:
 
-+ `Bad Request (400)` The JSON body submitted is malformed or invalid.
-+ `Method Not Accepted (404)` The endpoint is not allowed.
-+ `Gateway Timeout (502)` The rippled server is taking to long to respond.
-+ `Bad Gateway (504)` The rippled server is non-responsive.
+* Codes in the 200-299 range indicate success. (*Note:* Old versions of Ripple-REST return 200 OK even in some failure cases.)
+* Codes in the 400-499 range indicate that the request was invalid or incorrect somehow. For example:
+    * `400 Bad Request` occurs if the JSON body is malformed. This includes syntax errors as well as when invalid or mutually-exclusive options are selected.
+    * `404 Not Found` occurs if the path specified does not exist, or does not support that method (for example, trying to POST to a URL that only serves GET requests)
+* Codes in the 500-599 range indicate that the server experienced a problem. This could be due to a network outage or a bug in the software somewhere. For example:
+    * `502 Bad Gateway` occurs if Ripple-REST could not contact its `rippled` server at all.
+    * `504 Gateway Timeout` occurs if the `rippled` server took too long to respond to the Ripple-REST server.
 
-Application-level errors are described further in the body of the JSON response with the following fields:
+When possible, the server provides a JSON response body with more information about the error. These responses contain the following fields:
 
-+ `success` This will be set to `false` if an error occurred.
+| Field | Value | Description |
+|-------|-------|-------------|
+|`success` | Boolean | `false` indicates that an error occurred. |
+| `error_type` | String | A short string identifying the error that occurred. |
+| `message` | String | A longer human-readable string explaining what went wrong. |
 
-+ `error` A short string identifying the error that occurred.
 
-+ `message` A longer human-readable string explaining what went wrong.
+# Formatting Conventions #
 
+## Quoted Numbers ##
 
-### API Objects ###
+In any case where a large number should be specified, Ripple-REST uses a string instead of the native JSON number type. This avoids problems with JSON libraries which might automatically convert numbers into native types with differing range and precision.
 
-#### <a id="amount_object"></a> 1. Amount ####
+You should parse these numbers into a numeric data type with adequate precision. If it is not clear how much precision you need, we recommend using an arbitrary-precision data type.
+
+## <a id="amount_object"></a> Currency Amounts ##
 
 All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address of the gateway that issues the currency.
 
@@ -181,54 +215,18 @@ or for XRP:
 }
 ```
 
-#### <a id="payment_object"></a> 2. Payment ####
+The `value` field can get very large or very small. See the [Currency Format](https://wiki.ripple.com/Currency_Format) for the exact limits of Ripple's precision.
+
+## <a id="payment_object"></a> Payment Objects ##
 
 The `Payment` object is a simplified version of the standard Ripple transaction format.
 
 This `Payment` format is intended to be straightforward to create and parse, from strongly or loosely typed programming languages. Once a transaction is processed and validated it also includes information about the final details of the payment.
 
-<!-- A minimal `Payment` object will look like this:
+An example Payment object looks like this:
 
 ```js
 {
-  "src_address": "rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz",
-  "dst_address": "rNw4ozCG514KEjPs5cDrqEcdsi31Jtfm5r",
-  "dst_amount": {
-    "value": "0.001",
-    "currency": "XRP",
-    "issuer": ""
-  }
-}
-```
--->
-
- + `source_address` is the Ripple address for the source account, as a string.
-
- + `destination_address` is the Ripple address for the destination account, as a string.
-
- + `destination_amount` is an [Amount](#amount_object) object representing the amount that should be deposited into the destination account.
-
-The full set of fields accepted on `Payment` submission is as follows:
-
-+ `source_tag` is an optional unsigned 32 bit integer (0-4294967294, inclusive) that is generally used if the sender is a hosted wallet at a gateway. This should be the same as the `destination_tag` used to identify the hosted wallet when they are receiving a payment.
-
-+ `destination_tag` is an optional unsigned 32 bit integer (0-4294967294, inclusive) that is generally used if the receiver is a hosted wallet at a gateway.
-
-+ `source_slippage` can be specified to give the `source_amount` a cushion and increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The `source_address` will never be charged more than `source_slippage` + the `value` specified in `source_amount`.
-
-+ `invoice_id` is an optional 256-bit hash field that can be used to link payments to an invoice or bill.
-
-+ `paths` is a "stringified" version of the Ripple PathSet structure. Most users of this API will want to treat this field as opaque. See the [Ripple Wiki](https://ripple.com/wiki/Payment_paths) for more information about Ripple pathfinding.
-
-+ `flag_no_direct_ripple` is a boolean that can be set to `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option.
-
-+ `flag_partial_payment` is a boolean that, if set to true, indicates that this payment should go through even if the whole amount cannot be sent because of a lack of liquidity or funds in the `source_address` account. The vast majority of senders will never need to use this option.
-
-Payment Object:
-
-```js
-{
-    /* User Specified */
 
     "source_address": "rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz",
     "source_tag": "",
@@ -245,15 +243,29 @@ Payment Object:
         "currency": "XRP",
         "issuer": ""
     },
-
-    /* Advanced Options */
-
     "invoice_id": "",
     "paths": "[]",
     "flag_no_direct_ripple": false,
     "flag_partial_payment": false
 }
 ```
+
+The fields of a Payment object are defined as follows:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| `source_address` | String | The Ripple address of the account sending the payment |
+| `destination_address` | String |The Ripple address of the account receiving the payment |
+| `destination_amount` | [Amount Object](#amount_object) | The amount of currency that should be deposited into the account receiving the payment. |
+| `source_tag` | Unsigned Integer | (Optional) A 32-bit unsigned integer (0-4294967294, inclusive) that is generally used if the sender is a hosted wallet at a gateway. This should be the same as the `destination_tag` used to identify the hosted wallet when they are receiving a payment. |
+| `destination_tag` | Unsigned Integer | (Optional) A 32-bit unsigned integer (0-4294967294, inclusive) that is generally used if the recipient of the payment is a hosted wallet at a gateway. |
+| `source_slippage` | String (Quoted decimal number) | can be specified to give the `source_amount` a cushion and increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The `source_address` will never be charged more than `source_slippage` + the `value` specified in `source_amount`. |
+| `invoice_id` | String | (Optional) 256-bit hash that can be used to link payments to an invoice or bill. |
+| `paths` | String | A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the [Prepare Payment](#preparing-a-payment) method. |
+| `flag_no_direct_ripple` | Boolean  | (Optional, defaults to false) `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option. |
+| `flag_partial_payment` | Boolean | (Optional, defaults to false) If set to `true`, fees will be deducted from the delivered amount instead of the sent amount. (*Caution:* There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See [Partial Payments](transactions.html#partial-payments) |
+
+
 # PAYMENTS #
 
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
