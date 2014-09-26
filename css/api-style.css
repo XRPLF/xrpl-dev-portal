@@ -98,7 +98,7 @@ h2 {
 #output {
   width: 60%;
 }
-p, h3 {
+h3 {
   margin:16px 0;
   font-family:'open sans';
   font-weight:300;
@@ -150,7 +150,7 @@ p, h3 {
 }
 
 #request_options > div {
-  float:right;
+/*  float:right;
   margin:0;
   width:200px;
   color:#fff;
@@ -161,23 +161,25 @@ p, h3 {
   background-image:linear-gradient(283deg, rgba(255,255,255,0.1) 50%, transparent 55%), linear-gradient(top, rgba(255,255,255,0.15), transparent);
   background-image:-webkit-linear-gradient(283deg, rgba(255,255,255,0.1) 50%, transparent 55%), -webkit-linear-gradient(top, rgba(255,255,255,0.15), transparent);
   background-image:-moz-linear-gradient(283deg, rgba(255,255,255,0.1) 50%, transparent 55%), -moz-linear-gradient(top, rgba(255,255,255,0.15), transparent);
- */
+ 
 
   border-radius:4px;
   border-bottom:1px solid #fff;
   background-color: #346AA9;
   font-weight:300;
   font-size:16px;
-/*   line-height:50px; */
+/*   line-height:50px; 
   text-align:center;
   cursor:default;
 
   user-select:none;
   -webkit-user-select:none;
   -moz-user-select:none;
+*/
+  margin-top: 5px;
 }
 #request_button {
-  background:#3a87ad;
+  background-color: #346AA9;
 }
 #request_button.depressed {
   background:#295F7A;
@@ -290,9 +292,9 @@ ul.toolbar li {
   border:1px dotted #3a87ad;
 }
 
-#selected_command {
+/*#selected_command {
   margin-top:-32px;
-}
+}*/
 
 #selected_command a {
   text-decoration:none;
@@ -410,7 +412,8 @@ span.cm-atom {
 #rest_url_wrapper {
     font-family: sans-serif;
     display: inline-block;
-    margin-bottom: -11px;
+    text-indent: -2em;
+    padding-left: 2.5em;
 }
 
 #rest_url {
@@ -418,4 +421,37 @@ span.cm-atom {
     border: 0;
     background: none;
     font-size:13px;
+    vertical-align: top;
+}
+
+#rest_url .editable {
+    font-weight: bold;
+    font-family:'inconsolata',monospace;
+    border-width: 0 0px 1px 0;
+    border-style: dotted;
+    border-color: #aaa;
+    min-width: 5em;
+    background: none;
+    vertical-align: top;
+}
+
+#rest_url .non_editable {
+    vertical-align: top;
+}
+
+#rest_url_wrapper p {
+    margin: 0;
+}
+
+#rest_url div {
+    display: inline-block;
+}
+
+#rest_url input {
+    margin: 0 !important;
+}
+
+#rest_url div label, 
+#rest_url div input {
+    display: block;
 }

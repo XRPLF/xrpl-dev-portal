@@ -18,7 +18,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Payments ####
 
-* [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#preparing-a-payment)
+* [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
 * [Submit Payment - `POST /v1/payments`](#submitting-a-payment)
 * [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirming-a-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#confirming-a-payment)
@@ -76,11 +76,9 @@ Note that when you submit a payment for processing, you have to assign a unique 
 
 The Ripple protocol supports multiple types of transactions other than just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
 
-+ Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's [Payment transaction type](transactions.html#payment))
-
-+ Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#payment))
-
-+ Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#payment))
+ * Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's [Payment transaction type](transactions.html#payment))
+ * Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#payment))
+ * Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#payment))
 
 ## Getting Started ##
 
@@ -100,6 +98,7 @@ If you want to run your own Ripple-REST server, see the [installation instructio
 
 
 As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. There are lots of options, including:
+
  * The [`curl`](http://curl.haxx.se/) commandline utility
  * The [Poster Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/poster/)
  * The [Postman Chrome extension](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en)
@@ -195,13 +194,23 @@ All currencies on the Ripple Network have issuers, except for XRP. In the case o
 
 For more information about XRP see [the Ripple wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
 
-Amount Object:
+### Amounts in JSON ###
+
+When an amount of currency (or other asset) is specified as part of a JSON body, it is encoded as an object with three fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| value | String (Quoted decimal) | The quantity of the currency |
+| currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency |
+| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always an empty string for XRP. |
+
+Example Amount Object:
 
 ```js
 {
   "value": "1.0",
   "currency": "USD",
-  "issuer": "r..."
+  "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
 }
 ```
 
@@ -216,6 +225,18 @@ or for XRP:
 ```
 
 The `value` field can get very large or very small. See the [Currency Format](https://wiki.ripple.com/Currency_Format) for the exact limits of Ripple's precision.
+
+### Amounts in URLs ###
+
+When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and issuer -- but concatenate them with `+` symbols. 
+
+Example Amount:
+
+`1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q`
+
+When specifying an amount of XRP, you can omit the issuer entirely. For example:
+
+`1.0+XRP`
 
 ## <a id="payment_object"></a> Payment Objects ##
 
@@ -261,7 +282,7 @@ The fields of a Payment object are defined as follows:
 | `destination_tag` | Unsigned Integer | (Optional) A 32-bit unsigned integer (0-4294967294, inclusive) that is generally used if the recipient of the payment is a hosted wallet at a gateway. |
 | `source_slippage` | String (Quoted decimal number) | can be specified to give the `source_amount` a cushion and increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The `source_address` will never be charged more than `source_slippage` + the `value` specified in `source_amount`. |
 | `invoice_id` | String | (Optional) 256-bit hash that can be used to link payments to an invoice or bill. |
-| `paths` | String | A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the [Prepare Payment](#preparing-a-payment) method. |
+| `paths` | String | A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the [Prepare Payment](#prepare-payment) method. |
 | `flag_no_direct_ripple` | Boolean  | (Optional, defaults to false) `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option. |
 | `flag_partial_payment` | Boolean | (Optional, defaults to false) If set to `true`, fees will be deducted from the delivered amount instead of the sent amount. (*Caution:* There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See [Partial Payments](transactions.html#partial-payments) |
 
@@ -270,30 +291,35 @@ The fields of a Payment object are defined as follows:
 
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
-## Making Payments ##
+## Payments ##
 
-### Preparing a Payment ###
+## Prepare Payment ##
 
 __GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}__
 
 [Try it! >](rest-api-tool.html#prepare-payment)
 
-To prepare a payment, you first make an HTTP `GET` call to the above endpoint.  This will generate a list of possible payments between the two parties for the desired amount, taking into account the established trustlines between the two parties for the currency being transferred.  You can then choose one of the returned payments, modify it if necessary (for example, to set slippage values or tags), and then submit the payment for processing.
+Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network: consider it like getting quotes before actually making the payment.
+
+You can then choose one of the returned payment objects, modify it as desired (for example, to set slippage values or tags), and then submit the payment for processing.
 
 The following URL parameters are required by this API endpoint:
 
-+ `address` *[required]* The Ripple address for the source account.
-+ `destination_account` *[required]* The Ripple address for the destination account.
-+ `destination_amount` *[required]* The amount to be sent to the destination account.  Note that this value uses `+` characters to separate the `value`, `currency` and `issuer` fields.  
-+ For XRP, the format is: `0.1+XRP`
+| Field | Value | Description |
+|-------|-------|-------------|
+| `address` | String | The Ripple address for the account that would send the payment. |
+| `destination_account` | String | The Ripple address for the account that would receive the payment. |
+| `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls) | The amount that the destination account should receive. |
 
-+ For other currencies, you need to include the Ripple address of the currency's issuer, like this: `0.1+USD+r...`
+Optionally, you can also include the following as a query parameter:
 
-Optionally, you can also include the following as a query string parameter:
+| Field | Value | Description |
+|-------|-------|-------------|
+| `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:issuer}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If an issuer is not specified, include all issuances of that currency held by the sending account. |
 
-`source_currencies` *[optional]* A comma-separated list of source currencies.  This is used to filter the returned list of possible payments.  Each source currency can be specified either as a currency code (eg, `USD`), or as a currency code and issuer (eg, `USD+r...`).  If the issuer is not specified for a currency other than XRP, then the results will be limited to the specified currency, but any issuer for that currency will be included in the results.
+This method effectively performs a [ripple_path_find](rippled-apis.html#ripple-path-find) and constructs a payment object for the paths it finds.
 
-Note that this call is a wrapper around the [Ripple path-find](https://ripple.com/wiki/RPC_API#path_find) command, and returns an array of [`Payment`](#payment_object) objects, like this:
+Response Body:
 
 ```js
 {
