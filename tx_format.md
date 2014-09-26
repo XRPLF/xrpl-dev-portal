@@ -183,6 +183,8 @@ Some fields can be automatically filled in before the transaction is signed, eit
 
 For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
 
+(TODO: note that `Paths` will be populated, if necessary, when "build_path" is passed along with the secret to the submit/sign commands. Also, rippled/ripple-lib will also set the `tfFullyCanonicalSig` bit in the `Flags`)
+
 ### Transaction Fees ###
 
 The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
@@ -296,16 +298,16 @@ Example payment:
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| Paths | Array of path arrays | PathSet | (Optional, but recommended) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. If omitted, the server chooses a path. Must be omitted for XRP-to-XRP transactions. |
-| SendMax | String/Object | Amount | (Optional) Highest amount of currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) If omitted, do not send more than the `Amount` to be received. Must be omitted or empty for XRP-to-XRP transactions. |
+| Paths | Array of path arrays | PathSet | (Optional) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions or present (along with SendMax) if no direct trustline. May be set by rippled when `build_path: true` passed along with `secret` to submit (not recommended). |
+| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments (implies source balance). Must be omitted for XRP-to-XRP payments.|
 
 ### Paths ###
 
-The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path.
+The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path, and are implied by the Destination/Amount and SendMax fields.
 
 You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. We recommend always looking up the paths and including them as part of the transaction, because there are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
 
-An empty `Paths` array indicates that the server should decide which paths to use, or there is a direct path connecting the source and destination accounts.
+An empty `Paths` array indicates there is a direct path connecting the source and destination accounts. Clients must not serialize an empty json array into the tx_blob.
 
 A direct path could be:
 
