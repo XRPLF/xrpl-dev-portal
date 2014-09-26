@@ -167,7 +167,7 @@ Every transaction type has the same set of fundamental fields:
 | [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
-| [PreviousTxnID](#previoustxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
+| [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey | String | PubKey | (Omitted until signed) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
@@ -211,13 +211,13 @@ We strongly recommend that you specify the `LastLedgerSequence` parameter on eve
 
 Without the `LastLedgerSequence` parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the global base [transaction fee](#transaction-fees) increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) fee in order to send another transaction canceling it. Later, if the transaction fee decreases again, the transaction may become viable again. The `LastLedgerSequence` places a hard upper limit on how long the transaction can wait to be validated or rejected.
 
-### PreviousTxnID ###
+### AccountTxnID ###
 
-The `PreviousTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one is also valid and matches the transaction you expected.
+The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one is also valid and matches the transaction you expected.
 
-One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially encounter serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `PreviousTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
+One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially encounter serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
-In order to use PreviousTxnID, you must first set the [asfAccountTxnID](#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction.
+In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction.
 
 ### Memos ###
 
@@ -376,7 +376,7 @@ The available AccountSet flags are:
 | asfRequireAuth | 2 | Require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
-| asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [PreviousTxnID](#previoustxnid) | (None) |
+| asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
 | asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be cleared. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
 
