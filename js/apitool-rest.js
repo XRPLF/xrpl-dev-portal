@@ -7,12 +7,16 @@ var rest_url = $('#rest_url');
 var rest_method = $("#rest_method");
 var selected_command = $("#selected_command");
 var spinner = $(".loader");
+var reminders = $("#rest_url_wrapper .rest_reminders");
+var test_warning = $("#test_warning");
 
 var GET = "GET";
 var POST = "POST";
 var PUT = "PUT";
 var DELETE = "DELETE";
 var URL_BASE = "https://api.ripple.com:443";
+
+var DOC_BASE = "ripple-rest.html";
 
 
 function slugify(str) {
@@ -57,32 +61,46 @@ $(commands).click(function() {
 
 //---------- List of requests ------------------------//
 
+var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+var DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX";
+var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
+
 Request('Generate Account', {
     method: GET,
     path: "/v1/accounts/new",
     description: 'Generate the keys for a potential new account',
-    link: 'ripple-rest.html#generating-accounts'
+    link: '#generating-accounts'
 });
 
 Request('Get Account Balances', {
     method: GET,
-    path: '/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances',
+    path: '/v1/accounts/{:address}/balances',
     description: 'Retrieve the current balances for the given Ripple account',
-    link: 'ripple-rest.html#account-balances'
+    link: '#account-balances',
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1
+    }
 });
 
 Request('Get Account Settings', {
     method: GET,
-    path: '/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings',
+    path: '/v1/accounts/{:address}/settings',
     description: 'Retrieve the current settings for the given Ripple account',
-    link: 'ripple-rest.html#account-settings'
+    link: '#account-settings',
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1
+    }
 });
 
 Request('Update Account Settings', {
     method: POST,
-    path: '/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings',
+    path: '/v1/accounts/{:address}/settings',
     description: 'Change the current settings for the given Ripple account. <span class="btn-danger">Please, only use test accounts here.</span>',
-    link: 'ripple-rest.html#updating-account-settings',
+    link: '#updating-account-settings',
+    test_only: true,
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1
+    },
     body: {
         secret: "sssssssssssssssssssssssssssss",
         settings: {
@@ -97,21 +115,28 @@ Request('Update Account Settings', {
 
 Request('Prepare Payment', {
     method: GET,
-    path: '/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments/paths/ra5nK24KXen9AHvsdFTKHSANinZseWnPcX/1+USD+rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn',
+    path: '/v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}?{:query_params}',
     description: 'Change the current settings for the given Ripple account',
-    link: 'ripple-rest.html#preparing-a-payment'
+    link: '#prepare-payment',
+    params: {
+        "{:source_address}": DEFAULT_ADDRESS_1,
+        "{:destination_address}": DEFAULT_ADDRESS_2,
+        "{:amount}": "1+USD+rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "{:query_params}": "source_currencies=USD"
+    }
 });
 
 Request('Submit Payment', {
     method: POST,
     path: '/v1/payments',
     description: 'Send a prepared payment to the network. <span class="btn-danger">Please, only use test accounts here.</span>',
-    link: 'ripple-rest.html#submitting-a-payment',
+    link: '#submitting-a-payment',
+    test_only: true,
     body: {
       "secret": "sssssssssssssssssssssssssssss",
       "client_resource_id": "348170b9-16b9-4927-854d-7f9d4a2a692d",
       "payment":     {
-          "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "source_account": DEFAULT_ADDRESS_1,
           "source_tag": "",
           "source_amount": {
             "value": "1",
@@ -119,12 +144,12 @@ Request('Submit Payment', {
             "issuer": ""
           },
           "source_slippage": "0",
-          "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+          "destination_account": DEFAULT_ADDRESS_2,
           "destination_tag": "",
           "destination_amount": {
             "value": "1",
             "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+            "issuer": DEFAULT_ADDRESS_1
           },
           "invoice_id": "",
           "paths": "[]",
@@ -136,30 +161,46 @@ Request('Submit Payment', {
 
 Request("Confirm Payment", {
     method: GET,
-    path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments/9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    path: "/v1/accounts/{:address}/payments/{:hash}",
     description: "Retrieve details of a payment and its status",
-    link: "ripple-rest.html#confirming-a-payment"
+    link: "#confirming-a-payment",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:hash}": DEFAULT_HASH
+    }
 });
 
 Request("Get Payment History", {
     method: GET,
-    path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments",
+    path: "/v1/accounts/{:address}/payments?{:query_params}",
     description: "Browse through the history of payments sent and received by an account",
-    link: "ripple-rest.html#payment-history",
+    link: "#payment-history",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "direction=incoming&exclude_failed=true"
+    }
 });
 
 Request("Get Trustlines", {
     method: GET,
-    path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/trustlines?currency=USD",
+    path: "/v1/accounts/{:address}/trustlines?{:query_params}",
     description: "Check the status of one or more trustlines attached to an account",
-    link: "ripple-rest.html#reviewing-trustlines"
+    link: "#reviewing-trustlines",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "currency=USD&counterparty=ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+    }
 });
 
 Request("Grant Trustline", {
     method: POST,
-    path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/trustlines",
+    path: "/v1/accounts/{:address}/trustlines",
     description: "Add or modify a trustline from this account. <span class='btn-danger'>Please, only use test accounts here.</span>",
-    link: "ripple-rest.html#granting-a-trustline",
+    link: "#granting-a-trustline",
+    test_only: true,
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1
+    },
     body: {
         "secret": "sneThnzgBgxc3zXPG....",
         "trustline": {
@@ -173,37 +214,44 @@ Request("Grant Trustline", {
 
 Request("Check Notifications", {
     method: GET,
-    path: "/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/notifications/9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    path: "/v1/accounts/{:address}/notifications/{:hash}",
     description: "Browse through the history of payments sent and received by an account",
-    link: "ripple-rest.html#checking-notifications"
+    link: "#checking-notifications",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:hash}": DEFAULT_HASH
+    }
 });
 
 Request("Check Connection", {
     method: GET,
     path: "/v1/server/connected",
     description: "Check whether the REST server is connected to a rippled server",
-    link: "ripple-rest.html#check-connection-state"
+    link: "#check-connection-state"
 });
 
 Request("Get Server Status", {
     method: GET,
     path: "/v1/server",
     description: "Retrieve information about the current status of the Ripple-REST server and the rippled server it is connected to",
-    link: "ripple-rest.html#get-server-status"
+    link: "#get-server-status"
 });
 
 Request("Retrieve Ripple Transaction", {
     method: GET,
-    path: "/v1/tx/85C5E6762DE7969DC1BD69B3C8C7387A5B8FCE6A416AA1F74C0ED5D10F08EADD",
+    path: "/v1/tx/{:hash}",
     description: "Retrieve a raw Ripple transaction",
-    link: "ripple-rest.html#retrieve-ripple-transaction"
+    link: "#retrieve-ripple-transaction",
+    params: {
+        "{:hash}": DEFAULT_HASH
+    }
 });
 
 Request("Generate UUID", {
     method: GET,
     path: "/v1/uuid",
     description: "Create a universally-unique identifier (UUID) to use as the client resource ID for a payment",
-    link: "ripple-rest.html#create-client-resource-id"
+    link: "#create-client-resource-id"
 });
 
 //---------- End req. List ---------------------------//
@@ -221,8 +269,13 @@ var cm_response = CodeMirror(response_body.get(0), {
     readOnly: true
 });
 
-function update_method() {
-    method = $(this).val();
+function update_method(el) {
+    if (el === undefined) {
+        method = $(this).val();
+    } else {
+        method = $(el).val();
+    }
+    
     if (method == GET || method == DELETE) {
         request_body.hide();
     } else {
@@ -231,12 +284,47 @@ function update_method() {
     }
 }
 
+function change_path(command) {
+    rest_url.empty();
+    reminders.html("&nbsp;");
+    
+    var re = /(\{:[^}]+\})/g; // match stuff like {:address}
+    params = command.path.split(re);
+    
+    //console.log(params);
+    for (i=0; i<params.length; i++) {
+        if (params[i].match(/\{:[^}]+\}/) !== null) {
+            if (command.params === undefined || command.params[params[i]] === undefined) {
+                var default_val = params[i];
+            } else {
+                var default_val = command.params[params[i]];
+            }
+            //rest_url.append("<span class='editable' contenteditable='true' id='resturl_"+params[i]+"'>"+default_val+"</span>");
+            
+            var new_div = $("<div>").appendTo(rest_url);
+            var new_param = $("<input type='text' id='resturl_"+params[i]+"' value='"+default_val+"' class='editable' title='"+params[i]+"' />").appendTo(new_div);
+            new_param.autosizeInput({"space": 0});
+            //var new_label = $("<label class='reminder' for='resturl_"+params[i]+"'>"+params[i]+"</label>").appendTo(new_div);
+            
+            
+        } else {
+            rest_url.append("<span class='non_editable'>"+params[i]+"</span>");
+        }
+    }
+}
+
 function select_request(request) {
     command = requests[request];
+    
+    if (command.test_only === true) {
+        test_warning.show();
+    } else {
+        test_warning.hide();
+    }
 
     if (command.description) {
         $(description).html($('<a>')
-            .attr('href', command.link)
+            .attr('href', DOC_BASE+command.link)
             .html(command.description));
         $(description).show();
     } else {
@@ -244,15 +332,19 @@ function select_request(request) {
     }
 
     selected_command.html($('<a>')
-                    .attr('href', command.link)
+                    .attr('href', DOC_BASE+command.link)
                     .text(command.name));
                                 
     //rest_url.val(command.path);
-    rest_url.text(command.path);
+    //rest_url.text(command.path);
+    change_path(command);
 
     
-    rest_method.val(command.method);
-    rest_method.change();
+//    rest_method.val(command.method);
+//    rest_method.change();
+    request_button.val(command.method);
+    request_button.text(command.method+" request");
+    update_method(request_button);
     
     if (command.method == POST || command.method == PUT) {
         cm_request.setValue(JSON.stringify(command.body, null, 2));
@@ -270,22 +362,33 @@ function get_uuid(callback) {
     $.get(URL_BASE + "/v1/uuid").done(callback);
 }
 
+function get_path() {
+    s = "";
+    rest_url.find(".non_editable, .editable").each(function() {
+        if (this.tagName == "INPUT") {
+            s += $(this).val();
+        } else {
+            s += $(this).text();
+        }
+    });
+    return s;
+}
 
 function send_request() {
-    var method = rest_method.val();
+    //var method = rest_method.val();
+    var method = request_button.val();
     if (method != GET && method != POST && method != PUT && method != DELETE) {
         console.log("ERROR: unrecognized http method");
         return;
     }
     //var path = rest_url.val();
-    var path = rest_url.text();
+    var path = get_path();
 
     $(this).addClass('depressed');
     response_body.addClass('obscured');
 
     if (method == PUT || method == POST) {
         var body   = cm_request.getValue();
-        console.log(body);
         $.ajax({
             type: method,
             url: URL_BASE + path,
@@ -326,7 +429,7 @@ function reset_response_area() {
 
 $(document).ready(function() {
     request_button.click(send_request);
-    rest_method.change(update_method);
+    //rest_method.change(update_method);
     
     get_uuid(function(resp,status,xhr) {
         requests["submit-payment"].body.client_resource_id = resp.uuid;
