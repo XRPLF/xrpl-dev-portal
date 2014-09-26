@@ -452,7 +452,7 @@ A SetRegularKey transaction changes the regular key used by the account to sign 
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| RegularKey | String | PubKey | (Optional) Public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; if omitted, removes the existing regular key. |
+| RegularKey | String | Account | (Optional) Hash of the public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; if omitted, removes the existing regular key. |
 
 Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the [asfDisableMaster account flag](#accountset-flags).)
 
