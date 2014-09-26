@@ -32,7 +32,7 @@ Typically, you create a transaction in JSON format first. Here is an example of 
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  "Amount" : { 
+  "Amount" : {
      "currency" : "USD",
      "value" : "1",
      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -46,9 +46,9 @@ Typically, you create a transaction in JSON format first. Here is an example of 
 After doing that, you generate the signed binary format for the transaction. There are two ways to do this:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-  * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is a JavaScript implementation of offline signing. 
+  * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is a JavaScript implementation of offline signing.
 2. Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)
-  * As a shortcut, you can use the [submit command](rippled-apis.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes. 
+  * As a shortcut, you can use the [submit command](rippled-apis.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
 
 In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](rippled-apis.html#submit). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
 
@@ -189,15 +189,15 @@ The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specify
 
 Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an admin connection, it relays the transaction even under high load, so long as the fee meets the global base.)
 
-Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the fee higher or wait for the load to decrease. 
+Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the fee higher or wait for the load to decrease.
 
 For more information, see the [Transaction Fee wiki article](https://wiki.ripple.com/Transaction_Fee).
 
 ### Canceling or Skipping a Transaction ###
 
-An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger. 
+An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.
 
-However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same `Sequence` value from the same account. If you do not want to perform the same transaction again, you can perform an [AccountSet](#accountset) transaction with no options. 
+However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same `Sequence` value from the same account. If you do not want to perform the same transaction again, you can perform an [AccountSet](#accountset) transaction with no options.
 
 For example, if you attempted to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough [transaction fee](#transaction-fees) to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction fee for the new transaction 11), but it allows transactions 12 and 13 to become valid.
 
@@ -207,7 +207,7 @@ In this way, an AccountSet transaction with no options is the canonical "[no-op]
 
 ### LastLedgerSequence ###
 
-We strongly recommend that you specify the `LastLedgerSequence` parameter on every transaction. Provide a value of about 3 higher than [the most recent ledger index](rippled-apis.html#ledger) to ensure that your transaction is either validated or rejected within a matter of seconds. 
+We strongly recommend that you specify the `LastLedgerSequence` parameter on every transaction. Provide a value of about 3 higher than [the most recent ledger index](rippled-apis.html#ledger) to ensure that your transaction is either validated or rejected within a matter of seconds.
 
 Without the `LastLedgerSequence` parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the global base [transaction fee](#transaction-fees) increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) fee in order to send another transaction canceling it. Later, if the transaction fee decreases again, the transaction may become viable again. The `LastLedgerSequence` places a hard upper limit on how long the transaction can wait to be validated or rejected.
 
@@ -256,7 +256,7 @@ Example payment:
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  "Amount" : { 
+  "Amount" : {
      "currency" : "USD",
      "value" : "1",
      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -300,11 +300,11 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 ### Partial Payments ###
 
-A partial payment subtracts fees from the amount received instead of adding to the amount sent. Partial payments are useful for [returning payments](https://wiki.ripple.com/Returning_payments) without incurring additional costs to oneself. 
+A partial payment subtracts fees from the amount received instead of adding to the amount sent. Partial payments are useful for [returning payments](https://wiki.ripple.com/Returning_payments) without incurring additional costs to oneself.
 
 By default, the `Amount` field of a Payment transaction specifies the amount of currency that is *received* by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account, up to the `SendMax` amount. (If `SendMax` is not specified, and fees are necessary to make the transaction the transaction fails.)
 
-The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers. 
+The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers.
 
 Validated partial payment transactions have a `meta.DestinationAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
 
@@ -591,13 +591,13 @@ Create or modify a trust line linking two accounts.
 
 ### Trust Limits ###
 
-All balances on the Ripple Network, except for XRP, represent value owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is responsible for paying the balance back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account. 
+All balances on the Ripple Network, except for XRP, represent value owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is responsible for paying the balance back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account.
 
 Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing gateway defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network. (The Ripple Ledger will still reflect that you possess the same balance with that issuing gateway, but you won't be able to redeem, making it unlikely to be worth anything.)
 
 There are two cases where you can hold a balance on a trust line that is *greater* than your limit: when you acquire more of that currency through [trading](#offercreate), or when you decrease the limit on your trust line.
 
-Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it. 
+Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it.
 
 A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
 
