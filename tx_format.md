@@ -223,12 +223,35 @@ In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accounts
 
 The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects, where each object has the following fields:
 
-| Field | Type | Description |
+| Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|-------------|
-| MemoType | String | A unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
-| (...) | (Variable) | Arbitrary additional fields defined by the MemoType, including the contents of the memo, any values needed to decrypt it or verify its signature, etc. |
+| MemoType | Hex String | VariableLength | A unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoData | Hex String | VariableLength | TODO |
+| MemoFormat | Hex String | VariableLength | TODO |
 
-The memos field is currently limited to no more than 1KB in size.
+The MemoData and MemoFormat fields pack arbitrary data, with semantics defined by the MemoType,including the contents of the memo, any values needed to decrypt it or verify its signature, etc.
+
+The memos field is currently limited to no more than 1KB in size (when serialized in binary format).
+
+Example Memos:
+
+```
+{
+  "Memos" : [
+    {
+      "Memo" : {
+        "MemoType" : "0000FFFF",
+        "MemoData" : "0000FFFF",
+        "MemoFormat" : "0000FFFF"
+      }
+    }
+  ]
+  ...
+}
+```
+
+Note that the immediate children of the `Memos` array have a single field, which
+defines the name of the object.
 
 ### Flags ###
 
