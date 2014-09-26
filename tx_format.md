@@ -152,13 +152,13 @@ After a transaction has been submitted, if it gets accepted into a validated led
 
 ### Identifying Transactions ###
 
-The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction by in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
+The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
 
 The transaction hash can be used as a "proof of payment" since anyone can look up the transaction using the hash and verify its final status.
 
 ## Common Fields ##
 
-Every transaction has a the same set of fundamental fields:
+Every transaction type has the same set of fundamental fields:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
@@ -280,7 +280,7 @@ Example payment:
 
 The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path.
 
-You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. We recommend always including looking up the paths and including them as part of the transaction, because there are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
+You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. We recommend always looking up the paths and including them as part of the transaction, because there are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
 
 An empty `Paths` array indicates that the server should decide which paths to use, or there is a direct path connecting the source and destination accounts.
 
@@ -490,7 +490,7 @@ An unfunded transaction can remain on the ledger indefinitely, but it does not h
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
 * A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
 * A subsequent OfferCreate from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)
-* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook and 
+* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook and TODO: (and what??)
   * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports.
 * *Note:* there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See [RIPD-456](https://ripplelabs.atlassian.net/browse/RIPD-456) for status.)
 
@@ -617,7 +617,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 
 Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.
 
-Some of the fields that are mandatory for normal transactions do not make sense for psuedo-transactions. In those cases, the pseudo-transaction has the following default values:
+Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:
 
 | Field | Default Value |
 |-------|---------------|
