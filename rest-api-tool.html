@@ -129,21 +129,25 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         <div id='io_wrapper'>
           <div id='input' class='io'>
             <h2>REST Request</h2>
-            <div id='request_options'>
-              <div class="button btn btn-primary api" id='request_button'>Send request</div>
+            <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                <h4>Test accounts only!</h4>
+                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
             </div>
             <div style="clear:both;"></div>
             <h3 id='selected_command' title='Reference information'></h3>
             <p id='description'></p>
             <div id='invalid'>Invalid JSON</div>
-            <select id='rest_method'>
+<!--            <select id='rest_method'>
                 <option value='GET'>GET</option>
                 <option value='POST'>POST</option>
-            </select>
+            </select>-->
             <div id='rest_url_wrapper'>
-                <span id='rest_host'>https://api.ripple.com</span><span id='rest_url' contenteditable='true'></span>
+                <p><span id='rest_host'>https://api.ripple.com</span><span id='rest_url'></span></p>
             </div>
             <div id='request_body'></div>
+            <div id='request_options'>
+              <div class="button btn btn-primary api" id='request_button'>Send request</div>
+            </div>
           </div>
           <div id='output' class='io'>
             <h2>Response</h2>
@@ -232,6 +236,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <script type='text/javascript' src='js/es5-shim.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js'></script>
   <script type='text/javascript' src='js/cm-javascript.min.js'></script>
+  <script type='text/javascript' src='js/jquery.autosize.input.min.js'></script>
   <script type='text/javascript' src='js/apitool-rest.js'></script>
 
 
