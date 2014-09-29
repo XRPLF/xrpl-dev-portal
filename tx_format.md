@@ -174,6 +174,8 @@ Every transaction type has the same set of fundamental fields:
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
 | TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from. |
 
+The field `PreviousTxnID` is a **DEPRECATED** alias for [AccountTxnID](#accounttxnid). Always use `PreviousTxnID` instead.
+
 ### Auto-fillable Fields ###
 
 Some fields can be automatically filled in before the transaction is signed, either by a `rippled` server or by the library used for offline signing. Both [ripple-lib](https://github.com/ripple/ripple-lib) and `rippled` can automatically provide the following values:
@@ -183,7 +185,7 @@ Some fields can be automatically filled in before the transaction is signed, eit
 
 For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
 
-(TODO: note that `Paths` will be populated, if necessary, when "build_path" is passed along with the secret to the submit/sign commands. Also, rippled/ripple-lib will also set the `tfFullyCanonicalSig` bit in the `Flags`)
+The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also be automatically filled in. 
 
 ### Transaction Fees ###
 
@@ -223,37 +225,35 @@ In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accounts
 
 ### Memos ###
 
-The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects, where each object has the following fields:
+The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, `Memo`, which in turn contains another object with *one or more* of the following fields:
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|-------------|
-| MemoType | Hex String | VariableLength | A unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
-| MemoData | Hex String | VariableLength | TODO |
-| MemoFormat | Hex String | VariableLength | TODO |
+| MemoType | String | VariableLength | Arbitrary hex value; conventionally should be ASCII for a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoData | String | VariableLength | Arbitrary hex value, conventionally containing the content of the memo. |
+| MemoFormat | String | VariableLength | Arbitrary hex value, conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
 
-The MemoData and MemoFormat fields pack arbitrary data, with semantics defined by the MemoType,including the contents of the memo, any values needed to decrypt it or verify its signature, etc.
+The `Memos` field is currently limited to no more than 1KB in size (when serialized in binary format).
 
-The memos field is currently limited to no more than 1KB in size (when serialized in binary format).
-
-Example Memos:
+Example of a transaction with a Memos field:
 
 ```
 {
-  "Memos" : [
-    {
-      "Memo" : {
-        "MemoType" : "0000FFFF",
-        "MemoData" : "0000FFFF",
-        "MemoFormat" : "0000FFFF"
-      }
-    }
-  ]
-  ...
+    "TransactionType": "Payment",
+    "Account": "rMmTCjGFRWPz8S2zAUUoNVSQHxtRQD4eCx",
+    "Destination": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+    "Memos": [
+        {
+            "Memo": {
+                "MemoType": "5061796d656e7420726561736f6e",
+                "MemoData": "72656e74"
+            }
+        }
+    ],
+    "Amount": "1"
 }
 ```
 
-Note that the immediate children of the `Memos` array have a single field, which
-defines the name of the object.
 
 ### Flags ###
 
@@ -298,21 +298,24 @@ Example payment:
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| Paths | Array of path arrays | PathSet | (Optional) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions or present (along with SendMax) if no direct trustline. May be set by rippled when `build_path: true` passed along with `secret` to submit (not recommended). |
+| Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments (implies source balance). Must be omitted for XRP-to-XRP payments.|
 
 ### Paths ###
 
-The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path, and are implied by the Destination/Amount and SendMax fields.
+The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path. You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. 
 
-You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. We recommend always looking up the paths and including them as part of the transaction, because there are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
+If the `Paths` field is provided, the server decides at transaction processing time which paths to use out of the provided set. This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.
 
-An empty `Paths` array indicates there is a direct path connecting the source and destination accounts. Clients must not serialize an empty json array into the tx_blob.
-
-A direct path could be:
+If the `Paths` field is omitted, by definition the payment should take a direct path connecting the source and destination accounts. A direct path could be:
 
 * An XRP-to-XRP transfer.
 * A payment along a single trust line that connects the two accounts in the currency being transferred.
+
+The `Paths` field must not be an empty array, nor an array whose members are all empty arrays.
+
+The `Paths` field can be automatically filled in when the transaction is signed, if the `build_path` field is provided to the [sign](rippled-apis.html#sign) or [submit](rippled-apis.html#submit) commands. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
+
 
 ### Payment Flags ###
 
@@ -452,7 +455,7 @@ A SetRegularKey transaction changes the regular key used by the account to sign 
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
-| RegularKey | String | Account | (Optional) Hash of the public key of a new keypair to use as the regular key to this account, as a base-58-encoded string; if omitted, removes the existing regular key. |
+| RegularKey | String | Account | (Optional) The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. If omitted, removes the existing regular key. |
 
 Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the [asfDisableMaster account flag](#accountset-flags).)
 
@@ -515,7 +518,7 @@ An unfunded transaction can remain on the ledger indefinitely, but it does not h
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
 * A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
 * A subsequent OfferCreate from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)
-* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook and TODO: (and what??)
+* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook.
   * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports.
 * *Note:* there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See [RIPD-456](https://ripplelabs.atlassian.net/browse/RIPD-456) for status.)
 
