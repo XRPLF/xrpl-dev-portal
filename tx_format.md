@@ -226,7 +226,7 @@ In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accounts
 The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects, where each object has the following fields:
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|------|-------------|
+|-------|------|--------------------------------------------------------|-------------|
 | MemoType | Hex String | VariableLength | A unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 | MemoData | Hex String | VariableLength | TODO |
 | MemoFormat | Hex String | VariableLength | TODO |
@@ -331,7 +331,7 @@ By default, the `Amount` field of a Payment transaction specifies the amount of 
 
 The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers.
 
-Validated partial payment transactions have a `meta.DestinationAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
+Validated partial payment transactions have a `meta.DeliveredAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
 
 A partial payment cannot provide the initial XRP to fund an account; this case returns the error code telNO_DST_PARTIAL. Direct XRP-to-XRP payments also cannot be partial payments temBAD_SEND_XRP_PARTIAL.
 
