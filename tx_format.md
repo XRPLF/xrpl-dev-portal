@@ -169,7 +169,7 @@ Every transaction type has the same set of fundamental fields:
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
-| SigningPubKey | String | PubKey | (Omitted until signed) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
+| SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
 | TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from. |
@@ -228,7 +228,7 @@ In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accounts
 The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, `Memo`, which in turn contains another object with *one or more* of the following fields:
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|------|-------------|
+|-------|------|--------------------------------------------------------|-------------|
 | MemoType | String | VariableLength | Arbitrary hex value; conventionally should be ASCII for a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 | MemoData | String | VariableLength | Arbitrary hex value, conventionally containing the content of the memo. |
 | MemoFormat | String | VariableLength | Arbitrary hex value, conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
@@ -293,7 +293,7 @@ Example payment:
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency to deliver. *Note:* If the [*tfPartialPayment* flag](#payment-flags) is set, this is not the amount actually received. (Formatted as per [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts).) |
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
@@ -334,7 +334,7 @@ By default, the `Amount` field of a Payment transaction specifies the amount of 
 
 The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers.
 
-Validated partial payment transactions have a `meta.DestinationAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
+Validated partial payment transactions have a `meta.DeliveredAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
 
 A partial payment cannot provide the initial XRP to fund an account; this case returns the error code telNO_DST_PARTIAL. Direct XRP-to-XRP payments also cannot be partial payments temBAD_SEND_XRP_PARTIAL.
 
@@ -364,7 +364,7 @@ Example AccountSet:
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | [ClearFlag](#accountset-flags) | Unsigned Integer | UInt32 | (Optional) Unique identifier of a flag to disable for this account. |
 | [Domain](#domain) | String | VariableLength | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
 | EmailHash | String | Hash128 | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
@@ -427,7 +427,7 @@ Incoming transactions with unclear purposes may be an inconvenience for some gat
 
 For example, a destination tag is typically used to identify which hosted balance should be credited when the gateway receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the `asfRequireDest` tag, the gateway (or any account) can ensure that every incoming payment has a destination tag, which makes it harder to send an ambiguous payment by accident.
 
-Accounts can protect against unwanted incoming payments for non-XRP currencies simply by not creating trust lines in those currencies. Since XRP does not require trust, the `asfDisallowXRP` flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in `rippled` because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to meet the reserve and make a transaction that disabled the flag, the account would never be able to send another transaction.) Instead, client applications should disallow or discourage XRP payments to accounts with the `asfDisallowXRP` flag enabled.
+Accounts can protect against unwanted incoming payments for non-XRP currencies simply by not creating trust lines in those currencies. Since XRP does not require trust, the `asfDisallowXRP` flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in `rippled` because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the `asfDisallowXRP` flag enabled.
 
 ### TransferRate ###
 
@@ -454,7 +454,7 @@ A SetRegularKey transaction changes the regular key used by the account to sign 
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | RegularKey | String | Account | (Optional) The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. If omitted, removes the existing regular key. |
 
 Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the [asfDisableMaster account flag](#accountset-flags).)
@@ -489,7 +489,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | [Expiration](#expiration) | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in [seconds since the Ripple Epoch](rippled-apis.html#specifying-time). |
 | OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 | TakerGets | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being provided by the offer creator. |
@@ -524,7 +524,7 @@ An unfunded transaction can remain on the ledger indefinitely, but it does not h
 
 ### Offers and Trust ###
 
-The limit values of trust lines (See [TrustSet](#trustset)) do not affect offer. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.
+The limit values of trust lines (See [TrustSet](#trustset)) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.
 
 However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](https://wiki.ripple.com/Reserves), any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.
 
@@ -578,7 +578,7 @@ An OfferCancel transaction removes an Offer node from the global ledger.
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | OfferSequence | Unsigned Integer | UInt32 | The sequence number of the offer to cancel. |
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate](#offercreate) transaction with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
@@ -662,7 +662,7 @@ A change in transaction or account fees. This is typically in response to change
 *Note:* There have been very few, if any, Fee psuedo-transactions, ever. It is possible, but very unlikely, that you may encounter one in a historical ledger.
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
-|-------|-----------|---------------|-------------|
+|-------|-----------|--------------------------------------------------------|-------------|
 | BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
