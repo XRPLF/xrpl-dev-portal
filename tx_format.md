@@ -163,18 +163,18 @@ Every transaction type has the same set of fundamental fields:
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction. |
+| [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previous transaction matches the provided hash. |
 | [Fee](#transaction-fees) | String | Amount | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
 | [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
-| [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying a transaction. If the transaction immediately prior this one by sequence number does not match the provided hash, this transaction is considered invalid. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, and `AccountSet`. |
-| TxnSignature | String | VariableLength | (Omitted until signed) The signature that verifies this transaction as originating from the account it says it is from. |
+| TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
+| TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
-The field `PreviousTxnID` is a **DEPRECATED** alias for [AccountTxnID](#accounttxnid). Always use `PreviousTxnID` instead.
+The field `PreviousTxnID` is a **DEPRECATED** alias for [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead.
 
 ### Auto-fillable Fields ###
 
@@ -217,7 +217,7 @@ Without the `LastLedgerSequence` parameter, there is a particular situation that
 
 ### AccountTxnID ###
 
-The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one is also valid and matches the transaction you expected.
+The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one (by Sequence Number) is also valid and matches the transaction you expected.
 
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially encounter serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
@@ -274,6 +274,8 @@ The only flag that applies globally to all transactions is as follows:
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
 
+Payments are also the only way to [create accounts](#creating-accounts).
+
 Example payment:
 
 ```
@@ -300,6 +302,12 @@ Example payment:
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments (implies source balance). Must be omitted for XRP-to-XRP payments.|
+
+### Creating Accounts ###
+
+The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](https://wiki.ripple.com/Ledger_Format#AccountRoot) will be added to the ledger to reflect the newly-created account.
+
+If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.
 
 ### Paths ###
 
