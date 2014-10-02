@@ -95,7 +95,7 @@ Request('Get Account Settings', {
 Request('Update Account Settings', {
     method: POST,
     path: '/v1/accounts/{:address}/settings',
-    description: 'Change the current settings for the given Ripple account. <span class="btn-danger">Please, only use test accounts here.</span>',
+    description: 'Change the current settings for the given Ripple account.',
     link: '#updating-account-settings',
     test_only: true,
     params: {
@@ -129,7 +129,7 @@ Request('Prepare Payment', {
 Request('Submit Payment', {
     method: POST,
     path: '/v1/payments',
-    description: 'Send a prepared payment to the network. <span class="btn-danger">Please, only use test accounts here.</span>',
+    description: 'Send a prepared payment to the network.',
     link: '#submitting-a-payment',
     test_only: true,
     body: {
@@ -195,7 +195,7 @@ Request("Get Trustlines", {
 Request("Grant Trustline", {
     method: POST,
     path: "/v1/accounts/{:address}/trustlines",
-    description: "Add or modify a trustline from this account. <span class='btn-danger'>Please, only use test accounts here.</span>",
+    description: "Add or modify a trustline from this account.",
     link: "#granting-a-trustline",
     test_only: true,
     params: {
