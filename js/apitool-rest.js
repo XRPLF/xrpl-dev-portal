@@ -74,11 +74,12 @@ Request('Generate Account', {
 
 Request('Get Account Balances', {
     method: GET,
-    path: '/v1/accounts/{:address}/balances',
+    path: '/v1/accounts/{:address}/balances?{:query_params}',
     description: 'Retrieve the current balances for the given Ripple account',
     link: '#account-balances',
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "currency=USD"
     }
 });
 
