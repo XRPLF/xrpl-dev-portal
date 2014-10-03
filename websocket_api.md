@@ -5359,11 +5359,13 @@ The request includes the following parameters:
 | tx_json | Object | [Transaction definition](transactions.html) in JSON format |
 | secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
+| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
 
-The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields are automatic:
+The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields from the [transaction format](transactions.html) are automatically filled in:
 
-* `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. 
-* `Fee` - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee.
+* `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless `offline` is true.
+* `Fee` - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee. Automatically filled unless `offline` is true.
+* `Paths` - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a [ripple_path_find](#ripple-path-find). Only filled if `build_path` is provided. 
 
 #### Response Format ####
 
@@ -5441,7 +5443,68 @@ The response follows the [standard format](#response-formatting), with a success
 ## submit ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Submit.cpp "Source")
 
-The `submit` method sends a transaction to the network to be confirmed and included in future ledgers. There are two ways to use it: either you can supply JSON along with your secret key (not recommended), or you can take a pre-signed transaction blob (for example, one created with [`sign`](#sign), or better yet, something [signed offline](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js)) and submit it as-is.
+The `submit` method sends a [transaction](transactions.html) to the network to be confirmed and included in future ledgers. 
+
+This command has two modes:
+
+* Submit-only mode takes a signed, serialized transaction as a binary blob, and submits it to the network as-is. Since signed transaction objects are immutable, no portion of the transaction can be modified or automatically filled in after submission.
+* Sign-and-submit mode takes a JSON-formatted Transaction object, completes and signs the transaction in the same manner as the [sign command](#sign), and then submits the signed transaction. We recommend only using this mode for testing and development.
+
+To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, persist it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction. 
+
+### Submit-Only Mode ###
+
+A submit-only request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| tx_blob | String | Hex representation of the signed transaction to submit. |
+| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
+
+#### Request Format ####
+
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+    "id": 3,
+    "command": "submit",
+    "tx_blob": "1200002280000000240000001E61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000B732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210095D23D8AF107DF50651F266259CC7139D0CD0C64ABBA3A958156352A0D95A21E02207FCF9B77D7510380E49FF250C21B57169E14E9B4ACFD314CEDC79DDD0A38B8A681144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
+}
+```
+
+*JSON-RPC*
+```
+{
+    "method": "submit",
+    "params": [
+        {
+            "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
+        }
+    ]
+}
+```
+
+*Commandline*
+```
+#Syntax: submit tx_blob
+submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
+```
+</div>
+
+
+### Sign-and-Submit Mode ###
+
+A sign-and-submit request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| tx_json | Object | [Transaction definition](transactions.html) in JSON format, optionally omitting any auto-fillable fields. |
+| secret | String | (Required if `tx_json` is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
+| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
+| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
+| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
 
 #### Request Format ####
 An example of the request format:
@@ -5472,7 +5535,17 @@ An example of the request format:
     "method": "submit",
     "params": [
         {
-            "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
+            "secret": "sssssssssssssssssssssssssssss",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Amount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": "1"
+                },
+                "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "TransactionType": "Payment"
+            }
         }
     ]
 }
@@ -5486,26 +5559,6 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 </div>
 
 [Try it! >](ripple-api-tool.html#submit)
-
-The request includes the following parameters:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| tx_blob | String | (Do not include if tx_json and secret are supplied) Hex representation of the signed transaction to submit. |
-| tx_json | Object | (Do not include if tx_blob is supplied) [Transaction definition](transactions.html) in JSON format |
-| secret | String | (Required if tx_json is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
-| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
-| offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. (No effect when specifying the transaction as tx_blob.) |
-
-The JSON format for `tx_json` varies depending on the type of transaction. In the case of sending non-XRP currency (IOUs), you can obtain appropriate values for the `Paths` field by doing a `find_path` or `ripple_find_path` command first. The `Paths` field is not required for sending XRP. The provided path or paths are used as options for the path the payment takes; the server selects one or more of them to use according to its own criteria. You can omit the `Paths` field, but that leaves it up to the server to choose a path on the fly. Since the total cost of making the payment, including transit fees, is automatically deducted from the sending account, you should find paths ahead of time to avoid getting surprised. 
-
-By default, `rippled` tries to compute the cheapest combination of paths, but it may not have the resources to find the best option. A payment may even be broken up into multiple parts that take different paths if that is the cheapest way. An untrustworthy server could be modified to choose paths maliciously. 
-
-If `offline` is not set to true, then the server tries to automatically fill the `Sequence` and `Fee` parameters appropriately. 
-
-To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, persist it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction. 
-
-You should provide a [LastLedgerSequence](transactions.html#lastledgersequence) field in your transaction to make sure that it expires quickly in the case that it does not succeed. Otherwise, a transaction may end up in limbo, neither failing nor confirming, for a long time.
 
 #### Response Format ####
 
