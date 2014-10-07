@@ -91,13 +91,14 @@ You don't need to do any setup to retrieve information from a public Ripple-REST
 However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/). 
 
 Make sure you know both the account address and the account secret for your account:
+
  * The *address* can be found by clicking the *Show Address* button in the __Fund__ tab of Ripple Trade
  * The *secret* is provided when you first create your account. **WARNING: If you submit your secret to a server you do not control, your account can be stolen, along with all the money in it.** We recommend using a test account with very limited funds on the public Ripple-REST server.
 
 If you want to run your own Ripple-REST server, see the [installation instructions](https://github.com/ripple/ripple-rest/#installing-and-running).
 
 
-As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. There are lots of options, including:
+As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. For testing, there are lots of options, including:
 
  * The [`curl`](http://curl.haxx.se/) commandline utility
  * The [Poster Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/poster/)
@@ -147,17 +148,27 @@ The response should be a page with content similar to the following:
 }
 ```
 
+If you want to connect to your own server, just replace the hostname and port with the location of your instance. For example, if you are running Ripple-REST locally on port 5990, you can access the same information at the following URL:
+
+http://localhost:5990/v1/server
+
+Since the hostname depends on where your chosen Ripple-REST instance is, the methods in this document are identified using only the part of the path that comes after the hostname.
+
+
+
+# Formatting Conventions #
+
 The `ripple-rest` API conforms to the following general behavior for [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer):
 
-* The HTTP method identifies what you are trying to do.  Generally, HTTP `GET` requests are used to retrieve information, while HTTP `POST` requests are used to make changes or submit information.
 * You make HTTP (or HTTPS) requests to the API endpoint, indicating the desired resources within the URL itself. (The public server, for the sake of security, only accepts HTTPS requests.)
+* The HTTP method identifies what you are trying to do.  Generally, HTTP `GET` requests are used to retrieve information, while HTTP `POST` requests are used to make changes or submit information.
 * If more complicated information needs to be sent, it will be included as JSON-formatted data within the body of the HTTP POST request.
+  * This means that you must set `Content-Type: application/json` in the headers when sending POST requests with a body.
 * Upon successful completion, the server returns an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) of 200 OK, and a `Content-Type` value of `application/json`.  The body of the response will be a JSON-formatted object containing the information returned by the endpoint.
 
 As an additional convention, all responses from Ripple-REST contain a `"success"` field with a boolean value indicating whether or not the success 
 
-
-### Errors ###
+## Errors ##
 
 When errors occur, the server returns an HTTP status code in the 400-599 range, depending on the type of error. The body of the response contains more detailed information on the cause of the problem. (*Note:* Old versions of Ripple-REST return 200 OK regardless of the outcome.)
 
@@ -178,9 +189,6 @@ When possible, the server provides a JSON response body with more information ab
 |`success` | Boolean | `false` indicates that an error occurred. |
 | `error_type` | String | A short string identifying the error that occurred. |
 | `message` | String | A longer human-readable string explaining what went wrong. |
-
-
-# Formatting Conventions #
 
 ## Quoted Numbers ##
 
@@ -275,320 +283,54 @@ The fields of a Payment object are defined as follows:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| `source_address` | String | The Ripple address of the account sending the payment |
-| `destination_address` | String |The Ripple address of the account receiving the payment |
-| `destination_amount` | [Amount Object](#amount_object) | The amount of currency that should be deposited into the account receiving the payment. |
-| `source_tag` | Unsigned Integer | (Optional) A 32-bit unsigned integer (0-4294967294, inclusive) that is generally used if the sender is a hosted wallet at a gateway. This should be the same as the `destination_tag` used to identify the hosted wallet when they are receiving a payment. |
-| `destination_tag` | Unsigned Integer | (Optional) A 32-bit unsigned integer (0-4294967294, inclusive) that is generally used if the recipient of the payment is a hosted wallet at a gateway. |
-| `source_slippage` | String (Quoted decimal number) | can be specified to give the `source_amount` a cushion and increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The `source_address` will never be charged more than `source_slippage` + the `value` specified in `source_amount`. |
-| `invoice_id` | String | (Optional) 256-bit hash that can be used to link payments to an invoice or bill. |
+| `source_account` | String | The Ripple address of the account sending the payment |
+| `source_amount` | [Amount Object](#amount_object) | The amount to deduct from the account sending the payment. |
+| `destination_account` | String | The Ripple address of the account receiving the payment |
+| `destination_amount` | [Amount Object](#amount_object) | The amount that should be deposited into the account receiving the payment. |
+| `source_tag` | String (Quoted unsigned integer) | (Optional) A quoted 32-bit unsigned integer (0-4294967294, inclusive) to indicate a sub-category of the source account. Typically, it identifies a hosted wallet at a gateway as the sender of the payment. |
+| `destination_tag` | String (Quoted unsigned integer) | (Optional) A quoted 32-bit unsigned integer (0-4294967294, inclusive) to indicate a particular sub-category of the destination account. Typically, it identifies a hosted wallet at a gateway as the recipient of the payment. |
+| `source_slippage` | String (Quoted decimal) | (Optional) Provides the `source_amount` a cushion to increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The `source_address` will never be charged more than `source_slippage` + the `value` specified in `source_amount`. |
+| `invoice_id` | String | (Optional) Arbitrary 256-bit hash that can be used to link payments to an invoice or bill. |
 | `paths` | String | A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the [Prepare Payment](#prepare-payment) method. |
-| `flag_no_direct_ripple` | Boolean  | (Optional, defaults to false) `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option. |
-| `flag_partial_payment` | Boolean | (Optional, defaults to false) If set to `true`, fees will be deducted from the delivered amount instead of the sent amount. (*Caution:* There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See [Partial Payments](transactions.html#partial-payments) |
+| `no_direct_ripple` | Boolean  | (Optional, defaults to false) `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option. |
+| `partial_payment` | Boolean | (Optional, defaults to false) If set to `true`, fees will be deducted from the delivered amount instead of the sent amount. (*Caution:* There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See [Partial Payments](transactions.html#partial-payments) |
 
-
-# PAYMENTS #
-
-`ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
-
-## Payments ##
-
-## Prepare Payment ##
-
-__GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}__
-
-[Try it! >](rest-api-tool.html#prepare-payment)
-
-Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network: consider it like getting quotes before actually making the payment.
-
-You can then choose one of the returned payment objects, modify it as desired (for example, to set slippage values or tags), and then submit the payment for processing.
-
-The following URL parameters are required by this API endpoint:
+Submitted transactions can have additional fields reflecting the current status and outcome of the transaction, including:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| `address` | String | The Ripple address for the account that would send the payment. |
-| `destination_account` | String | The Ripple address for the account that would receive the payment. |
-| `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls) | The amount that the destination account should receive. |
+| direction | String | The direction of the payment relative to the account from the URL, either `"outgoing"` (sent by the account in the URL) or `"incoming"` (received by the account in the URL) |
+| state | String | The current status of the payment in transaction processing. A value of `"validated"` indicates that the transaction is finalized. |
+| result | String | The [Ripple transaction status code](https://wiki.ripple.com/Transaction_errors) for the transaction. A value of `"tesSUCCESS"` indicates a successful transaction. |
+| ledger | String | The sequence number of the ledger version that includes this transaction. |
+| hash | String | A hash value that uniquely identifies this transaction in the Ripple network. |
+| timestamp | String | The time this transaction was <span class='draft-comment'>submitted? validated?</span>, as a <span class='draft-comment'>???</span> formatted string. |
+| fee | String (Quoted decimal) | The amount of XRP charged as a transaction fee. |
+| source_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account sending the transaction as a result of the transaction. |
+| destination_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account receiving the transaction as a result of the transaction. |
 
-Optionally, you can also include the following as a query parameter:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:issuer}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If an issuer is not specified, include all issuances of that currency held by the sending account. |
-
-This method effectively performs a [ripple_path_find](rippled-apis.html#ripple-path-find) and constructs a payment object for the paths it finds.
-
-Response Body:
-
-```js
-{
-  "success": true,
-  "payments": [
-    { /* Payment */ },
-    { /* Payment */ },
-    ...
-  ]
-}
-```
-You can then select the desired payment, modify it if necessary, and submit the payment object to the [`POST /v1/payments`](#submitting-a-payment) endpoint for processing.
-
-__NOTE:__ This command may be quite slow. If the command times out, please try it again.
-
-### Submitting a Payment ###
-
-__`POST /v1/payments`__
-
-Before you can submit a payment, you will need to have three pieces of information:
-
-+ The [`Payment`](#payment_object) *[required]* object to be submitted.
-
-+ The `secret` *[required]* or private key for your Ripple account.
-
-__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- this is the key to your account and your money. If you are using the test server provided, only use test accounts to submit payments.
-
-+ A `client_resource_id` *[required]* that will uniquely identify this payment.  This is a 36-character UUID (universally unique identifier) value which will uniquely identify this payment within the `ripple-rest` API. This value can be any unique string such as "123" or "ABC123".  Note that you can use the [`GET /v1/uuid`](#calculating_a_uuid) endpoint to calculate a UUID value if you do not have a UUID generator readily available.
-
-This HTTP `POST` request must have a content-type of `application/json`, and the body of the request should look like this:
-
-```js
-{
-  "secret": "s...",
-  "client_resource_id": "123",
-  "payment": {
-    "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
-    "source_tag": "",
-    "source_amount": {
-      "value": "5.01",
-      "currency": "USD",
-      "issuer": ""
-    },
-    "source_slippage": "0",
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_tag": "",
-    "destination_amount": {
-      "value": "5",
-      "currency": "USD",
-      "issuer": ""
-    },
-    "invoice_id": "",
-    "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
-    "partial_payment": false,
-    "no_direct_ripple": false
-  }
-}
-```
-
-[Try it! >](rest-api-tool.html#submit-payment)
-
-Upon completion, the server will return a JSON object which looks like the following:
-
-```js
-{
-  "success": true,
-  "client_resource_id": "123",
-  "status_url": ".../v1/accounts/r1.../payments/123"
-}
-```
-
-The `status_url` value is a URL that can be queried to get the current status for this payment.  This will be a reference to the `GET /v1/accounts/{:address}/payments` endpoint, with the client resource ID filled in to retrieve the details of the payment.  More information on this endpoint can be found in the section on [confirming a payment](#confirming-a-payment).
-
-If an error occurred that prevented the payment from being submitted, the response object will look like this:
-
-```js
-{
-  "success": false,
-  "error": "tecPATH_DRY",
-  "message": "Path could not send partial amount. Please ensure that the src_address has sufficient funds (in the src_amount currency, if specified) to execute this transaction."
-}
-```
-
-More information about transaction errors can be found on the [Ripple Wiki](https://ripple.com/wiki/Transaction_errors).
-
-Note that payments cannot be cancelled once they have been submitted.
-
-### Confirming a Payment ###
-
-__`GET /v1/accounts/{:address}/payments/{:id}`__
-
-The `{:id}` value can be either a client resource identifier or a transaction hash value.
-
-[Try it! >](rest-api-tool.html#confirm-payment)
-
-To confirm that your payment has been submitted successfully, you can call this API endpoint.  The `hash` value can either be the transaction hash for the desired payment, or the payment's client resource ID.
-
-The server will return the details of your payment:
-
-```js
-{
-  "success": true,
-  "payment": {
-    "source_account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
-    "source_tag": "",
-    "source_amount": {
-    "value": "1",
-    "currency": "XRP",
-    "issuer": ""
-  },
-  "source_slippage": "0",
-  "destination_account" "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
-  "destination_tag": "",
-  "destination_amount": {
-    "value": "1",
-    "currency": "XRP",
-    "issuer": ""
-  },
-  "invoice_id": "",
-  "paths": "[]",
-  "no_direct_ripple": false,
-  "partial_payment": false,
-  "direction": "outgoing",
-  "state": "validated",
-  "result": "tesSUCCESS",
-  "ledger": "6141074",
-  "hash": "85C5E6762DE7969DC1BD69B3C8C7387A5B8FCE6A416AA1F74C0ED5D10F08EADD",
-  "timestamp": "2014-04-18T01:21:00.000Z",
-  "fee": "0.000012",
-  "source_balance_changes":
-  [
-    {
-      "value": "-1.000012",
-      "currency": "XRP",
-      "issuer": ""
-    }
-  ],
-  "destination_balance_changes":
-  [
-    {
-      "value": "1",
-      "currency": "XRP",
-      "issuer": ""
-    }
-  ]
-}
-```
-
-You can then check the `state` field to see if the payment has gone through; it will have the value "validated" when the payment has been validated and written to the Ripple ledger.
-
-If the payment cannot be found, then an error will be returned instead:
-
-```js
-{
-  "success": true,
-  "error": "Payment Not Found",
-  "message": "This may indicate that the payment was never validated and written into the Ripple ledger and it was not submitted through this ripple-rest instance. This error may also be seen if the databases of either ripple-rest or rippled were recently created or deleted."
-}
-```
-
-Note that there can be a delay in processing a submitted payment; if the payment does not exist yet, or has not been validated, you should wait for a short period of time before checking again.
-
-## Receiving Payments ##
-
-As well as sending payments, your application will need to know when incoming payments have been received.  To do this, you first make the following API call:
-
-__`GET /v1/accounts/{:address}/payments`__
-
-[Try it! >](rest-api-tool.html#get-payment-history)
-
-This will return the most recent payments (both incoming and outgoing will be denoted in the direction)
-
-```js
-{
-  "success": true,
-  "payments": [
-    { /* payment */ }.
-    { /* payment */ }.
-    { /* payment */ }.
-    { /* payment */ }.
-    { /* payment */ }
-  ]
-}
-```
-__`GET /v1/accounts/{:address}/payments?direction=incoming`__
-
-This will return the most recent incoming payments for your account, up to a maximum of 20.  You can process these historical payments if you want, and also retrieve more historical payments if you need to by using the `page` parameter, as described in the [Payment History](#payment-history) section below.
-
-Regardless of what else you do with these payments, you need to extract the value of the `ledger` field from the most recent (ie, first) payment in the returned list.  Convert this number to an integer and increment it by one.  The resulting value, which will we call the `next_ledger` value, is the starting point for polling for new payments.
-
-Your application should then periodically make the following API call:
-
-__`GET /v1/accounts/{:address}/payments?direction=incoming&earliest_first=true&start_ledger={next_ledger}`__
-
-This will return any _new_ payments which have been received, up to a maximum of 20.  You should process these incoming payments.  If you received a list of 20 payments, there may be more payments to be processed.  You should then use the `page` parameter to get the next chunk of 20 payments, like this:
-
-__`GET /v1/accounts/{:address}/payments?direction=incoming&earliest_first=true&start_ledger={next_ledger}&page=2`__
-
-Continue retrieving the payments, incrementing the `page` parameter each time, until there are no new incoming payments to be processed.
-
-__Note:__ We use the `earliest_first` parameter to retrieve the payments in ascending date order (ie, the oldest payment first).  This ensures that if any more payments come in after the first API call with `start_ledger` set to `next_ledger`, you won't miss any payments.  If you use the `page` parameter while retrieving the payments in descending order (ie, the most recent payment first), you may miss one or more payments while scanning through the pages.
-
-Once you have retrieved all the payments, you should update your `next_ledger` value by once again taking the value of the `ledger` field from the most recent (ie, last) payment received, converting this value to an integer and incrementing it by one.  This will give you the `next_ledger` value to use the next time you poll for payments.
-
-Using this approach, you can regularly poll for new incoming payments, confident that no payments will be processed twice, and no incoming payments will be missed.
-
-
-## Payment History ##
-
-__`GET /v1/accounts/{:address}/payments`__
-
-[Try it! >](rest-api-tool.html#get-payment-history)
-
-This API endpoint can be used to browse through an account's payment history and also used to confirm specific payments after a payment has been submitted. The following query string parameters can be used to filter the list of returned payments:
-
-+ `source_account` Filter the results to only include payments sent by the given account.
-
-+ `destination_account` Filter the results to only include payments received by the given account.
-
-+ `exclude_failed` If set to `true`, the results will only include payments which were successfully validated and written into the ledger.  Otherwise, failed payments will be included.
-
-+ `direction` Limit the results to only include the given type of payments.  The following direction values are currently supported:
- + `incoming`
- + `outgoing`
- + `pending`
- + `earliest_first` If set to `true`, the payments will be returned in ascending date order.  Otherwise, the payments will be returned in descending date order (ie, the most recent payment will be returned first).  Defaults to `false`.
-
-+ `start_ledger` The index for the starting ledger.  If `earliest_first` is `true`, this will be the oldest ledger to be queried; otherwise, it will be the most recent ledger.  Defaults to the first ledger in the `rippled` server's database.
-
-+ `end_ledger` The index for the ending ledger.  If `earliest_first` is `true`, this will be the most recent ledger to be queried; otherwise, it will be the oldest ledger.  Defaults to the most recent ledger in the `rippled` server's database.
-
-+ `results_per_page` The maximum number of payments to be returned at once.  Defaults to 20.
-
-+ `page` The page number to be returned.  The first page of results will have page number `1`, the second page will have page number `2`, and so on.  Defaults to `1`.
-
-Upon completion, the server will return a JSON object which looks like the following:
-
-```js
-{
-  "success": true,
-  "payments": [
-    {
-      "client_resource_id": "3492375b-d4d0-42db-9a80-a6a82925ccd5",
-      "payment": {
-        /* Payment */
-      }
-    }, {
-      "client_resource_id": "4a4e3fa5-d81e-4786-8383-7164c3cc9b01",
-      "payment": {
-        /* Payment */
-      }
-    }
-  ]
-}
-```
-
-If the server returns fewer than `results_per_page` payments, then there are no more pages of results to be returned.  Otherwise, increment the page number and re-issue the query to get the next page of results.
-
-Note that the `ripple-rest` API has to retrieve the full list of payments from the server and then filter them before returning them back to the caller.  This means that there is no speed advantage to specifying more filter values.
 
 
 
 # ACCOUNTS #
 
-`ripple-rest` provides the ability to review and confirm on information regarding your Ripple account. You can view your current balances and settings, as well as the ability to set your account setting flags.
+Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [account reserve](https://wiki.ripple.com/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
 
-## Generating Accounts ##
+## Generate Account ##
 
 (New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc1))
+
+Randomly generate keys for a potential new Ripple account.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/new
+```
+</div>
+
+[Try it! >](rest-api-tool.html#generate-account)
 
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
@@ -596,9 +338,7 @@ Generating the keys can be done offline, since it does not affect the network at
 
 *Caution:* Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There *are* bad actors who are sniffing around for account keys so they can steal your money!
 
-__`GET /v1/accounts/new`__
-
-[Try it! >](rest-api-tool.html#generate-account)
+#### Response ####
 
 The response is an object with the address and the secret for a potential new account:
 
@@ -615,15 +355,35 @@ The response is an object with the address and the secret for a potential new ac
 The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
 
 
-## Account Balances ##
-
-__`GET /v1/accounts/{:address}/balances`__
-
-[Try it! >](rest-api-tool.html#get-account-balances)
+## Get Account Balances ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/balances.js#L9 "Source")
 
 Retrieve the current balances for the given Ripple account.
 
-The `account` parameter should be set to the Ripple address of the desired account.  The server will return a JSON object which looks like the following:
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/balances
+```
+</div>
+
+[Try it! >](rest-api-tool.html#get-account-balances)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of the account whose balances to retrieve. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
+| counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway) |
+
+#### Response ####
 
 ```js
 {
@@ -797,6 +557,652 @@ A successful submission will result in a returning JSON object that includes a t
   "hash": "6434F18B3997D81152F1AB31911E8D40E1346A05478419B7B3DF78B270C1151A"
 }
 ```
+
+# PAYMENTS #
+
+`ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
+
+
+
+## Prepare Payment ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L538 "Source")
+
+Get quotes for possible ways to make a particular payment.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#prepare-payment)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| `address` | String | The Ripple address for the account that would send the payment. |
+| `destination_account` | String | The Ripple address for the account that would receive the payment. |
+| `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls) | The amount that the destination account should receive. |
+
+Optionally, you can also include the following as a query parameter:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:issuer}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If an issuer is not specified, include all issuances of that currency held by the sending account. |
+
+Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network. This method effectively performs a [ripple_path_find](rippled-apis.html#ripple-path-find) and constructs payment objects for the paths it finds.
+
+You can then choose one of the returned payment objects, modify it as desired (for example, to set slippage values or tags), and then submit the payment for processing.
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "payments": [
+    { /* Payment */ },
+    { /* Payment */ },
+    ...
+  ]
+}
+```
+
+You can then select the desired payment, modify it if necessary, and submit the payment object to the [`POST /v1/payments`](#submit-payment) endpoint for processing.
+
+__NOTE:__ This command may be quite slow. If the command times out, please try it again.
+
+
+
+## Submit Payment ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L43 "Source")
+
+Submit a payment object to be processed and executed. 
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/payments
+
+{
+  "secret": "s...",
+  "client_resource_id": "123",
+  "payment": {
+    "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
+    "source_tag": "",
+    "source_amount": {
+      "value": "5.01",
+      "currency": "USD",
+      "issuer": ""
+    },
+    "source_slippage": "0",
+    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_tag": "",
+    "destination_amount": {
+      "value": "5",
+      "currency": "USD",
+      "issuer": ""
+    },
+    "invoice_id": "",
+    "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+    "partial_payment": false,
+    "no_direct_ripple": false
+  }
+}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#submit-payment)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| payment | [Payment object](#payment_object) | The payment to send. You can generate a payment object using the [Prepare Payment](#prepare-payment) method. |
+| client_resource_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
+| secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "client_resource_id": "123",
+  "status_url": ".../v1/accounts/r1.../payments/123"
+}
+```
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| client_resource_id | String | The client resource ID provided in the request |
+| status_url | String | A URL that you can GET to check the status of the request. This refers to the [Confirm Payment](#confirm-payment) method. |
+
+
+
+## Confirm Payment ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L232 "Source")
+
+Retrieve the details of a payment, including the current state of the transaction and the result of transaction processing.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/payments/{:id}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#confirm-payment)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of an account involved in the transaction. |
+| id | String | A unique identifier for the transaction: either a client resource ID or a transaction hash. |
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "payment": {
+    "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "source_tag": "",
+    "source_amount": {
+      "value": "0.00001",
+      "currency": "XRP",
+      "issuer": ""
+    },
+    "source_slippage": "0",
+    "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "destination_tag": "",
+    "destination_amount": {
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+      "value": "0.01"
+    },
+    "invoice_id": "",
+    "paths": "[]",
+    "no_direct_ripple": false,
+    "partial_payment": true,
+    "direction": "outgoing",
+    "state": "validated",
+    "result": "tesSUCCESS",
+    "ledger": "8924146",
+    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "timestamp": "2014-09-17T21:47:00.000Z",
+    "fee": "0.00001",
+    "source_balance_changes": [
+      {
+        "value": "-0.00002",
+        "currency": "XRP",
+        "issuer": ""
+      }
+    ],
+    "destination_balance_changes": [
+      {
+        "value": "5.08e-8",
+        "currency": "USD",
+        "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+      }
+    ]
+  }
+}
+```
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| payment | Object | A [payment object](#payment-object) for the transaction. |
+
+If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
+
+Processing a payment can take several seconds to complete, depending on the [consensus process](consensus-whitepaper.html). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
+
+
+
+## Payment History ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L460 "Source")
+
+Retrieve a selection of payments that affected the specified account. 
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/payments
+```
+</div>
+
+[Try it! >](rest-api-tool.html#get-payment-history)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of an account involved in the transaction. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| source_account | String (Address) | If provided, only include payments sent by a given account. |
+| destination_account | String (Address) | If provided, only include payments received by a given account. |
+| exclude_failed | Boolean | If true, only include successful transactions. Defaults to false. |
+| direction | String | If provided, only include payments of the given type. Valid values include `"incoming"` (payments received by this account) and `"outgoing"` (payments sent by this account). |
+| earliest_first | Boolean | If true, sort results with the oldest payments first. Defaults to false (sort with the most recent payments first). |
+| start\_ledger | Integer (Ledger sequence number) | If provided, exclude payments from ledger versions older than the given ledger. |
+| end\_ledger | Integer (Ledger sequence number) | If provided, exclude payments from ledger versions newer than the given ledger. |
+| results\_per\_page | Integer | The maximum number of payments to be returned at once.  Defaults to 10. |
+| page | Integer | The page number for the results to return, if more than `results_per_page` are available. The first page of results is page `1`, the second page is number `2`, and so on.  Defaults to `1`. |
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "payments": [
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_tag": "",
+        "source_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "source_slippage": "0",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "outgoing",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "9018940",
+        "hash": "FED24FB85E5682E5FD03D2FFA047E1CE9F284671BCD82007C64B3FE735DD69B0",
+        "timestamp": "2014-09-23T19:20:20.000Z",
+        "fee": "0.000012",
+        "source_balance_changes": [
+          {
+            "value": "-0.000012",
+            "currency": "XRP",
+            "issuer": ""
+          },
+          {
+            "value": "-1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_tag": "",
+        "source_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "source_slippage": "0",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "outgoing",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "9018905",
+        "hash": "63BCCAFA0D6D56B2F914B5933D7FABCD25925450F0675179E836D12DFA530C28",
+        "timestamp": "2014-09-23T19:17:30.000Z",
+        "fee": "0.000012",
+        "source_balance_changes": [
+          {
+            "value": "-0.000012",
+            "currency": "XRP",
+            "issuer": ""
+          },
+          {
+            "value": "-1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_tag": "",
+        "source_amount": {
+          "value": "0.00001",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "source_slippage": "0",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+          "value": "0.01"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": true,
+        "direction": "outgoing",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8924146",
+        "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+        "timestamp": "2014-09-17T21:47:00.000Z",
+        "fee": "0.00001",
+        "source_balance_changes": [
+          {
+            "value": "-0.00002",
+            "currency": "XRP",
+            "issuer": ""
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "5.08e-8",
+            "currency": "USD",
+            "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "source_tag": "",
+        "source_amount": {
+          "value": "1",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "source_slippage": "0",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": "",
+        "destination_amount": {
+          "value": "1",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "incoming",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8889845",
+        "hash": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+        "timestamp": "2014-09-15T20:01:40.000Z",
+        "fee": "0.000012",
+        "source_balance_changes": [
+          {
+            "value": "-1.000012",
+            "currency": "XRP",
+            "issuer": ""
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "XRP",
+            "issuer": ""
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "source_tag": "",
+        "source_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "source_slippage": "0",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "incoming",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8889826",
+        "hash": "4C9FA63D9F87AFC7E1BBD7F2644A1D4BD7537E833B1A945E27E5EC19F3B4B271",
+        "timestamp": "2014-09-15T20:00:10.000Z",
+        "fee": "0.000012",
+        "source_balance_changes": [
+          {
+            "value": "-0.000012",
+            "currency": "XRP",
+            "issuer": ""
+          },
+          {
+            "value": "-1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "source_tag": "",
+        "source_amount": {
+          "value": "30",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "source_slippage": "0",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": "",
+        "destination_amount": {
+          "value": "30",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "incoming",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8889256",
+        "hash": "72549F0CB04C8C5F30F64256A4EBDE577B1943382AE44347F05FF70590FF7CCB",
+        "timestamp": "2014-09-15T19:14:50.000Z",
+        "fee": "0.000012",
+        "source_balance_changes": [
+          {
+            "value": "-30.000012",
+            "currency": "XRP",
+            "issuer": ""
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "30",
+            "currency": "XRP",
+            "issuer": ""
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_tag": "",
+        "source_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "source_slippage": "0",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "outgoing",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8803725",
+        "hash": "6A6E503211A32F7AB92FE747A8AD2759A1E597055CB8961F0B2FEDE3A53975AB",
+        "timestamp": "2014-09-10T23:22:20.000Z",
+        "fee": "0.000015",
+        "source_balance_changes": [
+          {
+            "value": "-0.000015",
+            "currency": "XRP",
+            "issuer": ""
+          },
+          {
+            "value": "-1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ]
+      }
+    },
+    {
+      "client_resource_id": "",
+      "payment": {
+        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_tag": "",
+        "source_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "source_slippage": "0",
+        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_tag": "",
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "value": "1"
+        },
+        "invoice_id": "",
+        "paths": "[]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "outgoing",
+        "state": "validated",
+        "result": "tesSUCCESS",
+        "ledger": "8711125",
+        "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208",
+        "timestamp": "2014-09-05T19:59:50.000Z",
+        "fee": "0.00001",
+        "source_balance_changes": [
+          {
+            "value": "-0.00001",
+            "currency": "XRP",
+            "issuer": ""
+          },
+          {
+            "value": "-1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "value": "1",
+            "currency": "USD",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+If the length of the `payments` array is equal to `results_per_page`, then there may be more results. To get them, increment the `page` query paramter and run the request again.
+
+*Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
+
+
+
+
 # NOTIFICATIONS #
 
 Notifications can be used as a looping mechanism to monitor any transactions against your Ripple address or to confirm against missed notifications if your connection to `rippled` goes down. Notifications are generic and span across all types of Ripple transactions which is different than the "Payments" endpoints which specifically retrieve payment transactions. The "Payments" endpoints also provide full payment objects versus the notification objects which described the transaction at a higher level with less detail.

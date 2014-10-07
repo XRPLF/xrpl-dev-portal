@@ -61,11 +61,12 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 
   
   <!-- syntax selection js -->
-  <script src='js/multicodetab.js'></script>
+  <script src="js/multicodetab.js"></script>
   <script>
     Flatdoc.run({
       fetcher: Flatdoc.file('ripplerest_api.md')
     });
+    $(document).on('flatdoc:ready', $().multicode_tabs);
   </script>
   <link type='text/css' rel='stylesheet' href='css/mod.css' />
   <script src="js/fixsidebarscroll.js"></script>
@@ -107,18 +108,6 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         </div><!--/.nav-collapse -->
       </div>
     </div>
-<!-- 
-  <div class="header-subnav-wrapper">
-  <div class='header-subnav navbar-fixed-top'>
-    <ul>
-        <li><a href='?p=introduction' id='subnav-intro'>Introduction</a></li>
-        <li><a href='?p=ripple-rest-api' id='subnav-rest'>Ripple-REST API</a></li>
-        <li><a href='?p=web-sockets-api' id='subnav-websocket'>WebSocket &amp; JSON-RPC APIs</a></li>
-    </ul>
-    <div class='clearer'>&nbsp;</div>
-  </div>
-</div>
- -->
   <div class='content-root'>
     <div class='menubar'>
       <div class='menu section' role='flatdoc-menu'></div>
