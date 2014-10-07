@@ -5360,11 +5360,13 @@ The request includes the following parameters:
 | secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
+| fee\_mult\_max | Integer | (Optional) If the transaction Fee is omitted, this field limits the fee that automatically filled so that it is less than or equal to the current ledger's fee times this value. |
 
 The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields from the [transaction format](transactions.html) are automatically filled in:
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless `offline` is true.
 * `Fee` - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee. Automatically filled unless `offline` is true.
+    * If `fee_mult_max` is included and the automatically generated Fee is greater than the current field times `fee_mult_max`, then the transaction fails with the error rpcHIGH_FEE.
 * `Paths` - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a [ripple_path_find](#ripple-path-find). Only filled if `build_path` is provided. 
 
 #### Response Format ####
@@ -5505,6 +5507,7 @@ A sign-and-submit request includes the following parameters:
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
+| fee\_mult\_max | Integer | (Optional) If the transaction Fee is omitted, this field limits the fee that automatically filled so that it is less than or equal to the current ledger's fee times this value. |
 
 #### Request Format ####
 An example of the request format:
