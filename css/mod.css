@@ -1,14 +1,15 @@
 .draft-comment {background: #faa; border: 1px solid #d88; padding: 2px;}
 
 td {border: 1px solid #DBDDE2 !important; padding: .2em;}
-table { border-collapse: collapse; clear: left; width: 550px}
-th { padding: .2em; }
+table { border-collapse: collapse; clear: left; }
+th { padding: .2em; font-weight: bold; }
 
 body .content-root {
     background-color: #F3F6FB;
     box-shadow: 930px 0 #FFFFFF inset, 931px 0 #DFE2E7 inset, 940px 0 5px -10px rgba(0, 0, 0, 0.1) inset;
 }
 code { max-height: 14em; overflow: auto;}
+.content code { color: #111; }
 .expanded { max-height: none; overflow: none;}
 
 .content h2, .menu a.level-2 {

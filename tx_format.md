@@ -163,7 +163,7 @@ Every transaction type has the same set of fundamental fields:
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction. |
-| [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previous transaction matches the provided hash. |
+| [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
 | [Fee](#transaction-fees) | String | Amount | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
 | [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
@@ -174,13 +174,13 @@ Every transaction type has the same set of fundamental fields:
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
-The field `PreviousTxnID` is a **DEPRECATED** alias for [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead.
+The field `PreviousTxnID` is **DEPRECATED**. It has been replaced by [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead.
 
 ### Auto-fillable Fields ###
 
 Some fields can be automatically filled in before the transaction is signed, either by a `rippled` server or by the library used for offline signing. Both [ripple-lib](https://github.com/ripple/ripple-lib) and `rippled` can automatically provide the following values:
 
-* `Fee` - Automatically use the current base network fee.
+* `Fee` - Automatically use the current base network fee. (*Note:* `rippled`'s [sign command](rippled-apis.html#sign) supports limits on how high the filled-in-value is, using the `fee_mult_max` parameter.)
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
 For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
