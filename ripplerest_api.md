@@ -189,9 +189,9 @@ When possible, the server provides a JSON response body with more information ab
 | Field | Type | Description |
 |-------|------|-------------|
 | success | Boolean | `false` indicates that an error occurred. |
-| error_type | String | A short string identifying a general category for the error that occurred. |
-| error | String | The specific error that occurred |
-| message | String | A longer human-readable string explaining why the error occurred. |
+| error_type | String | A short code identifying a general category for the error that occurred. |
+| error | String | A human-readable summary of the error that occurred. |
+| message | String | (May be omitted) A longer human-readable explanation for the error. |
 
 Example error:
 
