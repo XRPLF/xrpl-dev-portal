@@ -69,16 +69,17 @@ Request('Generate Account', {
     method: GET,
     path: "/v1/accounts/new",
     description: 'Generate the keys for a potential new account',
-    link: '#generating-accounts'
+    link: '#generate-account'
 });
 
 Request('Get Account Balances', {
     method: GET,
-    path: '/v1/accounts/{:address}/balances',
+    path: '/v1/accounts/{:address}/balances?{:query_params}',
     description: 'Retrieve the current balances for the given Ripple account',
-    link: '#account-balances',
+    link: '#get-account-balances',
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "currency=USD"
     }
 });
 
@@ -86,7 +87,7 @@ Request('Get Account Settings', {
     method: GET,
     path: '/v1/accounts/{:address}/settings',
     description: 'Retrieve the current settings for the given Ripple account',
-    link: '#account-settings',
+    link: '#get-account-settings',
     params: {
         "{:address}": DEFAULT_ADDRESS_1
     }
@@ -96,7 +97,7 @@ Request('Update Account Settings', {
     method: POST,
     path: '/v1/accounts/{:address}/settings',
     description: 'Change the current settings for the given Ripple account.',
-    link: '#updating-account-settings',
+    link: '#update-account-settings',
     test_only: true,
     params: {
         "{:address}": DEFAULT_ADDRESS_1
@@ -130,7 +131,7 @@ Request('Submit Payment', {
     method: POST,
     path: '/v1/payments',
     description: 'Send a prepared payment to the network.',
-    link: '#submitting-a-payment',
+    link: '#submit-payment',
     test_only: true,
     body: {
       "secret": "sssssssssssssssssssssssssssss",
@@ -163,7 +164,7 @@ Request("Confirm Payment", {
     method: GET,
     path: "/v1/accounts/{:address}/payments/{:hash}",
     description: "Retrieve details of a payment and its status",
-    link: "#confirming-a-payment",
+    link: "#confirm-payment",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:hash}": DEFAULT_HASH
@@ -174,7 +175,7 @@ Request("Get Payment History", {
     method: GET,
     path: "/v1/accounts/{:address}/payments?{:query_params}",
     description: "Browse through the history of payments sent and received by an account",
-    link: "#payment-history",
+    link: "#get-payment-history",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:query_params}": "direction=incoming&exclude_failed=true"
