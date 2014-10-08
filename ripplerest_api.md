@@ -189,9 +189,9 @@ When possible, the server provides a JSON response body with more information ab
 | Field | Type | Description |
 |-------|------|-------------|
 | success | Boolean | `false` indicates that an error occurred. |
-| error_type | String | A short string identifying a general category for the error that occurred. |
-| error | String | The specific error that occurred |
-| message | String | A longer human-readable string explaining why the error occurred. |
+| error_type | String | A short code identifying a general category for the error that occurred. |
+| error | String | A human-readable summary of the error that occurred. |
+| message | String | (May be omitted) A longer human-readable explanation for the error. |
 
 Example error:
 
@@ -339,7 +339,7 @@ Each Memo object must have at least one of the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | MemoType | String | Arbitrary string, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
-| MemoData | String | Arbitrary value representing the content of the memo. |
+| MemoData | String | Arbitrary UTF-8 string representing the content of the memo. |
 
 The MemoType field is intended to support URIs, so the contents of that field should only contain characters that are valid in URIs. In other words, MemoType should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
@@ -349,7 +349,7 @@ Example of the memos field:
     "memos": [
       {
         "MemoType": "unformatted_memo",
-        "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
       },
       {
         "MemoData": "Fusce est est, malesuada in tincidunt mattis, auctor eu magna."
