@@ -11,17 +11,17 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Accounts ####
 
-* [Generate Account - `GET /v1/accounts/new`](#generating-accounts)
-* [Get Account Balances - `GET /v1/accounts/{:address}/balances`](#account-balances)
-* [Get Account Settings - `GET /v1/accounts/{:address}/settings`](#account-settings)
-* [Update Account Settings - `POST /v1/accounts/{:address}/settings`](#updating-account-settings)
+* [Generate Account - `GET /v1/accounts/new`](#generate-account)
+* [Get Account Balances - `GET /v1/accounts/{:address}/balances`](#get-account-balances)
+* [Get Account Settings - `GET /v1/accounts/{:address}/settings`](#get-account-settings)
+* [Update Account Settings - `POST /v1/accounts/{:address}/settings`](#update-account-settings)
 
 #### Payments ####
 
 * [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
-* [Submit Payment - `POST /v1/payments`](#submitting-a-payment)
-* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirming-a-payment)
-* [Get Payment History - `GET /v1/accounts/{:address}/payments`](#confirming-a-payment)
+* [Submit Payment - `POST /v1/payments`](#submit-payment)
+* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
+* [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Trustlines ####
 
@@ -170,11 +170,12 @@ As an additional convention, all responses from Ripple-REST contain a `"success"
 
 ## Errors ##
 
-When errors occur, the server returns an HTTP status code in the 400-599 range, depending on the type of error. The body of the response contains more detailed information on the cause of the problem. (*Note:* Old versions of Ripple-REST return 200 OK regardless of the outcome.)
+When errors occur, the server returns an HTTP status code in the 400-599 range, depending on the type of error. The body of the response contains more detailed information on the cause of the problem.
 
 In general, the HTTP status code is indicative of where the problem occurred:
 
-* Codes in the 200-299 range indicate success. (*Note:* Old versions of Ripple-REST return 200 OK even in some failure cases.)
+* Codes in the 200-299 range indicate success. (*Note:* This behavior is new in Ripple-REST 1.3.0. Previous versions sometimes return 200 OK for some types of errors.)
+    * Unless otherwise specified, methods are expected to return `200 OK` on success.
 * Codes in the 400-499 range indicate that the request was invalid or incorrect somehow. For example:
     * `400 Bad Request` occurs if the JSON body is malformed. This includes syntax errors as well as when invalid or mutually-exclusive options are selected.
     * `404 Not Found` occurs if the path specified does not exist, or does not support that method (for example, trying to POST to a URL that only serves GET requests)
@@ -184,8 +185,8 @@ In general, the HTTP status code is indicative of where the problem occurred:
 
 When possible, the server provides a JSON response body with more information about the error. These responses contain the following fields:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 |`success` | Boolean | `false` indicates that an error occurred. |
 | `error_type` | String | A short string identifying the error that occurred. |
 | `message` | String | A longer human-readable string explaining what went wrong. |
@@ -206,8 +207,8 @@ For more information about XRP see [the Ripple wiki page on XRP](https://ripple.
 
 When an amount of currency (or other asset) is specified as part of a JSON body, it is encoded as an object with three fields:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency |
 | issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always an empty string for XRP. |
@@ -242,7 +243,7 @@ Example Amount:
 
 `1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q`
 
-When specifying an amount of XRP, you can omit the issuer entirely. For example:
+When specifying an amount of XRP, omit the issuer entirely. For example:
 
 `1.0+XRP`
 
@@ -281,8 +282,8 @@ An example Payment object looks like this:
 
 The fields of a Payment object are defined as follows:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | `source_account` | String | The Ripple address of the account sending the payment |
 | `source_amount` | [Amount Object](#amount_object) | The amount to deduct from the account sending the payment. |
 | `destination_account` | String | The Ripple address of the account receiving the payment |
@@ -297,8 +298,8 @@ The fields of a Payment object are defined as follows:
 
 Submitted transactions can have additional fields reflecting the current status and outcome of the transaction, including:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | direction | String | The direction of the payment relative to the account from the URL, either `"outgoing"` (sent by the account in the URL) or `"incoming"` (received by the account in the URL) |
 | state | String | The current status of the payment in transaction processing. A value of `"validated"` indicates that the transaction is finalized. |
 | result | String | The [Ripple transaction status code](https://wiki.ripple.com/Transaction_errors) for the transaction. A value of `"tesSUCCESS"` indicates a successful transaction. |
@@ -315,6 +316,8 @@ Submitted transactions can have additional fields reflecting the current status 
 # ACCOUNTS #
 
 Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [account reserve](https://wiki.ripple.com/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
+
+
 
 ## Generate Account ##
 
@@ -355,6 +358,7 @@ The response is an object with the address and the secret for a potential new ac
 The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
 
 
+
 ## Get Account Balances ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/balances.js#L9 "Source")
 
@@ -372,14 +376,14 @@ GET /v1/accounts/{:address}/balances
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | address | String | The Ripple account address of the account whose balances to retrieve. |
 
 Optionally, you can also include the following query parameters:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway) |
 
@@ -406,62 +410,89 @@ Optionally, you can also include the following query parameters:
 
 There will be one entry in the `balances` array for the account's XRP balance, and additional entries for each combination of currency code and issuer.
 
-## Account Settings ##
 
-You can retrieve an account's settings by using the following endpoint:
 
-__`GET /v1/accounts/{:address}/settings`__
+## Get Account Settings ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/settings.js#L53 "Source")
+
+Retrieve the current settings for a given account.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/settings
+```
+</div>
 
 [Try it! >](rest-api-tool.html#get-account-settings)
 
-The server will return a list of the current settings in force for the given account, in the form of a JSON object:
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of the account whose settings to retrieve. |
+
+#### Response ####
 
 ```js
 {
   "success": true,
   "settings": {
-    "transfer_rate": 100,
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "transfer_rate": "",
     "password_spent": false,
     "require_destination_tag": false,
     "require_authorization": false,
     "disallow_xrp": false,
     "disable_master": false,
-    "transaction_sequence": 22
+    "transaction_sequence": "36",
+    "email_hash": "",
+    "wallet_locator": "",
+    "wallet_size": "",
+    "message_key": "0000000000000000000000070000000300",
+    "domain": "mduo13.com",
+    "signers": ""
   }
 }
 ```
 
-The following account settings are currently supported:
+The response contains a `settings` object, with the following fields:
 
-+ `PasswordSpent` `true` if the password has been "spent", else `false`.
-<!--NOTE: This is not currently listed in the account settings schema, so I'm not sure what this setting is used for.
--->
-+ `RequireDestTag` If this is set to `true`, incoming payments will only be validated if they include a `destination_tag` value.  Note that this is used primarily by gateways that operate exclusively with hosted wallets.
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String | The Ripple address of this account |
+| transfer_rate | String (Quoted decimal number) | If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. |
+| password_spent | Boolean | If false, then this account can submit a special [SetRegularKey transaction](transactions.html#setregularkey) without a transaction fee. |
+| require\_destination\_tag | Boolean | If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.) |
+| require_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
+| disallow_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
+| disable_master | Boolean | If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account. |
+| transaction_sequence | String (Quoted integer) | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
+| email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
+| wallet_locator | String | (Not used) |
+| wallet_size | String | (Not used) |
+| message_key | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
+| domain | String | The domain that holds this account. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
+| signers | String |　<span class='draft-comment'>(What is this? Multi-sign related?)</span> |
 
-+ `RequireAuth` If this is set to `true`, incoming trustlines will only be validated if this account first creates a trustline to the counterparty with the authorized flag set to true.  This may be used by gateways to prevent accounts unknown to them from holding currencies they issue.
 
-+ `DisallowXRP` If this is set to `true`, payments in XRP will not be allowed.
 
-+ `EmailHash` The MD5 128-bit hash of the account owner's email address, if known.
+## Update Account Settings ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/settings.js#L97 "Source")
 
-+ `MessageKey` An optional public key, represented as a hex string, that can be used to allow others to send encrypted messages to the account owner.
+Modify the existing settings for an account.
 
-+ `Domain` The domain name associated with this account.
+<div class='multicode'>
+*REST*
 
-+ `TransferRate` The rate charged each time a holder of currency issued by this account transfers some funds.  The default rate is `"1.0"; a rate of `"1.01"` is a 1% charge on top of the amount being transferred.  Up to nine decimal places are supported.
+```
+POST /v1/accounts/{:address}/settings
 
-## Updating Account Settings ##
-
-To change an account's settings, make an HTTP `POST` request to the above endpoint.  The request must have a content-type of `application/json`, and the body of the request should look like this:
-
-__`POST /v1/accounts/{:address}/settings`__
-
-```js
 {
-  "secret": "s...",
+  "secret": "sssssssssssssssssssssssssssss",
   "settings": {
-    "transfer_rate": 100,
-    "password_spent": false,
+    "transfer_rate": 1.02,
     "require_destination_tag": false,
     "require_authorization": false,
     "disallow_xrp": false,
@@ -470,93 +501,65 @@ __`POST /v1/accounts/{:address}/settings`__
   }
 }
 ```
+</div>
 
 [Try it! >](rest-api-tool.html#update-account-settings)
 
-The given settings will be updated.
+The following URL parameters are required by this API endpoint:
 
-# TRUSTLINES #
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of the account whose settings to retrieve. |
 
-## Reviewing Trustlines ##
+The request body must be a JSON object with the following fields:
 
-__`GET /v1/accounts/{:address}/trustlines`__
+| Field | Value | Description |
+|-------|-------|-------------|
+| secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+| settings | Object | A map of settings to change for this account. Any settings not included are left unchanged. |
 
-[Try it! >](rest-api-tool.html#get-trustlines)
+The `settings` object can contain any of the following fields (any omitted fields are left unchanged):
 
-Retrieves all trustlines associated with the Ripple address. Upon completion, the server will return a JSON object which represents each trustline individually along with the currency, limit, and counterparty.
+| Field | Value | Description |
+|-------|-------|-------------|
+| transfer_rate | String (Quoted decimal number) | If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. |
+| require\_destination\_tag | Boolean | If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.) |
+| require_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
+| disallow_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
+| disable_master | Boolean | If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account. |
+| transaction_sequence | String (Quoted integer) | The sequence number of the next valid transaction for this account.  |
+| email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
+| message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
+| domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
+| signers | String |　<span class='draft-comment'>(What is this? Multi-sign related?)</span> |
 
-The following query string parameters are supported to provide additional filtering for either trustlines to a particular currency or trustlines from a specific counterparty:
 
-+ `currency` Three letter currency denominations (i.e. USD, BTC).
-+ `counterparty` Ripple address of the counterparty trusted.
-
-__`GET /v1/accounts/{:address}/trustlines?currency=USD&counterparty=rPs723Dsd...`__
-
-The object returned looks like this:
+#### Response ####
 
 ```js
 {
   "success": true,
-  "lines": [
-    {
-      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "currency": "USD",
-      "trust_limit": "100",
-      "reciprocated_trust_limit": "0",
-      "account_allows_rippling": false,
-      "counterparty_allows_rippling": true
-    },
-    {
-      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
-      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs58B",
-      "currency": "BTC",
-      "trust_limit": "5",
-      "reciprocated_trust_limit": "0",
-      "account_allows_rippling": false,
-      "counterparty_allows_rippling": true
-    }
-  ]
-}
-```
-
-## Granting a Trustline ##
-
-__`POST /v1/accounts/{:address}/trustlines`__
-
-A trustline can also updated and simply set with a currency,amount,counterparty combination by submitting to this endpoint with the following JSON object.
-
-```js
-{
-  "secret": "sneThnzgBgxc3zXPG....",
-  "trustline": {
-  "limit": "110",
-  "currency": "USD",
-  "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-  "allows_rippling": false
+  "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6",
+  "ledger": "9248628",
+  "settings": {
+    "require_destination_tag": false,
+    "require_authorization": false,
+    "disallow_xrp": false,
+    "email_hash": "98b4375e1d753e5b91627516f6d70977"
   }
 }
 ```
 
-[Try it! >](rest-api-tool.html#grant-trustline)
+The response is a JSON object containing the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash | String | A unique hash that identifies the Ripple transaction to change settings |
+| ledger | String (Quoted integer) | The sequence number of the ledger version where the settings-change transaction was applied. |
+| settings | Object | The settings that were changed, as provided in the request. |
 
 
-A successful submission will result in a returning JSON object that includes a transaction hash to the trustline transaction.
 
-```js
-{
-  "success": true,
-  "line": {
-    "account": "rPs7nVbSops6xm4v77wpoPGf549cqjzUy9",
-    "counterparty": "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
-    "currency": "USD",
-    "trust_limit": "100",
-    "allows_rippling": true
-  },
-  "ledger": "6146255",
-  "hash": "6434F18B3997D81152F1AB31911E8D40E1346A05478419B7B3DF78B270C1151A"
-}
-```
 
 # PAYMENTS #
 
@@ -581,16 +584,16 @@ GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | `address` | String | The Ripple address for the account that would send the payment. |
 | `destination_account` | String | The Ripple address for the account that would receive the payment. |
 | `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls) | The amount that the destination account should receive. |
 
 Optionally, you can also include the following as a query parameter:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:issuer}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If an issuer is not specified, include all issuances of that currency held by the sending account. |
 
 Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network. This method effectively performs a [ripple_path_find](rippled-apis.html#ripple-path-find) and constructs payment objects for the paths it finds.
@@ -659,8 +662,8 @@ POST /v1/payments
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | payment | [Payment object](#payment_object) | The payment to send. You can generate a payment object using the [Prepare Payment](#prepare-payment) method. |
 | client_resource_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
@@ -677,8 +680,8 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 }
 ```
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | client_resource_id | String | The client resource ID provided in the request |
 | status_url | String | A URL that you can GET to check the status of the request. This refers to the [Confirm Payment](#confirm-payment) method. |
 
@@ -701,8 +704,8 @@ GET /v1/accounts/{:address}/payments/{:id}
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | address | String | The Ripple account address of an account involved in the transaction. |
 | id | String | A unique identifier for the transaction: either a client resource ID or a transaction hash. |
 
@@ -756,8 +759,8 @@ The following URL parameters are required by this API endpoint:
 }
 ```
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | payment | Object | A [payment object](#payment-object) for the transaction. |
 
 If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
@@ -766,7 +769,7 @@ Processing a payment can take several seconds to complete, depending on the [con
 
 
 
-## Payment History ##
+## Get Payment History ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L460 "Source")
 
 Retrieve a selection of payments that affected the specified account. 
@@ -783,14 +786,14 @@ GET /v1/accounts/{:address}/payments
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | address | String | The Ripple account address of an account involved in the transaction. |
 
 Optionally, you can also include the following query parameters:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field | Type | Description |
+|-------|------|-------------|
 | source_account | String (Address) | If provided, only include payments sent by a given account. |
 | destination_account | String (Address) | If provided, only include payments received by a given account. |
 | exclude_failed | Boolean | If true, only include successful transactions. Defaults to false. |
@@ -1199,6 +1202,92 @@ Optionally, you can also include the following query parameters:
 If the length of the `payments` array is equal to `results_per_page`, then there may be more results. To get them, increment the `page` query paramter and run the request again.
 
 *Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
+
+
+
+
+# TRUSTLINES #
+
+## Reviewing Trustlines ##
+
+__`GET /v1/accounts/{:address}/trustlines`__
+
+[Try it! >](rest-api-tool.html#get-trustlines)
+
+Retrieves all trustlines associated with the Ripple address. Upon completion, the server will return a JSON object which represents each trustline individually along with the currency, limit, and counterparty.
+
+The following query string parameters are supported to provide additional filtering for either trustlines to a particular currency or trustlines from a specific counterparty:
+
++ `currency` Three letter currency denominations (i.e. USD, BTC).
++ `counterparty` Ripple address of the counterparty trusted.
+
+__`GET /v1/accounts/{:address}/trustlines?currency=USD&counterparty=rPs723Dsd...`__
+
+The object returned looks like this:
+
+```js
+{
+  "success": true,
+  "lines": [
+    {
+      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "currency": "USD",
+      "trust_limit": "100",
+      "reciprocated_trust_limit": "0",
+      "account_allows_rippling": false,
+      "counterparty_allows_rippling": true
+    },
+    {
+      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs58B",
+      "currency": "BTC",
+      "trust_limit": "5",
+      "reciprocated_trust_limit": "0",
+      "account_allows_rippling": false,
+      "counterparty_allows_rippling": true
+    }
+  ]
+}
+```
+
+## Granting a Trustline ##
+
+__`POST /v1/accounts/{:address}/trustlines`__
+
+A trustline can also updated and simply set with a currency,amount,counterparty combination by submitting to this endpoint with the following JSON object.
+
+```js
+{
+  "secret": "sneThnzgBgxc3zXPG....",
+  "trustline": {
+  "limit": "110",
+  "currency": "USD",
+  "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+  "allows_rippling": false
+  }
+}
+```
+
+[Try it! >](rest-api-tool.html#grant-trustline)
+
+
+A successful submission will result in a returning JSON object that includes a transaction hash to the trustline transaction.
+
+```js
+{
+  "success": true,
+  "line": {
+    "account": "rPs7nVbSops6xm4v77wpoPGf549cqjzUy9",
+    "counterparty": "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
+    "currency": "USD",
+    "trust_limit": "100",
+    "allows_rippling": true
+  },
+  "ledger": "6146255",
+  "hash": "6434F18B3997D81152F1AB31911E8D40E1346A05478419B7B3DF78B270C1151A"
+}
+```
 
 
 
