@@ -180,7 +180,7 @@ The field `PreviousTxnID` is **DEPRECATED**. It has been replaced by [AccountTxn
 
 Some fields can be automatically filled in before the transaction is signed, either by a `rippled` server or by the library used for offline signing. Both [ripple-lib](https://github.com/ripple/ripple-lib) and `rippled` can automatically provide the following values:
 
-* `Fee` - Automatically use the current base network fee.
+* `Fee` - Automatically use the current base network fee. (*Note:* `rippled`'s [sign command](rippled-apis.html#sign) supports limits on how high the filled-in-value is, using the `fee_mult_max` parameter.)
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
 For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
