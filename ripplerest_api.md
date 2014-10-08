@@ -174,12 +174,13 @@ When errors occur, the server returns an HTTP status code in the 400-599 range, 
 
 In general, the HTTP status code is indicative of where the problem occurred:
 
-* Codes in the 200-299 range indicate success. (*Note:* This behavior is new in Ripple-REST 1.3.0. Previous versions sometimes return 200 OK for some types of errors.)
+* Codes in the 200-299 range indicate success. (*Note:* This behavior is new in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4). Previous versions sometimes return 200 OK for some types of errors.)
     * Unless otherwise specified, methods are expected to return `200 OK` on success.
 * Codes in the 400-499 range indicate that the request was invalid or incorrect somehow. For example:
     * `400 Bad Request` occurs if the JSON body is malformed. This includes syntax errors as well as when invalid or mutually-exclusive options are selected.
     * `404 Not Found` occurs if the path specified does not exist, or does not support that method (for example, trying to POST to a URL that only serves GET requests)
 * Codes in the 500-599 range indicate that the server experienced a problem. This could be due to a network outage or a bug in the software somewhere. For example:
+    * `500 Internal Server Error` occurs when the server does not catch an error. This is always a bug. If you can reproduce the error, file it at [our bug tracker](https://ripplelabs.atlassian.net/browse/RA/).
     * `502 Bad Gateway` occurs if Ripple-REST could not contact its `rippled` server at all.
     * `504 Gateway Timeout` occurs if the `rippled` server took too long to respond to the Ripple-REST server.
 
@@ -187,9 +188,22 @@ When possible, the server provides a JSON response body with more information ab
 
 | Field | Type | Description |
 |-------|------|-------------|
-|`success` | Boolean | `false` indicates that an error occurred. |
-| `error_type` | String | A short string identifying the error that occurred. |
-| `message` | String | A longer human-readable string explaining what went wrong. |
+| success | Boolean | `false` indicates that an error occurred. |
+| error_type | String | A short string identifying a general category for the error that occurred. |
+| error | String | The specific error that occurred |
+| message | String | A longer human-readable string explaining why the error occurred. |
+
+Example error:
+
+```js
+{
+    "success": false,
+    "error_type": "invalid_request",
+    "error": "Invalid parameter: destination_amount",
+    "message": "Non-XRP payment must have an issuer"
+}
+```
+
 
 ## Quoted Numbers ##
 
@@ -295,8 +309,11 @@ The fields of a Payment object are defined as follows:
 | `paths` | String | A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the [Prepare Payment](#prepare-payment) method. |
 | `no_direct_ripple` | Boolean  | (Optional, defaults to false) `true` if `paths` are specified and the sender would like the Ripple Network to disregard any direct paths from the `source_address` to the `destination_address`. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option. |
 | `partial_payment` | Boolean | (Optional, defaults to false) If set to `true`, fees will be deducted from the delivered amount instead of the sent amount. (*Caution:* There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See [Partial Payments](transactions.html#partial-payments) |
+| `memos` | Array | (Optional) Array of [memo objects](#memo-objects), where each object is an arbitrary note to send with this payment. |
 
 Submitted transactions can have additional fields reflecting the current status and outcome of the transaction, including:
+
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L346 "Source")
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -305,12 +322,40 @@ Submitted transactions can have additional fields reflecting the current status 
 | result | String | The [Ripple transaction status code](https://wiki.ripple.com/Transaction_errors) for the transaction. A value of `"tesSUCCESS"` indicates a successful transaction. |
 | ledger | String | The sequence number of the ledger version that includes this transaction. |
 | hash | String | A hash value that uniquely identifies this transaction in the Ripple network. |
-| timestamp | String | The time this transaction was <span class='draft-comment'>submitted? validated?</span>, as a <span class='draft-comment'>???</span> formatted string. |
+| timestamp | String | The time the ledger containing this transaction was validated, as a [ISO8601 extended format](http://en.wikipedia.org/wiki/ISO_8601) string in the form `YYYY-MM-DDTHH:mm:ss.sssZ`. |
 | fee | String (Quoted decimal) | The amount of XRP charged as a transaction fee. |
 | source_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account sending the transaction as a result of the transaction. |
 | destination_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account receiving the transaction as a result of the transaction. |
 
 
+### Memo Objects ###
+
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
+
+Memo objects represent arbitrary data that can be included in a transaction. The overall size of the `memos` field cannot exceed 1KB after serialization.
+
+Each Memo object must have at least one of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| MemoType | String | Arbitrary string, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoData | String | Arbitrary value representing the content of the memo. |
+
+The MemoType field is intended to support URIs, so the contents of that field should only contain characters that are valid in URIs. In other words, MemoType should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
+
+Example of the memos field:
+
+```js
+    "memos": [
+      {
+        "MemoType": "unformatted_memo",
+        "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "MemoData": "Fusce est est, malesuada in tincidunt mattis, auctor eu magna."
+      }
+    ]
+```
 
 
 # ACCOUNTS #
@@ -321,7 +366,7 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 
 ## Generate Account ##
 
-(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc1))
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
 
 Randomly generate keys for a potential new Ripple account.
 
@@ -474,7 +519,6 @@ The response contains a `settings` object, with the following fields:
 | wallet_size | String | (Not used) |
 | message_key | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
 | domain | String | The domain that holds this account. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
-| signers | String |　<span class='draft-comment'>(What is this? Multi-sign related?)</span> |
 
 
 
@@ -531,7 +575,6 @@ The `settings` object can contain any of the following fields (any omitted field
 | email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
 | domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
-| signers | String |　<span class='draft-comment'>(What is this? Multi-sign related?)</span> |
 
 
 #### Response ####
@@ -1294,7 +1337,7 @@ A successful submission will result in a returning JSON object that includes a t
 
 # NOTIFICATIONS #
 
-Notifications can be used as a looping mechanism to monitor any transactions against your Ripple address or to confirm against missed notifications if your connection to `rippled` goes down. Notifications are generic and span across all types of Ripple transactions which is different than the "Payments" endpoints which specifically retrieve payment transactions. The "Payments" endpoints also provide full payment objects versus the notification objects which described the transaction at a higher level with less detail.
+Notifications can be used as a looping mechanism to monitor any transactions against your Ripple address or to confirm against missed notifications if your connection to `rippled` goes down. Notifications are generic and can include all types of Ripple transactions which is different than the "Payments" endpoints which specifically retrieve payment transactions. The "Payments" endpoints also provide full payment objects versus the notification objects which described the transaction at a higher level with less detail.
 
 ## Checking Notifications ##
 
