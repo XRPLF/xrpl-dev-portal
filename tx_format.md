@@ -332,21 +332,26 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfNoDirectRipple | 0x00010000 | 65536 | Do not use a direct path, if available. This is intended to force the transaction to take arbitrage opportunities. Most clients will not need this. |
-| tfPartialPayment | 0x00020000 | 131072 | Instead of deducting transfer and exchange fees from the sending account's balance, reduce the received amount by the fee amounts. See [Partial Payments](#partial-payments) for more details. |
+| tfPartialPayment | 0x00020000 | 131072 | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 
 ### Partial Payments ###
 
-A partial payment subtracts fees from the amount received instead of adding to the amount sent. Partial payments are useful for [returning payments](https://wiki.ripple.com/Returning_payments) without incurring additional costs to oneself.
+A partial payment allows a payment to succeed by reducing the amount received, instead of increasing the `SendMax`. Partial payments are useful for [returning payments](https://wiki.ripple.com/Returning_payments) without incurring additional costs to oneself.
 
-By default, the `Amount` field of a Payment transaction specifies the amount of currency that is *received* by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account, up to the `SendMax` amount. (If `SendMax` is not specified, and fees are necessary to make the transaction the transaction fails.)
+By default, the `Amount` field of a Payment transaction specifies the amount of currency that is *received* by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account's balances, up to the `SendMax` amount. (If `SendMax` is not specified, that is equivalent to setting the `SendMax` to the `Amount` field.) If the amount needed in order to make the payment exceeds the `SendMax` parameter, or the full amount cannot be delivered for any other reason, the transaction fails.
 
-The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a transaction, the costs of transaction fees and exchanging currencies are deducted from the amount sent instead of from the sender's balance. Consequently, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers.
+The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a payment, it delivers as much as possible, up to the `Amount` value, without exceeding the `SendMax` value. Fees and currency exchange rates are calculated the same way, but the amount being sent automatically scales down until the total amount deducted from the sending account's balances is within `SendMax`. The transaction is always considered successful as long as it delivers any positive amount. This means that partial payments can succeed at sending *some* of the intended value despite limitations including fees, lack of liquidity, insufficient space in the receiving account's trustlines, or other reasons.
 
-Validated partial payment transactions have a `meta.DeliveredAmount` field, which indicates the amount of currency actually received by the destination account. *Note:* Early partial payments in historical ledgers do not have this field.
+A partial payment cannot provide the initial XRP to fund an account; this case returns the error code `telNO_DST_PARTIAL`. Direct XRP-to-XRP payments also cannot be partial payments `temBAD_SEND_XRP_PARTIAL`.
 
-A partial payment cannot provide the initial XRP to fund an account; this case returns the error code telNO_DST_PARTIAL. Direct XRP-to-XRP payments also cannot be partial payments temBAD_SEND_XRP_PARTIAL.
+The amount of XRP used for the [transaction fee](#transaction-fees) is always deducted from the sender’s account, regardless of the *tfPartialPayment* flag.
 
-*Note:* The amount of XRP used for the [transaction fee](#transaction-fee) is always deducted from the sender's account, regardless of the *tfPartialPayment* flag.
+#### Partial Payments Warning ####
+
+When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers. Validated partial payment transactions have a `meta.DeliveredAmount` field, which indicates the amount of currency actually received by the destination account. When receiving a payment, you should confirm that, if the `meta.DeliveredAmount` field exists, you use that to determine how much your account received instead of relying on the `Amount` field. 
+
+*Note:* Early partial payments in historical ledgers do not have this field. If necessary, you can check the balance changes in the `meta` field to determine how much the destination account actually received.
+
 
 
 
