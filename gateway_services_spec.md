@@ -10,12 +10,43 @@ Gateways that implement these services can easily link with one another, allowin
 | ------- | ----------- | -------- | -------- |
 | [host-meta](#host-meta) | Provides useful metadata about a gateway or service provider, and lists all service endpoints provided by the domain | [RFC6415](http://tools.ietf.org/html/rfc6415) | [ripple.txt](https://ripple.com/wiki/Ripple.txt) |
 | [webfinger](#webfinger) | Performs reverse lookup of Ripple addresses, and lists service endpoints for interacting with a specified account holder | [RFC7033](http://tools.ietf.org/html/rfc7033) | [Federation Name Lookup](https://ripple.com/wiki/Federation_protocol) |
-| [bridge-payment](#bridge-payment) | Plans payments from any Ripple-connected wallet to any other, connecting through gateways as necessary. | [Ripple-REST payments](http://dev.ripple.com/ripple-rest.html#payments) | [Bridge protocol](https://ripple.com/wiki/Services_API) |
+| [bridge-payments](#bridge-payments) | Plans payments from any Ripple-connected wallet to any other, connecting through gateways as necessary. | [Ripple-REST payments](http://dev.ripple.com/ripple-rest.html#payments) | [Bridge protocol](https://ripple.com/wiki/Services_API) |
 | user-account | Provides standard method for registering an account with a Gateway, and provides signed claims about a user's identity  similar to bridge-payment's required claims | [OpenID Connect Claims](http://openid.net/specs/openid-connect-core-1_0.html#Claims), [JWT](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25) | -- |
 | wallet-payment | Makes outgoing payments and monitors for incoming payments, and works with hosted wallets. | [Ripple-REST payments](http://dev.ripple.com/ripple-rest.html#payments) | -- |
 | wallet-info | Shows information about a wallet, and works with hosted wallets | [Ripple-REST accounts](http://dev.ripple.com/ripple-rest.html#accounts) | -- |
 | wallet-balances | Shows information about balances in multiple currencies, and works with hosted wallets. | [Ripple-REST accounts](http://dev.ripple.com/ripple-rest.html#accounts) | -- |
 | wallet-history | Shows history of payments sent and received, and works with hosted wallets. | [Ripple-REST payment history](http://dev.ripple.com/ripple-rest.html#payment-history) | -- |
+
+# Gateway Services Identifiers #
+
+Several APIs require you to identify the sender or recipient of a payment. Since several different types of identifiers can be used this way, Gateway Services defines a standard way to create a Universal Resource Identifier (URI) for each type of resource.
+
+All of these resources map to either a Ripple account, an external account, or a human.
+
+The following URI types should be supported:
+
+| Type of Identifier | Example | Where to WebFinger |
+|--------------------|---------|--------------------|
+| Email address      | acct:bob@ripple.com | Domain from the email |
+| Email-style Federation address | acct:bob@fidor.de | Domain from the address
+| Ripple Address     | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v | Domain from the Ripple AccountRoot object |
+| Ripple Address with Destination Tag | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v?dt=103047 | Domain from the Ripple AccountRoot object |
+| Ripple Name        | ripple:bob | Domain from the Ripple AccountRoot object |
+
+<span class='draft-comment'>Legacy addresses (TBD):</span>
+
+| Type of Identifier | Example | Where to WebFinger |
+|--------------------|---------|--------------------|
+| US Bank number     | | |
+| IBAN Number        | | |
+| Credit/Debit card  | acct:4811738483484923@visa.com | visa.com |
+| Coin address       | | |
+| Paypal address     | acct:rome@ripple.com@paypal.com acct:paypal:rome@ripple.com | |
+| Google wallet      | | |
+| Square cash        | acct:rome@ripple.com@square.com | square.com |
+
+
+Participating Parties - neither the sender nor receiver, but information lookup for these parties is important for compliance purposes (e.g. clerk at a store receiving or handing out cash). <span class='draft-comment'>(Specified how?)</span>
 
 # Host-Meta #
 
@@ -59,15 +90,15 @@ __`GET https://latambridgepay.com/.well-known/host-meta.json`__
             "template": "https://latambridgepay.com/.well-known/webfinger.json?q={uri}"
         },
         {
-            "rel": "https://gatewayd.org/gateway-services/bridge_quotes",
-            "template": "https://latambridgepay.com/v1/bridge/quotes/{dest_acct}/{amount}",
+            "rel": "https://gatewayd.org/gateway-services/bridge_payments/quotes",
+            "template": "https://latambridgepay.com/v1/bridge_payments/quotes/{receiver}/{amount}",
             "properties": {
                 "version": "1"
             }
         },
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
-            "href": "https://latambridgepay.com/v1/bridge/payments",
+            "href": "https://latambridgepay.com/v1/bridge_payments",
             "properties": {
                 "version": "1",
                 "fields": {
@@ -139,7 +170,7 @@ __`GET https://latambridgepay.com/.well-known/host-meta.json`__
         },
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payment_status",
-            "template": "https://latambridgepay.com/api/v1/bridge/payments/{id}",
+            "template": "https://latambridgepay.com/api/v1/bridge_payments/{id}",
             "properties": {
                 "version": "1"
             }
@@ -185,7 +216,7 @@ Ripple defines the following properties:
 
 | Property | Value | Description |
 |----------|-------|-------------|
-| rl:type  | String | What type of Ripple entity this domain is, for example `"gateway"` |
+| rl:type  | String | What type of Ripple entity this domain is, for example `"gateway"` <span class='draft-comment'>(What are all the valid types?)</span> |
 | rl:domain | String | The domain this host-meta document applies to, which should match the one it is being served from. For example, `"coin-gate.com"` |
 | rl:accounts | Array of objects | Each member of this array should be an [account definition object](#acct_def_obj) for an issuing account (cold wallet) operated by this host |
 | rl:hotwallets | Array of strings | Each member of this array should be either a base-58-encoded Ripple Address or a Ripple Name for a hot wallet operated by the host |
@@ -199,6 +230,7 @@ An account definition object is a JSON object with the following properties:
 | Property | Value | Description |
 |----------|-------|-------------|
 | address | String | Base-58-encoded Ripple address |
+| rl:name | String | (Optional) The [Ripple Name](https://ripple.com/dev-blog/introducing-ripple-names/) of this account, omitting the leading tilde (~) |
 | rl:currencies | Object | Map of currencies issued from this address, where field names are the currency codes and values are the maximum amount issued, as a string containing a decimal number. |
 
 Example account definition object:
@@ -263,7 +295,7 @@ Also see the [Bridge-Quotes Reference](#bridge-quotes).
     ...
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_quotes",
-            "template": "https://latambridgepay.com/v1/bridge/quotes/{dest_acct}/{amount}",
+            "template": "https://latambridgepay.com/v1/{sender}/bridge_payments/quotes/{receiver}/{amount}",
             "properties": {
                 "version": "1"
             }
@@ -276,7 +308,7 @@ The fields of the link are defined as follows:
 | Field    | Value  |
 |----------|--------|
 | rel      | `https://gatewayd.org/gateway-services/bridge_quotes` |
-| template | The URL of your bridge-quotes service, with `{dest_acct}` in place of the account to send to, and `{amount}` in the place of how much to send. |
+| template | The URL of your bridge-quotes service, with `{sender}` in place of the identifier to send from, `{receiver}` in place of the identifier to send to, and `{amount}` in the place of how much to send. |
 | properties | Object with key-value map of properties for this link. |
 
 #### Properties ####
@@ -296,7 +328,7 @@ The following properties should be provided:
         ...
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
-            "href": "https://latambridgepay.com/v1/bridge/payments",
+            "href": "https://latambridgepay.com/v1/bridge_payments",
             "properties": {
                 "version": "1",
                 "fields": {
@@ -367,7 +399,7 @@ For the label and description fields, user-agent applications can choose which l
     ...
     {
       "rel": "https://gatewayd.org/gateway-services/bridge_payment_status",
-      "template": "https://latambridgepay.com/api/v1/bridge/payments/{id}",
+      "template": "https://latambridgepay.com/api/v1/bridge_payments/{id}",
       "properties": {
         "version": "1"
       }
@@ -415,14 +447,14 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
     "links": [
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_quotes",
-            "href": "https://latambridgepay.com/v1/bridge/quotes",
+            "href": "https://latambridgepay.com/v1/bridge_payments/quotes",
             "titles": {
                 "default": "Get quotes to send funds between Ripple and bank accounts in Latin America."
             }
         },
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
-            "href": "https://latambridgepay.com/v1/bridge/payments",
+            "href": "https://latambridgepay.com/v1/bridge_payments",
             "titles": {
                 "default": "Send funds between Ripple and bank accounts in Latin America."
             }
@@ -435,6 +467,8 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
 ## Aliases ##
 
 The `aliases` field of a WebFinger document can contain various values, including ones that are not related to Ripple. Gateway Services defines three formats for aliases that refer to Ripple addresses:
+
+<span class='draft-comment'>(Same as URIs? Exactly?)</span>
 
 | Alias for   | Format | Example
 |-------------|----
@@ -454,21 +488,27 @@ The `links` field of a WebFinger document should contain link elements describin
 
 ### Bridge Payments Get Quotes for user ###
 
+<span class='draft-comment'>(TODO)</span>
 
-# Bridge Payments: Get Quotes #
+
+# Bridge Payments #
+
+## Get Quotes ##
 
 Get Quotes tells you what your options are for making a payment.
 
-__`GET https://latambridgepay.com/v1/bridge/quotes/{dest_acct}/{amount}`__
+__`GET https://latambridgepay.com/v1/{sender}/bridge_payments/quotes/{receiver}/{amount}`__
 
 This API should accept parameters that are formatted as follows:
 
 | Parameter | Format | Example(s) |
 |-----------|--------|------------|
-| dest_acct | URL-encoded (%-escaped) string, prepended with "acct:" and with <span class='draft-comment'>one of the following: email address, federation address, Ripple account, Ripple name, Routing number and Bank number concatenated with a `+`</span> | bob@ripple.com <br>bob@fidor.de <br>ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v <br>ripple:bob <br>92734089709+1272301 |
+| sender    | A URL-encoded (%-escaped) [Gateway Services Identifier](#gateway-services-identifiers) | acct%3Abob%40ripple.com |
+| receiver  | A URL-encoded (%-escaped) [Gateway Services Identifier](#gateway-services-identifiers) | ripple%3AraLiCEoiYDN3aTw2ZnGmEVXWwYXWiAxR7n |
 | amount    | Decimal value, and 3-letter currency code <span class='draft-comment'>(Or hex code for say, GBI?)</span> for the currency, concatenated with a `+` | 10.99+USD |
 
-## Bridge Quotes Response ##
+
+### Get Quotes Response ###
 
 ```js
 {
@@ -486,25 +526,24 @@ This API should accept parameters that are formatted as follows:
                 "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
             },
             "ripple_invoice_id": "8765",
-            "sender_claims": {
+            "sender_info": {
                 "bank_account": "",
                 "routing_number": "",
                 "country": "",
                 "bank_name": ""
-            }
+            },
+            "sender_claims": []
         }
     ]
 }
 ```
 
-# Bridge Payments: Accept Quote #
+## Accept Quote ##
 
 Bridge Payments lets you tell the gateway which payment you are making, so it can be ready.
 
-__`GET https://latambridgepay.com/v1/bridge/quotes/ripple:bob/5+USD`__
-
 ```
-POST https://latambridgepay.com/v1/bridge/payments
+POST https://latambridgepay.com/v1/bob%40ripple.com/bridge_payments
 
 {
     "gateway_tx_id": "9876",
@@ -518,12 +557,13 @@ POST https://latambridgepay.com/v1/bridge/payments
         "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
     },
     "ripple_invoice_id": "8765",
-    "sender_claims": {
+    "sender_info": {    //Bob suggests signing this?
         "bank_account": "073240754",
         "routing_number": "23790832978",
         "country": "USA",
         "bank_name": "Example Bank USA"
-    }
+    },
+    "sender_claims": [..JWTs here..]
 }
 ```
 
@@ -535,11 +575,11 @@ No URL parameters. The request body is one of the objects from the `bridge_payme
 
 
 
-## Sender Claims Type Reference ##
+### Sender Claims Type Reference ###
 
 <span class='draft-comment'>TBD</span>
 
-## Sender Claims Required Failure ##
+### Error: Sender Claims Required ###
 
 ```
 400 Bad Request
@@ -554,11 +594,11 @@ No URL parameters. The request body is one of the objects from the `bridge_payme
 }
 ```
 
-# Bridge Payments: Check Status #
+## Check Status ##
 
 Bridge payment status checks tells you whether a payment has happened yet.
 
-__`GET https://latambridgepay.com/v1/bridge/payments/9876`__
+__`GET https://latambridgepay.com/v1/bridge_payments/9876`__
 
 
 Response:
