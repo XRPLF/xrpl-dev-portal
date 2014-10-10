@@ -470,8 +470,8 @@ The `aliases` field of a WebFinger document can contain various values, includin
 
 <span class='draft-comment'>(Same as URIs? Exactly?)</span>
 
-| Alias for   | Format | Example
-|-------------|----
+| Alias for   | Format | Example |
+|-------------|--------|---------|
 | Ripple Name | `ripple:` followed by the user's Ripple Name, without the tilde (~) | ripple:bob |
 | Ripple Address | `ripple:` followed by the user's base-58 encoded Ripple address | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v |
 | Ripple Address with Destination Tag | `ripple:` followed by the user's base-58 encoded Ripple address, followed by `?dt=` and an integer destination tag. (This is useful when a user only has a hosted wallet.) | ripple:rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn?dt=23459 |
