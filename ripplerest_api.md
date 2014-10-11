@@ -357,6 +357,30 @@ Example of the memos field:
     ]
 ```
 
+## Trustline Objects ##
+
+A trustline object describes a link between two accounts that allows one to hold the other's issuances. A trustline can also be two-way, meaning that each can hold balances issued by the other, but that case is less common. In other words, a trustline tracks money owed.
+
+A trustline with a positive limit indicates an account accepts issuances from the other account (typically an issuing gateway) as payment, up to the limit. An account cannot receive a payment that increases its balance over that trust limit. It is possible, however, to go over a limit by either by trading currencies or by decreasing the limit while already holding a balance.
+
+From the perspective of an account on one side of the trustline, the trustline has the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String (Address) | This account |
+| counterparty | String (Address) | The account at the other end of the trustline |
+| currency | String | Currency code for the type of currency that is held on this trustline. |
+| limit | String (Quoted decimal) | The maximum amount of currency issued by the counterparty account that this account should hold. |
+| reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
+| account\_allows\_rippling | Boolean | (Also known as [NoRipple](https://wiki.ripple.com/No_Ripple)). Prevents other payments from shifting balances to other trustlines that also have this flag set. |
+| counterparty\_allows\_rippling | Boolean | (Read-only) Whether the counterparty account has [NoRipple](https://wiki.ripple.com/No_Ripple) set. |
+| account\_froze\_line | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. |
+| counterparty\_froze\_line | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. |
+
+The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The `counterparty` field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)
+
+A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
+
 
 # ACCOUNTS #
 
@@ -562,6 +586,8 @@ The request body must be a JSON object with the following fields:
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | settings | Object | A map of settings to change for this account. Any settings not included are left unchanged. |
 
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
 The `settings` object can contain any of the following fields (any omitted fields are left unchanged):
 
 | Field | Value | Description |
@@ -576,6 +602,7 @@ The `settings` object can contain any of the following fields (any omitted field
 | message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
 | domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
 
+*Note:* Some of the account setting fields cannot be modified by this method. For example, the `password_spent` flag is only enabled when the account uses a free SetRegularKey transaction, and only disabled when the account receives a transmission of XRP.
 
 #### Response ####
 
@@ -703,7 +730,7 @@ POST /v1/payments
 
 [Try it! >](rest-api-tool.html#submit-payment)
 
-The following URL parameters are required by this API endpoint:
+The following parameters are required in the JSON body of the request:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -1251,22 +1278,38 @@ If the length of the `payments` array is equal to `results_per_page`, then there
 
 # TRUSTLINES #
 
-## Reviewing Trustlines ##
 
-__`GET /v1/accounts/{:address}/trustlines`__
+## Get Trustlines ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L18 "Source")
+
+Retrieves all trustlines associated with the Ripple address.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/trustlines
+```
+</div>
 
 [Try it! >](rest-api-tool.html#get-trustlines)
 
-Retrieves all trustlines associated with the Ripple address. Upon completion, the server will return a JSON object which represents each trustline individually along with the currency, limit, and counterparty.
+The following URL parameters are required by this API endpoint:
 
-The following query string parameters are supported to provide additional filtering for either trustlines to a particular currency or trustlines from a specific counterparty:
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address whose trustlines to look up. |
 
-+ `currency` Three letter currency denominations (i.e. USD, BTC).
-+ `counterparty` Ripple address of the counterparty trusted.
+Optionally, you can also include the following query parameters:
 
-__`GET /v1/accounts/{:address}/trustlines?currency=USD&counterparty=rPs723Dsd...`__
+| Field | Value | Description |
+|-------|-------|-------------|
+| currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency |
+| counterparty | String (Address) | Filter results to include only trustlines to the given account |
 
-The object returned looks like this:
+#### Response ####
+
+The response is an object with a `lines` array, where each member is a [trustline object](#trustline-objects).
 
 ```js
 {
@@ -1294,41 +1337,60 @@ The object returned looks like this:
 }
 ```
 
-## Granting a Trustline ##
 
-__`POST /v1/accounts/{:address}/trustlines`__
 
-A trustline can also updated and simply set with a currency,amount,counterparty combination by submitting to this endpoint with the following JSON object.
+## Grant Trustline ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L88 "Source")
 
-```js
+Creates or modifies a trustline.
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/accounts/{:address}/trustlines
 {
-  "secret": "sneThnzgBgxc3zXPG....",
-  "trustline": {
-  "limit": "110",
-  "currency": "USD",
-  "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-  "allows_rippling": false
-  }
+    "secret": "sneThnzgBgxc3zXPG....",
+    "trustline": {
+        "limit": "110",
+        "currency": "USD",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "account_allows_rippling": false
+    }
 }
 ```
+</div>
 
 [Try it! >](rest-api-tool.html#grant-trustline)
 
+The following parameters are required in the JSON body of the request:
 
-A successful submission will result in a returning JSON object that includes a transaction hash to the trustline transaction.
+| Field | Value | Description |
+|-------|-------|-------------|
+| secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+| trustline | Object ([Trustline](#trustline-objects)) | The trustline object to set. Ignores fields not controlled by this account. Any fields that are omitted are unchanged. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+*Note:* Since a trustline occupies space in the ledger, [a trustline increases the XRP the account must hold in reserve](https://wiki.ripple.com/Reserves). You cannot create more trustlines if you do not have sufficient XRP to pay the reserve. This applies to the account extending trust, not to the account receiving it. A trustline with a limit *and* a balance of 0 is equivalent to no trust line.
+
+#### Response ####
+
+A successful response uses the `201 Created` HTTP response code, and provides a JSON object that includes the trustline fields as saved, an identifying hash for the transaction that modified the trustline, and the sequence number of the ledger version that included the transaction.
 
 ```js
 {
   "success": true,
-  "line": {
-    "account": "rPs7nVbSops6xm4v77wpoPGf549cqjzUy9",
-    "counterparty": "rKB4oSXwPkRpb2sZRhgGyRfaEhhYS6tf4M",
+  "trustline": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "limit": "5",
     "currency": "USD",
-    "trust_limit": "100",
-    "allows_rippling": true
+    "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+    "account_allows_rippling": false,
+    "account_froze_trustline": false
   },
-  "ledger": "6146255",
-  "hash": "6434F18B3997D81152F1AB31911E8D40E1346A05478419B7B3DF78B270C1151A"
+  "ledger": "9302926",
+  "hash": "57695598CD32333F67A70DC6EBC3501D71569CE11C9803162CBA61990D89C1EE"
 }
 ```
 
@@ -1337,56 +1399,87 @@ A successful submission will result in a returning JSON object that includes a t
 
 # NOTIFICATIONS #
 
-Notifications can be used as a looping mechanism to monitor any transactions against your Ripple address or to confirm against missed notifications if your connection to `rippled` goes down. Notifications are generic and can include all types of Ripple transactions which is different than the "Payments" endpoints which specifically retrieve payment transactions. The "Payments" endpoints also provide full payment objects versus the notification objects which described the transaction at a higher level with less detail.
+Notifications provide a mechanism to monitor for any kind of transactions that modify your Ripple account. Unlike the [Get Payment History](#get-payment-history) method, notifications include _all_ types of transactions, but each is described in less detail.
 
-## Checking Notifications ##
+Notifications are sorted in order of when they occurred, so you can save the most recently-known transaction and easily iterate forward to find any notifications that are newer than that.
+
+
+## Check Notifications ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/notifications.js "Source")
+
+Get a notification for the specific transaction hash, along with links to previous and next notifications, if available. 
 
 __`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`__
 
 [Try it! >](rest-api-tool.html#check-notifications)
 
-This endpoint will grab the notification based on the specific transaction hash specified. Once called the notification object retreived will provide information on the type of transaction and also the previous and next notifications will be shown as well. The `previous_notification_url` and `next_notification_url` can be used to walk up and down the notification queue. Once the `next_notification_url` is empty that means you have the most current notification, this applies for the `previous_notification_url` similarly when it's empty as it means you are holding the earliest notification available on the `rippled` you are connecting to.
+The following URL parameters are required by this API endpoint:
 
-A successful retrieval will look like this:
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address of an account involved in the transaction. |
+| hash | String | A unique hash identifying the Ripple transaction that this notification describes |
+
+You can find a transaction `hash` in a few places:
+
+* From the response when you submit a transaction (via [Submit Payment](#submit-payment), [Update Account Settings](#update-account-settings), or [Grant Trustline](#grant-trustline)
+* From objects in the [payment history](#get-payment-history).
+* From the `previous_hash` or `next_hash` fields of another Check Notifications response.
+
+#### Response ####
+
+A successful response contains a notification object, for example:
 
 ```js
 {
   "success": true,
   "notification": {
-    "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "type": "payment",
     "direction": "outgoing",
     "state": "validated",
     "result": "tesSUCCESS",
-    "ledger": "5704389",
-    "hash": "EA1C8349FFFDB180BF6805FB69B32A41A5C86E27B4F79BED3CD8BA9A1E902721",
-    "timestamp": "+046228-05-27T00:20:00.000Z",
-    "transaction_url": "/v1/accounts/rPs7nVbSops6xm4v77wpoPFf549cqjzUy9/payments/EA1C8349FFFDB180BF6805FB69B32A41A5C86E27B4F79BED3CD8BA9A1E902721",
-    "previous_hash": "1578758880412050B6C9C367DAE090B5452649549F00780276BED51BDEECF63C",
-    "previous_notification_url": "/v1/accounts/rPs7nVbSops6xm4v77wpoPFf549cqjzUy9/notifications/1578758880412050B6C9C367DAE090B5452649549F00780276BED51BDEECF63C",
-    "next_hash": "441E8AEC90A3674318710B4978E9598BD47190CF51E44CBD11C28FFF75FBC934",
-    "next_notification_url": "/v1/accounts/rPs7nVbSops6xm4v77wpoPFf549cqjzUy9/notifications/441E8AEC90A3674318710B4978E9598BD47190CF51E44CBD11C28FFF75FBC934"
+    "ledger": "8924146",
+    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "timestamp": "2014-09-17T21:47:00.000Z",
+    "transaction_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments/9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "previous_hash": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+    "previous_notification_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/notifications/8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+    "next_hash": "AE79DE34230403EA2769B4DA21A0D4D2FD7A18518DBA0A4C5B6352AFD844D22A",
+    "next_notification_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/notifications/AE79DE34230403EA2769B4DA21A0D4D2FD7A18518DBA0A4C5B6352AFD844D22A"
   }
 }
 ```
 
-The notification of the most recent transaction will show `next_notification_url` as an empty string.
+If the server has any notifications that are older than this one, the `previous_hash` field contains a hash you can use to call this method again to get the previous one. The `previous_notification_url` contains the same information, but already formatted into a URL you can perform a GET request on. If no older notifications are available, both fields are either omitted, or provided as an empty string. 
 
-The earliest notification available on the `rippled` server will show `previous_notification_url` as an empty string.
+The `next_hash` and `next_notification_url` fields work the same way, but they provide information on newer notifications instead.
+
+*Caution:* If you are accessing the REST API through a proxy, you may not be able to access the URLs as provided. (See [RA-129](https://ripplelabs.atlassian.net/browse/RA-129) for status and details.)
+
+
+
 
 # RIPPLED SERVER STATUS #
 
 The following two endpoints can be used to check if the `ripple-rest` API is currently connected to a `rippled` server, and to retrieve information about the current status of the API.
 
-## Check Connection State ##
+## Check Connection ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L33 "Source")
 
-__`GET /v1/server/connected`__
+Perform a simple ping to make sure that the server is working properly.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/server/connected
+```
+</div>
 
 [Try it! >](rest-api-tool.html#check-connection)
 
-Checks to see if the `ripple-rest` API is currently connected to a `rippled` server, and is ready to be used.  This provides a quick and easy way to check to see if the API is up and running, before attempting to process transactions.
-
-No additional parameters are required.  Upon completion, the server will return `true` if the API is connected, and `false` otherwise.
+#### Response ####
 
 ```js
 {
@@ -1395,15 +1488,24 @@ No additional parameters are required.  Upon completion, the server will return 
 }
 ```
 
-## Get Server Status ##
+If the server has any problems, for example with connecting to the `rippled` server, it returns an error message instead.
 
-__`GET /v1/server`__
+## Get Server Status ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L14 "Source")
+
+Retrieve information about the current status of the Ripple-REST API and the `rippled` server it is connected to.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/server
+```
+</div>
 
 [Try it! >](rest-api-tool.html#get-server-status)
 
-Retrieve information about the current status of the `ripple-rest` API and the `rippled` server it is connected to.
-
-This endpoint takes no parameters, and returns a JSON object with information on the current status of the API:
+#### Response ####
 
 ```js
 {
@@ -1411,81 +1513,289 @@ This endpoint takes no parameters, and returns a JSON object with information on
   "api_documentation_url": "https://github.com/ripple/ripple-rest",
   "rippled_server_url": "wss://s1.ripple.com:443",
   "rippled_server_status": {
-    "build_version": "0.26.3-sp1",
-    "complete_ledgers": "32570-8926343",
-    "hostid": "LIED",
+    "build_version": "0.26.3-sp2",
+    "complete_ledgers": "32570-9306249",
+    "hostid": "MERT",
     "io_latency_ms": 1,
     "last_close": {
-      "converge_time_s": 3.068,
+      "converge_time_s": 3.021,
       "proposers": 5
     },
     "load_factor": 1,
-    "peers": 52,
-    "pubkey_node": "n9LpxYuMx4Epz4Wz8Kg2kH3eBTx1mUtHnYwtCdLoj3HC85L2pvBm",
+    "peers": 49,
+    "pubkey_node": "n9LpPSgwfihQDRX68dykxtNCm4gi2dBEJCga7uwV7uztoRSswms8",
     "server_state": "full",
     "validated_ledger": {
-      "age": 10,
+      "age": 9,
       "base_fee_xrp": 0.00001,
-      "hash": "5A24FC580674F444BAA72B897C906FF1E167227869BF3D2971C2D87272B038EF",
+      "hash": "7C3F4489091BAE5DCADE3B1A8A2C1E7E5C938FA4483660FD1A4098C4EC4805CD",
       "reserve_base_xrp": 20,
       "reserve_inc_xrp": 5,
-      "seq": 8926343
+      "seq": 9306249
     },
     "validation_quorum": 3
   }
 }
 ```
 
-If the server is not currently connected to the Ripple network, the following error will be returned:
+The parameters in a successful response are as follows:
 
-```js
-{
-  "success": false,
-  "error": "rippled Disconnected",
-  "message": "ripple-rest is unable to connect to the specified rippled server, or the rippled server is unable to communicate with the rest of the Ripple Network. Please check your internet and rippled server settings and try again"
-}
-```
+| Field | Value | Description |
+|-------|-------|-------------|
+| api\_documentation\_url | String | A URL that contains more information about the software, typically the [Ripple-REST Github Project](https://github.com/ripple/ripple-rest). |
+| rippled_server_url | String | The URL of the `rippled` server that Ripple-REST is using to interface with the Ripple Network |
+| rippled\_server\_status | Object | Various information about the `rippled` server |
+
+The `rippled_server_status` object may have any of the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| build_version | String | The `rippled` software version number |
+| complete_ledgers | String | A range (possibly a disjointed range) of ledger versions that the server has on hand |
+| hostid | String | The hostname of the machine running the `rippled` server |
+| io\_latency\_ms | Number | The number of milliseconds spent waiting for I/O operations to complete. A high number indicates too much load on the server, which can be improved with more RAM and faster hard disks. |
+| last\_close | Object | Some information about the most recently-closed ledger |
+| last\_close.converge\_time\_s | Number | How many seconds it took to reach consensus on the this ledger version |
+| last\_close.proposers | Number | How many trusted validators were involved in the consensus process for this ledger version |
+| load\_factor | Number | The load factor the server is currently enforcing, which affects transaction fees. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor. |
+| peers | Number | How many other `rippled` servers this server is connected to |
+| pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.) |
+| server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States in the rippled documentation](rippled-apis#possible-server-states) for more details. |
+| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
+| validated_ledger.age | Unsigned Integer | The time since the ledger was closed, in seconds |
+| validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
+| validated_ledger.hash | String | Unique hash for the ledger, as hex |
+| validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
+| validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
+| validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
+| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
+
+<!--Note: keep the above table up-to-date with the server_info command in the rippled documentation -->
+
+
+
+
 # UTILITIES #
 
 ## Retrieve Ripple Transaction ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/transactions.js#L118 "Source")
 
-While the `ripple-rest` API is a high-level API built on top of the `rippled` server, there are times when you may need to access an underlying Ripple transaction rather than dealing with the `ripple-rest` data format.  When you need to do this, you can retrieve a standard Ripple formatted transaction by using the following endpoint:
+Returns a Ripple transaction, in its complete, original format.
 
-__`GET /v1/tx/{:transaction_hash}`__
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/tx/{:transaction_hash}
+```
+</div>
 
 [Try it! >](rest-api-tool.html#retrieve-ripple-transaction)
 
-This retrieves the underlying Ripple transaction with the given transaction hash value.  Upon completion, the server will return following JSON object:
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash | String | A unique hash identifying the Ripple transaction to retrieve |
+
+#### Response ####
+
+The result is a JSON object, whose `transaction` field has the requested transaction. See the [Transaction format documentation](transactions.html) for a complete explanation of the fields of a transaction.
 
 ```js
 {
   "success": true,
-  "tx": { /* Ripple Transaction */ }
+  "transaction": {
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": {
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+      "value": "0.01"
+    },
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "10",
+    "Flags": 131072,
+    "SendMax": "10",
+    "Sequence": 11,
+    "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+    "TransactionType": "Payment",
+    "TxnSignature": "304402206B62F24BA371DF6E8F2F5A4D0C006F4081494B8ED49F9B2C453FF50B58AB170702200886487FFD272799E5C88547692AD7DD48B04E10070F7A1F36D7AF73CCFB708D",
+    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "inLedger": 8924146,
+    "ledger_index": 8924146,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+              "Balance": "20357167562",
+              "Flags": 0,
+              "OwnerCount": 44,
+              "Sequence": 709
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "0193CB8318BDB270B775835373E8789F5357CEF712DF3275F92A8CEE97E352FE",
+            "PreviousFields": {
+              "Balance": "20357167552"
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "Balance": "230999889",
+              "Domain": "6D64756F31332E636F6D",
+              "Flags": 0,
+              "MessageKey": "0000000000000000000000070000000300",
+              "OwnerCount": 0,
+              "Sequence": 12
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+            "PreviousFields": {
+              "Balance": "230999909",
+              "Sequence": 11
+            },
+            "PreviousTxnID": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+            "PreviousTxnLgrSeq": 8889845
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-19.84529319487081"
+              },
+              "Flags": 2228224,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+                "value": "0"
+              },
+              "HighNode": "0000000000000002",
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "0"
+              },
+              "LowNode": "0000000000000010"
+            },
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "2E103526973EF8CCE3340125DD66D6BF84DD8473EF693EC5E06B2ACBF2BAC155",
+            "PreviousFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-19.84529324567081"
+              }
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+              "BookDirectory": "3A574D1E645D05EA27A5D011AECF6C78FFB028AA9B584C245D06FE5809E78102",
+              "BookNode": "0000000000000000",
+              "Flags": 0,
+              "OwnerNode": "0000000000000003",
+              "Sequence": 696,
+              "TakerGets": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "15.2299999492"
+              },
+              "TakerPays": "2998031486"
+            },
+            "LedgerEntryType": "Offer",
+            "LedgerIndex": "350327BB97B7707F4E7B8670C42F886E29B9C9615D4A8D93FC730DD17770D9B4",
+            "PreviousFields": {
+              "TakerGets": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "15.23"
+              },
+              "TakerPays": "2998031496"
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-0.0100000508"
+              },
+              "Flags": 131072,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "value": "100"
+              },
+              "HighNode": "0000000000000000",
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "0"
+              },
+              "LowNode": "000000000000000B"
+            },
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "E3DC31319B6C121387EAE05253AF71CAF98360BF1419249DD1A218A9B4C121A9",
+            "PreviousFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-0.01"
+              }
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        }
+      ],
+      "DeliveredAmount": {
+        "currency": "USD",
+        "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+        "value": "0.00000005080000000000001"
+      },
+      "TransactionIndex": 5,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "date": 464305620
+  }
 }
 ```
 
-Please refer to the [Transaction Format](https://ripple.com/wiki/Transactions) page in the Ripple Wiki for more information about Ripple transactions.
-
-If the given transaction could not be found in the `rippled` server's historical database, the following error will be returned:
-
-```js
-{
-  "success": false,
-  "error": "txnNotFound",
-  "message": "Transaction not found."
-}
-```
 
 
 ## Create Client Resource ID ##
 
-__`GET /v1/uuid`__
+Generate a universally-unique identifier suitable for use as the Client Resource ID for a payment.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/uuid
+```
+</div>
 
 [Try it! >](rest-api-tool.html#generate-uuid)
 
-This endpoint creates a universally unique identifier (UUID) value which can be used to calculate a client resource ID for a payment.  This can be useful if the application does not have a UUID generator handy.
-
-This API endpoint takes no parameters, and returns a JSON object which looks like the following:
+#### Response ####
 
 ```js
 {
