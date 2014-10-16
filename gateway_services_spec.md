@@ -181,11 +181,11 @@ __`GET https://latambridgepay.com/.well-known/host-meta.json`__
 
 This file is divided up into the following elements:
 
-## Aliases ##
+## Host-Meta Aliases ##
 
 [Aliases are NOT RECOMMENDED](http://tools.ietf.org/html/rfc6415#section-3.1) in host-meta, according to the spec. Consumers of Gateway Services should not rely on any content there.
 
-## Properties ##
+## Host-Meta Properties ##
 
 ```js
     ...
@@ -244,16 +244,16 @@ Example account definition object:
 }
 ```
 
-## Links ##
+## Host-Meta Links ##
 
 The `links` field contains links to almost anything, where the meaning of the link is programmatically identified by a relation type, typically a URI, in the `rel` field of the link object. Gateways should use links to advertise the other Gateway Services APIs that they offer.
 
 Gateway Services requires the following links in host-meta:
 
 * [Webfinger link](#webfinger_link)
-* [Bridge Payments Quotes link](#bridge_quotes_link)
-* [Bridge Payments Accept link](#bridge_payments_link)
-* [Bridge Payments Status link](#bridge_payment_status_link)
+* [Bridge Payments Get Quotes link](#bridge_quotes_link)
+* [Bridge Payments Accept Quote link](#bridge_payments_link)
+* [Bridge Payments Get Quote Status link](#bridge_payment_status_link)
 * <span class='draft-comment'>(Additional services like user-account and wallet-info TBD?)</span>
 
 
@@ -276,16 +276,10 @@ Gateway Services requires the use of the [Webfinger protocol](https://code.googl
 | rel      | `lrdd` |
 | template | The URL of your webfinger service, with `{uri}` in place of the resource to look up. |
 
-For Gateway Services purposes, Webfinger API should accept requests that are formatted as follows:
-
-| Parameter | Format | Example(s) |
-|-----------|--------|------------|
-| uri       | URL-encoded (%-escaped) string, prepended with "acct:" and with <span class='draft-comment'>one of the following: email address, federation address, Ripple account, Ripple name, Routing number and Bank number concatenated with a `+`</span> | bob@ripple.com <br>bob@fidor.de <br>rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v <br>~bob <br>92734089709+1272301 |
-
-For the details of the response, see the [Gateway Services Webfinger Reference](#webfinger).
+For the details of how the Webfinger service itself should operate, see the [Gateway Services Webfinger Reference](#webfinger).
 
 
-### Bridge Payments: Quotes Link <a name="bridge_quotes_link"></a> ###
+### Bridge Payments: Get Quotes Link <a name="bridge_quotes_link"></a> ###
 
 Also see the [Bridge-Quotes Reference](#bridge-quotes).
 
@@ -320,7 +314,7 @@ The following properties should be provided:
 | version  | `"1"` for this version of the spec. |
 
 
-### Bridge Payments: Accept Link <a name="bridge_payments_link"></a> ###
+### Bridge Payments: Accept Quote Link <a name="bridge_payments_link"></a> ###
 
 ```js
         ...
@@ -391,7 +385,7 @@ For Bridge Payment, the `fields` property should include a `sender_claims` objec
 For the label and description fields, user-agent applications can choose which language to display, and which languages to fall back on in cases where the preferred language is not provided.
 
 
-### Bridge Payments: Status Link <a name="bridge_payment_status_link"></a> ###
+### Bridge Payments: Get Quote Status Link <a name="bridge_payment_status_link"></a> ###
 
 ```js
     ...
@@ -432,9 +426,39 @@ WebFinger tells you about a person, hopefully including how to send money to tha
 
 [RFC7033](http://tools.ietf.org/html/rfc7033) defines the WebFinger protocol as a way to discover information about people or other entities on the internet, from a URI that might not be usable as a locator otherwise, such as an account or email address. The response to a WebFinger request is like the response to a Host-Meta request, but relates to a specific user (or resource) instead of to the domain. The response to a WebFinger request is also called a JRD (JSON Resource Descriptor) 
 
-Gateway Services uses WebFinger to identify the possible beneficiaries of a payment. defines specific types of *aliases* and *links* that provide information about a user with regards to Ripple: what accounts represent that user, and what services can be used to send money to the user.
+Gateway Services uses WebFinger to identify the possible beneficiaries of a payment. The *aliases* and *links* in the WebFinger response provide information about a user with regards to Ripple, including what accounts represent that user, and what services can be used to send money to the user.
+
+#### Request format: ####
+
+```
+GET /.well-known/webfinger.json?resource={uri}
+```
+
+Alternate request format:
+
+```
+GET /.well-known/webfinger?resource={uri}
+Accept: application/json
+```
+
+The following parameters must be provided in the URL:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| uri   | A valid, URL-encoded [Gateway Services identifier URI]() | The resource to look up. For Gateway Services, should be an account that might send or receive money. |
+
+#### Response Format ####
+
+The response is a JRD, in a similar format to the response to [host-meta](#host-meta). Gateway Services uses specific [Aliases](#webfinger_aliases) and [Links](#webfinger_links) as described.
+
+#### Example request: ####
 
 __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
+
+
+#### Example response: ####
+
+<span class='draft-comment'>(note: update to reflect the link formatting we settle on for host-meta)</span>
 
 ```js
 {
@@ -447,7 +471,7 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
     "links": [
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_quotes",
-            "href": "https://latambridgepay.com/v1/bridge_payments/quotes",
+            "template": "https://latambridgepay.com/v1/{sender}/bridge_payments/quotes/{receiver}/amount",
             "titles": {
                 "default": "Get quotes to send funds between Ripple and bank accounts in Latin America."
             }
@@ -464,7 +488,8 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
 }
 ```
 
-## Aliases ##
+
+### Webfinger Aliases <a id="webfinger_aliases"></a> ###
 
 The `aliases` field of a WebFinger document can contain various values, including ones that are not related to Ripple. Gateway Services defines three formats for aliases that refer to Ripple addresses:
 
@@ -479,16 +504,17 @@ The `aliases` field of a WebFinger document can contain various values, includin
 A user can have any number of aliases of any combination of the above types, in addition to non-Ripple aliases, which clients of Gateway Services should ignore.
 
 
-## Links ##
+### Webfinger Links <a id="webfinger_links"></a> ###
 
 The `links` field of a WebFinger document should contain link elements describing where to find the following APIs:
 
 * Bridge Payments: Get Quotes for payments where this person is the beneficiary
 * Bridge Payments: Accept Quote for payments where this person is the beneficiary
 
-### Bridge Payments Get Quotes for user ###
+Both of these should be specified exactly as in the host-meta, with the following exceptions:
 
-<span class='draft-comment'>(TODO)</span>
+* The `{receiver}` field of the Bridge Payments: Get Quotes `template` should be already filled-in with an appropriate URI based on the resource that was WebFingered.
+* The `sender_claims` field of the Bridge Payments: Accept Quote `properties` may differ from the ones available in the host-meta, in case the WebFingered user has different required claims. 
 
 
 # Bridge Payments #
