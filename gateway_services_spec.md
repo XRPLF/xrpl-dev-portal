@@ -33,20 +33,26 @@ The following URI types should be supported:
 | Ripple Address with Destination Tag | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v?dt=103047 | Domain from the Ripple AccountRoot object |
 | Ripple Name        | ripple:bob | Domain from the Ripple AccountRoot object |
 
-<span class='draft-comment'>Legacy addresses (TBD):</span>
+Legacy addresses - Where to webfinger **depends on the outbound bridge.** This is because the outbound bridge is bound only by trust to make the last mile of the payment, outside of the Ripple Ledger. The outbound bridge can be chosen in a few ways:
 
-| Type of Identifier | Example | Where to WebFinger |
-|--------------------|---------|--------------------|
-| US Bank number     | | |
-| IBAN Number        | | |
-| Credit/Debit card  | acct:4811738483484923@visa.com | visa.com |
-| Coin address       | | |
-| Paypal address     | acct:rome@ripple.com@paypal.com acct:paypal:rome@ripple.com | |
-| Google wallet      | | |
-| Square cash        | acct:rome@ripple.com@square.com | square.com |
+1. Client configuration - user explicitly chooses an outbound bridge to use (user takes responsibility for last mile)
+   * Client can make this easier by using a central "Registry" of outbound bridges and presenting choices to the user
+2. Inbound bridge knows about outbound bridges it trusts (esp. ones operated by the same entity, e.g. Bitstamp trusts its own Bitcoin bridge)
+
+<span class='draft-comment'>(Still TBD)</span>
+
+| Type of Identifier | Format | Example | 
+|--------------------|---------|---------|
+| US Bank number     | usbn:{routing}+{bank acct num} | usbn:2209348904802+23401011034 |
+| IBAN               | iban:{some iban format??} | iban:9293722341 |
+| Credit/Debit card  | card:{15-16 digit card number} | card:4811738483484923 |
+| Coin address       | bitcoin:{bitcoin address} | bitcoin:b238974jsv9sd8sdf923as33f |
+| Paypal address     | paypal:{email address used as PayPal login}<br>paypal:{phone number?} | acct:rome@ripple.com@paypal.com acct:paypal:rome@ripple.com |
+| Google wallet      | google:{email address} | google:mduo13@gmail.com |
+| Square cash        | square:{email address} | square:rome@ripple.com |
 
 
-Participating Parties - neither the sender nor receiver, but information lookup for these parties is important for compliance purposes (e.g. clerk at a store receiving or handing out cash). <span class='draft-comment'>(Specified how?)</span>
+Participating Parties - neither the sender nor receiver, but information lookup for these parties is important for compliance purposes (e.g. clerk at a store receiving or handing out cash). <span class='draft-comment'>(acct:{email} or whatever)</span>
 
 # Host-Meta #
 
@@ -55,6 +61,13 @@ Host-Meta tells you about things operated by a domain.
 [RFC6415](http://tools.ietf.org/html/rfc6415) defines a standardized way to publish metadata, including information about resources controlled by the host, for any domain. In contrast to the original spec, **Ripple uses the JSON version of host-meta exclusively**, and never queries for the XML version. This spec defines several Ripple-centric resources which a host can advertise in a host-meta file, so that other applications can automatically **find** the host's other Gateway services, and **verify** the domain's various Ripple assets. This extends and replaces the functionality of the [ripple.txt](https://wiki.ripple.com/Ripple.txt) spec.
 
 The response to a host-meta request is a document called a JRD (JSON resource descriptor; there is also an XML version called an XRD). You can retrieve a domain's host-meta JRD by making an HTTP GET request to the `/.well-known/host-meta.json` path at the top level of the domain. You can also GET `/.well-known/host-meta` while providing an `Accept: application/json` header. Hosts implementing Gateway Services should support both methods.
+
+<span class='draft-comment'>
+(Some things that aren't in host-meta but maybe should be:
+
+- what inbound & outbound bridges this system operates
+- what currencies those bridges take?
+</span>
 
 Here is an example of an entire host-meta JRD:
 
@@ -216,12 +229,12 @@ Ripple defines the following properties:
 
 | Property | Value | Description |
 |----------|-------|-------------|
-| rl:type  | String | What type of Ripple entity this domain is, for example `"gateway"` <span class='draft-comment'>(What are all the valid types?)</span> |
+| rl:type  | String | What type of Ripple entity this domain is. Valid types are `"gateway"`, `"merchant"`, `"bridge"`, `"wallet-service"`, `"end-user"`. Other custom types are allowed. |
 | rl:domain | String | The domain this host-meta document applies to, which should match the one it is being served from. For example, `"coin-gate.com"` |
 | rl:accounts | Array of objects | Each member of this array should be an [account definition object](#acct_def_obj) for an issuing account (cold wallet) operated by this host |
 | rl:hotwallets | Array of strings | Each member of this array should be either a base-58-encoded Ripple Address or a Ripple Name for a hot wallet operated by the host |
 
-<span class='draft-comment'>(Might Ripple clients also use the standard objects "name" and "description"?)</span>
+(Ripple clients may also use the standard objects "name" and "description"
 
 #### Account Definition Object <a name="acct_def_obj"></a> ####
 
@@ -558,11 +571,17 @@ This API should accept parameters that are formatted as follows:
                 "country": "",
                 "bank_name": ""
             },
-            "sender_claims": []
+            "sender_claims": [],
+            "receiver_info": {
+                "postal_code": ""
+            },
+            "receiver_claims": []
         }
     ]
 }
 ```
+
+sender_info: additional addressing info that may be necessary to make the payment. 
 
 ## Accept Quote ##
 
