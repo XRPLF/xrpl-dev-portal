@@ -322,7 +322,7 @@ The API serves several purposes: it provides an easy way to customize settings w
 * [Retrieve Hot Wallet - `GET /v1/config/wallets/hot`](#retrieve-hot-wallet)
 * [Set Last Payment Hash - `POST /v1/config/last_payment_hash`](#set-last-payment-hash)
 * [Retrieve Last Payment Hash - `GET /v1/config/last_payment_hash`](#retrieve-last-payment-hash)
-* [Set Gateway Domain - `POST /v1/config/domin`](#set-gateway-domain)
+* [Set Gateway Domain - `POST /v1/config/domain`](#set-gateway-domain)
 * [Retrieve Domain - `GET /v1/config/domain`](#retrieve-domain)
 * [Set API Key - `POST /v1/config/key`](#set-api-key)
 * [Retrieve API Key - `GET /v1/config/key`](#retrieve-api-key)
