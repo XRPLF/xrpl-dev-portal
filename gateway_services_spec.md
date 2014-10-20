@@ -84,6 +84,7 @@ The response to a host-meta request is a document called a JRD (JSON resource de
 (Some things that aren't in host-meta but maybe should be:
 
 <ul><li> what inbound & outbound bridges this system operates</li>
+<li>JWT-signing pubkey</li>
 <li> what currencies those bridges take?</li></ul>
 </div>
 
@@ -337,7 +338,10 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
             }
         }
     ],
-    "properties": {}
+    "properties": {
+        "rl:inbound_bridge_schemes": ["paypal","card"],
+        "rl:outbound_bridge_schemes": ["ripple","bitcoin"]
+    }
 }
 ```
 
@@ -356,23 +360,13 @@ The `aliases` field of a WebFinger document can contain various values, includin
 
 A user can have any number of aliases of any combination of the above types, in addition to non-Ripple aliases, which clients of Gateway Services should ignore.
 
-<span class='draft-comment'>(But what if we want to send money to an off-ledger account? Can we support a type of URI that's for receiving money?)</span>
 
 ## Webfinger Links <a id="webfinger_links"></a> ##
 
-<div class='draft-comment'>(Should we have only a link that matches the bridge-payments one, or one link that provides a URL specifically for getting a quote for a payment <em>to</em> this identifier? What about quotes for payments <em>from</em> this identifier? All of the above?
-
 The `links` field of a WebFinger document should contain link elements describing where to find the following APIs:
 
-* Bridge Payments: Get Quotes for payments where this person is the beneficiary
-* Bridge Payments: Accept Quote for payments where this person is the beneficiary
-
-Both of these should be specified exactly as in the host-meta, with the following exceptions:
-
-* The `{receiver}` field of the Bridge Payments: Get Quotes `template` should be already filled-in with an appropriate URI based on the resource that was WebFingered.
-* The `sender_claims` field of the Bridge Payments: Accept Quote `properties` may differ from the ones available in the host-meta, in case the WebFingered user has different required claims. 
-</div>
-
+* Bridge Payments
+  * <span class='draft-comment'>(& the properties should specify what URI to specify so that this account receives a payment?)</span>
 
 
 # Bridge Payments #
@@ -391,40 +385,55 @@ A payment object looks like this:
 
 ```js
 {
-    "gateway_tx_id": "9876",
-    "gateway_tx_type": "in",
-    "gateway_tx_state": "accepting",
-    "gateway_tx_message": "In the process of accepting this quote",
-    "expiration": "1311280970",
-    "ripple_invoice_id": "8765",
+    "id": "9876A034899023AEDFE",
+    "state": "quote",
+    "expiration": "2014-09-23T19:20:20.000Z",
     
-    "sender": {
-        "uri": "bob@bob-way.com",
-        "bank_account": "073240754",
-        "routing_number": "23790832978",
-        "country": "USA",
-        "bank_name": "Example Bank USA"
+    "source": {
+        "uri": "bobway@snapswap.us",
+        "claims_required": ["dob","us_ssn","zip"], //could be []
+        "claims_jwts": ["jwt with dob & ssn", "jwt w/ zip & dob & mother's name"], //could be []
+        "additional_info": { //arbitrary key/value contents -- definitions are in host-meta
+            "bank_account": "073240754",
+            "routing_number": "23790832978",
+            "country": "USA",
+            "bank_name": "Example Bank USA"
+        }
     },
-    "sending_amount": {
-        "amount": "5.125",
-        "currency": "USD"
-    },
-    "sender_claims": [..JWTs here..],
+    
+    "wallet_payment": {//this payment object may change, but defines the wallet payment that kicks off the tx
+        //submit this to the wallet-payment API to actually make the payment
+        "destination": "ripple:snapswap" //uri
+        "primary_amount": {
+            "amount": "5.125",
+            "currency": "USD",
+            "issuer": ""
+        },
+        "invoice_id": "(not same as id?)"
+    }
     
     "destination": {
         "uri": "acct:stefan@fidor.de",
+        "claims_required": ["dob","us_ssn","zip"], //could be []
+        "claims_jwts": ["jwt with dob & ssn", "jwt w/ zip & dob & mother's name"], //could be []
+        "additional_info": { //arbitrary key/value contents -- definitions are in host-meta
+            "zip": "83902-1135"
+        }
     },
     "destination_amount": {
         "amount": "5",
         "currency": "USD",
         "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
     },
-    "destination_claims": [JWTs??],
     
-    "inbound_bridge": "https://snapswap.us/knox",
+    "parties": {
+        "inbound_bridge": "snapswap.us/knox",
+        "outbound_bridge": "ripple.fidor.de",
+        "sending_agent": "webfingerable uri",
+        "receiving_agent": "uri"
+    }
     
-    "outbound_bridge": "https://ripple.fidor.de",
-    //other participating parties/money handlers??
+    //future feature: document fees (compliance??)
 }
 ```
 
@@ -432,18 +441,28 @@ The fields are defined as follows:
 
 | Field              | Value  | Description |
 |--------------------|--------|-------------|
-| gateway\_tx\_id    | String | Arbitrary ID for this gateway payment. <span class='draft-comment'>(Probably an unsigned int? Limited character set?)</span> |
-| gateway\_tx\_type  | String | <span class='draft-comment'>(in/out depends on a perspective. Not all the calls have perspective as written.)</span> |
-| gateway\_tx\_state | String | What state the payment is in. Valid states are: `"quote"`, `"accepting"`, `"invoice"`, `"in_progress"`, `"complete"`, and `"canceled"` <span class='draft-comment'>Discuss.</span> |
-| gateway\_tx\_message | String | A human-readable string describing the state the transaction is in. <span class='draft-comment'>(Maybe remove this?)</span> |
-| expiration           | String | <span class='draft-comment'>Expiration time in, what, UNIX time seconds? Of the whole thing?</span> |
-| ripple\_invoice\_id  | String | Arbitrary ID that will be used as the `InvoiceID` field of the Ripple payment <span class='draft-comment'>(What's the case for having different IDs for this payment on-Ripple and off-Ripple?)</span> |
-| sender\_amount       | Object | <span class='draft-comment'>Not in example, but seems crucial.</span> |
-| sender\_info | Object | Information about the sender. `uri` sub-field should match the sender from get-quotes URL. <span class='draft-comment'>Is this additional addressing info that may be necessary to make the payment? Do we need a corresponding receiver_info? Where do we define the fields?</span> |
-| sender\_claims | Array | (Optional) Array of [JWTs](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-28) that provide KYC information about the sender <span class='draft-comment'>(and/or receiver?)</span> for compliance purposes. Each token is signed by some authority and may contain multiple claims. |
-| destination          | Object | Info about the ultimate beneficiary of the payment. `uri` subfield is the receiver [URI](#gateway-services-uris) from the get-quotes URL |
-| destination\_amount  | Object | <span class='draft-comment'>(Looks like a Ripple amount, but may not always be so.)</span> |
-| destination\_claims  | Array | (Optional) <span class='draft-comment'>(Do we need claims for the one receiving the payment, too?)</span> |
+| id    | String | Arbitrary ID for this gateway payment, a 256-bit hash that will also be used as the `InvoiceID` field of the Ripple payment. Not included until the response to Accept Quote. |
+| state | String | What state the payment is in. Valid states are: `"quote"`, `"invoice"`, `"in_progress"`, `"complete"`, and `"canceled"`. |
+| expiration         | String | Expiration time in ISO8601 extended format. Initiating payment will not be accepted if it arrives after this time. When the quote is accepted, the gateway may optionally extend the expiration to a later time. |
+| source | Object | Information about the originator of the payment. |
+| wallet\_payment | Object | An object that defines the payment which will initiate the entire chain of necessary transactions. After you accept the quote, you post the **wallet\_payment** object to the appropriate API. <span class='draft-comment'>(This object is not yet fully defined.)</span> |
+| destination          | Object | Info about the ultimate beneficiary of the payment, in the same format as `source`. |
+| destination\_amount  | Object | The amount of money that is received at the destination. The `issuer` field may be an empty string for non-Ripple addresses or cases where any trusted issuer is accepted. |
+| parties | Object | Info about intermediary parties in the transaction. A value of `""` indicates that the party is not involved or the field is not applicable this this transaction. |
+| parties.inbound\_bridge | String (URI) | The gateway provider responsible for receiving the wallet\_payment and making another payment. <span class='draft-comment'>(Are we defining these in terms of Ripple?)</span> |
+| parties.outbound\_bridge | String (URI) | The gateway provider responsible for paying the destination amount, if not the same as `inbound_bridge`. |
+| parties.sending\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `source` party. |
+| parties.receiving\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `destination` party. |
+
+The `source` and `destination` objects are defined in the same way, as follows:
+
+| Field              | Value  | Description |
+|--------------------|--------|-------------|
+| uri                | String | A WebFinger-able unique identifier for this account or person. |
+| claims\_required   | Array  | A list of pieces of information that are necessary to make this payment. |
+| claims_jwts        | Array  | Array of [JWTs](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-28). Each JWT contains one or more claims about this account or person, and is signed by some authority who vouches for those claims.
+| additional_info    | Object | If additional addressing information is necessary to make the payment, this field contains key-value pairs. The Get Quotes method returns `""` to indicate fields where information is needed. The definitions of these fields is provided in the host-meta. |
+
 
 
 ## Get Quotes ##
@@ -460,7 +479,7 @@ This API should accept parameters that are formatted as follows:
 | receiver  | A URL-encoded (%-escaped) [Gateway Services Identifier](#gateway-services-identifiers) | ripple%3AraLiCEoiYDN3aTw2ZnGmEVXWwYXWiAxR7n |
 | amount    | Decimal value, and 3-letter currency code <span class='draft-comment'>(What about demurraging currencies/assets like GBI XAU?)</span> for the currency, concatenated with a `+` | 10.99+USD |
 
-Get Quotes is intended to be a recursive process: if the Gateway Services provider does not know how to make an outgoing payment to the receiver in the specified currency, it can perform a Get Quotes call using another gateway that it trusts, then 
+Get Quotes is intended to be a recursive process: if the Gateway Services provider does not know how to make an outgoing payment to the receiver in the specified currency, it can perform a Get Quotes call using another gateway that it trusts, then return quotes accordingly (possibly marked up from the quotes of the other gateway).
 
 <span class='draft-comment'>(How is that any different from the user querying the outbound gateway directly through a GWS client? Do the requests or the returned quotes look different?)</span>
 
