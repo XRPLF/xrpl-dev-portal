@@ -6293,6 +6293,10 @@ The `info` object may have some arrangement of the following fields:
 | validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
 | validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
+<!--Note: keep the above table up-to-date with the Get Server Status method in the Ripple-REST documentation -->
+
+
+
 ## server_state ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/ServerState.cpp "Source")
 
