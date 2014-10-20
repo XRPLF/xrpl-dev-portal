@@ -62,7 +62,34 @@ body .content-root {
 .content pre {
     background: none;
 }
+
+@media (max-width: 990px) {
+	.navbar .container {
+	    width: 100% !important;
+	}
+}
 /* end bootstrap code styling fix */
+
+/* redo some of flatdoc's styling */
+
+.content i, .content em {
+    color: #303044;
+}
+
+.content h4, .content h3 {
+    color: #303044 !important;
+    font-family: montserrat;
+}
+
+.content h4 {
+    font-size: 14pt;
+}
+
+.content h3 {
+    font-size: 13pt;
+}
+
+/* end flatdoc styling fix */
 
 .menubar {
 	padding-top: 10px;
@@ -98,9 +125,28 @@ color: #f09 !important;
 }
 
 
-@media (min-width: 720px) {
+@media (min-width: 860px) {
+	
+	body, td, textarea, input {
+	    font-size: 13pt;
+	}
+	.content {
+	    font-size: 13pt;
+	    max-width: 900px;
+	}
+	
+	.content-root {
+	    max-width: 1094px;
+	    padding-left: 300px;
+	}
+	
 	.menubar {
-		right: 794px;
+	    width: 300px;
+	}
+	
+	.menubar.fixed {
+	    right: 794px;
+	    width: 294px;
 	}
 }
 
