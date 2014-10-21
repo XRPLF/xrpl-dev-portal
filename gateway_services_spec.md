@@ -488,7 +488,7 @@ Get Quotes is intended to be a recursive process: if the Gateway Services provid
 Request:
 
 ```
-GET https://latambridgepay.com/v1/bridge_payments/acct:bobway%40snapswap.us/acct:stefan@fidor.us/5+USD
+GET https://latambridgepay.com/v1/bridge_payments/acct%3Abobway%40snapswap.us/acct%3Astefan%40fidor.de/5+USD
 ```
 
 Response:
