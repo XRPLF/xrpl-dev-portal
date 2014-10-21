@@ -432,8 +432,6 @@ A payment object looks like this:
         "sending_agent": "webfingerable uri",
         "receiving_agent": "uri"
     }
-    
-    //future feature: document fees (compliance??)
 }
 ```
 
@@ -463,13 +461,14 @@ The `source` and `destination` objects are defined in the same way, as follows:
 | claims_jwts        | Array  | Array of [JWTs](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-28). Each JWT contains one or more claims about this account or person, and is signed by some authority who vouches for those claims.
 | additional_info    | Object | If additional addressing information is necessary to make the payment, this field contains key-value pairs. The Get Quotes method returns `""` to indicate fields where information is needed. The definitions of these fields is provided in the host-meta. |
 
+<span class='draft-comment'>Potential future feature - document / estimate all fees including ones on the initiating payment.</span>
 
 
 ## Get Quotes ##
 
 Get Quotes tells you what your options are for making a payment.
 
-__`GET https://latambridgepay.com/v1/bridge_payments/quotes/{sender}/{receiver}/{amount}`__
+__`GET /v1/bridge_payments/quotes/{sender}/{receiver}/{amount}`__
 
 This API should accept parameters that are formatted as follows:
 
@@ -484,13 +483,101 @@ Get Quotes is intended to be a recursive process: if the Gateway Services provid
 <span class='draft-comment'>(How is that any different from the user querying the outbound gateway directly through a GWS client? Do the requests or the returned quotes look different?)</span>
 
 
-### Get Quotes Response ###
+### Get Quotes Example ###
+
+Request:
+
+```
+GET https://latambridgepay.com/v1/bridge_payments/acct:bobway%40snapswap.us/acct:stefan@fidor.us/5+USD
+```
+
+Response:
 
 ```js
 {
     "success": true,
     "bridge_payments": [
-        ... (array of Payment objects in quote state. TODO: finalize payment object and fill in)
+        {
+            "state": "quote",
+            "expiration": "2014-09-23T19:20:20.000Z",
+            
+            "source": {
+                "uri": "acct:bobway@snapswap.us",
+                "claims_required": []
+                "claims_jwts": []
+                "additional_info": {}
+            },
+            
+            "wallet_payment": {
+                "destination": "ripple:snapswap"
+                "primary_amount": {
+                    "amount": "5.125",
+                    "currency": "USD",
+                    "issuer": ""
+                },
+                "invoice_id": "78934"
+            }
+            
+            "destination": {
+                "uri": "acct:stefan@fidor.de",
+                "claims_required": []
+                "claims_jwts": []
+                "additional_info": {}
+            },
+            "destination_amount": {
+                "amount": "5",
+                "currency": "USD",
+                "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
+            },
+            
+            "parties": {
+                "inbound_bridge": "snapswap.us/knox",
+                "outbound_bridge": "ripple.fidor.de",
+                "sending_agent": "",
+                "receiving_agent": ""
+            }
+        },
+        
+        {
+            "state": "quote",
+            "expiration": "2014-09-23T19:20:20.000Z",
+            
+            "source": {
+                "uri": "acct:bobway@snapswap.us",
+                "claims_required": []
+                "claims_jwts": []
+                "additional_info": {}
+            },
+            
+            "wallet_payment": {
+                "destination": "bitcoin:1AAHyhHQzRyKkUaCmAi8dPanXoxqHuGdEJ"
+                "primary_amount": {
+                    "amount": "0.0140",
+                    "currency": "BTC",
+                    "issuer": ""
+                },
+                "invoice_id": ""
+            }
+            
+            "destination": {
+                "uri": "acct:stefan@fidor.de",
+                "claims_required": []
+                "claims_jwts": []
+                "additional_info": {}
+            },
+            "destination_amount": {
+                "amount": "5",
+                "currency": "USD",
+                "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
+            },
+            
+            "parties": {
+                "inbound_bridge": "snapswap.us/knox",
+                "outbound_bridge": "ripple.fidor.de",
+                "sending_agent": "",
+                "receiving_agent": ""
+            }
+        }
     ]
 }
 ```
