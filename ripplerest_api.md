@@ -831,7 +831,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| payment | Object | A [payment object](#payment-object) for the transaction. |
+| payment | Object | A [payment object](#payment-objects) for the transaction. |
 
 If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
 
