@@ -186,7 +186,7 @@ Request("Get Trustlines", {
     method: GET,
     path: "/v1/accounts/{:address}/trustlines?{:query_params}",
     description: "Check the status of one or more trustlines attached to an account",
-    link: "#reviewing-trustlines",
+    link: "#get-trustlines",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:query_params}": "currency=USD&counterparty=ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
@@ -197,7 +197,7 @@ Request("Grant Trustline", {
     method: POST,
     path: "/v1/accounts/{:address}/trustlines",
     description: "Add or modify a trustline from this account.",
-    link: "#granting-a-trustline",
+    link: "#grant-trustline",
     test_only: true,
     params: {
         "{:address}": DEFAULT_ADDRESS_1
@@ -217,7 +217,7 @@ Request("Check Notifications", {
     method: GET,
     path: "/v1/accounts/{:address}/notifications/{:hash}",
     description: "Browse through the history of payments sent and received by an account",
-    link: "#checking-notifications",
+    link: "#check-notifications",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:hash}": DEFAULT_HASH
@@ -228,7 +228,7 @@ Request("Check Connection", {
     method: GET,
     path: "/v1/server/connected",
     description: "Check whether the REST server is connected to a rippled server",
-    link: "#check-connection-state"
+    link: "#check-connection"
 });
 
 Request("Get Server Status", {

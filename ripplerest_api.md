@@ -25,16 +25,16 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Trustlines ####
 
-* [Get Trustlines - `GET /v1/accounts/{:address}/trustlines`](#reviewing-trustlines)
-* [Grant Trustline - `POST /v1/accounts/{:address}/trustlines`](#granting-a-trustline)
+* [Get Trustlines - `GET /v1/accounts/{:address}/trustlines`](#get-trustlines)
+* [Grant Trustline - `POST /v1/accounts/{:address}/trustlines`](#grant-trustline)
 
 #### Notifications ####
 
-* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#checking-notifications)
+* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#check-notifications)
 
 #### Status ####
 
-* [Check Connection - `GET /v1/server/connected`](#check-connection-state)
+* [Check Connection - `GET /v1/server/connected`](#check-connection)
 * [Get Server Status - `GET /v1/server`](#get-server-status)
 
 #### Utilities ####
