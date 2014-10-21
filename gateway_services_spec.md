@@ -500,28 +500,25 @@ Response:
         {
             "state": "quote",
             "expiration": "2014-09-23T19:20:20.000Z",
-            
             "source": {
                 "uri": "acct:bobway@snapswap.us",
-                "claims_required": []
-                "claims_jwts": []
+                "claims_required": [],
+                "claims_jwts": [],
                 "additional_info": {}
             },
-            
             "wallet_payment": {
-                "destination": "ripple:snapswap"
+                "destination": "ripple:snapswap",
                 "primary_amount": {
                     "amount": "5.125",
                     "currency": "USD",
                     "issuer": ""
                 },
                 "invoice_id": "78934"
-            }
-            
+            },
             "destination": {
                 "uri": "acct:stefan@fidor.de",
-                "claims_required": []
-                "claims_jwts": []
+                "claims_required": [],
+                "claims_jwts": [],
                 "additional_info": {}
             },
             "destination_amount": {
@@ -529,7 +526,6 @@ Response:
                 "currency": "USD",
                 "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
             },
-            
             "parties": {
                 "inbound_bridge": "snapswap.us/knox",
                 "outbound_bridge": "ripple.fidor.de",
@@ -537,32 +533,28 @@ Response:
                 "receiving_agent": ""
             }
         },
-        
         {
             "state": "quote",
             "expiration": "2014-09-23T19:20:20.000Z",
-            
             "source": {
                 "uri": "acct:bobway@snapswap.us",
-                "claims_required": []
-                "claims_jwts": []
+                "claims_required": [],
+                "claims_jwts": [],
                 "additional_info": {}
             },
-            
             "wallet_payment": {
-                "destination": "bitcoin:1AAHyhHQzRyKkUaCmAi8dPanXoxqHuGdEJ"
+                "destination": "bitcoin:1AAHyhHQzRyKkUaCmAi8dPanXoxqHuGdEJ",
                 "primary_amount": {
                     "amount": "0.0140",
                     "currency": "BTC",
                     "issuer": ""
                 },
                 "invoice_id": ""
-            }
-            
+            },
             "destination": {
                 "uri": "acct:stefan@fidor.de",
-                "claims_required": []
-                "claims_jwts": []
+                "claims_required": [],
+                "claims_jwts": [],
                 "additional_info": {}
             },
             "destination_amount": {
@@ -570,7 +562,6 @@ Response:
                 "currency": "USD",
                 "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
             },
-            
             "parties": {
                 "inbound_bridge": "snapswap.us/knox",
                 "outbound_bridge": "ripple.fidor.de",
