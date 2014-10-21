@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Ripple Developer Portal: Ripple-REST API Tool</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+
+  <!-- Flatdoc -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/legacy.js'></script>
+  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
+  
+   <!-- Bootstrap -->
+ 
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <script src="js/bootstrap.min.js"></script>
+
+
+  <!-- Custom Stylesheet -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
+  <link  href='css/main.css' rel='stylesheet'>
+  <link  href='css/custom.css' rel='stylesheet'>
+  
+	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+  
+  
+  
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("132d42885e094171f34467fc54da6fab");
+  </script>
+    
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rest-api-tool"); }</script>    
+  <!-- end Mixpanel -->
+
+  <!-- start google analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49188512-1', 'ripple.com');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- end google analytics -->  
+    
+
+  
+
+  <!-- Temporary shims until I modify the css directly -->
+  <link type='text/css' rel='stylesheet' href='css/mod.css' />
+  <script src='js/expandcode.js'></script>
+  
+</head>
+<body role='flatdoc' class='no-literate'>
+<!--Draft warning would go here-->
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://dev.ripple.com/"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+			<li><a href="/">Resources</a></li>
+            <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+            <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+            <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
+            <li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tool <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="ripple-api-tool.html">WebSocket Tool</a></li>
+                <li class="active"><a href="rest-api-tool.html">REST Tool</a></li>
+              </ul>
+            </li>
+          </ul>
+          	<div class='right'>
+		 	 <!-- GitHub buttons -->
+		 		 <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+			</div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  <div class='content-root'>
+   <div id='wrapper'>
+    <div style="clear:both;"></div>
+    <div id='command_wrapper'>
+      <ul id='command_list'>
+        <li class='selected'>Generate Account</li>
+        <li>Get Account Balances</li>
+        <li>Get Account Settings</li>
+        <li>Update Account Settings</li>
+        <br/>
+        <li>Prepare Payment</li>
+        <li>Submit Payment</li>
+        <li>Confirm Payment</li>
+        <li>Get Payment History</li>
+        <br/>
+        <li>Get Trustlines</li>
+        <li>Grant Trustline</li>
+        <br/>
+        <li>Check Notifications</li>
+        <br/>
+        <li>Check Connection</li>
+        <li>Get Server Status</li>
+        <br/>
+        <li>Retrieve Ripple Transaction</li>
+        <li>Generate UUID</li>
+      </ul>
+      <div id='command_table'>
+        <div id='io_wrapper'>
+          <div id='input' class='io'>
+            <h2>REST Request</h2>
+            <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                <h4>Test accounts only!</h4>
+                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
+            </div>
+            <div style="clear:both;"></div>
+            <h3 id='selected_command' title='Reference information'></h3>
+            <p id='description'></p>
+            <div id='invalid'>Invalid JSON</div>
+<!--            <select id='rest_method'>
+                <option value='GET'>GET</option>
+                <option value='POST'>POST</option>
+            </select>-->
+            <div id='rest_url_wrapper'>
+                <p><span id='rest_host'>https://api.ripple.com</span><span id='rest_url'></span></p>
+            </div>
+            <div id='request_body'></div>
+            <div id='request_options'>
+              <div class="button btn btn-primary api" id='request_button'>Send request</div>
+            </div>
+          </div>
+          <div id='output' class='io'>
+            <h2>Response</h2>
+            <div>
+                <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                <span id='rest_responsecode'></span>
+            </div>
+            <div id='response_body'></div>
+            <div id='tooltip'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<div class="footer">
+      <div class="container">
+        <p class="text-muted">
+        	<div class="row">
+				<div class="col-md-2">
+					
+						<ul class="footer_links applications">
+							<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+							<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+							<li><a href="https://ripple.com/graph">Ripple Graph</a>
+							<li><a href="http://codius.org/">Codius</a>
+						</ul>
+				</div>
+				<div class="col-md-2">
+					
+						<ul class="footer_links middleware">
+							<li><a href="gatewayd.html">Gatewayd</a>
+							<li><a href="ripple-rest.html">Ripple REST</a>
+							<li><a href="https://github.com/ripple/ripple-lib">Ripple Lib</a>
+						</ul>
+				
+				</div>
+				<div class="col-md-2">
+					
+						<ul class="footer_links core_network">
+							<li><a href="rippled-apis.html">rippled</a>
+							<li><a href="transactions.html">Transactions</a>
+							<li><a href="consensus-whitepaper.html">Consensus</a>
+						</ul>
+				
+				</div>
+				<div class="col-md-2">
+						<ul class="footer_links bounties">
+							<li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a>
+							<li><a href="https://ripplelabs.atlassian.net/">Bug tracking</a>
+							<li><a href="guidelines.html">Brand guidelines</a>
+							<li><a href="https://ripple.com/dev/blog/">Dev blog</a>
+							<li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a>
+							<li><a href="https://ripple.com/wiki/Main_Page">Wiki</a>
+						</ul>
+				
+				</div>
+				<div class="col-md-4 mail_chimp">
+				<p>Join the mailing list!</p>
+				<label for="mce-EMAIL">Email address</label>
+					<!-- Begin MailChimp Signup Form -->
+						<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+						<style type="text/css">
+							#mc_embed_signup{clear:left; font:14px; }
+	
+						</style>
+						<div id="mc_embed_signup">
+						<form action="//ripple.us4.list-manage.com/subscribe/post?u=245dbc1c47849f034390dc5bf&amp;id=4dfbe160d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	
+							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="" required>
+							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+							<div style="position: absolute; left: -5000px; top: -50px;"><input type="text" name="b_245dbc1c47849f034390dc5bf_4dfbe160d0" tabindex="-1" value=""></div>
+							<input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+						</form>
+						</div>
+
+					<!--End mc_embed_signup-->
+				</div>
+      		</div>
+        
+      </div>
+    </div>
+  
+  <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
+  <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
+  <script type='text/javascript' src='js/es5-shim.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js'></script>
+  <script type='text/javascript' src='js/cm-javascript.min.js'></script>
+  <script type='text/javascript' src='js/jquery.autosize.input.min.js'></script>
+  <script type='text/javascript' src='js/apitool-rest.js'></script>
+
+
+</body>
+</html>

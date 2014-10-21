@@ -1,0 +1,301 @@
+/* Additional Styling */
+
+html, body, h1, td, textarea, input {
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+body .content-root {
+	background: none !important;
+	box-shadow: none !important;
+}
+
+.header {
+	background: #346AA9;
+	height: 50px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.header .left {
+	float: none;
+	max-width: 1170px;
+	margin: auto;
+}
+
+.header-subnav-wrapper {
+	background: #f3f6fb;
+	border-bottom: solid 1px #dfe2e7;
+	margin-top: 50px;
+}
+
+.header-subnav {
+	max-width: 1170px;
+	margin: auto;
+	border-bottom: none !important;
+	position: fixed !important;
+	width: 100%;
+	margin-top: 51px;
+}
+
+.content-root {
+	max-width: 1024px;
+	margin: auto;
+	margin-top: 50px;
+	padding-top: 10px;
+}
+
+.content img {
+    width: 100%;
+}
+
+.content h4, body:not(.big-h3) .content h3 {
+/* Fix for anchor links hiding under fixed header */
+    padding-top: 80px;
+    margin-top: -50px;
+}
+
+/* Undo some of bootstrap's code styling that clashes */
+.content pre code {
+    white-space: pre;
+}
+
+.content pre {
+    background: none;
+}
+/* end bootstrap code styling fix */
+
+.menubar {
+	padding-top: 10px;
+}
+
+.menubar.fixed {
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	margin-bottom: 0;
+}
+
+.menubar.fixed.leaveroomforfooter {
+	margin-bottom: 183px;
+}
+
+.header-subnav li a:active {
+color: #f09 !important;
+}
+
+.content a[title="Source"] {
+    float:right;
+}
+
+#selected_command a:hover {
+    text-decoration: underline;
+}
+
+/* Brand Guidelines */
+
+.brand_guidelines .content-root {
+	padding: 0 !important;
+}
+
+
+@media (min-width: 720px) {
+	.menubar {
+		right: 794px;
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		overflow-x: hidden;
+	}
+	
+	.header-subnav ul {
+		margin: auto;
+		max-width: 480px;
+	}
+	
+	.header-subnav li {
+		width: 350px;
+	}
+	
+	.header-subnav li a {
+		padding: 10px 5px !important;
+		font-size: .8em;
+	}
+	
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+		max-width: 300px;
+		margin: auto;
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	#command_wrapper {
+	    display: block !important;
+	}
+	
+	#command_wrapper #command_list {
+	    display: block;
+	}
+	
+	#online_state {
+	    top: 50px !important;
+	}
+	
+}
+
+
+/************
+  api tool(s)
+*********** */
+
+body #online_state {
+    position: absolute;
+    right: 50px;
+    top: 70px;
+}
+
+
+/************
+  	nav
+*********** */
+
+.navbar-inverse {
+	background-color: #346AA9;
+	border-color: #346AA9;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	border-color: #346AA9;
+}
+
+.navbar-collapse {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-brand {
+	padding: 8px 10px 10px 10px;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	background-color: #4a7ab3 !important;
+}
+
+.navbar-inverse .navbar-toggle {
+	border-color: #346AA9;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+	background-color: #4a7ab3;
+}
+
+.right {
+	float: right;
+	margin-top: 15px;
+}
+
+.nav>li {
+	font-size: 14px;
+}
+
+@media (max-width: 720px) {
+
+	.right {
+		float: left;
+		margin-top: 0px;
+	}
+
+}
+
+/************
+  footer
+*********** */
+.footer {
+	width: 100%;
+	background-color: #f5f5f5;
+	margin-top:20px;
+	color: #878787;
+	padding-bottom: 20px;
+}
+
+.container .text-muted {
+	margin: 20px 0;
+}
+
+ul.footer_links {
+	list-style: none;
+	padding: 10px 0 0 0;
+	font-size: 14px;
+}
+
+ul.footer_links a {
+	color: #878787;
+}
+
+ul.footer_links a:hover {
+	text-decoration: underline;
+}
+
+/************
+Mail chimp
+*********** */
+input#mce-EMAIL {
+	height: 34px !important;
+	border: 1px solid #ccc !important;
+}
+
+#mc_embed_signup input.email {
+	width: 38% !important;
+	display: inline-block !important;
+	margin-right: 2% !important;
+}
+
+#mc_embed_signup input.button {
+	display: inline-block !important;
+	height: 34px !important;
+	width: 26% !important;
+	font-weight: 400 !important;
+}
+
+input#mc-embedded-subscribe {
+	background-color: #346AA9 !important;
+	vertical-align: bottom !important;
+}
+
+#mc_embed_signup form {
+	padding: 0 !important;
+}
+
+.mail_chimp p {
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+/************
+consensus whitepaper
+*********** */
+
+.download_consensus {
+	font-size: 24px;
+	text-align: center;
+	padding: 5px;
+}

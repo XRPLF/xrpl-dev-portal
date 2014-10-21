@@ -1,5 +1,6 @@
 ripple-dev-portal
 =================
 
-This master branch of this fork is no longer used. Use the [gh-pages](https://github.com/mDuo13/ripple-dev-portal/tree/gh-pages) branch, or various feature branches, instead.
+The [Ripple Developer Portal](https://dev.ripple.com) is the authoritative source for Ripple documentation, including the `rippled` server, Ripple-REST API, Gatewayd, and other Ripple software.
 
+Please contribute pull requests to the **gh-pages** branch with any improvements or revisions.
