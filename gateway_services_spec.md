@@ -23,13 +23,14 @@ Several APIs require you to identify the sender or recipient of a payment. Since
 
 * The originator (sender) of a payment
 * The beneficiary (receiver) of the payment
-* Up to two gateways operating as inbound bridge and/or outbound bridges <span class='draft-comment'>(What kind of identifier should they use?)</span>
+* Up to two gateways operating as inbound bridge and/or outbound bridges
 * Up to two "Participating parties" (one on each end of the transaction), for example the clerk at a store receiving or handing out cash. This may be important for compliance purposes, especially for remittance.
 
 As a general rule on the web at large, any URI starts with a "scheme" portion, followed by a colon, for example `http:`. Gateway service supports using URIs with several different schemes as identifiers to represent the parties to a payment. Depending on the scheme, a particular URI may map to something different:
 
 * `acct:` identifiers refer to a user account at a particular service, such as an account at a bank or financial service.
 * `ripple:` identifiers refer to a specific Ripple account in the shared global ledger
+* `http:` and `https:` identifiers, always followed by *a domain only*, refer to a specific business entity that is connected to Ripple
 * Other identifiers can be used, depending on the configuration of the gateway being used.
 
 An identifier can only be used if a JRD with the necessary information can be found by WebFingering that identifier. Part of the challenge is knowing which WebFinger service to use to look up the desired URI. This is a matter of finding out the right domain to use from the URI.
@@ -45,6 +46,7 @@ Some kinds of URIs provide a single clear domain that can be used to perform the
 | Ripple Address     | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v | Domain from the Ripple AccountRoot object |
 | Ripple Address with Destination Tag | ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v?dt=103047 | Domain from the Ripple AccountRoot object |
 | Ripple Name        | ripple:bob | Domain from the Ripple AccountRoot object |
+| Domain             | http://snapswap.us | Use [host-meta](#host-meta) instead. |
 
 In the case where a particular email does not provide sufficient information to send a payment, client applications may optionally use a [WebFist](http://www.onebigfluke.com/2013/06/bootstrapping-webfinger-with-webfist.html) service to check for alternate places to WebFinger the provided address.
 
@@ -80,14 +82,6 @@ Host-Meta tells you about things operated by a domain.
 
 The response to a host-meta request is a document called a JRD (JSON resource descriptor; there is also an XML version called an XRD). 
 
-<div class='draft-comment'>
-(Some things that aren't in host-meta but maybe should be:
-
-<ul><li> what inbound & outbound bridges this system operates</li>
-<li>JWT-signing pubkey</li>
-<li> what currencies those bridges take?</li></ul>
-</div>
-
 #### Request Format ####
 
 ```
@@ -101,7 +95,7 @@ GET /.well-known/host-meta
 Accept: application/json
 ```
 
-*Note:* Some domains that do not use Gateway Services may implement host-meta without providing a JRD. In this case, the alternate request format may return an XRD document instead of a Not Found error.
+__*Note:*__ Some domains that do not use Gateway Services may implement host-meta without providing a JRD. In this case, the alternate request format may return an XRD document instead of a Not Found error.
 
 
 Here is an example of an entire host-meta JRD:
@@ -135,13 +129,72 @@ __`GET https://latambridgepay.com/.well-known/host-meta.json`__
     "links": [
         {
             "rel": "lrdd",
-            "template": "https://latambridgepay.com/.well-known/webfinger.json?q={uri}"
+            "template": "https://latambridgepay.com/.well-known/webfinger.json?q={uri}",
+            "properties": {
+                "rl:uri_schemes": ["paypal","bitcoin","acct","ripple"]
+            }
         },
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
             "href": "https://latambridgepay.com/v1/bridge_payments",
             "properties": {
-                "version": "1"
+                "version": "1",
+                "additional_info_definitions":{
+                    "bank": {
+                      "type": "AstropayBankCode",
+                      "label": {
+                        "en": "Astropay Bank Code"
+                      },
+                      "description": {
+                        "en": "Bank code from Astropay's documentation"
+                      }
+                    },
+                    "country": {
+                      "type": "AstropayCountryCode",
+                      "label": {
+                        "en": "Astropay Country Code",
+                      },
+                      "description": {
+                        "en": "Country code from Astropay's documentation"
+                      }
+                    },
+                    "cpf": {
+                      "type": "PersonalIDNumber",
+                      "label": {
+                        "en": "Personal Government ID Number"
+                      },
+                      "description": {
+                        "en": "Personal ID number from the Astropay documentation"
+                      },
+                    }
+                    "name": {
+                      "type": "FullName",
+                      "label": {
+                        "en": "Sender's Full Name"
+                      },
+                      "description": {
+                        "en": "First and last name of sender"
+                      }
+                    },
+                    "email": {
+                      "type": "EmailAddress",
+                      "label": {
+                        "en": "Sender's Email Address"
+                      },
+                      "description": {
+                        "en": "Sender's Email Address"
+                      }
+                    },
+                    "bdate": {
+                      "type": "Date",
+                      "label": {
+                        "en": "YYYYMMDD"
+                      },
+                      "description": {
+                        "en": "Sender's date of birth"
+                      }
+                    }
+                }
             }
         }
     ]
@@ -192,6 +245,8 @@ Ripple defines the following properties:
 
 Gateway Services clients may also use the standard "name" and "description" properties.
 
+<span class='draft-comment'>TBD: format for providing a JWT-signing PubKey in the properties. (Possibly use OpenID format?)</span>
+
 #### Account Definition Object <a name="acct_def_obj"></a> ####
 
 An account definition object is a JSON object with the following properties:
@@ -233,7 +288,10 @@ This link indicates where the [WebFinger (lrdd) service](#webfinger) is provided
     "links": [
         {
             "rel": "lrdd",
-            "template": "https://latambridgepay.com/.well-known/webfinger.json?resource={uri}"
+            "template": "https://latambridgepay.com/.well-known/webfinger.json?q={uri}",
+            "properties": {
+                "rl:uri_schemes": ["paypal","bitcoin","acct","ripple"]
+            }
         },
     ...
 ```
@@ -244,6 +302,13 @@ Gateway Services requires the use of the [Webfinger protocol](https://code.googl
 |----------|--------|
 | rel      | `lrdd` |
 | template | The URL of your webfinger service, with `{uri}` in place of the resource to look up. |
+| properties | Object with properties of this link |
+
+The `properties` field should contain the following field:
+
+| Field          | Value | Description |
+|----------------|-------|-------------|
+| rl:uri_schemes | Array | Each member of this array refers to the scheme section (the part before the first colon) of [Gateway Services Identifiers](#gateway-services-identifiers) that can be WebFingered at this location. By default, Gateway Services providers should support `acct` and `ripple`; other schemes indicate that the gateway operates a bridge that can send to and/or receive from identifiers for those schemes. |
 
 
 ### Bridge Payments Link <a name="bridge_payments_link"></a> ###
@@ -258,13 +323,80 @@ This link indicates where the [Bridge-Payments Service](#bridge-payments) is pro
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
             "href": "https://latambridgepay.com/v1/bridge_payments",
             "properties": {
-                "version": "1"
+                "version": "1",
+                "bridges": [
+                    {
+                        "currency": "USD",
+                        "scheme": "astropay",
+                        "direction": "both"
+                    },
+                    {
+                        "currency": "BTC",
+                        "scheme": "bitcoin",
+                        "direction": "in"
+                    }
+                ],
+                "additional_info_definitions":{
+                    "bank": {
+                      "type": "AstropayBankCode",
+                      "label": {
+                        "en": "Astropay Bank Code"
+                      },
+                      "description": {
+                        "en": "Bank code from Astropay's documentation"
+                      }
+                    },
+                    "country": {
+                      "type": "AstropayCountryCode",
+                      "label": {
+                        "en": "Astropay Country Code",
+                      },
+                      "description": {
+                        "en": "Country code from Astropay's documentation"
+                      }
+                    },
+                    "cpf": {
+                      "type": "PersonalIDNumber",
+                      "label": {
+                        "en": "Personal Government ID Number"
+                      },
+                      "description": {
+                        "en": "Personal ID number from the Astropay documentation"
+                      },
+                    }
+                    "name": {
+                      "type": "FullName",
+                      "label": {
+                        "en": "Sender's Full Name"
+                      },
+                      "description": {
+                        "en": "First and last name of sender"
+                      }
+                    },
+                    "email": {
+                      "type": "EmailAddress",
+                      "label": {
+                        "en": "Sender's Email Address"
+                      },
+                      "description": {
+                        "en": "Sender's Email Address"
+                      }
+                    },
+                    "bdate": {
+                      "type": "Date",
+                      "label": {
+                        "en": "YYYYMMDD"
+                      },
+                      "description": {
+                        "en": "Sender's date of birth"
+                      }
+                    }
+                }  
             }
         }
     ...
 ```
 
-<span class='draft-comment'>(Add dictionary of maybe-required fields back to this.)</span>
 
 The fields of the link are defined as follows:
 
@@ -281,9 +413,20 @@ The following properties should be provided:
 | Field    | Value  |
 |----------|--------|
 | version  | `"1"` for this version of the spec. |
-| additional_info | Definition of additional fields that may be requested to make payments through this API. |
+| bridges | <span class='draft-comment'>currencies, payment methods, or both? Distinction between in/out bridges?</span> |
+| additional\_info\_definitions | Definitions of all additional fields that may be requested to make payments through this API. |
 
-### Sender Claims Type Reference ###
+Each field name in the `additional_info` object should match a field that may be requested by the [Get Quotes method](#get-quotes). The contents of that field in the host-meta should be a definition of the field, so that client applications can create a user interface to request the user to fill in those fields.
+
+| Field    | Value  | Description |
+|----------|--------|-------------|
+| type     | String ([Additional Info Types](#additional-info-type-reference)) | What sort of validation should be performed on this field. |
+| label    | Object | Map of brief labels for this field. Keys should be [two-character ISO-639.1 codes](http://www.loc.gov/standards/iso639-2/php/code_list.php), and values should be human-readable Unicode strings (in the corresponding language) suitable for display in a UI. |
+| description | Object | Map of longer descriptions for this field. Keys should be [two-character ISO-639.1 codes](http://www.loc.gov/standards/iso639-2/php/code_list.php) <span class='draft-comment'>(or 3 letter codes instead? Any preferences?)</span>, and values should be human-readable Unicode strings (in the corresponding language) suitable for display in a UI. |
+
+For the label and description fields, client applications can choose which language to display, and which languages to fall back on in cases where the preferred language is not provided.
+
+### Additional Info Type Reference ###
 
 <span class='draft-comment'>TBD</span>
 
@@ -334,21 +477,33 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
     "expires": "2014-10-07T22:46:35.097Z",
     "aliases": [
         "ripple:bob",
-        "ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v"
+        "ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v",
+        "paypal:bob@bob-way.com"
     ],
     "links": [
         {
             "rel": "https://gatewayd.org/gateway-services/bridge_payments",
             "href": "https://latambridgepay.com/v1/bridge_payments",
             "properties": {
-                "version": "1"
+                "version": "1",
+                "send_to": 
+                [
+                    {
+                        "uri": "acct:bob@bob-way.com",
+                        "currencies": ["USD", "XAU"]
+                    },
+                    {
+                        "uri": "paypal:bob@bob-way.com",
+                        "currencies": ["USD"]
+                    },
+                    {
+                        "uri": "bitcoin:1Y23423jf9234...",
+                        "currencies": ["BTC"]
+                    }
+                ]
             }
         }
-    ],
-    "properties": {
-        "rl:inbound_bridge_schemes": ["paypal","card"],
-        "rl:outbound_bridge_schemes": ["ripple","bitcoin"]
-    }
+    ]
 }
 ```
 
@@ -356,6 +511,8 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
 ## Webfinger Aliases <a id="webfinger_aliases"></a> ##
 
 The `aliases` field of a WebFinger document can contain various values, including ones that are not related to Ripple. Aliases that match supported [Gateway Services URIs](#gateway-services-identifiers) can be used to identify this account as a party to a payment.
+
+If you WebFinger any of the aliases at the same domain, the resulting document should be the same (with the possible exception that the `subject` field may optionally change to reflect the resource requested in the URL).
 
 <span class='draft-comment'>(There may be weird edge cases here where an alias does not necessarily mean that the user can be paid according to that scheme by this gateway... we OK with that?)</span>
 
@@ -390,7 +547,7 @@ It looks like this:
 {
     "id": "9876A034899023AEDFE",
     "state": "quote",
-    "expiration": "2014-09-23T19:20:20.000Z",
+    "created": "2014-09-23T19:20:20.000Z", //for hashing uniqueness
     
     "source": {
         "uri": "bobway@snapswap.us",
@@ -411,7 +568,8 @@ It looks like this:
             "currency": "USD",
             "issuer": ""
         },
-        "invoice_id": "87246"
+        "invoice_id": "87246",
+        "expiration": "2014-09-23T20:20:20.000Z",
     },
     
     "destination": {
@@ -441,7 +599,7 @@ The fields are defined as follows:
 
 | Field              | Value  | Description |
 |--------------------|--------|-------------|
-| id    | String | An identifying hash value that uniquely describes this gateway payment. This is a 256-bit hash that will also be used as the `InvoiceID` field of the Ripple payment. Not included until the response to Accept Quote. |
+| id    | String | An identifying hash value that uniquely describes this gateway payment. This is a 256-bit hash of the Gateway Transaction object, omitting the `wallet_payment`, the `state`, and the `id` itself. If any Ripple transactions are used, it should also be used as the `InvoiceID` field of the Ripple payment. Not included until the response to Accept Quote. |
 | state | String | What state the payment is in. Valid states are: `"quote"`, `"invoice"`, `"in_progress"`, `"complete"`, and `"canceled"`. |
 | expiration         | String | Expiration time in ISO8601 extended format. The initial wallet payment will not be accepted if it arrives after this time. When the quote is accepted, the gateway may optionally extend the expiration to a later time. |
 | source | Object | Information about the originator of the payment. |
@@ -449,10 +607,12 @@ The fields are defined as follows:
 | destination          | Object | Info about the ultimate beneficiary of the payment, in the same format as `source`. |
 | destination\_amount  | Object | The amount of money that is received at the destination. The `issuer` field may be an empty string for non-Ripple addresses or cases where any trusted issuer is accepted. |
 | parties | Object | Info about intermediary parties in the transaction. A value of `""` indicates that the party is not involved or the field is not applicable this this transaction. |
-| parties.inbound\_bridge | String (URI) | The gateway provider responsible for receiving the wallet\_payment and making another payment. <span class='draft-comment'>(Are we defining these in terms of Ripple?)</span> |
+| parties.inbound\_bridge | String (URI) | The gateway provider responsible for receiving the wallet\_payment and making another payment. <span class='draft-comment'>(Are we defining these in terms of Ripple? -- YES)</span> |
 | parties.outbound\_bridge | String (URI) | The gateway provider responsible for paying the destination amount, if not the same as `inbound_bridge`. |
 | parties.sending\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `source` party. |
 | parties.receiving\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `destination` party. |
+
+<span class='draft-comment'>(Possible additional parties: the sender and receiver, all over again, but as URIs that can definitely be WebFingered at a single definitive domain.)</span>
 
 The `source` and `destination` objects are defined in the same way, as follows:
 
@@ -486,6 +646,8 @@ The response to Get Quotes is a JSON object with two top-level fields:
 |-----------------|---------|-------------|
 | success         | Boolean | `true` if this method succeeded |
 | bridge_payments | Array   | Array of [Payment Objects](#gateway-transaction-objects) in the `quote` state that represent possible payments, which could result in the destination amount being paid to the ultimate beneficiary. |
+
+The Gateway Services implementation can use custom business logic to determines which bridge_payments to include in the response, if any. This can depend on the sender, the receiver, the currency and amount, or other factors.
 
 Get Quotes is intended to be a recursive process: if the Gateway Services provider does not know how to make an outgoing payment to the receiver in the specified currency, it can perform a Get Quotes call using another gateway that it trusts, then return quotes accordingly (possibly marked up from the quotes of the other gateway). In this case, most portions of the payment object remain the same throughout, but the `wallet_payment` object at each stage reflects the payment that must be made to continue the chain.
 
