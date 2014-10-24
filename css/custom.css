@@ -135,7 +135,7 @@ color: #f09 !important;
 	    max-width: 900px;
 	}
 	
-	.content-root {
+	.no-literate .content-root {
 	    max-width: 1094px;
 	    padding-left: 300px;
 	}
