@@ -23,7 +23,7 @@ Several APIs require you to identify the sender or recipient of a payment. Since
 
 * The originator (sender) of a payment
 * The beneficiary (receiver) of the payment
-* Up to two gateways operating as inbound bridge and/or outbound bridges
+* Up to two gateways operating as inbound bridge (onto Ripple) and/or outbound bridges (off of Ripple)
 * Up to two "Participating parties" (one on each end of the transaction), for example the clerk at a store receiving or handing out cash. This may be important for compliance purposes, especially for remittance.
 
 As a general rule on the web at large, any URI starts with a "scheme" portion, followed by a colon, for example `http:`. Gateway service supports using URIs with several different schemes as identifiers to represent the parties to a payment. Depending on the scheme, a particular URI may map to something different:
@@ -73,6 +73,24 @@ As long as the identifier is reasonably likely to *uniquely* refer to a particul
 | Paypal address     | paypal:{email address used as PayPal login}<br>paypal:{phone number?} | acct:rome@ripple.com@paypal.com acct:paypal:rome@ripple.com |
 | Google wallet      | google:{email address} | google:mduo13@gmail.com |
 | Square cash        | square:{email address} | square:rome@ripple.com |
+
+## Currency Codes ##
+
+Currency codes in Gateway Services are specified as they are in Ripple. In most common cases, this means that currencies are provided as three-letter [ISO4217](http://www.xe.com/iso4217.php/) identifiers such as `"USD"`. Three-letter identifiers should be **case-insensitive**. 
+
+A currency can also be provided as a 160-bit hexadecimal string, in case it has unusual properties such as built-in demurrage. For example, gold with 0.5% annual demurrage from [Gold Bullion International](http://www.bullioninternational.com/digital-physical-gold/) is represented as the string `"0158415500000000C1F76FF6ECB0BAC600000000"`. 
+
+It is RECOMMENDED that Gateway Services providers and clients should be able to recognize hex values that refer to common 3-letter currencies. This can be achieved by the following method:
+
+* Convert three-letter codes to uppercase. (This is important! Even though "btc" is considered the same as "BTC", both should map to the same hex)
+* Determine the hex ASCII codes for those letters. For example, "JPY" is "4A5059". 
+* Render the hex code as "000000000000000000000000" + the hex of the 3-letter currency code + "0000000000"
+* If this code matches a hex code that is provided directly, then they are the same currency.
+
+See [Currency Format](https://wiki.ripple.com/Currency_format) for more detailed information on the hex representation..
+
+
+
 
 # Host-Meta #
 
@@ -276,7 +294,7 @@ Gateway Services requires the following links in host-meta:
 
 * [Webfinger Link](#webfinger_link)
 * [Bridge Payments Link](#bridge_payments_link)
-* <span class='draft-comment'>(Additional services like user-account and wallet-info TBD)</span>
+* <span class='draft-comment'>(As additional services are defined, they should have links added to host-meta.)</span>
 
 
 ### WebFinger Link <a name="webfinger_link"></a> ###
@@ -313,7 +331,7 @@ The `properties` field should contain the following field:
 
 ### Bridge Payments Link <a name="bridge_payments_link"></a> ###
 
-This link indicates where the [Bridge-Payments Service](#bridge-payments) is provided.
+This link indicates where the [Bridge-Payments Service](#bridge-payments) is provided, and information about it.
 
 ```js
     ...
@@ -413,8 +431,16 @@ The following properties should be provided:
 | Field    | Value  |
 |----------|--------|
 | version  | `"1"` for this version of the spec. |
-| bridges | <span class='draft-comment'>currencies, payment methods, or both? Distinction between in/out bridges?</span> |
+| bridges  | Array of objects describing any Ripple bridges operated by this gateway. |
 | additional\_info\_definitions | Definitions of all additional fields that may be requested to make payments through this API. |
+
+Each member of the `bridges` array should be an object with the following fields:
+
+| Field     | Value  | Description |
+|-----------|--------|-------------|
+| currency  | String | Currency code for the currency supported by this bridge. |
+| scheme    | String | A valid URI scheme that matches identifiers used to make non-Ripple payments to or from this bridge. See [Gateway Services Identifiers](#gateway-services-identifiers) for a list of schemes. The scheme `ripple` is not valid here. |
+| direction | String | Whether this bridge supports payments into the Ripple network (`in`), payments out from the Ripple network (`out`) or payments in both directions (`both`). Any other values of this field are invalid. |
 
 Each field name in the `additional_info` object should match a field that may be requested by the [Get Quotes method](#get-quotes). The contents of that field in the host-meta should be a definition of the field, so that client applications can create a user interface to request the user to fill in those fields.
 
@@ -422,13 +448,15 @@ Each field name in the `additional_info` object should match a field that may be
 |----------|--------|-------------|
 | type     | String ([Additional Info Types](#additional-info-type-reference)) | What sort of validation should be performed on this field. |
 | label    | Object | Map of brief labels for this field. Keys should be [two-character ISO-639.1 codes](http://www.loc.gov/standards/iso639-2/php/code_list.php), and values should be human-readable Unicode strings (in the corresponding language) suitable for display in a UI. |
-| description | Object | Map of longer descriptions for this field. Keys should be [two-character ISO-639.1 codes](http://www.loc.gov/standards/iso639-2/php/code_list.php) <span class='draft-comment'>(or 3 letter codes instead? Any preferences?)</span>, and values should be human-readable Unicode strings (in the corresponding language) suitable for display in a UI. |
+| description | Object | Map of longer descriptions for this field. Keys should be [two-character ISO-639.1 codes](http://www.loc.gov/standards/iso639-2/php/code_list.php), and values should be human-readable Unicode strings (in the corresponding language) suitable for display in a UI. |
 
 For the label and description fields, client applications can choose which language to display, and which languages to fall back on in cases where the preferred language is not provided.
 
 ### Additional Info Type Reference ###
 
 <span class='draft-comment'>TBD</span>
+
+
 
 
 # WebFinger #
@@ -456,7 +484,7 @@ The following parameters must be provided in the URL:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| uri   | A valid, URL-encoded [Gateway Services identifier URI]() | The resource to look up. For Gateway Services, should be an account that might send or receive money. |
+| uri   | A valid, URL-encoded [Gateway Services URI](gateway-services-identifiers) | The resource to look up. For Gateway Services, should be an account that might send or receive money, or be otherwise involved in a payment. |
 
 #### Response Format ####
 
@@ -468,8 +496,6 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
 
 
 #### Example response: ####
-
-<span class='draft-comment'>(note: update to reflect the link formatting we settle on for host-meta)</span>
 
 ```js
 {
@@ -510,11 +536,21 @@ __`GET https://latambridgepay.com/.well-known/webfinger?resource=ripple:bob`__
 
 ## Webfinger Aliases <a id="webfinger_aliases"></a> ##
 
+```js
+    ...
+    "aliases": [
+        "ripple:bob",
+        "ripple:rBWay8KRdmroZra4DTXi6h5cLtPhs5mH7v",
+        "paypal:bob@bob-way.com"
+    ],
+    ...
+```
+
 The `aliases` field of a WebFinger document can contain various values, including ones that are not related to Ripple. Aliases that match supported [Gateway Services URIs](#gateway-services-identifiers) can be used to identify this account as a party to a payment.
 
-If you WebFinger any of the aliases at the same domain, the resulting document should be the same (with the possible exception that the `subject` field may optionally change to reflect the resource requested in the URL).
+If you WebFinger any of the aliases at the same domain, the resulting document should be the same. Optionally, the `subject` field may change to reflect the resource requested in the URL. Alternatively, the `subject` field can remain the same, to indicate the preferred URI for a particular resource.
 
-<span class='draft-comment'>(There may be weird edge cases here where an alias does not necessarily mean that the user can be paid according to that scheme by this gateway... we OK with that?)</span>
+<span class='draft-comment'>(TODO: Discuss weird edge cases here where an alias does not necessarily mean that the user can be paid according to that scheme by this gateway.)</span>
 
 
 ## Webfinger Links <a id="webfinger_links"></a> ##
@@ -522,7 +558,49 @@ If you WebFinger any of the aliases at the same domain, the resulting document s
 The `links` field of a WebFinger document should contain link elements describing where to find the following APIs:
 
 * Bridge Payments
-  * <span class='draft-comment'>(& the properties should specify what URI to specify so that this account receives a payment?)</span>
+* <span class='draft-comment'>As we add other APIs that are relevant for a particular user, links to those APIs should be added to the WebFinger response.</span>
+* Optionally, additional links with information relevant to this party can be added. <span class='draft-comment'>The Gateway Services spec may grow to include some uses of additional links, for example location data that can be used by client applications to select from agents in different regions.</span>
+
+### Bridge Payments Link <a id='webfinger_bridgepayments_link'></a> ###
+
+```js
+    ...
+    {
+        "rel": "https://gatewayd.org/gateway-services/bridge_payments",
+        "href": "https://latambridgepay.com/v1/bridge_payments",
+        "properties": {
+            "version": "1",
+            "send_to": 
+            [
+                {
+                    "uri": "acct:bob@bob-way.com",
+                    "currencies": ["USD", "XAU"]
+                },
+                {
+                    "uri": "paypal:bob@bob-way.com",
+                    "currencies": ["USD"]
+                },
+                {
+                    "uri": "bitcoin:1Y23423jf9234...",
+                    "currencies": ["BTC"]
+                }
+            ]
+        }
+    }
+    ...
+```
+
+The Bridge-Payments link indicates where to find the [Bridge-Payments](#bridge-payments) service for the user in the URL; the URL provided is used as the base for Bridge-Payments methods. Unlike the version of this link in host-meta, the version in the WebFinger JRD does not have a definition of all the fields that might be requested in the `additional_info` paramter. (That information is omitted because it is not related to the resource being WebFingered.)
+
+Instead, the Bridge-Payments link the WebFinger JRD has a `send_to` property, which indicates which identifiers should be used to send different currencies to the resource being queried. Each element in the `send_to` array should be an object with the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| uri   | A valid [Gateway Services URI](#gateway-services-identifiers) | This identifies a particular identifier that should be used at this gateway-services link when the resource in the URL is receiving a payment. It may or may not be the same as the URI from the request. Any given URI should only appear once in the `send_to` array. |
+| currencies | Array | The [currency codes](#currency-codes) for one or more currencies that should be sent to the associated identifier using this bridge-payments service. |
+
+It is possible that a provider of Gateway Services may only provide WebFinger on a particular domain, so that the `href` for Bridge-Payments may be different for different resources. For example, an individual can set up her personal domain to run WebFinger, so that querying the person's personal email address returns a link to a bridge-payments service operated by a chosen gateway. It is even possible that there may be multiple instances of the Bridge-Payments link (with the same `rel`) but different destinations and properties, indicating that the resource has multiple Gateway Services providers it trusts.
+
 
 
 # Bridge Payments #
@@ -537,6 +615,7 @@ The URL for all the Bridge Payments calls is relative to the base URL defined in
 
 All three of these operate on a single type: the Gateway Transaction object. 
 
+
 ## Gateway Transaction Objects ##
 
 A Gateway Transaction defines is a type of object that represents a payment through a gateway. This is like a contract, representing a chain of steps that complete the intended payment from a sender to a receiver. 
@@ -547,7 +626,7 @@ It looks like this:
 {
     "id": "9876A034899023AEDFE",
     "state": "quote",
-    "created": "2014-09-23T19:20:20.000Z", //for hashing uniqueness
+    "created": "2014-09-23T19:20:20.000Z",
     
     "source": {
         "uri": "bobway@snapswap.us",
@@ -599,11 +678,12 @@ The fields are defined as follows:
 
 | Field              | Value  | Description |
 |--------------------|--------|-------------|
-| id    | String | An identifying hash value that uniquely describes this gateway payment. This is a 256-bit hash of the Gateway Transaction object, omitting the `wallet_payment`, the `state`, and the `id` itself. If any Ripple transactions are used, it should also be used as the `InvoiceID` field of the Ripple payment. Not included until the response to Accept Quote. |
+| id    | String | An identifying hash value that uniquely describes this gateway payment. This is a 256-bit hash of the Gateway Transaction object, omitting the `wallet_payment`, the `state`, and the `id` itself. If any Ripple transactions are made as part of this gateway transaction, they should use this value as the `InvoiceID` field of the Ripple payment. Not included until the response to Accept Quote. |
+| created | String | The time that this resource was initially created as part of a Get-Quotes request, as an ISO8601 extended format string. This time never changes throughout the lifetime of the object. This is included so that the hashed ID is different if the same parties make a payment for the same amount on different dates. |
 | state | String | What state the payment is in. Valid states are: `"quote"`, `"invoice"`, `"in_progress"`, `"complete"`, and `"canceled"`. |
-| expiration         | String | Expiration time in ISO8601 extended format. The initial wallet payment will not be accepted if it arrives after this time. When the quote is accepted, the gateway may optionally extend the expiration to a later time. |
 | source | Object | Information about the originator of the payment. |
 | wallet\_payment | Object | An object that defines the payment which will initiate the entire chain of necessary transactions. After you accept the quote, you post the **wallet\_payment** object to the appropriate API to make the payment that starts the chain. <span class='draft-comment'>(This object is not yet fully defined.)</span> |
+| wallet\_payment.expiration | String | Expiration time in ISO8601 extended format. The initial wallet payment will not be accepted if it arrives after this time. When the quote is accepted, the gateway may optionally extend the expiration to a later time. |
 | destination          | Object | Info about the ultimate beneficiary of the payment, in the same format as `source`. |
 | destination\_amount  | Object | The amount of money that is received at the destination. The `issuer` field may be an empty string for non-Ripple addresses or cases where any trusted issuer is accepted. |
 | parties | Object | Info about intermediary parties in the transaction. A value of `""` indicates that the party is not involved or the field is not applicable this this transaction. |
@@ -638,7 +718,7 @@ This API should accept parameters that are formatted as follows:
 |-----------|--------|------------|
 | sender    | A URL-encoded (%-escaped) [Gateway Services Identifier](#gateway-services-identifiers) | acct%3Abob%40ripple.com |
 | receiver  | A URL-encoded (%-escaped) [Gateway Services Identifier](#gateway-services-identifiers) | ripple%3AraLiCEoiYDN3aTw2ZnGmEVXWwYXWiAxR7n |
-| amount    | Decimal value, and 3-letter currency code <span class='draft-comment'>(What about demurraging currencies/assets like GBI XAU?)</span> for the currency, concatenated with a `+` | 10.99+USD |
+| amount    | Decimal value, and [code for the currency to be received](#currency-codes), concatenated with a `+` | 10.99+USD |
 
 The response to Get Quotes is a JSON object with two top-level fields:
 
@@ -676,7 +756,7 @@ Response:
     "bridge_payments": [
         {
             "state": "quote",
-            "expiration": "2014-09-23T19:20:20.000Z",
+            "created": "2014-09-23T19:20:20.000Z",
             "source": {
                 "uri": "acct:bobway@snapswap.us",
                 "claims_required": [],
@@ -690,7 +770,8 @@ Response:
                     "currency": "USD",
                     "issuer": ""
                 },
-                "invoice_id": "78934"
+                "invoice_id": "78934",
+                "expiration": "2014-09-23T20:20:20.000Z"
             },
             "destination": {
                 "uri": "acct:stefan@fidor.de",
@@ -712,7 +793,7 @@ Response:
         },
         {
             "state": "quote",
-            "expiration": "2014-09-23T19:20:20.000Z",
+            "created": "2014-09-23T19:20:20.000Z",
             "source": {
                 "uri": "acct:bobway@snapswap.us",
                 "claims_required": [],
@@ -726,7 +807,8 @@ Response:
                     "currency": "BTC",
                     "issuer": ""
                 },
-                "invoice_id": ""
+                "invoice_id": "",
+                "expiration": "2014-09-23T20:20:20.000Z"
             },
             "destination": {
                 "uri": "acct:stefan@fidor.de",
@@ -806,10 +888,45 @@ Bridge payment status checks tells you whether a payment has happened yet.
 __`GET https://latambridgepay.com/v1/bridge_payments/9876`__
 
 
-<span class='draft-comment'>(This should also reflect any changes we make to the payment object.)</span>
-
 Response:
 
 ```js
-(payment object. TODO: finalize payment object and fill in)
+{
+    "id": "9876A034899023AEDFE",
+    "state": "invoice",
+    "created": "2014-09-23T19:20:20.000Z",
+    "source": {
+        "uri": "acct:bobway@snapswap.us",
+        "claims_required": [],
+        "claims_jwts": [],
+        "additional_info": {}
+    },
+    "wallet_payment": {
+        "destination": "ripple:snapswap",
+        "primary_amount": {
+            "amount": "5.125",
+            "currency": "USD",
+            "issuer": ""
+        },
+        "invoice_id": "78934",
+        "expiration": "2014-09-23T20:20:20.000Z"
+    },
+    "destination": {
+        "uri": "acct:stefan@fidor.de",
+        "claims_required": [],
+        "claims_jwts": [],
+        "additional_info": {}
+    },
+    "destination_amount": {
+        "amount": "5",
+        "currency": "USD",
+        "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
+    },
+    "parties": {
+        "inbound_bridge": "snapswap.us/knox",
+        "outbound_bridge": "ripple.fidor.de",
+        "sending_agent": "",
+        "receiving_agent": ""
+    }
+}
 ```
