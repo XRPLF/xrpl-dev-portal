@@ -4,6 +4,11 @@ The Gateway Services initiative aims to make gateways interoperable, extending t
 
 Gateways that implement these services can easily link with one another, allowing users who have a business relationship with one of them to send and receive money to parties that are connected to other gateways in an automated fashion, while remaining regulation-compliant. Our Gatewayd framework will implement all these services, so gateway operators using Gatewayd don't need to do anything beyond standard configuration, and those with custom gateway software can use Gatewayd as a reference implementation. 
 
+<div class='danger alert'>
+This document, and the APIs it defines, are a work in progress. Do not go implementing them already! We are exposing these explanations as guidance to where we are heading, with the intent of getting feedback to refine them as necessary.<br><br>
+All names, URLs, and addresses in this document are used for example purposes only, and do not reflect actual services or a commitment to provide actual services.
+</div>
+
 ## Components ##
 
 | Service | Description | Based On | Replaces |
@@ -16,6 +21,35 @@ Gateways that implement these services can easily link with one another, allowin
 | wallet-info | Shows information about a wallet, and works with hosted wallets | [Ripple-REST accounts](http://dev.ripple.com/ripple-rest.html#accounts) | -- |
 | wallet-balances | Shows information about balances in multiple currencies, and works with hosted wallets. | [Ripple-REST accounts](http://dev.ripple.com/ripple-rest.html#accounts) | -- |
 | wallet-history | Shows history of payments sent and received, and works with hosted wallets. | [Ripple-REST payment history](http://dev.ripple.com/ripple-rest.html#payment-history) | -- |
+
+## Event Sequence ##
+
+The Gateway Services APIs are built to support many different process flows, but most of them can be simplified down to a simple payment flow through one or more gateways, such as the following:
+
+[![Gateway Services sequence diagram](img/gateway_services_sequence.png)](img/gateway_services_sequence.png)
+
+In this sequence, the client application starts with three pieces of information that define the payment that the user would like to make:
+
+* A unique identifier for the originator of the payment
+* A unique identifier for the beneficiary of the payment
+* An amount, including a currency, that the beneficiary should receive
+
+Initially, the client application uses the identifiers to determine which domains it should query. In the example image, federation addresses (_user@service.tld_) are used, so the domain can be determined directly from the URI. See [Gateway Services Identifiers](#gateway-services-identifiers) for more information. The client queries each domain's host-meta to confirm that it has the necessary Gateway Services available, and where those services are provided. 
+
+If they provide a WebFinger service, the client application looks up the originator and beneficiary of the payment using WebFinger. A successful response with a bridge-payments link indicates that the accounts are valid and connected to Ripple through the gateways.
+
+Now the client gets quotes for ways to make the payment. It asks the sending gateway for quotes. In this example, the sending gateway determines that it cannot make a payment to the receiving account directly. It requests host-meta and WebFinger from the receiving gateway just like the client did (not pictured), then gets quotes for the desired payment from the receiving Gateway. Each quote contains a wallet-payment object that the gateway wants to receive in exchange for making the desired outgoing payment.
+
+*Note:* The client could skip this recursive process by calling the destination gateway directly, but in our example the sending user does not have a way to pay the receiving gateway directly. (He neither holds euros nor has a Ripple account.) Gateway Services makes it possible to connect the two because both gateways have Ripple accounts.
+
+The inbound gateway takes the quotes it received from the outbound gateway, chooses one or more that it likes, and pads them to account for its own costs and risks before presenting them back to the client as quotes for the whole payment. 
+
+The client chooses a quote and accepts it, which causes the inbound gateway to accept the corresponding quote from the outbound gateway. It sends back a message to the client indicating success. At this point, all parties are ready for the chain of payments to be made.
+
+Finally, the client performs a wallet-payment call, which either pulls the money directly out of the appropriate account (if possible), or redirects the client to a place where the user can push the money back. An invoice ID on the payment lets the inbound gateway know which Gateway Transaction the incoming payment is meant to pay for. 
+
+After receiving money from the sender, the inbound performs the same call on the outbound gateway, and sends the payment (in this example, a Ripple payment) with the invoice ID that the outbound gateway is looking for. When the outbound gateway receives the payment, it recognizes the amount and invoice ID, which prompts it to send the final outgoing payment to the destination.
+
 
 # Gateway Services Identifiers #
 
@@ -666,8 +700,8 @@ It looks like this:
     },
     
     "parties": {
-        "inbound_bridge": "snapswap.us/knox",
-        "outbound_bridge": "ripple.fidor.de",
+        "inbound_bridge": "https://snapswap.us",
+        "outbound_bridge": "http://ripple.fidor.de",
         "sending_agent": "handler33@brickandmort.ar",
         "receiving_agent": ""
     }
@@ -687,12 +721,12 @@ The fields are defined as follows:
 | destination          | Object | Info about the ultimate beneficiary of the payment, in the same format as `source`. |
 | destination\_amount  | Object | The amount of money that is received at the destination. The `issuer` field may be an empty string for non-Ripple addresses or cases where any trusted issuer is accepted. |
 | parties | Object | Info about intermediary parties in the transaction. A value of `""` indicates that the party is not involved or the field is not applicable this this transaction. |
-| parties.inbound\_bridge | String (URI) | The gateway provider responsible for receiving the wallet\_payment and making another payment. <span class='draft-comment'>(Are we defining these in terms of Ripple? -- YES)</span> |
-| parties.outbound\_bridge | String (URI) | The gateway provider responsible for paying the destination amount, if not the same as `inbound_bridge`. |
+| parties.inbound\_bridge | String (URI) | The gateway provider responsible for receiving a non-Ripple payment and making a Ripple payment. Should be identified by `http://` or `https://` and a domain that has a [host-meta](#host-meta) |
+| parties.outbound\_bridge | String (URI) | The gateway provider responsible for paying the destination amount, if not the same as `inbound_bridge`. Should be identified by `http://` or `https://` and a domain that has a [host-meta](#host-meta) |
 | parties.sending\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `source` party. |
 | parties.receiving\_agent | String (URI) | Another involved party responsible for handling money on behalf of the `destination` party. |
 
-<span class='draft-comment'>(Possible additional parties: the sender and receiver, all over again, but as URIs that can definitely be WebFingered at a single definitive domain.)</span>
+<span class='draft-comment'>(Possible additional parties: the sender and receiver, again, but as URIs that can definitely be WebFingered at a single definitive domain.)</span>
 
 The `source` and `destination` objects are defined in the same way, as follows:
 
@@ -704,6 +738,16 @@ The `source` and `destination` objects are defined in the same way, as follows:
 | additional_info    | Object | If additional addressing information is necessary to make the payment, this field contains key-value pairs. The Get Quotes method returns `""` to indicate fields where information is needed. The definitions of these fields is provided in the host-meta. |
 
 <span class='draft-comment'>Potential future feature - document / estimate all fees including ones on the initiating payment.</span>
+
+### Calculating the Gateway Transaction ID ###
+
+The `id` field of the Gateway Transaction should be a hash that uniquely identifies the overarching payment goal, not just one step along the chain. To do this, there are specific rules for calculating the ID. 
+
+<span class='draft-comment'>(Rough draft of this section, subject to change)</span>
+
+1. Create a JSON object with all the fields of the Gateway Transaction Object __except__: `id`, `state`, and `wallet_payment`.
+2. Serialize the object as a UTF-8 string, with all the fields in alphabetical order, and no whitespace between elements.
+3. Take the SHA-256 hash of the serialized string, and use this as the `id` value.
 
 
 ## Get Quotes ##
@@ -733,7 +777,7 @@ Get Quotes is intended to be a recursive process: if the Gateway Services provid
 
 Some fields of each gateway transaction object may be omitted or not in their final state:
 
-* The `id` field is omitted until the quote is accepted by both parties (see [Accept Quote](#accept-quote)) because it is a hash of the immutable portions of the gateway transaction object. <span class='draft-comment'>(We'll need specific rules for deriving this, since some portions like "state" are not immutable.)</span>
+* The `id` field is omitted until the quote is accepted by both parties (see [Accept Quote](#accept-quote)) because it is a hash of the immutable portions of the gateway transaction object. 
 * The `state` field has the value `"quote"` to indicate that this is just a potential gateway transaction, and is not yet valid.
 * The `source.claims_jwts` field may be empty, even though `source.claims_required` is not empty. This indicates that this transaction requires signed claims from an authority the gateway trusts before it can be made.
 * The `source.additional_info` field may contain several fields whose value is the empty string `""`. This indicates that the client must provide values for those fields in order to accept the payment.
@@ -785,8 +829,8 @@ Response:
                 "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
             },
             "parties": {
-                "inbound_bridge": "snapswap.us/knox",
-                "outbound_bridge": "ripple.fidor.de",
+                "inbound_bridge": "https://snapswap.us",
+                "outbound_bridge": "http://ripple.fidor.de",
                 "sending_agent": "",
                 "receiving_agent": ""
             }
@@ -822,8 +866,8 @@ Response:
                 "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
             },
             "parties": {
-                "inbound_bridge": "snapswap.us/knox",
-                "outbound_bridge": "ripple.fidor.de",
+                "inbound_bridge": "https://snapswap.us",
+                "outbound_bridge": "http://ripple.fidor.de",
                 "sending_agent": "",
                 "receiving_agent": ""
             }
@@ -923,8 +967,8 @@ Response:
         "issuer": "r4tFZoa7Dk5nbEEaCeKQcY3rS5jGzkbn8a"
     },
     "parties": {
-        "inbound_bridge": "snapswap.us/knox",
-        "outbound_bridge": "ripple.fidor.de",
+        "inbound_bridge": "https://snapswap.us",
+        "outbound_bridge": "http://ripple.fidor.de",
         "sending_agent": "",
         "receiving_agent": ""
     }
