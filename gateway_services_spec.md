@@ -4,7 +4,7 @@ The Gateway Services initiative aims to make gateways interoperable, extending t
 
 Gateways that implement these services can easily link with one another, allowing users who have a business relationship with one of them to send and receive money to parties that are connected to other gateways in an automated fashion, while remaining regulation-compliant. Our Gatewayd framework will implement all these services, so gateway operators using Gatewayd don't need to do anything beyond standard configuration, and those with custom gateway software can use Gatewayd as a reference implementation. 
 
-<div class='danger alert'>
+<div class='alert-danger alert'>
 This document, and the APIs it defines, are a work in progress. Do not go implementing them already! We are exposing these explanations as guidance to where we are heading, with the intent of getting feedback to refine them as necessary.<br><br>
 All names, URLs, and addresses in this document are used for example purposes only, and do not reflect actual services or a commitment to provide actual services.
 </div>
