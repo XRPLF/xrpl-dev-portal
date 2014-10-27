@@ -388,7 +388,7 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 
 
 
-## Generate Account ##
+## Generate Wallet ##
 
 (New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
 
