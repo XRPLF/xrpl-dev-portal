@@ -11,7 +11,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Accounts ####
 
-* [Generate Account - `GET /v1/accounts/new`](#generate-account)
+* [Generate Wallet - `GET /v1/wallet/new`](#generate-wallet)
 * [Get Account Balances - `GET /v1/accounts/{:address}/balances`](#get-account-balances)
 * [Get Account Settings - `GET /v1/accounts/{:address}/settings`](#get-account-settings)
 * [Update Account Settings - `POST /v1/accounts/{:address}/settings`](#update-account-settings)
@@ -19,7 +19,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 #### Payments ####
 
 * [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
-* [Submit Payment - `POST /v1/payments`](#submit-payment)
+* [Submit Payment - `POST /v1/accounts/{:address}/payments`](#submit-payment)
 * [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
@@ -39,7 +39,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Utilities ####
 
-* [Retrieve Ripple Transaction - `GET /v1/tx`](#retrieve-ripple-transaction)
+* [Retrieve Ripple Transaction - `GET /v1/transactions/{:transaction-hash}`](#retrieve-ripple-transaction)
 * [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
 
@@ -88,7 +88,7 @@ You don't need to do any setup to retrieve information from a public Ripple-REST
 
 `https://api.ripple.com`
 
-However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/). 
+However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/).
 
 Make sure you know both the account address and the account secret for your account:
 
@@ -103,7 +103,7 @@ As a programmer, you will also need to have a suitable HTTP client that allows y
  * The [`curl`](http://curl.haxx.se/) commandline utility
  * The [Poster Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/poster/)
  * The [Postman Chrome extension](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en)
- 
+
 You can also use the [REST API Tool](rest-api-tool.html) here on the Dev Portal to try out the API.
 
 [Try it! >](rest-api-tool.html)
@@ -166,7 +166,7 @@ The `ripple-rest` API conforms to the following general behavior for [RESTful AP
   * This means that you must set `Content-Type: application/json` in the headers when sending POST requests with a body.
 * Upon successful completion, the server returns an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) of 200 OK, and a `Content-Type` value of `application/json`.  The body of the response will be a JSON-formatted object containing the information returned by the endpoint.
 
-As an additional convention, all responses from Ripple-REST contain a `"success"` field with a boolean value indicating whether or not the success 
+As an additional convention, all responses from Ripple-REST contain a `"success"` field with a boolean value indicating whether or not the success
 
 ## Errors ##
 
@@ -251,7 +251,7 @@ The `value` field can get very large or very small. See the [Currency Format](ht
 
 ### Amounts in URLs ###
 
-When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and issuer -- but concatenate them with `+` symbols. 
+When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and issuer -- but concatenate them with `+` symbols.
 
 Example Amount:
 
@@ -384,11 +384,11 @@ A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
 
 # ACCOUNTS #
 
-Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [account reserve](https://wiki.ripple.com/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
+Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [account reserve](https://wiki.ripple.com/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users.
 
 
 
-## Generate Account ##
+## Generate Wallet ##
 
 (New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
 
@@ -398,11 +398,11 @@ Randomly generate keys for a potential new Ripple account.
 *REST*
 
 ```
-GET /v1/accounts/new
+GET /v1/wallet/new
 ```
 </div>
 
-[Try it! >](rest-api-tool.html#generate-account)
+[Try it! >](rest-api-tool.html#generate-wallet)
 
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
@@ -683,7 +683,7 @@ You can then choose one of the returned payment objects, modify it as desired (f
 }
 ```
 
-You can then select the desired payment, modify it if necessary, and submit the payment object to the [`POST /v1/payments`](#submit-payment) endpoint for processing.
+You can then select the desired payment, modify it if necessary, and submit the payment object to the [`POST /v1/accounts/{address}/payments`](#submit-payment) endpoint for processing.
 
 __NOTE:__ This command may be quite slow. If the command times out, please try it again.
 
@@ -692,13 +692,13 @@ __NOTE:__ This command may be quite slow. If the command times out, please try i
 ## Submit Payment ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L43 "Source")
 
-Submit a payment object to be processed and executed. 
+Submit a payment object to be processed and executed.
 
 <div class='multicode'>
 *REST*
 
 ```
-POST /v1/payments
+POST /v1/accounts/{address}/payments
 
 {
   "secret": "s...",
@@ -842,7 +842,7 @@ Processing a payment can take several seconds to complete, depending on the [con
 ## Get Payment History ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L460 "Source")
 
-Retrieve a selection of payments that affected the specified account. 
+Retrieve a selection of payments that affected the specified account.
 
 <div class='multicode'>
 *REST*
@@ -1407,7 +1407,7 @@ Notifications are sorted in order of when they occurred, so you can save the mos
 ## Check Notifications ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/notifications.js "Source")
 
-Get a notification for the specific transaction hash, along with links to previous and next notifications, if available. 
+Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.
 
 __`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`__
 
@@ -1451,7 +1451,7 @@ A successful response contains a notification object, for example:
 }
 ```
 
-If the server has any notifications that are older than this one, the `previous_hash` field contains a hash you can use to call this method again to get the previous one. The `previous_notification_url` contains the same information, but already formatted into a URL you can perform a GET request on. If no older notifications are available, both fields are either omitted, or provided as an empty string. 
+If the server has any notifications that are older than this one, the `previous_hash` field contains a hash you can use to call this method again to get the previous one. The `previous_notification_url` contains the same information, but already formatted into a URL you can perform a GET request on. If no older notifications are available, both fields are either omitted, or provided as an empty string.
 
 The `next_hash` and `next_notification_url` fields work the same way, but they provide information on newer notifications instead.
 
@@ -1586,7 +1586,7 @@ Returns a Ripple transaction, in its complete, original format.
 *REST*
 
 ```
-GET /v1/tx/{:transaction_hash}
+GET /v1/transactions/{:transaction_hash}
 ```
 </div>
 
