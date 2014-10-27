@@ -266,7 +266,7 @@ HTTP Status: 200 OK
 | status | String | `"error"` if the request caused an error |
 | type | String | Typically `"response"`, which indicates a successful response to a command. |
 | error | String | A unique code for the type of error that occurred |
-| request | Object | A copy of the request that prompted this error, in JSON format. *Caution:* If the request contained any account secrets, they are copied here! |
+| request | Object | A copy of the request that prompted this error, in JSON format. __*Caution:*__ If the request contained any account secrets, they are copied here! |
 
 #### JSON-RPC API Error Response Format ####
 Some JSON-RPC requests will respond with an error code on the HTTP layer. In these cases, the response is a plain-text explanation in the response body. For example, if you forgot to specify the command in the `method` parameter, the response is like this:
@@ -282,7 +282,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 | result | Object | Object containing the response to the query |
 | result.error | String | A unique code for the type of error that occurred |
 | result.status | String | `"error"` if the request caused an error |
-| result.request | Object | A copy of the request that prompted this error, in JSON format. *Caution:* If the request contained any account secrets, they are copied here! *Note:* The request is re-formatted in WebSocket format, regardless of the request made. This may be changed in the future: See [RIPD-279](https://ripplelabs.atlassian.net/browse/RIPD-279). |
+| result.request | Object | A copy of the request that prompted this error, in JSON format. __*Caution:*__ If the request contained any account secrets, they are copied here! __*Note:*__ The request is re-formatted in WebSocket format, regardless of the request made. This may be changed in the future: See [RIPD-279](https://ripplelabs.atlassian.net/browse/RIPD-279). |
 
 ### Caution on Errors ###
 
@@ -317,7 +317,7 @@ Many API methods require you to specify an instance of the ledger, with the data
 	
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
-If you do not specify a ledger, the `current` (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated `ledger` field will be used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present. *Note:* Do not rely on this default behavior; it is subject to change. Instead, you should always specify a ledger version in each call.
+If you do not specify a ledger, the `current` (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated `ledger` field will be used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present. __*Note:*__ Do not rely on this default behavior; it is subject to change. Instead, you should always specify a ledger version in each call.
 
 The sequence number indicates the order of the ledgers; the hash value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For closed ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:
 
@@ -384,7 +384,7 @@ Depending on how the `rippled` server is configured, how long it has been runnin
 | validating | The server is currently participating in validation of the ledger |
 | proposing | The server is participating in validation of the ledger and currently proposing its own version. |
 
-*Note:* The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
+__*Note:*__ The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
 
 ## Modifying the Ledger ##
 
@@ -1596,7 +1596,7 @@ The response follows the [standard format](#response-formatting), with a success
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-*Note:* The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
+__*Note:*__ The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
@@ -2007,7 +2007,7 @@ An example of the request format:
 ```
 </div>
 
-*Note:* There is no commandline syntax for `ledger_data`.
+__*Note:*__ There is no commandline syntax for `ledger_data`. You can use the [`json` command](#json) to access this method from the commandline instead.
 
 A request can include the following fields:
 
@@ -2218,7 +2218,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. *Note:* There is no commandline version of this method. You can use the [`json`](#json) command to access this method from the commandline instead.
+The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. __*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
 #### Request Format ####
 
@@ -2542,7 +2542,7 @@ The response follows the [standard format](#response-formatting), with a success
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various) | (Various) | Other fields from the [Transaction object](transactions.html) |
 
-*Note:* If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the `rippled` does not have on hand anymore.
+__*Note:*__ If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the `rippled` does not have on hand anymore.
 
 ## transaction_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/TransactionEntry.cpp "Source")
@@ -2592,7 +2592,7 @@ The request includes the following parameters:
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | tx_hash | String | Unique hash of the transaction you are looking up |
 
-*Note:* This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`. 
+__*Note:*__ This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`. 
 
 #### Response Format ####
 
@@ -2748,7 +2748,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 
 The `tx_history` method retrieves a selection of the most recent transactions made.
 
-*Caution:* This method is deprecated, and may be removed without further notice.
+__*Caution:*__ This method is deprecated, and may be removed without further notice.
 
 #### Request Format ####
 An example of the request format:
@@ -3634,7 +3634,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 * `close` - Stop sending pathfinding information
 * `status` - Get the information of the currently-open pathfinding request
 
-Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (*Note:* A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
+Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (__*Note:*__ A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 ### path_find create ###
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/PathFind.cpp#L38 "Source")
@@ -4979,7 +4979,7 @@ If a pathfinding request is open, the response follows the same format as the in
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response to be used to make a payment transaction immediately. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use [`path_find`](#path-find) instead where possible.
 
-Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (*Note:* A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
+Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (__*Note:*__ A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 #### Request Format ####
 An example of the request format:
@@ -5296,7 +5296,7 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 
 The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction JSON and secret key.
 
-*Note:* It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, [ripple-lib's rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
+__*Note:*__ It is possible and preferable to sign a transaction without connecting to a server instead of using this command. For example, [ripple-lib's rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) demonstrates offline signing of a transaction. You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
 
 #### Request Format ####
 An example of the request format:
@@ -5361,7 +5361,7 @@ The request includes the following parameters:
 | tx_json | Object | [Transaction definition](transactions.html) in JSON format |
 | secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
-| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
+| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
 | fee\_mult\_max | Integer | (Optional) If the transaction `Fee` is omitted, this field limits the `Fee` value that is automatically filled so that it is less than or equal to the long-term base fee times this value. |
 
 The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields from the [transaction format](transactions.html) are automatically filled in:
@@ -5438,7 +5438,7 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | Binary representation of the fully-qualified, signed transaction, as hex |
 | tx_json | Object | JSON specification of the [complete transaction](transactions.html) as signed, including any fields that were automatically filled in |
 
-*Warning:* If this command results in an error messages, the message can contain the account secret from the request. Make sure that these errors are not visible to others, including:
+__*Caution:*__ If this command results in an error messages, the message can contain the account secret from the request. Make sure that these errors are not visible to others, including:
 
 * Do not write this error to a log file that can be seen by multiple people
 * Do not paste this error to a public place for debugging
@@ -5510,7 +5510,7 @@ A sign-and-submit request includes the following parameters:
 | secret | String | (Required if `tx_json` is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
-| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. *Caution:* The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
+| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
 | fee\_mult\_max | Integer | (Optional) If the transaction `Fee` is omitted, this field limits the `Fee` value that is automatically filled so that it is less than or equal to the long-term base fee times this value. |
 
 See the [sign command](#sign) for detailed information on how the server automatically fills in certain fields.
@@ -5645,9 +5645,9 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | The complete transaction in hex string format |
 | tx_json | Object | The complete transaction in JSON format |
 
-*Important:* Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
-*Warning:* If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
+__*Caution:*__ If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
 
 * Do not write an error including your secret to a log file that can be seen by multiple people
 * Do not paste an error including your secret to a public place for debugging
@@ -5721,7 +5721,7 @@ The request includes the following parameters:
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
-*Note:* The other parameters of this command -- `marker`, `limit`, `proof`, and `autobridge` -- are not yet fully implemented. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).
+__*Note:*__ The other parameters of this command -- `marker`, `limit`, `proof`, and `autobridge` -- are not yet fully implemented. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).
 
 Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.
 
@@ -5885,7 +5885,7 @@ The `streams` parameter provides access to the following default streams of info
 * `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
 * `ledger` - Sends a message whenever a new ledger version closes
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
-* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (Note that [even some transactions that don't succeed are included](https://ripple.com/wiki/Transaction_errors#Claimed_fee_only) in validated ledgers, because they take the anti-spam transaction fee.)
+* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even transactions that don't succeed are included](https://ripple.com/wiki/Transaction_errors#Claimed_fee_only) in validated ledgers, because they take the anti-spam transaction fee.)
 
 Each member of the `books` array, if provided, is an object with the following fields:
 

@@ -1,12 +1,6 @@
 ripple-dev-portal
 =================
 
-This Ripple Developer Portal is focused solely on documentation for the [`ripple-rest`](https://github.com/ripple/ripple-rest) API. The developer portal is a static site leveraging a fork of [`flatdoc`](https://github.com/rstacruz/flatdoc).
+The [Ripple Developer Portal](https://dev.ripple.com) is the authoritative source for Ripple documentation, including the `rippled` server, Ripple-REST API, Gatewayd, and other Ripple software.
 
-The documentation is stored in the "API.md" file in the root of the `ripple-dev-portal` repository. Versioning for the documentation will match the tagged release version for `ripple-rest`.
-
-### The ripple-dev-portal is currently hosted at https://dev.ripple.com  ###
-
-
-
-
+Please contribute pull requests to the **gh-pages** branch with any improvements or revisions.

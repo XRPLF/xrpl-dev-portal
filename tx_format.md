@@ -524,7 +524,7 @@ It is possible for an offer to become temporarily or permanently *unfunded*:
   * The offer becomes funded again when the trust line is no longer frozen.
 * If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
   * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
-* If the Expiration time included in the offer is later than the close time of the most recently-closed ledger. (See [Expiration](#expiration).)
+* If the Expiration time included in the offer is before the close time of the most recently-closed ledger. (See [Expiration](#expiration).)
 
 An unfunded transaction can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
 
