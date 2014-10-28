@@ -402,7 +402,8 @@ GET /v1/wallet/new
 ```
 </div>
 
-[Try it! >](rest-api-tool.html#generate-wallet)
+[Try it! >](rest-api-tool.html#generate-account)
+<!-- not a typo; waiting for the tool to be updated -->
 
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
