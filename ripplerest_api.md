@@ -1409,7 +1409,13 @@ Notifications are sorted in order of when they occurred, so you can save the mos
 
 Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.
 
-__`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`__
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/notifications/{:transaction_hash}
+```
+</div>
 
 [Try it! >](rest-api-tool.html#check-notifications)
 
