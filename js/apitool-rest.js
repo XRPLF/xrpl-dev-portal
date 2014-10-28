@@ -117,7 +117,7 @@ Request('Update Account Settings', {
 Request('Prepare Payment', {
     method: GET,
     path: '/v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}?{:query_params}',
-    description: 'Change the current settings for the given Ripple account',
+    description: 'Retrieve possible payment objects for a desired payment',
     link: '#prepare-payment',
     params: {
         "{:source_address}": DEFAULT_ADDRESS_1,
