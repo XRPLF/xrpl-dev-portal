@@ -547,7 +547,7 @@ A trust line indicates an issuer you trust enough to accept their issuances as p
 
 Existing offers are grouped by "quality", which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.
 
-When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the [canonical order](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp "Source: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/develop/src/ripple/app/consensus/LedgerConsensus.cpp#L1404-L1507 "Source: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
+When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the [canonical order](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp "Source: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
 
 ### Expiration ###
 
