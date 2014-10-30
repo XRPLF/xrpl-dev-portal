@@ -117,7 +117,7 @@ Request('Update Account Settings', {
 Request('Prepare Payment', {
     method: GET,
     path: '/v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}?{:query_params}',
-    description: 'Change the current settings for the given Ripple account',
+    description: 'Retrieve possible payment objects for a desired payment',
     link: '#prepare-payment',
     params: {
         "{:source_address}": DEFAULT_ADDRESS_1,
@@ -216,7 +216,7 @@ Request("Grant Trustline", {
 Request("Check Notifications", {
     method: GET,
     path: "/v1/accounts/{:address}/notifications/{:hash}",
-    description: "Browse through the history of payments sent and received by an account",
+    description: "Monitor an account for all kinds of transactions",
     link: "#check-notifications",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,

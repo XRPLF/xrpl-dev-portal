@@ -402,7 +402,8 @@ GET /v1/wallet/new
 ```
 </div>
 
-[Try it! >](rest-api-tool.html#generate-wallet)
+[Try it! >](rest-api-tool.html#generate-account)
+<!-- not a typo; waiting for the tool to be updated -->
 
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
@@ -1409,7 +1410,13 @@ Notifications are sorted in order of when they occurred, so you can save the mos
 
 Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.
 
-__`GET /v1/accounts/{:address}/notifications/{:transaction_hash}`__
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/notifications/{:transaction_hash}
+```
+</div>
 
 [Try it! >](rest-api-tool.html#check-notifications)
 
