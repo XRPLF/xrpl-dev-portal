@@ -240,7 +240,7 @@ Request("Get Server Status", {
 
 Request("Retrieve Ripple Transaction", {
     method: GET,
-    path: "/v1/tx/{:hash}",
+    path: "/v1/transactions/{:hash}",
     description: "Retrieve a raw Ripple transaction",
     link: "#retrieve-ripple-transaction",
     params: {
