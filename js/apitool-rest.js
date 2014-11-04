@@ -457,6 +457,6 @@ $(document).ready(function() {
       $(el).siblings().removeClass('selected');
       $(el).addClass('selected');
     } else {
-      select_request('generate-account');
+      select_request('generate-wallet');
     }
 });
