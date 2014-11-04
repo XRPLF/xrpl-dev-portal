@@ -65,11 +65,11 @@ var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
 var DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 
-Request('Generate Account', {
+Request('Generate Wallet', {
     method: GET,
-    path: "/v1/accounts/new",
+    path: "/v1/wallet/new",
     description: 'Generate the keys for a potential new account',
-    link: '#generate-account'
+    link: '#generate-wallet'
 });
 
 Request('Get Account Balances', {
