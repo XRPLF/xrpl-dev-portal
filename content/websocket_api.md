@@ -587,8 +587,8 @@ The request accepts the following paramters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
-| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-provided value to specify where to resume retrieving data from. |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| marker | (Not Specified) | (Optional) Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -891,8 +891,8 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address of the account this request corresponds to |
-| lines | Array | Array of trust-line objects, as described below. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| lines | Array | Array of trust-line objects, as described below. If the number of trust-lines is large, only returns up to the `limit` at a time. |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -959,8 +959,8 @@ A request can include the following parameters:
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
-| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-provided value to specify where to resume retrieving data from. |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
+| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1013,8 +1013,8 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address identifying the account that made the offers |
-| offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 
 Each offer object contains the following fields:
