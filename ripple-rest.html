@@ -11,24 +11,24 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 
-  <!-- Flatdoc -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/legacy.js'></script>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
+  
+  <!-- Flatdoc -->
+  <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
+  <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
   
    <!-- Bootstrap -->
- 
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="js/bootstrap.min.js"></script>
 
   <!-- Flatdoc theme -->
-  <link  href='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
+  <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+  <script src='vendor/flatdoc/v/0.8.0/theme-white/script.js'></script>
 
   <!-- Custom Stylesheet -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
-  <link  href='https://dev.ripple.com/css/main.css' rel='stylesheet'>
+  <link  href='css/main.css' rel='stylesheet'>
   <link  href='css/custom.css' rel='stylesheet'>
   
 	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
@@ -64,7 +64,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <script src="js/multicodetab.js"></script>
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('ripplerest_api.md')
+      fetcher: Flatdoc.file('content/ripplerest_api.md')
     });
     $(document).on('flatdoc:ready', $().multicode_tabs);
   </script>
@@ -84,11 +84,19 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://dev.ripple.com/"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-			<li class="active"><a href="/">Resources</a></li>
+			<li class="dropdown">
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="rippled-apis.html">rippled API Reference</a></li>
+                <li><a href="ripple-rest.html">REST API Reference</a></li>
+                <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
+                <li><a href="transactions.html">Transaction Format</a></li>
+              </ul>
+            </li>
             <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
@@ -103,7 +111,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
           </ul>
           	<div class='right'>
 		 	 <!-- GitHub buttons -->
-		 		 <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+		 		 <iframe src="vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 			</div>
         </div><!--/.nav-collapse -->
       </div>
