@@ -5654,7 +5654,7 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * Do not display an error message including your secret on a website, even by accident
 
 ## book_offers ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/BookOffers.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.
 
@@ -5706,7 +5706,7 @@ Request:
 
 *Commandline*
 ```
-#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
+#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 </div>
@@ -5717,11 +5717,14 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| limit | Unsigned Integer | (Optional) If provided, the server will not provide more than this many offers in the results. *Note:* Depending on the number of unfunded orders in the ledger, fewer results may be returned. |
 | taker | String | (Optional, defaults to [ACCOUNT_ONE](https://ripple.com/wiki/Accounts#ACCOUNT_ONE)) Unique base-58 address of an account to use as point-of-view. (This affects which unfunded offers are returned.) 
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
-__*Note:*__ The other parameters of this command -- `marker`, `limit`, `proof`, and `autobridge` -- are not yet fully implemented. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).
+__*Note:*__ The other parameters of this command -- `marker`, `proof`, and `autobridge` -- cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
 
 Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.
 
