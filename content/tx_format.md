@@ -270,7 +270,7 @@ The only flag that applies globally to all transactions is as follows:
 
 
 ## Payment ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/Payment.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)
 
@@ -357,7 +357,7 @@ When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` fiel
 
 ## AccountSet ##
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/SetAccount.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an [account in the global ledger]((https://wiki.ripple.com/Ledger_Format#AccountRoot).
 
@@ -452,7 +452,7 @@ For example, if HighFeeGateway issues USD and sets the `TransferRate` to 1200000
 
 ## SetRegularKey ##
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/module/app/transactors/SetRegularKey.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
 
 A SetRegularKey transaction changes the regular key used by the account to sign future transactions.
 
@@ -654,6 +654,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | tfSetFreeze | 0x00100000 | 1048572 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
 | tfClearFreeze | 0x00200000 | 2097152 | Unfreeze the trustline. |
 
+
 # Pseudo-Transactions #
 
 Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.
@@ -680,3 +681,56 @@ A change in transaction or account fees. This is typically in response to change
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
+
+# Transaction Results #
+
+The result of the [`submit` command](rippled-apis.html#submit) contains several fields that indicate what happened in processing the submitted transaction. These fields are as follows:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| engine\_result | String | A code that categorizes the result, such as `tecPATH_DRY` |
+| engine\_result\_code | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
+| engine\_result\_message | String | A human-readable message explaining what happened. |
+
+If nothing went wrong in the process of submitting and applying the transaction locally, the response looks like this:
+
+```js
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger."
+```
+
+__*Note:*__ A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server.
+
+To see the final result of a transaction, look at the `meta.TransactionResult` field that is returned as part of the response to the [`tx` command](rippled-apis.html#tx), [`account_tx` command](rippled-apis.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus. 
+
+Both the `engine_result` and the `meta.TransactionResult` use standard codes to identify the results of transactions, as follows:
+
+| Category              | Prefix | Description |
+|-----------------------|--------|-------------|
+| Local error           | tel    | The rippled server had an error, such as being under high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Malformed transaction | tem    | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
+| Failure               | tef    | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or there may be an authorization problem. |
+| Retry                 | ter    | The transaction could not be applied, but it might be possible to apply later. |
+| Success               | tes    | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
+| Claimed fee only      | tec    | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
+
+## Claimed Fee Justification ##
+
+Although it may seem unfair to charge a fee for a failed transaction, the `tec` class of errors exists for good reasons:
+
+* Transactions submitted after the failed one do not have to have their Sequence values renumbered. Incorporating the failed transaction into a ledger uses up the transaction's sequence number, preserving the expected sequence.
+* Distributing the transaction throughout the network increases network load. Charging a fee makes it harder for attackers to abuse the network with failed transactions.
+* The transaction fee is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.
+
+## Finality of Results ##
+
+A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated global ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
+
+Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
+
+There are several ways a transaction's failure could become permanent:
+
+* If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
+* If the `Sequence` number of the *account* sending the transaction is higher than the `Sequence` number in the transaction, then the transaction cannot be included in any new ledger.
+* If the transaction includes a `LastLedgerSequence` and a ledger with a higher sequence number is validated, the transaction cannot be included in any new ledger.
