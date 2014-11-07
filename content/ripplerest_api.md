@@ -20,7 +20,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 * [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
 * [Submit Payment - `POST /v1/accounts/{:address}/payments`](#submit-payment)
-* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
+* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:id}`](#confirm-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Trustlines ####
@@ -30,7 +30,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Notifications ####
 
-* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#check-notifications)
+* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:id}`](#check-notifications)
 
 #### Status ####
 
@@ -39,7 +39,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Utilities ####
 
-* [Retrieve Ripple Transaction - `GET /v1/transactions/{:transaction-hash}`](#retrieve-ripple-transaction)
+* [Retrieve Ripple Transaction - `GET /v1/transactions/{:id}`](#retrieve-ripple-transaction)
 * [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
 
@@ -1414,7 +1414,7 @@ Get a notification for the specific transaction hash, along with links to previo
 *REST*
 
 ```
-GET /v1/accounts/{:address}/notifications/{:transaction_hash}
+GET /v1/accounts/{:address}/notifications/{:id}
 ```
 </div>
 
@@ -1425,7 +1425,7 @@ The following URL parameters are required by this API endpoint:
 | Field | Value | Description |
 |-------|-------|-------------|
 | address | String | The Ripple account address of an account involved in the transaction. |
-| hash | String | A unique hash identifying the Ripple transaction that this notification describes |
+| id | String | A unique identifier for the transaction this notification describes -- either a client resource ID or a Ripple transaction hash |
 
 You can find a transaction `hash` in a few places:
 
@@ -1593,7 +1593,7 @@ Returns a Ripple transaction, in its complete, original format.
 *REST*
 
 ```
-GET /v1/transactions/{:transaction_hash}
+GET /v1/transactions/{:id}
 ```
 </div>
 
@@ -1603,7 +1603,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash | String | A unique hash identifying the Ripple transaction to retrieve |
+| hash | String | A unique identifier for the Ripple transaction to retrieve -- either a client resource ID or a Ripple transaction hash. |
 
 #### Response ####
 
