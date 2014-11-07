@@ -74,11 +74,25 @@ Note that when you submit a payment for processing, you have to assign a unique 
 
 ### Transaction Types ###
 
-The Ripple protocol supports multiple types of transactions other than just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
+The Ripple protocol supports multiple types of transactions, not just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
 
  * Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's [Payment transaction type](transactions.html#payment))
- * Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#payment))
- * Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#payment))
+ * Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#trustset))
+ * Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#accountset))
+ 
+### Client Resource IDs ###
+
+All Ripple transactions are identified by a unique hash, which is generated with the fields of the transaction. Ripple-REST uses an additional type of identifier, called a Client Resource ID, which is an arbitrary string provided at the time a transaction is submitted.
+
+A client resource ID generally maps to one Ripple transaction. However, if Ripple-REST re-submits a failed transaction, the client resource ID can become associated with the new transaction, which may have slightly different properties (such as the deadline for it to succeed) and therefore a different transaction hash.
+
+You can create client resource IDs using any method you like, so long as you follow some simple rules:
+
+* Do not reuse identifiers. 
+* A client resource ID cannot be a 256-bit hex string, because that is ambiguous with Ripple transaction hashes.
+* Client resource IDs must be properly [encoded](http://tools.ietf.org/html/rfc3986#section-2.1) when provided as part of a URL.
+
+You can use the [Create Client Resource ID](#create-client-resource-id) method in order to generate new Client Resource IDs.
 
 ## Getting Started ##
 
