@@ -89,8 +89,11 @@ Both the WebSocket API and the JSON-RPC API use [JSON](http://www.w3schools.com/
 
 
 #### Example Request ####
+
 <div class='multicode'>
+
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -102,6 +105,7 @@ Both the WebSocket API and the JSON-RPC API use [JSON](http://www.w3schools.com/
 ```
 
 *JSON-RPC*
+
 ```
 POST http://s1.ripple.com:51234/
 {
@@ -115,10 +119,13 @@ POST http://s1.ripple.com:51234/
     ]
 }
 ```
+
 *Commandline*
+
 ```
 rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
+
 </div>
 
 ## Response Formatting ##
@@ -2282,6 +2289,12 @@ The format of each object in the `state` array depends on whether `binary` was s
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | index | String | Unique identifier for this ledger entry, as hex. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors)
+* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+
 
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
@@ -2412,6 +2425,14 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
 | node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
 | node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+
+
 
 
 # Managing Transactions #
@@ -6546,6 +6567,7 @@ The request includes no parameters.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 *WebSocket*
 ```
