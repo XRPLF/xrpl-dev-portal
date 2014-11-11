@@ -924,7 +924,10 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique address of the account this request corresponds to |
 | lines | Array | Array of trust-line objects, as described below. If the number of trust-lines is large, only returns up to the `limit` at a time. |
-| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -934,11 +937,11 @@ Each trust-line object has some combination of the following fields, although no
 | balance | String | Representation of the numeric balance currently held against this line. A positive balance means that the account holds value; a negative balance means that the account owes value. |
 | currency | String | The currency this line applies to |
 | limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
-| limit_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
+| limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
 | no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for this line |
-| no_ripple_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
-| quality_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| quality_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
+| quality\_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| quality\_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 
 #### Possible Errors ####
 
@@ -1053,6 +1056,9 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique address identifying the account that made the offers |
 | offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 
@@ -5752,6 +5758,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 4,
@@ -5770,8 +5777,8 @@ An example of the request format:
 }
 ```
 
-Request:
 *JSON-RPC*
+
 ```
 {
     "method": "book_offers",
@@ -5794,6 +5801,7 @@ Request:
 ```
 
 *Commandline*
+
 ```
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
@@ -6680,8 +6688,11 @@ rippled -q -- json ledger_closed '{}'
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
+
 *WebSocket*
+
 ```
 {
    "result" : {
@@ -6690,8 +6701,8 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
