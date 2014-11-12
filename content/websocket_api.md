@@ -364,7 +364,7 @@ If you are specifying non-XRP currency (including fiat dollars, precious metals,
 
 For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`, you would specify:
 
-```js
+```
 {
 	"currency": "USD",
 	"value": "153.75",
@@ -586,6 +586,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 1,
@@ -596,6 +597,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "account_lines",
@@ -607,6 +609,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#account_lines)
@@ -674,6 +677,7 @@ An example of a successful response:
 ```
 
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -915,7 +919,9 @@ An example of a successful response:
         ],
         "status": "success"
     }
-}```
+}
+```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
@@ -962,6 +968,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -972,6 +979,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "account_offers",
@@ -985,6 +993,7 @@ An example of the request format:
 ```
 
 *Commandline*
+
 ```
 #Syntax: account_offers account [ledger_index]
 rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
@@ -1012,6 +1021,7 @@ An example of a successful response:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -1035,8 +1045,8 @@ An example of a successful response:
 }
 ```
 
-Response:
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -1099,8 +1109,6 @@ An example of the request format:
   "ledger_index_max": -1,
   "binary": false,
   "count": false,
-  "descending": false,
-  "offset": 1,
   "limit": 2,
   "forward": false
 }
@@ -2396,7 +2404,8 @@ An example of a successful response:
     },
     "status": "success",
     "type": "response"
-}```
+}
+```
 
 *JSON-RPC*
 ```
@@ -2637,7 +2646,13 @@ The response follows the [standard format](#response-formatting), with a success
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various) | (Various) | Other fields from the [Transaction object](transactions.html) |
 
-__*Note:*__ If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the `rippled` does not have on hand anymore.
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* txnNotFound - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+
+
 
 ## transaction_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
@@ -2650,6 +2665,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 4,
@@ -2658,7 +2674,9 @@ An example of the request format:
   "ledger_index": 348734
 }
 ```
+
 *JSON-RPC*
+
 ```
 {
     "method": "transaction_entry",
@@ -2670,7 +2688,9 @@ An example of the request format:
     ]
 }
 ```
+
 *Commandline*
+
 ```
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
