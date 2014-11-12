@@ -184,8 +184,6 @@
     ledger_index_max:  -1,
     binary:            false,
     count:             false,
-    descending:        false,
-    offset:            0,
     limit:             10,
     forward:           false,
     marker:            void(0),
