@@ -16,7 +16,6 @@ jQuery.fn.multicode_tabs = function() {
         // for each code, give it a unique ID and wrap it in a pre
         cb_area.children('code').each(function(index2,el2) {
             var linkid = 'code-'+index+'-'+index2;
-//            $(el2).attr('id', linkid);
             $(el2).wrap("<div id='"+linkid+"'><pre>");
             //also put in a link to this in the tab header ul
             $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
@@ -28,6 +27,38 @@ jQuery.fn.multicode_tabs = function() {
         });
     });
     $('.multicode em').remove();
+    
+    $('.multicode').minitabs();
+}
+
+
+// Variant version for the HTML that Pandoc generates
+// Expects markup in the form of:
+// <div class='multicode'>
+//   <p><em>tab 1 title</em></p>
+//   <pre><code>tab 1 code block</code></pre>
+//   <p><em>tab 2 title</em></p>
+//   <pre><code>tab 2 code block</code></pre>
+// </div>
+jQuery.fn.multicode_tabs_pandoc = function() {
+    $('.multicode').each(function(index,el) {
+        cb_area = $(el);
+        cb_area.attr('id', "code-"+index);
+        // make a ul to house the tab headers
+        cb_area.prepend("<ul class='codetabs'></ul>");
+        
+        cb_area.children('pre').each(function(index2,el2) {
+            var linkid = 'code-'+index+'-'+index2;
+            $(el2).wrap("<div id='"+linkid+"'>");
+            //also put in a link to this in the tab header ul
+            $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
+        });
+        
+        $(el).find('em').each(function(index2, el2) {
+            $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
+        });
+    });
+    $('.multicode p').remove();
     
     $('.multicode').minitabs();
 }

@@ -24,6 +24,11 @@
   <!-- Flatdoc theme -->
   <link href="vendor/flatdoc/v/0.8.0/theme-white/style.css" rel="stylesheet">
   <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+  
+  <!-- syntax highlighting -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/docco.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+
 
   <!-- Custom Stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -69,14 +74,21 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     Flatdoc.run({
       fetcher: Flatdoc.file('content/websocket_api.md')
     });
-    $(document).on('flatdoc:ready', $().multicode_tabs);
+    $(document).on('flatdoc:ready', function() {
+        $().multicode_tabs();
+        hljs.initHighlighting();
+    });
   </script>
   <!-- end flatdoc load -->
   <!-- Alternate multicode tabs for compiled page: 
   <script>
     $(document).ready(function() {
-        $(".multicode").minitabs()
+        //$(".multicode").minitabs()
+        $().multicode_tabs();
         make_code_expandable();
+        
+        //syntax highlighting:
+        hljs.initHighlightingOnLoad();
     });
   </script>
   <!--end alt code for compiled page -->
@@ -136,6 +148,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
       
  <!-- BEGIN FLATDOC PRE-GENERATED CONTENT -->
  
+ 
       <!-- END FLATDOC PRE-GENERATED CONTENT -->
       
       </div>
@@ -145,6 +158,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   
   
  <!-- BEGIN FLATDOC PRE-GENERATED CONTENT -->
+ 
  
  
  
