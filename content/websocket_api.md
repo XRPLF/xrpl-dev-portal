@@ -299,12 +299,16 @@ When your request results in an error, the entire request is copied back as part
 
 All methods can potentially return any of the following values for the `error` code:
 
-* unknownCmd - If the request does not contain a [command](#api-methods) that the `rippled` server recognizes.
-* jsonInvalid - (WebSocket only) If the request is not a proper JSON object. 
+* unknownCmd - The request does not contain a [command](#api-methods) that the `rippled` server recognizes.
+* jsonInvalid - (WebSocket only) The request is not a proper JSON object. 
     * JSON-RPC returns a 400 Bad Request error in this case instead.
-* missingCommand - (WebSocket only) If the `command` field is not provided.
+* missingCommand - (WebSocket only) The request did not specify a `command` field.
     * JSON-RPC returns a 400 Bad Request error in this case instead.
-* "wsTextRequired - (WebSocket only) If the request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. 
+* tooBusy - The server is under too much load to perform this command right now. Generally not returned if you are connected as an admin.
+* noNetwork - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).
+* noCurrent - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
+* noClosed - The server does not have a closed ledger, typically because it has not finished starting up.
+* wsTextRequired - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. 
 
 ## Formatting Conventions ##
 
@@ -569,9 +573,9 @@ The response follows the [standard format](#response-formatting), with the resul
 
 #### Possible Errors ####
 
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* actNotFound - If the address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 
@@ -951,9 +955,9 @@ Each trust-line object has some combination of the following fields, although no
 
 #### Possible Errors ####
 
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* actNotFound - If the address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * actMalformed - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
@@ -1083,9 +1087,9 @@ Each offer object contains the following fields:
 
 #### Possible Errors ####
 
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* actNotFound - If the address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * actMalformed - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
@@ -1671,7 +1675,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 #### Possible Errors ####
 
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
 * actMalformed - If the address specified in the `account` field of the request is not formatted properly.
 * actBitcoin - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
 * lgrIdxsInvalid - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
@@ -1763,7 +1767,8 @@ The key generated by this method can also be used as a regular key for an accoun
 
 #### Possible Errors ####
 
-* badSeed - If the `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
+* Any of the [universal error types](#universal-errors).
+* badSeed - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
 
 
 
@@ -1900,8 +1905,9 @@ The following fields are deprecated and may be removed without further notice: `
 
 #### Possible Errors ####
 
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * noPermission - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
 
 
@@ -1982,7 +1988,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors ####
 
-* Common errors only
+* Any of the [universal error types](#universal-errors).
 
 
 ## ledger_current ##
@@ -2060,6 +2066,12 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_current_index | Unsigned Integer | Sequence number of this ledger |
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
 
 ## ledger_data ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
@@ -2306,8 +2318,8 @@ The format of each object in the `state` array depends on whether `binary` was s
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors)
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 ## ledger_entry ##
@@ -2444,8 +2456,8 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* lgrNotFound - If the ledger specified by the `ledger_hash` or `ledger_index` does not exist, or if it does exist but the server does not have it.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 
@@ -2649,7 +2661,7 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
 * txnNotFound - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
 
 
@@ -2857,6 +2869,17 @@ There are a couple possible reasons the server may fail to find the transaction:
 * The transaction just does not exist
 * The transaction exists, but not in the specified ledger version
 * The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* fieldNotFoundTransaction - The `tx_hash` field was omitted from the request
+* notYetImplemented - A ledger version was not specified in the request.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* transactionNotFound - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
+
+<!-- I think ledgerNotFound ( https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/TransactionEntry.cpp#L62 ) should not occur because lookupLedger would have errored out first. -->
+
 
 ## tx_history ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
@@ -3738,6 +3761,13 @@ The response follows the [standard format](#response-formatting), with a success
 
 The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](transactions.html) for details.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* noPermission - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
+
+
 ## path_find ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
@@ -4180,6 +4210,12 @@ Each element in the `alternatives` array is an object that represents a path fro
 |-------|------|-------------|
 | paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
 | source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* noEvents - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 
 #### Asynchronous Follow-ups ####
 
@@ -5059,6 +5095,13 @@ The request includes the following parameters:
 
 If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
+* noEvents - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* noPathRequest - You tried to close a pathfinding request when there is not an open one.
+
 ### path_find status ###
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L57 "Source")
 
@@ -5088,6 +5131,13 @@ The request includes the following parameters:
 
 If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See [RIPD-293](https://ripplelabs.atlassian.net/browse/RIPD-293) for more information.)
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* noEvents - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* noPathRequest - You tried to check the status of a pathfinding request when there is not an open one.
+
 
 ## ripple_path_find ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
@@ -5101,6 +5151,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
     "id": 8,
@@ -5124,6 +5175,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "ripple_path_find",
@@ -5150,6 +5202,7 @@ An example of the request format:
 ```
 
 *Commandline*
+
 ```
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
@@ -5172,8 +5225,10 @@ The request includes the following parameters:
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
     "id": 8,
@@ -5282,6 +5337,7 @@ An example of a successful response:
 ```
 
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -5401,10 +5457,25 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | Field | Type | Description |
 |-------|------|-------------|
-| paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
-| source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+| paths\_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
+| source\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* tooBusy - 
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* srcActMissing
+* srcActMalformed
+* dstActMissing
+* dstActMalformed
+* srcCurMalformed
+* srcIsrMalformed
+
+
+
 
 ## sign ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Sign.cpp "Source")
