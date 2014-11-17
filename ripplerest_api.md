@@ -455,7 +455,12 @@ Optionally, you can also include the following query parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
-| counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway) |
+| counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
+| marker | String | Start position in response paging. |
+| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
+| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+
+*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
 
 #### Response ####
 
@@ -556,7 +561,7 @@ Modify the existing settings for an account.
 *REST*
 
 ```
-POST /v1/accounts/{:address}/settings
+POST /v1/accounts/{:address}/settings?validated=true
 
 {
   "secret": "sssssssssssssssssssssssssssss",
@@ -587,6 +592,12 @@ The request body must be a JSON object with the following fields:
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | settings | Object | A map of settings to change for this account. Any settings not included are left unchanged. |
 
+Optionally, you can include the following as a URL query parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the account transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 The `settings` object can contain any of the following fields (any omitted fields are left unchanged):
@@ -610,13 +621,14 @@ The `settings` object can contain any of the following fields (any omitted field
 ```js
 {
   "success": true,
-  "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6",
-  "ledger": "9248628",
   "settings": {
     "require_destination_tag": false,
     "require_authorization": false,
     "disallow_xrp": false,
-    "email_hash": "98b4375e1d753e5b91627516f6d70977"
+    "email_hash": "98b4375e1d753e5b91627516f6d70977",
+    "state": "pending",
+    "ledger": "9248628",
+    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6",
   }
 }
 ```
@@ -699,11 +711,13 @@ Submit a payment object to be processed and executed.
 *REST*
 
 ```
-POST /v1/accounts/{address}/payments
+POST /v1/accounts/{address}/payments?validated=true
 
 {
   "secret": "s...",
   "client_resource_id": "123",
+  "last_ledger_sequence": "1...",
+  "max_fee": "100",
   "payment": {
     "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
     "source_tag": "",
@@ -739,9 +753,24 @@ The following parameters are required in the JSON body of the request:
 | client_resource_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 
+Optionally, you can include the following as a URL query parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the payment has been successfully validated by the server. Response format in this case will match [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment) |
+
+Optionally, you can also include the following as a JSON body parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| last_ledger_sequence | String | A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
+| max_fee | String | A string representation of a fee amount in drops. If this parameter is not set, it defaults to a median of the connected ripple server fees |
+
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 #### Response ####
+
+*Note:* This response holds when the validated query parameter is not set or set to `false`. For responses with validated `true`, please refer to [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
 
 ```js
 {
@@ -756,7 +785,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 | client_resource_id | String | The client resource ID provided in the request |
 | status_url | String | A URL that you can GET to check the status of the request. This refers to the [Confirm Payment](#confirm-payment) method. |
 
-
+#### Response (With Validated Parameter) ####
 
 ## Confirm Payment ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L232 "Source")
@@ -1305,8 +1334,13 @@ Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency |
-| counterparty | String (Address) | Filter results to include only trustlines to the given account |
+| currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency. |
+| counterparty | String (Address) | Filter results to include only trustlines to the given account. |
+| marker | String | Start position in response paging. |
+| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
+| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+
+*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
 
 #### Response ####
 
@@ -1349,7 +1383,7 @@ Creates or modifies a trustline.
 *REST*
 
 ```
-POST /v1/accounts/{:address}/trustlines
+POST /v1/accounts/{:address}/trustlines?validated=true
 {
     "secret": "sneThnzgBgxc3zXPG....",
     "trustline": {
@@ -1371,6 +1405,12 @@ The following parameters are required in the JSON body of the request:
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | trustline | Object ([Trustline](#trustline-objects)) | The trustline object to set. Ignores fields not controlled by this account. Any fields that are omitted are unchanged. |
 
+Optionally, you can include the following as a URL query parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 *Note:* Since a trustline occupies space in the ledger, [a trustline increases the XRP the account must hold in reserve](https://wiki.ripple.com/Reserves). You cannot create more trustlines if you do not have sufficient XRP to pay the reserve. This applies to the account extending trust, not to the account receiving it. A trustline with a limit *and* a balance of 0 is equivalent to no trust line.
@@ -1388,10 +1428,11 @@ A successful response uses the `201 Created` HTTP response code, and provides a 
     "currency": "USD",
     "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
     "account_allows_rippling": false,
-    "account_froze_trustline": false
-  },
-  "ledger": "9302926",
-  "hash": "57695598CD32333F67A70DC6EBC3501D71569CE11C9803162CBA61990D89C1EE"
+    "account_froze_trustline": false,
+    "state": "pending",
+    "ledger": "9302926",
+    "hash": "57695598CD32333F67A70DC6EBC3501D71569CE11C9803162CBA61990D89C1EE"
+  }
 }
 ```
 
