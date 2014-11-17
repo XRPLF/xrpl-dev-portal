@@ -464,17 +464,17 @@ The following URL parameters are required by this API endpoint:
 |-------|------|-------------|
 | address | String | The Ripple account address of the account whose balances to retrieve. |
 
-Optionally, you can also include the following query parameters:
+Optionally, you can also include any of the following query parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
-| marker | String | Start position in response paging. |
-| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
-| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+| marker | String | Server-provided value that marks where to resume pagination. |
+| limit | Integer | (Defaults to 10) Max results per response. Cannot be less than 10. |
+| ledger | String (ledger hash) | Identifying hash of the ledger version to pull results from. |
 
-*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
 
 #### Response ####
 
@@ -518,8 +518,8 @@ GET /v1/accounts/{:address}/settings
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field   | Value | Description |
+|---------|-------|-------------|
 | address | String | The Ripple account address of the account whose settings to retrieve. |
 
 #### Response ####
@@ -608,9 +608,9 @@ The request body must be a JSON object with the following fields:
 
 Optionally, you can include the following as a URL query parameter:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the account transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+| Field     | Type    | Description |
+|-----------|---------|-------------|
+| validated | Boolean | If `true`, the server waits to respond until the account transaction has been successfully validated by the network. A validated transaction has `state` field of the response set to `"validated"`. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
@@ -642,7 +642,7 @@ The `settings` object can contain any of the following fields (any omitted field
     "email_hash": "98b4375e1d753e5b91627516f6d70977",
     "state": "pending",
     "ledger": "9248628",
-    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6",
+    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6"
   }
 }
 ```
@@ -759,32 +759,31 @@ POST /v1/accounts/{address}/payments?validated=true
 
 [Try it! >](rest-api-tool.html#submit-payment)
 
-The following parameters are required in the JSON body of the request:
+The JSON body of the request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | payment | [Payment object](#payment_object) | The payment to send. You can generate a payment object using the [Prepare Payment](#prepare-payment) method. |
-| client_resource_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
+| client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+| last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
+| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow. <span class='draft-comment'>(As drops of XRP -- we should change this)</span> If omitted, the server picks a static fee instead. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 Optionally, you can include the following as a URL query parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the payment has been successfully validated by the server. Response format in this case will match [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment) |
+| validated | Boolean | If `true`, the server waits to respond until the payment has been successfully validated by the network and returns the payment object. Otherwise, the server responds immediately with a message indicating that the transaction was received for processing. |
 
-Optionally, you can also include the following as a JSON body parameter:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| last_ledger_sequence | String | A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max_fee | String | A string representation of a fee amount in drops. If this parameter is not set, it defaults to a median of the connected ripple server fees |
-
-__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 #### Response ####
 
-*Note:* This response holds when the validated query parameter is not set or set to `false`. For responses with validated `true`, please refer to [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
+The response can take two formats, depending on the `validated` query parameter:
+
+* If `validated` is set to `true`, then the response matches the format from [Confirm Payment](#confirm-payment).
+* If `validated` is omitted or set to `false`, then the response is a JSON object as follows:
 
 ```js
 {
@@ -796,10 +795,11 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 
 | Field | Type | Description |
 |-------|------|-------------|
+| success | Boolean | A value of `true` only indicates that the request was received, not that the transaction was processed. |
 | client_resource_id | String | The client resource ID provided in the request |
 | status_url | String | A URL that you can GET to check the status of the request. This refers to the [Confirm Payment](#confirm-payment) method. |
 
-#### Response (With Validated Parameter) ####
+
 
 ## Confirm Payment ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L232 "Source")
