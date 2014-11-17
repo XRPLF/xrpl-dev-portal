@@ -455,7 +455,12 @@ Optionally, you can also include the following query parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
-| counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway) |
+| counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
+| marker | String | Start position in response paging. |
+| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
+| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+
+*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
 
 #### Response ####
 
@@ -1329,8 +1334,13 @@ Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency |
-| counterparty | String (Address) | Filter results to include only trustlines to the given account |
+| currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency. |
+| counterparty | String (Address) | Filter results to include only trustlines to the given account. |
+| marker | String | Start position in response paging. |
+| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
+| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+
+*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
 
 #### Response ####
 
