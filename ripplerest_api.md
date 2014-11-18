@@ -40,6 +40,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 #### Utilities ####
 
 * [Retrieve Ripple Transaction - `GET /v1/transactions/{:transaction-hash}`](#retrieve-ripple-transaction)
+* [Retrieve Transaction Fee - `GET /v1/transaction-fee`](#retrieve-transaction-fee)
 * [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
 
@@ -1824,6 +1825,30 @@ The result is a JSON object, whose `transaction` field has the requested transac
     "validated": true,
     "date": 464305620
   }
+}
+```
+
+
+## Retrieve Transaction Fee ##
+
+Retrieve the current transaction fee for the rippled server `ripple-rest` is connected to. If `ripple-rest` is connected to multiple rippled servers, the median fee between the connected servers is calculated.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/transaction-fee
+```
+</div>
+
+[Try it! >](rest-api-tool.html#retrieve-transaction-fee)
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "fee": "12000"
 }
 ```
 
