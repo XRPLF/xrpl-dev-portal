@@ -175,7 +175,7 @@ When errors occur, the server returns an HTTP status code in the 400-599 range, 
 
 In general, the HTTP status code is indicative of where the problem occurred:
 
-* Codes in the 200-299 range indicate success. (*Note:* This behavior is new in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4). Previous versions sometimes return 200 OK for some types of errors.)
+* Codes in the 200-299 range indicate success. (*Note:* This behavior is new in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0). Previous versions sometimes return 200 OK for some types of errors.)
     * Unless otherwise specified, methods are expected to return `200 OK` on success.
 * Codes in the 400-499 range indicate that the request was invalid or incorrect somehow. For example:
     * `400 Bad Request` occurs if the JSON body is malformed. This includes syntax errors as well as when invalid or mutually-exclusive options are selected.
@@ -331,7 +331,7 @@ Submitted transactions can have additional fields reflecting the current status 
 
 ### Memo Objects ###
 
-(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))
 
 Memo objects represent arbitrary data that can be included in a transaction. The overall size of the `memos` field cannot exceed 1KB after serialization.
 
@@ -391,7 +391,7 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 
 ## Generate Wallet ##
 
-(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/v1.3.0-rc4))
+(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))
 
 Randomly generate keys for a potential new Ripple account.
 
@@ -1830,6 +1830,8 @@ The result is a JSON object, whose `transaction` field has the requested transac
 
 
 ## Retrieve Transaction Fee ##
+
+(New in [Ripple-REST v1.3.1](https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1))
 
 Retrieve the current transaction fee for the rippled server `ripple-rest` is connected to. If `ripple-rest` is connected to multiple rippled servers, the median fee between the connected servers is calculated.
 
