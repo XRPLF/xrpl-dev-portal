@@ -764,7 +764,7 @@ Optionally, you can also include the following as a JSON body parameter:
 | Field | Type | Description |
 |-------|------|-------------|
 | last_ledger_sequence | String | A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max_fee | String | A string representation of a fee amount in drops. If this parameter is not set, it defaults to a median of the connected ripple server fees |
+| max_fee | String | A string representation of a fee amount in drops. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
