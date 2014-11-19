@@ -1942,10 +1942,11 @@ The result is a JSON object, whose `transaction` field has the requested transac
 
 
 ## Retrieve Transaction Fee ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L42 "Source")
 
 (New in [Ripple-REST v1.3.1](https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1))
 
-Retrieve the current transaction fee for the rippled server `ripple-rest` is connected to. If `ripple-rest` is connected to multiple rippled servers, the median fee between the connected servers is calculated.
+Retrieve the current transaction fee for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
 
 <div class='multicode'>
 *REST*
