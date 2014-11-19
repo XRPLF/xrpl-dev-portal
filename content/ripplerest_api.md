@@ -767,7 +767,7 @@ The JSON body of the request includes the following parameters:
 | client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow. <span class='draft-comment'>(As drops of XRP -- we should change this)</span> If omitted, the server picks a static fee instead. |
+| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow, as a decimal amount of XRP. If omitted, the server picks a static fee instead. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
