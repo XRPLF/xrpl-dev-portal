@@ -1946,7 +1946,7 @@ The result is a JSON object, whose `transaction` field has the requested transac
 
 (New in [Ripple-REST v1.3.1](https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1))
 
-Retrieve the current transaction fee for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
+Retrieve the current transaction fee, in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
 
 <div class='multicode'>
 *REST*
@@ -1960,13 +1960,14 @@ GET /v1/transaction-fee
 
 #### Response ####
 
+The response is a JSON object, whose `fee` field is a string containing a decimal amount of XRP that the `rippled` server requires to be destroyed in order to process and relay the transaction to the network.
+
 ```js
 {
   "success": true,
-  "fee": "12000"
+  "fee": "0.012"
 }
 ```
-
 
 
 ## Create Client Resource ID ##
