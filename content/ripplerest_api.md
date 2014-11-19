@@ -4,8 +4,6 @@ The Ripple-REST API provides a simplified, easy-to-use interface to the Ripple N
 
 We recommend Ripple-REST for users just getting started with Ripple, since it provides high-level abstractions and convenient simplifications in the data format. If you prefer to access a `rippled` server directly, you can use [rippled's WebSocket or JSON-RPC APIs](rippled-apis.html) instead, which provide the full power of Ripple at the cost of more complexity.
 
-Installation instructions and source code can be found in the [Ripple-REST repository](https://github.com/ripple/ripple-rest).
-
 
 ## Available API Routes ##
 
@@ -95,23 +93,20 @@ You can create client resource IDs using any method you like, so long as you fol
 
 You can use the [Create Client Resource ID](#create-client-resource-id) method in order to generate new Client Resource IDs.
 
-## Getting Started ##
-
-### Setup ###
+## Using Ripple-REST ##
 
 You don't need to do any setup to retrieve information from a public Ripple-REST server. Ripple Labs hosts a public Ripple-REST server here:
 
 `https://api.ripple.com`
 
-However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/).
+If you want to run your own Ripple-REST server, see the [installation instructions](#running-ripple-rest).
+
+In order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/).
 
 Make sure you know both the account address and the account secret for your account:
 
  * The *address* can be found by clicking the *Show Address* button in the __Fund__ tab of Ripple Trade
  * The *secret* is provided when you first create your account. **WARNING: If you submit your secret to a server you do not control, your account can be stolen, along with all the money in it.** We recommend using a test account with very limited funds on the public Ripple-REST server.
-
-If you want to run your own Ripple-REST server, see the [installation instructions](https://github.com/ripple/ripple-rest/#installing-and-running).
-
 
 As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. For testing, there are lots of options, including:
 
@@ -122,92 +117,6 @@ As a programmer, you will also need to have a suitable HTTP client that allows y
 You can also use the [REST API Tool](rest-api-tool.html) here on the Dev Portal to try out the API.
 
 [Try it! >](rest-api-tool.html)
-
-### Quick Start ###
-
-`ripple-rest` requires Node.js and uses sqlite3 as it's database.
-
-Follow these instructions to get your `ripple-rest` server installed and running
-
-1. Run `git clone https://github.com/ripple/ripple-rest.git` in a terminal and switch into the `ripple-rest` directory
-2. Install dependencies needed: `npm install`
-3. Copy the config example to config.json: `cp config-example.json config.json`
-5. Run `node server.js` to start the server
-6. Visit [`http://localhost:5990`](http://localhost:5990) to view available endpoints and to get started
-
-
-## Configuring `ripple-rest` ###
-
-The `ripple-rest` server loads configuration options from the following sources, according to the following hierarchy (where options from 1. override those below it):
-
-1. Command line arguments
-2. Environment variables
-3. The `config.json` file
-
-The path to the `config.json` file can be specified as a command line argument (`node server.js --config /path/to/config.json`). If no path is specified, the default location for that file is in `ripple-rest`'s root directory.
-
-Available configuration options are outlined in the [__Server Configuration__](docs/server-configuration.md) document and an example configuration file is provided [here](config-example.json).
-
-`ripple-rest` uses the [nconf](https://github.com/flatiron/nconf) configuration loader so that any options that can be specified in the `config.json` file can also be specified as command line arguments or environment variables.
-
-
-## Debug mode ##
-The server can be run in Debug Mode by running `node server.js --debug`.
-
-
-## Running ripple-rest securely over SSL ##
-1. Create SSL certificate to encrypt traffic to and from the `ripple-rest` server.
-
-```bash
-openssl genrsa -out /etc/ssl/private/server.key 2048
-openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
--batch
-openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
--out /etc/ssl/certs/server.crt -sha512
-```
-
-2. Modify the `config.json` to enable SSL and specify the paths to the `certificate` and `key` files
-
-```
-  "ssl_enabled": true,
-  "ssl": {
-    "key_path": "./certs/server.key",
-    "cert_path": "./certs/server.crt"
-  },
-
-```
-
-## Deployment tips
-Run `ripple-rest` using [`forever`](https://www.npmjs.org/package/forever). `node` and `npm` are required. Install `forever` using `sudo npm install -g forever`.
-
-Example of running `ripple-rest` using `forever`:
-```
-forever start \
-    --pidFile /var/run/ripple-rest/ripple-rest.pid \
-    --sourceDir /opt/ripple-rest \
-    -a -o /var/log/ripple-rest/ripple-rest.log \
-    -e /var/log/ripple-rest/ripple-rest.err \
-    -l /var/log/ripple-rest/ripple-rest.for \
-    server.js
-```
-
-Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
-
-Example of a monit script that will restart the server if:
-- memory goes up over 25%
-- the server fails responding to server status
-```
-set httpd port 2812 and allow localhost
-
-check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
-    start program = "/etc/init.d/ripple-rest start"
-    stop program = "/etc/init.d/ripple-rest stop"
-    if memory > 25% then restart
-    if failed port 5990 protocol HTTP
-        and request "/v1/server"
-    then restart
-```
-
 
 ### Exploring the API ###
 
@@ -253,6 +162,110 @@ If you want to connect to your own server, just replace the hostname and port wi
 http://localhost:5990/v1/server
 
 Since the hostname depends on where your chosen Ripple-REST instance is, the methods in this document are identified using only the part of the path that comes after the hostname.
+
+# Running Ripple-REST #
+## Quick Start ##
+
+Ripple-REST requires [Node.js](http://nodejs.org/) and [sqlite 3](http://www.sqlite.org/). Before starting, you should make sure that you have both installed. 
+
+Following that, use these instructions to get Ripple-REST installed and running:
+
+1. Clone the Ripple-REST repository with git:
+    `git clone https://github.com/ripple/ripple-rest.git`
+2. Switch to the `ripple-rest` directory:
+    `cd ripple-rest`
+3. Use *npm* to install additional dependencies:
+    `npm install`
+4. Copy the example config file to `config.json`:
+    `cp config-example.json config.json`
+5. Start the server:
+    `node server.js`
+6. Visit [http://localhost:5990](http://localhost:5990) in a browser to view available endpoints and get started
+
+
+## Configuring `ripple-rest` ##
+
+The Ripple-REST server uses [nconf](https://github.com/flatiron/nconf) to load configuration options from several sources. Settings from sources earlier in the following hierarchy override settings from the later levels:
+
+1. Command line arguments
+2. Environment variables
+3. The `config.json` file
+
+The path to the `config.json` file can be specified as a command line argument (`node server.js --config /path/to/config.json`). If no path is specified, the default location for that file is Ripple-REST's root directory.
+
+Available configuration options are outlined in the [__Server Configuration__](https://github.com/ripple/ripple-rest/blob/develop/docs/server-configuration.md) document. The `config-example.json` file in the root directory contains a sample configuration.
+
+
+## Debug mode ##
+The server can be run in Debug Mode by running `node server.js --debug`.
+
+
+## Running Ripple-REST securely over SSL ##
+
+We highly recommend running Ripple-REST securely over SSL. Doing so requires a certificate. For development and internal-only deployments, you can use a self-signed certificate. For production servers that are accessed over untrusted network connections, you should purchase a cert from a proper authority.
+
+You can perform the following steps to generate a self-signed cert with [OpenSSL](https://www.openssl.org/) and configure Ripple-REST to use it:
+
+1. Generate the SSL certificate:
+
+```bash
+openssl genrsa -out /etc/ssl/private/server.key 2048
+openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
+-batch
+openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
+-out /etc/ssl/certs/server.crt -sha512
+```
+
+2. Modify the `config.json` to enable SSL and specify the paths to the `certificate` and `key` files
+
+```
+  "ssl_enabled": true,
+  "ssl": {
+    "key_path": "./certs/server.key",
+    "cert_path": "./certs/server.crt"
+  },
+
+```
+
+## Deployment Tips ##
+
+### Keeping the service running ###
+
+To make sure that the Ripple-REST process remains active even if it crashes for some reason, use the  [`forever`](https://www.npmjs.org/package/forever) Node module. Install `forever` using `sudo npm install -g forever`.
+
+Here is an example of running `ripple-rest` using `forever`:
+
+```
+forever start \
+    --pidFile /var/run/ripple-rest/ripple-rest.pid \
+    --sourceDir /opt/ripple-rest \
+    -a -o /var/log/ripple-rest/ripple-rest.log \
+    -e /var/log/ripple-rest/ripple-rest.err \
+    -l /var/log/ripple-rest/ripple-rest.for \
+    server.js
+```
+
+### Monitoring the service ###
+
+Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
+
+Here is an example of a monit script that will restart the server if:
+
+- memory usage surpasses 25% of the server's available memory
+- the server fails responding to server status
+
+```
+set httpd port 2812 and allow localhost
+
+check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
+    start program = "/etc/init.d/ripple-rest start"
+    stop program = "/etc/init.d/ripple-rest stop"
+    if memory > 25% then restart
+    if failed port 5990 protocol HTTP
+        and request "/v1/server"
+    then restart
+```
+
 
 
 
