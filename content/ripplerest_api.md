@@ -123,6 +123,91 @@ You can also use the [REST API Tool](rest-api-tool.html) here on the Dev Portal 
 
 [Try it! >](rest-api-tool.html)
 
+### Quick Start ###
+
+`ripple-rest` requires Node.js and uses sqlite3 as it's database.
+
+Follow these instructions to get your `ripple-rest` server installed and running
+
+1. Run `git clone https://github.com/ripple/ripple-rest.git` in a terminal and switch into the `ripple-rest` directory
+2. Install dependencies needed: `npm install`
+3. Copy the config example to config.json: `cp config-example.json config.json`
+5. Run `node server.js` to start the server
+6. Visit [`http://localhost:5990`](http://localhost:5990) to view available endpoints and to get started
+
+
+## Configuring `ripple-rest` ###
+
+The `ripple-rest` server loads configuration options from the following sources, according to the following hierarchy (where options from 1. override those below it):
+
+1. Command line arguments
+2. Environment variables
+3. The `config.json` file
+
+The path to the `config.json` file can be specified as a command line argument (`node server.js --config /path/to/config.json`). If no path is specified, the default location for that file is in `ripple-rest`'s root directory.
+
+Available configuration options are outlined in the [__Server Configuration__](docs/server-configuration.md) document and an example configuration file is provided [here](config-example.json).
+
+`ripple-rest` uses the [nconf](https://github.com/flatiron/nconf) configuration loader so that any options that can be specified in the `config.json` file can also be specified as command line arguments or environment variables.
+
+
+## Debug mode ##
+The server can be run in Debug Mode by running `node server.js --debug`.
+
+
+## Running ripple-rest securely over SSL ##
+1. Create SSL certificate to encrypt traffic to and from the `ripple-rest` server.
+
+```bash
+openssl genrsa -out /etc/ssl/private/server.key 2048
+openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
+-batch
+openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
+-out /etc/ssl/certs/server.crt -sha512
+```
+
+2. Modify the `config.json` to enable SSL and specify the paths to the `certificate` and `key` files
+
+```
+  "ssl_enabled": true,
+  "ssl": {
+    "key_path": "./certs/server.key",
+    "cert_path": "./certs/server.crt"
+  },
+
+```
+
+## Deployment tips
+Run `ripple-rest` using [`forever`](https://www.npmjs.org/package/forever). `node` and `npm` are required. Install `forever` using `sudo npm install -g forever`.
+
+Example of running `ripple-rest` using `forever`:
+```
+forever start \
+    --pidFile /var/run/ripple-rest/ripple-rest.pid \
+    --sourceDir /opt/ripple-rest \
+    -a -o /var/log/ripple-rest/ripple-rest.log \
+    -e /var/log/ripple-rest/ripple-rest.err \
+    -l /var/log/ripple-rest/ripple-rest.for \
+    server.js
+```
+
+Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
+
+Example of a monit script that will restart the server if:
+- memory goes up over 25%
+- the server fails responding to server status
+```
+set httpd port 2812 and allow localhost
+
+check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
+    start program = "/etc/init.d/ripple-rest start"
+    stop program = "/etc/init.d/ripple-rest stop"
+    if memory > 25% then restart
+    if failed port 5990 protocol HTTP
+        and request "/v1/server"
+    then restart
+```
+
 
 ### Exploring the API ###
 
