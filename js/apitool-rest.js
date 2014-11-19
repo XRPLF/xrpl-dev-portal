@@ -95,12 +95,13 @@ Request('Get Account Settings', {
 
 Request('Update Account Settings', {
     method: POST,
-    path: '/v1/accounts/{:address}/settings',
+    path: '/v1/accounts/{:address}/settings?{:query_params}',
     description: 'Change the current settings for the given Ripple account.',
     link: '#update-account-settings',
     test_only: true,
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     },
     body: {
         secret: "sssssssssssssssssssssssssssss",
@@ -129,7 +130,7 @@ Request('Prepare Payment', {
 
 Request('Submit Payment', {
     method: POST,
-    path: '/v1/accounts/{:source_address}/payments',
+    path: '/v1/accounts/{:source_address}/payments?{:query_params}',
     description: 'Send a prepared payment to the network.',
     link: '#submit-payment',
     test_only: true,
@@ -159,7 +160,8 @@ Request('Submit Payment', {
         }
     },
     params: {
-        "{:source_address}": DEFAULT_ADDRESS_1
+        "{:source_address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     }
 });
 
@@ -198,12 +200,13 @@ Request("Get Trustlines", {
 
 Request("Grant Trustline", {
     method: POST,
-    path: "/v1/accounts/{:address}/trustlines",
+    path: "/v1/accounts/{:address}/trustlines?{:query_params}",
     description: "Add or modify a trustline from this account.",
     link: "#grant-trustline",
     test_only: true,
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     },
     body: {
         "secret": "sneThnzgBgxc3zXPG....",
