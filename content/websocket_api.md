@@ -5465,14 +5465,14 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* tooBusy - 
+* tooBusy - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
 * invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* srcActMissing
-* srcActMalformed
-* dstActMissing
-* dstActMalformed
-* srcCurMalformed
-* srcIsrMalformed
+* srcActMissing - The `source_account` field is omitted from the request.
+* srcActMalformed - The `source_account` field in the request is not formatted properly.
+* dstActMissing - The `destination_account` field is omitted from the request.
+* dstActMalformed - The `destination_account` field in the request is not formatted properly.
+* srcCurMalformed - The `source_currencies` field is not formatted properly.
+* srcIsrMalformed - The `issuer` field of one or more of the currency objects in the request is not valid.
 
 
 
@@ -5629,6 +5629,15 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * Do not write this error to a log file that can be seen by multiple people
 * Do not paste this error to a public place for debugging
 * Do not display the error message on a website, even by accident
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* highFee - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one.
+* tooBusy - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
+* noPath - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
+
 
 ## submit ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
@@ -5839,6 +5848,20 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * Do not paste an error including your secret to a public place for debugging
 * Do not display an error message including your secret on a website, even by accident
 
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidTransaction - The transaction is malformed or otherwise invalid.
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* highFee - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
+* tooBusy - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+* noPath - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
+* internalTransaction - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* internalSubmit - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* internalJson - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+
+
 ## book_offers ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
@@ -6011,6 +6034,19 @@ In addition to the standard Offer fields, the following fields may be included i
 | taker_pays_funded | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer.
 | quality | Number | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* srcCurMalformed - The `taker_pays` field in the request is not formatted properly.
+* dstAmtMalformed - The `taker_gets` field in the request is not formatted properly.
+* srcIsrMalformed - The `issuer` field of the `taker_pays` field in the request is not valid.
+* dstIsrMalformed - The `issuer` field of the `taker_gets` field in the request is not valid.
+* badMarket - The desired order book does not exist; for example, offers to exchange a currency for itself.
+
+
+
 
 # Subscriptions #
 
@@ -6112,6 +6148,21 @@ The response follows the [standard format](#response-formatting). The fields con
 * *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* noPermission - The request included the `url` field, but you are not connected as an admin.
+* unknownStream - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
+* malformedStream - The `streams` field of the request was not formatted properly.
+* malformedAccount - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* srcCurMalformed - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* dstAmtMalformed - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* srcIsrMalformed - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* dstIsrMalformed - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* badMarket - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+
 
 ### Subscription Stream Messages ###
 
@@ -6348,6 +6399,24 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
+* noPermission - The request included the `url` field, but you are not connected as an admin.
+* Unknown Stream - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
+* malformedStream - The `streams` field of the request was not formatted properly.
+* malformedAccount - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* srcCurMalformed - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* dstAmtMalformed - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* srcIsrMalformed - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* dstIsrMalformed - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* badMarket - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+
+
+
+
+
 # Server Information #
 
 There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.
@@ -6486,6 +6555,10 @@ The `info` object may have some arrangement of the following fields:
 
 <!--Note: keep the above table up-to-date with the Get Server Status method in the Ripple-REST documentation -->
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
 
 
 ## server_state ##
@@ -6621,6 +6694,13 @@ The `state` object may have some arrangement of the following fields:
 | validated_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
 | validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+
+
 # Convenience Functions #
 
 The rippled server also provides a few simple commands purely for convenience.
@@ -6691,6 +6771,11 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
 ## random ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 
@@ -6760,6 +6845,12 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | random | String | Random 256-bit hex value. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* internal - Some internal error occurred, possibly relating to the random number generator.
+
 
 ## json ##
 
