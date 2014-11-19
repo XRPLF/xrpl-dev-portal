@@ -18,8 +18,8 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Payments ####
 
-* [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
-* [Submit Payment - `POST /v1/accounts/{:address}/payments`](#submit-payment)
+* [Prepare Payment - `GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}`](#prepare-payment)
+* [Submit Payment - `POST /v1/accounts/{:source_address}/payments`](#submit-payment)
 * [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:id}`](#confirm-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
@@ -674,7 +674,7 @@ Get quotes for possible ways to make a particular payment.
 *REST*
 
 ```
-GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}
+GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}
 ```
 </div>
 
