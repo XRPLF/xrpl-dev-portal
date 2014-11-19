@@ -8,14 +8,14 @@
   <title>Ripple Developer Portal: Ripple-REST API Tool</title>
 
   <!-- favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Flatdoc -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  
+
    <!-- Bootstrap -->
- 
+
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="js/bootstrap.min.js"></script>
 
@@ -25,20 +25,20 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
   <link  href='css/main.css' rel='stylesheet'>
   <link  href='css/custom.css' rel='stylesheet'>
-  
+
 	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
 	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
-  
-  
-  
+
+
+
   <!-- start Mixpanel -->
   <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
 typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
 b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("132d42885e094171f34467fc54da6fab");
   </script>
-    
-  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rest-api-tool"); }</script>    
+
+  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rest-api-tool"); }</script>
   <!-- end Mixpanel -->
 
   <!-- start google analytics -->
@@ -52,15 +52,15 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   ga('send', 'pageview');
 
   </script>
-  <!-- end google analytics -->  
-    
+  <!-- end google analytics -->
 
-  
+
+
 
   <!-- Temporary shims until I modify the css directly -->
   <link type='text/css' rel='stylesheet' href='css/mod.css' />
   <script src='js/expandcode.js'></script>
-  
+
 </head>
 <body>
 <!--Draft warning would go here-->
@@ -129,6 +129,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         <li>Get Server Status</li>
         <br/>
         <li>Retrieve Ripple Transaction</li>
+        <li>Retrieve Transaction Fee</li>
         <li>Generate UUID</li>
       </ul>
       <div id='command_table'>
@@ -174,7 +175,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         <p class="text-muted">
         	<div class="row">
 				<div class="col-md-2">
-					
+
 						<ul class="footer_links applications">
 							<li><a href="https://www.rippletrade.com">Ripple Trade</a>
 							<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
@@ -183,22 +184,22 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 						</ul>
 				</div>
 				<div class="col-md-2">
-					
+
 						<ul class="footer_links middleware">
 							<li><a href="gatewayd.html">Gatewayd</a>
 							<li><a href="ripple-rest.html">Ripple REST</a>
 							<li><a href="https://github.com/ripple/ripple-lib">Ripple Lib</a>
 						</ul>
-				
+
 				</div>
 				<div class="col-md-2">
-					
+
 						<ul class="footer_links core_network">
 							<li><a href="rippled-apis.html">rippled</a>
 							<li><a href="transactions.html">Transactions</a>
 							<li><a href="consensus-whitepaper.html">Consensus</a>
 						</ul>
-				
+
 				</div>
 				<div class="col-md-2">
 						<ul class="footer_links bounties">
@@ -209,7 +210,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 							<li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a>
 							<li><a href="https://ripple.com/wiki/Main_Page">Wiki</a>
 						</ul>
-				
+
 				</div>
 				<div class="col-md-4 mail_chimp">
 				<p>Join the mailing list!</p>
@@ -218,11 +219,11 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 						<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
 						<style type="text/css">
 							#mc_embed_signup{clear:left; font:14px; }
-	
+
 						</style>
 						<div id="mc_embed_signup">
 						<form action="//ripple.us4.list-manage.com/subscribe/post?u=245dbc1c47849f034390dc5bf&amp;id=4dfbe160d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-	
+
 							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="" required>
 							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 							<div style="position: absolute; left: -5000px; top: -50px;"><input type="text" name="b_245dbc1c47849f034390dc5bf_4dfbe160d0" tabindex="-1" value=""></div>
@@ -233,10 +234,10 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 					<!--End mc_embed_signup-->
 				</div>
       		</div>
-        
+
       </div>
     </div>
-  
+
   <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
   <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
   <script type='text/javascript' src='js/es5-shim.js'></script>

@@ -22,7 +22,7 @@ var DOC_BASE = "ripple-rest.html";
 function slugify(str) {
   str = str.replace(/^\s+|\s+$/g, ''); // trim
   str = str.toLowerCase();
-  
+
   // remove accents, swap ñ for n, etc
   var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   var to   = "aaaaeeeeiiiioooouuuunc------";
@@ -68,7 +68,7 @@ var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA
 Request('Generate Wallet', {
     method: GET,
     path: "/v1/wallet/new",
-    description: 'Generate the keys for a potential new account',
+    description: 'Randomly generate keys for a potential new Ripple account',
     link: '#generate-wallet'
 });
 
@@ -110,7 +110,7 @@ Request('Update Account Settings', {
             disallow_xrp: false,
             disable_master: false,
             email_hash: "98b4375e1d753e5b91627516f6d70977"
-        } 
+        }
     }
 });
 
@@ -129,7 +129,7 @@ Request('Prepare Payment', {
 
 Request('Submit Payment', {
     method: POST,
-    path: '/v1/payments',
+    path: '/v1/accounts/{:source_address}/payments',
     description: 'Send a prepared payment to the network.',
     link: '#submit-payment',
     test_only: true,
@@ -157,6 +157,9 @@ Request('Submit Payment', {
           "partial_payment": false,
           "no_direct_ripple": false
         }
+    },
+    params: {
+        "{:source_address}": DEFAULT_ADDRESS_1
     }
 });
 
@@ -240,12 +243,19 @@ Request("Get Server Status", {
 
 Request("Retrieve Ripple Transaction", {
     method: GET,
-    path: "/v1/transactions/{:hash}",
+    path: "/v1/transactions/{:id}",
     description: "Retrieve a raw Ripple transaction",
     link: "#retrieve-ripple-transaction",
     params: {
         "{:hash}": DEFAULT_HASH
     }
+});
+
+Request("Retrieve Transaction Fee", {
+    method: GET,
+    path: "/v1/transaction-fee",
+    description: "Retrieve the current transaction fee for the connected rippled server(s)",
+    link: "#retrieve-transaction-fee",
 });
 
 Request("Generate UUID", {
@@ -276,7 +286,7 @@ function update_method(el) {
     } else {
         method = $(el).val();
     }
-    
+
     if (method == GET || method == DELETE) {
         request_body.hide();
     } else {
@@ -288,10 +298,10 @@ function update_method(el) {
 function change_path(command) {
     rest_url.empty();
     reminders.html("&nbsp;");
-    
+
     var re = /(\{:[^}]+\})/g; // match stuff like {:address}
     params = command.path.split(re);
-    
+
     //console.log(params);
     for (i=0; i<params.length; i++) {
         if (params[i].match(/\{:[^}]+\}/) !== null) {
@@ -301,13 +311,13 @@ function change_path(command) {
                 var default_val = command.params[params[i]];
             }
             //rest_url.append("<span class='editable' contenteditable='true' id='resturl_"+params[i]+"'>"+default_val+"</span>");
-            
+
             var new_div = $("<div>").appendTo(rest_url);
             var new_param = $("<input type='text' id='resturl_"+params[i]+"' value='"+default_val+"' class='editable' title='"+params[i]+"' />").appendTo(new_div);
             new_param.autosizeInput({"space": 0});
             //var new_label = $("<label class='reminder' for='resturl_"+params[i]+"'>"+params[i]+"</label>").appendTo(new_div);
-            
-            
+
+
         } else {
             rest_url.append("<span class='non_editable'>"+params[i]+"</span>");
         }
@@ -316,7 +326,7 @@ function change_path(command) {
 
 function select_request(request) {
     command = requests[request];
-    
+
     if (command.test_only === true) {
         test_warning.show();
     } else {
@@ -335,18 +345,18 @@ function select_request(request) {
     selected_command.html($('<a>')
                     .attr('href', DOC_BASE+command.link)
                     .text(command.name));
-                                
+
     //rest_url.val(command.path);
     //rest_url.text(command.path);
     change_path(command);
 
-    
+
 //    rest_method.val(command.method);
 //    rest_method.change();
     request_button.val(command.method);
     request_button.text(command.method+" request");
     update_method(request_button);
-    
+
     if (command.method == POST || command.method == PUT) {
         cm_request.setValue(JSON.stringify(command.body, null, 2));
     } else {
@@ -354,7 +364,7 @@ function select_request(request) {
         //This prevents confusion if the user toggles the HTTP method dropdown
         cm_request.setValue("");
     }
-    
+
     reset_response_area();
 };
 
@@ -403,7 +413,7 @@ function send_request() {
             url: URL_BASE + path
         }).done(success_output).fail(error_output).always(reset_sending_status);
     }
-    
+
     spinner.show();
 }
 
@@ -431,7 +441,7 @@ function reset_response_area() {
 $(document).ready(function() {
     request_button.click(send_request);
     //rest_method.change(update_method);
-    
+
     get_uuid(function(resp,status,xhr) {
         requests["submit-payment"].body.client_resource_id = resp.uuid;
         if (window.location.hash == "#submit-payment") {
