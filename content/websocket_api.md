@@ -299,16 +299,16 @@ When your request results in an error, the entire request is copied back as part
 
 All methods can potentially return any of the following values for the `error` code:
 
-* unknownCmd - The request does not contain a [command](#api-methods) that the `rippled` server recognizes.
-* jsonInvalid - (WebSocket only) The request is not a proper JSON object. 
-    * JSON-RPC returns a 400 Bad Request error in this case instead.
-* missingCommand - (WebSocket only) The request did not specify a `command` field.
-    * JSON-RPC returns a 400 Bad Request error in this case instead.
-* tooBusy - The server is under too much load to perform this command right now. Generally not returned if you are connected as an admin.
-* noNetwork - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).
-* noCurrent - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
-* noClosed - The server does not have a closed ledger, typically because it has not finished starting up.
-* wsTextRequired - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. 
+* `unknownCmd` - The request does not contain a [command](#api-methods) that the `rippled` server recognizes.
+* `jsonInvalid1 - (WebSocket only) The request is not a proper JSON object. 
+    * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
+* `missingCommand` - (WebSocket only) The request did not specify a `command` field.
+    * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
+* `tooBusy` - The server is under too much load to perform this command right now. Generally not returned if you are connected as an admin.
+* `noNetwork` - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).
+* `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
+* `noClosed` - The server does not have a closed ledger, typically because it has not finished starting up.
+* `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. 
 
 ## Formatting Conventions ##
 
@@ -573,9 +573,10 @@ The response follows the [standard format](#response-formatting), with the resul
 
 #### Possible Errors ####
 
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 
@@ -955,10 +956,11 @@ Each trust-line object has some combination of the following fields, although no
 
 #### Possible Errors ####
 
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* actMalformed - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
 ## account_offers ##
@@ -1087,10 +1089,11 @@ Each offer object contains the following fields:
 
 #### Possible Errors ####
 
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* actNotFound - The address specified in the `account` field of the request does not correspond to an account in the ledger.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* actMalformed - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
 ## account_tx ##
@@ -1675,14 +1678,15 @@ Each transaction object includes the following fields, depending on whether it w
 
 #### Possible Errors ####
 
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* actMalformed - If the address specified in the `account` field of the request is not formatted properly.
-* actBitcoin - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
-* lgrIdxsInvalid - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actMalformed` - If the address specified in the `account` field of the request is not formatted properly.
+* `actBitcoin` - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
+* `lgrIdxsInvalid` - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
 <!-- 
 this is the part where we plug our ears and don't acknowledge that you can provide a seed to identify an account, and it might cause:
-* badSeed
-* noGenDecrypt
+* `badSeed`
+* `noGenDecrypt`
 -->
 
 
@@ -1768,7 +1772,7 @@ The key generated by this method can also be used as a regular key for an accoun
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* badSeed - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
+* `badSeed` - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
 
 
 
@@ -1906,9 +1910,9 @@ The following fields are deprecated and may be removed without further notice: `
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* noPermission - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
 
 
 ## ledger_closed ##
@@ -2070,7 +2074,6 @@ A `ledger_hash` field is not provided, because the hash of the current ledger is
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-
 
 
 ## ledger_data ##
@@ -2318,8 +2321,8 @@ The format of each object in the `state` array depends on whether `binary` was s
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors)
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 ## ledger_entry ##
@@ -2456,8 +2459,8 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
 
@@ -2661,8 +2664,8 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* txnNotFound - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
 
 
 
@@ -2873,10 +2876,10 @@ There are a couple possible reasons the server may fail to find the transaction:
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* fieldNotFoundTransaction - The `tx_hash` field was omitted from the request
-* notYetImplemented - A ledger version was not specified in the request.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* transactionNotFound - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
+* `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
+* `notYetImplemented` - A ledger version was not specified in the request.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
 
 <!-- I think ledgerNotFound ( https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/TransactionEntry.cpp#L62 ) should not occur because lookupLedger would have errored out first. -->
 
@@ -3764,8 +3767,8 @@ The fields included in each transaction object vary slightly depending on the ty
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* noPermission - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
 
 
 ## path_find ##
@@ -4214,8 +4217,8 @@ Each element in the `alternatives` array is an object that represents a path fro
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* noEvents - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 
 #### Asynchronous Follow-ups ####
 
@@ -5098,9 +5101,9 @@ If a pathfinding request was successfully closed, the response follows the same 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - If any fields are specified incorrectly, or any required fields are missing.
-* noEvents - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
-* noPathRequest - You tried to close a pathfinding request when there is not an open one.
+* `invalidParams` - If any fields are specified incorrectly, or any required fields are missing.
+* `noEvents` - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
 
 ### path_find status ###
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L57 "Source")
@@ -5134,9 +5137,9 @@ If a pathfinding request is open, the response follows the same format as the in
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* noEvents - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
-* noPathRequest - You tried to check the status of a pathfinding request when there is not an open one.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
 
 
 ## ripple_path_find ##
@@ -5465,14 +5468,14 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* tooBusy - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* srcActMissing - The `source_account` field is omitted from the request.
-* srcActMalformed - The `source_account` field in the request is not formatted properly.
-* dstActMissing - The `destination_account` field is omitted from the request.
-* dstActMalformed - The `destination_account` field in the request is not formatted properly.
-* srcCurMalformed - The `source_currencies` field is not formatted properly.
-* srcIsrMalformed - The `issuer` field of one or more of the currency objects in the request is not valid.
+* `tooBusy` - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `srcActMissing` - The `source_account` field is omitted from the request.
+* `srcActMalformed` - The `source_account` field in the request is not formatted properly.
+* `dstActMissing` - The `destination_account` field is omitted from the request.
+* `dstActMalformed` - The `destination_account` field in the request is not formatted properly.
+* `srcCurMalformed` - The `source_currencies` field is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more of the currency objects in the request is not valid.
 
 
 
@@ -5633,10 +5636,10 @@ __*Caution:*__ If this command results in an error messages, the message can con
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* highFee - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one.
-* tooBusy - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
-* noPath - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one.
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
 
 
 ## submit ##
@@ -5852,14 +5855,14 @@ __*Caution:*__ If this command results in an error messages, the message can con
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidTransaction - The transaction is malformed or otherwise invalid.
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* highFee - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
-* tooBusy - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
-* noPath - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
-* internalTransaction - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
-* internalSubmit - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
-* internalJson - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `invalidTransaction` - The transaction is malformed or otherwise invalid.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
+* `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 
 
 ## book_offers ##
@@ -6037,13 +6040,13 @@ In addition to the standard Offer fields, the following fields may be included i
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* lgrNotFound - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* srcCurMalformed - The `taker_pays` field in the request is not formatted properly.
-* dstAmtMalformed - The `taker_gets` field in the request is not formatted properly.
-* srcIsrMalformed - The `issuer` field of the `taker_pays` field in the request is not valid.
-* dstIsrMalformed - The `issuer` field of the `taker_gets` field in the request is not valid.
-* badMarket - The desired order book does not exist; for example, offers to exchange a currency for itself.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `srcCurMalformed` - The `taker_pays` field in the request is not formatted properly.
+* `dstAmtMalformed` - The `taker_gets` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of the `taker_pays` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of the `taker_gets` field in the request is not valid.
+* `badMarket` - The desired order book does not exist; for example, offers to exchange a currency for itself.
 
 
 
@@ -6152,16 +6155,16 @@ The response follows the [standard format](#response-formatting). The fields con
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* noPermission - The request included the `url` field, but you are not connected as an admin.
-* unknownStream - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
-* malformedStream - The `streams` field of the request was not formatted properly.
-* malformedAccount - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
-* srcCurMalformed - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
-* dstAmtMalformed - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
-* srcIsrMalformed - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
-* dstIsrMalformed - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
-* badMarket - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The request included the `url` field, but you are not connected as an admin.
+* `unknownStream` - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
+* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
 
 
 ### Subscription Stream Messages ###
@@ -6402,16 +6405,16 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* invalidParams - One or more fields are specified incorrectly, or one or more required fields are missing.
-* noPermission - The request included the `url` field, but you are not connected as an admin.
-* Unknown Stream - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
-* malformedStream - The `streams` field of the request was not formatted properly.
-* malformedAccount - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
-* srcCurMalformed - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
-* dstAmtMalformed - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
-* srcIsrMalformed - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
-* dstIsrMalformed - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
-* badMarket - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The request included the `url` field, but you are not connected as an admin.
+* *Unknown Stream* - One or more the members of the `streams` field in the request was not recognized as a valid stream name. (The response does not use an exact code; this is a bug. See [RIPD-702](https://ripplelabs.atlassian.net/browse/RIPD-702) for details and status.)
+* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
 
 
 
@@ -6849,7 +6852,7 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* internal - Some internal error occurred, possibly relating to the random number generator.
+* `internal` - Some internal error occurred, possibly relating to the random number generator.
 
 
 ## json ##
