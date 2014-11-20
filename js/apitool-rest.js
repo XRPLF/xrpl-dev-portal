@@ -167,12 +167,12 @@ Request('Submit Payment', {
 
 Request("Confirm Payment", {
     method: GET,
-    path: "/v1/accounts/{:address}/payments/{:hash}",
+    path: "/v1/accounts/{:address}/payments/{:id}",
     description: "Retrieve details of a payment and its status",
     link: "#confirm-payment",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
@@ -221,12 +221,12 @@ Request("Grant Trustline", {
 
 Request("Check Notifications", {
     method: GET,
-    path: "/v1/accounts/{:address}/notifications/{:hash}",
+    path: "/v1/accounts/{:address}/notifications/{:id}",
     description: "Monitor an account for all kinds of transactions",
     link: "#check-notifications",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
@@ -250,7 +250,7 @@ Request("Retrieve Ripple Transaction", {
     description: "Retrieve a raw Ripple transaction",
     link: "#retrieve-ripple-transaction",
     params: {
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
