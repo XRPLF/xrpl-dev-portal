@@ -1,3 +1,12 @@
+# rippled #
+
+The core peer-to-peer server that operates the Ripple Network is called `rippled`. Each `rippled` server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
+
+* [Building and Installating](https://wiki.ripple.com/Rippled_build_instructions)
+* [API Reference](#api-methods)
+* [Transaction Reference](transactions.html)
+* Client Library - [Javascript](https://github.com/ripple/ripple-lib)
+
 # WebSocket and JSON-RPC APIs #
 If you want to communicate directly with the `rippled` server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the [Ripple-REST API](ripple-rest.html) provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:
 
