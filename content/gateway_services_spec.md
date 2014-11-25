@@ -286,7 +286,7 @@ This file is divided up into the following elements:
     ...
 ```
 
-Ripple defines the following properties:
+The host-meta JRD may contain any of the following Ripple-defined properties:
 
 | Property | Value | Description |
 |----------|-------|-------------|
