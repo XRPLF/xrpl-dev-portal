@@ -333,6 +333,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 |-----------|-----------|---------------|-------------|
 | tfNoDirectRipple | 0x00010000 | 65536 | Do not use a direct path, if available. This is intended to force the transaction to take arbitrage opportunities. Most clients will not need this. |
 | tfPartialPayment | 0x00020000 | 131072 | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
+| tfLimitQuality | 0x00040000 | 262144 | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
 ### Partial Payments ###
 
@@ -352,6 +353,21 @@ When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` fiel
 
 *Note:* Early partial payments in historical ledgers do not have this field. If necessary, you can check the balance changes in the `meta` field to determine how much the destination account actually received.
 
+### Limit Quality ###
+
+Ripple defines "quality" is the ratio of the numeric amout in to the numeric amount out of a conversion. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
+
+The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality. 
+
+By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average *average* quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the [transaction result](#transaction-results) is `tecPATH_DRY`.
+
+Consider the following example. If I am trying to send you 100 Chinese Yuan (`Amount` = 100 CNY) for 20 United States dollars (`SendMax` = 20 USD) or less, then the limit quality is `5`. Imagine one market maker is offering ¥95 for $15 (a ratio of about `6.3` CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of `2.5` CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about `5.9`. 
+
+Without the tfLimitQuality flag set, this transaction would succeed, because the $17 it costs me is within my specified `SendMax`. However, with the tfLimitQuality flag enabled, the transaction would fail instead, because the path to take the second offer has a quality of `2.5`, which is worse than the limit quality of `5`.
+
+The tfLimitQuality flag is most useful when combined with [partial payments](#partial-payments). When both *tfPartialPayment* and *tfLimitQuality* are set on a transaction, then the transaction delivers as much of the destination `Amount` as it can, without using any conversions that are worse than the limit quality.
+
+In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my `SendMax` of 20 USD and a destination `Amount` of 100 CNY, then the limit quality is still `5`. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about `6.3`, but it rejects the ¥5/$2 offer because that offer's quality of `2.5` is worse than the quality limit of `5`. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.
 
 
 
