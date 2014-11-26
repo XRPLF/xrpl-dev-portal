@@ -107,6 +107,10 @@
         <div id='io_wrapper'>
           <div id='input' class='io'>
             <h2>WebSocket Request</h2>
+            <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                <h4>Test accounts only!</h4>
+                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
+            </div>
             <div style="clear:both;"></div>
             <h3 id='selected_command' title='Reference information'>server_info</h3>
             <p id='description'></p>
@@ -126,11 +130,13 @@
             <p id='info'></p>
             <div id='response'></div>
             <div id='tooltip'></div>
-            <h3>Stream output</h3>
-            <ul class='toolbar'>
-              <li id='stream_show'>show</li>
-              <li id='stream_pause'>pause</li>
-            </ul>
+            <div id='stream_output'>
+                <h3>Stream output</h3>
+                <ul class='toolbar'>
+                  <li id='stream_show'>show</li>
+                  <li id='stream_pause'>pause</li>
+                </ul>
+            </div>
           </div>
         </div>
       </div>

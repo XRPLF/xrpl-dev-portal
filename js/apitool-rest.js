@@ -337,10 +337,15 @@ function select_request(request) {
     }
 
     if (command.description) {
-        $(description).html($('<a>')
-            .attr('href', DOC_BASE+command.link)
-            .html(command.description));
+        $(description).html(command.description);
+        
+        if (command.link) {
+            $(description).append(" <a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
+        }
+        
         $(description).show();
+    } else if (command.link) {
+        $(description).html("<a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
     } else {
         $(description).hide();
     }

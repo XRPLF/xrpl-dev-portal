@@ -112,14 +112,16 @@
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Start receiving selected streams from the server.',
-    _link: 'rippled-apis.html#subscribe'
+    _link: 'rippled-apis.html#subscribe',
+    _stream: true
   });
 
   Request('unsubscribe', {
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Stop receiving selected streams from the server.',
-    _link: 'rippled-apis.html#unsubscribe'
+    _link: 'rippled-apis.html#unsubscribe',
+    _stream: true
   });
 
   /* ---- ---- */
@@ -228,8 +230,9 @@
     source_account: sample_address,
     destination_account: 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
     destination_amount: ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
-    _description: 'Find or modify a payment pathway between specified accounts.',
-    _link: 'rippled-apis.html#path-find'
+    _description: 'Start or stop searching for payment paths between specified accounts.',
+    _link: 'rippled-apis.html#path-find',
+    _stream: true
   });
 
   Request('ripple_path_find', {
@@ -239,7 +242,7 @@
     source_currencies : [ { currency : 'USD' } ],
     destination_account : 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
     destination_amount : ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
-    _description: 'Find a path and estimated costs. For non-interactive use, such as automated payment sending from business integrations, ripple_path_find gives you single response that you can use immediately. However, for uses that need updated paths as new ledgers close, repeated calls becomes expensive. In those cases, when possible, use the RPC path_find in place of this API.',
+    _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
     _link: 'rippled-apis.html#ripple-path-find'
   });
 
@@ -253,8 +256,9 @@
       Fee: '15',
       Flags: 0
     },
-    _description: 'Submits a transaction to the network. <span class="btn-danger">Please, only use test accounts here.</span>',
-    _link: 'rippled-apis.html#submit'
+    _description: 'Submits a transaction to the network.',
+    _link: 'rippled-apis.html#submit',
+    _takes_secret: true
   });
   
   Request('sign', {
@@ -270,8 +274,9 @@
    },
    secret : "sssssssssssssssssssssssssssss",
    offline: false,
-   _description: 'Sends a transaction to be signed by the server. <span class="btn-danger">Please, only use test accounts here.</span>',
-   _link: 'rippled-apis.html#sign'
+   _description: 'Sends a transaction to be signed by the server.',
+   _link: 'rippled-apis.html#sign',
+    _takes_secret: true
 });
 
   /* ---- ---- ---- ---- ---- */
@@ -314,7 +319,8 @@
 
     if (command._description) {
       //$(description).html(command._description).show();
-      $(description).html($('<a>').attr('href', command._link).html(command._description));
+      $(description).html(command._description);
+      $(description).append(" <a class='btn btn-primary' href='"+command._link+"'>Read more</a>");
     } else {
       $(description).hide();
     }
@@ -387,6 +393,18 @@
 //      $('#sign_button').hide();
 //      return;
 //    }
+
+    if (selected_request._takes_secret === true) {
+        $("#test_warning").show();
+    } else {
+        $("#test_warning").hide();
+    }
+    
+    if (selected_request._stream === true) {
+        $("#stream_output").show();
+    } else {
+        $("#stream_output").hide();
+    }
 
     if (!remote._connected) {
       remote.once('connected', function() {

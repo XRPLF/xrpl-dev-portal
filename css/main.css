@@ -193,9 +193,9 @@ body:not(.no-literate) .content > pre,
 body:not(.no-literate) .content > blockquote {
   color: #fff;
 }
-body:not(.no-literate) a {
+/*body:not(.no-literate) a {
   color: #517ab8;
-}
+}*/
 body:not(.no-literate) .content {
   width: 100%;
   overflow-x: hidden;
