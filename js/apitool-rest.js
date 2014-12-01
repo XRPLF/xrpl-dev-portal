@@ -68,14 +68,14 @@ var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA
 Request('Generate Wallet', {
     method: GET,
     path: "/v1/wallet/new",
-    description: 'Randomly generate keys for a potential new Ripple account',
+    description: 'Randomly generate keys for a potential new Ripple account.',
     link: '#generate-wallet'
 });
 
 Request('Get Account Balances', {
     method: GET,
     path: '/v1/accounts/{:address}/balances?{:query_params}',
-    description: 'Retrieve the current balances for the given Ripple account',
+    description: 'Retrieve the current balances for the given Ripple account.',
     link: '#get-account-balances',
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
@@ -86,7 +86,7 @@ Request('Get Account Balances', {
 Request('Get Account Settings', {
     method: GET,
     path: '/v1/accounts/{:address}/settings',
-    description: 'Retrieve the current settings for the given Ripple account',
+    description: 'Retrieve the current settings for the given Ripple account.',
     link: '#get-account-settings',
     params: {
         "{:address}": DEFAULT_ADDRESS_1
@@ -118,7 +118,7 @@ Request('Update Account Settings', {
 Request('Prepare Payment', {
     method: GET,
     path: '/v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}?{:query_params}',
-    description: 'Retrieve possible payment objects for a desired payment',
+    description: 'Retrieve possible payment objects for a desired payment.',
     link: '#prepare-payment',
     params: {
         "{:source_address}": DEFAULT_ADDRESS_1,
@@ -168,7 +168,7 @@ Request('Submit Payment', {
 Request("Confirm Payment", {
     method: GET,
     path: "/v1/accounts/{:address}/payments/{:id}",
-    description: "Retrieve details of a payment and its status",
+    description: "Retrieve details of a payment and its status.",
     link: "#confirm-payment",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
@@ -179,7 +179,7 @@ Request("Confirm Payment", {
 Request("Get Payment History", {
     method: GET,
     path: "/v1/accounts/{:address}/payments?{:query_params}",
-    description: "Browse through the history of payments sent and received by an account",
+    description: "Browse through the history of payments sent and received by an account.",
     link: "#get-payment-history",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
@@ -190,7 +190,7 @@ Request("Get Payment History", {
 Request("Get Trustlines", {
     method: GET,
     path: "/v1/accounts/{:address}/trustlines?{:query_params}",
-    description: "Check the status of one or more trustlines attached to an account",
+    description: "Check the status of one or more trustlines attached to an account.",
     link: "#get-trustlines",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
@@ -222,7 +222,7 @@ Request("Grant Trustline", {
 Request("Check Notifications", {
     method: GET,
     path: "/v1/accounts/{:address}/notifications/{:id}",
-    description: "Monitor an account for all kinds of transactions",
+    description: "Monitor an account for all kinds of transactions.",
     link: "#check-notifications",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
@@ -233,14 +233,14 @@ Request("Check Notifications", {
 Request("Check Connection", {
     method: GET,
     path: "/v1/server/connected",
-    description: "Check whether the REST server is connected to a rippled server",
+    description: "Check whether the REST server is connected to a rippled server.",
     link: "#check-connection"
 });
 
 Request("Get Server Status", {
     method: GET,
     path: "/v1/server",
-    description: "Retrieve information about the current status of the Ripple-REST server and the rippled server it is connected to",
+    description: "Retrieve information about the current status of the Ripple-REST server and the rippled server it is connected to.",
     link: "#get-server-status"
 });
 
@@ -257,14 +257,14 @@ Request("Retrieve Ripple Transaction", {
 Request("Retrieve Transaction Fee", {
     method: GET,
     path: "/v1/transaction-fee",
-    description: "Retrieve the current transaction fee for the connected rippled server(s)",
+    description: "Retrieve the current transaction fee for the connected rippled server(s).",
     link: "#retrieve-transaction-fee",
 });
 
 Request("Generate UUID", {
     method: GET,
     path: "/v1/uuid",
-    description: "Create a universally-unique identifier (UUID) to use as the client resource ID for a payment",
+    description: "Create a universally-unique identifier (UUID) to use as the client resource ID for a payment.",
     link: "#create-client-resource-id"
 });
 
@@ -340,12 +340,12 @@ function select_request(request) {
         $(description).html(command.description);
         
         if (command.link) {
-            $(description).append(" <a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
+            $(description).append(" <a class='link_underline' href='"+DOC_BASE+command.link+"'>Read more</a>");
         }
         
         $(description).show();
     } else if (command.link) {
-        $(description).html("<a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
+        $(description).html("<a class='link_underline' href='"+DOC_BASE+command.link+"'>Read more</a>");
     } else {
         $(description).hide();
     }
