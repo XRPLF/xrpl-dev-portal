@@ -1,8 +1,17 @@
-# WebSocket and JSON-RPC APIs #
-If you want to communicate directly with the `rippled` server, you have three fairly similar options for how to do that. All of these APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the [Ripple-REST API](ripple-rest.html) provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:
+# rippled #
 
-* The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. 
-* The JSON-RPC API relies on simple request-response communication via HTTP. For commands that prompt multiple responses, you can provide a callback URL.
+The core peer-to-peer server that operates the Ripple Network is called `rippled`. Each `rippled` server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
+
+* [Building and Installating](https://wiki.ripple.com/Rippled_build_instructions)
+* [API Reference](#api-methods)
+* [Transaction Reference](transactions.html)
+* Client Library - [Javascript](https://github.com/ripple/ripple-lib)
+
+# WebSocket and JSON-RPC APIs #
+If you want to communicate directly with the `rippled` server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Whereas the [Ripple-REST API](ripple-rest.html) provides a simplified interface on top of the WebSocket API for easier integration, these APIs provide the full power of Ripple but require slightly more complexity:
+
+* The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The `rippled` server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.
+* The JSON-RPC API relies on simple request-response communication via HTTP or HTTPS. (The `rippled` server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.
 * The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server. This is only intended for administrative purposes, and is not a supported API.
 
 In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. JSON-RPC must open and close an HTTP connection for each individual message. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. However, all three have valid use cases and will continue to be supported for the foreseeable future.
@@ -89,8 +98,11 @@ Both the WebSocket API and the JSON-RPC API use [JSON](http://www.w3schools.com/
 
 
 #### Example Request ####
+
 <div class='multicode'>
+
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -102,6 +114,7 @@ Both the WebSocket API and the JSON-RPC API use [JSON](http://www.w3schools.com/
 ```
 
 *JSON-RPC*
+
 ```
 POST http://s1.ripple.com:51234/
 {
@@ -115,10 +128,13 @@ POST http://s1.ripple.com:51234/
     ]
 }
 ```
+
 *Commandline*
+
 ```
 rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
+
 </div>
 
 ## Response Formatting ##
@@ -288,6 +304,21 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 
 When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.
 
+### Universal Errors ###
+
+All methods can potentially return any of the following values for the `error` code:
+
+* `unknownCmd` - The request does not contain a [command](#api-methods) that the `rippled` server recognizes.
+* `jsonInvalid1 - (WebSocket only) The request is not a proper JSON object. 
+    * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
+* `missingCommand` - (WebSocket only) The request did not specify a `command` field.
+    * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
+* `tooBusy` - The server is under too much load to perform this command right now. Generally not returned if you are connected as an admin.
+* `noNetwork` - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).
+* `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
+* `noClosed` - The server does not have a closed ledger, typically because it has not finished starting up.
+* `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. 
+
 ## Formatting Conventions ##
 
 The WebSocket and JSON-RPC APIs generally take the same arguments, although they're provided in a different way (See [Request Formatting](#request-formatting) for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.
@@ -346,7 +377,7 @@ If you are specifying non-XRP currency (including fiat dollars, precious metals,
 
 For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`, you would specify:
 
-```js
+```
 {
 	"currency": "USD",
 	"value": "153.75",
@@ -392,13 +423,18 @@ All changes to Ripple's global shared ledger happen as the result of transaction
 
 For more information on the various transactions you can submit, consult the [Transaction Format](transactions.html).
 
+
+
+
 # API Methods #
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.
 
 This page deals with all the Public Commands available. 
 
+
 ## List of Public Commands ##
+
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
@@ -440,11 +476,12 @@ The `rippled` application, in addition to acting as a server, can be run (as a s
 * [`json` - Pass JSON through the commandline](#json)
 
 
+
 # Managing Accounts #
 Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
 
 ## account_info ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountInfo.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
 
 The `account_info` command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger. 
 
@@ -543,8 +580,17 @@ The response follows the [standard format](#response-formatting), with the resul
 | ledger_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. ([New in version 0.26](https://ripplelabs.atlassian.net/browse/RIPD-275)) |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+
 ## account_lines ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountLines.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
 
 The `account_lines` method returns information about the account's lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 
@@ -554,6 +600,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 1,
@@ -564,6 +611,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "account_lines",
@@ -575,6 +623,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#account_lines)
@@ -587,8 +636,8 @@ The request accepts the following paramters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
-| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-provided value to specify where to resume retrieving data from. |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| marker | (Not Specified) | (Optional) Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -642,6 +691,7 @@ An example of a successful response:
 ```
 
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -883,7 +933,9 @@ An example of a successful response:
         ],
         "status": "success"
     }
-}```
+}
+```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
@@ -891,8 +943,11 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address of the account this request corresponds to |
-| lines | Array | Array of trust-line objects, as described below. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-343)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| lines | Array | Array of trust-line objects, as described below. If the number of trust-lines is large, only returns up to the `limit` at a time. |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -902,15 +957,23 @@ Each trust-line object has some combination of the following fields, although no
 | balance | String | Representation of the numeric balance currently held against this line. A positive balance means that the account holds value; a negative balance means that the account owes value. |
 | currency | String | The currency this line applies to |
 | limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
-| limit_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
+| limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
 | no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for this line |
-| no_ripple_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
-| quality_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| quality_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
+| quality\_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| quality\_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
 ## account_offers ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountOffers.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
 The `account_offers` method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.
 
@@ -920,6 +983,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -930,6 +994,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "account_offers",
@@ -943,6 +1008,7 @@ An example of the request format:
 ```
 
 *Commandline*
+
 ```
 #Syntax: account_offers account [ledger_index]
 rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
@@ -959,8 +1025,8 @@ A request can include the following parameters:
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
-| limit | Integer | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344), Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-provided value to specify where to resume retrieving data from. |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
+| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -970,6 +1036,7 @@ An example of a successful response:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 2,
@@ -993,8 +1060,8 @@ An example of a successful response:
 }
 ```
 
-Response:
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -1013,8 +1080,11 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address identifying the account that made the offers |
-| offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. |
-| marker | (Not Specified) | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-344)) Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
+| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 
 Each offer object contains the following fields:
@@ -1026,8 +1096,17 @@ Each offer object contains the following fields:
 | taker_gets | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | taker_pays | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
+
+
 ## account_tx ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountTx.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of transactions that involved the specified account.
 
@@ -1046,8 +1125,6 @@ An example of the request format:
   "ledger_index_max": -1,
   "binary": false,
   "count": false,
-  "descending": false,
-  "offset": 1,
   "limit": 2,
   "forward": false
 }
@@ -1096,7 +1173,7 @@ The request includes the following parameters:
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/AccountTxSwitch.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
 
 ##### Iterating over queried data ######
@@ -1608,8 +1685,22 @@ Each transaction object includes the following fields, depending on whether it w
 | tx_blob | String | (Binary mode only) Unique hashed String representing the transaction. |
 | validated | Boolean | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actMalformed` - If the address specified in the `account` field of the request is not formatted properly.
+* `actBitcoin` - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
+* `lgrIdxsInvalid` - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+<!-- 
+this is the part where we plug our ears and don't acknowledge that you can provide a seed to identify an account, and it might cause:
+* `badSeed`
+* `noGenDecrypt`
+-->
+
+
 ## wallet_propose ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/WalletPropose.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
 Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
 
@@ -1687,6 +1778,11 @@ The response follows the [standard format](#response-formatting), with a success
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](transactions.html#setregularkey) to do so.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
+
 
 
 # Managing Ledgers #
@@ -1694,7 +1790,7 @@ The key generated by this method can also be used as a regular key for an accoun
 The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
 
 ## ledger ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Ledger.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ledger.cpp "Source")
 
 Retrieve information about the public ledger.
 
@@ -1820,9 +1916,16 @@ The response follows the [standard format](#response-formatting), with a success
 
 The following fields are deprecated and may be removed without further notice: `hash`, `seqNum`, `totalCoins`.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
+
 
 ## ledger_closed ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/LedgerClosed.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")
 
 The `ledger_closed` method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)
 
@@ -1896,8 +1999,13 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_hash | String | 20-byte hex string with a unique hash of the ledger |
 | ledger_index | Unsigned Integer | Sequence number of this ledger |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
 ## ledger_current ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/LedgerCurrent.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
 
 The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.
 
@@ -1972,8 +2080,13 @@ The response follows the [standard format](#response-formatting), with a success
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
 ## ledger_data ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/LedgerData.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
 
 The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls in order to retrieve the entire contents of a single ledger version.
 
@@ -2214,9 +2327,15 @@ The format of each object in the `state` array depends on whether `binary` was s
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | index | String | Unique identifier for this ledger entry, as hex. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors)
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
 
 ## ledger_entry ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/LedgerEntry.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
 The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. __*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
@@ -2309,7 +2428,8 @@ An example of a successful response:
     },
     "status": "success",
     "type": "response"
-}```
+}
+```
 
 *JSON-RPC*
 ```
@@ -2345,6 +2465,14 @@ The response follows the [standard format](#response-formatting), with a success
 | node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
 | node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+
 
 # Managing Transactions #
 
@@ -2353,7 +2481,7 @@ Transactions are the only thing that can modify the shared global ledger of the 
 There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House)) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. Sending XRP, the Ripple Network's native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports balances in any currency. This brings far more power, but it also means that the system must account for [counterparty risk](http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk), currency conversions, and other issues. The Ripple Network must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.
 
 ## tx ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Tx.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
 The `tx` method retrieves information on a single transaction. 
 
@@ -2542,10 +2670,16 @@ The response follows the [standard format](#response-formatting), with a success
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various) | (Various) | Other fields from the [Transaction object](transactions.html) |
 
-__*Note:*__ If the transaction was not found, it means that the rippled server could not find it from the ledger versions on hand. However, that does not mean that the transaction does not exist; it may simply have been included in an older ledger version that the `rippled` does not have on hand anymore.
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+
+
 
 ## transaction_entry ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/TransactionEntry.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) 
 
@@ -2555,6 +2689,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 4,
@@ -2563,7 +2698,9 @@ An example of the request format:
   "ledger_index": 348734
 }
 ```
+
 *JSON-RPC*
+
 ```
 {
     "method": "transaction_entry",
@@ -2575,7 +2712,9 @@ An example of the request format:
     ]
 }
 ```
+
 *Commandline*
+
 ```
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
@@ -2743,8 +2882,19 @@ There are a couple possible reasons the server may fail to find the transaction:
 * The transaction exists, but not in the specified ledger version
 * The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
+* `notYetImplemented` - A ledger version was not specified in the request.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
+
+<!-- I think ledgerNotFound ( https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/TransactionEntry.cpp#L62 ) should not occur because lookupLedger would have errored out first. -->
+
+
 ## tx_history ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/TxHistory.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
 
 The `tx_history` method retrieves a selection of the most recent transactions made.
 
@@ -3623,8 +3773,15 @@ The response follows the [standard format](#response-formatting), with a success
 
 The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](transactions.html) for details.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
+
+
 ## path_find ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/PathFind.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
 *WebSocket API only!* The `path_find` method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. 
 
@@ -3637,7 +3794,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (__*Note:*__ A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 ### path_find create ###
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/PathFind.cpp#L38 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L38 "Source")
 
 The `create` subcommand of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
 
@@ -4065,6 +4222,12 @@ Each element in the `alternatives` array is an object that represents a path fro
 |-------|------|-------------|
 | paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
 | source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 
 #### Asynchronous Follow-ups ####
 
@@ -4916,7 +5079,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
 </div>
 
 ### path_find close ###
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/PathFind.cpp#L46 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L46 "Source")
 
 The `close` subcommand of `path_find` instructs the server to stop sending information about the current open pathfinding request.
 
@@ -4944,8 +5107,15 @@ The request includes the following parameters:
 
 If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - If any fields are specified incorrectly, or any required fields are missing.
+* `noEvents` - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
+
 ### path_find status ###
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/PathFind.cpp#L57 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L57 "Source")
 
 The `status` subcommand of `path_find` requests an immediate update about the client's currently-open pathfinding request.
 
@@ -4973,9 +5143,16 @@ The request includes the following parameters:
 
 If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See [RIPD-293](https://ripplelabs.atlassian.net/browse/RIPD-293) for more information.)
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
+
 
 ## ripple_path_find ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/RipplePathFind.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response to be used to make a payment transaction immediately. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use [`path_find`](#path-find) instead where possible.
 
@@ -4986,6 +5163,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
     "id": 8,
@@ -5009,6 +5187,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "ripple_path_find",
@@ -5035,6 +5214,7 @@ An example of the request format:
 ```
 
 *Commandline*
+
 ```
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
@@ -5057,8 +5237,10 @@ The request includes the following parameters:
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
     "id": 8,
@@ -5167,6 +5349,7 @@ An example of a successful response:
 ```
 
 *JSON-RPC*
+
 ```
 200 OK
 {
@@ -5286,13 +5469,28 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | Field | Type | Description |
 |-------|------|-------------|
-| paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
-| source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+| paths\_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
+| source\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `tooBusy` - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `srcActMissing` - The `source_account` field is omitted from the request.
+* `srcActMalformed` - The `source_account` field in the request is not formatted properly.
+* `dstActMissing` - The `destination_account` field is omitted from the request.
+* `dstActMalformed` - The `destination_account` field in the request is not formatted properly.
+* `srcCurMalformed` - The `source_currencies` field is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more of the currency objects in the request is not valid.
+
+
+
+
 ## sign ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Sign.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Sign.cpp "Source")
 
 The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction JSON and secret key.
 
@@ -5444,8 +5642,17 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * Do not paste this error to a public place for debugging
 * Do not display the error message on a website, even by accident
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one.
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
+
+
 ## submit ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Submit.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
 The `submit` method sends a [transaction](transactions.html) to the network to be confirmed and included in future ledgers. 
 
@@ -5653,8 +5860,22 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * Do not paste an error including your secret to a public place for debugging
 * Do not display an error message including your secret on a website, even by accident
 
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidTransaction` - The transaction is malformed or otherwise invalid.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
+* `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+
+
 ## book_offers ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/BookOffers.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.
 
@@ -5663,6 +5884,7 @@ An example of the request format:
 
 <div class='multicode'>
 *WebSocket*
+
 ```
 {
   "id": 4,
@@ -5681,8 +5903,8 @@ An example of the request format:
 }
 ```
 
-Request:
 *JSON-RPC*
+
 ```
 {
     "method": "book_offers",
@@ -5705,8 +5927,9 @@ Request:
 ```
 
 *Commandline*
+
 ```
-#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit [proof [marker]]]]] [autobridge]
+#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 </div>
@@ -5717,11 +5940,14 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| limit | Unsigned Integer | (Optional) If provided, the server will not provide more than this many offers in the results. *Note:* Depending on the number of unfunded orders in the ledger, fewer results may be returned. |
 | taker | String | (Optional, defaults to [ACCOUNT_ONE](https://ripple.com/wiki/Accounts#ACCOUNT_ONE)) Unique base-58 address of an account to use as point-of-view. (This affects which unfunded offers are returned.) 
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
-__*Note:*__ The other parameters of this command -- `marker`, `limit`, `proof`, and `autobridge` -- are not yet fully implemented. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295)).
+__*Note:*__ The other parameters of this command -- `marker`, `proof`, and `autobridge` -- cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
 
 Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.
 
@@ -5820,6 +6046,19 @@ In addition to the standard Offer fields, the following fields may be included i
 | taker_pays_funded | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer.
 | quality | Number | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `srcCurMalformed` - The `taker_pays` field in the request is not formatted properly.
+* `dstAmtMalformed` - The `taker_gets` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of the `taker_pays` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of the `taker_gets` field in the request is not valid.
+* `badMarket` - The desired order book does not exist; for example, offers to exchange a currency for itself.
+
+
+
 
 # Subscriptions #
 
@@ -5828,7 +6067,7 @@ Using subscriptions, you can have the server push updates to your client when va
 JSON-RPC support for subscription callbacks is deprecated and may not work as expected.
 
 ## subscribe ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Subscribe.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 
 The `subscribe` method requests periodic notifications from the server when certain events happen. 
 
@@ -5921,6 +6160,21 @@ The response follows the [standard format](#response-formatting). The fields con
 * *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The request included the `url` field, but you are not connected as an admin.
+* `unknownStream` - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
+* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+
 
 ### Subscription Stream Messages ###
 
@@ -6087,7 +6341,7 @@ The `accounts_proposed` subscription works the same way, except it also includes
 
 
 ## unsubscribe ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Unsubscribe.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
 The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
 
@@ -6157,12 +6411,30 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `noPermission` - The request included the `url` field, but you are not connected as an admin.
+* *Unknown Stream* - One or more the members of the `streams` field in the request was not recognized as a valid stream name. (The response does not use an exact code; this is a bug. See [RIPD-702](https://ripplelabs.atlassian.net/browse/RIPD-702) for details and status.)
+* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (__*Note*__: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)
+* `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
+* `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
+* `srcIsrMalformed` - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
+* `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
+* `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+
+
+
+
+
 # Server Information #
 
 There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.
 
 ## server_info ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/ServerInfo.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the server for a human-readable version of various information about the `rippled` server being queried.
 
@@ -6295,10 +6567,14 @@ The `info` object may have some arrangement of the following fields:
 
 <!--Note: keep the above table up-to-date with the Get Server Status method in the Ripple-REST documentation -->
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
 
 
 ## server_state ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/ServerState.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp "Source")
 
 The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The results are very similar to [`server_info`](#server-info), but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
 
@@ -6430,12 +6706,19 @@ The `state` object may have some arrangement of the following fields:
 | validated_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
 | validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+
+
 # Convenience Functions #
 
 The rippled server also provides a few simple commands purely for convenience.
 
 ## ping ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Ping.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
 
 The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
 
@@ -6475,6 +6758,7 @@ The request includes no parameters.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 *WebSocket*
 ```
@@ -6499,8 +6783,13 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
 ## random ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/rpc/handlers/Random.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 
@@ -6569,6 +6858,12 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | random | String | Random 256-bit hex value. |
 
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `internal` - Some internal error occurred, possibly relating to the random number generator.
+
+
 ## json ##
 
 The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client*, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. 
@@ -6587,8 +6882,11 @@ rippled -q -- json ledger_closed '{}'
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
+
 *WebSocket*
+
 ```
 {
    "result" : {
@@ -6597,8 +6895,8 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.

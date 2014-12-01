@@ -4,8 +4,6 @@ The Ripple-REST API provides a simplified, easy-to-use interface to the Ripple N
 
 We recommend Ripple-REST for users just getting started with Ripple, since it provides high-level abstractions and convenient simplifications in the data format. If you prefer to access a `rippled` server directly, you can use [rippled's WebSocket or JSON-RPC APIs](rippled-apis.html) instead, which provide the full power of Ripple at the cost of more complexity.
 
-Installation instructions and source code can be found in the [Ripple-REST repository](https://github.com/ripple/ripple-rest).
-
 
 ## Available API Routes ##
 
@@ -18,9 +16,9 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Payments ####
 
-* [Prepare Payment - `GET /v1/accounts/{:address}/payments/paths`](#prepare-payment)
-* [Submit Payment - `POST /v1/accounts/{:address}/payments`](#submit-payment)
-* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
+* [Prepare Payment - `GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}`](#prepare-payment)
+* [Submit Payment - `POST /v1/accounts/{:source_address}/payments`](#submit-payment)
+* [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:id}`](#confirm-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Trustlines ####
@@ -30,7 +28,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Notifications ####
 
-* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:transaction_hash}`](#check-notifications)
+* [Check Notifications - `GET /v1/accounts/{:address}/notifications/{:id}`](#check-notifications)
 
 #### Status ####
 
@@ -39,7 +37,7 @@ Installation instructions and source code can be found in the [Ripple-REST repos
 
 #### Utilities ####
 
-* [Retrieve Ripple Transaction - `GET /v1/transactions/{:transaction-hash}`](#retrieve-ripple-transaction)
+* [Retrieve Ripple Transaction - `GET /v1/transactions/{:id}`](#retrieve-ripple-transaction)
 * [Retrieve Transaction Fee - `GET /v1/transaction-fee`](#retrieve-transaction-fee)
 * [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
@@ -75,29 +73,40 @@ Note that when you submit a payment for processing, you have to assign a unique 
 
 ### Transaction Types ###
 
-The Ripple protocol supports multiple types of transactions other than just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
+The Ripple protocol supports multiple types of transactions, not just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.
 
  * Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's [Payment transaction type](transactions.html#payment))
- * Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#payment))
- * Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#payment))
+ * Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's [TrustSet transaction type](transactions.html#trustset))
+ * Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's [AccountSet transaction type](transactions.html#accountset))
+ 
+### Client Resource IDs ###
 
-## Getting Started ##
+All Ripple transactions are identified by a unique hash, which is generated with the fields of the transaction. Ripple-REST uses an additional type of identifier, called a Client Resource ID, which is an arbitrary string provided at the time a transaction is submitted.
 
-### Setup ###
+A client resource ID generally maps to one Ripple transaction. However, if Ripple-REST re-submits a failed transaction, the client resource ID can become associated with the new transaction, which may have slightly different properties (such as the deadline for it to succeed) and therefore a different transaction hash.
+
+You can create client resource IDs using any method you like, so long as you follow some simple rules:
+
+* Do not reuse identifiers. 
+* A client resource ID cannot be a 256-bit hex string, because that is ambiguous with Ripple transaction hashes.
+* Client resource IDs must be properly [encoded](http://tools.ietf.org/html/rfc3986#section-2.1) when provided as part of a URL.
+
+You can use the [Create Client Resource ID](#create-client-resource-id) method in order to generate new Client Resource IDs.
+
+## Using Ripple-REST ##
 
 You don't need to do any setup to retrieve information from a public Ripple-REST server. Ripple Labs hosts a public Ripple-REST server here:
 
 `https://api.ripple.com`
 
-However, in order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/).
+If you want to run your own Ripple-REST server, see the [installation instructions](#running-ripple-rest).
+
+In order to submit payments or other transactions, you need an activated Ripple account. See the [online support](https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation) for how you can create an account using the [Ripple Trade client](https://rippletrade.com/).
 
 Make sure you know both the account address and the account secret for your account:
 
  * The *address* can be found by clicking the *Show Address* button in the __Fund__ tab of Ripple Trade
  * The *secret* is provided when you first create your account. **WARNING: If you submit your secret to a server you do not control, your account can be stolen, along with all the money in it.** We recommend using a test account with very limited funds on the public Ripple-REST server.
-
-If you want to run your own Ripple-REST server, see the [installation instructions](https://github.com/ripple/ripple-rest/#installing-and-running).
-
 
 As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (`HTTPS`) GET and POST requests. For testing, there are lots of options, including:
 
@@ -108,92 +117,6 @@ As a programmer, you will also need to have a suitable HTTP client that allows y
 You can also use the [REST API Tool](rest-api-tool.html) here on the Dev Portal to try out the API.
 
 [Try it! >](rest-api-tool.html)
-
-### Quick Start ###
-
-`ripple-rest` requires Node.js and uses sqlite3 as it's database.
-
-Follow these instructions to get your `ripple-rest` server installed and running
-
-1. Run `git clone https://github.com/ripple/ripple-rest.git` in a terminal and switch into the `ripple-rest` directory
-2. Install dependencies needed: `npm install`
-3. Copy the config example to config.json: `cp config-example.json config.json`
-5. Run `node server.js` to start the server
-6. Visit [`http://localhost:5990`](http://localhost:5990) to view available endpoints and to get started
-
-
-## Configuring `ripple-rest` ###
-
-The `ripple-rest` server loads configuration options from the following sources, according to the following hierarchy (where options from 1. override those below it):
-
-1. Command line arguments
-2. Environment variables
-3. The `config.json` file
-
-The path to the `config.json` file can be specified as a command line argument (`node server.js --config /path/to/config.json`). If no path is specified, the default location for that file is in `ripple-rest`'s root directory.
-
-Available configuration options are outlined in the [__Server Configuration__](docs/server-configuration.md) document and an example configuration file is provided [here](config-example.json).
-
-`ripple-rest` uses the [nconf](https://github.com/flatiron/nconf) configuration loader so that any options that can be specified in the `config.json` file can also be specified as command line arguments or environment variables.
-
-
-## Debug mode ##
-The server can be run in Debug Mode by running `node server.js --debug`.
-
-
-## Running ripple-rest securely over SSL ##
-1. Create SSL certificate to encrypt traffic to and from the `ripple-rest` server.
-
-```bash
-openssl genrsa -out /etc/ssl/private/server.key 2048
-openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
--batch
-openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
--out /etc/ssl/certs/server.crt -sha512
-```
-
-2. Modify the `config.json` to enable SSL and specify the paths to the `certificate` and `key` files
-
-```
-  "ssl_enabled": true,
-  "ssl": {
-    "key_path": "./certs/server.key",
-    "cert_path": "./certs/server.crt"
-  },
-
-```
-
-## Deployment tips
-Run `ripple-rest` using [`forever`](https://www.npmjs.org/package/forever). `node` and `npm` are required. Install `forever` using `sudo npm install -g forever`.
-
-Example of running `ripple-rest` using `forever`:
-```
-forever start \
-    --pidFile /var/run/ripple-rest/ripple-rest.pid \
-    --sourceDir /opt/ripple-rest \
-    -a -o /var/log/ripple-rest/ripple-rest.log \
-    -e /var/log/ripple-rest/ripple-rest.err \
-    -l /var/log/ripple-rest/ripple-rest.for \
-    server.js
-```
-
-Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
-
-Example of a monit script that will restart the server if:
-- memory goes up over 25%
-- the server fails responding to server status
-```
-set httpd port 2812 and allow localhost
-
-check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
-    start program = "/etc/init.d/ripple-rest start"
-    stop program = "/etc/init.d/ripple-rest stop"
-    if memory > 25% then restart
-    if failed port 5990 protocol HTTP
-        and request "/v1/server"
-    then restart
-```
-
 
 ### Exploring the API ###
 
@@ -239,6 +162,110 @@ If you want to connect to your own server, just replace the hostname and port wi
 http://localhost:5990/v1/server
 
 Since the hostname depends on where your chosen Ripple-REST instance is, the methods in this document are identified using only the part of the path that comes after the hostname.
+
+# Running Ripple-REST #
+## Quick Start ##
+
+Ripple-REST requires [Node.js](http://nodejs.org/) and [sqlite 3](http://www.sqlite.org/). Before starting, you should make sure that you have both installed. 
+
+Following that, use these instructions to get Ripple-REST installed and running:
+
+1. Clone the Ripple-REST repository with git:
+    `git clone https://github.com/ripple/ripple-rest.git`
+2. Switch to the `ripple-rest` directory:
+    `cd ripple-rest`
+3. Use *npm* to install additional dependencies:
+    `npm install`
+4. Copy the example config file to `config.json`:
+    `cp config-example.json config.json`
+5. Start the server:
+    `node server.js`
+6. Visit [http://localhost:5990](http://localhost:5990) in a browser to view available endpoints and get started
+
+
+## Configuring `ripple-rest` ##
+
+The Ripple-REST server uses [nconf](https://github.com/flatiron/nconf) to load configuration options from several sources. Settings from sources earlier in the following hierarchy override settings from the later levels:
+
+1. Command line arguments
+2. Environment variables
+3. The `config.json` file
+
+The path to the `config.json` file can be specified as a command line argument (`node server.js --config /path/to/config.json`). If no path is specified, the default location for that file is Ripple-REST's root directory.
+
+Available configuration options are outlined in the [__Server Configuration__](https://github.com/ripple/ripple-rest/blob/develop/docs/server-configuration.md) document. The `config-example.json` file in the root directory contains a sample configuration.
+
+
+## Debug mode ##
+The server can be run in Debug Mode by running `node server.js --debug`.
+
+
+## Running Ripple-REST securely over SSL ##
+
+We highly recommend running Ripple-REST securely over SSL. Doing so requires a certificate. For development and internal-only deployments, you can use a self-signed certificate. For production servers that are accessed over untrusted network connections, you should purchase a cert from a proper authority.
+
+You can perform the following steps to generate a self-signed cert with [OpenSSL](https://www.openssl.org/) and configure Ripple-REST to use it:
+
+1. Generate the SSL certificate:
+
+```bash
+openssl genrsa -out /etc/ssl/private/server.key 2048
+openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
+-batch
+openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
+-out /etc/ssl/certs/server.crt -sha512
+```
+
+2. Modify the `config.json` to enable SSL and specify the paths to the `certificate` and `key` files
+
+```
+  "ssl_enabled": true,
+  "ssl": {
+    "key_path": "./certs/server.key",
+    "cert_path": "./certs/server.crt"
+  },
+
+```
+
+## Deployment Tips ##
+
+### Keeping the service running ###
+
+To make sure that the Ripple-REST process remains active even if it crashes for some reason, use the  [`forever`](https://www.npmjs.org/package/forever) Node module. Install `forever` using `sudo npm install -g forever`.
+
+Here is an example of running `ripple-rest` using `forever`:
+
+```
+forever start \
+    --pidFile /var/run/ripple-rest/ripple-rest.pid \
+    --sourceDir /opt/ripple-rest \
+    -a -o /var/log/ripple-rest/ripple-rest.log \
+    -e /var/log/ripple-rest/ripple-rest.err \
+    -l /var/log/ripple-rest/ripple-rest.for \
+    server.js
+```
+
+### Monitoring the service ###
+
+Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
+
+Here is an example of a monit script that will restart the server if:
+
+- memory usage surpasses 25% of the server's available memory
+- the server fails responding to server status
+
+```
+set httpd port 2812 and allow localhost
+
+check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
+    start program = "/etc/init.d/ripple-rest start"
+    stop program = "/etc/init.d/ripple-rest stop"
+    if memory > 25% then restart
+    if failed port 5990 protocol HTTP
+        and request "/v1/server"
+    then restart
+```
+
 
 
 
@@ -488,8 +515,7 @@ GET /v1/wallet/new
 ```
 </div>
 
-[Try it! >](rest-api-tool.html#generate-account)
-<!-- not a typo; waiting for the tool to be updated -->
+[Try it! >](rest-api-tool.html#generate-wallet)
 
 There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.
 
@@ -511,7 +537,7 @@ The response is an object with the address and the secret for a potential new ac
 }
 ```
 
-The second step is [making a payment](#making-payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
+The second step is [making a payment](#payments) of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.
 
 
 
@@ -536,17 +562,17 @@ The following URL parameters are required by this API endpoint:
 |-------|------|-------------|
 | address | String | The Ripple account address of the account whose balances to retrieve. |
 
-Optionally, you can also include the following query parameters:
+Optionally, you can also include any of the following query parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
-| marker | String | Start position in response paging. |
-| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
-| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+| marker | String | Server-provided value that marks where to resume pagination. |
+| limit | Integer | (Defaults to 10) Max results per response. Cannot be less than 10. |
+| ledger | String (ledger hash) | Identifying hash of the ledger version to pull results from. |
 
-*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
 
 #### Response ####
 
@@ -590,8 +616,8 @@ GET /v1/accounts/{:address}/settings
 
 The following URL parameters are required by this API endpoint:
 
-| Field | Value | Description |
-|-------|-------|-------------|
+| Field   | Value | Description |
+|---------|-------|-------------|
 | address | String | The Ripple account address of the account whose settings to retrieve. |
 
 #### Response ####
@@ -633,7 +659,7 @@ The response contains a `settings` object, with the following fields:
 | email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | wallet_locator | String | (Not used) |
 | wallet_size | String | (Not used) |
-| message_key | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
+| message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
 | domain | String | The domain that holds this account. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
 
 
@@ -680,9 +706,9 @@ The request body must be a JSON object with the following fields:
 
 Optionally, you can include the following as a URL query parameter:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the account transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+| Field     | Type    | Description |
+|-----------|---------|-------------|
+| validated | Boolean | If `true`, the server waits to respond until the account transaction has been successfully validated by the network. A validated transaction has `state` field of the response set to `"validated"`. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
@@ -714,7 +740,7 @@ The `settings` object can contain any of the following fields (any omitted field
     "email_hash": "98b4375e1d753e5b91627516f6d70977",
     "state": "pending",
     "ledger": "9248628",
-    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6",
+    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6"
   }
 }
 ```
@@ -745,7 +771,7 @@ Get quotes for possible ways to make a particular payment.
 *REST*
 
 ```
-GET /v1/accounts/{:address}/payments/paths/{:destination_account}/{:destination_amount}
+GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}
 ```
 </div>
 
@@ -831,32 +857,31 @@ POST /v1/accounts/{address}/payments?validated=true
 
 [Try it! >](rest-api-tool.html#submit-payment)
 
-The following parameters are required in the JSON body of the request:
+The JSON body of the request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | payment | [Payment object](#payment_object) | The payment to send. You can generate a payment object using the [Prepare Payment](#prepare-payment) method. |
-| client_resource_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
+| client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+| last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
+| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow, as a decimal amount of XRP. If omitted, the server picks a static fee instead. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 Optionally, you can include the following as a URL query parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the payment has been successfully validated by the server. Response format in this case will match [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment) |
+| validated | Boolean | If `true`, the server waits to respond until the payment has been successfully validated by the network and returns the payment object. Otherwise, the server responds immediately with a message indicating that the transaction was received for processing. |
 
-Optionally, you can also include the following as a JSON body parameter:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| last_ledger_sequence | String | A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max_fee | String | A string representation of a fee amount in drops. If this parameter is not set, it defaults to a median of the connected ripple server fees |
-
-__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
 #### Response ####
 
-*Note:* This response holds when the validated query parameter is not set or set to `false`. For responses with validated `true`, please refer to [`GET /v1/accounts/{:address}/payments/{:payment}`](#confirm-payment)
+The response can take two formats, depending on the `validated` query parameter:
+
+* If `validated` is set to `true`, then the response matches the format from [Confirm Payment](#confirm-payment).
+* If `validated` is omitted or set to `false`, then the response is a JSON object as follows:
 
 ```js
 {
@@ -868,10 +893,11 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 
 | Field | Type | Description |
 |-------|------|-------------|
+| success | Boolean | A value of `true` only indicates that the request was received, not that the transaction was processed. |
 | client_resource_id | String | The client resource ID provided in the request |
 | status_url | String | A URL that you can GET to check the status of the request. This refers to the [Confirm Payment](#confirm-payment) method. |
 
-#### Response (With Validated Parameter) ####
+
 
 ## Confirm Payment ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L232 "Source")
@@ -1541,7 +1567,7 @@ Get a notification for the specific transaction hash, along with links to previo
 *REST*
 
 ```
-GET /v1/accounts/{:address}/notifications/{:transaction_hash}
+GET /v1/accounts/{:address}/notifications/{:id}
 ```
 </div>
 
@@ -1552,7 +1578,7 @@ The following URL parameters are required by this API endpoint:
 | Field | Value | Description |
 |-------|-------|-------------|
 | address | String | The Ripple account address of an account involved in the transaction. |
-| hash | String | A unique hash identifying the Ripple transaction that this notification describes |
+| id | String | A unique identifier for the transaction this notification describes -- either a client resource ID or a Ripple transaction hash |
 
 You can find a transaction `hash` in a few places:
 
@@ -1720,7 +1746,7 @@ Returns a Ripple transaction, in its complete, original format.
 *REST*
 
 ```
-GET /v1/transactions/{:transaction_hash}
+GET /v1/transactions/{:id}
 ```
 </div>
 
@@ -1730,7 +1756,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash | String | A unique hash identifying the Ripple transaction to retrieve |
+| hash | String | A unique identifier for the Ripple transaction to retrieve -- either a client resource ID or a Ripple transaction hash. |
 
 #### Response ####
 
@@ -1915,10 +1941,11 @@ The result is a JSON object, whose `transaction` field has the requested transac
 
 
 ## Retrieve Transaction Fee ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L42 "Source")
 
 (New in [Ripple-REST v1.3.1](https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1))
 
-Retrieve the current transaction fee for the rippled server `ripple-rest` is connected to. If `ripple-rest` is connected to multiple rippled servers, the median fee between the connected servers is calculated.
+Retrieve the current transaction fee, in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
 
 <div class='multicode'>
 *REST*
@@ -1932,13 +1959,14 @@ GET /v1/transaction-fee
 
 #### Response ####
 
+The response is a JSON object, whose `fee` field is a string containing a decimal amount of XRP that the `rippled` server requires to be destroyed in order to process and relay the transaction to the network.
+
 ```js
 {
   "success": true,
-  "fee": "12000"
+  "fee": "0.012"
 }
 ```
-
 
 
 ## Create Client Resource ID ##

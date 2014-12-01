@@ -11,10 +11,8 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Flatdoc -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/legacy.js'></script>
-  <script src='https://dev.ripple.com/vendor/flatdoc/v/0.8.0/flatdoc.js'></script>
+  <!-- jQuery -->
+  <script src="vendor/jquery-1.11.1.min.js"></script>
 
    <!-- Bootstrap -->
 
@@ -23,40 +21,12 @@
 
 
   <!-- Custom Stylesheet -->
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:600italic,400,700,300' rel='stylesheet' type='text/css'>
+  <link href="font/fonts.css" rel="stylesheet" type="text/css">
   <link  href='css/main.css' rel='stylesheet'>
   <link  href='css/custom.css' rel='stylesheet'>
 
 	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
 	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
-
-
-
-  <!-- start Mixpanel -->
-  <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
-typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
-b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
-mixpanel.init("132d42885e094171f34467fc54da6fab");
-  </script>
-
-  <script>if (window.location.host == "dev.ripple.com") { mixpanel.track("rest-api-tool"); }</script>
-  <!-- end Mixpanel -->
-
-  <!-- start google analytics -->
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-49188512-1', 'ripple.com');
-  ga('send', 'pageview');
-
-  </script>
-  <!-- end google analytics -->
-
-
 
 
   <!-- Temporary shims until I modify the css directly -->
@@ -75,11 +45,19 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://dev.ripple.com/"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-			<li><a href="/">Resources</a></li>
+			<li class="dropdown">
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="rippled-apis.html">rippled API Reference</a></li>
+                <li><a href="ripple-rest.html">REST API Reference</a></li>
+                <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
+                <li><a href="transactions.html">Transaction Format</a></li>
+              </ul>
+            </li>
             <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
@@ -94,7 +72,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
           </ul>
           	<div class='right'>
 		 	 <!-- GitHub buttons -->
-		 		 <iframe src="https://dev.ripple.com/vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+		 		 <iframe src="vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 			</div>
         </div><!--/.nav-collapse -->
       </div>
@@ -206,27 +184,6 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
 						</ul>
 
 				</div>
-				<div class="col-md-4 mail_chimp">
-				<p>Join the mailing list!</p>
-				<label for="mce-EMAIL">Email address</label>
-					<!-- Begin MailChimp Signup Form -->
-						<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-						<style type="text/css">
-							#mc_embed_signup{clear:left; font:14px; }
-
-						</style>
-						<div id="mc_embed_signup">
-						<form action="//ripple.us4.list-manage.com/subscribe/post?u=245dbc1c47849f034390dc5bf&amp;id=4dfbe160d0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-
-							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="" required>
-							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-							<div style="position: absolute; left: -5000px; top: -50px;"><input type="text" name="b_245dbc1c47849f034390dc5bf_4dfbe160d0" tabindex="-1" value=""></div>
-							<input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
-						</form>
-						</div>
-
-					<!--End mc_embed_signup-->
-				</div>
       		</div>
 
       </div>
@@ -235,7 +192,7 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
   <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
   <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
   <script type='text/javascript' src='js/es5-shim.js'></script>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/codemirror/3.16.0/codemirror.min.js'></script>
+  <script src='vendor/codemirror.min.js'></script>
   <script type='text/javascript' src='js/cm-javascript.min.js'></script>
   <script type='text/javascript' src='js/jquery.autosize.input.min.js'></script>
   <script type='text/javascript' src='js/apitool-rest.js'></script>

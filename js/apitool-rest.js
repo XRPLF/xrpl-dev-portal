@@ -95,12 +95,13 @@ Request('Get Account Settings', {
 
 Request('Update Account Settings', {
     method: POST,
-    path: '/v1/accounts/{:address}/settings',
+    path: '/v1/accounts/{:address}/settings?{:query_params}',
     description: 'Change the current settings for the given Ripple account.',
     link: '#update-account-settings',
     test_only: true,
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     },
     body: {
         secret: "sssssssssssssssssssssssssssss",
@@ -129,7 +130,7 @@ Request('Prepare Payment', {
 
 Request('Submit Payment', {
     method: POST,
-    path: '/v1/accounts/{:source_address}/payments',
+    path: '/v1/accounts/{:source_address}/payments?{:query_params}',
     description: 'Send a prepared payment to the network.',
     link: '#submit-payment',
     test_only: true,
@@ -159,18 +160,19 @@ Request('Submit Payment', {
         }
     },
     params: {
-        "{:source_address}": DEFAULT_ADDRESS_1
+        "{:source_address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     }
 });
 
 Request("Confirm Payment", {
     method: GET,
-    path: "/v1/accounts/{:address}/payments/{:hash}",
+    path: "/v1/accounts/{:address}/payments/{:id}",
     description: "Retrieve details of a payment and its status",
     link: "#confirm-payment",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
@@ -198,12 +200,13 @@ Request("Get Trustlines", {
 
 Request("Grant Trustline", {
     method: POST,
-    path: "/v1/accounts/{:address}/trustlines",
+    path: "/v1/accounts/{:address}/trustlines?{:query_params}",
     description: "Add or modify a trustline from this account.",
     link: "#grant-trustline",
     test_only: true,
     params: {
-        "{:address}": DEFAULT_ADDRESS_1
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
     },
     body: {
         "secret": "sneThnzgBgxc3zXPG....",
@@ -218,12 +221,12 @@ Request("Grant Trustline", {
 
 Request("Check Notifications", {
     method: GET,
-    path: "/v1/accounts/{:address}/notifications/{:hash}",
+    path: "/v1/accounts/{:address}/notifications/{:id}",
     description: "Monitor an account for all kinds of transactions",
     link: "#check-notifications",
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
@@ -243,11 +246,11 @@ Request("Get Server Status", {
 
 Request("Retrieve Ripple Transaction", {
     method: GET,
-    path: "/v1/transactions/{:hash}",
+    path: "/v1/transactions/{:id}",
     description: "Retrieve a raw Ripple transaction",
     link: "#retrieve-ripple-transaction",
     params: {
-        "{:hash}": DEFAULT_HASH
+        "{:id}": DEFAULT_HASH
     }
 });
 
@@ -334,10 +337,15 @@ function select_request(request) {
     }
 
     if (command.description) {
-        $(description).html($('<a>')
-            .attr('href', DOC_BASE+command.link)
-            .html(command.description));
+        $(description).html(command.description);
+        
+        if (command.link) {
+            $(description).append(" <a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
+        }
+        
         $(description).show();
+    } else if (command.link) {
+        $(description).html("<a class='btn btn-primary' href='"+DOC_BASE+command.link+"'>Read more</a>");
     } else {
         $(description).hide();
     }
@@ -467,6 +475,6 @@ $(document).ready(function() {
       $(el).siblings().removeClass('selected');
       $(el).addClass('selected');
     } else {
-      select_request('generate-account');
+      select_request('generate-wallet');
     }
 });

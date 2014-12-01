@@ -82,7 +82,6 @@ h2 {
   height: 100%;
 }
 #io_wrapper > div {
-  display:table-row;
   width:100%;
   margin:0;
   padding:0;
@@ -178,12 +177,12 @@ h3 {
 */
   margin-top: 5px;
 }
-#request_button {
+/*#request_button {
   background-color: #346AA9;
 }
 #request_button.depressed {
   background:#295F7A;
-}
+}*/
 #sign_button {
   display:none;
   background:#42602D;
@@ -282,7 +281,7 @@ ul.toolbar li {
 #status > div {
   border-bottom:1px dotted #aaa;
 }
-#description {
+/*#description {
   margin-top:10px;
   padding:15px;
   border-radiuS:4px;
@@ -290,7 +289,7 @@ ul.toolbar li {
   color:#3a87ad;
   background:#d9edf7;
   border:1px dotted #3a87ad;
-}
+}*/
 
 /*#selected_command {
   margin-top:-32px;
