@@ -730,6 +730,7 @@ Both the `engine_result` and the `meta.TransactionResult` use standard codes to 
 | Retry                 | ter    | The transaction could not be applied, but it might be possible to apply later. |
 | Success               | tes    | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
 | Claimed fee only      | tec    | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
+| Client library error  | tej    | (ripple-lib only) The transaction was not submitted, because the client library blocked it, as part of its additional error checking. |
 
 ## Claimed Fee Justification ##
 
