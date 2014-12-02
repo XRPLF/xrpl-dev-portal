@@ -569,7 +569,7 @@ Optionally, you can also include any of the following query parameters:
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
 | marker | String | Server-provided value that marks where to resume pagination. |
-| limit | Integer | (Defaults to 10) Max results per response. Cannot be less than 10. |
+| limit | Integer | (Defaults to 10) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
 | ledger | String (ledger hash) | Identifying hash of the ledger version to pull results from. |
 
 *Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
@@ -579,6 +579,7 @@ Optionally, you can also include any of the following query parameters:
 ```js
 {
   "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
   "balances": [
     {
       "currency": "XRP",
@@ -594,6 +595,8 @@ Optionally, you can also include any of the following query parameters:
   ]
 }
 ```
+
+*Note:* `marker` will be present in the response when there are additional pages to page through.
 
 There will be one entry in the `balances` array for the account's XRP balance, and additional entries for each combination of currency code and issuer.
 
@@ -1449,10 +1452,10 @@ Optionally, you can also include the following query parameters:
 | currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency. |
 | counterparty | String (Address) | Filter results to include only trustlines to the given account. |
 | marker | String | Start position in response paging. |
-| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
+| limit | String (Integer) | (Defaults to 10) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
 | ledger | String | Ledger to request paged results from. Use the ledger's hash. |
 
-*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
 
 #### Response ####
 
@@ -1461,6 +1464,7 @@ The response is an object with a `lines` array, where each member is a [trustlin
 ```js
 {
   "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
   "lines": [
     {
       "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
@@ -1484,7 +1488,7 @@ The response is an object with a `lines` array, where each member is a [trustlin
 }
 ```
 
-
+*Note:* `marker` will be present in the response when there are additional pages to page through.
 
 ## Grant Trustline ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L88 "Source")
