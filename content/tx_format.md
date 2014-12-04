@@ -1,4 +1,4 @@
-# Transactions #
+| # Transactions #
 
 A *Transaction* is the only way to modify the Ripple Ledger. All transactions have certain fields in common:
 
@@ -720,6 +720,8 @@ __*Note:*__ A successful result at this stage does not indicate that the transac
 
 To see the final result of a transaction, look at the `meta.TransactionResult` field that is returned as part of the response to the [`tx` command](rippled-apis.html#tx), [`account_tx` command](rippled-apis.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus. 
 
+## Result Categories ##
+
 Both the `engine_result` and the `meta.TransactionResult` use standard codes to identify the results of transactions, as follows:
 
 | Category              | Prefix | Description |
@@ -731,6 +733,10 @@ Both the `engine_result` and the `meta.TransactionResult` use standard codes to 
 | Success               | tes    | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
 | Claimed fee only      | tec    | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
 | Client library error  | tej    | (ripple-lib only) The transaction was not submitted, because the client library blocked it, as part of its additional error checking. |
+
+The distinction between a local error (`tel`) and a malformed transaction (`tem`) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a `tel` error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.
+
+By contrast, a `tem` error implies that no server anywhere can apply the transaction, regardless of settings. Either the transaction breaks the rules of the protocol, it is unacceptably ambiguous, or it is completely nonsensical. The only way a malformed transaction could become valid is through changes in the protocol; for example, if a new feature is adopted, then transactions using that feature could be considered malformed by servers that are running older software which predates that feature.
 
 ## Claimed Fee Justification ##
 
@@ -751,3 +757,135 @@ There are several ways a transaction's failure could become permanent:
 * If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
 * If the `Sequence` number of the *account* sending the transaction is higher than the `Sequence` number in the transaction, then the transaction cannot be included in any new ledger.
 * If the transaction includes a `LastLedgerSequence` and a ledger with a higher sequence number is validated, the transaction cannot be included in any new ledger.
+
+## Full Transaction Response List ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/TER.h "Source")
+
+
+### tel Codes ###
+
+These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.
+
+| Code | Explanation |
+|------|-------------|
+| telLOCAL_ERROR | Unspecified local error. |
+| telBAD\_DOMAIN | The transaction specified a domain value (for example, the `Domain` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long to store in the ledger. |
+| telBAD\_PATH_COUNT | The transaction contains too many paths for the local server to process. |
+| telBAD\_PUBLIC\_KEY | The transaction specified a public key value (for example, as the `MessageKey` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long. |
+| telFAILED\_PROCESSING | An unspecified error occurred when processing the transaction. |
+| telINSUF\_FEE_P | The `Fee` from the transaction is not high enough to meet the server's current Fee, which is derived from its load level. |
+| telNO\_DST\_PARTIAL | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](#partial-payments) was enabled. This is disallowed. |
+
+### tem Codes ###
+
+These codes indicate that the transaction was malformed, and cannot succeed on any server that follows the protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
+
+| Code | Explanation |
+|------|-------------|
+| temMALFORMED | Unspecified problem with the format of the transaction. |
+| temBAD\_AMOUNT | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment](#payment)) was invalid, possibly because it was a negative number. |
+| temBAD\_AUTH\_MASTER | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](#setregularkey) set. |
+| temBAD\_CURRENCY | The transaction improperly specified a currency field. See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts) for the correct format. |
+| temBAD\_EXPIRATION | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction](#offercreate). |
+| temBAD\_FEE | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
+| temBAD\_ISSUER | The transaction improperly specified the `issuer` field of some currency included in the request. |
+| temBAD\_LIMIT | The [TrustSet](#trustset) transaction improperly specified the `LimitAmount` value of a trustline. |
+| temBAD\_OFFER | The [OfferCreate](#offercreate) transaction specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
+| temBAD\_PATH | The [Payment](#payment) transaction specifies one or more [Paths](#paths) improperly, for example including an issuer for XRP, or specifying an account differently. |
+| temBAD\_PATH\_LOOP | One of the [Paths](#paths) in the [Payment](#payment) transaction was flagged as a loop, so it cannot be processed in a bounded amount of time. |
+| temBAD\_SEND\_XRP\_LIMIT | The [Payment](#payment) transaction used the [tfLimitQuality](#limit-quality) flag while sending XRP, even though sending XRP does not involve any conversions. |
+| temBAD\_SEND\_XRP\_MAX | The [Payment](#payment) transaction included a `SendMax` field while sending XRP, even though sending XRP should never require SendMax. |
+| temBAD\_SEND\_XRP\_NO_DIRECT | 
+| temBAD\_SEND\_XRP\_PARTIAL | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag while sending XRP, even though XRP should always deliver the full amount. |
+| temBAD\_SEND\_XRP\_PATHS | The [Payment](#payment) transaction included `Paths` while sending XRP, even though XRP should always be a direct payment. |
+| temBAD\_SEQUENCE | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
+| temBAD\_SIGNATURE | 
+| temBAD\_SRC\_ACCOUNT |
+| temBAD\_TRANSFER\_RATE |
+| temDST\_IS_SRC |
+| temDST\_NEEDED |
+| temINVALID |
+| temINVALID\_FLAG |
+| temREDUNDANT |
+| temREDUNDANT\_SEND\_MAX |
+| temRIPPLE\_EMPTY |
+
+### tef Codes ###
+
+These codes indicate that the transaction failed to apply, but the transaction could succeed in some theoretical ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.
+
+| Code | Explanation |
+|------|-------------|
+tefFAILURE = -199,
+tefALREADY,
+tefBAD_ADD_AUTH,
+tefBAD_AUTH,
+tefBAD_LEDGER,
+tefCREATED,
+tefDST_TAG_NEEDED,
+tefEXCEPTION,
+tefINTERNAL,
+tefNO_AUTH_REQUIRED, // Can't set auth if auth is not required.
+tefPAST_SEQ,
+tefWRONG_PRIOR,
+tefMASTER_DISABLED,
+tefMAX_LEDGER,
+
+### ter Codes ###
+
+These codes indicate that the transaction failed to apply, but it could apply successfully if some other transaction was applied first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.
+
+| Code | Explanation |
+|------|-------------|
+ terRETRY = -99,
+terFUNDS_SPENT, // This is a free transaction, so don't burden network.
+terINSUF_FEE_B, // Can't pay fee, therefore don't burden network.
+terNO_ACCOUNT, // Can't pay fee, therefore don't burden network.
+terNO_AUTH, // Not authorized to hold IOUs.
+terNO_LINE, // Internal flag.
+terOWNERS, // Can't succeed with non-zero owner count.
+terPRE_SEQ, // Can't pay fee, no point in forwarding, so don't
+// burden network.
+terLAST, // Process after all other transactions
+terNO_RIPPLE, // Rippling not allowed
+
+### tes Success ###
+
+The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not necessarily mean it accomplished its goal (for example, an [OfferCancel](#offercancel) can "succeed" if there is no offer for it to cancel). Success uses the numerical value 0.
+
+| Code | Explanation |
+|------|-------------|
+| tesSUCCESS | The transaction was applied and forwarded to other servers. If this appears in a validated ledger, then the transaction's success is final. |
+
+### tec Codes ###
+
+| Code | Explanation |
+|------|-------------|
+ tecCLAIM = 100,
+tecPATH_PARTIAL = 101,
+tecUNFUNDED_ADD = 102,
+tecUNFUNDED_OFFER = 103,
+tecUNFUNDED_PAYMENT = 104,
+tecFAILED_PROCESSING = 105,
+tecDIR_FULL = 121,
+tecINSUF_RESERVE_LINE = 122,
+tecINSUF_RESERVE_OFFER = 123,
+tecNO_DST = 124,
+tecNO_DST_INSUF_XRP = 125,
+tecNO_LINE_INSUF_RESERVE = 126,
+tecNO_LINE_REDUNDANT = 127,
+tecPATH_DRY = 128,
+tecUNFUNDED = 129, // Deprecated, old ambiguous unfunded.
+tecMASTER_DISABLED = 130,
+tecNO_REGULAR_KEY = 131,
+tecOWNERS = 132,
+tecNO_ISSUER = 133,
+tecNO_AUTH = 134,
+tecNO_LINE = 135,
+tecINSUFF_FEE = 136,
+tecFROZEN = 137,
+tecNO_TARGET = 138,
+tecNO_PERMISSION = 139,
+tecNO_ENTRY = 140,
+tecINSUFFICIENT_RESERVE = 141,
