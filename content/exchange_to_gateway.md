@@ -1,18 +1,18 @@
-h1. Becoming a Ripple Gateway
+# Becoming a Ripple Gateway #
 
 An existing online financial service, such as a payment system or digital currency exchanges, can provide additional value to customers by acting as a Ripple Gateway. This provides users the ability to send cross-currency payments to users linked by other Ripple Gateways, and potentially provides a new revenue source for balances deposited, withdrawn, or transferred in Ripple.
 
-Expanding an existing exchange system to support Ripple is a relatively simple task. This document explains the concepts necessary to set up a system, and covers the details of doing so.
+Expanding an existing exchange system to support Ripple is a relatively simple task. This document explains the concepts necessary to set up a system, and covers the details of doing so. In this document, we use a fictional online currency exchange named "ACME" and its users as examples of how ACME can expand its business to include being a Ripple Gateway.
 
-h2. Ripple Gateways Explained
+## Ripple Gateways Explained ##
 
-A Ripple _*Gateway*_ is an entity that exchanges balances in the Ripple Network for balances in the Ripple Network -- in other words, performing deposits and withdrawals from Ripple. Typically, a Gateway holds money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network that represent that money and can be sent, traded, and exchanged atomically in Ripple.
+A Ripple _*Gateway*_ is an entity that exchanges balances in the Ripple Network for balances in the Ripple Network -- in other words, performing deposits and withdrawals from Ripple. Typically, a Gateway holds money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network to represent them. Within Ripple, issuances can be sent, traded, and exchanged atomically without the gateway's intervention.
 
-h3. Prior to Ripple Integration
+### Prior to Ripple Integration ###
 
-A digital exchange already accepts withdrawals and deposits from users using some existing system, and uses some internal accounting system to track how much balance each user has with the exchange. Such a system can be modeled simply like this:
+Our example exchange, ACME, already accepts withdrawals and deposits from users using some existing system, and uses an internal accounting system to track how much balance each user has with the exchange. Such a system can be modeled simply like this:
 
-<!-- diagram:
+<!-- diagram: e2g_1
 
 Alice - €4 held
 ACME - €5 held
@@ -26,7 +26,7 @@ ACME Core Accounting - Alice: €4, Bob: €1, Charlie: €2, ACME itself: €2
 
 -->
 
-h3. Adding Ripple Deposits
+### Adding Ripple Deposits ###
 
 Two changes are necessary in order to become a Ripple Gateway. First, you must modify your accounting system to track money that is backing funds issued on the Ripple Network. This could be as simple as adding a record in your core accounting system for Ripple. Second, you must create and follow a process for "deposits" into Ripple, and "withdrawals" from Ripple. These are similar to, but separate from the process of depositing and withdrawing money from the exchange. 
 
@@ -62,16 +62,16 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME needs to know Alice's Ripple address.
 - Alice must create a trustline from her Ripple address to ACME.
 
-h3. Trading on Ripple
+### Trading on Ripple ###
 
-(TODO: flesh out)
+After the issuances have been created in Ripple, they can be freely transferred and 
 
 - Anyone can buy/sell EUR@ACME on Ripple
     - including users who don't have ACME accounts (caveat: requireauth flag)
 - Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME
 
 
-h3. Withdrawing from Ripple
+### Withdrawing from Ripple ###
 
 (TODO: flesh out)
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Ripple Developer Portal: Exchange to Gateway Tutorial</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- jQuery & Flatdoc -->
+  <script src="vendor/jquery-1.11.1.min.js"></script>
+  <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
+  <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+  
+   <!-- Bootstrap -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <script src="js/bootstrap.min.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link href="vendor/flatdoc/v/0.8.0/theme-white/style.css" rel="stylesheet">
+  <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+  <!-- syntax highlighting -->
+  <link rel="stylesheet" href="vendor/docco.min.css">
+  <script src="vendor/highlight.min.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link href="font/fonts.css" rel="stylesheet" type="text/css">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  
+	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+
+  
+  <!-- syntax selection js -->
+  <script src="js/multicodetab.js"></script>
+  <!-- Code to load Flatdoc; commented out on compiled page  -->
+  <script>
+    $(".flatdoc-content").empty();
+    $(".content-root .menubar .menu").empty();
+    Flatdoc.run({
+      fetcher: Flatdoc.file('content/exchange_to_gateway.md')
+    });
+    $(document).on('flatdoc:ready', function() {
+        $().multicode_tabs();
+        hljs.initHighlighting();
+    });
+  </script>
+  <!-- end flatdoc load -->
+  <!-- Alternate multicode tabs for compiled page: 
+  <script>
+    $(document).ready(function() {
+        $(".multicode").minitabs()
+        make_code_expandable();
+    });
+  </script>
+  <!--end alt code for compiled page -->
+  <link type="text/css" rel="stylesheet" href="css/mod.css">
+  <script src="js/expandcode.js"></script>
+  <script src="js/fixsidebarscroll.js"></script>
+  
+</head>
+<body role='flatdoc' class='no-literate'>
+    <div style="position:fixed; top: 50px; right: 100px; background: red; color: white; padding: 10px; z-index:3">DRAFT</div>
+
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="rippled-apis.html">rippled API Reference</a></li>
+                <li><a href="ripple-rest.html">REST API Reference</a></li>
+                <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
+                <li><a href="transactions.html">Transaction Format</a></li>
+              </ul>
+            </li>
+            <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+            <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+            <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
+            <li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tool <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="ripple-api-tool.html">WebSocket Tool</a></li>
+                <li><a href="rest-api-tool.html">REST Tool</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+  <div class='content-root'>
+    <div class='menubar'>
+      <div class='menu section' role='flatdoc-menu'></div>
+    </div>
+    <div role='flatdoc-content' class='content'>
+    	
+	</div>
+  </div>
+<div class="footer">
+      <div class="container">
+        <p class="text-muted">
+        	<div class="row">
+				<div class="col-md-2">
+					
+						<ul class="footer_links applications">
+							<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+							<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+							<li><a href="https://ripple.com/graph">Ripple Graph</a>
+							<li><a href="http://codius.org/">Codius</a>
+						</ul>
+				</div>
+				<div class="col-md-2">
+					
+						<ul class="footer_links middleware">
+							<li><a href="gatewayd.html">Gatewayd</a>
+							<li><a href="ripple-rest.html">Ripple REST</a>
+							<li><a href="https://github.com/ripple/ripple-lib">Ripple Lib</a>
+						</ul>
+				
+				</div>
+				<div class="col-md-2">
+					
+						<ul class="footer_links core_network">
+							<li><a href="rippled-apis.html">rippled</a>
+							<li><a href="transactions.html">Transactions</a>
+							<li><a href="consensus-whitepaper.html">Consensus</a>
+						</ul>
+				
+				</div>
+				<div class="col-md-2">
+						<ul class="footer_links bounties">
+							<li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a>
+							<li><a href="https://ripplelabs.atlassian.net/">Bug tracking</a>
+							<li><a href="guidelines.html">Brand guidelines</a>
+							<li><a href="https://ripple.com/dev/blog/">Dev blog</a>
+							<li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a>
+							<li><a href="https://ripple.com/wiki/Main_Page">Wiki</a>
+						</ul>
+				
+				</div>
+      </div>
+    </div>
+</body>
+</html>
+
