@@ -63,6 +63,7 @@ $(commands).click(function() {
 
 var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
 var DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX";
+var DEFAULT_ADDRESS_3 = "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 
 Request('Generate Wallet', {
@@ -184,6 +185,61 @@ Request("Get Payment History", {
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:query_params}": "direction=incoming&exclude_failed=true"
+    }
+});
+
+Request("Place Order", {
+    method: POST,
+    path: "/v1/accounts/{:address}/orders?{:query_params}",
+    description: "Place an order on the ripple network.",
+    link: "#place-order",
+    test_only: true,
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
+    },
+    body: {
+        "secret": "sneThnzgBgxc3zXPG....",
+        "order": {
+            "type": "sell",
+            "taker_pays": {
+                "currency": "JPY",
+                "value": "4000",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "taker_gets": {
+                "currency": "USD",
+                "value": ".25",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "immediate_or_cancel": true
+        }
+    }
+});
+
+Request("Cancel Order", {
+    method: DELETE,
+    path: "/v1/accounts/{:address}/orders?{:query_params}",
+    description: "Cancel an order on the ripple network.",
+    link: "#cancel-order",
+    test_only: true,
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "validated=true"
+    },
+    body: {
+        "secret": "sneThnzgBgxc3zXPG...."
+    }
+});
+
+Request("Get Account Orders", {
+    method: GET,
+    path: "/v1/accounts/{:address}/orders?{:query_params}",
+    description: "Check the status of one or more orders attached to an account.",
+    link: "#get-account-orders",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_3,
+        "{:query_params}": "ledger=10399192&limit=15"
     }
 });
 
