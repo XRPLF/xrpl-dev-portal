@@ -58,13 +58,13 @@ Alice Ripple acct —€2→ cold wallet
 
 There are several prerequisites that ACME must meet in order for this to happen:
 
-- ACME must have a Ripple account. Our best practices recommend actually having at least two accounts, so that the account creating issuances in Ripple is exposed to less risk than the account(s) performing day-to-day transactions.
-- ACME needs to know Alice's Ripple address.
-- Alice must create a trustline from her Ripple address to ACME.
+- ACME must have a Ripple account. Our best practices recommend actually having at least two accounts, so that the account creating issuances in Ripple is exposed to less risk than the account(s) performing day-to-day transactions. <span class='draft-comment'>(TODO: Link to creating wallets?)</span>
+- ACME needs to know Alice's Ripple address. <span class='draft-comment'>(TODO: Commentary on adding a system for users to add their Ripple address to acct details?)</span>
+- Alice must create a trustline from her Ripple address to ACME. <span class='draft-comment'>(TODO: bit about publicizing cold wallet address?)</span>
 
 ### Trading on Ripple ###
 
-After the issuances have been created in Ripple, they can be freely transferred and 
+After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. 
 
 - Anyone can buy/sell EUR@ACME on Ripple
     - including users who don't have ACME accounts (caveat: requireauth flag)
