@@ -48,6 +48,104 @@ body .content-root {
     width: 100%;
 }
 
+.draft-comment {background: #faa; border: 1px solid #d88; padding: 2px;}
+
+td {border: 1px solid #DBDDE2 !important; padding: .2em;}
+table { border-collapse: collapse; clear: left; }
+th { padding: .2em; font-weight: bold; }
+
+body .content-root {
+    background-color: #F3F6FB;
+    box-shadow: 930px 0 #FFFFFF inset, 931px 0 #DFE2E7 inset, 940px 0 5px -10px rgba(0, 0, 0, 0.1) inset;
+}
+
+.content h2, .menu a.level-2 {
+    text-transform: none !important;
+}
+
+/* Second-level navigation */
+.header-subnav {
+  background: #f3f6fb;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  border-bottom: solid 1px #dfe2e7;
+  position: relative;
+}
+
+.header-subnav li a {
+    float: left;
+    padding: 10px 15px;
+}
+
+.header-subnav li a:hover {
+    background: #3a3a44;
+    color: white;
+}
+
+.header-subnav li a.active {
+    background: rgba(202, 214, 234, 1);
+}
+
+.clearer {
+    clear:both;
+    font-size: 0;
+}
+
+/* code samples scrolling */
+code { max-height: 14em; overflow: auto;}
+.content code { color: #111; }
+.expanded { max-height: none; overflow: none;}
+
+/* code tabs css */
+.multicode {
+	color: #000;
+	border-bottom: 1px solid #DBDDE2;
+	margin: 12px 0px 0px 0px;
+	padding: 0 0 0 0;
+	z-index: 1;
+	padding-left: 10px;
+}
+	
+.multicode ul {
+    padding-bottom: 0;
+}
+
+.multicode pre {
+    padding-top: 0;
+}
+
+.multicode li {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none;
+}
+
+.multicode ul > li:before {
+    background: none;
+    border: none;
+}
+
+.multicode a, a.current {
+	color: black;
+	background: #DFE2E7;
+	border: 1px solid #DBDDE2;
+	padding: 1em 1em 0 1em;
+	margin: 0px;
+	text-decoration: none; }
+
+.multicode a.current {
+	background: #fff;
+	border-bottom: 1px solid #fff; 
+    color : black;
+}
+
+.multicode a:hover {
+	color: black;
+	background: white; 
+}
+
+
+.multicode a.current:hover {}
+
 .content h4, body:not(.big-h3) .content h3 {
 /* Fix for anchor links hiding under fixed header */
     padding-top: 80px;
@@ -204,6 +302,148 @@ color: #f09 !important;
 	
 }
 
+/************
+  print css
+*********** */
+
+@media print {
+
+    /* undo code tabs */
+    .multicode > div {
+        display: block !important;
+    }
+    
+    .multicode > ul {
+        display: none !important;
+    }
+    
+    .multicode > em {
+        display: block !important;
+    }
+    
+    .multicode > p {
+        display: block !important;
+    }
+    
+    /* Source URLs are too big to float */
+    .content a[title="Source"] {
+        float:none;
+    }
+    
+    /* Drop footer */
+    .footer, footer {
+        display: none;
+    }
+    
+    /* break lines in code */
+    .content pre code {
+        white-space: pre-wrap;
+    }
+    
+    code { 
+        max-height: none !important; 
+        overflow: visible;
+        page-break-inside: auto;
+    }
+    
+    /* Show ToC at top */
+    .menubar {
+        position: static;
+        width: auto;
+        display: block;
+        padding-top: 0;
+    }
+    .menubar:before {
+        content: "Contents";
+        letter-spacing: 1px;
+        font-size: 1.5em;
+        font-weight: bold;
+    	font-family: 'Open Sans', sans-serif !important;
+        display: block;
+        padding-top: 0;
+    }
+    
+    .content ul a:after { 
+        /*content: " (Pg. " target-counter(attr(href), page) ")"*/
+        target-counter(attr(href), page);
+        
+    }
+    
+
+    /* crazy print-section-numbering idea */
+    body {
+        counter-reset: level1;
+    }
+    h1 {
+        counter-reset: level2;
+    }
+    h1:before {
+        counter-increment: level1;
+        content: counters(level1,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+        visibility: visible !important;
+    }
+    h2 {
+        counter-reset: level3;
+    }
+    h2:before {
+        counter-increment: level2;
+        content: counters(level1,".") "." counters(level2,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+        visibility: visible !important;
+    }
+    h3:before {
+        counter-increment: level3;
+        content: counters(level1,".") "." counters(level2,".") "." counters(level3,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+        visibility: visible !important;
+    }
+    
+    .menubar, .dev_nav_wrapper {
+        counter-reset: toclevel1;
+    }
+    a.level-1 {
+        counter-reset: toclevel2;
+    }
+    a.level-1:before {
+        counter-increment: toclevel1;
+        content: counters(toclevel1,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+    }
+    a.level-2 {
+        counter-reset: toclevel3;
+    }
+    a.level-2:before {
+        counter-increment: toclevel2;
+        content: counters(toclevel1,".") "." counters(toclevel2,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+    }
+    a.level-3:before {
+        counter-increment: toclevel3;
+        content: counters(toclevel1,".") "." counters(toclevel2,".") "." counters(toclevel3,".") ". " !important;
+        display: inline !important;
+        background: none !important; 
+        position: static !important;
+        box-shadow: none !important;
+    }
+    
+    
+}
 
 /************
   api tool(s)

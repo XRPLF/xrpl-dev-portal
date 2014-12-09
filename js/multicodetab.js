@@ -26,7 +26,7 @@ jQuery.fn.multicode_tabs = function() {
             $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
         });
     });
-    $('.multicode em').remove();
+    $('.multicode em').hide();
     
     $('.multicode').minitabs();
 }
@@ -58,7 +58,7 @@ jQuery.fn.multicode_tabs_pandoc = function() {
             $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
         });
     });
-    $('.multicode p').remove();
+    $('.multicode p').hide();
     
     $('.multicode').minitabs();
 }
