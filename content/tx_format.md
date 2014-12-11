@@ -752,7 +752,7 @@ A signed transaction can be submitted to any `rippled` server, by anyone. The se
 
 Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
 
-Transactions that failed initially, especially `ter` and `tec` failures, could also potentially apply later if the conditions preventing that transaction from applying change. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sent enough XRP to create the destination account.
+Transactions that failed initially, especially `ter` and `tec` failures, could also potentially apply later if conditions change such that the transaction is no longer prevented from applying. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sent enough XRP to create the destination account.
 
 There are several ways a transaction's failure could become permanent:
 
@@ -821,7 +821,7 @@ These codes indicate that the transaction failed to apply, but the transaction c
 |------|-------------|
 | tefFAILURE | Unspecified failure in applying the transaction. |
 | tefALREADY | The same exact transaction has already been applied. |
-| tefBAD\_ADD\_AUTH | <span class='draft-comment'>Not authorized to add account.</span> |
+| tefBAD\_ADD\_AUTH | Deprecated. This code should never be returned. |
 | tefBAD\_AUTH | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
 | tefBAD\_LEDGER | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
 | tefCREATED | Deprecated. This code should never be returned. |
