@@ -752,6 +752,8 @@ A signed transaction can be submitted to any `rippled` server, by anyone. The se
 
 Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
 
+Transactions that failed initially, especially `ter` and `tec` failures, could also potentially apply later if the conditions preventing that transaction from applying change. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sent enough XRP to create the destination account.
+
 There are several ways a transaction's failure could become permanent:
 
 * If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
@@ -798,18 +800,18 @@ These codes indicate that the transaction was malformed, and cannot succeed on a
 | temBAD\_SEND\_XRP\_MAX | The [Payment](#payment) transaction included a `SendMax` field while sending XRP, even though sending XRP should never require SendMax. |
 | temBAD\_SEND\_XRP\_NO_DIRECT | 
 | temBAD\_SEND\_XRP\_PARTIAL | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag while sending XRP, even though XRP should always deliver the full amount. |
-| temBAD\_SEND\_XRP\_PATHS | The [Payment](#payment) transaction included `Paths` while sending XRP, even though XRP should always be a direct payment. |
+| temBAD\_SEND\_XRP\_PATHS | The [Payment](#payment) transaction improperly included `Paths` while sending XRP, even though XRP should always be a direct payment. |
 | temBAD\_SEQUENCE | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
-| temBAD\_SIGNATURE | 
-| temBAD\_SRC\_ACCOUNT |
-| temBAD\_TRANSFER\_RATE |
-| temDST\_IS_SRC |
-| temDST\_NEEDED |
-| temINVALID |
-| temINVALID\_FLAG |
-| temREDUNDANT |
-| temREDUNDANT\_SEND\_MAX |
-| temRIPPLE\_EMPTY |
+| temBAD\_SIGNATURE | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.)  |
+| temBAD\_SRC\_ACCOUNT | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account. |
+| temBAD\_TRANSFER\_RATE | The [`TransferRate` field of an AccountSet transaction](#transferrate) is not properly formatted. |
+| temDST\_IS\_SRC | The [TrustSet](#trustset) transaction improperly specified the destination of the trustline (the `issuer` field of `LimitAmount`) as the `Account` sending the transaction. You cannot extend a trustline to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.) |
+| temDST\_NEEDED | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment](#payment) transaction, or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
+| temINVALID | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
+| temINVALID\_FLAG | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
+| temREDUNDANT | The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
+| temREDUNDANT\_SEND\_MAX | The [Payment](#payment) transaction specifies a `SendMax` field when the field is not needed. |
+| temRIPPLE\_EMPTY | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
 
 ### tef Codes ###
 
@@ -817,20 +819,20 @@ These codes indicate that the transaction failed to apply, but the transaction c
 
 | Code | Explanation |
 |------|-------------|
-tefFAILURE = -199,
-tefALREADY,
-tefBAD_ADD_AUTH,
-tefBAD_AUTH,
-tefBAD_LEDGER,
-tefCREATED,
-tefDST_TAG_NEEDED,
-tefEXCEPTION,
-tefINTERNAL,
-tefNO_AUTH_REQUIRED, // Can't set auth if auth is not required.
-tefPAST_SEQ,
-tefWRONG_PRIOR,
-tefMASTER_DISABLED,
-tefMAX_LEDGER,
+| tefFAILURE | Unspecified failure in applying the transaction. |
+| tefALREADY | The same exact transaction has already been applied. |
+| tefBAD\_ADD\_AUTH | <span class='draft-comment'>Not authorized to add account.</span> |
+| tefBAD\_AUTH | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
+| tefBAD\_LEDGER | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
+| tefCREATED | Deprecated. This code should never be returned. |
+| tefDST\_TAG\_NEEDED | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. |
+| tefEXCEPTION | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
+| tefINTERNAL | While attempting to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
+| tefNO\_AUTH\_REQUIRED | The [TrustSet](#trustset) transaction attempted to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
+| tefPAST\_SEQ | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |
+| tefWRONG\_PRIOR | The transaction contained an `AccountTxnID` field (or the deprecated `PreviousTxnID` field), but the transaction specified there does not match the account's previous transaction. |
+| tefMASTER\_DISABLED | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
+| tefMAX\_LEDGER | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
 
 ### ter Codes ###
 
@@ -889,3 +891,7 @@ tecNO_TARGET = 138,
 tecNO_PERMISSION = 139,
 tecNO_ENTRY = 140,
 tecINSUFFICIENT_RESERVE = 141,
+
+### tej Codes ###
+
+These codes are only ever returned by the `ripple-lib` client library, not by `rippled` itself. 
