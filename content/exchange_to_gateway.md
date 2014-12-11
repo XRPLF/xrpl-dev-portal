@@ -1,6 +1,6 @@
 # Becoming a Ripple Gateway #
 
-An existing online financial service, such as a payment system or digital currency exchanges, can provide additional value to customers by acting as a Ripple Gateway. This provides users the ability to send cross-currency payments to users linked by other Ripple Gateways, and potentially provides a new revenue source for balances deposited, withdrawn, or transferred in Ripple.
+An existing online financial service, such as a payment system or digital currency exchangea, can provide additional value to customers by acting as a Ripple Gateway. This provides users the ability to send cross-currency payments to users linked by other Ripple Gateways, and potentially provides a new revenue source for balances deposited, withdrawn, or transferred in Ripple.
 
 Expanding an existing exchange system to support Ripple is a relatively simple task. This document explains the concepts necessary to set up a system, and covers the details of doing so. In this document, we use a fictional online currency exchange named "ACME" and its users as examples of how ACME can expand its business to include being a Ripple Gateway.
 
@@ -25,6 +25,15 @@ ACME - €9 held
 ACME Core Accounting - Alice: €4, Bob: €1, Charlie: €2, ACME itself: €2
 
 -->
+
+**Assumptions:** To integrate with Ripple, we assume that an exchange such as ACME meets the following assumptions:
+
+* ACME already has a system to accept deposits and withdrawals from some outside payment source. 
+* ACME waits for deposits to clear before crediting them internally.
+* ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.
+    * ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.
+* ACME has no limitations who can become a member, except as necessary to meet local regulatory requirements.
+
 
 ### Adding Ripple Deposits ###
 
@@ -61,6 +70,14 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME must have a Ripple account. Our best practices recommend actually having at least two accounts, so that the account creating issuances in Ripple is exposed to less risk than the account(s) performing day-to-day transactions. <span class='draft-comment'>(TODO: Link to creating wallets?)</span>
 - ACME needs to know Alice's Ripple address. <span class='draft-comment'>(TODO: Commentary on adding a system for users to add their Ripple address to acct details?)</span>
 - Alice must create a trustline from her Ripple address to ACME. <span class='draft-comment'>(TODO: bit about publicizing cold wallet address?)</span>
+
+### Ripple Trustlines, Hot and Cold Wallets ###
+
+A "Trustline" is link between two accounts in Ripple that represents an explicit statement of willingness to hold gateway debt obligations, which we call *issuances*. A *gateway deposit* is when someone sends currency (outside the Ripple Network) to a gateway in exchange for issuances on the Ripple network. An issuance represents a promise that whoever holds the issuance can redeem it with the issuer on the Ripple Network for that amount of currency (off the Ripple Network). Doing so is a *gateway withdrawal*. 
+
+All currencies on Ripple, except for the native cryptocurrency XRP, are represented as issuances. Issuances get their value from the promise that the gateway issuing them will honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. 
+
+
 
 ### Trading on Ripple ###
 
