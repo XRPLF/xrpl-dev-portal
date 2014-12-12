@@ -312,17 +312,24 @@ color: #f09 !important;
     .multicode > div {
         display: block !important;
     }
-    
     .multicode > ul {
         display: none !important;
     }
-    
-    .multicode > em {
+    .multicode > em, .multicode > p > em {
         display: block !important;
+        page-break-after: avoid;
     }
-    
     .multicode > p {
         display: block !important;
+    }
+    /* wrap code, not scroll */
+    .content pre code {
+        white-space: pre-wrap;
+    }
+    code { 
+        max-height: none !important; 
+        overflow: visible;
+        page-break-inside: auto;
     }
     
     /* Source URLs are too big to float */
@@ -330,52 +337,33 @@ color: #f09 !important;
         float:none;
     }
     
-    /* Drop footer */
-    .footer, footer {
+    /* Drop header, footer, google translate */
+    header, footer {
+       display: none;
+    }
+    #goog-gt-tt {
         display: none;
     }
     
-    /* break lines in code */
-    .content pre code {
-        white-space: pre-wrap;
+    /* table of contents can't scroll */
+    .dev_nav_wrapper, .menubar {
+        display: block !important;
+        overflow-y: visible !important;
+        position: static !important;
+        width: 100%;
+        page-break-after: always;
     }
     
-    code { 
-        max-height: none !important; 
-        overflow: visible;
-        page-break-inside: auto;
-    }
-    
-    /* Show ToC at top */
-    .menubar {
-        position: static;
-        width: auto;
-        display: block;
-        padding-top: 0;
-    }
-    .menubar:before {
-        content: "Contents";
-        letter-spacing: 1px;
-        font-size: 1.5em;
-        font-weight: bold;
-    	font-family: 'Open Sans', sans-serif !important;
-        display: block;
-        padding-top: 0;
-    }
-    
-    .content ul a:after { 
-        /*content: " (Pg. " target-counter(attr(href), page) ")"*/
-        target-counter(attr(href), page);
-        
-    }
-    
-
     /* crazy print-section-numbering idea */
     body {
         counter-reset: level1;
     }
     h1 {
         counter-reset: level2;
+        page-break-before: always;
+    }
+    .content :first-child {
+        page-break-before: avoid;
     }
     h1:before {
         counter-increment: level1;
@@ -444,6 +432,8 @@ color: #f09 !important;
     
     
 }
+
+
 
 /************
   api tool(s)
