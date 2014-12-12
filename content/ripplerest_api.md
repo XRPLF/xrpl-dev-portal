@@ -570,9 +570,9 @@ Optionally, you can also include any of the following query parameters:
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
 | marker | String | Server-provided value that marks where to resume pagination. |
 | limit | Integer | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
-| ledger | String (ledger hash) | Identifying hash of the ledger version to pull results from. |
+| ledger | String (ledger hash or sequence, or 'validated', 'current', or 'closed') | (Defaults to 'validated') Identifying ledger version to pull results from. |
 
-*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` hash or sequence query parameter to use pagination.
 
 #### Response ####
 
@@ -580,6 +580,9 @@ Optionally, you can also include any of the following query parameters:
 {
   "success": true,
   "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
   "balances": [
     {
       "currency": "XRP",
@@ -1453,7 +1456,7 @@ Optionally, you can also include the following query parameters:
 | counterparty | String (Address) | Filter results to include only trustlines to the given account. |
 | marker | String | Start position in response paging. |
 | limit | String (Integer) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
-| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+| ledger | String (ledger hash or sequence, or 'validated', 'current', or 'closed') | (Defaults to 'validated') Identifying ledger version to pull results from. |
 
 *Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
 
@@ -1465,6 +1468,9 @@ The response is an object with a `lines` array, where each member is a [trustlin
 {
   "success": true,
   "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
   "lines": [
     {
       "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
