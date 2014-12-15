@@ -726,7 +726,7 @@ Both the `engine_result` and the `meta.TransactionResult` use standard codes to 
 
 | Category              | Prefix | Description |
 |-----------------------|--------|-------------|
-| Local error           | tel    | The rippled server had an error, such as being under high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Local error           | tel    | The rippled server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
 | Malformed transaction | tem    | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
 | Failure               | tef    | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or there may be an authorization problem. |
 | Retry                 | ter    | The transaction could not be applied, but it might be possible to apply later. |
@@ -840,17 +840,16 @@ These codes indicate that the transaction failed to apply, but it could apply su
 
 | Code | Explanation |
 |------|-------------|
- terRETRY = -99,
-terFUNDS_SPENT, // This is a free transaction, so don't burden network.
-terINSUF_FEE_B, // Can't pay fee, therefore don't burden network.
-terNO_ACCOUNT, // Can't pay fee, therefore don't burden network.
-terNO_AUTH, // Not authorized to hold IOUs.
-terNO_LINE, // Internal flag.
-terOWNERS, // Can't succeed with non-zero owner count.
-terPRE_SEQ, // Can't pay fee, no point in forwarding, so don't
-// burden network.
-terLAST, // Process after all other transactions
-terNO_RIPPLE, // Rippling not allowed
+| terRETRY | Unspecified retriable error. |
+| terFUNDS\_SPENT | Deprecated. This code should never be returned. |
+| terINSUF\_FEE\_B | The account sending the transaction does not have enough XRP to pay the transaction fee. |
+| terNO\_ACCOUNT | The account sending the transaction does not exist in the ledger (yet). |
+| terNO\_AUTH | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trustline that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
+| terNO\_LINE | Used internally only. This code should never be returned. |
+| terOWNERS, // Can't succeed with non-zero owner count.
+| terPRE\_SEQ, // Can't pay fee, no point in forwarding, so don't burden network.
+| terLAST, // Process after all other transactions
+| terNO\_RIPPLE, // Rippling not allowed
 
 ### tes Success ###
 
