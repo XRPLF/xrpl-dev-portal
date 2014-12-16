@@ -569,10 +569,12 @@ Optionally, you can also include any of the following query parameters:
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
 | marker | String | Server-provided value that marks where to resume pagination. |
-| limit | String (Integer or 'all') | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use 'all' to return all results |
+| limit | String (Integer or `all`) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use `all` to return all results |
 | ledger | String (ledger hash or sequence, or 'validated', 'current', or 'closed') | (Defaults to 'validated') Identifying ledger version to pull results from. |
 
 *Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` hash or sequence query parameter to use pagination.
+
+*Caution:* When an account holds balances on a very large number of trust lines, specifying `limit=all` may take a long time or even time out. If you experience timeouts, try again later, or specify a smaller limit.
 
 #### Response ####
 
