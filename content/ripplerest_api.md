@@ -838,6 +838,7 @@ POST /v1/accounts/{address}/payments?validated=true
   "client_resource_id": "123",
   "last_ledger_sequence": "1...",
   "max_fee": "100",
+  "fixed_fee": "100",
   "payment": {
     "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
     "source_tag": "",
@@ -874,6 +875,7 @@ The JSON body of the request includes the following parameters:
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
 | max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow, as a decimal amount of XRP. If omitted, the server picks a static fee instead. |
+| fixed\_fee | String | (Optional) Optionally, the transaction fee the payer wishes to pay to the server, as a decimal amount of XRP. If set above server's fee, payer will lose the difference. If set below server's fee, the transaction will keep resubmitting with same fixed fee. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
