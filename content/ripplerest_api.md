@@ -874,10 +874,19 @@ The JSON body of the request includes the following parameters:
 | client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow, as a decimal amount of XRP. If omitted, the server picks a static fee instead. |
-| fixed\_fee | String | (Optional) Optionally, the transaction fee the payer wishes to pay to the server, as a decimal amount of XRP. If set above server's fee, payer will lose the difference. If set below server's fee, the transaction will keep resubmitting with same fixed fee. |
+| max\_fee | String | (Optional) The maximum transaction fee to allow, as a decimal amount of XRP. |
+| fixed\_fee | String | (Optional) The exact transaction fee the payer wishes to pay to the server, as a decimal amount of XRP. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+*Note:* The transaction fee is determined as follows:
+
+1. If `fixed_fee` is included, that exact value is used for the transaction fee. Otherwise, the transaction fee is set dynamically based on the server's current fee.
+2. If `max_fee` is included and the transaction fee is higher than `max_fee`, then the transaction is rejected without being submitted. This is true regardless of whether the fee was fixed or dynamically set. Otherwise, the transaction is submitted to the `rippled` server with the specified fee.
+3. If the transaction succeeds, the sending account loses the whole amount of the transaction fee, even if it was higher than the server's current fee. 
+4. If the transaction fails because the fee was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.
+
+Consequently, you can use `max_fee` as a "set-it-and-forget-it" safeguard on the fees you are willing to pay.
 
 Optionally, you can include the following as a URL query parameter:
 
