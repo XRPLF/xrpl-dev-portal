@@ -89,7 +89,8 @@ Alice Ripple acct —€2→ cold wallet
 
 There are several prerequisites that ACME must meet in order for this to happen:
 
-- ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. This could be as simple as adding a record for Ripple. Optionally, a gateway can take additional steps to separate normal user funds from funds backing the gateway's Ripple issuances.
+- ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. This could be as simple as adding a record for Ripple. 
+    - Optionally, a gateway can take additional steps to separate normal user funds from funds backing the gateway's Ripple issuances. For example, a cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple. This provides publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must have a Ripple account. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See [Hot and Cold Wallets](#hot-and-cold-wallets) for more information.
 - Alice must create a trustline from her Ripple address to ACME's issuing (cold wallet) account. She can do this from any Ripple client (such as [Ripple Trade](https://www.rippletrade.com/) as long as she knows ACME's account address or Ripple Name.
 - ACME must create a user interface for Alice to deposit funds from ACME into Ripple.
@@ -135,7 +136,7 @@ After the issuances have been created in Ripple, they can be freely transferred 
     - including users who don't have ACME accounts (caveat: requireauth flag)
 - Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME
 
-<span class='draft-comment'>TODO: Elaborate on this section</span>
+<span class='draft-comment'>TODO: Elaborate on this section.</span>
 
 ## Fees and Revenue Sources ##
 
@@ -228,23 +229,126 @@ Response:
 
 ## RequireAuth ##
 
-TODO
+The `RequireAuth` flag (`require_authorization` in Ripple-REST) prevents a Ripple account's issuances from being held by other users unless the issuer approves them.
+
+### With Hot Wallets ###
+
+We recommend enabling `RequireAuth` for all hot wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.
+
+The following is an example of a Ripple-REST request to enable the RequireDest flag. (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)
+
+Request:
+
+```
+POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/settings?validated=true
+
+{
+  "secret": "sssssssssssssssssssssssssssss",
+  "settings": {
+    "require_authorization": true
+  }
+}
+```
+
+Response:
+
+```
+{
+  "success": true,
+  "settings": {
+    "hash": "687702E0C3952E2227B2F7A0B34933EAADD72A572B234D31360AD83D3F193A78",
+    "ledger": "10596929",
+    "state": "validated",
+    "require_destination_tag": false,
+    "require_authorization": true,
+    "disallow_xrp": false
+  }
+}
+```
+
+### With Cold Wallets ###
+
+You may also enable `RequireAuth` for your cold wallet if you do not want unknown Ripple accounts to hold the currency your gateway issues. We feel this is *not necessary* in most cases.
+
+If you use RequireAuth on your cold wallet, then processing customer deposits (and allowing other customers to trade in your issuances) requires an additional step, to authorize customers' trust lines to hold your currency.
+
+You must authorizing trust lines from the same cold wallet account that issues the currency, which unfortunately means an increased risk exposure for that account. Before a deposit can be processed, the cold wallet must authorize a transaction to authorize the trust line where the issuances would be held. The flow for authorizing a user requires another step at the end:
+
+1. ACME publishes its cold wallet address to users.
+2. Alice extends a trust line from her Ripple account to ACME's cold wallet, indicating that she is willing to hold ACME's issuances.
+3. ACME's cold wallet sends a transaction authorizing Alice's trust line.
+
+The following is an example of a TrustSet transaction to authorize the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
+
+<span class='draft-comment'>(Not possible in REST?)</span>
+
 
 ## Robustly Monitoring for Payments ##
 
-TODO
+In order to robustly monitor incoming payments, gateways should do the following:
+
+* Keep a record of the most-recently-processed transaction. That way, if you temporarily lose connectivity, you know how far to go back.
+* Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code `tesSUCCESS` can change non-XRP balances.
+* Look out for Partial Payments. If an incoming transaction has a `destination_balance_changes` field (Ripple-REST) or a `meta.AmountDelivered` field (WebSocket/JSON-RPC), then use that to see how much money *actually* got delivered to the destination account. Payments with the partial-payment flag enabled are considered "successful" if any non-zero amount is delivered, even miniscule amounts. (The flag is called `"partial_payment": true` in REST, and `tfPartialPayment` in WebSocket/JSON-RPC) 
+* Some transactions modify your balances without being payments directly to or from one of your accounts. For example, if ACME sets a nonzero [TransferRate](#transferrate), then ACME's cold wallet's outstanding obligations decrease each time Bob and Charlie exchange ACME issuances. <span class='draft-comment'>(How does this look in REST?)</span>
+
+To make things simpler for your users, we recommend monitoring for incoming payments to hot wallets and the cold wallet, and treating the two equivalently.
+
+As an added precaution, we recommend regularly comparing the balances of your Ripple cold wallet account with the Ripple-backing funds in your internal accounting system. The cold wallet's balance should be the negative of the assets you hold, backing Ripple. If the two do not match up, then you should check that you have processed all transactions correctly. 
+
 
 ## Destination Tags ##
 
-TODO
+*Destination Tags* are 32-bit integers which identify the beneficiary or cause for a payment; for example, which customer should be credited when a Ripple withdrawal takes place. A gateway should maintain an internal mapping of destination tags to (non-Ripple) account records. 
+
+For greater privacy and security, we recommend *not* using a single persistent destination tag to refer to a single user. In particular, we do not recommend using monotonically-incrementing numbers for users.
+
+Instead, you can have a user interface to generate a destination tag on-demand when a user intends to make a deposit. This can be deterministic (through iterative uses of a hash function, for example), as long as you check for collisions. Then, consider that destination tag valid only for the expected withdrawal, and bounce any further transactions that reuse the same destination tag. <span class='draft-comment'>(I'd appreciate some better advice for best practices here.)</span>
+
+### Source Tags ###
+
+When sending a payment from a hot wallet, we also recommend creating a source tag and including it in the payment, so that the receiving Ripple account can bounce the payment back, using the original Source Tag as the Destination Tag of the bounce payment.
+
 
 ## TransferRate ##
 
-TODO
+The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is defined on the issuing (cold wallet) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of TransferRate:1 compared to the destination amount. TransferRate has a maximum precision of 9 decimal places, and cannot be less than 1 or greater than 2.
+
+The fee represented by the TransferRate disappears from the Ripple ledger, becoming the property of the gateway. 
+
+For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR@ACME, Charlie must send 2.01 EUR@ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by €0.01, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
+
+The following is an example of a Ripple-REST request to set the TransferRate for a fee of 0.5%.
+
+Request:
+
+```
+POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
+
+{
+  "secret": "sssssssssssssssssssssssssssss",
+  "settings": {
+    "transfer_rate": 1.005
+  }
+}
+
+```
+
+Response:
+
+<span class='draft-comment'>[RLJS-158](https://ripplelabs.atlassian.net/browse/RLJS-158)</span>
+
 
 ## Bouncing Payments ##
 
-TODO
+When your hot or cold wallet receives a payment whose purpose is unclear, we recommend that you make an attempt to return the money to its sender. While this is more work than simply pocketing the money, it demonstrates good faith towards customers.
+
+The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you!
+
+Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about which fees to pay.
+
+<span class='draft-comment'>(TODO: more)</span>
+
 
 ## Setting Trust Lines in Ripple Trade ##
 
@@ -252,4 +356,15 @@ TODO
 
 ## Robust Transaction Submission ##
 
-TODO
+The goal of robustly submitting transactions is to achieve the following two properties in a finite amount of time:
+
+* Idempotency - Transactions will be processed once and only once, or not at all.
+* Verifiability - Applications can determine the final result of a transaction.
+
+In order to achieve this, there are several steps you can take when submitting transactions:
+
+* Persist details of the transaction before submitting it.
+* Use the `LastLedgerSequence` parameter.
+* Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's `LastLedgerSequence` parameter.
+
+For additional information, consult <span class='draft-comment'>Gateway Bulletin #@@ (Forthcoming)</span>
