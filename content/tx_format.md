@@ -1,4 +1,4 @@
-| # Transactions #
+# Transactions #
 
 A *Transaction* is the only way to modify the Ripple Ledger. All transactions have certain fields in common:
 
