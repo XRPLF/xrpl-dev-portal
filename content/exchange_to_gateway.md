@@ -61,9 +61,9 @@ A deposit into Ripple means moving funds from a user's balance at a gateway into
 
 An example of a deposit flow:
 
-1. Alice asks to deposit €2 of her balance into Ripple
+1. Alice asks to deposit €2 of her ACME balance into Ripple.
 2. In its internal accounting, ACME debits Alice's balance €2 and credits the Ripple-backed balance by €2.
-3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME.
+3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME (2 EUR@ACME).
 
 <!-- diagram:
 
@@ -130,13 +130,18 @@ Processing withdrawals and bouncing incoming payments are both potentially risky
 
 # Trading on Ripple #
 
-After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. 
+After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. There are several consequences of this situation:
 
-- Anyone can buy/sell EUR@ACME on Ripple
-    - including users who don't have ACME accounts (caveat: requireauth flag)
-- Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME
+- Anyone can buy/sell EUR@ACME on Ripple, if they create a trust line to ACME's issuing account first. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
+    - This includes users who do not have an account with ACME Exchange. In order to withdraw the funds successfully from ACME, users still have to create ACME accounts.
+    - If ACME wants to limit who can hold EUR@ACME on Ripple, ACME must enable the [`RequireAuth` flag](#requireauth) for its cold wallet account and then manually approve trust lines.
+- Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME.
+- All exchanges and balances on Ripple are publicly viewable in the shared, global ledger. 
 
-<span class='draft-comment'>TODO: Elaborate on this section.</span>
+Exchanging EUR@ACME for other currencies within Ripple requires market makers who are willing to exchange other Ripple issuances for EUR@ACME. Market makers are just Ripple accounts with trust lines for EUR@ACME as well as other currencies or issuers, who create orders (called "offers" in the Ripple ledger) to exchange currency. The cost of exchanging EUR@ACME for another currency depends on the quantity and quality of orders. 
+
+To facilitate exchanging currency, ACME may decide to become its own market maker. For various reasons, we recommend using a separate Ripple account for trading. 
+
 
 ## Fees and Revenue Sources ##
 
@@ -145,6 +150,8 @@ There are several ways in which a gateway can seek to benefit financially from R
 * Indirect revenue from value added. Ripple integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
 * Withdrawal and Deposit fees. It is typical for a gateway to charge a small fee (such as 1%) for the service of adding or removing money from Ripple. You have the power to determine the rate you credit people when they move money onto and off of Ripple through your gateway.
 * Transfer fees. You can set a percentage fee to charge when Ripple users send each other issuances created by your account. This amount disappears from the Ripple ledger, decreasing your obligation each time your issuances change hands. See [TransferRate](#transferrate) for details.
+* Market making. A gateway can also make offers to buy and sell its issuances for other issuances on Ripple, providing liquidity to cross-currency payments and possibly making a profit. (As with any financial exchange, profits are not guaranteed.)
+
 
 # Technical Details #
 
