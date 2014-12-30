@@ -6,13 +6,13 @@ Gateways and back-end applications should use the best practices described here 
 
 The Ripple protocol provides a ledger shared across all nodes in the network.  Through a process of consensus and validation, the network agrees on order in which transactions are applied to (or omitted from) the ledger.  <!--See Ripple Ledger Consensus and Validation[b] for an overview of this process.-->
 
-Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction fee](https://ripple.com/transactions/#transaction-fees) increases after an application sends a transaction.  If the fee increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global base fee decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
+Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction fee](transactions.html#transaction-fees) increases after an application sends a transaction.  If the fee increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global base fee decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
 
 Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions.
 
 The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:
 
-1. [Idempotency](http://en.wikipedia.org/wiki/Idempotence) - Transactions will be processed once and only once, or not at all.
+1. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) - Transactions will be processed once and only once, or not at all.
 2. Verifiability - Applications can determine the final result of a transaction.
 
 
@@ -42,7 +42,7 @@ While applying transactions, Ripple network nodes work with the *last validated 
 
 ### LastLedgerSequence
 
-[`LastLedgerSequence`](https://ripple.com/build/transactions/#lastledgersequence) is an optional parameter of all transactions.  This instructs the Ripple network that a transaction must be validated on or before a specific ledger instance.  The transaction will never be included in a ledger instance with a higher sequence number.
+[`LastLedgerSequence`](transactions.html#lastledgersequence) is an optional parameter of all transactions.  This instructs the Ripple network that a transaction must be validated on or before a specific ledger instance.  The transaction will never be included in a ledger instance with a higher sequence number.
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not promptly validated yet could become viable at some point in the future. Gateways and other back-end applications should specify the `LastLedgerSequence` parameter on every transaction. Automated processes should use a value of 4 greater than the sequence number of the last validated ledger[1] to ensure that a transaction is validated or rejected in a predictable and timely fashion.
 
@@ -59,15 +59,13 @@ Applications submitting transactions should employ the following practices in or
 
 Submission and verification are two separate procedures which may be implemented using the logic described in this document.
 
-1. Submission
-   The transaction is submitted to the network and a provisional result is returned.
-2. Verification
-   The authoritative result is determined by examining validated ledgers.
+1. Submission - The transaction is submitted to the network and a provisional result is returned.
+2. Verification - The authoritative result is determined by examining validated ledgers.
 
 
 ### Submission
 
-[Persist](http://en.wikipedia.org/wiki/Persistence_(computer_science)) details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.
+[Persist](https://en.wikipedia.org/wiki/Persistence_(computer_science%29) details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.
 
 The submission process:
 
@@ -472,9 +470,9 @@ Finally the server state might indicate one or more gaps in the transaction hist
 ### Ripple-REST - Submitting and Verifying Payments
 
 
-The [Ripple-REST API](https://ripple.com/build/ripple-rest/) provides an interface to Ripple via a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer).  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, `LastLedgerSequence`, and fee.
+The [Ripple-REST API](ripple-rest.html) provides an interface to Ripple via a [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer).  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, `LastLedgerSequence`, and fee.
 
-This examples that follow refer to Ripple-REST API for *payments*.  The REST methods for setting trust lines and modifying account settings does not follow the same pattern.  See https://ripplelabs.atlassian.net/browse/RLJS-126 for additional details.
+This examples that follow refer to Ripple-REST API for *payments*.  The REST methods for setting trust lines and modifying account settings does not follow the same pattern.  See [RLJS-126](https://ripplelabs.atlassian.net/browse/RLJS-126) for additional details.
 
 
 #### Construct the Transaction
@@ -663,7 +661,7 @@ Response:
 }
 ```
 
-*Note the `txnNotFound` error shown above is the current behavior of ripple-REST, but will change in order to make it easier to determine the status of transactions in this case.  Follow https://ripplelabs.atlassian.net/browse/RLJS-163 for updates regarding this behavior.*
+*Note the `txnNotFound` error shown above is the current behavior of ripple-REST, but will change in order to make it easier to determine the status of transactions in this case.  Follow [RLJS-163](https://ripplelabs.atlassian.net/browse/RLJS-163) for updates regarding this behavior.*
 
 The `txnNotFound` error in this example indicates the transaction was received by Ripple-REST, but has failed to appear in a validated ledger.  This could be caused certain transaction errors, or possibly because Ripple-REST lost power or network before submitting the transaction to the network.  Application logic may dictate constructing and submitting a replacement transaction.
 
@@ -1015,7 +1013,7 @@ If the ledger history were not complete through the `LastLedgerSequence`, the ap
 
 ## Additional Resources
 
-- Developer Blog Post on [Transaction Format](http://dev.ripple.com/transactions.html)
-- Developer Blog Post on [Transaction Fees](http://dev.ripple.com/transactions.html#transaction-fees)
-- Documentation of [`LastLedgerSequence`](https://ripple.com/build/transactions/#lastledgersequence)
+- [Transaction Format](transactions.html)
+- [Transaction Fees](transactions.html#transaction-fees)
+- Documentation of [`LastLedgerSequence`](transactions.html#lastledgersequence)
 <!-- - Overview of Ripple Ledger Consensus and Validation-->

@@ -150,6 +150,23 @@ After a transaction has been submitted, if it gets accepted into a validated led
 }
 ```
 
+### Reliable Transaction Submission ###
+
+Reliably submitting transactions is the process of achieving both of the following:
+
+* Idempotency - A transaction will be processed once and only once, or not at all.
+* Verifiability - Applications can determine the final result of a transaction.
+
+To accomplish both of these, your application should:
+
+1. Construct and sign the transaction first, including a [`LastLedgerSequence`](#lastledgersequence) parameter that gives the transaction a limited viable lifespan.
+2. Persist details of the transaction before submitting.
+3. Submit the transaction.
+4. Confirm that the transaction was either included in a validated ledger, or that it has expired due to `LastLedgerSequence`. 
+5. If a transaction fails or expires, you can modify and resubmit it.
+
+Main article: [Reliable Transaction Submission](reliable_tx.html)
+
 ### Identifying Transactions ###
 
 The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
