@@ -1529,6 +1529,8 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ```
 
 ## Cancel Order ##
+
+<div class='multicode'>
 *REST*
 
 ```
