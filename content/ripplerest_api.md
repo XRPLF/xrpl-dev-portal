@@ -855,8 +855,8 @@ POST /v1/accounts/{address}/payments?validated=true
   "secret": "s...",
   "client_resource_id": "123",
   "last_ledger_sequence": "1...",
-  "max_fee": "100",
-  "fixed_fee": "100",
+  "max_fee": "0.1",
+  "fixed_fee": "0.01",
   "payment": {
     "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
     "source_tag": "",
