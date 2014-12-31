@@ -331,7 +331,7 @@ You should parse these numbers into a numeric data type with adequate precision.
 
 ## <a id="amount_object"></a> Currency Amounts ##
 
-All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address of the gateway that issues the currency.
+All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address.
 
 For more information about XRP see [the Ripple wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
 
@@ -343,7 +343,7 @@ When an amount of currency (or other asset) is specified as part of a JSON body,
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency |
-| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always an empty string for XRP. |
+| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. (For more information, see [Issuers in Payments](#issuers-in-payments)) |
 
 Example Amount Object:
 
@@ -375,9 +375,20 @@ Example Amount:
 
 `1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q`
 
-When specifying an amount of XRP, omit the issuer entirely. For example:
+When specifying an amount of XRP, you must omit the issuer entirely. For example:
 
 `1.0+XRP`
+
+### Issuers in Payments ###
+
+Most of the time, the `issuer` field of a non-XRP currency indicates the account of the gateway that issues that currency. However, when describing payments, there are a few nuances that are important:
+
+* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
+* You can omit the issuer from the `destination_amount` of a payment to mean "any issuer that the destination accepts". This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+    * For compatibility with `rippled`, setting the `issuer` of the `destination_amount` to be the destination account's address means the same thing.
+* You can omit the issuer from the `source_amount` of a payment to mean "any issuer the source can use". This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
+    * Similarly, setting the `issuer` of the `source_amount` to be the source account's address means the same thing.
+
 
 ## <a id="payment_object"></a> Payment Objects ##
 
