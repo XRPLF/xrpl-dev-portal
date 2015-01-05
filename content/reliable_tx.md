@@ -2,18 +2,26 @@
 
 Gateways and back-end applications should use the best practices described here to ensure that transactions are validated or rejected in a verifiable and timely fashion.  Transactions should be submitted to trusted (locally operated) rippled servers.
 
+The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:
+
+1. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) - Transactions will be processed once and only once, or not at all.
+2. Verifiability - Applications can determine the final result of a transaction.
+
+Applications which fail to implement best practices are at risk of the following errors:
+
+1. Submitting transactions which are inadvertently never executed.
+2. Mistaking provisional transaction results for their final, immutable results.
+3. Failing to find authoritative results of transactions previously applied to the ledger.
+
+These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.
+
 ## Background
 
 The Ripple protocol provides a ledger shared across all nodes in the network.  Through a process of consensus and validation, the network agrees on order in which transactions are applied to (or omitted from) the ledger.  <!--See Ripple Ledger Consensus and Validation[b] for an overview of this process.-->
 
 Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction fee](transactions.html#transaction-fees) increases after an application sends a transaction.  If the fee increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global base fee decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
 
-Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions.
-
-The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:
-
-1. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) - Transactions will be processed once and only once, or not at all.
-2. Verifiability - Applications can determine the final result of a transaction.
+Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.
 
 
 
@@ -24,7 +32,7 @@ Ripple provides several APIs for submitting transactions ([rippled](rippled-apis
 
 1. A transaction is created and signed by account owner.
 2. That transaction is submitted to the network as a candidate transaction.
-   - Badly formed transactions are rejected immediately.
+   - Malformed or nonsensical transactions are rejected immediately.
    - Well formed transactions may provisionally succeed, then later fail.
    - Well formed transactions may provisionally fail, then later succeed.
 3. Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied in order to claim a fee for being propagated through the network.
@@ -99,7 +107,7 @@ For each persisted transaction without validated result:
 	Else if (LastLedgerSequence > newest validated ledger)
         Wait for more ledgers to be validated
 	Else
-		If (server has contiguous ledger history up to and 
+		If (server has contiguous ledger history up to and
 	        including the ledger identified by LastLedgerSequence)
 			The transaction failed
 			Submit a new transaction, if appropriate for application
@@ -661,7 +669,7 @@ Response:
 }
 ```
 
-*Note the `txnNotFound` error shown above is the current behavior of ripple-REST, but will change in order to make it easier to determine the status of transactions in this case.  Follow [RLJS-163](https://ripplelabs.atlassian.net/browse/RLJS-163) for updates regarding this behavior.*
+*Note:* The `txnNotFound` error shown above is the current behavior of ripple-REST, but will change in order to make it easier to determine the status of transactions in this case.  Follow [RLJS-163](https://ripplelabs.atlassian.net/browse/RLJS-163) for updates regarding this behavior.
 
 The `txnNotFound` error in this example indicates the transaction was received by Ripple-REST, but has failed to appear in a validated ledger.  This could be caused certain transaction errors, or possibly because Ripple-REST lost power or network before submitting the transaction to the network.  Application logic may dictate constructing and submitting a replacement transaction.
 
@@ -1016,4 +1024,5 @@ If the ledger history were not complete through the `LastLedgerSequence`, the ap
 - [Transaction Format](transactions.html)
 - [Transaction Fees](transactions.html#transaction-fees)
 - Documentation of [`LastLedgerSequence`](transactions.html#lastledgersequence)
-<!-- - Overview of Ripple Ledger Consensus and Validation-->
+- [Overview of Ripple Ledger Consensus Process](http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/)
+- [Reaching Consensus in Ripple](https://ripple.com/knowledge_center/reaching-consensus-in-ripple/)
