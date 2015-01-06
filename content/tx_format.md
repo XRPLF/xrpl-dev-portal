@@ -17,6 +17,13 @@ Additionally, there are *Psuedo-Transactions* that are not created and submitted
 
 * [Fee - Adjust the minimum transaction fee or account reserve](#fee)
 
+Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.
+
+* [Signing and Sending Transactions](#signing-and-sending-transactions)
+* [Reliable Transaction Submission](#reliable-transaction-submission)
+* [Transaction Results - How to find and interpret transaction results](#transaction-results)
+* [Full Transaction Response List - Complete table of all error codes](#full-transaction-response-list)
+
 ## Signing and Sending Transactions ##
 
 Signing a transaction cryptographically proves that the person in charge of the account sending the transaction is authorized to do so. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.
@@ -171,7 +178,7 @@ Main article: [Reliable Transaction Submission](reliable_tx.html)
 
 The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
 
-The transaction hash can be used as a "proof of payment" since anyone can look up the transaction using the hash and verify its final status.
+The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](#looking-up-transaction-results) in order to verify its final status.
 
 ## Common Fields ##
 
@@ -717,7 +724,11 @@ A change in transaction or account fees. This is typically in response to change
 
 # Transaction Results #
 
-The result of the [`submit` command](rippled-apis.html#submit) contains several fields that indicate what happened in processing the submitted transaction. These fields are as follows:
+## Immediate Response ##
+
+The response from the [`submit` command](rippled-apis.html#submit) contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction. 
+
+The response from `submit` contains the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -735,21 +746,37 @@ If nothing went wrong in the process of submitting and applying the transaction 
 
 __*Note:*__ A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server.
 
-To see the final result of a transaction, look at the `meta.TransactionResult` field that is returned as part of the response to the [`tx` command](rippled-apis.html#tx), [`account_tx` command](rippled-apis.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus. 
+## Looking up Transaction Results ##
+
+To see the final result of a transaction, use the [`tx` command](rippled-apis.html#tx), [`account_tx` command](rippled-apis.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus. 
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| meta.TransactionResult | String | A code that categorizes the result, such as `tecPATH_DRY` |
+| validated | Boolean | Whether or not this result comes from a validated ledger. If `false`, then the result is provisional. If `true`, then the result is final. |
+
+```js
+    "hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+    "meta": {
+      ...
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true
+```
 
 ## Result Categories ##
 
 Both the `engine_result` and the `meta.TransactionResult` use standard codes to identify the results of transactions, as follows:
 
-| Category              | Prefix | Description |
-|-----------------------|--------|-------------|
-| Local error           | tel    | The rippled server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
-| Malformed transaction | tem    | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
-| Failure               | tef    | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or there may be an authorization problem. |
-| Retry                 | ter    | The transaction could not be applied, but it might be possible to apply later. |
-| Success               | tes    | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
-| Claimed fee only      | tec    | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
-| Client library error  | tej    | (ripple-lib only) The transaction was not submitted, because the client library blocked it, as part of its additional error checking. |
+| Category              | Prefix            | Description |
+|-----------------------|-------------------|-------------|
+| Local error           | [tel](#tel-codes) | The rippled server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Malformed transaction | [tem](#tem-codes) | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
+| Failure               | [tef](#tef-codes) | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
+| Retry                 | [ter](#ter-codes) | The transaction could not be applied, but it might be possible to apply later. |
+| Success               | [tes](#tes-success) | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
+| Claimed fee only      | [tec](#tec-codes) | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
+| Client library error  | [tej](#tej-codes) | (ripple-lib only) The transaction was not submitted, because the client library blocked it, as part of its additional error checking. |
 
 The distinction between a local error (`tel`) and a malformed transaction (`tem`) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a `tel` error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.
 
@@ -798,7 +825,7 @@ These codes indicate an error in the local server processing the transaction; it
 
 ### tem Codes ###
 
-These codes indicate that the transaction was malformed, and cannot succeed on any server that follows the protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
+These codes indicate that the transaction was malformed, and cannot succeed according to the Ripple protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
 
 | Code | Explanation |
 |------|-------------|
@@ -859,14 +886,14 @@ These codes indicate that the transaction failed to apply, but it could apply su
 |------|-------------|
 | terRETRY | Unspecified retriable error. |
 | terFUNDS\_SPENT | Deprecated. This code should never be returned. |
-| terINSUF\_FEE\_B | The account sending the transaction does not have enough XRP to pay the transaction fee. |
+| terINSUF\_FEE\_B | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
 | terNO\_ACCOUNT | The account sending the transaction does not exist in the ledger (yet). |
 | terNO\_AUTH | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trustline that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
 | terNO\_LINE | Used internally only. This code should never be returned. |
 | terOWNERS | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | terPRE\_SEQ | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
 | terLAST | Used internally only. This code should never be returned. |
-| terNO\_RIPPLE | <span class='draft-comment'>Internal-only?</span> |
+| terNO\_RIPPLE | Used internally only. This code should never be returned. |
 
 ### tes Success ###
 
@@ -883,32 +910,32 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | Code | Value | Explanation |
 |------|-------|-------------|
 | tecCLAIM | 100 | Unspecified failure, fee claimed |
-| tecPATH\_PARTIAL | 101 | <span class='draft-comment'>Deprecated?</span> |
-| tecUNFUNDED\_ADD | 102 | <span class='draft-comment'>Deprecated?</span> |
-| tecUNFUNDED\_OFFER | 103 | <span class='draft-comment'>Difference from tecINSUF_RESERVE_*?</span> The transaction failed because the sending account does not have enough XRP to create a new offer. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
-| tecUNFUNDED\_PAYMENT | 104 | <span class='draft-comment'>Difference from tecINSUF_RESERVE_*?</span> The transaction failed because the sending account does not have enough XRP to send the payment. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
+| tecPATH\_PARTIAL | 101 | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
+| tecUNFUNDED\_ADD | 102 | **DEPRECATED.** |
+| tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have enough of the `TakerGets` currency to fund it. |
+| tecUNFUNDED\_PAYMENT | 104 | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
 | tecFAILED\_PROCESSING | 105 | An unspecified error occurred when processing the transaction. |
 | tecDIR\_FULL | 121 | The "owners count" of the account sending the transaction is already maxed out. |
-| tecINSUF\_RESERVE\_LINE | 122 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
-| tecINSUF\_RESERVE\_OFFER | 123 | <span class='draft-comment'>?</span> |
-| tecNO\_DST | 124 | The account on the receiving end of the transaction does not exist. (It could be created if it received sufficient XRP.) <span class='draft-comment'>What transaction types?</span> |
+| tecINSUF\_RESERVE\_LINE | 122 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](https://wiki.ripple.com/Reserves)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
+| tecINSUF\_RESERVE\_OFFER | 123 | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
+| tecNO\_DST | 124 | The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received sufficient XRP.) |
 | tecNO\_DST\_INSUF_XRP | 125 | The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it. |
-| tecNO\_LINE\_INSUF\_RESERVE | 126 | <span class='draft-comment'>?</span> |
-| tecNO\_LINE\_REDUNDANT | 127 | <span class='draft-comment'>?</span> |
-| tecPATH\_DRY | 128 | There was insufficient liquidity to complete the transaction. |
-| tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_ADD, tecUNFUNDED\_OFFER, and tecUNFUNDED\_PAYMENT. |
-| tecMASTER\_DISABLED | 130 | <span class='draft-comment'>The transaction was correctly signed by the master key of this account, but</span> the account has the `lsfDisableMaster` flag enabled. |
-| tecNO\_REGULAR\_KEY | 131 | <span class='draft-comment'>A RegularKey is not enabled, and</span> |
+| tecNO\_LINE\_INSUF\_RESERVE | 126 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](https://wiki.ripple.com/Reserves)) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF\_RESERVE\_LINE for the other case.) |
+| tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
+| tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
+| tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
+| tecMASTER\_DISABLED | 130 | The [SetRegularKey transaction](#setregularkey) tried to unset the Regular Key, but the account has the `lsfDisableMaster` flag enabled. (Unsetting the Regular Key while also leaving the Master Key disabled would make the account unusable.) |
+| tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.) |
 | tecOWNERS | 132 | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |
-| tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. |
-| tecNO\_LINE | 135 | <span class='draft-comment'>?</span>
-| tecINSUFF\_FEE | 136 | The transaction fee specified by the transaction was insufficient to meet the current fee required by the network. <span class='draft-comment'>(This normally doesn't happen because the transaction isn't even propagated through the network if the fee isn't met?)</span> |
-| tecFROZEN | 137 | <span class='draft-comment'>The transaction failed because it needs to modify a trust line that is frozen.</span> |
-| tecNO\_TARGET | 138 | The account on the receiving end of the transaction does not exist. <span class='draft-comment'>What transaction types?</span> |
-| tecNO\_PERMISSION | 139 | <span class='draft-comment'>No permission to perform requested operation.</span> |
-| tecNO\_ENTRY | 140 | <span class='draft-comment'>No matching entry found.</span> |
-| tecINSUFFICIENT\_RESERVE | 141 | <span class='draft-comment'>Different from other insuf reserve how?</span> |
+| tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
+| tecNO\_LINE | 135 | The `TakerPays` field of the [OfferCreate transaction](#offercreate) specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, tecNO\_AUTH occurs instead. |
+| tecINSUFF\_FEE | 136 | The account sending the transaction does not possess enough XRP to pay the specified `Fee`. This error only occurs if the transaction has already been propagated through the network to achieve consensus. (For example, if two transactions are provisionally accepted, but the first fails to reach consensus and is replaced by another with a higher fee, the second transaction may fail with this error instead of being rejected with terINSUF\_FEE\_B.) |
+| tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](https://ripple.com/files/GB-2014-02.pdf). |
+| tecNO\_TARGET | 138 | **FORTHCOMING** Part of multi-signature transactions. |
+| tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
+| tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
+| tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
 
 ### tej Codes ###
 
@@ -916,12 +943,12 @@ These codes are only ever returned by the `ripple-lib` client library, not by `r
 
 | Code | Explanation |
 |------|-------------|
-| tejServerUntrusted | Attempt to give secret to untrusted server |
-| tejSecretUnknown | Missing secret |
-| tejSecretInvalid | Invalid secret |
-| tejUnconnected | |
-| tejMaxFeeExceeded | Max fee exceeded |
-| tejInvalidFlag | |
-| tejAbort | Transaction aborted |
-| tejMaxLedger | Transaction LastLedgerSequence exceeded |
+| tejServerUntrusted | The application attempted to submit an account secret to an untrusted server for transaction signing. |
+| tejSecretUnknown | The secret for a given account was omitted from the transaction, and ripple-lib was unable to automatically fill it in from saved data. |
+| tejSecretInvalid | The secret included for signing this transaction was not a properly-formatted secret. |
+| tejUnconnected | The application is not connected to a `rippled` server, but it needs to be in order to process the transaction. |
+| tejMaxFeeExceeded | The fee that would be necessary to send the transaction is higher than the maximum fee, which is either the `_MaxFee` parameter of the Transaction (if provided) or the maximum fee configured for the remote. The default value is 1 XRP (100000 drops). |
+| tejInvalidFlag | One of the flags specified was invalid, or does not apply to this transaction type. |
+| tejAbort | An unspecified error occurred in processing the transaction. |
+| tejMaxLedger | Currently-validated ledgers have surpassed the `LastLedgerSequence` parameter of the transaction without including it, so it can no longer succeed. (Also see [Reliable Transaction Submission](reliable_tx.html).) |
 
