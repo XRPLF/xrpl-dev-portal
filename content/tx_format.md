@@ -734,7 +734,7 @@ The response from `submit` contains the following fields:
 |-------|-------|-------------|
 | engine\_result | String | A code that categorizes the result, such as `tecPATH_DRY` |
 | engine\_result\_code | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
-| engine\_result\_message | String | A human-readable message explaining what happened. |
+| engine\_result\_message | String | A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice. |
 
 If nothing went wrong in the process of submitting and applying the transaction locally, the response looks like this:
 
@@ -909,7 +909,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 
 | Code | Value | Explanation |
 |------|-------|-------------|
-| tecCLAIM | 100 | Unspecified failure, fee claimed |
+| tecCLAIM | 100 | Unspecified failure, with fee claimed. |
 | tecPATH\_PARTIAL | 101 | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
 | tecUNFUNDED\_ADD | 102 | **DEPRECATED.** |
 | tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have enough of the `TakerGets` currency to fund it. |
