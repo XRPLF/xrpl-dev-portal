@@ -575,6 +575,13 @@ An unfunded transaction can remain on the ledger indefinitely, but it does not h
   * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports.
 * *Note:* there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See [RIPD-456](https://ripplelabs.atlassian.net/browse/RIPD-456) for status.)
 
+#### Tracking Unfunded Offers ####
+
+Tracking the funding status of all offers can be computationally taxing. In particular, accounts that are actively trading may have a large number of offers open and be frequently involved in transactions that affect the funding status of their offers. Because of this, `rippled` does not proactively find and remove offers.
+
+A client application can locally track the funding status of offers. To do this, first retreive an order book using the [`book_offers` command](rippled-apis.html#book-offers) and check the `taker_gets_funded` field of offers. Then,  [subscribe](rippled-apis.html#subscribe) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
+
+
 ### Offers and Trust ###
 
 The limit values of trust lines (See [TrustSet](#trustset)) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.
