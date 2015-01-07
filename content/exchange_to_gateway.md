@@ -59,6 +59,11 @@ ACME Core Accounting - Alice: €4, Bob: €1, Charlie: €2, ACME itself: €2
 
 A deposit into Ripple means moving funds from a user's balance at a gateway into a separate record tracking Ripple-backed funds, and then sending the equivalent amount of issuances in Ripple to the user's Ripple account.
 
+Before the first deposit (once only):
+
+1. ACME publishes its cold wallet address to users.
+2. Alice extends a trust line from her Ripple account to ACME's cold wallet, indicating that she is willing to hold ACME's issuances.
+
 An example of a deposit flow:
 
 1. Alice asks to deposit €2 of her ACME balance into Ripple.
@@ -279,7 +284,7 @@ You may also enable `RequireAuth` for your cold wallet if you do not want unknow
 
 If you use RequireAuth on your cold wallet, then processing customer deposits (and allowing other customers to trade in your issuances) requires an additional step, to authorize customers' trust lines to hold your currency.
 
-You must authorizing trust lines from the same cold wallet account that issues the currency, which unfortunately means an increased risk exposure for that account. Before a deposit can be processed, the cold wallet must authorize a transaction to authorize the trust line where the issuances would be held. The flow for authorizing a user requires another step at the end:
+You must authorize trust lines using the same cold wallet account that issues the currency, which unfortunately means an increased risk exposure for that account. Before users can deposit their ACME funds to Ripple or trade for ACME funds, they must have their trust lines approved:
 
 1. ACME publishes its cold wallet address to users.
 2. Alice extends a trust line from her Ripple account to ACME's cold wallet, indicating that she is willing to hold ACME's issuances.
@@ -287,7 +292,7 @@ You must authorizing trust lines from the same cold wallet account that issues t
 
 The following is an example of a TrustSet transaction to authorize the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
-<span class='draft-comment'>(Not possible in REST?)</span>
+<span class='draft-comment'>(authorized:true in REST. https://github.com/ripple/ripple-rest/commit/874ae93dbf70faf9d819cce529a513672ff031de )</span>
 
 
 ## Robustly Monitoring for Payments ##
@@ -308,9 +313,18 @@ As an added precaution, we recommend regularly comparing the balances of your Ri
 
 *Destination Tags* are 32-bit integers which identify the beneficiary or cause for a payment; for example, which customer should be credited when a Ripple withdrawal takes place. A gateway should maintain an internal mapping of destination tags to (non-Ripple) account records. 
 
-For greater privacy and security, we recommend *not* using a single persistent destination tag to refer to a single user. In particular, we do not recommend using monotonically-incrementing numbers for users.
+For greater privacy and security, we recommend *not* using monotonically-incrementing numbers as destination tags that correlate 1:1 with users.
 
-Instead, you can have a user interface to generate a destination tag on-demand when a user intends to make a deposit. This can be deterministic (through iterative uses of a hash function, for example), as long as you check for collisions. Then, consider that destination tag valid only for the expected withdrawal, and bounce any further transactions that reuse the same destination tag. <span class='draft-comment'>(I'd appreciate some better advice for best practices here.)</span>
+Instead, we recommend using convenient internal IDs, but mapping those to destination tags through the use of a quick hash or cipher function such as [Hasty Pudding](http://en.wikipedia.org/wiki/Hasty_Pudding_cipher). You should set aside ranges of internal numbers for different uses of destination tags:
+
+* Direct mappings to user accounts
+* Tags for outgoing payments (set the Source Tag of the payment, so that users will bounce it to that Destination Tag)
+* Tags for quotes, which expire
+* Other disposable destination tags that users can generate.
+
+After passing the internal numbers through your hash function, you can use the result as a destination tag. You should check for collisions just to be safe, and do not reuse destination tags unless they have explicit expiration dates (like quotes and user-generated tags).
+
+We recommend making a user interface to generate a destination tag on-demand when a user intends to make a deposit. This can be deterministic (through iterative uses of a hash function, for example), as long as you check for collisions. Then, consider that destination tag valid only for the expected withdrawal, and bounce any other transactions that use the same destination tag.
 
 ### Source Tags ###
 
@@ -319,7 +333,7 @@ When sending a payment from a hot wallet, we also recommend creating a source ta
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is defined on the issuing (cold wallet) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of TransferRate:1 compared to the destination amount. TransferRate has a maximum precision of 9 decimal places, and cannot be less than 1 or greater than 2.
+The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is set by the issuing (cold wallet) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of TransferRate:1 compared to the destination amount. TransferRate has a maximum precision of 9 decimal places, and cannot be less than 1 or greater than 2.
 
 The fee represented by the TransferRate disappears from the Ripple ledger, becoming the property of the gateway. 
 
@@ -343,7 +357,7 @@ POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/setti
 
 Response:
 
-<span class='draft-comment'>[RLJS-158](https://ripplelabs.atlassian.net/browse/RLJS-158)</span>
+<span class='draft-comment'>Setting the TransferRate in Ripple-REST is currently broken. See [RLJS-158](https://ripplelabs.atlassian.net/browse/RLJS-158) for status.</span>
 
 
 ## Bouncing Payments ##
@@ -352,14 +366,64 @@ When your hot or cold wallet receives a payment whose purpose is unclear, we rec
 
 The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you!
 
-Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about which fees to pay.
+Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about how much you might have to pay in fees.
 
-<span class='draft-comment'>(TODO: more)</span>
+To send a Partial Payment in Ripple-REST, set the `partial_payment` field to true in the object returned by the [Prepare Payment method](ripple-rest.html#prepare-payment) before submitting it. Set the `source_amount` to be equal to the `destination_amount` and the `slippage` to `"0"`.
+
+Third, it is conventional that you take the Source Tag from the incoming payment (`source_tag` in Ripple-REST) and use that value as the Destination Tag (`destination_tag` in Ripple-REST) for the return payment. 
+
+To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again. 
+
+The following is an example of a return payment:
+
+```
+POST /v1/accounts/{address}/payments?validated=true
+
+{
+  "secret": "sssssssssssssssssssssssssssss",
+  "client_resource_id": "fc521224-bdd8-4463-94a4-b26cb760fc92",
+  "last_ledger_sequence": "10968788",
+  "max_fee": "1.0",
+  "payment": {
+    "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
+    "source_tag": "479686",
+    "source_amount": {
+      "value": "2",
+      "currency": "EUR",
+      "issuer": ""
+    },
+    "source_slippage": "0",
+    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_tag": "803489",
+    "destination_amount": {
+      "value": "2",
+      "currency": "EUR",
+      "issuer": ""
+    },
+    "invoice_id": "",
+    "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+    "partial_payment": true,
+    "no_direct_ripple": false
+  }
+}
+```
 
 
 ## Setting Trust Lines in Ripple Trade ##
 
-TODO
+Follow these steps to extend a trust line to a Gateway's issuing (cold wallet) account in the Ripple Trade client.
+
+1. Log in and go to the **Fund** tab:
+    ![Fund tab](img/connectgateway_01.png)
+2. Click **Gateways** in the sidebar:
+    ![Gateways](img/connectgateway_02.png)
+3. Enter the Ripple Name or Ripple Address of the Gateway's **cold wallet**, and click **Save**.
+    ![Enter gateway's name or address, then save](img/connectgateway_03.png)
+4. Enter the Ripple Trade password, and click **Submit**. (This allows access to send a transaction to the Ripple Network to create the trust line.)
+    ![Enter password and submit](img/connectgateway_04.png)
+5. When the page shows a green "Gateway connected" box, the transaction to create the trust line has succeeded and the Ripple Network has validated it.
+    ![Gateway connected](img/connectgateway_05.png)
+    
 
 ## Robust Transaction Submission ##
 
@@ -374,4 +438,4 @@ In order to achieve this, there are several steps you can take when submitting t
 * Use the `LastLedgerSequence` parameter.
 * Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
-For additional information, consult <span class='draft-comment'>Gateway Bulletin #@@ (Forthcoming)</span>
+For additional information, consult the guide to [Reliable Transaction Submission](reliable_tx.html)
