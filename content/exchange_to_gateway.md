@@ -29,21 +29,11 @@ A hot wallet makes payments to the gateway's users in Ripple by sending them iss
 
 ## Prior to Ripple Integration ##
 
-Our example exchange, ACME, already accepts withdrawals and deposits from users using some existing system, and uses an internal accounting system to track how much balance each user has with the exchange. Such a system can be modeled simply like this:
+Our example exchange, ACME, already accepts withdrawals and deposits from users using some existing system, and uses an internal accounting system to track how much balance each user has with the exchange. Such a system can be modeled simply with a balance sheet and tracking how much currency each user has on hand.
 
-<!-- diagram: e2g_1
+In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of reserves. Alice deposits €4, so ACME adds her to its balance sheet and ends up with €9.
 
-Alice - €4 held
-ACME - €5 held
-ACME Core Accounting - Bob: €1, Charlie: €2, ACME itself: €2
-
-Alice deposits €4
-
-Alice - €0 held
-ACME - €9 held
-ACME Core Accounting - Alice: €4, Bob: €1, Charlie: €2, ACME itself: €2
-
--->
+![Alice sends €4 to ACME. ACME adds her balance to its balance sheet.](img/e2g-01.gif)
 
 **Assumptions:** To integrate with Ripple, we assume that an exchange such as ACME meets the following assumptions:
 
@@ -69,6 +59,8 @@ An example of a deposit flow:
 1. Alice asks to deposit €2 of her ACME balance into Ripple.
 2. In its internal accounting, ACME debits Alice's balance €2 and credits the Ripple-backed balance by €2.
 3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME (2 EUR@ACME).
+
+![ACME issues 2 EUR@ACME to Alice on Ripple](img/e2g-02.gif)
 
 <!-- diagram:
 
