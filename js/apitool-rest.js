@@ -205,12 +205,12 @@ Request("Place Order", {
             "taker_pays": {
                 "currency": "JPY",
                 "value": "4000",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+                "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
             },
             "taker_gets": {
                 "currency": "USD",
                 "value": ".25",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
             },
             "immediate_or_cancel": true
         }

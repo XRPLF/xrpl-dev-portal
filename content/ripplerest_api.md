@@ -22,8 +22,8 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Orders ####
-* [Place Order - `POST /v1/accounts/{:source_address}/orders`](#place-order)
-* [Cancel Order - `DELETE /v1/accounts/{:source_address}/orders/{:sequence}`](#cancel-order)
+* [Place Order - `POST /v1/accounts/{:address}/orders`](#place-order)
+* [Cancel Order - `DELETE /v1/accounts/{:address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
 
 #### Trustlines ####
@@ -1482,12 +1482,12 @@ POST /v1/accounts/{:address}/orders?validated=true
       "type": "sell",
       "taker_pays": {
         currency: "JPY",
-        issuer: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+        counterparty: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
         value: "4000"
       },
       "taker_gets": {
         currency: "USD",
-        issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        counterparty: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
         value: ".25"
       }
     }
