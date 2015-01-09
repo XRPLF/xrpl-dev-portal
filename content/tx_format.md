@@ -198,7 +198,7 @@ Every transaction type has the same set of fundamental fields:
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
-The field `PreviousTxnID` is **DEPRECATED**. It has been replaced by [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead.
+The field `PreviousTxnID` as a transaction parameter is **DEPRECATED**. It has been replaced by [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead. (*Note:* There is also a field named `PreviousTxnID` that occurs in ledger metadata. That field has different meaning and is not deprecated.)
 
 ### Auto-fillable Fields ###
 
@@ -325,7 +325,11 @@ Example payment:
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments (implies source balance). Must be omitted for XRP-to-XRP payments.|
+| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+
+### Special issuer Values for SendMax and Amount ###
+
+The [currency amount](rippled-apis.html#currency-amounts) specified for `Amount` and `SendMax` fields of a 
 
 ### Creating Accounts ###
 
@@ -950,12 +954,14 @@ These codes are only ever returned by the `ripple-lib` client library, not by `r
 
 | Code | Explanation |
 |------|-------------|
-| tejServerUntrusted | The application attempted to submit an account secret to an untrusted server for transaction signing. |
-| tejSecretUnknown | The secret for a given account was omitted from the transaction, and ripple-lib was unable to automatically fill it in from saved data. |
-| tejSecretInvalid | The secret included for signing this transaction was not a properly-formatted secret. |
-| tejUnconnected | The application is not connected to a `rippled` server, but it needs to be in order to process the transaction. |
-| tejMaxFeeExceeded | The fee that would be necessary to send the transaction is higher than the maximum fee, which is either the `_MaxFee` parameter of the Transaction (if provided) or the maximum fee configured for the remote. The default value is 1 XRP (100000 drops). |
+| tejAbort | The transaction was manually canceled by calling `transaction.abort()`. |
+| tejAttemptsExceeded | The transaction was submitted multiple times, up to a total equal to the max attempts setting, without being successfully included in a ledger. |
 | tejInvalidFlag | One of the flags specified was invalid, or does not apply to this transaction type. |
-| tejAbort | An unspecified error occurred in processing the transaction. |
-| tejMaxLedger | Currently-validated ledgers have surpassed the `LastLedgerSequence` parameter of the transaction without including it, so it can no longer succeed. (Also see [Reliable Transaction Submission](reliable_tx.html).) |
+| tejLocalSigningRequired | The transaction could not be resubmitted because local signing is disabled. |
+| tejMaxFeeExceeded | The fee that would be necessary to send the transaction is higher than the maximum fee, which is either the `_MaxFee` parameter of the Transaction (if provided) or the maximum fee configured for the remote. The default value is 1 XRP (100000 drops). |
+| tejMaxLedger | Currently-validated ledgers have surpassed the `LastLedgerSequence` parameter of the transaction without including it, so it can no longer succeed. (Also see [Reliable Transaction Submission](reliable_tx.html).) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes. |
+| tejSecretInvalid | The secret included for signing this transaction was not a properly-formatted secret. |
+| tejSecretUnknown | The secret for a given account was omitted from the transaction, and ripple-lib was unable to automatically fill it in from saved data. |
+| tejServerUntrusted | The application attempted to submit an account secret to an untrusted server for transaction signing. |
+| tejUnconnected | The application is not connected to a `rippled` server, but it needs to be in order to process the transaction. |
 
