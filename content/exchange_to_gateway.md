@@ -32,11 +32,13 @@ The value of a gateway's issuances in Ripple comes directly from users' trust th
 
 It is strongly recommended that Ripple gateways employ a "hot wallet / cold wallet" strategy. This enforces a separation of roles that promotes strong security. ("Wallets" in Ripple are equivalent to Accounts.)
 
-The cold wallet should remain offline, and serves as the asset issuer. This means that the secret key to sign transactions for the cold wallet is not stored on a computer that is connected to the Internet. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the hot wallet's balance. Because the cold wallet is the account creating the issuances, customer accounts holding those issuances must trust the cold wallet. 
+The cold wallet is like a vault. It serves as the asset issuer, and should remian offline. The secret key that is used for this wallet is kept offline, accessible to only a few trusted operators. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the hot wallet's balance. Because the cold wallet is the account creating the issuances, customer accounts holding those issuances must trust the cold wallet. 
 
-A hot wallet makes payments to the gateway's users in Ripple by sending them issuances created by the cold wallet. It also needs a trust line to the cold wallet. A gateway can use one or more "hot wallet" accounts, but each hot wallet has a limited balance of the gateway's issuances. If it is compromised, the gateway can only lose as much currency as the hot wallet holds. However, this means that the gateway must monitor the hot wallet's balance, so that it doesn't run out during ordinary operation.
+A hot wallet is like a cash register. It makes payments to the gateway's users in Ripple by sending them issuances created by the cold wallet. The secret key for a hot wallet is, by necessity, stored on a server that is connected to the outside internet, usually a configuration file for the software that performs gateway operations. Because it holds issuances created by the cold walet, each hot wallet needs a trust line to the cold wallet. Customers do not, and should not, trust hot wallet accounts.
 
-If the hot wallet is compromised, the amount the hot wallet holds may be lost, but that's all. Customers do not need to change any configuration in order to receive funds from a new hot wallet.
+(Unlike a cash register, the hot wallet does not have to handle incoming payments from users, because the cold wallet can receive and monitor payments without using its secret key. To make things simple for your users, we recommend treating incoming payments to the hot and cold wallets as the same.)
+
+A gateway can use one or more "hot wallet" accounts, but each hot wallet has a limited balance of the gateway's issuances. If a hot wallet is compromised, the gateway only loses as much currency as that account holds. Customers do not need to change any configuration in order to receive funds from a new hot wallet. However, the gateway must monitor the hot wallet's balance so that it doesn't run out of funds during ordinary operation.
 
 If a cold wallet is compromised, the attacker could create an unlimited amount of issuances, which makes it very difficult to redeem legitimately-held issuances fairly. In this case, the gateway must create a new cold wallet account, and all users with trust lines to the old gateway must create new trust lines to the new account. (Thus, it's best to keep your cold wallet as secure as possible.)
 
@@ -297,8 +299,42 @@ You must authorize trust lines using the same cold wallet account that issues th
 
 The following is an example of a TrustSet transaction to authorize the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
-<span class='draft-comment'>(authorized:true in REST. https://github.com/ripple/ripple-rest/commit/874ae93dbf70faf9d819cce529a513672ff031de )</span>
+Request:
 
+```
+POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
+{
+  "secret": "sssssssssssssssssssssss",
+  "trustline": {
+    "limit": "0",
+    "currency": "USD",
+    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "authorized": true
+  }
+}
+```
+
+Response:
+
+```
+201 Created
+{
+  "success": true,
+  "trustline": {
+    "hash": "E80F97A8623076D2915984058E64E46B9D02D5C16DC47F7BB8909D665ACC2E6A",
+    "ledger": "11085971",
+    "state": "validated",
+    "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "limit": "0",
+    "currency": "USD",
+    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "account_allows_rippling": true,
+    "account_trustline_frozen": false
+  }
+}
+```
+
+<span class='draft-comment'>(Would be nice to know what versions are affected by [RLJS-154](https://ripplelabs.atlassian.net/browse/RLJS-154).)</span>
 
 ## Robustly Monitoring for Payments ##
 
@@ -366,7 +402,9 @@ Response:
 
 <span class='draft-comment'>Setting the TransferRate in Ripple-REST is currently broken. See [RLJS-158](https://ripplelabs.atlassian.net/browse/RLJS-158) for status.</span>
 
-All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments from the hot wallet. You can accomplish this by setting the `source_amount` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
+All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. You can accomplish this by setting the `source_amount` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
+
+*Note:* The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 USD@ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 USD@ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system accordingly. 
 
 
 ## Bouncing Payments ##
