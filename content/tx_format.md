@@ -812,7 +812,7 @@ Transactions that failed initially, especially `ter` and `tec` failures, could a
 There are several ways a transaction's failure could become permanent:
 
 * If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
-* If the `Sequence` number of the *account* sending the transaction is higher than the `Sequence` number in the transaction, then the transaction cannot be included in any new ledger.
+* If the `Sequence` number of the *account* sending the transaction is higher (in a validated ledger) than the `Sequence` number of the transaction, then the transaction cannot be included in any new ledger.
 * If the transaction includes a `LastLedgerSequence` and a ledger with a higher sequence number is validated, the transaction cannot be included in any new ledger.
 
 ## Full Transaction Response List ##
@@ -851,11 +851,11 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temBAD\_OFFER | The [OfferCreate](#offercreate) transaction specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
 | temBAD\_PATH | The [Payment](#payment) transaction specifies one or more [Paths](#paths) improperly, for example including an issuer for XRP, or specifying an account differently. |
 | temBAD\_PATH\_LOOP | One of the [Paths](#paths) in the [Payment](#payment) transaction was flagged as a loop, so it cannot be processed in a bounded amount of time. |
-| temBAD\_SEND\_XRP\_LIMIT | The [Payment](#payment) transaction used the [tfLimitQuality](#limit-quality) flag while sending XRP, even though sending XRP does not involve any conversions. |
-| temBAD\_SEND\_XRP\_MAX | The [Payment](#payment) transaction included a `SendMax` field while sending XRP, even though sending XRP should never require SendMax. |
-| temBAD\_SEND\_XRP\_NO_DIRECT | 
-| temBAD\_SEND\_XRP\_PARTIAL | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag while sending XRP, even though XRP should always deliver the full amount. |
-| temBAD\_SEND\_XRP\_PATHS | The [Payment](#payment) transaction improperly included `Paths` while sending XRP, even though XRP should always be a direct payment. |
+| temBAD\_SEND\_XRP\_LIMIT | The [Payment](#payment) transaction used the [tfLimitQuality](#limit-quality) flag in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions. |
+| temBAD\_SEND\_XRP\_MAX | The [Payment](#payment) transaction included a `SendMax` field in a direct XRP-to-XRP payment, even though sending XRP should never require SendMax. (XRP is only valid in SendMax if the destination `Amount` is not XRP.) |
+| temBAD\_SEND\_XRP\_NO_DIRECT | The [Payment](#payment) transaction used the [tfNoDirectRipple](#payment-flags) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct. |
+| temBAD\_SEND\_XRP\_PARTIAL | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
+| temBAD\_SEND\_XRP\_PATHS | The [Payment](#payment) transaction included `Paths` while sending XRP, even though XRP-to-XRP payments should always be direct. |
 | temBAD\_SEQUENCE | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
 | temBAD\_SIGNATURE | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.)  |
 | temBAD\_SRC\_ACCOUNT | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account. |
@@ -923,7 +923,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecCLAIM | 100 | Unspecified failure, with fee claimed. |
 | tecPATH\_PARTIAL | 101 | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
 | tecUNFUNDED\_ADD | 102 | **DEPRECATED.** |
-| tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have enough of the `TakerGets` currency to fund it. |
+| tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have any of the `TakerGets` currency. |
 | tecUNFUNDED\_PAYMENT | 104 | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
 | tecFAILED\_PROCESSING | 105 | An unspecified error occurred when processing the transaction. |
 | tecDIR\_FULL | 121 | The "owners count" of the account sending the transaction is already maxed out. |
