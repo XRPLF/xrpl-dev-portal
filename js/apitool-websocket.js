@@ -219,9 +219,15 @@
     ledger_hash: void(0),
     ledger_index: void(0),
     taker: sample_address,
-    taker_gets: ripple.Amount.from_json('1/EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
-    taker_pays: ripple.Amount.from_json('1/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
-    _description: 'Returns the offers for an order book as one or more pages.',
+    taker_gets: {
+      currency: 'XRP'
+    },
+    taker_pays: {
+      currency: 'USD',
+      issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+    },
+    limit: 10,
+    _description: 'Returns a snapshot of the offers for an order book.',
     _link: 'rippled-apis.html#book-offers'
   });
 

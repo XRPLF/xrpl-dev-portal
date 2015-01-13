@@ -74,8 +74,6 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
     });
   </script>
  -->
-  <!-- Temporary shims until I modify the css directly -->
-  <link type='text/css' rel='stylesheet' href='css/mod.css' />
   <script src='js/expandcode.js'></script>
   
 </head>
@@ -94,7 +92,16 @@ mixpanel.init("132d42885e094171f34467fc54da6fab");
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-			<li class="active"><a href="/">Resources</a></li>
+            <li class="dropdown">
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="rippled-apis.html">rippled API Reference</a></li>
+                <li><a href="ripple-rest.html">REST API Reference</a></li>
+                <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
+                <li><a href="transactions.html">Transaction Format</a></li>
+                <li><a href="reliable_tx.html">Submitting Transactions</a></li>
+              </ul>
+            </li>
             <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
             <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
             <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>

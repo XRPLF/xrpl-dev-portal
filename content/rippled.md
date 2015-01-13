@@ -5891,15 +5891,13 @@ An example of the request format:
   "command": "book_offers",
   "taker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "taker_gets": {
-    "value": "1",
-    "currency": "EUR",
-    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    "currency": "XRP"
   },
   "taker_pays": {
-    "value": "1",
     "currency": "USD",
     "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-  }
+  },
+  "limit": 10
 }
 ```
 
@@ -5912,15 +5910,13 @@ An example of the request format:
         {
             "taker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
             "taker_gets": {
-                "currency": "EUR",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                "value": "1"
+                "currency": "XRP"
             },
             "taker_pays": {
                 "currency": "USD",
                 "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                "value": "1"
-            }
+            },
+            "limit": 10
         }
     ]
 }

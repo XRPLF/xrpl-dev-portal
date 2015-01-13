@@ -23,7 +23,6 @@
   <link href="font/fonts.css" rel="stylesheet" type="text/css">
   <link href='css/main.css' rel='stylesheet'>
   <link href='css/custom.css' rel='stylesheet'>
-  <link href='css/mod.css' type='text/css' rel='stylesheet' />
   
   <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
   <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
@@ -51,6 +50,7 @@
                 <li><a href="ripple-rest.html">REST API Reference</a></li>
                 <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
                 <li><a href="transactions.html">Transaction Format</a></li>
+                <li><a href="reliable_tx.html">Submitting Transactions</a></li>
               </ul>
             </li>
             <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
@@ -125,7 +125,6 @@
             <h2>Response</h2>
             <div>
                 <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                <p id='status'></p>
             </div>
             <p id='info'></p>
             <div id='response'></div>
@@ -136,6 +135,7 @@
                   <li id='stream_show'>show</li>
                   <li id='stream_pause'>pause</li>
                 </ul>
+                <p id='status'></p>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@
   <script src='vendor/codemirror.min.js'></script>
   <script type='text/javascript' src='js/cm-javascript.min.js'></script>
   <script type='text/javascript' src='js/api-ripple.min.js'></script>
-  <script type='text/javascript' src='js/api-main.js'></script>
+  <script type='text/javascript' src='js/apitool-websocket.js'></script>
 
 
 </body>

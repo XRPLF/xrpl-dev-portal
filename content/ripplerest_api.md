@@ -21,6 +21,11 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Confirm Payment - `GET /v1/accounts/{:address}/payments/{:id}`](#confirm-payment)
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
+#### Orders ####
+* [Place Order - `POST /v1/accounts/{:source_address}/orders`](#place-order)
+* [Cancel Order - `DELETE /v1/accounts/{:source_address}/orders/{:sequence}`](#cancel-order)
+* [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
+
 #### Trustlines ####
 
 * [Get Trustlines - `GET /v1/accounts/{:address}/trustlines`](#get-trustlines)
@@ -326,7 +331,7 @@ You should parse these numbers into a numeric data type with adequate precision.
 
 ## <a id="amount_object"></a> Currency Amounts ##
 
-All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address of the gateway that issues the currency.
+All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address.
 
 For more information about XRP see [the Ripple wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
 
@@ -338,7 +343,7 @@ When an amount of currency (or other asset) is specified as part of a JSON body,
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency |
-| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always an empty string for XRP. |
+| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. (For more information, see [Issuers in Payments](#issuers-in-payments)) |
 
 Example Amount Object:
 
@@ -370,9 +375,20 @@ Example Amount:
 
 `1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q`
 
-When specifying an amount of XRP, omit the issuer entirely. For example:
+When specifying an amount of XRP, you must omit the issuer entirely. For example:
 
 `1.0+XRP`
+
+### Issuers in Payments ###
+
+Most of the time, the `issuer` field of a non-XRP currency indicates the account of the gateway that issues that currency. However, when describing payments, there are a few nuances that are important:
+
+* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
+* You can omit the issuer from the `destination_amount` of a payment to mean "any issuer that the destination accepts". This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+    * For compatibility with `rippled`, setting the `issuer` of the `destination_amount` to be the destination account's address means the same thing.
+* You can omit the issuer from the `source_amount` of a payment to mean "any issuer the source can use". This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
+    * Similarly, setting the `issuer` of the `source_amount` to be the source account's address means the same thing.
+
 
 ## <a id="payment_object"></a> Payment Objects ##
 
@@ -469,6 +485,19 @@ Example of the memos field:
       }
     ]
 ```
+
+## Order Objects ##
+
+An order object describes an offer to exchange two currencies
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
+| taker_pays | String ([Amount Object](#amount_object)) | The amount the taker must pay to consume this order. |
+| taker_gets | String ([Amount Object](#amount_object)) | The amount the taker will get once the order is consumed. |
+| passive    | Boolean | Whether the order should be [passive](https://ripple.com/build/transactions/#offercreate-flags). |
+| immediate_or_cancel | Boolean | Whether the order should be [immediate or cancel](https://ripple.com/build/transactions/#offercreate-flags). |
+| fill_or_kill        | Boolean | Whether the order should be [fill or kill](https://ripple.com/build/transactions/#offercreate-flags). |
 
 ## Trustline Objects ##
 
@@ -569,16 +598,22 @@ Optionally, you can also include any of the following query parameters:
 | currency | String ([ISO 4217 Currency Code](http://www.xe.com/iso4217.php)) | If provided, only include balances in the given currency. |
 | counterparty | String (Address) | If provided, only include balances issued by the provided address (usually a gateway). |
 | marker | String | Server-provided value that marks where to resume pagination. |
-| limit | Integer | (Defaults to 10) Max results per response. Cannot be less than 10. |
-| ledger | String (ledger hash) | Identifying hash of the ledger version to pull results from. |
+| limit | String (Integer or `all`) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use `all` to return all results |
+| ledger | String (ledger hash or sequence, or 'validated', 'current', or 'closed') | (Defaults to 'validated') Identifying ledger version to pull results from. |
 
-*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` hash or sequence query parameter to use pagination.
+
+*Caution:* When an account holds balances on a very large number of trust lines, specifying `limit=all` may take a long time or even time out. If you experience timeouts, try again later, or specify a smaller limit.
 
 #### Response ####
 
 ```js
 {
   "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
   "balances": [
     {
       "currency": "XRP",
@@ -594,6 +629,8 @@ Optionally, you can also include any of the following query parameters:
   ]
 }
 ```
+
+*Note:* `marker` will be present in the response when there are additional pages to page through.
 
 There will be one entry in the `balances` array for the account's XRP balance, and additional entries for each combination of currency code and issuer.
 
@@ -783,7 +820,7 @@ The following URL parameters are required by this API endpoint:
 |-------|------|-------------|
 | `address` | String | The Ripple address for the account that would send the payment. |
 | `destination_account` | String | The Ripple address for the account that would receive the payment. |
-| `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls) | The amount that the destination account should receive. |
+| `destination_amount` | String ([URL-formatted Amount](#amounts-in-urls)) | The amount that the destination account should receive. |
 
 Optionally, you can also include the following as a query parameter:
 
@@ -829,7 +866,8 @@ POST /v1/accounts/{address}/payments?validated=true
   "secret": "s...",
   "client_resource_id": "123",
   "last_ledger_sequence": "1...",
-  "max_fee": "100",
+  "max_fee": "0.1",
+  "fixed_fee": "0.01",
   "payment": {
     "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
     "source_tag": "",
@@ -865,9 +903,19 @@ The JSON body of the request includes the following parameters:
 | client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#calculating_a_uuid) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max\_fee | String | (Optional) Optionally, the maximum transaction fee to allow, as a decimal amount of XRP. If omitted, the server picks a static fee instead. |
+| max\_fee | String | (Optional) The maximum transaction fee to allow, as a decimal amount of XRP. |
+| fixed\_fee | String | (Optional) The exact transaction fee the payer wishes to pay to the server, as a decimal amount of XRP. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+*Note:* The transaction fee is determined as follows:
+
+1. If `fixed_fee` is included, that exact value is used for the transaction fee. Otherwise, the transaction fee is set dynamically based on the server's current fee.
+2. If `max_fee` is included and the transaction fee is higher than `max_fee`, then the transaction is rejected without being submitted. This is true regardless of whether the fee was fixed or dynamically set. Otherwise, the transaction is submitted to the `rippled` server with the specified fee.
+3. If the transaction succeeds, the sending account loses the whole amount of the transaction fee, even if it was higher than the server's current fee. 
+4. If the transaction fails because the fee was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.
+
+Consequently, you can use `max_fee` as a "set-it-and-forget-it" safeguard on the fees you are willing to pay.
 
 Optionally, you can include the following as a URL query parameter:
 
@@ -1416,7 +1464,217 @@ If the length of the `payments` array is equal to `results_per_page`, then there
 *Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
 
 
+# ORDERS #
 
+## Place Order ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L110 "Source")
+
+Places an order on the ripple network.
+
+<div class='multicode'>
+*REST*
+
+```
+POST /v1/accounts/{:address}/orders?validated=true
+{
+    "secret": "sneThnzgBgxc3zXPG....",
+    "order": {
+      "type": "sell",
+      "taker_pays": {
+        currency: "JPY",
+        issuer: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+        value: "4000"
+      },
+      "taker_gets": {
+        currency: "USD",
+        issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        value: ".25"
+      }
+    }
+}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#place-order)
+
+The following parameters are required in the JSON body of the request:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+| order | Object ([Order](#order-objects)) | The order to place. |
+
+Optionally, you can include the following as a URL query parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "order": {
+    "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
+    "ledger": "9592219",
+    "state": "validated",
+    "account": "sneThnzgBgxc3zXPG....",
+    "taker_pays": {
+      currency: "JPY",
+      issuer: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+      value: "4000"
+    },
+    "taker_gets": {
+      currency: "USD",
+      issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      value: ".25"
+    }
+    "fee": "0.012",
+    "type": "sell",
+    "sequence": 99
+  }
+}
+```
+
+## Cancel Order ##
+
+<div class='multicode'>
+*REST*
+
+```
+DELETE /v1/accounts/{:address}/orders?validated=true
+{
+    "secret": "sneThnzgBgxc3zXPG...."
+}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#cancel-order)
+
+The following parameters are required in the JSON body of the request:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+
+Optionally, you can include the following as a URL query parameter:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validated | String | `true` or `false`. When set to `true`, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the `state` attribute set to `"validated"` in the response. |
+
+__DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
+
+#### Response ####
+
+```js
+{
+  "success": true,
+  "order": {
+    "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
+    "ledger": "9592219",
+    "state": "validated",
+    "account": "sneThnzgBgxc3zXPG....",
+    "fee": "0.012",
+    "offer_sequence": 99,
+    "sequence": 100
+  }
+}
+```
+
+## Get Account Orders ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
+
+Retrieves all orders associated with the Ripple address.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/orders
+```
+</div>
+
+[Try it! >](rest-api-tool.html#get-account-orders)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address whose trustlines to look up. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| marker | String | Start position in response paging. |
+| limit | String (Integer) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
+| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
+
+#### Response ####
+
+The response is an object with a `orders` array, where each member is a [order object](#order-objects).
+
+```js
+{
+  "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 100,
+  "ledger": 9592219,
+  "validated": true,
+  "orders": [
+    {
+      "flags": 0,
+      "seq": 719930,
+      "taker_gets": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "17.70155237781915"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "1122.990930900328"
+      }
+    },
+    {
+      "flags": 0,
+      "seq": 757002,
+      "taker_gets": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "18.46856867857617"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "issuer": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2",
+        "value": "19.50899530491766"
+      }
+    },
+    {
+      "flags": 0,
+      "seq": 756999,
+      "taker_gets": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "19.11697137482289"
+      },
+      "taker_pays": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "750"
+      }
+    }
+  ]
+}
+```
+
+*Note:* `marker` will be present in the response when there are additional pages to page through.
 
 # TRUSTLINES #
 
@@ -1449,10 +1707,10 @@ Optionally, you can also include the following query parameters:
 | currency | String ([ISO4217 currency code](http://www.xe.com/iso4217.php)) | Filter results to include only trustlines for the given currency. |
 | counterparty | String (Address) | Filter results to include only trustlines to the given account. |
 | marker | String | Start position in response paging. |
-| limit | String (Integer) | Max results per response. Will default to 10 if not set or set below 10. |
-| ledger | String | Ledger to request paged results from. Use the ledger's hash. |
+| limit | String (Integer or 'all') | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use 'all' to return all results |
+| ledger | String (ledger hash or sequence, or 'validated', 'current', or 'closed') | (Defaults to 'validated') Identifying ledger version to pull results from. |
 
-*Note:* In order to use paging, you must provide `ledger` as a URL query parameter.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
 
 #### Response ####
 
@@ -1461,6 +1719,10 @@ The response is an object with a `lines` array, where each member is a [trustlin
 ```js
 {
   "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
   "lines": [
     {
       "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
@@ -1484,7 +1746,7 @@ The response is an object with a `lines` array, where each member is a [trustlin
 }
 ```
 
-
+*Note:* `marker` will be present in the response when there are additional pages to page through.
 
 ## Grant Trustline ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L88 "Source")
