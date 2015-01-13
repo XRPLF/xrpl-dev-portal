@@ -25,6 +25,7 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Place Order - `POST /v1/accounts/{:source_address}/orders`](#place-order)
 * [Cancel Order - `DELETE /v1/accounts/{:source_address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
+* [Get Order Book - `GET /v1/accounts/{:address}/order_book/{:base}/{:counter}`](#get-order-book)
 
 #### Trustlines ####
 
@@ -495,9 +496,28 @@ An order object describes an offer to exchange two currencies
 | type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
 | taker_pays | String ([Amount Object](#amount_object)) | The amount the taker must pay to consume this order. |
 | taker_gets | String ([Amount Object](#amount_object)) | The amount the taker will get once the order is consumed. |
+| sequence   | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
 | passive    | Boolean | Whether the order should be [passive](https://ripple.com/build/transactions/#offercreate-flags). |
+| sell       | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
 | immediate_or_cancel | Boolean | Whether the order should be [immediate or cancel](https://ripple.com/build/transactions/#offercreate-flags). |
 | fill_or_kill        | Boolean | Whether the order should be [fill or kill](https://ripple.com/build/transactions/#offercreate-flags). |
+
+## Orderbook Objects ##
+
+An orderbook object describes an offer to exchange two currencies.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
+| price | String ([Amount Object](#amount_object)) | The quoted price, denominated in total units of the counter currency per unit of the base currency |
+| taker_pays_total | String ([Amount Object](#amount_object)) | The total amount the taker must pay to consume this order. |
+| taker_pays_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker_gets_total | String ([Amount Object](#amount_object)) | The total amount the taker will get once the order is consumed. |
+| taker_gets_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| order_maker | String | The Ripple address of the account that placed the bid or ask on the order book. |
+| sequence | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
+| sell       | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
+| passive    | Boolean | Whether the order should be [passive](https://ripple.com/build/transactions/#offercreate-flags). |
 
 ## Trustline Objects ##
 
@@ -1604,7 +1624,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| address | String | The Ripple account address whose trustlines to look up. |
+| address | String | The Ripple account address whose orders to look up. |
 
 Optionally, you can also include the following query parameters:
 
@@ -1623,58 +1643,324 @@ The response is an object with a `orders` array, where each member is a [order o
 ```js
 {
   "success": true,
-  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
-  "limit": 100,
-  "ledger": 9592219,
+  "marker": "DF5DE453A6531A542988861F250376A0C284C2C829DEE0ABC22D663EAFC270F9",
+  "limit": 10,
+  "ledger": 11082531,
   "validated": true,
-  "orders": [
-    {
-      "flags": 0,
-      "seq": 719930,
-      "taker_gets": {
-        "currency": "EUR",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "17.70155237781915"
-      },
-      "taker_pays": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "1122.990930900328"
-      }
+  "orders": [{
+    "taker_gets": {
+      "currency": "EUR",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "2500"
     },
-    {
-      "flags": 0,
-      "seq": 757002,
-      "taker_gets": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "18.46856867857617"
-      },
-      "taker_pays": {
-        "currency": "USD",
-        "issuer": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2",
-        "value": "19.50899530491766"
-      }
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "3750"
     },
-    {
-      "flags": 0,
-      "seq": 756999,
-      "taker_gets": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "19.11697137482289"
-      },
-      "taker_pays": {
-        "currency": "EUR",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "750"
-      }
-    }
-  ]
+    "sequence": 105955,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "CHF",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "47"
+    },
+    "taker_pays": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "4700"
+    },
+    "sequence": 106858,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "10996.534297"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+      "value": "0.99968493609091"
+    },
+    "sequence": 105993,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "BTC",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "19.32"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "21"
+    },
+    "sequence": 106880,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "21"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "22.47"
+    },
+    "sequence": 106066,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "102058.710535"
+    },
+    "taker_pays": {
+      "currency": "MXN",
+      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+      "value": "44373.35240666822"
+    },
+    "sequence": 105962,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "450000"
+    },
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "15000"
+    },
+    "sequence": 105963,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "17000"
+    },
+    "taker_pays": {
+      "currency": "CAD",
+      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
+      "value": "500"
+    },
+    "sequence": 105964,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "28000"
+    },
+    "taker_pays": {
+      "currency": "CAD",
+      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
+      "value": "1000"
+    },
+    "sequence": 105965,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "255000"
+    },
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "7500"
+    },
+    "sequence": 105966,
+    "passive": false,
+    "sell": false
+  }]
 }
 ```
 
-*Note:* `marker` will be present in the response when there are additional pages to page through.
+
+
+
+## Get Order Book ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
+
+Retrieves the top of the order book for a currency pair.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/order_book/{:base}/{:counter}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#get-order-book)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address whose orders to look up. |
+| base | String | The base currency as `currency+counterparty` (e.g., `USD+`)|
+| counter | String | The counter currency as `currency+counterparty` (e.g., `BTC+`)|
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| limit | String (Integer) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
+
+
+#### Response ####
+
+The response includes `bids` and `asks` arrays that contain [orderbook objects](#orderbook-objects)
+
+```js
+{
+  "success": true,
+  "order_book": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "ledger": "11082710",
+  "validated": true,
+  "bids": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.60000000000017358109"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "order_maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+    "sequence": 550,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.53485133502987091805"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "order_maker": "rQE5Z3FgVnRMbVfS6xiVQFgB4J3X162FVD",
+    "sequence": 114646,
+    "passive": false,
+    "sell": false
+  }],
+  "asks": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "267.73999242396369106028"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "order_maker": "rwmnMXpRXFqHLYzwyeggJQ8fu5bPyxqup1",
+    "sequence": 145474,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "5205797604790419e-26"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.00000001403173538341179"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "order_maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+    "sequence": 52688,
+    "passive": false,
+    "sell": true
+  }]
+}
+```
+
+
+
 
 # TRUSTLINES #
 

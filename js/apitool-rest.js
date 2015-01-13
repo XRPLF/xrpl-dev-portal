@@ -243,6 +243,19 @@ Request("Get Account Orders", {
     }
 });
 
+Request("Get Order Book", {
+    method: GET,
+    path: "/v1/accounts/{:address}/order_book/{:base}/{:counter}?{:query_params}",
+    description: "Get the order book for a currency pair",
+    link: "#get-order-book",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_3,
+        "{:base}": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:counter}": "USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:query_params}": "limit=10"
+    }
+});
+
 Request("Get Trustlines", {
     method: GET,
     path: "/v1/accounts/{:address}/trustlines?{:query_params}",
