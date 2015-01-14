@@ -1469,9 +1469,12 @@ If the length of the `payments` array is equal to `results_per_page`, then there
 ## Place Order ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L110 "Source")
 
-Places an order on the ripple network.
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+
+Places an order to exchange currencies.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -1493,9 +1496,16 @@ POST /v1/accounts/{:address}/orders?validated=true
     }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#place-order)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| address | String | The Ripple account address the account creating the order. |
 
 The following parameters are required in the JSON body of the request:
 
@@ -1540,25 +1550,40 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ```
 
 ## Cancel Order ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L243 "Source")
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+
+Deletes a previous order to exchange currencies.
 
 <div class='multicode'>
+
 *REST*
 
 ```
-DELETE /v1/accounts/{:address}/orders?validated=true
+DELETE /v1/accounts/{:address}/orders/{:order}?validated=true
 {
     "secret": "sneThnzgBgxc3zXPG...."
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#cancel-order)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| address | String | The Ripple account address of an account involved in the transaction. |
+| order | Integer | The `sequence` number of the order to cancel. |
 
 The following parameters are required in the JSON body of the request:
 
 | Field | Value | Description |
 |-------|-------|-------------|
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
+
+*Note:* Some older client libraries do not support a body for the DELETE method. If this is a problem for you, please [file an issue in Ripple Labs' bug tracker](https://ripplelabs.atlassian.net/browse/RLJS).
 
 Optionally, you can include the following as a URL query parameter:
 
@@ -1588,14 +1613,18 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ## Get Account Orders ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
 
-Retrieves all orders associated with the Ripple address.
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+
+Retrieves all currency-exchange orders associated with the Ripple address.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/orders
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-account-orders)
