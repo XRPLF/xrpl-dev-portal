@@ -514,8 +514,8 @@ From the perspective of an account on one side of the trustline, the trustline h
 | currency | String | Currency code for the type of currency that is held on this trustline. |
 | limit | String (Quoted decimal) | The maximum amount of currency issued by the counterparty account that this account should hold. |
 | reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
-| account\_allows\_rippling | Boolean | (Also known as [NoRipple](https://wiki.ripple.com/No_Ripple)). Prevents other payments from shifting balances to other trustlines that also have this flag set. |
-| counterparty\_allows\_rippling | Boolean | (Read-only) Whether the counterparty account has [NoRipple](https://wiki.ripple.com/No_Ripple) set. |
+| account\_allows\_rippling | Boolean | If set to false on two trustlines from the same account, payments cannot ripple between them. (See the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
+| counterparty\_allows\_rippling | Boolean | (Read-only) If false, the counterparty account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) enabled. |
 | account\_froze\_line | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. |
 | counterparty\_froze\_line | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. |
 

@@ -329,7 +329,11 @@ Example payment:
 
 ### Special issuer Values for SendMax and Amount ###
 
-The [currency amount](rippled-apis.html#currency-amounts) specified for `Amount` and `SendMax` fields of a 
+Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis.html#currency-amounts) indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+
+* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
+* When the `issuer` field of the destination `Amount` field matches the `Destination` account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
 
 ### Creating Accounts ###
 
@@ -700,8 +704,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfSetAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
-| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
+| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
+| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfSetFreeze | 0x00100000 | 1048576 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
 | tfClearFreeze | 0x00200000 | 2097152 | Unfreeze the trustline. |
 
