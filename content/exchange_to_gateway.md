@@ -304,7 +304,7 @@ Request:
 ```
 POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
 {
-  "secret": "sssssssssssssssssssssss",
+  "secret": "sssssssssssssssssssssssss",
   "trustline": {
     "limit": "0",
     "currency": "USD",
@@ -321,20 +321,21 @@ Response:
 {
   "success": true,
   "trustline": {
-    "hash": "E80F97A8623076D2915984058E64E46B9D02D5C16DC47F7BB8909D665ACC2E6A",
-    "ledger": "11085971",
-    "state": "validated",
     "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
     "limit": "0",
     "currency": "USD",
     "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "account_allows_rippling": true,
-    "account_trustline_frozen": false
-  }
+    "account_trustline_frozen": false,
+    "authorized": true
+  },
+  "hash": "4509288EE17F01C83FC7D45850EB066A795EE5DBA17BB4DC98DD4023D31EEE5B",
+  "ledger": "11158585",
+  "state": "validated"
 }
 ```
 
-<span class='draft-comment'>(Would be nice to know what versions are affected by [RLJS-154](https://ripplelabs.atlassian.net/browse/RLJS-154).)</span>
+<!-- Note: RLJS-154 only affects 1.3.2-rc1 and -rc2 -->
 
 ## Robustly Monitoring for Payments ##
 
@@ -400,7 +401,22 @@ POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/setti
 
 Response:
 
-<span class='draft-comment'>Setting the TransferRate in Ripple-REST is currently broken. See [RLJS-158](https://ripplelabs.atlassian.net/browse/RLJS-158) for status.</span>
+```
+200 OK
+
+{
+  "success": true,
+  "settings": {
+    "transfer_rate": 1.005,
+    "require_destination_tag": false,
+    "require_authorization": false,
+    "disallow_xrp": false
+  },
+  "hash": "4D098C181DE0A21A55ACBD362E5ADBF24EA2493BD4E56F2137DBAF113327AB4E",
+  "ledger": "11158720",
+  "state": "validated"
+}
+```
 
 All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. You can accomplish this by setting the `source_amount` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
 
