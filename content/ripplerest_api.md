@@ -22,9 +22,10 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Orders ####
-* [Place Order - `POST /v1/accounts/{:source_address}/orders`](#place-order)
-* [Cancel Order - `DELETE /v1/accounts/{:source_address}/orders/{:sequence}`](#cancel-order)
+* [Place Order - `POST /v1/accounts/{:address}/orders`](#place-order)
+* [Cancel Order - `DELETE /v1/accounts/{:address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
+* [Get Order Book - `GET /v1/accounts/{:address}/order_book/{:base}/{:counter}`](#get-order-book)
 
 #### Trustlines ####
 
@@ -60,21 +61,19 @@ A Ripple ___payment___ can be sent using Ripple's native currency, XRP, directly
 
 Payments are made between two accounts, by specifying the ___source___ and ___destination___ address for those accounts.  A payment also involves an ___amount___, which includes both the numeric amount and the currency, for example: `100+XRP`.
 
-When you make a payment in a currency other than XRP, you also need to include the Ripple address of the ___issuer___.  The issuer is the gateway or other entity who holds the foreign-currency funds on your behalf.  For foreign-currency payments, the amount will look something like this: `100+USD+rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`.
+When you make a payment in a currency other than XRP, you also need to include the Ripple address of the ___counterparty___.  The counterparty is the gateway or other entity who holds the funds on your behalf.  For non-XRP payments, the amount looks something like this: `100+USD+rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp`.
 
-While the `ripple-rest` API provides a high-level interface for sending and receiving payments, there are other endpoints within the API that you can use to work with generic ripple transactions, and to check the status of the Ripple server.
+Although the Ripple-REST API provides a high-level interface to Ripple, there are also API methods for checking the status of the `rippled` server and retrieving a Ripple transaction in its native format.
 
 ### Sending Payments ###
 
 Sending a payment involves three steps:
 
-1. You need to generate the payment object by doing using what is called a pathfind(preparing a payment).  If the payment is to be made in a currency other than XRP, the Ripple system will identify the chain of trust, or ___path___, that connects the source and destination accounts; when creating the payment, the `ripple-rest` API will automatically find the set of possible paths for you.
+1. Generate the payment object with the [Prepare Payment method](#prepare-payment).  If the payment is not a direct send of XRP from one account to another, the Ripple system identifies the chain of trust, or ___path___, that connects the source and destination accounts, and includes it in the payment object.
+2. Modify the payment object if desired, and then [submit it](#submit-payment) to the API for processing. *Caution:* Making many changes to the payment object increases the chances of causing an error.
+3. Finally, ___confirm___ that the payment has completed, using the [Confirm Payment method](#confirm-payment). Payment submission is an asynchronous process, so payments can fail even after they have been submitted successfully.
 
-2. You can modify the payment object if necessary, and then ___submit___ it to the API for processing. It is recommended to submit the payment object generated directly to prevent any errors from occuring.
-
-3. Finally, you have to ___confirm___ that the payment has gone through by checking the payment's ___status___. This is because the payment submission is considered an asynchronous process, payments themselves can still fail even after they have been submitted successfully.
-
-Note that when you submit a payment for processing, you have to assign a unique `client resource identifier` to that payment.  This is a string which uniquely identifies the payment, and ensures that you do not accidentally submit the same payment twice.  You can also use the `client_resource_id` to retrieve a payment once it has been submitted.
+When you submit a payment for processing, you assign a unique `client resource identifier` to that payment.  This is a string which uniquely identifies the payment, and ensures that you do not accidentally submit the same payment twice.  You can also use the `client_resource_id` to retrieve a payment once it has been submitted.
 
 ### Transaction Types ###
 
@@ -97,6 +96,7 @@ You can create client resource IDs using any method you like, so long as you fol
 * Client resource IDs must be properly [encoded](http://tools.ietf.org/html/rfc3986#section-2.1) when provided as part of a URL.
 
 You can use the [Create Client Resource ID](#create-client-resource-id) method in order to generate new Client Resource IDs.
+
 
 ## Using Ripple-REST ##
 
@@ -168,7 +168,10 @@ http://localhost:5990/v1/server
 
 Since the hostname depends on where your chosen Ripple-REST instance is, the methods in this document are identified using only the part of the path that comes after the hostname.
 
+
+
 # Running Ripple-REST #
+
 ## Quick Start ##
 
 Ripple-REST requires [Node.js](http://nodejs.org/) and [sqlite 3](http://www.sqlite.org/). Before starting, you should make sure that you have both installed. 
@@ -331,19 +334,26 @@ You should parse these numbers into a numeric data type with adequate precision.
 
 ## <a id="amount_object"></a> Currency Amounts ##
 
-All currencies on the Ripple Network have issuers, except for XRP. In the case of XRP, the `issuer` field may be omitted or set to `""`. Otherwise, the `issuer` must be a valid Ripple address.
+There are two kinds of currency on the Ripple network: XRP, and issuances. XRP is the native cryptocurrency that only exists in the network, and can be held by accounts and sent directly to other accounts with no trust necessary.
 
-For more information about XRP see [the Ripple wiki page on XRP](https://ripple.com/wiki/XRP). For more information about using currencies other than XRP on the Ripple Network see [the Ripple wiki page for gateways](https://ripple.com/wiki/Ripple_for_Gateways).
+All other currencies take the form of *issuances*, which are held in the *trust lines* that link accounts. Issuances are identified by a `counterparty` on the other end of the trust line, sometimes also called the `issuer`. Sending and trading issuances actually means debiting the balance of a trust line and crediting the balance of another trust line linked to the same account. Ripple ensures this operation happens atomically.
+
+Issuances are typically created by Gateway accounts in exchange for assets in the outside world. In most cases, the `counterparty` of a currency refers to the gateway that created the issuances. XRP never has a counterparty.
+
+You can read more about [XRP](https://ripple.com/knowledge_categories/xrp/) and [Gateways](https://ripple.com/knowledge_center/gateways/) in the Knowledge Center.
+
 
 ### Amounts in JSON ###
 
-When an amount of currency (or other asset) is specified as part of a JSON body, it is encoded as an object with three fields:
+When an amount of currency is specified as part of a JSON body, it is encoded as an object with three fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
-| currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency |
-| issuer | String | The Ripple address of the account issuing the currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. (For more information, see [Issuers in Payments](#issuers-in-payments)) |
+| currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency. Alternatively, a 160-bit hex value. (Some advanced features, like [demurrage](https://ripple.com/wiki/Gateway_demurrage), require the hex version.) |
+| counterparty | String | (New in [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
+| issuer | String | (Prior to 1.3.2) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
+
 
 Example Amount Object:
 
@@ -351,7 +361,7 @@ Example Amount Object:
 {
   "value": "1.0",
   "currency": "USD",
-  "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+  "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
 }
 ```
 
@@ -361,7 +371,7 @@ or for XRP:
 {
   "value": "1.0",
   "currency": "XRP",
-  "issuer": ""
+  "counterparty": ""
 }
 ```
 
@@ -369,25 +379,25 @@ The `value` field can get very large or very small. See the [Currency Format](ht
 
 ### Amounts in URLs ###
 
-When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and issuer -- but concatenate them with `+` symbols.
+When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and counterparty -- but concatenate them with `+` symbols in that order.
 
 Example Amount:
 
 `1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q`
 
-When specifying an amount of XRP, you must omit the issuer entirely. For example:
+When specifying an amount of XRP, you must omit the counterparty entirely. For example:
 
 `1.0+XRP`
 
-### Issuers in Payments ###
+### Counterparties in Payments ###
 
-Most of the time, the `issuer` field of a non-XRP currency indicates the account of the gateway that issues that currency. However, when describing payments, there are a few nuances that are important:
+Most of the time, the `counterparty` field of a non-XRP currency indicates the account of the gateway that issues that currency. However, when describing payments, there are a few nuances that are important:
 
-* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
-* You can omit the issuer from the `destination_amount` of a payment to mean "any issuer that the destination accepts". This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
-    * For compatibility with `rippled`, setting the `issuer` of the `destination_amount` to be the destination account's address means the same thing.
-* You can omit the issuer from the `source_amount` of a payment to mean "any issuer the source can use". This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
-    * Similarly, setting the `issuer` of the `source_amount` to be the source account's address means the same thing.
+* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `counterparty` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
+* You can omit the counterparty from the `destination_amount` of a payment to mean "any counterparty that the destination accepts". This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+    * For compatibility with `rippled`, setting the `counterparty` of the `destination_amount` to be the destination account's address means the same thing.
+* You can omit the counterparty from the `source_amount` of a payment to mean "any counterparty the source can use". This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
+    * Similarly, setting the `counterparty` of the `source_amount` to be the source account's address means the same thing.
 
 
 ## <a id="payment_object"></a> Payment Objects ##
@@ -488,16 +498,36 @@ Example of the memos field:
 
 ## Order Objects ##
 
-An order object describes an offer to exchange two currencies
+An order object describes an offer to exchange two currencies. Order objects are used when creating or looking up individual orders.
 
 | Field | Value | Description |
 |-------|-------|-------------|
 | type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
-| taker_pays | String ([Amount Object](#amount_object)) | The amount the taker must pay to consume this order. |
-| taker_gets | String ([Amount Object](#amount_object)) | The amount the taker will get once the order is consumed. |
-| passive    | Boolean | Whether the order should be [passive](https://ripple.com/build/transactions/#offercreate-flags). |
-| immediate_or_cancel | Boolean | Whether the order should be [immediate or cancel](https://ripple.com/build/transactions/#offercreate-flags). |
-| fill_or_kill        | Boolean | Whether the order should be [fill or kill](https://ripple.com/build/transactions/#offercreate-flags). |
+| taker\_pays | String ([Amount Object](#amount_object)) | The amount the taker must pay to consume this order. |
+| taker\_gets | String ([Amount Object](#amount_object)) | The amount the taker will get once the order is consumed. |
+| sequence   | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
+| passive    | Boolean | Whether the order should be [passive](transactions.html#offercreate-flags). |
+| sell       | Boolean | Whether the order should be [sell](transactions.html#offercreate-flags). |
+| immediate\_or\_cancel | Boolean | Whether the order should be [immediate or cancel](transactions.html#offercreate-flags). |
+| fill\_or\_kill        | Boolean | Whether the order should be [fill or kill](transactions.html#offercreate-flags). |
+
+
+## Bid Objects ##
+
+An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used when retrieving an order book.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
+| price | String ([Amount Object](#amount_object)) | The quoted price, denominated in total units of the counter currency per unit of the base currency |
+| taker\_pays\_total | String ([Amount Object](#amount_object)) | The total amount the taker must pay to consume this order. |
+| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_gets\_total | String ([Amount Object](#amount_object)) | The total amount the taker will get once the order is consumed. |
+| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| order\_maker | String | The Ripple address of the account that placed the bid or ask on the order book. |
+| sequence | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
+| sell     | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
+| passive  | Boolean | Whether the order should be [passive](https://ripple.com/build/transactions/#offercreate-flags). |
 
 ## Trustline Objects ##
 
@@ -516,8 +546,8 @@ From the perspective of an account on one side of the trustline, the trustline h
 | reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
 | account\_allows\_rippling | Boolean | If set to false on two trustlines from the same account, payments cannot ripple between them. (See the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | counterparty\_allows\_rippling | Boolean | (Read-only) If false, the counterparty account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) enabled. |
-| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc3)) |
-| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc3)) |
+| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
+| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
 
 The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The `counterparty` field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)
 
@@ -618,12 +648,12 @@ Optionally, you can also include any of the following query parameters:
     {
       "currency": "XRP",
       "amount": "1046.29877312",
-      "issuer": ""
+      "counterparty": ""
     },
     {
       "currency": "USD",
       "amount": "512.79",
-      "issuer": "r...",
+      "counterparty": "r...",
     }
     ...
   ]
@@ -632,7 +662,7 @@ Optionally, you can also include any of the following query parameters:
 
 *Note:* `marker` will be present in the response when there are additional pages to page through.
 
-There will be one entry in the `balances` array for the account's XRP balance, and additional entries for each combination of currency code and issuer.
+There is one entry in the `balances` array for the account's XRP balance, and additional entries for each combination of currency code and counterparty.
 
 
 
@@ -826,7 +856,7 @@ Optionally, you can also include the following as a query parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:issuer}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If an issuer is not specified, include all issuances of that currency held by the sending account. |
+| `source_currencies` | Comma-separated list of source currencies. Each should be an [ISO 4217 currency code](http://www.xe.com/iso4217.php), or a `{:currency}+{:counterparty}` string. | Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If a counterparty is not specified, include all issuances of that currency held by the sending account. |
 
 Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network. This method effectively performs a [ripple_path_find](rippled-apis.html#ripple-path-find) and constructs payment objects for the paths it finds.
 
@@ -838,9 +868,48 @@ You can then choose one of the returned payment objects, modify it as desired (f
 {
   "success": true,
   "payments": [
-    { /* Payment */ },
-    { /* Payment */ },
-    ...
+    {
+      "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "source_tag": "",
+      "source_amount": {
+        "value": "1.008413509923106",
+        "currency": "USD",
+        "issuer": ""
+      },
+      "source_slippage": "0",
+      "destination_account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+      "destination_tag": "",
+      "destination_amount": {
+        "value": "1",
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "invoice_id": "",
+      "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"currency\":\"XRP\",\"type\":16,\"type_hex\":\"0000000000000010\"},{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+      "partial_payment": false,
+      "no_direct_ripple": false
+    },
+    {
+      "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "source_tag": "",
+      "source_amount": {
+        "value": "61.06103",
+        "currency": "XRP",
+        "issuer": ""
+      },
+      "source_slippage": "0",
+      "destination_account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+      "destination_tag": "",
+      "destination_amount": {
+        "value": "1",
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "invoice_id": "",
+      "paths": "[[{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rHAwwozJw6FHfnJfRQaFXrkGHocGoaNYSy\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rEtr3Kzh5MmhPbeNu6PDtQZsKBpgFEEEo5\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rKvPTQrD8ap1Y8TSmKjcK6G7q7Kvx7RAqQ\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+      "partial_payment": false,
+      "no_direct_ripple": false
+    }
   ]
 }
 ```
@@ -1469,7 +1538,7 @@ If the length of the `payments` array is equal to `results_per_page`, then there
 ## Place Order ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L110 "Source")
 
-(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
 
 Places an order to exchange currencies.
 
@@ -1485,12 +1554,12 @@ POST /v1/accounts/{:address}/orders?validated=true
       "type": "sell",
       "taker_pays": {
         currency: "JPY",
-        issuer: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+        counterparty: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
         value: "4000"
       },
       "taker_gets": {
         currency: "USD",
-        issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        counterparty: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
         value: ".25"
       }
     }
@@ -1533,15 +1602,15 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
     "state": "validated",
     "account": "sneThnzgBgxc3zXPG....",
     "taker_pays": {
-      currency: "JPY",
-      issuer: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
-      value: "4000"
+      "currency": "JPY",
+      "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+      "value": "4000"
     },
     "taker_gets": {
-      currency: "USD",
-      issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      value: ".25"
-    }
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": ".25"
+    },
     "fee": "0.012",
     "type": "sell",
     "sequence": 99
@@ -1551,7 +1620,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 
 ## Cancel Order ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L243 "Source")
-(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
 
 Deletes a previous order to exchange currencies.
 
@@ -1613,7 +1682,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ## Get Account Orders ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
 
-(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc2))
+(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
 
 Retrieves all currency-exchange orders associated with the Ripple address.
 
@@ -1633,7 +1702,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| address | String | The Ripple account address whose trustlines to look up. |
+| address | String | The Ripple account address whose orders to look up. |
 
 Optionally, you can also include the following query parameters:
 
@@ -1652,58 +1721,324 @@ The response is an object with a `orders` array, where each member is a [order o
 ```js
 {
   "success": true,
-  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
-  "limit": 100,
-  "ledger": 9592219,
+  "marker": "DF5DE453A6531A542988861F250376A0C284C2C829DEE0ABC22D663EAFC270F9",
+  "limit": 10,
+  "ledger": 11082531,
   "validated": true,
-  "orders": [
-    {
-      "flags": 0,
-      "seq": 719930,
-      "taker_gets": {
-        "currency": "EUR",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "17.70155237781915"
-      },
-      "taker_pays": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "1122.990930900328"
-      }
+  "orders": [{
+    "taker_gets": {
+      "currency": "EUR",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "2500"
     },
-    {
-      "flags": 0,
-      "seq": 757002,
-      "taker_gets": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "18.46856867857617"
-      },
-      "taker_pays": {
-        "currency": "USD",
-        "issuer": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2",
-        "value": "19.50899530491766"
-      }
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "3750"
     },
-    {
-      "flags": 0,
-      "seq": 756999,
-      "taker_gets": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "19.11697137482289"
-      },
-      "taker_pays": {
-        "currency": "EUR",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-        "value": "750"
-      }
-    }
-  ]
+    "sequence": 105955,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "CHF",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "47"
+    },
+    "taker_pays": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "4700"
+    },
+    "sequence": 106858,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "10996.534297"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+      "value": "0.99968493609091"
+    },
+    "sequence": 105993,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "BTC",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "19.32"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "21"
+    },
+    "sequence": 106880,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "21"
+    },
+    "taker_pays": {
+      "currency": "BTC",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "22.47"
+    },
+    "sequence": 106066,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "102058.710535"
+    },
+    "taker_pays": {
+      "currency": "MXN",
+      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+      "value": "44373.35240666822"
+    },
+    "sequence": 105962,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "450000"
+    },
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "15000"
+    },
+    "sequence": 105963,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "17000"
+    },
+    "taker_pays": {
+      "currency": "CAD",
+      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
+      "value": "500"
+    },
+    "sequence": 105964,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "28000"
+    },
+    "taker_pays": {
+      "currency": "CAD",
+      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
+      "value": "1000"
+    },
+    "sequence": 105965,
+    "passive": false,
+    "sell": false
+  }, {
+    "taker_gets": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "255000"
+    },
+    "taker_pays": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "7500"
+    },
+    "sequence": 105966,
+    "passive": false,
+    "sell": false
+  }]
 }
 ```
 
-*Note:* `marker` will be present in the response when there are additional pages to page through.
+
+
+
+## Get Order Book ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
+
+Retrieves the top of the order book for a currency pair.
+
+<div class='multicode'>
+*REST*
+
+```
+GET /v1/accounts/{:address}/order_book/{:base}/{:counter}
+```
+</div>
+
+[Try it! >](rest-api-tool.html#get-order-book)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address whose orders to look up. |
+| base | String | The base currency as `currency+counterparty` (e.g., `USD+`)|
+| counter | String | The counter currency as `currency+counterparty` (e.g., `BTC+`)|
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| limit | String (Integer) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
+
+
+#### Response ####
+
+The response includes `bids` and `asks` arrays that contain [bid objects](#bid-objects)
+
+```js
+{
+  "success": true,
+  "order_book": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "ledger": "11082710",
+  "validated": true,
+  "bids": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.60000000000017358109"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "order_maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+    "sequence": 550,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.53485133502987091805"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "order_maker": "rQE5Z3FgVnRMbVfS6xiVQFgB4J3X162FVD",
+    "sequence": 114646,
+    "passive": false,
+    "sell": false
+  }],
+  "asks": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "267.73999242396369106028"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "order_maker": "rwmnMXpRXFqHLYzwyeggJQ8fu5bPyxqup1",
+    "sequence": 145474,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "5205797604790419e-26"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.00000001403173538341179"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "order_maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+    "sequence": 52688,
+    "passive": false,
+    "sell": true
+  }]
+}
+```
+
+
+
 
 # TRUSTLINES #
 

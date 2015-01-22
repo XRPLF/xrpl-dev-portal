@@ -206,12 +206,12 @@ Request("Place Order", {
             "taker_pays": {
                 "currency": "JPY",
                 "value": "4000",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+                "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
             },
             "taker_gets": {
                 "currency": "USD",
                 "value": ".25",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
             },
             "immediate_or_cancel": true
         }
@@ -242,6 +242,19 @@ Request("Get Account Orders", {
     params: {
         "{:address}": DEFAULT_ADDRESS_3,
         "{:query_params}": "ledger=10399192&limit=15"
+    }
+});
+
+Request("Get Order Book", {
+    method: GET,
+    path: "/v1/accounts/{:address}/order_book/{:base}/{:counter}?{:query_params}",
+    description: "Get the order book for a currency pair",
+    link: "#get-order-book",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_3,
+        "{:base}": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:counter}": "USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:query_params}": "limit=10"
     }
 });
 
