@@ -253,13 +253,13 @@
   });
 
   Request('submit', {
-    secret: 'sssssssssssssssssssssssssssss',
+    secret: 'sn3nxiW7v8KXzPzAqzyHXbSSKNuN9',
     tx_json: {
       Flags: 0,
       TransactionType: 'AccountSet',
       Account: 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn',
       Sequence: void(0),
-      Fee: '15',
+      Fee: '10000',
       Flags: 0
     },
     _description: 'Submits a transaction to the network.',
@@ -278,8 +278,9 @@
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
       }
    },
-   secret : "sssssssssssssssssssssssssssss",
+   secret : "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
    offline: false,
+   fee_mult_max: 1000,
    _description: 'Sends a transaction to be signed by the server.',
    _link: 'rippled-apis.html#sign',
     _takes_secret: true
