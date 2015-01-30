@@ -141,6 +141,7 @@ rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 
 #### Example Successful Response ####
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -205,6 +206,7 @@ HTTP Status: 200 OK
     }
 }
 ```
+
 </div>
 
 The fields of a successful response include:
@@ -224,6 +226,7 @@ It is impossible to enumerate all the possible ways an error can occur. Some may
 
 Some example errors:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -273,6 +276,7 @@ HTTP Status: 200 OK
     }
 }
 ```
+
 </div>
 
 #### WebSocket API Error Response Format ####
@@ -490,6 +494,7 @@ The `account_info` command retrieves information about an account, its activity,
 
 An example of an account_info request:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -520,6 +525,7 @@ An example of an account_info request:
 #Syntax: account_info account [ledger_index|ledger_hash] [strict]
 rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#account_info)
@@ -540,6 +546,7 @@ The following fields are deprecated and should not be provided: `ident`, `accoun
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -562,6 +569,7 @@ An example of a successful response:
   }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
@@ -600,6 +608,7 @@ The `account_lines` method returns information about the account's lines of trus
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -647,6 +656,7 @@ The following parameters are deprecated and may be removed without further notic
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -983,6 +993,7 @@ The `account_offers` method retrieves a list of offers made by a given account t
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -1014,6 +1025,7 @@ An example of the request format:
 #Syntax: account_offers account [ledger_index]
 rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#account_offers)
@@ -1036,6 +1048,7 @@ The following parameter is deprecated and may be removed without further notice:
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -1116,6 +1129,7 @@ The `account_tx` method retrieves a list of transactions that involved the speci
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1156,6 +1170,7 @@ An example of the request format:
 #Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#account_tx)
@@ -1188,6 +1203,7 @@ However, in the time between requests, things may change so that `"ledger_index_
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1711,6 +1727,7 @@ which may be deleted.
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1737,6 +1754,7 @@ An example of the request format:
 #Syntax can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled -- can_delete 11320417
 ```
+
 </div>
 
 The request includes the following optional parameter:
@@ -1776,6 +1794,7 @@ Use the `wallet_propose` method to generate the keys needed for a new account. T
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1814,6 +1833,7 @@ The request can contain the following parameter:
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1828,6 +1848,7 @@ An example of a successful response:
    }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new account, including the following fields:
@@ -1863,6 +1884,7 @@ Retrieve information about the public ledger.
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1896,6 +1918,7 @@ An example of the request format:
 #Syntax: ledger ledger_index|ledger_hash [full]
 rippled -- ledger current false
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ledger)
@@ -1918,6 +1941,7 @@ The `ledger` field is deprecated and may be removed without further notice.
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -1960,6 +1984,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing information about the ledger, including the following fields:
@@ -1998,6 +2023,7 @@ The `ledger_closed` method returns the unique identifiers of the most recently c
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2021,6 +2047,7 @@ An example of the request format:
 #Syntax: ledger_closed
 rippled -- ledger_closed
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ledger_closed)
@@ -2031,6 +2058,7 @@ This method accepts no parameters.
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2055,6 +2083,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -2079,6 +2108,7 @@ The `ledger_current` method returns the unique identifiers of the current in-pro
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2102,6 +2132,7 @@ An example of the request format:
 #Syntax: ledger_current
 rippled -- ledger_current
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ledger_current)
@@ -2113,6 +2144,7 @@ The request contains no parameters.
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2135,6 +2167,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following field:
@@ -2159,6 +2192,7 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2183,6 +2217,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 __*Note:*__ There is no commandline syntax for `ledger_data`. You can use the [`json` command](#json) to access this method from the commandline instead.
@@ -2204,6 +2239,7 @@ The `ledger` field is deprecated and may be removed without further notice.
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket (binary:true)*
 ```
 {
@@ -2372,6 +2408,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -2409,6 +2446,7 @@ The `ledger_entry` method returns a single entry from the specified ledger. See 
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2433,6 +2471,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ledger_entry)
@@ -2473,6 +2512,7 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```{
     "id": 3,
@@ -2519,6 +2559,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -2555,6 +2596,7 @@ The `tx` method retrieves information on a single transaction.
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2581,6 +2623,7 @@ An example of the request format:
 #Syntax: tx transaction [binary]
 tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#tx)
@@ -2596,6 +2639,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2722,6 +2766,7 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the fields of the [Transaction object](transactions.html) as well as the following additional fields:
@@ -2753,6 +2798,7 @@ The `transaction_entry` method retrieves information on a single transaction fro
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -2784,6 +2830,7 @@ An example of the request format:
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#transaction_entry)
@@ -2802,6 +2849,7 @@ __*Note:*__ This method does not support retrieving information from the current
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2930,6 +2978,7 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -2969,6 +3018,7 @@ __*Caution:*__ This method is deprecated, and may be removed without further not
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -2995,6 +3045,7 @@ An example of the request format:
 #Syntax: tx_history [start]
 rippled -- tx_history 0
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#tx_history)
@@ -3010,6 +3061,7 @@ The request includes the following parameters:
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -3827,6 +3879,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -3869,6 +3922,7 @@ A client can only have one pathfinding request open at a time. If another pathfi
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -3884,6 +3938,7 @@ An example of the request format:
     }
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#path_find)
@@ -3904,6 +3959,7 @@ The server also recognizes the following fields, but the results of using them a
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -4269,6 +4325,7 @@ An example of a successful response:
   }
 }
 ```
+
 </div>
 
 The initial response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -4301,6 +4358,7 @@ In addition to the initial response, the server sends more messages in a similar
 Here is an example of an asychronous follow-up from a path_find create request:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5141,6 +5199,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+
 </div>
 
 ### path_find close ###
@@ -5152,6 +5211,7 @@ The `close` subcommand of `path_find` instructs the server to stop sending infor
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5160,6 +5220,7 @@ An example of the request format:
   "subcommand": "close"
 }
 ```
+
 </div>
 
 The request includes the following parameters:
@@ -5188,6 +5249,7 @@ The `status` subcommand of `path_find` requests an immediate update about the cl
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5196,6 +5258,7 @@ An example of the request format:
   "subcommand": "status"
 }
 ```
+
 </div>
 
 The request includes the following parameters:
@@ -5227,6 +5290,7 @@ Although the `rippled` server attempts to find the cheapest path or combination 
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -5284,6 +5348,7 @@ An example of the request format:
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ripple_path_find)
@@ -5304,6 +5369,7 @@ The request includes the following parameters:
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -5520,6 +5586,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -5565,6 +5632,7 @@ __*Note:*__ It is possible and preferable to sign a transaction without connecti
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5613,6 +5681,7 @@ An example of the request format:
 #Syntax: sign secret tx_json [offline]
 rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#sign)
@@ -5638,6 +5707,7 @@ The server automatically attempts to fill in certain fields from the `tx_json` o
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5692,6 +5762,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -5741,6 +5812,7 @@ A submit-only request includes the following parameters:
 
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5767,6 +5839,7 @@ A submit-only request includes the following parameters:
 #Syntax: submit tx_blob
 submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#submit)
@@ -5791,6 +5864,7 @@ See the [sign command](#sign) for detailed information on how the server automat
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5837,6 +5911,7 @@ An example of the request format:
 #Syntax: submit secret json [offline]
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#submit)
@@ -5846,6 +5921,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -5905,6 +5981,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -5948,6 +6025,7 @@ The `book_offers` method retrieves a list of offers, also known as the [order bo
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -5993,6 +6071,7 @@ An example of the request format:
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#book_offers)
@@ -6016,6 +6095,7 @@ Normally, offers that are not funded are omitted; however, offers made by the sp
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6088,6 +6168,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
@@ -6136,6 +6217,7 @@ The `subscribe` method requests periodic notifications from the server when cert
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket - accounts*
 ```
 {
@@ -6162,6 +6244,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#subscribe)
@@ -6203,6 +6286,7 @@ The field `proof` is reserved for future use.
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6212,6 +6296,7 @@ An example of a successful response:
   "result": {}
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting). The fields contained in the response vary depending on what subscriptions were included in the request.
@@ -6410,6 +6495,7 @@ The `unsubscribe` command tells the server to stop sending messages for a partic
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6432,6 +6518,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#unsubscribe)
@@ -6459,6 +6546,7 @@ The objects in the `books` array are defined almost like the ones from subscribe
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6468,6 +6556,7 @@ An example of a successful response:
     "type": "response"
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
@@ -6503,6 +6592,7 @@ The `server_info` command asks the server for a human-readable version of variou
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6520,6 +6610,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#server_info)
@@ -6530,6 +6621,7 @@ The request does not takes any parameters.
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6596,6 +6688,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing an `info` object as its only field.
@@ -6643,6 +6736,7 @@ The `server_state` command asks the server for various machine-readable informat
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6660,6 +6754,7 @@ An example of the request format:
     ]
 }
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#server_state)
@@ -6670,6 +6765,7 @@ The request does not takes any parameters.
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 
 ```
@@ -6787,6 +6883,7 @@ The `ping` command returns an acknowledgement, so that clients can test the conn
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6810,6 +6907,7 @@ An example of the request format:
 #Syntax: ping
 rippled -- ping
 ```
+
 </div>
 
 [Try it! >](ripple-api-tool.html#ping)
@@ -6821,6 +6919,7 @@ The request includes no parameters.
 An example of a successful response:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6840,6 +6939,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
@@ -6858,6 +6958,7 @@ The `random` command provides a random number to be used as a source of entropy 
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6881,6 +6982,7 @@ An example of the request format:
 #Syntax: random
 rippled -- random
 ```
+
 </div>
 
 The request includes no parameters.
@@ -6889,6 +6991,7 @@ The request includes no parameters.
 
 An example of a successful response:
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -6911,6 +7014,7 @@ An example of a successful response:
     }
 }
 ```
+
 </div>
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following field:
@@ -6933,11 +7037,13 @@ The `json` method is a proxy to running other commands, and accepts the paramete
 An example of the request format:
 
 <div class='multicode'>
+
 *Commandline*
 ```
 # Syntax: json method json_stanza
 rippled -q -- json ledger_closed '{}'
 ```
+
 </div>
 
 #### Response Format ####
