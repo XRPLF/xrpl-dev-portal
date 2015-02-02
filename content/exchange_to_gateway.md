@@ -121,7 +121,7 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. This could be as simple as adding a record for Ripple. 
     - Optionally, a gateway can take additional steps to separate normal user funds from funds backing the gateway's Ripple issuances. For example, a cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple. This provides publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must have a Ripple account. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See [Hot and Cold Wallets](#hot-and-cold-wallets) for more information.
-- Alice must create a trustline from her Ripple address to ACME's issuing (cold wallet) account. She can do this from any Ripple client (such as [Ripple Trade](https://www.rippletrade.com/) as long as she knows ACME's account address or Ripple Name.
+- Alice must create a trustline from her Ripple account to ACME's issuing (cold wallet) account. She can do this from any Ripple client (such as [Ripple Trade](https://www.rippletrade.com/) as long as she knows the address or Ripple Name of ACME's cold wallet.
 - ACME must create a user interface for Alice to send funds from ACME into Ripple.
     - In order to do this, ACME needs to know Alice's Ripple address. ACME can have Alice input her Ripple addresss as part of the interface, or ACME can require Alice to input and verify her Ripple address in advance.
 
@@ -140,12 +140,12 @@ An example of a withdrawal flow:
 In addition to the [requirements for making deposits possible](#deposit-requirements), there are several prerequisites that ACME must meet in order to process payments coming from Ripple:
 
 - ACME must monitor its Ripple accounts for incoming payments.
-- ACME must recognize the identities of users from the incoming payments.
+- ACME must know which user to credit internally for the incoming payments.
     - We recommend that ACME should [bounce any unrecognized incoming payments](#bouncing-payments) back to their sender.
     - Typically, the preferred method of recognizing incoming payments is through [destination tags](#destination-tags).
 
 
-### Precautions ###
+## Precautions ##
 
 Processing payments to and from Ripple naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:
 
@@ -153,7 +153,7 @@ Processing payments to and from Ripple naturally comes with some risks, so a gat
 - Before processing a payment out of Ripple, make sure you know the customer's identity. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.
 - Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending Ripple transactions.
 - [Robustly monitor for incoming payments](#robustly-monitor-for-payments), and read the correct amount. Don't be deceived by Partial Payments.
-- Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, pause processing withdrawals and deposits until you resolve the discrepancy. (<span class='draft-comment'>TODO: Link to tallying bulletin when it comes out</span>)
+- Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy. (<span class='draft-comment'>TODO: Link to tallying bulletin when it comes out</span>)
 - Proactively avoid ambiguous situations. We recommend the following:
     - Enable the [`DisallowXRP` flag](#disallowxrp) for the cold wallet account and all hot wallet accounts, so users do not accidentally send you XRP.
     - Enable the [`RequireDest` flag](#requiredest) for the cold wallet account and all hot wallet accounts, so users do not accidentally forget the destination tag on payments to make withdrawals.
@@ -163,15 +163,17 @@ Processing payments to and from Ripple naturally comes with some risks, so a gat
 
 After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. There are several consequences of this situation:
 
-- Anyone can buy/sell EUR@ACME on Ripple, if they create a trust line to ACME's issuing account first. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
+- Anyone can buy/sell EUR@ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
     - This includes users who do not have an account with ACME Exchange. In order to withdraw the funds successfully from ACME, users still have to create ACME accounts.
     - Optionally, use the [Authorized Accounts](#authorized-accounts) feature to limit who can hold EUR@ACME on Ripple.
 - Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME.
 - All exchanges and balances on Ripple are publicly viewable in the shared, global ledger. 
 
+## Market Makers ##
+
 Exchanging EUR@ACME for other currencies within Ripple requires market makers who are willing to exchange other Ripple issuances for EUR@ACME. Market makers are just Ripple accounts with trust lines for EUR@ACME as well as other currencies or issuers, who create orders (called "offers" in the Ripple ledger) to exchange currency. The cost of exchanging EUR@ACME for another currency depends on the quantity and quality of orders. 
 
-To facilitate exchanging currency, ACME may decide to become its own market maker. For various reasons, we recommend using a separate Ripple account for trading. 
+To facilitate exchanging currency, ACME may decide to become its own market maker. For various reasons, we recommend using a separate Ripple account for trading. Because market making can result in financial losses, gateways that choose to act as market makers should not use customer funds for market making.
 
 The following diagram depicts a simple Ripple payment sending 2EUR@ACME from Alice to Charlie. Note that ACME's balance sheet and holdings do not change:
 
@@ -195,7 +197,7 @@ To use the Authorized Accounts feature, a gateway first enables the `RequireAuth
 
 You must authorize trust lines using the same cold wallet account that issues the currency, which unfortunately means an increased risk exposure for that account. The process for sending funds into Ripple with RequireAuth enabled looks like the following:
 
-1. ACME publishes its cold wallet address to users.
+1. ACME publishes the address of its cold wallet to users.
 2. Alice extends a trust line from her Ripple account to ACME's cold wallet, indicating that she is willing to hold ACME's issuances.
 3. ACME's cold wallet sends a transaction authorizing Alice's trust line.
 
