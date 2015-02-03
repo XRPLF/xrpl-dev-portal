@@ -1,7 +1,9 @@
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() > $(document).height() - 183) {
-       $(".menubar.fixed").addClass("leaveroomforfooter");
+   var footerpos = parseInt($(".footer").offset().top);
+   var scrollpos = $(window).scrollTop() + $(window).height();
+   if(scrollpos - footerpos > 0) {
+       $(".menubar.fixed").css("margin-bottom", scrollpos-footerpos);
    } else {
-       $(".menubar.fixed").removeClass("leaveroomforfooter");
+       $(".menubar.fixed").css("margin-bottom", 0);
    }
 });

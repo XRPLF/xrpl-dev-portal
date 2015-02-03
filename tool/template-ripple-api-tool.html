@@ -1,0 +1,86 @@
+{% extends "template-base.html" %}
+{% block contentroot %}
+    <div class='content-root'>
+    <div id='online_state'>Offline</div>
+    <div style="clear:both;"></div>
+    <div id='command_wrapper'>
+        <ul id='command_list'>
+            <li class='selected'>server_info</li>
+            <li>server_state</li>
+            <li>ping</li>
+            <br/>
+            <li>subscribe</li>
+            <li>unsubscribe</li>
+            <br/>
+            <li>ledger</li>
+            <li>ledger_closed</li>
+            <li>ledger_current</li>
+            <li>ledger_entry</li>
+            <br/>
+            <li>account_info</li>
+            <li>account_lines</li>
+            <li>account_offers</li>
+            <li>account_tx</li>
+            <br/>
+            <li>transaction_entry</li>
+            <li>tx</li>
+            <li>tx_history</li>
+            <br/>
+            <li>sign</li>
+            <li>submit</li>
+            <br/>
+            <li>ripple_path_find</li>
+            <li>path_find</li>
+            <li>book_offers</li>
+        </ul>
+        <div id='command_table'>
+            <div id='io_wrapper'>
+                <div id='input' class='io'>
+                    <h2>WebSocket Request</h2>
+                    <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                        <h4>Test accounts only!</h4>
+                        <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <h3 id='selected_command' title='Reference information'>server_info</h3>
+                    <p id='description'></p>
+                    <div id='invalid'>Invalid JSON</div>
+                    <p>JSON</p>
+                    <div id='request'></div>
+                    <div id='request_options'>
+                        <div class="button btn btn-primary api" id='request_button'>Send request</div>
+                    </div>
+                </div>
+                <div id='output' class='io'>
+                    <h2>Response</h2>
+                    <div>
+                        <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                    </div>
+                    <p id='info'></p>
+                    <div id='response'></div>
+                    <div id='tooltip'></div>
+                    <div id='stream_output'>
+                        <h3>Stream output</h3>
+                        <ul class='toolbar'>
+                            <li id='stream_show'>show</li>
+                            <li id='stream_pause'>pause</li>
+                        </ul>
+                        <p id='status'></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+  
+{% block endbody %}
+  <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
+  <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
+  <script type='text/javascript' src='js/es5-shim.js'></script>
+  <script src='vendor/codemirror.min.js'></script>
+  <script type='text/javascript' src='js/cm-javascript.min.js'></script>
+  <script type='text/javascript' src='js/ripple-0.11.0-min.js'></script>
+  <script type='text/javascript' src='js/apitool-websocket.js'></script>
+{% endblock %}
+

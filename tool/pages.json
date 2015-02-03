@@ -1,0 +1,63 @@
+[
+    {
+        "name": "rippled",
+        "md":"rippled.md",
+        "html":"rippled-apis.html"
+    },
+    {
+        "name": "Ripple-REST",
+        "md": "ripplerest_api.md",
+        "html": "ripple-rest.html"
+    },
+    {
+        "name": "Gatewayd",
+        "md":"gatewayd.md",
+        "html":"gatewayd.html"
+    },
+    {
+        "name": "Transactions",
+        "md":"tx_format.md",
+        "html":"transactions.html"
+    },
+    {
+        "name": "Reliable Transaction Submission",
+        "md":"reliable_tx.md",
+        "html":"reliable_tx.html"
+    },
+    {
+        "name": "Gateway Guide",
+        "md":"exchange_to_gateway.md",
+        "html":"gateway_guide.html"
+    },
+    {
+        "name": "Historical Data API",
+        "md": "historical_data.md",
+        "html": "historical_data.html"
+    },
+    {
+        "name": "Gateway Services",
+        "md":"gateway_services_spec.md",
+        "html":"gateway_services.html"
+    },
+    {
+        "name": "Whitepapers",
+        "md":"whitepapers.md",
+        "html":"whitepapers.html"
+    },
+    {
+        "name": "Overview",
+        "template":"template-index.html",
+        "html": "index.html"
+    },
+    {
+        "name": "Ripple-REST API Tool",
+        "template":"template-rest-api-tool.html",
+        "html": "rest-api-tool.html"
+    },
+    {
+        "name": "WebSocket API Tool",
+        "template":"template-ripple-api-tool.html",
+        "html": "ripple-api-tool.html"
+    }
+]
+
