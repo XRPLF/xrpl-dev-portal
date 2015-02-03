@@ -6,7 +6,7 @@ Interact with the gatewayd by building custom integrations with banking and paym
 
 <div class="alert alert-danger">
 
-**Gatewayd is currently unsupported.** Gatewayd is undergoing a major restructuring. Use the current, in-development version at your own risk. For continuing support of previous versions of Gatewayd, contact [developers@ripple.com](mailto:developers@ripple.com). For new enterprise-class integrations, we recommend that you use [Ripple-REST](ripple-rest.html) instead at this time.
+**Limited support only.** Gatewayd is undergoing a major restructuring. Use the current, in-development version at your own risk. For continuing support of previous versions of Gatewayd, contact [developers@ripple.com](mailto:developers@ripple.com). For new enterprise-class integrations, we recommend that you use [Ripple-REST](ripple-rest.html) instead at this time.
 
 </div>
 
