@@ -16,11 +16,13 @@ The [tool/](tool/) folder contains tools and templates for generating the HTML f
 * The default, dynamic pages. Generates thin HTML wrappers for each page and uses Flatdoc to load and parse the contents. Great for development since a refresh automatically picks up changes to the md files.
 * Pre-compiled pages. Requires [Pandoc](http://johnmacfarlane.net/pandoc/). Parses the Markdown all at once and puts the contents directly into the HTML body of each file. Still experimental.
 
+To add more pages to the Dev Portal, simply modify `pages.json` and then run `parse_pages.py` again.
+
 
 Contributing
 ------------
 
 The Developer Portal welcomes outside contributions, especially to the documentation contents. If you have any corrections, improvements, or expansions of the portal, please contribute pull requests to the **gh-pages** branch.
 
-Contributions become copyright Ripple Labs and are provided under the MIT [LICENSE](LICENSE)
+Contributions become copyright Ripple Labs and are provided under the MIT [LICENSE](LICENSE).
 
