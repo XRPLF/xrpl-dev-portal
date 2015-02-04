@@ -65,6 +65,7 @@ var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
 var DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX";
 var DEFAULT_ADDRESS_3 = "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
+var DEFAULT_SECRET = "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9";
 
 Request('Generate Wallet', {
     method: GET,
@@ -105,7 +106,7 @@ Request('Update Account Settings', {
         "{:query_params}": "validated=true"
     },
     body: {
-        secret: "sssssssssssssssssssssssssssss",
+        secret: DEFAULT_SECRET,
         settings: {
             require_destination_tag: false,
             require_authorization: false,
@@ -136,7 +137,7 @@ Request('Submit Payment', {
     link: '#submit-payment',
     test_only: true,
     body: {
-      "secret": "sssssssssssssssssssssssssssss",
+      "secret": DEFAULT_SECRET,
       "client_resource_id": "348170b9-16b9-4927-854d-7f9d4a2a692d",
       "payment":     {
           "source_account": DEFAULT_ADDRESS_1,
@@ -199,18 +200,18 @@ Request("Place Order", {
         "{:query_params}": "validated=true"
     },
     body: {
-        "secret": "sneThnzgBgxc3zXPG....",
+        "secret": DEFAULT_SECRET,
         "order": {
             "type": "sell",
             "taker_pays": {
                 "currency": "JPY",
                 "value": "4000",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+                "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
             },
             "taker_gets": {
                 "currency": "USD",
                 "value": ".25",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
             },
             "immediate_or_cancel": true
         }
@@ -219,16 +220,17 @@ Request("Place Order", {
 
 Request("Cancel Order", {
     method: DELETE,
-    path: "/v1/accounts/{:address}/orders?{:query_params}",
+    path: "/v1/accounts/{:address}/orders/{:order}/?{:query_params}",
     description: "Cancel an order on the ripple network.",
     link: "#cancel-order",
     test_only: true,
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
-        "{:query_params}": "validated=true"
+        "{:query_params}": "validated=true",
+        "{:order}": "23"
     },
     body: {
-        "secret": "sneThnzgBgxc3zXPG...."
+        "secret": DEFAULT_SECRET
     }
 });
 
@@ -240,6 +242,19 @@ Request("Get Account Orders", {
     params: {
         "{:address}": DEFAULT_ADDRESS_3,
         "{:query_params}": "ledger=10399192&limit=15"
+    }
+});
+
+Request("Get Order Book", {
+    method: GET,
+    path: "/v1/accounts/{:address}/order_book/{:base}/{:counter}?{:query_params}",
+    description: "Get the order book for a currency pair",
+    link: "#get-order-book",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_3,
+        "{:base}": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:counter}": "USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "{:query_params}": "limit=10"
     }
 });
 
@@ -265,7 +280,7 @@ Request("Grant Trustline", {
         "{:query_params}": "validated=true"
     },
     body: {
-        "secret": "sneThnzgBgxc3zXPG....",
+        "secret": DEFAULT_SECRET,
         "trustline": {
             "limit": "110",
             "currency": "USD",
@@ -346,7 +361,7 @@ function update_method(el) {
         method = $(el).val();
     }
 
-    if (method == GET || method == DELETE) {
+    if (method == GET) {
         request_body.hide();
     } else {
         request_body.show();
@@ -421,7 +436,7 @@ function select_request(request) {
     request_button.text(command.method+" request");
     update_method(request_button);
 
-    if (command.method == POST || command.method == PUT) {
+    if (command.hasOwnProperty("body")) {
         cm_request.setValue(JSON.stringify(command.body, null, 2));
     } else {
         //No body, so wipe out the current contents.
@@ -461,8 +476,10 @@ function send_request() {
 
     $(this).addClass('depressed');
     response_body.addClass('obscured');
+    
+    var original_cmd = requests[slugify(selected_command.text())];
 
-    if (method == PUT || method == POST) {
+    if (original_cmd.hasOwnProperty("body")) {
         var body   = cm_request.getValue();
         $.ajax({
             type: method,

@@ -329,7 +329,11 @@ Example payment:
 
 ### Special issuer Values for SendMax and Amount ###
 
-The [currency amount](rippled-apis.html#currency-amounts) specified for `Amount` and `SendMax` fields of a 
+Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis.html#currency-amounts) indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+
+* There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
+* When the `issuer` field of the destination `Amount` field matches the `Destination` account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
 
 ### Creating Accounts ###
 
@@ -488,9 +492,13 @@ Accounts can protect against unwanted incoming payments for non-XRP currencies s
 
 ### TransferRate ###
 
-TransferRate allows issuing gateways to charge users for sending funds to other users of the same gateway. It adds a fee, specified in billionths of a unit (for all non-XRP currencies) that applies when a user pays another user in the currency issued by this account. The fee "disappears" from the balances on the ledger, becoming the property of the issuing gateway. The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
+TransferRate allows issuing gateways to charge users for sending funds to other users of the same gateway. It adds a fee, specified in billionths of a unit (for all non-XRP currencies) that applies when a user pays another user in the currency issued by this account. The fee "disappears" from the balances on the ledger, becoming the property of the issuing gateway. The TransferRate does not apply when redeeming funds with the account that issued them. The TransferRate applies equally to all currencies issued by that account. (XRP, which never has an issuer, is never subject to a TransferRate.)
 
-For example, if HighFeeGateway issues USD and sets the `TransferRate` to 120000000 and Norman wants to send Arthur $100 of USD issued by HighFeeGateway, Norman would have to spend $120 in order for Arthur to receive $100. The other $20 would no longer be tracked on the Ripple Ledger, and would become the property of HighFeeGateway instead.
+In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `120000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
+
+Ripple-REST uses a decimal value to represent the `transfer_rate` as a decimal, the amount that must be sent in order for 1 unit to arrive. For example, a 20% transfer fee is represented as the value `1.2`. Ripple-REST's format also allows 9 digits of precision. The value `0` is equivalent to the value `1`, both meaning no fee.
+
+The fee is paid by the sender on top of the destination amount of the transaction. For example, if HighFeeGateway's `TransferRate` is 20% and Norman wants to send Arthur $100 of USD issued by HighFeeGateway, Norman would have to spend $120 in order for Arthur to receive $100. The other $20 would no longer be tracked on the Ripple Ledger, and would become the property of HighFeeGateway instead.
 
 
 
@@ -700,8 +708,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfSetAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
-| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://wiki.ripple.com/No_Ripple) for details.) |
+| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
+| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfSetFreeze | 0x00100000 | 1048576 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
 | tfClearFreeze | 0x00200000 | 2097152 | Unfreeze the trustline. |
 

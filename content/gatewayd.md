@@ -4,6 +4,12 @@ Gatewayd (pronounced "gateway-dee"), provides a framework you can extend to buil
 
 Interact with the gatewayd by building custom integrations with banking and payment systems around the world, and by using the built-in APIs for designing beautiful gateway mobile apps and user interfaces. Gatewayd includes a REST API, Javascript library, and commandline interface; developers can also interact with Gatewayd by directly modifying the database records it monitors.
 
+<div class="alert alert-danger">
+
+**Limited support only.** Gatewayd is undergoing a major restructuring. Use the current, in-development version at your own risk. For continuing support of previous versions of Gatewayd, contact [developers@ripple.com](mailto:developers@ripple.com). For new enterprise-class integrations, we recommend that you use [Ripple-REST](ripple-rest.html) instead at this time.
+
+</div>
+
 Gatewayd's features include: 
 
   - deposits and withdrawals
@@ -357,7 +363,6 @@ All these routes are **DEPRECATED**. Authentication for these routes works diffe
 ## External Transactions ##
 
 ### Record Deposit ###
-
 [[Source]<br>](https://github.com/ripple/gatewayd/blob/master/lib/http/controllers/api/record_deposit.js "Source")
 
 <div class='multicode'>
