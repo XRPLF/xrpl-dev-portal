@@ -1,37 +1,48 @@
 # Becoming a Ripple Gateway #
 
-An existing online financial service, such as a payment system or digital currency exchange, can provide additional value to customers by acting as a Ripple Gateway. Users gain access to a new cross-currency payment network, and gateways gain a new revenue source for transfers into, out of, and even within Ripple.
+Gateways are the businesses that link the Ripple network to the rest of the world. Existing online financial services, such as payment systems and digital currency exchange, can gain several advantages by becoming a Ripple gateway:
 
-Expanding an existing exchange system to support Ripple is a relatively simple task. This document explains the concepts necessary to set up a system, and covers the details of doing so. In this document, we use a fictional online currency exchange named "ACME" and its users as examples, to show how ACME can expand its business to include being a Ripple Gateway.
+* By enabling its users to send and receive value in Ripple, the gateway increases its value proposition to users.
+* By accepting payments from the Ripple network, the gateway increases the number of ways that users can fund accounts at its business, even internationally.
+* The gateway can use Ripple-related services as a new source of revenue.
+
+Expanding an existing online financial system to support Ripple is a relatively simple task. This document explains the concepts and steps necessary to become a Ripple gateway. In this document, we use a fictional online currency exchange named "ACME" and its users as examples, to show how ACME can expand its business to include being a Ripple gateway.
+
 
 ## Ripple Gateways Explained ##
 
-A Ripple _*Gateway*_ is an entity that exchanges balances in the Ripple Network for balances in the outside world -- which is like performing deposits and withdrawals from Ripple. Typically, a Gateway holds money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network to represent them. Within Ripple, issuances can be sent, traded, and exchanged atomically without the gateway's intervention. 
+A Ripple _*Gateway*_ is an entity that exchanges balances in the Ripple Network for value in the outside world, which is like performing deposits and withdrawals from Ripple. There are three major models that gateways can follow, with different purposes and modes of operation. 
 
-Ripple's native cryptocurrency, XRP, can also be exchanged for issuances, and sent to any Ripple account, but exists only within the Ripple Network. All Ripple accounts need a small reserve of XRP in order to pay the network costs of maintaining their accounts and sending transactions. Some users may choose to hold additional XRP to use as a means of exchange, but large holdings of XRP are not strictly necessary to operate a gateway.
+* An **Issuing Gateway** holds money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network to represent. This provides a way for users to get money in and out of Ripple. This document focuses primarily on how to become an issuing gateway.
+* A **Private Exchange** lets its users purchase and trade XRP amongst themselves. This is similar to being an exchange for any other commodity or cryptocurrency, except that users can also trade XRP for other issuances within the Ripple Network itself.
+* A **Merchant** accepts payment within Ripple for goods or services outside the network. Unlike an issuing gateway, a Merchant does not create its own currency, but accepts issuances that are created by other gateways. This guide does not describe how to become a merchant within Ripple.
 
 
 ### Ripple Trust Lines and Issuances ###
 
-All assets in Ripple, except for the native cryptocurrency XRP, are represented as *issuances*, which are digital assets that reflect traditional assets held by a gateway. Within Ripple, issuances can be divided, sent, and traded with very low barrier to entry. Issuances get their value from the promise that the gateway issuing them will honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. Therefore, Ripple's *trust lines* ensure that users only hold issuances from gateways they trust to pay out when needed.
+All assets in Ripple, except for the native cryptocurrency XRP, are represented as *issuances*, which are digital assets that reflect traditional assets held by a gateway. Within Ripple, issuances can be divided, sent, and traded without the gateway's intervention and very low barriers to entry. Issuances get their value from the promise that the gateway issuing them will honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. Therefore, Ripple's *trust lines* ensure that users only hold issuances from gateways they trust to pay out when needed.
 
 A "trust line" is link between two accounts in Ripple that represents an explicit statement of willingness to hold gateway debt obligations. When a user sends money into Ripple, a Gateway takes custody of assets in the outside world, and sends issuances within the Ripple network to the user. When a user sends money out of Ripple, she "redeems" the issuances with the Gateway's Ripple account, and the gateway sends the assets to the user in the outside world.
 
 ### XRP ###
 
-XRP is the native [cryptocurrency](https://ripple.com/knowledge_center/math-based-currency/) of the Ripple network. Unlike issuances, XRP is not connected to a trust line, and can be sent directly from any Ripple account to any other, without going through a gateway or market maker. For this reason, XRP is a convenient bridge currency to facilitate currency exchanges.
+XRP is the native [cryptocurrency](https://ripple.com/knowledge_center/math-based-currency/) of the Ripple network. Like issuances, XRP can be freely sent and exchanged by users in the network. Unlike issuances, XRP is not connected to a trust line, and can be sent directly from any Ripple account to any other, without going through a gateway or market maker. For this reason, XRP is a convenient bridge currency to facilitate currency exchanges.
 
-XRP also serves other purposes in the Ripple network, in particular as [a protective measure against spamming the network](https://ripple.com/knowledge_center/abuse-protection/). 
+XRP also serves other purposes in the Ripple network, in particular as [a protective measure against spamming the network](https://ripple.com/knowledge_center/abuse-protection/). All Ripple accounts need a small reserve of XRP in order to pay the network costs of maintaining their accounts and sending transactions. The anti-spam network fees are destroyed, not paid to any party.
 
-Gateways do not need to accumulate or exchange XRP. They must only maintain a small balance of XRP to send transactions on the network. The XRP equivalent of $10 USD is enough for a busy gateway to operate for a year.
+Issuing gateways do not need to accumulate or exchange XRP. They must only maintain a small balance of XRP to send transactions on the network. The XRP equivalent of $10 USD is enough for a busy gateway to operate for a year.
+
+Private exchanges and market makers may choose to hold additional XRP to use as a means of exchange. Ripple Labs **does not** encourage treating XRP as a speculative investment.
 
 ### Liquidity and Currency Exchange Within Ripple ###
 
-The Ripple network contains a distributed financial exchange, where any user can place and fulfill bids to exchange issuances and XRP. Cross-currency payments automatically use the financial exchange to convert currency atomically at the time of sending. In this way, users who choose to become market makers provide the liquidity that makes the Ripple Network useful.
+The Ripple network contains a distributed financial exchange, where any user can place and fulfill bids to exchange currencies (including issuances and XRP). Cross-currency payments automatically use the financial exchange to convert currency atomically at the time of sending. In this way, users who choose to become market makers provide the liquidity that makes the Ripple Network useful.
 
-When adding a new gateway to the Ripple network, it is important to establish liquidity to other popular currencies. Since third-party market makers perform the exchanges, a gateway can provide currency-exchange services through Ripple without having to keep a large reserve of currencies or shoulder the risk of financial exchange.
+When adding a new gateway to the Ripple network, it is important to establish liquidity to other popular currencies. Because liquidity is provided by third-party market makers, a gateway can provide currency-exchange services through Ripple without having to keep a large reserve of currencies or shoulder the risk of financial exchange.
 
-Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing a market between your gateway and others.
+[Ripple Trade](https://www.rippletrade.com/) is the official client application, and it is used by a large number of market makers to participate in the global exchange. To make it easier on users to trade in ACME issuances, Ripple Labs can add a shortcut to ACME's gateway in Ripple Trade, so long as ACME meets certain best-practice requirements.
+
+Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing a market between your gateway and others, and about getting your gateway listed in Ripple Trade.
 
 
 ## Suggested Business Practices ##
@@ -98,7 +109,7 @@ In the following diagram, ACME Exchange starts with €5 on hand, including €1
 
 ## Sending from Gateway to Ripple ##
 
-Sending money into Ripple means moving funds from a user's balance at a gateway into a separate record tracking Ripple-backed funds, and then sending the equivalent amount of issuances in Ripple to the user's Ripple account.
+Ripple payments can automatically bridge between currencies, but an issuing gateway normally only sends single-currency payments that go directly to users. This means moving funds from a user's balance to a separate "Ripple-backing" balance, and then sending the equivalent amount of issuances in Ripple to the user's Ripple account. 
 
 Before the first deposit (once only):
 
@@ -109,9 +120,9 @@ An example of a deposit flow:
 
 1. Alice asks to deposit €2 of her ACME balance into Ripple.
 2. In its internal accounting, ACME debits Alice's balance €2 and credits the Ripple-backed balance by €2.
-3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME (2 EUR@ACME).
+3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME (2 EUR.ACME).
 
-![ACME issues 2 EUR@ACME to Alice on Ripple](img/e2g-02.gif)
+![ACME issues 2 EUR.ACME to Alice on Ripple](img/e2g-02.gif)
 
 
 ### Requirements for Sending to Ripple ###
@@ -119,7 +130,7 @@ An example of a deposit flow:
 There are several prerequisites that ACME must meet in order for this to happen:
 
 - ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. This could be as simple as adding a record for Ripple. 
-    - Optionally, a gateway can take additional steps to separate normal user funds from funds backing the gateway's Ripple issuances. For example, a cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple. This provides publicly-verifiable proof to customers that the gateway is solvent.
+    - Optionally, a gateway can take additional steps to separate normal user funds from funds backing the gateway's Ripple issuances. For example, the funds allocated to Ripple can be stored in a separate bank account. A cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple, as publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must have a Ripple account. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See [Hot and Cold Wallets](#hot-and-cold-wallets) for more information.
 - Alice must create a trustline from her Ripple account to ACME's issuing (cold wallet) account. She can do this from any Ripple client (such as [Ripple Trade](https://www.rippletrade.com/) as long as she knows the address or Ripple Name of ACME's cold wallet.
 - ACME must create a user interface for Alice to send funds from ACME into Ripple.
@@ -131,8 +142,10 @@ A withdrawal from Ripple means moving funds from the Ripple-backed balance at a 
 
 An example of a withdrawal flow:
 
-1. Bob sends Ripple transaction of €1 to ACME's cold wallet
+1. Bob sends Ripple transaction of €1 to ACME's cold wallet.
 2. In its internal accounting, ACME debits its Ripple-backing balance €1 and credits Bob's balance €1.
+
+Payments going from Ripple to a gateway can be single-currency or cross-currency payments. Users can choose the exchange rates in a Ripple client application such as Ripple Trade, so that the gateway receives issuances created by its cold wallet account.
 
 
 ### Requirements for Receiving from Ripple ###
@@ -155,29 +168,32 @@ Processing payments to and from Ripple naturally comes with some risks, so a gat
 - [Robustly monitor for incoming payments](#robustly-monitor-for-payments), and read the correct amount. Don't be deceived by Partial Payments.
 - Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy. (<span class='draft-comment'>TODO: Link to tallying bulletin when it comes out</span>)
 - Proactively avoid ambiguous situations. We recommend the following:
-    - Enable the [`DisallowXRP` flag](#disallowxrp) for the cold wallet account and all hot wallet accounts, so users do not accidentally send you XRP.
+    - Enable the [`DisallowXRP` flag](#disallowxrp) for the cold wallet account and all hot wallet accounts, so users do not accidentally send you XRP. (Private exchanges should not use this flag, since they actually do send and receive XRP.)
     - Enable the [`RequireDest` flag](#requiredest) for the cold wallet account and all hot wallet accounts, so users do not accidentally forget the destination tag on payments to make withdrawals.
     - Enable the [`RequireAuth` flag](#requireauth) on all hot wallet accounts so they cannot create their own issuances.
+- Monitor for suspicious or abusive behavior. For example, a user could repeatedly withdraw and deposit funds in Ripple, as a sort of "denial of service" attack that effectively empties the hot wallet. Suspend users whose accounts are involved in suspicious behavior by not processing their Ripple payments.
 
 ## Trading on Ripple ##
 
 After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. There are several consequences of this situation:
 
-- Anyone can buy/sell EUR@ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
+- Anyone can buy/sell EUR.ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
     - This includes users who do not have an account with ACME Exchange. In order to withdraw the funds successfully from ACME, users still have to create ACME accounts.
-    - Optionally, use the [Authorized Accounts](#authorized-accounts) feature to limit who can hold EUR@ACME on Ripple.
-- Ripple users trading and sending EUR@ACME to one another requires no intervention by ACME.
+    - Optionally, use the [Authorized Accounts](#authorized-accounts) feature to limit who can hold EUR.ACME on Ripple.
+- Ripple users trading and sending EUR.ACME to one another requires no intervention by ACME.
 - All exchanges and balances on Ripple are publicly viewable in the shared, global ledger. 
 
 ## Market Makers ##
 
-Exchanging EUR@ACME for other currencies within Ripple requires market makers who are willing to exchange other Ripple issuances for EUR@ACME. Market makers are just Ripple accounts with trust lines for EUR@ACME as well as other currencies or issuers, who create orders (called "offers" in the Ripple ledger) to exchange currency. The cost of exchanging EUR@ACME for another currency depends on the quantity and quality of orders. 
+Exchanging EUR.ACME for other currencies within Ripple requires market makers who are willing to exchange other Ripple issuances for EUR.ACME. Market makers are just Ripple accounts with trust lines for EUR.ACME as well as other currencies or issuers, who create orders (called "offers" in the Ripple ledger) to exchange currency. The cost of exchanging EUR.ACME for another currency depends on the quantity and quality of orders. 
 
 To facilitate exchanging currency, ACME may decide to become its own market maker. For various reasons, we recommend using a separate Ripple account for trading. Because market making can result in financial losses, gateways that choose to act as market makers should not use customer funds for market making.
 
-The following diagram depicts a simple Ripple payment sending 2EUR@ACME from Alice to Charlie. Note that ACME's balance sheet and holdings do not change:
+For more information about how and why to become a market maker, see the [Maket Makers Whitepaper (PDF)](https://ripple.com/files/ripple_mm.pdf) 
 
-![Alice's sends 2 EUR@ACME from her trust line to Charlie's](img/e2g-03.gif)
+The following diagram depicts a simple Ripple payment sending 2EUR.ACME from Alice to Charlie. Note that ACME's balance sheet and holdings do not change:
+
+![Alice's sends 2 EUR.ACME from her trust line to Charlie's](img/e2g-03.gif)
 
 ## Freezes ##
 
@@ -188,6 +204,7 @@ Ripple provides the ability to freeze assets issued by the gateway in Ripple as 
 * Furthermore, gateways can permanently opt out of their ability to freeze issuances at all. This allows a gateway to assure its users that it will continue to provide "physical-money-like" services.
 
 For more information, see the [Gateway Bulletin on Freezes](https://ripple.com/files/GB-2014-02.pdf).
+
 
 ## Authorized Accounts ##
 
@@ -203,6 +220,21 @@ You must authorize trust lines using the same cold wallet account that issues th
 
 See [RequireAuth](#requireauth) for technical details on how to use authorized accounts.
 
+
+## Source and Destination Tags ##
+
+*Destination Tags* are a feature of Ripple payments can be used to identify the beneficiary or destination for a payment. For example, a Ripple payment to a gateway may include a destination tag to indicate which customer should be credited for the payment. A gateway should maintain an internal mapping of destination tags to (non-Ripple) account records. 
+
+Similarly, *Source Tags* indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.
+
+We recommend providing several kinds of Destination Tags for different purposes:
+
+* Direct mappings to user accounts
+* Matching the Source Tags on outgoing payments (in case your payments get bounced)
+* Tags for quotes, which expire
+* Other disposable destination tags that users can generate.
+
+See [Generating Source and Destination Tags](#generating-source-and-destination-tags) for recommendations on the tehnical details of making and using Source Tags and Destination Tags.
 
 
 # Technical Details #
@@ -223,6 +255,26 @@ There are several interfaces you can use to connect to Ripple, depending on your
 * [Gatewayd](gatewayd.html) provides a pre-configured suite of gateway functionality.
 
 
+## Tool Security ##
+
+Any time you submit a Ripple transaction, it must be signed using your secret. However, having your secret means having full control over your account. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own server or client application to sign the transactions before sending them out.
+
+The examples in this document show Ripple-REST API methods that include an account secret. This is only safe if you control the Ripple-REST server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could operate your own `rippled` server; or you can use a client application such as `ripple-lib` to perform local signing before submitting your transactions to a third-party server.
+
+
+## Generating Souce and Destination Tags ##
+
+You need a scheme to create Source and Destination tags for your users and payments. (See [Source and Destination Tags](#source-and-destination-tags) for an explanation of what Source and Destination Tags are.)
+
+For greater privacy and security, we recommend *not* using monotonically-incrementing numbers as destination tags that correlate 1:1 with users. Instead, we recommend using convenient internal IDs, but mapping those to destination tags through the use of a quick hash or cipher function such as [Hasty Pudding](http://en.wikipedia.org/wiki/Hasty_Pudding_cipher). You should set aside ranges of internal numbers for different uses of destination tags.
+
+After passing the internal numbers through your hash function, you can use the result as a destination tag. You should check for collisions just to be safe, and do not reuse destination tags unless they have explicit expiration dates (like quotes and user-generated tags).
+
+We recommend making a user interface to generate a destination tag on-demand when a user intends to send money to the gateway. Then, consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.
+
+Enable the [RequireDest](#requiredest) flag on your hot and cold wallet accounts so that users must use a destination tag to indicate where funds should go when they send Ripple payments to your gateway.
+
+
 ## DisallowXRP ##
 
 The DisallowXRP flag (`disallow_xrp` in Ripple-REST) is designed to discourage users from sending XRP to your account by accident. For accounts that are intended to process withdrawals, receiving XRP is undesirable because there is no way to "withdraw" XRP from the network.
@@ -234,15 +286,17 @@ The following is an example of a Ripple-REST request to enable the DisallowXRP f
 Request:
 
 ```
-POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
+POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
 
 {
-  "secret": "ssssssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "settings": {
     "disallow_xrp": true
   }
 }
 ```
+
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
@@ -262,9 +316,10 @@ Response:
 }
 ```
 
+
 ## RequireDest ##
 
-The `RequireDest` flag (`require_destination_tag` in Ripple-REST) is designed to prevent users from sending payments to your account while accidentally forgetting the [destination tag](#destination-tags) that identifies who should be credited for the payment. When enabled, the Ripple Network rejects any payment to your account that does not specify a destination tag.
+The `RequireDest` flag (`require_destination_tag` in Ripple-REST) is designed to prevent users from sending payments to your account while accidentally forgetting the [destination tag](#source-and-destination-tags) that identifies who should be credited for the payment. When enabled, the Ripple Network rejects any payment to your account that does not specify a destination tag.
 
 We recommend enabling the RequireDest flag on all gateway hot and cold wallets.
 
@@ -273,15 +328,16 @@ The following is an example of a Ripple-REST request to enable the RequireDest f
 Request:
 
 ```
-POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
+POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
 
 {
-  "secret": "ssssssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "settings": {
     "require_destination_tag": true
   }
 }
 ```
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
@@ -317,15 +373,16 @@ The following is an example of a Ripple-REST request to enable the RequireDest f
 Request:
 
 ```
-POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/settings?validated=true
+POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/settings?validated=true
 
 {
-  "secret": "sssssssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "settings": {
     "require_authorization": true
   }
 }
 ```
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
@@ -354,9 +411,9 @@ The following is an example of using the [Grant Trustline](ripple-rest.html#gran
 Request:
 
 ```
-POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
+POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
 {
-  "secret": "sssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "trustline": {
     "limit": "0",
     "currency": "USD",
@@ -365,6 +422,7 @@ POST https://api.ripple.com/v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trust
   }
 }
 ```
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
@@ -405,37 +463,15 @@ As an added precaution, we recommend regularly comparing the balances of your Ri
 * Use the [Get Account Balances method](ripple-rest.html#get-account-balances) (Ripple-REST) or the [`account_lines` command](rippled-apis.html#account-lines) (rippled) to check your balances.
 
 
-## Destination Tags ##
-
-*Destination Tags* are 32-bit integers which identify the beneficiary or cause for a payment; for example, which customer should be credited when a Ripple withdrawal takes place. A gateway should maintain an internal mapping of destination tags to (non-Ripple) account records. 
-
-For greater privacy and security, we recommend *not* using monotonically-incrementing numbers as destination tags that correlate 1:1 with users.
-
-Instead, we recommend using convenient internal IDs, but mapping those to destination tags through the use of a quick hash or cipher function such as [Hasty Pudding](http://en.wikipedia.org/wiki/Hasty_Pudding_cipher). You should set aside ranges of internal numbers for different uses of destination tags:
-
-* Direct mappings to user accounts
-* Tags for outgoing payments (set the Source Tag of the payment, so that users will bounce it to that Destination Tag)
-* Tags for quotes, which expire
-* Other disposable destination tags that users can generate.
-
-After passing the internal numbers through your hash function, you can use the result as a destination tag. You should check for collisions just to be safe, and do not reuse destination tags unless they have explicit expiration dates (like quotes and user-generated tags).
-
-We recommend making a user interface to generate a destination tag on-demand when a user intends to make a deposit. This can be deterministic (through iterative uses of a hash function, for example), as long as you check for collisions. Then, consider that destination tag valid only for the expected withdrawal, and bounce any other transactions that use the same destination tag.
-
-### Source Tags ###
-
-When sending a payment from a hot wallet, we also recommend creating a source tag and including it in the payment, so that the receiving Ripple account can bounce the payment back, using the original Source Tag as the Destination Tag of the bounce payment.
-
-
 ## TransferRate ##
 
 The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is set by the issuing (**cold wallet**) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of TransferRate:1 compared to the destination amount. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% (a `transfer_rate` of 1.0) or greater than 100% (a `transfer_rate` of 2.0).
 
 The fee represented by the TransferRate is debited from the Ripple ledger, becoming the property of the gateway. 
 
-For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR@ACME, Charlie must send 2.01 EUR@ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by €0.01, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
+For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR.ACME, Charlie must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by €0.01, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
 
-The following diagram shows a Ripple payment of 3EUR@ACME from Alice to Charlie with a transfer fee of 1%:
+The following diagram shows a Ripple payment of 3EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
 ![Alice sends €3.03, Charlie receives €3.00, and ACME holds €0.03 for Ripple](img/e2g-with_transferrate.gif)
 
@@ -444,16 +480,17 @@ The following is an example of a Ripple-REST request to set the TransferRate for
 Request:
 
 ```
-POST https://api.ripple.com/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
+POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
 
 {
-  "secret": "sssssssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "settings": {
     "transfer_rate": 1.005
   }
 }
 
 ```
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
@@ -476,7 +513,11 @@ Response:
 
 All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. You can accomplish this by setting the `source_amount` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
 
-*Note:* The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 USD@ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 USD@ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system accordingly. 
+**Note:** The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 USD@ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 USD@ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system accordingly. 
+
+### Choosing a TransferRate ###
+
+Implementing a transfer fee with TransferRate is optional. Obviously, setting a higher fee allows a gateway to receive a larger percentage compensation for each trade in Ripple that uses its issuances. On the other hand, having a high TransferRate decreases the desirability of your issuances, causing customers to use other Ripple gateways when possible. Choosing the right transfer fee is a matter of balancing your pricing with what the market will pay. Consider the fees that are charged by other gateways, especially ones issuing similar currencies.
 
 
 ## Bouncing Payments ##
@@ -499,7 +540,7 @@ The following is an example of a return payment:
 POST /v1/accounts/{address}/payments?validated=true
 
 {
-  "secret": "sssssssssssssssssssssssssssss",
+  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
   "client_resource_id": "fc521224-bdd8-4463-94a4-b26cb760fc92",
   "last_ledger_sequence": "10968788",
   "max_fee": "1.0",
@@ -526,6 +567,7 @@ POST /v1/accounts/{address}/payments?validated=true
   }
 }
 ```
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 
 ## Setting Trust Lines in Ripple Trade ##
@@ -558,3 +600,12 @@ In order to achieve this, there are several steps you can take when submitting t
 * Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For additional information, consult the guide to [Reliable Transaction Submission](reliable_tx.html)
+
+
+## ripple.txt and host-meta ##
+
+The [ripple.txt](https://wiki.ripple.com/Ripple.txt) and [host-meta](https://ripple.com/build/gateway-services/#host-meta) standards provide a way to publish information about your gateway so that automated tools and applications can read and understand it. 
+
+For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple account addresses you control, to protect against impostors or confusion.
+
+We recommend implementing one or both of ripple.txt and host-meta. (In the future, we expect ripple.txt to become obsolete, but not yet.)
