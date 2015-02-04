@@ -2,15 +2,6 @@
   global
 *********** */
 
-body {
-	background-color: #f5f5f5;
-	font-family: 'Open Sans', sans-serif;
-}
-
-.wrapper {
-	background-color: #fff;
-}
-
 a:hover {
 	text-decoration: none;
 }

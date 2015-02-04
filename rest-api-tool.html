@@ -1,39 +1,36 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
 
-  <title>Ripple Developer Portal: Ripple-REST API Tool</title>
+    <title>Ripple-REST API Tool - Ripple Developer Portal</title>
 
-  <!-- favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- jQuery -->
-  <script src="vendor/jquery-1.11.1.min.js"></script>
+    <!-- jQuery -->
+    <script src="vendor/jquery-1.11.1.min.js"></script>
 
-   <!-- Bootstrap -->
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
 
-   <link href="css/bootstrap.min.css" rel="stylesheet">
-   <script src="js/bootstrap.min.js"></script>
-
-
-  <!-- Custom Stylesheet -->
-  <link href="font/fonts.css" rel="stylesheet" type="text/css">
-  <link  href='css/main.css' rel='stylesheet'>
-  <link  href='css/custom.css' rel='stylesheet'>
-
-	<link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
-	<link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
-
-
-  <script src='js/expandcode.js'></script>
-
+    
+    
+    <!-- Custom Stylesheets -->
+    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
+    
+  
 </head>
-<body>
-<!--Draft warning would go here-->
+<body >
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -50,157 +47,166 @@
 			<li class="dropdown">
               <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="rippled-apis.html">rippled API Reference</a></li>
-                <li><a href="ripple-rest.html">REST API Reference</a></li>
-                <li><a href="gatewayd.html">Gatewayd API Reference</a></li>
-                <li><a href="transactions.html">Transaction Format</a></li>
-                <li><a href="reliable_tx.html">Submitting Transactions</a></li>
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
+                    <li><a href="gatewayd.html">Gatewayd</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+                    <li><a href="historical_data.html">Historical Data API</a></li>
+                    <li><a href="gateway_services.html">Gateway Services</a></li>
+                    <li><a href="whitepapers.html">Whitepapers</a></li>
               </ul>
             </li>
-            <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
-            <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
-            <li><a href="https://ripple.com/dev/blog/">Dev Blog</a></li>
-            <li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a></li>
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tool <span class="caret"></span></a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="ripple-api-tool.html">WebSocket Tool</a></li>
-                <li class="active"><a href="rest-api-tool.html">REST Tool</a></li>
+                <li><a href="rest-api-tool.html">REST Tool</a></li>
               </ul>
             </li>
-          </ul>
-          	<div class='right'>
-		 	 <!-- GitHub buttons -->
-		 		 <iframe src="vendor/ghbtn.html?user=ripple&repo=ripple-dev-portal&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-			</div>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+				</ul>
+                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-  <div class='content-root'>
-   <div id='wrapper'>
-    <div style="clear:both;"></div>
-    <div id='command_wrapper'>
-      <ul id='command_list'>
-        <li class='selected'>Generate Wallet</li>
-        <li>Get Account Balances</li>
-        <li>Get Account Settings</li>
-        <li>Update Account Settings</li>
-        <br/>
-        <li>Prepare Payment</li>
-        <li>Submit Payment</li>
-        <li>Confirm Payment</li>
-        <li>Get Payment History</li>
-        <br/>
-        <li>Place Order</li>
-        <li>Cancel Order</li>
-        <li>Get Account Orders</li>
-        <li>Get Order Book</li>
-        <br/>
-        <li>Get Trustlines</li>
-        <li>Grant Trustline</li>
-        <br/>
-        <li>Check Notifications</li>
-        <br/>
-        <li>Check Connection</li>
-        <li>Get Server Status</li>
-        <br/>
-        <li>Retrieve Ripple Transaction</li>
-        <li>Retrieve Transaction Fee</li>
-        <li>Generate UUID</li>
-      </ul>
-      <div id='command_table'>
-        <div id='io_wrapper'>
-          <div id='input' class='io'>
-            <h2>REST Request</h2>
-            <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                <h4>Test accounts only!</h4>
-                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-            </div>
+    <div class='wrapper'>
+    <div class='content-root'>
+        <div id='wrapper'>
             <div style="clear:both;"></div>
-            <h3 id='selected_command' title='Reference information'></h3>
-            <p id='description'></p>
-            <div id='invalid'>Invalid JSON</div>
-<!--            <select id='rest_method'>
-                <option value='GET'>GET</option>
-                <option value='POST'>POST</option>
-            </select>-->
-            <div id='rest_url_wrapper'>
-                <p><span id='rest_host'>https://api.ripple.com</span><span id='rest_url'></span></p>
+            <div id='command_wrapper'>
+            <ul id='command_list'>
+                <li class='selected'>Generate Wallet</li>
+                <li>Get Account Balances</li>
+                <li>Get Account Settings</li>
+                <li>Update Account Settings</li>
+                <br/>
+                <li>Prepare Payment</li>
+                <li>Submit Payment</li>
+                <li>Confirm Payment</li>
+                <li>Get Payment History</li>
+                <br/>
+                <li>Place Order</li>
+                <li>Cancel Order</li>
+                <li>Get Account Orders</li>
+                <li>Get Order Book</li>
+                <br/>
+                <li>Get Trustlines</li>
+                <li>Grant Trustline</li>
+                <br/>
+                <li>Check Notifications</li>
+                <br/>
+                <li>Check Connection</li>
+                <li>Get Server Status</li>
+                <br/>
+                <li>Retrieve Ripple Transaction</li>
+                <li>Retrieve Transaction Fee</li>
+                <li>Generate UUID</li>
+            </ul>
+                <div id='command_table'>
+                    <div id='io_wrapper'>
+                        <div id='input' class='io'>
+                            <h2>REST Request</h2>
+                            <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                                <h4>Test accounts only!</h4>
+                                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <h3 id='selected_command' title='Reference information'></h3>
+                            <p id='description'></p>
+                            <div id='invalid'>Invalid JSON</div>
+                            <div id='rest_url_wrapper'>
+                                <p><span id='rest_host'>https://api.ripple.com</span><span id='rest_url'></span></p>
+                            </div>
+                            <div id='request_body'></div>
+                            <div id='request_options'>
+                                <div class="button btn btn-primary api" id='request_button'>Send request</div>
+                            </div>
+                        </div>
+                        <div id='output' class='io'>
+                            <h2>Response</h2>
+                            <div>
+                                <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                                <span id='rest_responsecode'></span>
+                            </div>
+                            <div id='response_body'></div>
+                            <div id='tooltip'></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id='request_body'></div>
-            <div id='request_options'>
-              <div class="button btn btn-primary api" id='request_button'>Send request</div>
-            </div>
-          </div>
-          <div id='output' class='io'>
-            <h2>Response</h2>
-            <div>
-                <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                <span id='rest_responsecode'></span>
-            </div>
-            <div id='response_body'></div>
-            <div id='tooltip'></div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  </div>
-<div class="footer">
-      <div class="container">
-        <p class="text-muted">
-        	<div class="row">
-				<div class="col-md-2">
-
-						<ul class="footer_links applications">
-							<li><a href="https://www.rippletrade.com">Ripple Trade</a>
-							<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
-							<li><a href="https://ripple.com/graph">Ripple Graph</a>
-							<li><a href="http://codius.org/">Codius</a>
-						</ul>
-				</div>
-				<div class="col-md-2">
-
-						<ul class="footer_links middleware">
-							<li><a href="gatewayd.html">Gatewayd</a>
-							<li><a href="ripple-rest.html">Ripple REST</a>
-							<li><a href="https://github.com/ripple/ripple-lib">Ripple Lib</a>
-						</ul>
-
-				</div>
-				<div class="col-md-2">
-
-						<ul class="footer_links core_network">
-							<li><a href="rippled-apis.html">rippled</a>
-							<li><a href="transactions.html">Transactions</a>
-							<li><a href="consensus-whitepaper.html">Consensus</a>
-						</ul>
-
-				</div>
-				<div class="col-md-2">
-						<ul class="footer_links bounties">
-							<li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a>
-							<li><a href="https://ripplelabs.atlassian.net/">Bug tracking</a>
-							<li><a href="guidelines.html">Brand guidelines</a>
-							<li><a href="https://ripple.com/dev/blog/">Dev blog</a>
-							<li><a href="https://ripple.com/forum/viewforum.php?f=2&sid=c016bc6b934120b7117c0e136e74de98">Forums</a>
-							<li><a href="https://ripple.com/wiki/Main_Page">Wiki</a>
-						</ul>
-
-				</div>
+    </div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+		        <h4>Documentation</h4>
+			    <ul class="footer_links">
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
+                    <li><a href="gatewayd.html">Gatewayd</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+                    <li><a href="historical_data.html">Historical Data API</a></li>
+                    <li><a href="gateway_services.html">Gateway Services</a></li>
+                    <li><a href="whitepapers.html">Whitepapers</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Resources</h4>
+				<ul class="footer_links">
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Ripple Projects</h4>
+				<ul class="footer_links">
+					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+					<li><a href="https://ripple.com/graph">Ripple Graph</a>
+					<li><a href="http://codius.org/">Codius</a>
+				</ul>
+			</div>
+			<div class="col-md-3">
+		        <h4>Ripple Labs</h4>
+			    <ul class="footer_links">
+				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
+                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
+                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
+                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
+                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
+                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
+                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
+                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
+			    </ul>
       		</div>
-
-      </div>
+        </div>
     </div>
+</footer>
 
-  <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
-  <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
-  <script type='text/javascript' src='js/es5-shim.js'></script>
-  <script src='vendor/codemirror.min.js'></script>
-  <script type='text/javascript' src='js/cm-javascript.min.js'></script>
-  <script type='text/javascript' src='js/jquery.autosize.input.min.js'></script>
-  <script type='text/javascript' src='js/apitool-rest.js'></script>
-
+    <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
+    <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
+    <script type='text/javascript' src='js/es5-shim.js'></script>
+    <script src='vendor/codemirror.min.js'></script>
+    <script type='text/javascript' src='js/cm-javascript.min.js'></script>
+    <script type='text/javascript' src='js/jquery.autosize.input.min.js'></script>
+    <script type='text/javascript' src='js/apitool-rest.js'></script>
 
 </body>
 </html>
