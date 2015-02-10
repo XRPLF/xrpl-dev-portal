@@ -336,8 +336,8 @@ When an amount of currency is specified as part of a JSON body, it is encoded as
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency. Alternatively, a 160-bit hex value. (Some advanced features, like [demurrage](https://ripple.com/wiki/Gateway_demurrage), require the hex version.) |
-| counterparty | String | (New in [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
-| issuer | String | (Prior to 1.3.2) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
+| counterparty | String | (New in [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
+| issuer | String | (Prior to 1.4.0) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
 
 
 Example Amount Object:
@@ -454,7 +454,7 @@ Submitted transactions can have additional fields reflecting the current status 
 
 ### Memo Objects ###
 
-(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))
+_(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))_
 
 Memo objects represent arbitrary data that can be included in a transaction. The overall size of the `memos` field cannot exceed 1KB after serialization.
 
@@ -482,6 +482,8 @@ Example of the memos field:
 ```
 
 ## Order Objects ##
+
+_(New in [Ripple-REST 1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1))_
 
 An order object describes an offer to exchange two currencies. Order objects are used when creating or looking up individual orders.
 
@@ -511,7 +513,7 @@ An order change object describes the changes to to a Ripple account's open order
 
 ## Bid Objects ##
 
-An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used when retrieving an order book.
+An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used to describe bids and asks when retrieving an order book. 
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -543,8 +545,8 @@ From the perspective of an account on one side of the trustline, the trustline h
 | reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
 | account\_allows\_rippling | Boolean | If set to false on two trustlines from the same account, payments cannot ripple between them. (See the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | counterparty\_allows\_rippling | Boolean | (Read-only) If false, the counterparty account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) enabled. |
-| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
-| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
+| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
+| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
 
 The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The `counterparty` field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)
 
@@ -1247,19 +1249,19 @@ Places an order to exchange currencies.
 ```
 POST /v1/accounts/{:address}/orders?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG....",
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "order": {
-      "type": "sell",
-      "taker_pays": {
-        currency: "JPY",
-        counterparty: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
-        value: "4000"
-      },
-      "taker_gets": {
-        currency: "USD",
-        counterparty: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-        value: ".25"
-      }
+        "type": "sell",
+        "taker_pays": {
+            "currency": "JPY",
+            "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+            "value": "4000"
+        },
+        "taker_gets": {
+            "currency": "USD",
+            "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "value": ".25"
+        }
     }
 }
 ```
@@ -1298,7 +1300,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
     "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
     "ledger": "9592219",
     "state": "validated",
-    "account": "sneThnzgBgxc3zXPG....",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "taker_pays": {
       "currency": "JPY",
       "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
@@ -1328,7 +1330,7 @@ Deletes a previous order to exchange currencies.
 ```
 DELETE /v1/accounts/{:address}/orders/{:order}?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG...."
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
 }
 ```
 
@@ -1368,7 +1370,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
     "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
     "ledger": "9592219",
     "state": "validated",
-    "account": "sneThnzgBgxc3zXPG....",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "fee": "0.012",
     "offer_sequence": 99,
     "sequence": 100
@@ -1957,7 +1959,7 @@ Creates or modifies a trustline.
 ```
 POST /v1/accounts/{:address}/trustlines?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG....",
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "trustline": {
         "limit": "110",
         "currency": "USD",
