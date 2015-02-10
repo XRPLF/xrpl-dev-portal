@@ -237,11 +237,22 @@ Request("Cancel Order", {
 Request("Get Account Orders", {
     method: GET,
     path: "/v1/accounts/{:address}/orders?{:query_params}",
-    description: "Check the status of one or more orders attached to an account.",
+    description: "Get open currency-exchange orders associated with the Ripple address.",
     link: "#get-account-orders",
     params: {
         "{:address}": DEFAULT_ADDRESS_3,
         "{:query_params}": "ledger=10399192&limit=15"
+    }
+});
+
+Request("Get Order Transaction", {
+    method: GET,
+    path: "/v1/accounts/{:address}/orders/{:hash}",
+    description: "Get the details of an order transaction.",
+    link: "#get-order-transaction",
+    params: {
+        "{:address}": "rEQWVz1qN4DWw5J17s3DgXQzUuVYDSpK6M",
+        "{:hash}": "D53A3B99AC0C3CAF35D72178390ACA94CD42479A98CEA438EEAFF338E5FEB76D"
     }
 });
 
