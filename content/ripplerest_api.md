@@ -27,7 +27,7 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Cancel Order - `DELETE /v1/accounts/{:address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
 * [Get Order Book - `GET /v1/accounts/{:address}/order_book/{:base}/{:counter}`](#get-order-book)
-* [Get Order Transaction - `GET /v1/accounts{:address}/orders/{:hash}`](#get-order)
+* [Get Order Transaction - `GET /v1/accounts{:address}/orders/{:hash}`](#get-order-transaction)
 
 #### Trustlines ####
 
