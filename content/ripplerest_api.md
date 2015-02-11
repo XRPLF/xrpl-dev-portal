@@ -520,9 +520,9 @@ An bid object describes an offer to exchange two currencies, including the curre
 | type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
 | price | String ([Amount Object](#amount_object)) | The quoted price, denominated in total units of the counter currency per unit of the base currency |
 | taker\_pays\_total | String ([Amount Object](#amount_object)) | The total amount the taker must pay to consume this order. |
-| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | taker\_gets\_total | String ([Amount Object](#amount_object)) | The total amount the taker will get once the order is consumed. |
-| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | order\_maker | String | The Ripple address of the account that placed the bid or ask on the order book. |
 | sequence | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
 | sell     | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
