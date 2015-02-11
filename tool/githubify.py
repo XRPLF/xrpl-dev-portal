@@ -2,7 +2,7 @@
 
 import sys
 
-def convert_page(text):
+def convert_page(text, reverse):
     replacements = {
         "<div class='multicode'>": "<!-- <div class='multicode'> -->",
         "</div>": "<!-- </div> -->",
@@ -12,16 +12,24 @@ def convert_page(text):
         }
     
     for (k,v) in replacements.items():
-        text = text.replace(k,v)
+        if reverse:
+            text = text.replace(v,k)
+        else:
+            text = text.replace(k,v)
         
     return text
     
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        exit("usage: %s infile" % sys.argv[0])
+    if len(sys.argv) < 2 or len(sys.argv) > 3:
+        exit("usage: %s infile [reverse]" % sys.argv[0])
+    
+    if len(sys.argv) == 3 and sys.argv[2].lower() == "true":
+        reverse = True
+    else:
+        reverse = False
     
     with open(sys.argv[1]) as f:
         text = f.read()
-        text = convert_page(text)
+        text = convert_page(text, reverse)
         print(text)
 
