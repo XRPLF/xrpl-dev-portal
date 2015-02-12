@@ -1,4 +1,17 @@
 #!/bin/env python3
+"""
+Convert between Dev-Portal-ready markdown and Github-ready markdown. Has two modes:
+Normal - Convert from Dev Portal format to Github:
+    * Comments out divs that the dev portal uses to generate tabs, so that Github parses the markdown inside
+    * Replaces local relative links with absolute links to ripple.com
+Reverse - Convert from Github format to Dev Portal:
+    * Uncomments multicode divs
+    * Replaces absolute links with local ones that will work even offline.
+    
+Usage: githubify.py ripplerest_api.md > readme.md
+
+You may still want to do some manual editing (for example, to add Travis status icons to your readme)
+"""
 
 import sys
 
@@ -23,7 +36,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 2 or len(sys.argv) > 3:
         exit("usage: %s infile [reverse]" % sys.argv[0])
     
-    if len(sys.argv) == 3 and sys.argv[2].lower() == "true":
+    if len(sys.argv) == 3 and sys.argv[2].lower() == "reverse":
         reverse = True
     else:
         reverse = False
