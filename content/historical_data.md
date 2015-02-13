@@ -9,10 +9,43 @@ Ripple Labs provides a live instance of the `rippled` Historical Database API wi
 
 The [rippled Historical Database source code](https://github.com/ripple/rippled-historical-database) is also available under an open-source license, so you can use, install, and contribute back to the project.
 
+# API Objects #
+
+## Transaction Objects ##
+
+Transactions have two formats - a compact "binary" format where the defining fields of the transaction are encoded as strings of hex, and an expanded format where the defining fields of the transaction are nested as complete JSON objects. 
+
+### Full JSON Format ###
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash  | String - Transaction Hash | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| date  | String - IS0 8601 UTC Timestamp | The time when this transaction was included in a validated ledger. |
+| ledger_index | Number - Ledger Index | The sequence number of the ledger that included this ledger. |
+| tx    | Object | The fields of this transaction object, as defined by the [Transaction Format](transactions.html) |
+| meta  | Object | Metadata about the results of this transaction. |
+
+### Binary Format ###
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash  | String - Transaction Hash | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| date  | String - IS0 8601 UTC Timestamp | The time when this transaction was included in a validated ledger. |
+| ledger_index | Number - Ledger Index | The sequence number of the ledger that included this ledger. |
+| tx    | String | The binary data that represents this transaction, as a hex string. |
+| meta  | Object | The binary data that represents this transaction's metadata, as a hex string. |
+
+## Ledger Objects ##
+
+<span class="draft-comment">TODO</span>
 
 # Usage #
 
-The `rippled` Historical Database provides a REST API, currently with only one API method:
+The `rippled` Historical Database provides a REST API, with the following methods:
+
+* [Get Account Transaction History - `GET /v1/accounts/{:address}/transactions`](#get-account-transaction-history)
+* [Get Ledger - `GET /v1/ledgers/{:ledger_identifier}`](#get-ledger)
+* [Get Transaction - `GET /v1/transactions/{:hash}`](#get-transaction)
 
 ## Get Account Transaction History ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/8dc88fc5a9de5f6bd12dd3589b586872fe283ad3/api/routes/accountTx.js "Source")
@@ -41,8 +74,8 @@ Optionally, you can also include the following query parameters:
 |-------|-------|-------------|
 | type  | Single transaction type or comma-separated list of types | Filter results to include only transactions with the specified transaction type or types. Valid types include `OfferCreate`, `OfferCancel`, `Payment`, `TrustSet`, `AccountSet`, and `TicketCreate`. |
 | result | Transaction result code | Filter results to only transactions with the specified transaction result code. Valid result codes include `tesSUCCESS` and all [tec codes](transactions.html#tec-codes). |
-| start | ISO 8601-format date (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or after the specified date and time. |
-| end   | ISO 8601-format date (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or before the specified date and time. |
+| start | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or after the specified date and time. |
+| end   | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or before the specified date and time. |
 | ledger_min | Integer | Sequence number of the earliest ledger to search. | 
 | ledger_max | Integer | Sequence number of the most recent ledger to search. |
 | limit | Integer | Number of transactions to return. Defaults to 20. |
@@ -58,7 +91,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `transactions` field. |
-| transactions | Array of transaction objects | The transactions matching the request, with a `tx` field for the [transaction definition](transactions.html) and a `meta` field with transaction result metadata. |
+| transactions | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
 
 
 #### Example ####
@@ -523,3 +556,88 @@ Response:
 ```
 
 
+## Get Ledger ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/6e4d601d18e60582754c8e0bde592d888cae5efc/api/routes/getLedger.js "Source")
+
+Retrieve a specific ledger version.
+
+<div class='multicode'>
+
+*REST*
+
+```
+GET /v1/ledgers/{:ledger_identifier}
+```
+
+</div>
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| ledger_identifier | Ledger Hash, Sequence Number, or ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | (Optional) An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| transactions | Boolean | If `true`, include the identifying hashes of all transactions that are part of this ledger. |
+| binary | Boolean | If `true`, include all transactions from this ledger as hex-formatted binary data. (If provided, overrides `transactions`.) |
+| expand | Boolean | If `true`, include all transactions from this ledger as nested JSON objects. (If provided, overrides `binary` and `transactions`.) |
+
+#### Example ####
+
+Request:
+
+```
+GET /v1/ledgers/3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5
+```
+
+Response:
+
+```js
+
+``` 
+
+## Get Transaction ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/24595d37551687aa65209369377d15a803ac8f73/api/routes/getTx.js "Source")
+
+Retrieve a specific transaction by its identifying hash.
+
+<div class='multicode'>
+
+*REST*
+
+```
+GET /v1/transactions/{:hash}
+```
+
+</div>
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash  | Transaction Hash | The identifying (SHA-512) hash of the transaction, as hex. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| binary | Boolean | If `true`, return transaction data in binary format, as a hex string. Otherwise, return transaction data as nested JSON. Defaults to false. |
+
+A successful response contains a [Transaction Object](#transaction-object).
+
+#### Example ####
+
+Request:
+
+```
+GET /v1/transactions/03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A
+```
+
+Response:
+
+```js
+
+```

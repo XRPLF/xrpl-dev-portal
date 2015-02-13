@@ -1,0 +1,137 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+    <link href="css/custom-landing.css" rel="stylesheet">
+    
+  	<!-- Font Awesome -->
+	<link href="vendor/font-awesome.min.css" rel="stylesheet">
+    
+{% endblock %}
+    
+{% block contentroot %}
+
+    <!-- jumbotron -->
+	<!-- <div class="container theme-showcase" role="main"> -->
+    <div class="jumbotron">
+      <div class="container">
+      	<div class="row">
+      		<div class="col-md-12">
+       		 <div class="col-md-6">
+       		 	<img class="large_logo" src="assets/img/ripple_logo_large.png">
+       		 </div>
+       		 <div class="col-md-6">
+       		 	<h4>Build on the world's first protocol for value exchange</h4>
+        		<p class="main_callout">Ripple is a protocol for making financial transactions worldwide, with no central authority responsible for managing it. Anyone can run a server, connect to the network, and start doing business. Get started by submitting API calls to our public servers now.</p>
+      		 	
+				<p class="api_btn"><a href="ripple-api-tool.html"><button type="button" class="button btn btn-primary api">Try it!</button></a></p>
+      		 </div>
+      		</div>
+      	</div>
+      </div>
+    </div>
+   <!--  </div> -->
+    
+    <!-- main container -->
+	<div class="container">
+		 <div class="row">
+		 
+		<!--  Applications -->
+		
+			<div class="col-md-3 main_title"><i class="fa fa-tachometer"></i> Applications</div>
+			<div class="col-md-9 description">
+				<h2>Ripple Trade</h2>
+					<p>The official open-source web client to Ripple.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="https://www.rippletrade.com"><i class="fa fa-home"></i> Website </a></li>
+							<li><a href="https://github.com/ripple/ripple-client"><i class="fa fa-code"></i> Source </a></li>
+							<li><a href="https://www.bountysource.com/trackers/3604734-ripple-trade"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+						</ul>
+			</div>
+			<div class="col-md-3 main_title"></div>
+			<div class="col-md-9 description highlight">
+				<h2>Ripple Charts</h2>
+					<p>Live charts showing trading metrics and activity.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="https://www.ripplecharts.com"><i class="fa fa-home"></i> Website </a></li>
+							<li><a href="http://docs.rippledataapi.apiary.io/"><i class="fa fa-file-text-o"></i> Overview </a></li>
+							<li><a href="https://github.com/ripple/ripplecharts-frontend"><i class="fa fa-code"></i> Source (Frontend) </a></li>
+							<li><a href="https://github.com/ripple/ripple-data-api"><i class="fa fa-code"></i> Source (Data API) </a></li>
+							<li><a href="https://www.bountysource.com/trackers/3954022-ripple-charts"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+						</ul>
+			</div>
+			<div class="col-md-3 main_title"></div>
+			<div class="col-md-9 description">
+				<h2>Ripple Graph</h2>
+					<p>Interactive graph visualization of the Ripple ledger.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="https://ripple.com/graph"><i class="fa fa-home"></i> Website </a></li>
+							<li><a href="https://github.com/ripple/ripple-graph"><i class="fa fa-code"></i> Source </a></li>
+						</ul>
+			</div>
+		
+			
+			
+		<!-- Middleware -->
+			<div class="col-md-3 main_title"><i class="fa fa-cogs"></i> Middleware</div>
+			<div class="col-md-9 description highlight">
+				<h2>Gatewayd</h2>
+					<p>Framework software for building a gateway—just add the connections to your payment system.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="gatewayd.html"><i class="fa fa-cubes"></i> API Reference </a></li>
+							<li><a href="https://github.com/ripple/gatewayd"><i class="fa fa-code"></i> Source </a></li>
+							<li><a href="https://www.bountysource.com/trackers/552820-gatewayd"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+						</ul>
+			</div>
+			<div class="col-md-3 main_title"></div>
+			<div class="col-md-9 description">
+				<h2>Ripple REST</h2>
+					<p>Easily connect with a rippled server using REST: check balances, set trust lines, and more.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="ripple-rest.html"><i class="fa fa-cubes"></i> API Reference </a></li>
+							<li><a href="https://github.com/ripple/ripple-rest"><i class="fa fa-code"></i> Source </a></li>
+							<li><a href="https://www.bountysource.com/trackers/500333-ripple-rest-api"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+						</ul>
+			</div>
+			<div class="col-md-3 main_title"></div>
+			<div class="col-md-9 description last highlight">
+				<h2>Ripple Lib</h2>
+					<p>A JavaScript API for interacting with rippled.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="https://github.com/ripple/ripple-lib"><i class="fa fa-code"></i> Source </a></li>
+							<li><a href="https://www.bountysource.com/trackers/323756-ripple-lib"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+						</ul>
+			</div>
+			
+		<!-- Core Network -->
+			<div class="col-md-3 main_title"><i class="fa fa-database"></i> Core Network</div>
+			<div class="col-md-9 description last">
+				<h2>rippled</h2>
+					<p>The core server that makes the Ripple network possible.</p>
+						<ul class="resources">
+							<li>Resources:</li>
+							<li><a href="rippled-apis.html"><i class="fa fa-cubes"></i> API Reference </a></li>
+							<li><a href="https://github.com/ripple/rippled"><i class="fa fa-code"></i> Source </a></li>
+							<li><a href="https://www.bountysource.com/trackers/304896-rippled"><i class="fa fa-dot-circle-o"></i> Bounties </a></li>
+							<li><a href="consensus-whitepaper.html"><i class="fa fa-file"></i> Consensus Whitepaper </a></li>
+							<li><a href="transactions.html"><i class="fa fa-cubes"></i> Transaction Format </a></li>
+						</ul>
+			</div>
+			
+		</div>
+	</div>
+	
+{% endblock %}

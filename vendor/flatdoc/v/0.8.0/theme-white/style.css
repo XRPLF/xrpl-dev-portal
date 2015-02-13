@@ -549,7 +549,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     padding-right: 0;
   }
 }
-.header {
+/*.header {
   background: #f3f6fb;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   border-bottom: solid 1px #dfe2e7;
@@ -601,7 +601,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 .header li a:hover {
   color: #3a3a44;
-}
+}*/
 @media (min-width: 480px) /* Tablet & Desktop */ {
   .header h1 {
     float: left;

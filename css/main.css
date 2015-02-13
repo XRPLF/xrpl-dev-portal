@@ -717,7 +717,7 @@ body:not(.no-literate) .guidelines-content .badge-example .badge-location:after 
   border: solid 1px #CED3E1;
   background: rgba(206, 211, 225, 0.5);
 }
-.header {
+/*.header {
   background: #5d89ae;
   padding-top: 0;
   padding-bottom: 0;
@@ -767,7 +767,7 @@ body:not(.no-literate) .guidelines-content .badge-example .badge-location:after 
 .header h1 + ul li.active a,
 .header h1 + ul li:hover a {
   background: rgba(255, 255, 255, 0.1);
-}
+}*/
 @media (min-width: 1180px) {
   body:not(.no-literate) .modal .modal-dialog {
     width: 700px;

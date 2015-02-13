@@ -1,0 +1,65 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- Flatdoc theme -->
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="vendor/docco.min.css">
+    <script src="vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="js/multicodetab.js"></script>
+    {% if precompiled %}
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+    {% else %}
+    <!-- Code to load contents via Flatdoc  -->
+    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
+    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <script>
+        $(".flatdoc-content").empty();
+        $(".content-root .menubar .menu").empty();
+        Flatdoc.run({
+          fetcher: Flatdoc.file('content/{{ currentpage.md }}')
+        });
+        $(document).on('flatdoc:ready', function() {
+            $().multicode_tabs();
+            hljs.initHighlighting();
+        });
+    </script>
+    {% endif %}
+
+    <script src="js/expandcode.js"></script>
+    <script src="js/fixsidebarscroll.js"></script>
+{% endblock %}
+
+{% block bodyattrs %} role='flatdoc' class='no-literate'{% endblock %}
+  
+{% block contentroot %}
+    <div class='content-root'>
+        <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'>
+                {% if precompiled %}
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
+                {% endif %}
+            </div>
+        </div>
+        <div role='flatdoc-content' class='content'>
+            {% if precompiled %}
+	        {{ content }}
+	        {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

@@ -22,10 +22,12 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Get Payment History - `GET /v1/accounts/{:address}/payments`](#get-payment-history)
 
 #### Orders ####
+
 * [Place Order - `POST /v1/accounts/{:address}/orders`](#place-order)
 * [Cancel Order - `DELETE /v1/accounts/{:address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
 * [Get Order Book - `GET /v1/accounts/{:address}/order_book/{:base}/{:counter}`](#get-order-book)
+* [Get Order Transaction - `GET /v1/accounts{:address}/orders/{:hash}`](#get-order-transaction)
 
 #### Trustlines ####
 
@@ -239,22 +241,6 @@ openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/se
 
 ### Keeping the service running ###
 
-To make sure that the Ripple-REST process remains active even if it crashes for some reason, use the  [`forever`](https://www.npmjs.org/package/forever) Node module. Install `forever` using `sudo npm install -g forever`.
-
-Here is an example of running `ripple-rest` using `forever`:
-
-```
-forever start \
-    --pidFile /var/run/ripple-rest/ripple-rest.pid \
-    --sourceDir /opt/ripple-rest \
-    -a -o /var/log/ripple-rest/ripple-rest.log \
-    -e /var/log/ripple-rest/ripple-rest.err \
-    -l /var/log/ripple-rest/ripple-rest.for \
-    server.js
-```
-
-### Monitoring the service ###
-
 Monitor `ripple-rest` using [`monit`](http://mmonit.com/monit/). On Ubuntu you can install `monit` using `sudo apt-get install monit`.
 
 Here is an example of a monit script that will restart the server if:
@@ -273,7 +259,6 @@ check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
         and request "/v1/server"
     then restart
 ```
-
 
 
 
@@ -351,8 +336,8 @@ When an amount of currency is specified as part of a JSON body, it is encoded as
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency. Alternatively, a 160-bit hex value. (Some advanced features, like [demurrage](https://ripple.com/wiki/Gateway_demurrage), require the hex version.) |
-| counterparty | String | (New in [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
-| issuer | String | (Prior to 1.3.2) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
+| counterparty | String | (New in [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
+| issuer | String | (Prior to 1.4.0) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
 
 
 Example Amount Object:
@@ -452,7 +437,7 @@ The fields of a Payment object are defined as follows:
 
 Submitted transactions can have additional fields reflecting the current status and outcome of the transaction, including:
 
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L346 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/lib/tx-to-rest-converter.js#L25 "Source")
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -469,7 +454,7 @@ Submitted transactions can have additional fields reflecting the current status 
 
 ### Memo Objects ###
 
-(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))
+_(New in [Ripple-REST v1.3.0](https://github.com/ripple/ripple-rest/releases/tag/1.3.0))_
 
 Memo objects represent arbitrary data that can be included in a transaction. The overall size of the `memos` field cannot exceed 1KB after serialization.
 
@@ -498,6 +483,8 @@ Example of the memos field:
 
 ## Order Objects ##
 
+_(New in [Ripple-REST 1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1))_
+
 An order object describes an offer to exchange two currencies. Order objects are used when creating or looking up individual orders.
 
 | Field | Value | Description |
@@ -511,19 +498,31 @@ An order object describes an offer to exchange two currencies. Order objects are
 | immediate\_or\_cancel | Boolean | Whether the order should be [immediate or cancel](transactions.html#offercreate-flags). |
 | fill\_or\_kill        | Boolean | Whether the order should be [fill or kill](transactions.html#offercreate-flags). |
 
+## Order Change Objects ##
+
+An order change object describes the changes to to a Ripple account's open order due to a transaction.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
+| taker\_pays | String ([Amount Object](#amount_object)) | The `value` of the amount is expressed as the difference between the final amount and original amount. |
+| taker\_gets | String ([Amount Object](#amount_object)) | The `value` of the amount is expressed as the difference between the final amount and original amount. |
+| sequence   | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
+| status | String(`created`, `closed`, `canceled`, `open`) | The status of the order on the ledger. An order that is partially filled has the status `open`. |
+
 
 ## Bid Objects ##
 
-An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used when retrieving an order book.
+An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used to describe bids and asks when retrieving an order book. 
 
 | Field | Value | Description |
 |-------|-------|-------------|
 | type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
 | price | String ([Amount Object](#amount_object)) | The quoted price, denominated in total units of the counter currency per unit of the base currency |
 | taker\_pays\_total | String ([Amount Object](#amount_object)) | The total amount the taker must pay to consume this order. |
-| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | taker\_gets\_total | String ([Amount Object](#amount_object)) | The total amount the taker will get once the order is consumed. |
-| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | order\_maker | String | The Ripple address of the account that placed the bid or ask on the order book. |
 | sequence | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
 | sell     | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
@@ -546,8 +545,8 @@ From the perspective of an account on one side of the trustline, the trustline h
 | reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
 | account\_allows\_rippling | Boolean | If set to false on two trustlines from the same account, payments cannot ripple between them. (See the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | counterparty\_allows\_rippling | Boolean | (Read-only) If false, the counterparty account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) enabled. |
-| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
-| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4)) |
+| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
+| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
 
 The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The `counterparty` field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)
 
@@ -567,11 +566,13 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 Randomly generate keys for a potential new Ripple account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/wallet/new
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#generate-wallet)
@@ -601,16 +602,18 @@ The second step is [making a payment](#payments) of XRP to the new account addre
 
 
 ## Get Account Balances ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/balances.js#L9 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/balances.js#L34 "Source")
 
 Retrieve the current balances for the given Ripple account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/balances
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-account-balances)
@@ -672,11 +675,13 @@ There is one entry in the `balances` array for the account's XRP balance, and ad
 Retrieve the current settings for a given account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/settings
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-account-settings)
@@ -732,11 +737,12 @@ The response contains a `settings` object, with the following fields:
 
 
 ## Update Account Settings ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/settings.js#L97 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/settings.js#L135 "Source")
 
 Modify the existing settings for an account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -754,6 +760,7 @@ POST /v1/accounts/{:address}/settings?validated=true
   }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#update-account-settings)
@@ -828,18 +835,19 @@ The response is a JSON object containing the following fields:
 `ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
 
-
 ## Prepare Payment ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L538 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L484 "Source")
 
 Get quotes for possible ways to make a particular payment.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#prepare-payment)
@@ -921,11 +929,12 @@ __NOTE:__ This command may be quite slow. If the command times out, please try i
 
 
 ## Submit Payment ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L43 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L52 "Source")
 
 Submit a payment object to be processed and executed.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -960,6 +969,7 @@ POST /v1/accounts/{address}/payments?validated=true
   }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#submit-payment)
@@ -1017,16 +1027,18 @@ The response can take two formats, depending on the `validated` query parameter:
 
 
 ## Confirm Payment ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L232 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L270 "Source")
 
 Retrieve the details of a payment, including the current state of the transaction and the result of transaction processing.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/payments/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#confirm-payment)
@@ -1094,21 +1106,23 @@ The following URL parameters are required by this API endpoint:
 
 If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
 
-Processing a payment can take several seconds to complete, depending on the [consensus process](consensus-whitepaper.html). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
+Processing a payment can take several seconds to complete, depending on the [consensus process](https://ripple.com/consensus-whitepaper/). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
 
 
 
 ## Get Payment History ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/master/api/payments.js#L460 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L394 "Source")
 
 Retrieve a selection of payments that affected the specified account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/payments
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-payment-history)
@@ -1140,389 +1154,83 @@ Optionally, you can also include the following query parameters:
   "success": true,
   "payments": [
     {
-      "client_resource_id": "",
       "payment": {
-        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "source_account": "rBvktWhzs4MQDaFYScsqPCB5YufRDXwKDC",
         "source_tag": "",
         "source_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
+          "value": "1166313.057",
+          "currency": "JPY",
+          "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
         },
         "source_slippage": "0",
-        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "destination_account": "rBvktWhzs4MQDaFYScsqPCB5YufRDXwKDC",
         "destination_tag": "",
         "destination_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "outgoing",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "9018940",
-        "hash": "FED24FB85E5682E5FD03D2FFA047E1CE9F284671BCD82007C64B3FE735DD69B0",
-        "timestamp": "2014-09-23T19:20:20.000Z",
-        "fee": "0.000012",
-        "source_balance_changes": [
-          {
-            "value": "-0.000012",
-            "currency": "XRP",
-            "issuer": ""
-          },
-          {
-            "value": "-1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "source_tag": "",
-        "source_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "source_slippage": "0",
-        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "destination_tag": "",
-        "destination_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "outgoing",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "9018905",
-        "hash": "63BCCAFA0D6D56B2F914B5933D7FABCD25925450F0675179E836D12DFA530C28",
-        "timestamp": "2014-09-23T19:17:30.000Z",
-        "fee": "0.000012",
-        "source_balance_changes": [
-          {
-            "value": "-0.000012",
-            "currency": "XRP",
-            "issuer": ""
-          },
-          {
-            "value": "-1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "source_tag": "",
-        "source_amount": {
-          "value": "0.00001",
-          "currency": "XRP",
-          "issuer": ""
-        },
-        "source_slippage": "0",
-        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "destination_tag": "",
-        "destination_amount": {
-          "currency": "USD",
-          "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
-          "value": "0.01"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": true,
-        "direction": "outgoing",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "8924146",
-        "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
-        "timestamp": "2014-09-17T21:47:00.000Z",
-        "fee": "0.00001",
-        "source_balance_changes": [
-          {
-            "value": "-0.00002",
-            "currency": "XRP",
-            "issuer": ""
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "5.08e-8",
-            "currency": "USD",
-            "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "source_tag": "",
-        "source_amount": {
-          "value": "1",
-          "currency": "XRP",
-          "issuer": ""
-        },
-        "source_slippage": "0",
-        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "destination_tag": "",
-        "destination_amount": {
-          "value": "1",
+          "value": "600000",
           "currency": "XRP",
           "issuer": ""
         },
         "invoice_id": "",
-        "paths": "[]",
+        "paths": "[[{\"currency\":\"XRP\",\"type\":16,\"type_hex\":\"0000000000000010\"}]]",
         "no_direct_ripple": false,
         "partial_payment": false,
-        "direction": "incoming",
-        "state": "validated",
+        "direction": "passthrough",
         "result": "tesSUCCESS",
-        "ledger": "8889845",
-        "hash": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
-        "timestamp": "2014-09-15T20:01:40.000Z",
-        "fee": "0.000012",
+        "timestamp": "2015-02-06T03:59:30.000Z",
+        "fee": "0.012",
         "source_balance_changes": [
           {
-            "value": "-1.000012",
-            "currency": "XRP",
-            "issuer": ""
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "1",
-            "currency": "XRP",
-            "issuer": ""
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "source_tag": "",
-        "source_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "source_slippage": "0",
-        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "destination_tag": "",
-        "destination_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "incoming",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "8889826",
-        "hash": "4C9FA63D9F87AFC7E1BBD7F2644A1D4BD7537E833B1A945E27E5EC19F3B4B271",
-        "timestamp": "2014-09-15T20:00:10.000Z",
-        "fee": "0.000012",
-        "source_balance_changes": [
-          {
-            "value": "-0.000012",
-            "currency": "XRP",
-            "issuer": ""
+            "currency": "JPY",
+            "value": "-1164533.852420654",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
           },
           {
-            "value": "-1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "source_tag": "",
-        "source_amount": {
-          "value": "30",
-          "currency": "XRP",
-          "issuer": ""
-        },
-        "source_slippage": "0",
-        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "destination_tag": "",
-        "destination_amount": {
-          "value": "30",
-          "currency": "XRP",
-          "issuer": ""
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "incoming",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "8889256",
-        "hash": "72549F0CB04C8C5F30F64256A4EBDE577B1943382AE44347F05FF70590FF7CCB",
-        "timestamp": "2014-09-15T19:14:50.000Z",
-        "fee": "0.000012",
-        "source_balance_changes": [
-          {
-            "value": "-30.000012",
             "currency": "XRP",
+            "value": "599999.988",
             "issuer": ""
           }
         ],
         "destination_balance_changes": [
           {
-            "value": "30",
-            "currency": "XRP",
-            "issuer": ""
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "source_tag": "",
-        "source_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "source_slippage": "0",
-        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "destination_tag": "",
-        "destination_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "outgoing",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "8803725",
-        "hash": "6A6E503211A32F7AB92FE747A8AD2759A1E597055CB8961F0B2FEDE3A53975AB",
-        "timestamp": "2014-09-10T23:22:20.000Z",
-        "fee": "0.000015",
-        "source_balance_changes": [
-          {
-            "value": "-0.000015",
-            "currency": "XRP",
-            "issuer": ""
+            "currency": "JPY",
+            "value": "-1164533.852420654",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
           },
           {
-            "value": "-1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ],
-        "destination_balance_changes": [
-          {
-            "value": "1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-          }
-        ]
-      }
-    },
-    {
-      "client_resource_id": "",
-      "payment": {
-        "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "source_tag": "",
-        "source_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "source_slippage": "0",
-        "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "destination_tag": "",
-        "destination_amount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "1"
-        },
-        "invoice_id": "",
-        "paths": "[]",
-        "no_direct_ripple": false,
-        "partial_payment": false,
-        "direction": "outgoing",
-        "state": "validated",
-        "result": "tesSUCCESS",
-        "ledger": "8711125",
-        "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208",
-        "timestamp": "2014-09-05T19:59:50.000Z",
-        "fee": "0.00001",
-        "source_balance_changes": [
-          {
-            "value": "-0.00001",
             "currency": "XRP",
+            "value": "599999.988",
             "issuer": ""
-          },
-          {
-            "value": "-1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
           }
         ],
-        "destination_balance_changes": [
+        "order_changes": [
           {
-            "value": "1",
-            "currency": "USD",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+            "taker_pays": {
+              "currency": "JPY",
+              "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+              "value": "-67605.3"
+            },
+            "taker_gets": {
+              "currency": "XRP",
+              "counterparty": "",
+              "value": "-34300"
+            },
+            "sequence": 3751,
+            "status": "closed"
+          }
+        ],
+        "memos": [
+          {
+            "MemoType": "636C69656E74",
+            "MemoFormat": "7274312E332E31",
+            "parsed_memo_type": "client",
+            "parsed_memo_format": "rt1.3.1"
           }
         ]
-      }
+      },
+      "client_resource_id": "",
+      "hash": "E485D1E18D946ACD410AD79F51E2C57E887CC206286E6CE0A1CA80FC75C24643",
+      "ledger": "11547185",
+      "state": "validated"
     }
   ]
 }
@@ -1530,13 +1238,20 @@ Optionally, you can also include the following query parameters:
 
 If the length of the `payments` array is equal to `results_per_page`, then there may be more results. To get them, increment the `page` query paramter and run the request again.
 
-*Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
+The `payment` objects include additional transactional metadata:
 
+| Field | Type | Description |
+|-------|------|-------------|
+| source_balance_changes | Amount | The balance changes of the Ripple address that submitted the payment |
+| destination_balance_changes | Amount | The balance changes of the Ripple address that received the payment |
+| order_changes | Order | The changes in the orders of the perspective account |
+
+*Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
 
 # ORDERS #
 
 ## Place Order ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L110 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L161 "Source")
 
 (New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
 
@@ -1549,19 +1264,19 @@ Places an order to exchange currencies.
 ```
 POST /v1/accounts/{:address}/orders?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG....",
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "order": {
-      "type": "sell",
-      "taker_pays": {
-        currency: "JPY",
-        counterparty: "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
-        value: "4000"
-      },
-      "taker_gets": {
-        currency: "USD",
-        counterparty: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-        value: ".25"
-      }
+        "type": "sell",
+        "taker_pays": {
+            "currency": "JPY",
+            "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+            "value": "4000"
+        },
+        "taker_gets": {
+            "currency": "USD",
+            "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "value": ".25"
+        }
     }
 }
 ```
@@ -1600,7 +1315,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
     "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
     "ledger": "9592219",
     "state": "validated",
-    "account": "sneThnzgBgxc3zXPG....",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "taker_pays": {
       "currency": "JPY",
       "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
@@ -1619,8 +1334,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ```
 
 ## Cancel Order ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L243 "Source")
-(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L250 "Source")
 
 Deletes a previous order to exchange currencies.
 
@@ -1631,7 +1345,7 @@ Deletes a previous order to exchange currencies.
 ```
 DELETE /v1/accounts/{:address}/orders/{:order}?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG...."
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
 }
 ```
 
@@ -1671,7 +1385,7 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
     "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
     "ledger": "9592219",
     "state": "validated",
-    "account": "sneThnzgBgxc3zXPG....",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "fee": "0.012",
     "offer_sequence": 99,
     "sequence": 100
@@ -1680,11 +1394,9 @@ __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key 
 ```
 
 ## Get Account Orders ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L38 "Source")
 
-(New in [Ripple-REST v1.3.2](https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4))
-
-Retrieves all currency-exchange orders associated with the Ripple address.
+Retrieves all open currency-exchange orders associated with the Ripple address.
 
 <div class='multicode'>
 
@@ -1712,7 +1424,7 @@ Optionally, you can also include the following query parameters:
 | limit | String (Integer) | (Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. |
 | ledger | String | Ledger to request paged results from. Use the ledger's hash. |
 
-*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination.
+*Note:* Pagination using `limit` and `marker` requires a consistent ledger version, so you must also provide the `ledger` query parameter to use pagination. `marker` will be present in the response when there are additional pages to page through.
 
 #### Response ####
 
@@ -1721,168 +1433,311 @@ The response is an object with a `orders` array, where each member is a [order o
 ```js
 {
   "success": true,
-  "marker": "DF5DE453A6531A542988861F250376A0C284C2C829DEE0ABC22D663EAFC270F9",
-  "limit": 10,
-  "ledger": 11082531,
+  "ledger": 11561783,
   "validated": true,
-  "orders": [{
-    "taker_gets": {
-      "currency": "EUR",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "value": "2500"
+  "orders": [
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "11205.2494363431"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "9933.731769807718"
+      },
+      "sequence": 11,
+      "passive": false
     },
-    "taker_pays": {
-      "currency": "USD",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "value": "3750"
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "9229.29"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "10447.55628"
+      },
+      "sequence": 12,
+      "passive": false
     },
-    "sequence": 105955,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "CHF",
-      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "value": "47"
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5600"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "5000"
+      },
+      "sequence": 13,
+      "passive": false
     },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "4.7"
+      },
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "997.876857"
+      },
+      "sequence": 14,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "999"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "4.74525"
+      },
+      "sequence": 15,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5.35"
+      },
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "998.134328"
+      },
+      "sequence": 16,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "999"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5.96403"
+      },
+      "sequence": 17,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "1103.64"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "976.6725663716827"
+      },
+      "sequence": 18,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "986.89"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "1116.17259"
+      },
+      "sequence": 19,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "2"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "2"
+      },
+      "sequence": 21,
+      "passive": false
+    }
+  ]
+}
+
+```
+
+## Get Order Transaction ##
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L505 "Source")
+
+Get the details of an order transaction. An order transaction either [places an order](#place-order) or [cancels an order](#cancel-order).
+
+
+<div class='multicode'>
+
+*REST*
+
+```
+GET /v1/accounts/{:address}/orders/{:hash}
+```
+
+</div>
+
+[Try it! >](rest-api-tool.html#get-order-transaction)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String | The Ripple account address whose orders to look up. |
+| hash | String | The transaction hash for the order |
+
+
+#### Response ####
+
+An example response for an order transaction to place an order:
+
+```js
+{
+  "success": true,
+  "hash": "D53A3B99AC0C3CAF35D72178390ACA94CD42479A98CEA438EEAFF338E5FEB76D",
+  "ledger": 11349675,
+  "validated": true,
+  "timestamp": "2015-01-26T17:49:30.000Z",
+  "fee": "0.012",
+  "action": "order_create",
+  "direction": "outgoing",
+  "order": {
+    "account": "rEQWVz1qN4DWw5J17s3DgXQzUuVYDSpK6M",
     "taker_pays": {
       "currency": "XRP",
       "counterparty": "",
-      "value": "4700"
+      "value": "10000000"
     },
-    "sequence": 106858,
-    "passive": false,
-    "sell": false
-  }, {
     "taker_gets": {
+      "currency": "JPY",
+      "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+      "value": "0.0001"
+    },
+    "passive": false,
+    "immediate_or_cancel": false,
+    "fill_or_kill": false,
+    "type": "buy",
+    "sequence": 26
+  },
+  "balance_changes": [
+    {
+      "counterparty": "",
+      "currency": "XRP",
+      "value": "-0.012"
+    }
+  ],
+  "order_changes": [
+    {
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "10000000"
+      },
+      "taker_gets": {
+        "currency": "JPY",
+        "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+        "value": "0.0001"
+      },
+      "sequence": 26,
+      "status": "created"
+    }
+  ]
+}
+
+```
+
+An example response for an order transaction that cancels an order:
+
+```js
+{
+  "success": true,
+  "hash": "3D948699072B40312AE313E7E8297EED83080C9A4D5B564BCACF0951ABF00AC5",
+  "ledger": 11236693,
+  "validated": true,
+  "timestamp": "2015-01-20T21:46:00.000Z",
+  "fee": "0.012",
+  "action": "order_cancel",
+  "direction": "outgoing",
+  "order": {
+    "account": "rEQWVz1qN4DWw5J17s3DgXQzUuVYDSpK6M",
+    "type": "cancel",
+    "sequence": 22,
+    "cancel_sequence": 20
+  },
+  "balance_changes": [{
+    "counterparty": "",
+    "currency": "XRP",
+    "value": "-0.012"
+  }],
+  "order_changes": [{
+    "taker_pays": {
       "currency": "XRP",
       "counterparty": "",
-      "value": "10996.534297"
+      "value": "0"
     },
-    "taker_pays": {
-      "currency": "BTC",
-      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
-      "value": "0.99968493609091"
-    },
-    "sequence": 105993,
-    "passive": false,
-    "sell": false
-  }, {
     "taker_gets": {
-      "currency": "BTC",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "value": "19.32"
+      "currency": "JPY",
+      "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+      "value": "0"
     },
-    "taker_pays": {
-      "currency": "BTC",
-      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "value": "21"
-    },
-    "sequence": 106880,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "BTC",
-      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "value": "21"
-    },
-    "taker_pays": {
-      "currency": "BTC",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "value": "22.47"
-    },
-    "sequence": 106066,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "XRP",
-      "counterparty": "",
-      "value": "102058.710535"
-    },
-    "taker_pays": {
-      "currency": "MXN",
-      "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
-      "value": "44373.35240666822"
-    },
-    "sequence": 105962,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "XRP",
-      "counterparty": "",
-      "value": "450000"
-    },
-    "taker_pays": {
-      "currency": "USD",
-      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-      "value": "15000"
-    },
-    "sequence": 105963,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "XRP",
-      "counterparty": "",
-      "value": "17000"
-    },
-    "taker_pays": {
-      "currency": "CAD",
-      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
-      "value": "500"
-    },
-    "sequence": 105964,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "XRP",
-      "counterparty": "",
-      "value": "28000"
-    },
-    "taker_pays": {
-      "currency": "CAD",
-      "counterparty": "r3ADD8kXSUKHd6zTCKfnKT3zV9EZHjzp1S",
-      "value": "1000"
-    },
-    "sequence": 105965,
-    "passive": false,
-    "sell": false
-  }, {
-    "taker_gets": {
-      "currency": "XRP",
-      "counterparty": "",
-      "value": "255000"
-    },
-    "taker_pays": {
-      "currency": "USD",
-      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "value": "7500"
-    },
-    "sequence": 105966,
-    "passive": false,
-    "sell": false
+    "sequence": 20,
+    "status": "canceled"
   }]
 }
 ```
 
+The response includes the original [`order`](#order-objects), if the `action` is `order_create`.
 
+For transactions that cancel orders, the `order` object describes the transaction that canceled the original order.
 
+The response also includes `balance_changes` and [`order changes`](order-change-objects)
+for the perspective account (e.g., the Ripple account address used in the URI).
+
+The `direction` of the transaction is either `incoming`, `outgoing` or `unaffected`. Outgoing transactions are made by the perspective account. Incoming transactions affect the perspective account.
 
 ## Get Order Book ##
-[[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/orders.js#L20 "Source")
+[[Source]<br>](https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L38 "Source")
 
 Retrieves the top of the order book for a currency pair.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/order_book/{:base}/{:counter}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-order-book)
@@ -2049,11 +1904,13 @@ The response includes `bids` and `asks` arrays that contain [bid objects](#bid-o
 Retrieves all trustlines associated with the Ripple address.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/trustlines
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-trustlines)
@@ -2118,12 +1975,13 @@ The response is an object with a `lines` array, where each member is a [trustlin
 Creates or modifies a trustline.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 POST /v1/accounts/{:address}/trustlines?validated=true
 {
-    "secret": "sneThnzgBgxc3zXPG....",
+    "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
     "trustline": {
         "limit": "110",
         "currency": "USD",
@@ -2132,6 +1990,7 @@ POST /v1/accounts/{:address}/trustlines?validated=true
     }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#grant-trustline)
@@ -2190,11 +2049,13 @@ Notifications are sorted in order of when they occurred, so you can save the mos
 Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/notifications/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#check-notifications)
@@ -2256,11 +2117,13 @@ The following two endpoints can be used to check if the `ripple-rest` API is cur
 Perform a simple ping to make sure that the server is working properly.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/server/connected
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#check-connection)
@@ -2282,11 +2145,13 @@ If the server has any problems, for example with connecting to the `rippled` ser
 Retrieve information about the current status of the Ripple-REST API and the `rippled` server it is connected to.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/server
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-server-status)
@@ -2369,11 +2234,13 @@ The `rippled_server_status` object may have any of the following fields:
 Returns a Ripple transaction, in its complete, original format.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/transactions/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#retrieve-ripple-transaction)
@@ -2574,11 +2441,13 @@ The result is a JSON object, whose `transaction` field has the requested transac
 Retrieve the current transaction fee, in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/transaction-fee
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#retrieve-transaction-fee)
@@ -2600,11 +2469,13 @@ The response is a JSON object, whose `fee` field is a string containing a decima
 Generate a universally-unique identifier suitable for use as the Client Resource ID for a payment.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/uuid
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#generate-uuid)
