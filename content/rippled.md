@@ -423,7 +423,7 @@ __*Note:*__ The distinction between `full`, `validating`, and `proposing` is bas
 
 ### Markers and Pagination ###
 
-Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a `marker` field. You can use this to retrieve more pages of data across multiple calls. In each subsequent request, pass the `marker` value from the previous response in order to resume resume from the point where you left off. If the `marker` is omitted from a response, then you have reached the end of the data set.
+Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a `marker` field. You can use this to retrieve more pages of data across multiple calls. In each subsequent request, pass the `marker` value from the previous response in order to resume from the point where you left off. If the `marker` is omitted from a response, then you have reached the end of the data set.
 
 The format of the `marker` field is intentionally undefined. Each server can define a `marker` field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server can have different `marker` definitions. Each `marker` is ephemeral, and may not work as expected after 10 minutes.
 
@@ -1199,7 +1199,7 @@ The request includes the following parameters:
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
 
-##### Iterating over queried data ######
+##### **Iterating over queried data** ######
 
 As with other paginated methods, you can use the `marker` field to return multiple pages of data.
 
