@@ -421,6 +421,13 @@ Depending on how the `rippled` server is configured, how long it has been runnin
 
 __*Note:*__ The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
 
+### Markers and Pagination ###
+
+Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a `marker` field. You can use this to retrieve more pages of data across multiple calls. In each subsequent request, pass the `marker` value from the previous response in order to resume resume from the point where you left off. If the `marker` is omitted from a response, then you have reached the end of the data set.
+
+The format of the `marker` field is intentionally undefined. Each server can define a `marker` field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server can have different `marker` definitions. Each `marker` is ephemeral, and may not work as expected after 10 minutes.
+
+
 ## Modifying the Ledger ##
 
 All changes to Ripple's global shared ledger happen as the result of transactions. Consequently, this means that there is *only one* public API method that causes a change in the state of the Ripple Network at all: the [*submit*](#submit) command. Most of the other methods represent different ways to view the data represented in the Ripple Network, and the remaining ones just generate data for your convenience. (The [wallet_propose](#wallet-propose), [path_find](#path-find), and [random](#random) commands fall into this category.)
@@ -647,7 +654,7 @@ The request accepts the following paramters:
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | peer | String | (Optional) A unique ID for a second account. If provided, show only lines of trust connecting the two accounts. |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
-| marker | (Not Specified) | (Optional) Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -958,7 +965,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
-| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| markers | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -1039,7 +1046,7 @@ A request can include the following parameters:
 | ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger_index | (Optional) Unsigned integer, or String | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See Ledger Indexes.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
-| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1098,7 +1105,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
-| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-344)) |
 
 
 Each offer object contains the following fields:
@@ -1180,23 +1187,23 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | A unique identifier for the account, most commonly the account's address. | 
-| ledger_index_min | Integer | Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest ledger available. |
-| ledger_index_max | Integer | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent one available. |
-| ledger_hash | String | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| ledger_index | String or Unsigned Integer | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_index\_min | Integer | Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest ledger available. |
+| ledger\_index\_max | Integer | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent one available. |
+| ledger\_hash | String | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_index | String or Unsigned Integer | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
 
 ##### Iterating over queried data ######
 
-If you want to retrieve an amount of data that is higher than the server's maximum `limit` value, or you want to break up your request into multiple smaller requests, you can use the `marker` field to pick up in the same place you left off. For each subsequent request, pass the `marker` value from the previous request to instruct rippled to resume from the point where you left off.
+As with other paginated methods, you can use the `marker` field to return multiple pages of data.
 
-However, in the time between requests, things may change so that `"ledger_index_min": -1` and `"ledger_index_max": -1` may refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the `ledger_index_min` and `ledger_index_max` values provided in the first response, and use those values for all subsequent requests. 
+However, in the time between requests, `"ledger_index_min": -1` and `"ledger_index_max": -1` may change to refer to different ledger versions than they did before. To make sure you iterate over the same exact data set, take the `ledger_index_min` and `ledger_index_max` values provided in the first response, and use those values for all subsequent requests. 
 
 #### Response Format ####
 
@@ -1682,10 +1689,10 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address identifying the related account |
-| ledger_index_min | Integer | The sequence number of the earliest ledger actually searched for transactions. |
-| ledger_index_max | Integer | The sequence number of the most recent ledger actually searched for transactions. |
+| ledger\_index\_min | Integer | The sequence number of the earliest ledger actually searched for transactions. |
+| ledger\_index\_max | Integer | The sequence number of the most recent ledger actually searched for transactions. |
 | limit | Integer | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
 | offset | Integer | The `offset` value used in the request. |
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
@@ -1709,18 +1716,13 @@ Each transaction object includes the following fields, depending on whether it w
 * `actMalformed` - If the address specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
 * `lgrIdxsInvalid` - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-<!-- 
-this is the part where we plug our ears and don't acknowledge that you can provide a seed to identify an account, and it might cause:
-* `badSeed`
-* `noGenDecrypt`
--->
+* `badSeed` - This error should never occur.
+* `noGenDecrypt` - This error should never occur.
 
 ## can_delete ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-With `online_delete` and `advisory_delete` configuration options enabled,
-the `can_delete` method informs the rippled server of the latest ledger
-which may be deleted.
+With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted.
 
 #### Request Format ####
 
@@ -2231,7 +2233,7 @@ A request can include the following fields:
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 | binary | Boolean | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
 | limit | Integer | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
-| marker | (Not Specified) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -2418,7 +2420,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger_index | Unsigned Integer | Sequence number of this ledger |
 | ledger_hash | String | Unique identifying hash of the entire ledger. |
 | state | Array | Array of JSON objects containing data from the tree, as defined below |
-| marker | (Not Specified) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. |
 
 The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
 
