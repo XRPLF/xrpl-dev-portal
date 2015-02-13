@@ -27,7 +27,7 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 * [Cancel Order - `DELETE /v1/accounts/{:address}/orders/{:sequence}`](#cancel-order)
 * [Get Account Orders - `GET /v1/accounts/{:address}/orders`](#get-account-orders)
 * [Get Order Book - `GET /v1/accounts/{:address}/order_book/{:base}/{:counter}`](#get-order-book)
-* [Get Order Transaction - `GET /v1/accounts{:address}/orders/{:hash}`](#get-order)
+* [Get Order Transaction - `GET /v1/accounts{:address}/orders/{:hash}`](#get-order-transaction)
 
 #### Trustlines ####
 
@@ -520,9 +520,9 @@ An bid object describes an offer to exchange two currencies, including the curre
 | type  | String (`buy` or `sell`) | Whether the order is to buy or sell. |
 | price | String ([Amount Object](#amount_object)) | The quoted price, denominated in total units of the counter currency per unit of the base currency |
 | taker\_pays\_total | String ([Amount Object](#amount_object)) | The total amount the taker must pay to consume this order. |
-| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_pays\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker must pay to consume this order, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | taker\_gets\_total | String ([Amount Object](#amount_object)) | The total amount the taker will get once the order is consumed. |
-| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is (partially funded)[https://wiki.ripple.com/Unfunded_offers]. |
+| taker\_gets\_funded | String ([Amount Object](#amount_object)) | The actual amount the taker will get once the order is consumed, if the order is [partially funded](https://wiki.ripple.com/Unfunded_offers). |
 | order\_maker | String | The Ripple address of the account that placed the bid or ask on the order book. |
 | sequence | Number | The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order. |
 | sell     | Boolean | Whether the order should be [sell](https://ripple.com/build/transactions/#offercreate-flags). |
@@ -566,11 +566,13 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 Randomly generate keys for a potential new Ripple account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/wallet/new
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#generate-wallet)
@@ -605,11 +607,13 @@ The second step is [making a payment](#payments) of XRP to the new account addre
 Retrieve the current balances for the given Ripple account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/balances
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-account-balances)
@@ -671,11 +675,13 @@ There is one entry in the `balances` array for the account's XRP balance, and ad
 Retrieve the current settings for a given account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/settings
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-account-settings)
@@ -736,6 +742,7 @@ The response contains a `settings` object, with the following fields:
 Modify the existing settings for an account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -753,6 +760,7 @@ POST /v1/accounts/{:address}/settings?validated=true
   }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#update-account-settings)
@@ -833,11 +841,13 @@ The response is a JSON object containing the following fields:
 Get quotes for possible ways to make a particular payment.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#prepare-payment)
@@ -924,6 +934,7 @@ __NOTE:__ This command may be quite slow. If the command times out, please try i
 Submit a payment object to be processed and executed.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -1021,11 +1032,13 @@ The response can take two formats, depending on the `validated` query parameter:
 Retrieve the details of a payment, including the current state of the transaction and the result of transaction processing.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/payments/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#confirm-payment)
@@ -1093,7 +1106,7 @@ The following URL parameters are required by this API endpoint:
 
 If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
 
-Processing a payment can take several seconds to complete, depending on the [consensus process](consensus-whitepaper.html). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
+Processing a payment can take several seconds to complete, depending on the [consensus process](https://ripple.com/consensus-whitepaper/). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
 
 
 
@@ -1103,11 +1116,13 @@ Processing a payment can take several seconds to complete, depending on the [con
 Retrieve a selection of payments that affected the specified account.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/payments
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-payment-history)
@@ -1583,11 +1598,13 @@ Get the details of an order transaction. An order transaction either [places an 
 
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/orders/{:hash}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-order-transaction)
@@ -1714,11 +1731,13 @@ The `direction` of the transaction is either `incoming`, `outgoing` or `unaffect
 Retrieves the top of the order book for a currency pair.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/order_book/{:base}/{:counter}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-order-book)
@@ -1885,11 +1904,13 @@ The response includes `bids` and `asks` arrays that contain [bid objects](#bid-o
 Retrieves all trustlines associated with the Ripple address.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/trustlines
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-trustlines)
@@ -1954,6 +1975,7 @@ The response is an object with a `lines` array, where each member is a [trustlin
 Creates or modifies a trustline.
 
 <div class='multicode'>
+
 *REST*
 
 ```
@@ -1968,6 +1990,7 @@ POST /v1/accounts/{:address}/trustlines?validated=true
     }
 }
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#grant-trustline)
@@ -2026,11 +2049,13 @@ Notifications are sorted in order of when they occurred, so you can save the mos
 Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/accounts/{:address}/notifications/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#check-notifications)
@@ -2092,11 +2117,13 @@ The following two endpoints can be used to check if the `ripple-rest` API is cur
 Perform a simple ping to make sure that the server is working properly.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/server/connected
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#check-connection)
@@ -2118,11 +2145,13 @@ If the server has any problems, for example with connecting to the `rippled` ser
 Retrieve information about the current status of the Ripple-REST API and the `rippled` server it is connected to.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/server
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#get-server-status)
@@ -2205,11 +2234,13 @@ The `rippled_server_status` object may have any of the following fields:
 Returns a Ripple transaction, in its complete, original format.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/transactions/{:id}
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#retrieve-ripple-transaction)
@@ -2410,11 +2441,13 @@ The result is a JSON object, whose `transaction` field has the requested transac
 Retrieve the current transaction fee, in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/transaction-fee
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#retrieve-transaction-fee)
@@ -2436,11 +2469,13 @@ The response is a JSON object, whose `fee` field is a string containing a decima
 Generate a universally-unique identifier suitable for use as the Client Resource ID for a payment.
 
 <div class='multicode'>
+
 *REST*
 
 ```
 GET /v1/uuid
 ```
+
 </div>
 
 [Try it! >](rest-api-tool.html#generate-uuid)
