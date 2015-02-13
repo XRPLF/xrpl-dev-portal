@@ -840,7 +840,7 @@ Some fields that may appear in transaction metadata include:
 
 The `Amount` of a [Payment transaction](#payment) indicates the amount to deliver to the `Destination`, so if the transaction was successful, then the destination received that much -- **except if the transaction was a [partial payment](#partial-payments)**. (In that case, any positive amount up to `Amount` might have arrived.) Rather than choosing whether or not to trust the `Amount` field, you should use the `delivered_amount` field of the metadata to see how much actually reached its destination.
 
-The `delivered_amount` field of a transaction is included in all successful Payment transactions, and is formatted like a normal currency amount. However, the correct value is not available for transactions that meet both of the following criteria:
+The `delivered_amount` field of transaction metadata is included in all successful Payment transactions, and is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
 
 * Is a partial payment, and
 * Included in a validated ledger prior to 2014-01-20
