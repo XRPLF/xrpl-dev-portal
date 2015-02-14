@@ -336,7 +336,7 @@ When an amount of currency is specified as part of a JSON body, it is encoded as
 |-------|------|-------------|
 | value | String (Quoted decimal) | The quantity of the currency |
 | currency | String | Three-digit [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) specifying which currency. Alternatively, a 160-bit hex value. (Some advanced features, like [demurrage](https://ripple.com/wiki/Gateway_demurrage), require the hex version.) |
-| counterparty | String | (New in [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
+| counterparty | String | (New in [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0)) The Ripple address of the account that is a counterparty to this currency. This is usually an [issuing gateway](https://wiki.ripple.com/Gateway_List). Always omitted, or an empty string, for XRP. |
 | issuer | String | (Prior to 1.4.0) **DEPRECATED** alias for `counterparty`. Some methods may still return this instead. |
 
 
@@ -450,6 +450,7 @@ Submitted transactions can have additional fields reflecting the current status 
 | fee | String (Quoted decimal) | The amount of XRP charged as a transaction fee. |
 | source_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account sending the transaction as a result of the transaction. |
 | destination_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account receiving the transaction as a result of the transaction. |
+| order\_changes | Array | Array of [Amount objects](#amount_object) indicating changes to orders caused by the Payment. |
 
 
 ### Memo Objects ###
@@ -483,7 +484,7 @@ Example of the memos field:
 
 ## Order Objects ##
 
-_(New in [Ripple-REST 1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1))_
+_(New in [Ripple-REST 1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0))_
 
 An order object describes an offer to exchange two currencies. Order objects are used when creating or looking up individual orders.
 
@@ -545,8 +546,8 @@ From the perspective of an account on one side of the trustline, the trustline h
 | reciprocated_limit | String (Quoted decimal) | (Read-only) The maximum amount of currency issued by this account that the counterparty account should hold. |
 | account\_allows\_rippling | Boolean | If set to false on two trustlines from the same account, payments cannot ripple between them. (See the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | counterparty\_allows\_rippling | Boolean | (Read-only) If false, the counterparty account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) enabled. |
-| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
-| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0-rc1)) |
+| account\_trustline\_frozen | Boolean | Indicates whether this account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`account_froze_trustline` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0)) |
+| counterparty\_trustline\_frozen | Boolean | (Read-only) Indicates whether the counterparty account has [frozen](https://wiki.ripple.com/Freeze) the trustline. (`counterparty_froze_line` prior to [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0)) |
 
 The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The `counterparty` field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)
 
@@ -1067,44 +1068,62 @@ The following URL parameters are required by this API endpoint:
     "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
     "destination_tag": "",
     "destination_amount": {
+      "value": "0.00000005080000000000001",
       "currency": "USD",
-      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
-      "value": "0.01"
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
     },
     "invoice_id": "",
     "paths": "[]",
     "no_direct_ripple": false,
     "partial_payment": true,
     "direction": "outgoing",
-    "state": "validated",
     "result": "tesSUCCESS",
-    "ledger": "8924146",
-    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
     "timestamp": "2014-09-17T21:47:00.000Z",
     "fee": "0.00001",
     "source_balance_changes": [
       {
-        "value": "-0.00002",
         "currency": "XRP",
+        "value": "-0.00002",
         "issuer": ""
       }
     ],
     "destination_balance_changes": [
       {
-        "value": "5.08e-8",
         "currency": "USD",
+        "value": "5.08e-8",
         "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
       }
-    ]
-  }
+    ],
+    "order_changes": [],
+    "destination_amount_submitted": {
+      "value": "0.01",
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+    },
+    "source_amount_submitted": {
+      "value": "0.00001",
+      "currency": "XRP",
+      "issuer": ""
+    }
+  },
+  "client_resource_id": "",
+  "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+  "ledger": "8924146",
+  "state": "validated"
 }
 ```
 
 | Field | Type | Description |
 |-------|------|-------------|
 | payment | Object | A [payment object](#payment-objects) for the transaction. |
+| client\_resource\_id | String | The [client resource identifier](#client-resource-ids) used for this payment. |
+| hash | String (Transaction Hash) | A hash value that uniquely identifies this transaction in the Ripple network. |
+| ledger | String (Ledger Index) | (May be omitted) The sequence number of the ledger that includes this transaction, if this transaction is in a ledger. |
+| state | String | Whether or not the transaction is included in a ledger that has been validated by consensus. |
 
-If the `payment.state` field has the value `"validated"`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `payment.result` field for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
+_New in [v1.4.0](https://github.com/ripple/ripple-rest/releases/tag/1.4.0) - The `hash`, `ledger`, and `state` fields have been moved to the top level. Previously, they were included as part of the Payment object._
+
+If the `state` field has the value `validated`, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the `result` field of the Payment for a value of `"tesSUCCESS"` to see if the payment was successfully executed. If the `payment.partial_payment` flag is *true*, then you should also consult the `payment.destination_balance_changes` array to see how much currency was actually delivered to the destination account.
 
 Processing a payment can take several seconds to complete, depending on the [consensus process](https://ripple.com/consensus-whitepaper/). If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.
 
@@ -1237,14 +1256,6 @@ Optionally, you can also include the following query parameters:
 ```
 
 If the length of the `payments` array is equal to `results_per_page`, then there may be more results. To get them, increment the `page` query paramter and run the request again.
-
-The `payment` objects include additional transactional metadata:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| source_balance_changes | Amount | The balance changes of the Ripple address that submitted the payment |
-| destination_balance_changes | Amount | The balance changes of the Ripple address that received the payment |
-| order_changes | Order | The changes in the orders of the perspective account |
 
 *Note:* It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the `rippled` before it can filter them.
 
