@@ -381,9 +381,8 @@ The amount of XRP used for the [transaction fee](#transaction-fees) is always de
 
 #### Partial Payments Warning ####
 
-When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers. Validated partial payment transactions have a `meta.DeliveredAmount` field, which indicates the amount of currency actually received by the destination account. When receiving a payment, you should confirm that, if the `meta.DeliveredAmount` field exists, you use that to determine how much your account received instead of relying on the `Amount` field. 
+When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` field __*is not guaranteed to be the amount received*__. In fact, __*there is no minimum guaranteed amount*__ that a partial payment actually delivers. The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the `Amount` field to determine how much your account received instead. 
 
-*Note:* Early partial payments in historical ledgers do not have this field. If necessary, you can check the balance changes in the `meta` field to determine how much the destination account actually received.
 
 ### Limit Quality ###
 
@@ -822,6 +821,32 @@ There are several ways a transaction's failure could become permanent:
 * If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
 * If the `Sequence` number of the *account* sending the transaction is higher (in a validated ledger) than the `Sequence` number of the transaction, then the transaction cannot be included in any new ledger.
 * If the transaction includes a `LastLedgerSequence` and a ledger with a higher sequence number is validated, the transaction cannot be included in any new ledger.
+
+## Understanding Transaction Metadata ##
+
+The metadata section of a transaction includes detailed information about all the changes to the shared global ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
+
+Some fields that may appear in transaction metadata include:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| AffectedNodes | Array | List of nodes that were created, deleted, or modified by this transaction, and specific changes to each. |
+| DeliveredAmount | String or Object | **DEPRECATED.** Replaced by `delivered_amount`. Omitted if not a partial payment. |
+| TransactionIndex | Unsigned Integer | The transaction's position within the ledger that included it. (For example, the value `2` means it was the 2nd transaction in that ledger.) |
+| TransactionResult | String | A [result code](#result-categories) indicating whether the transaction succeeded or how it failed. |
+| [delivered_amount](#delivered-amount) | Object or String | (New in [rippled 0.27.0](https://github.com/ripple/rippled/releases/tag/0.27.0)) The [amount](rippled-apis.html#specifying-currency-amounts) actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](#partial-payments). |
+
+### delivered_amount ###
+
+The `Amount` of a [Payment transaction](#payment) indicates the amount to deliver to the `Destination`, so if the transaction was successful, then the destination received that much -- **except if the transaction was a [partial payment](#partial-payments)**. (In that case, any positive amount up to `Amount` might have arrived.) Rather than choosing whether or not to trust the `Amount` field, you should use the `delivered_amount` field of the metadata to see how much actually reached its destination.
+
+The `delivered_amount` field of transaction metadata is included in all successful Payment transactions, and is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
+
+* Is a partial payment, and
+* Included in a validated ledger prior to 2014-01-20
+
+If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the AffectedNodes in the transaction's metadata.
+
 
 ## Full Transaction Response List ##
 
