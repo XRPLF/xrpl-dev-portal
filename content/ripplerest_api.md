@@ -442,15 +442,13 @@ Submitted transactions can have additional fields reflecting the current status 
 | Field | Type | Description |
 |-------|------|-------------|
 | direction | String | The direction of the payment relative to the account from the URL, either `"outgoing"` (sent by the account in the URL) or `"incoming"` (received by the account in the URL) |
-| state | String | The current status of the payment in transaction processing. A value of `"validated"` indicates that the transaction is finalized. |
 | result | String | The [Ripple transaction status code](https://wiki.ripple.com/Transaction_errors) for the transaction. A value of `"tesSUCCESS"` indicates a successful transaction. |
-| ledger | String | The sequence number of the ledger version that includes this transaction. |
-| hash | String | A hash value that uniquely identifies this transaction in the Ripple network. |
 | timestamp | String | The time the ledger containing this transaction was validated, as a [ISO8601 extended format](http://en.wikipedia.org/wiki/ISO_8601) string in the form `YYYY-MM-DDTHH:mm:ss.sssZ`. |
 | fee | String (Quoted decimal) | The amount of XRP charged as a transaction fee. |
 | source_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account sending the transaction as a result of the transaction. |
 | destination_balance_changes | Array | Array of [Amount objects](#amount_object) indicating changes in balances held by the account receiving the transaction as a result of the transaction. |
 | order\_changes | Array | Array of [Amount objects](#amount_object) indicating changes to orders caused by the Payment. |
+| source_amount_submitted | Object | An [Amount object](#amount_object) indicating the source amount submitted (useful when `payment.partial_payment` flag is set to *true* |
 
 
 ### Memo Objects ###
