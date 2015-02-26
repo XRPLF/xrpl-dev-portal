@@ -1,17 +1,17 @@
 # Becoming a Ripple Gateway #
 
-Gateways are the businesses that link the Ripple network to the rest of the world. Existing online financial services, such as payment systems and digital currency exchange, can gain several advantages by becoming a Ripple gateway:
+Expanding an existing online financial system to support Ripple is a relatively simple task. Gateways are the businesses that link the Ripple network to the rest of the world. By becoming a Ripple gateway, existing online financial services, such as payment systems and digital currency exchange, can gain several advantages:
 
-* By enabling its users to send and receive value in Ripple, the gateway increases its value proposition to users.
-* By accepting payments from the Ripple network, the gateway increases the number of ways that users can fund accounts at its business, even internationally.
-* The gateway can use Ripple-related services as a new source of revenue.
+* By enabling its users to send and receive value in Ripple, the business increases its value proposition to users.
+* By accepting payments from the Ripple network, the business increases the number of ways that users can fund accounts at its business, even internationally.
+* The business can use Ripple-related services as a new source of revenue.
 
-Expanding an existing online financial system to support Ripple is a relatively simple task. This document explains the concepts and steps necessary to become a Ripple gateway. In this document, we use a fictional online currency exchange named "ACME" and its users as examples, to show how ACME can expand its business to include being a Ripple gateway.
+This document explains the concepts and steps necessary to become a Ripple gateway. In this document, we use a fictional online currency exchange named "ACME" and its users as examples, to show how ACME can expand its business to include being a Ripple gateway.
 
 
 ## Contact Information ##
 
-You are not on your own. Ripple Labs is here to help you build and grow your gateway. Feel free to seek out help if you need it.
+You are not on your own. Ripple Labs depends on the success of individual gateways, so we are here to help. Please contact us if you need any assistance building and growing your gateway.
 
 * Contact [partners@ripple.com](mailto:partners@ripple.com) for enterprise-class integrations, infrastructure advice, and other business development needs.
 * Contact [developers@ripple.com](mailto:developers@ripple.com) for technical questions, clarifications, bug reports, and feature requests.
@@ -19,31 +19,31 @@ You are not on your own. Ripple Labs is here to help you build and grow your gat
 
 ## Ripple Gateways Explained ##
 
-A Ripple _*Gateway*_ is an entity that exchanges balances in the Ripple Network for value in the outside world, which is like performing deposits and withdrawals from Ripple. There are three major models that gateways can follow, with different purposes and modes of operation. 
+A Ripple _*Gateway*_ is an entity that exchanges value in the Ripple Network for value in the outside world, which is like performing deposits and withdrawals from Ripple. There are three major models that gateways can follow, with different purposes and modes of operation. 
 
-* An **Issuing Gateway** holds money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network to represent. This provides a way for users to get money in and out of Ripple. This document focuses primarily on how to become an issuing gateway.
-* A **Private Exchange** lets its users purchase and trade XRP amongst themselves. This is similar to being an exchange for any other commodity or cryptocurrency, except that users can also trade XRP for other issuances within the Ripple Network itself.
-* A **Merchant** accepts payment within Ripple for goods or services outside the network. Unlike an issuing gateway, a Merchant does not create its own currency, but accepts issuances that are created by other gateways. This guide does not describe how to become a merchant within Ripple.
+* An **Issuing Gateway** receives money (or other assets of value) outside of Ripple, and creates _*issuances*_ in the Ripple Network. This provides a way for users to get money in and out of Ripple. This document focuses primarily on how to become an issuing gateway.
+* A **Private Exchange** lets its users purchase and trade XRP among users of the private exchange. This is similar to being an exchange for any other commodity or cryptocurrency. However, unlike other cryptocurrencies, there is also an exchange built into the Ripple protocol itself.
+* A **Merchant** accepts payment within Ripple for goods or services outside the network. Unlike an issuing gateway, a merchant business does not create its own currency, but accepts issuances that are created by other gateways. This guide does not describe how to accept Ripple payments as a merchant.
 
 ### Ripple Trust Lines and Issuances ###
 
-All assets in Ripple, except for the native cryptocurrency XRP, are represented as *issuances*, which are digital assets that reflect traditional assets held by a gateway. Within Ripple, issuances can be divided, sent, and traded without the gateway's intervention and very low barriers to entry. Issuances get their value from the promise that the gateway issuing them will honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. Therefore, Ripple's *trust lines* ensure that users only hold issuances from gateways they trust to pay out when needed.
+All assets in Ripple, except for the native cryptocurrency XRP, are represented as *issuances*, which are digital assets that reflect traditional assets held by a gateway. Within Ripple, issuances can be sent and traded without the gateway's intervention and very low barriers to entry. Issuances get their value from gateway's agreement to honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. Therefore, Ripple's *trust lines* ensure that users only hold issuances from gateways they trust to pay out when needed.
 
-A "trust line" is link between two accounts in Ripple that represents an explicit statement of willingness to hold gateway debt obligations. When a user sends money into Ripple, a Gateway takes custody of assets in the outside world, and sends issuances within the Ripple network to the user. When a user sends money out of Ripple, she "redeems" the issuances with the Gateway's Ripple account, and the gateway sends the assets to the user in the outside world.
+A "trust line" is link between two accounts in Ripple that represents an explicit statement of willingness to hold gateway debt obligations. When a user sends money into Ripple, a Gateway takes custody of those assets outside of Ripple, and sends issuances within the Ripple network to the user. When a user sends money out of Ripple, she sends the issuances to the gateway, and the gateway then sends the assets to the user in the outside world. To redeem funds, a user simply makes a Ripple payment from her Ripple account to the Gateway's.
 
 ### XRP ###
 
-XRP is the native [cryptocurrency](https://ripple.com/knowledge_center/math-based-currency/) of the Ripple network. Like issuances, XRP can be freely sent and exchanged by users in the network. Unlike issuances, XRP is not connected to a trust line, and can be sent directly from any Ripple account to any other, without going through a gateway or market maker. For this reason, XRP is a convenient bridge currency to facilitate currency exchanges.
+XRP is the native [cryptocurrency](https://ripple.com/knowledge_center/math-based-currency/) of the Ripple network. Like issuances, XRP can be freely sent and exchanged by users in the network. Unlike issuances, XRP is not connected to a trust line, and can be sent directly from any Ripple account to any other, without going through a gateway or market maker. This helps make XRP a convenient bridge currency to facilitate currency exchanges.
 
 XRP also serves other purposes in the Ripple network, in particular as [a protective measure against spamming the network](https://ripple.com/knowledge_center/abuse-protection/). All Ripple accounts need a small reserve of XRP in order to pay the network costs of maintaining their accounts and sending transactions. The anti-spam network fees are destroyed, not paid to any party.
 
-Issuing gateways do not need to accumulate or exchange XRP. They must only maintain a small balance of XRP to send transactions on the network. The XRP equivalent of $10 USD is enough for a busy gateway to operate for a year.
+Issuing gateways do not need to accumulate or exchange XRP. They must only maintain a small balance of XRP to send transactions on the network. The XRP equivalent of $10 USD should be enough for a busy gateway to operate for a year.
 
-Private exchanges and market makers may choose to hold additional XRP to use as a means of exchange. Ripple Labs **does not** encourage treating XRP as a speculative investment.
+Private exchanges and market makers may choose to hold additional XRP to use as a means of exchange. Ripple Labs **does not** promote XRP as a speculative investment.
 
 ### Liquidity and Currency Exchange Within Ripple ###
 
-The Ripple network contains a distributed financial exchange, where any user can place and fulfill bids to exchange currencies (including issuances and XRP). Cross-currency payments automatically use the financial exchange to convert currency atomically at the time of sending. In this way, users who choose to become market makers provide the liquidity that makes the Ripple Network useful.
+The Ripple network contains a distributed financial exchange, where any user can place and fulfill bids to exchange currencies (issuances and XRP). Cross-currency payments automatically use the financial exchange to convert currency atomically at the time of sending. In this way, users who choose to become market makers provide the liquidity that makes the Ripple Network useful.
 
 When adding a new gateway to the Ripple network, it is important to establish liquidity to other popular currencies. Because liquidity is provided by third-party market makers, a gateway can provide currency-exchange services through Ripple without having to keep a large reserve of currencies or shoulder the risk of financial exchange.
 
@@ -54,7 +54,7 @@ Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing 
 
 ## Suggested Business Practices ##
 
-The value of a gateway's issuances in Ripple comes directly from users' trust that the gateway will pay withdrawals when needed. Since a gateway cannot pay out if it shuts down, it is also in users' interest that a gateway does not shut down. There are a number of precaution a gateway can take that reduce the risk of business interruptions:
+The value of a gateway's issuances in Ripple comes directly from users' trust that users can redeem them with the gateway when needed. Since a gateway cannot pay out if it shuts down, it is also in customers' interest that a gateway does not shut down. There are a number of precaution a gateway can take that reduce the risk of business interruptions:
 
 * Use [Hot and Cold Wallets](#hot-and-cold-wallets) to limit your risk profile on the network.
 * Comply with anti-money-laundering regulations for your jurisdiction, such as the [Bank Secrecy Act](http://en.wikipedia.org/wiki/Bank_Secrecy_Act). This usually includes requirements to collect ["Know-Your-Customer" (KYC) information](http://en.wikipedia.org/wiki/Know_your_customer).
@@ -66,15 +66,15 @@ The value of a gateway's issuances in Ripple comes directly from users' trust th
 
 It is strongly recommended that Ripple gateways employ a "hot wallet / cold wallet" strategy. This enforces a separation of roles that promotes strong security. ("Wallets" in Ripple are equivalent to Accounts.)
 
+If the account that creates a gateway's issuances is compromised, the attacker could create an unlimited amount of new issuances, which makes it very difficult to redeem legitimately-held issuances fairly. In this case, the gateway must create a new issuing account, and all users with trust lines to the old gateway must create new trust lines to the new account. Thus, it's best to keep your issuing account as secure as possible.
+
 The cold wallet is like a vault. It serves as the asset issuer, and should remain offline. The secret key that is used for this wallet is kept offline, accessible to only a few trusted operators. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the hot wallet's balance. Because the cold wallet is the account creating the issuances, customer accounts holding those issuances must trust the cold wallet. 
 
-A hot wallet is like a cash register. It makes payments to the gateway's users in Ripple by sending them issuances created by the cold wallet. The secret key for a hot wallet is, by necessity, stored on a server that is connected to the outside internet, usually a configuration file for the software that performs gateway operations. Because it holds issuances created by the cold walet, each hot wallet needs a trust line to the cold wallet. Customers do not, and should not, trust hot wallet accounts.
+A hot wallet is like a cash register. It makes payments to the gateway's users in Ripple by sending them issuances created by the cold wallet. The secret key for a hot wallet is, by necessity, stored on a server that is connected to the outside internet, usually in a configuration file on a public-facing server. Because it holds issuances created by the cold walet, each hot wallet needs a trust line to the cold wallet. Customers do not, and should not, trust hot wallet accounts.
 
 (Unlike a cash register, the hot wallet does not have to handle incoming payments from users, because the cold wallet can receive and monitor payments without using its secret key. To make things simple for your users, we recommend treating incoming payments to the hot and cold wallets as the same.)
 
 A gateway can use one or more "hot wallet" accounts, but each hot wallet has a limited balance of the gateway's issuances. If a hot wallet is compromised, the gateway only loses as much currency as that account holds. Customers do not need to change any configuration in order to receive funds from a new hot wallet. However, the gateway must monitor the hot wallet's balance so that it doesn't run out of funds during ordinary operation.
-
-If a cold wallet is compromised, the attacker could create an unlimited amount of issuances, which makes it very difficult to redeem legitimately-held issuances fairly. In this case, the gateway must create a new cold wallet account, and all users with trust lines to the old gateway must create new trust lines to the new account. (Thus, it's best to keep your cold wallet as secure as possible.)
 
 ### Warm Wallets ###
 
@@ -103,7 +103,7 @@ There are several ways in which a gateway can seek to benefit financially from R
 * Indirect revenue from value added. Ripple integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
 * Withdrawal and Deposit fees. It is typical for a gateway to charge a small fee (such as 1%) for the service of adding or removing money from Ripple. You have the power to determine the rate you credit people when they move money onto and off of Ripple through your gateway.
 * Transfer fees. You can set a percentage fee to charge automatically when Ripple users send each other issuances created by your account. This amount is debited from the Ripple ledger, decreasing your obligation each time your issuances change hands. See [TransferRate](#transferrate) for details.
-* Interest on Ripple-backed funds. You can keep some of your Ripple-backing currency in an external account that earns interest. Just be sure the external account's policies do not interfere with your ability to adequately serve your customer withdrawals. (For example, limits on withdrawing money, or risk of losses.)
+* Interest on Ripple-backed funds. You can keep some of your Ripple-backing currency in an external account that earns interest. Just make sure you can always access enough funds to service customer withdrawals.
 * [Market making](#market-makers). A gateway can also make offers to buy and sell its issuances for other issuances on Ripple, providing liquidity to cross-currency payments and possibly making a profit. (As with any market making opportunity, profits are not guaranteed.)
 
 <span class='draft-comment'>TODO: Diagram of fee sources</span>
@@ -122,7 +122,7 @@ Our example exchange, ACME, already accepts withdrawals and deposits from users 
 
 In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of reserves that belong to ACME itself. Alice deposits €4, so ACME adds her to its balance sheet and ends up with €9.
 
-![Alice sends €4 to ACME. ACME adds her balance to its balance sheet.](img/e2g-01.gif)
+![Alice sends €4 to ACME. ACME adds her balance to its balance sheet.](img/e2g-01.png)
 
 **Assumptions:** To integrate with Ripple, we assume that an exchange such as ACME meets the following assumptions:
 
@@ -138,14 +138,14 @@ Ripple payments can automatically bridge between currencies, but an issuing gate
 An example of a deposit flow:
 
 1. Alice asks to deposit €2 of her ACME balance into Ripple.
-2. In its internal accounting, ACME debits Alice's balance €2 and credits the Ripple-backed balance by €2.
+2. In its internal accounting, ACME debits Alice's balance €3 and credits the Ripple-backed balance by €2.
 3. ACME submits a Ripple transaction, sending €2 to Alice's Ripple address. The €2 is marked in Ripple as being "issued" by ACME (2 EUR.ACME).
 
 **Assumptions:** 
 
 * Alice already has a Ripple account separate from her ACME account, which she manages using an application such as Ripple Trade.
 
-![ACME issues 2 EUR.ACME to Alice on Ripple](img/e2g-02.gif)
+![ACME issues 3 EUR.ACME to Alice on Ripple](img/e2g-02.png)
 
 ### Requirements for Sending to Ripple ###
 
@@ -207,6 +207,10 @@ After the issuances have been created in Ripple, they can be freely transferred 
 - Ripple users trading and sending EUR.ACME to one another requires no intervention by ACME.
 - All exchanges and balances on Ripple are publicly viewable in the shared, global ledger. 
 
+The following diagram depicts a simple Ripple payment sending 2EUR.ACME from Alice to Charlie. ACME can query Ripple to see updates to its balances any time after the transaction has occurred:
+
+![Alice's sends 2 EUR.ACME from her trust line to Charlie's](img/e2g-03.png)
+
 
 ## Market Makers ##
 
@@ -216,9 +220,6 @@ To facilitate exchanging currency, ACME may decide to become its own market make
 
 For more information about how and why to become a market maker, see the [Maket Makers Whitepaper (PDF)](https://ripple.com/files/ripple_mm.pdf).
 
-The following diagram depicts a simple Ripple payment sending 2EUR.ACME from Alice to Charlie. Note that ACME's balance sheet and holdings do not change:
-
-![Alice's sends 2 EUR.ACME from her trust line to Charlie's](img/e2g-03.gif)
 
 ## Freezes ##
 
@@ -502,9 +503,9 @@ The fee represented by the TransferRate is debited from the Ripple ledger, becom
 
 For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR.ACME, Charlie must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by €0.01, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
 
-The following diagram shows a Ripple payment of 3EUR.ACME from Alice to Charlie with a transfer fee of 1%:
+The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-![Alice sends €3.03, Charlie receives €3.00, and ACME holds €0.03 for Ripple](img/e2g-with_transferrate.gif)
+![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ on Ripple](img/e2g-with_transferrate.png)
 
 The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to set the TransferRate for a fee of 0.5%.
 
