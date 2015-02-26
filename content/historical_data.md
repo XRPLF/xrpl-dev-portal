@@ -17,7 +17,8 @@ The `rippled` Historical Database provides a REST API, with the following method
 * [Get Transaction By Account and Sequence - `GET /v1/accounts/{:address}/transactions/{:sequence}`](#get-transaction-by-account-and-sequence)
 * [Get Ledger - `GET /v1/ledgers/{:ledger_identifier}`](#get-ledger)
 * [Get Transaction - `GET /v1/transactions/{:hash}`](#get-transaction)
-* [Get Exchanges - `/v1/exchanges/{:base}/{:counter}`](#get-exchanges)
+
+
 
 # API Objects #
 
@@ -47,7 +48,21 @@ Transactions have two formats - a compact "binary" format where the defining fie
 
 ## Ledger Objects ##
 
-<span class="draft-comment">TODO</span>
+A "ledger" is one block of the shared global ledger. Each ledger object has the following fields:
+
+| Field        | Value | Description |
+|--------------|-------|-------------|
+| ledger_hash  | String - Transaction Hash | An identifying hash unique to this ledger, as a hex string. |
+| ledger_index | Number (Unsigned Integer) - Ledger Index | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
+| parent_hash  | String - Transaction Hash | The identifying hash of the previous ledger. |
+| total_coins  | Unsigned Integer | The total number of drops of XRP still in existence at the time of the ledger. (Each "drop" is 100,000 XRP.) |
+| close\_time\_res | Number | Approximate number of seconds between closing one ledger version and closing the next one. |
+| accounts\_hash | String - Hash | Hash of the account information contained in this ledger, as hex. |
+| transactions\_hash | String - Hash | Hash of the transaction information contained in this ledger, as hex. |
+| close_time | Unsigned Integer - UNIX time | The time at which this ledger was closed. |
+| close\_time\_human | String - IS0 8601 UTC Timestamp | The time at which this ledger was closed. |
+
+
 
 # API Reference #
 
@@ -105,7 +120,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-GET http://history.ripple.com/v1/accounts/r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59/transactions?limit=2&type=OfferCreate
+GET /v1/accounts/r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59/transactions?limit=2&type=OfferCreate
 ```
 
 Response:
@@ -564,7 +579,7 @@ Response:
 ## Get Transaction By Account and Sequence ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTxSeq.js "Source")
 
-Retrieve a specific transaction, by account and sequence number. <span class='draft-comment'>(Not deployed yet.)</span>
+Retrieve a specific transaction, by account and sequence number.
 
 #### Request Format ####
 
@@ -615,6 +630,9 @@ Response:
 {
     "result": "success",
     "transaction": {
+        "hash": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
+        "ledger_index": 8317030,
+        "date": "2014-08-14T20:21:40+00:00",
         "tx": {
             "TransactionType": "OfferCreate",
             "Flags": 0,
@@ -629,11 +647,7 @@ Response:
             "Fee": "20",
             "SigningPubKey": "0382A086DB113581E08E439546156D7F34B68F11D70914B65F63A98A36AF9845DC",
             "TxnSignature": "3045022100AB584255CDA4500BD82B5EA7CBB5ABB706DF657976F79187985209DDEB05C6290220365B67073797D3D4265B6E28ACC7DB7CE4EF3DF9DDB9B62ABE8078F0BF039414",
-            "Account": "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr",
-            "hash": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
-            "ledger_index": 8317030,
-            "executed_time": 1408047700,
-            "date": 461362900
+            "Account": "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr"
         },
         "meta": {
             "TransactionIndex": 7,
@@ -690,8 +704,8 @@ Response:
                         },
                         "FinalFields": {
                             "Flags": 131072,
-                            "LowNode": "43",
-                            "HighNode": "0",
+                            "LowNode": "0000000000000043",
+                            "HighNode": "0000000000000000",
                             "Balance": {
                                 "value": "-0.000000007322616",
                                 "currency": "BTC",
@@ -727,8 +741,8 @@ Response:
                         "FinalFields": {
                             "Flags": 131072,
                             "Sequence": 1404,
-                            "BookNode": "0",
-                            "OwnerNode": "0",
+                            "BookNode": "0000000000000000",
+                            "OwnerNode": "0000000000000000",
                             "BookDirectory": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F211CEE1E0697A0",
                             "TakerPays": "182677152",
                             "TakerGets": {
@@ -755,8 +769,8 @@ Response:
                         },
                         "FinalFields": {
                             "Flags": 2228224,
-                            "LowNode": "230",
-                            "HighNode": "0",
+                            "LowNode": "0000000000000230",
+                            "HighNode": "0000000000000000",
                             "Balance": {
                                 "value": "-8.849596279263425",
                                 "currency": "BTC",
@@ -785,8 +799,6 @@ Response:
 
 ## Get Ledger ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/6e4d601d18e60582754c8e0bde592d888cae5efc/api/routes/getLedger.js "Source")
-
-<span class='draft-comment'>(Not deployed yet.)</span>
 
 Retrieve a specific ledger version.
 
@@ -835,14 +847,27 @@ GET /v1/ledgers/3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5
 
 Response:
 
-```js
-
+```
+200 OK
+{
+    "result": "success",
+    "ledger": {
+        "ledger_hash": "3170da37ce2b7f045f889594cbc323d88686d2e90e8ffd2bbcd9bad12e416db5",
+        "ledger_index": 8317037,
+        "parent_hash": "aff6e04f07f441abc6b4133f8c50c65935b817a85b895f06dba098b3fbc1be90",
+        "total_coins": 99999980165594400,
+        "close_time_res": 10,
+        "accounts_hash": "8ad73e49a34d8b9c31bc13b8a97c56981e45ee70225ef4892e8b198fec5a1f7d",
+        "transactions_hash": "33e0b9c5fd7766343e67854aed4222f5ed9c9507e0ec0d7ae7d54d0f17adb98e",
+        "close_time": 1408047740,
+        "close_time_human": "2014-08-14T20:22:20+00:00"
+    }
+}
 ``` 
+
 
 ## Get Transaction ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/24595d37551687aa65209369377d15a803ac8f73/api/routes/getTx.js "Source")
-
-<span class='draft-comment'>(Not deployed yet.)</span>
 
 Retrieve a specific transaction by its identifying hash.
 
@@ -879,7 +904,6 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | transaction | [Transaction object](#transaction-objects) | The requested transaction |
 
-
 #### Example ####
 
 Request:
@@ -895,6 +919,9 @@ Response:
 {
     "result": "success",
     "transaction": {
+        "ledger_index": 8317037,
+        "date": "2014-08-14T20:22:20+00:00",
+        "hash": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
         "tx": {
             "TransactionType": "OfferCreate",
             "Flags": 131072,
@@ -908,11 +935,7 @@ Response:
             "Fee": "64",
             "SigningPubKey": "02279DDA900BC53575FC5DFA217113A5B21C1ACB2BB2AEFDD60EA478A074E9E264",
             "TxnSignature": "3045022100D81FFECC36A3DEF0922EB5D16F1AA5AA0804C30A18ED3B512093A75E87C81AD602206B221E22A4E3158785C109E7508624AD3DE5C0E06108D34FA709FCC9575C9441",
-            "Account": "r2d2iZiCcJmNL6vhUGFjs8U8BuUq6BnmT",
-            "hash": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
-            "ledger_index": 8317037,
-            "executed_time": 1408047740,
-            "date": 461362940
+            "Account": "r2d2iZiCcJmNL6vhUGFjs8U8BuUq6BnmT"
         },
         "meta": {
             "TransactionIndex": 0,
@@ -973,8 +996,8 @@ Response:
                             "Flags": 0,
                             "Sequence": 326320,
                             "Expiration": 461364125,
-                            "BookNode": "0",
-                            "OwnerNode": "3",
+                            "BookNode": "0000000000000000",
+                            "OwnerNode": "0000000000000003",
                             "BookDirectory": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F212B4AE944DDE4",
                             "TakerPays": "7869978846",
                             "TakerGets": {
@@ -1001,8 +1024,8 @@ Response:
                         },
                         "FinalFields": {
                             "Flags": 2228224,
-                            "LowNode": "221",
-                            "HighNode": "0",
+                            "LowNode": "0000000000000221",
+                            "HighNode": "0000000000000000",
                             "Balance": {
                                 "value": "-2.253363366782792",
                                 "currency": "BTC",
@@ -1036,8 +1059,8 @@ Response:
                         },
                         "FinalFields": {
                             "Flags": 131072,
-                            "LowNode": "43",
-                            "HighNode": "0",
+                            "LowNode": "0000000000000043",
+                            "HighNode": "0000000000000000",
                             "Balance": {
                                 "value": "0",
                                 "currency": "BTC",
@@ -1087,8 +1110,8 @@ Response:
                             "Flags": 131072,
                             "Sequence": 1404,
                             "PreviousTxnLgrSeq": 8317030,
-                            "BookNode": "0",
-                            "OwnerNode": "0",
+                            "BookNode": "0000000000000000",
+                            "OwnerNode": "0000000000000000",
                             "PreviousTxnID": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
                             "BookDirectory": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F211CEE1E0697A0",
                             "TakerPays": "182676470",
@@ -1135,8 +1158,8 @@ Response:
                         },
                         "FinalFields": {
                             "Flags": 1114112,
-                            "LowNode": "0",
-                            "HighNode": "233",
+                            "LowNode": "0000000000000000",
+                            "HighNode": "0000000000000233",
                             "Balance": {
                                 "value": "0.001567373",
                                 "currency": "BTC",
@@ -1173,58 +1196,5 @@ Response:
 }
 ```
 
-## Get Exchanges ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/tree/develop/api/routes "Source")
-
-<span class='draft-comment'>(Not yet implemented; no source link.)</span>
-
-Retrieve currency exchanges by the currency and issuer. (Currency exchanges occur whenever an Offer in the ledger is partially or fully consumed by a matching [OfferCreate](transactions.html#offercreate) or [Payment](transactions.html#payment) transaction.)
-
-#### Request Format ####
-
-<div class='multicode'>
-
-*REST*
-
-```
-/v1/exchanges/{:base}/{:counter}
-```
-
-</div>
 
 
-The following URL parameters are required by this API endpoint:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| base  | String (currency and issuer) | One currency of the exchange, formatted as a currency code (a 3-letter [ISO 4217](http://www.xe.com/iso4217.php/) code or a 160-bit hex code), followed by a `.`, followed by the currency issuer's Ripple address |
-| counter | String (currency and issuer) | (Optional) The other currency of the exchange, in the same format as the `base`. 
-
-Optionally, you can also include the following query parameters:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| <span class='draft-comment'>(TBD)</span> | | |
-
-#### Response Format ####
-
-<span class='draft-comment'>(Subject to change)</span>
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| time  | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | The time the exchange occurred. |
-| price | String (decimal number) | The exchange rate, as the ratio base:counter. |
-| base_amount | Amount | The amount of the base currency exchanged. |
-| counter_amount | Amount |
-| buyer | String (Address) | The Ripple address of the account that received the base currency. |
-| seller | String (Address) | The Ripple address of the account that received the counter currency. |
-| taker | String (Address) | The Ripple address of the account that completed the exchange. This is the same as either the `buyer` or the `seller`. |
-| tx_hash | String (Transaction Hash) | The identifying hash of the transaction where this exchange occurred. |
-
-**Note:** One transaction can cause multiple exchanges. For example, an OfferCreate could consume the most favorable exchange in the order book and part of the following offer.
-
-#### Example ####
-
-```js
-
-```
