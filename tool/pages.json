@@ -35,6 +35,11 @@
         "html": "historical_data.html"
     },
     {
+        "name": "Ripple Charts API",
+        "md": "charts_api.md",
+        "html": "charts_api.html"
+    },
+    {
         "name": "Gateway Services",
         "md":"gateway_services_spec.md",
         "html":"gateway_services.html"
