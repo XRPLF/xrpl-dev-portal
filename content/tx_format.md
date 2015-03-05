@@ -555,7 +555,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
 | [Expiration](#expiration) | Unsigned Integer | UInt32 | (Optional) Time after which the offer is no longer active, in [seconds since the Ripple Epoch](rippled-apis.html#specifying-time). |
-| OfferSequence | Unsigned Integer | UInt32 | (Optional) The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
+| OfferSequence | Unsigned Integer | UInt32 | (Optional) An offer to delete first, specified in the same way as [OfferCancel](#offercancel). |
 | TakerGets | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being provided by the offer creator. |
 | TakerPays | Object (Non-XRP), or <br/>String (XRP) | Amount | The amount and type of currency being requested by the offer creator. |
 
@@ -650,7 +650,7 @@ An OfferCancel transaction removes an Offer node from the global ledger.
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| OfferSequence | Unsigned Integer | UInt32 | The sequence number of the offer to cancel. |
+| OfferSequence | Unsigned Integer | UInt32 | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate](#offercreate) transaction with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
