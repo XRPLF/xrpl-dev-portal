@@ -393,9 +393,11 @@ The value `"require_destination_tag": true` indicates that the RequireDest flag 
 
 ## RequireAuth ##
 
-The `RequireAuth` flag (`require_authorization` in Ripple-REST) prevents a Ripple account's issuances from being held by other users unless the issuer approves them.
+The `RequireAuth` flag (`require_authorization` in Ripple-REST) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. 
 
 We recommend enabling RequireAuth for all hot wallet (and warm wallet) accounts, as a precaution. Separately, the [Authorized Accounts](#authorized-accounts) feature involves setting the RequireAuth flag on your cold wallet.
+
+You can only enable RequireAuth if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple network.
 
 ### With Hot Wallets ###
 
