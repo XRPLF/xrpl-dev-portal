@@ -1,6 +1,8 @@
 # Ripple Charts API #
 
-The Ripple Charts API, also known as the **Data API**, provides past and present information about the state of the Ripple Network through a REST-like API, with additional information calculated for analysis purposes. The Ripple Charts API is used as a data source by applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com/).
+The Ripple Charts API, also known as the **Data API**, provides past and present information about the state of the Ripple Network through an HTTP API, with additional information calculated for analysis purposes. The Ripple Charts API is used as a data source by applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com/).
+
+(The API does not follow the conventions of a REST API, but you can use an HTTP client to access it in the same way you would access a REST API.)
 
 * [Architecture](#architecture)
 * [Setup](#setup)
@@ -90,49 +92,223 @@ For example:
 ## Currency Objects ##
 [Currency Object]: #currency-objects
 
-Many methods define a currency as an object with the following fields:
+Many methods define **a currency** as an object with the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
 | currency | String | Three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) string, or a 160-bit hex string according to Ripple's internal [Currency format](https://wiki.ripple.com/Currency_format). |
-| issuer | String | Account address of the counterparty holding the currency. Usually an issuing gateway in the Ripple network. Omitted for XRP. |
+| issuer | String | Account address of the counterparty holding the currency. Usually an issuing gateway in the Ripple network. Omitted or `null` for XRP. |
 
+Some methods describe **an amount of currency**, for example a quantity traded in a currency exchange. In [JSON format][Response Format], this takes the form of a nested JSON object with the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| currency | String | Same as the `currency` field of a currency object. |
+| issuer | String | Same as the `issuer` field of a currency object. |
+| amount | Number | The quantity of the currency exchanged. |
+
+In [CSV or array format][Response Format], a currency amount is specified as three separate attributes that correspond to the fields of the JSON object. The name of the fields depends on the context: for example, the `baseAmount` column is equivalent to the `amount` field of the `base` currency amount object.
+
+**Warning:** JavaScript's native number type does not support `rippled`'s full range of precision. When dealing with very large or very small numbers, the `amount` values returned by the Charts API lose precision.
 
 ## Response Formats ##
-[Response Formats]: #response-formats
+[Response Format]: #response-formats
 
 Several methods provide a `format` parameter, which lets you request results in one of three formats:
 
-* `csv` - [Comma-separated-values](http://en.wikipedia.org/wiki/Comma-separated_values) table. Each line represents one result or interval, with its attributes in columns.
+* `csv` - [Comma-separated-values](http://en.wikipedia.org/wiki/Comma-separated_values) table. The first line is a row of column headers, and each subsequent line represents one result or interval, with its attributes in columns. The columns are separated by comma (`,`) characters.
 * `json` - The request contains some top-level information at the top level, and a `results` array. Each member of the `results` array is a JSON object with attributes and values that represent one result or interval.
 * **Two-dimensional array format** - If neither `csv` nor `json` is specified, the API returns an array of JSON arrays, in a format that resembles CSV. The first member of the top-level array is an array of table headers, and each subsequent member is a nested array representing one result or interval, with its members corresponding to the attribute names in the header row.
 
 
+
 # API Method Reference #
 
-Ripple Labs runs a public instance of the Ripple Charts API with full data, available at:
+To use a method in this document, append the path for that method to the hostname of the Charts API instance you want to use.  Ripple Labs runs a public instance of the Ripple Charts API with full data, available at:
 
-**https://api.ripplecharts.com/api**
+**https://api.ripplecharts.com**
 
 The API provides the following methods:
 
-* [Account Offers Exercised - `POST /account_offers_exercised`](#account-offers-exercised)
-* [Account Transaction Stats - `POST /account_transaction_stats`](#account-transaction-stats)
-* [Account Transactions - `POST /account_transactions`](#account-transactions)
-* [Accounts Created - `POST /accounts_created`](#accounts-created)
-* [Exchange Rates - `POST /exchange_rates`](#exchange-rates)
-* [Issuer Capitalization - `POST /issuer_capitalization`](#issuer-capitalization)
-* [Ledgers Closed - `POST /ledgers_closed`](#ledgers-closed)
-* [Market Traders - `POST /market_traders`](#market-traders)
-* [Offers - `POST /offers`](#offers)
-* [Offers Exercised - `POST /offers_exercised`](#offers-exercised)
-* [Top Markets - `POST /top_markets`](#top-markets)
-* [Total Network Value - `POST /total_network_value`](#total-network-value)
-* [Total Value Sent - `POST /total_value_sent`](#total-value-sent)
-* [Transaction Stats - `POST /transaction_stats`](#transaction-stats)
-* [Value Sent - `POST /value_sent`](#value-sent)
+* [Account Offers Exercised - `POST /api/account_offers_exercised`](#account-offers-exercised)
+* [Account Transaction Stats - `POST /api/account_transaction_stats`](#account-transaction-stats)
+* [Account Transactions - `POST /api/account_transactions`](#account-transactions)
+* [Accounts Created - `POST /api/accounts_created`](#accounts-created)
+* [Exchange Rates - `POST /api/exchange_rates`](#exchange-rates)
+* [Issuer Capitalization - `POST /api/issuer_capitalization`](#issuer-capitalization)
+* [Ledgers Closed - `POST /api/ledgers_closed`](#ledgers-closed)
+* [Market Traders - `POST /api/market_traders`](#market-traders)
+* [Offers - `POST /api/offers`](#offers)
+* [Offers Exercised - `POST /api/offers_exercised`](#offers-exercised)
+* [Top Markets - `POST /api/top_markets`](#top-markets)
+* [Total Network Value - `POST /api/total_network_value`](#total-network-value)
+* [Total Value Sent - `POST /api/total_value_sent`](#total-value-sent)
+* [Transaction Stats - `POST /api/transaction_stats`](#transaction-stats)
+* [Value Sent - `POST /api/value_sent`](#value-sent)
 
-## offers_exercised ##
+
+## Account Offers Exercised ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/master/api/routes/accountOffersExercised.js "Source")
+
+Retrieve currency-exchange orders being exercised for a single account.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*JSON*
+
+```
+POST /api/account_offers_exercised
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014",
+    "limit": 5,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+*CSV*
+
+```
+POST /api/account_offers_exercised
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014",
+    "limit": 5,
+    "offset": 0,
+    "format": "csv"
+}
+```
+
+*Array*
+
+```
+POST /api/account_offers_exercised
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014",
+    "limit": 5,
+    "offset": 0
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String (Ripple address) | Retrieve currency-exchange orders exercised as a result of this account sending a transaction, or another transaction modifying an order previously placed by this account. |
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information starting at this time. Defaults to 30 days before `endTime`. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
+| limit | Number | (Optional) The maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offest | Number | (Optional) The number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+The format of the response depends on the `format` parameter from the request. See [Response Format][] for details. Examples of successful responses:
+
+<div class='multicode'>
+
+*JSON*
+
+```
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014-01-01T00:00:00+00:00",
+    "endTime": "2015-03-09T21:05:27+00:00",
+    "results": [
+        {
+            "base": {
+                "currency": "XRP",
+                "issuer": null,
+                "amount": 0.00001
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "amount": 5.080000065049717e-8
+            },
+            "type": "buy",
+            "rate": 196.8503937007874,
+            "counterparty": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+            "time": "2014-09-17T21:47:00+00:00",
+            "txHash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+            "ledgerIndex": 8924146
+        }
+    ]
+}
+```
+
+*CSV*
+
+```
+baseCurrency, baseIssuer, baseAmount, counterCurrency, counterIssuer, counterAmount, type, rate, counterparty, time, txHash, ledgerIndex
+XRP, , 0.00001, USD, rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc, 5.080000065049717e-8, buy, 196.8503937007874, rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG, 2014-09-17T21:47:00+00:00, 9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E, 8924146
+```
+
+*Array*
+
+```
+[
+    [
+        "baseCurrency",
+        "baseIssuer",
+        "baseAmount",
+        "counterCurrency",
+        "counterIssuer",
+        "counterAmount",
+        "type",
+        "rate",
+        "counterparty",
+        "time",
+        "txHash",
+        "ledgerIndex"
+    ],
+    [
+        "XRP",
+        null,
+        0.00001,
+        "USD",
+        "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+        5.080000065049717e-8,
+        "buy",
+        196.8503937007874,
+        "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+        "2014-09-17T21:47:00+00:00",
+        "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+        8924146
+    ]
+]
+```
+
+</div>
+
+Each result in the response describes an individual transaction that exercised a currency exchange on the account. This includes [OfferCreate](transactions.html#offercreate) and cross-currency [Payment](transactions.html#payment) transactions that the account sent, as well as transactions that consumed an offer that the account had previously placed.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| base | Object ([Currency Amount][Currency Object]) | (JSON format only) Amount of one currency exchanged in this transaction. |
+| baseCurrency | String ([currency name][Currency Object]) | (CSV and array formats only) Name of the base currency exchanged in this transaction. |
+| baseIssuer | String ([currency issuer][Currency Object]) | (CSV and array formats only) Issuer of the base currency exchanged in this transaction. |
+| baseAmount | String ([currency amount][Currency Object]) | (CSV and array formats only) Quantity of the base currency exchanged in this transaction. | 
+| counter | Object ([Currency Amount][Currency Object]) | (JSON format only) Amount of the other currency exchanged in this transaction. |
+| counterCurrency | String ([currency name][Currency Object]) | (CSV and array formats only) Name of the counter currency exchanged in this transaction. |
+| counterIssuer | String ([currency issuer][Currency Object]) | (CSV and array formats only) Issuer of the counter currency exchanged in this transaction. |
+| counterAmount | String ([currency amount][Currency Object]) | (CSV and array formats only) Quantity of the counter currency exchanged in this transaction. | 
+| type | String | Either `buy` or `sell`. If the specified account sent the transaction, `buy` means the account acquired the counter currency. If another account sent the transaction, `buy` means the specified account acquired the base currency. (In both cases, `sell` means the reverse.) |
+| rate | Number | The exchange ratio between the base and counter currency. |
+| counterparty | String (Ripple address) | The other account involved in this exchange. |
+| time | String ([Date-Time][]) | The time this transaction occurred, as defined by the close time of the ledger that included it. |
+| txHash | String (Transaction Hash) | The identifying hash of the Ripple transaction that performed this exchange, as a hex string. |
+| ledgerIndex | Number | The sequence number of the ledger that included this transaction. |
+
+
+## Offers Exercised ##
 [[Source]<br>](https://github.com/ripple/ripple-data-api/blob/master/api/routes/offersExercised.js "Source")
 
 Retrieve information about currency-exchange orders being exercised on the network, for a specific pair of currencies and timeframe.
@@ -198,12 +374,11 @@ The request includes the following body parameters:
 | reduce | Boolean | (Optional) If `false`, include transactions individually instead of collapsing them into results over time. Defaults to `true`. Ignored if `timeIncrement` is provided. |
 | limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
 | offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
-| format | String | (Optional) The format to return results in. Use `csv` to return results in CSV format or `json` to return results as JSON. If omitted, defaults to a CSV-like JSON array format. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
 
 #### Response Format ####
 
-An example of a successful response:
-
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
 
 <div class='multicode'>
 
@@ -341,8 +516,6 @@ An example of a successful response:
 ```
 
 </div>
-
-The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Formats][] for details.
 
 **If results are reduced** (the default), then each result represents an interval of time, with the following attributes, in order:
 
