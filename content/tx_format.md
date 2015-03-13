@@ -465,8 +465,9 @@ The available AccountSet flags are:
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
-| asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be cleared. | lsfNoFreeze |
+| asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
+| asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -698,7 +699,7 @@ There are two cases where you can hold a balance on a trust line that is *greate
 
 Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it.
 
-A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
+A trust line with settings in the default state is equivalent to no trust line.
 
 ### TrustSet Flags ###
 

@@ -496,7 +496,7 @@ Accounts are the core unit of authentication in the Ripple Network. Each account
 ## account_currencies ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
 
-The `account_currencies` command retrieves a simple list of currencies that an account can send or receive, based on its trustlines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
+The `account_currencies` command retrieves a simple list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
 
 #### Request Format ####
 An example of the request format:
@@ -632,7 +632,7 @@ The response follows the [standard format](#response-formatting), with a success
 | send\_currencies | Array of Strings |  Array of currency codes for currencies that this account can send. Each currency is either a 3-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to the [currency format](https://wiki.ripple.com/Currency_format). |
 | validated | Boolean | If `true`, this data comes from a validated ledger. |
 
-*Note:* The currencies that an account can send or receive are defined based on a simple check of its trust lines. if an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trustline's balance can go down, the account can send that currency. This method *does not* check whether the trust line is frozen or authorized.
+*Note:* The currencies that an account can send or receive are defined based on a simple check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method *does not* check whether the trust line is frozen or authorized.
 
 #### Possible Errors ####
 
