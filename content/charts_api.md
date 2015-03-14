@@ -73,7 +73,14 @@ Alternatively, you can use the experimental websocket-based importer:
 
 
 
-# API Objects #
+# Formatting Conventions #
+
+Requests to the Charts API generally take the same format:
+
+- Use the HTTP POST method
+- The URL defines the API method to use
+- All parameters are in the request body.
+- The `Content-Type` header has the value `application/json`. **Caution:** If you omit or specify the wrong Content-Type, the API may respond with misleading error messages such as `{"error":"Please specify an account"}`
 
 ## Dates and Times ##
 [Date-Time]: #dates-and-times
@@ -306,6 +313,166 @@ Each result in the response describes an individual transaction that exercised a
 | time | String ([Date-Time][]) | The time this transaction occurred, as defined by the close time of the ledger that included it. |
 | txHash | String (Transaction Hash) | The identifying hash of the Ripple transaction that performed this exchange, as a hex string. |
 | ledgerIndex | Number | The sequence number of the ledger that included this transaction. |
+
+
+## Account Transaction Stats ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/accountTransactionStats.js "Source")
+
+Retrieve information about transactions sent by a given account.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Expanded*
+
+```
+POST /api/account_transaction_stats
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "Mar 9, 2014",
+    "endTime": "Mar 10, 2015",
+    "timeIncrement": "all",
+    "descending": false,
+    "reduce": false,
+    "limit": 5,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+*Reduced*
+
+```
+POST /api/account_transaction_stats
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "Mar 9, 2014",
+    "endTime": "Mar 10, 2015",
+    "timeIncrement": "hour",
+    "descending": true,
+    "reduce": true,
+    "limit": 5,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String (Ripple address) | Retrieve information about transactions sent by this account. |
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information starting at this time. Defaults to 30 days before `endTime`. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. Ignored if `reduce` is `false`. |
+| descending | Boolean | (Optional) If true, return results with the most recent first. Defaults to true. |
+| reduce | Boolean | (Optional) If `false`, include transactions individually instead of collapsing them into results over time. Defaults to `true`. |
+| limit | Number | (Optional) The maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offest | Number | (Optional) The number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+An example of a successful response:
+<div class='multicode'>
+
+*Expanded*
+
+```
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014-03-09T00:00:00+00:00",
+    "endTime": "2015-03-10T00:00:00+00:00",
+    "timeIncrement": "all",
+    "results": [
+        {
+            "time": "2014-06-02T22:47:50+00:00",
+            "type": "Payment",
+            "txHash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
+            "ledgerIndex": 6979192
+        },
+        {
+            "time": "2014-06-04T19:16:50+00:00",
+            "type": "Payment",
+            "txHash": "33EA42FC7A06F062A7B843AF4DC7C0AB00D6644DFDF4C5D354A87C035813D321",
+            "ledgerIndex": 7013674
+        },
+        {
+            "time": "2014-09-05T19:59:50+00:00",
+            "type": "Payment",
+            "txHash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208",
+            "ledgerIndex": 8711125
+        },
+        {
+            "time": "2014-09-10T23:22:20+00:00",
+            "type": "Payment",
+            "txHash": "6A6E503211A32F7AB92FE747A8AD2759A1E597055CB8961F0B2FEDE3A53975AB",
+            "ledgerIndex": 8803725
+        },
+        {
+            "time": "2014-09-11T00:11:40+00:00",
+            "type": "AccountSet",
+            "txHash": "439E2E369C81A6F21E9EA2C7CA3094E74A792B1D1CE7EEA58A52FEFF7A1626CB",
+            "ledgerIndex": 8804356
+        }
+    ]
+}
+```
+
+*Reduced*
+
+```
+{
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime": "2014-09-12T00:00:00+00:00",
+    "endTime": "2014-09-05T00:00:00+00:00",
+    "timeIncrement": "hour",
+    "results": [
+        {
+            "AccountSet": 1,
+            "time": "2014-09-11T00:00:00+00:00"
+        },
+        {
+            "Payment": 1,
+            "time": "2014-09-10T23:00:00+00:00"
+        },
+        {
+            "Payment": 1,
+            "time": "2014-09-05T19:00:00+00:00"
+        }
+    ]
+}
+```
+
+</div>
+
+**If the results are not reduced** (the default), then each result represents an individual transaction, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time this transaction occurred. |
+| type | String | The transaction type. Valid types are: `AccountSet`, `OfferCancel`, `OfferCreate`, `Payment`, `SetFee`, `SetRegularKey`, and `TrustSet` |
+| txHash | String (Transaction Hash) | The identifying hash of this transaction. |
+| ledgerIndex | Number (Ledger Index) | The identifying sequence number of the ledger that included this transaction. |
+
+
+**If the results are reduced** (the request used `"reduce":true`), then each result represents an interval of time, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time at which this interval begins. |
+| Payment | Number | (May be omitted) The number of Payment transactions during this interval sent by the specified account. |
+| OfferCreate | Number | (May be omitted) The number of OfferCreate transactions during this interval sent by the specified account. |
+| OfferCancel | Number | (May be omitted) The number of OfferCancel transactions during this interval sent by the specified account. |
+| TrustSet | Number | (May be omitted) The number of TrustSet transactions during this interval sent by the specified account. |
+| AccountSet | Number | (May be omitted) The number of AccountSet transactions during this interval sent by the specified account. |
+| SetFee | Number | (May be omitted) The number of SetFee pseudo-transactions during this interval sent by the specified account. Since SetFee is a pseudo-transaction, this transaction type only appears for [ACCOUNT_ZERO](https://wiki.ripple.com/Accounts#ACCOUNT_ZERO). |
+| SetRegularKey |  Number | (May be omitted) The number of Payment transactions during this interval sent by the specified account. |
+
+Each of the transaction type attributes is omitted when there is no data. In CSV or array format, columns are included for each type that has a nonzero value in any interval. In JSON format, each interval includes fields only for the types that have nonzero values in that particular interval.
 
 
 ## Offers Exercised ##
