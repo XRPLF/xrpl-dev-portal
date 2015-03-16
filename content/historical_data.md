@@ -5,7 +5,7 @@ The `rippled` Historical Database provides access to raw Ripple transactions tha
 
 Ripple Labs provides a live instance of the `rippled` Historical Database API with as complete a transaction record as possible at the following address:
 
-`history.ripple.com`
+`https://history.ripple.com`
 
 The [rippled Historical Database source code](https://github.com/ripple/rippled-historical-database) is also available under an open-source license, so you can use, install, and contribute back to the project.
 

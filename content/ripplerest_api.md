@@ -189,7 +189,7 @@ Following that, use these instructions to get Ripple-REST installed and running:
 4. Copy the example config file to `config.json`:
     `cp config-example.json config.json`
 5. Start the server:
-    `node server.js`
+    `npm start`
 6. Visit [http://localhost:5990](http://localhost:5990) in a browser to view available endpoints and get started
 
 
