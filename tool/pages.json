@@ -26,7 +26,7 @@
     },
     {
         "name": "Gateway Guide",
-        "md":"exchange_to_gateway.md",
+        "md":"gateway_guide.md",
         "html":"gateway_guide.html"
     },
     {
