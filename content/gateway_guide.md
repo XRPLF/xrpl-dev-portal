@@ -156,6 +156,7 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. ACME can query Ripple to see who holds its Ripple issuances at any time.
     - Optionally, a gateway can take additional steps to separate the assets backing the gateway's Ripple issuances. For example, the funds allocated to Ripple can be stored in a separate "Ripple Escrow" bank account. A cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple, as publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must have an account on the Ripple network. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See [Hot and Cold Wallets](#hot-and-cold-wallets) for more information.
+    - ACME must enable the [DefaultRipple Flag](#defaultripple) on its issuing account in order for users to send and receive its issuances.
 - Alice must create a trustline from her Ripple account to ACME's issuing (cold wallet) account. She can do this from any Ripple client (such as [Ripple Trade](https://www.rippletrade.com/) as long as she knows the address or Ripple Name of ACME's cold wallet.
     - In order to do this, Alice needs to find the address of ACME's cold wallet. ACME can publicize its cold wallet address on its website, or have its gateway listed in a client such as Ripple Trade. See [Setting Trust Lines in Ripple Trade](#setting-trust-lines-in-ripple-trade).
 - ACME must create a user interface for Alice to send funds from ACME into Ripple.
@@ -289,6 +290,67 @@ There are several interfaces you can use to connect to Ripple, depending on your
 Any time you submit a Ripple transaction, it must be signed using your secret. However, having your secret means having full control over your account. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own server or client application to sign the transactions before sending them out.
 
 The examples in this document show Ripple-REST API methods that include an account secret. This is only safe if you control the Ripple-REST server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could operate your own `rippled` server; or you can use a client application such as `ripple-lib` to perform local signing before submitting your transactions to a third-party server.
+
+
+## DefaultRipple ##
+
+The DefaultRipple flag controls whether the balances held in an account's trust lines are [allowed to ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) by default. Rippling is what allows users to trade issuances, so a gateway must make sure rippling is allowed on all the trust lines connected to its issuing (cold wallet) account. 
+
+Before asking users to trust its issuing account, a gateway should enable the DefaultRipple flag on that account. Otherwise, the gateway must individually disable the NoRipple flag for each trust line that other accounts extend to it.
+
+*Note:* Ripple-REST (as of version 1.4.0) does not yet support retrieving or setting the DefaultRipple flag.
+
+The following is an example of using a local [`rippled` JSON-RPC API](ripple-rest.html#update-account-settings) to enable the DefaultRipple flag:
+
+Request:
+
+```
+POST http://localhost:8088/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 8,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+```
+
+Response:
+
+```
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200032200000000240000003E202100000008684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A333581144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Fee": "15000",
+            "Flags": 0,
+            "Sequence": 62,
+            "SetFlag": 8,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A3335",
+            "hash": "665B27B64CE658704FFD326A4FE2F5F5B5E67EACA61DE08258A59D35B883E1D5"
+        }
+    }
+}
+```
+
+To confirm that an account has DefaultRipple enabled, look up the account using the [account_info command](rippled-apis.html#account-info), specifying a validated ledger version. Use [the xor operator](https://en.wikipedia.org/wiki/Exclusive_or) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](https://wiki.ripple.com/Ledger_Format#AccountRoot)). If the result of the xor operation is nonzero, then the account has DefaultRipple enabled.
+
+_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 
 ## Generating Souce and Destination Tags ##
