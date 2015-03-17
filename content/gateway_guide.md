@@ -323,6 +323,8 @@ POST http://localhost:8088/
 }
 ```
 
+_(**Reminder:** Don't send your secret to a server you do not control.)_
+
 Response:
 
 ```
@@ -349,8 +351,6 @@ Response:
 ```
 
 To confirm that an account has DefaultRipple enabled, look up the account using the [account_info command](rippled-apis.html#account-info), specifying a validated ledger version. Use [the xor operator](https://en.wikipedia.org/wiki/Exclusive_or) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](https://wiki.ripple.com/Ledger_Format#AccountRoot)). If the result of the xor operation is nonzero, then the account has DefaultRipple enabled.
-
-_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 
 ## Generating Souce and Destination Tags ##
