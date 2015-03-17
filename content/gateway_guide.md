@@ -89,12 +89,12 @@ As with hot wallets, warm wallets must trust the cold wallet, and should not be 
 
 Funds in Ripple tend to flow in a cycle, from the cold wallet to the warm wallets, then the warm wallets, to customers, and eventually from customers back to the cold wallet. When you put that together with the transactions outside of Ripple, the lifecycle looks something like this:
 
-![Payments flow diagram](img/e2g-payment_flow.gif)
+![Funds flow diagram](img/e2g-funds_flow.png)
 
-1. Charlie [sends €2 from ACME to Ripple](#sending-from-gateway-to-ripple). This involves two transactions. Outside of Ripple, ACME moves €2 from Charlie's ACME balance to ACME's Ripple-backing balance. Within Ripple, ACME's hot wallet sends €2 to Charlie's Ripple wallet.
-2. ACME refills its hot wallet using €2 from its warm wallet.
-3. ACME refills its warm wallet by issuing a new €2 from its cold wallet.
-4. Charlie [sends €2 from Ripple to ACME](#sending-from-ripple-to-gateway). This is basically the reverse of the initial step, with two transactions. Within Ripple, Charlie redeems issuances with ACME's cold wallet. Outside of Ripple, ACME debits €2 from its Ripple-backing balance and credits it to Charlie's balance.
+1. Alice [initiates a payment from ACME to Ripple](#sending-from-gateway-to-ripple). Outside of Ripple, ACME debits Alice's account. Then ACME sends a Ripple payment of EUR.ACME from ACME's hot wallet account to Alice's Ripple account.
+2. ACME refills its hot wallet using EUR.ACME from its warm wallet.
+3. ACME refills its warm wallet by issuing new EUR.ACME from its cold wallet.
+4. Alice [initiates a payment from Ripple to ACME](#sending-from-ripple-to-gateway). This is basically the reverse of the initial step. Alice redeems issuances of EUR.ACME by sending them to ACME's cold wallet. Outside of Ripple, ACME credits Alice for the amount it received.
 
 
 ## Fees and Revenue Sources ##
