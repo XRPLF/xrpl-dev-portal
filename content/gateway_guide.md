@@ -87,7 +87,7 @@ As with hot wallets, warm wallets must trust the cold wallet, and should not be 
 
 ### Funds Lifecycle ###
 
-Funds in Ripple tend to flow in a cycle, from the cold wallet to the warm wallets, then the warm wallets, to customers, and eventually from customers back to the cold wallet. When you put that together with the transactions outside of Ripple, the lifecycle looks something like this:
+Funds in Ripple tend to flow in a cycle, from the cold wallet to the warm wallets, then the warm wallets, to customers, and eventually from customers back to the cold wallet. Issuances (any non-XRP balance in Ripple) are always tied to a trust line, so each payment "ripples" through ACME's issuing account on the trust lines connected to it. Ultimately, the lifecycle of issuances in Ripple looks something like this:
 
 ![Funds flow diagram](img/e2g-funds_flow.png)
 
@@ -294,7 +294,7 @@ The examples in this document show Ripple-REST API methods that include an accou
 
 ## DefaultRipple ##
 
-The DefaultRipple flag controls whether the balances held in an account's trust lines are [allowed to ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) by default. Rippling is what allows users to trade issuances, so a gateway must make sure rippling is allowed on all the trust lines connected to its issuing (cold wallet) account. 
+The DefaultRipple flag controls whether the balances held in an account's trust lines are [allowed to ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) by default. Rippling is what allows users to trade issuances, so a gateway must allow rippling on all the trust lines connected to its issuing (cold wallet) account.
 
 Before asking users to trust its issuing account, a gateway should enable the DefaultRipple flag on that account. Otherwise, the gateway must individually disable the NoRipple flag for each trust line that other accounts extend to it.
 
