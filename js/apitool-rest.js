@@ -14,9 +14,6 @@ var GET = "GET";
 var POST = "POST";
 var PUT = "PUT";
 var DELETE = "DELETE";
-var URL_BASE = "https://api.ripple.com:443";
-
-var DOC_BASE = "ripple-rest.html";
 
 
 function slugify(str) {

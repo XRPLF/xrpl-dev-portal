@@ -1,5 +1,7 @@
 //---------- List of requests ------------------------//
 // Must be loaded after apitool-rest.js //
+var URL_BASE = "https://api.ripple.com:443";
+var DOC_BASE = "ripple-rest.html";
 
 var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
 var DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX";
