@@ -728,18 +728,37 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 | SigningPubKey | "" |
 | Signature | "" |
 
-## Fee ##
+## SetFee ##
 
 A change in transaction or account fees. This is typically in response to changes in the load on the network.
 
-*Note:* There have been very few, if any, Fee psuedo-transactions, ever. It is possible, but very unlikely, that you may encounter one in a historical ledger.
+*Note:* You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
+
+```
+{
+    "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
+    "BaseFee": "000000000000000A",
+    "Fee": "0",
+    "ReferenceFeeUnits": 10,
+    "ReserveBase": 20000000,
+    "ReserveIncrement": 5000000,
+    "Sequence": 0,
+    "SigningPubKey": "",
+    "TransactionType": "SetFee",
+    "date": 439578860,
+    "hash": "1C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B",
+    "ledger_index": 3721729,
+  }
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| BaseFee | String | UInt64 | The charge, in drops, for the reference transaction, as hex. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
+
+
 
 # Transaction Results #
 
