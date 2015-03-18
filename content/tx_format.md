@@ -15,7 +15,7 @@ There are several different types of transactions that perform different actions
 
 Additionally, there are *Psuedo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
 
-* [Fee - Adjust the minimum transaction fee or account reserve](#fee)
+* [SetFee - Adjust the minimum transaction fee or account reserve](#setfee)
 
 Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.
 
