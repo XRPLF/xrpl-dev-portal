@@ -26,7 +26,7 @@
     },
     {
         "name": "Gateway Guide",
-        "md":"exchange_to_gateway.md",
+        "md":"gateway_guide.md",
         "html":"gateway_guide.html"
     },
     {
@@ -52,11 +52,21 @@
     {
         "name": "Ripple-REST API Tool",
         "template":"template-rest-api-tool.html",
+        "methods_js": "js/apitool-methods-ripplerest.js",
+        "is_apitool": true,
         "html": "rest-api-tool.html"
+    },
+    {
+        "name": "Historical Database API Tool",
+        "template":"template-rest-api-tool.html",
+        "methods_js": "js/apitool-methods-historical.js",
+        "is_apitool": true,
+        "html": "historicaldb-api-tool.html"
     },
     {
         "name": "WebSocket API Tool",
         "template":"template-ripple-api-tool.html",
+        "is_apitool": true,
         "html": "ripple-api-tool.html"
     }
 ]
