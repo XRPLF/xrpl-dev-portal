@@ -318,7 +318,7 @@ Each result in the response describes an individual transaction that exercised a
 ## Account Transaction Stats ##
 [[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/accountTransactionStats.js "Source")
 
-Retrieve information about transactions sent by a given account.
+**DEPRECATED** This API method may return inaccurate results. Do not use it.
 
 #### Request Format ####
 
@@ -376,7 +376,10 @@ The request includes the following body parameters:
 
 #### Response Format ####
 
+**DEPRECATED** Do not use this method.
+
 An example of a successful response:
+
 <div class='multicode'>
 
 *Expanded*
@@ -473,6 +476,94 @@ An example of a successful response:
 | SetRegularKey |  Number | (May be omitted) The number of Payment transactions during this interval sent by the specified account. |
 
 Each of the transaction type attributes is omitted when there is no data. In CSV or array format, columns are included for each type that has a nonzero value in any interval. In JSON format, each interval includes fields only for the types that have nonzero values in that particular interval.
+
+
+## Account Transactions ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/accountTransactions.js "Source")
+
+**DEPRECATED** This API method may return inaccurate results. Do not use it.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*REST*
+
+```
+POST /api/account_transactions
+{
+    "account":   "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "startTime" : "jan 1, 2014 10:00 am",
+    "endTime"   : "mar 15, 2015 10:00 am",
+    "descending": true,
+    "limit": 5,
+    "offset": 0,
+    "format"    : "json"
+}
+
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String (Ripple address) | Retrieve transactions sent or received by this account. |
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information starting at this time. Defaults to 30 days before `endTime`. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| descending | Boolean | (Optional) If true, return results with the most recent first. Defaults to false. |
+| limit | Number | (Optional) The maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offest | Number | (Optional) The number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+This method is **DEPRECATED**. Do not use it.
+
+
+## Accounts Created ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/accountsCreated.js "Source")
+
+Retrieve information about the creation of new Ripple accounts.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*REST*
+
+```
+
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. |
+| endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
+| descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
+| reduce | Boolean | (Optional) If `false`, include accounts individually instead of collapsing them into results over time. Defaults to `true`. |
+| limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+```js
+//actual example here
+```
+
+A successful result contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
 
 
 ## Offers Exercised ##
