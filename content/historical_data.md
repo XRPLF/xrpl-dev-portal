@@ -83,6 +83,8 @@ GET /v1/accounts/{:address}/transactions
 
 </div>
 
+[Try it! >](historicaldb-api-tool.html#get-account-transaction-history)
+
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
@@ -593,6 +595,8 @@ GET /v1/accounts/{:address}/transactions/{:sequence}
 
 </div>
 
+[Try it! >](historicaldb-api-tool.html#get-transaction-by-account-and-sequence)
+
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
@@ -814,6 +818,8 @@ GET /v1/ledgers/{:ledger_identifier}
 
 </div>
 
+[Try it! >](historicaldb-api-tool.html#get-ledger)
+
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
@@ -882,6 +888,8 @@ GET /v1/transactions/{:hash}
 ```
 
 </div>
+
+[Try it! >](historicaldb-api-tool.html#get-transaction)
 
 The following URL parameters are required by this API endpoint:
 
