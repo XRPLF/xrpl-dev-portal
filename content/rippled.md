@@ -2,7 +2,7 @@
 
 The core peer-to-peer server that operates the Ripple Network is called `rippled`. Each `rippled` server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
 
-* [Building and Installating](https://wiki.ripple.com/Rippled_build_instructions)
+* [Building and Installing](https://wiki.ripple.com/Rippled_build_instructions)
 * [API Reference](#api-methods)
 * [Transaction Reference](transactions.html)
 * Client Library - [Javascript](https://github.com/ripple/ripple-lib)
