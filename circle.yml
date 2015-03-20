@@ -1,0 +1,11 @@
+general:
+  build_dir: tool/
+dependencies:
+  pre:
+    - pyenv global 3.4.0
+  override:
+    - pip3 install jinja2 requests beautifulsoup4
+test:
+  override:
+    - ./parse_pages.py
+    - ./check_links.py
