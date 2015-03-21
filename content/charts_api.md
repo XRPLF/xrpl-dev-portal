@@ -487,7 +487,7 @@ Each of the transaction type attributes is omitted when there is no data. In CSV
 
 <div class='multicode'>
 
-*REST*
+*JSON*
 
 ```
 POST /api/account_transactions
@@ -531,10 +531,33 @@ Retrieve information about the creation of new Ripple accounts.
 
 <div class='multicode'>
 
-*REST*
+*Reduced*
 
 ```
+POST /api/accounts_created
+{
+    "startTime": "jan 1, 2014 10:00 am",
+    "endTime": "mar 15, 2015 10:00 am",
+    "timeIncrement": "month",
+    "descending": true,
+    "reduce": true,
+    "format": "json"
+}
+```
 
+*Expanded*
+
+```
+POST /api/accounts_created
+{
+    "startTime": "mar 15, 2015 9:00 am",
+    "endTime": "mar 15, 2015 5:00 pm",
+    "descending": true,
+    "reduce": false,
+    "limit": 5,
+    "offset": 0,
+    "format": "json"
+}
 ```
 
 </div>
@@ -547,23 +570,352 @@ The request includes the following body parameters:
 | endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
 | timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
 | descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
-| reduce | Boolean | (Optional) If `false`, include accounts individually instead of collapsing them into results over time. Defaults to `true`. |
+| reduce | Boolean | (Optional) If `false`, include accounts individually instead of collapsing them into results over time. Ignored if `timeIncrement` is provided. Defaults to `true`. |
 | limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
 | offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
 | format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
 
 #### Response Format ####
 
-An example of a successful response:
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
 
-```js
-//actual example here
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "startTime": "2015-03-15T10:00:00+00:00",
+    "endTime": "2014-01-01T10:00:00+00:00",
+    "timeIncrement": "month",
+    "total": 97417,
+    "results": [
+        {
+            "time": "2015-03-01T00:00:00+00:00",
+            "count": 2388
+        },
+        {
+            "time": "2015-02-01T00:00:00+00:00",
+            "count": 6770
+        },
+        {
+            "time": "2015-01-01T00:00:00+00:00",
+            "count": 7584
+        },
+        {
+            "time": "2014-12-01T00:00:00+00:00",
+            "count": 10760
+        },
+        {
+            "time": "2014-11-01T00:00:00+00:00",
+            "count": 6834
+        },
+        {
+            "time": "2014-10-01T00:00:00+00:00",
+            "count": 5787
+        },
+        {
+            "time": "2014-09-01T00:00:00+00:00",
+            "count": 4146
+        },
+        {
+            "time": "2014-08-01T00:00:00+00:00",
+            "count": 5301
+        },
+        {
+            "time": "2014-07-01T00:00:00+00:00",
+            "count": 7820
+        },
+        {
+            "time": "2014-06-01T00:00:00+00:00",
+            "count": 7031
+        },
+        {
+            "time": "2014-05-01T00:00:00+00:00",
+            "count": 10421
+        },
+        {
+            "time": "2014-04-01T00:00:00+00:00",
+            "count": 4771
+        },
+        {
+            "time": "2014-03-01T00:00:00+00:00",
+            "count": 5195
+        },
+        {
+            "time": "2014-02-01T00:00:00+00:00",
+            "count": 5299
+        },
+        {
+            "time": "2014-01-01T00:00:00+00:00",
+            "count": 7310
+        }
+    ]
+}
 ```
 
-A successful result contains the following fields:
+*Expanded*
+
+```
+{
+    "startTime": "2015-03-15T17:00:00+00:00",
+    "endTime": "2015-03-15T09:00:00+00:00",
+    "total": 5,
+    "results": [
+        {
+            "time": "2015-03-15T15:34:20+00:00",
+            "account": "rK6gVSDPNXeMPSR4p8LKx8yHVKST1qs6gX",
+            "txHash": "75FB423CD1319A7DA68BD12B0918777D93111FB8FAD964E2A5C5CF99DC35F491",
+            "ledgerIndex": 12273337
+        },
+        {
+            "time": "2015-03-15T15:31:10+00:00",
+            "account": "rUPGhr8vhPuobxnKGbWS5dAvUfL7LmjpNQ",
+            "txHash": "FB018F1D19DAE75529F13F5B4F296817E62AAA2E032836AEA95A87F68C9C12C4",
+            "ledgerIndex": 12273295
+        },
+        {
+            "time": "2015-03-15T14:13:30+00:00",
+            "account": "rap2yHgBKNKkb8D7PTdQNPEZM1D9YJSDJe",
+            "txHash": "EF0CB7051983C16775E8FCDAE62760870B29053A751548B17ED526CD62F1A2A1",
+            "ledgerIndex": 12272263
+        },
+        {
+            "time": "2015-03-15T14:11:10+00:00",
+            "account": "rnEffWJFRd1VVFbKoEXjhGR9gtqnJKTt1X",
+            "txHash": "8CA751FD309BF5767339888AA410786FC2B7007B8C01941A91F7679BF92930B6",
+            "ledgerIndex": 12272233
+        },
+        {
+            "time": "2015-03-15T13:42:20+00:00",
+            "account": "r4anmJmbTQ4C7ei1w2jSmFDxthypWaJTmp",
+            "txHash": "A19D55662957DCC450FC91DBB3681CD917EFE00D4F902F7A0D196015D832141F",
+            "ledgerIndex": 12271842
+        }
+    ]
+}
+```
+
+</div>
+
+**If results are reduced** (the default), then each result represents an interval of time, with the following attributes, in order:
 
 | Field | Type | Description |
 |-------|------|-------------|
+| time  | String ([Date-Time][]) | The time this interval begins |
+| count | Number | The number of accounts created (successfully funded with the XRP reserve) in this interval. |
+
+**If the results are not reduced** (the request specified `reduce` as false and did not include a `timeIncrement`), then each result represents an individual account that was created, with the following attributes:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time  | String ([Date-Time][]) | The time this account was created, as defined by the close time of the ledger containing the transaction that created it. |
+| account | String (Ripple Address) | The address of the newly-created account. |
+| txHash | String (Transaction Hash) | The identifying hash of the transaction that created this account. |
+| ledgerIndex | Number | The sequence number of the ledger when this account was created. |
+
+
+## Exchange Rates ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/exchangeRates.js "Source")
+
+Retrieve information about the exchange rates between one or more pairs of currency, based on trading activity in the network.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Multiple*
+
+```
+POST /api/exchange_rates
+{
+    "pairs": [
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+            },
+            "counter": {
+                "currency": "XRP"
+            }
+        },
+        {
+            "base": {
+                "currency": "MXN",
+                "issuer": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            }
+        }
+    ],
+    "range": "day"
+}
+```
+
+*Single*
+
+```
+{
+    "base": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+    },
+    "counter": {
+        "currency": "XRP"
+    },
+    "range": "day"
+}
+```
+
+*Live*
+
+```
+{
+    "pairs": [
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "depth": 0
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "depth": 1000
+        }
+    ],
+    "live": true
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| pairs | Array | (Optional) Array of currency pairs to compare. Each member of the array should be an object with a `base` field and a `counter` field, whose values are [Currency Objects][Currency Object]. If `live` is true, each pair can also include a `depth` field specifying how deep to dig into the order book to calculate the live rate. |
+| base  | Object ([Currency Object][]) | (Optional) One currency to compare. Ignored if `pairs` provided. |
+| counter | Object ([Currency Object][]) | (Optional) The other currency to compare. Ignored if `pairs` provided. |
+| depth | Number | (Optional) Ignored unless `live` is true. Ignored if `pairs` is provided. Retrieve exchange rates for this amount of the `counter` currency. Provides a more accurate picture when the best orders in the market do not have enough volume to fully satisfy an exchange. Defaults to 0 (use the first bid and ask only). |
+| range | String | (Optional) Time period over which the exchange rate is calculated: `year`, `month`, `week`, `day`, or `hour`. Defaults to `day`. Ignored if `live` is true. |
+| last | Boolean | (Optional) If true, only return the price from the most recent exchange, without calculating [VWAP](https://en.wikipedia.org/wiki/Volume-weighted_average_price). Use for a faster response. Defaults to false. |
+| live | Boolean | (Optional) If true, retrieve the current price directly from the Ripple network instead, as the midpoint between weighted average of the bid and asks up to the depth specified . Otherwise, use historical data from the past `range` amount of time. Defaults to false. |
+
+You must provide either `pairs` or both `base` and `counter`.
+
+#### Response Format ####
+
+Examples of successful responses:
+
+<div class='multicode'>
+
+*Single*
+
+```
+[
+    {
+        "base": {
+            "currency": "CNY",
+            "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+            "name": "rippleCN"
+        },
+        "counter": {
+            "currency": "XRP"
+        },
+        "rate": 15.360721689111838,
+        "last": 15.699279
+    }
+]
+```
+
+*Multiple*
+
+```
+[
+    {
+        "base": {
+            "currency": "CNY",
+            "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+            "name": "rippleCN"
+        },
+        "counter": {
+            "currency": "XRP"
+        },
+        "rate": 15.360721689111838,
+        "last": 15.699279
+    },
+    {
+        "base": {
+            "currency": "MXN",
+            "issuer": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+            "name": "Bitso"
+        },
+        "counter": {
+            "currency": "USD",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap"
+        },
+        "rate": 0.0626248440992736,
+        "last": 0.064269
+    }
+]
+```
+
+*Live*
+
+```
+[
+    {
+        "base": {
+            "currency": "BTC",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap"
+        },
+        "counter": {
+            "currency": "XRP"
+        },
+        "rate": 25136.142311030344
+    },
+    {
+        "base": {
+            "currency": "BTC",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap"
+        },
+        "counter": {
+            "currency": "XRP"
+        },
+        "depth": 1000,
+        "rate": 27250.470591648358
+    }
+]
+```
+
+</div>
+
+A successful result contains a JSON array. Each member of the array represents a currency pair, as an object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| base  |  Object ([Currency Object][]) | The base currency specified for this pair, possibly including a `name` field with the Ripple Name for the `issuer` address. |
+| counter | Object ([Currency Object][]) | The counter currency specified for this pair, possibly including a `name` field with the Ripple Name for the `issuer` address. |
+| depth | Number | (May be omitted) The depth to search for this currency pair, if provided. |
+| rate  | Number | (May be omitted) The amount of the counter currency that you can purchase with 1 unit of the base currency. By default, this is calculated [volume-weighted average price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) for all exchanges executed during the `range` period from the request. If the request specified `live` as true, this is instead calculated as the midpoint between the weighted average of current bid and ask rates in the network up to the specified `depth`. Omitted if the request specified `last` as `true`. |
+| last | Number | (May be omitted) The rate of the single most recent exchange to take place. |
+
+If no exchanges are found for a currency pair from the request, that pair is omitted from the response.
 
 
 ## Offers Exercised ##
