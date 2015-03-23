@@ -54,6 +54,7 @@
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-ripplerest.js",
         "is_apitool": true,
+        "rest_host": "https://api.ripple.com",
         "html": "rest-api-tool.html"
     },
     {
@@ -61,6 +62,7 @@
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-historical.js",
         "is_apitool": true,
+        "rest_host": "https://history.ripple.com",
         "html": "historicaldb-api-tool.html"
     },
     {
