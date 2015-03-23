@@ -909,13 +909,207 @@ A successful result contains a JSON array. Each member of the array represents a
 
 | Field | Type | Description |
 |-------|------|-------------|
-| base  |  Object ([Currency Object][]) | The base currency specified for this pair, possibly including a `name` field with the Ripple Name for the `issuer` address. |
+| base  | Object ([Currency Object][]) | The base currency specified for this pair, possibly including a `name` field with the Ripple Name for the `issuer` address. |
 | counter | Object ([Currency Object][]) | The counter currency specified for this pair, possibly including a `name` field with the Ripple Name for the `issuer` address. |
 | depth | Number | (May be omitted) The depth to search for this currency pair, if provided. |
 | rate  | Number | (May be omitted) The amount of the counter currency that you can purchase with 1 unit of the base currency. By default, this is calculated [volume-weighted average price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) for all exchanges executed during the `range` period from the request. If the request specified `live` as true, this is instead calculated as the midpoint between the weighted average of current bid and ask rates in the network up to the specified `depth`. Omitted if the request specified `last` as `true`. |
 | last | Number | (May be omitted) The rate of the single most recent exchange to take place. |
 
 If no exchanges are found for a currency pair from the request, that pair is omitted from the response.
+
+
+## Issuer Capitalization ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/issuerCapitalization.js "Source")
+
+Retrieve the total capitalization (outstanding balance) of specified currency issuers over time.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Request*
+
+```
+POST /api/issuer_capitalization
+{
+    "currencies": [
+        {
+            "currency": "USD",
+            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        {
+            "currency": "USD",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+        }
+    ],
+    "startTime": "Jan 1, 2014",
+    "endTime": "Jan 1, 2015",
+    "timeIncrement": "month"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| currencies | Array of [Currency Objects][Currency Object]) | A list of currency/issuer pairs to look up. |
+| startTime |  String ([Date-Time][]) | Retrieve information starting at this time. |
+| endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. Ignored if `reduce` is `false`. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+```
+[
+    {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "name": "Bitstamp",
+        "hotwallets": [
+            "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
+            "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX"
+        ],
+        "results": [
+            [
+                "2014-01-01T00:00:00+00:00",
+                2182532.512563024
+            ],
+            [
+                "2014-02-01T00:00:00+00:00",
+                1672428.6072806932
+            ],
+            [
+                "2014-03-01T00:00:00+00:00",
+                1475205.4287192414
+            ],
+            [
+                "2014-04-01T00:00:00+00:00",
+                1475129.7523240475
+            ],
+            [
+                "2014-05-01T00:00:00+00:00",
+                1641170.5998081048
+            ],
+            [
+                "2014-06-01T00:00:00+00:00",
+                2823512.0227728607
+            ],
+            [
+                "2014-07-01T00:00:00+00:00",
+                2181718.7345464956
+            ],
+            [
+                "2014-08-01T00:00:00+00:00",
+                2150290.1475041625
+            ],
+            [
+                "2014-09-01T00:00:00+00:00",
+                1370978.1335410434
+            ],
+            [
+                "2014-10-01T00:00:00+00:00",
+                1386720.726560316
+            ],
+            [
+                "2014-11-01T00:00:00+00:00",
+                1171158.4417431813
+            ],
+            [
+                "2014-12-01T00:00:00+00:00",
+                1651264.0460538066
+            ],
+            [
+                "2015-01-01T00:00:00+00:00",
+                2272895.4608580153
+            ]
+        ]
+    },
+    {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "name": "SnapSwap",
+        "hotwallets": [
+            "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+            "rQsAshmCjPsxkYnxY9GnmBTAeEUaePDAie",
+            "rEk9i7G8ac1kUs1mFjtze1qjj9FzGvXAG",
+            "rsTQ7iwrCik9Ugc3zbpcbo2K3SbAdYJss1",
+            "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+            "rnd8KJ4qeip6FPJvC1fyv82nW2Lm8C8KjQ",
+            "r5ymZSvtdNgbKVc8ay1Jhmq5f9QgnvEtj"
+        ],
+        "results": [
+            [
+                "2014-01-01T00:00:00+00:00",
+                308414.17014300067
+            ],
+            [
+                "2014-02-01T00:00:00+00:00",
+                221127.8278553265
+            ],
+            [
+                "2014-03-01T00:00:00+00:00",
+                189103.31201476356
+            ],
+            [
+                "2014-04-01T00:00:00+00:00",
+                166239.66201052035
+            ],
+            [
+                "2014-05-01T00:00:00+00:00",
+                181126.05199917927
+            ],
+            [
+                "2014-06-01T00:00:00+00:00",
+                352360.96199815325
+            ],
+            [
+                "2014-07-01T00:00:00+00:00",
+                406900.8018140941
+            ],
+            [
+                "2014-08-01T00:00:00+00:00",
+                522981.4027866862
+            ],
+            [
+                "2014-09-01T00:00:00+00:00",
+                823727.7361699624
+            ],
+            [
+                "2014-10-01T00:00:00+00:00",
+                1285657.1682029555
+            ],
+            [
+                "2014-11-01T00:00:00+00:00",
+                1162233.7115210893
+            ],
+            [
+                "2014-12-01T00:00:00+00:00",
+                1631690.8946927704
+            ],
+            [
+                "2015-01-01T00:00:00+00:00",
+                3778040.482102244
+            ]
+        ]
+    }
+]
+```
+
+A successful result contains a **JSON array** of objects representing the issuers from the request. Each member object has the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| currency | String | Currency code of the currency described by this record. |
+| issuer | String (Ripple Address) | The account address of the gateway issuing this currency. |
+| name | String | The name of this gateway, which usually corresponds to the Ripple Name of the account. |
+| hotwallets | Array of Ripple Addresses | Hot wallets controlled by this gateway. Assets held by these accounts are not counted towards the capitalization. |
+| results | Array of Arrays | The capitalization of the issuer/currency pair as an array of intervals. Each nested array has two values: a String ([Date-Time][]) specifying the beginning of the interval, and a number representing the total units of the currency distributed through the network at the time. |
+
+The list of gateway names and hot wallets is defined by the [gateways.json](https://github.com/ripple/ripple-data-api/blob/a6c23a8c1bc5f073f2dd2bf32e8d763b66b6a2e3/api/gateways.json) file in the server tree. In the future, this may be [expanded to use host-meta](https://ripplelabs.atlassian.net/browse/RD-75).
 
 
 ## Offers Exercised ##
