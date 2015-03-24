@@ -1124,6 +1124,7 @@ Retrieve information about ledgers closed over time.
 *Reduced*
 
 ```
+POST /api/ledgers_closed
 {
     "startTime": "2014-01-01",
     "endTime": "2015-01-01",
@@ -1137,6 +1138,7 @@ Retrieve information about ledgers closed over time.
 *Expanded*
 
 ```
+POST /api/ledgers_closed
 {
     "startTime": "2015-01-01",
     "endTime": "2015-01-02",
@@ -1151,6 +1153,7 @@ Retrieve information about ledgers closed over time.
 *Minimal*
 
 ```
+POST /api/ledgers_closed
 {}
 ```
 
@@ -1317,6 +1320,646 @@ The format of the response depends on the `format` and `reduce` parameters from 
 **If neither reduce nor timeIncrement are provided**, the response body is simply an integer indicating the number of ledgers closed during the requested window. 
 
 
+## Market Traders ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/marketTraders.js "Source")
+
+Return a list of accounts that participated in trading a specified currency exchange.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Transactions Included*
+
+```
+POST /api/market_traders
+{
+    "base": {
+        "currency": "XRP"
+    },
+    "counter": {
+        "currency": "KRW",
+        "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
+    },
+    "startTime": "2014-11-01",
+    "transactions": true,
+    "format": "json"
+}
+```
+
+*Default Markets*
+
+```
+POST /api/market_traders
+{
+    "startTime": "2013-02-26",
+    "format": "json"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| base  | Object ([Currency Object][]) | (Optional) One of the currencies being exchanged. Required if `counter` is specified. |
+| counter | Object ([Currency Object][]) | (Optional) The other of the currencies being exchanged. Required if `base` is specified. |
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information starting at this time. If omitted, use the `period` ending at the current time. |
+| period | String | (Optional) One of the following values: `3d` (three days), `7d` (seven days), or `24h` (24 hours). Defaults to `24h`. |
+| transactions | Boolean | (Optional) If true, include individual transactions in the response. Defaults to false. Ignored if `format` is csv. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+If both `base` and `counter` are omitted, the API combines the results from a [hardcoded list of popular markets](https://github.com/ripple/ripple-data-api/blob/2d456ace25c7ee157ed510b801ccc987b58d5d92/api/routes/marketTraders.js#L81-L92) with XRP as the base currency.
+
+**Note:** This method *does not* have an `endTime` parameter.
+
+#### Response Format ####
+
+Examples of successful responses:
+
+<div class='multicode'>
+
+*Transactions Included*
+
+```
+{
+    "startTime": "2014-11-01T00:00:00+00:00",
+    "endTime": "2014-11-02T00:00:00+00:00",
+    "results": [
+        {
+            "buy": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "sell": {
+                "baseVolume": 314,
+                "counterVolume": 1776.2,
+                "count": 7
+            },
+            "account": "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+            "baseVolume": 314,
+            "counterVolume": 1776.2,
+            "count": 7,
+            "transactions": [
+                [
+                    "2014-11-01T06:45:40+00:00",
+                    5.6,
+                    0.08,
+                    0.44800000000009277,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "12EEDEF7ACB178F589D3308962D394FC50A6B018B1CBFF1983E5F2AA00F35C3F",
+                    9690578
+                ],
+                [
+                    "2014-11-01T06:50:10+00:00",
+                    5.6,
+                    0.00823,
+                    0.046087999999826934,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "C131B35C504B29EA2A57F02E0930C8E6A70D5353B024FA811DD3319817E4F096",
+                    9690630
+                ],
+                [
+                    "2014-11-01T06:56:50+00:00",
+                    5.6,
+                    0.000001,
+                    0.0000048198000968113774,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "89BDB5CF8003DF370974E5755E68E055A38D75D3319F36698A4EA6FAEFD35562",
+                    9690706
+                ],
+                [
+                    "2014-11-01T07:32:10+00:00",
+                    5.6,
+                    0.00015,
+                    0.0008370000000468281,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "62E570CDA203BB757796BD2EFCC1ED6B723FA0AAB7084F0F6FC65AAD6D6466C8",
+                    9691142
+                ],
+                [
+                    "2014-11-01T14:17:10+00:00",
+                    5.6,
+                    199.911619,
+                    1119.5050701802,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "E0E22F48F9A61665C45932BC2BD4CF2112F5B2FA7A184A2AF647B90EE364FC2E",
+                    9696061
+                ],
+                [
+                    "2014-11-01T14:17:30+00:00",
+                    5.699999999999999,
+                    50,
+                    285,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "1BE8EDD238D3B7988412E605E44024912F5B715BDE92F5ECB2B5ADB5BCD17AC7",
+                    9696066
+                ],
+                [
+                    "2014-11-01T14:17:50+00:00",
+                    5.800000000000001,
+                    64,
+                    371.2,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "B5A56CCAB5DCEA40CEC8F8B9D2077185893D307282936024375B91CD4917240C",
+                    9696070
+                ]
+            ]
+        },
+        {
+            "buy": {
+                "baseVolume": 0.088381,
+                "counterVolume": 0.49492981980006334,
+                "count": 4
+            },
+            "sell": {
+                "baseVolume": 34.098334,
+                "counterVolume": 187.54083700000047,
+                "count": 1
+            },
+            "account": "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+            "baseVolume": 34.186715,
+            "counterVolume": 188.03576681980053,
+            "count": 5,
+            "transactions": [
+                [
+                    "2014-11-01T06:45:40+00:00",
+                    5.6,
+                    0.08,
+                    0.44800000000009277,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "12EEDEF7ACB178F589D3308962D394FC50A6B018B1CBFF1983E5F2AA00F35C3F",
+                    9690578
+                ],
+                [
+                    "2014-11-01T06:50:10+00:00",
+                    5.6,
+                    0.00823,
+                    0.046087999999826934,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "C131B35C504B29EA2A57F02E0930C8E6A70D5353B024FA811DD3319817E4F096",
+                    9690630
+                ],
+                [
+                    "2014-11-01T06:56:50+00:00",
+                    5.6,
+                    0.000001,
+                    0.0000048198000968113774,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "89BDB5CF8003DF370974E5755E68E055A38D75D3319F36698A4EA6FAEFD35562",
+                    9690706
+                ],
+                [
+                    "2014-11-01T07:30:00+00:00",
+                    5.500000000000001,
+                    34.098334,
+                    187.54083700000047,
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "0CF2D0F5EC58BE54F6C31CD2F3C0C5483A340FCE27D7B7C8D84AFA8888A6A0B4",
+                    9691114
+                ],
+                [
+                    "2014-11-01T07:32:10+00:00",
+                    5.6,
+                    0.00015,
+                    0.0008370000000468281,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "62E570CDA203BB757796BD2EFCC1ED6B723FA0AAB7084F0F6FC65AAD6D6466C8",
+                    9691142
+                ]
+            ]
+        },
+        {
+            "buy": {
+                "baseVolume": 1463.376734,
+                "counterVolume": 8048.572037,
+                "count": 3
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+            "baseVolume": 1463.376734,
+            "counterVolume": 8048.572037,
+            "count": 3,
+            "transactions": [
+                [
+                    "2014-11-01T07:30:00+00:00",
+                    5.500000000000001,
+                    34.098334,
+                    187.54083700000047,
+                    "r3drXrWREtPbe8EjqwQib6fbpCoKBF2Pfg",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "0CF2D0F5EC58BE54F6C31CD2F3C0C5483A340FCE27D7B7C8D84AFA8888A6A0B4",
+                    9691114
+                ],
+                [
+                    "2014-11-01T13:59:50+00:00",
+                    5.500000000000001,
+                    966.294955,
+                    5314.622252499999,
+                    "rajdkuhURyoFCg9z36eHd75r2QTuEESFKe",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "F6797151ACD0AFA86C4E7FAE8948CEAB67982F623BF2FBCD9044E5CA216876F4",
+                    9695862
+                ],
+                [
+                    "2014-11-01T14:00:10+00:00",
+                    5.500000000000001,
+                    462.983445,
+                    2546.4089475,
+                    "rajdkuhURyoFCg9z36eHd75r2QTuEESFKe",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "F4C06FBFFFEAA3B47034D99DACC6CB9738823E0F1473096C4BACA7035FCAC90D",
+                    9695866
+                ]
+            ]
+        },
+        {
+            "buy": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "sell": {
+                "baseVolume": 1429.2784,
+                "counterVolume": 7861.031199999999,
+                "count": 2
+            },
+            "account": "rajdkuhURyoFCg9z36eHd75r2QTuEESFKe",
+            "baseVolume": 1429.2784,
+            "counterVolume": 7861.031199999999,
+            "count": 2,
+            "transactions": [
+                [
+                    "2014-11-01T13:59:50+00:00",
+                    5.500000000000001,
+                    966.294955,
+                    5314.622252499999,
+                    "rajdkuhURyoFCg9z36eHd75r2QTuEESFKe",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "F6797151ACD0AFA86C4E7FAE8948CEAB67982F623BF2FBCD9044E5CA216876F4",
+                    9695862
+                ],
+                [
+                    "2014-11-01T14:00:10+00:00",
+                    5.500000000000001,
+                    462.983445,
+                    2546.4089475,
+                    "rajdkuhURyoFCg9z36eHd75r2QTuEESFKe",
+                    "rMcGGXYeY9QFNt1fQAP3Gfpe8CdRaEfAmM",
+                    "F4C06FBFFFEAA3B47034D99DACC6CB9738823E0F1473096C4BACA7035FCAC90D",
+                    9695866
+                ]
+            ]
+        },
+        {
+            "buy": {
+                "baseVolume": 313.911619,
+                "counterVolume": 1775.7050701802,
+                "count": 3
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+            "baseVolume": 313.911619,
+            "counterVolume": 1775.7050701802,
+            "count": 3,
+            "transactions": [
+                [
+                    "2014-11-01T14:17:10+00:00",
+                    5.6,
+                    199.911619,
+                    1119.5050701802,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "E0E22F48F9A61665C45932BC2BD4CF2112F5B2FA7A184A2AF647B90EE364FC2E",
+                    9696061
+                ],
+                [
+                    "2014-11-01T14:17:30+00:00",
+                    5.699999999999999,
+                    50,
+                    285,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "1BE8EDD238D3B7988412E605E44024912F5B715BDE92F5ECB2B5ADB5BCD17AC7",
+                    9696066
+                ],
+                [
+                    "2014-11-01T14:17:50+00:00",
+                    5.800000000000001,
+                    64,
+                    371.2,
+                    "rhLKAC1yy92YSfM45LE7KQ6CcuJF4pJSdR",
+                    "rJ11W7nDukN1sWKcyhSGdZWbKKGQkYntyA",
+                    "B5A56CCAB5DCEA40CEC8F8B9D2077185893D307282936024375B91CD4917240C",
+                    9696070
+                ]
+            ]
+        }
+    ]
+}
+```
+
+*Default Markets*
+
+```
+{
+    "startTime": "2013-02-26T00:00:00+00:00",
+    "endTime": "2013-02-27T00:00:00+00:00",
+    "results": [
+        {
+            "buy": {
+                "baseVolume": 1650,
+                "counterVolume": 0.03,
+                "count": 2
+            },
+            "sell": {
+                "baseVolume": 1950,
+                "counterVolume": 1,
+                "count": 1
+            },
+            "account": "rN6DeCG5VvmfqjBywwoE24oXQsHzRDUfzh",
+            "baseVolume": 3600,
+            "counterVolume": 1.03,
+            "count": 3
+        },
+        {
+            "buy": {
+                "baseVolume": 54890.21956,
+                "counterVolume": 0.998003991999999,
+                "count": 1
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "r4EM4gBQfr1QgQLXSPF4r7h84qE9mb6iCC",
+            "baseVolume": 54890.21956,
+            "counterVolume": 0.998003991999999,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 43468.68636,
+                "counterVolume": 1.66884978,
+                "count": 3
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
+            "baseVolume": 43468.68636,
+            "counterVolume": 1.66884978,
+            "count": 3
+        },
+        {
+            "buy": {
+                "baseVolume": 3998,
+                "counterVolume": 2,
+                "count": 1
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rhdAw3LiEfWWmSrbnZG3udsN7PoWKT56Qo",
+            "baseVolume": 3998,
+            "counterVolume": 2,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "sell": {
+                "baseVolume": 8200,
+                "counterVolume": 0.2,
+                "count": 1
+            },
+            "account": "rGsLivkDjTZHFQ8oV2h81uTcbTpgjEaEY7",
+            "baseVolume": 8200,
+            "counterVolume": 0.2,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 1688782.827518,
+                "counterVolume": 26.242631108001902,
+                "count": 18
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rKQLJpoBagwGiE7LVcY8YfDfE6EUREJjeq",
+            "baseVolume": 1688782.827518,
+            "counterVolume": 26.242631108001902,
+            "count": 18
+        },
+        {
+            "buy": {
+                "baseVolume": 3688,
+                "counterVolume": 0.071,
+                "count": 3
+            },
+            "sell": {
+                "baseVolume": 13608.0998,
+                "counterVolume": 0.24950099800399195,
+                "count": 4
+            },
+            "account": "rpuebQXsR7kAst5yidD6fmGmJHD4niXzbo",
+            "baseVolume": 17296.0998,
+            "counterVolume": 0.320500998003992,
+            "count": 7
+        },
+        {
+            "buy": {
+                "baseVolume": 153840,
+                "counterVolume": 3.2,
+                "count": 5
+            },
+            "sell": {
+                "baseVolume": 345998,
+                "counterVolume": 8,
+                "count": 5
+            },
+            "account": "rnZoUopPFXRSVGdeDkgbqdft8SbXfJxKYh",
+            "baseVolume": 499838,
+            "counterVolume": 11.2,
+            "count": 10
+        },
+        {
+            "buy": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "sell": {
+                "baseVolume": 87300,
+                "counterVolume": 1.56,
+                "count": 6
+            },
+            "account": "rMFTySyNbLqyhy391qGL7GHdHWZ5LfvtG",
+            "baseVolume": 87300,
+            "counterVolume": 1.56,
+            "count": 6
+        },
+        {
+            "buy": {
+                "baseVolume": 10000,
+                "counterVolume": 0.19999999999999996,
+                "count": 1
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rnwRcxX4JpHnPjTJpaDH8YZzRPTphvsHbE",
+            "baseVolume": 10000,
+            "counterVolume": 0.19999999999999996,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 307790.40518999996,
+                "counterVolume": 4.78696007984032,
+                "count": 6
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rNnLFDCRrAtuESodmwamAasMBZqCmkqQH9",
+            "baseVolume": 307790.40518999996,
+            "counterVolume": 4.78696007984032,
+            "count": 6
+        },
+        {
+            "buy": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "sell": {
+                "baseVolume": 1827449.9996490004,
+                "counterVolume": 28.469630993204063,
+                "count": 27
+            },
+            "account": "ramJoEsBUHc299vFuMvn8NgLrF3Qrt3XV4",
+            "baseVolume": 1827449.9996490004,
+            "counterVolume": 28.469630993204063,
+            "count": 27
+        },
+        {
+            "buy": {
+                "baseVolume": 800,
+                "counterVolume": 0.016000000000000014,
+                "count": 1
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rKuuVUKA14roSPTuquQTo7nmWZN8EsfxpT",
+            "baseVolume": 800,
+            "counterVolume": 0.016000000000000014,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 4597.960821,
+                "counterVolume": 0.06568703136583831,
+                "count": 1
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rNHf9nnX4JgHferxjRxmapDev7mWQZ6XXd",
+            "baseVolume": 4597.960821,
+            "counterVolume": 0.06568703136583831,
+            "count": 1
+        },
+        {
+            "buy": {
+                "baseVolume": 11000,
+                "counterVolume": 0.2,
+                "count": 2
+            },
+            "sell": {
+                "baseVolume": 0,
+                "counterVolume": 0,
+                "count": 0
+            },
+            "account": "rG8VFQPaJB2gNjx29Et1wKUJettQP1eLmk",
+            "baseVolume": 11000,
+            "counterVolume": 0.2,
+            "count": 2
+        }
+    ]
+}
+```
+
+</div>
+
+A successful result contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String (Account Address) | The account of the trader. |
+| buy | Object | Object with `baseVolume` (volume of base currency bought), `counterVolume` (volume of counter currency bought), and `count` (number of buy transactions) fields describing the activity of this account. |
+| sell | Object | Object with `baseVolume` (volume of base currency sold), `counterVolume` (volume of counter currency sold), and `count` (number of sell transactions) fields describing the activity of this account. |
+| baseVolume | Number | The total amount of the base currency exchanged. |
+| counterVolume | Number | The total amount of the counter currency exchanged. |
+| count | Number | The number of exchanges this account performed. |
+| transactions | Array | (Omitted unless the request specified `transactions` as true) Array of transactions sent that this account participated in. |
+
+If transactions are included, each transaction is represented as an array with the following fields in order:
+
+| Type | Description |
+|------|-------------|
+| String ([Date-Time][]) | The approximate time this transaction occurred. |
+| Number | The amount of the counter currency received for each unit of the base spent. |
+| Number | The amount of base currency in this transaction. |
+| Number | The amount of counter currency in this transaction. |
+| String (Ripple Address) | One party to this transaction. |
+| String (Ripple Address) | The other party to this transaction. |
+| String (Transaction Hash) | The identifying hash for this transaction. (This may be `null` for very old transactions.) |
+| Number | The sequence number of the ledger that included this transaction. |
+
+
 ## Offers Exercised ##
 [[Source]<br>](https://github.com/ripple/ripple-data-api/blob/master/api/routes/offersExercised.js "Source")
 
@@ -1327,7 +1970,7 @@ Retrieve information about currency-exchange orders being exercised on the netwo
 *15-minute increments*
 
 ```
-POST /offers_exercised
+POST /api/offers_exercised
 {
     "base": {
         "currency": "USD",
@@ -1348,7 +1991,7 @@ POST /offers_exercised
 *Expanded*
 
 ```
-POST /offers_exercised
+POST /api/offers_exercised
 {
     "base": {
         "currency": "USD",
