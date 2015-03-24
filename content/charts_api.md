@@ -1376,7 +1376,7 @@ If both `base` and `counter` are omitted, the API combines the results from a [h
 
 #### Response Format ####
 
-Examples of successful responses:
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
 
 <div class='multicode'>
 
@@ -1958,6 +1958,214 @@ If transactions are included, each transaction is represented as an array with t
 | String (Ripple Address) | The other party to this transaction. |
 | String (Transaction Hash) | The identifying hash for this transaction. (This may be `null` for very old transactions.) |
 | Number | The sequence number of the ledger that included this transaction. |
+
+
+## Offers ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/offers.js "Source")
+
+Returns all currency-exchange orders and cancellations over time for a specified currency pair, including unfulfilled offers.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+POST /api/offers
+{
+    "base": {
+        "currency": "GBP",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    },
+    "counter": {
+        "currency": "XRP"
+    },
+    "startTime": "2015-03-01",
+    "endTime": "2015-03-7",
+    "timeIncrement": "day",
+    "descending": false,
+    "reduce": true,
+    "format": "json"
+}
+```
+
+*Expanded*
+
+```
+POST /api/offers
+{
+    "base": {
+        "currency": "GBP",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    },
+    "counter": {
+        "currency": "XRP"
+    },
+    "startTime": "2015-03-01",
+    "endTime": "2015-03-7",
+    "descending": false,
+    "reduce": false,
+    "limit": 5,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| base  | Object ([Currency Object][]) | One of the currencies being exchanged. |
+| counter | Object ([Currency Object][]) | The other of the currencies being exchanged. |
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. |
+| endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
+| descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
+| reduce | Boolean | (Optional) If `false`, include transactions individually instead of collapsing them into results over time. Defaults to `true`. Ignored if `timeIncrement` is provided. |
+| limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "base": {
+        "currency": "GBP",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    },
+    "counter": {
+        "currency": "XRP"
+    },
+    "startTime": "2015-03-01T00:00:00+00:00",
+    "endTime": "2015-03-07T00:00:00+00:00",
+    "timeIncrement": "day",
+    "results": [
+        {
+            "time": "2015-03-01T00:00:00.000Z",
+            "OfferCreate": 14,
+            "OfferCancel": 15
+        },
+        {
+            "time": "2015-03-02T00:00:00.000Z",
+            "OfferCreate": 7,
+            "OfferCancel": 6
+        },
+        {
+            "time": "2015-03-03T00:00:00.000Z",
+            "OfferCreate": 23,
+            "OfferCancel": 23
+        },
+        {
+            "time": "2015-03-05T00:00:00.000Z",
+            "OfferCreate": 0,
+            "OfferCancel": 1
+        }
+    ]
+}
+```
+
+*Expanded*
+
+```
+{
+    "base": {
+        "currency": "GBP",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    },
+    "counter": {
+        "currency": "XRP"
+    },
+    "startTime": "2015-03-01T00:00:00+00:00",
+    "endTime": "2015-03-07T00:00:00+00:00",
+    "results": [
+        {
+            "type": "OfferCancel",
+            "account": "rUBLCjWdsPPMkppdFXVJWhHnr3FNqCzgG3",
+            "baseAmount": 21244.787159,
+            "counterAmount": 170.88055684,
+            "price": 124.3253624161118,
+            "time": "2015-03-01T01:45:40+00:00",
+            "txHash": "C604881B175DEB22EC385BDD823899D35C9634F1686B3879A149704EB5EC0D81",
+            "ledgerIndex": 11992359
+        },
+        {
+            "type": "OfferCreate",
+            "account": "rUBLCjWdsPPMkppdFXVJWhHnr3FNqCzgG3",
+            "baseAmount": 21567.217829,
+            "counterAmount": 170.88055684,
+            "price": 126.21223986994579,
+            "time": "2015-03-01T01:46:50+00:00",
+            "txHash": "BBC91163FBD9F51338CFE96F14C3C0622DCA192C39B89BCB99D35549FECA0D4B",
+            "ledgerIndex": 11992373
+        },
+        {
+            "type": "OfferCancel",
+            "account": "rUBLCjWdsPPMkppdFXVJWhHnr3FNqCzgG3",
+            "baseAmount": 21567.217829,
+            "counterAmount": 170.88055684,
+            "price": 126.21223986994579,
+            "time": "2015-03-01T12:10:50+00:00",
+            "txHash": "BB0F8E6395CDE8D64B04638CAA3953D74AB791770D8123B39AF8BC0CBE81FEB9",
+            "ledgerIndex": 12000709
+        },
+        {
+            "type": "OfferCreate",
+            "account": "rUBLCjWdsPPMkppdFXVJWhHnr3FNqCzgG3",
+            "baseAmount": 22015.655577,
+            "counterAmount": 170.88055684,
+            "price": 128.8365158922898,
+            "time": "2015-03-01T12:11:40+00:00",
+            "txHash": "E0A861F84489E29ED5003913DA57E7EE2BBDDDD6B207E906D8B276F9956316C4",
+            "ledgerIndex": 12000721
+        },
+        {
+            "type": "OfferCancel",
+            "account": "rUBLCjWdsPPMkppdFXVJWhHnr3FNqCzgG3",
+            "baseAmount": 22015.655577,
+            "counterAmount": 170.88055684,
+            "price": 128.8365158922898,
+            "time": "2015-03-01T13:10:50+00:00",
+            "txHash": "3EA9920CC8466E2CC50F2DF37D5A43A06B4DC8251E7CB66B015EAC482F0691DD",
+            "ledgerIndex": 12001477
+        }
+    ]
+}
+```
+
+</div>
+
+**If results are reduced** (the default), then each result represents an interval of time, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time  | String ([Date-Time][]) | The start time of this interval. |
+| OfferCreate | Number | The number of [currency-exchange order creation transactions](transactions.html#offercreate) in this interval. |
+| OfferCancel | Number | The number of [currency-exchange order cancellation transactions](transactions.html#offercancel) in this interval. |
+
+**Note:** An `OfferCreate`-type transaction can cancel a previous order in addition to creating a new one.
+
+**If the results are not reduced** (the request used `"reduce":false`), then each result represents an individual transaction, with the following attributes:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| type  | String | The [type of this transaction](transactions.html): `OfferCreate` or `OfferCancel`.
+| account | String (Ripple Address) | The account that sent this transaction. |
+| baseAmount | Object ([Currency Amount][Currency Object]) | The amount of the base currency exchanged in this transaction. |
+| counterAmount | Object ([Currency Amount][Currency Object]) | The amount of the counter currency exchanged in this transaction. |
+| price | Number | The amount of counter currency received for each unit of the base currency spent in this transaction. |
+| time | String ([Date-Time][]) | The approximate time this transaction occurred. |
+| txHash | String (Transaction Hash) | The identifying hash of this transaction. |
+| ledgerIndex | Number | The sequence number of the ledger where this transaction occurred. |
 
 
 ## Offers Exercised ##
