@@ -1112,6 +1112,211 @@ A successful result contains a **JSON array** of objects representing the issuer
 The list of gateway names and hot wallets is defined by the [gateways.json](https://github.com/ripple/ripple-data-api/blob/a6c23a8c1bc5f073f2dd2bf32e8d763b66b6a2e3/api/gateways.json) file in the server tree. In the future, this may be [expanded to use host-meta](https://ripplelabs.atlassian.net/browse/RD-75).
 
 
+## Ledgers Closed ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/ledgersClosed.js "Source")
+
+Retrieve information about ledgers closed over time.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "startTime": "2014-01-01",
+    "endTime": "2015-01-01",
+    "timeIncrement": "month",
+    "descending": false,
+    "reduce": true,
+    "format": "json"
+}
+```
+
+*Expanded*
+
+```
+{
+    "startTime": "2015-01-01",
+    "endTime": "2015-01-02",
+    "descending": false,
+    "reduce": false,
+    "limit": 50,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+*Minimal*
+
+```
+{}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information starting at this time. Defaults to 30 days before `endTime`. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. Ignored if `reduce` is `false`. |
+| descending | Boolean | (Optional) If true, return results with the most recent first. Defaults to true. |
+| reduce | Boolean | (Optional) If `false`, include ledgers individually instead of collapsing them into results over time. Defaults to `true`. |
+| limit | Number | (Optional) The maximum number of ledgers to return in one response. Use with `offset` to paginate results. Ignored if `reduce` is false. Defaults to 500. |
+| offest | Number | (Optional) The number of transactions to skip before returning results. Use with `limit` to paginate results. Ignored if `reduce` is false. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "startTime": "2014-01-01T00:00:00+00:00",
+    "endTime": "2015-01-01T00:00:00+00:00",
+    "timeIncrement": "month",
+    "total": 6655524,
+    "results": [
+        {
+            "time": "2014-01-01T00:00:00+00:00",
+            "count": 551361
+        },
+        {
+            "time": "2014-02-01T00:00:00+00:00",
+            "count": 528527
+        },
+        {
+            "time": "2014-03-01T00:00:00+00:00",
+            "count": 565889
+        },
+        {
+            "time": "2014-04-01T00:00:00+00:00",
+            "count": 546201
+        },
+        {
+            "time": "2014-05-01T00:00:00+00:00",
+            "count": 569552
+        },
+        {
+            "time": "2014-06-01T00:00:00+00:00",
+            "count": 551485
+        },
+        {
+            "time": "2014-07-01T00:00:00+00:00",
+            "count": 569394
+        },
+        {
+            "time": "2014-08-01T00:00:00+00:00",
+            "count": 558809
+        },
+        {
+            "time": "2014-09-01T00:00:00+00:00",
+            "count": 504121
+        },
+        {
+            "time": "2014-10-01T00:00:00+00:00",
+            "count": 558358
+        },
+        {
+            "time": "2014-11-01T00:00:00+00:00",
+            "count": 547955
+        },
+        {
+            "time": "2014-12-01T00:00:00+00:00",
+            "count": 603870
+        },
+        {
+            "time": "2015-01-01T00:00:00+00:00",
+            "count": 2
+        }
+    ]
+}
+```
+
+*Expanded*
+
+```
+{
+    "startTime": "2015-01-01T00:00:00+00:00",
+    "endTime": "2015-01-02T00:00:00+00:00",
+    "total": 10,
+    "results": [
+        {
+            "time": "2015-01-01T00:00:00+00:00",
+            "ledgerIndex": 10852618
+        },
+        {
+            "time": "2015-01-01T00:00:00+00:00",
+            "ledgerIndex": 10852619
+        },
+        {
+            "time": "2015-01-01T00:00:10+00:00",
+            "ledgerIndex": 10852620
+        },
+        {
+            "time": "2015-01-01T00:00:10+00:00",
+            "ledgerIndex": 10852621
+        },
+        {
+            "time": "2015-01-01T00:00:20+00:00",
+            "ledgerIndex": 10852622
+        },
+        {
+            "time": "2015-01-01T00:00:20+00:00",
+            "ledgerIndex": 10852623
+        },
+        {
+            "time": "2015-01-01T00:00:20+00:00",
+            "ledgerIndex": 10852624
+        },
+        {
+            "time": "2015-01-01T00:00:30+00:00",
+            "ledgerIndex": 10852625
+        },
+        {
+            "time": "2015-01-01T00:00:30+00:00",
+            "ledgerIndex": 10852626
+        },
+        {
+            "time": "2015-01-01T00:00:40+00:00",
+            "ledgerIndex": 10852627
+        }
+    ]
+}
+```
+
+*Minimal*
+
+```
+581851
+```
+
+</div>
+
+**If results are reduced** (the default), then each result represents an interval of time, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time  | String ([Date-Time][]) | The start time of this interval. |
+| count | Number | The number of ledgers that closed during this interval. |
+
+**If the results are not reduced** (the request used `"reduce":false`), then each result represents an individual ledger, with the following attributes:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time  | String ([Date-Time][]) | The approximate time this ledger closed. |
+| ledgerIndex | Number | The sequence number of this ledger. |
+
+**If neither reduce nor timeIncrement are provided**, the response body is simply an integer indicating the number of ledgers closed during the requested window. 
+
+
 ## Offers Exercised ##
 [[Source]<br>](https://github.com/ripple/ripple-data-api/blob/master/api/routes/offersExercised.js "Source")
 
