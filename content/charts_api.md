@@ -2409,6 +2409,668 @@ Note: The API omits intervals during which no exchanges occurred. This means tha
 | baseAmount | Number | Total amount of the base currency spent in this trade. |
 | counterAmount | Number | Total amount of the counter currency received in this trade. |
 | account | String | The Ripple address of the account providing the base currency. |
-| counterparty | String | The Ripple address of the account providing the counter currency. |
-| tx_hash | String | The identifying hash of the transaction where this transaction occurred. |
+| counterparty | String (Ripple Address) | The Ripple address of the account providing the counter currency. |
+| tx_hash | String (Transaction Hash) | The identifying hash of the transaction where this transaction occurred. |
 | ledgerIndex | Number | The sequence number of the ledger that included this transaction. |
+
+
+## Top Markets ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/totalTradeVolume.js "Source")
+
+Returns the total trade volume for [a selection of the largest currency-exchange markets in the Ripple Network](https://github.com/ripple/ripple-data-api/blob/develop/api/library/metrics/tradeVolume.js) during a given time period.
+
+The total volume is normalized in terms of XRP and then optionally converted to another specified currency.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Request*
+
+```
+POST /api/top_markets
+{
+    "startTime": "2015-01-15 7:00 AM",
+    "endTime": "2015-01-16 8:00 PM",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. Defaults to 24 hours before the current time. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| exchange | Object ([Currency Object][]) | (Optional) Represent the volume of each market in terms of this currency. Defaults to XRP. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+```js
+{
+    "startTime": "2015-01-15T00:00:00+00:00",
+    "endTime": "2015-01-16T00:00:00+00:00",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    },
+    "exchangeRate": 0.01646395158719886,
+    "total": 2378736.7119640484,
+    "count": 45086,
+    "components": [
+        {
+            "base": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 1,
+            "count": 3291,
+            "amount": 203276.6053861964,
+            "convertedAmount": 203276.6053861964
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 209.0645112082856,
+            "count": 2378,
+            "amount": 467.1872824011091,
+            "convertedAmount": 97672.28083791517
+        },
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.16300752590344095,
+            "count": 1300,
+            "amount": 352600.6074331275,
+            "convertedAmount": 57476.55264972454
+        },
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.165410686020017,
+            "count": 1978,
+            "amount": 598934.9857105609,
+            "convertedAmount": 99070.24686777295
+        },
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.16611418005077094,
+            "count": 5249,
+            "amount": 689671.2643442968,
+            "convertedAmount": 114564.17658113135
+        },
+        {
+            "base": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 1.015674437867591,
+            "count": 5887,
+            "amount": 332291.09141223435,
+            "convertedAmount": 337499.5674785294
+        },
+        {
+            "base": {
+                "currency": "EUR",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 1.1885584523292927,
+            "count": 2250,
+            "amount": 56085.58908399305,
+            "convertedAmount": 66661.00095964746
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 208.0331642429944,
+            "count": 6260,
+            "amount": 1586.032424195194,
+            "convertedAmount": 329947.34379731334
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0,
+            "count": 0,
+            "amount": 0,
+            "convertedAmount": 0
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.00845173776394386,
+            "count": 2883,
+            "amount": 17970017.17694474,
+            "convertedAmount": 151877.8727931037
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.008480693452054242,
+            "count": 2931,
+            "amount": 23369930.598202318,
+            "convertedAmount": 198193.21739913648
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.008684460374378918,
+            "count": 79,
+            "amount": 4066843.5686033685,
+            "convertedAmount": 35318.341820333706
+        },
+        {
+            "base": {
+                "currency": "KRW",
+                "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
+            },
+            "counter": {
+                "currency": "XRP"
+            },
+            "rate": 0.0009481132167155902,
+            "count": 1427,
+            "amount": 182823180.8616419,
+            "convertedAmount": 173337.07409690745
+        },
+        {
+            "base": {
+                "currency": "EUR",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "rate": 1.1885584523292927,
+            "count": 753,
+            "amount": 25970.558828017478,
+            "convertedAmount": 30867.5272067553
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "rate": 209.0645112082856,
+            "count": 868,
+            "amount": 214.60263271777458,
+            "convertedAmount": 44865.79451315278
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "rate": 208.0331642429944,
+            "count": 1383,
+            "amount": 313.98277229154746,
+            "convertedAmount": 65318.8296375982
+        },
+        {
+            "base": {
+                "currency": "BTC",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "counter": {
+                "currency": "BTC",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "rate": 209.0645112082856,
+            "count": 1426,
+            "amount": 352.3729308907017,
+            "convertedAmount": 73668.67455969556
+        },
+        {
+            "base": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "rate": 1,
+            "count": 1481,
+            "amount": 107909.9976469439,
+            "convertedAmount": 107909.9976469439
+        },
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "rate": 0.16300752590344095,
+            "count": 341,
+            "amount": 114310.06014186383,
+            "convertedAmount": 18633.40008959876
+        },
+        {
+            "base": {
+                "currency": "CNY",
+                "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "rate": 0.165410686020017,
+            "count": 350,
+            "amount": 187183.97960387194,
+            "convertedAmount": 30962.230478233323
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "rate": 0.00845173776394386,
+            "count": 154,
+            "amount": 739711.1344496784,
+            "convertedAmount": 6251.844529438101
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "counter": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+            },
+            "rate": 0.00845173776394386,
+            "count": 1060,
+            "amount": 5706197.2332384875,
+            "convertedAmount": 48227.282644673694
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "counter": {
+                "currency": "CNY",
+                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+            },
+            "rate": 0.00845173776394386,
+            "count": 219,
+            "amount": 1215826.9527283495,
+            "convertedAmount": 10275.850570794979
+        },
+        {
+            "base": {
+                "currency": "JPY",
+                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+            },
+            "counter": {
+                "currency": "JPY",
+                "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+            },
+            "rate": 0.00845173776394386,
+            "count": 1138,
+            "amount": 9094106.036672123,
+            "convertedAmount": 76860.9994194516
+        }
+    ]
+}
+```
+
+A successful result contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| startTime | Object ([Date-Time][]) | The starting time from the request. |
+| endTime | Object ([Date-Time][]) | The ending time from the request. |
+| exchange | Object ([Currency Object][]) | The currency from the request that is used to express the volume. |
+| exchangeRate | Number | The amount of the `exchange` currency that can be bought for 1 XRP. |
+| total | Number | The total volume traded across all markets, in terms of the `exchange` currency. |
+| count | Number | The total number of trades in all the markets. |
+| components | Array | The market volumes of each market in the list of top markets. |
+
+Each member of the `components` array has the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| base  | Object ([Currency Object][]) | One of the currencies that defines this market. |
+| counter | Object ([Currency Object][]) | The other currency that defines this market. |
+| rate  | Number | The amount of the `exchange` currency necessary to buy 1 unit of the `base` currency. |
+| count | Number | The number of trades in this market during the requested time period. |
+| amount | Number | Total amount of the base currency traded in this market during the requested time period. |
+| convertedAmount | Number | Total amount of currency traded in this market during the requested time period, in terms of the `exchange` currency. |
+
+**Note:** If there are no trades in a market during the requested period, the `rate` is defined as 0.
+
+
+## Total Network Value ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/totalNetworkValue.js "Source")
+
+Retrieve the total amount of currency held in the network, as of a specified time.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Request*
+
+```
+POST /api/total_network_value
+{
+    "time": "2014-12-24",
+    "exchange":{
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| time  | Object ([Date-Time][]) | (Optional) Calculate results at this point in time. Defaults to the current time. |
+| exchange | Object ([Currency Object][]) | (Optional) Express the total network value in terms of this currency. Defaults to XRP. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+```js
+{
+    "time": "2014-12-24T00:00:00+00:00",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    },
+    "exchangeRate": 0.02390745076867089,
+    "total": 2403965823.842066,
+    "components": [
+        {
+            "currency": "USD",
+            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "name": "Bitstamp",
+            "hotwallets": [
+                "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
+                "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX"
+            ],
+            "amount": 2646521.4813476186,
+            "rate": 1,
+            "convertedAmount": 2646521.4813476186
+        },
+        {
+            "currency": "USD",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap",
+            "hotwallets": [
+                "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+                "rQsAshmCjPsxkYnxY9GnmBTAeEUaePDAie",
+                "rEk9i7G8ac1kUs1mFjtze1qjj9FzGvXAG",
+                "rsTQ7iwrCik9Ugc3zbpcbo2K3SbAdYJss1",
+                "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+                "rnd8KJ4qeip6FPJvC1fyv82nW2Lm8C8KjQ",
+                "r5ymZSvtdNgbKVc8ay1Jhmq5f9QgnvEtj"
+            ],
+            "amount": 3423391.3201022753,
+            "rate": 1.0133549934987702,
+            "convertedAmount": 3469110.688925987
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "name": "Bitstamp",
+            "hotwallets": [
+                "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
+                "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX"
+            ],
+            "amount": 4618.960079657584,
+            "rate": 339.1489364416104,
+            "convertedAmount": 1566515.3984821255
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap",
+            "hotwallets": [
+                "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+                "rQsAshmCjPsxkYnxY9GnmBTAeEUaePDAie",
+                "rEk9i7G8ac1kUs1mFjtze1qjj9FzGvXAG",
+                "rsTQ7iwrCik9Ugc3zbpcbo2K3SbAdYJss1",
+                "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+                "rnd8KJ4qeip6FPJvC1fyv82nW2Lm8C8KjQ",
+                "r5ymZSvtdNgbKVc8ay1Jhmq5f9QgnvEtj"
+            ],
+            "amount": 4553.083622174116,
+            "rate": 335.89151565461424,
+            "convertedAmount": 1529342.1587542647
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1",
+            "name": "Justcoin",
+            "hotwallets": [],
+            "amount": 214.02645083481798,
+            "rate": 289.21948875946936,
+            "convertedAmount": 61900.62069144976
+        },
+        {
+            "currency": "EUR",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "name": "SnapSwap",
+            "hotwallets": [
+                "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+                "rQsAshmCjPsxkYnxY9GnmBTAeEUaePDAie",
+                "rEk9i7G8ac1kUs1mFjtze1qjj9FzGvXAG",
+                "rsTQ7iwrCik9Ugc3zbpcbo2K3SbAdYJss1",
+                "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+                "rnd8KJ4qeip6FPJvC1fyv82nW2Lm8C8KjQ",
+                "r5ymZSvtdNgbKVc8ay1Jhmq5f9QgnvEtj"
+            ],
+            "amount": 377998.6458813907,
+            "rate": 1.2709529373414195,
+            "convertedAmount": 480418.4892940326
+        },
+        {
+            "currency": "CNY",
+            "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+            "name": "rippleCN",
+            "hotwallets": [
+                "rNaptDNfFXo1quhKwMaNPf66iwPqA8YLky",
+                "rno91tGDJeRcnM7EMXj8KG9UTyxRGMMz8s"
+            ],
+            "amount": 4654048.165312849,
+            "rate": 0.1618097193244357,
+            "convertedAmount": 753070.227351677
+        },
+        {
+            "currency": "CNY",
+            "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
+            "name": "RippleChina",
+            "hotwallets": [
+                "r45dBj4S3VvMMYXxr9vHX4Z4Ma6ifPMCkK"
+            ],
+            "amount": 2233083.979247972,
+            "rate": 0.1586128864797496,
+            "convertedAmount": 354195.8957002061
+        },
+        {
+            "currency": "CNY",
+            "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+            "name": "Ripple Fox",
+            "hotwallets": [
+                "rLSnkKvMfPD9abLoQFxQJMYyZqJcsqkL3o",
+                "rPcQaiyDxMwLr7Q9eFmn5VnVx2RN57MUmN",
+                "r3ipidkRUZWq8JYVjnSnNMf3v7o69vgLEW"
+            ],
+            "amount": 854758.6787252785,
+            "rate": 0.16085453749001152,
+            "convertedAmount": 137491.811931928
+        },
+        {
+            "currency": "JPY",
+            "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+            "name": "Ripple Trade Japan",
+            "hotwallets": [
+                "r3bStftDydy4dKEUBc9YMabTTk98uZzMpF"
+            ],
+            "amount": 61129214.7353749,
+            "rate": 0.007831461299902996,
+            "convertedAmount": 478731.07949354843
+        },
+        {
+            "currency": "JPY",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+            "name": "TokyoJPY",
+            "hotwallets": [],
+            "amount": 175691868.2021911,
+            "rate": 0.008018224568263696,
+            "convertedAmount": 1408736.8540629558
+        },
+        {
+            "currency": "JPY",
+            "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg",
+            "name": "Ripple Market Japan",
+            "hotwallets": [],
+            "amount": 29743906.757837094,
+            "rate": 0.007931783750900699,
+            "convertedAmount": 235922.23631011773
+        },
+        {
+            "currency": "XAU",
+            "issuer": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH",
+            "name": "Ripple Singapore",
+            "hotwallets": [
+                "rL4A1qbTkrJXT644gyzmLVk6uudyMagJ9Q"
+            ],
+            "amount": 52.747091158245624,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "XAU",
+            "issuer": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
+            "name": "GBI",
+            "hotwallets": [],
+            "amount": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "KRW",
+            "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+            "name": "Pax Moneta",
+            "hotwallets": [
+                "rhLSigWL4J9JBBW1JFMBvaduDkVghG7cc2"
+            ],
+            "amount": 135974484.5037933,
+            "rate": 0.0008632373432934944,
+            "convertedAmount": 117378.25275875695
+        },
+        {
+            "currency": "XRP",
+            "amount": 99999222492.58995,
+            "rate": 0.02390745076867089,
+            "convertedAmount": 2390726488.646961
+        }
+    ]
+}
+```
+
+A successful result contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time  | Object ([Date-Time][]) | Values are calculated for this time, from the request. |
+| exchange | Object ([Currency Object][]) | Values are expressed in this currency, from the request. |
+| exchangeRate | Number | The amount of the `exchange` currency necessary to buy 1 XRP. |
+| total | Number | The total value of all currency issued by [a selection of large gateways](https://github.com/ripple/ripple-data-api/blob/develop/api/library/metrics/networkValue.js), and all XRP in the network (including including XRP that is [held in reserve by Ripple Labs](https://www.ripplelabs.com/xrp-distribution/)). |
+| components | Array | A list of the gateways and XRP that contributed to the `total` value. |
+
+Each member of the `components` array is an object representing a currency issued by a specific gateway, except for one member that represents the XRP native to the network. Each object has the following properties:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| currency | String | Currency code for this currency. |
+| issuer | String (Ripple Address) | (Omitted for XRP) The Ripple account of the gateway issuing this currency. |
+| name | String | (Omitted for XRP) The name of the gateway issuing this currency. |
+| hotwallets | Array of Strings | (Omitted for XRP) Each member of this list is the Ripple Address of an account that the gateway uses as a hot wallet. |
+| amount | Number | The total amount of this currency issued as of the requested time. |
+| rate | Number | The amount of the `exchange` currency necessary to buy 1 unit of this currency. |
+| convertedAmount | Number | The total amount of this currency issued as of the requested time, converted to the `exchange` currency. |
