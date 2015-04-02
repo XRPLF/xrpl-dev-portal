@@ -5,7 +5,7 @@ The `rippled` Historical Database provides access to raw Ripple transactions tha
 
 Ripple Labs provides a live instance of the `rippled` Historical Database API with as complete a transaction record as possible at the following address:
 
-`history.ripple.com`
+`https://history.ripple.com`
 
 The [rippled Historical Database source code](https://github.com/ripple/rippled-historical-database) is also available under an open-source license, so you can use, install, and contribute back to the project.
 
@@ -82,6 +82,8 @@ GET /v1/accounts/{:address}/transactions
 ```
 
 </div>
+
+[Try it! >](historicaldb-api-tool.html#get-account-transaction-history)
 
 The following URL parameters are required by this API endpoint:
 
@@ -593,6 +595,8 @@ GET /v1/accounts/{:address}/transactions/{:sequence}
 
 </div>
 
+[Try it! >](historicaldb-api-tool.html#get-transaction-by-account-and-sequence)
+
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
@@ -814,6 +818,8 @@ GET /v1/ledgers/{:ledger_identifier}
 
 </div>
 
+[Try it! >](historicaldb-api-tool.html#get-ledger)
+
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
@@ -882,6 +888,8 @@ GET /v1/transactions/{:hash}
 ```
 
 </div>
+
+[Try it! >](historicaldb-api-tool.html#get-transaction)
 
 The following URL parameters are required by this API endpoint:
 

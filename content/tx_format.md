@@ -15,7 +15,7 @@ There are several different types of transactions that perform different actions
 
 Additionally, there are *Psuedo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
 
-* [Fee - Adjust the minimum transaction fee or account reserve](#fee)
+* [SetFee - Adjust the minimum transaction fee or account reserve](#setfee)
 
 Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.
 
@@ -465,8 +465,9 @@ The available AccountSet flags are:
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
-| asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be cleared. | lsfNoFreeze |
+| asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
+| asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -698,7 +699,7 @@ There are two cases where you can hold a balance on a trust line that is *greate
 
 Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it.
 
-A trust line with a limit *and* a balance of 0 is equivalent to no trust line.
+A trust line with settings in the default state is equivalent to no trust line.
 
 ### TrustSet Flags ###
 
@@ -727,18 +728,37 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 | SigningPubKey | "" |
 | Signature | "" |
 
-## Fee ##
+## SetFee ##
 
 A change in transaction or account fees. This is typically in response to changes in the load on the network.
 
-*Note:* There have been very few, if any, Fee psuedo-transactions, ever. It is possible, but very unlikely, that you may encounter one in a historical ledger.
+*Note:* You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
+
+```
+{
+    "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
+    "BaseFee": "000000000000000A",
+    "Fee": "0",
+    "ReferenceFeeUnits": 10,
+    "ReserveBase": 20000000,
+    "ReserveIncrement": 5000000,
+    "Sequence": 0,
+    "SigningPubKey": "",
+    "TransactionType": "SetFee",
+    "date": 439578860,
+    "hash": "1C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B",
+    "ledger_index": 3721729,
+  }
+```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| BaseFee | String (Quoted Integer) | UInt64 | The charge, in drops, for the reference transaction. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| BaseFee | String | UInt64 | The charge, in drops, for the reference transaction, as hex. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
+
+
 
 # Transaction Results #
 
