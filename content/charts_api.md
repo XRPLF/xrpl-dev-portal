@@ -462,7 +462,7 @@ An example of a successful response:
 | ledgerIndex | Number (Ledger Index) | The identifying sequence number of the ledger that included this transaction. |
 
 
-**If the results are reduced** (the request used `"reduce":true`), then each result represents an interval of time, with the following attributes, in order:
+**If the results are reduced** (the request used `"reduce":true`), then each result represents an interval of time, with the following attributes:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -473,7 +473,7 @@ An example of a successful response:
 | TrustSet | Number | (May be omitted) The number of TrustSet transactions during this interval sent by the specified account. |
 | AccountSet | Number | (May be omitted) The number of AccountSet transactions during this interval sent by the specified account. |
 | SetFee | Number | (May be omitted) The number of SetFee pseudo-transactions during this interval sent by the specified account. Since SetFee is a pseudo-transaction, this transaction type only appears for [ACCOUNT_ZERO](https://wiki.ripple.com/Accounts#ACCOUNT_ZERO). |
-| SetRegularKey |  Number | (May be omitted) The number of Payment transactions during this interval sent by the specified account. |
+| SetRegularKey |  Number | (May be omitted) The number of SetRegularKey transactions during this interval sent by the specified account. |
 
 Each of the transaction type attributes is omitted when there is no data. In CSV or array format, columns are included for each type that has a nonzero value in any interval. In JSON format, each interval includes fields only for the types that have nonzero values in that particular interval.
 
@@ -487,7 +487,7 @@ Each of the transaction type attributes is omitted when there is no data. In CSV
 
 <div class='multicode'>
 
-*JSON*
+*Request*
 
 ```
 POST /api/account_transactions
@@ -3072,5 +3072,547 @@ Each member of the `components` array is an object representing a currency issue
 | name | String | (Omitted for XRP) The name of the gateway issuing this currency. |
 | hotwallets | Array of Strings | (Omitted for XRP) Each member of this list is the Ripple Address of an account that the gateway uses as a hot wallet. |
 | amount | Number | The total amount of this currency issued as of the requested time. |
-| rate | Number | The amount of the `exchange` currency necessary to buy 1 unit of this currency. |
+| rate | Number | The amount of the `exchange` currency necessary to buy 1 unit of this currency. (This is `0` if no amount exists at the time.) |
 | convertedAmount | Number | The total amount of this currency issued as of the requested time, converted to the `exchange` currency. |
+
+## Total Value Sent ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/totalValueSent.js "Source")
+
+The total amount of money sent, in payments and currency exchanges, for a [curated list of currencies and issuers](https://github.com/ripple/ripple-data-api/blob/develop/api/library/metrics/transactionVolume.js). Results are normalized to a single currency.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Request*
+
+```
+POST /api/total_value_sent
+{
+    "startTime": "2014-01-15 7:00 AM",
+    "endTime": "2014-01-16 8:00 PM",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. Defaults to 24 hours before the current time. |
+| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| exchange | Object ([Currency Object][]) | The currency from the request that is used to express the volume. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+```js
+{
+    "startTime": "2014-01-15T00:00:00+00:00",
+    "endTime": "2014-01-16T00:00:00+00:00",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    },
+    "exchangeRate": 0.021579751827645943,
+    "total": 755505.9176608312,
+    "count": 12435,
+    "components": [
+        {
+            "currency": "USD",
+            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "amount": 41127.707337329506,
+            "count": 217,
+            "rate": 1,
+            "convertedAmount": 41127.707337329506
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "amount": 41.918516276559075,
+            "count": 111,
+            "rate": 836.3421115008575,
+            "convertedAmount": 35058.22041372048
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1",
+            "amount": 1.2768145849842485,
+            "count": 14,
+            "rate": 849.2864280964847,
+            "convertedAmount": 1084.381298222768
+        },
+        {
+            "currency": "USD",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "amount": 238540.0568303883,
+            "count": 205,
+            "rate": 0.902112870742654,
+            "convertedAmount": 215190.0554543774
+        },
+        {
+            "currency": "BTC",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "amount": 1.2000099999999998,
+            "count": 5,
+            "rate": 694.0470227860804,
+            "convertedAmount": 832.8633678135243
+        },
+        {
+            "currency": "EUR",
+            "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "CNY",
+            "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+            "amount": 93632.5764443946,
+            "count": 161,
+            "rate": 0.16425234833298158,
+            "convertedAmount": 15379.370561459229
+        },
+        {
+            "currency": "CNY",
+            "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
+            "amount": 26058.7512030993,
+            "count": 293,
+            "rate": 0.1625146758107911,
+            "convertedAmount": 4234.929503805744
+        },
+        {
+            "currency": "CNY",
+            "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "JPY",
+            "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "JPY",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "JPY",
+            "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "KRW",
+            "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+            "amount": 0,
+            "count": 0,
+            "rate": 0,
+            "convertedAmount": 0
+        },
+        {
+            "currency": "XRP",
+            "amount": 20509892.479722,
+            "count": 11429,
+            "rate": 0.021579751827645943,
+            "convertedAmount": 442598.3897241026
+        }
+    ]
+}
+```
+
+A successful result contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| startTime | Object ([Date-Time][]) | The starting time from the request. |
+| endTime | Object ([Date-Time][]) | The ending time from the request. |
+| exchange | Object ([Currency Object][]) | Totals are normalize to this currency from the request. |
+| exchangeRate | Number | The amount of the `exchange` currency necessary to buy 1 XRP. |
+| total | Number | The total value sent in the network, normalized to the `exchange` currency, during the requested time period. |
+| count | Number | The number of transactions processed to calculate this result. |
+| components | Array | An array of the currencies used to calculate this total. |
+
+Each member of the `components` array is an Object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| currency | String | Currency code for this currency. |
+| issuer | String (Ripple Address) | (Omitted for XRP) The Ripple account of the gateway issuing this currency. |
+| amount | Number | The total amount of this currency sent during the requested time period. |
+| count | Number | The total number of transactions that sent this currency during the requested time period. |
+| rate | Number | The amount of the `exchange` currency necessary to buy 1 unit of this currency. (This is 0 if there are no transactions for this currency in the requested time period.) |
+| convertedAmount | Number | The total amount of this currency sent during the requested time period, converted to the `exchange` currency. |
+
+## Transaction Stats ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/transactionStats.js "Source")
+
+Retrieve information about Ripple transactions during a specific time frame.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+POST /api/transaction_stats
+{
+    "startTime": "2015-01-15 07:00 Z",
+    "endTime": "2015-01-15 10:00 Z",
+    "timeIncrement": "hour",
+    "descending": true,
+    "reduce": true,
+    "format": "json"
+}
+```
+
+*Expanded*
+
+```
+POST /api/transaction_stats
+{
+    "startTime": "2015-01-15 07:00 Z",
+    "endTime": "2015-01-15 07:59 Z",
+    "descending": true,
+    "reduce": false,
+    "limit": 10,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. |
+| endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
+| descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
+| reduce | Boolean | (Optional) If `false`, include transactions individually instead of collapsing them into results over time. Ignored if `timeIncrement` is provided. Defaults to `true`. |
+| limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "startTime": "2015-01-15T10:00:00+00:00",
+    "endTime": "2015-01-15T07:00:00+00:00",
+    "timeIncrement": "hour",
+    "results": [
+        {
+            "OfferCancel": 14,
+            "OfferCreate": 26,
+            "Payment": 3,
+            "time": "2015-01-15T10:00:00+00:00"
+        },
+        {
+            "OfferCancel": 3996,
+            "OfferCreate": 10659,
+            "Payment": 1527,
+            "TrustSet": 24,
+            "AccountSet": 133,
+            "time": "2015-01-15T09:00:00+00:00"
+        },
+        {
+            "OfferCancel": 4680,
+            "OfferCreate": 12836,
+            "Payment": 3484,
+            "AccountSet": 153,
+            "TrustSet": 32,
+            "time": "2015-01-15T08:00:00+00:00"
+        },
+        {
+            "AccountSet": 139,
+            "OfferCancel": 3843,
+            "OfferCreate": 12593,
+            "Payment": 2686,
+            "TrustSet": 24,
+            "time": "2015-01-15T07:00:00+00:00"
+        }
+    ]
+}
+```
+
+*Expanded*
+
+```
+{
+    "startTime": "2015-01-15T07:59:00+00:00",
+    "endTime": "2015-01-15T07:00:00+00:00",
+    "results": [
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCancel",
+            "account": "rEepZ4ok2UWuvBedU54XjfjxeiePexxEsq",
+            "txHash": "3C32492DBB8D8CF3E605EA76EDFB9EF6FD80F7BAE7DF939CDEBC245CD7B4DBC8",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCancel",
+            "account": "rHsZHqa5oMQNL5hFm4kfLd47aEMYjPstpg",
+            "txHash": "054D836321179C5BEECB0CF08A2880BE235088B527AFB5ED249AE35FDECDAAEC",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCancel",
+            "account": "rhUWKrgoGztYKxbuaZMeLc3PdviRrCpdhz",
+            "txHash": "44785B97D4E5FE72AFAD0E536D477402D86D9583143A3F0CE5A7AFD65FAF22B9",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCancel",
+            "account": "rhUWKrgoGztYKxbuaZMeLc3PdviRrCpdhz",
+            "txHash": "952B9371F38EB027A9DB7D75F5E5DD5141B6D753C2EB3B6101BE62AE13814B8E",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "r3cS9gS86hjwLwb6rg2usGcXYxwcrvJwBH",
+            "txHash": "D44BFB81C585272AA633D70C16F200C9E08D0544C8FE430B42E93DB529CCF397",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "rBSZe33F5oxHTbxSF1nZJooVDpcrrqNFp3",
+            "txHash": "7E48425E313E56F3CF4CD8B8995CA9AAEADA52A0559EDD5703DD899109A57135",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "rBSZe33F5oxHTbxSF1nZJooVDpcrrqNFp3",
+            "txHash": "C53FCCA0C53C39FAFA95B754268635B8187AEB80D6DDC74AAB9DCBFE4B07C664",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "rGFpans8aW7XZNEcNky6RHKyEdLvXPMnUn",
+            "txHash": "716971CA2C2168EF4C06BA4408F27E6FB519148F52154B5CADA29A083E7A0B96",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr",
+            "txHash": "0A57DFB995947FF8E87324B903D8E25917B3E0C09F4C24F93132AECDC7849362",
+            "ledgerIndex": 11130426
+        },
+        {
+            "time": "2015-01-15T07:59:00+00:00",
+            "type": "OfferCreate",
+            "account": "rJnZ4YHCUsHvQu7R6mZohevKJDHFzVD6Zr",
+            "txHash": "17AC61741060D5561D813ABFEFA1A7939273CAA21A7B329CBBFC562EBFE98DB9",
+            "ledgerIndex": 11130426
+        }
+    ]
+}
+```
+
+</div>
+
+**If the results are reduced** (the default), then each result represents an interval of time, with the following attributes:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time at which this interval begins. |
+| Payment | Number | (May be omitted) The number of Payment transactions during this interval sent by the specified account. |
+| OfferCreate | Number | (May be omitted) The number of OfferCreate transactions during this interval sent by the specified account. |
+| OfferCancel | Number | (May be omitted) The number of OfferCancel transactions during this interval sent by the specified account. |
+| TrustSet | Number | (May be omitted) The number of TrustSet transactions during this interval sent by the specified account. |
+| AccountSet | Number | (May be omitted) The number of AccountSet transactions during this interval sent by the specified account. |
+| SetFee | Number | (May be omitted) The number of SetFee pseudo-transactions during this interval sent by the specified account. Since SetFee is a pseudo-transaction, this transaction type only appears for [ACCOUNT_ZERO](https://wiki.ripple.com/Accounts#ACCOUNT_ZERO). |
+| SetRegularKey |  Number | (May be omitted) The number of SetRegularKey transactions during this interval sent by the specified account. |
+
+Each of the transaction type attributes is omitted when there is no data. In CSV or array format, columns are included for each type that has a nonzero value in any interval. In JSON format, each interval includes fields only for the types that have nonzero values in that particular interval.
+
+**If the results are not reduced** (the request used `"reduce": false`), then each result represents an individual transaction, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time this transaction occurred. |
+| type | String | The transaction type. Valid types are: `AccountSet`, `OfferCancel`, `OfferCreate`, `Payment`, `SetFee`, `SetRegularKey`, and `TrustSet` |
+| account | String (Ripple Address) | The address of the account that sent this transaction. |
+| txHash | String (Transaction Hash) | The identifying hash of this transaction. |
+| ledgerIndex | Number (Ledger Index) | The identifying sequence number of the ledger that included this transaction. |
+
+
+## Value Sent ##
+[[Source]<br>](https://github.com/ripple/ripple-data-api/blob/develop/api/routes/valueSent.js "Source")
+
+Retrieve the total amount of a single currency sent, in payments and currency exchanges, during a specific time period.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+POST /api/value_sent
+{
+    "currency": "JPY",
+    "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+    "startTime": "2015-01-15 08:00 Z",
+    "endTime": "2015-01-15 10:59 Z",
+    "timeIncrement": "hour",
+    "descending": false,
+    "reduce": true,
+    "format": "json"
+}
+```
+
+*Expanded*
+
+```
+POST /api/value_sent
+{
+    "currency": "JPY",
+    "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+    "startTime": "2015-01-15 08:00 Z",
+    "endTime": "2015-01-15 08:01 Z",
+    "reduce": false,
+    "limit": 3,
+    "offset": 0,
+    "format": "json"
+}
+```
+
+</div>
+
+The request includes the following body parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| currency | String | Three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) string, or a 160-bit hex string according to Ripple's internal [Currency format](https://wiki.ripple.com/Currency_format). |
+| issuer | String | Account address of the counterparty holding the currency. Usually an issuing gateway in the Ripple network. Omitted or `null` for XRP. |
+| startTime | String ([Date-Time][]) | Retrieve information starting at this time. |
+| endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
+| descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
+| reduce | Boolean | (Optional) If `false`, include transactions individually instead of collapsing them into results over time. Ignored if `timeIncrement` is provided. Defaults to `true`. |
+| limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
+| offset | Number | (Optional) If reduce is `false`, this value defines a number of transactions to skip before returning results. Use with `limit` to paginate results. Defaults to 0. |
+| format | String | (Optional) The [Response Format][] to use: `csv` or `json`. If omitted, defaults to a CSV-like JSON array format. |
+
+#### Response Format ####
+
+The format of the response depends on the `format` and `reduce` parameters from the request. See [Response Format][] for details. Examples of successful responses:
+
+<div class='multicode'>
+
+*Reduced*
+
+```
+{
+    "currency": "JPY",
+    "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+    "startTime": "2015-01-15T08:00:00+00:00",
+    "endTime": "2015-01-15T10:59:00+00:00",
+    "timeIncrement": "hour",
+    "results": [
+        {
+            "time": "2015-01-15T08:00:00+00:00",
+            "amount": 1152046.1607243735,
+            "count": 190
+        },
+        {
+            "time": "2015-01-15T09:00:00+00:00",
+            "amount": 483892.1115109554,
+            "count": 84
+        },
+        {
+            "time": "2015-01-15T10:00:00+00:00",
+            "amount": 485985.50256177614,
+            "count": 72
+        }
+    ]
+}
+```
+
+*Expanded*
+
+```
+{
+    "currency": "JPY",
+    "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+    "startTime": "2015-01-15T08:00:00+00:00",
+    "endTime": "2015-01-15T08:01:00+00:00",
+    "results": [
+        {
+            "time": "2015-01-15T08:00:00+00:00",
+            "amount": 18081.50257044235,
+            "account": "rPCFVxAqP2XdaPmih1ZSjmCPNxoyMiy2ne",
+            "destination": null,
+            "txHash": "64520542AB1F3EEF516DE3E07E4958F3C07AC668D4B3DE769AF08D305AFA50D1",
+            "ledgerIndex": 11130438
+        },
+        {
+            "time": "2015-01-15T08:01:00+00:00",
+            "amount": 0.0000010567819117568433,
+            "account": "rfU3YWd1TnYryvryQTQ9xwyCSqzMTbnyW6",
+            "destination": null,
+            "txHash": "52B282E616B2B9AD5E34B3BDE2D6D0AB44D06298590D3A949C2D7817D3057957",
+            "ledgerIndex": 11130451
+        }
+    ]
+}
+```
+
+</div>
+
+**If the results are reduced** (the default), then each result represents an interval of time, with the following attributes:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time at which this interval begins. |
+| amount | Number | The total amount of the requested currency sent during this interval |
+| count | Number | The total number of transactions in this interval that contributed to the `amount`. |
+
+
+**If the results are not reduced** (the request used `"reduce": false`), then each result represents an individual transaction, with the following attributes, in order:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| time | String ([Date-Time][]) | The time this transaction occurred. |
+| amount | Number | The amount of the requested currency sent in this transaction. |
+| account | String (Ripple Address) | The address of the account that sent this transaction. |
+| destination | String (Ripple Address) | The address of the account that received the funds. <span class='draft-comment'>(This always seems to be null in my experience.)</span> |
+| txHash | String (Transaction Hash) | The identifying hash of this transaction. |
+| ledgerIndex | Number (Ledger Index) | The identifying sequence number of the ledger that included this transaction. |
+
