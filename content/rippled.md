@@ -2,9 +2,7 @@
 
 The core peer-to-peer server that operates the Ripple Network is called `rippled`. Each `rippled` server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
 
-* [Building from source](https://wiki.ripple.com/Rippled_build_instructions)
-* [Installing from precompiled binaries](rippled-stock-node.html)
-* [Setting up a validator](rippled-validator.html)
+* [`rippled` Setup](rippled-setup.html)
 * [API Reference](#api-methods)
 * [Transaction Reference](transactions.html)
 * Client Library - [Javascript](https://github.com/ripple/ripple-lib)
@@ -28,19 +26,9 @@ https://groups.google.com/forum/#!forum/ripple-server
 
 Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Alternatively, you can run your own local copy of [`rippled`](https://ripple.com/wiki/Rippled). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
+Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
 
-### Reasons to Run Your Own rippled ###
 
-There are lots of reasons you might want to run your own `rippled` server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it.
-
-It is important that you can trust the `rippled` you use, so you can be certain that the software you are running will behave in the manner specified in its source code. Of course, you must also practice good network security to protect your server from malicious hackers. If you connect to a malicious server, there are myriad ways that it can take advantage of you or cause you to lose money. For example:
-
-* A malicious server could report that you were paid when no such payment was made
-* It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal
-* If you sent it your account's secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account's balances.
-
-Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so `rippled` has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.
 
 ### WebSocket API ###
 

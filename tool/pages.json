@@ -5,24 +5,9 @@
         "html":"rippled-apis.html"
     },
     {
-        "name": "Running a stock rippled node",
-        "md":"rippled-stock-node.md",
-        "html":"rippled-stock-node.html"
-    },
-    {
-        "name": "Configuring rippled to validate ledgers",
-        "md":"rippled-validator.md",
-        "html": "rippled-validator.html"
-    },
-    {
-        "name": "Configuring rippled to trust other validators",
-        "md":"rippled-untrusted-validator.md",
-        "html": "rippled-untrusted-validator.html"
-    },
-    {
-        "name": "Configuring rippled to be a trusted validator",
-        "md":"rippled-trusted-validator.md",
-        "html": "rippled-trusted-validator.html"
+        "name": "rippled Setup",
+        "md":"rippled-setup.md",
+        "html":"rippled-setup.html"
     },
     {
         "name": "Ripple-REST",
