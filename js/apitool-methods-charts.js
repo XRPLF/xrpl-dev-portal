@@ -4,8 +4,9 @@ var DOC_BASE = "charts_api.html";
 var URL_BASE = "https://api.ripplecharts.com:443";
 
 var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
-var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
-var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
+var TIME_20140101 = "2014-01-01T00:00:00.000Z";
+var TIME_20150101 = "2015-01-01T00:00:00.000Z";
+var TIME_20150101_2 = "2015-01-01T02:00:00.000Z";
 
 
 Request('Account Offers Exercised', {
@@ -16,7 +17,7 @@ Request('Account Offers Exercised', {
     params: {},
     body: {
         account: DEFAULT_ADDRESS_1,
-        startTime: "2014",
+        startTime: TIME_20140101,
         limit: 5,
         offset: 0,
         format: "json"
@@ -30,8 +31,8 @@ Request('Accounts Created', {
     link: "#accounts-created",
     params: {},
     body: {
-        "startTime": "2014-01-01",
-        "endTime": "2015-03-31",
+        "startTime": TIME_20140101,
+        "endTime": "2015-03-31T00:00:00.000Z",
         "timeIncrement": "month",
         "descending": true,
         "reduce": true,
@@ -88,8 +89,8 @@ Request('Issuer Capitalization', {
                 "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
             }
         ],
-        "startTime": "Jan 1, 2014",
-        "endTime": "Jan 1, 2015",
+        "startTime": TIME_20140101,
+        "endTime": TIME_20150101,
         "timeIncrement": "month"
     }
 });
@@ -101,8 +102,8 @@ Request('Ledgers Closed', {
     link: "#ledgers-closed",
     params: {},
     body: {
-        "startTime": "2014-01-01",
-        "endTime": "2015-01-01",
+        "startTime": TIME_20140101,
+        "endTime": TIME_20150101,
         "timeIncrement": "month",
         "descending": false,
         "reduce": true,
@@ -124,7 +125,7 @@ Request('Market Traders', {
             "currency": "KRW",
             "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
         },
-        "startTime": "2014-11-01",
+        "startTime": TIME_20150101,
         "transactions": true,
         "format": "json"
     }
@@ -144,8 +145,8 @@ Request('Offers', {
         "counter": {
             "currency": "XRP"
         },
-        "startTime": "2015-03-01",
-        "endTime": "2015-03-7",
+        "startTime": "2015-03-01T00:00:00.000Z",
+        "endTime": "2015-03-07T00:00:00.000Z",
         "timeIncrement": "day",
         "descending": false,
         "reduce": true,
@@ -168,8 +169,8 @@ Request('Offers Exercised', {
             "currency": "BTC",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
         },
-        "endTime": "2015-03-01T00:00Z",
-        "startTime": "2015-03-01T12:00Z",
+        "endTime": TIME_20150101,
+        "startTime": TIME_20150101_2,
         "timeIncrement": "minute",
         "timeMultiple": 15,
         "format": "json"
@@ -183,8 +184,8 @@ Request('Top Markets', {
     link: "#top-markets",
     params: {},
     body: {
-        "startTime": "2015-01-15 7:00 AM",
-        "endTime": "2015-01-16 8:00 PM",
+        "startTime": TIME_20150101,
+        "endTime": TIME_20150101_2,
         "exchange": {
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -199,7 +200,7 @@ Request('Total Network Value', {
     link: "#total-network-value",
     params: {},
     body: {
-        "time": "2014-12-24",
+        "time": TIME_20150101,
         "exchange":{
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -214,8 +215,8 @@ Request('Total Value Sent', {
     link: "#total-value-sent",
     params: {},
     body: {
-        "startTime": "2014-01-15 7:00 AM",
-        "endTime": "2014-01-16 8:00 PM",
+        "startTime": TIME_20150101,
+        "endTime": TIME_20150101_2,
         "exchange": {
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -230,8 +231,8 @@ Request('Transaction Stats', {
     link: "#transaction-stats",
     params: {},
     body: {
-        "startTime": "2015-01-15 07:00 Z",
-        "endTime": "2015-01-15 10:00 Z",
+        "startTime": TIME_20150101,
+        "endTime": TIME_20150101_2,
         "timeIncrement": "hour",
         "descending": true,
         "reduce": true,
@@ -248,8 +249,8 @@ Request('Value Sent', {
     body: {
         "currency": "JPY",
         "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
-        "startTime": "2015-01-15 08:00 Z",
-        "endTime": "2015-01-15 10:59 Z",
+        "startTime": TIME_20150101,
+        "endTime": TIME_20150101_2,
         "timeIncrement": "hour",
         "descending": false,
         "reduce": true,
