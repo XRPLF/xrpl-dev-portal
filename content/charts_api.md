@@ -339,8 +339,8 @@ Retrieve information about the creation of new Ripple accounts.
 ```
 POST /api/accounts_created
 {
-    "startTime": "jan 1, 2014 10:00 am",
-    "endTime": "mar 15, 2015 10:00 am",
+    "startTime": "2014-01-01T10:00:00.000Z",
+    "endTime": "2015-03-15T10:00:00.000Z",
     "timeIncrement": "month",
     "descending": true,
     "reduce": true,
@@ -353,8 +353,8 @@ POST /api/accounts_created
 ```
 POST /api/accounts_created
 {
-    "startTime": "mar 15, 2015 9:00 am",
-    "endTime": "mar 15, 2015 5:00 pm",
+    "startTime": "2015-03-15T09:00:00.000Z",
+    "endTime": "2015-03-15T17:00:00.000Z",
     "descending": true,
     "reduce": false,
     "limit": 5,
@@ -745,8 +745,8 @@ POST /api/issuer_capitalization
             "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
         }
     ],
-    "startTime": "Jan 1, 2014",
-    "endTime": "Jan 1, 2015",
+    "startTime": "2014-01-01T10:00:00.000Z",
+    "endTime": "2015-01-01T10:00:00.000Z",
     "timeIncrement": "month"
 }
 ```
@@ -929,8 +929,8 @@ Retrieve information about ledgers closed over time.
 ```
 POST /api/ledgers_closed
 {
-    "startTime": "2014-01-01",
-    "endTime": "2015-01-01",
+    "startTime": "2014-01-01T10:00:00.000Z",
+    "endTime": "2015-01-01T10:00:00.000Z",
     "timeIncrement": "month",
     "descending": false,
     "reduce": true,
@@ -943,8 +943,8 @@ POST /api/ledgers_closed
 ```
 POST /api/ledgers_closed
 {
-    "startTime": "2015-01-01",
-    "endTime": "2015-01-02",
+    "startTime": "2015-01-01T10:00:00.000Z",
+    "endTime": "2015-01-02T10:00:00.000Z",
     "descending": false,
     "reduce": false,
     "limit": 50,
@@ -1144,7 +1144,7 @@ POST /api/market_traders
         "currency": "KRW",
         "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
     },
-    "startTime": "2014-11-01",
+    "startTime": "2014-11-01T10:00:00.000Z",
     "transactions": true,
     "format": "json"
 }
@@ -1155,7 +1155,7 @@ POST /api/market_traders
 ```
 POST /api/market_traders
 {
-    "startTime": "2013-02-26",
+    "startTime": "2013-02-26T10:00:00.000Z",
     "format": "json"
 }
 ```
@@ -1784,8 +1784,8 @@ POST /api/offers
     "counter": {
         "currency": "XRP"
     },
-    "startTime": "2015-03-01",
-    "endTime": "2015-03-7",
+    "startTime": "2015-03-01T10:00:00.000Z",
+    "endTime": "2015-03-07T10:00:00.000Z",
     "timeIncrement": "day",
     "descending": false,
     "reduce": true,
@@ -1805,8 +1805,8 @@ POST /api/offers
     "counter": {
         "currency": "XRP"
     },
-    "startTime": "2015-03-01",
-    "endTime": "2015-03-7",
+    "startTime": "2015-03-01T10:00:00.000Z",
+    "endTime": "2015-03-07T10:00:00.000Z",
     "descending": false,
     "reduce": false,
     "limit": 5,
@@ -2012,8 +2012,8 @@ POST /api/offers_exercised
         "currency": "BTC",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
     },
-    "endTime": "2015-03-01T00:00Z",
-    "startTime": "2015-03-01T23:59Z",
+    "endTime": "2015-03-01T00:00:00.000Z",
+    "startTime": "2015-03-01T23:59:00.000Z",
     "reduce": false,
     "limit": 5,
     "offset": 0,
@@ -2233,8 +2233,8 @@ The total volume is normalized in terms of XRP and then optionally converted to 
 ```
 POST /api/top_markets
 {
-    "startTime": "2015-01-15 7:00 AM",
-    "endTime": "2015-01-16 8:00 PM",
+    "startTime": "2015-01-15T00:00:00.000Z",
+    "endTime": "2015-01-16T00:00:00.000Z",
     "exchange": {
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -2635,7 +2635,7 @@ Retrieve the total amount of currency held in the network, as of a specified tim
 ```
 POST /api/total_network_value
 {
-    "time": "2014-12-24",
+    "time": "2014-12-24T00:00:00.000Z",
     "exchange":{
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -2892,8 +2892,8 @@ The total amount of money sent, in payments and currency exchanges, for a [curat
 ```
 POST /api/total_value_sent
 {
-    "startTime": "2014-01-15 7:00 AM",
-    "endTime": "2014-01-16 8:00 PM",
+    "startTime": "2014-01-15T00:00:00.000Z",
+    "endTime": "2014-01-16T00:00:00.000Z",
     "exchange": {
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -3079,10 +3079,10 @@ Retrieve information about Ripple transactions during a specific time frame.
 ```
 POST /api/transaction_stats
 {
-    "startTime": "2015-01-15 07:00 Z",
-    "endTime": "2015-01-15 10:00 Z",
+    "startTime": "2015-01-15T10:00:00.000Z",
+    "endTime": "2015-01-15T07:00:00.000Z",
     "timeIncrement": "hour",
-    "descending": true,
+    "descending": false,
     "reduce": true,
     "format": "json"
 }
@@ -3128,23 +3128,17 @@ The format of the response depends on the `format` and `reduce` parameters from 
 
 ```
 {
-    "startTime": "2015-01-15T10:00:00+00:00",
-    "endTime": "2015-01-15T07:00:00+00:00",
+    "startTime": "2015-01-15T07:00:00+00:00",
+    "endTime": "2015-01-15T10:00:00+00:00",
     "timeIncrement": "hour",
     "results": [
         {
-            "OfferCancel": 14,
-            "OfferCreate": 26,
-            "Payment": 3,
-            "time": "2015-01-15T10:00:00+00:00"
-        },
-        {
-            "OfferCancel": 3996,
-            "OfferCreate": 10659,
-            "Payment": 1527,
+            "OfferCancel": 3843,
+            "OfferCreate": 12593,
             "TrustSet": 24,
-            "AccountSet": 133,
-            "time": "2015-01-15T09:00:00+00:00"
+            "Payment": 2686,
+            "AccountSet": 139,
+            "time": "2015-01-15T07:00:00+00:00"
         },
         {
             "OfferCancel": 4680,
@@ -3155,12 +3149,18 @@ The format of the response depends on the `format` and `reduce` parameters from 
             "time": "2015-01-15T08:00:00+00:00"
         },
         {
-            "AccountSet": 139,
-            "OfferCancel": 3843,
-            "OfferCreate": 12593,
-            "Payment": 2686,
+            "OfferCancel": 3996,
+            "OfferCreate": 10659,
+            "Payment": 1527,
+            "AccountSet": 133,
             "TrustSet": 24,
-            "time": "2015-01-15T07:00:00+00:00"
+            "time": "2015-01-15T09:00:00+00:00"
+        },
+        {
+            "OfferCancel": 14,
+            "OfferCreate": 26,
+            "Payment": 3,
+            "time": "2015-01-15T10:00:00+00:00"
         }
     ]
 }
@@ -3248,6 +3248,8 @@ The format of the response depends on the `format` and `reduce` parameters from 
 ```
 
 </div>
+
+*Note:* In JSON format, the `startTime` and `endTime` parameters at the top level are switched when the request specifies `"descending": true`. This is a bug. See [RD-110](https://ripplelabs.atlassian.net/browse/RD-110) for more details.
 
 **If the results are reduced** (the default), then each result represents an interval of time, with the following attributes:
 
@@ -3415,7 +3417,7 @@ The format of the response depends on the `format` and `reduce` parameters from 
 | time | String ([Date-Time][]) | The time this transaction occurred. |
 | amount | Number | The amount of the requested currency sent in this transaction. |
 | account | String (Ripple Address) | The address of the account that sent this transaction. |
-| destination | String (Ripple Address) | The address of the account that received the funds. <span class='draft-comment'>(This always seems to be null in my experience.)</span> |
+| destination | String (Ripple Address) | The address of the account that received the funds. Due to [RD-111](https://ripplelabs.atlassian.net/browse/RD-111), this value is always returned as `null` instead. |
 | txHash | String (Transaction Hash) | The identifying hash of this transaction. |
 | ledgerIndex | Number (Ledger Index) | The identifying sequence number of the ledger that included this transaction. |
 
