@@ -2,6 +2,7 @@
 
 The core server of the Ripple peer-to-peer network is [`rippled`](rippled-apis.html). Anyone can run their own `rippled` server (also known as a _`rippled` node_) that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server perform validations and participate in the consensus process.
 
+
 ## Types of rippled Servers ##
 
 The `rippled` server software can run in several modes depending on its configuration, including:
@@ -12,17 +13,23 @@ The `rippled` server software can run in several modes depending on its configur
 
 You can also run `rippled` as a client application for accessing [rippled APIs](rippled-apis.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
+
 ## Parallel Networks ##
 
 Most of the time, we describe the Ripple Network as one collective, singular entity -- and that's mostly true. There is one production Ripple Network, and all business that takes place on Ripple occurs within the production Ripple Network.
 
-However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. 
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. Contact [bwilson@ripple.com](mailto:bwilson@ripple.com) to request Test Net XRP.
 
 **Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to used to test various properties of server configuration, network topology, and network performance.
 
-Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). <span class='draft-comment'>Should we mention anything about earning XRP for running a Ripple Test Net validator?</span>
+Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). Ripple Labs may also reward reliable Test Net validators with production-network XRP.
 
 Over time, there may also be additional, smaller test networks for specific purposes.
+
+### Parallel Networks and Consensus ###
+
+There is no `rippled` setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of `rippled` instances only trust other members of the same group, each group continues to operate as a parallel network. Even if malicious or misbehaving nodes connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
+
 
 ## Reasons to Run a Stock Node ##
 
@@ -36,6 +43,9 @@ It is important that you can trust the `rippled` you use, so you can be certain 
 
 Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so `rippled` has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.
 
+Finally, if you run a validating node, you can use a stock node as a proxy to the public network while keeping your validating node on a private subnet only accessible to the outside world through the stock node. This makes it more difficult to compromise the integrity of your validating node.
+
+
 ## Reasons to Run a Validating Node ##
 
 The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators _not to collude_. The more operators with different interests there are who run validating nodes, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple Network, it is in your interest to contribute to the consensus process.
@@ -43,6 +53,7 @@ The robustness of the Ripple network depends on an interconnected web of validat
 Not all `rippled` nodes need to be validating nodes: trusting additional nodes from the same operator does not provide additional protection against collusion. However, an organization may run nodes in multiple regions in order to provide better redundancy in case of natural disasters and other emergencies.
 
 If your organization runs a validating node, you may also run one or more stock nodes, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
+
 
 ## System Requirements ##
 
@@ -59,11 +70,14 @@ Amazon EC2's m3.medium or m3.large VM sizes may be appropriate depending on your
 
 Naturally, a fast network connection is preferable.
 
+
+
 # Installing rippled #
 
 For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
 
 Production `rippled` instances can use Ripple Labs' binary executable, available from the Ripple Labs apt-get repository. 
+
 
 ## Binary Installation on Ubuntu ##
 
@@ -144,9 +158,12 @@ This document assumes that you are using Ubuntu 14.04.
         
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple Network.
 
+
+
 # Running a Validating Node #
 
 Becoming a validator that participates in the network involves several steps. Initially, the network probably ignores any validations your node provides: this is called being an _untrusted validator_. Later, after the operators of other `rippled` validators add your node to their configuration, your node's validations actually contribute to the consensus process. At this point, you have become a _trusted validator_.
+
 
 ## Validator Setup ##
 
@@ -232,24 +249,5 @@ Becoming a validator that participates in the network involves several steps. In
 9. Start `rippled` untrusted validator
 
         $ sudo service rippled start
-        
-## Starting a Parallel Network ##
 
-<span class='draft-comment'>Do we really want to instruct people how to start a fork of the network?</span>
 
-Starting a parallel `rippled` network is very similar to [running a validator](#running-a-validating-node), with the following exceptions:
-
-1. Stop `rippled` if it is running:
-
-        $ sudo service rippled stop
-
-2. Set the validation quorum value to 0 in `rippled.cfg`:
-
-        [validation_quorum]
-        0
-        
-3. Start rippled validator as the first node starting at a fresh ledger
-
-        $ sudo start-stop-daemon --start --quiet --background -m --pidfile /var/run/rippled.pid --exec /usr/sbin/rippled --chuid rippled --group rippled -- --start --conf /etc/rippled/rippled.cfg
-        
-<span class='draft-comment'>(Wasn't there something about nodes accidentally linking up with the production network? What happens if someone adds nodes from both networks in their UNL? etc.)</span>
