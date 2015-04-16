@@ -730,7 +730,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](transactions.html#accountset-flags) |
 | account_data.LedgerEntryType | String | "AccountRoot" is the type of ledger entry that holds an account's data |
 | account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This is used to calculate the total reserve required to use the account. |
-| account_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account |
+| account\_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account node directly. **Note:** This does not include all changes to the account's trust lines and offers. Use [account_tx](#account-tx) to get a more inclusive list. |
 | account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | account_data.index | String | A unique index for the AccountRoot node that represents this account in the ledger. |
 | ledger_current_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
