@@ -207,7 +207,9 @@ Available configuration options are outlined in the [__Server Configuration__](h
 
 
 ## Debug mode ##
-The server can be run in Debug Mode by running `node server.js --debug`.
+You can run the server in Debug Mode with the following command:
+
+    node server.js --debug
 
 
 ## Running Ripple-REST securely over SSL ##
@@ -461,17 +463,18 @@ Each Memo object must have at least one of the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| MemoType | String | Arbitrary string, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoType | String | A string using URL-safe characters, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoFormat | String | A string using URL-safe characters, conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
 | MemoData | String | Arbitrary UTF-8 string representing the content of the memo. |
 
-The MemoType field is intended to support URIs, so the contents of that field should only contain characters that are valid in URIs. In other words, MemoType should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
+The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
 Example of the memos field:
 
 ```js
     "memos": [
       {
-        "MemoType": "unformatted_memo",
+        "MemoType": "http://example.com/unique/memo/relation",
         "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
       },
       {

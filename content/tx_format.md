@@ -269,7 +269,7 @@ Example of a transaction with a Memos field:
     "Memos": [
         {
             "Memo": {
-                "MemoType": "5061796d656e7420726561736f6e",
+                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
                 "MemoData": "72656e74"
             }
         }
