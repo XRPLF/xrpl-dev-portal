@@ -254,7 +254,7 @@ The Memos field allows for arbitrary messaging data that can accompany the trans
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|--------------------------------------------------------|-------------|
 | MemoData | String | VariableLength | Arbitrary hex value, conventionally containing the content of the memo. |
-| MemoFormat | String | VariableLength | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
+| MemoFormat | String | VariableLength | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
 | MemoType | String | VariableLength | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 
 The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
