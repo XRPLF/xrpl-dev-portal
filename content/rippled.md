@@ -72,10 +72,10 @@ If you are running your own `rippled` server, make sure that you have enabled th
 
 ### Commandline ###
 
-The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, `rippled` connects to the local instance; however, you can specify the server to connect to in the configuration file or with the `--rpc-ip` commandline argument. For example:
+The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. As a commandline client, `rippled` connects to the local instance. For example:
 
 ```
-rippled --rpc_ip=s1.ripple.com:51234 server_info
+rippled --conf=/etc/rippled.cfg server_info
 ```
 
 ## Request Formatting ##
