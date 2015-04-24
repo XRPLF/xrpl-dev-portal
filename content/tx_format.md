@@ -198,7 +198,9 @@ Every transaction type has the same set of fundamental fields:
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
-The field `PreviousTxnID` as a transaction parameter is **DEPRECATED**. It has been replaced by [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead. (*Note:* There is also a field named `PreviousTxnID` that occurs in ledger metadata. That field has different meaning and is not deprecated.)
+**Note:** The deprecated `PreviousTxnID` transaction parameter was removed entirely in [rippled 0.28.0][]. Use `AccountTxnID` instead.
+
+[rippled 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0-rc1
 
 ### Auto-fillable Fields ###
 
@@ -471,7 +473,7 @@ The available AccountSet flags are:
 | asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
 | asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
-_New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1):_ You cannot send a transaction that enables `asfDisableMaster` or `asfNoFreeze` using a [regular key](#setregularkey). You must use the master key to sign the transaction.
+_New in [rippled 0.28.0][]:_ You cannot send a transaction that enables `asfDisableMaster` or `asfNoFreeze` using a [regular key](#setregularkey). You must use the master key to sign the transaction.
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -922,7 +924,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temINVALID | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
 | temINVALID\_FLAG | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
 | temREDUNDANT | The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
-| temREDUNDANT\_SEND\_MAX | _(Removed in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
+| temREDUNDANT\_SEND\_MAX | _(Removed in [rippled 0.28.0][])_ |
 | temRIPPLE\_EMPTY | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
 
 ### tef Codes ###
@@ -1004,7 +1006,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
 | tecNEED_MASTER_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
-| tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
+| tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0][])_ |
 
 ### tej Codes ###
 
