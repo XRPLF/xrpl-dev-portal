@@ -246,7 +246,8 @@ Request("Grant Trustline", {
             "limit": "110",
             "currency": "USD",
             "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-            "allows_rippling": false
+            "account_allows_rippling": false,
+            "account_trustline_frozen": false
         }
     }
 });
