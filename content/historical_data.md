@@ -97,11 +97,13 @@ Optionally, you can also include the following query parameters:
 |-------|-------|-------------|
 | type  | Single transaction type or comma-separated list of types | Filter results to include only transactions with the specified transaction type or types. Valid types include `OfferCreate`, `OfferCancel`, `Payment`, `TrustSet`, `AccountSet`, and `TicketCreate`. |
 | result | Transaction result code | Filter results to only transactions with the specified transaction result code. Valid result codes include `tesSUCCESS` and all [tec codes](transactions.html#tec-codes). |
-| start | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or after the specified date and time. |
-| end   | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or before the specified date and time. |
-| ledger_min | Integer | Sequence number of the earliest ledger to search. | 
-| ledger_max | Integer | Sequence number of the most recent ledger to search. |
+| start | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or after the specified date and time. (Ignored if `min_sequence` or `max_sequence` provided.) |
+| end   | ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | Only retrieve transactions occurring on or before the specified date and time. (Ignored if `min_sequence` or `max_sequence` provided.) |
+| ledger\_min | Integer | Sequence number of the earliest ledger to search. (Ignored if `min_sequence` or `max_sequence` provided.) | 
+| ledger\_max | Integer | Sequence number of the most recent ledger to search. (Ignored if `min_sequence` or `max_sequence` provided.) |
 | limit | Integer | Number of transactions to return. Defaults to 20. |
+| min\_sequence | Integer | If provided, filter results to transactions submitted by the specified account with a Sequence number greater than or equal to this value. |
+| max\_sequence | Integer | If provided, filter results to transactions submitted by the specified account with a Sequence number less than or equal to this value. |
 | offset | Integer | Start getting results after skipping this many. Used for paginating results. |
 | descending | Boolean | Whether to order transactions with the most recent first. Defaults to true. |
 | binary | Boolean | If true, retrieve transactions as hex-formatted binary blobs instead of parsed JSON objects. Defaults to false. |
