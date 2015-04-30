@@ -186,14 +186,10 @@ function select_request(request) {
         //No body, so wipe out the current contents.
         cm_request.setValue("");
     }
+    cm_request.refresh();
 
     reset_response_area();
 };
-
-//helper to fill the default payment with a new UUID
-function get_uuid(callback) {
-    $.get(URL_BASE + "/v1/uuid").done(callback);
-}
 
 function get_path() {
     s = "";
@@ -262,24 +258,15 @@ function reset_response_area() {
     response_code.text("");
 }
 
+function change_base_url(u) {
+    window.URL_BASE = u;
+    $("#rest_host").text(u);
+}
+
 $(document).ready(function() {
     //wait for the Requests to be populated by another file
     generate_table_of_contents();
     make_commands_clickable();
-    
-    request_button.click(send_request);
-    //rest_method.change(update_method);
-
-    get_uuid(function(resp,status,xhr) {
-        requests["submit-payment"].body.client_resource_id = resp.uuid;
-        if (window.location.hash == "#submit-payment") {
-            //we might have already loaded the call by the time the AJAX
-            // completes, so refresh the default body.
-            // Debatably a bad idea, because if the AJAX takes so long that the
-            // user has already started editing the call, it'll reset it.
-            select_request("submit-payment");
-        }
-    });
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
@@ -287,4 +274,24 @@ $(document).ready(function() {
     } else {
       select_request();
     }
+    
+    if (urlParams["base_url"]) {
+        change_base_url(urlParams["base_url"]);
+    }
+    
+    request_button.click(send_request);
+    
 });
+
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();

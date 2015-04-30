@@ -198,7 +198,9 @@ Every transaction type has the same set of fundamental fields:
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
-The field `PreviousTxnID` as a transaction parameter is **DEPRECATED**. It has been replaced by [AccountTxnID](#accounttxnid). Always use `AccountTxnID` instead. (*Note:* There is also a field named `PreviousTxnID` that occurs in ledger metadata. That field has different meaning and is not deprecated.)
+**Note:** The deprecated `PreviousTxnID` transaction parameter was removed entirely in [rippled 0.28.0][]. Use `AccountTxnID` instead.
+
+[rippled 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0-rc1
 
 ### Auto-fillable Fields ###
 
@@ -253,9 +255,11 @@ The Memos field allows for arbitrary messaging data that can accompany the trans
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|--------------------------------------------------------|-------------|
-| MemoType | String | VariableLength | Arbitrary hex value; conventionally should be ASCII for a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 | MemoData | String | VariableLength | Arbitrary hex value, conventionally containing the content of the memo. |
-| MemoFormat | String | VariableLength | Arbitrary hex value, conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
+| MemoFormat | String | VariableLength | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
+| MemoType | String | VariableLength | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+
+The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
 The `Memos` field is currently limited to no more than 1KB in size (when serialized in binary format).
 
@@ -269,7 +273,7 @@ Example of a transaction with a Memos field:
     "Memos": [
         {
             "Memo": {
-                "MemoType": "5061796d656e7420726561736f6e",
+                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
                 "MemoData": "72656e74"
             }
         }
@@ -468,6 +472,8 @@ The available AccountSet flags are:
 | asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
 | asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
+
+_New in [rippled 0.28.0][]:_ You cannot send a transaction that enables `asfDisableMaster` or `asfNoFreeze` using a [regular key](#setregularkey). You must use the master key to sign the transaction.
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -918,7 +924,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temINVALID | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
 | temINVALID\_FLAG | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
 | temREDUNDANT | The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
-| temREDUNDANT\_SEND\_MAX | The [Payment](#payment) transaction specifies a `SendMax` field when the field is not needed. |
+| temREDUNDANT\_SEND\_MAX | _(Removed in [rippled 0.28.0][])_ |
 | temRIPPLE\_EMPTY | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
 
 ### tef Codes ###
@@ -933,7 +939,6 @@ These codes indicate that the transaction failed to apply, but the transaction c
 | tefBAD\_AUTH | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
 | tefBAD\_LEDGER | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
 | tefCREATED | Deprecated. This code should never be returned. |
-| tefDST\_TAG\_NEEDED | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. |
 | tefEXCEPTION | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
 | tefINTERNAL | While attempting to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [file a bug](https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&issuetype=1) to get it fixed. |
 | tefNO\_AUTH\_REQUIRED | The [TrustSet](#trustset) transaction attempted to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
@@ -1000,6 +1005,8 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
+| tecNEED_MASTER_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
+| tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0][])_ |
 
 ### tej Codes ###
 

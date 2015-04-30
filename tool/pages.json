@@ -5,6 +5,11 @@
         "html":"rippled-apis.html"
     },
     {
+        "name": "rippled Setup",
+        "md":"rippled-setup.md",
+        "html":"rippled-setup.html"
+    },
+    {
         "name": "Ripple-REST",
         "md": "ripplerest_api.md",
         "html": "ripple-rest.html"
@@ -35,6 +40,11 @@
         "html": "historical_data.html"
     },
     {
+        "name": "Ripple Charts API",
+        "md": "charts_api.md",
+        "html": "charts_api.html"
+    },
+    {
         "name": "Gateway Services",
         "md":"gateway_services_spec.md",
         "html":"gateway_services.html"
@@ -54,6 +64,7 @@
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-ripplerest.js",
         "is_apitool": true,
+        "rest_host": "https://api.ripple.com",
         "html": "rest-api-tool.html"
     },
     {
@@ -61,6 +72,7 @@
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-historical.js",
         "is_apitool": true,
+        "rest_host": "https://history.ripple.com",
         "html": "historicaldb-api-tool.html"
     },
     {
@@ -68,6 +80,14 @@
         "template":"template-ripple-api-tool.html",
         "is_apitool": true,
         "html": "ripple-api-tool.html"
+    },
+    {
+        "name": "Charts API Tool",
+        "template":"template-rest-api-tool.html",
+        "methods_js": "js/apitool-methods-charts.js",
+        "is_apitool": true,
+        "rest_host": "https://api.ripplecharts.com",
+        "html": "charts-api-tool.html"
     }
 ]
 

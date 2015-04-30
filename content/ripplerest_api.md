@@ -207,7 +207,9 @@ Available configuration options are outlined in the [__Server Configuration__](h
 
 
 ## Debug mode ##
-The server can be run in Debug Mode by running `node server.js --debug`.
+You can run the server in Debug Mode with the following command:
+
+    node server.js --debug
 
 
 ## Running Ripple-REST securely over SSL ##
@@ -461,17 +463,18 @@ Each Memo object must have at least one of the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| MemoType | String | Arbitrary string, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoType | String | A string using URL-safe characters, conventionally a unique relation type (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoFormat | String | A string using URL-safe characters, conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) |
 | MemoData | String | Arbitrary UTF-8 string representing the content of the memo. |
 
-The MemoType field is intended to support URIs, so the contents of that field should only contain characters that are valid in URIs. In other words, MemoType should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
+The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
 Example of the memos field:
 
 ```js
     "memos": [
       {
-        "MemoType": "unformatted_memo",
+        "MemoType": "http://example.com/unique/memo/relation",
         "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
       },
       {
@@ -698,14 +701,17 @@ The following URL parameters are required by this API endpoint:
   "success": true,
   "settings": {
     "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "transfer_rate": "",
+    "transfer_rate": 1004999999,
     "password_spent": false,
-    "require_destination_tag": false,
+    "require_destination_tag": true,
     "require_authorization": false,
-    "disallow_xrp": false,
+    "disallow_xrp": true,
     "disable_master": false,
-    "transaction_sequence": "36",
-    "email_hash": "",
+    "no_freeze": false,
+    "global_freeze": false,
+    "default_ripple": true,
+    "transaction_sequence": "330",
+    "email_hash": "98B4375E1D753E5B91627516F6D70977",
     "wallet_locator": "",
     "wallet_size": "",
     "message_key": "0000000000000000000000070000000300",
@@ -720,18 +726,22 @@ The response contains a `settings` object, with the following fields:
 | Field | Value | Description |
 |-------|-------|-------------|
 | account | String | The Ripple address of this account |
-| transfer_rate | String (Quoted decimal number) | If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. See [TransferRate](transactions.html#transferrate) for details. |
-| password_spent | Boolean | If false, then this account can submit a special [SetRegularKey transaction](transactions.html#setregularkey) without a transaction fee. |
+| transfer\_rate | String (Quoted decimal number) | If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. See [TransferRate](transactions.html#transferrate) for details. |
+| password\_spent | Boolean | If false, then this account can submit a special [SetRegularKey transaction](transactions.html#setregularkey) without a transaction fee. |
 | require\_destination\_tag | Boolean | If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.) |
-| require_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
-| disallow_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
-| disable_master | Boolean | If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account. |
-| transaction_sequence | String (Quoted integer) | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
+| require\_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
+| disallow\_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
+| disable\_master | Boolean | If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account. |
+| no_freeze | Boolean | If true, the account has permanently given up the ability to [freeze](https://ripple.com/files/GB-2014-02.pdf) its trust lines. |
+| global_freeze | Boolean | If true, all trust lines connected to the account are [frozen](https://ripple.com/files/GB-2014-02.pdf). |
+| default\_ripple | Boolean | If true, enables [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trustlines by default. _(New in [Ripple-REST v1.5.0](https://github.com/ripple/ripple-rest/releases/tag/1.5.0-rc1))_ |
+| transaction\_sequence | String (Quoted integer) | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| wallet_locator | String | (Not used) |
-| wallet_size | String | (Not used) |
-| message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
+| wallet\_locator | String | (Not used) |
+| wallet\_size | String | (Not used) |
+| message\_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account. |
 | domain | String | The domain that holds this account. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
+| signers | (Undefined) | (To be used for [Multi-sign](https://wiki.ripple.com/M_of_N)) |
 
 
 
@@ -755,7 +765,7 @@ POST /v1/accounts/{:address}/settings?validated=true
     "require_authorization": false,
     "disallow_xrp": false,
     "disable_master": false,
-    "transaction_sequence": 22
+    "default_ripple": false
   }
 }
 ```
@@ -791,12 +801,14 @@ The `settings` object can contain any of the following fields (any omitted field
 |-------|-------|-------------|
 | transfer_rate | String (Quoted decimal number) | If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. |
 | require\_destination\_tag | Boolean | If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.) |
-| require_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
-| disallow_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
+| require\_authorization | Boolean | If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) |
+| disallow\_xrp | Boolean | If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.) |
 | disable_master | Boolean | If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account. |
-| transaction_sequence | String (Quoted integer) | The sequence number of the next valid transaction for this account.  |
+| no_freeze | Boolean | If true, the account has permanently given up the ability to [freeze](https://ripple.com/files/GB-2014-02.pdf) its trust lines. Cannot be set to false after being true. |
+| global_freeze | Boolean | If true, [freeze](https://ripple.com/files/GB-2014-02.pdf) all trust lines connected to the account. |
+| default\_ripple | Boolean | If true, enables [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trustlines by default. _(New in [Ripple-REST v1.5.0](https://github.com/ripple/ripple-rest/releases/tag/1.5.0-rc1))_ |
 | email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| message_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
+| message\_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
 | domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
 
 *Note:* Some of the account setting fields cannot be modified by this method. For example, the `password_spent` flag is only enabled when the account uses a free SetRegularKey transaction, and only disabled when the account receives a transmission of XRP.

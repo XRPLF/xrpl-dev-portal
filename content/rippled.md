@@ -2,7 +2,7 @@
 
 The core peer-to-peer server that operates the Ripple Network is called `rippled`. Each `rippled` server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
 
-* [Building and Installing](https://wiki.ripple.com/Rippled_build_instructions)
+* [`rippled` Setup](rippled-setup.html)
 * [API Reference](#api-methods)
 * [Transaction Reference](transactions.html)
 * Client Library - [Javascript](https://github.com/ripple/ripple-lib)
@@ -26,19 +26,9 @@ https://groups.google.com/forum/#!forum/ripple-server
 
 Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Alternatively, you can run your own local copy of [`rippled`](https://ripple.com/wiki/Rippled). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
+Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
 
-### Reasons to Run Your Own rippled ###
 
-There are lots of reasons you might want to run your own `rippled` server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it.
-
-It is important that you can trust the `rippled` you use, so you can be certain that the software you are running will behave in the manner specified in its source code. Of course, you must also practice good network security to protect your server from malicious hackers. If you connect to a malicious server, there are myriad ways that it can take advantage of you or cause you to lose money. For example:
-
-* A malicious server could report that you were paid when no such payment was made
-* It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal
-* If you sent it your account's secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account's balances.
-
-Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so `rippled` has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.
 
 ### WebSocket API ###
 
@@ -82,10 +72,10 @@ If you are running your own `rippled` server, make sure that you have enabled th
 
 ### Commandline ###
 
-The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, `rippled` connects to the local instance; however, you can specify the server to connect to in the configuration file or with the `--rpc-ip` commandline argument. For example:
+The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. As a commandline client, `rippled` connects to the local instance. For example:
 
 ```
-rippled --rpc_ip=s1.ripple.com:51234 server_info
+rippled --conf=/etc/rippled.cfg server_info
 ```
 
 ## Request Formatting ##
@@ -740,7 +730,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](transactions.html#accountset-flags) |
 | account_data.LedgerEntryType | String | "AccountRoot" is the type of ledger entry that holds an account's data |
 | account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This is used to calculate the total reserve required to use the account. |
-| account_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account |
+| account\_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account node directly. **Note:** This does not include all changes to the account's trust lines and offers. Use [account_tx](#account-tx) to get a more inclusive list. |
 | account_data.Sequence | Integer | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | account_data.index | String | A unique index for the AccountRoot node that represents this account in the ledger. |
 | ledger_current_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
