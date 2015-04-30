@@ -186,6 +186,7 @@ function select_request(request) {
         //No body, so wipe out the current contents.
         cm_request.setValue("");
     }
+    cm_request.refresh();
 
     reset_response_area();
 };
@@ -257,13 +258,15 @@ function reset_response_area() {
     response_code.text("");
 }
 
+function change_base_url(u) {
+    window.URL_BASE = u;
+    $("#rest_host").text(u);
+}
+
 $(document).ready(function() {
     //wait for the Requests to be populated by another file
     generate_table_of_contents();
     make_commands_clickable();
-    
-    request_button.click(send_request);
-    //rest_method.change(update_method);
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
@@ -271,4 +274,24 @@ $(document).ready(function() {
     } else {
       select_request();
     }
+    
+    if (urlParams["base_url"]) {
+        change_base_url(urlParams["base_url"]);
+    }
+    
+    request_button.click(send_request);
+    
 });
+
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
