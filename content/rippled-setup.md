@@ -18,9 +18,9 @@ You can also run `rippled` as a client application for accessing [rippled APIs](
 
 Most of the time, we describe the Ripple Network as one collective, singular entity -- and that's mostly true. There is one production Ripple Network, and all business that takes place on Ripple occurs within the production Ripple Network.
 
-However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. Contact [bwilson@ripple.com](mailto:bwilson@ripple.com) to request Test Net XRP.
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. Contact [decentralization-list@ripple.com](mailto:decentralization-list@ripple.com) to request Test Net XRP.
 
-**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to used to test various properties of server configuration, network topology, and network performance.
+**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
 Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). Ripple Labs may also reward reliable Test Net validators with production-network XRP.
 
