@@ -18,15 +18,7 @@ You can also run `rippled` as a client application for accessing [rippled APIs](
 
 Most of the time, we describe the Ripple Network as one collective, singular entity -- and that's mostly true. There is one production Ripple Network, and all business that takes place on Ripple occurs within the production Ripple Network.
 
-However, sometimes you may want to do tests and experiments without interacting
-with the core network. That's why Ripple Labs started the [Ripple Test
-Net](https://rippletest.net/), an "alternate universe" network, which can act as
-a testing ground for applications and the `rippled` server itself, without
-impacting the business operations of everyday Ripple users. The Ripple Test Net
-(also known as the AltNet) has a separate supply of TestNet-only XRP, which
-Ripple Labs gives away for free to parties interested in developing applications
-on the Test Net. XRP is automatically generated and distributed to wallets for
-all new accounts on rippletest.net.
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. XRP is automatically generated and distributed to wallets for all new accounts on rippletest.net.
 
 **Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
