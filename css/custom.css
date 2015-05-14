@@ -90,9 +90,17 @@ body .content-root {
 }
 
 /* code samples scrolling */
-code { max-height: 14em; overflow: auto;}
+.code_sample code { max-height: 14em; overflow: auto;}
+.code_sample code.expanded,
+.code_sample .hljs.expanded {
+    max-height: none;
+    width: 100%;
+}
+
+.code_sample { position: relative; }
+.code_sample .code_toggler { position: absolute; bottom: 0; right: 0; }
+
 .content code { color: #111; }
-.expanded { max-height: none; overflow: none;}
 
 /* code tabs css */
 .multicode {

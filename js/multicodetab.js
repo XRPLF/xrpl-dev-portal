@@ -16,7 +16,7 @@ jQuery.fn.multicode_tabs = function() {
         // for each code, give it a unique ID and wrap it in a pre
         cb_area.children('code').each(function(index2,el2) {
             var linkid = 'code-'+index+'-'+index2;
-            $(el2).wrap("<div id='"+linkid+"'><pre>");
+            $(el2).wrap("<div id='"+linkid+"' class='code_sample'><pre>");
             //also put in a link to this in the tab header ul
             $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
         });
