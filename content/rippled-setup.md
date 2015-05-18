@@ -22,8 +22,6 @@ However, sometimes you may want to do tests and experiments without interacting 
 
 **Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
-Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). Ripple Labs may also reward reliable Test Net validators with production-network XRP.
-
 Over time, there may also be additional, smaller test networks for specific purposes.
 
 ### Parallel Networks and Consensus ###
@@ -183,34 +181,24 @@ Becoming a validator that participates in the network involves several steps. In
             "validation_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4"
         }
 
-4. Stop rippled:
-
-        $ sudo service rippled stop
-
-5. Add the generated validator signing key from above to your `rippled.cfg`:
+4. Add the generated validator signing key from above to your `rippled.cfg`:
 
         [validation_seed]
         ssdecohJMDPFuUPDkmG1w4objZyp4
         
-6. (Optional) If connecting to a [parallel network](#parallel-networks), add core validator IP addresses of parallel network to `rippled.cfg`:
+5. (Optional) If connecting to a [parallel network](#parallel-networks), add core validator IP addresses of parallel network to `rippled.cfg`:
 
   For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) core validators:
 
         [ips_fixed]
-        54.92.66.122 51235
-        54.67.72.173 51235
         52.16.66.76 51235
-        54.93.66.235 51235
-        52.74.67.18 51235
-        52.64.9.71 51235
-        54.207.20.165 51235
-        54.172.212.33 51235
         52.11.28.194 51235
         54.94.245.104 51235
-        54.65.200.22 51235
-        52.1.205.132 51235
+        52.11.181.30 51235
+        52.68.19.29 51235
+        41.79.78.42 51235
 
-7. Add core validator validation public keys to `rippled.cfg`:
+6. Add core validator validation public keys to `rippled.cfg`:
 
   The default configuration includes core validators operated by Ripple Labs for the production Ripple Network:
   
@@ -224,30 +212,24 @@ Becoming a validator that participates in the network involves several steps. In
   If you want to connect to the [Ripple Test Net](#parallel-networks), you would add the validation public keys of the core validators on that network instead:
 
         [validators]
-        n9LnZ1AiyHmytkhLUr89dmL76uxZLzzyregvQVZFkVfqEQTCpg7B
-        n9LJWexXc9wxzUKWZe4faTS4N9DUba3jNsByERZSa8MJc2bhCF7c
-        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
-        n9LxyXSSrTZ482ceep9WGQnT2nknfzFMFgNL4wMjTUn3SfF3rhtS
-        n9MTPLhEEjxcWHfqsXQhFoSUKaqYvU4E7B4yke39EMFm2DhFr43F
-        n9Lw3j7THPhKLz2uDqBBWwyxHQC1Foyr3M6JeWCVyu7uhnhL6HA5
-        n9L2XLFvcdriK34bCNXexzKMVcsZ9i4UG9J4pykR5c3J8gvBB6fw
-        n9JCK3M4ci7b1XRq2wr1Ckd1HNq3Cg7NWrWiKyzJa4R5J489QGer
-        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
+        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
+        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
+        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
         n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
-        n9J1voqeu6iZQiLXaMofLeMbv8mbPskJWGYRtjdo8rmpvNdQRyEn
-        n9KuCFBLq2GD4vJtoL3tebQJbhcHSd7tMqFM1x9bPK9wSagPJdd1
-        
-8. Adjust the validation quorum value in `rippled.cfg`:
+        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
+        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
+
+7. Adjust the validation quorum value in `rippled.cfg`:
 
   This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
 
   For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
 
         [validation_quorum]
-        10
+        4
 
-9. Start `rippled` untrusted validator
+8. Restart `rippled` validator
 
-        $ sudo service rippled start
+        $ sudo service rippled restart
 
 
