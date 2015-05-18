@@ -192,6 +192,15 @@
     _description: 'Returns a list of transactions that applied to a specified account.',
     _link: 'rippled-apis.html#account-tx'
   });
+  
+  Request('account_currencies', {
+    account:           sample_address,
+    strict: true,
+    ledger_index: "validated",
+    account_index: 0,
+    _description: 'Returns a list of currencies the account can send or receive.',
+    _link: 'rippled-apis.html#account-currencies'
+  });
 
   /* ---- ---- */
 
