@@ -460,14 +460,17 @@ This page deals with all the Public Commands available.
 * [`tx_history` - Retrieve info about all recent transactions](#tx-history)
 * [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
 
-The `wallet_accounts` command is deprecated and may be removed without further notice.
-
 ## Admin Commands ##
 
-Additionally, this page contains an explanation of the following important admin-only command:
+Additionally, this page contains an explanation of the following admin-only commands:
 
 * [`can_delete` - Allow online deletion of ledgers up to a specific ledger.](#can-delete)
+* [`ledger_accept` - Close and advance the ledger in stand-alone mode.](#ledger-accept)
 * [`wallet_propose` - Generate keys for a new account](#wallet-propose)
+
+The following admin commands are deprecated and may be removed without further notice: `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score`, and `wallet_seed`.
+
+(For UNL management, use the the configuration file. To generate wallet keys, use `wallet_propose`.)
 
 For information about other Admin Commands, consult [the old wiki documentation](https://ripple.com/wiki/JSON_Messages).
 
@@ -2656,6 +2659,62 @@ The response follows the [standard format](#response-formatting), with a success
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
+## ledger_accept ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
+
+The `ledger_accept` method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
+
+*The `ledger_accept` method is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+   "id": "Accept my ledger!",
+   "command": "ledger_accept"
+}
+```
+
+*Commandline*
+```
+#Syntax: ledger_accept
+rippled -- ledger_accept
+```
+</div>
+
+The request accepts no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+```js
+{
+  "id": "Accept my ledger!",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 6643240
+  }
+}
+```
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger\_current\_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
+
+**Note:** When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.
+
 
 
 # Managing Transactions #
@@ -2699,7 +2758,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: tx transaction [binary]
-tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
+rippled -- tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 
 </div>
