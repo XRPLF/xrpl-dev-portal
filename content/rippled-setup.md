@@ -30,8 +30,6 @@ all new accounts on rippletest.net.
 
 **Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
-Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). Ripple Labs may also reward reliable Test Net validators with production-network XRP.
-
 Over time, there may also be additional, smaller test networks for specific purposes.
 
 ### Parallel Networks and Consensus ###
