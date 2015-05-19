@@ -470,7 +470,7 @@ Additionally, this page contains an explanation of the following admin-only comm
 
 The following admin commands are deprecated and may be removed without further notice: `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score`, and `wallet_seed`.
 
-(For UNL management, use the the configuration file. To generate wallet keys, use `wallet_propose`.)
+(For UNL management, use the the configuration file. To generate wallet keys, use [`wallet_propose`](#wallet-propose).)
 
 For information about other Admin Commands, consult [the old wiki documentation](https://ripple.com/wiki/JSON_Messages).
 
