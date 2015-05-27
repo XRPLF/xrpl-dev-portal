@@ -106,20 +106,14 @@ This document assumes that you are using Ubuntu 14.04.
         [port_rpc]
         port = 51234
         ip = 0.0.0.0
-        admin = allow
+        admin = 127.0.0.1
         protocol = http
 
         [port_ws]
         port = 51233
         ip = 0.0.0.0
-        admin = allow
+        admin = 127.0.0.1
         protocol = ws
-
-        [peer_private]
-        1
-
-        [ledger_history]
-        full
 
         [ssl_verify]
         0
@@ -130,29 +124,66 @@ This document assumes that you are using Ubuntu 14.04.
         time.nist.gov
         pool.ntp.org
 
-        [rpc_allow_remote]
-        1
-
         [node_db]
         type=nudb
-        path=/mnt/rippled/db/nudb
+        path=/var/lib/rippled/db/nudb
 
         [database_path]
-        /mnt/rippled/db
+        /var/lib/rippled/db
+
+        [debug_logfile]
+        /var/log/rippled/debug.log
 
         [rpc_startup]
         {"command": "log_level", "severity": "warning"}
 
    See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for additional configuration options.
 
-4. Give rippled permission to mount:
+4. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
 
-        $ sudo mkdir /mnt/rippled
-        $ sudo chown rippled:rippled -R /mnt/rippled
+  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) validators:
 
-5. Start the rippled service:
+        [ips]
+        52.16.66.76 51235
+        52.11.28.194 51235
+        54.94.245.104 51235
+        52.11.181.30 51235
+        52.68.19.29 51235
+        41.79.78.42 51235
 
-        $ sudo service rippled start
+5. Add trusted validation public keys to `rippled.cfg`:
+
+  The default configuration includes validators operated by Ripple Labs for the production Ripple Network:
+  
+        [validators]
+        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
+        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
+        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
+        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
+        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
+
+  If you want to connect to the [Ripple Test Net](#parallel-networks), you could add the validation public keys of the Ripple Labs validators on that network instead:
+
+        [validators]
+        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
+        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
+        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
+        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
+        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
+        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
+
+6. Adjust the validation quorum value in `rippled.cfg`:
+
+  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
+
+  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
+
+        [validation_quorum]
+        4
+
+7. Restart rippled:
+
+        $ sudo service rippled restart
         
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple Network.
 
@@ -185,50 +216,8 @@ Becoming a validator that participates in the network involves several steps. In
 
         [validation_seed]
         ssdecohJMDPFuUPDkmG1w4objZyp4
-        
-5. (Optional) If connecting to a [parallel network](#parallel-networks), add core validator IP addresses of parallel network to `rippled.cfg`:
 
-  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) core validators:
-
-        [ips_fixed]
-        52.16.66.76 51235
-        52.11.28.194 51235
-        54.94.245.104 51235
-        52.11.181.30 51235
-        52.68.19.29 51235
-        41.79.78.42 51235
-
-6. Add core validator validation public keys to `rippled.cfg`:
-
-  The default configuration includes core validators operated by Ripple Labs for the production Ripple Network:
-  
-        [validators]
-        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
-        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
-        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
-        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
-        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
-
-  If you want to connect to the [Ripple Test Net](#parallel-networks), you would add the validation public keys of the core validators on that network instead:
-
-        [validators]
-        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
-        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
-        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
-        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
-        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
-        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
-
-7. Adjust the validation quorum value in `rippled.cfg`:
-
-  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
-
-  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
-
-        [validation_quorum]
-        4
-
-8. Restart `rippled` validator
+5. Restart `rippled` validator
 
         $ sudo service rippled restart
 
