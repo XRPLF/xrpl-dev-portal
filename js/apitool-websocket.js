@@ -92,17 +92,17 @@
   /* ---- ---- */
 
   Request('server_info', {
-    _description: 'Returns information about the state of the server for human consumption. Results are subject to change without notice.',
+    _description: 'Get information about the state of the server for human consumption. Results are subject to change without notice.',
     _link: 'rippled-apis.html#server-info'
   });
 
   Request('server_state', {
-    _description: 'Returns information about the state of the server for machine consumption.',
+    _description: 'Get information about the state of the server for machine consumption.',
     _link: 'rippled-apis.html#server-state'
   });
 
   Request('ping', {
-    _description: 'This command is used to check connectivity for clients. Websocket clients can use this to determine turn around time and actively discover loss of connectivity to a server.',
+    _description: 'Check connectivity to the server.',
     _link: 'rippled-apis.html#ping'
   });
 
@@ -142,17 +142,17 @@
     account_root:  sample_address,
     ledger_index:   'validated',
     ledger_hash:  void(0),
-    _description: 'Returns a ledger entry. For untrusted servers, the index option provides raw access to ledger entries and proof.',
+    _description: 'Get a single node from the ledger',
     _link: 'rippled-apis.html#ledger-entry'
   });
 
   Request('ledger_closed', {
-    _description: 'Returns the most recent closed ledger index. If a validation list has been provided, then validations should be available.',
+    _description: 'Get the most recent closed ledger index.',
     _link: 'rippled-apis.html#ledger-closed'
   });
 
   Request('ledger_current', {
-    _description: 'Returns the current proposed ledger index. Proof is not possible for the current ledger. This command is primarily useful for testing.',
+    _description: 'Get the current in-progress ledger index.',
     _link: 'rippled-apis.html#ledger-current'
   });
 
@@ -160,7 +160,7 @@
 
   Request('account_info', {
     account: sample_address,
-    _description: 'Returns information about the specified account.',
+    _description: 'Get information about the specified account.',
     _link: 'rippled-apis.html#account-info'
   });
 
@@ -168,7 +168,7 @@
     account:        sample_address,
     account_index:  void(0),
     ledger:         'current',
-    _description: 'Returns information about the ripple credit lines for the specified account.',
+    _description: "Get a list of trust lines connected to an account.",
     _link: 'rippled-apis.html#account-lines'
   });
 
@@ -176,7 +176,7 @@
     account:        sample_address,
     account_index:  void(0),
     ledger:         'current',
-    _description: 'Returns the outstanding offers for a specified account.',
+    _description: 'Get a list of offers created by an account.',
     _link: 'rippled-apis.html#account-offers'
   });
 
@@ -189,7 +189,7 @@
     limit:             10,
     forward:           false,
     marker:            void(0),
-    _description: 'Returns a list of transactions that applied to a specified account.',
+    _description: 'Get a list of transactions that applied to a specified account.',
     _link: 'rippled-apis.html#account-tx'
   });
   
@@ -208,7 +208,7 @@
     tx_hash:       sample_tx,
     ledger_index:  348734,
     ledger_hash:   void(0),
-    _description: 'Returns information about a specified transaction.',
+    _description: 'Get information about a specified transaction.',
     _link: 'rippled-apis.html#transaction-entry'
   });
 
