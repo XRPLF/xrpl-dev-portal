@@ -283,6 +283,35 @@ Request("Get Server Status", {
 
 Request("UTILITIES");
 
+Request("Sign Transaction", {
+    method: POST,
+    path: "/v1/transaction/sign",
+    description: "Sign a Ripple transaction in preparation for submission",
+    link: "#sign-transaction",
+    body: {
+        "secret": DEFAULT_SECRET,
+        "tx_json": {
+            "Flags": 0,
+            "TransactionType": "AccountSet",
+            "Account": DEFAULT_ADDRESS_1,
+            "Domain": "726970706C652E636F6D",
+            "LastLedgerSequence": 8820052,
+            "Fee": "12",
+            "Sequence": 2938
+        }
+    }
+});
+
+Request("Submit Transaction", {
+    method: POST,
+    path: "/v1/transaction/submit",
+    description: "Submit a signed transaction to the Ripple network",
+    link: "#submit-transaction",
+    body: {
+        "tx_blob": "12000322000000002400000B7A201B0086961168400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D87446304402207660BDEF67105CE1EBA9AD35DC7156BAB43FF1D47633199EE257D70B6B9AAFBF0220723E54B026DF8C6FF19DC7CBEB6AB458C7D367B2BE42827E91CBA934143F2729770A726970706C652E636F6D81144FBFF73DA4ECF9B701940F27341FA8020C313443"
+    }
+});
+
 Request("Retrieve Ripple Transaction", {
     method: GET,
     path: "/v1/transactions/{:id}",
