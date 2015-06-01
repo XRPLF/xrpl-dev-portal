@@ -23,7 +23,7 @@
     local_fee:      false,
     servers: [
       {
-        host:    's1.ripple.com',
+        host:    's2.ripple.com',
         port:    443,
         secure:  true
       }
@@ -87,6 +87,7 @@
   };
 
   var sample_address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+  var sample_address_2 = 'ra5nK24KXen9AHvsdFTKHSANinZseWnPcX';
   var sample_tx = 'E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7';
 
   /* ---- ---- */
@@ -243,8 +244,12 @@
   Request('path_find', {
     subcommand: 'create',
     source_account: sample_address,
-    destination_account: 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
-    destination_amount: ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
+    destination_account: sample_address_2,
+    destination_amount: {
+        "currency": "USD",
+        "value": "0.01",
+        "issuer": sample_address_2
+    },
     _description: 'Start or stop searching for payment paths between specified accounts.',
     _link: 'rippled-apis.html#path-find',
     _stream: true
@@ -255,8 +260,12 @@
     ledger_index : void(0),
     source_account : sample_address,
     source_currencies : [ { currency : 'USD' } ],
-    destination_account : 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
-    destination_amount : ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
+    destination_account : sample_address_2,
+    destination_amount : {
+        "currency": "USD",
+        "value": "0.01",
+        "issuer": sample_address_2
+    },
     _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
     _link: 'rippled-apis.html#ripple-path-find'
   });
