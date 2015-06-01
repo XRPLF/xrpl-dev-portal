@@ -219,7 +219,7 @@ The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specify
 
 Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an admin connection, it relays the transaction even under high load, so long as the fee meets the global base.)
 
-Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the fee higher or wait for the load to decrease.
+Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the `Fee` value higher or wait for the load to decrease.
 
 For more information, see the [Transaction Fee wiki article](https://wiki.ripple.com/Transaction_Fee).
 
@@ -329,7 +329,7 @@ Example payment:
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). (See [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including transfer fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP `Fee` for submitting the transaction](#transaction-fees). (Also see [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 
 ### Special issuer Values for SendMax and Amount ###
 
