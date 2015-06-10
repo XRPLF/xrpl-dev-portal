@@ -699,7 +699,11 @@ var urlParams;
         });
     }
 
-    remote.connect(init);
+    try {
+        remote.connect(init);
+    } catch {
+        alert("Can't connect. Maybe blocked by cross-origin-scripting protections?");
+    }
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
