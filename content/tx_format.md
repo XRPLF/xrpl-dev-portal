@@ -410,7 +410,7 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the global ledger]((https://wiki.ripple.com/Ledger_Format#AccountRoot).
+An AccountSet transaction modifies the properties of an [account in the global ledger](https://wiki.ripple.com/Ledger_Format#AccountRoot).
 
 Example AccountSet:
 
