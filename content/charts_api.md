@@ -203,6 +203,8 @@ POST /api/account_offers_exercised
 
 </div>
 
+[Try it! >](charts-api-tool.html#account-offers-exercised)
+
 The request includes the following body parameters:
 
 | Field | Value | Description |
@@ -339,12 +341,11 @@ Retrieve information about the creation of new Ripple accounts.
 ```
 POST /api/accounts_created
 {
-    "startTime": "2014-01-01T10:00:00.000Z",
-    "endTime": "2015-03-15T10:00:00.000Z",
-    "timeIncrement": "month",
+    "startTime": "2014-01-01T00:00:00.000Z",
+    "endTime": "2015-03-31T00:00:00.000Z",
+    "timeIncrement": "week",
     "descending": true,
-    "reduce": true,
-    "format": "json"
+    "reduce": true
 }
 ```
 
@@ -353,17 +354,17 @@ POST /api/accounts_created
 ```
 POST /api/accounts_created
 {
-    "startTime": "2015-03-15T09:00:00.000Z",
-    "endTime": "2015-03-15T17:00:00.000Z",
+    "startTime": "2015-01-01T00:00:00.000Z",
+    "endTime": "2015-02-28T00:00:00.000Z",
+    "timeIncrement": "week",
     "descending": true,
-    "reduce": false,
-    "limit": 5,
-    "offset": 0,
     "format": "json"
 }
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#accounts-created)
 
 The request includes the following body parameters:
 
@@ -371,7 +372,7 @@ The request includes the following body parameters:
 |-------|-------|-------------|
 | startTime | String ([Date-Time][]) | Retrieve information starting at this time. |
 | endTime | String ([Date-Time][]) | Retrieve information ending at this time. |
-| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `year`, `month`, `day`, `hour`, `minute`, or `second`. The value `all` collapses the results into just one interval. Defaults to `all`. |
+| timeIncrement | String | (Optional) Divide results into intervals of the specified length: `week`, `day`, `hour`. The value `all` collapses the results into just one interval. Defaults to `all`. |
 | descending | Boolean | (Optional) If true, return results in descending order. Defaults to false. |
 | reduce | Boolean | (Optional) If `false`, include accounts individually instead of collapsing them into results over time. Ignored if `timeIncrement` is provided. Defaults to `true`. |
 | limit | Number | (Optional) If reduce is `false`, this value defines the maximum number of transactions to return in one response. Use with `offset` to paginate results. Defaults to 500. |
@@ -387,115 +388,60 @@ The format of the response depends on the `format` and `reduce` parameters from 
 *Reduced*
 
 ```
-{
-    "startTime": "2015-03-15T10:00:00+00:00",
-    "endTime": "2014-01-01T10:00:00+00:00",
-    "timeIncrement": "month",
-    "total": 97417,
-    "results": [
-        {
-            "time": "2015-03-01T00:00:00+00:00",
-            "count": 2388
-        },
-        {
-            "time": "2015-02-01T00:00:00+00:00",
-            "count": 6770
-        },
-        {
-            "time": "2015-01-01T00:00:00+00:00",
-            "count": 7584
-        },
-        {
-            "time": "2014-12-01T00:00:00+00:00",
-            "count": 10760
-        },
-        {
-            "time": "2014-11-01T00:00:00+00:00",
-            "count": 6834
-        },
-        {
-            "time": "2014-10-01T00:00:00+00:00",
-            "count": 5787
-        },
-        {
-            "time": "2014-09-01T00:00:00+00:00",
-            "count": 4146
-        },
-        {
-            "time": "2014-08-01T00:00:00+00:00",
-            "count": 5301
-        },
-        {
-            "time": "2014-07-01T00:00:00+00:00",
-            "count": 7820
-        },
-        {
-            "time": "2014-06-01T00:00:00+00:00",
-            "count": 7031
-        },
-        {
-            "time": "2014-05-01T00:00:00+00:00",
-            "count": 10421
-        },
-        {
-            "time": "2014-04-01T00:00:00+00:00",
-            "count": 4771
-        },
-        {
-            "time": "2014-03-01T00:00:00+00:00",
-            "count": 5195
-        },
-        {
-            "time": "2014-02-01T00:00:00+00:00",
-            "count": 5299
-        },
-        {
-            "time": "2014-01-01T00:00:00+00:00",
-            "count": 7310
-        }
-    ]
-}
+[
+  [
+    "time",
+    "count"
+  ],
+  [
+    "2015-03-31T00:00:00+00:00",
+    102478
+  ]
+]
 ```
 
 *Expanded*
 
 ```
 {
-    "startTime": "2015-03-15T17:00:00+00:00",
-    "endTime": "2015-03-15T09:00:00+00:00",
-    "total": 5,
-    "results": [
-        {
-            "time": "2015-03-15T15:34:20+00:00",
-            "account": "rK6gVSDPNXeMPSR4p8LKx8yHVKST1qs6gX",
-            "txHash": "75FB423CD1319A7DA68BD12B0918777D93111FB8FAD964E2A5C5CF99DC35F491",
-            "ledgerIndex": 12273337
-        },
-        {
-            "time": "2015-03-15T15:31:10+00:00",
-            "account": "rUPGhr8vhPuobxnKGbWS5dAvUfL7LmjpNQ",
-            "txHash": "FB018F1D19DAE75529F13F5B4F296817E62AAA2E032836AEA95A87F68C9C12C4",
-            "ledgerIndex": 12273295
-        },
-        {
-            "time": "2015-03-15T14:13:30+00:00",
-            "account": "rap2yHgBKNKkb8D7PTdQNPEZM1D9YJSDJe",
-            "txHash": "EF0CB7051983C16775E8FCDAE62760870B29053A751548B17ED526CD62F1A2A1",
-            "ledgerIndex": 12272263
-        },
-        {
-            "time": "2015-03-15T14:11:10+00:00",
-            "account": "rnEffWJFRd1VVFbKoEXjhGR9gtqnJKTt1X",
-            "txHash": "8CA751FD309BF5767339888AA410786FC2B7007B8C01941A91F7679BF92930B6",
-            "ledgerIndex": 12272233
-        },
-        {
-            "time": "2015-03-15T13:42:20+00:00",
-            "account": "r4anmJmbTQ4C7ei1w2jSmFDxthypWaJTmp",
-            "txHash": "A19D55662957DCC450FC91DBB3681CD917EFE00D4F902F7A0D196015D832141F",
-            "ledgerIndex": 12271842
-        }
-    ]
+  "startTime": "2015-02-28T00:00:00+00:00",
+  "endTime": "2015-01-01T00:00:00+00:00",
+  "timeIncrement": "week",
+  "total": 13814,
+  "results": [
+    {
+      "time": "2015-02-23T00:00:00+00:00",
+      "count": 1381
+    },
+    {
+      "time": "2015-02-16T00:00:00+00:00",
+      "count": 1551
+    },
+    {
+      "time": "2015-02-09T00:00:00+00:00",
+      "count": 1827
+    },
+    {
+      "time": "2015-02-02T00:00:00+00:00",
+      "count": 2017
+    },
+    {
+      "time": "2015-01-26T00:00:00+00:00",
+      "count": 1690
+    },
+    {
+      "time": "2015-01-19T00:00:00+00:00",
+      "count": 1638
+    },
+    {
+      "time": "2015-01-12T00:00:00+00:00",
+      "count": 1565
+    },
+    {
+      "time": "2015-01-05T00:00:00+00:00",
+      "count": 2145
+    }
+  ]
 }
 ```
 
@@ -603,6 +549,8 @@ POST /api/exchange_rates
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#exchange-rates)
 
 The request includes the following body parameters:
 
@@ -752,6 +700,8 @@ POST /api/issuer_capitalization
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#issuer-capitalization)
 
 The request includes the following body parameters:
 
@@ -962,6 +912,8 @@ POST /api/ledgers_closed
 
 </div>
 
+[Try it! >](charts-api-tool.html#ledgers-closed)
+
 The request includes the following body parameters:
 
 | Field | Value | Description |
@@ -1161,6 +1113,8 @@ POST /api/market_traders
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#market-traders)
 
 The request includes the following body parameters:
 
@@ -1817,6 +1771,8 @@ POST /api/offers
 
 </div>
 
+[Try it! >](charts-api-tool.html#offers)
+
 The request includes the following body parameters:
 
 | Field | Value | Description |
@@ -2022,6 +1978,8 @@ POST /api/offers_exercised
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#offers-exercised)
 
 The request includes the following body parameters:
 
@@ -2233,8 +2191,8 @@ The total volume is normalized in terms of XRP and then optionally converted to 
 ```
 POST /api/top_markets
 {
-    "startTime": "2015-01-15T00:00:00.000Z",
-    "endTime": "2015-01-16T00:00:00.000Z",
+    "startTime": "2015-01-07T00:00:00.000Z",
+    "interval": "week",
     "exchange": {
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -2244,12 +2202,14 @@ POST /api/top_markets
 
 </div>
 
+[Try it! >](charts-api-tool.html#top-markets)
+
 The request includes the following body parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| startTime | String ([Date-Time][]) | Retrieve information starting at this time. Defaults to 24 hours before the current time. |
-| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
+| startTime | String ([Date-Time][]) | Retrieve information from the interval containing or starting from this time. Defaults to 24 hours before the current time. |
+| interval | String | Return results from an interval of this length. |
 | exchange | Object ([Currency Object][]) | (Optional) Represent the volume of each market in terms of this currency. Defaults to XRP. |
 
 #### Response Format ####
@@ -2258,340 +2218,341 @@ An example of a successful response:
 
 ```js
 {
-    "startTime": "2015-01-15T00:00:00+00:00",
-    "endTime": "2015-01-16T00:00:00+00:00",
-    "exchange": {
+  "rowkey": "trade_volume|week|20150105000000",
+  "components": [
+    {
+      "base": {
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0004093940882798027,
+      "count": 12818,
+      "amount": 1058808.8475284327,
+      "convertedAmount": 1058808.8475284327
     },
-    "exchangeRate": 0.01646395158719886,
-    "total": 2378736.7119640484,
-    "count": 45086,
-    "components": [
-        {
-            "base": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 1,
-            "count": 3291,
-            "amount": 203276.6053861964,
-            "convertedAmount": 203276.6053861964
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 209.0645112082856,
-            "count": 2378,
-            "amount": 467.1872824011091,
-            "convertedAmount": 97672.28083791517
-        },
-        {
-            "base": {
-                "currency": "CNY",
-                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.16300752590344095,
-            "count": 1300,
-            "amount": 352600.6074331275,
-            "convertedAmount": 57476.55264972454
-        },
-        {
-            "base": {
-                "currency": "CNY",
-                "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.165410686020017,
-            "count": 1978,
-            "amount": 598934.9857105609,
-            "convertedAmount": 99070.24686777295
-        },
-        {
-            "base": {
-                "currency": "CNY",
-                "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.16611418005077094,
-            "count": 5249,
-            "amount": 689671.2643442968,
-            "convertedAmount": 114564.17658113135
-        },
-        {
-            "base": {
-                "currency": "USD",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 1.015674437867591,
-            "count": 5887,
-            "amount": 332291.09141223435,
-            "convertedAmount": 337499.5674785294
-        },
-        {
-            "base": {
-                "currency": "EUR",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 1.1885584523292927,
-            "count": 2250,
-            "amount": 56085.58908399305,
-            "convertedAmount": 66661.00095964746
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 208.0331642429944,
-            "count": 6260,
-            "amount": 1586.032424195194,
-            "convertedAmount": 329947.34379731334
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0,
-            "count": 0,
-            "amount": 0,
-            "convertedAmount": 0
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.00845173776394386,
-            "count": 2883,
-            "amount": 17970017.17694474,
-            "convertedAmount": 151877.8727931037
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.008480693452054242,
-            "count": 2931,
-            "amount": 23369930.598202318,
-            "convertedAmount": 198193.21739913648
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.008684460374378918,
-            "count": 79,
-            "amount": 4066843.5686033685,
-            "convertedAmount": 35318.341820333706
-        },
-        {
-            "base": {
-                "currency": "KRW",
-                "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
-            },
-            "counter": {
-                "currency": "XRP"
-            },
-            "rate": 0.0009481132167155902,
-            "count": 1427,
-            "amount": 182823180.8616419,
-            "convertedAmount": 173337.07409690745
-        },
-        {
-            "base": {
-                "currency": "EUR",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "rate": 1.1885584523292927,
-            "count": 753,
-            "amount": 25970.558828017478,
-            "convertedAmount": 30867.5272067553
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "rate": 209.0645112082856,
-            "count": 868,
-            "amount": 214.60263271777458,
-            "convertedAmount": 44865.79451315278
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "rate": 208.0331642429944,
-            "count": 1383,
-            "amount": 313.98277229154746,
-            "convertedAmount": 65318.8296375982
-        },
-        {
-            "base": {
-                "currency": "BTC",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "counter": {
-                "currency": "BTC",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "rate": 209.0645112082856,
-            "count": 1426,
-            "amount": 352.3729308907017,
-            "convertedAmount": 73668.67455969556
-        },
-        {
-            "base": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "rate": 1,
-            "count": 1481,
-            "amount": 107909.9976469439,
-            "convertedAmount": 107909.9976469439
-        },
-        {
-            "base": {
-                "currency": "CNY",
-                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "rate": 0.16300752590344095,
-            "count": 341,
-            "amount": 114310.06014186383,
-            "convertedAmount": 18633.40008959876
-        },
-        {
-            "base": {
-                "currency": "CNY",
-                "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "rate": 0.165410686020017,
-            "count": 350,
-            "amount": 187183.97960387194,
-            "convertedAmount": 30962.230478233323
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-            },
-            "rate": 0.00845173776394386,
-            "count": 154,
-            "amount": 739711.1344496784,
-            "convertedAmount": 6251.844529438101
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
-            },
-            "counter": {
-                "currency": "USD",
-                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-            },
-            "rate": 0.00845173776394386,
-            "count": 1060,
-            "amount": 5706197.2332384875,
-            "convertedAmount": 48227.282644673694
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
-            },
-            "counter": {
-                "currency": "CNY",
-                "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
-            },
-            "rate": 0.00845173776394386,
-            "count": 219,
-            "amount": 1215826.9527283495,
-            "convertedAmount": 10275.850570794979
-        },
-        {
-            "base": {
-                "currency": "JPY",
-                "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
-            },
-            "counter": {
-                "currency": "JPY",
-                "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
-            },
-            "rate": 0.00845173776394386,
-            "count": 1138,
-            "amount": 9094106.036672123,
-            "convertedAmount": 76860.9994194516
-        }
-    ]
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 5038,
+      "amount": 1211.8976720489186,
+      "convertedAmount": 328802.69694533286
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.002517187670715517,
+      "count": 5792,
+      "amount": 1886016.212859644,
+      "convertedAmount": 306740.69197435805
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.002487380215448072,
+      "count": 7069,
+      "amount": 2631245.752126516,
+      "convertedAmount": 433072.6959400096
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0024999228710402563,
+      "count": 20660,
+      "amount": 1318591.835624731,
+      "convertedAmount": 215936.1429155409
+    },
+    {
+      "base": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0003945533232038895,
+      "count": 33575,
+      "amount": 1480087.1064381741,
+      "convertedAmount": 1535759.2393204158
+    },
+    {
+      "base": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.00033245421053307723,
+      "count": 13892,
+      "amount": 326411.42570749344,
+      "convertedAmount": 401952.82176561374
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0000014787515510977754,
+      "count": 22939,
+      "amount": 5535.83428387394,
+      "convertedAmount": 1532602.165544437
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.00002019256666183595,
+      "count": 4,
+      "amount": 0.00008287404598700001,
+      "convertedAmount": 0.0016802294164530685
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.048446318835714555,
+      "count": 11387,
+      "amount": 90721573.94254778,
+      "convertedAmount": 766639.7972870923
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.049622732367643606,
+      "count": 7604,
+      "amount": 97770194.62368087,
+      "convertedAmount": 806617.0035207476
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.04957853568065961,
+      "count": 650,
+      "amount": 21241310.716636248,
+      "convertedAmount": 175399.8361451728
+    },
+    {
+      "base": {
+        "currency": "KRW",
+        "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.45875087906923134,
+      "count": 3309,
+      "amount": 643024533.754439,
+      "convertedAmount": 573841.8273378739
+    },
+    {
+      "base": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.00033245421053307723,
+      "count": 4408,
+      "amount": 89233.81725732498,
+      "convertedAmount": 109885.19953232592
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 1135,
+      "amount": 308.8960869071788,
+      "convertedAmount": 83807.29561038432
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0000014787515510977754,
+      "count": 5705,
+      "amount": 1097.9447905182549,
+      "convertedAmount": 303967.29333071
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 1855,
+      "amount": 588.0555584971066,
+      "convertedAmount": 159546.6828982718
+    },
+    {
+      "base": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0004093940882798027,
+      "count": 3623,
+      "amount": 536607.4024021383,
+      "convertedAmount": 536607.4024021383
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.002517187670715517,
+      "count": 871,
+      "amount": 426317.9599118283,
+      "convertedAmount": 69336.13037513298
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.002487380215448072,
+      "count": 833,
+      "amount": 415914.584286911,
+      "convertedAmount": 68454.74245510166
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.048446318835714555,
+      "count": 441,
+      "amount": 2687850.8059423557,
+      "convertedAmount": 22713.59840285114
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.048446318835714555,
+      "count": 5186,
+      "amount": 27619591.096972037,
+      "convertedAmount": 233398.48284757807
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "rate": 0.048446318835714555,
+      "count": 1008,
+      "amount": 7269403.650447986,
+      "convertedAmount": 61429.86611439055
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "JPY",
+        "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+      },
+      "rate": 0.048446318835714555,
+      "count": 2852,
+      "amount": 26542137.8118745,
+      "convertedAmount": 224293.4978679679
+    }
+  ],
+  "count": 172654,
+  "endTime": "2015-01-12T00:00:00+00:00",
+  "exchange": {
+    "currency": "USD",
+    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  "exchangeRate": 0.020233489275945527,
+  "startTime": "2015-01-05T00:00:00+00:00",
+  "total": 10009613.959742112
 }
 ```
 
@@ -2644,6 +2605,8 @@ POST /api/total_network_value
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#total-network-value)
 
 The request includes the following body parameters:
 
@@ -2892,8 +2855,8 @@ The total amount of money sent, in payments and currency exchanges, for a [curat
 ```
 POST /api/total_value_sent
 {
-    "startTime": "2014-01-15T00:00:00.000Z",
-    "endTime": "2014-01-16T00:00:00.000Z",
+    "startTime": "2015-01-01T00:00:00.000Z",
+    "interval": "month",
     "exchange": {
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
@@ -2903,13 +2866,15 @@ POST /api/total_value_sent
 
 </div>
 
+[Try it! >](charts-api-tool.html#total-value-sent)
+
 The request includes the following body parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| startTime | String ([Date-Time][]) | Retrieve information starting at this time. Defaults to 24 hours before the current time. |
-| endTime | String ([Date-Time][]) | (Optional) Retrieve information ending at this time. Defaults to the current time. |
-| exchange | Object ([Currency Object][]) | The currency from the request that is used to express the volume. |
+| startTime | String ([Date-Time][]) | (Optional) Retrieve information from the interval containing or starting at this time. Defaults to 24 hours before the current time. |
+| interval | String | Retrieve information for an interval of this length. Valid values are `month`, `week`, or `day`. |
+| exchange | Object ([Currency Object][]) | (Optional) Represent the volume of each market in terms of this currency. Defaults to XRP. |
 
 #### Response Format ####
 
@@ -2917,128 +2882,129 @@ An example of a successful response:
 
 ```js
 {
-    "startTime": "2014-01-15T00:00:00+00:00",
-    "endTime": "2014-01-16T00:00:00+00:00",
-    "exchange": {
-        "currency": "USD",
-        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-    },
-    "exchangeRate": 0.021579751827645943,
-    "total": 755505.9176608312,
-    "count": 12435,
+    "rowkey": "transaction_volume|month|20150101000000",
     "components": [
         {
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-            "amount": 41127.707337329506,
-            "count": 217,
+            "amount": 9066039.197471142,
+            "count": 49673,
             "rate": 1,
-            "convertedAmount": 41127.707337329506
+            "convertedAmount": 9066039.197471142
         },
         {
             "currency": "BTC",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-            "amount": 41.918516276559075,
-            "count": 111,
-            "rate": 836.3421115008575,
-            "convertedAmount": 35058.22041372048
+            "amount": 12322.744400761932,
+            "count": 26449,
+            "rate": 249.97360755383627,
+            "convertedAmount": 3080360.872822297
         },
         {
             "currency": "BTC",
             "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1",
-            "amount": 1.2768145849842485,
-            "count": 14,
-            "rate": 849.2864280964847,
-            "convertedAmount": 1084.381298222768
+            "amount": 2.0750693782824463,
+            "count": 19,
+            "rate": 206.3432067399226,
+            "convertedAmount": 428.1764697226175
         },
         {
             "currency": "USD",
             "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-            "amount": 238540.0568303883,
-            "count": 205,
-            "rate": 0.902112870742654,
-            "convertedAmount": 215190.0554543774
+            "amount": 24169595.842277594,
+            "count": 121079,
+            "rate": 1.0045601252681042,
+            "convertedAmount": 24279812.22699783
         },
         {
             "currency": "BTC",
             "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-            "amount": 1.2000099999999998,
-            "count": 5,
-            "rate": 694.0470227860804,
-            "convertedAmount": 832.8633678135243
+            "amount": 119295.11119032024,
+            "count": 115273,
+            "rate": 247.6297232015663,
+            "convertedAmount": 29541015.363359075
         },
         {
             "currency": "EUR",
             "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 12161779.117053518,
+            "count": 34018,
+            "rate": 1.202596674172229,
+            "convertedAmount": 14625715.118185826
         },
         {
             "currency": "CNY",
             "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
-            "amount": 93632.5764443946,
-            "count": 161,
-            "rate": 0.16425234833298158,
-            "convertedAmount": 15379.370561459229
+            "amount": 14402245.292370766,
+            "count": 38738,
+            "rate": 0.15857204600050093,
+            "convertedAmount": 2283793.5030123154
         },
         {
             "currency": "CNY",
             "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-            "amount": 26058.7512030993,
-            "count": 293,
-            "rate": 0.1625146758107911,
-            "convertedAmount": 4234.929503805744
+            "amount": 17882680.39132861,
+            "count": 42097,
+            "rate": 0.16168366526106312,
+            "convertedAmount": 2891337.310362152
         },
         {
             "currency": "CNY",
             "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 24416254.92038198,
+            "count": 134038,
+            "rate": 0.16425884742617405,
+            "convertedAmount": 4010585.8916855953
         },
         {
             "currency": "JPY",
             "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 1193425912.8648715,
+            "count": 61429,
+            "rate": 0.008080112652674486,
+            "convertedAmount": 9643015.818569047
         },
         {
             "currency": "JPY",
             "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 561857294.1293701,
+            "count": 39508,
+            "rate": 0.008252613589614441,
+            "convertedAmount": 4636791.140956038
         },
         {
             "currency": "JPY",
             "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 214582946.10751072,
+            "count": 1181,
+            "rate": 0.008380754739008903,
+            "convertedAmount": 1798367.0425010128
         },
         {
             "currency": "KRW",
             "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
-            "amount": 0,
-            "count": 0,
-            "rate": 0,
-            "convertedAmount": 0
+            "amount": 6893715627.324748,
+            "count": 12289,
+            "rate": 0.0008985058881862472,
+            "convertedAmount": 6194044.082632835
         },
         {
             "currency": "XRP",
-            "amount": 20509892.479722,
-            "count": 11429,
-            "rate": 0.021579751827645943,
-            "convertedAmount": 442598.3897241026
+            "amount": 8211627045.779512,
+            "count": 1052459,
+            "rate": 0.017264153697157482,
+            "convertedAmount": 141766791.42207274
         }
-    ]
+    ],
+    "count": 1728250,
+    "endTime": "2015-02-01T00:00:00+00:00",
+    "exchange": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    },
+    "exchangeRate": 0.017264153697157482,
+    "startTime": "2015-01-01T00:00:00+00:00",
+    "total": 253818097.16709763
 }
 ```
 
@@ -3104,6 +3070,8 @@ POST /api/transaction_stats
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#transaction-stats)
 
 The request includes the following body parameters:
 
@@ -3319,6 +3287,8 @@ POST /api/value_sent
 ```
 
 </div>
+
+[Try it! >](charts-api-tool.html#value-sent)
 
 The request includes the following body parameters:
 
