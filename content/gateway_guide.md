@@ -67,7 +67,7 @@ The value of a gateway's issuances in Ripple comes directly from users' trust th
 
 It is strongly recommended that Ripple gateways employ a "hot wallet / cold wallet" strategy. This enforces a separation of roles that promotes strong security. ("Wallets" in Ripple are equivalent to Accounts.)
 
-If the account that creates a gateway's issuances is compromised, the attacker could create an unlimited amount of new issuances, which makes it very difficult to redeem legitimately-held issuances fairly. In this case, the gateway must create a new issuing account, and all users with trust lines to the old gateway must create new trust lines to the new account. Thus, it's best to keep your issuing account as secure as possible.
+If a malicious person compromises a gateway's issuing account (cold wallet), that person could create an unlimited amount of new issuances, which makes it very difficult to redeem legitimately-held issuances fairly. In this case, the gateway must create a new issuing account, and all users with trust lines to the old gateway must create new trust lines to the new account. Thus, it's best to keep your issuing account as secure as possible.
 
 The cold wallet is like a vault. It serves as the asset issuer, and should remain offline. The secret key that is used for this wallet is kept offline, accessible to only a few trusted operators. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the hot wallet's balance. Because the cold wallet is the account creating the issuances, customer accounts holding those issuances must trust the cold wallet. 
 
@@ -189,7 +189,7 @@ In addition to the [requirements for making deposits possible](#deposit-requirem
 Processing payments to and from Ripple naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:
 
 - Protect yourself against reversible deposits. Ripple payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.
-- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you, and it is also an important element of most anti-money-laundering regulations. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.
+- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for malicious to scam you, and it is also an important element of most anti-money-laundering regulations. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.
 - Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending Ripple transactions.
 - [Robustly monitor for incoming payments](#robustly-monitoring-for-payments), and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](transactions.html#partial-payments).
 - Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
@@ -197,7 +197,7 @@ Processing payments to and from Ripple naturally comes with some risks, so a gat
     - Enable the [`DisallowXRP` flag](#disallowxrp) for the cold wallet account and all hot wallet accounts, so users do not accidentally send you XRP. (Private exchanges should *not* set this flag, since they trade XRP normally.)
     - Enable the [`RequireDest` flag](#requiredest) for the cold wallet account and all hot wallet accounts, so users do not accidentally send a payment without the destination tag to indicate who should be credited.
     - Enable the [`RequireAuth` flag](#requireauth) on all hot wallet accounts so they cannot unintentionally create their own issuances.
-- Monitor for suspicious or abusive behavior. For example, a user could repeatedly withdraw and deposit funds in Ripple, as a sort of "denial of service" attack that effectively empties the hot wallet. Suspend users whose accounts are involved in suspicious behavior by not processing their Ripple payments.
+- Monitor for suspicious or abusive behavior. For example, a user could repeatedly withdraw and deposit funds in Ripple, as a denial of service attack that effectively empties the hot wallet. Suspend users whose accounts are involved in suspicious behavior by not processing their Ripple payments.
 
 
 ## Trading on Ripple ##
@@ -282,7 +282,6 @@ There are several interfaces you can use to connect to Ripple, depending on your
 * [`rippled`](rippled-apis.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.
     * The official client library to rippled, [ripple-lib](https://github.com/ripple/ripple-lib) is available for JavaScript, and provides extended convenience features.
 * [Ripple-REST](ripple-rest.html) provides an easy-to-use RESTful API on top of `rippled`. In particular, Ripple-REST is designed to be easier to use from statically-typed languages.
-* [Gatewayd](gatewayd.html) provides a pre-configured suite of gateway functionality.
 
 
 ## Tool Security ##
@@ -353,7 +352,7 @@ Response:
 To confirm that an account has DefaultRipple enabled, look up the account using the [account_info command](rippled-apis.html#account-info), specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](https://wiki.ripple.com/Ledger_Format#AccountRoot)). If the result of the bitwise-AND operation is nonzero, then the account has DefaultRipple enabled.
 
 
-## Generating Souce and Destination Tags ##
+## Generating Source and Destination Tags ##
 
 You need a scheme to create Source and Destination tags for your users and payments. (See [Source and Destination Tags](#source-and-destination-tags) for an explanation of what Source and Destination Tags are.)
 
