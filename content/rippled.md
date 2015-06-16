@@ -7206,7 +7206,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7407,7 +7407,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7565,7 +7565,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7743,7 +7743,7 @@ Examples of successful responses:
 *Commandline (set log level)*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7755,7 +7755,7 @@ Connecting to 127.0.0.1:5005
 *Commandline (check log levels)*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7885,7 +7885,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7983,7 +7983,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -8009,6 +8009,1167 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.
+
+
+## peers ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
+
+The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 5,
+    "command": "peers"
+}
+```
+
+*Commandline*
+
+```
+rippled -- peers
+```
+
+</div>
+
+The request includes no additional parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "peers" : [
+         {
+            "address" : "54.86.175.122:51235",
+            "complete_ledgers" : "14088526 - 14089550",
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 1,
+            "public_key" : "n94rE1SydpHTvJ4NyX9vC1cdeDmYP5nQSXTyeMnLh8jMJSRdcy9Q",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "192.170.145.70:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 2913,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 10,
+            "public_key" : "n9L7jeMAVM28wfzhdzoYZqcvBRkP5p6ZCvidgqmyEa62ThUdCE1x",
+            "version" : "rippled-0.28.0-rc3"
+         },
+         {
+            "address" : "192.170.145.69:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 7802,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 10,
+            "public_key" : "n94JPD9sx9TetuJGn1ju5TRDG87Di7EEbUbXWCdjj52GKqZUsnKA",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "74.201.214.197:51235",
+            "complete_ledgers" : "14088531 - 14089555",
+            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
+            "load" : 4,
+            "public_key" : "n9LAPy9VbzXtodR4W58umSwwcbQsf9ZgFv1bpsd95CAgo7GWUvM4",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "93.190.138.234:51235",
+            "complete_ledgers" : "13948110 - 14089552",
+            "ledger" : "99288D510F63FDAC3F91BB410E4E251B050F92DF196CA33946A2F339DFF7483E",
+            "load" : 52,
+            "public_key" : "n9LYLVRw987hj8tyDdt2gVXZyrq4NvXF5vi4YwZPUNGaoPkqo4PH",
+            "version" : "rippled-0.28.0-b18"
+         },
+         {
+            "address" : "192.170.145.77:51235",
+            "complete_ledgers" : "32570 - 14089555",
+            "ledger" : "BFFF0AA3C71F9E1690F1B5537416CAEA2A038C896650FC5BB6E1057E464088ED",
+            "load" : 4,
+            "public_key" : "n9LwcmtjDAJQz4u8DZCMGQ9GXHuMEV4Cf8KpPL9NgqAV2puxdYc2",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "188.166.17.21:52345",
+            "complete_ledgers" : "14089423 - 14089551",
+            "latency" : 7894,
+            "ledger" : "2DBD1EAD2BAE89C01C183BE818B35C2E67BB2D0B07922C58A57A399B1ABD48BA",
+            "load" : 8,
+            "public_key" : "n9M3pWqDot5jyDRSdre6AZQVTA4RFXwUzWZHfj8m2dqMX1S99erB",
+            "version" : "rippled-0.27.0"
+         },
+         {
+            "address" : "198.204.238.130:51235",
+            "complete_ledgers" : "14087551 - 14089551",
+            "latency" : 3427,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 8,
+            "public_key" : "n94PN5sKswgBVjmg5UcJs2dwjSippFrbZXnHALvCm52LY1L3KGLT",
+            "version" : "rippled-0.27.4"
+         },
+         {
+            "address" : "162.217.98.92:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 2694,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 7,
+            "public_key" : "n9L4MyAQHZgtnhUSYeNmbc2SeveoBbxu9kWDyxckijGgj5WuKmy2",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "72.251.233.166:51235",
+            "complete_ledgers" : "14088531 - 14089555",
+            "latency" : 9358,
+            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
+            "load" : 88,
+            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
+            "version" : "rippled-0.28.0-rc3"
+         }
+      ],
+      "status" : "success"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "peers" : [
+         {
+            "address" : "162.217.98.91:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 93,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n94szsuScMEjP4Nu7c3mndcyjWJELepZcASEkDMcDSwXhHH6Sn37",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "54.186.248.91:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 68,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 17,
+            "public_key" : "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "162.217.98.136:51235",
+            "complete_ledgers" : "32570 - 14015062",
+            "latency" : 97,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 32,
+            "public_key" : "n944PcXEoZaiEHnwFD92xA4bxsS7jjYb27WcdDQwkHYyk1MWTEsX",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "54.186.73.52:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 68,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 14,
+            "public_key" : "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.233.165:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 39,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n9M77Uc9CSaSFZqt5V7sxPR4kFwbha7hwUFBD5v5kZt2SQjBeoDs",
+            "version" : "rippled-0.28.1-hf1"
+         },
+         {
+            "address" : "72.251.233.164:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 35,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n9LWq5vQbx9nrm5ERkjbvNmAN8erdoShdHWiHYj18Gbo3ExsnFDE",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "162.217.98.90:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 114,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 14,
+            "public_key" : "n9KJB2KWFQcqQcnjNN9wLZ5KPYjFcoVpvZ94m6t34tvjV5PquhCc",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.233.166:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 20,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 9,
+            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
+            "version" : "rippled-0.28.0-rc3"
+         },
+         {
+            "address" : "72.251.233.163:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 31,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 16,
+            "public_key" : "n94ne2Z5dX8qcJNa8cPtAbtn21gEaCoEduS8TwdGAhi1iLfCUMDm",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.232.171:51235",
+            "complete_ledgers" : "32570 - 14015062",
+            "latency" : 32,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 44,
+            "public_key" : "n9LJekVe9sUpxf1PEhWX3Csg63oShsTLMEfJ1mL4kpuzDu3bxotS",
+            "version" : "rippled-0.28.1-rc3"
+         }
+      ],
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing a `peers` array. Each member of the peers array is a peer object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| address | String | The IP address and port where this peer is connected |
+| cluster | Boolean | (May be omitted) If `true`, the current server and the peer server are part of the same `rippled` cluster. |
+| name | String | (May be omitted) If the peer is part of the same cluster, this is the display name for that node as defined in the config file. |
+| complete\_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the peer `rippled` has available |
+| inbound | Boolean | (May be omitted) If `true`, the peer is connecting to the local server. |
+| latency | Number | The network latency to the peer (in milliseconds) |
+| ledger | String | The hash of the peer's most recently closed ledger |
+| load | Number | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
+| protocol | String | (May be omitted) The protocol version that the peer is using, if not the same as the local server. |
+| public\_key | String | (May be omitted) A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
+| sanity | String | (May be omitted) Whether this peer is following the same rules and ledger sequence as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. |
+| status | String | (May be omitted) The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
+| version | string | (May be omitted) The `rippled` version number of the peer server |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## print ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+
+The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "print_req_1",
+    "command": "print"
+}
+```
+
+*Commandline*
+
+```
+rippled -- print
+```
+
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "app" : {
+         "ledgercleaner" : {
+            "status" : "idle"
+         },
+         "peers" : {
+            "peerfinder" : {
+               "bootcache" : {
+                  "entries" : 109
+               },
+               "config" : {
+                  "auto_connect" : "true",
+                  "features" : "",
+                  "max_peers" : 21,
+                  "out_peers" : 10,
+                  "port" : 51235,
+                  "want_incoming" : "true"
+               },
+               "counts" : {
+                  "accept" : 0,
+                  "close" : 0,
+                  "cluster" : "0",
+                  "connect" : 0,
+                  "fixed" : "0",
+                  "in" : "0/11",
+                  "out" : "10/10",
+                  "total" : "10"
+               },
+               "fixed" : 0,
+               "livecache" : {
+                  "entries" : [
+                     {
+                        "address" : "23.239.3.247:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "23.253.231.106:6561",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "41.79.78.42:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "45.63.13.66:51235",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "46.101.189.160:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "50.116.6.13:51235",
+                        "expires" : "20999983114 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "50.170.31.235:51235",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.11.11.36:51235",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.11.28.194:51235",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "52.11.48.116:51235",
+                        "expires" : "19999982708 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.11.175.107:51235",
+                        "expires" : "14000054746 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.11.181.30:51235",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.16.36.139:51236",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.16.66.76:51235",
+                        "expires" : "19999982708 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.16.90.90:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.16.142.169:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.24.43.83:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "52.25.172.6:51235",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.26.205.197:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "52.64.5.127:51235",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.24.129:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.25.108:51235",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.63.248:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.68.22:51235",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.79.201:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.80.225:51235",
+                        "expires" : "20999983114 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.64.95.61:51235",
+                        "expires" : "20999983114 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "52.74.154.161:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.69.87.117:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.84.21.230:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.86.99.78:51235",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.86.175.122:51235",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.94.232.198:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.94.245.104:51235",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.153.139.32:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "54.186.73.52:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "54.186.248.91:51235",
+                        "expires" : "20999983114 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "54.244.127.16:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "62.210.172.66:51235",
+                        "expires" : "21999982474 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "63.141.233.146:51235",
+                        "expires" : "8000115319 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "66.85.141.74:51235",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "72.196.97.233:51235",
+                        "expires" : "4000046383 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "72.251.232.171:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "72.251.233.162:51235",
+                        "expires" : "21999982474 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "72.251.233.163:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "72.251.233.164:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "72.251.233.166:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.194:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.195:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.196:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.197:51235",
+                        "expires" : "21999982474 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.198:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.204:51235",
+                        "expires" : "20999983114 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "74.201.214.205:51235",
+                        "expires" : "21999982474 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "85.139.162.244:51235",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "86.174.14.231:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "93.190.138.234:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "99.110.49.91:51301",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "103.224.165.48:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "104.236.194.245:51232",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "107.150.53.35:6561",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "107.150.53.36:6561",
+                        "expires" : "19999982708 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "107.150.53.37:6561",
+                        "expires" : "24000009851 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "107.150.55.19:6561",
+                        "expires" : "10000035284 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "107.150.55.20:6561",
+                        "expires" : "4000046383 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "107.150.55.21:6561",
+                        "expires" : "24000009851 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "148.251.186.89:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "149.210.147.23:19087",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "162.217.98.90:51235",
+                        "expires" : "18999984462 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.217.98.91:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.217.98.92:51235",
+                        "expires" : "26999998650 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.217.98.93:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.217.98.94:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.217.98.136:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.222.161.49:51235",
+                        "expires" : "19999982708 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "162.243.37.106:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "168.1.60.132:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "173.208.129.227:6561",
+                        "expires" : "15000003926 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "173.208.129.228:6561",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 3
+                     },
+                     {
+                        "address" : "173.208.129.229:6561",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "174.129.28.156:51235",
+                        "expires" : "19999982708 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "177.92.63.137:51235",
+                        "expires" : "22999993427 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "185.45.192.109:51235",
+                        "expires" : "16999983446 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.99.15.174:51235",
+                        "expires" : "25000012677 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.66:51235",
+                        "expires" : "24000009851 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.67:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.68:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.69:51235",
+                        "expires" : "28999974682 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.70:51235",
+                        "expires" : "16999983446 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.77:51235",
+                        "expires" : "24000009851 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.88:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "198.204.238.130:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "203.127.12.115:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "212.83.147.67:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     }
+                  ],
+                  "hist" : "0, 10, 74, 10, 0, 0, 0, 0",
+                  "size" : "94"
+               },
+               "peers" : [
+                  {
+                     "local_address" : "10.1.10.78:48923",
+                     "remote_address" : "52.24.43.83:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:50004",
+                     "remote_address" : "52.26.205.197:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:48609",
+                     "remote_address" : "54.153.139.32:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:46420",
+                     "remote_address" : "54.186.73.52:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:37134",
+                     "remote_address" : "72.251.233.164:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:32951",
+                     "remote_address" : "93.190.138.234:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:42494",
+                     "remote_address" : "162.243.37.106:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:37019",
+                     "remote_address" : "168.1.60.132:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:38775",
+                     "remote_address" : "192.170.145.88:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:34793",
+                     "remote_address" : "198.204.238.130:51235",
+                     "state" : "active"
+                  }
+               ]
+            }
+         },
+         "resource" : {
+            "admin" : [
+               {
+                  "balance" : 0,
+                  "count" : 1,
+                  "name" : "\"127.0.0.1\""
+               }
+            ],
+            "inactive" : [],
+            "inbound" : [],
+            "outbound" : [
+               {
+                  "balance" : 23,
+                  "count" : 1,
+                  "name" : "93.190.138.234:51235"
+               },
+               {
+                  "balance" : 35,
+                  "count" : 1,
+                  "name" : "198.204.238.130:51235"
+               },
+               {
+                  "balance" : 31,
+                  "count" : 1,
+                  "name" : "52.26.205.197:51235"
+               },
+               {
+                  "balance" : 28,
+                  "count" : 1,
+                  "name" : "54.153.139.32:51235"
+               },
+               {
+                  "balance" : 30,
+                  "count" : 1,
+                  "name" : "168.1.60.132:51235"
+               },
+               {
+                  "balance" : 37,
+                  "count" : 1,
+                  "name" : "162.243.37.106:51235"
+               },
+               {
+                  "balance" : 34,
+                  "count" : 1,
+                  "name" : "52.24.43.83:51235"
+               },
+               {
+                  "balance" : 31,
+                  "count" : 1,
+                  "name" : "192.170.145.88:51235"
+               },
+               {
+                  "balance" : 32,
+                  "count" : 1,
+                  "name" : "54.186.73.52:51235"
+               },
+               {
+                  "balance" : 15,
+                  "count" : 1,
+                  "name" : "72.251.233.164:51235"
+               }
+            ]
+         },
+         "server" : {
+            "active" : "2",
+            "hist" : "16",
+            "history" : [
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "11688",
+                  "elapsed" : "0 seconds",
+                  "id" : "16",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 16:33:50"
+               },
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "11431",
+                  "elapsed" : "0 seconds",
+                  "id" : "15",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 16:11:59"
+               },
+               {
+                  "bytes_in" : "235",
+                  "bytes_out" : "344",
+                  "elapsed" : "0 seconds",
+                  "id" : "14",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 15:07:23"
+               },
+               {
+                  "bytes_in" : "239",
+                  "bytes_out" : "427",
+                  "elapsed" : "0 seconds",
+                  "id" : "13",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 15:07:19"
+               },
+               {
+                  "bytes_in" : "290",
+                  "bytes_out" : "428",
+                  "elapsed" : "0 seconds",
+                  "id" : "12",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 15:04:05"
+               },
+               {
+                  "bytes_in" : "236",
+                  "bytes_out" : "431",
+                  "elapsed" : "0 seconds",
+                  "id" : "11",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:59:44"
+               },
+               {
+                  "bytes_in" : "288",
+                  "bytes_out" : "396",
+                  "elapsed" : "0 seconds",
+                  "id" : "10",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:59:11"
+               },
+               {
+                  "bytes_in" : "236",
+                  "bytes_out" : "429",
+                  "elapsed" : "0 seconds",
+                  "id" : "9",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:58:59"
+               },
+               {
+                  "bytes_in" : "220",
+                  "bytes_out" : "1261",
+                  "elapsed" : "0 seconds",
+                  "id" : "8",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:58:54"
+               },
+               {
+                  "bytes_in" : "226",
+                  "bytes_out" : "224",
+                  "elapsed" : "0 seconds",
+                  "id" : "7",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:58:51"
+               },
+               {
+                  "bytes_in" : "220",
+                  "bytes_out" : "1402",
+                  "elapsed" : "0 seconds",
+                  "id" : "6",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:58:25"
+               },
+               {
+                  "bytes_in" : "264",
+                  "bytes_out" : "429",
+                  "elapsed" : "0 seconds",
+                  "id" : "5",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:58:16"
+               },
+               {
+                  "bytes_in" : "228",
+                  "bytes_out" : "429",
+                  "elapsed" : "0 seconds",
+                  "id" : "4",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:57:46"
+               },
+               {
+                  "bytes_in" : "227",
+                  "bytes_out" : "337",
+                  "elapsed" : "0 seconds",
+                  "id" : "3",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:57:23"
+               },
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "2917",
+                  "elapsed" : "0 seconds",
+                  "id" : "2",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 12:39:29"
+               },
+               {
+                  "bytes_in" : "220",
+                  "bytes_out" : "1426",
+                  "elapsed" : "0 seconds",
+                  "id" : "1",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 12:39:13"
+               }
+            ]
+         },
+         "validators" : {}
+      },
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting). Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## validation_seed ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+
+The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "set_seed_1",
+    "command": "validation_seed",
+    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+}
+```
+
+*Commandline*
+
+```#Syntax: validation_seed [secret]
+rippled -- validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| secret | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+200 OK
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validation\_key | String | (Omitted if proposing disabled) The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
+| validation\_public\_key | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format. |
+| validation\_seed | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
 
 
 
@@ -8285,7 +9446,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -8372,7 +9533,7 @@ An example of a successful response:
 *Commandline*
 
 ```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
