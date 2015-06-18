@@ -2665,6 +2665,128 @@ The response follows the [standard format](#response-formatting), with a success
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
+## ledger_request ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
+
+The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
+
+*The `ledger_request` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 102,
+    "command": "ledger_request",
+    "ledger_index": 13800000
+}
+```
+
+*Commandline*
+
+```
+rippled -- ledger_request 13800000
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field         | Type   | Description |
+|---------------|--------|-------------|
+| ledger\_index | Number | (Optional) Retrieve the specified ledger by its sequence number. |
+| ledger\_hash  | String | (Optional) Retrieve the specified ledger by its identifying hash. |
+
+You must provide either `ledger_index` or `ledger_hash` but not both.
+
+#### Response Format ####
+
+The response follows the [standard format](#response-formatting). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
+
+**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple Labs' full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
+
+A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [`ledger` command](#ledger).
+
+<div class='multicode'>
+
+*Commandline (failure)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "error" : "ledgerNotFound",
+      "hash" : "D6E25136ADF43DED49C886A6D049436DDC8F8CC02C84E7C89DE67E209F0FAAB6",
+      "have_header" : false,
+      "peers" : 2,
+      "request" : {
+         "command" : "ledger_request",
+         "ledger_index" : 13800000
+      },
+      "status" : "error",
+      "timeouts" : 0
+   }
+}
+```
+
+*Commandline (success)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "ledger" : {
+         "accepted" : true,
+         "account_hash" : "84EBB27D9510AD5B9A3A328201921B3FD418D4A349E85D3DC69E33C7B506407F",
+         "close_time" : 486691300,
+         "close_time_human" : "2015-Jun-04 00:01:40",
+         "close_time_resolution" : 10,
+         "closed" : true,
+         "hash" : "DCF5D723ECEE1EF56D2B0024CD9BDFF2D8E3DC211BD2B9460165922564ACD863",
+         "ledger_hash" : "DCF5D723ECEE1EF56D2B0024CD9BDFF2D8E3DC211BD2B9460165922564ACD863",
+         "ledger_index" : "13840000",
+         "parent_hash" : "8A3F6FBC62C11DE4538D969F9C7966234635FE6CEB1133DDC37220978F8100A9",
+         "seqNum" : "13840000",
+         "totalCoins" : "99999022883526403",
+         "total_coins" : "99999022883526403",
+         "transaction_hash" : "3D759EF3AF1AE2F78716A8CCB2460C3030F82687E54206E883703372B9E1770C"
+      },
+      "ledger_index" : 13840000,
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
+
+
+The fields of the "failure" response (the ledger was requested, but has not been fully retrieved yet) can include any of the following:
+
+| Field                       | Type    | Description |
+|-----------------------------|---------|-------------|
+| hash                        | String  | The hash of the requested ledger, if the server knows it. |
+| have\_header                | Boolean | Whether the server has the header section of the requested ledger. |
+| have\_state                 | Boolean | (May be omitted) Whether the server has the state section of the requested ledger. |
+| have\_transactions          | Boolean | (May be omitted) Whether the server has the transaction section of the requested ledger. |
+| needed\_state\_hashes       | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the state tree that the server still needs to retrieve. |
+| needed\_transaction\_hashes | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the transaction tree that the server still needs to retrieve. |
+| peers                       | Number  | How many peers the server is querying in its attempt to find this ledger. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
+* `ledgerNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger.
+
+
 ## ledger_accept ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
 
@@ -8011,10 +8133,99 @@ The response follows the [standard format](#response-formatting), with a success
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.
 
 
+## validation_seed ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+
+The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
+
+*The `validation_seed` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "set_seed_1",
+    "command": "validation_seed",
+    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+}
+```
+
+*Commandline*
+
+```#Syntax: validation_seed [secret]
+rippled -- validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| secret | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+200 OK
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validation\_key | String | (Omitted if proposing disabled) The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
+| validation\_public\_key | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format. |
+| validation\_seed | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
+
+
 ## peers ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
+
+*The `peers` request is an admin command that cannot be run by unpriviledged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -8278,6 +8489,8 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
+*The `print` request is an admin command that cannot be run by unpriviledged users!*
+
 #### Request Format ####
 An example of the request format:
 
@@ -8351,451 +8564,6 @@ Connecting to 127.0.0.1:5005
                         "hops" : 2
                      },
                      {
-                        "address" : "23.253.231.106:6561",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "41.79.78.42:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "45.63.13.66:51235",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "46.101.189.160:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "50.116.6.13:51235",
-                        "expires" : "20999983114 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "50.170.31.235:51235",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.11.11.36:51235",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.11.28.194:51235",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "52.11.48.116:51235",
-                        "expires" : "19999982708 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.11.175.107:51235",
-                        "expires" : "14000054746 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.11.181.30:51235",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.16.36.139:51236",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.16.66.76:51235",
-                        "expires" : "19999982708 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.16.90.90:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.16.142.169:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.24.43.83:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "52.25.172.6:51235",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.26.205.197:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "52.64.5.127:51235",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.24.129:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.25.108:51235",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.63.248:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.68.22:51235",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.79.201:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.80.225:51235",
-                        "expires" : "20999983114 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.64.95.61:51235",
-                        "expires" : "20999983114 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "52.74.154.161:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.69.87.117:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.84.21.230:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.86.99.78:51235",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.86.175.122:51235",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.94.232.198:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.94.245.104:51235",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.153.139.32:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "54.186.73.52:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "54.186.248.91:51235",
-                        "expires" : "20999983114 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "54.244.127.16:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "62.210.172.66:51235",
-                        "expires" : "21999982474 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "63.141.233.146:51235",
-                        "expires" : "8000115319 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "66.85.141.74:51235",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "72.196.97.233:51235",
-                        "expires" : "4000046383 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "72.251.232.171:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "72.251.233.162:51235",
-                        "expires" : "21999982474 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "72.251.233.163:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "72.251.233.164:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "72.251.233.166:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.194:51235",
-                        "expires" : "30000000000 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.195:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.196:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.197:51235",
-                        "expires" : "21999982474 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.198:51235",
-                        "expires" : "30000000000 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.204:51235",
-                        "expires" : "20999983114 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "74.201.214.205:51235",
-                        "expires" : "21999982474 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "85.139.162.244:51235",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "86.174.14.231:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "93.190.138.234:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "99.110.49.91:51301",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "103.224.165.48:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "104.236.194.245:51232",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "107.150.53.35:6561",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "107.150.53.36:6561",
-                        "expires" : "19999982708 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "107.150.53.37:6561",
-                        "expires" : "24000009851 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "107.150.55.19:6561",
-                        "expires" : "10000035284 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "107.150.55.20:6561",
-                        "expires" : "4000046383 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "107.150.55.21:6561",
-                        "expires" : "24000009851 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "148.251.186.89:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "149.210.147.23:19087",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "162.217.98.90:51235",
-                        "expires" : "18999984462 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.217.98.91:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.217.98.92:51235",
-                        "expires" : "26999998650 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.217.98.93:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.217.98.94:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.217.98.136:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.222.161.49:51235",
-                        "expires" : "19999982708 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "162.243.37.106:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "168.1.60.132:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 1
-                     },
-                     {
-                        "address" : "173.208.129.227:6561",
-                        "expires" : "15000003926 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "173.208.129.228:6561",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 3
-                     },
-                     {
-                        "address" : "173.208.129.229:6561",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "174.129.28.156:51235",
-                        "expires" : "19999982708 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "177.92.63.137:51235",
-                        "expires" : "22999993427 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "185.45.192.109:51235",
-                        "expires" : "16999983446 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.99.15.174:51235",
-                        "expires" : "25000012677 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.66:51235",
-                        "expires" : "24000009851 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.67:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.68:51235",
-                        "expires" : "26000024558 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.69:51235",
-                        "expires" : "28999974682 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.70:51235",
-                        "expires" : "16999983446 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
-                        "address" : "192.170.145.77:51235",
-                        "expires" : "24000009851 nanoseconds",
-                        "hops" : 2
-                     },
-                     {
                         "address" : "192.170.145.88:51235",
                         "expires" : "30000000000 nanoseconds",
                         "hops" : 1
@@ -8828,31 +8596,6 @@ Connecting to 127.0.0.1:5005
                   {
                      "local_address" : "10.1.10.78:50004",
                      "remote_address" : "52.26.205.197:51235",
-                     "state" : "active"
-                  },
-                  {
-                     "local_address" : "10.1.10.78:48609",
-                     "remote_address" : "54.153.139.32:51235",
-                     "state" : "active"
-                  },
-                  {
-                     "local_address" : "10.1.10.78:46420",
-                     "remote_address" : "54.186.73.52:51235",
-                     "state" : "active"
-                  },
-                  {
-                     "local_address" : "10.1.10.78:37134",
-                     "remote_address" : "72.251.233.164:51235",
-                     "state" : "active"
-                  },
-                  {
-                     "local_address" : "10.1.10.78:32951",
-                     "remote_address" : "93.190.138.234:51235",
-                     "state" : "active"
-                  },
-                  {
-                     "local_address" : "10.1.10.78:42494",
-                     "remote_address" : "162.243.37.106:51235",
                      "state" : "active"
                   },
                   {
@@ -8900,31 +8643,6 @@ Connecting to 127.0.0.1:5005
                   "name" : "52.26.205.197:51235"
                },
                {
-                  "balance" : 28,
-                  "count" : 1,
-                  "name" : "54.153.139.32:51235"
-               },
-               {
-                  "balance" : 30,
-                  "count" : 1,
-                  "name" : "168.1.60.132:51235"
-               },
-               {
-                  "balance" : 37,
-                  "count" : 1,
-                  "name" : "162.243.37.106:51235"
-               },
-               {
-                  "balance" : 34,
-                  "count" : 1,
-                  "name" : "52.24.43.83:51235"
-               },
-               {
-                  "balance" : 31,
-                  "count" : 1,
-                  "name" : "192.170.145.88:51235"
-               },
-               {
                   "balance" : 32,
                   "count" : 1,
                   "name" : "54.186.73.52:51235"
@@ -8955,94 +8673,6 @@ Connecting to 127.0.0.1:5005
                   "id" : "15",
                   "requests" : 1,
                   "when" : "2015-Jun-16 16:11:59"
-               },
-               {
-                  "bytes_in" : "235",
-                  "bytes_out" : "344",
-                  "elapsed" : "0 seconds",
-                  "id" : "14",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 15:07:23"
-               },
-               {
-                  "bytes_in" : "239",
-                  "bytes_out" : "427",
-                  "elapsed" : "0 seconds",
-                  "id" : "13",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 15:07:19"
-               },
-               {
-                  "bytes_in" : "290",
-                  "bytes_out" : "428",
-                  "elapsed" : "0 seconds",
-                  "id" : "12",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 15:04:05"
-               },
-               {
-                  "bytes_in" : "236",
-                  "bytes_out" : "431",
-                  "elapsed" : "0 seconds",
-                  "id" : "11",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:59:44"
-               },
-               {
-                  "bytes_in" : "288",
-                  "bytes_out" : "396",
-                  "elapsed" : "0 seconds",
-                  "id" : "10",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:59:11"
-               },
-               {
-                  "bytes_in" : "236",
-                  "bytes_out" : "429",
-                  "elapsed" : "0 seconds",
-                  "id" : "9",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:58:59"
-               },
-               {
-                  "bytes_in" : "220",
-                  "bytes_out" : "1261",
-                  "elapsed" : "0 seconds",
-                  "id" : "8",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:58:54"
-               },
-               {
-                  "bytes_in" : "226",
-                  "bytes_out" : "224",
-                  "elapsed" : "0 seconds",
-                  "id" : "7",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:58:51"
-               },
-               {
-                  "bytes_in" : "220",
-                  "bytes_out" : "1402",
-                  "elapsed" : "0 seconds",
-                  "id" : "6",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:58:25"
-               },
-               {
-                  "bytes_in" : "264",
-                  "bytes_out" : "429",
-                  "elapsed" : "0 seconds",
-                  "id" : "5",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:58:16"
-               },
-               {
-                  "bytes_in" : "228",
-                  "bytes_out" : "429",
-                  "elapsed" : "0 seconds",
-                  "id" : "4",
-                  "requests" : 1,
-                  "when" : "2015-Jun-16 14:57:46"
                },
                {
                   "bytes_in" : "227",
@@ -9085,91 +8715,6 @@ The response follows the [standard format](#response-formatting). Additional fie
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-
-
-## validation_seed ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
-
-The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
-
-#### Request Format ####
-An example of the request format:
-
-<div class='multicode'>
-
-*WebSocket*
-
-```
-{
-    "id": "set_seed_1",
-    "command": "validation_seed",
-    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
-}
-```
-
-*Commandline*
-
-```#Syntax: validation_seed [secret]
-rippled -- validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
-```
-
-</div>
-
-The request includes the following parameters:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| secret | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
-
-#### Response Format ####
-
-An example of a successful response:
-
-<div class='multicode'>
-
-*JSON-RPC*
-
-```
-200 OK
-{
-   "result" : {
-      "status" : "success",
-      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
-      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
-      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
-   }
-}
-```
-
-*Commandline*
-
-```
-Loading: "/etc/rippled.cfg"
-Connecting to 127.0.0.1:5005
-{
-   "result" : {
-      "status" : "success",
-      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
-      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
-      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
-   }
-}
-```
-
-</div>
-
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| validation\_key | String | (Omitted if proposing disabled) The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
-| validation\_public\_key | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format. |
-| validation\_seed | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
-
-#### Possible Errors ####
-
-* Any of the [universal error types](#universal-errors).
-* `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
 
 
 
