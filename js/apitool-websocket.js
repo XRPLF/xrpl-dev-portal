@@ -61,7 +61,13 @@ var urlParams;
   });
 
   remote.on('connect', function() {
-    set_online_state('connected');
+    var msg = "connected";
+    if (remote._servers.length === 1) {
+        msg = "connected to "+remote._servers[0].getHostID();
+    } else if (remote._servers.length > 1) {
+        msg = "connected to "+remote._servers.length+" servers";
+    }
+    set_online_state(msg);
   });
 
   /* ---- ---- ---- ---- ---- */
@@ -699,11 +705,7 @@ var urlParams;
         });
     }
 
-    try {
-        remote.connect(init);
-    } catch {
-        alert("Can't connect. Maybe blocked by cross-origin-scripting protections?");
-    }
+    remote.connect(init);
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
