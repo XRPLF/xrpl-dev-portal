@@ -7757,12 +7757,6 @@ An example of the request format:
 }
 ```
 
-*Second tab*
-
-```
-//second example here
-```
-
 </div>
 
 The request includes the following parameters:
