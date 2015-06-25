@@ -162,6 +162,8 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME must create a user interface for Alice to send funds from ACME into Ripple.
     - In order to do this, ACME needs to know Alice's Ripple address. ACME can have Alice input her Ripple addresss as part of the interface, or ACME can require Alice to input and verify her Ripple address in advance.
 
+See [Sending Payments to Users](#sending-payments-to-users) for an example of how to send payments into Ripple.
+
 
 ## Sending from Ripple to Gateway ##
 
@@ -189,7 +191,9 @@ In addition to the [requirements for making deposits possible](#deposit-requirem
 Processing payments to and from Ripple naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:
 
 - Protect yourself against reversible deposits. Ripple payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.
-- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for malicious to scam you, and it is also an important element of most anti-money-laundering regulations. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.
+- When sending into Ripple, specify the cold wallet as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other accounts.
+- Before sending a payment into Ripple, double check the cost of the payment. A simple payment from your hot wallet to a customer should not cost more than the destination amount plus any [transfer fee](#transferrate) you have set.
+- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you, and it is also an important element of most anti-money-laundering regulations. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.
 - Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending Ripple transactions.
 - [Robustly monitor for incoming payments](#robustly-monitoring-for-payments), and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](transactions.html#partial-payments).
 - Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
@@ -543,8 +547,6 @@ Response:
 
 A successful response shows `"state": "validated"` when the change has been accepted into a validated Ripple ledger.
 
-<!-- Note: RLJS-154 only affects 1.3.2-rc1 and -rc2 -->
-
 ## Robustly Monitoring for Payments ##
 
 In order to robustly monitor incoming payments, gateways should do the following:
@@ -564,15 +566,7 @@ As an added precaution, we recommend comparing the balances of your Ripple cold 
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is set by the issuing (**cold wallet**) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of transfer\_rate:1 compared to the destination amount. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% (a `transfer_rate` of 1.0) or greater than 100% (a `transfer_rate` of 2.0).
-
-The fee represented by the TransferRate is debited from the Ripple ledger, becoming the property of the gateway. 
-
-For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR.ACME, Charlie must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by 0,01€, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
-
-The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
-
-![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ on Ripple](img/e2g-with_transferrate.png)
+The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
 The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to set the TransferRate for a fee of 0.5%.
 
@@ -616,8 +610,46 @@ The field `transfer_rate` in the `settings` object should have the value you set
 
 All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. You can accomplish this by setting the `source_amount` plus `slippage` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
 
-**Note:** The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 EUR.ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 EUR.ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system to make up for fees they paid to redeem with the hot wallet. 
+**Note:** The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 EUR.ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 EUR.ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system to make up for fees they paid to redeem with the hot wallet.
 
+
+## Sending Payments to Users ##
+
+When you build an automated system to send payments into Ripple for your users, you must ensure that it constructs payments carefully. Malicious users are constantly trying to find ways to trick a system into paying them more money than it should. If you use Ripple-REST to construct payments, we recommend **not using** the Prepare Payment endpoint for payments from a hot wallet to a user. Sending from a hot wallet to a properly-configured user account requires only a default path, but the Prepare Payment method looks for _all_ possible paths to the destination account, including ones that have a higher `source_amount` than necessary.
+
+The following template can be used with Ripple-REST's [Submit Payment method](ripple-rest.html#submit-payment). You should also follow the [reliable transaction submission](#reliable-transaction-submission) guidelines and persist a copy of the transaction before submitting it.
+
+```
+POST /v1/accounts/<HOT WALLET ADDRESS>/payments
+{
+  "secret": <HOT WALLET SECRET KEY>,
+  "client_resource_id": <UNIQUE CLIENT RESOURCE ID>,
+  "payment": {
+      "source_account": <HOT WALLET ADDRESS>,
+      "source_amount": {
+        "value": <DESTINATION AMOUNT, for example "100">,
+        "currency": <CURRENCY>,
+        "issuer": <COLD WALLET ADDRESS>
+      },
+      "source_slippage": <DESTINATION AMOUNT * TRANSFER FEE, for example "0.5">,
+      "source_tag": <OPTIONAL SOURCE TAG>,
+      "destination_account": <CUSTOMER ADDRESS>,
+      "destination_amount": {
+        "value": <DESTINATION AMOUNT>,
+        "currency": <CURRENCY>,
+        "issuer": <COLD WALLET ADDRESS>
+      }
+  }
+}
+```
+
+*Reminder: Don't send your secret to a server you do not control.*
+
+In particular, note the following features of the payment object:
+
+- No `paths` field. The payment will only succeed if it can use a default path, which is preferable. Using less direct paths can become much more expensive.
+- The `issuer` of both the `source_amount` and the `destination_amount` is the cold wallet. This ensures that the transaction sends and delivers issuances from the cold wallet account, and not from some other gateway.
+- The `source_amount` uses the same `value` as the `destination_amount`. The [transfer fee](#transferrate), if there is one, is covered by the `slippage` field.
 
 
 ## Bouncing Payments ##
@@ -626,18 +658,18 @@ When your hot or cold wallet receives a payment whose purpose is unclear, we rec
 
 The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The [Partial Payment Flag Gateway Bulletin](https://ripple.com/files/GB-2014-06.pdf) explains how to avoid a common problem.
 
-Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple network. You should publicize your bounced payments policy as part of your terms of use.
+Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple network. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.
 
-To send a Partial Payment in Ripple-REST, set the `partial_payment` field to true in the object returned by the [Prepare Payment method](ripple-rest.html#prepare-payment) before submitting it. Set the `source_amount` to be equal to the `destination_amount` and the `slippage` to `"0"`.
+To send a Partial Payment in Ripple-REST, set the `partial_payment` field to true in the object returned by the [Prepare Payment method](ripple-rest.html#prepare-payment) before submitting it. Set the `source_amount` to be equal to the `destination_amount`. and the `slippage` to `"0"`. As long as your hot and cold wallets only send the currencies that your cold wallet issues, you should also remove the `paths` field, which is not necessary for simple payments. You should always specify your cold wallet as the issuer of the funds you want to deliver. (You can specify the issuer in the Prepare Payment request, or modify the `issuer` field of the `destination_amount` in the object you get back.)
 
-Third, it is conventional that you take the Source Tag from the incoming payment (`source_tag` in Ripple-REST) and use that value as the Destination Tag (`destination_tag` in Ripple-REST) for the return payment. 
+It is conventional that you take the Source Tag from the incoming payment (`source_tag` in Ripple-REST) and use that value as the Destination Tag (`destination_tag` in Ripple-REST) for the return payment.
 
 To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again. 
 
-The following is an example of a [Ripple-REST Submit Payment request](http://localhost/ripple-dev-portal/ripple-rest.html#submit-payment) to send a return payment. Particularly important fields include the [*destination_tag*](#source-and-destination-tags), setting `"slippage": "0"`, and `"partial_payment": true`:
+The following is an example of a [Ripple-REST Submit Payment request](ripple-rest.html#submit-payment) to send a return payment. Particularly important fields include the [*destination_tag*](#source-and-destination-tags), setting `"slippage": "0"`, `"partial_payment": true`, the lack of a `"paths"` field, and the `issuer` of the `destination_amount` being the cold wallet:
 
 ```
-POST /v1/accounts/{address}/payments?validated=true
+POST /v1/accounts/rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv/payments?validated=true
 
 {
   "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
@@ -650,7 +682,7 @@ POST /v1/accounts/{address}/payments?validated=true
     "source_amount": {
       "value": "2",
       "currency": "EUR",
-      "issuer": ""
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     },
     "source_slippage": "0",
     "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -658,10 +690,9 @@ POST /v1/accounts/{address}/payments?validated=true
     "destination_amount": {
       "value": "2",
       "currency": "EUR",
-      "issuer": ""
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     },
     "invoice_id": "",
-    "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
     "partial_payment": true,
     "no_direct_ripple": false
   }
@@ -704,7 +735,7 @@ For additional information, consult the [Reliable Transaction Submission](reliab
 
 ## ripple.txt and host-meta ##
 
-The [ripple.txt](https://wiki.ripple.com/Ripple.txt) and [host-meta](https://ripple.com/build/gateway-services/#host-meta) standards provide a way to publish information about your gateway so that automated tools and applications can read and understand it. 
+The [ripple.txt](https://wiki.ripple.com/Ripple.txt) and host-meta standards provide a way to publish information about your gateway so that automated tools and applications can read and understand it.
 
 For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple account addresses you control, to protect against impostors or confusion.
 

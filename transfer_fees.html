@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>WebSocket API Tool - Ripple Developer Portal</title>
+    <title>Transfer Fees - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -18,7 +18,34 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
 
-    
+
+    <!-- Flatdoc theme -->
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="vendor/docco.min.css">
+    <script src="vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="js/multicodetab.js"></script>
+    <!-- Code to load contents via Flatdoc  -->
+    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
+    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <script>
+        $(".flatdoc-content").empty();
+        $(".content-root .menubar .menu").empty();
+        Flatdoc.run({
+          fetcher: Flatdoc.file('content/transferrate.md')
+        });
+        $(document).on('flatdoc:ready', function() {
+            $().multicode_tabs();
+            hljs.initHighlighting();
+        });
+    </script>
+
+    <script src="js/expandcode.js"></script>
+    <script src="js/fixsidebarscroll.js"></script>
     
     <!-- Custom Stylesheets -->
     <link href="font/fonts.css" rel="stylesheet" type="text/css" />
@@ -30,7 +57,7 @@
     
   
 </head>
-<body >
+<body  role='flatdoc' class='no-literate'>
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -87,77 +114,12 @@
     </div>
     <div class='wrapper'>
     <div class='content-root'>
-    <div id='online_state'>Offline</div>
-    <div style="clear:both;"></div>
-    <div id='command_wrapper'>
-        <ul id='command_list'>
-            <li class='selected'><a href='#server_info'>server_info</a></li>
-            <li><a href='#server_state'>server_state</a></li>
-            <li><a href='#ping'>ping</a></li>
-            <br/>
-            <li><a href='#subscribe'>subscribe</a></li>
-            <li><a href='#unsubscribe'>unsubscribe</a></li>
-            <br/>
-            <li><a href='#ledger'>ledger</a></li>
-            <li><a href='#ledger_closed'>ledger_closed</a></li>
-            <li><a href='#ledger_current'>ledger_current</a></li>
-            <li><a href='#ledger_entry'>ledger_entry</a></li>
-            <br/>
-            <li><a href='#account_info'>account_info</a></li>
-            <li><a href='#account_lines'>account_lines</a></li>
-            <li><a href='#account_offers'>account_offers</a></li>
-            <li><a href='#account_tx'>account_tx</a></li>
-            <li><a href='#account_currencies'>account_currencies</a></li>
-            <br/>
-            <li><a href='#transaction_entry'>transaction_entry</a></li>
-            <li><a href='#tx'>tx</a></li>
-            <li><a href='#tx_history'>tx_history</a></li>
-            <br/>
-            <li><a href='#sign'>sign</a></li>
-            <li><a href='#submit'>submit</a></li>
-            <br/>
-            <li><a href='#ripple_path_find'>ripple_path_find</a></li>
-            <li><a href='#path_find'>path_find</a></li>
-            <li><a href='#book_offers'>book_offers</a></li>
-        </ul>
-        <div id='command_table'>
-            <div id='io_wrapper'>
-                <div id='input' class='io'>
-                    <h2>WebSocket Request</h2>
-                    <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                        <h4>Test accounts only!</h4>
-                        <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <h3 id='selected_command' title='Reference information'>server_info</h3>
-                    <p id='description'></p>
-                    <div id='invalid'>Invalid JSON</div>
-                    <p>JSON</p>
-                    <div id='request'></div>
-                    <div id='request_options'>
-                        <div class="button btn btn-primary api" id='request_button'>Send request</div>
-                    </div>
-                </div>
-                <div id='output' class='io'>
-                    <h2>Response</h2>
-                    <div>
-                        <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                    </div>
-                    <p id='info'></p>
-                    <div id='response'></div>
-                    <div id='tooltip'></div>
-                    <div id='stream_output'>
-                        <h3>Stream output</h3>
-                        <ul class='toolbar'>
-                            <li id='stream_show'>show</li>
-                            <li id='stream_pause'>pause</li>
-                        </ul>
-                        <p id='status'></p>
-                    </div>
-                </div>
+        <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'>
             </div>
         </div>
-    </div>
+        <div role='flatdoc-content' class='content'>
+        </div>
     </div>
     </div>
 <footer class="footer">
@@ -214,12 +176,5 @@
         </div>
     </div>
 </footer>
-  <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
-  <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
-  <script type='text/javascript' src='js/es5-shim.js'></script>
-  <script src='vendor/codemirror.min.js'></script>
-  <script type='text/javascript' src='js/cm-javascript.min.js'></script>
-  <script type='text/javascript' src='js/ripple-0.11.0-min.js'></script>
-  <script type='text/javascript' src='js/apitool-websocket.js'></script>
 </body>
 </html>

@@ -1,3 +1,15 @@
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
 
 ;(function() {
 
@@ -16,6 +28,9 @@
   var status          = $(command_wrapper).find('#status');
   var info            = $(command_wrapper).find('#info');
   var spinner = $(".loader");
+  
+  var BASE_HOST_DEFAULT = 's2.ripple.com';
+  var BASE_PORT_DEFAULT = 443;
 
   var remote = new ripple.Remote({
     trusted:        true,
@@ -23,12 +38,16 @@
     local_fee:      false,
     servers: [
       {
-        host:    's2.ripple.com',
-        port:    443,
+        host:    BASE_HOST_DEFAULT,
+        port:    BASE_PORT_DEFAULT,
         secure:  true
       }
     ]
   });
+  
+  function new_remote(options) {
+    remote = new ripple.Remote(options);
+  }
 
   function set_online_state(state) {
     var state = state.toLowerCase();
@@ -42,7 +61,13 @@
   });
 
   remote.on('connect', function() {
-    set_online_state('connected');
+    var msg = "connected";
+    if (remote._servers.length === 1) {
+        msg = "connected to "+remote._servers[0].getHostID();
+    } else if (remote._servers.length > 1) {
+        msg = "connected to "+remote._servers.length+" servers";
+    }
+    set_online_state(msg);
   });
 
   /* ---- ---- ---- ---- ---- */
@@ -648,6 +673,37 @@
 
   $(function() {
     set_online_state('connecting');
+    
+    if (urlParams["base_url"]) {
+        base_url = urlParams["base_url"].split(":");
+        if (base_url.length == 2) {
+            base_host = base_url[0];
+            base_port = base_url[1];
+        } else {
+            base_host = base_url[0];
+            base_port = BASE_PORT_DEFAULT;
+        }
+        
+        if (urlParams["use_wss"]
+            && urlParams["use_wss"].toLowerCase() === "false") {
+            use_wss = false;
+        } else {
+            use_wss = true;
+        }
+        
+        new_remote({
+            trusted:        true,
+            local_signing:  true,
+            local_fee:      false,
+            servers: [
+              {
+                host:    base_host,
+                port:    base_port,
+                secure:  use_wss
+              }
+            ]
+        });
+    }
 
     remote.connect(init);
 

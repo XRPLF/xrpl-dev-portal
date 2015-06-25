@@ -69,6 +69,21 @@ Amazon EC2's m3.medium or m3.large VM sizes may be appropriate depending on your
 Naturally, a fast network connection is preferable.
 
 
+## Clustering ##
+
+If you are running multiple `rippled` servers in a single datacenter, you can configure your nodes to operate in a cluster to maximize efficiency. Operating your `rippled` servers in a cluster provides the following benefits:
+
+* Clustered nodes share the work of cryptography. If one node has verified the authenticity of a message, the other nodes in the cluster trust it and do not re-verify.
+* Clustered nodes share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all nodes of the cluster at once.
+* Clustered nodes always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.
+
+To enable clustering, modify the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
+
+* List the IP addresses of each other node under the `[ips_fixed]` section.
+* Generate a unique seed (using the [`validation_create` command](rippled-apis.html#validation-seed)) for each of your nodes, and configure it under the `[node_seed]` section. The `rippled` node uses this key to sign its messages to other nodes in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
+* Add the public keys (for peer communication) of each of your other nodes under the `[cluster_nodes]` section.
+
+
 
 # Installing rippled #
 

@@ -50,6 +50,11 @@
         "html":"gateway_services.html"
     },
     {
+        "name": "Transfer Fees",
+        "md":"transferrate.md",
+        "html":"transfer_fees.html"
+    },
+    {
         "name": "Whitepapers",
         "md":"whitepapers.md",
         "html":"whitepapers.html"

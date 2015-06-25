@@ -410,7 +410,7 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the global ledger]((https://wiki.ripple.com/Ledger_Format#AccountRoot).
+An AccountSet transaction modifies the properties of an [account in the global ledger](https://wiki.ripple.com/Ledger_Format#AccountRoot).
 
 Example AccountSet:
 
@@ -498,13 +498,9 @@ Accounts can protect against unwanted incoming payments for non-XRP currencies s
 
 ### TransferRate ###
 
-TransferRate allows issuing gateways to charge users for sending funds to other users of the same gateway. It adds a fee, specified in billionths of a unit (for all non-XRP currencies) that applies when a user pays another user in the currency issued by this account. The fee "disappears" from the balances on the ledger, becoming the property of the issuing gateway. The TransferRate does not apply when redeeming funds with the account that issued them. The TransferRate applies equally to all currencies issued by that account. (XRP, which never has an issuer, is never subject to a TransferRate.)
+The TransferRate field specifies a fee to charge whenever a gateway's issuances change hands. See [Transfer Rate](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
 In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `120000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
-
-Ripple-REST uses a decimal value to represent the `transfer_rate` as a decimal, the amount that must be sent in order for 1 unit to arrive. For example, a 20% transfer fee is represented as the value `1.2`. Ripple-REST's format also allows 9 digits of precision. The value `0` is equivalent to the value `1`, both meaning no fee.
-
-The fee is paid by the sender on top of the destination amount of the transaction. For example, if HighFeeGateway's `TransferRate` is 20% and Norman wants to send Arthur $100 of USD issued by HighFeeGateway, Norman would have to spend $120 in order for Arthur to receive $100. The other $20 would no longer be tracked on the Ripple Ledger, and would become the property of HighFeeGateway instead.
 
 
 
