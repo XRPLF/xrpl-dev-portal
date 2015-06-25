@@ -567,15 +567,7 @@ As an added precaution, we recommend comparing the balances of your Ripple cold 
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. The transfer fee is set by the issuing (**cold wallet**) account. For any transaction *except paying back to the issuing account*, the sending account is debited issuances at a ratio of transfer\_rate:1 compared to the destination amount. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% (a `transfer_rate` of 1.0) or greater than 100% (a `transfer_rate` of 2.0).
-
-The fee represented by the TransferRate is debited from the Ripple ledger, becoming the property of the gateway. 
-
-For example, if ACME sets the trasfer_rate of its cold wallet to 1.005, that indicates a transfer fee of 0.5% for ACME issuances. In order for Bob to receive 2 EUR.ACME, Charlie must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by 0,01€, which means that it is no longer obliged to hold that amount in the account backing its Ripple issuances.
-
-The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
-
-![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ on Ripple](img/e2g-with_transferrate.png)
+The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
 The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to set the TransferRate for a fee of 0.5%.
 
