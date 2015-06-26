@@ -108,7 +108,7 @@ POST http://s1.ripple.com:51234/
 *Commandline*
 
 ```
-rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
 
 </div>
@@ -371,7 +371,7 @@ Unit tests are permitted to submit amounts of non-XRP currencies as a slash-sepa
 
 If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the `value` field.
 
-If you are specifying XRP without an amount -- also typically for defining an order book -- you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
+If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
 
 Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
 
@@ -445,15 +445,16 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`tx_history` - Retrieve info about all recent transactions](#tx-history)
 * [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
 
-## Admin Commands ##
+
+## List of Admin Commands ##
 
 * [`can_delete` - Allow online deletion of ledgers up to a specific ledger](#can-delete)
 * [`connect` - Force the rippled server to connect to a specific peer](#connect)
 * [`consensus_info` - Get information about the state of consensus as it happens](#consensus-info)
 * [`fetch_info` - Get information about the server's sync with the network](#fetch-info)
-* [`get_counts` - Get information about the server's memory usage](#get-counts)
+* [`get_counts` - Get statistics about the server's internals and memory usage](#get-counts)
 * [`ledger_accept` - Close and advance the ledger in stand-alone mode](#ledger-accept)
-* [`ledger_cleaner` - Configure the ledger cleaner service to check for corrupted data](#ledger-accept)
+* [`ledger_cleaner` - Configure the ledger cleaner service to check for corrupted data](#ledger-cleaner)
 * [`ledger_request` - Query a peer server for a specific ledger version](#ledger-request)
 * [`log_level` - Get or modify log verbosity](#log-level)
 * [`logrotate` - Reopen the log file](#logrotate)
@@ -673,7 +674,7 @@ An example of an account_info request:
 *Commandline*
 ```
 #Syntax: account_info account [ledger_index|ledger_hash] [strict]
-rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 
 </div>
@@ -1173,7 +1174,7 @@ An example of the request format:
 
 ```
 #Syntax: account_offers account [ledger_index]
-rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
+rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 
 </div>
@@ -1318,7 +1319,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
-rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
+rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
 
 </div>
@@ -1862,6 +1863,7 @@ Each transaction object includes the following fields, depending on whether it w
 * `badSeed` - This error should never occur.
 * `noGenDecrypt` - This error should never occur.
 
+
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
@@ -1898,7 +1900,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: wallet_propose [passphrase]
-rippled -- wallet_propose test
+rippled wallet_propose test
 ```
 
 </div>
@@ -1996,7 +1998,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger ledger_index|ledger_hash [full]
-rippled -- ledger current false
+rippled ledger current false
 ```
 
 </div>
@@ -2125,7 +2127,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger_closed
-rippled -- ledger_closed
+rippled ledger_closed
 ```
 
 </div>
@@ -2210,7 +2212,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger_current
-rippled -- ledger_current
+rippled ledger_current
 ```
 
 </div>
@@ -2683,7 +2685,7 @@ An example of the request format:
 *Commandline*
 
 ```
-rippled -- ledger_request 13800000
+rippled ledger_request 13800000
 ```
 
 </div>
@@ -2803,7 +2805,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger_accept
-rippled -- ledger_accept
+rippled ledger_accept
 ```
 </div>
 
@@ -2879,7 +2881,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: tx transaction [binary]
-rippled -- tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
+rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 
 </div>
@@ -3086,7 +3088,7 @@ An example of the request format:
 
 ```
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
+rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 
 </div>
@@ -3301,7 +3303,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: tx_history [start]
-rippled -- tx_history 0
+rippled tx_history 0
 ```
 
 </div>
@@ -5604,7 +5606,7 @@ An example of the request format:
 
 ```
 #Syntax ripple_path_find json ledger_index|ledger_hash
-rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
+rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
 
 </div>
@@ -5937,7 +5939,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: sign secret tx_json [offline]
-rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
+rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 ```
 
 </div>
@@ -6327,7 +6329,7 @@ An example of the request format:
 
 ```
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
-rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 
 </div>
@@ -6345,7 +6347,7 @@ The request includes the following parameters:
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
-__*Note:*__ The other parameters of this command -- `marker`, `proof`, and `autobridge` -- cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
+__*Note:*__ The other parameters of this command (`marker`, `proof`, and `autobridge`) cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
 
 Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.
 
@@ -7162,7 +7164,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax can_delete [<ledger_index>|<ledger_hash>|now|always|never]
-rippled -- can_delete 11320417
+rippled can_delete 11320417
 ```
 
 </div>
@@ -7229,7 +7231,7 @@ An example of the request format:
 
 ```
 #Syntax: consensus_info
-rippled -- consensus_info
+rippled consensus_info
 ```
 
 </div>
@@ -7463,7 +7465,7 @@ An example of the request format:
 
 ```
 #Syntax: fetch_info [clear]
-rippled -- fetch_info
+rippled fetch_info
 ```
 
 </div>
@@ -7622,7 +7624,7 @@ An example of the request format:
 
 ```
 #Syntax: get_counts [min_count]
-rippled -- get_counts 100
+rippled get_counts 100
 ```
 
 </div>
@@ -7831,7 +7833,7 @@ An example of the request format:
 
 ```
 #Syntax: log_level [[partition] severity]
-rippled -- log_level PathRequest debug
+rippled log_level PathRequest debug
 ```
 
 </div>
@@ -7965,7 +7967,7 @@ An example of the request format:
 *Commandline*
 
 ```
-rippled -- logrotate
+rippled logrotate
 ```
 
 </div>
@@ -8057,7 +8059,7 @@ An example of the request format:
 
 ```
 #Syntax: validation_create [secret]
-rippled -- validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
 
 </div>
@@ -8145,7 +8147,7 @@ An example of the request format:
 *Commandline*
 
 ```#Syntax: validation_seed [secret]
-rippled -- validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
+rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 ```
 
 </div>
@@ -8231,7 +8233,7 @@ An example of the request format:
 *Commandline*
 
 ```
-rippled -- peers
+rippled peers
 ```
 
 </div>
@@ -8495,7 +8497,7 @@ An example of the request format:
 *Commandline*
 
 ```
-rippled -- print
+rippled print
 ```
 
 </div>
@@ -8740,7 +8742,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ping
-rippled -- ping
+rippled ping
 ```
 
 </div>
@@ -8815,7 +8817,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: random
-rippled -- random
+rippled random
 ```
 
 </div>
@@ -8876,7 +8878,7 @@ An example of the request format:
 *Commandline*
 ```
 # Syntax: json method json_stanza
-rippled -q -- json ledger_closed '{}'
+rippled -q json ledger_closed '{}'
 ```
 
 </div>
@@ -8945,7 +8947,7 @@ An example of the request format:
 
 ```
 #Syntax: connect ip [port]
-rippled -- connect 192.170.145.88 51235
+rippled connect 192.170.145.88 51235
 ```
 
 </div>
@@ -9038,7 +9040,7 @@ An example of the request format:
 *Commandline*
 
 ```
-rippled -- stop
+rippled stop
 ```
 
 </div>
