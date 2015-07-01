@@ -423,6 +423,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
+* [`account_objects` - Get all ledger objects owned by an account](#account-objects)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
 * [`account_tx` - Get info about an account's transactions](#account-tx)
 * [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
@@ -431,6 +432,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`ledger_current` - Get the current working ledger version](#ledger-current)
 * [`ledger_data` - Get the raw contents of a ledger version](#ledger-data)
 * [`ledger_entry` - Get one element from a ledger version](#ledger-entry)
+* [`noripple_check` - Get recommended changes to an account's DefaultRipple and NoRipple settings](#noripple-check)
 * [`path_find` - Find a path for a payment between two accounts and receive updates](#path-find)
 * [`ping` - Confirm connectivity with the server](#ping)
 * [`random` - Generate a random number](#random)
@@ -445,6 +447,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`tx_history` - Retrieve info about all recent transactions](#tx-history)
 * [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
 
+The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
 
 ## List of Admin Commands ##
 
@@ -1109,7 +1112,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
-| markers | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -1120,8 +1123,8 @@ Each trust-line object has some combination of the following fields, although no
 | currency | String | The currency this line applies to |
 | limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
 | limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
-| no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for this line |
-| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
+| no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for this line |
+| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for the other direction of this trust line |
 | quality\_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality\_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 
@@ -1268,6 +1271,615 @@ Each offer object contains the following fields:
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
+
+
+## account_objects ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+
+The `account_objects` command returns the raw ledger format for all objects owned by an account, such as [outstanding offers](transactions.html#lifecycle-of-an-offer), trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend [`account_lines`](#account-lines) instead.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+  "id": 1,
+  "command": "account_objects",
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "ledger_index": "validated",
+  "type": "state",
+  "limit": 10
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "account_objects",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "validated",
+            "limit": 10,
+            "type": "state"
+        }
+    ]
+}
+```
+
+
+*Commandline*
+
+```
+#Syntax: account_objects <account> [<ledger>]
+rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | A unique identifier for the account, most commonly the account's address. |
+| type | String | (Optional) If included, filter results to include only this type of ledger node. Valid types include `state` (trust lines), `offer` (offers), and `ticket` (part of the forthcoming signing process). |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| limit   | Unsigned Integer | (Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200. |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 8,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "account_objects": [
+            {
+                "Balance": {
+                    "currency": "ASP",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "ASP",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "ASP",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "10"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
+                "PreviousTxnLgrSeq": 1438879,
+                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
+            },
+            {
+                "Balance": {
+                    "currency": "XAU",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 3342336,
+                "HighLimit": {
+                    "currency": "XAU",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
+                "PreviousTxnLgrSeq": 5982530,
+                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
+                "PreviousTxnLgrSeq": 10555014,
+                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
+            },
+            {
+                "Balance": {
+                    "currency": "MXN",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "481.992867407479"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "MXN",
+                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "MXN",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1000"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
+                "PreviousTxnLgrSeq": 3316170,
+                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
+            },
+            {
+                "Balance": {
+                    "currency": "EUR",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0.793598266778297"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "EUR",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "EUR",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
+                "PreviousTxnLgrSeq": 5447146,
+                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
+            },
+            {
+                "Balance": {
+                    "currency": "CNY",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 2228224,
+                "HighLimit": {
+                    "currency": "CNY",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CNY",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000008",
+                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
+                "PreviousTxnLgrSeq": 5949673,
+                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
+            },
+            {
+                "Balance": {
+                    "currency": "DYM",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "1.336889190631542"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "DYM",
+                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "DYM",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
+                "PreviousTxnLgrSeq": 8818732,
+                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
+            },
+            {
+                "Balance": {
+                    "currency": "CHF",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-0.3488146605801446"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "CHF",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CHF",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000008C",
+                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
+                "PreviousTxnLgrSeq": 2687590,
+                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000043",
+                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
+                "PreviousTxnLgrSeq": 8317037,
+                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-16.00534471983042"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5000"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000004A",
+                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
+                "PreviousTxnLgrSeq": 14365854,
+                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
+            }
+        ],
+        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",
+        "ledger_index": 14378733,
+        "limit": 10,
+        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
+        "validated": true
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "account_objects": [
+            {
+                "Balance": {
+                    "currency": "ASP",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "ASP",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "ASP",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "10"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
+                "PreviousTxnLgrSeq": 1438879,
+                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
+            },
+            {
+                "Balance": {
+                    "currency": "XAU",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 3342336,
+                "HighLimit": {
+                    "currency": "XAU",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
+                "PreviousTxnLgrSeq": 5982530,
+                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
+                "PreviousTxnLgrSeq": 10555014,
+                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
+            },
+            {
+                "Balance": {
+                    "currency": "MXN",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "481.992867407479"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "MXN",
+                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "MXN",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1000"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
+                "PreviousTxnLgrSeq": 3316170,
+                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
+            },
+            {
+                "Balance": {
+                    "currency": "EUR",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0.793598266778297"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "EUR",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "EUR",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
+                "PreviousTxnLgrSeq": 5447146,
+                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
+            },
+            {
+                "Balance": {
+                    "currency": "CNY",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 2228224,
+                "HighLimit": {
+                    "currency": "CNY",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CNY",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000008",
+                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
+                "PreviousTxnLgrSeq": 5949673,
+                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
+            },
+            {
+                "Balance": {
+                    "currency": "DYM",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "1.336889190631542"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "DYM",
+                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "DYM",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
+                "PreviousTxnLgrSeq": 8818732,
+                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
+            },
+            {
+                "Balance": {
+                    "currency": "CHF",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-0.3488146605801446"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "CHF",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CHF",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000008C",
+                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
+                "PreviousTxnLgrSeq": 2687590,
+                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000043",
+                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
+                "PreviousTxnLgrSeq": 8317037,
+                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-16.00534471983042"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5000"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000004A",
+                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
+                "PreviousTxnLgrSeq": 14365854,
+                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
+            }
+        ],
+        "ledger_hash": "4C99E5F63C0D0B1C2283B4F5DCE2239F80CE92E8B1A6AED1E110C198FC96E659",
+        "ledger_index": 14380380,
+        "limit": 10,
+        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
+        "status": "success",
+        "validated": true
+    }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | Unique address of the account this request corresponds to |
+| account\_objects | Array | Array of objects owned by this account. Each object is in its raw [ledger format](https://ripple.com/wiki/Ledger_Format). |
+| ledger\_hash | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
+| ledger\_index | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
+| ledger\_current\_index | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
+| limit | Number | (May be omitted) The limit that was used in this request, if any. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. |
+| validated | Boolean | If `true`, this information comes from ledger version that has been validated by consensus. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
 
 
 ## account_tx ##
@@ -1860,8 +2472,192 @@ Each transaction object includes the following fields, depending on whether it w
 * `actMalformed` - If the address specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
 * `lgrIdxsInvalid` - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `badSeed` - This error should never occur.
-* `noGenDecrypt` - This error should never occur.
+
+
+## noripple_check ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
+
+The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), compared with the recommended settings.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 0,
+    "command": "noripple_check",
+    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "role": "gateway",
+    "ledger_index": "current",
+    "limit": 2,
+    "transactions": true
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "noripple_check",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "current",
+            "limit": 2,
+            "role": "gateway",
+            "transactions": true
+        }
+    ]
+}
+```
+
+
+</div>
+
+**Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | A unique identifier for the account, most commonly the account's address. |
+| role    | String | Whether the account refers to a `gateway` or `user`. Recommendations depend on the role of the account. Gateways must have DefaultRipple enabled and must disable NoRipple on all trust lines. Users should have DefaultRipple disabled, and should enable NoRipple on all trust lines. |
+| transactions | Boolean | (Optional) If `true`, include an array of suggested [transactions](transactions.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
+| limit   | Unsigned Integer | (Optional) The maximum number of trust line problems to include in the results. Defaults to 300. |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+  "id": 0,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 14342939,
+    "problems": [
+      "You should immediately set your default ripple flag",
+      "You should clear the no ripple flag on your XAU line to r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+      "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    ],
+    "transactions": [
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Sequence": 1406,
+        "SetFlag": 8,
+        "TransactionType": "AccountSet"
+      },
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Flags": 262144,
+        "LimitAmount": {
+          "currency": "XAU",
+          "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+          "value": "0"
+        },
+        "Sequence": 1407,
+        "TransactionType": "TrustSet"
+      },
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Flags": 262144,
+        "LimitAmount": {
+          "currency": "USD",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "value": "5"
+        },
+        "Sequence": 1408,
+        "TransactionType": "TrustSet"
+      }
+    ],
+    "validated": false
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "ledger_current_index": 14380381,
+        "problems": [
+            "You should immediately set your default ripple flag",
+            "You should clear the no ripple flag on your XAU line to r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+            "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        ],
+        "status": "success",
+        "transactions": [
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Sequence": 1406,
+                "SetFlag": 8,
+                "TransactionType": "AccountSet"
+            },
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Flags": 262144,
+                "LimitAmount": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "Sequence": 1407,
+                "TransactionType": "TrustSet"
+            },
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Flags": 262144,
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "5"
+                },
+                "Sequence": 1408,
+                "TransactionType": "TrustSet"
+            }
+        ],
+        "validated": false
+    }
+}
+```
+
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger\_current\_index | Number | The sequence number of the ledger used to calculate these results. |
+| problems | Array | Array of strings with human-readable descriptions of the problems. This includes up to one entry if the account's DefaultRipple setting is not as recommended, plus up to `limit` entries for trust lines whose NoRipple setting is not as recommended. |
+| transactions | Array | (May be omitted) If the request specified `transactions` as `true`, this is an array of JSON objects, each of which is the JSON form of a [transaction](transactions.html) that should fix one of the described problems. The length of this array is the same as the `problems` array, and each entry is intended to fix the problem described at the same index into that array. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
 
 
 ## wallet_propose ##
@@ -6254,7 +7050,7 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | The complete transaction in hex string format |
 | tx_json | Object | The complete transaction in JSON format |
 
-__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](transactions.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 __*Caution:*__ If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
 
@@ -6528,7 +7324,7 @@ The `streams` parameter provides access to the following default streams of info
 * `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
 * `ledger` - Sends a message whenever a new ledger version closes
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
-* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even transactions that don't succeed are included](https://ripple.com/wiki/Transaction_errors#Claimed_fee_only) in validated ledgers, because they take the anti-spam transaction fee.)
+* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even some transactions that don't succeed are included](transactions.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.)
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -6735,8 +7531,8 @@ The `accounts_proposed` subscription works the same way, except it also includes
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `transaction` indicates this is the notification of a transaction, which could come from the `transactions` or `transactions_proposed` streams, or from watching a particular account |
-| engine_result | String | String [transaction response code](https://ripple.com/wiki/Transaction_errors) |
-| engine_result_code | Number | Numeric [transaction response code](https://ripple.com/wiki/Transaction_errors) |
+| engine_result | String | String [Transaction result code](transactions.html#result-categories) |
+| engine_result_code | Number | Numeric [transaction response code](transactions.html#result-categories), if applicable. |
 | engine_result_message | String | Human-readable explanation for the transaction response |
 | ledger_current_index | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
 | ledger_hash | String | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
