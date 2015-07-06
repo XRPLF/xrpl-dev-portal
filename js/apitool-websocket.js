@@ -1,3 +1,15 @@
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
 
 ;(function() {
 
@@ -16,6 +28,9 @@
   var status          = $(command_wrapper).find('#status');
   var info            = $(command_wrapper).find('#info');
   var spinner = $(".loader");
+  
+  var BASE_HOST_DEFAULT = 's2.ripple.com';
+  var BASE_PORT_DEFAULT = 443;
 
   var remote = new ripple.Remote({
     trusted:        true,
@@ -23,12 +38,16 @@
     local_fee:      false,
     servers: [
       {
-        host:    's1.ripple.com',
-        port:    443,
+        host:    BASE_HOST_DEFAULT,
+        port:    BASE_PORT_DEFAULT,
         secure:  true
       }
     ]
   });
+  
+  function new_remote(options) {
+    remote = new ripple.Remote(options);
+  }
 
   function set_online_state(state) {
     var state = state.toLowerCase();
@@ -42,7 +61,13 @@
   });
 
   remote.on('connect', function() {
-    set_online_state('connected');
+    var msg = "connected";
+    if (remote._servers.length === 1) {
+        msg = "connected to "+remote._servers[0].getHostID();
+    } else if (remote._servers.length > 1) {
+        msg = "connected to "+remote._servers.length+" servers";
+    }
+    set_online_state(msg);
   });
 
   /* ---- ---- ---- ---- ---- */
@@ -87,22 +112,23 @@
   };
 
   var sample_address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+  var sample_address_2 = 'ra5nK24KXen9AHvsdFTKHSANinZseWnPcX';
   var sample_tx = 'E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7';
 
   /* ---- ---- */
 
   Request('server_info', {
-    _description: 'Returns information about the state of the server for human consumption. Results are subject to change without notice.',
+    _description: 'Get information about the state of the server for human consumption. Results are subject to change without notice.',
     _link: 'rippled-apis.html#server-info'
   });
 
   Request('server_state', {
-    _description: 'Returns information about the state of the server for machine consumption.',
+    _description: 'Get information about the state of the server for machine consumption.',
     _link: 'rippled-apis.html#server-state'
   });
 
   Request('ping', {
-    _description: 'This command is used to check connectivity for clients. Websocket clients can use this to determine turn around time and actively discover loss of connectivity to a server.',
+    _description: 'Check connectivity to the server.',
     _link: 'rippled-apis.html#ping'
   });
 
@@ -142,17 +168,17 @@
     account_root:  sample_address,
     ledger_index:   'validated',
     ledger_hash:  void(0),
-    _description: 'Returns a ledger entry. For untrusted servers, the index option provides raw access to ledger entries and proof.',
+    _description: 'Get a single node from the ledger',
     _link: 'rippled-apis.html#ledger-entry'
   });
 
   Request('ledger_closed', {
-    _description: 'Returns the most recent closed ledger index. If a validation list has been provided, then validations should be available.',
+    _description: 'Get the most recent closed ledger index.',
     _link: 'rippled-apis.html#ledger-closed'
   });
 
   Request('ledger_current', {
-    _description: 'Returns the current proposed ledger index. Proof is not possible for the current ledger. This command is primarily useful for testing.',
+    _description: 'Get the current in-progress ledger index.',
     _link: 'rippled-apis.html#ledger-current'
   });
 
@@ -160,7 +186,7 @@
 
   Request('account_info', {
     account: sample_address,
-    _description: 'Returns information about the specified account.',
+    _description: 'Get information about the specified account.',
     _link: 'rippled-apis.html#account-info'
   });
 
@@ -168,7 +194,7 @@
     account:        sample_address,
     account_index:  void(0),
     ledger:         'current',
-    _description: 'Returns information about the ripple credit lines for the specified account.',
+    _description: "Get a list of trust lines connected to an account.",
     _link: 'rippled-apis.html#account-lines'
   });
 
@@ -176,7 +202,7 @@
     account:        sample_address,
     account_index:  void(0),
     ledger:         'current',
-    _description: 'Returns the outstanding offers for a specified account.',
+    _description: 'Get a list of offers created by an account.',
     _link: 'rippled-apis.html#account-offers'
   });
 
@@ -189,8 +215,17 @@
     limit:             10,
     forward:           false,
     marker:            void(0),
-    _description: 'Returns a list of transactions that applied to a specified account.',
+    _description: 'Get a list of transactions that applied to a specified account.',
     _link: 'rippled-apis.html#account-tx'
+  });
+  
+  Request('account_currencies', {
+    account:           sample_address,
+    strict: true,
+    ledger_index: "validated",
+    account_index: 0,
+    _description: 'Returns a list of currencies the account can send or receive.',
+    _link: 'rippled-apis.html#account-currencies'
   });
 
   /* ---- ---- */
@@ -199,7 +234,7 @@
     tx_hash:       sample_tx,
     ledger_index:  348734,
     ledger_hash:   void(0),
-    _description: 'Returns information about a specified transaction.',
+    _description: 'Get information about a specified transaction.',
     _link: 'rippled-apis.html#transaction-entry'
   });
 
@@ -234,8 +269,12 @@
   Request('path_find', {
     subcommand: 'create',
     source_account: sample_address,
-    destination_account: 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
-    destination_amount: ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
+    destination_account: sample_address_2,
+    destination_amount: {
+        "currency": "USD",
+        "value": "0.01",
+        "issuer": sample_address_2
+    },
     _description: 'Start or stop searching for payment paths between specified accounts.',
     _link: 'rippled-apis.html#path-find',
     _stream: true
@@ -246,8 +285,12 @@
     ledger_index : void(0),
     source_account : sample_address,
     source_currencies : [ { currency : 'USD' } ],
-    destination_account : 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59',
-    destination_amount : ripple.Amount.from_json('0.001/USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B').to_json(),
+    destination_account : sample_address_2,
+    destination_amount : {
+        "currency": "USD",
+        "value": "0.01",
+        "issuer": sample_address_2
+    },
     _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
     _link: 'rippled-apis.html#ripple-path-find'
   });
@@ -630,6 +673,37 @@
 
   $(function() {
     set_online_state('connecting');
+    
+    if (urlParams["base_url"]) {
+        base_url = urlParams["base_url"].split(":");
+        if (base_url.length == 2) {
+            base_host = base_url[0];
+            base_port = base_url[1];
+        } else {
+            base_host = base_url[0];
+            base_port = BASE_PORT_DEFAULT;
+        }
+        
+        if (urlParams["use_wss"]
+            && urlParams["use_wss"].toLowerCase() === "false") {
+            use_wss = false;
+        } else {
+            use_wss = true;
+        }
+        
+        new_remote({
+            trusted:        true,
+            local_signing:  true,
+            local_fee:      false,
+            servers: [
+              {
+                host:    base_host,
+                port:    base_port,
+                secure:  use_wss
+              }
+            ]
+        });
+    }
 
     remote.connect(init);
 

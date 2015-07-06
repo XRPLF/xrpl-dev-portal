@@ -18,11 +18,9 @@ You can also run `rippled` as a client application for accessing [rippled APIs](
 
 Most of the time, we describe the Ripple Network as one collective, singular entity -- and that's mostly true. There is one production Ripple Network, and all business that takes place on Ripple occurs within the production Ripple Network.
 
-However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. Contact [bwilson@ripple.com](mailto:bwilson@ripple.com) to request Test Net XRP.
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. XRP is automatically generated and distributed to wallets for all new accounts on rippletest.net.
 
-**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to used to test various properties of server configuration, network topology, and network performance.
-
-Organizations who want to contribute to the Ripple Network as a validator can start by demonstrating reliability in the [Ripple Test Net](https://rippletest.net/). Ripple Labs may also reward reliable Test Net validators with production-network XRP.
+**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
 Over time, there may also be additional, smaller test networks for specific purposes.
 
@@ -71,6 +69,21 @@ Amazon EC2's m3.medium or m3.large VM sizes may be appropriate depending on your
 Naturally, a fast network connection is preferable.
 
 
+## Clustering ##
+
+If you are running multiple `rippled` servers in a single datacenter, you can configure your nodes to operate in a cluster to maximize efficiency. Operating your `rippled` servers in a cluster provides the following benefits:
+
+* Clustered nodes share the work of cryptography. If one node has verified the authenticity of a message, the other nodes in the cluster trust it and do not re-verify.
+* Clustered nodes share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all nodes of the cluster at once.
+* Clustered nodes always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.
+
+To enable clustering, modify the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
+
+* List the IP addresses of each other node under the `[ips_fixed]` section.
+* Generate a unique seed (using the [`validation_create` command](rippled-apis.html#validation-seed)) for each of your nodes, and configure it under the `[node_seed]` section. The `rippled` node uses this key to sign its messages to other nodes in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
+* Add the public keys (for peer communication) of each of your other nodes under the `[cluster_nodes]` section.
+
+
 
 # Installing rippled #
 
@@ -108,20 +121,14 @@ This document assumes that you are using Ubuntu 14.04.
         [port_rpc]
         port = 51234
         ip = 0.0.0.0
-        admin = allow
+        admin = 127.0.0.1
         protocol = http
 
         [port_ws]
         port = 51233
         ip = 0.0.0.0
-        admin = allow
+        admin = 127.0.0.1
         protocol = ws
-
-        [peer_private]
-        1
-
-        [ledger_history]
-        full
 
         [ssl_verify]
         0
@@ -132,29 +139,66 @@ This document assumes that you are using Ubuntu 14.04.
         time.nist.gov
         pool.ntp.org
 
-        [rpc_allow_remote]
-        1
-
         [node_db]
         type=nudb
-        path=/mnt/rippled/db/nudb
+        path=/var/lib/rippled/db/nudb
 
         [database_path]
-        /mnt/rippled/db
+        /var/lib/rippled/db
+
+        [debug_logfile]
+        /var/log/rippled/debug.log
 
         [rpc_startup]
         {"command": "log_level", "severity": "warning"}
 
    See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for additional configuration options.
 
-4. Give rippled permission to mount:
+4. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
 
-        $ sudo mkdir /mnt/rippled
-        $ sudo chown rippled:rippled -R /mnt/rippled
+  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) validators:
 
-5. Start the rippled service:
+        [ips]
+        52.16.66.76 51235
+        52.11.28.194 51235
+        54.94.245.104 51235
+        52.11.181.30 51235
+        52.68.19.29 51235
+        41.79.78.42 51235
 
-        $ sudo service rippled start
+5. Add trusted validation public keys to `rippled.cfg`:
+
+  The default configuration includes validators operated by Ripple Labs for the production Ripple Network:
+  
+        [validators]
+        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
+        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
+        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
+        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
+        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
+
+  If you want to connect to the [Ripple Test Net](#parallel-networks), you could add the validation public keys of the Ripple Labs validators on that network instead:
+
+        [validators]
+        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
+        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
+        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
+        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
+        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
+        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
+
+6. Adjust the validation quorum value in `rippled.cfg`:
+
+  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
+
+  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
+
+        [validation_quorum]
+        4
+
+7. Restart rippled:
+
+        $ sudo service rippled restart
         
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple Network.
 
@@ -183,71 +227,13 @@ Becoming a validator that participates in the network involves several steps. In
             "validation_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4"
         }
 
-4. Stop rippled:
-
-        $ sudo service rippled stop
-
-5. Add the generated validator signing key from above to your `rippled.cfg`:
+4. Add the generated validator signing key from above to your `rippled.cfg`:
 
         [validation_seed]
         ssdecohJMDPFuUPDkmG1w4objZyp4
-        
-6. (Optional) If connecting to a [parallel network](#parallel-networks), add core validator IP addresses of parallel network to `rippled.cfg`:
 
-  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) core validators:
+5. Restart `rippled` validator
 
-        [ips_fixed]
-        54.92.66.122 51235
-        54.67.72.173 51235
-        52.16.66.76 51235
-        54.93.66.235 51235
-        52.74.67.18 51235
-        52.64.9.71 51235
-        54.207.20.165 51235
-        54.172.212.33 51235
-        52.11.28.194 51235
-        54.94.245.104 51235
-        54.65.200.22 51235
-        52.1.205.132 51235
-
-7. Add core validator validation public keys to `rippled.cfg`:
-
-  The default configuration includes core validators operated by Ripple Labs for the production Ripple Network:
-  
-        [validators]
-        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
-        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
-        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
-        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
-        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
-
-  If you want to connect to the [Ripple Test Net](#parallel-networks), you would add the validation public keys of the core validators on that network instead:
-
-        [validators]
-        n9LnZ1AiyHmytkhLUr89dmL76uxZLzzyregvQVZFkVfqEQTCpg7B
-        n9LJWexXc9wxzUKWZe4faTS4N9DUba3jNsByERZSa8MJc2bhCF7c
-        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
-        n9LxyXSSrTZ482ceep9WGQnT2nknfzFMFgNL4wMjTUn3SfF3rhtS
-        n9MTPLhEEjxcWHfqsXQhFoSUKaqYvU4E7B4yke39EMFm2DhFr43F
-        n9Lw3j7THPhKLz2uDqBBWwyxHQC1Foyr3M6JeWCVyu7uhnhL6HA5
-        n9L2XLFvcdriK34bCNXexzKMVcsZ9i4UG9J4pykR5c3J8gvBB6fw
-        n9JCK3M4ci7b1XRq2wr1Ckd1HNq3Cg7NWrWiKyzJa4R5J489QGer
-        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
-        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
-        n9J1voqeu6iZQiLXaMofLeMbv8mbPskJWGYRtjdo8rmpvNdQRyEn
-        n9KuCFBLq2GD4vJtoL3tebQJbhcHSd7tMqFM1x9bPK9wSagPJdd1
-        
-8. Adjust the validation quorum value in `rippled.cfg`:
-
-  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
-
-  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
-
-        [validation_quorum]
-        10
-
-9. Start `rippled` untrusted validator
-
-        $ sudo service rippled start
+        $ sudo service rippled restart
 
 

@@ -33,10 +33,9 @@ Request('Accounts Created', {
     body: {
         "startTime": TIME_20140101,
         "endTime": "2015-03-31T00:00:00.000Z",
-        "timeIncrement": "month",
+        "timeIncrement": "week",
         "descending": true,
-        "reduce": true,
-        "format": "json"
+        "reduce": true
     }
 });
 
@@ -185,11 +184,11 @@ Request('Top Markets', {
     params: {},
     body: {
         "startTime": TIME_20150101,
-        "endTime": TIME_20150101_2,
+        "interval": "week",
         "exchange": {
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-        }
+      }
     }
 });
 
@@ -216,7 +215,7 @@ Request('Total Value Sent', {
     params: {},
     body: {
         "startTime": TIME_20150101,
-        "endTime": TIME_20150101_2,
+        "interval": "month",
         "exchange": {
             "currency": "USD",
             "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"

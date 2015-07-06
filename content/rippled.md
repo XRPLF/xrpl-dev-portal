@@ -26,7 +26,9 @@ https://groups.google.com/forum/#!forum/ripple-server
 
 Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`)
+Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, in order to access admin functionality, you must connect to on a port/IP address marked as admin in the config file.
+
+The [example config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
 
 
@@ -53,22 +55,6 @@ Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
 | s1.ripple.com | 51234 |
 
 These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
-
-If you are running your own `rippled` server, make sure that you have enabled the JSON-RPC interface in your [rippled.cfg](https://ripple.com/wiki/Rippled.cfg) file, since JSON-RPC is disabled by default. The relevant section is something like this example:
-
-```
-# [rpc_ip]:
-#   IP address or domain to bind to allow insecure RPC connections.
-#   Defaults to not allow RPC connections.
-#
-# [rpc_port]:
-#   Port to bind to if allowing insecure RPC connections.
-[rpc_ip]
-127.0.0.1
-
-[rpc_port]
-8088
-```
 
 ### Commandline ###
 
@@ -122,7 +108,7 @@ POST http://s1.ripple.com:51234/
 *Commandline*
 
 ```
-rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
 
 </div>
@@ -385,7 +371,7 @@ Unit tests are permitted to submit amounts of non-XRP currencies as a slash-sepa
 
 If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the `value` field.
 
-If you are specifying XRP without an amount -- also typically for defining an order book -- you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
+If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
 
 Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
 
@@ -431,11 +417,10 @@ For more information on the various transactions you can submit, consult the [Tr
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.
 
-This page deals with all the Public Commands available. 
-
 
 ## List of Public Commands ##
 
+* [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
@@ -460,16 +445,32 @@ This page deals with all the Public Commands available.
 * [`tx_history` - Retrieve info about all recent transactions](#tx-history)
 * [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
 
-The `wallet_accounts` command is deprecated and may be removed without further notice.
 
-## Admin Commands ##
+## List of Admin Commands ##
 
-Additionally, this page contains an explanation of the following important admin-only command:
-
-* [`can_delete` - Allow online deletion of ledgers up to a specific ledger.](#can-delete)
+* [`can_delete` - Allow online deletion of ledgers up to a specific ledger](#can-delete)
+* [`connect` - Force the rippled server to connect to a specific peer](#connect)
+* [`consensus_info` - Get information about the state of consensus as it happens](#consensus-info)
+* [`fetch_info` - Get information about the server's sync with the network](#fetch-info)
+* [`get_counts` - Get statistics about the server's internals and memory usage](#get-counts)
+* [`ledger_accept` - Close and advance the ledger in stand-alone mode](#ledger-accept)
+* [`ledger_cleaner` - Configure the ledger cleaner service to check for corrupted data](#ledger-cleaner)
+* [`ledger_request` - Query a peer server for a specific ledger version](#ledger-request)
+* [`log_level` - Get or modify log verbosity](#log-level)
+* [`logrotate` - Reopen the log file](#logrotate)
+* [`peers` - Get information about the peer servers connected](#peers)
+* [`print` - Get information about internal subsystems](#print)
+* [`stop` - Shut down the rippled server](#stop)
+* [`validation_create` - Generate keys for a new rippled validator](#validation-create)
+* [`validation_seed` - Temporarily set key to be used for validating](#validation-seed)
 * [`wallet_propose` - Generate keys for a new account](#wallet-propose)
 
-For information about other Admin Commands, consult [the old wiki documentation](https://ripple.com/wiki/JSON_Messages).
+The following admin commands are deprecated and may be removed without further notice: 
+
+* `ledger_header` - Use the [`ledger` command](#ledger) instead.
+* `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the configuration file for UNL management instead.
+* `wallet_seed` - Use [`wallet_propose`](#wallet-propose) instead.
+
 
 ## Commandline Access ##
 
@@ -479,7 +480,7 @@ The `rippled` application, in addition to acting as a server, can be run (as a s
 
 
 
-# Managing Accounts #
+# Account Information #
 Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [reserve for an account](https://ripple.com/wiki/Reserves) increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. 
 
 
@@ -522,6 +523,8 @@ An example of the request format:
 ```
 
 </div>
+
+[Try it! >](ripple-api-tool.html#account_currencies)
 
 The request includes the following parameters:
 
@@ -671,7 +674,7 @@ An example of an account_info request:
 *Commandline*
 ```
 #Syntax: account_info account [ledger_index|ledger_hash] [strict]
-rippled -- account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 
 </div>
@@ -1171,7 +1174,7 @@ An example of the request format:
 
 ```
 #Syntax: account_offers account [ledger_index]
-rippled -- account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
+rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 
 </div>
@@ -1316,7 +1319,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
-rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
+rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
 
 </div>
@@ -1860,6 +1863,7 @@ Each transaction object includes the following fields, depending on whether it w
 * `badSeed` - This error should never occur.
 * `noGenDecrypt` - This error should never occur.
 
+
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
@@ -1896,7 +1900,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: wallet_propose [passphrase]
-rippled -- wallet_propose test
+rippled wallet_propose test
 ```
 
 </div>
@@ -1949,7 +1953,7 @@ The key generated by this method can also be used as a regular key for an accoun
 
 
 
-# Managing Ledgers #
+# Ledger Information #
 
 The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
 
@@ -1994,7 +1998,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger ledger_index|ledger_hash [full]
-rippled -- ledger current false
+rippled ledger current false
 ```
 
 </div>
@@ -2123,7 +2127,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger_closed
-rippled -- ledger_closed
+rippled ledger_closed
 ```
 
 </div>
@@ -2208,7 +2212,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ledger_current
-rippled -- ledger_current
+rippled ledger_current
 ```
 
 </div>
@@ -2656,9 +2660,187 @@ The response follows the [standard format](#response-formatting), with a success
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
+## ledger_request ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
+
+The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
+
+*The `ledger_request` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 102,
+    "command": "ledger_request",
+    "ledger_index": 13800000
+}
+```
+
+*Commandline*
+
+```
+rippled ledger_request 13800000
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field         | Type   | Description |
+|---------------|--------|-------------|
+| ledger\_index | Number | (Optional) Retrieve the specified ledger by its sequence number. |
+| ledger\_hash  | String | (Optional) Retrieve the specified ledger by its identifying hash. |
+
+You must provide either `ledger_index` or `ledger_hash` but not both.
+
+#### Response Format ####
+
+The response follows the [standard format](#response-formatting). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
+
+**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple Labs' full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
+
+A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [`ledger` command](#ledger).
+
+<div class='multicode'>
+
+*Commandline (failure)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "error" : "ledgerNotFound",
+      "hash" : "D6E25136ADF43DED49C886A6D049436DDC8F8CC02C84E7C89DE67E209F0FAAB6",
+      "have_header" : false,
+      "peers" : 2,
+      "request" : {
+         "command" : "ledger_request",
+         "ledger_index" : 13800000
+      },
+      "status" : "error",
+      "timeouts" : 0
+   }
+}
+```
+
+*Commandline (success)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "ledger" : {
+         "accepted" : true,
+         "account_hash" : "84EBB27D9510AD5B9A3A328201921B3FD418D4A349E85D3DC69E33C7B506407F",
+         "close_time" : 486691300,
+         "close_time_human" : "2015-Jun-04 00:01:40",
+         "close_time_resolution" : 10,
+         "closed" : true,
+         "hash" : "DCF5D723ECEE1EF56D2B0024CD9BDFF2D8E3DC211BD2B9460165922564ACD863",
+         "ledger_hash" : "DCF5D723ECEE1EF56D2B0024CD9BDFF2D8E3DC211BD2B9460165922564ACD863",
+         "ledger_index" : "13840000",
+         "parent_hash" : "8A3F6FBC62C11DE4538D969F9C7966234635FE6CEB1133DDC37220978F8100A9",
+         "seqNum" : "13840000",
+         "totalCoins" : "99999022883526403",
+         "total_coins" : "99999022883526403",
+         "transaction_hash" : "3D759EF3AF1AE2F78716A8CCB2460C3030F82687E54206E883703372B9E1770C"
+      },
+      "ledger_index" : 13840000,
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
 
 
-# Managing Transactions #
+The fields of the "failure" response (the ledger was requested, but has not been fully retrieved yet) can include any of the following:
+
+| Field                       | Type    | Description |
+|-----------------------------|---------|-------------|
+| hash                        | String  | The hash of the requested ledger, if the server knows it. |
+| have\_header                | Boolean | Whether the server has the header section of the requested ledger. |
+| have\_state                 | Boolean | (May be omitted) Whether the server has the state section of the requested ledger. |
+| have\_transactions          | Boolean | (May be omitted) Whether the server has the transaction section of the requested ledger. |
+| needed\_state\_hashes       | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the state tree that the server still needs to retrieve. |
+| needed\_transaction\_hashes | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the transaction tree that the server still needs to retrieve. |
+| peers                       | Number  | How many peers the server is querying in its attempt to find this ledger. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
+* `ledgerNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger.
+
+
+## ledger_accept ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
+
+The `ledger_accept` method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
+
+*The `ledger_accept` method is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+
+An example of the request format:
+
+<div class='multicode'>
+*WebSocket*
+```
+{
+   "id": "Accept my ledger!",
+   "command": "ledger_accept"
+}
+```
+
+*Commandline*
+```
+#Syntax: ledger_accept
+rippled ledger_accept
+```
+</div>
+
+The request accepts no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+```js
+{
+  "id": "Accept my ledger!",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 6643240
+  }
+}
+```
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger\_current\_index | Unsigned Integer | Sequence number of the newly created 'current' ledger |
+
+**Note:** When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.
+
+
+
+# Transactions #
 
 Transactions are the only thing that can modify the shared global ledger of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).
 
@@ -2699,7 +2881,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: tx transaction [binary]
-tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
+rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 
 </div>
@@ -2906,7 +3088,7 @@ An example of the request format:
 
 ```
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
-rippled -- transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
+rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 
 </div>
@@ -3121,7 +3303,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: tx_history [start]
-rippled -- tx_history 0
+rippled tx_history 0
 ```
 
 </div>
@@ -5424,7 +5606,7 @@ An example of the request format:
 
 ```
 #Syntax ripple_path_find json ledger_index|ledger_hash
-rippled -- ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }' 
+rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
 
 </div>
@@ -5757,7 +5939,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: sign secret tx_json [offline]
-rippled -- sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
+rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 ```
 
 </div>
@@ -6147,7 +6329,7 @@ An example of the request format:
 
 ```
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
-rippled -- book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
+rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 
 </div>
@@ -6165,7 +6347,7 @@ The request includes the following parameters:
 | taker_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 | taker_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), similar to [currency amounts](#specifying-currency-amounts). |
 
-__*Note:*__ The other parameters of this command -- `marker`, `proof`, and `autobridge` -- cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
+__*Note:*__ The other parameters of this command (`marker`, `proof`, and `autobridge`) cannot be fully implemented with the current design. (See [RIPD-295](https://ripplelabs.atlassian.net/browse/RIPD-295) for more information).
 
 Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.
 
@@ -6948,7 +7130,9 @@ The `state` object may have some arrangement of the following fields:
 ## can_delete ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted. _The `can_delete` method is an admin command that cannot be run by unpriviledged users._
+With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted. 
+
+_The `can_delete` method is an admin command that cannot be run by unpriviledged users._
 
 #### Request Format ####
 
@@ -6980,7 +7164,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax can_delete [<ledger_index>|<ledger_hash>|now|always|never]
-rippled -- can_delete 11320417
+rippled can_delete 11320417
 ```
 
 </div>
@@ -7009,6 +7193,1518 @@ Use this command with no parameter to query the existing `can_delete` setting.
 * `notReady` - Not ready to handle this request.
 * `lgrNotFound` - Ledger not found.
 * `invalidParams` - Invalid parameters.
+
+
+## consensus_info ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
+
+The `consensus_info` command provides information about the consensus process for debugging purposes.
+
+_The `consensus_info` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 99,
+    "command": "consensus_info"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "consensus_info",
+    "params": [
+        {}
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: consensus_info
+rippled consensus_info
+```
+
+</div>
+
+The request has no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "info" : {
+         "acquired" : {
+            "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306" : "acquired"
+         },
+         "close_granularity" : 10,
+         "close_percent" : 50,
+         "close_resolution" : 10,
+         "close_times" : {
+            "486082972" : 1,
+            "486082973" : 4
+         },
+         "current_ms" : 1003,
+         "have_time_consensus" : false,
+         "ledger_seq" : 13701086,
+         "our_position" : {
+            "close_time" : 486082973,
+            "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+            "propose_seq" : 0,
+            "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+         },
+         "peer_positions" : {
+            "0A2EAF919033A036D363D4E5610A66209DDBE8EE" : {
+               "close_time" : 486082972,
+               "peer_id" : "n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "1567A8C953A86F8428C7B01641D79BBF2FD508F3" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "202397A81F20B44CF44EA99AF761295E5A8397D2" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "5C29005CF4FB479FC49EEFB4A5B075C86DD963CC" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "EFC49EB648E557CC50A72D715249B80E071F7705" : {
+               "close_time" : 486082973,
+               "peer_id" : "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            }
+         },
+         "previous_mseconds" : 2005,
+         "previous_proposers" : 5,
+         "proposers" : 5,
+         "proposing" : false,
+         "state" : "consensus",
+         "synched" : true,
+         "validating" : false
+      },
+      "status" : "success"
+   }
+}
+
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "info" : {
+         "acquired" : {
+            "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306" : "acquired"
+         },
+         "close_granularity" : 10,
+         "close_percent" : 50,
+         "close_resolution" : 10,
+         "close_times" : {
+            "486082972" : 1,
+            "486082973" : 4
+         },
+         "current_ms" : 1003,
+         "have_time_consensus" : false,
+         "ledger_seq" : 13701086,
+         "our_position" : {
+            "close_time" : 486082973,
+            "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+            "propose_seq" : 0,
+            "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+         },
+         "peer_positions" : {
+            "0A2EAF919033A036D363D4E5610A66209DDBE8EE" : {
+               "close_time" : 486082972,
+               "peer_id" : "n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "1567A8C953A86F8428C7B01641D79BBF2FD508F3" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "202397A81F20B44CF44EA99AF761295E5A8397D2" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "5C29005CF4FB479FC49EEFB4A5B075C86DD963CC" : {
+               "close_time" : 486082973,
+               "peer_id" : "n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            },
+            "EFC49EB648E557CC50A72D715249B80E071F7705" : {
+               "close_time" : 486082973,
+               "peer_id" : "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+               "previous_ledger" : "0BB01379B51234BAAF501A71C7AB147F595460B689BB9E8252A0B87B5A483623",
+               "propose_seq" : 0,
+               "transaction_hash" : "4BC2CE596CBD1321775320E2067F9C06D3862826212C16EF42ABB6A2B0414306"
+            }
+         },
+         "previous_mseconds" : 2005,
+         "previous_proposers" : 5,
+         "proposers" : 5,
+         "proposing" : false,
+         "state" : "consensus",
+         "synched" : true,
+         "validating" : false
+      },
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| info | Object | Information that may be useful for debugging consensus. This output is subject to change without notice. |
+
+The following is an incomplete summary of fields that may be contained in the `info` object:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger\_seq | Number | The sequence number of the ledger currently in the consensus process |
+| our\_position | Object | This server's expectation for the ledger in the consensus process. |
+| peer\_positions | Object | Map of peers and their proposed versions of the ledger in the consensus process. |
+| proposers | Number | The number of trusted validators participating in this consensus process. Which validators are trusted depends on this server's configuration. |
+| synched | Boolean | Whether this server considers itself in sync with the network. |
+| state | String | What portion of the consensus process is currently in progress: `open`, `consensus`, `finished`, or `accepted`. |
+
+It is also normal to get a minimal result where the only field in `info` is `"consensus": "none"`. This indicates that the server is in between consensus rounds. 
+
+The results of the `consensus_info` command can vary dramatically if you run it several times, even in short succession.
+
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## fetch_info ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp "Source")
+
+The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches. 
+
+_The `fetch_info` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 91,
+    "command": "fetch_info",
+    "clear": false
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "fetch_info",
+    "params": [
+        {
+            "clear": false
+        }
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: fetch_info [clear]
+rippled fetch_info
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| clear | Boolean | If `true`, reset current fetches. Otherwise, only get status of fetches in progress. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "info" : {
+         "348928" : {
+            "hash" : "C26D432B06F84861BCACD7942EDC3FE0B2E1DEB966A9E516A0FD275A375C2010",
+            "have_header" : true,
+            "have_state" : false,
+            "have_transactions" : true,
+            "needed_state_hashes" : [
+               "BF8DC6B1E10D1D3565BF0649075D22EBFD34F751AFCC0E53E81D74786BC88922",
+               "34E37A71CB51A12C73A435250E6A6349F7884C7EEBA6B88FA31F0244E967E88F",
+               "BFB7D3008A7D61FD6A0538D1C2E70CFB94CE8DC66606319C372F278A48629765",
+               "41C0C61D701FB1EA586F0EF1FC7A91FEC476D979589DA60507F05C13F7C21975",
+               "6DDE8840A2C3C7FF05E5FFEE4D06408694C16A8357338FE0C4581DC3D8A00BBA",
+               "6C69D833B582C849917806FA009518832BB50E900E43716FD7CC1966428DD0CF",
+               "1EDC020CFC4AF19B625C52E20B66D6AE672821CCC461E8A9C457A3B2955657F7",
+               "FC0616A66A2B0589CA513F3341D4EA51E782C4601E5072308478E3CC19264640",
+               "19FC607B5DE1B64681A676EC1ED5507B9555B0E098CD9D898320297DE1A64033",
+               "5E128D3FC990074E35687387A14AA12D9FD287E5AB57CB9B2FD83DE635DF5CA9",
+               "DE72820F3981770F2AA8770BC233B80661F1A452819D8529008875FF8DED87A9",
+               "3ACB84BEE2C45556351FF60FD787D235C9CF5623FB8A35B01446B773598E7CC0",
+               "0DD3A8DF69874148057F1F2BF305442FF2E89A76A08B4CC8C051E2ED69B874F3",
+               "4AE9A9C4F12A5BD0355037DA40A0B145420A2168A9FEDE43E643BD13062F8ECE",
+               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
+               "779B2577C5C4BAED6657421448EA506BBF50F86BE363E0924127C4EA17A58BBE"
+            ],
+            "peers" : 2,
+            "timeouts" : 0
+         }
+      },
+      "status" : "success"
+   }
+}
+
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "info" : {
+         "348928" : {
+            "hash" : "C26D432B06F84861BCACD7942EDC3FE0B2E1DEB966A9E516A0FD275A375C2010",
+            "have_header" : true,
+            "have_state" : false,
+            "have_transactions" : true,
+            "needed_state_hashes" : [
+               "BF8DC6B1E10D1D3565BF0649075D22EBFD34F751AFCC0E53E81D74786BC88922",
+               "34E37A71CB51A12C73A435250E6A6349F7884C7EEBA6B88FA31F0244E967E88F",
+               "BFB7D3008A7D61FD6A0538D1C2E70CFB94CE8DC66606319C372F278A48629765",
+               "41C0C61D701FB1EA586F0EF1FC7A91FEC476D979589DA60507F05C13F7C21975",
+               "6DDE8840A2C3C7FF05E5FFEE4D06408694C16A8357338FE0C4581DC3D8A00BBA",
+               "6C69D833B582C849917806FA009518832BB50E900E43716FD7CC1966428DD0CF",
+               "1EDC020CFC4AF19B625C52E20B66D6AE672821CCC461E8A9C457A3B2955657F7",
+               "FC0616A66A2B0589CA513F3341D4EA51E782C4601E5072308478E3CC19264640",
+               "19FC607B5DE1B64681A676EC1ED5507B9555B0E098CD9D898320297DE1A64033",
+               "5E128D3FC990074E35687387A14AA12D9FD287E5AB57CB9B2FD83DE635DF5CA9",
+               "DE72820F3981770F2AA8770BC233B80661F1A452819D8529008875FF8DED87A9",
+               "3ACB84BEE2C45556351FF60FD787D235C9CF5623FB8A35B01446B773598E7CC0",
+               "0DD3A8DF69874148057F1F2BF305442FF2E89A76A08B4CC8C051E2ED69B874F3",
+               "4AE9A9C4F12A5BD0355037DA40A0B145420A2168A9FEDE43E643BD13062F8ECE",
+               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
+               "779B2577C5C4BAED6657421448EA506BBF50F86BE363E0924127C4EA17A58BBE"
+            ],
+            "peers" : 2,
+            "timeouts" : 0
+         }
+      },
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| info | Object | Map of objects being fetched and the status of that object being fetched. A ledger being fetched may be identified by its sequence number; ledgers and other objects being fetched may also be identified by their hashes. |
+
+The fields describing a fetch in progress are subject to change without notice. The following fields may be included:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| hash | String | The hash of the object being fetched. |
+| have\_header | Boolean | For a ledger, whether this server has already obtained the ledger's header section. |
+| have\_transactions | Boolean | For a ledger, whether this server has already obtained the transaction section of that ledger. |
+| needed\_state\_hashes | Array of (Hash) Strings | The hash values of state nodes still needed from this object. If more than 16 are needed, the response contains only the first 16. |
+| peers | Number | The number of peers who have this object available. |
+| timeouts | Number | The number of times that fetching this object has resulted in a timeout (2.5 seconds). |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## get_counts ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
+
+The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory. 
+
+_The `get_counts` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 90,
+    "command": "get_counts",
+    "min_count": 100
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "get_counts",
+    "params": [
+        {
+            "min_count": 100
+        }
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: get_counts [min_count]
+rippled get_counts 100
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| min_count | Number (Unsigned Integer) | Only return fields with a value at least this high. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "AL_hit_rate" : 48.36725616455078,
+      "HashRouterEntry" : 3048,
+      "Ledger" : 46,
+      "NodeObject" : 10417,
+      "SLE_hit_rate" : 64.62035369873047,
+      "STArray" : 1299,
+      "STLedgerEntry" : 646,
+      "STObject" : 6987,
+      "STTx" : 4104,
+      "STValidation" : 610,
+      "Transaction" : 4069,
+      "dbKBLedger" : 10733,
+      "dbKBTotal" : 39069,
+      "dbKBTransaction" : 26982,
+      "fullbelow_size" : 0,
+      "historical_perminute" : 0,
+      "ledger_hit_rate" : 71.0565185546875,
+      "node_hit_rate" : 3.808214902877808,
+      "node_read_bytes" : 393611911,
+      "node_reads_hit" : 1283098,
+      "node_reads_total" : 679410,
+      "node_writes" : 1744285,
+      "node_written_bytes" : 794368909,
+      "status" : "success",
+      "treenode_cache_size" : 6650,
+      "treenode_track_size" : 598631,
+      "uptime" : "3 hours, 50 minutes, 27 seconds",
+      "write_load" : 0
+   }
+}
+
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "AL_hit_rate" : 48.36725616455078,
+      "HashRouterEntry" : 3048,
+      "Ledger" : 46,
+      "NodeObject" : 10417,
+      "SLE_hit_rate" : 64.62035369873047,
+      "STArray" : 1299,
+      "STLedgerEntry" : 646,
+      "STObject" : 6987,
+      "STTx" : 4104,
+      "STValidation" : 610,
+      "Transaction" : 4069,
+      "dbKBLedger" : 10733,
+      "dbKBTotal" : 39069,
+      "dbKBTransaction" : 26982,
+      "fullbelow_size" : 0,
+      "historical_perminute" : 0,
+      "ledger_hit_rate" : 71.0565185546875,
+      "node_hit_rate" : 3.808214902877808,
+      "node_read_bytes" : 393611911,
+      "node_reads_hit" : 1283098,
+      "node_reads_total" : 679410,
+      "node_writes" : 1744285,
+      "node_written_bytes" : 794368909,
+      "status" : "success",
+      "treenode_cache_size" : 6650,
+      "treenode_track_size" : 598631,
+      "uptime" : "3 hours, 50 minutes, 27 seconds",
+      "write_load" : 0
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting). The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Transaction | Number | The number of `Transaction` objects in memory |
+| Ledger | Number | The number of ledgers in memory |
+| uptime | String | The amount of time this server has been running uninterrupted. |
+
+For most other entries, the value indicates the number of objects of that type currently in memory.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+
+
+## ledger_cleaner ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp "Source")
+
+The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers. 
+
+_The `ledger_cleaner` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "command": "ledger_cleaner",
+    "max_ledger": 13818756,
+    "min_ledger": 13818000,
+    "stop": false
+}
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field       | Type    | Description |
+|-------------|---------|-------------|
+| ledger      | Number (Ledger Sequence Number) | (Optional) If provided, check and correct this specific ledger only. |
+| max_ledger  | Number (Ledger Sequence Number) | (Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this. |
+| min_ledger  | Number (Ledger Sequence Number) | (Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this. |
+| full        | Boolean | (Optional) If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
+| fix_txns    | Boolean | (Optional) If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
+| check_nodes | Boolean | (Optional) If true, correct ledger state nodes in the specified ledger(s). Overrides `full` if provided. |
+| stop        | Boolean | (Optional) If true, disable the ledger cleaner. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+200 OK
+{
+   "result" : {
+      "message" : "Cleaner configured",
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| message | String | `Cleaner configured` on success. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `internal` if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return `invalidParams` instead. See [RPD-916](https://ripplelabs.atlassian.net/browse/RIPD-916) for status.)
+
+
+## log_level ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
+
+The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
+
+_The `log_level` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "ll1",
+    "command": "log_level",
+    "severity": "debug",
+    "partition": "PathRequest"
+}
+```
+
+*Commandline*
+
+```
+#Syntax: log_level [[partition] severity]
+rippled log_level PathRequest debug
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| severity | String | (Optional) What level of verbosity to set logging at. Valid values are, in order from least to most verbose: `fatal`, `error`, `warn`, `info`, `debug`, and `trace`. If omitted, return current log verbosity for all categories. |
+| partition | String | (Optional) Ignored unless `severity` is provided. Which logging category to modify. If omitted, or if provided with the value `base`, set logging level for all categories. |
+
+#### Response Format ####
+
+Examples of successful responses:
+
+<div class='multicode'>
+
+*Commandline (set log level)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success"
+   }
+}
+```
+
+*Commandline (check log levels)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "levels" : {
+         "AmendmentTable" : "Error",
+         "Application" : "Error",
+         "CancelOffer" : "Error",
+         "Collector" : "Error",
+         "CreateOffer" : "Error",
+         "DeferredCredits" : "Error",
+         "FeeVote" : "Error",
+         "InboundLedger" : "Error",
+         "JobQueue" : "Error",
+         "Ledger" : "Error",
+         "LedgerCleaner" : "Error",
+         "LedgerConsensus" : "Error",
+         "LedgerEntrySet" : "Error",
+         "LedgerMaster" : "Error",
+         "LedgerTiming" : "Error",
+         "LoadManager" : "Error",
+         "LoadMonitor" : "Error",
+         "NetworkOPs" : "Error",
+         "NodeObject" : "Error",
+         "OrderBookDB" : "Error",
+         "Overlay" : "Error",
+         "PathRequest" : "Debug",
+         "Payment" : "Error",
+         "Peer" : "Error",
+         "PeerFinder" : "Error",
+         "Protocol" : "Error",
+         "RPC" : "Error",
+         "RPCErr" : "Error",
+         "RPCHandler" : "Error",
+         "RPCManager" : "Error",
+         "Resolver" : "Error",
+         "Resource" : "Error",
+         "RippleCalc" : "Error",
+         "SHAMap" : "Error",
+         "SHAMapStore" : "Error",
+         "SNTPClient" : "Error",
+         "STAmount" : "Error",
+         "SerializedLedger" : "Error",
+         "Server" : "Error",
+         "SetAccount" : "Error",
+         "SetTrust" : "Error",
+         "TaggedCache" : "Error",
+         "TransactionAcquire" : "Error",
+         "TransactionEngine" : "Error",
+         "UVL" : "Error",
+         "UniqueNodeList" : "Error",
+         "Validations" : "Error",
+         "WALCheckpointer" : "Error",
+         "WebSocket" : "Trace",
+         "base" : "Error"
+      },
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting). The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields. 
+
+Otherwise, the request contains the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| level | Object | The current log levels of each category. This list of categories is subject to change without notice in future releases. You can use the field names as values to `partition` in requests to this command. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+
+
+## logrotate ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+
+The `logrotate` command closes and reopens the log file. This is intended to facilitate log rotation on Linux file systems.
+
+_The `logrotate` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "lr1",
+    "command": "logrotate"
+}
+```
+
+*Commandline*
+
+```
+rippled logrotate
+```
+
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+200 OK
+{
+   "result" : {
+      "message" : "The log file was closed and reopened.",
+      "status" : "success"
+   }
+}
+
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "message" : "The log file was closed and reopened.",
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| message | String | On success, contains the message `The log file was closed and reopened.` |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## validation_create ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
+
+Use the `validation_create` command to generate the keys for a rippled [validating node](rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
+
+_The `validation_create` method is an admin command that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 0,
+    "command": "validation_create",
+    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "validation_create",
+    "params": [
+        {
+            "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+        }
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: validation_create [secret]
+rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| secret | String | (Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's base-58 format. If omitted, generate a random seed. |
+
+**Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the `secret` when generating new credentials for the first time.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+      "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+      "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+      "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+      "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validation\_key | String | The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
+| validation\_public\_key | String | The public key for these validation credentials, in Ripple's base-58 encoded string format. |
+| validation\_seed | String | The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.
+
+
+## validation_seed ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+
+The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
+
+*The `validation_seed` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "set_seed_1",
+    "command": "validation_seed",
+    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
+}
+```
+
+*Commandline*
+
+```#Syntax: validation_seed [secret]
+rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| secret | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+200 OK
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE",
+      "validation_public_key" : "n9Jx6RS6zSgqsgnuWJifNA9EqgjTKAywqYNReK5NRd1yLBbfC3ng",
+      "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| validation\_key | String | (Omitted if proposing disabled) The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
+| validation\_public\_key | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format. |
+| validation\_seed | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
+
+
+## peers ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
+
+The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
+
+*The `peers` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 5,
+    "command": "peers"
+}
+```
+
+*Commandline*
+
+```
+rippled peers
+```
+
+</div>
+
+The request includes no additional parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "peers" : [
+         {
+            "address" : "54.86.175.122:51235",
+            "complete_ledgers" : "14088526 - 14089550",
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 1,
+            "public_key" : "n94rE1SydpHTvJ4NyX9vC1cdeDmYP5nQSXTyeMnLh8jMJSRdcy9Q",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "192.170.145.70:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 2913,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 10,
+            "public_key" : "n9L7jeMAVM28wfzhdzoYZqcvBRkP5p6ZCvidgqmyEa62ThUdCE1x",
+            "version" : "rippled-0.28.0-rc3"
+         },
+         {
+            "address" : "192.170.145.69:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 7802,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 10,
+            "public_key" : "n94JPD9sx9TetuJGn1ju5TRDG87Di7EEbUbXWCdjj52GKqZUsnKA",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "74.201.214.197:51235",
+            "complete_ledgers" : "14088531 - 14089555",
+            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
+            "load" : 4,
+            "public_key" : "n9LAPy9VbzXtodR4W58umSwwcbQsf9ZgFv1bpsd95CAgo7GWUvM4",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "93.190.138.234:51235",
+            "complete_ledgers" : "13948110 - 14089552",
+            "ledger" : "99288D510F63FDAC3F91BB410E4E251B050F92DF196CA33946A2F339DFF7483E",
+            "load" : 52,
+            "public_key" : "n9LYLVRw987hj8tyDdt2gVXZyrq4NvXF5vi4YwZPUNGaoPkqo4PH",
+            "version" : "rippled-0.28.0-b18"
+         },
+         {
+            "address" : "192.170.145.77:51235",
+            "complete_ledgers" : "32570 - 14089555",
+            "ledger" : "BFFF0AA3C71F9E1690F1B5537416CAEA2A038C896650FC5BB6E1057E464088ED",
+            "load" : 4,
+            "public_key" : "n9LwcmtjDAJQz4u8DZCMGQ9GXHuMEV4Cf8KpPL9NgqAV2puxdYc2",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "188.166.17.21:52345",
+            "complete_ledgers" : "14089423 - 14089551",
+            "latency" : 7894,
+            "ledger" : "2DBD1EAD2BAE89C01C183BE818B35C2E67BB2D0B07922C58A57A399B1ABD48BA",
+            "load" : 8,
+            "public_key" : "n9M3pWqDot5jyDRSdre6AZQVTA4RFXwUzWZHfj8m2dqMX1S99erB",
+            "version" : "rippled-0.27.0"
+         },
+         {
+            "address" : "198.204.238.130:51235",
+            "complete_ledgers" : "14087551 - 14089551",
+            "latency" : 3427,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 8,
+            "public_key" : "n94PN5sKswgBVjmg5UcJs2dwjSippFrbZXnHALvCm52LY1L3KGLT",
+            "version" : "rippled-0.27.4"
+         },
+         {
+            "address" : "162.217.98.92:51235",
+            "complete_ledgers" : "14088527 - 14089551",
+            "latency" : 2694,
+            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
+            "load" : 7,
+            "public_key" : "n9L4MyAQHZgtnhUSYeNmbc2SeveoBbxu9kWDyxckijGgj5WuKmy2",
+            "version" : "rippled-0.28.1-hf2"
+         },
+         {
+            "address" : "72.251.233.166:51235",
+            "complete_ledgers" : "14088531 - 14089555",
+            "latency" : 9358,
+            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
+            "load" : 88,
+            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
+            "version" : "rippled-0.28.0-rc3"
+         }
+      ],
+      "status" : "success"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "peers" : [
+         {
+            "address" : "162.217.98.91:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 93,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n94szsuScMEjP4Nu7c3mndcyjWJELepZcASEkDMcDSwXhHH6Sn37",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "54.186.248.91:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 68,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 17,
+            "public_key" : "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "162.217.98.136:51235",
+            "complete_ledgers" : "32570 - 14015062",
+            "latency" : 97,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 32,
+            "public_key" : "n944PcXEoZaiEHnwFD92xA4bxsS7jjYb27WcdDQwkHYyk1MWTEsX",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "54.186.73.52:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 68,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 14,
+            "public_key" : "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.233.165:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 39,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n9M77Uc9CSaSFZqt5V7sxPR4kFwbha7hwUFBD5v5kZt2SQjBeoDs",
+            "version" : "rippled-0.28.1-hf1"
+         },
+         {
+            "address" : "72.251.233.164:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 35,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 15,
+            "public_key" : "n9LWq5vQbx9nrm5ERkjbvNmAN8erdoShdHWiHYj18Gbo3ExsnFDE",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "162.217.98.90:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 114,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 14,
+            "public_key" : "n9KJB2KWFQcqQcnjNN9wLZ5KPYjFcoVpvZ94m6t34tvjV5PquhCc",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.233.166:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 20,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 9,
+            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
+            "version" : "rippled-0.28.0-rc3"
+         },
+         {
+            "address" : "72.251.233.163:51235",
+            "complete_ledgers" : "14014038 - 14015062",
+            "latency" : 31,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 16,
+            "public_key" : "n94ne2Z5dX8qcJNa8cPtAbtn21gEaCoEduS8TwdGAhi1iLfCUMDm",
+            "version" : "rippled-0.28.1-rc3"
+         },
+         {
+            "address" : "72.251.232.171:51235",
+            "complete_ledgers" : "32570 - 14015062",
+            "latency" : 32,
+            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
+            "load" : 44,
+            "public_key" : "n9LJekVe9sUpxf1PEhWX3Csg63oShsTLMEfJ1mL4kpuzDu3bxotS",
+            "version" : "rippled-0.28.1-rc3"
+         }
+      ],
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing a `peers` array. Each member of the peers array is a peer object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| address | String | The IP address and port where this peer is connected |
+| cluster | Boolean | (May be omitted) If `true`, the current server and the peer server are part of the same `rippled` cluster. |
+| name | String | (May be omitted) If the peer is part of the same cluster, this is the display name for that node as defined in the config file. |
+| complete\_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the peer `rippled` has available |
+| inbound | Boolean | (May be omitted) If `true`, the peer is connecting to the local server. |
+| latency | Number | The network latency to the peer (in milliseconds) |
+| ledger | String | The hash of the peer's most recently closed ledger |
+| load | Number | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
+| protocol | String | (May be omitted) The protocol version that the peer is using, if not the same as the local server. |
+| public\_key | String | (May be omitted) A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
+| sanity | String | (May be omitted) Whether this peer is following the same rules and ledger sequence as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. |
+| status | String | (May be omitted) The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
+| version | string | (May be omitted) The `rippled` version number of the peer server |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## print ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+
+The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
+
+*The `print` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "print_req_1",
+    "command": "print"
+}
+```
+
+*Commandline*
+
+```
+rippled print
+```
+
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "app" : {
+         "ledgercleaner" : {
+            "status" : "idle"
+         },
+         "peers" : {
+            "peerfinder" : {
+               "bootcache" : {
+                  "entries" : 109
+               },
+               "config" : {
+                  "auto_connect" : "true",
+                  "features" : "",
+                  "max_peers" : 21,
+                  "out_peers" : 10,
+                  "port" : 51235,
+                  "want_incoming" : "true"
+               },
+               "counts" : {
+                  "accept" : 0,
+                  "close" : 0,
+                  "cluster" : "0",
+                  "connect" : 0,
+                  "fixed" : "0",
+                  "in" : "0/11",
+                  "out" : "10/10",
+                  "total" : "10"
+               },
+               "fixed" : 0,
+               "livecache" : {
+                  "entries" : [
+                     {
+                        "address" : "23.239.3.247:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "192.170.145.88:51235",
+                        "expires" : "30000000000 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "198.204.238.130:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 1
+                     },
+                     {
+                        "address" : "203.127.12.115:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     },
+                     {
+                        "address" : "212.83.147.67:51235",
+                        "expires" : "26000024558 nanoseconds",
+                        "hops" : 2
+                     }
+                  ],
+                  "hist" : "0, 10, 74, 10, 0, 0, 0, 0",
+                  "size" : "94"
+               },
+               "peers" : [
+                  {
+                     "local_address" : "10.1.10.78:48923",
+                     "remote_address" : "52.24.43.83:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:50004",
+                     "remote_address" : "52.26.205.197:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:37019",
+                     "remote_address" : "168.1.60.132:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:38775",
+                     "remote_address" : "192.170.145.88:51235",
+                     "state" : "active"
+                  },
+                  {
+                     "local_address" : "10.1.10.78:34793",
+                     "remote_address" : "198.204.238.130:51235",
+                     "state" : "active"
+                  }
+               ]
+            }
+         },
+         "resource" : {
+            "admin" : [
+               {
+                  "balance" : 0,
+                  "count" : 1,
+                  "name" : "\"127.0.0.1\""
+               }
+            ],
+            "inactive" : [],
+            "inbound" : [],
+            "outbound" : [
+               {
+                  "balance" : 23,
+                  "count" : 1,
+                  "name" : "93.190.138.234:51235"
+               },
+               {
+                  "balance" : 35,
+                  "count" : 1,
+                  "name" : "198.204.238.130:51235"
+               },
+               {
+                  "balance" : 31,
+                  "count" : 1,
+                  "name" : "52.26.205.197:51235"
+               },
+               {
+                  "balance" : 32,
+                  "count" : 1,
+                  "name" : "54.186.73.52:51235"
+               },
+               {
+                  "balance" : 15,
+                  "count" : 1,
+                  "name" : "72.251.233.164:51235"
+               }
+            ]
+         },
+         "server" : {
+            "active" : "2",
+            "hist" : "16",
+            "history" : [
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "11688",
+                  "elapsed" : "0 seconds",
+                  "id" : "16",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 16:33:50"
+               },
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "11431",
+                  "elapsed" : "0 seconds",
+                  "id" : "15",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 16:11:59"
+               },
+               {
+                  "bytes_in" : "227",
+                  "bytes_out" : "337",
+                  "elapsed" : "0 seconds",
+                  "id" : "3",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 14:57:23"
+               },
+               {
+                  "bytes_in" : "214",
+                  "bytes_out" : "2917",
+                  "elapsed" : "0 seconds",
+                  "id" : "2",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 12:39:29"
+               },
+               {
+                  "bytes_in" : "220",
+                  "bytes_out" : "1426",
+                  "elapsed" : "0 seconds",
+                  "id" : "1",
+                  "requests" : 1,
+                  "when" : "2015-Jun-16 12:39:13"
+               }
+            ]
+         },
+         "validators" : {}
+      },
+      "status" : "success"
+   }
+}
+
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting). Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
 
 
 # Convenience Functions #
@@ -7046,7 +8742,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: ping
-rippled -- ping
+rippled ping
 ```
 
 </div>
@@ -7121,7 +8817,7 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: random
-rippled -- random
+rippled random
 ```
 
 </div>
@@ -7182,7 +8878,7 @@ An example of the request format:
 *Commandline*
 ```
 # Syntax: json method json_stanza
-rippled -q -- json ledger_closed '{}'
+rippled -q json ledger_closed '{}'
 ```
 
 </div>
@@ -7208,3 +8904,188 @@ An example of a successful response:
 </div>
 
 The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
+
+
+## connect ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
+
+The `connect` command forces the rippled server to connect to a specific peer rippled server.
+
+*The `connect` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "command": "connect",
+    "ip": "192.170.145.88",
+    "port": 51235
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "connect",
+    "params": [
+        {
+            "ip": "192.170.145.88",
+            "port": 51235
+        }
+    ]
+}
+```
+
+
+*Commandline*
+
+```
+#Syntax: connect ip [port]
+rippled connect 192.170.145.88 51235
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ip | String | IP address of the server to connect to |
+| port | Number | (Optional) Port number to use when connecting. Defaults to 6561. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "message" : "connecting",
+      "status" : "success"
+   }
+}
+
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "message" : "connecting",
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| message | String | The value `connecting`, if the command was successful. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* Cannot connect in standalone mode - Network-related commands are disabled in stand-alone mode.
+
+
+## stop ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp "Source")
+
+Gracefully shuts down the server.
+
+*The `stop` request is an admin command that cannot be run by unpriviledged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 0,
+    "command": "stop"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "stop",
+    "params": [
+        {}
+    ]
+}
+```
+
+*Commandline*
+
+```
+rippled stop
+```
+
+</div>
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*JSON-RPC*
+
+```
+{
+   "result" : {
+      "message" : "ripple server stopping",
+      "status" : "success"
+   }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "message" : "ripple server stopping",
+      "status" : "success"
+   }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| message | String | `ripple server stopping` on success. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
