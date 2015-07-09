@@ -26,11 +26,32 @@ There are several different kinds of nodes that can appear in the ledger's state
 * [**Offer** - An offer to exchange currencies, known in finance as an _order_.](#offer)
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this node type.](#ripplestate)
 
-Each ledger node consists of several fields. In the peer protocol that `rippled` nodes use to communicate with each other, ledger nodes are represented in their raw binary format. In other [`rippled` APIs](rippled-apis.html), nodes are represented as JSON objects.
+Each ledger node consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other [`rippled` APIs](rippled-apis.html), ledger nodes are represented as JSON objects.
 
 ## AccountRoot ##
 
-The `AccountRoot` node type describes a single _account_ object. The `AccountRoot` node has the following fields:
+The `AccountRoot` node type describes a single _account_ object. Example `AccountRoot` node:
+
+```
+{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "AccountTxnID": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
+    "Balance": "148446663",
+    "Domain": "6D64756F31332E636F6D",
+    "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+    "Flags": 8388608,
+    "LedgerEntryType": "AccountRoot",
+    "MessageKey": "0000000000000000000000070000000300",
+    "OwnerCount": 3,
+    "PreviousTxnID": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
+    "PreviousTxnLgrSeq": 14091160,
+    "Sequence": 336,
+    "TransferRate": 1004999999,
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+}
+```
+
+The `AccountRoot` node has the following fields:
 
 | Field           | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-----------------|-----------|---------------|-------------|
@@ -118,7 +139,7 @@ Example Directories:
 | Name              | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------------------|-----------|---------------|-------------|
 | LedgerEntryType   | Number    | UInt16    | The value `0x64`, mapped to the string `DirectoryNode`, indicates that this node is part of a Directory. |
-| Flags             | Number    | UInt32    | A bit-map of boolean flags enabled for this directory. |
+| Flags             | Number    | UInt32    | A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects. |
 | RootIndex         | Number    | Hash256   | The index of root node for this directory. |
 | Indexes           | Array     | Vector256 | The contents of this Directory: an array of indexes to other nodes. |
 | IndexNext         | Number    | UInt64    | (Optional) If this Directory consists of multiple nodes, this index links to the next node in the chain, wrapping around at the end. |
@@ -136,6 +157,31 @@ The `Offer` node type describes an offer to exchange currencies, more traditiona
 
 An offer can become unfunded through other activities in the network, while remaining in the ledger. However, `rippled` will automatically prune any unfunded offers it happens across in the course of transaction processing. For more information, see [lifecycle of an offer](transactions.html#lifecycle-of-an-offer).
 
+Example Offer node:
+
+```
+{
+    "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
+    "BookDirectory": "ACC27DE91DBA86FC509069EAF4BC511D73128B780F2E54BF5E07A369E2446000",
+    "BookNode": "0000000000000000",
+    "Flags": 131072,
+    "LedgerEntryType": "Offer",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
+    "PreviousTxnLgrSeq": 14524914,
+    "Sequence": 866,
+    "TakerGets": {
+        "currency": "XAG",
+        "issuer": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH",
+        "value": "37"
+    },
+    "TakerPays": "79550000000",
+    "index": "96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"
+}
+```
+
+An Offer node has the following fields:
+
 | Name              | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------------------|-----------|---------------|-------------|
 | LedgerEntryType   | String    | UInt16    | The value `0x6F`, mapped to the string `Offer`, indicates that this node is an Offer object. |
@@ -149,41 +195,99 @@ An offer can become unfunded through other activities in the network, while rema
 | OwnerNode         | String    | UInt64    | A hint indicating which which page of the owner directory links to this node, in case the directory consists of multiple nodes. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | Expiration        | Number    | UInt32    | (Optional) Indicates the time after which this offer will be considered unfunded. See [Specifying Time](rippled-apis.html#specifying-time) for details. |
 
+### Offer Flags ###
+
+There are several options which can be either enabled or disabled when an [OfferCreate transaction](transactions.html#offercreate) creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+
+Offer nodes can have the following flag values:
+
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [OfferCreate Flag](transactions.html#offercreate-flags) |
+|-----------|-----------|---------------|-------------|------------------------|
+| lsfPassive | 0x00010000 | 65536 | The node was placed as a passive offer. This has no effect on the node in the ledger. | tfPassive |
+| lsfSell   | 0x00020000 | 131072 | The node was placed as a sell offer. This has no effect on the node in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the node enters the ledger). | tfSell |
 
 ## RippleState ##
 
 The `RippleState` node type connects two accounts in a single currency. Conceptually, a RippleState node represents two _trust lines_ between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A RippleState node that is entirely in its default state is considered the same as a RippleState node that does not exist, so `rippled` deletes RippleState nodes when their properties are entirely default.
 
-Since no account is privileged in the Ripple ledger, a RippleState node identifies the two parties by numerically comparing their account addresses. Whichever address is numerically lower is deemed the "low node" and the other is the "high node".
+Since no account is privileged in the Ripple ledger, a RippleState node identifies the two parties by numerically comparing their account addresses. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
+
+Example RippleState node:
+
+```
+{
+    "Balance": {
+        "currency": "USD",
+        "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+        "value": "-10"
+    },
+    "Flags": 393216,
+    "HighLimit": {
+        "currency": "USD",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "value": "110"
+    },
+    "HighNode": "0000000000000000",
+    "LedgerEntryType": "RippleState",
+    "LowLimit": {
+        "currency": "USD",
+        "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "value": "0"
+    },
+    "LowNode": "0000000000000000",
+    "PreviousTxnID": "E3FE6EA3D48F0C2B639448020EA4F03D4F4F8FFDB243A852A0F59177921B4879",
+    "PreviousTxnLgrSeq": 14090896,
+    "index": "9CA88CDEDFF9252B3DE183CE35B038F57282BC9503CDFA1923EF9A95DF0D6F7B"
+}
+```
+
+A RippleState node has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
 | LedgerEntryType | String    | UInt16 | The value `0x72`, mapped to the string `RippleState`, indicates that this node is a RippleState object. |
 | Flags           | Number    | UInt32 | A bit-map of boolean options enabled for this node. |
-| Balance         | Object    | Amount | The balance of the trust line, from the perspective of the low node. A negative balance indicates that the low node has issued currency to the high node. The issuer in this is always set to the neutral value [ACCOUNT_ONE](https://wiki.ripple.com/Accounts#ACCOUNT_ONE). |
-| LowLimit        | Object    | Amount | The limit that the low node has set on the trust line. The `issuer` is the address of the low node that set this limit. |
-| HighLimit       | Object    | Amount | The limit that the high node has set on the trust line. The `issuer` is the address of the high node that set this limit. |
-| LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the low node's owner directory links to this node, in case the directory consists of multiple nodes. |
-| HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the high node's owner directory links to this node, in case the directory consists of multiple nodes. |
-| LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low node, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| LowQualityOut   | Number    | UInt32 | (Optional) The outbound quality set by the low node, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| HighQualityIn   | Number    | UInt32 | (Optional) The inbound quality set by the high node, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| HighQualityOut  | Number    | UInt32 | (Optional) The outbound quality set by the high node, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+| Balance         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](https://wiki.ripple.com/Accounts#ACCOUNT_ONE). |
+| LowLimit        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
+| HighLimit       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
+| LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
+| HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
+| LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+| LowQualityOut   | Number    | UInt32 | (Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+| HighQualityIn   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+| HighQualityOut  | Number    | UInt32 | (Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+
+### RippleState Flags ###
+
+There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction](transactions.html#trustset). In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+
+RippleState nodes can have the following flag values:
+
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [TrustSet Flag](transactions.html#trustset-flags) |
+|-----------|-----------|---------------|-------------|------------------------|
+| lsfLowReserve | 0x00010000 | 65536 | This RippleState node [contributes to the low account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
+| lsfHighReserve | 0x00020000 |131072 | This RippleState node [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
+| lsfLowAuth | 0x00040000 | 262144 | The low account has authorized the high account to hold the low account's issuances. | tfSetAuth |
+| lsfHighAuth | 0x00080000 | 524288 |  The high account has authorized the low account to hold the high account's issuances. | tfSetAuth |
+| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfLowFreeze | 0x00400000 | 4194304 | The low account has frozen the trust line, preventing the high account from transferring the asset. | tfSetFreeze |
+| lsfHighFreeze | 0x00800000 | 8388608 | The high account has frozen the trust line, preventing the low account from transferring the asset. | tfSetFreeze |
 
 ### Contributing to the Owner Reserve ###
 
-If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's owner reserve. In a RippleState node, the `lsfLowReserve` and `lsfHighReserve` flags indicate which node(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
+If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's owner reserve. In a RippleState node, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
 
 The values that count towards a a trust line's non-default state are as follows:
 
-| High Node Responsible | Low Node Responsible |
+| High account responsible if... | Low account responsible if... |
 |-----------------------|----------------------|
-| If `Balance` is negative (the high node holds currency) | If `Balance` is positive (the low node holds currency) |
-| HighLimit is not `0` | LowLimit is not `0`  |
-| LowQualityIn is not `0` and not `1000000000` | HighQualityIn is not `0` and not `1000000000` |
-| LowQualityOut is not `0` and not `1000000000` | HighQualityOut is not `0` and not `1000000000` |
-| lsfHighNoRipple flag is not in its default state | lsfLowNoRipple is not in its default state |
-| lsfHighFreeze is enabled | lsfLowFreeze is enabled |
+| `Balance` is negative (the high account holds currency) | If `Balance` is positive (the low account holds currency) |
+| `HighLimit` is not `0` | `LowLimit` is not `0`  |
+| `LowQualityIn` is not `0` and not `1000000000` | `HighQualityIn` is not `0` and not `1000000000` |
+| `LowQualityOut` is not `0` and not `1000000000` | `HighQualityOut` is not `0` and not `1000000000` |
+| lsfHighNoRipple flag is not in its default state | lsfLowNoRipple flag is not in its default state |
+| lsfHighFreeze flag is enabled | lsfLowFreeze flag is enabled |
 
 The lsfLowAuth and lsfHighAuth flags do not count towards the default state, because they cannot be disabled.
 
