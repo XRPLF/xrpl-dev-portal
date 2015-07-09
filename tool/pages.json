@@ -15,14 +15,14 @@
         "html": "ripple-rest.html"
     },
     {
-        "name": "Gatewayd",
-        "md":"gatewayd.md",
-        "html":"gatewayd.html"
-    },
-    {
         "name": "Transactions",
         "md":"tx_format.md",
         "html":"transactions.html"
+    },
+    {
+        "name": "The Ledger",
+        "md":"ledger_format.md",
+        "html":"ripple-ledger.html"
     },
     {
         "name": "Reliable Transaction Submission",
