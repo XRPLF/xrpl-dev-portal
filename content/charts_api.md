@@ -12,7 +12,7 @@ The Ripple Charts API, also known as the **Data API**, provides past and present
 
 # Architecture #
 
-The Ripple Charts API is a [Node.js](https://nodejs.org/) application that uses [CouchDB](https://couchdb.apache.org/) and [Redis](http://redis.io/) as its datastore. The Charts API continually monitors rippled for new ledgers and imports them.
+The Ripple Charts API is a [Node.js](https://nodejs.org/) application that uses [HBase](http://hbase.apache.org/) as its datastore.
 
 ## Components ##
 
@@ -20,36 +20,15 @@ The Ripple Charts API is a [Node.js](https://nodejs.org/) application that uses 
 The ledger importer imports ledgers from the Ripple Network into the data store.  The process is set up to import continously in real time as ledgers are validated, and also import historical ledgers.
 
 ### Data Store ###
-The data store uses CouchDB to store ledgers as a JSON document.  To retrieve structured data from the ledgers, the Charts API uses "views" that index specific elements from the ledger into a format that can be queried efficiently.  For example, one view collects all successful transactions that exercise offers and indexes them according to the currencies, issuers, and date, and returns the amounts and prices of the exercised offers.  We can then query this view and group the indexed results by time increments to get an array of offers excercised over time for a given pair of currencies.
+The data store uses HBase to store ledgers. This is not as flexible as the old CouchDB data store, but it scales much better.
 
 ### API Server ###
-Accessing the historical data is not done by querying the database directly but through a node.js API server.  The server takes requests in the form of JSON data, interprets it into one or several couchDB queries, processes the data as necessary and returns the results.
-
-### Memory Cache ###
-To reduce the load on CouchDB, the Charts API uses Redis as a caching layer.  The cache expects the data stored in CouchDB to be accurate and up to date, so the API automatically disables the cache if the importer is unable to keep up. When the importer catches up, the API restarts the cache again.
+Accessing the historical data is not done by querying the database directly but through a node.js API server.  The server takes requests in the form of JSON data, interprets it into one or several database queries, processes the data as necessary and returns the results.
 
 
 # Setup #
 
-Basic setup of the Ripple Charts API involves the following steps:
-
-1. Install Node.js
-2. Install CouchDB, or get access to a hosted CouchDB.
-3. Install Redis. (This step is optional, but strong recommended.)
-4. Clone the Ripple Charts repository:<br/>
-    `git clone https://github.com/ripple/ripple-data-api.git`
-5. Install dependencies using [npm](https://www.npmjs.com/):<br/>
-    `npm install`
-6. Copy the example configuration files to their expected locations:<br/>
-    In the `ripple-data-api` top folder:<br/>
-    `cp db.config.json.example db.config.json`<br/>
-    `cp deployment.environments.json.example deployment.environments.json`
-7. Modify the configuration files, providing the addresses and credentials of your CouchDB and Redis databases.
-8. Push design documents to CouchDB:<br/>
-    `grunt updateViews`<br/>
-    (This requires write permissions to the CouchDB instance.)
-
-At this point, the Ripple Charts API is installed, but not running, and has no data imported. You can [start the API service](#start-api-service) or [start the ledger importer](#start-ledger-importer) in any order.
+Setup for the Ripple Charts API on top of HBase is not currently documented.
 
 ## Start API Service ##
 
@@ -57,7 +36,7 @@ The following command starts the API service:
 
 `grunt watch`
 
-(This requires read permissions to CouchDB. Write permissions are not necessary.)
+(This requires read permissions to the database. Write permissions are not necessary.)
 
 ## Start Ledger Importer ##
 
@@ -69,7 +48,7 @@ Alternatively, you can use the experimental websocket-based importer:
 
 `node db/import`
 
-(Either way, you need write permission to the CouchDB database.)
+(Either way, you need write permission to the database.)
 
 
 
