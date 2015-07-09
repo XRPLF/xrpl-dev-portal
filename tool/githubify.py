@@ -22,6 +22,7 @@ def convert_page(text, reverse):
         "(rest-api-tool.html": "(https://ripple.com/build/rest-tool",
         "(transactions.html": "(https://ripple.com/build/transactions",
         "(rippled-apis.html": "(https://ripple.com/build/rippled-apis",
+        "(charts-api-tool.html": "(https://ripple.com/build/charts-api-tool/",
         }
     
     for (k,v) in replacements.items():
