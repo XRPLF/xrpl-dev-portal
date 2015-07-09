@@ -3580,7 +3580,7 @@ This method can retrieve several different types of data. You can select which t
 2. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
 3. `directory` - Retrieve a directory node, which contains a list of IDs linking things
 4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
-5. `ripple_state` - Retrieve a RippleState node, which a trust line along which non-XRP balances are held
+5. `ripple_state` - Retrieve a RippleState node, which is a trust line where non-XRP balances are held
 
 If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
