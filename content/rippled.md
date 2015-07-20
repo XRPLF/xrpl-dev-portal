@@ -1951,7 +1951,7 @@ The request includes the following parameters:
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
@@ -2454,7 +2454,7 @@ The response follows the [standard format](#response-formatting), with a success
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-__*Note:*__ The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
+__*Note:*__ The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
