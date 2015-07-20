@@ -1126,8 +1126,8 @@ Each trust-line object has some combination of the following fields, although no
 | limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
 | no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for this line |
 | no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for the other direction of this trust line |
-| quality\_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| quality\_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| quality\_in | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| quality\_out | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 
 #### Possible Errors ####
 
