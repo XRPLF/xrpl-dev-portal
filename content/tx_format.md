@@ -709,7 +709,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfSetAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
+| tfSetfAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
 | tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfSetFreeze | 0x00100000 | 1048576 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
