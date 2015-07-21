@@ -217,7 +217,7 @@ The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also
 
 The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
 
-Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an admin connection, it relays the transaction even under high load, so long as the fee meets the global base.)
+Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an [admin connection](rippled-apis.html#connecting-to-rippled), it relays the transaction even under high load, so long as the fee meets the global base.)
 
 Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the `Fee` value higher or wait for the load to decrease.
 
@@ -390,7 +390,7 @@ When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` fiel
 
 ### Limit Quality ###
 
-Ripple defines "quality" is the ratio of the numeric amout in to the numeric amount out of a conversion. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
+Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
 
 The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality. 
 
@@ -688,8 +688,8 @@ Create or modify a trust line linking two accounts.
 | LimitAmount.currency | String | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
 | LimitAmount.value | String | (Amount.value) | Quoted decimal representation of the limit to set on this trust line. |
 | LimitAmount.issuer | String | (Amount.issuer) | The address of the account to extend trust to. |
-| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
-| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
+| QualityIn | Unsigned Integer | UInt32 | (Optional) Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
+| QualityOut | Unsigned Integer | UInt32 | (Optional) Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
 ### Trust Limits ###
 
