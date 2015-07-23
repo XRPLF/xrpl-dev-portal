@@ -13,16 +13,20 @@ A single ledger version consists of:
 
 ## Tree Format ##
 
-As its name might suggest, the state tree is a tree data structure, with each node identified by a 256-bit hash value called an `index`. In JSON, these 256-bit hash values are represented as 64-character hexadecimal strings like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use to look up the node; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree.
+As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, these values are represented as 64-character hexadecimal strings like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree.
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
+
+In the case of state nodes, `rippled` usually includes the `index` of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a [namespace identifier](https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94). The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This prevents nodes of different types from hashing to the same index. For a hash function, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
+
+
 
 # Ledger Node Types #
 
 There are several different kinds of nodes that can appear in the ledger's state tree:
 
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
-* [**DirectoryNode** - Contains a bunch of links to other nodes.](#directorynode)
+* [**DirectoryNode** - Contains links to other nodes.](#directorynode)
 * [**Offer** - An offer to exchange currencies, known in finance as an _order_.](#offer)
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this node type.](#ripplestate)
 
@@ -64,8 +68,8 @@ The `AccountRoot` node has the following fields:
 | RegularKey      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction](transactions.html#setregularkey) to change this value. |
 | EmailHash       | String | Hash128 | (Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | WalletLocator   | String | Hash256 | (Optional) **DEPRECATED**. Do not use. |
-| WalletSize      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. |
-| MessageKey      | String | PubKey  | (Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. <span class='draft-comment'>(bit size?)</span> |
+| WalletSize      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. <span class='draft-comment'>It seems there's no way to set this field. The only reference I could find is <a href='https://github.com/ripple/rippled/blob/7edf783102a3df4ba6e846e24a3c3245a55e0b5a/src/ripple/protocol/impl/SField.cpp#L99'>the SField definition</a>. Does it appear in historical ledgers?</span> |
+| MessageKey      | String | VariableLength  | (Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes. |
 | TransferRate    | Number | UInt32  | (Optional) A [transfer fee](https://ripple.com/knowledge_center/transfer-fees/) to charge other users for sending currency issued by this account to each other. |
 | Domain          | String | VariableLength | (Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. |
 
@@ -86,6 +90,14 @@ AccountRoot nodes can have the following flag values:
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this account are frozen. | asfGlobalFreeze |
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. Required for gateways; discouraged for other accounts. |
 
+### AccountRoot index format ###
+
+The `index` of an AccountRoot node is the SHA-512Half of the following values put together:
+
+* The Account space key (`a`)
+* The AccountID of the account
+
+
 ## DirectoryNode ##
 
 The `DirectoryNode` node type provides a list of links to other nodes in the ledger's state tree. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 [indexes](#tree-format) of other nodes. The first node is called the root of the directory, and all nodes other than the root node can be added or deleted as necessary.
@@ -93,7 +105,7 @@ The `DirectoryNode` node type provides a list of links to other nodes in the led
 There are two kinds of Directories:
 
 * **Owner directories** list other nodes owned by an account, such as RippleState or Offer nodes.
-* **Offer directories** list the offers currently available in the distributed exchange, grouped by exchange rate.
+* **Offer directories** list the offers currently available in the distributed exchange. A single Offer Directory contains all the offers that have the same exchange rate for the same issuances.
 
 Example Directories:
 
@@ -151,6 +163,36 @@ Example Directories:
 | TakerGetsCurrency | String    | Hash160   | (Offer Directories only) The currency code of the TakerGets amount from the offers in this directory. |
 | TakerGetsIssuer   | String    | Hash160   | (Offer Directories only) The issuer of the TakerGets amount from the offers in this directory. |
 
+### Directory index formats ###
+
+There are three different formulas for DirectoryNode ledger nodes, depending on what the DirectoryNode represents:
+
+1. The first page (also called the root) of an Owner Directory
+2. The first page of an Offer Directory
+3. Subsequent pages of either type
+
+The first page of an Owner Directory has an `index` that is the SHA-512Half of the following values put together:
+
+* The Owner Directory space key (`O`, capital letter O)
+* The AccountID from the `Owner` field.
+
+The first page of an Offer Directory has a special `index`: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (An index is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the SHA-512Half of the following values put together:
+
+* The Book Directory space key (`B`)
+* The 160-bit currency code from the `TakerPaysCurrency`
+* The 160-bit currency code from the `TakerGetsCurrency`
+* The AccountID from the `TakerPaysIssuer`
+* The AccountID from the `TakerGetsIssuer`
+
+The lower 64 bits of an Offer Directory's index represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in Ripple's internal amount format.
+
+If the DirectoryNode is not the first page in the Directory (regardless of whether it is an Owner Directory or an Offer Directory), then it has an `index` that is the SHA-512Half of the following values put together:
+
+* The Directory Node space key (`d`)
+* The `index` of the root DirectoryNode
+* The page number of this node. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
+
+
 ## Offer ##
 
 The `Offer` node type describes an offer to exchange currencies, more traditionally known as an _order_, which is currently in an order book in Ripple's distributed exchange. An [OfferCreate transaction](transactions.html#offercreate) only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
@@ -205,6 +247,15 @@ Offer nodes can have the following flag values:
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfPassive | 0x00010000 | 65536 | The node was placed as a passive offer. This has no effect on the node in the ledger. | tfPassive |
 | lsfSell   | 0x00020000 | 131072 | The node was placed as a sell offer. This has no effect on the node in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the node enters the ledger). | tfSell |
+
+### Offer index format ###
+
+The `index` of an Offer node is the SHA-512Half of the following values put together:
+
+* The Offer space key (`o`)
+* The AccountID of the account placing the offer
+* The Sequence number of the transaction that created the offer
+
 
 ## RippleState ##
 
@@ -286,11 +337,20 @@ The values that count towards a a trust line's non-default state are as follows:
 | `HighLimit` is not `0` | `LowLimit` is not `0`  |
 | `LowQualityIn` is not `0` and not `1000000000` | `HighQualityIn` is not `0` and not `1000000000` |
 | `LowQualityOut` is not `0` and not `1000000000` | `HighQualityOut` is not `0` and not `1000000000` |
-| lsfHighNoRipple flag is not in its default state | lsfLowNoRipple flag is not in its default state |
-| lsfHighFreeze flag is enabled | lsfLowFreeze flag is enabled |
+| **lsfHighNoRipple** flag is not in its default state | **lsfLowNoRipple** flag is not in its default state |
+| **lsfHighFreeze** flag is enabled | **lsfLowFreeze** flag is enabled |
 
-The lsfLowAuth and lsfHighAuth flags do not count towards the default state, because they cannot be disabled.
+The **lsfLowAuth** and **lsfHighAuth** flags do not count towards the default state, because they cannot be disabled.
 
 The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](#accountroot-flags) in their corresponding AccountRoot nodes. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default. **Note:** Prior to the introduction of the DefaultRipple flags in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with lsfNoRipple disabled (rippling enabled).
 
 Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. Later, if the account modifies a trust line, the owner reserve will apply if the changes put it into a non-default state.
+
+### RippleState index format ###
+
+The `index` of a RippleState node is the SHA-512Half of the following values put together:
+
+* The RippleState space key (`r`)
+* The AccountID of the low account
+* The AccountID of the high account
+* The 160-bit currency code of the trust line(s)
