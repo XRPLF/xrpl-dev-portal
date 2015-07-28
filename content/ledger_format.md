@@ -1,10 +1,14 @@
 # The Ledger #
 
-The point of the Ripple software is to maintain a shared, global ledger that is open to all, so that individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The `rippled` server software accomplishes this by maintaining a ledger database that can only be updated according to very specific rules. Each instance of `rippled` maintains a full copy of the ledger, and the peer-to-peer network of `rippled` servers distributes candidate transactions, where [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) determines which transactions get applied to each new version of the ledger.
+The point of the Ripple software is to maintain a shared, global ledger that is open to all, so that individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The `rippled` server software accomplishes this by maintaining a ledger database that can only be updated according to very specific rules. Each instance of `rippled` maintains a full copy of the ledger, and the peer-to-peer network of `rippled` servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: [The Consensus Process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/).
+
+![Diagram: Each ledger is the result of applying transactions to the previous ledger version.](img/ledger-process.png)
 
 The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number, starting at 0 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
 
-A single ledger version consists of:
+A single ledger version consists of several components:
+
+![Diagram: A ledger has transactions, a state node, and a header with the close time and validation info](img/ledger-components.png)
 
 * A **header** - The sequence number, hashes of the other contents, and other metadata.
 * A **transaction tree** - The [transactions](transactions.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to modify the ledger.
@@ -13,11 +17,13 @@ A single ledger version consists of:
 
 ## Tree Format ##
 
-As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, these values are represented as 64-character hexadecimal strings like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree.
+As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, these values are represented as 64-character hexadecimal strings like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree.
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
 
 In the case of state nodes, `rippled` usually includes the `index` of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a [namespace identifier](https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94). The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This prevents nodes of different types from hashing to the same index. For a hash function, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
+
+![Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding.](img/indexes.png)
 
 
 
@@ -233,8 +239,8 @@ An Offer node has the following fields:
 | TakerPays         | String or Object | Amount | The remaining amount and type of currency requested by the offer creator. |
 | TakerGets         | String or Object | Amount | The remaining amount and type of currency being provided by the offer creator. |
 | BookDirectory     | String    | UInt256   | The index of the [Offer Directory](#directorynode) that links to this offer. |
-| BookNode          | String    | UInt64    | A hint indicating which which page of the offer directory links to this node, in case the directory consists of multiple nodes. |
-| OwnerNode         | String    | UInt64    | A hint indicating which which page of the owner directory links to this node, in case the directory consists of multiple nodes. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| BookNode          | String    | UInt64    | A hint indicating which page of the offer directory links to this node, in case the directory consists of multiple nodes. |
+| OwnerNode         | String    | UInt64    | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | Expiration        | Number    | UInt32    | (Optional) Indicates the time after which this offer will be considered unfunded. See [Specifying Time](rippled-apis.html#specifying-time) for details. |
 
 ### Offer Flags ###
@@ -259,7 +265,7 @@ The `index` of an Offer node is the SHA-512Half of the following values put toge
 
 ## RippleState ##
 
-The `RippleState` node type connects two accounts in a single currency. Conceptually, a RippleState node represents two _trust lines_ between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A RippleState node that is entirely in its default state is considered the same as a RippleState node that does not exist, so `rippled` deletes RippleState nodes when their properties are entirely default.
+The `RippleState` node type connects two accounts in a single currency. Conceptually, a RippleState node represents two _trust lines_ between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so `rippled` deletes RippleState nodes when their properties are entirely default.
 
 Since no account is privileged in the Ripple ledger, a RippleState node identifies the two parties by numerically comparing their account addresses. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
 
@@ -301,8 +307,8 @@ A RippleState node has the following fields:
 | Balance         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](https://wiki.ripple.com/Accounts#ACCOUNT_ONE). |
 | LowLimit        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | HighLimit       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
-| LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
-| HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
+| LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
+| HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
 | LowQualityOut   | Number    | UInt32 | (Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
 | HighQualityIn   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
@@ -333,18 +339,18 @@ The values that count towards a a trust line's non-default state are as follows:
 
 | High account responsible if... | Low account responsible if... |
 |-----------------------|----------------------|
-| `Balance` is negative (the high account holds currency) | If `Balance` is positive (the low account holds currency) |
+| `Balance` is negative (the high account holds currency) | `Balance` is positive (the low account holds currency) |
 | `HighLimit` is not `0` | `LowLimit` is not `0`  |
 | `LowQualityIn` is not `0` and not `1000000000` | `HighQualityIn` is not `0` and not `1000000000` |
 | `LowQualityOut` is not `0` and not `1000000000` | `HighQualityOut` is not `0` and not `1000000000` |
 | **lsfHighNoRipple** flag is not in its default state | **lsfLowNoRipple** flag is not in its default state |
 | **lsfHighFreeze** flag is enabled | **lsfLowFreeze** flag is enabled |
 
-The **lsfLowAuth** and **lsfHighAuth** flags do not count towards the default state, because they cannot be disabled.
+The **lsfLowAuth** and **lsfHighAuth** flags do not count against the default state, because they cannot be disabled.
 
 The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](#accountroot-flags) in their corresponding AccountRoot nodes. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default. **Note:** Prior to the introduction of the DefaultRipple flags in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with lsfNoRipple disabled (rippling enabled).
 
-Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. Later, if the account modifies a trust line, the owner reserve will apply if the changes put it into a non-default state.
+Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. If an account modifies a trust line, `rippled` re-evaluates whether that individual trust line is in its default state and should contribute the owner reserve.
 
 ### RippleState index format ###
 
