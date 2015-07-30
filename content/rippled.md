@@ -3089,20 +3089,19 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| accepted | Boolean | This designation is for internal protocol use, and should not be used. It does *not* mean the same as `validated` |
 | account_hash | String | Hash of all account state information in this ledger, as hex |
-| close_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
-| close_time_human | String | The time this ledger was closed, in human-readable format |
-| close_time_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
+| close\_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| close\_time_human | String | The time this ledger was closed, in human-readable format |
+| close\_time\_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
 | closed | Boolean | Whether or not this ledger has been closed |
-| ledger_hash | String | Unique identifying hash of the entire ledger. |
-| ledger_index | String | Ledger sequence number as a quoted integer |
-| parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
-| transaction_hash | String | Hash of the transaction information included in this ledger, as hex |
+| ledger\_hash | String | Unique identifying hash of the entire ledger. |
+| ledger\_index | String | Ledger sequence number as a quoted integer |
+| parent\_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
+| total\_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| transaction\_hash | String | Hash of the transaction information included in this ledger, as hex |
 | validated | Boolean | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-569)) If included and set to `true`, the information in this request describes a validated ledger version. Otherwise, the information is subject to change. |
 
-The following fields are deprecated and may be removed without further notice: `hash`, `seqNum`, `totalCoins`.
+The following fields are deprecated and may be removed without further notice: `accepted`, `hash`, `seqNum`, `totalCoins`.
 
 #### Possible Errors ####
 
