@@ -4,26 +4,53 @@ The point of the Ripple software is to maintain a shared, global ledger that is 
 
 ![Diagram: Each ledger is the result of applying transactions to the previous ledger version.](img/ledger-process.png)
 
-The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number, starting at 0 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
+The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 0 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
 
 A single ledger version consists of several components:
 
 ![Diagram: A ledger has transactions, a state node, and a header with the close time and validation info](img/ledger-components.png)
 
-* A **header** - The sequence number, hashes of the other contents, and other metadata.
+* A **header** - The ledger's unique index (sequence number), hashes of the other contents, and other metadata.
 * A **transaction tree** - The [transactions](transactions.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to modify the ledger.
-* A **state tree** - A full record of the settings, balances, and objects contained in the ledger as of this version
-* A **collection of signatures** - <span class='draft-comment'>(where? what?)</span>
+* A **state tree** - All the [ledger nodes](#ledger-node-types) that contain the settings, balances, and objects in the ledger as of this version.
+
 
 ## Tree Format ##
 
-As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, these values are represented as 64-character hexadecimal strings like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree.
+As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (key) of a ledger node with the `ledger_index` (sequence number) of a ledger.
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
 
 In the case of state nodes, `rippled` usually includes the `index` of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a [namespace identifier](https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94). The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This prevents nodes of different types from hashing to the same index. For a hash function, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
 
 ![Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding.](img/indexes.png)
+
+
+## Header Format ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/ledger/ReadView.h#L68 "Source")
+
+Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [`ledger` command](rippled-apis.html#ledger). The contents of the ledger header are as follows:
+
+| Field           | JSON Type | [Internal Type][] | Description |
+|-----------------|-----------|-------------------|-------------|
+| ledger\_index   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
+| ledger\_hash    | String    | Hash256           | The SHA-512Half of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
+| account\_hash   | String    | Hash256           | The SHA-512Half of this ledger's state tree information. |
+| close\_time     | Number    | UInt32            | The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the `close_time_resolution`, so it is possible for subsequent ledgers to have the same value. |
+| closed          | Boolean   | bool              | If true, this transaction is no longer accepting new transactions. (However, unless this ledger is validated, it might be replaced by a different ledger with a different set of transactions.) |
+| parent\_hash    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger by sequence number, this indicates from which one the ledger was derived. |
+| total\_coins    | String    | UInt64            | The total number of drops of XRP owned by accounts in the ledger. This subtracts XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
+| transaction\_hash | String  | Hash256           | The SHA-512Half of the transactions included in this ledger. |
+| close\_time\_resolution | Number | Uint8        | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. <span class='draft-comment'>(Please double-check this defintion.)</span> |
+| closeFlags      | (Omitted) | UInt8             | A bit-map of flags relating to the closing of this ledger. |
+
+[Internal Type]: https://wiki.ripple.com/Binary_Format
+
+### Close Flags ###
+
+Currently, the ledger has only one flag defined for closeFlags: **sLCF_NoConsensusTime** (value `1`). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a `close_time` value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified `close_time`.)
+
+The `closeFlags` field is not included in any JSON representations of a ledger, but it is a part of the binary representation of a ledger, and is one of the fields that determine the ledger's hash.
 
 
 
@@ -39,6 +66,7 @@ There are several different kinds of nodes that can appear in the ledger's state
 Each ledger node consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other [`rippled` APIs](rippled-apis.html), ledger nodes are represented as JSON objects.
 
 ## AccountRoot ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
 The `AccountRoot` node type describes a single _account_ object. Example `AccountRoot` node:
 
@@ -63,7 +91,7 @@ The `AccountRoot` node type describes a single _account_ object. Example `Accoun
 
 The `AccountRoot` node has the following fields:
 
-| Field           | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+| Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|---------------|-------------|
 | LedgerEntryType | String | UInt16 | The value `0x61`, mapped to the string `AccountRoot`, indicates that this node is an AccountRoot object. |
 | Account         | String | AccountID | The identifying address of this account, such as rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn. |
@@ -71,6 +99,9 @@ The `AccountRoot` node has the following fields:
 | Sequence        | Number | UInt32 | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | Balance         | String | Amount | The account's current XRP balance in drops, represented as a string. |
 | OwnerCount      | Number | UInt32 | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
+| PreviousTxnID   | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
+| AccountTxnID    | String | Hash256 | (Optional) The identifying hash of the transaction most recently submitted by this account. |
 | RegularKey      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction](transactions.html#setregularkey) to change this value. |
 | EmailHash       | String | Hash128 | (Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | WalletLocator   | String | Hash256 | (Optional) **DEPRECATED**. Do not use. |
@@ -105,6 +136,7 @@ The `index` of an AccountRoot node is the SHA-512Half of the following values pu
 
 
 ## DirectoryNode ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
 The `DirectoryNode` node type provides a list of links to other nodes in the ledger's state tree. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 [indexes](#tree-format) of other nodes. The first node is called the root of the directory, and all nodes other than the root node can be added or deleted as necessary.
 
@@ -154,7 +186,7 @@ Example Directories:
 
 </div>
 
-| Name              | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+| Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
 | LedgerEntryType   | Number    | UInt16    | The value `0x64`, mapped to the string `DirectoryNode`, indicates that this node is part of a Directory. |
 | Flags             | Number    | UInt32    | A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects. |
@@ -200,6 +232,7 @@ If the DirectoryNode is not the first page in the Directory (regardless of wheth
 
 
 ## Offer ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 The `Offer` node type describes an offer to exchange currencies, more traditionally known as an _order_, which is currently in an order book in Ripple's distributed exchange. An [OfferCreate transaction](transactions.html#offercreate) only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
 
@@ -230,7 +263,7 @@ Example Offer node:
 
 An Offer node has the following fields:
 
-| Name              | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+| Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
 | LedgerEntryType   | String    | UInt16    | The value `0x6F`, mapped to the string `Offer`, indicates that this node is an Offer object. |
 | Flags             | Number    | UInt32    | A bit-map of boolean flags enabled for this offer. |
@@ -264,6 +297,7 @@ The `index` of an Offer node is the SHA-512Half of the following values put toge
 
 
 ## RippleState ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
 The `RippleState` node type connects two accounts in a single currency. Conceptually, a RippleState node represents two _trust lines_ between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so `rippled` deletes RippleState nodes when their properties are entirely default.
 
