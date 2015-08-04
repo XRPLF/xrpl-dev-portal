@@ -3031,6 +3031,7 @@ The request can contain the following parameters:
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| binary | Boolean | (Optional, defaults to false) If `transactions` and `expand` are both true, and this option is also true, return transaction information in binary format instead of JSON format. _(New in [rippled v0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0))_ |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
