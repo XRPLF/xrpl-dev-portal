@@ -5613,7 +5613,7 @@ The initial response follows the [standard format](#response-formatting), with a
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
 | id | (Various) | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
 | source\_account | String | Unique address of the account that would initiate a transaction |
-| full\_reply | Boolean | If `false`, this is the result of an incomplete search, and a subsequent reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but rippled has stopped searching.) |
+| full\_reply | Boolean | If `false`, this is the result of an incomplete search, and a subsequent reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but rippled has stopped searching.) _(New in [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0))_ |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
