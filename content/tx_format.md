@@ -330,7 +330,7 @@ Example payment:
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including transfer fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP `Fee` for submitting the transaction](#transaction-fees). (Also see [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
-| DeliverMin | String/Object | Amount | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). _(New in [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0)_ |
+| DeliverMin | String/Object | Amount | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). _(This field is part of [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0), and becomes valid August 17 at 17:00 UTC.)_ |
 
 ### Special issuer Values for SendMax and Amount ###
 
