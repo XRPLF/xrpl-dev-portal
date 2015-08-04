@@ -125,7 +125,7 @@ AccountRoot nodes can have the following flag values:
 | lsfDisableMaster | 0x00100000 | 1048576 | Disallows use of the master key to sign transactions for this account. | asfDisableMaster |
 | lsfNoFreeze | 0x00200000 | 209715　| This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this account are frozen. | asfGlobalFreeze |
-| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. Required for gateways; discouraged for other accounts. |
+| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. Required for gateways; discouraged for other accounts. | asfDefaultRipple |
 
 ### AccountRoot index format ###
 
@@ -203,18 +203,18 @@ Example Directories:
 
 ### Directory index formats ###
 
-There are three different formulas for DirectoryNode ledger nodes, depending on what the DirectoryNode represents:
+There are three different formulas for creating the index of a DirectoryNode, depending on whether the DirectoryNode represents:
 
-1. The first page (also called the root) of an Owner Directory
-2. The first page of an Offer Directory
-3. Subsequent pages of either type
+* The first page (also called the root) of an Owner Directory,
+* The first page of an Offer Directory, _or_
+* Subsequent pages of either type
 
-The first page of an Owner Directory has an `index` that is the SHA-512Half of the following values put together:
+**The first page of an Owner Directory** has an `index` that is the SHA-512Half of the following values put together:
 
 * The Owner Directory space key (`O`, capital letter O)
 * The AccountID from the `Owner` field.
 
-The first page of an Offer Directory has a special `index`: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (An index is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the SHA-512Half of the following values put together:
+**The first page of an Offer Directory** has a special `index`: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (An index is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the SHA-512Half of the following values put together:
 
 * The Book Directory space key (`B`)
 * The 160-bit currency code from the `TakerPaysCurrency`
@@ -224,7 +224,7 @@ The first page of an Offer Directory has a special `index`: the higher 192 bits 
 
 The lower 64 bits of an Offer Directory's index represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in Ripple's internal amount format.
 
-If the DirectoryNode is not the first page in the Directory (regardless of whether it is an Owner Directory or an Offer Directory), then it has an `index` that is the SHA-512Half of the following values put together:
+**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an `index` that is the SHA-512Half of the following values put together:
 
 * The Directory Node space key (`d`)
 * The `index` of the root DirectoryNode
@@ -236,7 +236,7 @@ If the DirectoryNode is not the first page in the Directory (regardless of wheth
 
 The `Offer` node type describes an offer to exchange currencies, more traditionally known as an _order_, which is currently in an order book in Ripple's distributed exchange. An [OfferCreate transaction](transactions.html#offercreate) only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
 
-An offer can become unfunded through other activities in the network, while remaining in the ledger. However, `rippled` will automatically prune any unfunded offers it happens across in the course of transaction processing. For more information, see [lifecycle of an offer](transactions.html#lifecycle-of-an-offer).
+An offer can become unfunded through other activities in the network, while remaining in the ledger. However, `rippled` will automatically prune any unfunded offers it happens across in the course of transaction processing (and _only_ transaction processing, because the ledger state must only be changed by transactions). For more information, see [lifecycle of an offer](transactions.html#lifecycle-of-an-offer).
 
 Example Offer node:
 
@@ -274,6 +274,8 @@ An Offer node has the following fields:
 | BookDirectory     | String    | UInt256   | The index of the [Offer Directory](#directorynode) that links to this offer. |
 | BookNode          | String    | UInt64    | A hint indicating which page of the offer directory links to this node, in case the directory consists of multiple nodes. |
 | OwnerNode         | String    | UInt64    | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| PreviousTxnID     | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 | Expiration        | Number    | UInt32    | (Optional) Indicates the time after which this offer will be considered unfunded. See [Specifying Time](rippled-apis.html#specifying-time) for details. |
 
 ### Offer Flags ###
@@ -341,6 +343,8 @@ A RippleState node has the following fields:
 | Balance         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](https://wiki.ripple.com/Accounts#ACCOUNT_ONE). |
 | LowLimit        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | HighLimit       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
+| PreviousTxnID   | String    | Hash256 | The identifying hash of the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number  | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 | LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
