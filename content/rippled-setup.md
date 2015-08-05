@@ -217,7 +217,7 @@ Becoming a validator that participates in the network involves several steps. In
 
         $ sudo service rippled start
 
-3. Generate a validator key and save the output to a secure place:
+3. Generate a validation public key and seed and save the output to a secure place:
 
         $ rippled --conf /etc/rippled/rippled.cfg -q validation_create
         {
@@ -236,4 +236,52 @@ Becoming a validator that participates in the network involves several steps. In
 
         $ sudo service rippled restart
 
+## Domain Verification ##
 
+Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple.txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
+
+### ripple.txt
+
+Publish a [ripple.txt](https://wiki.ripple.com/Ripple.txt) page at your domain with a signed SSL certificate.
+
+List the validator's `validation_public_key` (generated [above](#validator-setup) in step 3) in the `[validation_public_key]` section.
+
+### Account domain
+
+A master seed can be used to generate both a validation public key and a ripple account address (also known as an account id). The ripple account id represents an account that is owned by the operator of the validator with the corresponding validation public key.
+
+The steps below describe how to set the domain field of a validator's ripple account.
+
+1. Get the validator's account id using the `validation_seed` generated [above](#validator-setup) in step 3:
+
+        $ rippled wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
+        {
+           "result" : {
+              "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
+              "key_type" : "secp256k1",
+              "master_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
+              "master_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4",
+              "master_seed_hex" : "434256443542C27BD1A84A2BACC9B8F0",
+              "public_key" : "aBQzwnRdgHVZmr8gLNugihTf5NsWAUpayGdAHtz8YPk1w3L4fh6S",
+              "public_key_hex" : "038ED9785EE7FC687445E0D94065A74FF6CEC6506A03C7380075D81A2B9E7E8681",
+              "status" : "success"
+           }
+        }
+
+2. Fund the account by sending it at least 25 XRP
+
+3. Set the account domain field to the your domain with ripple.txt
+
+  For example, this can be done using [ripple-cli](https://www.npmjs.com/package/ripple-cli):
+
+        $ ripple-cli account_set_domain mycooldomain.com
+        {
+            "engine_result": "tesSUCCESS",
+            "engine_result_code": 0,
+            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+            "ledger_hash": "876BC104F7EB386B929E5AD44F14EFA47FE5EB471EA00D70DDA69AE6119193B0",
+            "ledger_index": 1337445,
+            "metadata": {
+              ...
+            }
+        }
