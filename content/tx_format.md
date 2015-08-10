@@ -341,7 +341,7 @@ Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis
 
 ### Creating Accounts ###
 
-The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](https://wiki.ripple.com/Ledger_Format#AccountRoot) will be added to the ledger to reflect the newly-created account.
+The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](ripple-ledger.html#AccountRoot) will be added to the ledger to reflect the newly-created account.
 
 If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.
 
@@ -410,7 +410,7 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the global ledger](https://wiki.ripple.com/Ledger_Format#AccountRoot).
+An AccountSet transaction modifies the properties of an [account in the Ripple Consensus Ledger](ripple-ledger.html#AccountRoot).
 
 Example AccountSet:
 
@@ -446,7 +446,7 @@ The `Domain` field is represented as the hex string of the lowercase ASCII of th
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
-Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain. *Note:* We expect the *host-meta* component of [Gateway Services](https://wiki.ripple.com/Gateway_Services) to replace ripple.txt for this purpose.
+Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain.
 
 ### AccountSet Flags ###
 
@@ -528,7 +528,7 @@ Instead of using an account's master key to sign transactions, you can set an al
 
 A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
-If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](https://wiki.ripple.com/Ledger_Format#AccountRoot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
+If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](ripple-ledger.html#AccountRoot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
 
 
 
@@ -536,7 +536,7 @@ If your regular key is compromised, but the master key is not, you can use this 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CreateOffer.cpp "Source")
 
-An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the global ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
 ```
 {
@@ -637,7 +637,7 @@ The following invalid flag combination prompts a temINVALID_FLAG error:
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CancelOffer.cpp "Source")
 
-An OfferCancel transaction removes an Offer node from the global ledger.
+An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.
 
 ```
 {
@@ -832,7 +832,7 @@ Although it may seem unfair to charge a fee for a failed transaction, the `tec` 
 
 ## Finality of Results ##
 
-A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated global ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
+A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated Ripple Consensus Ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
 
 Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
 
@@ -846,7 +846,7 @@ There are several ways a transaction's failure could become permanent:
 
 ## Understanding Transaction Metadata ##
 
-The metadata section of a transaction includes detailed information about all the changes to the shared global ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
+The metadata section of a transaction includes detailed information about all the changes to the shared Ripple Consensus Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
 
 Some fields that may appear in transaction metadata include:
 

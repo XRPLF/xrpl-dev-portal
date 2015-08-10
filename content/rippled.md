@@ -1277,7 +1277,9 @@ Each offer object contains the following fields:
 ## account_objects ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
-The `account_objects` command returns the raw ledger format for all objects owned by an account, such as [outstanding offers](transactions.html#lifecycle-of-an-offer), trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend [`account_lines`](#account-lines) instead.
+The `account_objects` command returns the raw [ledger format][] for all objects owned by an account, such as [outstanding offers](transactions.html#lifecycle-of-an-offer), trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend [`account_lines`](#account-lines) instead.
+
+[ledger format]: ripple-ledger.html
 
 #### Request Format ####
 An example of the request format:
@@ -1866,7 +1868,7 @@ The response follows the [standard format](#response-formatting), with a success
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | Unique address of the account this request corresponds to |
-| account\_objects | Array | Array of objects owned by this account. Each object is in its raw [ledger format](https://ripple.com/wiki/Ledger_Format). |
+| account\_objects | Array | Array of objects owned by this account. Each object is in its raw [ledger format][]. |
 | ledger\_hash | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
 | ledger\_index | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | ledger\_current\_index | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
@@ -3523,7 +3525,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 | Field | Type | Description |
 |-------|------|-------------|
 | data | String | (Only included if `"binary":true`) Hex representation of the requested data |
-| LedgerEntryType | String | (Only included if `"binary":false`) String indicating what type of object this is. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) |
+| LedgerEntryType | String | (Only included if `"binary":false`) String indicating what type of ledger node this object represents. See [ledger format][] for the full list. |
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | index | String | Unique identifier for this ledger entry, as hex. |
 
@@ -3537,7 +3539,9 @@ The format of each object in the `state` array depends on whether `binary` was s
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. __*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
+The `ledger_entry` method returns a single ledger node from the Ripple Consensus Ledger. See [ledger format][] for information on the different types of objects you can retrieve.
+
+__*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
 #### Request Format ####
 
@@ -3666,7 +3670,7 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | index | String | Unique identifying key for this ledger_entry |
 | ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
-| node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
+| node | Object | (`"binary":false` only) Object containing the data of this ledger node, according to the [ledger format][]. |
 | node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
 
 #### Possible Errors ####
