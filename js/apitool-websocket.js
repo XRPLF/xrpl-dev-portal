@@ -221,11 +221,21 @@ var urlParams;
   
   Request('account_currencies', {
     account:           sample_address,
-    strict: true,
-    ledger_index: "validated",
-    account_index: 0,
+    strict:            true,
+    ledger_index:      "validated",
+    account_index:     0,
     _description: 'Returns a list of currencies the account can send or receive.',
     _link: 'rippled-apis.html#account-currencies'
+  });
+  
+  Request('gateway_balances', {
+    account:           sample_address,
+    strict:            true,
+    hotwallet:         [],
+    ledger_index:      "validated",
+    account_index:     0,
+    _description: 'Returns a list of currencies the account can send or receive.',
+    _link: 'rippled-apis.html#gateway-balances'
   });
 
   /* ---- ---- */

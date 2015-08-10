@@ -26,7 +26,7 @@ https://groups.google.com/forum/#!forum/ripple-server
 
 Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network. 
 
-Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, in order to access admin functionality, you must connect to on a port/IP address marked as admin in the config file.
+Alternatively, you can [run your own local copy of `rippled`](rippled-setup.html). This is required if you want to access any of the [Admin Commands](#List-of-Admin-Commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, in order to access admin functionality, you must connect from a port/IP address marked as admin in the config file.
 
 The [example config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
@@ -423,14 +423,17 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
+* [`account_objects` - Get all ledger objects owned by an account](#account-objects)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
 * [`account_tx` - Get info about an account's transactions](#account-tx)
 * [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
+* [`gateway_balances` - Calculate total amounts issued by an account](#gateway-balances)
 * [`ledger` - Get info about a ledger version](#ledger)
 * [`ledger_closed` - Get the latest closed ledger version](#ledger-closed)
 * [`ledger_current` - Get the current working ledger version](#ledger-current)
 * [`ledger_data` - Get the raw contents of a ledger version](#ledger-data)
 * [`ledger_entry` - Get one element from a ledger version](#ledger-entry)
+* [`noripple_check` - Get recommended changes to an account's DefaultRipple and NoRipple settings](#noripple-check)
 * [`path_find` - Find a path for a payment between two accounts and receive updates](#path-find)
 * [`ping` - Confirm connectivity with the server](#ping)
 * [`random` - Generate a random number](#random)
@@ -445,6 +448,7 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 * [`tx_history` - Retrieve info about all recent transactions](#tx-history)
 * [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
 
+The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
 
 ## List of Admin Commands ##
 
@@ -1109,7 +1113,7 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
-| markers | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
 Each trust-line object has some combination of the following fields, although not necessarily all of them:
 
@@ -1120,10 +1124,10 @@ Each trust-line object has some combination of the following fields, although no
 | currency | String | The currency this line applies to |
 | limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
 | limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
-| no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for this line |
-| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/wiki/No_Ripple) set for the other direction of this trust line |
-| quality\_in | Unsigned Integer | Ratio for incoming [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| quality\_out | Unsigned Integer | Ratio for outgoing [transit fees](https://ripple.com/wiki/Transit_Fees) represented in billionths. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for this line |
+| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for the other direction of this trust line |
+| quality\_in | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| quality\_out | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 
 #### Possible Errors ####
 
@@ -1270,6 +1274,617 @@ Each offer object contains the following fields:
 * `actMalformed` - If the `marker` field provided is not acceptable. (See [RIPD-684](https://ripplelabs.atlassian.net/browse/RIPD-684))
 
 
+## account_objects ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+
+The `account_objects` command returns the raw [ledger format][] for all objects owned by an account, such as [outstanding offers](transactions.html#lifecycle-of-an-offer), trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend [`account_lines`](#account-lines) instead.
+
+[ledger format]: ripple-ledger.html
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+  "id": 1,
+  "command": "account_objects",
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "ledger_index": "validated",
+  "type": "state",
+  "limit": 10
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "account_objects",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "validated",
+            "limit": 10,
+            "type": "state"
+        }
+    ]
+}
+```
+
+
+*Commandline*
+
+```
+#Syntax: account_objects <account> [<ledger>]
+rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | A unique identifier for the account, most commonly the account's address. |
+| type | String | (Optional) If included, filter results to include only this type of ledger node. Valid types include `state` (trust lines), `offer` (offers), and `ticket` (part of the forthcoming signing process). |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| limit   | Unsigned Integer | (Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200. |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 8,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "account_objects": [
+            {
+                "Balance": {
+                    "currency": "ASP",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "ASP",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "ASP",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "10"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
+                "PreviousTxnLgrSeq": 1438879,
+                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
+            },
+            {
+                "Balance": {
+                    "currency": "XAU",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 3342336,
+                "HighLimit": {
+                    "currency": "XAU",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
+                "PreviousTxnLgrSeq": 5982530,
+                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
+                "PreviousTxnLgrSeq": 10555014,
+                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
+            },
+            {
+                "Balance": {
+                    "currency": "MXN",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "481.992867407479"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "MXN",
+                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "MXN",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1000"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
+                "PreviousTxnLgrSeq": 3316170,
+                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
+            },
+            {
+                "Balance": {
+                    "currency": "EUR",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0.793598266778297"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "EUR",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "EUR",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
+                "PreviousTxnLgrSeq": 5447146,
+                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
+            },
+            {
+                "Balance": {
+                    "currency": "CNY",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 2228224,
+                "HighLimit": {
+                    "currency": "CNY",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CNY",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000008",
+                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
+                "PreviousTxnLgrSeq": 5949673,
+                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
+            },
+            {
+                "Balance": {
+                    "currency": "DYM",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "1.336889190631542"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "DYM",
+                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "DYM",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
+                "PreviousTxnLgrSeq": 8818732,
+                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
+            },
+            {
+                "Balance": {
+                    "currency": "CHF",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-0.3488146605801446"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "CHF",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CHF",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000008C",
+                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
+                "PreviousTxnLgrSeq": 2687590,
+                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000043",
+                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
+                "PreviousTxnLgrSeq": 8317037,
+                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-16.00534471983042"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5000"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000004A",
+                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
+                "PreviousTxnLgrSeq": 14365854,
+                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
+            }
+        ],
+        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",
+        "ledger_index": 14378733,
+        "limit": 10,
+        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
+        "validated": true
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "account_objects": [
+            {
+                "Balance": {
+                    "currency": "ASP",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "ASP",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "ASP",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "10"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
+                "PreviousTxnLgrSeq": 1438879,
+                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
+            },
+            {
+                "Balance": {
+                    "currency": "XAU",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 3342336,
+                "HighLimit": {
+                    "currency": "XAU",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
+                "PreviousTxnLgrSeq": 5982530,
+                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
+                "PreviousTxnLgrSeq": 10555014,
+                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
+            },
+            {
+                "Balance": {
+                    "currency": "MXN",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "481.992867407479"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "MXN",
+                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "MXN",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1000"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
+                "PreviousTxnLgrSeq": 3316170,
+                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
+            },
+            {
+                "Balance": {
+                    "currency": "EUR",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0.793598266778297"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "EUR",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "EUR",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
+                "PreviousTxnLgrSeq": 5447146,
+                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
+            },
+            {
+                "Balance": {
+                    "currency": "CNY",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 2228224,
+                "HighLimit": {
+                    "currency": "CNY",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CNY",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000008",
+                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
+                "PreviousTxnLgrSeq": 5949673,
+                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
+            },
+            {
+                "Balance": {
+                    "currency": "DYM",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "1.336889190631542"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "DYM",
+                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "DYM",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
+                "PreviousTxnLgrSeq": 8818732,
+                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
+            },
+            {
+                "Balance": {
+                    "currency": "CHF",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-0.3488146605801446"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "CHF",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CHF",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000008C",
+                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
+                "PreviousTxnLgrSeq": 2687590,
+                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000043",
+                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
+                "PreviousTxnLgrSeq": 8317037,
+                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-16.00534471983042"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5000"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000004A",
+                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
+                "PreviousTxnLgrSeq": 14365854,
+                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
+            }
+        ],
+        "ledger_hash": "4C99E5F63C0D0B1C2283B4F5DCE2239F80CE92E8B1A6AED1E110C198FC96E659",
+        "ledger_index": 14380380,
+        "limit": 10,
+        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
+        "status": "success",
+        "validated": true
+    }
+}
+```
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | Unique address of the account this request corresponds to |
+| account\_objects | Array | Array of objects owned by this account. Each object is in its raw [ledger format][]. |
+| ledger\_hash | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
+| ledger\_index | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
+| ledger\_current\_index | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
+| limit | Number | (May be omitted) The limit that was used in this request, if any. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. |
+| validated | Boolean | If `true`, this information comes from ledger version that has been validated by consensus. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+
 ## account_tx ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
@@ -1333,12 +1948,12 @@ The request includes the following parameters:
 | account | String | A unique identifier for the account, most commonly the account's address. | 
 | ledger\_index\_min | Integer | Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest ledger available. |
 | ledger\_index\_max | Integer | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent one available. |
-| ledger\_hash | String | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| ledger\_index | String or Unsigned Integer | (Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_hash | String | (Optional) Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_index | String or Unsigned Integer | (Optional) Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
@@ -1841,7 +2456,7 @@ The response follows the [standard format](#response-formatting), with a success
 | transactions | Array | Array of transactions matching the request's criteria, as explained below. |
 | validated | Boolean | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-__*Note:*__ The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand. If you are iterating over data, you should check these fields with every call to make sure you don't miss anything if the values change over time.
+__*Note:*__ The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
@@ -1860,8 +2475,411 @@ Each transaction object includes the following fields, depending on whether it w
 * `actMalformed` - If the address specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - If the address specified in the `account` field is formatted like a Bitcoin address instead of a Ripple address.
 * `lgrIdxsInvalid` - If the ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `badSeed` - This error should never occur.
-* `noGenDecrypt` - This error should never occur.
+
+
+## noripple_check ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
+
+The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), compared with the recommended settings.
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": 0,
+    "command": "noripple_check",
+    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "role": "gateway",
+    "ledger_index": "current",
+    "limit": 2,
+    "transactions": true
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "noripple_check",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "current",
+            "limit": 2,
+            "role": "gateway",
+            "transactions": true
+        }
+    ]
+}
+```
+
+
+</div>
+
+**Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| account | String | A unique identifier for the account, most commonly the account's address. |
+| role    | String | Whether the account refers to a `gateway` or `user`. Recommendations depend on the role of the account. Gateways must have DefaultRipple enabled and must disable NoRipple on all trust lines. Users should have DefaultRipple disabled, and should enable NoRipple on all trust lines. |
+| transactions | Boolean | (Optional) If `true`, include an array of suggested [transactions](transactions.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
+| limit   | Unsigned Integer | (Optional) The maximum number of trust line problems to include in the results. Defaults to 300. |
+| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+  "id": 0,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger_current_index": 14342939,
+    "problems": [
+      "You should immediately set your default ripple flag",
+      "You should clear the no ripple flag on your XAU line to r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+      "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    ],
+    "transactions": [
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Sequence": 1406,
+        "SetFlag": 8,
+        "TransactionType": "AccountSet"
+      },
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Flags": 262144,
+        "LimitAmount": {
+          "currency": "XAU",
+          "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+          "value": "0"
+        },
+        "Sequence": 1407,
+        "TransactionType": "TrustSet"
+      },
+      {
+        "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "Fee": 10000,
+        "Flags": 262144,
+        "LimitAmount": {
+          "currency": "USD",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "value": "5"
+        },
+        "Sequence": 1408,
+        "TransactionType": "TrustSet"
+      }
+    ],
+    "validated": false
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "ledger_current_index": 14380381,
+        "problems": [
+            "You should immediately set your default ripple flag",
+            "You should clear the no ripple flag on your XAU line to r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+            "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        ],
+        "status": "success",
+        "transactions": [
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Sequence": 1406,
+                "SetFlag": 8,
+                "TransactionType": "AccountSet"
+            },
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Flags": 262144,
+                "LimitAmount": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "Sequence": 1407,
+                "TransactionType": "TrustSet"
+            },
+            {
+                "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                "Fee": 10000,
+                "Flags": 262144,
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "5"
+                },
+                "Sequence": 1408,
+                "TransactionType": "TrustSet"
+            }
+        ],
+        "validated": false
+    }
+}
+```
+
+
+</div>
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ledger\_current\_index | Number | The sequence number of the ledger used to calculate these results. |
+| problems | Array | Array of strings with human-readable descriptions of the problems. This includes up to one entry if the account's DefaultRipple setting is not as recommended, plus up to `limit` entries for trust lines whose NoRipple setting is not as recommended. |
+| transactions | Array | (May be omitted) If the request specified `transactions` as `true`, this is an array of JSON objects, each of which is the JSON form of a [transaction](transactions.html) that should fix one of the described problems. The length of this array is the same as the `problems` array, and each entry is intended to fix the problem described at the same index into that array. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+## gateway_balances ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
+
+The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by specific "hot wallet" addresses. _(New in [version 0.28.2](https://github.com/ripple/rippled/releases/tag/0.28.2).)_
+
+#### Request Format ####
+An example of the request format:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+    "id": "example_gateway_balances_1",
+    "command": "gateway_balances",
+    "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+    "strict": true,
+    "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ","ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "gateway_balances",
+    "params": [
+        {
+            "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "hotwallet": [
+                "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
+                "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"
+            ],
+            "ledger_index": "validated",
+            "strict": true
+        }
+    ]
+}
+```
+
+</div>
+
+The request includes the following parameters:
+
+| Field     | Type    | Description |
+|-----------|---------|-------------|
+| account   | String  | The address of the account to use |
+| strict    | Boolean | (Optional) If true, only accept an address or public key for the account parameter. Defaults to false. |
+| hotwallet | String or Array | The address of a hot wallet account to exclude from the balances issued, or an array of such addresses. |
+| ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+
+#### Response Format ####
+
+An example of a successful response:
+
+<div class='multicode'>
+
+*WebSocket*
+
+```
+{
+  "id": 3,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+    "assets": {
+      "r9F6wk8HkXrgYWoJ7fsv4VrUBVoqDVtzkH": [
+        {
+          "currency": "BTC",
+          "value": "5444166510000000e-26"
+        }
+      ],
+      "rPFLkxQk6xUGdGYEykqe7PR25Gr7mLHDc8": [
+        {
+          "currency": "EUR",
+          "value": "4000000000000000e-27"
+        }
+      ],
+      "rPU6VbckqCLW4kb51CWqZdxvYyQrQVsnSj": [
+        {
+          "currency": "BTC",
+          "value": "1029900000000000e-26"
+        }
+      ],
+      "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ": [
+        {
+          "currency": "BTC",
+          "value": "4000000000000000e-30"
+        }
+      ],
+      "rwmUaXsWtXU4Z843xSYwgt1is97bgY8yj6": [
+        {
+          "currency": "BTC",
+          "value": "8700000000000000e-30"
+        }
+      ]
+    },
+    "balances": {
+      "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ": [
+        {
+          "currency": "EUR",
+          "value": "29826.1965999999"
+        }
+      ],
+      "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt": [
+        {
+          "currency": "USD",
+          "value": "13857.70416"
+        }
+      ]
+    },
+    "ledger_hash": "61DDBF304AF6E8101576BF161D447CA8E4F0170DDFBEAFFD993DC9383D443388",
+    "ledger_index": 14483195,
+    "obligations": {
+      "BTC": "5908.324927635318",
+      "EUR": "992471.7419793958",
+      "GBP": "4991.38706013193",
+      "USD": "1997134.20229482"
+    },
+    "validated": true
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "assets": {
+            "r9F6wk8HkXrgYWoJ7fsv4VrUBVoqDVtzkH": [
+                {
+                    "currency": "BTC",
+                    "value": "5444166510000000e-26"
+                }
+            ],
+            "rPFLkxQk6xUGdGYEykqe7PR25Gr7mLHDc8": [
+                {
+                    "currency": "EUR",
+                    "value": "4000000000000000e-27"
+                }
+            ],
+            "rPU6VbckqCLW4kb51CWqZdxvYyQrQVsnSj": [
+                {
+                    "currency": "BTC",
+                    "value": "1029900000000000e-26"
+                }
+            ],
+            "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ": [
+                {
+                    "currency": "BTC",
+                    "value": "4000000000000000e-30"
+                }
+            ],
+            "rwmUaXsWtXU4Z843xSYwgt1is97bgY8yj6": [
+                {
+                    "currency": "BTC",
+                    "value": "8700000000000000e-30"
+                }
+            ]
+        },
+        "balances": {
+            "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ": [
+                {
+                    "currency": "EUR",
+                    "value": "29826.1965999999"
+                }
+            ],
+            "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt": [
+                {
+                    "currency": "USD",
+                    "value": "13857.70416"
+                }
+            ]
+        },
+        "ledger_hash": "980FECF48CA4BFDEC896692C31A50D484BDFE865EC101B00259C413AA3DBD672",
+        "ledger_index": 14483212,
+        "obligations": {
+            "BTC": "5908.324927635318",
+            "EUR": "992471.7419793958",
+            "GBP": "4991.38706013193",
+            "USD": "1997134.20229482"
+        },
+        "status": "success",
+        "validated": true
+    }
+}
+```
+
+</div>
+
+**Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| obligations | Object | (Omitted if empty) Total amounts issued to accounts that are not hot wallets, as a map of currencies to the total value issued. |
+| balances | Object | (Omitted if empty) Amounts issued to the `hotwallet` accounts from the request. The keys are hot wallet addresses and the values are arrays of currency amounts they hold. The issuer (omitted from the currency amounts) is the account from the request. |
+| assets | Object | (Omitted if empty) Total amounts held that are issued by others. For the recommended gateway configuration, there should be none. |
+| ledger\_hash | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
+| ledger\_index | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
+| ledger\_current\_index | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the address of an account holding currency issued by the account from the request.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
 
 
 ## wallet_propose ##
@@ -2015,6 +3033,7 @@ The request can contain the following parameters:
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| binary | Boolean | (Optional, defaults to false) If `transactions` and `expand` are both true, and this option is also true, return transaction information in binary format instead of JSON format. _(New in [rippled v0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0))_ |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -2073,20 +3092,19 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| accepted | Boolean | This designation is for internal protocol use, and should not be used. It does *not* mean the same as `validated` |
 | account_hash | String | Hash of all account state information in this ledger, as hex |
-| close_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
-| close_time_human | String | The time this ledger was closed, in human-readable format |
-| close_time_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
+| close\_time | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| close\_time_human | String | The time this ledger was closed, in human-readable format |
+| close\_time\_resolution | Integer | Approximate number of seconds between closing one ledger version and closing the next one |
 | closed | Boolean | Whether or not this ledger has been closed |
-| ledger_hash | String | Unique identifying hash of the entire ledger. |
-| ledger_index | String | Ledger sequence number as a quoted integer |
-| parent_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| total_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
-| transaction_hash | String | Hash of the transaction information included in this ledger, as hex |
+| ledger\_hash | String | Unique identifying hash of the entire ledger. |
+| ledger\_index | String | Ledger sequence number as a quoted integer |
+| parent\_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
+| total\_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| transaction\_hash | String | Hash of the transaction information included in this ledger, as hex |
 | validated | Boolean | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-569)) If included and set to `true`, the information in this request describes a validated ledger version. Otherwise, the information is subject to change. |
 
-The following fields are deprecated and may be removed without further notice: `hash`, `seqNum`, `totalCoins`.
+The following fields are deprecated and may be removed without further notice: `accepted`, `hash`, `seqNum`, `totalCoins`.
 
 #### Possible Errors ####
 
@@ -2507,7 +3525,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 | Field | Type | Description |
 |-------|------|-------------|
 | data | String | (Only included if `"binary":true`) Hex representation of the requested data |
-| LedgerEntryType | String | (Only included if `"binary":false`) String indicating what type of object this is. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) |
+| LedgerEntryType | String | (Only included if `"binary":false`) String indicating what type of ledger node this object represents. See [ledger format][] for the full list. |
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | index | String | Unique identifier for this ledger entry, as hex. |
 
@@ -2521,7 +3539,9 @@ The format of each object in the `state` array depends on whether `binary` was s
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single entry from the specified ledger. See [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) for information on the different types of objects you can retrieve. __*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
+The `ledger_entry` method returns a single ledger node from the Ripple Consensus Ledger. See [ledger format][] for information on the different types of objects you can retrieve.
+
+__*Note:*__ There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
 #### Request Format ####
 
@@ -2564,7 +3584,7 @@ This method can retrieve several different types of data. You can select which t
 2. `account_root` - Retrieve an account node, similar to the [account_info](#account-info) command
 3. `directory` - Retrieve a directory node, which contains a list of IDs linking things
 4. `offer` - Retrieve an offer node, which defines an offer to exchange currency
-5. `ripple_state` - Retrieve a RippleState node, which a trust line along which non-XRP balances are held
+5. `ripple_state` - Retrieve a RippleState node, which is a trust line where non-XRP balances are held
 
 If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.
 
@@ -2650,7 +3670,7 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | index | String | Unique identifying key for this ledger_entry |
 | ledger_index | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
-| node | Object | (`"binary":false` only) Object containing the data of this ledger node; the exact contents vary depending on the [LedgerEntryType](https://ripple.com/wiki/Ledger_Format#Entries) of node retrieved. |
+| node | Object | (`"binary":false` only) Object containing the data of this ledger node, according to the [ledger format][]. |
 | node_binary | String | (`"binary":true` only) Binary data of the ledger node retrieved, as hex. |
 
 #### Possible Errors ####
@@ -4581,7 +5601,8 @@ An example of a successful response:
       "value": "0.001"
     },
     "id": 1,
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "full_reply": false
   }
 }
 ```
@@ -4593,17 +5614,18 @@ The initial response follows the [standard format](#response-formatting), with a
 | Field | Type | Description |
 |-------|------|-------------|
 | alternatives | Array | Array of objects with suggested paths to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
-| destination_account | String | Unique address of the account that would receive a transaction |
-| destination_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
+| destination\_account | String | Unique address of the account that would receive a transaction |
+| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
 | id | (Various) | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
-| source_account | String | Unique address of the account that would initiate a transaction |
+| source\_account | String | Unique address of the account that would initiate a transaction |
+| full\_reply | Boolean | If `false`, this is the result of an incomplete search, and a subsequent reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but rippled has stopped searching.) _(New in [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0))_ |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| paths_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
-| source_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
+| paths\_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
+| source\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
 
 #### Possible Errors ####
 
@@ -4615,6 +5637,8 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
 
+If the follow-up includes `"full_reply": true`, then this is the best path that rippled can find as of the current ledger.
+
 Here is an example of an asychronous follow-up from a path_find create request:
 
 <div class='multicode'>
@@ -4625,830 +5649,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
     "id": 1,
     "type": "path_find",
     "alternatives": [
-        {
-            "paths_computed": [
-                [
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "currency": "USD",
-                        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rG2pEp6WtqLfThH8wsVM9XYYvy9wSe9Zqu",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "currency": "USD",
-                        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rULnR9YhAkj9HrcxAcudzBhaXRSqT7zJkq",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "currency": "USD",
-                        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rwBWBFZrbLzHoe3PhwWYv89iHJdxAFrxcB",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": "251686"
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rpgKWEmNqSDAGFhy5WDnsyPqfQxbWxKeVd",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "BTC",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.000001529347313523348"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "CHF",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.0009211546262510451"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "CNY",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.00626921726264844"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "DYM",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.0007157142857142858"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "EUR",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.0007390991477027603"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "JPY",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.103412412"
-            }
-        },
-        {
-            "paths_computed": [
-                [
-                    {
-                        "account": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rBVuBbPYvLyf8HvMdf48nayR8XF8X9J3Ds",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ],
-                [
-                    {
-                        "account": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "currency": "XRP",
-                        "type": 16,
-                        "type_hex": "0000000000000010"
-                    },
-                    {
-                        "currency": "USD",
-                        "issuer": "rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9",
-                        "type": 48,
-                        "type_hex": "0000000000000030"
-                    },
-                    {
-                        "account": "rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    },
-                    {
-                        "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                        "type": 1,
-                        "type_hex": "0000000000000001"
-                    }
-                ]
-            ],
-            "source_amount": {
-                "currency": "MXN",
-                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                "value": "0.03202111959287532"
-            }
-        }
+        /* paths omitted from this example; same format as the initial response */
     ],
     "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
     "destination_amount": {
@@ -6254,7 +6455,7 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | The complete transaction in hex string format |
 | tx_json | Object | The complete transaction in JSON format |
 
-__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](https://ripple.com/wiki/Transaction_errors) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](transactions.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 __*Caution:*__ If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
 
@@ -6528,7 +6729,7 @@ The `streams` parameter provides access to the following default streams of info
 * `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
 * `ledger` - Sends a message whenever a new ledger version closes
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
-* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even transactions that don't succeed are included](https://ripple.com/wiki/Transaction_errors#Claimed_fee_only) in validated ledgers, because they take the anti-spam transaction fee.)
+* `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even some transactions that don't succeed are included](transactions.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.)
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -6735,8 +6936,8 @@ The `accounts_proposed` subscription works the same way, except it also includes
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `transaction` indicates this is the notification of a transaction, which could come from the `transactions` or `transactions_proposed` streams, or from watching a particular account |
-| engine_result | String | String [transaction response code](https://ripple.com/wiki/Transaction_errors) |
-| engine_result_code | Number | Numeric [transaction response code](https://ripple.com/wiki/Transaction_errors) |
+| engine_result | String | String [Transaction result code](transactions.html#result-categories) |
+| engine_result_code | Number | Numeric [transaction response code](transactions.html#result-categories), if applicable. |
 | engine_result_message | String | Human-readable explanation for the transaction response |
 | ledger_current_index | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
 | ledger_hash | String | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |

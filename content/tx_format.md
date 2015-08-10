@@ -217,7 +217,7 @@ The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also
 
 The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
 
-Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an admin connection, it relays the transaction even under high load, so long as the fee meets the global base.)
+Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an [admin connection](rippled-apis.html#connecting-to-rippled), it relays the transaction even under high load, so long as the fee meets the global base.)
 
 Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the `Fee` value higher or wait for the load to decrease.
 
@@ -341,7 +341,7 @@ Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis
 
 ### Creating Accounts ###
 
-The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](https://wiki.ripple.com/Ledger_Format#AccountRoot) will be added to the ledger to reflect the newly-created account.
+The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](ripple-ledger.html#accountroot) will be added to the ledger to reflect the newly-created account.
 
 If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.
 
@@ -390,7 +390,7 @@ When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` fiel
 
 ### Limit Quality ###
 
-Ripple defines "quality" is the ratio of the numeric amout in to the numeric amount out of a conversion. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
+Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
 
 The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality. 
 
@@ -410,7 +410,7 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the global ledger](https://wiki.ripple.com/Ledger_Format#AccountRoot).
+An AccountSet transaction modifies the properties of an [account in the Ripple Consensus Ledger](ripple-ledger.html#accountroot).
 
 Example AccountSet:
 
@@ -446,7 +446,7 @@ The `Domain` field is represented as the hex string of the lowercase ASCII of th
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
-Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain. *Note:* We expect the *host-meta* component of [Gateway Services](https://wiki.ripple.com/Gateway_Services) to replace ripple.txt for this purpose.
+Client applications can use the [ripple.txt](https://ripple.com/wiki/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain.
 
 ### AccountSet Flags ###
 
@@ -528,7 +528,7 @@ Instead of using an account's master key to sign transactions, you can set an al
 
 A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
-If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](https://wiki.ripple.com/Ledger_Format#AccountRoot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
+If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
 
 
 
@@ -536,7 +536,7 @@ If your regular key is compromised, but the master key is not, you can use this 
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CreateOffer.cpp "Source")
 
-An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the global ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
 ```
 {
@@ -580,7 +580,7 @@ It is possible for an offer to become temporarily or permanently *unfunded*:
   * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
 * If the Expiration time included in the offer is before the close time of the most recently-closed ledger. (See [Expiration](#expiration).)
 
-An unfunded transaction can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
+An unfunded offer can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
 
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
 * A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.
@@ -637,7 +637,7 @@ The following invalid flag combination prompts a temINVALID_FLAG error:
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CancelOffer.cpp "Source")
 
-An OfferCancel transaction removes an Offer node from the global ledger.
+An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.
 
 ```
 {
@@ -688,8 +688,8 @@ Create or modify a trust line linking two accounts.
 | LimitAmount.currency | String | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
 | LimitAmount.value | String | (Amount.value) | Quoted decimal representation of the limit to set on this trust line. |
 | LimitAmount.issuer | String | (Amount.issuer) | The address of the account to extend trust to. |
-| QualityIn | Unsigned Integer | UInt32 | (Optional) % fee for incoming value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
-| QualityOut | Unsigned Integer | UInt32 | (Optional) % fee for outgoing value on this line, represented as an integer over 1,000,000,000. A value of `0` is shorthand for no fee. |
+| QualityIn | Unsigned Integer | UInt32 | (Optional) Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
+| QualityOut | Unsigned Integer | UInt32 | (Optional) Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
 ### Trust Limits ###
 
@@ -709,7 +709,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfSetAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
+| tfSetfAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
 | tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfSetFreeze | 0x00100000 | 1048576 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
@@ -832,7 +832,7 @@ Although it may seem unfair to charge a fee for a failed transaction, the `tec` 
 
 ## Finality of Results ##
 
-A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated global ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
+A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated Ripple Consensus Ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
 
 Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
 
@@ -846,7 +846,7 @@ There are several ways a transaction's failure could become permanent:
 
 ## Understanding Transaction Metadata ##
 
-The metadata section of a transaction includes detailed information about all the changes to the shared global ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
+The metadata section of a transaction includes detailed information about all the changes to the shared Ripple Consensus Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
 
 Some fields that may appear in transaction metadata include:
 
