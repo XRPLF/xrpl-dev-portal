@@ -16,7 +16,7 @@ You can also run `rippled` as a client application for accessing [rippled APIs](
 
 ## Parallel Networks ##
 
-Most of the time, we describe the Ripple Network as one collective, singular entity -- and that's mostly true. There is one production Ripple Network, and all business that takes place on Ripple occurs within the production Ripple Network.
+Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.
 
 However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. XRP is automatically generated and distributed to wallets for all new accounts on rippletest.net.
 
@@ -46,7 +46,7 @@ Finally, if you run a validating node, you can use a stock node as a proxy to th
 
 ## Reasons to Run a Validating Node ##
 
-The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators _not to collude_. The more operators with different interests there are who run validating nodes, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple Network, it is in your interest to contribute to the consensus process.
+The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators _not to collude_. The more operators with different interests there are who run validating nodes, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple peer-to-peer network, it is in your interest to contribute to the consensus process.
 
 Not all `rippled` nodes need to be validating nodes: trusting additional nodes from the same operator does not provide additional protection against collusion. However, an organization may run nodes in multiple regions in order to provide better redundancy in case of natural disasters and other emergencies.
 
@@ -168,7 +168,7 @@ This document assumes that you are using Ubuntu 14.04.
 
 5. Add trusted validation public keys to `rippled.cfg`:
 
-  The default configuration includes validators operated by Ripple Labs for the production Ripple Network:
+  The default configuration includes validators operated by Ripple Labs for the production Ripple peer-to-peer network:
   
         [validators]
         n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
@@ -200,7 +200,7 @@ This document assumes that you are using Ubuntu 14.04.
 
         $ sudo service rippled restart
         
-It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple Network.
+It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple peer-to-peer network.
 
 
 
@@ -211,13 +211,13 @@ Becoming a validator that participates in the network involves several steps. In
 
 ## Validator Setup ##
 
-1. [Install and configure a `rippled` node](#installing-rippled)
+1. [Install and configure a `rippled` node.](#installing-rippled)
 
 2. Start `rippled`:
 
         $ sudo service rippled start
 
-3. Generate a validation public key and seed and save the output to a secure place:
+3. Generate a validation public key and seed and save the output to a secure place::
 
         $ rippled --conf /etc/rippled/rippled.cfg -q validation_create
         {
@@ -232,27 +232,29 @@ Becoming a validator that participates in the network involves several steps. In
         [validation_seed]
         ssdecohJMDPFuUPDkmG1w4objZyp4
 
-5. Restart `rippled` validator
+5. Restart `rippled` validator:
 
         $ sudo service rippled restart
+
+
 
 ## Domain Verification ##
 
 Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple.txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
 
-### ripple.txt
+### ripple.txt ###
 
 Publish a [ripple.txt](https://wiki.ripple.com/Ripple.txt) page at your domain with a signed SSL certificate.
 
 List the validator's `validation_public_key` (generated [above](#validator-setup) in step 3) in the `[validation_public_key]` section.
 
-### Account domain
+### Account domain ###
 
-A master seed can be used to generate both a validation public key and a ripple account address (also known as an account id). The ripple account id represents an account that is owned by the operator of the validator with the corresponding validation public key.
+A master seed can be used to generate both a validation public key and a Ripple account address. Since the same secret key is used for both, whoever operates the validator also controls the account with the corresponding address. (The validator's public key and the account address both represent the public key for the same keypair.)
 
-The steps below describe how to set the domain field of a validator's ripple account.
+The steps below describe how to set the domain field of a validator's Ripple account.
 
-1. Get the validator's account id using the `validation_seed` generated [above](#validator-setup) in step 3:
+1. Get the validator's account address using the `validation_seed` generated [above](#validator-setup) in step 3:
 
         $ rippled wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
         {
@@ -268,9 +270,9 @@ The steps below describe how to set the domain field of a validator's ripple acc
            }
         }
 
-2. Fund the account by sending it at least 25 XRP
+2. Fund the account by sending it at least 25 XRP.
 
-3. Set the account domain field to the your domain with ripple.txt
+3. Set the `Domain` field of the account to match the domain hosting your ripple.txt.
 
   For example, this can be done using [ripple-cli](https://www.npmjs.com/package/ripple-cli):
 
