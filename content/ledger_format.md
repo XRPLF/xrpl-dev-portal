@@ -4,7 +4,7 @@ The point of the Ripple software is to maintain a shared, global ledger that is 
 
 ![Diagram: Each ledger is the result of applying transactions to the previous ledger version.](img/ledger-process.png)
 
-The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 0 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
+The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 1 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
 
 A single ledger version consists of several components:
 
@@ -21,9 +21,9 @@ As its name might suggest, a ledger's state tree is a tree data structure, with 
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
 
-In the case of state nodes, `rippled` usually includes the `index` of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a [namespace identifier](https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94). The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This prevents nodes of different types from hashing to the same index. For a hash function, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
+In the case of state nodes, `rippled` usually includes the `index` of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a [namespace identifier](https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94). The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This ensures every index is unique. For a hash function, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
 
-![Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding.](img/indexes.png)
+![Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding.](img/ledger-indexes.png)
 
 
 ## Header Format ##
@@ -41,7 +41,7 @@ Every ledger version has a unique header that describes the contents. You can lo
 | parent\_hash    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger by sequence number, this indicates from which one the ledger was derived. |
 | total\_coins    | String    | UInt64            | The total number of drops of XRP owned by accounts in the ledger. This subtracts XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
 | transaction\_hash | String  | Hash256           | The SHA-512Half of the transactions included in this ledger. |
-| close\_time\_resolution | Number | Uint8        | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. <span class='draft-comment'>(Please double-check this defintion.)</span> |
+| close\_time\_resolution | Number | Uint8        | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. |
 | closeFlags      | (Omitted) | UInt8             | A bit-map of flags relating to the closing of this ledger. |
 
 [Internal Type]: https://wiki.ripple.com/Binary_Format
@@ -105,7 +105,7 @@ The `AccountRoot` node has the following fields:
 | RegularKey      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction](transactions.html#setregularkey) to change this value. |
 | EmailHash       | String | Hash128 | (Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | WalletLocator   | String | Hash256 | (Optional) **DEPRECATED**. Do not use. |
-| WalletSize      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. <span class='draft-comment'>It seems there's no way to set this field. The only reference I could find is <a href='https://github.com/ripple/rippled/blob/7edf783102a3df4ba6e846e24a3c3245a55e0b5a/src/ripple/protocol/impl/SField.cpp#L99'>the SField definition</a>. Does it appear in historical ledgers?</span> |
+| WalletSize      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. |
 | MessageKey      | String | VariableLength  | (Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes. |
 | TransferRate    | Number | UInt32  | (Optional) A [transfer fee](https://ripple.com/knowledge_center/transfer-fees/) to charge other users for sending currency issued by this account to each other. |
 | Domain          | String | VariableLength | (Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. |
@@ -303,7 +303,7 @@ The `index` of an Offer node is the SHA-512Half of the following values put toge
 
 The `RippleState` node type connects two accounts in a single currency. Conceptually, a RippleState node represents two _trust lines_ between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so `rippled` deletes RippleState nodes when their properties are entirely default.
 
-Since no account is privileged in the Ripple ledger, a RippleState node identifies the two parties by numerically comparing their account addresses. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
+Since no account is privileged in the Ripple ledger, a RippleState node sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
 
 Example RippleState node:
 
@@ -347,10 +347,10 @@ A RippleState node has the following fields:
 | PreviousTxnLgrSeq | Number  | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 | LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
-| LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| LowQualityOut   | Number    | UInt32 | (Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| HighQualityIn   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
-| HighQualityOut  | Number    | UInt32 | (Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or no fee. |
+| LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
+| LowQualityOut   | Number    | UInt32 | (Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
+| HighQualityIn   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
+| HighQualityOut  | Number    | UInt32 | (Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
 
 ### RippleState Flags ###
 
