@@ -45,6 +45,11 @@
         "html": "charts_api.html"
     },
     {
+        "name": "Ripple Data API v2",
+        "md": "data_v2.md",
+        "html": "data_api_v2.html"
+    },
+    {
         "name": "Gateway Services",
         "md":"gateway_services_spec.md",
         "html":"gateway_services.html"
