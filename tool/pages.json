@@ -98,6 +98,14 @@
         "is_apitool": true,
         "rest_host": "https://api.ripplecharts.com",
         "html": "charts-api-tool.html"
+    },
+    {
+        "name": "Data API v2 Tool",
+        "template":"template-rest-api-tool.html",
+        "methods_js": "js/apitool-methods-data_v2.js",
+        "is_apitool": true,
+        "rest_host": "https://data.ripple.com",
+        "html": "data-api-v2-tool.html"
     }
 ]
 

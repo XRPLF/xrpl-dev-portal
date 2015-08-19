@@ -15,20 +15,20 @@ The Data API v2 provides a REST API with the following methods:
 
 General Methods:
 
-* [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger-v2)
-* [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction-v2)
+* [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
+* [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
 * [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
 * [Get Reports - `GET /v2/reports/`](#get-reports)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
-* [Get Accounts - `GET /v2/accounts`](#get-accounts)
 
 Account Methods:
 
 * [Get Account - `GET /v2/accounts/{:address}`](#get-account)
+* [Get Accounts - `GET /v2/accounts`](#get-accounts)
 * [Get Account Balances - `GET /v2/accounts/{:address}/balances`](#get-account-balances)
-* [Get Account Transaction History - `GET /v2/accounts/{:address}/transactions`](#get-account-transaction-history-v2)
-* [Get Transaction By Account and Sequence - `GET /v2/accounts/{:address}/transactions/{:sequence}`](#get-transaction-by-account-and-sequence-v2)
+* [Get Account Transaction History - `GET /v2/accounts/{:address}/transactions`](#get-account-transaction-history)
+* [Get Transaction By Account and Sequence - `GET /v2/accounts/{:address}/transactions/{:sequence}`](#get-transaction-by-account-and-sequence)
 * [Get Account Payments - `GET /v2/accounts/{:address}/payments`](#get-account-payments)
 * [Get Account Exchanges - `GET /v2/accounts/{:address}/exchanges`](#get-account-exchanges)
 * [Get Account Balance Changes - `GET /v2/accounts/{:address}/balance_changes`](#get-account-balance-changes)
@@ -78,11 +78,31 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | close_time | Unsigned Integer - UNIX time | The time at which this ledger was closed. |
 | close\_time\_human | String - IS0 8601 UTC Timestamp | The time at which this ledger was closed. |
 
+### Genesis Ledger ###
+
+Every ledger has a sequence number, also known as a Ledger Index, which is an unsigned integer. The very first ledger was sequence number 1, and each subsequent ledger is 1 higher than the sequence number of the ledger immediately before it.
+
+However, due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the _genesis ledger_.
+
+## Account Creation Objects ##
+
+An account creation object represents the action of creating an account in the Ripple Consensus Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed _genesis accounts_.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String - Address | The identifying address of this account, in base-58. |
+| inception | String - ISO 8601 UTC Timestamp | The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570. |
+| ledger\_index | Number (Unsigned Integer) - Ledger Index | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
+| parent | String - Address | (Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account. |
+| tx_hash | String - Hash | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
+| initial\_balance | String - Decimal number | (Omitted for genesis accounts) The amount of XRP that funded this account. |
+| genesis\_balance | Number ?? | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
+| genesis\_index | Number (Unsigned Integer) | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
 
 
 # API Reference #
 
-## Get Ledger V2 ##
+## Get Ledger ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
 Retrieve a specific Ledger by hash, index, date, or latest validated.
@@ -152,7 +172,7 @@ Response:
 
 
 
-## Get Transaction V2 ##
+## Get Transaction ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js "Source")
 
 Retrieve a specific transaction by its identifying hash.
@@ -486,7 +506,7 @@ Response:
 
 
 
-## Get Transactions V2 ##
+## Get Transactions ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js "Source")
 
 Retrieve transactions by time
@@ -577,7 +597,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
 | marker | String | Pagination marker |
-| exchanges | Array of exchange objects | The requested exchanges |
+| exchanges | Array of <span class='draft-comment'>exchange objects</span> | The requested exchanges |
 
 
 
@@ -623,7 +643,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
 | marker | String | Pagination marker |
-| reports | Array of report objects | The requested reports |
+| reports | Array of <span class='draft-comment'>report objects</span> | The requested reports |
 
 
 
@@ -652,7 +672,7 @@ This method requires the following URL parameters:
 | Field  | Value | Description |
 |--------|-------|-------------|
 | family | String  | Return only specified family (`type`, `result`, or `metric`) |
-| metric | String  | Return only a specific metric from the family subset |
+| metric | String  | Return only a specific metric from the family subset <span class='draft-comment'>What metrics can you choose?</span> |
 
 Optionally, you can also include the following query parameters:
 
@@ -718,7 +738,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | Number of reports returned. |
 | marker | String | Pagination marker |
-| stats  | Array of account creation objects | The requested accounts |
+| stats  | Array of [account creation objects](#account-creation-objects) | The requested accounts |
 
 
 
@@ -730,7 +750,7 @@ Get creation info for a specific ripple account
 #### Request Format ####
 
 ```
-GET /v2/account/{:address}
+GET /v2/accounts/{:address}
 ```
 
 
@@ -747,7 +767,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field  | Value | Description |
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
-| account | account creation object | The requested account |
+| account | Object - [Account Creation](#account-creation-objects) | The requested account |
 
 
 
@@ -763,7 +783,7 @@ Get balances for a specific ripple account
 *REST*
 
 ```
-GET /v2/account/{:address}/balances
+GET /v2/accounts/{:address}/balances
 ```
 
 </div>
@@ -804,7 +824,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 
 
-## Get Account Transactions V2 ##
+## Get Account Transaction History ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTransactions.js "Source")
 
 Retrieve a history of transactions that affected a specific account. This includes all transactions the account sent, payments the account received, and payments that rippled through the account.
@@ -859,7 +879,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 
 
-## Get Transactions By Account And Sequence V2 ##
+## Get Transaction By Account And Sequence ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTxSeq.js "Source")
 
 Retrieve a specifc transaction originating from a specified account
@@ -968,8 +988,8 @@ Retrieve Exchanges for a given account over time.
 *REST*
 
 ```
-GET /v2/account/{:address}/exchanges/
-GET /v2/account/{:address}/exchanges/{:base}/{:counter}
+GET /v2/accounts/{:address}/exchanges/
+GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 ```
 
 </div>
@@ -1019,7 +1039,7 @@ Retrieve Balance changes for a given account over time.
 *REST*
 
 ```
-GET /v2/account/{:address}/balance_changes/
+GET /v2/accounts/{:address}/balance_changes/
 ```
 
 </div>
@@ -1068,8 +1088,8 @@ Retrieve daily summaries of payment activity for an account.
 *REST*
 
 ```
-GET /v2/account/{:address}/reports/
-GET /v2/account/{:address}/reports/{:date}
+GET /v2/accounts/{:address}/reports/
+GET /v2/accounts/{:address}/reports/{:date}
 ```
 
 </div>
