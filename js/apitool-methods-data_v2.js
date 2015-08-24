@@ -36,10 +36,34 @@ Request('Get Transaction', {
 Request('Get Transactions', {
     method: GET,
     path: "/v2/transactions/?{:query_params}",
-    description: "Retrieve a transactions by its identifying hash.",
+    description: "Search through all transactions",
     link: "#get-transactions",
     params: {
         "{:query_params}": "descending=true&limit=3&result=tesSUCCESS&type=OfferCreate"
+    }
+});
+
+
+Request('Get Exchanges', {
+    method: GET,
+    path: "/v2/exchanges/{:base}/{:counter}?{:query_params}",
+    description: "Retrieve exchanges for a currency pair over time.",
+    link: "#get-exchanges",
+    params: {
+        "{:base}": "USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "{:counter}": "XRP",
+        "{:query_params}": "descending=true&limit=3&result=tesSUCCESS&type=OfferCreate"
+    }
+});
+
+Request('Get Reports', {
+    method: GET,
+    path: "/v2/reports/{:date}?{:query_params}",
+    description: "Retrieve an aggregated summary of payments per account for one day.",
+    link: "#get-reports",
+    params: {
+        "{:date}": "2015-08-19T00:00:00Z",
+        "{:query_params}": "accounts=true&payments=true"
     }
 });
 

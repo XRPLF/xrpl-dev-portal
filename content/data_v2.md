@@ -15,7 +15,7 @@ The Data API v2 provides a REST API with the following methods:
 
 General Methods:
 
-* [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
+* [Get Ledgers - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledgers)
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
 * [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
@@ -100,9 +100,46 @@ An account creation object represents the action of creating an account in the R
 | genesis\_index | Number (Unsigned Integer) | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
 
 
+## Exchange Objects ##
+
+An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| base\_amount | Number | The amount of the base currency that was traded |
+| counter\_amount | Number | The amount of the counter currency that was traded |
+| rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
+| buyer | String - Address | The account that acquired the base currency |
+| executed\_time | String - ISO 8601 UTC timestamp | The time the exchange occurred |
+| ledger\_index | Number - Ledger Index | The sequence number of the ledger that included this transaction |
+| offer\_sequence | Number - Transaction Sequence | The sequence number of the `provider`'s existing offer in the ledger. |
+| provider | String - Address | The account that had an existing Offer in the ledger |
+| seller | String - Address | The account that acquired the counter currency |
+| taker | String - Address | The account that sent the transaction which executed this exchange |
+| tx\_hash | String - Hash | The identifying hash of the transaction that executed this exchange. (**Note:** This exchange may be one of several executed in a single transaction.) |
+| tx\_type | String | The type of transaction that executed this exchange, either `Payment` or `OfferCreate`. |
+
+
+## Reports Objects ##
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String - Address | One account worth of activity |
+| date | String - ISO8601 UTC timestamp | 
+| high\_value\_received | Number | Largest amount received in a single transaction. <span class='draft-comment'>(Payments only, or offers, too? Normalized?)</span> |
+| high\_value\_sent | Number | 
+| payments\_received | Number | <span class='draft-comment'>(Including transactions to which this account is involved as neither sender nor receiver?)</span> |
+| payments\_sent | Number | 
+| receiving\_counterparties | Number | <span class='draft-comment'>(Need a good definition of who counts as a counterparty in a complex tx)</span> |
+| sending\_counterparties | Number | 
+| total\_value | Number | Sum of total value received and sent. |
+| total\_value\_received | Number | Sum of all credits to the `account`.
+| total\_value\_sent | Number | 
+
+
 # API Reference #
 
-## Get Ledger ##
+## Get Ledgers ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
 Retrieve a specific Ledger by hash, index, date, or latest validated.
@@ -536,6 +573,117 @@ Optionally, you can include the following query parameters:
 | limit      | Integer | max results per page (defaults to 20) |
 | marker     | String | The pagination marker from a previous response |
 
+#### Example ####
+
+Request:
+
+```
+GET https://data.ripple.com/v2/transactions/?result=tecPATH_DRY&limit=2&type=Payment
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 2,
+  "marker": "20130106022000|000000053869|00000",
+  "transactions": [
+    {
+      "hash": "B8E4335A94438EC8209135A4E861A4C88F988C651B819DDAF2E8C55F9B41E589",
+      "date": "2013-01-02T20:13:40+00:00",
+      "ledger_index": 40752,
+      "ledger_hash": "55A900C2BA9483DC83F8FC065DE7789570662365BDE98EB75C5F4CE4F9B43214",
+      "tx": {
+        "TransactionType": "Payment",
+        "Flags": 0,
+        "Sequence": 61,
+        "Amount": {
+          "value": "96",
+          "currency": "USD",
+          "issuer": "rJ6VE6L87yaVmdyxa9jZFXSAdEFSoTGPbE"
+        },
+        "Fee": "10",
+        "SigningPubKey": "02082622E4DA1DC6EA6B38A48956D816881E000ACF0C5F5B52863B9F698799D474",
+        "TxnSignature": "304402200A0746192EBC7BC3C1B9D657F42B6345A49D75FE23EF340CB6F0427254C139D00220446BF9169C94AEDC87F56D01DB011866E2A67E2AADDCC45C4D11422550D044CB",
+        "Account": "rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY",
+        "Destination": "rJ6VE6L87yaVmdyxa9jZFXSAdEFSoTGPbE"
+      },
+      "meta": {
+        "TransactionIndex": 0,
+        "AffectedNodes": [
+          {
+            "ModifiedNode": {
+              "LedgerEntryType": "AccountRoot",
+              "PreviousTxnLgrSeq": 40212,
+              "PreviousTxnID": "F491DC8B5E51045D4420297293199039D5AE1EA0C6D62CAD9A973E3C89E40CD6",
+              "LedgerIndex": "9B242A0D59328CE964FFFBFF7D3BBF8B024F9CB1A212923727B42F24ADC93930",
+              "PreviousFields": {
+                "Sequence": 61,
+                "Balance": "8178999999999400"
+              },
+              "FinalFields": {
+                "Flags": 0,
+                "Sequence": 62,
+                "OwnerCount": 6,
+                "Balance": "8178999999999390",
+                "Account": "rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY"
+              }
+            }
+          }
+        ],
+        "TransactionResult": "tecPATH_DRY"
+      }
+    },
+    {
+      "hash": "1E1C14BF5E61682F3DC9D035D9908816497B8E8843E05C0EE98E06DFDDDAE920",
+      "date": "2013-01-05T08:43:10+00:00",
+      "ledger_index": 51819,
+      "ledger_hash": "88ED10E4E31FC7580285CF173B264690B0E8688A3FC9F5F9C62F1A295B96269D",
+      "tx": {
+        "TransactionType": "Payment",
+        "Flags": 0,
+        "Sequence": 10,
+        "Amount": {
+          "value": "2",
+          "currency": "EUR",
+          "issuer": "rfitr7nL7MX85LLKJce7E3ATQjSiyUPDfj"
+        },
+        "Fee": "10",
+        "SigningPubKey": "03FDDCD97668B686100E60653FD1E5210A8310616669AACB3A1FCC6D2C090CCB32",
+        "TxnSignature": "304402204F9BB7E37C14A3A3762E2A7DADB9A28D1AFFB3797521229B6FB98BA666B5491B02204F69AAEAFAC8FA473E52042FF06035AB3618A54E0B76C9852766D55184E98598",
+        "Account": "rhdAw3LiEfWWmSrbnZG3udsN7PoWKT56Qo",
+        "Destination": "rfitr7nL7MX85LLKJce7E3ATQjSiyUPDfj"
+      },
+      "meta": {
+        "TransactionIndex": 0,
+        "AffectedNodes": [
+          {
+            "ModifiedNode": {
+              "LedgerEntryType": "AccountRoot",
+              "PreviousTxnLgrSeq": 51814,
+              "PreviousTxnID": "5EC1C179996BD87E2EB11FE60A37ADD0FB2229ADC7D13B204FAB04FABED8A38D",
+              "LedgerIndex": "AC1B67084F84839A3158A4E38618218BF9016047B1EE435AECD4B02226AB2105",
+              "PreviousFields": {
+                "Sequence": 10,
+                "Balance": "10000999910"
+              },
+              "FinalFields": {
+                "Flags": 0,
+                "Sequence": 11,
+                "OwnerCount": 2,
+                "Balance": "10000999900",
+                "Account": "rhdAw3LiEfWWmSrbnZG3udsN7PoWKT56Qo"
+              }
+            }
+          }
+        ],
+        "TransactionResult": "tecPATH_DRY"
+      }
+    }
+  ]
+}
+```
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -588,6 +736,67 @@ Optionally, you can also include the following query parameters:
 | autobridged | Boolean | return only results from autobridged exchanges |
 | format      | String | format of returned results: `csv`,`json` defaults to `json` |
 
+#### Example ####
+
+Request:
+
+```
+https://data.ripple.com/v2/exchanges/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?descending=true&limit=3&result=tesSUCCESS&type=OfferCreate
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 3,
+  "marker": "USD|rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q|XRP||20150820230940|000015383279|00002|00000",
+  "exchanges": [
+    {
+      "base_amount": 1.5868807911938,
+      "counter_amount": 207.598995,
+      "rate": 130.8220479774132,
+      "buyer": "rsCC4p8HGz9R7yHiNjW3WPn9R6sKQv2jbT",
+      "executed_time": "2015-08-20T23:09:50",
+      "ledger_index": 15383280,
+      "offer_sequence": 2269,
+      "provider": "rsCC4p8HGz9R7yHiNjW3WPn9R6sKQv2jbT",
+      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
+      "tx_type": "Payment"
+    },
+    {
+      "base_amount": 22.5,
+      "counter_amount": 2946.032801,
+      "rate": 130.9347911555556,
+      "buyer": "rJoom9YSbpxnYcQ47SZzdoDE46iPxtZUA7",
+      "executed_time": "2015-08-20T23:09:50",
+      "ledger_index": 15383280,
+      "offer_sequence": 2760,
+      "provider": "rJoom9YSbpxnYcQ47SZzdoDE46iPxtZUA7",
+      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
+      "tx_type": "Payment"
+    },
+    {
+      "base_amount": 90.6280759869664,
+      "counter_amount": 11866.368204,
+      "rate": 130.934791171968,
+      "buyer": "rMToPrWnbtX8wAKacb8KvV7Uq7oXqVePtm",
+      "executed_time": "2015-08-20T23:09:50",
+      "ledger_index": 15383280,
+      "offer_sequence": 2757,
+      "provider": "rMToPrWnbtX8wAKacb8KvV7Uq7oXqVePtm",
+      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
+      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
+      "tx_type": "Payment"
+    }
+  ]
+}
+```
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -1129,35 +1338,20 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 # Running the Historical Database #
 
-You can also run your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple Labs to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
+You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple Labs to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
 
 ## Installation ##
 
 ### Dependencies ###
 
 The Historical Database requires the following software installed first:
-* [PostgreSQL](http://www.postgresql.org/) (required for v1),
+
 * [HBase](http://hbase.apache.org/) (required for v2),
 * [Node.js](http://nodejs.org/)
 * [npm](https://www.npmjs.org/)
 * [git](http://git-scm.com/) (optional) for installation and updating.
 
 ### Installation Process ###
-
-For v1 (postgres):
-
-  1. Create a new postgres database:
-    `createdb ripple_historical` in PostgreSQL
-  2. Clone the rippled Historical Database Git Repository:
-    `git clone https://github.com/ripple/rippled-historical-database.git`
-    (You can also download and extract a zipped release instead.)
-  3. Use npm to install additional modules:
-    `cd rippled-historical-database`
-    `npm install`
-    The install script will also create the required config files: `config/api.config.json` and `config/import.config.json`
-  4. Modify the API and import config files as needed. If you only wish to run the v1 endpoints, remove the `hbase` section from the api config.
-  5. Load the latest database schema for the rippled Historical Database:
-    `./node_modules/knex/lib/bin/cli.js migrate:latest`
 
 For v2 (hbase):
 
@@ -1235,6 +1429,4 @@ node import/postgres/backfill
 // get ledgers #1,000,000 to #2,000,000 (inclusive) and store in hbase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
 ```
-
-
 
