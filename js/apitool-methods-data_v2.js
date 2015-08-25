@@ -56,14 +56,24 @@ Request('Get Exchanges', {
     }
 });
 
-Request('Get Reports', {
+Request('Get Daily Summary', {
     method: GET,
     path: "/v2/reports/{:date}?{:query_params}",
     description: "Retrieve an aggregated summary of payments per account for one day.",
-    link: "#get-reports",
+    link: "#get-daily-summary",
     params: {
         "{:date}": "2015-08-19T00:00:00Z",
         "{:query_params}": "accounts=true&payments=true"
+    }
+});
+
+Request('Get Stats', {
+    method: GET,
+    path: "/v2/stats/?{:query_params}",
+    description: "Retrieve an aggregated summary of payments per account for one day.",
+    link: "#get-daily-summary",
+    params: {
+        "{:query_params}": "family=metric&metrics=accounts_created,exchanges_count,ledger_count,payments_count"
     }
 });
 

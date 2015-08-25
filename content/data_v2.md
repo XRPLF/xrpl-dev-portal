@@ -19,7 +19,7 @@ General Methods:
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
 * [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
-* [Get Reports - `GET /v2/reports/`](#get-reports)
+* [Get Daily Summary - `GET /v2/reports/`](#get-daily-summary)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
 
 Account Methods:
@@ -104,6 +104,8 @@ An account creation object represents the action of creating an account in the R
 
 An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
 
+A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.
+
 | Field | Value | Description |
 |-------|-------|-------------|
 | base\_amount | Number | The amount of the base currency that was traded |
@@ -122,6 +124,8 @@ An exchange object represents an actual exchange of currency, which can occur in
 
 ## Reports Objects ##
 
+Reports objects show the activity of a given account over a specific interval of time, typically a day. Reports have the following fields:
+
 | Field | Value | Description |
 |-------|-------|-------------|
 | account | String - Address | One account worth of activity |
@@ -135,6 +139,44 @@ An exchange object represents an actual exchange of currency, which can occur in
 | total\_value | Number | Sum of total value received and sent. |
 | total\_value\_received | Number | Sum of all credits to the `account`.
 | total\_value\_sent | Number | 
+
+
+## Payment Objects ##
+
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` transaction type, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+
+Payment objects have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| amount | String - Number | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
+| delivered\_amount | String - Number | The amount of the destination `currency` actually received by the destination account. |
+| destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
+| source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
+| fee | String - Number | The amount of XRP spent by the `source` account on the transaction cost. |
+| currency | String - Currency Code | The currency that the `destination` account received. |
+| destination | String - Address | The account that received the payment. |
+| executed\_time | String - ISO 8601 UTC Timestamp | The time the ledger that included this payment closed. |
+| ledger\_index | Number - Ledger Index | The sequence number of the ledger that included this payment. |
+| source | String - Address | The account that sent the payment. |
+| source\_currency | String - Currency Code | The currency that the `source` account spent. |
+| tx\_hash | String - Hash | The identifying hash of the transaction that caused the payment. |
+
+[balance change objects]: #balance-change-objects
+
+### Balance Change Objects ###
+
+Balance change objects represent a single balance change that occurs in transaction execution. Every balance change object is associated with a Ripple account. A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
+
+Balance Change Objects have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| counterparty | String - Address | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
+| currency | String - Currency Code | The currency for which this balance changed. |
+| value | String - Number | The amount of the `currency` that the associated account gained or lost. This value can be positive (for amounts gained) or negative (for amounts lost). |
+
+
 
 
 # API Reference #
@@ -811,7 +853,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 
 
-## Get Reports ##
+## Get Daily Summary ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/reports.js "Source")
 
 Retrieve per account per day aggregated payment summaries
@@ -860,7 +902,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 ## Get Stats ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/stats.js "Source")
 
-Retrieve ripple network transaction stats
+Retrieve statistics about transaction activity in the Ripple Consensus Ledger, divided into intervals of time.
 
 #### Request Format ####
 
@@ -870,23 +912,17 @@ Retrieve ripple network transaction stats
 
 ```
 GET /v2/stats
-GET /v2/stats/{:family}
-GET /v2/stats/{:family}/{:metric}
 ```
 
 </div>
 
-This method requires the following URL parameters:
-
-| Field  | Value | Description |
-|--------|-------|-------------|
-| family | String  | Return only specified family (`type`, `result`, or `metric`) |
-| metric | String  | Return only a specific metric from the family subset <span class='draft-comment'>What metrics can you choose?</span> |
 
 Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
+| family     | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
+| metrics    | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
 | start      | String  | UTC start time of query range |
 | end        | String  | UTC end time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
@@ -894,6 +930,16 @@ Optionally, you can also include the following query parameters:
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
+
+##### Families and Metrics #####
+
+The `family` and `metrics` query parameters provide a way to filter results to a specific subset of all metrics available for transactions in any given interval. Each metric is tied to a specific family, as follows:
+
+| Family | Included Metrics | Meaning |
+|--------|------------------|---------|
+| type | All Ripple transaction types, including `Payment`, `AccountSet`, `SetRegularKey`, `OfferCreate`, `OfferCancel`, `TrustSet`. | Number of transactions of the given type that occurred during the interval. |
+| result | All [transaction result codes](transactions.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
+| metric | Data-API defined [transaction metrics](#transaction-metrics). | (Varies) |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -903,9 +949,23 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
 | marker | String | Pagination marker |
-| stats | Array of stats objects | The requested stats |
+| stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
 
+#### Transaction Metrics ####
+
+The Data API automatically calculates the following metrics for every interval:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| accounts\_created | Number | The number of new accounts funded during this interval. |
+| exchanges\_count | Number | The number of currency exchanges that occurred during this interval. |
+| ledger\_count | Number | The number of ledgers closed during this interval. |
+| ledger\_interval | Number | The average number of seconds between ledgers closing during this interval. |
+| payments\_count | Number | The number of payments from one account to another during this interval. |
+| tx\_per\_ledger | Number | The average number of transactions per ledger in this interval. |
+
+If any of the metrics have a value of 0, they are omitted from the results.
 
 
 ## Get Accounts ##
