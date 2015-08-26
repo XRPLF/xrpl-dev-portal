@@ -5,11 +5,20 @@ The Ripple Data API v2 provides access to raw and processed information about ch
 
 Ripple Labs provides a live instance of the `rippled` Historical Database API with as complete a transaction record as possible at the following address:
 
-`https://data.ripple.com`
+[**https://data.ripple.com**](https://data.ripple.com)
 
-The Ripple Data API v2 is an evolution of the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). The [rippled Historical Database source code](https://github.com/ripple/rippled-historical-database) is also available under an open-source license, so you can use, install, and contribute back to the project.
 
-## API Methods ##
+## More Information ##
+The Ripple Data API v2 is an evolution of the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). 
+
+* [API Methods](#api-method-reference)
+* [API Objects](#api-objects)
+* [Setup (local instance)](#running-the-historical-database)
+* [Source Code on Github](https://github.com/ripple/rippled-historical-database)
+
+
+
+# API Method Reference #
 
 The Data API v2 provides a REST API with the following methods:
 
@@ -35,152 +44,6 @@ Account Methods:
 * [Get Account Reports - `GET /v2/accounts/{:address}/reports`](#get-account-reports)
 
 
-
-# API Objects #
-
-## Transaction Objects ##
-
-Transactions have two formats - a compact "binary" format where the defining fields of the transaction are encoded as strings of hex, and an expanded format where the defining fields of the transaction are nested as complete JSON objects.
-
-### Full JSON Format ###
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| hash  | String - Transaction Hash | An identifying SHA-512 hash unique to this transaction, as a hex string. |
-| date  | String - IS0 8601 UTC Timestamp | The time when this transaction was included in a validated ledger. |
-| ledger_index | Number - Ledger Index | The sequence number of the ledger that included this ledger. |
-| tx    | Object | The fields of this transaction object, as defined by the [Transaction Format](https://ripple.com/build/transactions) |
-| meta  | Object | Metadata about the results of this transaction. |
-
-### Binary Format ###
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| hash  | String - Transaction Hash | An identifying SHA-512 hash unique to this transaction, as a hex string. |
-| date  | String - IS0 8601 UTC Timestamp | The time when this transaction was included in a validated ledger. |
-| ledger_index | Number - Ledger Index | The sequence number of the ledger that included this ledger. |
-| tx    | String | The binary data that represents this transaction, as a hex string. |
-| meta  | Object | The binary data that represents this transaction's metadata, as a hex string. |
-
-## Ledger Objects ##
-
-A "ledger" is one version of the shared global ledger. Each ledger object has the following fields:
-
-| Field        | Value | Description |
-|--------------|-------|-------------|
-| ledger_hash  | String - Transaction Hash | An identifying hash unique to this ledger, as a hex string. |
-| ledger_index | Number (Unsigned Integer) - Ledger Index | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
-| parent_hash  | String - Transaction Hash | The identifying hash of the previous ledger. |
-| total_coins  | Unsigned Integer | The total number of drops of XRP still in existence at the time of the ledger. (Each "drop" is 100,000 XRP.) |
-| close\_time\_res | Number | Approximate number of seconds between closing one ledger version and closing the next one. |
-| accounts\_hash | String - Hash | Hash of the account information contained in this ledger, as hex. |
-| transactions\_hash | String - Hash | Hash of the transaction information contained in this ledger, as hex. |
-| close_time | Unsigned Integer - UNIX time | The time at which this ledger was closed. |
-| close\_time\_human | String - IS0 8601 UTC Timestamp | The time at which this ledger was closed. |
-
-### Genesis Ledger ###
-
-Every ledger has a sequence number, also known as a Ledger Index, which is an unsigned integer. The very first ledger was sequence number 1, and each subsequent ledger is 1 higher than the sequence number of the ledger immediately before it.
-
-However, due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the _genesis ledger_.
-
-## Account Creation Objects ##
-
-An account creation object represents the action of creating an account in the Ripple Consensus Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed _genesis accounts_.
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| address | String - Address | The identifying address of this account, in base-58. |
-| inception | String - ISO 8601 UTC Timestamp | The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570. |
-| ledger\_index | Number (Unsigned Integer) - Ledger Index | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
-| parent | String - Address | (Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account. |
-| tx_hash | String - Hash | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
-| initial\_balance | String - Decimal number | (Omitted for genesis accounts) The amount of XRP that funded this account. |
-| genesis\_balance | Number ?? | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
-| genesis\_index | Number (Unsigned Integer) | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
-
-
-## Exchange Objects ##
-
-An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
-
-A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| base\_amount | Number | The amount of the base currency that was traded |
-| counter\_amount | Number | The amount of the counter currency that was traded |
-| rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
-| buyer | String - Address | The account that acquired the base currency |
-| executed\_time | String - ISO 8601 UTC timestamp | The time the exchange occurred |
-| ledger\_index | Number - Ledger Index | The sequence number of the ledger that included this transaction |
-| offer\_sequence | Number - Transaction Sequence | The sequence number of the `provider`'s existing offer in the ledger. |
-| provider | String - Address | The account that had an existing Offer in the ledger |
-| seller | String - Address | The account that acquired the counter currency |
-| taker | String - Address | The account that sent the transaction which executed this exchange |
-| tx\_hash | String - Hash | The identifying hash of the transaction that executed this exchange. (**Note:** This exchange may be one of several executed in a single transaction.) |
-| tx\_type | String | The type of transaction that executed this exchange, either `Payment` or `OfferCreate`. |
-
-
-## Reports Objects ##
-
-Reports objects show the activity of a given account over a specific interval of time, typically a day. Reports have the following fields:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| account | String - Address | One account worth of activity |
-| date | String - ISO8601 UTC timestamp | 
-| high\_value\_received | Number | Largest amount received in a single transaction. <span class='draft-comment'>(Payments only, or offers, too? Normalized?)</span> |
-| high\_value\_sent | Number | 
-| payments\_received | Number | <span class='draft-comment'>(Including transactions to which this account is involved as neither sender nor receiver?)</span> |
-| payments\_sent | Number | 
-| receiving\_counterparties | Number | <span class='draft-comment'>(Need a good definition of who counts as a counterparty in a complex tx)</span> |
-| sending\_counterparties | Number | 
-| total\_value | Number | Sum of total value received and sent. |
-| total\_value\_received | Number | Sum of all credits to the `account`.
-| total\_value\_sent | Number | 
-
-
-## Payment Objects ##
-
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` transaction type, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
-
-Payment objects have the following fields:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| amount | String - Number | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
-| delivered\_amount | String - Number | The amount of the destination `currency` actually received by the destination account. |
-| destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
-| source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
-| fee | String - Number | The amount of XRP spent by the `source` account on the transaction cost. |
-| currency | String - Currency Code | The currency that the `destination` account received. |
-| destination | String - Address | The account that received the payment. |
-| executed\_time | String - ISO 8601 UTC Timestamp | The time the ledger that included this payment closed. |
-| ledger\_index | Number - Ledger Index | The sequence number of the ledger that included this payment. |
-| source | String - Address | The account that sent the payment. |
-| source\_currency | String - Currency Code | The currency that the `source` account spent. |
-| tx\_hash | String - Hash | The identifying hash of the transaction that caused the payment. |
-
-[balance change objects]: #balance-change-objects
-
-### Balance Change Objects ###
-
-Balance change objects represent a single balance change that occurs in transaction execution. Every balance change object is associated with a Ripple account. A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
-
-Balance Change Objects have the following fields:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-| counterparty | String - Address | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
-| currency | String - Currency Code | The currency for which this balance changed. |
-| value | String - Number | The amount of the `currency` that the associated account gained or lost. This value can be positive (for amounts gained) or negative (for amounts lost). |
-
-
-
-
-# API Reference #
-
 ## Get Ledgers ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
@@ -202,7 +65,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| ledger_identifier | Ledger Hash, Sequence Number, or ISO 8601 UTC timestamp (YYYY-MM-DDThh:mmZ) | (Optional) An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
+| ledger_identifier | Ledger [Hash][], [Ledger Index][], or [Timestamp][] | (Optional) An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
 
 Optionally, you can also include the following query parameters:
 
@@ -848,7 +711,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
 | marker | String | Pagination marker |
-| exchanges | Array of <span class='draft-comment'>exchange objects</span> | The requested exchanges |
+| exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 
 
@@ -894,7 +757,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
 | marker | String | Pagination marker |
-| reports | Array of <span class='draft-comment'>report objects</span> | The requested reports |
+| reports | Array of [Reports Objects][] | The requested reports |
 
 
 
@@ -1395,6 +1258,268 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 
 
+# API Objects #
+
+## Basic Types ##
+
+As a REST API, the Data API v2 uses [JSON](http://json.org/)'s native datatypes to represent API fields, with some special cases.
+
+### Numbers and Precision ###
+[String - Number]: #numbers-and-precision
+
+Currency amounts in Ripple require more precision than most native number types, so the Data API v2 uses the String type to represent some values.
+
+Within the String value, the numbers are serialized in the same way as native JSON numbers:
+
+* Base-10.
+* Non-zero-prefaced.
+* May contain `.` as a decimal point. For example, ½ is represented as `0.5`. (American style, not European)
+* May contain `E` or `e` to indicate being raised to a power of 10. For example, `1.2E5` is equivalent to `120000`.
+* No comma (`,`) characters are used.
+
+The precision for amounts of **non-XRP currency** in Ripple is as follows:
+
+* Minimum nonzero absolute value: `1000000000000000e-96`
+* Maximum value:  `9999999999999999e80`
+* 15 decimal digits of precision
+
+**XRP** has a different internal representation, and consequently its precision is different:
+
+* Minimum value: `0`
+* Maximum value: `100000000000` (`1e11`)
+* Precise to the nearest `0.000001` (`1e-6`)
+
+In other words, XRP has the same precision as a 64-bit unsigned integer where each unit is equivalent to 0.000001 XRP.
+
+### Addresses ###
+[Address]: #addresses
+
+Ripple Accounts are identified by a base-58 Ripple Address, which is derived from the account's master public key. An address is represented as a String in JSON, with the following characteristics:
+
+* Between 25 and 35 characters in length
+* Starts with the character `r`
+* Case-sensitive
+* Base-58 encoded using only the following characters: `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz` That's alphanumeric characters, excluding zero (`0`), capital O (`O`), capital I (`I`), and lowercase L (`l`).
+* Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.
+
+### Hashes ###
+[Hash]: #hashes
+
+Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 64-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a SHA-512 hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered identical.
+
+A Ripple hash value has the following characteristics:
+
+* Exactly 64 characters in length
+* [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
+* Typically written using uppercase letters only.
+
+
+### Timestamps ###
+[Timestamp]: #timestamps
+
+All dates and times are written in ISO 8601 Timestamp Format, using UTC. This format is summarized as:
+
+`YYYY-MM-DDThh:mmZ`
+
+* Four-digit year
+* Two-digit month
+* Two-digit day
+* The letter `T` indicating the beginning of the time portion
+* Two-digit hour using a 24-hour clock
+* Two digit minute
+* The letter `Z` indicating zero offset from UTC.
+
+### Ledger Index ###
+[Ledger Index]: #ledger-index
+
+A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.
+
+Two ledgers with the same ledger index are guaranteed to have identical contents _if they are validated by consensus_. Ledgers that are not validated by consensus may have different contents even with the same ledger index. (The [Hash][] values of two ledgers can tell you whether those ledgers have the exact same contents.)
+
+### Account Sequence ###
+[Sequence Number]: #account-sequence
+
+A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.
+
+Every [account object in the Ripple Consensus Ledger](ripple-ledger.html#accountroot) has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a `Sequence` field that matches the sending account's current `Sequence` number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.
+
+Every [Offer node in the Ripple Consensus Ledger](ripple-ledger.html#offer) is marked with the sending `Account` [Address][] and the `Sequence` value of the [OfferCreate transaction](transactions.html#offercreate) that created it. These two fields, together, uniquely identify the Offer.
+
+### Currency Code ###
+[Currency Code]: #currency-code
+
+Currencies in Ripple can be represented in two ways:
+
+* As three-letter [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php). These currency codes must be written in uppercase ("USD" is valid, "usd" is not). Ripple permits currency codes that are not officially approved, including currency codes with digits in them.
+* As 160-bit hexadecimal values, such as `0158415500000000C1F76FF6ECB0BAC600000000`, according to Ripple's internal [Currency Format](https://wiki.ripple.com/Currency_format). This representation is uncommon.
+
+## Transaction Objects ##
+
+Transactions have two formats - a compact "binary" format where the defining fields of the transaction are encoded as strings of hex, and an expanded format where the defining fields of the transaction are nested as complete JSON objects.
+
+### Full JSON Format ###
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash  | String - [Hash][] | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
+| ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| tx    | Object | The fields of this transaction object, as defined by the [Transaction Format](https://ripple.com/build/transactions) |
+| meta  | Object | Metadata about the results of this transaction. |
+
+### Binary Format ###
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| hash  | String - [Hash][] | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
+| ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| tx    | String | The binary data that represents this transaction, as a hexadecimal string. |
+| meta  | String | The binary data that represents this transaction's metadata, as a hex string. |
+
+## Ledger Objects ##
+
+A "ledger" is one version of the shared global ledger. Each ledger object has the following fields:
+
+| Field        | Value | Description |
+|--------------|-------|-------------|
+| ledger\_hash  | String - [Hash][] | An identifying hash unique to this ledger, as a hex string. |
+| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
+| parent\_hash  | String - [Hash][] | The identifying hash of the previous ledger. |
+| total\_coins  | [String - Number][] | The total number of drops of XRP still in existence at the time of the ledger. (Each "drop" is 100,000 XRP.) |
+| close\_time\_res | Number | The ledger close time is rounded to approximately this many seconds. |
+| accounts\_hash | String - [Hash][] | Hash of the account information contained in this ledger, as hex. |
+| transactions\_hash | String - [Hash][] | Hash of the transaction information contained in this ledger, as hex. |
+| close\_time | Number | The time at which this ledger was closed, in UNIX time. |
+| close\_time\_human | String - [Timestamp][] | The time at which this ledger was closed. |
+
+**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
+
+### Genesis Ledger ###
+
+Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the _genesis ledger_.
+
+## Account Creation Objects ##
+
+An account creation object represents the action of creating an account in the Ripple Consensus Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed _genesis accounts_.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| address | String - [Address][] | The identifying address of this account, in base-58. |
+| inception | String - [Timestamp][] | The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570. |
+| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
+| parent | String - [Address][] | (Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account. |
+| tx\_hash | String - [Hash][] | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
+| initial\_balance | [String - Number][] | (Omitted for genesis accounts) The amount of XRP that funded this account. |
+| genesis\_balance | [String - Number][] | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
+| genesis\_index | Number - [Sequence Number][] | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
+
+
+## Exchange Objects ##
+
+An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
+
+A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| base\_amount | Number | The amount of the base currency that was traded |
+| counter\_amount | Number | The amount of the counter currency that was traded |
+| rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
+| buyer | String - [Address][] | The account that acquired the base currency |
+| executed\_time | String - [Timestamp][] | The time the exchange occurred |
+| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this transaction |
+| offer\_sequence | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
+| provider | String - [Address][] | The account that had an existing Offer in the ledger |
+| seller | String - [Address][] | The account that acquired the counter currency |
+| taker | String - [Address][] | The account that sent the transaction which executed this exchange |
+| tx\_hash | String - [Hash][] | The identifying hash of the transaction that executed this exchange. (**Note:** This exchange may be one of several executed in a single transaction.) |
+| tx\_type | String | The type of transaction that executed this exchange, either `Payment` or `OfferCreate`. |
+
+
+## Reports Objects ##
+
+Reports objects show the activity of a given account over a specific interval of time, typically a day. Reports have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| account | String - [Address][] | The address of the account to which this report pertains. |
+| date | String - [Timestamp][] | The start of the interval to which this report pertains. |
+| high\_value\_received | Number | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
+| high\_value\_sent | Number | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
+| payments\_received | Number | The number of payments sent to this account. (This only includes payments for which this account was the destination, not payments that only rippled through the account or consumed the account's offers.) |
+| payments\_sent | Number | The number of payments sent by this account. |
+| receiving\_counterparties | Number | The number of different accounts that received payments from this account. |
+| sending\_counterparties | Number | The number of different accounts that sent payments to this account. |
+| total\_value | Number | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
+| total\_value\_received | Number | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
+| total\_value\_sent | Number | Sum value of all payments from this account, normalized to XRP (as closely as possible).
+
+
+## Payment Objects ##
+
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` transaction type, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+
+Payment objects have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| amount | String - Number | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
+| delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
+| destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
+| source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
+| fee | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. |
+| currency | String - [Currency Code][] | The currency that the `destination` account received. |
+| destination | String - [Address][] | The account that received the payment. |
+| executed\_time | String - [Timestamp][] | The time the ledger that included this payment closed. |
+| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this payment. |
+| source | String - [Address][] | The account that sent the payment. |
+| source\_currency | String - [Currency Code][] | The currency that the `source` account spent. |
+| tx\_hash | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
+
+
+## Balance Change Objects ##
+[balance change objects]: #balance-change-objects
+
+Balance change objects represent a single balance change that occurs in transaction execution. Every balance change object is associated with a Ripple account. A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
+
+Balance Change Objects have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| counterparty | String - [Address][] | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
+| currency | String - [Currency Code][] | The currency for which this balance changed. |
+| value | [String - Number][] | The amount of the `currency` that the associated account gained or lost. This value can be positive (for amounts gained) or negative (for amounts lost). |
+
+
+## Balance Change Descriptors ##
+[Balance Change Descriptors]: #balance-change-descriptors
+
+Balance Change Descriptors are objects that describe and analyze a single balance change that occurs in transaction execution. They represent the same events as [balance change objects][], but in greater detail.
+
+Balance Change Descriptors have the following fields:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| change | [String - Number][] | The amount that 
+| final\_balance | [String - Number][] |
+| node\_index | Number (or `null`)| This balance change is represented the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost  |
+| tx\_index | Number | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
+| change\_type | String | One of several [](#change-types) 
+| currency | String - [Currency Code][] |
+| executed\_time | String - [Timestamp][] |
+| issuer | String - [Address][] |
+| ledger\_index | Number - [Ledger Index][] |
+| tx\_hash | String - [Hash][] |
+
+### Change Types ###
+
+The following values are valid for the `change_type` field of a Balance Change Descriptor:
+
+| Value | Meaning |
+|-------|---------|
+| `network_fee` | This 
+
 
 # Running the Historical Database #
 
@@ -1439,7 +1564,7 @@ The `rippled` Historical Database consists of several processes that can be run 
     Command:  `npm start` (restarts the server automatically when source files change),
     or `node api/server.js` (simple start)
 
-# Importing Data #
+## Importing Data ##
 
 In order to retrieve data from the `rippled` Historical Database, you must first populate it with data. Broadly speaking, there are two ways this can happen:
 
@@ -1449,7 +1574,7 @@ In order to retrieve data from the `rippled` Historical Database, you must first
 
 In all cases, keep in mind that the integrity of the data is only as good as the original source. If you retrieve data from a public server, you are assuming that the operator of that server is trustworthy. If you load from a database dump, you are assuming that the provider of the dump has not corrupted or tampered with the data.
 
-## Live Ledger Importer ##
+### Live Ledger Importer ###
 
 The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, it is still possible that the Importer may miss ledgers.
 
@@ -1470,7 +1595,7 @@ $ node import/live --type postgres
 $ node import/live --type postgres,hbase
 ```
 
-## Backfiller ##
+### Backfiller ###
 
 The Backfiller retrieves old ledgers from a `rippled` instance by moving backwards in time. You can optionally provide start and stop indexes to retrieve a specific range of ledgers, by their sequence number.
 
