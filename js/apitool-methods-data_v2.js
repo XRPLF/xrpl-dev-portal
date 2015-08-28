@@ -134,4 +134,28 @@ Request('Get Account Payments', {
         "{:query_params}": "currency=USD&limit=3"
     }
 });
+
+Request('Get Account Reports By Day', {
+    method: GET,
+    path: "/v2/accounts/{:address}/reports/{:date}?{:query_params}",
+    description: "Retrieve summary of account activity for a given account on a certain day.",
+    link: "#get-account-reports",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:date}": "2015-08-27T00:00:00",
+        "{:query_params}": "accounts=true&payments=true&descending=true"
+    }
+});
+
+Request('Get Account Reports Range', {
+    method: GET,
+    path: "/v2/accounts/{:address}/reports?{:query_params}",
+    description: "Retrieve multiple daily summaries of account activity.",
+    link: "#get-account-reports",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "accounts=true&payments=true&descending=true"
+    }
+});
+
 //---------- End req. List ---------------------------//

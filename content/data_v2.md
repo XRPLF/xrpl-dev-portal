@@ -478,6 +478,16 @@ Optionally, you can include the following query parameters:
 | limit      | Integer | max results per page (defaults to 20) |
 | marker     | String | The pagination marker from a previous response |
 
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of Transactions returned. |
+| marker | String | Pagination marker |
+| transactions | Array of [Transaction object](#transaction-objects) | The requested transactions |
+
 #### Example ####
 
 Request:
@@ -590,16 +600,6 @@ Response:
 }
 ```
 
-#### Response Format ####
-A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
-
-| Field  | Value | Description |
-|--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of Transactions returned. |
-| marker | String | Pagination marker |
-| transactions | Array of [Transaction object](#transaction-objects) | The requested transactions |
-
 
 
 
@@ -640,6 +640,16 @@ Optionally, you can also include the following query parameters:
 | marker      | String | pagination key from previously returned response |
 | autobridged | Boolean | return only results from autobridged exchanges |
 | format      | String | format of returned results: `csv`,`json` defaults to `json` |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of Transactions returned. |
+| marker | String | Pagination marker |
+| exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
 
@@ -703,16 +713,6 @@ Response:
 }
 ```
 
-#### Response Format ####
-A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
-
-| Field  | Value | Description |
-|--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of Transactions returned. |
-| marker | String | Pagination marker |
-| exchanges | Array of [Exchange Objects][] | The requested exchanges |
-
 
 
 
@@ -747,7 +747,6 @@ Optionally, you can also include the following query parameters:
 | payments | Boolean | Include lists of individual payments |
 | format   | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
-
 #### Response Format ####
 
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -759,6 +758,19 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | marker | String | Pagination marker |
 | reports | Array of [Reports Objects][] | The requested reports |
 
+#### Example ####
+
+Request:
+
+```
+https://data.ripple.com/v2/reports/2015-08-19T00:00:00Z?accounts=true&payments=true
+```
+
+Response:
+
+```
+
+```
 
 
 
@@ -1231,18 +1243,18 @@ This method requires the following URL parameters:
 | Field    | Value  | Description |
 |----------|--------|-------------|
 | :address | String | Ripple address to query |
-| :date    | String | UTC date for single report |
+| :date    | String | (Optional) UTC date for single report. If omitted, use the `start` and `end` query parameters. |
 
 
 Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
-| accounts   | Boolean | Include lists of counterparty accounts |
-| payments   | Boolean | Include lists of individual payments |
-| descending | Boolean | Reverse chronological order |
+| start      | String  | UTC start time of query range. Defaults to start of current date. |
+| end        | String  | UTC end time of query range. Defaults to current date. |
+| accounts   | Boolean | If true, provide lists with addresses of all `sending_counterparties` and `receiving_counterparties` in results. Otherwise, return only the number of sending and receiving counterparties. |
+| payments   | Boolean | Include [Payment Summary Objects][] in the `payments` field for each interval, with the payments that occurred during that interval. |
+| descending | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 
@@ -1253,9 +1265,65 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
-| reports | Array of report objects | The requested reports |
+| reports | Array of [Reports Objects][] | Daily summaries of account activity for the given account and date range. |
 
+#### Example ####
 
+Request:
+
+```
+https://data.ripple.com/v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:00:00&end=2015-08-28T00:00:00&accounts=true&payments=true&descending=true
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 1,
+  "reports": [
+    {
+      "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "date": "2015-08-28T00:00:00+00:00",
+      "high_value_received": 89500.74142547617,
+      "high_value_sent": 0,
+      "payments": [
+        {
+          "tx_hash": "F2323EE7494384E77ABB18F31981FEE8C31767BBD27515B55FC3BD6792C4E408",
+          "amount": 2.7,
+          "currency": "BTC",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "type": "received"
+        },
+        {
+          "tx_hash": "FEAD462738EE430E154FF3122D3EE2DD27DDD8BEFBA080A60FE91B78E8865365",
+          "amount": 3,
+          "currency": "BTC",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "type": "received"
+        },
+        {
+          "tx_hash": "383B1D1EABB646AB2EFBBF9E8967FE279BFE5EF86A3B6BCD5BDA287210053116",
+          "amount": 0.14,
+          "currency": "BTC",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "type": "received"
+        }
+      ],
+      "payments_received": 3,
+      "payments_sent": 0,
+      "receiving_counterparties": [],
+      "sending_counterparties": [
+        "rhi4zZdCeFdfTokzek8D7p9bUWmtEFCZAe",
+        "rP1hkW1LCiVos6FpzU7itmm9Tk29yqvyk5"
+      ],
+      "total_value": 174019.58324753598,
+      "total_value_received": 174019.58324753598,
+      "total_value_sent": 0
+    }
+  ]
+}
+```
 
 
 # API Objects #
@@ -1438,6 +1506,7 @@ A single transaction can cause several exchanges to occur. In this case, the sen
 
 
 ## Reports Objects ##
+[Reports Objects]: #reports-objects
 
 Reports objects show the activity of a given account over a specific interval of time, typically a day. Reports have the following fields:
 
@@ -1447,16 +1516,31 @@ Reports objects show the activity of a given account over a specific interval of
 | date | String - [Timestamp][] | The start of the interval to which this report pertains. |
 | high\_value\_received | Number | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
 | high\_value\_sent | Number | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
+| payments | Array of [Payment Summary Objects][] | (May be omitted) Array with information on each payment sent or received by the account during this interval. |
 | payments\_received | Number | The number of payments sent to this account. (This only includes payments for which this account was the destination, not payments that only rippled through the account or consumed the account's offers.) |
 | payments\_sent | Number | The number of payments sent by this account. |
-| receiving\_counterparties | Number | The number of different accounts that received payments from this account. |
-| sending\_counterparties | Number | The number of different accounts that sent payments to this account. |
+| receiving\_counterparties | Array or Number | If account lists requested, an array of addresses that received payments from this account. Otherwise, the number of different accounts that received payments from this account. |
+| sending\_counterparties | Array or Number |  If account lists requested, an array of addresses that sent payments to this account. Otherwise, the number of different accounts that sent payments to this account. |
 | total\_value | Number | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
 | total\_value\_received | Number | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
 | total\_value\_sent | Number | Sum value of all payments from this account, normalized to XRP (as closely as possible).
 
+## Payment Summary Objects ##
+[Payment Summary Objects]: #payment-summary-objects
+
+A Payment Summary Object contains a reduced amount of information about a single payment from the perspective of either the sender or receiver of that payment. 
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| tx\_hash | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
+| delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
+| currency | String - [Currency Code][] | The currency delivered to the recipient of the transaction. |
+| issuer | String - [Address][] | The gateway issuing the currency, or an empty string for XRP. |
+| type | String | Either `sent` or `received`, indicating whether the perspective account is sender or receiver of this transaction. |
+
 
 ## Payment Objects ##
+[Payment Objects]: #payment-objects
 
 In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` transaction type, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
@@ -1614,4 +1698,4 @@ node import/postgres/backfill
 // get ledgers #1,000,000 to #2,000,000 (inclusive) and store in hbase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
 ```
-
+accounts=true&payments=true&descending=true&start=2014-05-01&end=2014-07-01&format=csv
