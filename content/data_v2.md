@@ -265,7 +265,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-GET https://data.ripple.com/v2/transactions/?result=tecPATH_DRY&limit=2&type=Payment
+GET /v2/transactions/?result=tecPATH_DRY&limit=2&type=Payment
 ```
 
 Response:
@@ -428,7 +428,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-https://data.ripple.com/v2/exchanges/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?descending=true&limit=3&result=tesSUCCESS&type=OfferCreate
+GET /v2/exchanges/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?descending=true&limit=3&result=tesSUCCESS&type=OfferCreate
 ```
 
 Response:
@@ -536,7 +536,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-https://data.ripple.com/v2/reports/2015-08-19T00:00:00Z?accounts=true&payments=true
+GET /v2/reports/2015-08-19T00:00:00Z?accounts=true&payments=true
 ```
 
 Response (trimmed for size):
@@ -613,8 +613,8 @@ Optionally, you can also include the following query parameters:
 |------------|---------|-------------|
 | family     | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
 | metrics    | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
+| start      | String - [Timestamp][]  | Start time of query range |
+| end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
@@ -678,8 +678,8 @@ Optionally, you can include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
+| start      | String - [Timestamp][]  | Start time of query range |
+| end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
@@ -786,7 +786,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-GET https://data.ripple.com/v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 ```
 
 Response:
@@ -834,14 +834,12 @@ Optionally, you can also include the following query parameters:
 |--------------|---------|-------------|
 | ledger_index | Integer | Index of ledger for historical balances |
 | ledger_hash  | String  | Ledger hash for historical balances |
-| date         | String  | UTC date for historical balances |
+| date         | String  | UTC date for historical balances. (**Note:** Historical balances may not be available for all dates. See [RD-671](https://ripplelabs.atlassian.net/browse/RD-671) for details.) |
 | currency     | String  | Restrict results to specified currency |
 | issuer       | String  | Restrict results to specified counterparty/issuer |
 | limit        | Integer | Max results per page (defaults to 200) |
 | marker       | String  | Pagination key from previously returned response |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
-
-
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -853,7 +851,58 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | close_time | String | close time of the ledger |
 | limit | String | number of results returned, if limit was exceeded |
 | marker | String | Pagination marker |
-| balances | Array of balance objects | The requested balances |
+| balances | Array of [balance objects][] | The requested balances |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?date=2015-08-01T00:00:00Z
+```
+
+Response:
+
+```
+{
+    "result": "success",
+    "ledger_index": 14979795,
+    "close_time": "2015-08-01T00:00:00",
+    "validated": true,
+    "balances": [
+        {
+            "value": "148.446663",
+            "currency": "XRP",
+            "counterparty": ""
+        },
+        {
+            "value": "-11.0301",
+            "currency": "USD",
+            "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+        },
+        {
+            "value": "0.0001",
+            "currency": "USD",
+            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+        },
+        {
+            "value": "0",
+            "currency": "USD",
+            "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        {
+            "value": "10",
+            "currency": "USD",
+            "counterparty": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+        },
+        {
+            "value": "0",
+            "currency": "USD",
+            "counterparty": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
+        }
+    ]
+}
+```
 
 
 
@@ -910,6 +959,79 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | marker | String | Pagination marker |
 | transactions | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
 
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions?type=Payment&result=tesSUCCESS&limit=1
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 1,
+  "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20140602224750|000006979192|00001",
+  "transactions": [
+    {
+      "hash": "074415C5DC6DB0029E815EA6FC2629FBC29A2C9D479F5D040AFF94ED58ECC820",
+      "date": "2014-05-29T17:05:20+00:00",
+      "ledger_index": 6902264,
+      "tx": {
+        "TransactionType": "Payment",
+        "Flags": 0,
+        "Sequence": 1,
+        "LastLedgerSequence": 6902266,
+        "Amount": "100000000",
+        "Fee": "12",
+        "SigningPubKey": "032ECFCC409F02057D8556988B89E17D48ECFC8373965036C6BA294AA2B7972971",
+        "TxnSignature": "30450221008D8E251DA5EA17A29CC9192717860F3B4047E74DF005127A65D9140CAE870C0902201C8E4548D2D3BA11B3E13CE8A167EBC076920E2B1C38547275CAA75FEC436EB9",
+        "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      },
+      "meta": {
+        "TransactionIndex": 1,
+        "AffectedNodes": [
+          {
+            "CreatedNode": {
+              "LedgerEntryType": "AccountRoot",
+              "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+              "NewFields": {
+                "Sequence": 1,
+                "Balance": "100000000",
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+              }
+            }
+          },
+          {
+            "ModifiedNode": {
+              "LedgerEntryType": "AccountRoot",
+              "PreviousTxnLgrSeq": 6486567,
+              "PreviousTxnID": "FF9BFF3C200B475CA7EE54F9A98EAB7E92BBDBD2DBE95AC854405D8A85C9D535",
+              "LedgerIndex": "43EA78783A089B137D5E87610DF3BD4129F989EDD02EFAF6C265924D3A0EF8CE",
+              "PreviousFields": {
+                "Sequence": 1,
+                "Balance": "1000000000"
+              },
+              "FinalFields": {
+                "Flags": 0,
+                "Sequence": 2,
+                "OwnerCount": 0,
+                "Balance": "899999988",
+                "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+              }
+            }
+          }
+        ],
+        "TransactionResult": "tesSUCCESS"
+      }
+    }
+  ]
+}
+```
+
 
 
 
@@ -954,6 +1076,28 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | transaction | [transaction object](#transaction-objects) | requested transaction |
 
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions/10?binary=true
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "transaction": {
+    "hash": "4BFFBB86C12659B6C5BB88F0EB859356DE3433EBACBFD9F50F6E70B2C05CCFE0",
+    "date": "2014-09-15T19:59:10+00:00",
+    "ledger_index": 8889812,
+    "tx": "1200052200000000240000000A68400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100AA4AF08726FCF0F28AA4A841C45F975C3BF1545648F6907DCB33F6E3DD7E85D6022037365B80AB1972BF8A4280009A0DBCF16A1D562ED0489B155750E48CC939039981144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+    "meta": "201C00000003F8E5110061250087A5C555CBCA96F4C42E0EBC0E75C5AD84B3403FEDF824A7DAFA45ADCA6ECB66AA143C1B5613F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8E6240000000A62400000000DB5852F8814D3484B9ED2556DCE16A3B928B438BA6EE0FF0989E1E72200010000240000000B2D0000000062400000000DB5852572110000000000000000000000070000000300770A6D64756F31332E636F6D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9E1E1F1031000"
+  }
+}
+```
 
 
 
@@ -985,8 +1129,8 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
+| start      | String - [Timestamp][]  | Start time of query range |
+| end        | String - [Timestamp][]  | End time of query range |
 | type       | String  | Type of payment - `sent` or `received` |
 | currency   | String  | Restrict results to specified currency |
 | issuer     | String  | Restrict results to specified issuer |
@@ -1005,7 +1149,54 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `payments` field. |
 | marker | String | Pagination marker |
-| payments | Array of payment objects | All payments matching the request. |
+| payments | Array of [payment objects][] | All payments matching the request. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments?currency=USD&limit=1
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 1,
+  "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20140604191650|000007013674|00000",
+  "payments": [
+    {
+      "amount": "1.0",
+      "delivered_amount": "1.0",
+      "destination_balance_changes": [
+        {
+          "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "currency": "USD",
+          "value": "1"
+        }
+      ],
+      "fee": "1.0E-5",
+      "source_balance_changes": [
+        {
+          "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+          "currency": "USD",
+          "value": "-1"
+        }
+      ],
+      "currency": "USD",
+      "destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "executed_time": "2014-06-02T22:47:50",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "ledger_index": 6979192,
+      "source": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "source_currency": "USD",
+      "tx_hash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E"
+    }
+  ]
+}
+```
 
 
 
@@ -1017,12 +1208,19 @@ Retrieve Exchanges for a given account over time.
 
 #### Request Format ####
 
+There are two variations on this method:
+
 <div class='multicode'>
 
-*REST*
+*REST - All Exchanges*
 
 ```
 GET /v2/accounts/{:address}/exchanges/
+```
+
+*REST - Specific Currency Pair*
+
+```
 GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 ```
 
@@ -1041,8 +1239,8 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
+| start      | String - [Timestamp][]  | Start time of query range |
+| end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
@@ -1057,7 +1255,66 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of exchanges returned. |
 | marker | String | Pagination marker |
-| exchanges | Array of exchange objects | The requested exchanges |
+| exchanges | Array of [Exchange Objects][] | The requested exchanges |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw/exchanges/KRW+rUkMKjQitpgAM5WTGk79xpjT38DEJY283d/XRP?start=2015-08-08T00:00:00Z&end=2015-08-31T00:00:00Z&limit=2
+
+```
+
+Response:
+
+```
+{
+    "result": "success",
+    "count": 2,
+    "marker": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw|20150810014200|000015162386|00013|00003",
+    "exchanges": [
+        {
+            "base_amount": 209.3501241148,
+            "counter_amount": 20.424402,
+            "rate": 0.097560973925,
+            "autobridged_currency": "USD",
+            "autobridged_issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "base_currency": "KRW",
+            "base_issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+            "buyer": "rnAqwsu2BEbCjacoZmsXrpViqd3miZhHbT",
+            "counter_currency": "XRP",
+            "executed_time": "2015-08-08T02:57:40",
+            "ledger_index": 15122851,
+            "offer_sequence": "1738",
+            "provider": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw",
+            "seller": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw",
+            "taker": "rnAqwsu2BEbCjacoZmsXrpViqd3miZhHbT",
+            "tx_hash": "506D109A609A5E0778276CCBB125A4AA7B78428059F069A2CB4F739B861C0C49",
+            "tx_type": "OfferCreate"
+        },
+        {
+            "base_amount": 86355.6498758851,
+            "counter_amount": 8424.941452,
+            "rate": 0.097560975618,
+            "base_currency": "KRW",
+            "base_issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+            "buyer": "r9xQi5YT8jqVM3wZhbiV94ZKKvGHaVeSDj",
+            "client": "rt1.1-26-gbeb68ab",
+            "counter_currency": "XRP",
+            "executed_time": "2015-08-08T07:15:00",
+            "ledger_index": 15126536,
+            "offer_sequence": "1738",
+            "provider": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw",
+            "seller": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw",
+            "taker": "r9xQi5YT8jqVM3wZhbiV94ZKKvGHaVeSDj",
+            "tx_hash": "C897A595DED16ADF5AD52E6FD9CE5DE65C78A93CCAA62A85248DC3015A78F5C4",
+            "tx_type": "Payment"
+        }
+    ]
+}
+```
+
 
 
 
@@ -1091,8 +1348,8 @@ Optionally, you can also include the following query parameters:
 |------------|---------|-------------|
 | currency   | String  | Restrict results to specified currency |
 | issuer     | String  | Restrict results to specified counterparty/issuer |
-| start      | String  | UTC start time of query range |
-| end        | String  | UTC end time of query range |
+| start      | String - [Timestamp][]  | Start time of query range |
+| end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
@@ -1107,7 +1364,60 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of balance changes returned. |
 | marker | String | Pagination marker |
-| exchanges | Array of balance change objects | The requested balance changes |
+| exchanges | Array of [balance change descriptors][] | The requested balance changes |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balance_changes?descending=true&limit=3
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 3,
+  "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20150616212230|000014091020|00003|$",
+  "balance_changes": [
+    {
+      "change": "-0.012",
+      "final_balance": "148.446663",
+      "tx_index": 1,
+      "change_type": "network fee",
+      "currency": "XRP",
+      "executed_time": "2015-06-16T21:32:40",
+      "ledger_index": 14091160,
+      "tx_hash": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
+      "node_index": null
+    },
+    {
+      "change": "-0.012",
+      "final_balance": "148.458663",
+      "tx_index": 20,
+      "change_type": "network fee",
+      "currency": "XRP",
+      "executed_time": "2015-06-16T21:22:40",
+      "ledger_index": 14091022,
+      "tx_hash": "26C1C876D709380DF7136F307B84E7F16CD74381F82E9B2D352A92069C880D66",
+      "node_index": null
+    },
+    {
+      "change": "-30.0",
+      "final_balance": "148.470663",
+      "node_index": 0,
+      "tx_index": 3,
+      "change_type": "payment_source",
+      "currency": "XRP",
+      "executed_time": "2015-06-16T21:22:30",
+      "ledger_index": 14091020,
+      "tx_hash": "73699F26E2A4A8703EB48684FF38CD6362B7ABF217576AB460CBAA64D383D9EC"
+    }
+  ]
+}
+```
 
 
 
@@ -1162,7 +1472,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-https://data.ripple.com/v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:00:00&end=2015-08-28T00:00:00&accounts=true&payments=true&descending=true
+GET /v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:00:00&end=2015-08-28T00:00:00&accounts=true&payments=true&descending=true
 ```
 
 Response:
@@ -1344,7 +1654,7 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | ledger\_hash  | String - [Hash][] | An identifying hash unique to this ledger, as a hex string. |
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
 | parent\_hash  | String - [Hash][] | The identifying hash of the previous ledger. |
-| total\_coins  | [String - Number][] | The total number of drops of XRP still in existence at the time of the ledger. (Each "drop" is 100,000 XRP.) |
+| total\_coins  | [String - Number][] | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
 | close\_time\_res | Number | The ledger close time is rounded to approximately this many seconds. |
 | accounts\_hash | String - [Hash][] | Hash of the account information contained in this ledger, as hex. |
 | transactions\_hash | String - [Hash][] | Hash of the transaction information contained in this ledger, as hex. |
@@ -1374,6 +1684,7 @@ An account creation object represents the action of creating an account in the R
 
 
 ## Exchange Objects ##
+[Exchange Objects]: #exchange-objects
 
 An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
 
@@ -1384,7 +1695,14 @@ A single transaction can cause several exchanges to occur. In this case, the sen
 | base\_amount | Number | The amount of the base currency that was traded |
 | counter\_amount | Number | The amount of the counter currency that was traded |
 | rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
+| autobridged\_currency | String - [Currency Code][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| autobridged\_issuer | String - [Address][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| base\_currency | String - [Currency Code][] | (May be omitted) The base currency |
+| base\_issuer | String - [Address][] | (May be omitted) The account that issued the base currency |
 | buyer | String - [Address][] | The account that acquired the base currency |
+| client | String | (May be omitted) If the transaction contains a memo indicating what client application sent it, this is the contents of the memo. |
+| counter\_currency | String - [Currency Code][] | (May be omitted) The counter currency |
+| counter\_issuer | String - [Address][] | (May be omitted) The account that issued the counter currency |
 | executed\_time | String - [Timestamp][] | The time the exchange occurred |
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this transaction |
 | offer\_sequence | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
@@ -1452,18 +1770,21 @@ Payment objects have the following fields:
 | tx\_hash | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
 
 
-## Balance Change Objects ##
-[balance change objects]: #balance-change-objects
+## Balance Objects and Balance Change Objects ##
+[balance change objects]: #balance-objects-and-balance-change-objects
+[balance objects]: #balance-objects-and-balance-change-objects
 
-Balance change objects represent a single balance change that occurs in transaction execution. Every balance change object is associated with a Ripple account. A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
+Balance objects represent an Ripple account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.
 
-Balance Change Objects have the following fields:
+A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
+
+Balance objects and Balance Change objects have the same format, with the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
 | counterparty | String - [Address][] | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
 | currency | String - [Currency Code][] | The currency for which this balance changed. |
-| value | [String - Number][] | The amount of the `currency` that the associated account gained or lost. This value can be positive (for amounts gained) or negative (for amounts lost). |
+| value | [String - Number][] | The amount of the `currency` that the associated account gained or lost. In balance change objects, this value can be positive (for amounts gained) or negative (for amounts lost). In balance objects, this value can be positive (for amounts the counterparty owes the account) or negative (for amounts owed to the counterparty). |
 
 
 ## Balance Change Descriptors ##
@@ -1475,16 +1796,16 @@ Balance Change Descriptors have the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| change | [String - Number][] | The amount that 
-| final\_balance | [String - Number][] |
-| node\_index | Number (or `null`)| This balance change is represented the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost  |
+| change | [String - Number][] | The difference in the amount of currency held before and after this change. |
+| final\_balance | [String - Number][] | The balance after the change occurred. |
+| node\_index | Number (or `null`)| This balance change is represented by the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
 | tx\_index | Number | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
-| change\_type | String | One of several [](#change-types) 
-| currency | String - [Currency Code][] |
-| executed\_time | String - [Timestamp][] |
-| issuer | String - [Address][] |
-| ledger\_index | Number - [Ledger Index][] |
-| tx\_hash | String - [Hash][] |
+| change\_type | String | One of several [](#change-types) describing what caused this balance change to occur. |
+| currency | String - [Currency Code][] | The change affected this currency. |
+| executed\_time | String - [Timestamp][] | The time the change occurred. (This is based on the close time of the ledger that included the transaction that executed the change. |
+| issuer | String - [Address][] | (Omitted for XRP) The `currency` was issued by this account. |
+| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included the transaction that executed this balance change. |
+| tx\_hash | String - [Hash][] | The identifying hash of the transaction that executed this balance change. |
 
 ### Change Types ###
 
@@ -1492,7 +1813,12 @@ The following values are valid for the `change_type` field of a Balance Change D
 
 | Value | Meaning |
 |-------|---------|
-| `network_fee` | This 
+| `network fee` | This balance change reflects XRP that was destroyed to relay a transaction. (This value may change; see [RD-635](https://ripplelabs.atlassian.net/browse/RD-635) for details.) |
+| `payment_destination` | This balance change reflects currency that was received from a payment. |
+| `payment_source` | This balance change reflects currency that was spent in a payment. |
+| `exchange` | This balance change reflects currency that was traded for other currency, or the same currency from a different issuer. This can occur in the middle of payment execution as well as from offers. |
+
+
 
 
 # Running the Historical Database #

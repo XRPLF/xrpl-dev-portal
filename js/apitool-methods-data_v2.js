@@ -4,6 +4,7 @@ var DOC_BASE = "data_api_v2.html";
 var URL_BASE = "https://data.ripple.com:443";
 
 var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+var KRW_TRADER_ADDRESS = "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
 
@@ -101,6 +102,18 @@ Request('Get Accounts', {
     }
 });
 
+Request('Get Account Balances', {
+    method: GET,
+    path: "/v2/accounts/{:address}/balances?{:query_params}",
+    description: "Retrieve a given account's balances at a given time.",
+    link: "#get-account-balances",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "currency=USD&date=2015-01-01T00:00:00Z&limit=3"
+    }
+});
+
+
 Request('Get Account Transaction History', {
     method: GET,
     path: "/v2/accounts/{:address}/transactions?{:query_params}",
@@ -132,6 +145,41 @@ Request('Get Account Payments', {
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:query_params}": "currency=USD&limit=3"
+    }
+});
+
+Request('Get Account Exchanges - All', {
+    method: GET,
+    path: "/v2/accounts/{:address}/exchanges?{:query_params}",
+    description: "Retrieve all currency changes in which a given account participated.",
+    link: "#get-account-exchanges",
+    params: {
+        "{:address}": KRW_TRADER_ADDRESS,
+        "{:query_params}": "start=2015-08-01T00:00:00Z&end=2015-08-31T00:00:00Z"
+    }
+});
+
+Request('Get Account Exchanges - Single Currency Pair', {
+    method: GET,
+    path: "/v2/accounts/{:address}/exchanges/{:base}/{:counter}?{:query_params}",
+    description: "Retrieve exchanges of a specific currency pair in which a given account participated.",
+    link: "#get-account-exchanges",
+    params: {
+        "{:address}": KRW_TRADER_ADDRESS,
+        "{:base}": "KRW+rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+        "{:counter}": "XRP",
+        "{:query_params}": "start=2015-08-08T00:00:00Z&end=2015-08-31T00:00:00Z&limit=2"
+    }
+});
+
+Request('Get Account Balance Changes', {
+    method: GET,
+    path: "/v2/accounts/{:address}/balance_changes?{:query_params}",
+    description: "Retrieve detailed account of all changes to an account's balance.",
+    link: "#get-account-balance-changes",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "descending=true&limit=3"
     }
 });
 
