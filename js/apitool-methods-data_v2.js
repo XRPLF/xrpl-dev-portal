@@ -73,7 +73,7 @@ Request('Get Stats', {
     description: "Retrieve an aggregated summary of payments per account for one day.",
     link: "#get-daily-summary",
     params: {
-        "{:query_params}": "family=metric&metrics=accounts_created,exchanges_count,ledger_count,payments_count"
+        "{:query_params}": "start=2015-08-30&end=2015-08-31&interval=day&family=metric&metrics=accounts_created,exchanges_count,ledger_count,payments_count"
     }
 });
 
@@ -97,7 +97,7 @@ Request('Get Accounts', {
     description: "Get info for all account creations.",
     link: "#get-accounts",
     params: {
-        "{:query_params}": "interval=week&descending=true"
+        "{:query_params}": "descending=true&parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     }
 });
 

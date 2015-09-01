@@ -24,7 +24,7 @@ The Data API v2 provides a REST API with the following methods:
 
 General Methods:
 
-* [Get Ledgers - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledgers)
+* [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
 * [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
@@ -44,7 +44,7 @@ Account Methods:
 * [Get Account Reports - `GET /v2/accounts/{:address}/reports`](#get-account-reports)
 
 
-## Get Ledgers ##
+## Get Ledger ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
 Retrieve a specific Ledger by hash, index, date, or latest validated.
@@ -135,7 +135,7 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | Transaction Hash | The identifying (SHA-512) hash of the transaction, as hex. |
+| hash  | String - [Hash][] | The identifying hash of the transaction. |
 
 Optionally, you can also include the following query parameters:
 
@@ -160,7 +160,7 @@ Request:
 GET /v2/transactions/03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A
 ```
 
-Response:
+Response (trimmed for size):
 
 ```js
 200 OK
@@ -207,236 +207,8 @@ Response:
                         }
                     }
                 },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "AccountRoot",
-                        "PreviousTxnLgrSeq": 8317030,
-                        "PreviousTxnID": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
-                        "LedgerIndex": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
-                        "PreviousFields": {
-                            "OwnerCount": 18,
-                            "Balance": "213169802117"
-                        },
-                        "FinalFields": {
-                            "Flags": 0,
-                            "Sequence": 1405,
-                            "OwnerCount": 17,
-                            "Balance": "213169802799",
-                            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "Offer",
-                        "PreviousTxnLgrSeq": 8317036,
-                        "PreviousTxnID": "B7256723E74A38A17C9F4F5CB938BD45581C57767E44BF26DAC8BA9FF2D58021",
-                        "LedgerIndex": "55D0954D7C190006BF905D3B3D269A07016CB9F97B1E37ABE7CC8275DBBDE3DA",
-                        "PreviousFields": {
-                            "TakerPays": "8016312417",
-                            "TakerGets": {
-                                "value": "0.085862",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            }
-                        },
-                        "FinalFields": {
-                            "Flags": 0,
-                            "Sequence": 326320,
-                            "Expiration": 461364125,
-                            "BookNode": "0000000000000000",
-                            "OwnerNode": "0000000000000003",
-                            "BookDirectory": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F212B4AE944DDE4",
-                            "TakerPays": "7869978846",
-                            "TakerGets": {
-                                "value": "0.084294634308",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            },
-                            "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw"
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "RippleState",
-                        "PreviousTxnLgrSeq": 8317014,
-                        "PreviousTxnID": "AB356934159ECD02D27089C0AA97EF2B3DA4B3A5A3A9EC522474CADDF276B307",
-                        "LedgerIndex": "5DC222A1BAF75AE489F9C78F772AEF6AF00C66660B4C28D93DC05FF4A4124D27",
-                        "PreviousFields": {
-                            "Balance": {
-                                "value": "-2.254933867206176",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            }
-                        },
-                        "FinalFields": {
-                            "Flags": 2228224,
-                            "LowNode": "0000000000000221",
-                            "HighNode": "0000000000000000",
-                            "Balance": {
-                                "value": "-2.253363366782792",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            },
-                            "LowLimit": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            },
-                            "HighLimit": {
-                                "value": "1000",
-                                "currency": "BTC",
-                                "issuer": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw"
-                            }
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "RippleState",
-                        "PreviousTxnLgrSeq": 8317030,
-                        "PreviousTxnID": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
-                        "LedgerIndex": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765",
-                        "PreviousFields": {
-                            "Balance": {
-                                "value": "-0.000000007322616",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            }
-                        },
-                        "FinalFields": {
-                            "Flags": 131072,
-                            "LowNode": "0000000000000043",
-                            "HighNode": "0000000000000000",
-                            "Balance": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            },
-                            "LowLimit": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            },
-                            "HighLimit": {
-                                "value": "3",
-                                "currency": "BTC",
-                                "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-                            }
-                        }
-                    }
-                },
-                {
-                    "DeletedNode": {
-                        "LedgerEntryType": "DirectoryNode",
-                        "LedgerIndex": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F211CEE1E0697A0",
-                        "FinalFields": {
-                            "Flags": 0,
-                            "ExchangeRate": "5F211CEE1E0697A0",
-                            "RootIndex": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F211CEE1E0697A0",
-                            "TakerPaysCurrency": "0000000000000000000000000000000000000000",
-                            "TakerPaysIssuer": "0000000000000000000000000000000000000000",
-                            "TakerGetsCurrency": "0000000000000000000000004254430000000000",
-                            "TakerGetsIssuer": "0A20B3C85F482532A9578DBB3950B85CA06594D1"
-                        }
-                    }
-                },
-                {
-                    "DeletedNode": {
-                        "LedgerEntryType": "Offer",
-                        "LedgerIndex": "AF3C702057C9C47DB9E809FD8C76CD22521012C5CC7AE95D914EC9E226F1D7E5",
-                        "PreviousFields": {
-                            "TakerPays": "182677152",
-                            "TakerGets": {
-                                "value": "0.001959953669835",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            }
-                        },
-                        "FinalFields": {
-                            "Flags": 131072,
-                            "Sequence": 1404,
-                            "PreviousTxnLgrSeq": 8317030,
-                            "BookNode": "0000000000000000",
-                            "OwnerNode": "0000000000000000",
-                            "PreviousTxnID": "F8E33A40A481F037BA788231421737AF2AD13161928B15A14F6ABC5007D6A2B7",
-                            "BookDirectory": "7B73A610A009249B0CC0D4311E8BA7927B5A34D86634581C5F211CEE1E0697A0",
-                            "TakerPays": "182676470",
-                            "TakerGets": {
-                                "value": "0.001959946361835",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            },
-                            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "AccountRoot",
-                        "PreviousTxnLgrSeq": 8317036,
-                        "PreviousTxnID": "049D5872010AE9144F8FE6A8A92937B6A21C065C2FA9A0233C9CAB7F5485ADC5",
-                        "LedgerIndex": "B4C12A5134DCFE012CCC035F62D5903179DE5CABE74B228D84C7E4905BECC032",
-                        "PreviousFields": {
-                            "Sequence": 159244,
-                            "Balance": "201007563226"
-                        },
-                        "FinalFields": {
-                            "Flags": 0,
-                            "Sequence": 159245,
-                            "OwnerCount": 19,
-                            "Balance": "200861228909",
-                            "Account": "r2d2iZiCcJmNL6vhUGFjs8U8BuUq6BnmT"
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "RippleState",
-                        "PreviousTxnLgrSeq": 8317036,
-                        "PreviousTxnID": "03229A664FF41A8767818DC8B236E59279078BB33C440996CB0A0093F213C173",
-                        "LedgerIndex": "F16445094C00CD3A38CE7851BD6ECA77CA2F281019BE800AB984CDF57D2F2631",
-                        "PreviousFields": {
-                            "Balance": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            }
-                        },
-                        "FinalFields": {
-                            "Flags": 1114112,
-                            "LowNode": "0000000000000000",
-                            "HighNode": "0000000000000233",
-                            "Balance": {
-                                "value": "0.001567373",
-                                "currency": "BTC",
-                                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji"
-                            },
-                            "LowLimit": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "r2d2iZiCcJmNL6vhUGFjs8U8BuUq6BnmT"
-                            },
-                            "HighLimit": {
-                                "value": "0",
-                                "currency": "BTC",
-                                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-                            }
-                        }
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "DirectoryNode",
-                        "LedgerIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93",
-                        "FinalFields": {
-                            "Flags": 0,
-                            "RootIndex": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93",
-                            "Owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-                        }
-                    }
-                }
+                
+                ...
             ],
             "TransactionResult": "tesSUCCESS"
         }
@@ -737,7 +509,7 @@ This method requires the following URL parameters:
 
 | Field | Value  | Description |
 |-------|--------|-------------|
-| date  | String | UTC query date (defaults to today) |
+| date  | String | (Optional) UTC query date. If omitted, use the current day. |
 
 Optionally, you can also include the following query parameters:
 
@@ -755,8 +527,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
-| marker | String | Pagination marker |
 | reports | Array of [Reports Objects][] | The requested reports |
+
+**WARNING:** This method tends to return a very large response with no linebreaks, which may cause your tools or application to perform badly.
 
 #### Example ####
 
@@ -766,10 +539,52 @@ Request:
 https://data.ripple.com/v2/reports/2015-08-19T00:00:00Z?accounts=true&payments=true
 ```
 
-Response:
+Response (trimmed for size):
 
 ```
-
+{
+    "result": "success",
+    "count": 1153,
+    "reports": [
+        {
+            "account": "r2LXq2rZWSgQ1thhKiEytzi1smg6oEn8A",
+            "date": "2015-08-19T00:00:00+00:00",
+            "high_value_received": 7000,
+            "high_value_sent": 3400,
+            "payments": [
+                {
+                    "tx_hash": "A032EFBB219B1102BBD9BCCB91EDC6EAA8185509574FA476A2D3FE6BA79B04EF",
+                    "amount": 1700,
+                    "currency": "XRP",
+                    "type": "received"
+                },
+                {
+                    "tx_hash": "76041BD6546389B5EC2CDBAA543200CF7B8D300F34F908BA5CA8523B0CA158C8",
+                    "amount": 1400,
+                    "currency": "XRP",
+                    "type": "sent"
+                }.
+                ...
+            ],
+            "payments_received": 155,
+            "payments_sent": 49,
+            "receiving_counterparties": [
+                "rnn4sCdC5jTCRRkPxxSbrrphSVYKZ4R7M5",
+                ...
+                "rw4jwYbMwfj3h5PSQhR1dgK9VJtwEVxRhR"
+            ],
+            "sending_counterparties": [
+                "rw4jwYbMwfj3h5PSQhR1dgK9VJtwEVxRhR",
+                 ...
+                "raGwbQHagX7DVDRgKXkthFLETnVVN57fYA"
+            ],
+            "total_value": 210940,
+            "total_value_received": 100540,
+            "total_value_sent": 110400
+        },
+        ...
+    ]
+}
 ```
 
 
@@ -814,22 +629,11 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 |--------|------------------|---------|
 | type | All Ripple transaction types, including `Payment`, `AccountSet`, `SetRegularKey`, `OfferCreate`, `OfferCancel`, `TrustSet`. | Number of transactions of the given type that occurred during the interval. |
 | result | All [transaction result codes](transactions.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
-| metric | Data-API defined [transaction metrics](#transaction-metrics). | (Varies) |
+| metric | Data-API defined Special Transaction Metrics. | (Varies) |
 
-#### Response Format ####
-A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+##### Special Transaction Metrics #####
 
-| Field  | Value | Description |
-|--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of reports returned. |
-| marker | String | Pagination marker |
-| stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
-
-
-#### Transaction Metrics ####
-
-The Data API automatically calculates the following metrics for every interval:
+The Data API derives the following values for every interval. These metrics are part of the `metric` family.
 
 | Field  | Value | Description |
 |--------|-------|-------------|
@@ -842,11 +646,21 @@ The Data API automatically calculates the following metrics for every interval:
 
 If any of the metrics have a value of 0, they are omitted from the results.
 
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of reports returned. |
+| marker | String | Pagination marker |
+| stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
+
 
 ## Get Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accounts.js "Source")
 
-Get funded ripple network accounts
+Retrieve information about the creation of new accounts in the Ripple Consensus Ledger.
 
 #### Request Format ####
 
@@ -866,11 +680,11 @@ Optionally, you can include the following query parameters:
 |------------|---------|-------------|
 | start      | String  | UTC start time of query range |
 | end        | String  | UTC end time of query range |
-| interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
+| interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
-| parent     | String  | Limit results to specified parent account |
+| parent     | String  | Limit results to specified parent account. (Ignored if `interval` is provided. This may change: see [RD-669](https://ripplelabs.atlassian.net/browse/RD-669) for status and details.) |
 | reduce     | Boolean | Return a count of results only |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -882,8 +696,55 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | Number of reports returned. |
 | marker | String | Pagination marker |
-| stats  | Array of [account creation objects](#account-creation-objects) | The requested accounts |
+| accounts | Array | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
 
+##### Interval Objects #####
+
+If the request uses the `interval` query parameter, the response has an array of interval objects, each of which represents the number of accounts created during a single interval. Interval objects have the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| date   | String - [Timestamp] | The time at which this interval starts. (The length of the interval is determined by the request.) |
+| count  | Number | How many accounts were created in this interval. |
+
+#### Example ####
+
+Request:
+
+```
+
+```
+
+Response (trimmed for size):
+
+```
+{
+  "result": "success",
+  "count": 200,
+  "marker": "20150824051620|000015449034|00005",
+  "accounts": [
+    {
+      "balance": "30",
+      "account": "rLev753oLTgKTpSzzauKezXzCSVkuY5BPY",
+      "executed_time": "2015-08-31T21:42:30+00:00",
+      "ledger_index": 15604454,
+      "parent": "rigorv4X4W5V49QA3JfAwb4G2T9CpucaY",
+      "tx_hash": "030014A941199CBEEBB4764EB6448886B4F7834F48BFEA86C1BC4DBF8F97B174"
+    },
+    {
+      "balance": "41",
+      "account": "rsXoSLUWboosXJF3WX4nZY7y1RYwArVjsi",
+      "executed_time": "2015-08-31T16:10:50+00:00",
+      "ledger_index": 15599799,
+      "parent": "rU8eTXdMFB8tpQzxfdN47CW1eAdBa6ZZkv",
+      "tx_hash": "6A8CA215716A7661006DD6342DD422F8D00BA49911489D90388DD68718A31AC3"
+    },
+    
+    ...
+    
+  ]
+}
+```
 
 
 ## Get Account ##
@@ -893,9 +754,16 @@ Get creation info for a specific ripple account
 
 #### Request Format ####
 
+
+<div class='multicode'>
+
+*REST*
+
 ```
 GET /v2/accounts/{:address}
 ```
+
+</div>
 
 
 This method requires the following URL parameters:
@@ -913,7 +781,29 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | account | Object - [Account Creation](#account-creation-objects) | The requested account |
 
+#### Example ####
 
+Request:
+
+```
+GET https://data.ripple.com/v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
+```
+
+Response:
+
+```
+{
+    "result": "success",
+    "account": {
+        "address": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "parent": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "initial_balance": "100.0",
+        "inception": "2014-05-29T17:05:20+00:00",
+        "ledger_index": 6902264,
+        "tx_hash": "074415C5DC6DB0029E815EA6FC2629FBC29A2C9D479F5D040AFF94ED58ECC820"
+    }
+}
+```
 
 
 
@@ -1379,7 +1269,7 @@ A Ripple hash value has the following characteristics:
 
 * Exactly 64 characters in length
 * [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
-* Typically written using uppercase letters only.
+* Typically written in upper case.
 
 
 ### Timestamps ###
@@ -1395,7 +1285,7 @@ All dates and times are written in ISO 8601 Timestamp Format, using UTC. This fo
 * The letter `T` indicating the beginning of the time portion
 * Two-digit hour using a 24-hour clock
 * Two digit minute
-* The letter `Z` indicating zero offset from UTC.
+* The letter `Z` indicating zero offset from UTC. Alternatively, `+00:00` may appear instead, with the same meaning.
 
 ### Ledger Index ###
 [Ledger Index]: #ledger-index
@@ -1429,7 +1319,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | String - [Hash][] | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| hash  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
 | date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
 | ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
 | tx    | Object | The fields of this transaction object, as defined by the [Transaction Format](https://ripple.com/build/transactions) |
@@ -1439,7 +1329,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | String - [Hash][] | An identifying SHA-512 hash unique to this transaction, as a hex string. |
+| hash  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
 | date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
 | ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
 | tx    | String | The binary data that represents this transaction, as a hexadecimal string. |
