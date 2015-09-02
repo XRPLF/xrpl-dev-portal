@@ -1548,7 +1548,8 @@ Within the String value, the numbers are serialized in the same way as native JS
 The precision for amounts of **non-XRP currency** in Ripple is as follows:
 
 * Minimum nonzero absolute value: `1000000000000000e-96`
-* Maximum value:  `9999999999999999e80`
+* Maximum value: `9999999999999999e80`
+* Minimum value: `-9999999999999999e80`
 * 15 decimal digits of precision
 
 **XRP** has a different internal representation, and consequently its precision is different:
@@ -1580,6 +1581,8 @@ A Ripple hash value has the following characteristics:
 * Exactly 64 characters in length
 * [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
 * Typically written in upper case.
+
+**Note:** SHA-512Half has similar security to the officially-defined _SHA-512/256_ hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function (since support for SHA-512/256 is not common in cryptographic libraries as of this writing).
 
 
 ### Timestamps ###
@@ -1849,6 +1852,8 @@ For v2 (hbase):
     `npm install`
     The install script will also create the required config files: `config/api.config.json` and `config/import.config.json`
   4. Modify the API and import config files as needed. If you only wish to run the v2 endpoints, remove the `postgres` section from the api config file.
+
+Reports, stats, and aggregated exchange data needs additional processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
 
 At this point, the rippled Historical Database is installed. See [Services](#services) for the different components that you can run.
 
