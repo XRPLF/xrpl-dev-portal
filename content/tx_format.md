@@ -1002,8 +1002,10 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
-| tecNEED_MASTER_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
+| tecNEED\_MASTER\_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
 | tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0][])_ |
+| tecINTERNAL | 144 | Unspecified internal error, with fee claimed. This error code should not normally occur. |
+| tecOVERSIZE | 145 | This transaction could not be processed, because attempted transaction processing created an excessively large amount of metadata. _(New in [rippled 0.29.0-hf1](https://github.com/ripple/rippled/releases/tag/0.29.0-hf1) )_ |
 
 ### tej Codes ###
 
