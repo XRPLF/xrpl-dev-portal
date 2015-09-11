@@ -398,3 +398,37 @@ The `index` of a RippleState node is the SHA-512Half of the following values put
 * The AccountID of the low account
 * The AccountID of the high account
 * The 160-bit currency code of the trust line(s)
+
+
+## SignerList ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
+
+The `SignerList` node type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account.
+
+Example SignerList node:
+
+```
+TODO
+```
+
+A SignerList node has the following fields:
+
+| Name            | JSON Type | Internal Type | Description |
+|-----------------|-----------|---------------|-------------|
+| OwnerNode       |           | UInt64        | <span class='draft-comment'>?</span> |
+| SignerQuorum    | Number    | UInt32        | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
+| SignerEntries   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |
+| SignerListID    |           | UInt32        | An ID for this signer list. Currently always set to `0`. If a future update allows multiple signer lists for an account, this may change. |
+| PreviousTxnID   |           | Hash256       | The identifying hash of a previous transaction <span class='draft-comment'>that modified this node?</span> |
+| PreviousTxnLgrSeq |         | UInt32        | The sequence number of the ledger that included the `PreviousTxnID`. |
+
+### SignerEntry object ###
+
+Each member of the `SignerEntries` field is an object that describes that signer in the list. A SignerEntry has the following fields:
+
+| Name            | JSON Type | Internal Type | Description |
+|-----------------|-----------|---------------|-------------|
+| Account         | String    | AccountID     | An address whose signature contributes to the multi-signature. <span class='draft-comment'>It doesn't have to exist in the ledger, or does it?</span> |
+| SignerWeight    | Number    | UInt16        | The weight of signatures from this signer. A multi-signature is only valid of the sum weight of the signatures provided meets or exceeds the SignerList's `SignerQuorum` value. |
+
+
