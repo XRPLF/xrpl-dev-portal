@@ -680,11 +680,11 @@ Optionally, you can include the following query parameters:
 |------------|---------|-------------|
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
-| interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. |
+| interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
 | limit      | Integer | Max results per page (defaults to 200) |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
-| parent     | String  | Limit results to specified parent account. (Ignored if `interval` is provided. This may change: see [RD-669](https://ripplelabs.atlassian.net/browse/RD-669) for status and details.) |
+| parent     | String  | Limit results to specified parent account. Not compatible with the `interval` parameter. |
 | reduce     | Boolean | Return a count of results only |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
