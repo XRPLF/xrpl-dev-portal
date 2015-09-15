@@ -169,7 +169,7 @@ To accomplish both of these, your application should:
 1. Construct and sign the transaction first, including a [`LastLedgerSequence`](#lastledgersequence) parameter that gives the transaction a limited viable lifespan.
 2. Persist details of the transaction before submitting.
 3. Submit the transaction.
-4. Confirm that the transaction was either included in a validated ledger, or that it has expired due to `LastLedgerSequence`. 
+4. Confirm that the transaction was either included in a validated ledger, or that it has expired due to `LastLedgerSequence`.
 5. If a transaction fails or expires, you can modify and resubmit it.
 
 Main article: [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html)
@@ -193,7 +193,8 @@ Every transaction type has the same set of fundamental fields:
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
-| SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. |
+| SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
+| [Signers](#multi-signing) | Array | Array | (Optional) Array of objects that represent a multi-signature which authorizes this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
@@ -211,13 +212,16 @@ Some fields can be automatically filled in before the transaction is signed, eit
 
 For a production system, we recommend *not* leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.
 
-The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also be automatically filled in. 
+The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also be automatically filled in.
+
 
 ### Transaction Cost ###
 
-In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This transaction cost is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
+In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This _[transaction cost](concept-transaction-cost.html)_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
-The `Fee` field specifies an amount, in [drops of XRP](reference-rippled.html#specifying-currency-amounts), to destroy as the cost for this transaction. If the transaction is included in a validated leger (whether or not it achieves its intended purpose), then the amount of XRP specified in the `Fee` parameter is destroyed forever. You can [look up the transaction cost](concept-transaction-cost.html#querying-the-transaction-cost) in advance, or [let `rippled` set it automatically](concept-transaction-cost.html#automatically-specifying-the-transaction-cost) when you sign a transaction.
+The `Fee` field specifies an amount, in [drops of XRP](reference-rippled.html#specifying-currency-amounts), to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the `Fee` parameter is destroyed forever. You can [look up the transaction cost](concept-transaction-cost.html#querying-the-transaction-cost) in advance, or [let `rippled` set it automatically](concept-transaction-cost.html#automatically-specifying-the-transaction-cost) when you sign a transaction.
+
+**Note:** [Multi-signed transactions](#multi-signing) require additional fees to relay to the network.
 
 
 ### Canceling or Skipping a Transaction ###
@@ -248,7 +252,7 @@ In order to use AccountTxnID, you must first set the [asfAccountTxnID](#accounts
 
 ### Memos ###
 
-The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, `Memo`, which in turn contains another object with *one or more* of the following fields:
+The `Memos` field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, `Memo`, which in turn contains another object with *one or more* of the following fields:
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|--------------------------------------------------------|-------------|
@@ -279,10 +283,27 @@ Example of a transaction with a Memos field:
 }
 ```
 
+### Multi-signing ###
+
+The `Signers` field contains a multi-signature, which has signatures from up to 8 key pairs, that together should authorize the transaction. A multi-signature replaces a single signature by either the master key or regular key. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
+
+The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
+
+| Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+|-------|------|--------------------------------------------------------|-------------|
+| Account | String | AccountID | The address associated with this signature, as it appears in the SignerList. |
+| TxnSignature | String | Blob | A signature for this transaction, verifiable using the `SigningPubKey`. |
+| SigningPubKey | String | The public key used to create this signature. |
+
+The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](ripple-ledger.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
+
+Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-siganture increases the `Fee` required by the amount of the minimum transaction fee. For example, if the current minimum `Fee` value to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would cost `40000` drops to relay.
+
+
 
 ### Flags ###
 
-The Flags field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.
+The `Flags` field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
@@ -334,7 +355,7 @@ Example payment:
 Most of the time, the `issuer` field of a non-XRP [currency amount](reference-rippled.html#specifying-currency-amounts) indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
 * There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
-* When the `issuer` field of the destination `Amount` field matches the `Destination` account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
+* When the `issuer` field of the destination `Amount` field matches the `Destination` account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines.
 * When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.
 
 ### Creating Accounts ###
@@ -391,11 +412,11 @@ When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` fiel
 
 Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
 
-The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality. 
+The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.
 
 By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average *average* quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the [transaction result](#transaction-results) is `tecPATH_DRY`.
 
-Consider the following example. If I am trying to send you 100 Chinese Yuan (`Amount` = 100 CNY) for 20 United States dollars (`SendMax` = 20 USD) or less, then the limit quality is `5`. Imagine one market maker is offering ¥95 for $15 (a ratio of about `6.3` CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of `2.5` CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about `5.9`. 
+Consider the following example. If I am trying to send you 100 Chinese Yuan (`Amount` = 100 CNY) for 20 United States dollars (`SendMax` = 20 USD) or less, then the limit quality is `5`. Imagine one market maker is offering ¥95 for $15 (a ratio of about `6.3` CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of `2.5` CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about `5.9`.
 
 Without the tfLimitQuality flag set, this transaction would succeed, because the $17 it costs me is within my specified `SendMax`. However, with the tfLimitQuality flag enabled, the transaction would fail instead, because the path to take the second offer has a quality of `2.5`, which is worse than the limit quality of `5`.
 
@@ -776,11 +797,21 @@ A change in [transaction cost](concept-transaction-cost.html) or [account reserv
 
 
 
+## SignerListSet ##
+
+The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to multi-sign a transaction.
+<span class='draft-comment'>(TODO)</span>
+
+
+
+
+
+
 # Transaction Results #
 
 ## Immediate Response ##
 
-The response from the [`submit` command](reference-rippled.html#submit) contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction. 
+The response from the [`submit` command](reference-rippled.html#submit) contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
 
 The response from `submit` contains the following fields:
 
@@ -802,7 +833,7 @@ __*Note:*__ A successful result at this stage does not indicate that the transac
 
 ## Looking up Transaction Results ##
 
-To see the final result of a transaction, use the [`tx` command](reference-rippled.html#tx), [`account_tx` command](reference-rippled.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus. 
+To see the final result of a transaction, use the [`tx` command](reference-rippled.html#tx), [`account_tx` command](reference-rippled.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -1028,7 +1059,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 
 ### tej Codes ###
 
-These codes are only ever returned by the `ripple-lib` client library, not by `rippled` itself. 
+These codes are only ever returned by the `ripple-lib` client library, not by `rippled` itself.
 
 | Code | Explanation |
 |------|-------------|
@@ -1042,4 +1073,3 @@ These codes are only ever returned by the `ripple-lib` client library, not by `r
 | tejSecretUnknown | The secret for a given account was omitted from the transaction, and ripple-lib was unable to automatically fill it in from saved data. |
 | tejServerUntrusted | The application attempted to submit an account secret to an untrusted server for transaction signing. |
 | tejUnconnected | The application is not connected to a `rippled` server, but it needs to be in order to process the transaction. |
-

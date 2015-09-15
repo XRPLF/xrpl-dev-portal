@@ -415,12 +415,12 @@ A SignerList node has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
-| OwnerNode       |           | UInt64        | <span class='draft-comment'>?</span> |
+| OwnerNode       | String    | UInt64        | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. |
 | SignerQuorum    | Number    | UInt32        | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
 | SignerEntries   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |
 | SignerListID    |           | UInt32        | An ID for this signer list. Currently always set to `0`. If a future update allows multiple signer lists for an account, this may change. |
-| PreviousTxnID   |           | Hash256       | The identifying hash of a previous transaction <span class='draft-comment'>that modified this node?</span> |
-| PreviousTxnLgrSeq |         | UInt32        | The sequence number of the ledger that included the `PreviousTxnID`. |
+| PreviousTxnID   | String    | Hash256       | The identifying hash of the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number  | UInt32        | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 
 ### SignerEntry object ###
 
@@ -428,7 +428,7 @@ Each member of the `SignerEntries` field is an object that describes that signer
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
-| Account         | String    | AccountID     | An address whose signature contributes to the multi-signature. <span class='draft-comment'>It doesn't have to exist in the ledger, or does it?</span> |
+| Account         | String    | AccountID     | An address whose signature contributes to the multi-signature. This does not need to be a funded Ripple account. |
 | SignerWeight    | Number    | UInt16        | The weight of signatures from this signer. A multi-signature is only valid of the sum weight of the signatures provided meets or exceeds the SignerList's `SignerQuorum` value. |
 
 
