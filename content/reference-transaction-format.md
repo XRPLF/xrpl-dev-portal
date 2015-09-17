@@ -751,6 +751,31 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | tfClearFreeze | 0x00200000 | 2097152 | [Unfreeze](concept-freeze.html) the trustline. |
 
 
+
+## SignerListSet ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
+
+The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to multi-sign a transaction.
+
+Example SignerListSet:
+
+```
+TODO
+```
+
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+|-------|-----------|--------------------------------------------------------|-------------|
+| SignerQuorum | Number | UInt32 | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete a SignerList, use the value `0`. |
+| SignerEntries | Array | Array | (Omitted when deleting) Array of [SignerEntry objects](ripple-ledger.html#signerentry-object), indicating the addresses and weights of signers in this list. A SignerList must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. |
+
+An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set `SignerQuorum` to `0` _and_ omit the `SignerEntries` field. Otherwise, the transaction fails with the error [temMALFORMED](#tem-codes). A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.
+
+You cannot create a SignerList such that the SignerQuorum could never be met. The SignerQuorum must be greater than 0 but less than or equal to the sum of the `SignerWeight` values in the list. Otherwise, the transaction fails with the error [temMALFORMED](#tem-codes).
+
+You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](ripple-ledger.html#accountroot-flags) enabled) and the account does not have a Regular Key configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [tecNO\_ALTERNATIVE\_KEY](#tec-codes).
+
+
+
 # Pseudo-Transactions #
 
 Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.
@@ -794,13 +819,6 @@ A change in [transaction cost](concept-transaction-cost.html) or [account reserv
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
-
-
-
-## SignerListSet ##
-
-The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to multi-sign a transaction.
-<span class='draft-comment'>(TODO)</span>
 
 
 
@@ -966,13 +984,17 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temBAD\_SIGNATURE | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.)  |
 | temBAD\_SRC\_ACCOUNT | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account. |
 | temBAD\_TRANSFER\_RATE | The [`TransferRate` field of an AccountSet transaction](#transferrate) is not properly formatted. |
-| temDST\_IS\_SRC | The [TrustSet](#trustset) transaction improperly specified the destination of the trustline (the `issuer` field of `LimitAmount`) as the `Account` sending the transaction. You cannot extend a trustline to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.) |
+| temDST\_IS\_SRC | The [TrustSet](#trustset) transaction improperly specified the destination of the trust line (the `issuer` field of `LimitAmount`) as the `Account` sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.) |
 | temDST\_NEEDED | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment](#payment) transaction, or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
 | temINVALID | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
 | temINVALID\_FLAG | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
 | temREDUNDANT | The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
 | temREDUNDANT\_SEND\_MAX | _(Removed in [rippled 0.28.0][])_ |
 | temRIPPLE\_EMPTY | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
+| temBAD_WEIGHT | The [SignerListSet](#signerlistset) transaction includes a `SignerWeight` that is invalid, for example a zero or negative value. |
+| temBAD_SIGNER | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid: for example, it might be a duplicate, or it might be the account to which the SignerList belongs. |
+| temBAD_QUORUM | The [SignerListSet](#signerlistset) transaction has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
+
 
 ### tef Codes ###
 
@@ -1040,7 +1062,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
 | tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
-| tecMASTER\_DISABLED | 130 | The [SetRegularKey transaction](#setregularkey) tried to unset the Regular Key, but the account has the `lsfDisableMaster` flag enabled. (Unsetting the Regular Key while also leaving the Master Key disabled would make the account unusable.) |
+| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of signing transactions. This could be a [SetRegularKey transaction](#setregularkey) to remove the Regular Key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the Master Key. (Renamed from `tecMASTER_DISABLED` after [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0) |
 | tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.) |
 | tecOWNERS | 132 | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |

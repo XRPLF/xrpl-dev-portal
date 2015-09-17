@@ -418,7 +418,7 @@ A SignerList node has the following fields:
 | OwnerNode       | String    | UInt64        | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. |
 | SignerQuorum    | Number    | UInt32        | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
 | SignerEntries   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |
-| SignerListID    |           | UInt32        | An ID for this signer list. Currently always set to `0`. If a future update allows multiple signer lists for an account, this may change. |
+| SignerListID    | Number    | UInt32        | An ID for this signer list. Currently always set to `0`. If a future update allows multiple signer lists for an account, this may change. |
 | PreviousTxnID   | String    | Hash256       | The identifying hash of the transaction that most recently modified this node. |
 | PreviousTxnLgrSeq | Number  | UInt32        | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 
@@ -431,4 +431,8 @@ Each member of the `SignerEntries` field is an object that describes that signer
 | Account         | String    | AccountID     | An address whose signature contributes to the multi-signature. This does not need to be a funded Ripple account. |
 | SignerWeight    | Number    | UInt16        | The weight of signatures from this signer. A multi-signature is only valid of the sum weight of the signatures provided meets or exceeds the SignerList's `SignerQuorum` value. |
 
+When processing a multi-signed transaction, the server dereferences the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot node](#accountroot), then only the master secret associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. Even if the account has a SignerList configured, a multi-signature cannot be used as a valid component to another multi-signature. (In other words, "multi-level" multi-signing is disallowed.)
 
+### SignerLists and Reserves ###
+
+A SignerList contributes to the [Account Reserve](https://wiki.ripple.com/Reserves). The SignerList itself counts as two objects, and each member of the list counts as one, so that the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
