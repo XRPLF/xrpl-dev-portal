@@ -196,7 +196,7 @@ Every transaction type has the same set of fundamental fields:
 | SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
 | [Signers](#multi-signing) | Array | Array | (Optional) Array of objects that represent a multi-signature which authorizes this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, and `SetRegularKey`. |
+| TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, and `SignerListSet`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
 **Note:** The deprecated `PreviousTxnID` transaction parameter was removed entirely in [rippled 0.28.0][]. Use `AccountTxnID` instead.
@@ -285,7 +285,7 @@ Example of a transaction with a Memos field:
 
 ### Multi-signing ###
 
-The `Signers` field contains a multi-signature, which has signatures from up to 8 key pairs, that together should authorize the transaction. A multi-signature replaces a single signature by either the master key or regular key. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
+The `Signers` field contains a multi-signature, which has signatures from up to 8 key pairs, that together should authorize the transaction. A multi-signature authorizes a transaction in place of a single-signature. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
 
 The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
@@ -486,7 +486,7 @@ The available AccountSet flags are:
 | asfRequireDest | 1 | Require a destination tag to send transactions to this account. | lsfRequireDestTag |
 | asfRequireAuth | 2 | Require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.) | lsfRequireAuth |
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
-| asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
+| asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](#setregularkey) or a [Signer List](#signerlistset). | lsfDisableMaster |
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
 | asfNoFreeze | 6 | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](concept-freeze.html). This flag can never be disabled after being enabled. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | [Freeze](concept-freeze.html) all assets issued by this account. | lsfGlobalFreeze |
@@ -543,11 +543,11 @@ A SetRegularKey transaction changes the regular key used by the account to sign 
 |-------|-----------|--------------------------------------------------------|-------------|
 | RegularKey | String | Account | (Optional) The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. If omitted, removes the existing regular key. |
 
-Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the [asfDisableMaster account flag](#accountset-flags).)
+Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the `RegularKey` field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (Other methods of signing transactions can also be used, including [multi-signing](#multi-signing) or the master key.
 
-A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](reference-rippled.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
+A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key). The Master Key can be [disabled](#accountset-flags) but it cannot be changed. Therefore, it is beneficial to security sign transactions with a Regular Key instead of the master key whenever possible. For even greater security, you can use [multi-signing](#multi-signing), but multi-signing costs additional XRP in transaction fees and reserves.
 
-If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
+If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your account. In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
 
 
 
