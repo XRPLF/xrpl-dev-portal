@@ -28,9 +28,7 @@ Transactions are only valid if signed, submitted, and accepted into a validated 
 
 Signing a transaction cryptographically proves that the person in charge of the account sending the transaction is authorized to do so. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.
 
-You can sign a transaction using a secret key: either the master secret, or a regular secret if the account has a regular key pair associated with it. (See [SetRegularKey](#setregularkey) for details.)
-
-Multi-signature transactions are [in development](https://wiki.ripple.com/Multisign).
+You sign a transaction using a secret key: either the master secret, or a regular secret if the account has a regular key pair associated with it. (See [SetRegularKey](#setregularkey) for details.) If your account has a SignerList associated with it, you can use a [multi-signature](#multi-signing) instead.
 
 Typically, you create a transaction in JSON format first. Here is an example of an unsigned Payment-type transaction in JSON:
 
@@ -50,11 +48,11 @@ Typically, you create a transaction in JSON format first. Here is an example of 
 }
 ```
 
-After doing that, you generate the signed binary format for the transaction. There are two ways to do this:
+After doing that, you generate the signed binary format for the transaction. For transactions authorized by only a single signature, you have two options:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
     * You can use [RippleAPI](reference-rippleapi.html#sign) to perform offline signing.
-2. Have a `rippled` server sign the transaction for you. The [sign command](reference-rippled.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)
+2. Have a `rippled` server sign the transaction for you. The [sign command](reference-rippled.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)
     * As a shortcut, you can use the [submit command](reference-rippled.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
 
 In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](reference-rippled.html#submit). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
@@ -157,6 +155,12 @@ After a transaction has been submitted, if it gets accepted into a validated led
 }
 ```
 
+### Multi-Signing ###
+
+A multi-signature authorizes a transaction in place of a single-signature. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
+
+<span class='draft-comment'>TODO: more detail on how to actually sign and submit a multi-signed transaction.</span>
+
 ### Reliable Transaction Submission ###
 
 Reliably submitting transactions is the process of achieving both of the following:
@@ -194,7 +198,7 @@ Every transaction type has the same set of fundamental fields:
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| [Signers](#multi-signing) | Array | Array | (Optional) Array of objects that represent a multi-signature which authorizes this transaction. |
+| [Signers](#signers-field) | Array | Array | (Optional) Array of objects that represent a multi-signature which authorizes this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, and `SignerListSet`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
@@ -283,17 +287,15 @@ Example of a transaction with a Memos field:
 }
 ```
 
-### Multi-signing ###
+### Signers Field ###
 
-The `Signers` field contains a multi-signature, which has signatures from up to 8 key pairs, that together should authorize the transaction. A multi-signature authorizes a transaction in place of a single-signature. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
-
-The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
+The `Signers` field contains a [multi-signature](#multi-signing), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
 | Field | Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|------|--------------------------------------------------------|-------------|
 | Account | String | AccountID | The address associated with this signature, as it appears in the SignerList. |
 | TxnSignature | String | Blob | A signature for this transaction, verifiable using the `SigningPubKey`. |
-| SigningPubKey | String | The public key used to create this signature. |
+| SigningPubKey | String | PubKey | The public key used to create this signature. |
 
 The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](ripple-ledger.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 
