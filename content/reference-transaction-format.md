@@ -1015,6 +1015,9 @@ These codes indicate that the transaction failed to apply, but the transaction c
 | tefWRONG\_PRIOR | The transaction contained an `AccountTxnID` field (or the deprecated `PreviousTxnID` field), but the transaction specified there does not match the account's previous transaction. |
 | tefMASTER\_DISABLED | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
 | tefMAX\_LEDGER | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
+| tefBAD\_SIGNATURE | The transaction was [multi-signed](#multi-signing), but contained a signature for an address not part of a SignerList associated with the sending account. |
+| tefBAD\_QUORUM | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |
+| tefNOT\_MULTI\_SIGNING | The transaction was [multi-signed](#multi-signing), but the sending account has no SignerList defined. |
 
 ### ter Codes ###
 
@@ -1062,18 +1065,17 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
 | tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
-| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of signing transactions. This could be a [SetRegularKey transaction](#setregularkey) to remove the Regular Key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the Master Key. (Renamed from `tecMASTER_DISABLED` after [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0) |
+| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of signing transactions. This could be a [SetRegularKey transaction](#setregularkey) to remove the Regular Key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the Master Key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED` instead.) |
 | tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.) |
 | tecOWNERS | 132 | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |
 | tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
 | tecNO\_LINE | 135 | The `TakerPays` field of the [OfferCreate transaction](#offercreate) specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, tecNO\_AUTH occurs instead. |
-| tecINSUFF\_FEE | 136 | The account sending the transaction does not possess enough XRP to pay the specified `Fee`. This error only occurs if the transaction has already been propagated through the network to achieve consensus, |
 | tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
-| tecNO\_TARGET | 138 | **FORTHCOMING** Part of multi-signature transactions. |
-| tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
-| tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
-| tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
+| tecNO\_TARGET | 138 | **FORTHCOMING** Reserved for future features. |
+| tecNO\_PERMISSION | 139 | **FORTHCOMING** Reserved for future features. |
+| tecNO\_ENTRY | 140 | **FORTHCOMING** Reserved for future features. |
+| tecINSUFFICIENT\_RESERVE | 141 | The [SignerListSet](#signerlistset) or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](ripple-ledger.html#signerlists-and-reserves) for more information. |
 | tecNEED\_MASTER\_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
 | tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0][])_ |
 | tecINTERNAL | 144 | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
