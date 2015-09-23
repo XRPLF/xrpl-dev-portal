@@ -91,10 +91,22 @@ For development, you can [compile `rippled` from source](https://wiki.ripple.com
 
 Production `rippled` instances can use Ripple Labs' binary executable, available from the Ripple Labs apt-get repository. 
 
+## Installation on Red Hat with yum  ##
 
-## Binary Installation on Ubuntu ##
+This section assumes that you are using Red Hat Enterprise Linux 7.
 
-This document assumes that you are using Ubuntu 14.04.
+1. Install the Ripple rpm repository:
+
+        $ rpm -Uvh http://mirrors.ripple.com/ripple-repo-el7.rpm
+        $ yum install --enablerepo=ripple-stable rippled
+
+2. Install the `rippled` package:
+
+        $ yum install rippled
+
+## Installation on Ubuntu with apt ##
+
+This section assumes that you are using Ubuntu 14.04.
 
 1. Install the Ripple apt repository:
 
@@ -106,7 +118,9 @@ This document assumes that you are using Ubuntu 14.04.
 
         $ sudo apt-get install rippled
 
-3. Configure `rippled` in `/etc/rippled/rippled.cfg`:
+# Configuring rippled #
+
+1. Configure `rippled` in `/etc/rippled/rippled.cfg`:
 
         [server]
         port_peer
@@ -154,7 +168,7 @@ This document assumes that you are using Ubuntu 14.04.
 
    See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for additional configuration options.
 
-4. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
+2. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
 
   For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) validators:
 
@@ -166,7 +180,7 @@ This document assumes that you are using Ubuntu 14.04.
         52.68.19.29 51235
         41.79.78.42 51235
 
-5. Add trusted validation public keys to `rippled.cfg`:
+3. Add trusted validation public keys to `rippled.cfg`:
 
   The default configuration includes validators operated by Ripple Labs for the production Ripple peer-to-peer network:
   
@@ -187,7 +201,7 @@ This document assumes that you are using Ubuntu 14.04.
         n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
         n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
 
-6. Adjust the validation quorum value in `rippled.cfg`:
+4. Adjust the validation quorum value in `rippled.cfg`:
 
   This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
 
@@ -196,13 +210,11 @@ This document assumes that you are using Ubuntu 14.04.
         [validation_quorum]
         4
 
-7. Restart rippled:
+5. Restart rippled:
 
         $ sudo service rippled restart
         
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple peer-to-peer network.
-
-
 
 # Running a Validating Node #
 
