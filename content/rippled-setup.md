@@ -97,12 +97,19 @@ This section assumes that you are using Red Hat Enterprise Linux 7.
 
 1. Install the Ripple rpm repository:
 
-        $ rpm -Uvh http://mirrors.ripple.com/ripple-repo-el7.rpm
-        $ yum install --enablerepo=ripple-stable rippled
+        $ sudo rpm -Uvh http://mirrors.ripple.com/ripple-repo-el7.rpm
 
-2. Install the `rippled` package:
+2. Install the `rippled` software package:
 
-        $ yum install rippled
+        $ sudo yum install --enablerepo=ripple-stable rippled
+
+3. Configure the `rippled` service to start on system boot:
+
+        $ sudo systemctl enable rippled.service
+
+4. Start the `rippled` service
+
+        $ sudo systemctl start rippled.service
 
 ## Installation on Ubuntu with apt ##
 
@@ -117,6 +124,10 @@ This section assumes that you are using Ubuntu 14.04.
 2. Install the `rippled` package:
 
         $ sudo apt-get install rippled
+
+3. Start the `rippled` service:
+
+        $ sudo service rippled start
 
 # Configuring rippled #
 
