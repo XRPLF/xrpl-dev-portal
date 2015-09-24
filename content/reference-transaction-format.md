@@ -1046,6 +1046,7 @@ These codes indicate that the transaction failed to apply, but the transaction c
 | tefBAD\_SIGNATURE | The transaction was [multi-signed](#multi-signing), but contained a signature for an address not part of a SignerList associated with the sending account. |
 | tefBAD\_QUORUM | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |
 | tefNOT\_MULTI\_SIGNING | The transaction was [multi-signed](#multi-signing), but the sending account has no SignerList defined. |
+| tefBAD\_AUTH\_MASTER | <span class='draft-comment'>(something to do with the key not being the right one for this account)</span> |
 
 ### ter Codes ###
 

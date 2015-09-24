@@ -408,7 +408,36 @@ The `SignerList` node type represents a list of parties that, as a group, are au
 Example SignerList node:
 
 ```
-TODO
+{
+    "Flags": 0,
+    "LedgerEntryType": "SignerList",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "5904C0DC72C58A83AEFED2FFC5386356AA83FCA6A88C89D00646E51E687CDBE4",
+    "PreviousTxnLgrSeq": 16061435,
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SignerWeight": 2
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SignerWeight": 1
+            }
+        }
+    ],
+    "SignerListID": 0,
+    "SignerQuorum": 3,
+    "index": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7"
+}
 ```
 
 A SignerList node has the following fields:
@@ -436,3 +465,4 @@ When processing a multi-signed transaction, the server dereferences the `Account
 ### SignerLists and Reserves ###
 
 A SignerList contributes to the [Account Reserve](https://wiki.ripple.com/Reserves). The SignerList itself counts as two objects, and each member of the list counts as one, so that the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
+
