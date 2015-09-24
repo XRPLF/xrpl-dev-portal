@@ -762,7 +762,33 @@ The SignerListSet transaction creates, modifies, or removes a list of signers th
 Example SignerListSet:
 
 ```
-TODO
+{
+    "Flags": 0,
+    "TransactionType": "SignerListSet",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "10000",
+    "SignerQuorum": 3,
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SignerWeight": 2
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SignerWeight": 1
+            }
+        }
+    ]
+}
 ```
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
