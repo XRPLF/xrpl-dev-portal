@@ -715,7 +715,7 @@ Request:
 GET /v1/accounts?parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 ```
 
-Response (trimmed for size):
+Response:
 
 ```
 {
