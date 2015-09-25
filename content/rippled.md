@@ -5228,9 +5228,10 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | subcommand | String | Use `"create"` to send the create subcommand |
-| source_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
-| destination_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
-| destination_amount | String (XRP)<br/>Object (Otherwise) | The amount of currency that needs to arrive at the destination. (See [Specifying Currency Amounts](#specifying-currency-amounts). Set the issuer to the destination account's address to use any issuer the destination accepts.) |
+| source\_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
+| destination\_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
+| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.29.1))_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.29.1))_ |
 | paths | Array | (Optional) Array of arrays of objects, representing paths to confirm. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
@@ -5692,7 +5693,13 @@ The request includes the following parameters:
 
 #### Response Format ####
 
-If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead.
+If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| closed | Boolean | The value `true` indicates this reply is in response to a `path_find close` command. |
+
+If there was no outstanding pathfinding request, an error is returned instead.
 
 #### Possible Errors ####
 
@@ -5730,7 +5737,13 @@ The request includes the following parameters:
 
 #### Response Format ####
 
-If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create). If there was no outstanding pathfinding request, an error is returned instead. (Prior to version 0.26, the server erroneously reports success. See [RIPD-293](https://ripplelabs.atlassian.net/browse/RIPD-293) for more information.)
+If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| status | Boolean | The value `true` indicates this reply is in response to a `path_find status` command. |
+
+If there was no outstanding pathfinding request, an error is returned instead. 
 
 #### Possible Errors ####
 
@@ -5818,12 +5831,13 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| source_account | String | Unique address of the account that would send funds in a transaction |
-| destination_account | String | Unique address of the account that would receive funds in a transaction |
-| destination_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction |
-| source_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
-| ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
-| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
+| source\_account | String | Unique address of the account that would send funds in a transaction |
+| destination\_account | String | Unique address of the account that would receive funds in a transaction |
+| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.28.2))_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.28.2))_ |
+| source\_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
+| ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-a-ledger-instance)) |
+| ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-a-ledger-instance))|
 
 #### Response Format ####
 
