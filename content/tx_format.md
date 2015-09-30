@@ -419,10 +419,9 @@ Example AccountSet:
 {
     "TransactionType": "AccountSet",
     "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
+    "Fee": "10000",
     "Sequence": 5,
     "Domain": "6D64756F31332E636F6D",
-    "LastLedgerIndex": 8804315,
     "SetFlag": 5,
     "MessageKey": "rQD4SqHJtDxn5DDL7xNnojNa3vxS1Jx5gv"
 }
