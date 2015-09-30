@@ -712,36 +712,40 @@ If the request uses the `interval` query parameter, the response has an array of
 Request:
 
 ```
-
+GET /v1/accounts?parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 ```
 
-Response (trimmed for size):
+Response:
 
 ```
 {
   "result": "success",
-  "count": 200,
-  "marker": "20150824051620|000015449034|00005",
+  "count": 3,
   "accounts": [
     {
-      "balance": "30",
-      "account": "rLev753oLTgKTpSzzauKezXzCSVkuY5BPY",
-      "executed_time": "2015-08-31T21:42:30+00:00",
-      "ledger_index": 15604454,
-      "parent": "rigorv4X4W5V49QA3JfAwb4G2T9CpucaY",
-      "tx_hash": "030014A941199CBEEBB4764EB6448886B4F7834F48BFEA86C1BC4DBF8F97B174"
+      "balance": "20.0",
+      "account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+      "executed_time": "2015-02-09T23:31:40+00:00",
+      "ledger_index": 11620700,
+      "parent": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "tx_hash": "1D381C0FCA00E8C34A6D4D3A91DAC9F3697B4E66BC49ED3D9B2D6F57D7F15E2E"
     },
     {
-      "balance": "41",
-      "account": "rsXoSLUWboosXJF3WX4nZY7y1RYwArVjsi",
-      "executed_time": "2015-08-31T16:10:50+00:00",
-      "ledger_index": 15599799,
-      "parent": "rU8eTXdMFB8tpQzxfdN47CW1eAdBa6ZZkv",
-      "tx_hash": "6A8CA215716A7661006DD6342DD422F8D00BA49911489D90388DD68718A31AC3"
+      "balance": "30",
+      "account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+      "executed_time": "2015-06-16T21:15:40+00:00",
+      "ledger_index": 14090928,
+      "parent": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "tx_hash": "60B614622FC67DFCA8D796D7F6AF0B7AEC5E59BB268EA032F810395407DDF8D5"
     },
-    
-    ...
-    
+    {
+      "balance": "50",
+      "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
+      "executed_time": "2015-09-23T23:05:20+00:00",
+      "ledger_index": 16061430,
+      "parent": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "tx_hash": "FAE331A6D5CB83BCE832E7EBEDBD807EDEFFAF39AB241683EE81A0326A1A6748"
+    }
   ]
 }
 ```
