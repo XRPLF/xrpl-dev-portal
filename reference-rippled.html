@@ -60,6 +60,7 @@
 <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
 <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
 <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -478,7 +479,7 @@ Null method
 <p>All methods can potentially return any of the following values for the <code>error</code> code:</p>
 <ul>
 <li><code>unknownCmd</code> - The request does not contain a <a href="#api-methods">command</a> that the <code>rippled</code> server recognizes.</li>
-<li>`jsonInvalid1 - (WebSocket only) The request is not a proper JSON object. <ul>
+<li><code>jsonInvalid</code> - (WebSocket only) The request is not a proper JSON object.<ul>
 <li>JSON-RPC returns a 400 Bad Request HTTP error in this case instead.</li>
 </ul>
 </li>
@@ -490,7 +491,7 @@ Null method
 <li><code>noNetwork</code> - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).</li>
 <li><code>noCurrent</code> - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.</li>
 <li><code>noClosed</code> - The server does not have a closed ledger, typically because it has not finished starting up.</li>
-<li><code>wsTextRequired</code> - (WebSocket only) The request's <a href="https://tools.ietf.org/html/rfc6455#section-5.2">opcode</a> is not text. </li>
+<li><code>wsTextRequired</code> - (WebSocket only) The request's <a href="https://tools.ietf.org/html/rfc6455#section-5.2">opcode</a> is not text.</li>
 </ul>
 <h2 id="formatting-conventions">Formatting Conventions</h2>
 <p>The WebSocket and JSON-RPC APIs generally take the same arguments, although they're provided in a different way (See <a href="#request-formatting">Request Formatting</a> for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.</p>
@@ -578,7 +579,7 @@ Null method
 <p>Many API methods require you to specify an instance of the ledger, with the data retrieved being considered accurate and up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:</p>
 <ol>
 <li>Specify a ledger by its <a href="#ledger-index">Ledger Index</a> in the <code>ledger_index</code> parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)</li>
-<li>Specify a ledger by its <a href="#hashes">Hash</a> value in the <code>ledger_hash</code> parameter. </li>
+<li>Specify a ledger by its <a href="#hashes">Hash</a> value in the <code>ledger_hash</code> parameter.</li>
 <li>Specify a ledger by one of the following shortcuts, in the <code>ledger_index</code> parameter:<ul>
 <li><code>validated</code> for the most recent ledger that has been validated by the whole network</li>
 <li><code>closed</code> for the most recent ledger that has been closed for modifications and proposed for validation by the node</li>
@@ -780,7 +781,7 @@ Null method
 <li><a href="#validation-seed"><code>validation_seed</code> - Temporarily set key to be used for validating</a></li>
 <li><a href="#wallet-propose"><code>wallet_propose</code> - Generate keys for a new account</a></li>
 </ul>
-<p>The following admin commands are deprecated and may be removed without further notice: </p>
+<p>The following admin commands are deprecated and may be removed without further notice:</p>
 <ul>
 <li><code>ledger_header</code> - Use the <a href="#ledger"><code>ledger</code> command</a> instead.</li>
 <li><code>unl_add</code>, <code>unl_delete</code>, <code>unl_list</code>, <code>unl_load</code>, <code>unl_network</code>, <code>unl_reset</code>, <code>unl_score</code> - Use the configuration file for UNL management instead.</li>
@@ -792,7 +793,7 @@ Null method
 <li><a href="#json"><code>json</code> - Pass JSON through the commandline</a></li>
 </ul>
 <h1 id="account-information">Account Information</h1>
-<p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="concept-reserves.html">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p>
+<p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="concept-reserves.html">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users.</p>
 <h2 id="account-currencies">account_currencies</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>account_currencies</code> command retrieves a simple list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)</p>
@@ -970,7 +971,7 @@ Null method
 </ul>
 <h2 id="account-info">account_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger. </p>
+<p>The <code>account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger.</p>
 <h4 id="request-format-1">Request Format</h4>
 <p>An example of an account_info request:</p>
 <div class="multicode">
@@ -1629,7 +1630,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 </ul>
 <h2 id="account-objects">account_objects</h2>
 <p><a href="https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account, such as <a href="reference-transaction-format.html#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
+<p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account, such as <a href="reference-transaction-format.html#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and <a href="reference-transaction-format.html#multi-signing">signer lists</a>. For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
 <h4 id="request-format-4">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -4731,7 +4732,7 @@ rippled ledger_accept
 <p>There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the <a href="http://en.wikipedia.org/wiki/Automated_Clearing_House">ACH</a>) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to accomplish the same thing. Sending XRP, the Ripple Network's native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports balances in any currency. This brings far more power, but it also means that the system must account for <a href="http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk">counterparty risk</a>, currency conversions, and other issues. The Ripple Network must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.</p>
 <h2 id="tx">tx</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>tx</code> method retrieves information on a single transaction. </p>
+<p>The <code>tx</code> method retrieves information on a single transaction.</p>
 <h4 id="request-format-16">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -4961,7 +4962,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 </ul>
 <h2 id="transaction-entry">transaction_entry</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code>tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.) </p>
+<p>The <code>transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code>tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)</p>
 <h4 id="request-format-17">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -5017,7 +5018,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note:</em></strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>. </p>
+<p><strong><em>Note:</em></strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
 <h4 id="response-format-17">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
@@ -6092,10 +6093,10 @@ rippled tx_history 0
 </ul>
 <h2 id="path-find">path_find</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" title="Source">[Source]<br/></a></p>
-<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="concept-paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p>
+<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="concept-paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.</p>
 <p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code>subcommand</code> parameter:</p>
 <ul>
-<li><code>create</code> - Start sending pathfinding information </li>
+<li><code>create</code> - Start sending pathfinding information</li>
 <li><code>close</code> - Stop sending pathfinding information</li>
 <li><code>status</code> - Get the information of the currently-open pathfinding request</li>
 </ul>
@@ -7138,7 +7139,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
       "TransactionType" : "Payment",
       "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : { 
+      "Amount" : {
          "currency" : "USD",
          "value" : "1",
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -7224,7 +7225,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <li>If <code>fee_mult_max</code> is included, and the automatically provided <code>Fee</code> value is greater than the long-term base transaction cost times <code>fee_mult_max</code>, then the transaction fails with the error <code>rpcHIGH_FEE</code>. This way, you can let the server fill in the current minimum <code>Fee</code> value as long as the current load-based transaction cost is not too high.</li>
 </ul>
 </li>
-<li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a <a href="#ripple-path-find">ripple_path_find</a>. Only filled if <code>build_path</code> is provided. </li>
+<li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a <a href="#ripple-path-find">ripple_path_find</a>. Only filled if <code>build_path</code> is provided.</li>
 </ul>
 <h4 id="response-format-23">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -7319,13 +7320,13 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </ul>
 <h2 id="submit">submit</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>submit</code> method sends a <a href="reference-transaction-format.html">transaction</a> to the network to be confirmed and included in future ledgers. </p>
+<p>The <code>submit</code> method sends a <a href="reference-transaction-format.html">transaction</a> to the network to be confirmed and included in future ledgers.</p>
 <p>This command has two modes:</p>
 <ul>
 <li>Submit-only mode takes a signed, serialized transaction as a binary blob, and submits it to the network as-is. Since signed transaction objects are immutable, no portion of the transaction can be modified or automatically filled in after submission.</li>
 <li>Sign-and-submit mode takes a JSON-formatted Transaction object, completes and signs the transaction in the same manner as the <a href="#sign">sign command</a>, and then submits the signed transaction. We recommend only using this mode for testing and development.</li>
 </ul>
-<p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code>sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code>submit</code> it as a <code>tx_blob</code>. After submission, monitor the network with the <a href="#tx"><code>tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code>tx_blob</code> transaction: it won't be applied twice since it has the same sequence number as the old transaction. </p>
+<p>To send a transaction as robustly as possible, you should construct and <a href="#sign"><code>sign</code></a> it in advance, persist it somewhere that you can access even after a power outage, then <code>submit</code> it as a <code>tx_blob</code>. After submission, monitor the network with the <a href="#tx"><code>tx</code></a> command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the <code>tx_blob</code> transaction: it won't be applied twice since it has the same sequence number as the old transaction.</p>
 <h3 id="submit-only-mode">Submit-Only Mode</h3>
 <p>A submit-only request includes the following parameters:</p>
 <table>
@@ -7434,7 +7435,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
       "TransactionType" : "Payment",
       "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : { 
+      "Amount" : {
          "currency" : "USD",
          "value" : "1",
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -7821,7 +7822,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>JSON-RPC support for subscription callbacks is deprecated and may not work as expected.</p>
 <h2 id="subscribe">subscribe</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>subscribe</code> method requests periodic notifications from the server when certain events happen. </p>
+<p>The <code>subscribe</code> method requests periodic notifications from the server when certain events happen.</p>
 <h4 id="request-format-27">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -7968,7 +7969,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The response follows the <a href="#response-formatting">standard format</a>. The fields contained in the response vary depending on what subscriptions were included in the request.</p>
 <ul>
 <li><code>accounts</code> and <code>accounts_proposed</code> - No fields returned</li>
-<li><em>Stream: server</em> - Information about the server status, such as <code>load_base</code> (the current load level of the server), <code>random</code> (a randomly-generated value), and others, subject to change. </li>
+<li><em>Stream: server</em> - Information about the server status, such as <code>load_base</code> (the current load level of the server), <code>random</code> (a randomly-generated value), and others, subject to change.</li>
 <li><em>Stream: transactions</em>, <em>Stream: transactions_proposed</em>, and <em>Stream: validations</em> - No fields returned</li>
 <li><em>Stream: ledger</em> - Information about the ledgers on hand and current fee schedule, such as <code>fee_base</code> (current base fee for transactions in XRP), <code>fee_ref</code> (current base fee for transactions in fee units), <code>ledger_hash</code> (hash of the latest validated ledger), <code>reserve_base</code> (minimum reserve for accounts), and more.</li>
 <li><code>books</code> - No fields returned by default. If <code>"snapshot": true</code> is set in the request, returns <code>offers</code> (an array of offer definition objects defining the order book)</li>
@@ -8373,7 +8374,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tbody>
 </table>
 <h3 id="order-book-streams">Order Book Streams</h3>
-<p>When you subscribe to one or more order books with the <code>books</code> field, you get back any transactions that affect those order books. </p>
+<p>When you subscribe to one or more order books with the <code>books</code> field, you get back any transactions that affect those order books.</p>
 <p>Example order book stream message:</p>
 <pre><code>{
     "engine_result": "tesSUCCESS",
@@ -9349,7 +9350,7 @@ rippled server_state
 </ul>
 <h2 id="can-delete">can_delete</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp" title="Source">[Source]<br/></a></p>
-<p>With <code>online_delete</code> and <code>advisory_delete</code> configuration options enabled, the <code>can_delete</code> method informs the rippled server of the latest ledger which may be deleted. </p>
+<p>With <code>online_delete</code> and <code>advisory_delete</code> configuration options enabled, the <code>can_delete</code> method informs the rippled server of the latest ledger which may be deleted.</p>
 <p><em>The <code>can_delete</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-31">Request Format</h4>
 <p>An example of the request format:</p>
@@ -9658,7 +9659,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<p>It is also normal to get a minimal result where the only field in <code>info</code> is <code>"consensus": "none"</code>. This indicates that the server is in between consensus rounds. </p>
+<p>It is also normal to get a minimal result where the only field in <code>info</code> is <code>"consensus": "none"</code>. This indicates that the server is in between consensus rounds.</p>
 <p>The results of the <code>consensus_info</code> command can vary dramatically if you run it several times, even in short succession.</p>
 <h4 id="possible-errors-31">Possible Errors</h4>
 <ul>
@@ -9666,7 +9667,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="fetch-info">fetch_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>fetch_info</code> command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches. </p>
+<p>The <code>fetch_info</code> command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.</p>
 <p><em>The <code>fetch_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-33">Request Format</h4>
 <p>An example of the request format:</p>
@@ -9852,7 +9853,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="get-counts">get_counts</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory. </p>
+<p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.</p>
 <p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-34">Request Format</h4>
 <p>An example of the request format:</p>
@@ -10006,7 +10007,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="ledger-cleaner">ledger_cleaner</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers. </p>
+<p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.</p>
 <p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-35">Request Format</h4>
 <p>An example of the request format:</p>
@@ -10219,7 +10220,7 @@ Connecting to 127.0.0.1:5005
 }
 </code></pre>
 </div>
-<p>The response follows the <a href="#response-formatting">standard format</a>. The response format depends on whether the request specified a <code>severity</code>. If it did, the log level is changed and a successful result contains no additional fields. </p>
+<p>The response follows the <a href="#response-formatting">standard format</a>. The response format depends on whether the request specified a <code>severity</code>. If it did, the log level is changed and a successful result contains no additional fields.</p>
 <p>Otherwise, the request contains the following field:</p>
 <table>
 <thead>
@@ -11325,7 +11326,7 @@ rippled random
 <li><code>internal</code> - Some internal error occurred, possibly relating to the random number generator.</li>
 </ul>
 <h2 id="json">json</h2>
-<p>The <code>json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable. </p>
+<p>The <code>json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.</p>
 <h4 id="request-format-44">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">

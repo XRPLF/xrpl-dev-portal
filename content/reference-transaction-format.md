@@ -157,9 +157,30 @@ After a transaction has been submitted, if it gets accepted into a validated led
 
 ### Multi-Signing ###
 
-A multi-signature authorizes a transaction in place of a single-signature. To provide a multi-signature, an account must first have a SignerList associated with it, which it can do by sending a [SignerListSet](#signerlistset) transaction.
+Multi-signing in Ripple is the act of authorizing transactions for the Ripple
+Consensus Ledger by using a combination of multiple secret keys. Multi-signing
+allows various use cases including:
 
-<span class='draft-comment'>TODO: more detail on how to actually sign and submit a multi-signed transaction.</span>
+* If you require keys from different devices, a malicious user must compromise multiple machines in order to send transactions on your behalf.
+* If the keys to an account are in the custody of entirely different people, those people must collaborate in order to send transaction from that account.
+* Delegate a group of others who can send transactions for you if you are unavailable or unable to sign normally.
+* ... and more.
+
+To set up multi-signing for an account, the process is straightforward:
+
+1. Use a [SignerListSet transaction](#signerlistset) to define which accounts or keys can, together, authorize transactions for this account.
+2. Optionally disable the master key with an [AccountSet transaction](#accountset) using the `asfDisableMaster` flag.
+3. Optionally remove the existing regular key (if any) with a [SetRegularKey transaction](#setregularkey).
+
+After an account has a SignerList associated with it, the process of submitting a multi-signed transaction is as follows:
+
+1. Create the transaction to be signed as a JSON object
+2. Generate a signature for each account using the [`sign_for` command](rippled-apis.html#sign-for).
+3. Combine the signatures and submit using the [`submit_multisigned` command](rippled-apis.html#submit-multisigned).
+
+Main article: [How to Multi-Sign](multisign.html)
+
+
 
 ### Reliable Transaction Submission ###
 

@@ -107,6 +107,13 @@ pages:
         ripple.com: https://ripple.com/build/reliable-transaction-submission/
         sidebar: true
 
+    -   name: Multi-Signing Transactions
+        category: Tutorials
+        html: tutorial-multisign.html
+        md: tutorial-multisign.md
+        ripple.com: https://wiki.ripple.com/Multisign
+        sidebar: true
+
 # Concepts are introductions that explain a topic.
 # In the Dev Portal, these are mostly summaries of RCL features.
     -   name: Paths
