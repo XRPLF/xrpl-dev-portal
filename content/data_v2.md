@@ -247,7 +247,7 @@ Optionally, you can include the following query parameters:
 | type       | String | filter transactions for a specific transaction type |
 | result     | String | filter transactions for a specific transaction result |
 | binary     | Boolean | return transactions in binary form |
-| limit      | Integer | max results per page (defaults to 20) |
+| limit      | Integer | max results per page (defaults to 20). Cannot be more than 100. |
 | marker     | String | The pagination marker from a previous response |
 
 #### Response Format ####
@@ -407,8 +407,8 @@ Optionally, you can also include the following query parameters:
 | end         | String | UTC end time of query range |
 | interval    | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month` |
 | descending  | Boolean | reverse chronological order |
-| reduce      | Boolean | aggregate all individual results |
-| limit       | Integer | max results per page (defaults to 200) |
+| reduce      | Boolean | aggregate all individual results. |
+| limit       | Integer | max results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
 | marker      | String | pagination key from previously returned response |
 | autobridged | Boolean | return only results from autobridged exchanges |
 | format      | String | format of returned results: `csv`,`json` defaults to `json` |
@@ -616,7 +616,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
-| limit      | Integer | Max results per page (defaults to 200) |
+| limit      | Integer | Max results per page (defaults to 200). No maximum value (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
@@ -681,7 +681,7 @@ Optionally, you can include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
-| limit      | Integer | Max results per page (defaults to 200) |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
 | parent     | String  | Limit results to specified parent account. Not compatible with the `interval` parameter. |
@@ -841,7 +841,7 @@ Optionally, you can also include the following query parameters:
 | date         | String  | UTC date for historical balances. (**Note:** Historical balances may not be available for all dates. See [RD-671](https://ripplelabs.atlassian.net/browse/RD-671) for details.) |
 | currency     | String  | Restrict results to specified currency |
 | issuer       | String  | Restrict results to specified counterparty/issuer |
-| limit        | Integer | Max results per page (defaults to 200) |
+| limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results. This may change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)) |
 | marker       | String  | Pagination key from previously returned response |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -947,7 +947,7 @@ Optionally, you can also include the following query parameters:
 | result       | String  | Restrict results to specified transaction result |
 | binary       | Boolean | Return results in binary format |
 | descending   | Boolean | Reverse chronological order |
-| limit        | Integer | Max results per page (defaults to 20) |
+| limit        | Integer | Max results per page (defaults to 20). Cannot be more than 1,000. |
 | marker       | String  | Pagination key from previously returned response |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -1139,7 +1139,7 @@ Optionally, you can also include the following query parameters:
 | currency   | String  | Restrict results to specified currency |
 | issuer     | String  | Restrict results to specified issuer |
 | descending | Boolean | Reverse chronological order |
-| limit      | Integer | Max results per page (defaults to 20) |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
 | marker     | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -1246,7 +1246,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
-| limit      | Integer | Max results per page (defaults to 200) |
+| limit      | Integer | Max results per page (defaults to 200). No maximum value (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
 | marker     | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -1355,7 +1355,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
-| limit      | Integer | Max results per page (defaults to 200) |
+| limit      | Integer | Max results per page (defaults to 200). No maximum (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
 | marker     | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
