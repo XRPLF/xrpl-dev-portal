@@ -91,26 +91,6 @@ For development, you can [compile `rippled` from source](https://wiki.ripple.com
 
 Production `rippled` instances can use Ripple Labs' binary executable, available from the Ripple Labs apt-get repository. 
 
-## Installation on Red Hat with yum  ##
-
-This section assumes that you are using Red Hat Enterprise Linux 7.
-
-1. Install the Ripple rpm repository:
-
-        $ sudo rpm -Uvh http://mirrors.ripple.com/ripple-repo-el7.rpm
-
-2. Install the `rippled` software package:
-
-        $ sudo yum install --enablerepo=ripple-stable rippled
-
-3. Configure the `rippled` service to start on system boot:
-
-        $ sudo systemctl enable rippled.service
-
-4. Start the `rippled` service
-
-        $ sudo systemctl start rippled.service
-
 ## Installation on Ubuntu with apt ##
 
 This section assumes that you are using Ubuntu 14.04.
