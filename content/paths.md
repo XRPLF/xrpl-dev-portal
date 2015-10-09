@@ -36,6 +36,13 @@ You can use the [`tfNoDirectRipple` flag](transactions.html#payment-flags) to di
 
 # Technical Details #
 
+## Pathfinding ##
+
+The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](rippled-apis.html#ripple-path-find) gets a single response. The [`path_find` command](rippled-apis.html#path-find) (WebSocket only) provides a path with follow-up responses when a ledger closes or the server finds a better path.
+
+Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
+
+
 ## Implied Steps ##
 
 By convention, the sender and the receiver are implied, rather than included explicitly in a path, even though they are the proper first and last steps. Sometimes the second step and second-to-last step are also implied by the issuers of the currencies to send and receive. More specifically:
