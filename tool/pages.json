@@ -60,6 +60,11 @@
         "html":"transfer_fees.html"
     },
     {
+        "name": "Paths",
+        "md":"paths.md",
+        "html":"paths.html"
+    },
+    {
         "name": "Whitepapers",
         "md":"whitepapers.md",
         "html":"whitepapers.html"
