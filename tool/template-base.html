@@ -47,10 +47,20 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 			<li class="dropdown">
-              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 {% for page in pages %}
-    		        {% if page.md %}
+    		        {% if page.type == "reference" %}
+                    <li><a href="{{ page.html }}">{{ page.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                {% for page in pages %}
+    		        {% if page.type == "tutorial" %}
                     <li><a href="{{ page.html }}">{{ page.name }}</a></li>
                     {% endif %}
                 {% endfor %}
@@ -60,7 +70,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 {% for page in pages %}
-    		        {% if page.is_apitool %}
+    		        {% if page.type == "apitool" %}
                     <li><a href="{{ page.html }}">{{ page.name }}</a></li>
                     {% endif %}
                 {% endfor %}

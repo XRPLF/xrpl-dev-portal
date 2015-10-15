@@ -2,72 +2,86 @@
     {
         "name": "rippled",
         "md":"rippled.md",
-        "html":"rippled-apis.html"
+        "html":"rippled-apis.html",
+        "type": "reference"
     },
     {
         "name": "rippled Setup",
         "md":"rippled-setup.md",
-        "html":"rippled-setup.html"
+        "html":"rippled-setup.html",
+        "type": "tutorial"
     },
     {
         "name": "Ripple-REST",
         "md": "ripplerest_api.md",
-        "html": "ripple-rest.html"
+        "html": "ripple-rest.html",
+        "type": "reference"
     },
     {
         "name": "Transactions",
         "md":"tx_format.md",
-        "html":"transactions.html"
+        "html":"transactions.html",
+        "type": "reference"
     },
     {
-        "name": "The Ledger",
+        "name": "Ripple Consensus Ledger",
         "md":"ledger_format.md",
-        "html":"ripple-ledger.html"
+        "html":"ripple-ledger.html",
+        "type": "reference"
     },
     {
         "name": "Reliable Transaction Submission",
         "md":"reliable_tx.md",
-        "html":"reliable_tx.html"
+        "html":"reliable_tx.html",
+        "type": "tutorial"
     },
     {
         "name": "Gateway Guide",
         "md":"gateway_guide.md",
-        "html":"gateway_guide.html"
+        "html":"gateway_guide.html",
+        "type": "tutorial"
     },
     {
         "name": "Historical Data API",
         "md": "historical_data.md",
-        "html": "historical_data.html"
+        "html": "historical_data.html",
+        "type": "reference"
     },
     {
         "name": "Ripple Charts API",
         "md": "charts_api.md",
-        "html": "charts_api.html"
+        "html": "charts_api.html",
+        "type": "reference"
     },
     {
         "name": "Ripple Data API v2",
         "md": "data_v2.md",
-        "html": "data_api_v2.html"
-    },
-    {
-        "name": "Gateway Services",
-        "md":"gateway_services_spec.md",
-        "html":"gateway_services.html"
-    },
-    {
-        "name": "Transfer Fees",
-        "md":"transferrate.md",
-        "html":"transfer_fees.html"
+        "html": "data_api_v2.html",
+        "type": "reference"
     },
     {
         "name": "Paths",
         "md":"paths.md",
-        "html":"paths.html"
+        "html":"paths.html",
+        "type": "reference"
     },
     {
-        "name": "Whitepapers",
-        "md":"whitepapers.md",
-        "html":"whitepapers.html"
+        "name": "Fees (Disambiguation)",
+        "md": "fees.md",
+        "html": "fees.html",
+        "type": "reference"
+    },
+    {
+        "name": "Transfer Fees",
+        "md":"transferrate.md",
+        "html":"transfer_fees.html",
+        "type": "reference"
+    },
+    {
+        "name": "Transaction Cost",
+        "md": "tx-cost.md",
+        "html": "tx-cost.html",
+        "type": "reference"
     },
     {
         "name": "Overview",
@@ -86,21 +100,21 @@
         "name": "Historical Database API Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-historical.js",
-        "is_apitool": true,
+        "type": "apitool",
         "rest_host": "https://history.ripple.com",
         "html": "historicaldb-api-tool.html"
     },
     {
         "name": "WebSocket API Tool",
         "template":"template-ripple-api-tool.html",
-        "is_apitool": true,
+        "type": "apitool",
         "html": "ripple-api-tool.html"
     },
     {
         "name": "Charts API Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-charts.js",
-        "is_apitool": true,
+        "type": "apitool",
         "rest_host": "https://api.ripplecharts.com",
         "html": "charts-api-tool.html"
     },
@@ -108,7 +122,7 @@
         "name": "Data API v2 Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-data_v2.js",
-        "is_apitool": true,
+        "type": "apitool",
         "rest_host": "https://data.ripple.com",
         "html": "data-api-v2-tool.html"
     }
