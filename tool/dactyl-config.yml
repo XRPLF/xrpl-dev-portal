@@ -165,6 +165,13 @@ pages:
         ripple.com: https://ripple.com/build/freeze/
         sidebar: true
 
+    -   name: Amendments
+        category: Concepts
+        html: concept-amendments.html
+        md: concept-amendments.md
+        ripple.com: https://wiki.ripple.com/Understanding:_Feature_adoption
+        sidebar: true
+
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Addresses
         category: Best Practices
