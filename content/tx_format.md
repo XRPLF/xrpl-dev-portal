@@ -348,18 +348,19 @@ If you attempt to send an insufficient amount of XRP, or any other currency, the
 
 ### Paths ###
 
-The `Paths` field is a set of different paths along which the payment can be made. A single transaction can potentially follow multiple paths, for example if the transaction exchanges currency using several different offers in order to achieve the best rate. The source and destination (that is, the endpoints of the path) are omitted from a path. You can get suggestions of paths from rippled servers using the [`path_find`](#path-find) or [`ripple_path_find`](#ripple-path-find) commands. 
+If present, the `Paths` field must contain a _path set_ - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books in order to achieve the best rate.
 
-If the `Paths` field is provided, the server decides at transaction processing time which paths to use out of the provided set. This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.
-
-If the `Paths` field is omitted, by definition the payment should take a direct path connecting the source and destination accounts. A direct path could be:
+You must omit the `Paths` field for direct payments, including:
 
 * An XRP-to-XRP transfer.
-* A payment along a single trust line that connects the two accounts in the currency being transferred.
+* A simple transfer on a trust line that connects the sender and receiver.
+
+If the `Paths` field is provided, the server decides at transaction processing time which paths to use, from the provided set plus a _default path_ (the simplest possible way to connect the specified accounts). This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.
 
 The `Paths` field must not be an empty array, nor an array whose members are all empty arrays.
 
-The `Paths` field can be automatically filled in when the transaction is signed, if the `build_path` field is provided to the [sign](rippled-apis.html#sign) or [submit](rippled-apis.html#submit) commands. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
+For more information, see [Paths](paths.html).
+
 
 
 ### Payment Flags ###
@@ -368,7 +369,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfNoDirectRipple | 0x00010000 | 65536 | Do not use a direct path, if available. This is intended to force the transaction to take arbitrage opportunities. Most clients will not need this. |
+| tfNoDirectRipple | 0x00010000 | 65536 | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
 | tfPartialPayment | 0x00020000 | 131072 | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | tfLimitQuality | 0x00040000 | 262144 | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 

@@ -1,19 +1,23 @@
 # Paths #
 
-In the Ripple Consensus Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments and exchanges. A single Payment transaction in the Ripple Consensus Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_ of possible paths to take. The paths in a path set must start and end with the same currency.
+In the Ripple Consensus Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver via market makers. Paths also enable complex settlement of offsetting debts.
+
+A single Payment transaction in the Ripple Consensus Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. The paths in a path set must start and end with the same currency.
 
 Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.
 
 ## Path Steps ##
 
-A path is made of steps that connect the sender to the receiver of the payment. In theory, there are many possible types of steps, but in practice, there are only two:
+A path is made of steps that connect the sender to the receiver of the payment. Every step is either:
 
 * Rippling through another account in the same currency
 * Exchanging currency at an order book
 
+Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See [Understanding the NoRipple Flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for more examples of rippling.
+
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)
 
-In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due either to [transfer fees](https://ripple.com/knowledge_center/transfer-fees/) or rounding.
+In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](https://ripple.com/knowledge_center/transfer-fees/), trust line quality, or rounding.
 
 [![Diagram of three example paths](img/paths.png)](img/paths.png)
 
@@ -23,7 +27,9 @@ In both types of steps, each intermediate account gains and loses approximately 
 
 ## Pathfinding ##
 
-The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](rippled-apis.html#ripple-path-find) gets a single response. The [`path_find` command](rippled-apis.html#path-find) (WebSocket only) provides a path with follow-up responses when a ledger closes or the server finds a better path.
+The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](rippled-apis.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](rippled-apis.html#path-find) (WebSocket only) expands on the initial search with follow-up responses whenever a ledger closes or the server finds a better path.
+
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign](rippled-apis.html#sign) or [sign-and-submit](rippled-apis.html#sign-and-submit-mode) commands. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
 
 Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
 
