@@ -618,6 +618,15 @@ You can determine the final disposition of an offer with an `Expiration` as soon
 
 *Note:* Since only new transactions can modify the ledger, an expired offer can remain on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the [ledger_entry](rippled-apis.html#ledger-entry) command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server encounters it while processing.
 
+### Auto-Bridging ###
+
+Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.
+
+Example: _Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader in order to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers._
+
+Auto-bridging happens automatically on any OfferCreate transaction. [Payment transactions](#payment) _do not_ autobridge by default, but path-finding can find paths that have the same effect.
+
+
 ### OfferCreate Flags ###
 
 Transactions of the OfferCreate type support additional values in the [`Flags` field](#flags), as follows:
@@ -632,6 +641,9 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 The following invalid flag combination prompts a temINVALID_FLAG error:
 
 * tfImmediateOrCancel and tfFillOrKill
+
+
+
 
 ## OfferCancel ##
 

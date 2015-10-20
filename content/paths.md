@@ -17,10 +17,6 @@ Each intermediate account gains and loses approximately equal value: either a ba
 
 [![Diagram of three example paths](img/paths.png)](img/paths.png)
 
-### Auto-Bridging ###
-
-In addition to any order books that are explicitly included in a path, any currency exchange between two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency.
-
 
 
 # Technical Details #
@@ -67,9 +63,9 @@ A path set is an array. Each member of the path set is another array that repres
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| account | String - Address | (Optional) The address of the account to ripple through. |
-| currency | String - currency code | (Optional) The currency code of the currency to convert to |
-| issuer | String - Address | (Optional) The issuer of the currency to convert to |
+| account | String - Address | (Optional) If present, this path step represents rippling through the specified account. |
+| currency | String - currency code | (Optional) If present, this path step represents changing currencies through an order book. |
+| issuer | String - Address | (Optional) If the path step represents changing currencies through an order book, this field indicates the issuer of the new currency. This field is not present when changing to XRP. |
 | type  | Integer | **DEPRECATED**: An indicator of which other fields are present. The value `1` indicates rippling to another account. The values `16` indicates a currency change to XRP through an order book. The value `48` indicates a currency change, with a new issuer, through an order book. |
 | type_hex | String | **DEPRECATED**: A hexadecimal representation of the `type` field. |
 
