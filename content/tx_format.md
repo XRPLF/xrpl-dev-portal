@@ -53,7 +53,7 @@ Typically, you create a transaction in JSON format first. Here is an example of 
 After doing that, you generate the signed binary format for the transaction. There are two ways to do this:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-  * [rsign.js](https://github.com/ripple/ripple-lib/blob/develop/bin/rsign.js) is a JavaScript implementation of offline signing.
+  * [ripple-lib](https://github.com/ripple/ripple-lib) has an implementation of offline signing.
 2. Have a `rippled` server sign the transaction for you. The [sign command](rippled-apis.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)
   * As a shortcut, you can use the [submit command](rippled-apis.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
 
@@ -176,7 +176,7 @@ Main article: [Reliable Transaction Submission](reliable_tx.html)
 
 ### Identifying Transactions ###
 
-The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](rippled-apis.html#account_tx).
+The `"hash"` is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](rippled-apis.html#account-tx).
 
 The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](#looking-up-transaction-results) in order to verify its final status.
 
@@ -334,7 +334,7 @@ Example payment:
 
 ### Special issuer Values for SendMax and Amount ###
 
-Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis.html#currency-amounts) indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis.html#specifying-currency-amounts) indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
 * There is only ever one balance for the same currency between two accounts. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.
 * When the `issuer` field of the destination `Amount` field matches the `Destination` account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. 
@@ -529,13 +529,13 @@ Instead of using an account's master key to sign transactions, you can set an al
 
 A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
-If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag]() is automatically cleared if your account receives a payment of XRP.
+If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) is automatically cleared if your account receives a payment of XRP.
 
 
 
 ## OfferCreate ##
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CreateOffer.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
 An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
@@ -648,7 +648,7 @@ The following invalid flag combination prompts a temINVALID_FLAG error:
 
 ## OfferCancel ##
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/CancelOffer.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
 
 An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.
 
@@ -675,7 +675,7 @@ The OfferCancel method returns [tesSUCCESS](https://ripple.com/wiki/Transaction_
 
 ## TrustSet ##
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/module/app/transactors/SetTrust.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
 Create or modify a trust line linking two accounts.
 

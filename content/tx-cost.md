@@ -17,7 +17,7 @@ The transaction cost is only debited from the sender's XRP balance when the tran
 When you sign a transaction online, you can omit the `Fee` field. In this case, `rippled` or ripple-lib looks up an appropriate value based on the state of the peer-to-peer network, and includes it before signing the transaction. There are several drawbacks and limitations to this system, however:
 
 * If the network's transaction fee goes up between signing and distributing the transaction, the transaction may not be confirmed.
-    * In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a `LastLedgerSequence` parameter or until you cancel it with a new transaction that uses the same `Sequence` number. See [reliable transaction submission](reliable-tx.html) for best practices.
+    * In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a `LastLedgerSequence` parameter or until you cancel it with a new transaction that uses the same `Sequence` number. See [reliable transaction submission](reliable_tx.html) for best practices.
 * If the network's transaction fee is abnormally high, you may end up destroying more of your XRP than expected. You can avoid this by double-checking the details of the signed transaction before submitting it.
     * If you are using `rippled`, you can also use the `fee_mult_max` parameter of the [`sign` command](rippled-apis.html#sign) to set a limit to the load scaling you will allow.
 * You cannot look up the fee if you are offline.

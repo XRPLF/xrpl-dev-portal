@@ -178,12 +178,12 @@ Payments going from Ripple to a gateway can be single-currency or cross-currency
 
 ### Requirements for Receiving from Ripple ###
 
-In addition to the [requirements for making deposits possible](#deposit-requirements), there are several prerequisites that ACME must meet in order to process payments coming from Ripple:
+In addition to the [requirements for sending into Ripple](#requirements-for-sending-to-ripple), there are several prerequisites that ACME must meet in order to process payments coming from Ripple:
 
 - ACME must monitor its cold and hot wallet Ripple accounts for incoming payments.
 - ACME must know which user to credit internally for the incoming payments.
     - We recommend that ACME should [bounce any unrecognized incoming payments](#bouncing-payments) back to their sender.
-    - Typically, the preferred method of recognizing incoming payments is through [destination tags](#destination-tags).
+    - Typically, the preferred method of recognizing incoming payments is through [destination tags](#source-and-destination-tags).
 
 
 ## Precautions ##

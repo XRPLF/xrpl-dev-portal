@@ -263,9 +263,10 @@ Becoming a validator that participates in the network involves several steps. In
 
 ## Domain Verification ##
 
-Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple.txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
+Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple-txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
 
-### ripple.txt ###
+### ripple.txt <a name="ripple-txt"></a> ###
+
 
 Publish a [ripple.txt](https://wiki.ripple.com/Ripple.txt) page at your domain with a signed SSL certificate.
 

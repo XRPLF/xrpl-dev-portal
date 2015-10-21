@@ -17,6 +17,7 @@ import subprocess
 
 #Python markdown works instead of pandoc
 from markdown import markdown
+from bs4 import BeautifulSoup
 
 #Watchdog stuff
 import time#, logging
@@ -46,7 +47,17 @@ def parse_markdown(md):
     md = re.sub("(<div[^>]*)>", add_markdown_class, md)
     
     #the actual markdown parsing is the easy part
-    return markdown(md, extensions=["markdown.extensions.extra", "markdown.extensions.toc"])
+    html = markdown(md, extensions=["markdown.extensions.extra", "markdown.extensions.toc"])
+    
+    #replace underscores with dashes in h1,h2,etc. for Flatdoc compatibility
+    soup = BeautifulSoup(html, "html.parser")
+    headers = soup.find_all(name=re.compile("h[0-9]"), id=True)
+    for h in headers:
+        if "_" in h["id"]:
+            h["id"] = h["id"].replace("_","-")
+    
+    html2 = soup.prettify()
+    return html2
     
 def get_pages():
     print("reading page manifest...")
@@ -143,6 +154,8 @@ def watch(pre_parse, pdf):
     class UpdaterHandler(PatternMatchingEventHandler):
         def on_any_event(self, event):
             print("got event!")
+            if pdf:
+                make_pdf(pdf)
             render_pages(pre_parse, pdf)
     
     patterns = ["*tool/pages.json","*tool/template-*.html"]
@@ -188,7 +201,7 @@ if __name__ == "__main__":
     #Not an accident that we go on to re-gen files in non-PDF format
     
     if args.watch:
-        watch(args.pre_parse)
+        watch(args.pre_parse, args.pdf)
     else:
         render_pages(args.pre_parse)
     

@@ -752,7 +752,7 @@ Response:
 
 
 ## Get Account ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getaccount.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getAccount.js "Source")
 
 Get creation info for a specific ripple account
 
@@ -1869,7 +1869,7 @@ The `rippled` Historical Database consists of several processes that can be run 
     Command: `node import/live`
 * [Backfiller](#backfiller) - Populates the database with older ledgers from a `rippled` instance.
     Command: `node import/postgres/backfill`
-* API Server - Provides [REST API access](#usage) to the data.
+* API Server - Provides [REST API access](#api-method-reference) to the data.
     Command:  `npm start` (restarts the server automatically when source files change),
     or `node api/server.js` (simple start)
 
