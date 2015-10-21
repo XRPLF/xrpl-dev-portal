@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Pandoc filter to make output more like Flatdoc's parser:

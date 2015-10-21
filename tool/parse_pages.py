@@ -8,22 +8,63 @@
 ################################################################################
 
 from jinja2 import Environment, FileSystemLoader
+import os, sys, re
 import json
+import argparse
+
+##Necessary for pandoc, prince
 import subprocess
-import os
-import sys
+
+#Python markdown works instead of pandoc
+from markdown import markdown
+
+#Watchdog stuff
+import time#, logging
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
+
 
 DOC_TEMPLATE_FILE = "template-doc.html"
+PDF_TEMPLATE_FILE = "template-forpdf.html"
 PAGE_MANIFEST_FILE = "pages.json"
 BUILD_PATH = ".."
 CONTENT_PATH = "../content"
 BUTTONIZE_FILTER = "buttonize.py"
+PRINCE_PAGE_MANIFEST_FILE = "/tmp/devportal-pages.txt"
 
-def render_pages(precompiled):
+def parse_markdown(md):
+    ## Python markdown requires markdown="1" on HTML block elements
+    ##     that contain markdown. AND there's a bug where if you use
+    ##     markdown.extensions.extra, it replaces code fences in HTML
+    ##     block elements with garbled text
+    def add_markdown_class(m):
+        if m.group(0).find("markdown=") == -1:
+            return m.group(1) + ' markdown="1">'
+        else:
+            return m.group(0)
+    
+    md = re.sub("(<div[^>]*)>", add_markdown_class, md)
+    
+    #the actual markdown parsing is the easy part
+    return markdown(md, extensions=["markdown.extensions.extra", "markdown.extensions.toc"])
+    
+def get_pages():
     print("reading page manifest...")
     with open(PAGE_MANIFEST_FILE) as f:
         pages = json.load(f)
     print("done")
+    return pages
+
+def render_pages(precompiled, pdf=False):
+    pages = get_pages()
+    
+#    if pdf:
+#        precompiled = True#Prince probably won't work otherwise
+#        with open(PRINCE_PAGE_MANIFEST_FILE,"w") as f:
+#            for page in pages:
+#                if "md" in page:
+#                    f.write(page["html"])
+#                    f.write("\n\n")
     
     env = Environment(loader=FileSystemLoader(os.path.curdir))
     env.lstrip_blocks = True
@@ -40,19 +81,28 @@ def render_pages(precompiled):
 #                template_text = f.read()
 #            doc_template = Template(template_text)
             doc_template = env.get_template(DOC_TEMPLATE_FILE)
+            if pdf:
+                doc_template = env.get_template(PDF_TEMPLATE_FILE)
             print("done")
             
     
             if precompiled:
                 filein = os.path.join(CONTENT_PATH, currentpage["md"])
-                args = ['pandoc', filein, '-F', BUTTONIZE_FILTER, '-t', 'html']
-                print("compiling: running ", " ".join(args),"...")
-                pandoc_html = subprocess.check_output(args, universal_newlines=True)
+                print("parsing markdown for", currentpage)
+                ## New markdown module way
+                with open(filein) as f:
+                    s = f.read()
+                    doc_html = parse_markdown(s)
+                
+#                ## Old Pandoc way
+#                args = ['pandoc', filein, '-F', BUTTONIZE_FILTER, '-t', 'html']
+#                print("compiling: running ", " ".join(args),"...")
+#                doc_html = subprocess.check_output(args, universal_newlines=True)
                 print("done")
                 
                 print("rendering page",currentpage,"...")
                 out_html = doc_template.render(currentpage=currentpage, pages=pages, 
-                                               content=pandoc_html, precompiled=precompiled)
+                                               content=doc_html, precompiled=precompiled)
                 print("done")
             
             else:
@@ -87,14 +137,58 @@ def render_pages(precompiled):
             f.write(out_html)
             print("done")
 
+
+def watch(pre_parse, pdf):
+    path = ".."
+    class UpdaterHandler(PatternMatchingEventHandler):
+        def on_any_event(self, event):
+            print("got event!")
+            render_pages(pre_parse, pdf)
+    
+    patterns = ["*tool/pages.json","*tool/template-*.html"]
+    if pre_parse:
+        #md only prompts HTML change if pre-parsed
+        patterns.append("*content/*.md",)
+    event_handler = UpdaterHandler(patterns=patterns)
+    observer = Observer()
+    observer.schedule(event_handler, path, recursive=True)
+    observer.start()
+    #The above starts an observing thread, so the main thread can just wait
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
+
+def make_pdf(outfile):
+    print("rendering PDF-able versions of pages...")
+    render_pages(True, outfile)
+    print("done")
+    
+    args = ['prince', '-o', outfile, "../index.html"]
+    pages = get_pages()
+    args += ["../"+p["html"] for p in pages if "md" in p]
+    print("generating PDF: running ", " ".join(args),"...")
+    prince_resp = subprocess.check_output(args, universal_newlines=True)
+
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
-        exit("usage: %s [compile]" % sys.argv[0])
-    elif len(sys.argv) <= 1:
-        render_pages(False)
-    elif sys.argv[1].lower() == "true":
-        render_pages(True)
-    elif sys.argv[1].lower() == "false":
-        render_pages(False)
+    parser = argparse.ArgumentParser(description='Generate static site from markdown and templates.')
+    parser.add_argument("-p", "--pre_parse", action="store_true",
+                       help="Parse markdown; otherwise, use Flatdoc")
+    parser.add_argument("-w","--watch", action="store_true",
+                       help="Watch for changes and re-generate the files. This runs until force-quit.")
+    parser.add_argument("--pdf", type=str, help="Generate a PDF, too. Requires Prince.")
+    args = parser.parse_args()
+    
+    if args.pdf:
+        if args.pdf[-4:] != ".pdf":
+            exit("PDF filename must end in .pdf")
+        make_pdf(args.pdf)
+    #Not an accident that we go on to re-gen files in non-PDF format
+    
+    if args.watch:
+        watch(args.pre_parse)
     else:
-        exit("argument 1 must be 'true' or 'false'")
+        render_pages(args.pre_parse)
+    
