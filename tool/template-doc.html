@@ -41,7 +41,7 @@
     <script src="js/fixsidebarscroll.js"></script>
 {% endblock %}
 
-{% block bodyattrs %} role='flatdoc' class='no-literate'{% endblock %}
+{% block bodyattrs %}{% if not precompiled %} role='flatdoc'{% endif %} class='no-literate'{% endblock %}
   
 {% block contentroot %}
     <div class='content-root'>
@@ -55,7 +55,7 @@
                 {% endif %}
             </div>
         </div>
-        <div role='flatdoc-content' class='content'>
+        <div {% if not precompiled %}role='flatdoc-content' {% endif %}class='content'>
             {% if precompiled %}
 	        {{ content }}
 	        {% endif %}

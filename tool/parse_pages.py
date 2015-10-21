@@ -33,11 +33,12 @@ CONTENT_PATH = "../content"
 BUTTONIZE_FILTER = "buttonize.py"
 PRINCE_PAGE_MANIFEST_FILE = "/tmp/devportal-pages.txt"
 
-def parse_markdown(md):
+def parse_markdown(md, environment="local", pages=None):
     ## Python markdown requires markdown="1" on HTML block elements
     ##     that contain markdown. AND there's a bug where if you use
     ##     markdown.extensions.extra, it replaces code fences in HTML
     ##     block elements with garbled text
+    print("adding markdown class to embedded divs...")
     def add_markdown_class(m):
         if m.group(0).find("markdown=") == -1:
             return m.group(1) + ' markdown="1">'
@@ -45,18 +46,54 @@ def parse_markdown(md):
             return m.group(0)
     
     md = re.sub("(<div[^>]*)>", add_markdown_class, md)
+    print("done")
     
     #the actual markdown parsing is the easy part
-    html = markdown(md, extensions=["markdown.extensions.extra", "markdown.extensions.toc"])
+    print("parsing markdown...")
+    html = markdown(md, extensions=["markdown.extensions.extra",
+                                    "markdown.extensions.toc"])
+    print("done")
     
     #replace underscores with dashes in h1,h2,etc. for Flatdoc compatibility
+    print("tweaking header IDs...")
     soup = BeautifulSoup(html, "html.parser")
     headers = soup.find_all(name=re.compile("h[0-9]"), id=True)
     for h in headers:
         if "_" in h["id"]:
             h["id"] = h["id"].replace("_","-")
+    print("done")
     
-    html2 = soup.prettify()
+    #buttonize links ending in >
+    print("buttonizing try-it links...")
+    buttonlinks = soup.find_all("a", string=re.compile(">$"))
+##    print("buttonlinks:",buttonlinks)
+    for link in buttonlinks:
+        if "class" in link.attrs:
+            link["class"].append("button")
+        else:
+            link["class"] = "button"
+    print("done")
+    
+    #Replace links for live site
+    if environment != "local":
+        print("modifying links for environment",environment)
+        if not pages:
+            pages = get_pages()
+        
+        links = soup.find_all("a",href=re.compile("^[^.]+\.html"))
+        for link in links:
+            for page in pages:
+                if environment in page:
+                    #There's a replacement link for this env
+                    if page["html"] in link["href"]:
+                        link["href"] = link["href"].replace(page["html"],
+                                                            page[environment])
+        print("done")
+    
+    print("re-rendering HTML")
+    #html2 = soup.prettify()
+    html2 = str(soup)
+    print("done")
     return html2
     
 def get_pages():
@@ -66,16 +103,8 @@ def get_pages():
     print("done")
     return pages
 
-def render_pages(precompiled, pdf=False):
+def render_pages(precompiled, pdf=False, environment="local"):
     pages = get_pages()
-    
-#    if pdf:
-#        precompiled = True#Prince probably won't work otherwise
-#        with open(PRINCE_PAGE_MANIFEST_FILE,"w") as f:
-#            for page in pages:
-#                if "md" in page:
-#                    f.write(page["html"])
-#                    f.write("\n\n")
     
     env = Environment(loader=FileSystemLoader(os.path.curdir))
     env.lstrip_blocks = True
@@ -88,6 +117,7 @@ def render_pages(precompiled, pdf=False):
     
             print("reading template file...")
             
+#           #Experimental: Preprocessing the doc files using Jinja
 #            with open(DOC_TEMPLATE_FILE) as f:
 #                template_text = f.read()
 #            doc_template = Template(template_text)
@@ -103,7 +133,7 @@ def render_pages(precompiled, pdf=False):
                 ## New markdown module way
                 with open(filein) as f:
                     s = f.read()
-                    doc_html = parse_markdown(s)
+                    doc_html = parse_markdown(s, environment, pages)
                 
 #                ## Old Pandoc way
 #                args = ['pandoc', filein, '-F', BUTTONIZE_FILTER, '-t', 'html']
@@ -111,17 +141,21 @@ def render_pages(precompiled, pdf=False):
 #                doc_html = subprocess.check_output(args, universal_newlines=True)
                 print("done")
                 
-                print("rendering page",currentpage,"...")
-                out_html = doc_template.render(currentpage=currentpage, pages=pages, 
-                                               content=doc_html, precompiled=precompiled)
+                print("rendering page",currentpage["name"],"...")
+                out_html = doc_template.render(currentpage=currentpage,
+                                               pages=pages, 
+                                               content=doc_html,        
+                                               precompiled=precompiled)
                 print("done")
             
             else:
                 print("compiling skipped")
                 
-                print("rendering page",currentpage,"...")
-                out_html = doc_template.render(currentpage=currentpage, pages=pages, 
-                                               content="", precompiled=precompiled)
+                print("rendering page",currentpage["name"],"...")
+                out_html = doc_template.render(currentpage=currentpage, 
+                                               pages=pages, 
+                                               content="", 
+                                               precompiled=precompiled)
                 print("done")
         
         else:
@@ -134,7 +168,7 @@ def render_pages(precompiled, pdf=False):
             print("done")
             
             
-            print("rendering page",currentpage,"...")
+            print("rendering page",currentpage["name"],"...")
             out_html = template.render(currentpage=currentpage, pages=pages)
             print("done")
             
@@ -149,14 +183,14 @@ def render_pages(precompiled, pdf=False):
             print("done")
 
 
-def watch(pre_parse, pdf):
+def watch(pre_parse, pdf, environment):
     path = ".."
     class UpdaterHandler(PatternMatchingEventHandler):
         def on_any_event(self, event):
             print("got event!")
             if pdf:
                 make_pdf(pdf)
-            render_pages(pre_parse, pdf)
+            render_pages(pre_parse, pdf, environment)
     
     patterns = ["*tool/pages.json","*tool/template-*.html"]
     if pre_parse:
@@ -176,7 +210,7 @@ def watch(pre_parse, pdf):
 
 def make_pdf(outfile):
     print("rendering PDF-able versions of pages...")
-    render_pages(True, outfile)
+    render_pages(True, pdf=outfile)
     print("done")
     
     args = ['prince', '-o', outfile, "../index.html"]
@@ -192,16 +226,23 @@ if __name__ == "__main__":
     parser.add_argument("-w","--watch", action="store_true",
                        help="Watch for changes and re-generate the files. This runs until force-quit.")
     parser.add_argument("--pdf", type=str, help="Generate a PDF, too. Requires Prince.")
+    parser.add_argument("--environment", "-e", type=str, default="local",
+                        choices=["local","ripple.com"])
     args = parser.parse_args()
     
     if args.pdf:
         if args.pdf[-4:] != ".pdf":
             exit("PDF filename must end in .pdf")
+        print("making a pdf...")
         make_pdf(args.pdf)
+        print("pdf done")
     #Not an accident that we go on to re-gen files in non-PDF format
     
     if args.watch:
-        watch(args.pre_parse, args.pdf)
+        print("watching for changes...")
+        watch(args.pre_parse, args.pdf, args.environment)
     else:
-        render_pages(args.pre_parse)
+        print("rendering pages now")
+        render_pages(args.pre_parse, environment=args.environment)
+        print("all done")
     
