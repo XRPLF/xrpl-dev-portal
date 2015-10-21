@@ -20,7 +20,7 @@ In general, we recommend using WebSocket, because WebSocket's push paradigm has 
 
 The WebSocket and JSON-RPC APIs are still in development, and are subject to change. If you want to be notified of upcoming changes and future versions of `rippled`, subscribe to the Ripple Server mailing list:
 
-https://groups.google.com/forum/#!forum/ripple-server
+[https://groups.google.com/forum/#!forum/ripple-server](https://groups.google.com/forum/#!forum/ripple-server)
 
 ## Connecting to rippled ##
 
@@ -116,6 +116,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ## Response Formatting ##
 
 #### Example Successful Response ####
+
 <div class='multicode'>
 
 *WebSocket*
@@ -649,6 +650,7 @@ The `account_info` command retrieves information about an account, its activity,
 #### Request Format ####
 
 An example of an account_info request:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -2519,7 +2521,6 @@ An example of the request format:
 }
 ```
 
-
 </div>
 
 **Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
@@ -2643,7 +2644,6 @@ An example of a successful response:
     }
 }
 ```
-
 
 </div>
 
@@ -2933,6 +2933,7 @@ The request can contain the following parameter:
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -3339,6 +3340,7 @@ The `ledger` field is deprecated and may be removed without further notice.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket (binary:true)*
@@ -3614,6 +3616,7 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -3815,6 +3818,7 @@ The `ledger_accept` method forces the server to close the current-working ledger
 An example of the request format:
 
 <div class='multicode'>
+
 *WebSocket*
 ```
 {
@@ -3828,6 +3832,7 @@ An example of the request format:
 #Syntax: ledger_accept
 rippled ledger_accept
 ```
+
 </div>
 
 The request accepts no parameters.
@@ -3919,6 +3924,7 @@ The request includes the following parameters:
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -4129,6 +4135,7 @@ __*Note:*__ This method does not support retrieving information from the current
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -5239,6 +5246,7 @@ The server also recognizes the following fields, but the results of using them a
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -6168,6 +6176,7 @@ The server automatically attempts to fill in certain fields from the `tx_json` o
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -6556,6 +6565,7 @@ Normally, offers that are not funded are omitted; however, offers made by the sp
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -6747,6 +6757,7 @@ The field `proof` is reserved for future use.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -7007,6 +7018,7 @@ The objects in the `books` array are defined almost like the ones from subscribe
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -7082,6 +7094,7 @@ The request does not takes any parameters.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -7226,6 +7239,7 @@ The request does not takes any parameters.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
@@ -9030,6 +9044,7 @@ The request includes no parameters.
 #### Response Format ####
 
 An example of a successful response:
+
 <div class='multicode'>
 
 *WebSocket*
