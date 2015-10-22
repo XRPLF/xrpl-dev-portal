@@ -1,103 +1,110 @@
 [
     {
+        "name": "Overview",
+        "template":"template-index.html",
+        "html": "index.html",
+        "targets": ["local", "ripple.com"]
+    },
+    {
+        "name": "Ripple Developer Resources",
+        "template":"template-pdf_intro.html",
+        "html": "pdf_intro.html",
+        "targets": ["pdf"]
+    },
+    {
         "name": "rippled",
         "md":"rippled.md",
         "html":"rippled-apis.html",
         "ripple.com": "https://ripple.com/build/rippled-apis/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "rippled Setup",
         "md":"rippled-setup.md",
         "html":"rippled-setup.html",
         "ripple.com": "https://ripple.com/build/rippled-setup/",
-        "type": "tutorial"
+        "category": "Tutorials"
     },
     {
         "name": "Ripple-REST",
         "md": "ripplerest_api.md",
         "html": "ripple-rest.html",
         "ripple.com": "https://ripple.com/build/ripple-rest/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Transactions",
         "md":"tx_format.md",
         "html":"transactions.html",
         "ripple.com": "https://ripple.com/build/transactions/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Ripple Consensus Ledger",
         "md":"ledger_format.md",
         "html":"ripple-ledger.html",
         "ripple.com": "https://ripple.com/build/ledger-format/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Reliable Transaction Submission",
         "md":"reliable_tx.md",
         "html":"reliable_tx.html",
         "ripple.com": "https://ripple.com/build/reliable-transaction-submission/",
-        "type": "tutorial"
+        "category": "Tutorials"
     },
     {
         "name": "Gateway Guide",
         "md":"gateway_guide.md",
         "html":"gateway_guide.html",
         "ripple.com": "https://ripple.com/build/gateway-guide/",
-        "type": "tutorial"
+        "category": "Tutorials"
     },
     {
         "name": "Historical Data API",
         "md": "historical_data.md",
         "html": "historical_data.html",
         "ripple.com": "https://ripple.com/build/historical-database/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Ripple Charts API",
         "md": "charts_api.md",
         "html": "charts_api.html",
         "ripple.com": "https://ripple.com/build/charts-api/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Ripple Data API v2",
         "md": "data_v2.md",
         "html": "data_api_v2.html",
         "ripple.com": "https://ripple.com/build/data-api-v2/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Paths",
         "md":"paths.md",
         "html":"paths.html",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Fees (Disambiguation)",
         "md": "fees.md",
         "html": "fees.html",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Transfer Fees",
         "md":"transferrate.md",
         "html":"transfer_fees.html",
         "ripple.com": "https://ripple.com/knowledge_center/transfer-fees/",
-        "type": "reference"
+        "category": "References"
     },
     {
         "name": "Transaction Cost",
         "md": "tx-cost.md",
         "html": "tx-cost.html",
-        "type": "reference"
-    },
-    {
-        "name": "Overview",
-        "template":"template-index.html",
-        "html": "index.html"
+        "category": "References"
     },
     {
         "name": "Ripple-REST API Tool",
@@ -106,40 +113,45 @@
         "is_apitool": true,
         "rest_host": "https://api.ripple.com",
         "ripple.com": "https://ripple.com/build/rest-tool/",
-        "html": "rest-api-tool.html"
+        "html": "rest-api-tool.html",
+        "targets": ["local","ripple.com"]
     },
     {
         "name": "Historical Database API Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-historical.js",
-        "type": "apitool",
+        "category": "API Tools",
         "rest_host": "https://history.ripple.com",
         "ripple.com": "https://ripple.com/build/historical-database-api-tool/",
-        "html": "historicaldb-api-tool.html"
+        "html": "historicaldb-api-tool.html",
+        "targets": ["local","ripple.com"]
     },
     {
         "name": "WebSocket API Tool",
         "template":"template-ripple-api-tool.html",
-        "type": "apitool",
+        "category": "API Tools",
         "ripple.com": "https://ripple.com/build/websocket-tool/",
-        "html": "ripple-api-tool.html"
+        "html": "ripple-api-tool.html",
+        "targets": ["local","ripple.com"]
     },
     {
         "name": "Charts API Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-charts.js",
-        "type": "apitool",
+        "category": "API Tools",
         "rest_host": "https://api.ripplecharts.com",
         "ripple.com": "https://ripple.com/build/charts-api-tool/",
-        "html": "charts-api-tool.html"
+        "html": "charts-api-tool.html",
+        "targets": ["local","ripple.com"]
     },
     {
         "name": "Data API v2 Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-data_v2.js",
-        "type": "apitool",
+        "category": "API Tools",
         "rest_host": "https://data.ripple.com",
-        "html": "data-api-v2-tool.html"
+        "html": "data-api-v2-tool.html",
+        "targets": ["local","ripple.com"]
     }
 ]
 

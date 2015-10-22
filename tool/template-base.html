@@ -46,36 +46,18 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-			<li class="dropdown">
-              <a href="./" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                {% for page in pages %}
-    		        {% if page.type == "reference" %}
-                    <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-                    {% endif %}
-                {% endfor %}
-              </ul>
-            </li>
+            {% for cat in categories %}
             <li class="dropdown">
-              <a href="./" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                {% for page in pages %}
-    		        {% if page.type == "tutorial" %}
+              {% for page in pages %}
+    		        {% if page.category == cat %}
                     <li><a href="{{ page.html }}">{{ page.name }}</a></li>
                     {% endif %}
-                {% endfor %}
+              {% endfor %}
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                {% for page in pages %}
-    		        {% if page.type == "apitool" %}
-                    <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-                    {% endif %}
-                {% endfor %}
-              </ul>
-            </li>
+            {% endfor %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
