@@ -435,53 +435,70 @@ Response:
 
 ```
 {
-  "result": "success",
-  "count": 3,
-  "marker": "USD|rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q|XRP||20150820230940|000015383279|00002|00000",
-  "exchanges": [
-    {
-      "base_amount": 1.5868807911938,
-      "counter_amount": 207.598995,
-      "rate": 130.8220479774132,
-      "buyer": "rsCC4p8HGz9R7yHiNjW3WPn9R6sKQv2jbT",
-      "executed_time": "2015-08-20T23:09:50",
-      "ledger_index": 15383280,
-      "offer_sequence": 2269,
-      "provider": "rsCC4p8HGz9R7yHiNjW3WPn9R6sKQv2jbT",
-      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
-      "tx_type": "Payment"
-    },
-    {
-      "base_amount": 22.5,
-      "counter_amount": 2946.032801,
-      "rate": 130.9347911555556,
-      "buyer": "rJoom9YSbpxnYcQ47SZzdoDE46iPxtZUA7",
-      "executed_time": "2015-08-20T23:09:50",
-      "ledger_index": 15383280,
-      "offer_sequence": 2760,
-      "provider": "rJoom9YSbpxnYcQ47SZzdoDE46iPxtZUA7",
-      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
-      "tx_type": "Payment"
-    },
-    {
-      "base_amount": 90.6280759869664,
-      "counter_amount": 11866.368204,
-      "rate": 130.934791171968,
-      "buyer": "rMToPrWnbtX8wAKacb8KvV7Uq7oXqVePtm",
-      "executed_time": "2015-08-20T23:09:50",
-      "ledger_index": 15383280,
-      "offer_sequence": 2757,
-      "provider": "rMToPrWnbtX8wAKacb8KvV7Uq7oXqVePtm",
-      "seller": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "taker": "rLMJ4db4uwHcd6NHg6jvTaYb8sH5Gy4tg5",
-      "tx_hash": "881A3704CF3DA1212955F9768D5A7A817669F2003046B83C32E96422103A7B2F",
-      "tx_type": "Payment"
-    }
-  ]
+    "result": "success",
+    "count": 3,
+    "marker": "USD|rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q|XRP||20151021222220|000016612683|00017|00000",
+    "exchanges": [
+        {
+            "base_amount": 4.98954834453577,
+            "counter_amount": 1047.806201,
+            "node_index": 9,
+            "rate": 210.00021000021,
+            "tx_index": 0,
+            "buyer": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+            "executed_time": "2015-10-21T23:09:50",
+            "ledger_index": 16613308,
+            "offer_sequence": 1010056,
+            "provider": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+            "seller": "rK2o63evRPdRoMT2ZaW72wsHsFzcjnRLLq",
+            "taker": "rK2o63evRPdRoMT2ZaW72wsHsFzcjnRLLq",
+            "tx_hash": "25600A10E5395D45A9D514E1EC3D98C341C5451FD21C48FA9D104C310EC29D6B",
+            "tx_type": "Payment",
+            "base_currency": "USD",
+            "base_issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "counter_currency": "XRP"
+        },
+        {
+            "base_amount": 0.0004716155440678037,
+            "counter_amount": 0.1,
+            "node_index": 3,
+            "rate": 212.03711637126,
+            "tx_index": 0,
+            "buyer": "rfh3pFHkCXv3TgzsEJgyCzF1CduZHCLi9o",
+            "executed_time": "2015-10-21T23:09:50",
+            "ledger_index": 16613308,
+            "offer_sequence": 158081,
+            "provider": "rfh3pFHkCXv3TgzsEJgyCzF1CduZHCLi9o",
+            "seller": "rK2o63evRPdRoMT2ZaW72wsHsFzcjnRLLq",
+            "taker": "rK2o63evRPdRoMT2ZaW72wsHsFzcjnRLLq",
+            "tx_hash": "25600A10E5395D45A9D514E1EC3D98C341C5451FD21C48FA9D104C310EC29D6B",
+            "tx_type": "Payment",
+            "base_currency": "USD",
+            "base_issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "counter_currency": "XRP"
+        },
+        {
+            "base_amount": 0.0004714169229390923,
+            "counter_amount": 0.1,
+            "node_index": 3,
+            "rate": 212.1264535361624,
+            "tx_index": 17,
+            "autobridged_currency": "USD",
+            "autobridged_issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "buyer": "rfh3pFHkCXv3TgzsEJgyCzF1CduZHCLi9o",
+            "executed_time": "2015-10-21T22:22:20",
+            "ledger_index": 16612683,
+            "offer_sequence": 158059,
+            "provider": "rfh3pFHkCXv3TgzsEJgyCzF1CduZHCLi9o",
+            "seller": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+            "taker": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+            "tx_hash": "F05F670B06D641D7F6FE18E450DDB2C7A4DDF76D580C34C820939DC22AD9F582",
+            "tx_type": "OfferCreate",
+            "base_currency": "USD",
+            "base_issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "counter_currency": "XRP"
+        }
+    ]
 }
 ```
 
@@ -549,12 +566,12 @@ Response (trimmed for size):
         {
             "account": "r2LXq2rZWSgQ1thhKiEytzi1smg6oEn8A",
             "date": "2015-08-19T00:00:00+00:00",
-            "high_value_received": 7000,
-            "high_value_sent": 3400,
+            "high_value_received": "7000",
+            "high_value_sent": "3400",
             "payments": [
                 {
                     "tx_hash": "A032EFBB219B1102BBD9BCCB91EDC6EAA8185509574FA476A2D3FE6BA79B04EF",
-                    "amount": 1700,
+                    "amount": "1700",
                     "currency": "XRP",
                     "type": "received"
                 },
@@ -578,9 +595,9 @@ Response (trimmed for size):
                  ...
                 "raGwbQHagX7DVDRgKXkthFLETnVVN57fYA"
             ],
-            "total_value": 210940,
-            "total_value_received": 100540,
-            "total_value_sent": 110400
+            "total_value": "210940",
+            "total_value_received": "100540",
+            "total_value_sent": "110400"
         },
         ...
     ]
@@ -616,7 +633,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
-| limit      | Integer | Max results per page (defaults to 200). No maximum value (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
@@ -684,7 +701,7 @@ Optionally, you can include the following query parameters:
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse chronological order |
-| parent     | String  | Limit results to specified parent account. Not compatible with the `interval` parameter. |
+| parent     | String  | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
 | reduce     | Boolean | Return a count of results only |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -842,7 +859,7 @@ Optionally, you can also include the following query parameters:
 | currency     | String  | Restrict results to specified currency |
 | issuer       | String  | Restrict results to specified counterparty/issuer |
 | limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results. This may change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)) |
-| marker       | String  | Pagination key from previously returned response |
+| marker       | String  | **DEPRECATED** Do not use. |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 #### Response Format ####
@@ -1246,7 +1263,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
-| limit      | Integer | Max results per page (defaults to 200). No maximum value (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -1355,7 +1372,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
-| limit      | Integer | Max results per page (defaults to 200). No maximum (subject to change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)). |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -1704,12 +1721,12 @@ A single transaction can cause several exchanges to occur. In this case, the sen
 | rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
 | autobridged\_currency | String - [Currency Code][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
 | autobridged\_issuer | String - [Address][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
-| base\_currency | String - [Currency Code][] | (May be omitted) The base currency |
-| base\_issuer | String - [Address][] | (May be omitted) The account that issued the base currency |
+| base\_currency | String - [Currency Code][] | The base currency |
+| base\_issuer | String - [Address][] | (Omitted for XRP) The account that issued the base currency |
 | buyer | String - [Address][] | The account that acquired the base currency |
 | client | String | (May be omitted) If the transaction contains a memo indicating what client application sent it, this is the contents of the memo. |
-| counter\_currency | String - [Currency Code][] | (May be omitted) The counter currency |
-| counter\_issuer | String - [Address][] | (May be omitted) The account that issued the counter currency |
+| counter\_currency | String - [Currency Code][] | The counter currency |
+| counter\_issuer | String - [Address][] | (Omitted for XRP) The account that issued the counter currency |
 | executed\_time | String - [Timestamp][] | The time the exchange occurred |
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this transaction |
 | offer\_sequence | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
@@ -1729,16 +1746,16 @@ Reports objects show the activity of a given account over a specific interval of
 |-------|-------|-------------|
 | account | String - [Address][] | The address of the account to which this report pertains. |
 | date | String - [Timestamp][] | The start of the interval to which this report pertains. |
-| high\_value\_received | Number | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
-| high\_value\_sent | Number | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
+| high\_value\_received | [String - Number][] | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
+| high\_value\_sent | [String - Number][] | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
 | payments | Array of [Payment Summary Objects][] | (May be omitted) Array with information on each payment sent or received by the account during this interval. |
 | payments\_received | Number | The number of payments sent to this account. (This only includes payments for which this account was the destination, not payments that only rippled through the account or consumed the account's offers.) |
 | payments\_sent | Number | The number of payments sent by this account. |
 | receiving\_counterparties | Array or Number | If account lists requested, an array of addresses that received payments from this account. Otherwise, the number of different accounts that received payments from this account. |
 | sending\_counterparties | Array or Number |  If account lists requested, an array of addresses that sent payments to this account. Otherwise, the number of different accounts that sent payments to this account. |
-| total\_value | Number | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
-| total\_value\_received | Number | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
-| total\_value\_sent | Number | Sum value of all payments from this account, normalized to XRP (as closely as possible).
+| total\_value | [String - Number][] | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
+| total\_value\_received | [String - Number][] | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
+| total\_value\_sent | [String - Number][] | Sum value of all payments from this account, normalized to XRP (as closely as possible).
 
 ## Payment Summary Objects ##
 [Payment Summary Objects]: #payment-summary-objects
@@ -1763,7 +1780,7 @@ Payment objects have the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| amount | String - Number | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
+| amount | [String - Number][] | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
 | delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
 | destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
 | source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
