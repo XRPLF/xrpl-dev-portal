@@ -36,15 +36,13 @@ Finding paths is a very challenging problem that changes slightly every few seco
 
 ## Implied Steps ##
 
-By convention, the sender and the receiver are implied, rather than included explicitly in a path, even though they are the proper first and last steps. Sometimes the second step and second-to-last step are also implied by the issuers of the currencies to send and receive. More specifically:
+By convention, several steps of a path are implied by the [fields of the Payment transaction](transactions.html#payment): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
     * If `issuer` of the `SendMax` _is_ the sending account, then the path starts at the sending account, and may use any of that account's trust lines in the given currency. See [special values for SendMax and Amount](transactions.html#special-issuer-values-for-sendmax-and-amount) for details.
 * If the `Amount` field of the transaction includes an `issuer` that is not the same as the `Destination` of the transaction, that issuer is implied to be the second-to-last step of the path.
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
-
-See [Payment Transaction Type](transactions.html#payment) for more information on the fields of a Payment.
 
 
 ## Default Paths ##
