@@ -706,7 +706,7 @@ A trust line with settings in the default state is equivalent to no trust line.
 
 The default state of all flags is off, except for the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), whose default state depends on the DefaultRipple flag.
 
-The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.29.1))_: You can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
+The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: You can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
 ### TrustSet Flags ###
 
