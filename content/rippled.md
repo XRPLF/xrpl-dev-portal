@@ -6758,7 +6758,7 @@ The following parameters are deprecated and may be removed without further notic
 The `streams` parameter provides access to the following default streams of information:
 
 * `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
-* `ledger` - Sends a message whenever a new ledger version closes
+* `ledger` - Sends a message whenever the consensus process declares a new validated ledger
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
 * `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even some transactions that don't succeed are included](transactions.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.)
 
@@ -6821,6 +6821,8 @@ When you subscribe to a particular stream, you will receive periodic responses o
 
 #### Stream: ledger Message ####
 
+The ledger stream only sends `ledgerClosed` messages when [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
+
 ```
 {
   "type": "ledgerClosed",
@@ -6841,15 +6843,15 @@ The fields from a ledger stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `ledgerClosed` indicates this is from the ledger stream |
-| fee_base | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
-| fee_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
-| ledger_hash | String | Unique hash of the ledger that was closed, as hex |
-| ledger_index | Unsigned Integer | Sequence number of the ledger that was closed |
-| ledger_time | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
-| reserve_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account |
-| reserve_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines |
-| txn_count | Unsigned Integer | Number of transactions newly included in this ledger |
-| validated_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
+| fee\_base | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new transaction cost applies to all transactions after this ledger. |
+| fee\_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| ledger\_hash | String | Unique hash of the ledger that was closed, as hex |
+| ledger\_index | Unsigned Integer | Sequence number of the ledger that was closed |
+| ledger\_time | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| reserve\_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new base reserve applies after this ledger. |
+| reserve\_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new owner reserve applies after this ledger.  |
+| txn\_count | Unsigned Integer | Number of new transactions included in this ledger |
+| validated\_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
 
 #### Transaction Messages ####
 
