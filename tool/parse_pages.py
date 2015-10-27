@@ -69,7 +69,6 @@ def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
     #buttonize links ending in >
     print("buttonizing try-it links...")
     buttonlinks = soup.find_all("a", string=re.compile(">$"))
-##    print("buttonlinks:",buttonlinks)
     for link in buttonlinks:
         if "class" in link.attrs:
             link["class"].append("button")
@@ -94,7 +93,6 @@ def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
         print("done")
     
     print("re-rendering HTML")
-    #html2 = soup.prettify()
     html2 = str(soup)
     print("done")
     return html2
@@ -254,13 +252,13 @@ if __name__ == "__main__":
         print("making a pdf...")
         make_pdf(args.pdf)
         print("pdf done")
+    
     #Not an accident that we go on to re-gen files in non-PDF format
+    print("rendering pages now")
+    render_pages(precompiled=args.pre_parse, target=args.target)
+    print("all done")
     
     if args.watch:
         print("watching for changes...")
         watch(args.pre_parse, args.pdf, args.target)
-    else:
-        print("rendering pages now")
-        render_pages(precompiled=args.pre_parse, target=args.target)
-        print("all done")
     
