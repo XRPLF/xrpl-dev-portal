@@ -567,9 +567,9 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full `TakerGets` amount in order to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes an Offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
 
-An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded.
+An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded. A single transaction can consume up to 850 Offers from the ledger. (Any more than that, and the metadata becomes too large, resulting in [`tecOVERSIZE`](#tec-codes).)
 
-You can create an Offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. Any amount of that currency you have, up to the `TakerGets` amount, will be sold until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
+You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. Any amount of that currency you have, up to the `TakerGets` amount, will be sold until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
 
 It is possible for an offer to become temporarily or permanently *unfunded*:
 
@@ -715,6 +715,10 @@ There are two cases where you can hold a balance on a trust line that is *greate
 Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it.
 
 A trust line with settings in the default state is equivalent to no trust line.
+
+The default state of all flags is off, except for the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), whose default state depends on the DefaultRipple flag.
+
+The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: You can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
 ### TrustSet Flags ###
 
