@@ -353,7 +353,7 @@ If you are specifying non-XRP currency (including fiat dollars, precious metals,
 
 | Field | Type | Description |
 |-------|------|-------------|
-| currency | String | Three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) string ("XRP" is invalid). Alternatively, an unsigned 160-bit hex value according to the [Currency format](https://wiki.ripple.com/Currency_format). |
+| currency | String | 3-character currency code. We recommend using uppercase [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php) only. The string `"XRP"` is disallowed. The following characters are permitted: all uppercase and lowercase letters, digits, and `<>(){}[]|?!@#$%^&*`. Can also be a 40-character hex value according to the internal [Currency format](https://wiki.ripple.com/Currency_format). |
 | value | String | Quoted decimal representation of the amount of currency |
 | issuer | String | Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed. |
 
