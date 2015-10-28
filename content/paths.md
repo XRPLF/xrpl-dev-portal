@@ -19,7 +19,7 @@ In the case of a currency exchange step, the path step specifies which currency 
 
 In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](https://ripple.com/knowledge_center/transfer-fees/), trust line quality, or rounding.
 
-[![Diagram of three example paths](img/paths.png)](img/paths.png)
+[![Diagram of three example paths](img/paths-examples.png)](img/paths-examples.png)
 
 
 
@@ -29,7 +29,7 @@ In both types of steps, each intermediate account gains and loses approximately 
 
 The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](rippled-apis.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](rippled-apis.html#path-find) (WebSocket only) expands on the initial search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign](rippled-apis.html#sign) or [sign-and-submit](rippled-apis.html#sign-and-submit-mode) commands. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [`sign` command](rippled-apis.html#sign) or [`submit` command (sign-and-submit mode)](rippled-apis.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit.)
 
 Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
 
@@ -57,7 +57,7 @@ The default path could be any of the following:
 * For cross-currency transactions, the default path uses the order book between the source currency (as specified in the `SendMax` field) and the destination currency (as specified in the `Amount` field).
 
 The following diagram enumerates all possible default paths:
-[![Diagram of default paths](img/default-paths.png)](img/default-paths.png)
+[![Diagram of default paths](img/paths-default_paths.png)](img/paths-default_paths.png)
 
 You can use the [`tfNoDirectRipple` flag](transactions.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 
