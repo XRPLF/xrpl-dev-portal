@@ -71,8 +71,8 @@ A path set is an array. Each member of the path set is another array that repres
 | account | String - Address | (Optional) If present, this path step represents rippling through the specified account. |
 | currency | String - currency code | (Optional) If present, this path step represents changing currencies through an order book. The currency specified indicates the new currency. |
 | issuer | String - Address | (Optional) If the path step represents changing currencies through an order book, this field indicates the issuer of the new currency. This field is not present when changing to XRP. |
-| type  | Integer | **DEPRECATED**: An indicator of which other fields are present. |
-| type_hex | String | **DEPRECATED**: A hexadecimal representation of the `type` field. |
+| type  | Integer | **DEPRECATED** (Optional) An indicator of which other fields are present. |
+| type_hex | String | **DEPRECATED**: (Optional) A hexadecimal representation of the `type` field. |
 
 The `type` field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:
 
