@@ -809,7 +809,7 @@ The `settings` object can contain any of the following fields (any omitted field
 | default\_ripple | Boolean | If true, enables [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trustlines by default. _(New in [Ripple-REST v1.5.0](https://github.com/ripple/ripple-rest/releases/tag/1.5.0-rc1))_ |
 | email_hash | String | Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
 | message\_key | String | A [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) public key that should be used to encrypt secret messages to this account, as hex. |
-| domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt) or [host-meta](https://wiki.ripple.com/Gateway_Services) of the domain. |
+| domain | String | The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the [ripple.txt](https://wiki.ripple.com/Ripple.txt). |
 
 *Note:* Some of the account setting fields cannot be modified by this method. For example, the `password_spent` flag is only enabled when the account uses a free SetRegularKey transaction, and only disabled when the account receives a transmission of XRP.
 
