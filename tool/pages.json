@@ -92,6 +92,7 @@
         "name": "Fees (Disambiguation)",
         "md": "fees.md",
         "html": "fees.html",
+        "ripple.com": "https://ripple.com/knowledge_center/fees-disambiguation/",
         "category": "References"
     },
     {
@@ -108,10 +109,16 @@
         "category": "References"
     },
     {
+        "name": "Reserves",
+        "md": "reserves.md",
+        "html": "reserves.html",
+        "category": "References"
+    },
+    {
         "name": "Ripple-REST API Tool",
         "template":"template-rest-api-tool.html",
         "methods_js": "js/apitool-methods-ripplerest.js",
-        "is_apitool": true,
+        "category": "API Tools",
         "rest_host": "https://api.ripple.com",
         "ripple.com": "https://ripple.com/build/rest-tool/",
         "html": "rest-api-tool.html",
