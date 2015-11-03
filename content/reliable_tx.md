@@ -706,7 +706,7 @@ ripple-lib provides a high level API for creating transactions.  In this example
 
 Note that ripple-lib will automatically provide additional details before the transaction is signed and submitted.  These details include an account transaction Sequence, `LastLedgerSequence` and Fee.
 
-Before submitting, applications should persist the transaction details, so that status may be verified in the event of a failure.  Applications have an opportunity to do this by implementing [transaction event handlers](https://github.com/ripple/ripple-lib/blob/develop/docs/REFERENCE.md#transaction-events).  The `presubmit` event handler is appropriate for saving data before a transaction is submitted to the network.  During normal operation, a `state` event is emitted whenever the transaction status changes, including final validation.
+Before submitting, applications should persist the transaction details, so that status may be verified in the event of a failure.  Applications have an opportunity to do this by implementing [transaction event handlers](https://github.com/ripple/ripple-lib/blob/61afca2337927a4f331ae02770ccdad5d9bdef17/docs/REFERENCE.md#transaction-events).  The `presubmit` event handler is appropriate for saving data before a transaction is submitted to the network.  During normal operation, a `state` event is emitted whenever the transaction status changes, including final validation.
 
 The example implementation (below) of a these event handlers simply logs some information about the transaction, in order to show some of the data available to applications.  Live applications should implement handlers to **synchronously** persist transactions details, and should throw an error if unable to save the data.
 
