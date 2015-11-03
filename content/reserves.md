@@ -1,6 +1,6 @@
 # Reserves #
 
-The Ripple Consensus Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing too large to handle efficiently as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match [Moore's Law](https://en.wikipedia.org/wiki/Moore's_law) so that a current commodity-level machinec an always fit the current ledger in RAM and the full ledger history on disk.
+The Ripple Consensus Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match [Moore's Law](https://en.wikipedia.org/wiki/Moore's_law) so that a current commodity-level machine an always fit the current ledger in RAM and the full ledger history on disk.
 
 Each account in the shared global ledger must hold a minimum of XRP in order to submit transactions, and it cannot send this XRP to other accounts. You cannot create a new account unless you send enough XRP to meet the minimum reserve requirement.
 
@@ -33,3 +33,7 @@ During transaction processing, a transaction can only be successful if the sendi
 
 When an account has less XRP than its current reserve requirement, it continues to exist in the ledger, but it cannot send new transactions. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.
 
+
+## Changing the Reserve Requirements ##
+
+The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
