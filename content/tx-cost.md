@@ -33,7 +33,7 @@ The [`server_info` command](rippled-apis.html#server-info) reports the unscaled 
 
 ### server_state ###
 
-The [`server_state` command](rippled-apis.html#server-state) returns a direct representation of rippled's internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](rippled-apis.html#specifying-currency-amounts). This design enables rippled to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
+The [`server_state` command](rippled-apis.html#server-state) returns a direct representation of `rippled`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](rippled-apis.html#specifying-currency-amounts). This design enables `rippled` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
 
 **Current Transaction Cost in Drops = (`base_fee` × `load_factor`) ÷ `load_base`**
 
