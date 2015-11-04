@@ -801,7 +801,7 @@ If nothing went wrong in the process of submitting and applying the transaction 
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 ```
 
-__*Note:*__ A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server.
+__*Note:*__ A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See [Finality of Results](#finality-of-results) for details.
 
 ## Looking up Transaction Results ##
 
@@ -849,17 +849,23 @@ Although it may seem unfair to charge a fee for a failed transaction, the `tec` 
 
 ## Finality of Results ##
 
-A signed transaction can be submitted to any `rippled` server, by anyone. The server processes the transaction and passes it on to other servers in the network according to its own logic. If enough servers apply a transaction to a ledger that the transaction passes consensus, then the transaction becomes a permanent part of the shared, validated Ripple Consensus Ledger. This can happen in two ways: Either the transaction is successful (a `tes` result), or the transaction fails but the fee is charged anyway (a `tec` result). No transaction with any other result is included in a ledger.
+The order in which transactions apply to the consensus ledger is not final until a ledger is closed and the exact transaction set is approved by the consensus process. Therefore, a transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a subsequent round.
 
-Transactions that failed in other ways could still succeed (or fail with a `tec`) and become included in later ledgers. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first; the signature means that the transaction is authorized to happen. 
+A validated ledger can include successful transactions (`tes` result codes) as well as failed transactions (`tec` result codes). No transaction with any other result is included in a ledger.
 
-Transactions that failed initially, especially `ter` and `tec` failures, could also potentially apply later if conditions change such that the transaction is no longer prevented from applying. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sent enough XRP to create the destination account.
+For any other result code, it can be difficult to determine if the result is final. The following table summarizes when a transaction's outcome is final, based on the result code from submitting the transaction:
 
-There are several ways a transaction's failure could become permanent:
+| Error Code | Finality |
+|------------|----------|
+| `tesSUCCESS` | Final when included in a validated ledger |
+| Any `tec` code | Final when included in a validated ledger |
+| Any `tem` code | Final unless the protocol changes to make the transaction valid |
+| `tefPAST_SEQ` | Final when another transaction with the same sequence number is included in a validated ledger |
+| `tefMAX_LEDGER` | Final when a validated ledger has a sequence number higher than the transaction's `LastLedgerSequence` field, and no validated ledger includes the transaction |
 
-* If the transaction is malformed, failure is always permanent (unless the protocol changes to accept what was formerly considered an invalid transaction).
-* If the `Sequence` number of the *account* sending the transaction is higher (in a validated ledger) than the `Sequence` number of the transaction, then the transaction cannot be included in any new ledger.
-* If the transaction includes a `LastLedgerSequence` and a ledger with a higher sequence number is validated, the transaction cannot be included in any new ledger.
+Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.
+
+
 
 ## Understanding Transaction Metadata ##
 

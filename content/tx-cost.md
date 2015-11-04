@@ -17,18 +17,26 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 ## Load Scaling ##
 
-Each server independently scales the transaction cost based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server drops the transaction: it neither applies not relays it. (**Exception:** If you submit a transaction through an admin connection, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) However, your transaction is very unlikely to survive the consensus process unless its `Fee` value meets the requirements of a majority of servers.
+Each server independently scales the transaction cost based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server drops the transaction: it neither applies nor relays it. (**Exception:** If you submit a transaction through an admin connection, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive the consensus process unless its `Fee` value meets the requirements of a majority of servers.
 
 
 ## Querying the Transaction Cost ##
+
+The `rippled` APIs have two ways to query the transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
+
+### server_info ###
 
 The [`server_info` command](rippled-apis.html#server-info) reports the unscaled minimum XRP cost, as of the previous ledger, as `validated_ledger.base_fee_xrp`, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying by the `load_factor` parameter in the same response, which represents the server's current load level. In other words:
 
 **Current Transaction Cost in XRP = `base_fee_xrp` × `load_factor`**
 
+
+### server_state ###
+
 The [`server_state` command](rippled-apis.html#server-state) returns a direct representation of rippled's internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](rippled-apis.html#specifying-currency-amounts). This design enables rippled to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
 
 **Current Transaction Cost in Drops = (`base_fee` × `load_factor`) ÷ `load_base`**
+
 
 
 ## Specifying the Transaction Cost ##
@@ -53,17 +61,18 @@ As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they a
 
 ## Transaction Costs and Failed Transactions ##
 
-Since the purpose of the transaction cost is to protect the peer-to-peer Ripple network from spurious load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, in order to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, rippled servers attempt to include failed transactions in ledgers, with [`tec` status codes](transactions.html#result-categories) ("tec" stands for "Transaction Engine - Claimed fee only").
+Since the purpose of the transaction cost is to protect the peer-to-peer Ripple network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, in order to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, `rippled` servers attempt to include failed transactions in ledgers, with [`tec` status codes](transactions.html#result-categories) ("tec" stands for "Transaction Engine - Claimed fee only").
 
 The transaction cost is only debited from the sender's XRP balance when the transaction actually becomes included in a validated ledger. This is true whether the transaction is considered successful or fails with a `tec` code.
 
-If a transaction fails with a different class of status code, such as `tem` (Malformed transactions), the `rippled` server does not relay it to the network. Consequently, that transaction does not get included in a validated ledger, and it cannot have any effect on anyone's XRP balance.
+If a transaction's failure is [final](transactions.html#finality-of-results), the `rippled` server does not relay it to the network. Consequently, that transaction does not get included in a validated ledger, and it cannot have any effect on anyone's XRP balance.
 
 ### Insufficient XRP ###
 
-When a rippled server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the transaction never gets relayed to the network and no XRP balances are actually adjusted.
+When a `rippled` server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the `rippled` server retries the transaction without relaying it to the network, until the transaction's outcome is [final](transactions.html#finality-of-results).
 
-However, account's XRP balance could change between when the transaction gets distributed to the network and when it becomes included in a validated ledger. (For example, a previous transaction sending XRP to the account in question might have applied provisionally, but the two transactions might execute in the opposite order when the network forms the consensus ledger.) In this case, an account may have insufficient XRP to pay the transaction cost even though the transaction got distributed to the network. When this happens, the account pays as much XRP as possible, resulting in a balance of 0 XRP.
+An account's XRP balance could change between when the transaction gets distributed to the network and when it becomes included in a validated ledger. (For example, a previous transaction sending XRP to the account in question might have applied provisionally, but the two transactions might execute in the opposite order when the network forms the consensus ledger.) In this case, an account may have insufficient XRP to pay the transaction cost even though the transaction has already been distributed to the network. When this happens, the transaction fails with the result code `tecINSUFF_FEE` and the account pays as much XRP as possible, resulting in a balance of 0 XRP.
+
 
 ## Changing the Transaction Cost ##
 
