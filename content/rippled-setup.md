@@ -18,9 +18,9 @@ You can also run `rippled` as a client application for accessing [rippled APIs](
 
 Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.
 
-However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. XRP is automatically generated and distributed to wallets for all new accounts on rippletest.net.
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple gives away for free to parties interested in developing applications on the Test Net.
 
-**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
+**Caution:** Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
 
 Over time, there may also be additional, smaller test networks for specific purposes.
 
@@ -58,7 +58,7 @@ If your organization runs a validating node, you may also run one or more stock 
 A `rippled` server should run comfortably on commodity hardware, to make it easy to participate in the network. At present, we recommend the following:
 
 - Operating System:
-    - Production: Ubuntu Linux (latest LTS) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
@@ -89,11 +89,12 @@ To enable clustering, modify the following sections of your [config file](https:
 
 For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
 
-Production `rippled` instances can use Ripple Labs' binary executable, available from the Ripple Labs apt-get repository. 
+Production `rippled` instances can use Ripple's binary executable, available from the Ripple yum repository.
 
-## Installation on Red Hat with yum  ##
 
-This section assumes that you are using Red Hat Enterprise Linux 7.
+## Installation on CentOS/Red Hat with yum  ##
+
+This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
 1. Install the Ripple rpm repository:
 
@@ -111,121 +112,19 @@ This section assumes that you are using Red Hat Enterprise Linux 7.
 
         $ sudo systemctl start rippled.service
 
-## Installation on Ubuntu with apt ##
+It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple peer-to-peer network.
 
-This section assumes that you are using Ubuntu 14.04.
-
-1. Install the Ripple apt repository:
-
-        $ sudo apt-get install software-properties-common
-        $ sudo apt-add-repository 'deb http://mirrors.ripple.com/ubuntu/ trusty stable contrib'
-        $ sudo apt-get update
-
-2. Install the `rippled` package:
-
-        $ sudo apt-get install rippled
-
-3. Start the `rippled` service:
-
-        $ sudo service rippled start
 
 # Configuring rippled #
 
-1. Configure `rippled` in `/etc/rippled/rippled.cfg`:
+`rippled` should connect to the Ripple network with the default configuration. However, you can modify your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
 
-        [server]
-        port_peer
-        port_rpc
-        port_ws
+See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
 
-        [port_peer]
-        port = 51235
-        ip = 0.0.0.0
-        protocol = peer
-
-        [port_rpc]
-        port = 51234
-        ip = 0.0.0.0
-        admin = 127.0.0.1
-        protocol = http
-
-        [port_ws]
-        port = 51233
-        ip = 0.0.0.0
-        admin = 127.0.0.1
-        protocol = ws
-
-        [ssl_verify]
-        0
-
-        [sntp_servers]
-        time.windows.com
-        time.apple.com
-        time.nist.gov
-        pool.ntp.org
-
-        [node_db]
-        type=nudb
-        path=/var/lib/rippled/db/nudb
-
-        [database_path]
-        /var/lib/rippled/db
-
-        [debug_logfile]
-        /var/log/rippled/debug.log
-
-        [rpc_startup]
-        {"command": "log_level", "severity": "warning"}
-
-   See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for additional configuration options.
-
-2. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
-
-  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) validators:
-
-        [ips]
-        52.16.66.76 51235
-        52.11.28.194 51235
-        54.94.245.104 51235
-        52.11.181.30 51235
-        52.68.19.29 51235
-        41.79.78.42 51235
-
-3. Add trusted validation public keys to `rippled.cfg`:
-
-  The default configuration includes validators operated by Ripple Labs for the production Ripple peer-to-peer network:
-  
-        [validators]
-        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
-        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
-        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
-        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
-        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
-
-  If you want to connect to the [Ripple Test Net](#parallel-networks), you could add the validation public keys of the Ripple Labs validators on that network instead:
-
-        [validators]
-        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
-        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
-        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
-        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
-        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
-        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
-
-4. Adjust the validation quorum value in `rippled.cfg`:
-
-  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
-
-  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
-
-        [validation_quorum]
-        4
-
-5. Restart rippled:
+You will need to restart rippled for any configuration changes to take effect:
 
         $ sudo service rippled restart
         
-It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple peer-to-peer network.
 
 # Running a Validating Node #
 
