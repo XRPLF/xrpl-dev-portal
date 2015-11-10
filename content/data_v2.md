@@ -27,9 +27,17 @@ General Methods:
 * [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
+* [Get Payments - `GET /v2/payments/:currency`](#get-payments)
 * [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
-* [Get Daily Summary - `GET /v2/reports/`](#get-daily-summary)
+* [Get Exchange Rates - `GET /v2/exchange_rates/:base/:counter`](#get-exchange-rates)
+* [Get Normalization - `GET /v2/normalize`](#normalize)
+* [Get Daily Reports - `GET /v2/reports/`](#get-daily-reports)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
+* [Get Capitalization - `GET /v2/capitalization/:currency/:issuer`](#get-capitalization)
+* [Get Active Accounts - `GET /v2/active_accounts/:base/:counter`](#get-active-accounts)
+* [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
+* [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
+* [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
 
 Account Methods:
 
@@ -374,6 +382,66 @@ Response:
 
 
 
+## Get Payments ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getPayments.js "Source")
+
+Retrieve Payments over time, where Payments are defined as `Payment` type transactions where the sender of the transaction is not also the destination. 
+
+Results can be returned as individual payments or aggregated to a specific list of intervals if a currency and issuer is provided.
+
+```
+GET /v2/payments/{:currency}
+```
+
+#### Request Format ####
+
+This method accepts the following URL parameters:
+
+| Field     | Value  | Description |
+|-----------|--------|-------------|
+| :currency | String | (Optional) Currency code, followed by `+` and an issuer. (Or just `XRP`.) If omitted, return payments for all currencies. |
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| start      | String - [Timestamp][]  | Filter results to this time and later |
+| end        | String - [Timestamp][]  | Filter results to this time and earlier |
+| interval   | String  | If provided and `currency` is also specified, return results aggregated into intervals of the specified length instead of individual payments. Valid intervals are `day`, `week`, or `month`. |
+| descending | Boolean | Reverse cronological order |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
+| marker     | String  | Pagination key from previously returned response |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of Transactions returned. |
+| marker | String | Pagination marker |
+| payments | Array of [Payment Objects][], or array of aggregate objects | The requested payments |
+
+
+##### Aggregate Results #####
+
+If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. Each interval summary object has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| count | Number | The number of payments that occurred during this interval. |
+| currency | String - Currency Code | This summary describes payments that delivered the specified currency. |
+| issuer | String - Address | (Omitted for XRP) This summary describes payments that delivered the currency issued by this address. |
+| start | String - [Timestamp][] | The start time of this interval |
+| total\_amount | Number | The amount of the `currency` delivered during this interval. |
+| average\_amount | Number | The average amount of currency delivered by a single payment during this interval. |
+
+
+
+
 
 ## Get Exchanges ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchanges.js "Source")
@@ -403,8 +471,8 @@ Optionally, you can also include the following query parameters:
 
 | Field       | Value | Description |
 |-------------|-------|-------------|
-| start       | String | UTC start time of query range |
-| end         | String | UTC end time of query range |
+| start       | String - [Timestamp][] | Filter results to this time and later |
+| end         | String - [Timestamp][] | Filter results to this time and earlier |
 | interval    | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month` |
 | descending  | Boolean | reverse chronological order |
 | reduce      | Boolean | aggregate all individual results. |
@@ -504,8 +572,86 @@ Response:
 
 
 
+## Get Exchange Rates ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchangeRate.js "Source")
 
-## Get Daily Summary ##
+Retrieve an exchange rate for a given currency pair at a specific time.
+
+```
+GET /v2/exchange_rates/{:base}/{:counter}
+```
+
+#### Request Format ####
+
+This method requires the following URL parameters:
+
+| Field    | Value  | Description |
+|----------|--------|-------------|
+| :base    | String | Base currency of the pair in the format currency[+issuer] |
+| :counter | String | Counter currency of the pair in the format currency[+issuer] |
+
+
+Optionally, you can also include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| date   | String - [Timestamp][] | Return an exchange rate for the specified time. Defaults to the current time. |
+| strict | Boolean | If false, allow rates derived from less than 10 exchanges. Defaults to true. |
+
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| rate | Number | The requested exchange rate, or `0` if the exchange rate could not be determined. |
+
+All exchange rates are calcuated by converting the base currency and counter currency to XRP.
+
+The rate is derived from the volume weighted average over the calendar day specified, averaged with the volume weighted average of the last 50 trades within the last 14 days.
+
+
+
+## Normalize ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/normalize.js "Source")
+
+Convert an amount from one currency and issuer to another, using the network exchange rates.
+
+```
+GET /v2/normalize
+```
+
+#### Request Method ####
+
+This method uses the following query parameters:
+
+| Field             | Value   | Description |
+|-------------------|---------|-------------|
+| amount            | Number  | (Required) Amount of currency to normalize |
+| currency          | String - Currency Code | The currency code of the `amount` to convert from. (Defaults to XRP.) |
+| issuer            | String - Address | The issuer of the currency to convert from. (Required if `currency` is not XRP.) |
+| exchange\_currency | String  | The currency code of the currency to convert to. (Defaults to XRP.) |
+| exchange\_issuer   | String  | The issuer of the currency to convert to. (Required if `exchange_currency` is not XRP.) |
+| date              | String - [Timestamp][] | Convert according to the exchange rate at this time. (Defaults to the current time.) |
+| strict            | Boolean | If true, do not use exchange rates that are determined by less than 10 exchanges. (Defaults to true.) |
+
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| amount | Number | Pre-conversion amount specified in the request |
+| converted | Number | Post-conversion amount of the `exchange_currency`, or `0` if the exchange rate could not be determined. |
+| rate | Number | Exchange rate used to calculate the conversion, or `0` if the exchange rate could not be determined. |
+
+All exchange rates are calculating by converting both currencies to XRP.
+
+
+
+## Get Daily Reports ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/reports.js "Source")
 
 Retrieve per account per day aggregated payment summaries
@@ -674,6 +820,97 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
 
+
+
+## Get Capitalization ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js "Source")
+
+Get capitalization data for a specific currency + issuer
+
+```
+GET /v2/capitaliztion/{:currency}
+```
+
+#### Request Format ####
+
+This method requires the following URL parameters:
+
+| Field     | Value  | Description |
+|-----------|--------|-------------|
+| :currency | String | Currency and issuer to look up, concatenated with a `+`. XRP is invalid. |
+
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| start      | String - [Timestamp][] | Start time of query range |
+| end        | String - [Timestamp][] | End time of query range |
+| interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
+| limit      | Integer | Max results per page (defaults to 200) |
+| marker     | String  | Pagination key from previously returned response |
+| descending | Boolean | Reverse cronological order |
+| adjusted   | Boolean | Adjust results by removing known issuer owned wallets |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of reports returned. |
+| currency | String | Currency requested |
+| issuer | String | Issuer requested |
+| marker | String | Pagination marker |
+| rows | Array of issuer capitalization objects | The requested capitalization data |
+
+Each issuer capitalization object has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| date   | String - [Timestamp][] | The start time of the interval this object represents. |
+| amount | [String - Number][] | The total amount of currency issued by the issuer as of the start of this interval. |
+
+
+## Get Active Accounts ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js "Source")
+
+<span class='draft-comment'>TODO</span>
+
+
+
+## Get Exchange Volume ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+
+<span class='draft-comment'>TODO</span>
+
+
+## Get Payment Volume ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+
+<span class='draft-comment'>TODO</span>
+
+
+## Get Issued Value ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+
+<span class='draft-comment'>TODO</span>
+
+## Get Gateways ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js)
+
+<span class='draft-comment'>TODO</span>
+
+
+## Get Currencies ##
+
+<span class='draft-comment'>TODO...
+		+    app.get('/v2/currencies/:currencyAsset?', routesV2.gateways.Currencies);
+</span>
+
+
 ## Get Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accounts.js "Source")
 
@@ -703,7 +940,7 @@ Optionally, you can include the following query parameters:
 | descending | Boolean | Reverse chronological order |
 | parent     | String  | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
 | reduce     | Boolean | Return a count of results only |
-| format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
