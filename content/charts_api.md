@@ -1285,8 +1285,8 @@ A successful result contains the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String (Account Address) | The account of the trader. |
-| buy | Object | Object with `baseVolume` (volume of base currency bought), `counterVolume` (volume of counter currency bought), and `count` (number of buy transactions) fields describing the activity of this account. |
-| sell | Object | Object with `baseVolume` (volume of base currency sold), `counterVolume` (volume of counter currency sold), and `count` (number of sell transactions) fields describing the activity of this account. |
+| buy | Object | Object with `baseVolume` (volume of base currency bought), `counterVolume` (volume of counter currency used to buy the base currency), and `count` (number of buy transactions) fields describing the activity of this account. |
+| sell | Object | Object with `baseVolume` (volume of base currency sold), `counterVolume` (volume of counter acquired by selling the base currency), and `count` (number of sell transactions) fields describing the activity of this account. |
 | baseVolume | Number | The total amount of the base currency exchanged. |
 | counterVolume | Number | The total amount of the counter currency exchanged. |
 | count | Number | The number of exchanges this account performed. |
