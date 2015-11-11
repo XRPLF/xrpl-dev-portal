@@ -389,11 +389,11 @@ Retrieve Payments over time, where Payments are defined as `Payment` type transa
 
 Results can be returned as individual payments or aggregated to a specific list of intervals if a currency and issuer is provided.
 
+#### Request Format ####
+
 ```
 GET /v2/payments/{:currency}
 ```
-
-#### Request Format ####
 
 This method accepts the following URL parameters:
 
@@ -577,11 +577,11 @@ Response:
 
 Retrieve an exchange rate for a given currency pair at a specific time.
 
+#### Request Format ####
+
 ```
 GET /v2/exchange_rates/{:base}/{:counter}
 ```
-
-#### Request Format ####
 
 This method requires the following URL parameters:
 
@@ -618,11 +618,11 @@ The rate is derived from the volume weighted average over the calendar day speci
 
 Convert an amount from one currency and issuer to another, using the network exchange rates.
 
+#### Request Format ####
+
 ```
 GET /v2/normalize
 ```
-
-#### Request Method ####
 
 This method uses the following query parameters:
 
@@ -827,11 +827,11 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 Get capitalization data for a specific currency + issuer
 
+#### Request Format ####
+
 ```
 GET /v2/capitaliztion/{:currency}
 ```
-
-#### Request Format ####
 
 This method requires the following URL parameters:
 
@@ -877,24 +877,404 @@ Each issuer capitalization object has the following fields:
 ## Get Active Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js "Source")
 
-<span class='draft-comment'>TODO</span>
+Get information on which accounts are actively trading in a specific currency pair.
+
+#### Request Format ####
+
+```
+GET /v2/active_accounts/{:base}/{:counter}
+```
+
+This method requires the following URL parameters:
+
+| Field    | Value  | Description |
+|----------|--------|-------------|
+| :base    | String | Base currency of the pair in the format currency[+issuer] |
+| :counter | String | Counter currency of the pair in the format currency[+issuer] |
+
+Optionally, you can also include the following query parameters:
+
+| Field              | Value   | Description |
+|--------------------|---------|-------------|
+| period             | String  | Get results for trading activity during a chosen time period. Valid periods are `1day`, `3day`, or `7day`. Defaults to `1day`. |
+| date               | String  | Get results for the period starting at this time. Defaults to the most recent period available. |
+| include\_exchanges | Boolean | Include individual exchanges for each account in the results. |
+| format             | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of accounts returned. |
+| exchanges\_count | Integer | Total number of exchanges in the period. |
+| accounts | Array of active Account Trading Objects | Active trading accounts for the period |
+
+Each "Account Trading Object" describes the activity of a single account during the period, and has the following fields:
+
+| Field           | Value            | Description |
+|-----------------|------------------|-------------|
+| buy             | Object | Summary of currency exchanges buying the base currency|
+| buy.base\_volume | Number | Amount of base currency the account bought in this period. |
+| buy.counter\_volume | Number | Amount of counter currency the account sold in this period. |
+| buy.count       | Number | Number of trades that bought the base currency in this period. |
+| sell            | Object | Summary of currency changes selling the base currency |
+| sell.base\_volume | Number | Amount of the base currency the account sold this period. |
+| sell.counter\_volume | Number | Amount of the counter currency the account bought this period. |
+| sell.count      | Number | Number of trades that sold the base currency. |
+| account         | String - Address | The address whose activity this object describes |
+| base\_volume    | Number | The total volume of the base currency the account bought and sold in this period. |
+| counter\_volume | Number | The total volume of the counter currency the account bought and sold in this period. |
+| count           | Number | The total number of exchanges the account made during this period. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/active_accounts/XRP/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
+```
+
+Response:
+
+```
+{
+    "result": "success",
+    "count": 12,
+    "exchanges_count": 11,
+    "accounts": [
+        {
+            "buy": {
+                "base_volume": 0,
+                "counter_volume": 0,
+                "count": 0
+            },
+            "sell": {
+                "base_volume": 13084.822874,
+                "counter_volume": 54.499328645454604,
+                "count": 4
+            },
+            "account": "rGBQhB8EH5DmqMmfKPLchpqr3MR19pv6zN",
+            "base_volume": 13084.822874,
+            "counter_volume": 54.499328645454604,
+            "count": 4
+        },
+        {
+            "buy": {
+                "base_volume": 12597.822874,
+                "counter_volume": 52.4909286454546,
+                "count": 1
+            },
+            "sell": {
+                "base_volume": 0,
+                "counter_volume": 0,
+                "count": 0
+            },
+            "account": "rQE5Z3FgVnRMbVfS6xiVQFgB4J3X162FVD",
+            "base_volume": 12597.822874,
+            "counter_volume": 52.4909286454546,
+            "count": 1
+        },
+        
+        ... (additional results trimmed)...
+        
+        {
+            "buy": {
+                "base_volume": 1.996007,
+                "counter_volume": 0.008782427920595,
+                "count": 1
+            },
+            "sell": {
+                "base_volume": 0,
+                "counter_volume": 0,
+                "count": 0
+            },
+            "account": "rD8LigXE7165r3VWhSQ4FwzJy7PNrTMwUq",
+            "base_volume": 1.996007,
+            "counter_volume": 0.008782427920595,
+            "count": 1
+        },
+        {
+            "buy": {
+                "base_volume": 0,
+                "counter_volume": 0,
+                "count": 0
+            },
+            "sell": {
+                "base_volume": 0.1,
+                "counter_volume": 0.0004821658905462904,
+                "count": 1
+            },
+            "account": "rfh3pFHkCXv3TgzsEJgyCzF1CduZHCLi9o",
+            "base_volume": 0.1,
+            "counter_volume": 0.0004821658905462904,
+            "count": 1
+        }
+    ]
+}
+```
 
 
 
 ## Get Exchange Volume ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-<span class='draft-comment'>TODO</span>
+
+Get aggregated exchange volume for a given time period.
+
+#### Request Format ####
+
+```
+GET /v2/network/exchange_volume
+```
+
+Optionally, you can include the following query parameters:
+
+| Field    | Value   | Description |
+|----------|---------|-------------|
+| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
+| marker   | String  | Pagination key from previously returned response |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of results returned. |
+| rows | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+
+Each object in the `components` array of the Volume Objects represent the volume of exchanges in a market between two currencies, and has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| count  | Number | The number of exchanges in this market during this interval. |
+| rate   | Number | The exchange rate between the two currencies. <span class='draft-comment'>(Probably?)</span> |
+| amount | Number | The amount of volume in the market, in units of the base currency. |
+| base   | Object | The `currency` and `issuer` that identify the base currency of this market. There is no `issuer` for XRP. |
+| counter | Object | The `currency` and `issuer` that identify the counter currency of this market. There is no `issuer` for XRP. |
+| convertedAmount | Number | The total amount of volume in the market, converted to the display currency. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/exchange_volume?exchange_currency=USD&exchange_issuer=rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B
+```
+
+
+Response:
+
+```
+{
+    "result": "success",
+    "count": 1,
+    "rows": [
+        {
+            "components": [
+                {
+                    "count": 1711,
+                    "rate": 5.514373809662552e-8,
+                    "amount": 333.7038784107369,
+                    "base": {
+                        "currency": "BTC",
+                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                    },
+                    "counter": {
+                        "currency": "XRP"
+                    },
+                    "convertedAmount": 117720.99268355068
+                },
+                {
+                    "count": 1977,
+                    "rate": 0.000019601413454357618,
+                    "amount": 74567.72531650064,
+                    "base": {
+                        "currency": "USD",
+                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                    },
+                    "counter": {
+                        "currency": "XRP"
+                    },
+                    "convertedAmount": 74003.51871932109
+                },
+                
+                ... (additional results trimmed) ...
+                
+                {
+                    "count": 3,
+                    "rate": 0.022999083584408355,
+                    "amount": 85.40728674708998,
+                    "base": {
+                        "currency": "CNY",
+                        "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+                    },
+                    "counter": {
+                        "currency": "USD",
+                        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+                    },
+                    "convertedAmount": 12.72863756671683
+                },
+                {
+                    "count": 3,
+                    "rate": 1.7749889023209692e-7,
+                    "amount": 570.687912196755,
+                    "base": {
+                        "currency": "JPY",
+                        "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+                    },
+                    "counter": {
+                        "currency": "BTC",
+                        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+                    },
+                    "convertedAmount": 4.4137945368632545
+                }
+            ],
+            "count": 11105,
+            "endTime": "2015-09-11T19:58:58+00:00",
+            "exchange": {
+                "currency": "USD",
+                "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+            },
+            "exchangeRate": 0.004410567085248279,
+            "startTime": "2015-11-10T00:06:04+00:00",
+            "total": 442442.5974313684
+        }
+    ]
+}
+```
+
+
+
 
 
 ## Get Payment Volume ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-<span class='draft-comment'>TODO</span>
+Get aggregated payment volume for a given time period.
+
+```
+GET /v2/network/payment_volume
+```
+
+Optionally, you can include the following query parameters:
+
+| Field    | Value   | Description |
+|----------|---------|-------------|
+| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
+| marker   | String  | Pagination key from previously returned response |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of results returned. |
+| rows | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+
+Each object in the `components` array of the Volume Objects represent the volume of payments for one currencies and issuer, and has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| currency | String - [Currency Code][] | This object represents payment volume for this currency. |
+| issuer | String - [Address][] | (Omitted for XRP) This object represents payment volume for the currency issued by this account. |
+| amount | Number | Total payment volume for this currency during the interval, in units of the currency itself. |
+| count  | Number | The total number of payments in this currency |
+| rate   | Number | The exchange rate between this currency and the display currency. |
+| convertedAmount | Number | Total payment volume for this currency, converted to the display currency. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/payment_volume
+```
+
+Response:
+
+```
+{
+    "result": "success",
+    "count": 1,
+    "rows": [
+        {
+            "components": [
+                {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "amount": 87279.59029136538,
+                    "count": 331,
+                    "rate": 0.004412045860957953,
+                    "convertedAmount": 19782113.1153009
+                },
+                {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "amount": 0,
+                    "count": 0,
+                    "rate": 0.00451165816091143,
+                    "convertedAmount": 0
+                },
+                {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "amount": 279.03077460240354,
+                    "count": 107,
+                    "rate": 0.000013312520335244644,
+                    "convertedAmount": 20960026.169024874
+                },
+                
+                ... (additional results trimmed) ...
+                
+                {
+                    "currency": "MXN",
+                    "issuer": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+                    "amount": 49263.13280138676,
+                    "count": 19,
+                    "rate": 0.07640584677247926,
+                    "convertedAmount": 644756.0609868265
+                },
+                {
+                    "currency": "XRP",
+                    "amount": 296246369.30089426,
+                    "count": 8691,
+                    "rate": 1,
+                    "convertedAmount": 296246369.30089426
+                }
+            ],
+            "count": 9388,
+            "endTime": "2015-09-11T19:58:59+00:00",
+            "exchange": {
+                "currency": "XRP"
+            },
+            "exchangeRate": 1,
+            "startTime": "2015-11-10T00:19:04+00:00",
+            "total": 390754174.7837752
+        }
+    ]
+}
+```
+
 
 
 ## Get Issued Value ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getMetric.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
 <span class='draft-comment'>TODO</span>
 
@@ -2078,6 +2458,21 @@ The following values are valid for the `change_type` field of a Balance Change D
 | `payment_destination` | This balance change reflects currency that was received from a payment. |
 | `payment_source` | This balance change reflects currency that was spent in a payment. |
 | `exchange` | This balance change reflects currency that was traded for other currency, or the same currency from a different issuer. This can occur in the middle of payment execution as well as from offers. |
+
+## Volume Objects ##
+
+Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given time period.
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| components | Array of Objects | The data that was used to assemble this total. For payment volume, each object represents payments in a particular currency and issuer. For exchange volume, each object represents a market between two currencies. |
+| count | Number | The total number of exchanges in this period. |
+| endTime | String - [Timestamp][] | The end time of this interval. |
+| exchange | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
+| exchangeRate | Number | The exchange rate to the displayed currency from XRP. 
+| startTime | String - [Timestamp][] | The start of this time period. |
+| total | Number | Total volume of all recorded exchanges in the time period. |
+
 
 
 
