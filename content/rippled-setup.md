@@ -120,7 +120,7 @@ Running a `rippled` validator that participates in the Consensus process is simp
 
         $ sudo service rippled start
 
-3. Generate a validation public key and seed and save the output to a secure place::
+3. Generate a validation public key and seed, and save the output to a secure place:
 
         $ rippled --conf /etc/rippled/rippled.cfg -q validation_create
         {
@@ -139,6 +139,26 @@ Running a `rippled` validator that participates in the Consensus process is simp
 
         $ sudo service rippled restart
 
+
+## Public-Facing Server ##
+
+A production validator should run behind one or more public-facing rippleds to protect it from DDOS attacks.
+
+1. [Set up the rippled validator.](#validator-setup)
+
+2. [Set up one or more stock rippled nodes.](#installing-rippled)
+
+3. Configure the validator and stock rippleds to be [clustered](#clustering) with each other.
+
+4. Make the following configuration changes to your validator:
+    * Copy the `[ips_fixed]` list and paste it under `[ips]`. These fields should contain only the IP addresses and ports of the public-facing rippled(s). The validator will connect to only these peers.
+    * Change `[peer_private]` to `1` to prevent its IP address from being forwarded.
+
+5. Configure the validator host machine's firewall to only accept inbound connections from its public-facing rippled(s).
+
+Remember to restart rippled for config changes to take effect.
+
+Take care not to publish the IP address of your validator.
 
 
 ## Domain Verification ##
@@ -228,7 +248,12 @@ If you are running multiple `rippled` servers in a single datacenter, you can co
 
 To enable clustering, modify the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
 
-* List the IP addresses of each other node under the `[ips_fixed]` section.
+* List the IP address and port of each other node under the `[ips_fixed]` section. The port should be the one from the other nodes' `protocol = peer` setting in their `rippled.cfg`. Example:
+
+        [ips_fixed]
+        192.168.0.1 51235
+        192.168.0.2 51235
+
 * Generate a unique seed (using the [`validation_create` command](rippled-apis.html#validation-seed)) for each of your nodes, and configure it under the `[node_seed]` section. The `rippled` node uses this key to sign its messages to other nodes in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
 * Add the public keys (for peer communication) of each of your other nodes under the `[cluster_nodes]` section.
 
