@@ -5,7 +5,7 @@ The core server of the Ripple peer-to-peer network is [`rippled`](rippled-apis.h
 This page contains instructions for:
 
 * [Installing `rippled`](#installing-rippled)
-* [Participating in the Consensus Process](#running-a-validating-server)
+* [Participating in the Consensus Process](#running-a-validator)
 
 
 ## Types of rippled Servers ##
