@@ -1276,19 +1276,259 @@ Response:
 ## Get Issued Value ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-<span class='draft-comment'>TODO</span>
+Get total capitalization for a selection of major gateways over time. By default, returns only the most recent measurement.
 
-## Get Gateways ##
+#### Request Format ####
+
+```
+GET /v2/network/issued_value
+```
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
+| marker   | String  | Pagination key from previously returned response |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of results returned. |
+| rows | Array of Issued Value Objects | Aggregated capitalization at the requested point(s) in time. |
+
+Each Issued Value Object represents the total value issued at one point in time, and has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| components | Array of Objects | The data on individual issuers that was used to assemble this total. |
+| exchange | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
+| exchangeRate | Number | The exchange rate to the displayed currency from XRP. 
+| time | String - [Timestamp][] | The time at which this data was measured. |
+| total | Number | Total value of all issued assets at this time, in units of the display currency. |
+
+
+
+
+## Get All Gateways ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js)
 
-<span class='draft-comment'>TODO</span>
+Get information about known gateways.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*REST*
+
+```
+GET /v2/gateways/
+```
+
+</div>
+
+<span class='draft-comment'>(Apparently this method has no query parameters?)</span>
 
 
-## Get Currencies ##
+#### Response Format ####
 
-<span class='draft-comment'>TODO...
-		+    app.get('/v2/currencies/:currencyAsset?', routesV2.gateways.Currencies);
-</span>
+A successful response uses the HTTP code **200 OK** and has a JSON body.
+
+Each field in the top level JSON object is a [Currency Code][]. The content of each field is an array of gateway objects that issue that currency.
+
+Each gateway object represents a gateway, and has the following fields:
+
+
+| Field    | Value   | Description |
+|----------|---------|-------------|
+| name     | String  | A human-readable proper name for the gateway. |
+| account  | String - [Address][] | The issuing account (cold wallet) that issues the currency. |
+| featured | Boolean | Whether this gateway considered a "featured" issuer of the currency. Ripple, Inc. decides which gateways to feature based on responsible business practices, volume, and other measures. |
+| label    | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
+| assets   | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/gateways/
+```
+
+Response:
+
+```
+{
+    "AUD": [
+        {
+            "name": "Bitstamp",
+            "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "featured": false,
+            "assets": [
+                "logo.grayscale.svg",
+                "logo.svg"
+            ]
+        },
+        {
+            "name": "Coinex",
+            "account": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+            "featured": false,
+            "assets": []
+        }
+    ],
+
+... (additional results trimmed) ...
+
+    "0158415500000000C1F76FF6ECB0BAC600000000": [
+        {
+            "name": "GBI",
+            "account": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
+            "featured": false,
+            "label": "XAU (-0.5pa)",
+            "assets": []
+        }
+    ],
+    "KRW": [
+        {
+            "name": "EXRP",
+            "account": "rPxU6acYni7FcXzPCMeaPSwKcuS2GTtNVN",
+            "featured": true,
+            "assets": []
+        },
+        {
+            "name": "Pax Moneta",
+            "account": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d",
+            "featured": false,
+            "assets": []
+        }
+    ]
+}
+```
+
+
+
+## Get Gateway ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js)
+
+Get information about known gateways.
+
+#### Request Format ####
+
+<div class='multicode'>
+
+*REST*
+
+```
+GET /v2/gateways/:gateway
+```
+
+</div>
+
+This method requires the following URL parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| :gateway | String | The issuing [Address][], URL-escaped name, or normalized name of the gateway. |
+
+<span class='draft-comment'>(Apparently this method has no query parameters?)</span>
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field       | Value  | Description |
+|-------------|--------|-------------|
+| name        | String | Human-readable name of the gateway
+| start\_date | String - [Timestamp][] | <span class='draft-comment'>(The date when this gateway started doing business?)</span>
+| accounts    | Array | A list of issuing accounts used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as hot wallets. |
+| domain      | String | The domain name where this gateway does business. Typically it has a `ripple.txt` hosted there. |
+| status      | String | <span class='draft-comment'>It's always `active` even if it... probably shouldn't be?</span> |
+| normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
+| assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+
+Each object in the `accounts` field array has the following fields:
+
+| Field      | Value  | Description |
+|------------|--------|-------------|
+| address    | String | The [Address][] of an issuing account (cold wallet) used by this gateway. |
+| currencies | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple, Inc. decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/gateways/Gatehub
+```
+
+Response:
+
+```
+200 OK
+{
+    "name": "Gatehub",
+    "start_date": "2015-02-15T00:00:00Z",
+    "accounts": [
+        {
+            "address": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+            "currencies": {
+                "EUR": {
+                    "featured": true
+                },
+                "USD": {
+                    "featured": true
+                }
+            }
+        }
+    ],
+    "hotwallets": [
+        "rhotcWYdfn6qxhVMbPKGDF3XCKqwXar5J4"
+    ],
+    "domain": "gatehub.net",
+    "status": "active",
+    "normalized": "gatehub",
+    "assets": [
+        "logo.grayscale.svg",
+        "logo.svg"
+    ]
+}
+```
+
+
+
+
+## Get Currency Images ##
+
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/v0.0.4-rc2/api/routesV2/gateways.js#L196 "Source")
+
+Retrieve vector icons for various currencies.
+
+#### Request Format ####
+
+```
+GET /v2/currencies/:currencyimage
+```
+
+This method requires the following URL parameter:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| :currencimage | String | An image file for a currency, such as `xrp.svg`. See [the source code](https://github.com/ripple/rippled-historical-database/tree/develop/api/gateways/currencyAssets) for a list of available images. |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a **Content-Type** header of `image/svg+xml` to indicate that the contents are XML representing a file in [SVG format](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
+
+
 
 
 ## Get Accounts ##
