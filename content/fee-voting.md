@@ -2,7 +2,7 @@
 
 In the long term, it may be necessary to change the basic schedule of XRP requirements to reflect long-term changes in the value of XRP. In this case, validators can vote for changes to basic [transaction cost](tx-cost.html) as well as [reserve requirements](reserves.html). If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter.
 
-Operators of [`rippled` validators](rippled-setup.html#running-a-validating-node) can set their preferences for the transaction cost and reserve requirements in the `[voting]` stanza of the `rippled.cfg` file. Changes here should not be made lightly: insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:
+Operators of [`rippled` validators](rippled-setup.html#running-a-validator) can set their preferences for the transaction cost and reserve requirements in the `[voting]` stanza of the `rippled.cfg` file. Changes here should not be made lightly: insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:
 
 | Parameter | Description | Recommended Value |
 |-----------|-------------|-------------------|
