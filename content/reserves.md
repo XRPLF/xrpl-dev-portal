@@ -4,6 +4,8 @@ The Ripple Consensus Ledger applies _reserve requirements_, in XRP, to protect t
 
 Each account in the shared global ledger must hold a minimum of XRP in order to submit transactions, and it cannot send this XRP to other accounts. You cannot create a new account unless you send enough XRP to meet the minimum reserve requirement.
 
+The current minimum reserve requirement is **20 XRP**. (This is the cost of an account that owns no additional objects in the ledger.)
+
 
 ## Base Reserve and Owner Reserve ##
 
@@ -15,7 +17,7 @@ The reserve requirement is divided into two parts:
 
 ### Owner Reserves ###
 
-Many objects in the ledger are owned by a particular account, and therefore count toward the reserve requirement of that account. When objects are removed from the ledger, they no longer count against their owner's account reserve.
+Many objects in the ledger are owned by a particular account, and therefore count toward the reserve requirement of that account. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
 
 * [Offers](ripple-ledger.html#offer) are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an [OfferCancel transaction](transactions.html#offercancel), or by sending an [OfferCreate transaction](transactions.html#offercreate) that contains an `OfferSequence` parameter.
 * [Trust lines](ripple-ledger.html#ripplestate) are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See [Contributing to the Owner Reserve](ripple-ledger.html#contributing-to-the-owner-reserve) for details.
@@ -31,7 +33,7 @@ The Ripple Consensus Ledger considers an [OfferCreate transaction](transactions.
 
 During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the [transaction cost](tx-cost.html) destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.
 
-When an account has less XRP than its current reserve requirement, it continues to exist in the ledger, but it cannot send new transactions. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.
+When an account has less XRP than its current reserve requirement, it cannot send new transactions. Even so, it continues to exist in the ledger, as all accounts do. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.
 
 **Exception:** When an account is below the reserve requirement, it can send new [OfferCreate transactions](transactions.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](ripple-ledger.html#ripplestate), or [Offer nodes in the ledger](ripple-ledger.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
