@@ -9,7 +9,7 @@ Each account in the shared global ledger must hold a minimum of XRP in order to 
 
 The reserve requirement is divided into two parts:
 
-* The **Base Reserve** is a static minimum amount of XRP that is required for every account in the ledger. Currently, this is 20 XRP (`20000000` drops).
+* The **Base Reserve** is a minimum amount of XRP that is required for every account in the ledger. Currently, this is 20 XRP (`20000000` drops).
 * The **Owner Reserve** is an additional requirement that scales with the number of objects that the account owns in the ledger. Currently, this is 5 XRP (`5000000` drops) per item.
 
 
@@ -32,6 +32,8 @@ The Ripple Consensus Ledger considers an [OfferCreate transaction](transactions.
 During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the [transaction cost](tx-cost.html) destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.
 
 When an account has less XRP than its current reserve requirement, it continues to exist in the ledger, but it cannot send new transactions. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.
+
+**Exception:** When an account is below the reserve requirement, it can send new [OfferCreate transactions](transactions.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](ripple-ledger.html#ripplestate), or [Offer nodes in the ledger](ripple-ledger.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
 
 ## Changing the Reserve Requirements ##
