@@ -101,6 +101,22 @@ This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the Ripple peer-to-peer network.
 
+[rippled commands](https://ripple.com/build/rippled-apis/#list-of-public-commands) can be run with:
+
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg <command>
+
+
+## Updating rippled ##
+
+Run the following commands to update to the latest release of `rippled`:
+
+        $ sudo yum update --enablerepo=ripple-stable rippled
+        $ sudo systemctl daemon-reload
+        $ sudo service rippled restart
+
+You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
+
+
 # Running a Validator #
 
 Running a `rippled` validator that participates in the Consensus process is simple:
@@ -122,7 +138,7 @@ Running a `rippled` validator that participates in the Consensus process is simp
 
 3. Generate a validation public key and seed, and save the output to a secure place:
 
-        $ rippled --conf /etc/rippled/rippled.cfg -q validation_create
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg -q validation_create
         {
             "status" : "success",
             "validation_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
@@ -179,7 +195,7 @@ The steps below describe how to set the domain field of a validator's Ripple acc
 
 1. Get the validator's account address using the `validation_seed` generated [above](#validator-setup) in step 3:
 
-        $ rippled wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
         {
            "result" : {
               "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -217,6 +233,10 @@ The steps below describe how to set the domain field of a validator's Ripple acc
 `rippled` should connect to the Ripple network with the default configuration. However, you can modify your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
 
 See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
+
+Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
+
+        $ chown -R rippled:rippled <configured path>
 
 You will need to restart `rippled` for any configuration changes to take effect:
 
