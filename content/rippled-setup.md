@@ -234,6 +234,10 @@ The steps below describe how to set the domain field of a validator's Ripple acc
 
 See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
 
+Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
+
+        $ chown -R rippled:rippled <configured path>
+
 You will need to restart `rippled` for any configuration changes to take effect:
 
         $ sudo service rippled restart
