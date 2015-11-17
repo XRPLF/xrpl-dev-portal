@@ -1,6 +1,6 @@
 # Transaction Cost #
 
-In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/knowledge_center/math-based-currency-2/). This _transaction cost_ is designed to scale up with the load on the network, in order to quickly bankrupt abusers while imposing as little cost as possible on legitimate, respectful users.
+In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/knowledge_center/math-based-currency-2/). This _transaction cost_ is designed to increase along with the load on the network, in order to quickly bankrupt abusers while imposing as little cost as possible on legitimate, respectful users.
 
 Every transaction must [specify how much XRP it will destroy](#specifying-the-transaction-cost) in order to pay the transaction cost.
 
@@ -8,6 +8,8 @@ Every transaction must [specify how much XRP it will destroy](#specifying-the-tr
 ## Current Transaction Cost ##
 
 The current transaction cost required by the network is typically **0.01 XRP** (10,000 drops), although it sometimes increases due to network load.
+
+You can also [query `rippled` for the current transaction cost](#querying-the-transaction-cost).
 
 
 ## Beneficiaries of the Transaction Cost ##
@@ -17,7 +19,7 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 ## Load Scaling ##
 
-Each server independently scales the transaction cost based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server drops the transaction: it neither applies nor relays it. (**Exception:** If you submit a transaction through an admin connection, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive the consensus process unless its `Fee` value meets the requirements of a majority of servers.
+Each `rippled` server independently scales the transaction cost based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an admin connection, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) unless its `Fee` value meets the requirements of a majority of servers.
 
 
 ## Querying the Transaction Cost ##
@@ -26,7 +28,7 @@ The `rippled` APIs have two ways to query the transaction cost: the `server_info
 
 ### server_info ###
 
-The [`server_info` command](rippled-apis.html#server-info) reports the unscaled minimum XRP cost, as of the previous ledger, as `validated_ledger.base_fee_xrp`, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying by the `load_factor` parameter in the same response, which represents the server's current load level. In other words:
+The [`server_info` command](rippled-apis.html#server-info) reports the unscaled minimum XRP cost, as of the previous ledger, as `validated_ledger.base_fee_xrp`, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that `base_fee_xrp` value by the `load_factor` parameter in the same response, which represents the server's current load level. In other words:
 
 **Current Transaction Cost in XRP = `base_fee_xrp` × `load_factor`**
 
@@ -51,12 +53,12 @@ When you sign a transaction online, you can omit the `Fee` field. In this case, 
     * In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a `LastLedgerSequence` parameter or until you cancel it with a new transaction that uses the same `Sequence` number. See [reliable transaction submission](reliable_tx.html) for best practices.
 * You do not know in advance exactly what value you are signing for the `Fee` field.
     * If you are using `rippled`, you can also use the `fee_mult_max` parameter of the [`sign` command](rippled-apis.html#sign) to set a limit to the load scaling you are willing to sign.
-* You cannot look up the transaction cost if you are offline.
+* You cannot look up the current transaction cost from an offline machine.
 
 
 ### Paying More Than Necessary ###
 
-As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they are signed, to the extent possible. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if it is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's reserve requirement.
+As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if it is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's reserve requirement.
 
 
 ## Transaction Costs and Failed Transactions ##
