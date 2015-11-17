@@ -1,6 +1,6 @@
 # Transaction Cost #
 
-In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/knowledge_center/math-based-currency-2/). This _transaction cost_ is designed to increase along with the load on the network, in order to quickly bankrupt abusers while imposing as little cost as possible on legitimate, respectful users.
+In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/knowledge_center/math-based-currency-2/). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
 Every transaction must [specify how much XRP it will destroy](#specifying-the-transaction-cost) in order to pay the transaction cost.
 
@@ -45,7 +45,12 @@ The [`server_state` command](rippled-apis.html#server-state) returns a direct re
 
 Every signed transaction must include the transaction cost in the [`Fee` field](transactions.html#common-fields). Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.
 
+As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if it is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's reserve requirement.
+
 Before signing a transaction, we recommend [looking up the current load-based transaction cost](#querying-the-transaction-cost). If the transaction cost is currently high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.
+
+
+### Automatically Specifying the Transaction Cost ###
 
 When you sign a transaction online, you can omit the `Fee` field. In this case, `rippled` or ripple-lib looks up an appropriate value based on the state of the peer-to-peer network, and includes it before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:
 
@@ -55,10 +60,6 @@ When you sign a transaction online, you can omit the `Fee` field. In this case, 
     * If you are using `rippled`, you can also use the `fee_mult_max` parameter of the [`sign` command](rippled-apis.html#sign) to set a limit to the load scaling you are willing to sign.
 * You cannot look up the current transaction cost from an offline machine.
 
-
-### Paying More Than Necessary ###
-
-As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if it is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's reserve requirement.
 
 
 ## Transaction Costs and Failed Transactions ##
@@ -74,6 +75,15 @@ If a transaction's failure is [final](transactions.html#finality-of-results), th
 When a `rippled` server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the `rippled` server retries the transaction without relaying it to the network, until the transaction's outcome is [final](transactions.html#finality-of-results).
 
 An account's XRP balance could change between when the transaction gets distributed to the network and when it becomes included in a validated ledger. (For example, a previous transaction sending XRP to the account in question might have applied provisionally, but the two transactions might execute in the opposite order when the network forms the consensus ledger.) In this case, an account may have insufficient XRP to pay the transaction cost even though the transaction has already been distributed to the network. When this happens, the transaction fails with the result code `tecINSUFF_FEE` and the account pays as much XRP as possible, resulting in a balance of 0 XRP.
+
+
+## Key Reset Transaction ##
+
+As a special case, an account can send a [SetRegularKey](transactions.html#setregularkey) transaction with a transaction cost of `0`, as long as the account's [lsfPasswordSpent flag](ripple-ledger.html#accountroot-flags) is disabled. This transaction must be signed by the account's _master key_. Sending this transaction enables the lsfPasswordSpent flag.
+
+This feature is designed to allow you to recover an account if the regular key is compromised, without worrying about whether the compromised account has any XRP available. This way, you can regain control of the account before you send additional XRP to it.
+
+The [lsfPasswordSpent flag](ripple-ledger.html#accountroot-flags) starts out disabled. If enabled, it gets disabled again when the account receives a [Payment](transactions.html#payment) of XRP.
 
 
 ## Changing the Transaction Cost ##
