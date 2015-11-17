@@ -3,7 +3,7 @@ Ripple Data API v2
 
 The Ripple Data API v2 provides access to raw and processed information about changes in the Ripple Consensus Ledger. This information is stored in a database for easy access, which frees `rippled` servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as a source of processed analytic data to applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
 
-Ripple Labs provides a live instance of the `rippled` Historical Database API with as complete a transaction record as possible at the following address:
+Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
@@ -27,14 +27,14 @@ General Methods:
 * [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
 * [Get Transactions - `GET /v2/transactions/`](#get-transactions)
-* [Get Payments - `GET /v2/payments/:currency`](#get-payments)
-* [Get Exchanges - `GET /v2/exchanges/:base/:counter`](#get-exchanges)
-* [Get Exchange Rates - `GET /v2/exchange_rates/:base/:counter`](#get-exchange-rates)
+* [Get Payments - `GET /v2/payments/{:currency}`](#get-payments)
+* [Get Exchanges - `GET /v2/exchanges/{:base}/{:counter}`](#get-exchanges)
+* [Get Exchange Rates - `GET /v2/exchange_rates/{:base}/{:counter}`](#get-exchange-rates)
 * [Get Normalization - `GET /v2/normalize`](#normalize)
 * [Get Daily Reports - `GET /v2/reports/`](#get-daily-reports)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
-* [Get Capitalization - `GET /v2/capitalization/:currency/:issuer`](#get-capitalization)
-* [Get Active Accounts - `GET /v2/active_accounts/:base/:counter`](#get-active-accounts)
+* [Get Capitalization - `GET /v2/capitalization/{:currency}](#get-capitalization)
+* [Get Active Accounts - `GET /v2/active_accounts/{:base}/{:counter}`](#get-active-accounts)
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
 * [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
@@ -464,8 +464,8 @@ This method requires the following URL parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| base  | String | base currency of the pair in the format currency[+issuer] (required) |
-| counter | String | counter currency of the pair in the format currency[+issuer] (required) |
+| base  | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| counter | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 
 Optionally, you can also include the following query parameters:
 
@@ -587,8 +587,8 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| :base    | String | Base currency of the pair in the format currency[+issuer] |
-| :counter | String | Counter currency of the pair in the format currency[+issuer] |
+| :base    | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| :counter | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 
 
 Optionally, you can also include the following query parameters:
@@ -629,10 +629,10 @@ This method uses the following query parameters:
 | Field             | Value   | Description |
 |-------------------|---------|-------------|
 | amount            | Number  | (Required) Amount of currency to normalize |
-| currency          | String - Currency Code | The currency code of the `amount` to convert from. (Defaults to XRP.) |
-| issuer            | String - Address | The issuer of the currency to convert from. (Required if `currency` is not XRP.) |
-| exchange\_currency | String  | The currency code of the currency to convert to. (Defaults to XRP.) |
-| exchange\_issuer   | String  | The issuer of the currency to convert to. (Required if `exchange_currency` is not XRP.) |
+| currency          | String - [Currency Code][] | The currency code of the `amount` to convert from. (Defaults to XRP.) |
+| issuer            | String - [Address][] | The issuer of the currency to convert from. (Required if `currency` is not XRP.) |
+| exchange\_currency | String - [Currency Code][] | The currency to convert to. (Defaults to XRP.) |
+| exchange\_issuer   | String - [Address][] | The issuer of the currency to convert to. (Required if `exchange_currency` is not XRP.) |
 | date              | String - [Timestamp][] | Convert according to the exchange rate at this time. (Defaults to the current time.) |
 | strict            | Boolean | If true, do not use exchange rates that are determined by less than 10 exchanges. (Defaults to true.) |
 
@@ -825,19 +825,19 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 ## Get Capitalization ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js "Source")
 
-Get capitalization data for a specific currency + issuer
+Get capitalization data for a specific currency and issuer.
 
 #### Request Format ####
 
 ```
-GET /v2/capitaliztion/{:currency}
+GET /v2/capitaliztion/{:currency}+{:issuer}
 ```
 
 This method requires the following URL parameters:
 
-| Field     | Value  | Description |
-|-----------|--------|-------------|
-| :currency | String | Currency and issuer to look up, concatenated with a `+`. XRP is invalid. |
+| Field     | Value                      | Description |
+|-----------|----------------------------|-------------|
+| :currency | String | Currency to look up, in the form of [currency](#currency-code)+[issuer](#addresses). XRP is disallowed. |
 
 
 Optionally, you can also include the following query parameters:
@@ -889,8 +889,8 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| :base    | String | Base currency of the pair in the format currency[+issuer] |
-| :counter | String | Counter currency of the pair in the format currency[+issuer] |
+| :base    | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| :counter | String | Counter currency of the pair in the format [currency](#currency-code)\[+[issuer](#addresses)\] |
 
 Optionally, you can also include the following query parameters:
 
@@ -1428,7 +1428,7 @@ Get information about known gateways.
 *REST*
 
 ```
-GET /v2/gateways/:gateway
+GET /v2/gateways/{:gateway}
 ```
 
 </div>
@@ -1516,7 +1516,7 @@ Retrieve vector icons for various currencies.
 #### Request Format ####
 
 ```
-GET /v2/currencies/:currencyimage
+GET /v2/currencies/{:currencyimage}
 ```
 
 This method requires the following URL parameter:
@@ -2109,8 +2109,8 @@ This method requires the following URL parameters:
 | Field    | Value  | Description |
 |----------|--------|-------------|
 | :address | String | Ripple address to query |
-| :base    | String | Base currency of the pair in the format currency[+issuer] |
-| :counter | String | Counter currency of the pair in the format currency[+issuer] |
+| :base    | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| :counter | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 
 
 Optionally, you can also include the following query parameters:
@@ -2719,7 +2719,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 
 # Running the Historical Database #
 
-You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple Labs to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
+You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
 
 ## Installation ##
 
@@ -2801,7 +2801,7 @@ The `--startIndex` parameter defines the most-recent ledger to retrieve. The Bac
 
 The `--stopIndex` parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.
 
-**Warning:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. Ripple Labs used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
+**Warning:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. Ripple, Inc. used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
 
 Here are some examples:
 
