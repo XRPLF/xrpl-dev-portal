@@ -342,7 +342,7 @@ Most of the time, the `issuer` field of a non-XRP [currency amount](rippled-apis
 
 ### Creating Accounts ###
 
-The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](https://wiki.ripple.com/Reserves) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](ripple-ledger.html#accountroot) will be added to the ledger to reflect the newly-created account.
+The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](reserves.html) to a mathematically-valid account address that does not exist yet. When the payment is processed, a new [AccountRoot node](ripple-ledger.html#accountroot) will be added to the ledger to reflect the newly-created account.
 
 If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.
 
@@ -601,7 +601,7 @@ A client application can locally track the funding status of offers. To do this,
 
 The limit values of trust lines (See [TrustSet](#trustset)) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.
 
-However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](https://wiki.ripple.com/Reserves), any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.
+However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.
 
 A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.
 
@@ -712,7 +712,7 @@ Since a computer program cannot force the gateway to keep its promise and not de
 
 There are two cases where you can hold a balance on a trust line that is *greater* than your limit: when you acquire more of that currency through [trading](#offercreate), or when you decrease the limit on your trust line.
 
-Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](https://wiki.ripple.com/Reserves). This applies to the account extending trust, not to the account receiving it.
+Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](reserves.html). This applies to the account extending trust, not to the account receiving it.
 
 A trust line with settings in the default state is equivalent to no trust line.
 
@@ -1001,14 +1001,14 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecPATH\_PARTIAL | 101 | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
 | tecUNFUNDED\_ADD | 102 | **DEPRECATED.** |
 | tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have any of the `TakerGets` currency. |
-| tecUNFUNDED\_PAYMENT | 104 | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
+| tecUNFUNDED\_PAYMENT | 104 | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](reserves.html)) |
 | tecFAILED\_PROCESSING | 105 | An unspecified error occurred when processing the transaction. |
 | tecDIR\_FULL | 121 | The "owners count" of the account sending the transaction is already maxed out. |
-| tecINSUF\_RESERVE\_LINE | 122 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](https://wiki.ripple.com/Reserves)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
-| tecINSUF\_RESERVE\_OFFER | 123 | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](https://wiki.ripple.com/Reserves)) |
+| tecINSUF\_RESERVE\_LINE | 122 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
+| tecINSUF\_RESERVE\_OFFER | 123 | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](reserves.html)) |
 | tecNO\_DST | 124 | The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received sufficient XRP.) |
 | tecNO\_DST\_INSUF_XRP | 125 | The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it. |
-| tecNO\_LINE\_INSUF\_RESERVE | 126 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](https://wiki.ripple.com/Reserves)) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF\_RESERVE\_LINE for the other case.) |
+| tecNO\_LINE\_INSUF\_RESERVE | 126 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](reserves.html)) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF\_RESERVE\_LINE for the other case.) |
 | tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
 | tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |

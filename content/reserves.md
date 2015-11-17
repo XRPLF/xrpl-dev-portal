@@ -37,7 +37,7 @@ When an account has less XRP than its current reserve requirement, it cannot sen
 
 **Exception:** When an account is below the reserve requirement, it can send new [OfferCreate transactions](transactions.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](ripple-ledger.html#ripplestate), or [Offer nodes in the ledger](ripple-ledger.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
-
 ## Changing the Reserve Requirements ##
 
 The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
+

@@ -86,42 +86,42 @@
         "md":"paths.md",
         "html":"paths.html",
         "ripple.com": "https://ripple.com/build/paths/",
-        "category": "References"
+        "category": "Concepts"
     },
     {
         "name": "Fees (Disambiguation)",
         "md": "fees.md",
         "html": "fees.html",
         "ripple.com": "https://ripple.com/knowledge_center/fees-disambiguation/",
-        "category": "References"
+        "category": "Concepts"
     },
     {
         "name": "Transfer Fees",
         "md":"transferrate.md",
         "html":"transfer_fees.html",
         "ripple.com": "https://ripple.com/knowledge_center/transfer-fees/",
-        "category": "References"
+        "category": "Concepts"
     },
     {
         "name": "Transaction Cost",
         "md": "tx-cost.md",
         "html": "tx-cost.html",
         "ripple.com": "https://wiki.ripple.com/Transaction_Fee",
-        "category": "References"
+        "category": "Concepts"
     },
     {
         "name": "Fee Voting",
         "md": "fee-voting.md",
         "html": "fee-voting.html",
         "ripple.com": "https://wiki.ripple.com/Understanding:_Transaction_and_Reserve_fee_setting",
-        "category": "References"
+        "category": "Concepts"
     },
     {
         "name": "Reserves",
         "md": "reserves.md",
         "html": "reserves.html",
-        "ripple.com": "https://wiki.ripple.com/Reserves",
-        "category": "References"
+        "ripple.com": "https://ripple.com/build/reserves/",
+        "category": "Concepts"
     },
     {
         "name": "Ripple-REST API Tool",

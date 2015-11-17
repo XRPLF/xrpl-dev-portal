@@ -2,13 +2,13 @@
 
 The Ripple Consensus Ledger is a decentralized ledger, secured by cryptography, and operated by a distributed peer-to-peer network of servers. This means that no one party, not even the Ripple, Inc., can charge a fee for access to the network.
 
-However, the rules of the Ripple Consensus Ledger include several types of fees, including the [_transaction cost_](tx-cost.html) and [_reserve requirement_](https://wiki.ripple.com/Reserves), which protect the ledger against abuse. (These neutral fees are not paid to anyone.) There are also several optional ways that users of the Consensus Ledger can collect fees from each other, both inside and outside the Ripple Consensus Ledger.
+However, the rules of the Ripple Consensus Ledger include several types of fees, including the [_transaction cost_](tx-cost.html) and [_reserve requirement_](reserves.html), which protect the ledger against abuse. (These neutral fees are not paid to anyone.) There are also several optional ways that users of the Consensus Ledger can collect fees from each other, both inside and outside the Ripple Consensus Ledger.
 
 ## In the Ledger ##
 
 The _transaction cost_ (sometimes called the transaction fee) is a miniscule amount of XRP destroyed in order to send a transaction. This cost scales with the load of the network, which protects it from being overwhelmed with spam. See [Transaction Cost](tx-cost.html) for more information.
 
-The _account reserve_ is a minimum amount of XRP that an account must possess. It scales with the number of objects the account owns in the ledger. This serves to disincentivize spam that would increase the size of the ledger. See [Reserves](https://wiki.ripple.com/Reserves) for more information.
+The _account reserve_ is a minimum amount of XRP that an account must possess. It scales with the number of objects the account owns in the ledger. This serves to disincentivize spam that would increase the size of the ledger. See [Reserves](reserves.html) for more information.
 
 _Transfer fees_ are optional percentage fees that gateways can charge to transfer the currencies they issue to other accounts within the Ripple Consensus Ledger. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) for more information.
 
