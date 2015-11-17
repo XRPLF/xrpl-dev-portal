@@ -121,6 +121,8 @@ def render_pages(precompiled, target=DEFAULT_TARGET):
     env = Environment(loader=FileSystemLoader(os.path.curdir))
     env.lstrip_blocks = True
     env.trim_blocks = True
+    
+    pp_env = Environment(loader=FileSystemLoader(CONTENT_PATH))
 
     for currentpage in pages:
     
@@ -128,11 +130,7 @@ def render_pages(precompiled, target=DEFAULT_TARGET):
             # Documentation file
     
             print("reading template file...")
-            
-#           #Experimental: Preprocessing the doc files using Jinja
-#            with open(DOC_TEMPLATE_FILE) as f:
-#                template_text = f.read()
-#            doc_template = Template(template_text)
+
             doc_template = env.get_template(DOC_TEMPLATE_FILE)
             if target == PDF_TARGET:
                 doc_template = env.get_template(PDF_TEMPLATE_FILE)
@@ -141,13 +139,19 @@ def render_pages(precompiled, target=DEFAULT_TARGET):
     
             if precompiled:
                 filein = os.path.join(CONTENT_PATH, currentpage["md"])
-                print("parsing markdown for", currentpage["name"])
-                ## New markdown module way
-                with open(filein) as f:
-                    s = f.read()
-                    doc_html = parse_markdown(s, target, pages)
                 
-#                ## Old Pandoc way
+                ## Old: read markdown from file
+                #with open(filein) as f:
+                    #md_in = f.read()
+                ## New: read markdown as a template
+                print("pre-processing markdown file",currentpage["md"])
+                md_raw = pp_env.get_template(currentpage["md"])
+                md_in = md_raw.render(target=target,pages=pages)
+                
+                print("parsing markdown for", currentpage["name"])
+                doc_html = parse_markdown(md_in, target, pages)
+                
+#                ## Old Pandoc markdown parsing way
 #                args = ['pandoc', filein, '-F', BUTTONIZE_FILTER, '-t', 'html']
 #                print("compiling: running ", " ".join(args),"...")
 #                doc_html = subprocess.check_output(args, universal_newlines=True)
