@@ -74,7 +74,7 @@ If a transaction's failure is [final](transactions.html#finality-of-results), th
 
 When a `rippled` server initially evaluates a transaction, it rejects the transaction with the error code `terINSUF_FEE_B` if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a `ter` (Retry) code, the `rippled` server retries the transaction without relaying it to the network, until the transaction's outcome is [final](transactions.html#finality-of-results).
 
-An account's XRP balance could change between when the transaction gets distributed to the network and when it becomes included in a validated ledger. (For example, a previous transaction sending XRP to the account in question might have applied provisionally, but the two transactions might execute in the opposite order when the network forms the consensus ledger.) In this case, an account may have insufficient XRP to pay the transaction cost even though the transaction has already been distributed to the network. When this happens, the transaction fails with the result code `tecINSUFF_FEE` and the account pays as much XRP as possible, resulting in a balance of 0 XRP.
+When a transaction has already been distributed to the network, but the account does not have sufficient XRP to pay the transaction cost, the result code `tecINSUFF_FEE` occurs instead. In this case, the account pays all the XRP it can, ending with 0 XRP. This can occur because `rippled` decides whether to relay the transaction to the network based on its in-progress ledger, but transactions may be dropped or reordered when building the consensus ledger.
 
 
 ## Key Reset Transaction ##
