@@ -123,6 +123,8 @@ def render_pages(precompiled, target=DEFAULT_TARGET):
     env.trim_blocks = True
     
     pp_env = Environment(loader=FileSystemLoader(CONTENT_PATH))
+    #Example: if we want to add custom functions to the md files
+    #pp_env.globals['foo'] = lambda x: "FOO %s"%x
 
     for currentpage in pages:
     
