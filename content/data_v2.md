@@ -33,7 +33,7 @@ General Methods:
 * [Get Normalization - `GET /v2/normalize`](#normalize)
 * [Get Daily Reports - `GET /v2/reports/`](#get-daily-reports)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
-* [Get Capitalization - `GET /v2/capitalization/{:currency}](#get-capitalization)
+* [Get Capitalization - `GET /v2/capitalization/{:currency}`](#get-capitalization)
 * [Get Active Accounts - `GET /v2/active_accounts/{:base}/{:counter}`](#get-active-accounts)
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
@@ -59,7 +59,7 @@ Retrieve a specific Ledger by hash, index, date, or latest validated.
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -67,7 +67,7 @@ Retrieve a specific Ledger by hash, index, date, or latest validated.
 GET /v2/ledgers/{:identifier}
 ```
 
-</div>
+<!--</div>-->
 
 The following URL parameters are required by this API endpoint:
 
@@ -129,7 +129,7 @@ Retrieve a specific transaction by its identifying hash.
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -137,7 +137,7 @@ Retrieve a specific transaction by its identifying hash.
 GET /v2/transactions/{:hash}
 ```
 
-</div>
+<!--</div>-->
 
 The following URL parameters are required by this API endpoint:
 
@@ -235,7 +235,7 @@ Retrieve transactions by time
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -243,14 +243,14 @@ Retrieve transactions by time
 GET /v2/transactions/
 ```
 
-</div>
+<!--</div>-->
 
 Optionally, you can include the following query parameters:
 
 | Field      | Value | Description |
 |------------|-------|-------------|
-| start      | String | UTC start time of query range |
-| end        | String | UTC end time of query range |
+| start      | String - [Timestamp][]  | Filter results to this time and later |
+| end        | String - [Timestamp][]  | Filter results to this time and earlier |
 | descending | Boolean | reverse chronological order |
 | type       | String | filter transactions for a specific transaction type |
 | result     | String | filter transactions for a specific transaction result |
@@ -387,13 +387,25 @@ Response:
 
 Retrieve Payments over time, where Payments are defined as `Payment` type transactions where the sender of the transaction is not also the destination. 
 
-Results can be returned as individual payments or aggregated to a specific list of intervals if a currency and issuer is provided.
+Results can be returned as individual payments, or aggregated to a specific list of intervals if currency and issuer are provided.
 
 #### Request Format ####
+
+<!--<div class='multicode'>-->
+
+*REST - All Currencies*
+
+```
+GET /v2/payments/
+```
+
+*REST - Specific Currency*
 
 ```
 GET /v2/payments/{:currency}
 ```
+
+<!--</div>-->
 
 This method accepts the following URL parameters:
 
@@ -439,6 +451,84 @@ If the request specifies a `currency` and an `interval`, the result includes obj
 | total\_amount | Number | The amount of the `currency` delivered during this interval. |
 | average\_amount | Number | The average amount of currency delivered by a single payment during this interval. |
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/payments/BTC+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q?limit=2
+```
+
+Response:
+
+```
+200 OK
+{
+  "result": "success",
+  "count": 2,
+  "marker": "20131124004240|000003504935|00002",
+  "payments": [
+    {
+      "amount": "100.0",
+      "delivered_amount": "100.0",
+      "destination_balance_changes": [
+        {
+          "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "currency": "BTC",
+          "value": "100"
+        }
+      ],
+      "fee": "1.0E-5",
+      "source_balance_changes": [
+        {
+          "counterparty": "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+          "currency": "BTC",
+          "value": "-100"
+        }
+      ],
+      "tx_index": 3,
+      "currency": "BTC",
+      "destination": "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+      "executed_time": "2013-09-27T04:03:00Z",
+      "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "ledger_index": 2424349,
+      "source": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "source_currency": "BTC",
+      "tx_hash": "EDDE2601C38F886E1183B5E7E1BFD936105C76E3648E3FAD2A6C55E90BABDB47"
+    },
+    {
+      "amount": "0.2",
+      "delivered_amount": "0.2",
+      "destination_balance_changes": [
+        {
+          "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "currency": "BTC",
+          "value": "0.2"
+        }
+      ],
+      "fee": "1.5E-5",
+      "max_amount": "0.202",
+      "source_balance_changes": [
+        {
+          "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "currency": "BTC",
+          "value": "-0.2"
+        }
+      ],
+      "tx_index": 1,
+      "currency": "BTC",
+      "destination": "rHfcNvcg8pBqBxtSvD9Ma8gF17uxauB31o",
+      "executed_time": "2013-11-20T23:52:30Z",
+      "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "ledger_index": 3445885,
+      "source": "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+      "source_currency": "BTC",
+      "tx_hash": "F30D6CED4B0C37660F6DD741C9CA49F0BCB2D2648CDB8FC8AD6CFD86A86384E2"
+    }
+  ]
+}
+```
+
 
 
 
@@ -450,7 +540,7 @@ Retrieve Exchanges for a given currency pair over time.  Results can be returned
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -458,7 +548,7 @@ Retrieve Exchanges for a given currency pair over time.  Results can be returned
 GET /v2/exchanges/{:base}/{:counter}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -579,9 +669,15 @@ Retrieve an exchange rate for a given currency pair at a specific time.
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/exchange_rates/{:base}/{:counter}
 ```
+
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -611,6 +707,24 @@ All exchange rates are calcuated by converting the base currency and counter cur
 
 The rate is derived from the volume weighted average over the calendar day specified, averaged with the volume weighted average of the last 50 trades within the last 14 days.
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/exchange_rates/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?date=2015-11-13T00:00:00Z
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "rate": "224.65709"
+}
+```
+
+
 
 
 ## Normalize ##
@@ -620,9 +734,15 @@ Convert an amount from one currency and issuer to another, using the network exc
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/normalize
 ```
+
+<!--</div>-->
 
 This method uses the following query parameters:
 
@@ -649,6 +769,26 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 All exchange rates are calculating by converting both currencies to XRP.
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/normalize?amount=100&currency=XRP&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "amount": "100",
+  "converted": "0.4267798022744489",
+  "rate": "0.0042677980"
+}
+```
+
+
 
 
 ## Get Daily Reports ##
@@ -658,7 +798,7 @@ Retrieve per account per day aggregated payment summaries
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -666,7 +806,7 @@ Retrieve per account per day aggregated payment summaries
 GET /v2/reports/{:date}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -759,7 +899,7 @@ Retrieve statistics about transaction activity in the Ripple Consensus Ledger, d
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -767,7 +907,7 @@ Retrieve statistics about transaction activity in the Ripple Consensus Ledger, d
 GET /v2/stats
 ```
 
-</div>
+<!--</div>-->
 
 
 Optionally, you can also include the following query parameters:
@@ -776,8 +916,8 @@ Optionally, you can also include the following query parameters:
 |------------|---------|-------------|
 | family     | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
 | metrics    | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
-| start      | String - [Timestamp][]  | Start time of query range |
-| end        | String - [Timestamp][]  | End time of query range |
+| end        | String - [Timestamp][] | Filter results to this time and earlier |
+| end        | String - [Timestamp][] | Filter results to this time and earlier |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
@@ -819,6 +959,39 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | marker | String | Pagination marker |
 | stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/stats/?start=2015-08-30&end=2015-08-31&interval=day&family=metric&metrics=accounts_created,exchanges_count,ledger_count,payments_count
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 2,
+  "stats": [
+    {
+      "accounts_created": 15,
+      "exchanges_count": 19368,
+      "ledger_count": 20307,
+      "payments_count": 24763,
+      "date": "2015-08-30T00:00:00Z"
+    },
+    {
+      "accounts_created": 18,
+      "exchanges_count": 17192,
+      "ledger_count": 19971,
+      "payments_count": 30894,
+      "date": "2015-08-31T00:00:00Z"
+    }
+  ]
+}
+```
+
 
 
 
@@ -829,9 +1002,15 @@ Get capitalization data for a specific currency and issuer.
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
-GET /v2/capitaliztion/{:currency}+{:issuer}
+GET /v2/capitaliztion/{:currency}
 ```
+
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -844,7 +1023,7 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range |
+| start      | String - [Timestamp][] | Start time of query range. Defaults to the most recent  |
 | end        | String - [Timestamp][] | End time of query range |
 | interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
 | limit      | Integer | Max results per page (defaults to 200) |
@@ -873,6 +1052,70 @@ Each issuer capitalization object has the following fields:
 | date   | String - [Timestamp][] | The start time of the interval this object represents. |
 | amount | [String - Number][] | The total amount of currency issued by the issuer as of the start of this interval. |
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/capitalization/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q?start=2015-01-01T00:00:00Z&end=2015-10-31&interval=month
+```
+
+Response:
+
+```
+200 OK
+{
+  "result": "success",
+  "currency": "USD",
+  "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+  "count": 10,
+  "rows": [
+    {
+      "date": "2015-01-01T00:00:00Z",
+      "amount": "4212940.254176095"
+    },
+    {
+      "date": "2015-02-01T00:00:00Z",
+      "amount": "5102817.663782776"
+    },
+    {
+      "date": "2015-03-01T00:00:00Z",
+      "amount": "4179270.8503426993"
+    },
+    {
+      "date": "2015-04-01T00:00:00Z",
+      "amount": "2609239.954946732"
+    },
+    {
+      "date": "2015-05-01T00:00:00Z",
+      "amount": "2262976.3681027396"
+    },
+    {
+      "date": "2015-06-01T00:00:00Z",
+      "amount": "2401904.277326213"
+    },
+    {
+      "date": "2015-07-01T00:00:00Z",
+      "amount": "2007614.760195671"
+    },
+    {
+      "date": "2015-08-01T00:00:00Z",
+      "amount": "2286058.6013003727"
+    },
+    {
+      "date": "2015-09-01T00:00:00Z",
+      "amount": "2070512.4729615194"
+    },
+    {
+      "date": "2015-10-01T00:00:00Z",
+      "amount": "2140238.7719266433"
+    }
+  ]
+}
+```
+
+
+
 
 ## Get Active Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js "Source")
@@ -881,9 +1124,15 @@ Get information on which accounts are actively trading in a specific currency pa
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/active_accounts/{:base}/{:counter}
 ```
+
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -1020,14 +1269,19 @@ Response:
 ## Get Exchange Volume ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-
 Get aggregated exchange volume for a given time period.
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/network/exchange_volume
 ```
+
+<!--</div>-->
 
 Optionally, you can include the following query parameters:
 
@@ -1036,8 +1290,8 @@ Optionally, you can include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
 | marker   | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
@@ -1056,7 +1310,7 @@ Each object in the `components` array of the Volume Objects represent the volume
 | Field  | Value  | Description |
 |--------|--------|-------------|
 | count  | Number | The number of exchanges in this market during this interval. |
-| rate   | Number | The exchange rate between the two currencies. <span class='draft-comment'>(Probably?)</span> |
+| rate   | Number | The exchange rate from the base currency to the display currency. |
 | amount | Number | The amount of volume in the market, in units of the base currency. |
 | base   | Object | The `currency` and `issuer` that identify the base currency of this market. There is no `issuer` for XRP. |
 | counter | Object | The `currency` and `issuer` that identify the counter currency of this market. There is no `issuer` for XRP. |
@@ -1161,9 +1415,17 @@ Response:
 
 Get aggregated payment volume for a given time period.
 
+#### Request Format ####
+
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/network/payment_volume
 ```
+
+<!--</div>-->
 
 Optionally, you can include the following query parameters:
 
@@ -1172,8 +1434,8 @@ Optionally, you can include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
 | marker   | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
@@ -1280,9 +1542,15 @@ Get total capitalization for a selection of major gateways over time. By default
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/network/issued_value
 ```
+
+<!--</div>-->
 
 Optionally, you can include the following query parameters:
 
@@ -1290,8 +1558,8 @@ Optionally, you can include the following query parameters:
 |--------|---------|-------------|
 | start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
-| exchange\_currency | String | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | Normalize results to the specified `currency` issued by this issuer. |
+| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
 | marker   | String  | Pagination key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
@@ -1316,17 +1584,71 @@ Each Issued Value Object represents the total value issued at one point in time,
 | time | String - [Timestamp][] | The time at which this data was measured. |
 | total | Number | Total value of all issued assets at this time, in units of the display currency. |
 
+#### Example ####
+
+Request: 
+
+```
+GET /v2/network/issued_value?start=2015-10-01T00:00:00&end=2015-10-01T00:00:00&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 1,
+  "rows": [
+    {
+      "components": [
+        {
+          "currency": "USD",
+          "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+          "amount": "2177473.2843876695",
+          "rate": "0.000028818194",
+          "converted_amount": "2166521.1303508882"
+        },
+        {
+          "currency": "USD",
+          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+          "amount": "1651297.315492664",
+          "rate": "0.000028888001",
+          "converted_amount": "1639021.4313562333"
+        },
+        
+        ... (additional results trimmed for size) ...
+        
+        {
+          "currency": "MXN",
+          "issuer": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
+          "amount": "2288827.2376308907",
+          "rate": "0.00050850375",
+          "converted_amount": "129061.20018881827"
+        }
+      ],
+      "exchange": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "total": "8338101.394233938",
+      "exchange_rate": "0.0053547404",
+      "date": "2015-10-01T00:00:00Z"
+    }
+  ]
+}
+```
+
 
 
 
 ## Get All Gateways ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js)
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
 Get information about known gateways.
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1334,9 +1656,9 @@ Get information about known gateways.
 GET /v2/gateways/
 ```
 
-</div>
+<!--</div>-->
 
-<span class='draft-comment'>(Apparently this method has no query parameters?)</span>
+This method takes no query parameters.
 
 
 #### Response Format ####
@@ -1417,13 +1739,13 @@ Response:
 
 
 ## Get Gateway ##
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js)
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
-Get information about known gateways.
+Get information about a specific known gateway.
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1431,7 +1753,7 @@ Get information about known gateways.
 GET /v2/gateways/{:gateway}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -1439,7 +1761,7 @@ This method requires the following URL parameters:
 |-------|-------|-------------|
 | :gateway | String | The issuing [Address][], URL-escaped name, or normalized name of the gateway. |
 
-<span class='draft-comment'>(Apparently this method has no query parameters?)</span>
+This method takes no query parameters.
 
 #### Response Format ####
 
@@ -1448,11 +1770,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field       | Value  | Description |
 |-------------|--------|-------------|
 | name        | String | Human-readable name of the gateway
-| start\_date | String - [Timestamp][] | <span class='draft-comment'>(The date when this gateway started doing business?)</span>
+| start\_date | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
 | accounts    | Array | A list of issuing accounts used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
 | hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as hot wallets. |
 | domain      | String | The domain name where this gateway does business. Typically it has a `ripple.txt` hosted there. |
-| status      | String | <span class='draft-comment'>It's always `active` even if it... probably shouldn't be?</span> |
 | normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
 | assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
 
@@ -1495,7 +1816,6 @@ Response:
         "rhotcWYdfn6qxhVMbPKGDF3XCKqwXar5J4"
     ],
     "domain": "gatehub.net",
-    "status": "active",
     "normalized": "gatehub",
     "assets": [
         "logo.grayscale.svg",
@@ -1515,9 +1835,15 @@ Retrieve vector icons for various currencies.
 
 #### Request Format ####
 
+<!--<div class='multicode'>-->
+
+*REST*
+
 ```
 GET /v2/currencies/{:currencyimage}
 ```
+
+<!--</div>-->
 
 This method requires the following URL parameter:
 
@@ -1538,7 +1864,7 @@ Retrieve information about the creation of new accounts in the Ripple Consensus 
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1546,7 +1872,7 @@ Retrieve information about the creation of new accounts in the Ripple Consensus 
 GET /v2/accounts
 ```
 
-</div>
+<!--</div>-->
 
 Optionally, you can include the following query parameters:
 
@@ -1633,7 +1959,7 @@ Get creation info for a specific ripple account
 #### Request Format ####
 
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1641,7 +1967,7 @@ Get creation info for a specific ripple account
 GET /v2/accounts/{:address}
 ```
 
-</div>
+<!--</div>-->
 
 
 This method requires the following URL parameters:
@@ -1688,9 +2014,9 @@ Response:
 ## Get Account Balances ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountBalances.js "Source")
 
-Get balances for a specific ripple account
+Get all balances held or owed by a specific Ripple account.
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1698,7 +2024,7 @@ Get balances for a specific ripple account
 GET /v2/accounts/{:address}/balances
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -1712,11 +2038,10 @@ Optionally, you can also include the following query parameters:
 |--------------|---------|-------------|
 | ledger_index | Integer | Index of ledger for historical balances |
 | ledger_hash  | String  | Ledger hash for historical balances |
-| date         | String  | UTC date for historical balances. (**Note:** Historical balances may not be available for all dates. See [RD-671](https://ripplelabs.atlassian.net/browse/RD-671) for details.) |
+| date         | String  | UTC date for historical balances. |
 | currency     | String  | Restrict results to specified currency |
 | issuer       | String  | Restrict results to specified counterparty/issuer |
-| limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results. This may change; see [RD-832](https://ripplelabs.atlassian.net/browse/RD-832)) |
-| marker       | String  | **DEPRECATED** Do not use. |
+| limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results.) |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 #### Response Format ####
@@ -1729,7 +2054,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | close_time | String | close time of the ledger |
 | limit | String | number of results returned, if limit was exceeded |
 | marker | String | Pagination marker |
-| balances | Array of [balance objects][] | The requested balances |
+| balances | Array of [Balance Object][]s | The requested balances |
 
 #### Example ####
 
@@ -1783,6 +2108,125 @@ Response:
 ```
 
 
+## Get Account Orders ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountOrders.js "Source")
+
+Get orders in the order books, placed by a specific account. This does not return orders that have already been filled.
+
+#### Request Format ####
+
+<!--<div class='multicode'>-->
+
+*REST*
+
+```
+GET /v2/account/{:address}/orders
+```
+
+<!--</div>-->
+
+This method requires the following URL parameters:
+
+| Field    | Value  | Description |
+|----------|--------|-------------|
+| address  | String - [Address][] | Ripple address to query |
+
+Optionally, you can also include the following query parameters:
+
+| Field        | Value   | Description |
+|--------------|---------|-------------|
+| ledger_index | Integer | Index of ledger for historical orders |
+| ledger_hash  | String  | Ledger hash for historical orders |
+| date         | String  | UTC date for historical orders. |
+| limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400. |
+| format       | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| ledger_index | Integer | ledger index for orders query |
+| close_time | String | close time of the ledger |
+| limit | String | number of results returned, if limit was exceeded |
+| orders | Array of order objects | The requested orders |
+
+Each order object has the following fields:
+
+| Field                        | Value  | Description |
+|------------------------------|--------|-------------|
+| specification                | Object | Details of this order's current state. |
+| specification.direction      | String | Either `buy` or `sell` |
+| specification.quantity       | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
+| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency that will spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled. |
+| properties                   | Object | Details of how the order was placed. |
+| properties.maker             | String - [Address][] | The Ripple account that placed the order. |
+| properties.sequence          | Number | The sequence number of the transaction that placed this order. |
+| properties.makerExchangeRate | [String - Number][] | The exchange rate from the point of view of the account that submitted the order. |
+
+#### Example ####
+
+Request: 
+
+```
+GET /v2/accounts/rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV/orders?limit=2&date=2015-11-11T00:00:00Z
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "ledger_index": 17007855,
+  "close_time": "2015-11-11T00:00:00Z",
+  "limit": 2,
+  "orders": [
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "JPY",
+          "value": "56798.00687665813",
+          "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+        },
+        "totalPrice": {
+          "currency": "USD",
+          "value": "433.792841227449",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV",
+        "sequence": 7418286,
+        "makerExchangeRate": "130.9334813270407"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "JPY",
+          "value": "11557.02705273459",
+          "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+        },
+        "totalPrice": {
+          "currency": "USD",
+          "value": "87.570156003591",
+          "counterparty": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"
+        }
+      },
+      "properties": {
+        "maker": "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV",
+        "sequence": 7418322,
+        "makerExchangeRate": "131.9744942815983"
+      }
+    }
+  ]
+}
+```
+
+
 
 
 ## Get Account Transaction History ##
@@ -1792,7 +2236,7 @@ Retrieve a history of transactions that affected a specific account. This includ
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1800,13 +2244,13 @@ Retrieve a history of transactions that affected a specific account. This includ
 GET /v2/accounts/{:address}/transactions
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| :address | String | Ripple address to query |
+| :address | String - [Address][] | Ripple address to query |
 
 
 Optionally, you can also include the following query parameters:
@@ -1920,7 +2364,7 @@ Retrieve a specifc transaction originating from a specified account
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1928,7 +2372,7 @@ Retrieve a specifc transaction originating from a specified account
 GET /v2/accounts/{:address}/transactions/{:sequence}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -1986,7 +2430,7 @@ Retrieve a payments for a specified account
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -1994,7 +2438,7 @@ Retrieve a payments for a specified account
 GET /v2/accounts/{:address}/payments
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -2088,7 +2532,7 @@ Retrieve Exchanges for a given account over time.
 
 There are two variations on this method:
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST - All Exchanges*
 
@@ -2102,7 +2546,7 @@ GET /v2/accounts/{:address}/exchanges/
 GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -2203,7 +2647,7 @@ Retrieve Balance changes for a given account over time.
 
 #### Request Format ####
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
 *REST*
 
@@ -2211,7 +2655,7 @@ Retrieve Balance changes for a given account over time.
 GET /v2/accounts/{:address}/balance_changes/
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -2264,7 +2708,7 @@ Response:
       "change": "-0.012",
       "final_balance": "148.446663",
       "tx_index": 1,
-      "change_type": "network fee",
+      "change_type": "transaction_cost",
       "currency": "XRP",
       "executed_time": "2015-06-16T21:32:40",
       "ledger_index": 14091160,
@@ -2275,7 +2719,7 @@ Response:
       "change": "-0.012",
       "final_balance": "148.458663",
       "tx_index": 20,
-      "change_type": "network fee",
+      "change_type": "transaction_cost",
       "currency": "XRP",
       "executed_time": "2015-06-16T21:22:40",
       "ledger_index": 14091022,
@@ -2305,16 +2749,21 @@ Response:
 
 Retrieve daily summaries of payment activity for an account.
 
-<div class='multicode'>
+<!--<div class='multicode'>-->
 
-*REST*
+*REST - Date Omitted*
 
 ```
 GET /v2/accounts/{:address}/reports/
+```
+
+*REST - Date Specified*
+
+```
 GET /v2/accounts/{:address}/reports/{:date}
 ```
 
-</div>
+<!--</div>-->
 
 This method requires the following URL parameters:
 
@@ -2328,8 +2777,8 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String  | UTC start time of query range. Defaults to start of current date. |
-| end        | String  | UTC end time of query range. Defaults to current date. |
+| start      | String  | UTC start time of query range. Defaults to start of current date. Ignored if `date` specified. |
+| end        | String  | UTC end time of query range. Defaults to current date. Ignored if `date` specified. |
 | accounts   | Boolean | If true, provide lists with addresses of all `sending_counterparties` and `receiving_counterparties` in results. Otherwise, return only the number of sending and receiving counterparties. |
 | payments   | Boolean | Include [Payment Summary Objects][] in the `payments` field for each interval, with the payments that occurred during that interval. |
 | descending | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
@@ -2653,7 +3102,7 @@ Payment objects have the following fields:
 
 ## Balance Objects and Balance Change Objects ##
 [balance change objects]: #balance-objects-and-balance-change-objects
-[balance objects]: #balance-objects-and-balance-change-objects
+[Balance Object]: #balance-objects-and-balance-change-objects
 
 Balance objects represent an Ripple account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.
 
@@ -2694,12 +3143,13 @@ The following values are valid for the `change_type` field of a Balance Change D
 
 | Value | Meaning |
 |-------|---------|
-| `network fee` | This balance change reflects XRP that was destroyed to relay a transaction. (This value may change; see [RD-635](https://ripplelabs.atlassian.net/browse/RD-635) for details.) |
+| `transaction_cost` | This balance change reflects XRP that was destroyed to relay a transaction. (This value may change; see [RD-635](https://ripplelabs.atlassian.net/browse/RD-635) for details.) |
 | `payment_destination` | This balance change reflects currency that was received from a payment. |
 | `payment_source` | This balance change reflects currency that was spent in a payment. |
 | `exchange` | This balance change reflects currency that was traded for other currency, or the same currency from a different issuer. This can occur in the middle of payment execution as well as from offers. |
 
 ## Volume Objects ##
+[Volume Objects]: #volume-objects
 
 Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given time period.
 
