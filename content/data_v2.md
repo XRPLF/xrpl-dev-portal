@@ -3262,4 +3262,4 @@ node import/postgres/backfill
 // get ledgers #1,000,000 to #2,000,000 (inclusive) and store in hbase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
 ```
-accounts=true&payments=true&descending=true&start=2014-05-01&end=2014-07-01&format=csv
+
