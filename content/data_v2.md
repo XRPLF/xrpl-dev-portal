@@ -12,10 +12,12 @@ Ripple provides a live instance of the Data API with as complete a transaction r
 The Ripple Data API v2 is an evolution of the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). 
 
 * [API Methods](#api-method-reference)
-* [API Objects](#api-objects)
+* [API Conventions](#api-conventions)
 * [Setup (local instance)](#running-the-historical-database)
 * [Source Code on Github](https://github.com/ripple/rippled-historical-database)
+* [Release Notes](https://github.com/ripple/rippled-historical-database/releases)
 
+[v2.0.4]: https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2
 
 
 # API Method Reference #
@@ -30,7 +32,7 @@ General Methods:
 * [Get Payments - `GET /v2/payments/{:currency}`](#get-payments)
 * [Get Exchanges - `GET /v2/exchanges/{:base}/{:counter}`](#get-exchanges)
 * [Get Exchange Rates - `GET /v2/exchange_rates/{:base}/{:counter}`](#get-exchange-rates)
-* [Get Normalization - `GET /v2/normalize`](#normalize)
+* [Normalize - `GET /v2/normalize`](#normalize)
 * [Get Daily Reports - `GET /v2/reports/`](#get-daily-reports)
 * [Get Stats - `GET /v2/stats/`](#get-stats)
 * [Get Capitalization - `GET /v2/capitalization/{:currency}`](#get-capitalization)
@@ -38,12 +40,16 @@ General Methods:
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
 * [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
+* [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
+* [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
+* [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
 
 Account Methods:
 
 * [Get Account - `GET /v2/accounts/{:address}`](#get-account)
 * [Get Accounts - `GET /v2/accounts`](#get-accounts)
 * [Get Account Balances - `GET /v2/accounts/{:address}/balances`](#get-account-balances)
+* [Get Account Orders - `GET /v2/accounts/{:address}/orders`](#get-account-orders)
 * [Get Account Transaction History - `GET /v2/accounts/{:address}/transactions`](#get-account-transaction-history)
 * [Get Transaction By Account and Sequence - `GET /v2/accounts/{:address}/transactions/{:sequence}`](#get-transaction-by-account-and-sequence)
 * [Get Account Payments - `GET /v2/accounts/{:address}/payments`](#get-account-payments)
@@ -265,7 +271,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | transactions | Array of [Transaction object](#transaction-objects) | The requested transactions |
 
 #### Example ####
@@ -385,7 +391,7 @@ Response:
 ## Get Payments ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getPayments.js "Source")
 
-Retrieve Payments over time, where Payments are defined as `Payment` type transactions where the sender of the transaction is not also the destination. 
+Retrieve Payments over time, where Payments are defined as `Payment` type transactions where the sender of the transaction is not also the destination. _(New in [v2.0.4][])_
 
 Results can be returned as individual payments, or aggregated to a specific list of intervals if currency and issuer are provided.
 
@@ -434,7 +440,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | payments | Array of [Payment Objects][], or array of aggregate objects | The requested payments |
 
 
@@ -578,7 +584,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
@@ -821,6 +827,8 @@ Optionally, you can also include the following query parameters:
 | accounts | Boolean | Include lists of counterparty accounts |
 | payments | Boolean | Include lists of individual payments |
 | format   | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
+| marker     | String  | Pagination key from previously returned response |
 
 #### Response Format ####
 
@@ -829,10 +837,12 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field  | Value | Description |
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
+| date   | String - [Timestamp][] | The date for which this report applies. |
 | count | Integer | Number of reports returned. |
-| reports | Array of [Reports Objects][] | The requested reports |
+| marker | String | (May be omitted) Pagination marker. |
+| reports | Array of [Reports Objects][] | The requested reports. Each report pertains to a single account. |
 
-**WARNING:** This method tends to return a very large response with no linebreaks, which may cause your tools or application to perform badly.
+**WARNING:** This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.
 
 #### Example ####
 
@@ -847,45 +857,102 @@ Response (trimmed for size):
 ```
 {
     "result": "success",
-    "count": 1153,
+    "date": "2015-08-19T00:00:00Z",
+    "count": 2,
+    "marker": "20150819000000|r2nt4zXDP6Be5FNrLsiuuTEBETbGR9RFw",
     "reports": [
         {
             "account": "r2LXq2rZWSgQ1thhKiEytzi1smg6oEn8A",
-            "date": "2015-08-19T00:00:00+00:00",
+            "date": "2015-08-19T00:00:00Z",
             "high_value_received": "7000",
             "high_value_sent": "3400",
             "payments": [
                 {
                     "tx_hash": "A032EFBB219B1102BBD9BCCB91EDC6EAA8185509574FA476A2D3FE6BA79B04EF",
                     "amount": "1700",
-                    "currency": "XRP",
                     "type": "received"
                 },
                 {
+                    "tx_hash": "8B059360DC83777CDCABA84824C169651AFD6A7AB44E8742A3B8C6BC2AAF7384",
+                    "amount": "40",
+                    "type": "received"
+                },
+                
+                ...(additional results trimmed)...
+                
+                {
                     "tx_hash": "76041BD6546389B5EC2CDBAA543200CF7B8D300F34F908BA5CA8523B0CA158C8",
-                    "amount": 1400,
-                    "currency": "XRP",
+                    "amount": "1400",
                     "type": "sent"
-                }.
-                ...
+                }
             ],
             "payments_received": 155,
             "payments_sent": 49,
             "receiving_counterparties": [
-                "rnn4sCdC5jTCRRkPxxSbrrphSVYKZ4R7M5",
-                ...
-                "rw4jwYbMwfj3h5PSQhR1dgK9VJtwEVxRhR"
+                "rDMFJrKg2jyoNG6WDWJknXDEKZ6ywNFGwD",
+                "r4XXHxraHLuCiLmLMw96FTPXXywZSnWSyR",
+                
+                ...(additional results trimmed)...
+                
+                
+                "rp1C4Ld6uGjurFpempUJ8q5hPSWhak5EQf"
             ],
             "sending_counterparties": [
-                "rw4jwYbMwfj3h5PSQhR1dgK9VJtwEVxRhR",
-                 ...
-                "raGwbQHagX7DVDRgKXkthFLETnVVN57fYA"
+                "rwxcJVWZSEgN2DmLZYYjyagHjMx5jQ7BAa",
+                
+                ...(additional results trimmed)...
+                
+                
+                "rBK1rLjbWsSU9EuST1cAz9RsiYdJPVGXXA"
             ],
             "total_value": "210940",
             "total_value_received": "100540",
             "total_value_sent": "110400"
         },
-        ...
+        {
+            "account": "r2adXWaWFJt9mHeoWN77iHJozDz2FDAPA",
+            "date": "2015-08-19T00:00:00Z",
+            "high_value_received": "7400",
+            "high_value_sent": "15900",
+            "payments": [
+                {
+                    "tx_hash": "9C7EA76D467AE58E6AEFAAC7994D42FB4E7FA72BFA22F90260937386D76BDB64",
+                    "amount": "900",
+                    "type": "sent"
+                },
+                
+                ...(additional results trimmed)...
+                
+                
+                {
+                    "tx_hash": "EC25427964419394BB5D06343BC74235C33655C1F70523C688F9A201957D65BA",
+                    "amount": "100",
+                    "type": "sent"
+                }
+            ],
+            "payments_received": 43,
+            "payments_sent": 62,
+            "receiving_counterparties": [
+                "rB4cyZxrBrTmJcWZSBc8YoW2t3bafiKRp",
+                
+                ...(additional results trimmed)...
+                
+                
+                "rKybkw3Pu74VfJfrWr7QJbVPJNarnKP2EJ"
+            ],
+            "sending_counterparties": [
+                "rNRCXw8PQRjvTwMDDLZVvuLHSKqqXUXQHv",
+                "r7CLMVEuNvK2yXTPLPnkWMqzkkXuopWeL",
+                
+                ...(additional results trimmed)...
+                
+                
+                "ranyeoYRhvwiFABzDvxSVyqQKp1bMkFsaX"
+            ],
+            "total_value": "117600",
+            "total_value_received": "54700",
+            "total_value_sent": "62900"
+        }
     ]
 }
 ```
@@ -956,7 +1023,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
 #### Example ####
@@ -998,7 +1065,7 @@ Response:
 ## Get Capitalization ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js "Source")
 
-Get capitalization data for a specific currency and issuer.
+Get capitalization data for a specific currency and issuer. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1026,7 +1093,7 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][] | Start time of query range. Defaults to the most recent  |
 | end        | String - [Timestamp][] | End time of query range |
 | interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
-| limit      | Integer | Max results per page (defaults to 200) |
+| limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse cronological order |
 | adjusted   | Boolean | Adjust results by removing known issuer owned wallets |
@@ -1042,7 +1109,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | count | Integer | Number of reports returned. |
 | currency | String | Currency requested |
 | issuer | String | Issuer requested |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | rows | Array of issuer capitalization objects | The requested capitalization data |
 
 Each issuer capitalization object has the following fields:
@@ -1120,7 +1187,7 @@ Response:
 ## Get Active Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js "Source")
 
-Get information on which accounts are actively trading in a specific currency pair.
+Get information on which accounts are actively trading in a specific currency pair. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1269,7 +1336,7 @@ Response:
 ## Get Exchange Volume ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get aggregated exchange volume for a given time period.
+Get aggregated exchange volume for a given time period. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1413,7 +1480,7 @@ Response:
 ## Get Payment Volume ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get aggregated payment volume for a given time period.
+Get aggregated payment volume for a given time period. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1538,7 +1605,7 @@ Response:
 ## Get Issued Value ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get total capitalization for a selection of major gateways over time. By default, returns only the most recent measurement.
+Get total capitalization for a selection of major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1644,7 +1711,7 @@ Response:
 ## Get All Gateways ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
-Get information about known gateways.
+Get information about known gateways. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1741,7 +1808,7 @@ Response:
 ## Get Gateway ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
-Get information about a specific known gateway.
+Get information about a specific known gateway. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1827,11 +1894,11 @@ Response:
 
 
 
-## Get Currency Images ##
+## Get Currency Image ##
 
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/v0.0.4-rc2/api/routesV2/gateways.js#L196 "Source")
 
-Retrieve vector icons for various currencies.
+Retrieve vector icons for various currencies. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1895,7 +1962,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | Number of reports returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | accounts | Array | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
 
 ##### Interval Objects #####
@@ -2053,7 +2120,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | ledger_index | Integer | ledger index for balances query |
 | close_time | String | close time of the ledger |
 | limit | String | number of results returned, if limit was exceeded |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | balances | Array of [Balance Object][]s | The requested balances |
 
 #### Example ####
@@ -2278,7 +2345,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `transactions` field. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | transactions | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
 
 #### Example ####
@@ -2470,7 +2537,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `payments` field. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | payments | Array of [payment objects][] | All payments matching the request. |
 
 #### Example ####
@@ -2576,7 +2643,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of exchanges returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
@@ -2685,7 +2752,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of balance changes returned. |
-| marker | String | Pagination marker |
+| marker | String | (May be omitted) Pagination marker |
 | exchanges | Array of [balance change descriptors][] | The requested balance changes |
 
 #### Example ####
@@ -2853,7 +2920,7 @@ Response:
 ```
 
 
-# API Objects #
+# API Conventions #
 
 ## Basic Types ##
 
@@ -2950,6 +3017,16 @@ Currencies in Ripple can be represented in two ways:
 
 * As three-letter [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php). These currency codes must be written in uppercase ("USD" is valid, "usd" is not). Ripple permits currency codes that are not officially approved, including currency codes with digits in them.
 * As 160-bit hexadecimal values, such as `0158415500000000C1F76FF6ECB0BAC600000000`, according to Ripple's internal [Currency Format](https://wiki.ripple.com/Currency_format). This representation is uncommon.
+
+## Pagination ##
+
+Many queries may return more data than is reasonable to return in a single HTTP response. The Data API uses a "limit and marker" system to control how much is returned in a single response ("page") and to query for additional content.
+
+The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary by based on the method. Most of the time, the `limit` is **200** by default, and can be set as high as **1000**. Any value over the maximum `limit` value is treated as the maximum instead.
+
+When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results by including the contents of the `marker` field as the `marker` query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
+
+When a `marker` is or would be present, the response contains a [`Link` header](https://tools.ietf.org/html/rfc5988#section-5) with `rel="next"`. This is a full URL to the next page of results. You can use this to paginate over results when the response is in `csv` format instead of `json`. _(New in [v2.0.4][])_
 
 ## Transaction Objects ##
 
@@ -3143,7 +3220,7 @@ The following values are valid for the `change_type` field of a Balance Change D
 
 | Value | Meaning |
 |-------|---------|
-| `transaction_cost` | This balance change reflects XRP that was destroyed to relay a transaction. (This value may change; see [RD-635](https://ripplelabs.atlassian.net/browse/RD-635) for details.) |
+| `transaction_cost` | This balance change reflects XRP that was destroyed to relay a transaction. _(Prior to [v2.0.4][], this was `network fee` instead.)_ |
 | `payment_destination` | This balance change reflects currency that was received from a payment. |
 | `payment_source` | This balance change reflects currency that was spent in a payment. |
 | `exchange` | This balance change reflects currency that was traded for other currency, or the same currency from a different issuer. This can occur in the middle of payment execution as well as from offers. |
