@@ -35,27 +35,39 @@ PRINCE_PAGE_MANIFEST_FILE = "/tmp/devportal-pages.txt"
 
 PDF_TARGET = "pdf"
 DEFAULT_TARGET = "local"
+MULTICODE_TAB_TARGETS = ["local","ripple.com"]
+
+
+MC_START_REGEX = re.compile("<!-- *<div class='multicode'[^>]*> *-->")
+MC_END_REGEX = re.compile("<!-- *</div> *-->")
 
 def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
     ## Python markdown requires markdown="1" on HTML block elements
     ##     that contain markdown. AND there's a bug where if you use
     ##     markdown.extensions.extra, it replaces code fences in HTML
     ##     block elements with garbled text
-    print("adding markdown class to embedded divs...")
-    def add_markdown_class(m):
-        if m.group(0).find("markdown=") == -1:
-            return m.group(1) + ' markdown="1">'
-        else:
-            return m.group(0)
-    
-    md = re.sub("(<div[^>]*)>", add_markdown_class, md)
-    print("done")
+#    print("adding markdown class to embedded divs...")
+#    def add_markdown_class(m):
+#        if m.group(0).find("markdown=") == -1:
+#            return m.group(1) + ' markdown="1">'
+#        else:
+#            return m.group(0)
+#    
+#    md = re.sub("(<div[^>]*)>", add_markdown_class, md)
+#    print("done")
     
     #the actual markdown parsing is the easy part
     print("parsing markdown...")
     html = markdown(md, extensions=["markdown.extensions.extra",
                                     "markdown.extensions.toc"])
     print("done")
+    
+    #if target uses multicode tabs, uncomment the divs
+    if target in MULTICODE_TAB_TARGETS:
+        print("enabling multicode tabs...")
+        html = re.sub(MC_START_REGEX, "<div class='multicode'>", html)
+        html = re.sub(MC_END_REGEX, "</div>", html)
+        print("done")
     
     #replace underscores with dashes in h1,h2,etc. for Flatdoc compatibility
     print("tweaking header IDs...")
@@ -242,8 +254,7 @@ if __name__ == "__main__":
                        help="Watch for changes and re-generate the files. This runs until force-quit.")
     parser.add_argument("--pdf", type=str, 
             help="Generate a PDF, too. Requires Prince.")
-    parser.add_argument("--target", "-t", type=str, default=DEFAULT_TARGET,
-                        choices=[DEFAULT_TARGET,"ripple.com"])
+    parser.add_argument("--target", "-t", type=str, default=DEFAULT_TARGET)
     args = parser.parse_args()
     
     if args.pdf:
