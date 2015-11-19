@@ -15,7 +15,7 @@ There are several different types of transactions that perform different actions
 
 Additionally, there are *Psuedo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
 
-* [SetFee - Adjust the minimum transaction fee or account reserve](#setfee)
+* [SetFee - Adjust the minimum transaction cost or account reserve](#setfee)
 
 Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.
 
@@ -188,7 +188,7 @@ Every transaction type has the same set of fundamental fields:
 |-------|-----------|---------------|-------------|
 | Account | String | Account | The unique address of the account that initiated the transaction. |
 | [AccountTxnID](#accounttxnid) | String | Hash256 | (Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
-| [Fee](#transaction-fees) | String | Amount | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a fee for redistributing this transaction to the network. |
+| [Fee](#transaction-cost) | String | Amount | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. |
 | [Flags](#flags) | Unsigned Integer | UInt32 | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence](#lastledgersequence) | Number | UInt32 | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
@@ -206,22 +206,19 @@ Every transaction type has the same set of fundamental fields:
 
 Some fields can be automatically filled in before the transaction is signed, either by a `rippled` server or by the library used for offline signing. Both [ripple-lib](https://github.com/ripple/ripple-lib) and `rippled` can automatically provide the following values:
 
-* `Fee` - Automatically use the current base network fee. (*Note:* `rippled`'s [sign command](rippled-apis.html#sign) supports limits on how high the filled-in-value is, using the `fee_mult_max` parameter.)
+* `Fee` - Automatically fill in the [transaction cost](tx-cost.html) based on the network. (*Note:* `rippled`'s [sign command](rippled-apis.html#sign) supports limits on how high the filled-in-value is, using the `fee_mult_max` parameter.)
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
-For a production system, we recommend *not* leaving these fields to be filled by the server. For example if fees become temporarily high, you may want to wait for fees to decrease before sending some transactions, instead of continuing regardless of fee.
+For a production system, we recommend *not* leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.
 
 The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also be automatically filled in. 
 
-### Transaction Fees ###
+### Transaction Cost ###
 
-The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), that must be deducted from the sender's balance in order to relay any transaction through the network. This is a measure to protect against spam and DDoS attacks weighing down the whole network. You can specify any amount in the `Fee` field when you create a transaction. If your transaction makes it into a validated leger (whether or not it achieves its intended purpose), then the deducted XRP is destroyed forever.
+In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This transaction cost is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
-Each rippled server decides on the minimum fee to require, which is at least the global base transaction fee, and increases based on the individual server's current load. If a transaction's fee is not high enough, then the server does not relay the transaction to other servers. (*Exception:* If you send a transaction to your own server over an [admin connection](rippled-apis.html#connecting-to-rippled), it relays the transaction even under high load, so long as the fee meets the global base.)
+The `Fee` field specifies an amount, in [drops of XRP](rippled-apis.html#specifying-currency-amounts), to destroy as the cost for this transaction. If the transaction is included in a validated leger (whether or not it achieves its intended purpose), then the amount of XRP specified in the `Fee` parameter is destroyed forever. You can [look up the transaction cost](tx-cost.html#querying-the-transaction-cost) in advance, or [let `rippled` set it automatically](tx-cost.html#automatically-specifying-the-transaction-cost) when you sign a transaction.
 
-Even if some servers have too much load to propagate a transaction, the transaction can still make it into a validated ledger as long as a large enough percentage of validating servers receive it, so the global base fee is generally enough to submit a transaction. If many servers in the network are under high load all at once (for example, due to a DDoS or a global event of some sort) then you must either set the `Fee` value higher or wait for the load to decrease.
-
-For more information, see the [Transaction Fee wiki article](https://wiki.ripple.com/Transaction_Fee).
 
 ### Canceling or Skipping a Transaction ###
 
@@ -229,7 +226,7 @@ An important and intentional feature of the Ripple Network is that a transaction
 
 However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same `Sequence` value from the same account. If you do not want to perform the same transaction again, you can perform an [AccountSet](#accountset) transaction with no options.
 
-For example, if you attempted to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough [transaction fee](#transaction-fees) to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction fee for the new transaction 11), but it allows transactions 12 and 13 to become valid.
+For example, if you attempted to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough [transaction cost](#transaction-cost) to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction cost for the new transaction 11), but it allows transactions 12 and 13 to become valid.
 
 This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.
 
@@ -239,7 +236,7 @@ In this way, an AccountSet transaction with no options is the canonical "[no-op]
 
 We strongly recommend that you specify the `LastLedgerSequence` parameter on every transaction. Provide a value of about 3 higher than [the most recent ledger index](rippled-apis.html#ledger) to ensure that your transaction is either validated or rejected within a matter of seconds.
 
-Without the `LastLedgerSequence` parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the global base [transaction fee](#transaction-fees) increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) fee in order to send another transaction canceling it. Later, if the transaction fee decreases again, the transaction may become viable again. The `LastLedgerSequence` places a hard upper limit on how long the transaction can wait to be validated or rejected.
+Without the `LastLedgerSequence` parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the load-based [transaction cost](#transaction-cost) of the network increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) transaction cost in order to send another transaction canceling it. Later, if the transaction cost decreases again, the transaction may become viable again. The `LastLedgerSequence` places a hard upper limit on how long the transaction can wait to be validated or rejected.
 
 ### AccountTxnID ###
 
@@ -329,7 +326,7 @@ Example payment:
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including transfer fees, exchanges, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP `Fee` for submitting the transaction](#transaction-fees). (Also see [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including [transfer fees](transfer_fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). (Also see [Specifying Currency Amounts](rippled-apis.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 | DeliverMin | String/Object | Amount | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). _(This field is part of [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0), and becomes valid August 17 at 17:00 UTC.)_ |
 
 ### Special issuer Values for SendMax and Amount ###
@@ -383,7 +380,7 @@ The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial paym
 
 A partial payment cannot provide the initial XRP to fund an account; this case returns the error code `telNO_DST_PARTIAL`. Direct XRP-to-XRP payments also cannot be partial payments `temBAD_SEND_XRP_PARTIAL`.
 
-The amount of XRP used for the [transaction fee](#transaction-fees) is always deducted from the sender’s account, regardless of the *tfPartialPayment* flag.
+The amount of XRP used for the [transaction cost](#transaction-cost) is always deducted from the sender’s account, regardless of the *tfPartialPayment* flag.
 
 #### Partial Payments Warning ####
 
@@ -439,7 +436,7 @@ Example AccountSet:
 | WalletLocator | String | Hash256 | (Optional) Not used. |
 | WalletSize | Unsigned Integer | UInt32 | (Optional) Not used. |
 
-If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction fee). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
+If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
 
 ### Domain ###
 
@@ -499,7 +496,7 @@ Accounts can protect against unwanted incoming payments for non-XRP currencies s
 
 ### TransferRate ###
 
-The TransferRate field specifies a fee to charge whenever a gateway's issuances change hands. See [Transfer Rate](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
+The TransferRate field specifies a fee to charge whenever a gateway's issuances change hands. See [Transfer Fees article](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
 In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `120000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
 
@@ -529,7 +526,7 @@ Instead of using an account's master key to sign transactions, you can set an al
 
 A Regular Key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](rippled-apis.html#wallet-propose)), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.
 
-If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. As a special feature, each account is allowed to perform SetRegularKey transaction *without* a transaction fee as long as the [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) for the account is not set. To use this feature, submit a SetRegularKey transaction with a `Fee` value of 0, signed by the account's *master key*. (This way, you don't have to worry about whether the attacker has used up all the account's spare XRP.) The [*lsfPasswordSpent* flag](ripple-ledger.html#accountroot) is automatically cleared if your account receives a payment of XRP.
+If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. In some cases, you can even send a [key reset transaction](tx-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
 
 
 
@@ -749,7 +746,7 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 
 ## SetFee ##
 
-A change in transaction or account fees. This is typically in response to changes in the load on the network.
+A change in [transaction cost](tx-cost.html) or [account reserve](reserves.html) requirements. This is typically in response to changes in the load on the network.
 
 *Note:* You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
 
@@ -772,7 +769,7 @@ A change in transaction or account fees. This is typically in response to change
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| BaseFee | String | UInt64 | The charge, in drops, for the reference transaction, as hex. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| BaseFee | String | UInt64 | The charge, in drops of XRP, for the reference transaction, as hex. (This is the [transaction cost](tx-cost.html) before scaling for load.) |
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
@@ -832,20 +829,20 @@ Both the `engine_result` and the `meta.TransactionResult` use standard codes to 
 | Failure               | [tef](#tef-codes) | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
 | Retry                 | [ter](#ter-codes) | The transaction could not be applied, but it might be possible to apply later. |
 | Success               | [tes](#tes-success) | (Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger. |
-| Claimed fee only      | [tec](#tec-codes) | The transaction did not achieve its intended purpose, but the transaction fee was charged. This result is not final unless it appears in a validated ledger. |
+| Claimed cost only     | [tec](#tec-codes) | The transaction did not achieve its intended purpose, but the [transaction cost](tx-cost.html) was destroyed. This result is not final unless it appears in a validated ledger. |
 | Client library error  | [tej](#tej-codes) | (ripple-lib only) The transaction was not submitted, because the client library blocked it, as part of its additional error checking. |
 
 The distinction between a local error (`tel`) and a malformed transaction (`tem`) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a `tel` error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.
 
 By contrast, a `tem` error implies that no server anywhere can apply the transaction, regardless of settings. Either the transaction breaks the rules of the protocol, it is unacceptably ambiguous, or it is completely nonsensical. The only way a malformed transaction could become valid is through changes in the protocol; for example, if a new feature is adopted, then transactions using that feature could be considered malformed by servers that are running older software which predates that feature.
 
-## Claimed Fee Justification ##
+## Claimed Cost Justification ##
 
-Although it may seem unfair to charge a fee for a failed transaction, the `tec` class of errors exists for good reasons:
+Although it may seem unfair to charge a [transaction cost](tx-cost.html) for a failed transaction, the `tec` class of errors exists for good reasons:
 
 * Transactions submitted after the failed one do not have to have their Sequence values renumbered. Incorporating the failed transaction into a ledger uses up the transaction's sequence number, preserving the expected sequence.
-* Distributing the transaction throughout the network increases network load. Charging a fee makes it harder for attackers to abuse the network with failed transactions.
-* The transaction fee is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.
+* Distributing the transaction throughout the network increases network load. Enforcing a cost makes it harder for attackers to abuse the network with failed transactions.
+* The transaction cost is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.
 
 ## Finality of Results ##
 
@@ -909,7 +906,7 @@ These codes indicate an error in the local server processing the transaction; it
 | telBAD\_PATH_COUNT | The transaction contains too many paths for the local server to process. |
 | telBAD\_PUBLIC\_KEY | The transaction specified a public key value (for example, as the `MessageKey` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long. |
 | telFAILED\_PROCESSING | An unspecified error occurred when processing the transaction. |
-| telINSUF\_FEE_P | The `Fee` from the transaction is not high enough to meet the server's current Fee, which is derived from its load level. |
+| telINSUF\_FEE_P | The `Fee` from the transaction is not high enough to meet the server's current [transaction cost](tx-cost.html) requirement, which is derived from its load level. |
 | telNO\_DST\_PARTIAL | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](#partial-payments) was enabled. This is disallowed. |
 
 ### tem Codes ###
@@ -993,11 +990,11 @@ The code `tesSUCCESS` is the only code that indicates a transaction succeeded. T
 
 ### tec Codes ###
 
-These codes indicate that the transaction failed, but it was applied to a ledger in order to claim a transaction fee. They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.
+These codes indicate that the transaction failed, but it was applied to a ledger in order to apply the [transaction cost](tx-cost.html). They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.
 
 | Code | Value | Explanation |
 |------|-------|-------------|
-| tecCLAIM | 100 | Unspecified failure, with fee claimed. |
+| tecCLAIM | 100 | Unspecified failure, with transaction cost destroyed. |
 | tecPATH\_PARTIAL | 101 | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
 | tecUNFUNDED\_ADD | 102 | **DEPRECATED.** |
 | tecUNFUNDED\_OFFER | 103 | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have any of the `TakerGets` currency. |
@@ -1018,7 +1015,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |
 | tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
 | tecNO\_LINE | 135 | The `TakerPays` field of the [OfferCreate transaction](#offercreate) specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, tecNO\_AUTH occurs instead. |
-| tecINSUFF\_FEE | 136 | The account sending the transaction does not possess enough XRP to pay the specified `Fee`. This error only occurs if the transaction has already been propagated through the network to achieve consensus. (For example, if two transactions are provisionally accepted, but the first fails to reach consensus and is replaced by another with a higher fee, the second transaction may fail with this error instead of being rejected with terINSUF\_FEE\_B.) |
+| tecINSUFF\_FEE | 136 | The account sending the transaction does not possess enough XRP to pay the specified `Fee`. This error only occurs if the transaction has already been propagated through the network to achieve consensus, |
 | tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](https://ripple.com/files/GB-2014-02.pdf). |
 | tecNO\_TARGET | 138 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
@@ -1026,7 +1023,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecINSUFFICIENT\_RESERVE | 141 | **FORTHCOMING** Part of multi-signature transactions. (Code may change; see [RIPD-743](https://ripplelabs.atlassian.net/browse/RIPD-743) for status.) |
 | tecNEED\_MASTER\_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
 | tecDST\_TAG\_NEEDED | 143 | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [rippled 0.28.0][])_ |
-| tecINTERNAL | 144 | Unspecified internal error, with fee claimed. This error code should not normally occur. |
+| tecINTERNAL | 144 | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
 | tecOVERSIZE | 145 | This transaction could not be processed, because attempted transaction processing created an excessively large amount of metadata. _(New in [rippled 0.29.0-hf1](https://github.com/ripple/rippled/releases/tag/0.29.0-hf1) )_ |
 
 ### tej Codes ###
@@ -1039,7 +1036,7 @@ These codes are only ever returned by the `ripple-lib` client library, not by `r
 | tejAttemptsExceeded | The transaction was submitted multiple times, up to a total equal to the max attempts setting, without being successfully included in a ledger. |
 | tejInvalidFlag | One of the flags specified was invalid, or does not apply to this transaction type. |
 | tejLocalSigningRequired | The transaction could not be resubmitted because local signing is disabled. |
-| tejMaxFeeExceeded | The fee that would be necessary to send the transaction is higher than the maximum fee, which is either the `_MaxFee` parameter of the Transaction (if provided) or the maximum fee configured for the remote. The default value is 1 XRP (100000 drops). |
+| tejMaxFeeExceeded | The [transaction cost](tx-cost.html) that would be necessary to send the transaction is higher than the maximum transaction cost setting, which is either the `_MaxFee` parameter of the Transaction (if provided) or the maximum transaction cost configured for the remote. The default value is 1 XRP (100000 drops). |
 | tejMaxLedger | Currently-validated ledgers have surpassed the `LastLedgerSequence` parameter of the transaction without including it, so it can no longer succeed. (Also see [Reliable Transaction Submission](reliable_tx.html).) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes. |
 | tejSecretInvalid | The secret included for signing this transaction was not a properly-formatted secret. |
 | tejSecretUnknown | The secret for a given account was omitted from the transaction, and ripple-lib was unable to automatically fill it in from saved data. |

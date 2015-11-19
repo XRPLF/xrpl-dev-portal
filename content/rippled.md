@@ -3108,9 +3108,8 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_hash | String | Unique identifying hash of the entire ledger. |
 | ledger\_index | String | Ledger sequence number as a quoted integer |
 | parent\_hash | String | Unique identifying hash of the ledger that came immediately before this one. |
-| total\_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.) |
+| total\_coins | String | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.) |
 | transaction\_hash | String | Hash of the transaction information included in this ledger, as hex |
-| validated | Boolean | ([Upcoming](https://ripplelabs.atlassian.net/browse/RIPD-569)) If included and set to `true`, the information in this request describes a validated ledger version. Otherwise, the information is subject to change. |
 
 The following fields are deprecated and may be removed without further notice: `accepted`, `hash`, `seqNum`, `totalCoins`.
 
@@ -6184,13 +6183,13 @@ The request includes the following parameters:
 | secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
-| fee\_mult\_max | Integer | (Optional) If the transaction `Fee` is omitted, this field limits the `Fee` value that is automatically filled so that it is less than or equal to the long-term base fee times this value. |
+| fee\_mult\_max | Integer | (Optional) If the `Fee` parameter ([transaction cost](tx-cost.html)) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value. |
 
 The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields from the [transaction format](transactions.html) are automatically filled in:
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless `offline` is true.
-* `Fee` - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified `offline` as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee. Automatically filled unless `offline` is true.
-    * If `fee_mult_max` is included, and the automatically generated Fee is greater than the long-term base fee times `fee_mult_max`, then the transaction fails with the error `rpcHIGH_FEE`. This way, you can let the server fill in the current minimum `Fee` value as long as the current load fee is not too high.
+* `Fee` - If you omit the `Fee` parameter, the server [automatically provides an appropriate transaction cost](tx-cost.html#automatically-specifying-the-transaction-cost) unless you specified `offline` as true. If you specify `offline` as true, you must fill in the transaction cost in the `Fee` parameter. Be careful: a malicious server can specify an excessively high transaction cost.
+    * If `fee_mult_max` is included, and the automatically provided `Fee` value is greater than the long-term base transaction cost times `fee_mult_max`, then the transaction fails with the error `rpcHIGH_FEE`. This way, you can let the server fill in the current minimum `Fee` value as long as the current load-based transaction cost is not too high.
 * `Paths` - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a [ripple_path_find](#ripple-path-find). Only filled if `build_path` is provided. 
 
 #### Response Format ####
@@ -6273,7 +6272,7 @@ __*Caution:*__ If this command results in an error messages, the message can con
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current transaction cost multiplier exceeds the specified one.
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
 
@@ -6347,7 +6346,7 @@ A sign-and-submit request includes the following parameters:
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. (See [RIPD-173](https://ripplelabs.atlassian.net/browse/RIPD-173) for status.) |
-| fee\_mult\_max | Integer | (Optional) If the transaction `Fee` is omitted, this field limits the `Fee` value that is automatically filled so that it is less than or equal to the long-term base fee times this value. |
+| fee\_mult\_max | Integer | (Optional) If the `Fee` parameter is omitted, this field limits the automatically-provided `Fee` value so that it is less than or equal to the long-term base transaction cost times this value. |
 
 See the [sign command](#sign) for detailed information on how the server automatically fills in certain fields.
 
@@ -6843,8 +6842,8 @@ The fields from a ledger stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `ledgerClosed` indicates this is from the ledger stream |
-| fee\_base | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new transaction cost applies to all transactions after this ledger. |
-| fee\_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. (See [Transaction Fee Terminology](https://ripple.com/wiki/Transaction_Fee#Fee_Terminology) |
+| fee\_base | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](tx-cost.html) If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new transaction cost applies to all transactions after this ledger. |
+| fee\_ref | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. |
 | ledger\_hash | String | Unique hash of the ledger that was closed, as hex |
 | ledger\_index | Unsigned Integer | Sequence number of the ledger that was closed |
 | ledger\_time | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
@@ -7202,7 +7201,7 @@ The `info` object may have some arrangement of the following fields:
 | load | Object | *Admin only* Detailed information about the current load state of the server |
 | load.job\_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
-| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier on the base transaction fee. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. See [Calculating Transaction Fees](https://ripple.com/wiki/Calculating_the_Transaction_Fee) for more details. **Note:** This `load_factor` is calculated as the ratio of the `load_factor` and the `load_base` that are reported by the [`server_state` command](#server-state) |
+| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. **Note:** This `load_factor` is calculated as the ratio of the `load_factor` and the `load_base` that are reported by the [`server_state` command](#server-state) |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.) |
 | pubkey_validator | String | *Admin only* Public key used by this node to sign ledger validations; . |
@@ -7346,7 +7345,7 @@ The `state` object may have some arrangement of the following fields:
 | load | Object | *Admin only* Detailed information about the current load state of the server |
 | load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
-| load\_base | Number | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction fees are doubled. See [Calculating Transaction Fees](https://ripple.com/wiki/Calculating_the_Transaction_Fee) for more details. |
+| load\_base | Number | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction fees are doubled. |
 | load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the load\_base determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in rippled's local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |

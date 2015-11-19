@@ -106,7 +106,7 @@
         "name": "Transaction Cost",
         "md": "tx-cost.md",
         "html": "tx-cost.html",
-        "ripple.com": "https://wiki.ripple.com/Transaction_Fee",
+        "ripple.com": "https://ripple.com/build/transaction-cost/",
         "category": "Concepts"
     },
     {

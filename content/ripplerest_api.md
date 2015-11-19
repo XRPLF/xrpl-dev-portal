@@ -46,7 +46,7 @@ We recommend Ripple-REST for users just getting started with Ripple, since it pr
 #### Utilities ####
 
 * [Retrieve Ripple Transaction - `GET /v1/transactions/{:id}`](#retrieve-ripple-transaction)
-* [Retrieve Transaction Fee - `GET /v1/transaction-fee`](#retrieve-transaction-fee)
+* [Retrieve Transaction Cost - `GET /v1/transaction-fee`](#retrieve-transaction-cost)
 * [Generate UUID - `GET /v1/uuid`](#create-client-resource-id)
 
 
@@ -843,7 +843,7 @@ The response is a JSON object containing the following fields:
 
 # PAYMENTS #
 
-`ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
+`ripple-rest` provides access to `ripple-lib`'s robust transaction submission processes. This means that it automatically manages the transaction cost and sequence number, signs the transaction with your secret, and resubmits the transaction up to 10 times if `rippled` reports an initial error that can be solved automatically.
 
 
 ## Prepare Payment ##
@@ -993,19 +993,19 @@ The JSON body of the request includes the following parameters:
 | client\_resource\_id | String | A unique identifier for this payment. You can generate one using the [`GET /v1/uuid`](#create-client-resource-id) method. |
 | secret | String | A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured. |
 | last\_ledger\_sequence | String | (Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer. |
-| max\_fee | String | (Optional) The maximum transaction fee to allow, as a decimal amount of XRP. |
-| fixed\_fee | String | (Optional) The exact transaction fee the payer wishes to pay to the server, as a decimal amount of XRP. |
+| max\_fee | String | (Optional) The maximum [transaction cost](tx-cost.html) to allow, as a decimal amount of XRP. |
+| fixed\_fee | String | (Optional) The exact [transaction cost](tx-cost.html) to pay, as a decimal amount of XRP. |
 
 __DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER__ -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.
 
-*Note:* The transaction fee is determined as follows:
+*Note:* The [transaction cost](tx-cost.html) is determined as follows:
 
-1. If `fixed_fee` is included, that exact value is used for the transaction fee. Otherwise, the transaction fee is set dynamically based on the server's current fee.
-2. If `max_fee` is included and the transaction fee is higher than `max_fee`, then the transaction is rejected without being submitted. This is true regardless of whether the fee was fixed or dynamically set. Otherwise, the transaction is submitted to the `rippled` server with the specified fee.
-3. If the transaction succeeds, the sending account loses the whole amount of the transaction fee, even if it was higher than the server's current fee. 
-4. If the transaction fails because the fee was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.
+1. If `fixed_fee` is included, that exact value is used for the transaction cost. Otherwise, the transaction cost is set dynamically based on the server's current cost.
+2. If `max_fee` is included and the server requires a transaction cost that is higher than `max_fee`, then the transaction is rejected without being submitted. This is true regardless of whether the transaction cost was fixed or dynamically set. Otherwise, the transaction is submitted to the `rippled` server with the specified transaction cost.
+3. If the transaction succeeds, the sending account loses the whole amount of the transaction cost, even if it was higher than the server's current requirement. 
+4. If the transaction fails because the transaction cost was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.
 
-Consequently, you can use `max_fee` as a "set-it-and-forget-it" safeguard on the fees you are willing to pay.
+Consequently, you can use `max_fee` as a "set-it-and-forget-it" safeguard on the transaction cost you are willing to pay.
 
 Optionally, you can include the following as a URL query parameter:
 
@@ -2229,13 +2229,13 @@ The `rippled_server_status` object may have any of the following fields:
 | last\_close | Object | Some information about the most recently-closed ledger |
 | last\_close.converge\_time\_s | Number | How many seconds it took to reach consensus on the this ledger version |
 | last\_close.proposers | Number | How many trusted validators were involved in the consensus process for this ledger version |
-| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier for the base transaction fee. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor. |
+| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier for the base [transaction cost](tx-cost.html). The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor. |
 | peers | Number | How many other `rippled` servers this server is connected to |
 | pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.) |
 | server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States in the rippled documentation](rippled-apis.html#possible-server-states) for more details. |
 | validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
 | validated_ledger.age | Unsigned Integer | The time since the ledger was closed, in seconds |
-| validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
+| validated_ledger.base_fee_xrp | Number | Base [transaction cost](tx-cost.html), in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
 | validated_ledger.hash | String | Unique hash for the ledger, as hex |
 | validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
 | validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
@@ -2454,12 +2454,12 @@ The result is a JSON object, whose `transaction` field has the requested transac
 ```
 
 
-## Retrieve Transaction Fee ##
+## Retrieve Transaction Cost ##
 [[Source]<br>](https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L42 "Source")
 
 (New in [Ripple-REST v1.3.1](https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1))
 
-Retrieve the current transaction fee, in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.
+Retrieve the current [transaction cost](tx-cost.html), in XRP, for the `rippled` server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median transaction cost among the connected servers.
 
 <div class='multicode'>
 
