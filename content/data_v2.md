@@ -1090,13 +1090,13 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to the most recent  |
+| start      | String - [Timestamp][] | Start time of query range. Defaults to the most recent sample. |
 | end        | String - [Timestamp][] | End time of query range |
 | interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
 | marker     | String  | Pagination key from previously returned response |
 | descending | Boolean | Reverse cronological order |
-| adjusted   | Boolean | Adjust results by removing known issuer owned wallets |
+| adjusted   | Boolean | If true, adjust results by removing known issuer owned wallets. Defaults to true. |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
@@ -3016,7 +3016,7 @@ A Ripple hash value has the following characteristics:
 
 All dates and times are written in ISO 8601 Timestamp Format, using UTC. This format is summarized as:
 
-`YYYY-MM-DDThh:mmZ`
+`YYYY-MM-DDThh:mm:ssZ`
 
 * Four-digit year
 * Two-digit month
@@ -3024,7 +3024,9 @@ All dates and times are written in ISO 8601 Timestamp Format, using UTC. This fo
 * The letter `T` indicating the beginning of the time portion
 * Two-digit hour using a 24-hour clock
 * Two digit minute
-* The letter `Z` indicating zero offset from UTC. Alternatively, `+00:00` may appear instead, with the same meaning.
+* The letter `Z` indicating zero offset from UTC.
+
+(As of [v2.0.4][], the offset `+00:00` is no longer used.)
 
 ### Ledger Index ###
 [Ledger Index]: #ledger-index
