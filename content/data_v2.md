@@ -1826,7 +1826,7 @@ This method requires the following URL parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| :gateway | String | The issuing [Address][], URL-escaped name, or normalized name of the gateway. |
+| :gateway | String | The issuing [Address][], [URL-encoded name](https://en.wikipedia.org/wiki/Percent-encoding), or normalized name of the gateway. |
 
 This method takes no query parameters.
 
