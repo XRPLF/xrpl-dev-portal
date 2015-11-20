@@ -1,10 +1,11 @@
 //---------- List of requests ------------------------//
 // Must be loaded after apitool-rest.js //
 var DOC_BASE = "data_api_v2.html";
-var URL_BASE = "https://data.ripple.com:443";
+var URL_BASE = "https://data-staging.ripple.com";
 
 var DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
 var KRW_TRADER_ADDRESS = "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw";
+var JPY_TRADER_ADDRESS = "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
 
@@ -44,6 +45,17 @@ Request('Get Transactions', {
     }
 });
 
+Request('Get Payments', {
+    method: GET,
+    path: "/v2/payments/{:currency}?{:query_params}",
+    description: "Retrieve Payments over time, where Payments are defined as Payment-type transactions where the sender of the transaction is not also the destination. ",
+    link: "#get-payments",
+    params: {
+        "{:currency}": "BTC+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "{:query_params}": "limit=2"
+    }
+});
+
 
 Request('Get Exchanges', {
     method: GET,
@@ -57,11 +69,33 @@ Request('Get Exchanges', {
     }
 });
 
-Request('Get Daily Summary', {
+Request('Get Exchange Rates', {
+    method: GET,
+    path: "/v2/exchange_rates/{:base}/{:counter}?{:query_params}",
+    description: "Retrieve an exchange rate for a given currency pair at a specific time.",
+    link: "#get-exchange-rates",
+    params: {
+        "{:base}": "USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "{:counter}": "XRP",
+        "{:query_params}": "date=2015-11-13T00:00:00Z"
+    }
+});
+
+Request('Normalize', {
+    method: GET,
+    path: "/v2/normalize?{:query_params}",
+    description: "Convert an amount from one currency and issuer to another, using the network exchange rates.",
+    link: "#normalize",
+    params: {
+        "{:query_params}": "amount=100&currency=XRP&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    }
+});
+
+Request('Get Daily Reports', {
     method: GET,
     path: "/v2/reports/{:date}?{:query_params}",
     description: "Retrieve an aggregated summary of payments per account for one day.",
-    link: "#get-daily-summary",
+    link: "#get-daily-reports",
     params: {
         "{:date}": "2015-08-19T00:00:00Z",
         "{:query_params}": "accounts=true&payments=true"
@@ -77,6 +111,78 @@ Request('Get Stats', {
         "{:query_params}": "start=2015-08-30&end=2015-08-31&interval=day&family=metric&metrics=accounts_created,exchanges_count,ledger_count,payments_count"
     }
 });
+
+Request('Get Capitalization', {
+    method: GET,
+    path: "/v2/capitalization/{:currency}?{:query_params}",
+    description: "Get capitalization data for a specific currency and issuer.",
+    link: "#get-capitalization",
+    params: {
+        "{:currency}": "USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "{:query_params}": "start=2015-01-01T00:00:00Z&end=2015-10-31&interval=month"
+    }
+});
+
+Request('Get Active Accounts', {
+    method: GET,
+    path: "/v2/active_accounts/{:base}/{:counter}?{:query_params}",
+    description: "Get information on which accounts are actively trading in a specific currency pair.",
+    link: "#get-active-accounts",
+    params: {
+        "{:base}": "USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "{:counter}": "XRP",
+        "{:query_params}": "period=7day"
+    }
+});
+
+Request('Get Exchange Volume', {
+    method: GET,
+    path: "/v2/network/exchange_volume?{:query_params}",
+    description: "Get aggregated exchange volume for a given time period.",
+    link: "#get-exchange-volume",
+    params: {
+        "{:query_params}": "start=2015-10-01T00:00:00&end=2015-11-15T00:00:00&interval=week&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    }
+});
+
+Request('Get Payment Volume', {
+    method: GET,
+    path: "/v2/network/payment_volume?{:query_params}",
+    description: "Get aggregated payment volume for a given time period.",
+    link: "#get-exchange-volume",
+    params: {
+        "{:query_params}": "start=2015-10-01T00:00:00&end=2015-11-15T00:00:00&interval=week&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    }
+});
+
+Request('Get Issued Value', {
+    method: GET,
+    path: "/v2/network/issued_value?{:query_params}",
+    description: "Get aggregated payment volume for a given time period.",
+    link: "#get-exchange-volume",
+    params: {
+        "{:query_params}": "start=2015-10-01T00:00:00&end=2015-11-15T00:00:00&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+    }
+});
+
+Request('Get All Gateways', {
+    method: GET,
+    path: "/v2/gateways",
+    description: "Get information about known gateways.",
+    link: "#get-all-gateways",
+    params: {}
+});
+
+Request('Get Gateway', {
+    method: GET,
+    path: "/v2/gateways/{:gateway}",
+    description: "Get information about a specific known gateway.",
+    link: "#get-gateway",
+    params: {
+        "{:gateway}": "Gatehub"
+    }
+});
+
 
 // account methods -----------------------------------//
 
@@ -110,6 +216,18 @@ Request('Get Account Balances', {
     params: {
         "{:address}": DEFAULT_ADDRESS_1,
         "{:query_params}": "currency=USD&date=2015-01-01T00:00:00Z&limit=3"
+    }
+});
+
+
+Request('Get Account Orders', {
+    method: GET,
+    path: "/v2/accounts/{:address}/orders?{:query_params}",
+    description: "Get orders in the order books, placed by a specific account.",
+    link: "#get-account-orders",
+    params: {
+        "{:address}": JPY_TRADER_ADDRESS,
+        "{:query_params}": "limit=2&date=2015-11-11T00:00:00Z"
     }
 });
 
