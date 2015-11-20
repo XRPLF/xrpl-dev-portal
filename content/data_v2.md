@@ -3201,7 +3201,7 @@ Payment objects have the following fields:
 | delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
 | destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
 | source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
-| fee | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. |
+| transaction\_cost | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
 | currency | String - [Currency Code][] | The currency that the `destination` account received. |
 | destination | String - [Address][] | The account that received the payment. |
 | executed\_time | String - [Timestamp][] | The time the ledger that included this payment closed. |
