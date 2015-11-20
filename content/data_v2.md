@@ -484,7 +484,7 @@ Response:
           "value": "100"
         }
       ],
-      "fee": "1.0E-5",
+      "transaction_cost": "1.0E-5",
       "source_balance_changes": [
         {
           "counterparty": "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
@@ -512,7 +512,7 @@ Response:
           "value": "0.2"
         }
       ],
-      "fee": "1.5E-5",
+      "transaction_cost": "1.5E-5",
       "max_amount": "0.202",
       "source_balance_changes": [
         {
@@ -2598,7 +2598,7 @@ Response:
           "value": "1"
         }
       ],
-      "fee": "1.0E-5",
+      "transaction_cost": "1.0E-5",
       "source_balance_changes": [
         {
           "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
