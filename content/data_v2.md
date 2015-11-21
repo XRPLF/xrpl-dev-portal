@@ -3000,7 +3000,7 @@ Ripple Accounts are identified by a base-58 Ripple Address, which is derived fro
 ### Hashes ###
 [Hash]: #hashes
 
-Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 64-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a SHA-512 hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered identical.
+Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a SHA-512 hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered identical.
 
 A Ripple hash value has the following characteristics:
 
