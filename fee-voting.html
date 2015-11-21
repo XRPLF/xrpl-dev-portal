@@ -29,18 +29,12 @@
 
     <!-- syntax selection js -->
     <script src="js/multicodetab.js"></script>
-    <!-- Code to load contents via Flatdoc  -->
-    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
-    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
     <script>
-        $(".flatdoc-content").empty();
-        $(".content-root .menubar .menu").empty();
-        Flatdoc.run({
-          fetcher: Flatdoc.file('content/fee-voting.md')
-        });
-        $(document).on('flatdoc:ready', function() {
-            $().multicode_tabs();
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
             hljs.initHighlighting();
+            make_code_expandable();
         });
     </script>
 
@@ -57,7 +51,7 @@
     
   
 </head>
-<body  role='flatdoc' class='no-literate'>
+<body  class='no-literate'>
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -72,6 +66,17 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
@@ -81,6 +86,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -89,17 +95,6 @@
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
                     <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -136,9 +131,53 @@
     <div class='content-root'>
         <div class='menubar'>
             <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
             </div>
         </div>
-        <div role='flatdoc-content' class='content'>
+        <div class='content'>
+	        <h1 id="fee-voting">Fee Voting</h1>
+<p>In the long term, it may be necessary to change the basic schedule of XRP requirements to reflect long-term changes in the value of XRP. In this case, validators can vote for changes to basic <a href="tx-cost.html">transaction cost</a> as well as <a href="reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter.</p>
+<p>Operators of <a href="rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. Changes here should not be made lightly: insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Recommended Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reference_fee</td>
+<td>Amount of XRP, in <em>drops</em>, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers.</td>
+<td><code>10</code> (0.00001 XRP)</td>
+</tr>
+<tr>
+<td>account_reserve</td>
+<td>Minimum amount of XRP, in drops, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger.</td>
+<td><code>20000000</code> (20 XRP)</td>
+</tr>
+<tr>
+<td>owner_reserve</td>
+<td>Additional amount of XRP, in drops, that an account must have on reserve for <em>each</em> object it owns in the ledger.</td>
+<td><code>5000000</code> (5 XRP)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voting-process">Voting Process</h3>
+<p>Every 256th ledger is called a "flag" ledger. In the ledger immediately before the flag ledger, each validator whose account reserve and transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
+<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
+<p>After seeing the votes of other validators, each validator that wants to change the transaction cost and reserve settings tries to find a compromise on settings that is closest to its own preferences but also approved by a majority of other validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20.) If this seems possible, the validator inserts a <a href="transactions.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger, with the expectation that other validators who also want the same change will insert an identical SetFee pseudo-transaction into their proposals for the same ledger. If a SetFee psuedotransaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudotransaction takes effect starting with the following ledger.</p>
+<p>In short:</p>
+<ul>
+<li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
+<li><strong>Flag ledger</strong>: Validators tally votes and decide what SetFee to include, if any.</li>
+<li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
+<li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee psuedotransaction achieved consensus.</li>
+</ul>
         </div>
     </div>
     </div>
@@ -148,6 +187,12 @@
             <div class="col-md-3">
 		        <h4>Documentation</h4>
 			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="ripple-rest.html">Ripple-REST</a></li>
@@ -158,12 +203,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
 			    </ul>
 			</div>
 			<div class="col-md-3">

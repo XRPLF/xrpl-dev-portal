@@ -29,18 +29,12 @@
 
     <!-- syntax selection js -->
     <script src="js/multicodetab.js"></script>
-    <!-- Code to load contents via Flatdoc  -->
-    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
-    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
     <script>
-        $(".flatdoc-content").empty();
-        $(".content-root .menubar .menu").empty();
-        Flatdoc.run({
-          fetcher: Flatdoc.file('content/ripplerest_api.md')
-        });
-        $(document).on('flatdoc:ready', function() {
-            $().multicode_tabs();
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
             hljs.initHighlighting();
+            make_code_expandable();
         });
     </script>
 
@@ -57,7 +51,7 @@
     
   
 </head>
-<body  role='flatdoc' class='no-literate'>
+<body  class='no-literate'>
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -72,6 +66,17 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
@@ -81,6 +86,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -89,17 +95,6 @@
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
                     <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -136,9 +131,3169 @@
     <div class='content-root'>
         <div class='menubar'>
             <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
             </div>
         </div>
-        <div role='flatdoc-content' class='content'>
+        <div class='content'>
+	        <h1 id="ripple-rest-api">Ripple-REST API</h1>
+<p>The Ripple-REST API provides a simplified, easy-to-use interface to the Ripple Network via a RESTful API. This page explains how to use the API to send and receive payments on Ripple.</p>
+<p>We recommend Ripple-REST for users just getting started with Ripple, since it provides high-level abstractions and convenient simplifications in the data format. If you prefer to access a <code>rippled</code> server directly, you can use <a href="rippled-apis.html">rippled's WebSocket or JSON-RPC APIs</a> instead, which provide the full power of Ripple at the cost of more complexity.</p>
+<h2 id="available-api-routes">Available API Routes</h2>
+<h4 id="accounts">Accounts</h4>
+<ul>
+<li><a href="#generate-wallet">Generate Wallet - <code>GET /v1/wallet/new</code></a></li>
+<li><a href="#get-account-balances">Get Account Balances - <code>GET /v1/accounts/{:address}/balances</code></a></li>
+<li><a href="#get-account-settings">Get Account Settings - <code>GET /v1/accounts/{:address}/settings</code></a></li>
+<li><a href="#update-account-settings">Update Account Settings - <code>POST /v1/accounts/{:address}/settings</code></a></li>
+</ul>
+<h4 id="payments">Payments</h4>
+<ul>
+<li><a href="#prepare-payment">Prepare Payment - <code>GET /v1/accounts/{:source_address}/payments/paths/{:destination_address}/{:amount}</code></a></li>
+<li><a href="#submit-payment">Submit Payment - <code>POST /v1/accounts/{:source_address}/payments</code></a></li>
+<li><a href="#confirm-payment">Confirm Payment - <code>GET /v1/accounts/{:address}/payments/{:id}</code></a></li>
+<li><a href="#get-payment-history">Get Payment History - <code>GET /v1/accounts/{:address}/payments</code></a></li>
+</ul>
+<h4 id="orders">Orders</h4>
+<ul>
+<li><a href="#place-order">Place Order - <code>POST /v1/accounts/{:address}/orders</code></a></li>
+<li><a href="#cancel-order">Cancel Order - <code>DELETE /v1/accounts/{:address}/orders/{:sequence}</code></a></li>
+<li><a href="#get-account-orders">Get Account Orders - <code>GET /v1/accounts/{:address}/orders</code></a></li>
+<li><a href="#get-order-book">Get Order Book - <code>GET /v1/accounts/{:address}/order_book/{:base}/{:counter}</code></a></li>
+<li><a href="#get-order-transaction">Get Order Transaction - <code>GET /v1/accounts{:address}/orders/{:hash}</code></a></li>
+</ul>
+<h4 id="trustlines">Trustlines</h4>
+<ul>
+<li><a href="#get-trustlines">Get Trustlines - <code>GET /v1/accounts/{:address}/trustlines</code></a></li>
+<li><a href="#grant-trustline">Grant Trustline - <code>POST /v1/accounts/{:address}/trustlines</code></a></li>
+</ul>
+<h4 id="notifications">Notifications</h4>
+<ul>
+<li><a href="#check-notifications">Check Notifications - <code>GET /v1/accounts/{:address}/notifications/{:id}</code></a></li>
+</ul>
+<h4 id="status">Status</h4>
+<ul>
+<li><a href="#check-connection">Check Connection - <code>GET /v1/server/connected</code></a></li>
+<li><a href="#get-server-status">Get Server Status - <code>GET /v1/server</code></a></li>
+</ul>
+<h4 id="utilities">Utilities</h4>
+<ul>
+<li><a href="#retrieve-ripple-transaction">Retrieve Ripple Transaction - <code>GET /v1/transactions/{:id}</code></a></li>
+<li><a href="#retrieve-transaction-fee">Retrieve Transaction Fee - <code>GET /v1/transaction-fee</code></a></li>
+<li><a href="#create-client-resource-id">Generate UUID - <code>GET /v1/uuid</code></a></li>
+</ul>
+<h2 id="api-overview">API Overview</h2>
+<h3 id="ripple-concepts">Ripple Concepts</h3>
+<p>Ripple is a system for making financial transactions.  You can use Ripple to send money anywhere in the world, in any currency, instantly and for free.</p>
+<p>In the Ripple world, each account is identified by a <a href="https://ripple.com/wiki/Account">Ripple Address</a>.  A Ripple address is a string that uniquely identifies an account, for example: <code>rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp</code></p>
+<p>A Ripple <strong><em>payment</em></strong> can be sent using Ripple's native currency, XRP, directly from one account to another.  Payments can also be sent in other currencies, for example US dollars, Euros, Pounds or Bitcoins, though the process is slightly more complicated.</p>
+<p>Payments are made between two accounts, by specifying the <strong><em>source</em></strong> and <strong><em>destination</em></strong> address for those accounts.  A payment also involves an <strong><em>amount</em></strong>, which includes both the numeric amount and the currency, for example: <code>100+XRP</code>.</p>
+<p>When you make a payment in a currency other than XRP, you also need to include the Ripple address of the <strong><em>counterparty</em></strong>.  The counterparty is the gateway or other entity who holds the funds on your behalf.  For non-XRP payments, the amount looks something like this: <code>100+USD+rNsJKf3kaxvFvR8RrDi9P3LBk2Zp6VL8mp</code>.</p>
+<p>Although the Ripple-REST API provides a high-level interface to Ripple, there are also API methods for checking the status of the <code>rippled</code> server and retrieving a Ripple transaction in its native format.</p>
+<h3 id="sending-payments">Sending Payments</h3>
+<p>Sending a payment involves three steps:</p>
+<ol>
+<li>Generate the payment object with the <a href="#prepare-payment">Prepare Payment method</a>.  If the payment is not a direct send of XRP from one account to another, the Ripple system identifies the chain of trust, or <strong><em>path</em></strong>, that connects the source and destination accounts, and includes it in the payment object.</li>
+<li>Modify the payment object if desired, and then <a href="#submit-payment">submit it</a> to the API for processing. <em>Caution:</em> Making many changes to the payment object increases the chances of causing an error.</li>
+<li>Finally, <strong><em>confirm</em></strong> that the payment has completed, using the <a href="#confirm-payment">Confirm Payment method</a>. Payment submission is an asynchronous process, so payments can fail even after they have been submitted successfully.</li>
+</ol>
+<p>When you submit a payment for processing, you assign a unique <code>client resource identifier</code> to that payment.  This is a string which uniquely identifies the payment, and ensures that you do not accidentally submit the same payment twice.  You can also use the <code>client_resource_id</code> to retrieve a payment once it has been submitted.</p>
+<h3 id="transaction-types">Transaction Types</h3>
+<p>The Ripple protocol supports multiple types of transactions, not just payments. Transactions are considered to be any changes to the database made on behalf of a Ripple Address. Transactions are first constructed and then submitted to the network. After transaction processing, meta data is associated with the transaction which itemizes the resulting changes to the ledger.</p>
+<ul>
+<li>Payment: A Payment transaction is an authorized transfer of balance from one address to another. (This maps to rippled's <a href="transactions.html#payment">Payment transaction type</a>)</li>
+<li>Trustline: A Trustline transaction is an authorized grant of trust between two addresses. (This maps to rippled's <a href="transactions.html#trustset">TrustSet transaction type</a>)</li>
+<li>Setting: A Setting transaction is an authorized update of account flags under a Ripple Account. (This maps to rippled's <a href="transactions.html#accountset">AccountSet transaction type</a>)</li>
+</ul>
+<h3 id="client-resource-ids">Client Resource IDs</h3>
+<p>All Ripple transactions are identified by a unique hash, which is generated with the fields of the transaction. Ripple-REST uses an additional type of identifier, called a Client Resource ID, which is an arbitrary string provided at the time a transaction is submitted.</p>
+<p>A client resource ID generally maps to one Ripple transaction. However, if Ripple-REST re-submits a failed transaction, the client resource ID can become associated with the new transaction, which may have slightly different properties (such as the deadline for it to succeed) and therefore a different transaction hash.</p>
+<p>You can create client resource IDs using any method you like, so long as you follow some simple rules:</p>
+<ul>
+<li>Do not reuse identifiers. </li>
+<li>A client resource ID cannot be a 256-bit hex string, because that is ambiguous with Ripple transaction hashes.</li>
+<li>Client resource IDs must be properly <a href="http://tools.ietf.org/html/rfc3986#section-2.1">encoded</a> when provided as part of a URL.</li>
+</ul>
+<p>You can use the <a href="#create-client-resource-id">Create Client Resource ID</a> method in order to generate new Client Resource IDs.</p>
+<h2 id="using-ripple-rest">Using Ripple-REST</h2>
+<p>You don't need to do any setup to retrieve information from a public Ripple-REST server. Ripple Labs hosts a public Ripple-REST server here:</p>
+<p><code>https://api.ripple.com</code></p>
+<p>If you want to run your own Ripple-REST server, see the <a href="#running-ripple-rest">installation instructions</a>.</p>
+<p>In order to submit payments or other transactions, you need an activated Ripple account. See the <a href="https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation">online support</a> for how you can create an account using the <a href="https://rippletrade.com/">Ripple Trade client</a>.</p>
+<p>Make sure you know both the account address and the account secret for your account:</p>
+<ul>
+<li>The <em>address</em> can be found by clicking the <em>Show Address</em> button in the <strong>Fund</strong> tab of Ripple Trade</li>
+<li>The <em>secret</em> is provided when you first create your account. <strong>WARNING: If you submit your secret to a server you do not control, your account can be stolen, along with all the money in it.</strong> We recommend using a test account with very limited funds on the public Ripple-REST server.</li>
+</ul>
+<p>As a programmer, you will also need to have a suitable HTTP client that allows you to make secure HTTP (<code>HTTPS</code>) GET and POST requests. For testing, there are lots of options, including:</p>
+<ul>
+<li>The <a href="http://curl.haxx.se/"><code>curl</code></a> commandline utility</li>
+<li>The <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Poster Firefox extension</a></li>
+<li>The <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman Chrome extension</a></li>
+</ul>
+<p>You can also use the <a href="rest-api-tool.html">REST API Tool</a> here on the Dev Portal to try out the API.</p>
+<p><a class="button" href="rest-api-tool.html">Try it! &gt;</a></p>
+<h3 id="exploring-the-api">Exploring the API</h3>
+<p>A REST API makes resources available via HTTP, the same protocol used by your browser to access the web. This means you can even use your browser to get a response from the API. Try visiting the following URL:</p>
+<p>https://api.ripple.com/v1/server</p>
+<p>The response should be a page with content similar to the following:</p>
+<pre><code class="js">{
+  "rippled_server_url": "wss://s-west.ripple.com:443",
+  "rippled_server_status": {
+    "build_version": "0.23.0",
+    "complete_ledgers": "5526705-6142138",
+    "fetch_pack": 2004,
+    "hostid": "NEAT",
+    "last_close": {
+      "converge_time_s": 2.005,
+      "proposers": 5
+    },
+    "load_factor": 1,
+    "peers": 55,
+    "pubkey_node": "n9KmrBnGoyVf89WYdiAnvGnKFaVqjLdAYjKrBuvg2r8pMxGPp6MF",
+    "server_state": "full",
+    "validated_ledger": {
+      "age": 1,
+      "base_fee_xrp": 0.00001,
+      "hash": "BADDAB671EF21E8ED56B21253123D2C74139FE34E12DBE4B1F5527772EC88494",
+      "reserve_base_xrp": 20,
+      "reserve_inc_xrp": 5,
+      "seq": 6142138
+    },
+    "validation_quorum": 3
+  },
+  "success": true,
+  "api_documentation_url": "https://github.com/ripple/ripple-rest"
+}
+</code></pre>
+<p>If you want to connect to your own server, just replace the hostname and port with the location of your instance. For example, if you are running Ripple-REST locally on port 5990, you can access the same information at the following URL:</p>
+<p>http://localhost:5990/v1/server</p>
+<p>Since the hostname depends on where your chosen Ripple-REST instance is, the methods in this document are identified using only the part of the path that comes after the hostname.</p>
+<h1 id="running-ripple-rest">Running Ripple-REST</h1>
+<h2 id="quick-start">Quick Start</h2>
+<p>Ripple-REST requires <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.sqlite.org/">sqlite 3</a>. Before starting, you should make sure that you have both installed. </p>
+<p>Following that, use these instructions to get Ripple-REST installed and running:</p>
+<ol>
+<li>Clone the Ripple-REST repository with git:
+    <code>git clone https://github.com/ripple/ripple-rest.git</code></li>
+<li>Switch to the <code>ripple-rest</code> directory:
+    <code>cd ripple-rest</code></li>
+<li>Use <em>npm</em> to install additional dependencies:
+    <code>npm install</code></li>
+<li>Copy the example config file to <code>config.json</code>:
+    <code>cp config-example.json config.json</code></li>
+<li>Start the server:
+    <code>npm start</code></li>
+<li>Visit <code>http://localhost:5990</code> in a browser to view available endpoints and get started</li>
+</ol>
+<h2 id="configuring-ripple-rest">Configuring <code>ripple-rest</code></h2>
+<p>The Ripple-REST server uses <a href="https://github.com/flatiron/nconf">nconf</a> to load configuration options from several sources. Settings from sources earlier in the following hierarchy override settings from the later levels:</p>
+<ol>
+<li>Command line arguments</li>
+<li>Environment variables</li>
+<li>The <code>config.json</code> file</li>
+</ol>
+<p>The path to the <code>config.json</code> file can be specified as a command line argument (<code>node server.js --config /path/to/config.json</code>). If no path is specified, the default location for that file is Ripple-REST's root directory.</p>
+<p>Available configuration options are outlined in the <a href="https://github.com/ripple/ripple-rest/blob/develop/docs/server-configuration.md"><strong>Server Configuration</strong></a> document. The <code>config-example.json</code> file in the root directory contains a sample configuration.</p>
+<h2 id="debug-mode">Debug mode</h2>
+<p>You can run the server in Debug Mode with the following command:</p>
+<pre><code>node server.js --debug
+</code></pre>
+<h2 id="running-ripple-rest-securely-over-ssl">Running Ripple-REST securely over SSL</h2>
+<p>We highly recommend running Ripple-REST securely over SSL. Doing so requires a certificate. For development and internal-only deployments, you can use a self-signed certificate. For production servers that are accessed over untrusted network connections, you should purchase a cert from a proper authority.</p>
+<p>You can perform the following steps to generate a self-signed cert with <a href="https://www.openssl.org/">OpenSSL</a> and configure Ripple-REST to use it:</p>
+<ol>
+<li>Generate the SSL certificate:</li>
+</ol>
+<pre><code class="bash">openssl genrsa -out /etc/ssl/private/server.key 2048
+openssl req -utf8 -new -key /etc/ssl/private/server.key -out /etc/ssl/server.csr -sha512
+-batch
+openssl x509 -req -days 730 -in /etc/ssl/server.csr -signkey /etc/ssl/private/server.key
+-out /etc/ssl/certs/server.crt -sha512
+</code></pre>
+<ol>
+<li>Modify the <code>config.json</code> to enable SSL and specify the paths to the <code>certificate</code> and <code>key</code> files</li>
+</ol>
+<pre><code>  "ssl_enabled": true,
+  "ssl": {
+    "key_path": "./certs/server.key",
+    "cert_path": "./certs/server.crt"
+  },
+
+</code></pre>
+<h2 id="deployment-tips">Deployment Tips</h2>
+<h3 id="keeping-the-service-running">Keeping the service running</h3>
+<p>Monitor <code>ripple-rest</code> using <a href="http://mmonit.com/monit/"><code>monit</code></a>. On Ubuntu you can install <code>monit</code> using <code>sudo apt-get install monit</code>.</p>
+<p>Here is an example of a monit script that will restart the server if:</p>
+<ul>
+<li>memory usage surpasses 25% of the server's available memory</li>
+<li>the server fails responding to server status</li>
+</ul>
+<pre><code>set httpd port 2812 and allow localhost
+
+check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
+    start program = "/etc/init.d/ripple-rest start"
+    stop program = "/etc/init.d/ripple-rest stop"
+    if memory &gt; 25% then restart
+    if failed port 5990 protocol HTTP
+        and request "/v1/server"
+    then restart
+</code></pre>
+<h1 id="formatting-conventions">Formatting Conventions</h1>
+<p>The <code>ripple-rest</code> API conforms to the following general behavior for <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful API</a>:</p>
+<ul>
+<li>You make HTTP (or HTTPS) requests to the API endpoint, indicating the desired resources within the URL itself. (The public server, for the sake of security, only accepts HTTPS requests.)</li>
+<li>The HTTP method identifies what you are trying to do.  Generally, HTTP <code>GET</code> requests are used to retrieve information, while HTTP <code>POST</code> requests are used to make changes or submit information.</li>
+<li>If more complicated information needs to be sent, it will be included as JSON-formatted data within the body of the HTTP POST request.</li>
+<li>This means that you must set <code>Content-Type: application/json</code> in the headers when sending POST requests with a body.</li>
+<li>Upon successful completion, the server returns an <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP status code</a> of 200 OK, and a <code>Content-Type</code> value of <code>application/json</code>.  The body of the response will be a JSON-formatted object containing the information returned by the endpoint.</li>
+</ul>
+<p>As an additional convention, all responses from Ripple-REST contain a <code>"success"</code> field with a boolean value indicating whether or not the success</p>
+<h2 id="errors">Errors</h2>
+<p>When errors occur, the server returns an HTTP status code in the 400-599 range, depending on the type of error. The body of the response contains more detailed information on the cause of the problem.</p>
+<p>In general, the HTTP status code is indicative of where the problem occurred:</p>
+<ul>
+<li>Codes in the 200-299 range indicate success. (<em>Note:</em> This behavior is new in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.0">Ripple-REST v1.3.0</a>. Previous versions sometimes return 200 OK for some types of errors.)<ul>
+<li>Unless otherwise specified, methods are expected to return <code>200 OK</code> on success.</li>
+</ul>
+</li>
+<li>Codes in the 400-499 range indicate that the request was invalid or incorrect somehow. For example:<ul>
+<li><code>400 Bad Request</code> occurs if the JSON body is malformed. This includes syntax errors as well as when invalid or mutually-exclusive options are selected.</li>
+<li><code>404 Not Found</code> occurs if the path specified does not exist, or does not support that method (for example, trying to POST to a URL that only serves GET requests)</li>
+</ul>
+</li>
+<li>Codes in the 500-599 range indicate that the server experienced a problem. This could be due to a network outage or a bug in the software somewhere. For example:<ul>
+<li><code>500 Internal Server Error</code> occurs when the server does not catch an error. This is always a bug. If you can reproduce the error, file it at <a href="https://ripplelabs.atlassian.net/browse/RA/">our bug tracker</a>.</li>
+<li><code>502 Bad Gateway</code> occurs if Ripple-REST could not contact its <code>rippled</code> server at all.</li>
+<li><code>504 Gateway Timeout</code> occurs if the <code>rippled</code> server took too long to respond to the Ripple-REST server.</li>
+</ul>
+</li>
+</ul>
+<p>When possible, the server provides a JSON response body with more information about the error. These responses contain the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Boolean</td>
+<td><code>false</code> indicates that an error occurred.</td>
+</tr>
+<tr>
+<td>error_type</td>
+<td>String</td>
+<td>A short code identifying a general category for the error that occurred.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>String</td>
+<td>A human-readable summary of the error that occurred.</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>(May be omitted) A longer human-readable explanation for the error.</td>
+</tr>
+</tbody>
+</table>
+<p>Example error:</p>
+<pre><code class="js">{
+    "success": false,
+    "error_type": "invalid_request",
+    "error": "Invalid parameter: destination_amount",
+    "message": "Non-XRP payment must have an issuer"
+}
+</code></pre>
+<h2 id="quoted-numbers">Quoted Numbers</h2>
+<p>In any case where a large number should be specified, Ripple-REST uses a string instead of the native JSON number type. This avoids problems with JSON libraries which might automatically convert numbers into native types with differing range and precision.</p>
+<p>You should parse these numbers into a numeric data type with adequate precision. If it is not clear how much precision you need, we recommend using an arbitrary-precision data type.</p>
+<h2 id="currency-amounts"><a id="amount_object"></a> Currency Amounts</h2>
+<p>There are two kinds of currency on the Ripple network: XRP, and issuances. XRP is the native cryptocurrency that only exists in the network, and can be held by accounts and sent directly to other accounts with no trust necessary.</p>
+<p>All other currencies take the form of <em>issuances</em>, which are held in the <em>trust lines</em> that link accounts. Issuances are identified by a <code>counterparty</code> on the other end of the trust line, sometimes also called the <code>issuer</code>. Sending and trading issuances actually means debiting the balance of a trust line and crediting the balance of another trust line linked to the same account. Ripple ensures this operation happens atomically.</p>
+<p>Issuances are typically created by Gateway accounts in exchange for assets in the outside world. In most cases, the <code>counterparty</code> of a currency refers to the gateway that created the issuances. XRP never has a counterparty.</p>
+<p>You can read more about <a href="https://ripple.com/knowledge_categories/xrp/">XRP</a> and <a href="https://ripple.com/knowledge_center/gateways/">Gateways</a> in the Knowledge Center.</p>
+<h3 id="amounts-in-json">Amounts in JSON</h3>
+<p>When an amount of currency is specified as part of a JSON body, it is encoded as an object with three fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>String (Quoted decimal)</td>
+<td>The quantity of the currency</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Three-digit <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Code</a> specifying which currency. Alternatively, a 160-bit hex value. (Some advanced features, like <a href="https://ripple.com/wiki/Gateway_demurrage">demurrage</a>, require the hex version.)</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>String</td>
+<td>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.4.0">v1.4.0</a>) The Ripple address of the account that is a counterparty to this currency. This is usually an <a href="https://ripple.com/knowledge_center/gateways/">issuing gateway</a>. Always omitted, or an empty string, for XRP.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>String</td>
+<td>(Prior to 1.4.0) <strong>DEPRECATED</strong> alias for <code>counterparty</code>. Some methods may still return this instead.</td>
+</tr>
+</tbody>
+</table>
+<p>Example Amount Object:</p>
+<pre><code class="js">{
+  "value": "1.0",
+  "currency": "USD",
+  "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+}
+</code></pre>
+<p>or for XRP:</p>
+<pre><code class="js">{
+  "value": "1.0",
+  "currency": "XRP",
+  "counterparty": ""
+}
+</code></pre>
+<p>The <code>value</code> field can get very large or very small. See the <a href="https://wiki.ripple.com/Currency_Format">Currency Format</a> for the exact limits of Ripple's precision.</p>
+<h3 id="amounts-in-urls">Amounts in URLs</h3>
+<p>When an amount of currency has to be specified in a URL, you use the same fields as the JSON object -- value, currency, and counterparty -- but concatenate them with <code>+</code> symbols in that order.</p>
+<p>Example Amount:</p>
+<p><code>1.0+USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q</code></p>
+<p>When specifying an amount of XRP, you must omit the counterparty entirely. For example:</p>
+<p><code>1.0+XRP</code></p>
+<h3 id="counterparties-in-payments">Counterparties in Payments</h3>
+<p>Most of the time, the <code>counterparty</code> field of a non-XRP currency indicates the account of the gateway that issues that currency. However, when describing payments, there are a few nuances that are important:</p>
+<ul>
+<li>There is only ever one balance for the same currency between two accounts. This means that, sometimes, the <code>counterparty</code> field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.</li>
+<li>You can omit the counterparty from the <code>destination_amount</code> of a payment to mean "any counterparty that the destination accepts". This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. <ul>
+<li>For compatibility with <code>rippled</code>, setting the <code>counterparty</code> of the <code>destination_amount</code> to be the destination account's address means the same thing.</li>
+</ul>
+</li>
+<li>You can omit the counterparty from the <code>source_amount</code> of a payment to mean "any counterparty the source can use". This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.<ul>
+<li>Similarly, setting the <code>counterparty</code> of the <code>source_amount</code> to be the source account's address means the same thing.</li>
+</ul>
+</li>
+</ul>
+<h2 id="payment-objects"><a id="payment_object"></a> Payment Objects</h2>
+<p>The <code>Payment</code> object is a simplified version of the standard Ripple transaction format.</p>
+<p>This <code>Payment</code> format is intended to be straightforward to create and parse, from strongly or loosely typed programming languages. Once a transaction is processed and validated it also includes information about the final details of the payment.</p>
+<p>An example Payment object looks like this:</p>
+<pre><code class="js">{
+
+    "source_address": "rKXCummUHnenhYudNb9UoJ4mGBR75vFcgz",
+    "source_tag": "",
+    "source_amount": {
+        "value": "0.001",
+        "currency": "XRP",
+        "issuer": ""
+    },
+    "source_slippage": "0",
+    "destination_address": "rNw4ozCG514KEjPs5cDrqEcdsi31Jtfm5r",
+    "destination_tag": "",
+    "destination_amount": {
+        "value": "0.001",
+        "currency": "XRP",
+        "issuer": ""
+    },
+    "invoice_id": "",
+    "paths": "[]",
+    "flag_no_direct_ripple": false,
+    "flag_partial_payment": false
+}
+</code></pre>
+<p>The fields of a Payment object are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source_account</code></td>
+<td>String</td>
+<td>The Ripple address of the account sending the payment</td>
+</tr>
+<tr>
+<td><code>source_amount</code></td>
+<td><a href="#amount_object">Amount Object</a></td>
+<td>The amount to deduct from the account sending the payment.</td>
+</tr>
+<tr>
+<td><code>destination_account</code></td>
+<td>String</td>
+<td>The Ripple address of the account receiving the payment</td>
+</tr>
+<tr>
+<td><code>destination_amount</code></td>
+<td><a href="#amount_object">Amount Object</a></td>
+<td>The amount that should be deposited into the account receiving the payment.</td>
+</tr>
+<tr>
+<td><code>source_tag</code></td>
+<td>String (Quoted unsigned integer)</td>
+<td>(Optional) A quoted 32-bit unsigned integer (0-4294967294, inclusive) to indicate a sub-category of the source account. Typically, it identifies a hosted wallet at a gateway as the sender of the payment.</td>
+</tr>
+<tr>
+<td><code>destination_tag</code></td>
+<td>String (Quoted unsigned integer)</td>
+<td>(Optional) A quoted 32-bit unsigned integer (0-4294967294, inclusive) to indicate a particular sub-category of the destination account. Typically, it identifies a hosted wallet at a gateway as the recipient of the payment.</td>
+</tr>
+<tr>
+<td><code>source_slippage</code></td>
+<td>String (Quoted decimal)</td>
+<td>(Optional) Provides the <code>source_amount</code> a cushion to increase its chance of being processed successfully. This is helpful if the payment path changes slightly between the time when a payment options quote is given and when the payment is submitted. The <code>source_address</code> will never be charged more than <code>source_slippage</code> + the <code>value</code> specified in <code>source_amount</code>.</td>
+</tr>
+<tr>
+<td><code>invoice_id</code></td>
+<td>String</td>
+<td>(Optional) Arbitrary 256-bit hash that can be used to link payments to an invoice or bill.</td>
+</tr>
+<tr>
+<td><code>paths</code></td>
+<td>String</td>
+<td>A "stringified" version of the Ripple PathSet structure. You can get a path for your payment from the <a href="#prepare-payment">Prepare Payment</a> method.</td>
+</tr>
+<tr>
+<td><code>no_direct_ripple</code></td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) <code>true</code> if <code>paths</code> are specified and the sender would like the Ripple Network to disregard any direct paths from the <code>source_address</code> to the <code>destination_address</code>. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet. Most users will not need to use this option.</td>
+</tr>
+<tr>
+<td><code>partial_payment</code></td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) If set to <code>true</code>, fees will be deducted from the delivered amount instead of the sent amount. (<em>Caution:</em> There is no minimum amount that will actually arrive as a result of using this flag; only a miniscule amount may actually be received.) See <a href="transactions.html#partial-payments">Partial Payments</a></td>
+</tr>
+<tr>
+<td><code>memos</code></td>
+<td>Array</td>
+<td>(Optional) Array of <a href="#memo-objects">memo objects</a>, where each object is an arbitrary note to send with this payment.</td>
+</tr>
+</tbody>
+</table>
+<p>Submitted transactions can have additional fields reflecting the current status and outcome of the transaction, including:</p>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/lib/tx-to-rest-converter.js#L25" title="Source">[Source]<br/></a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>The direction of the payment relative to the account from the URL, either <code>"outgoing"</code> (sent by the account in the URL) or <code>"incoming"</code> (received by the account in the URL)</td>
+</tr>
+<tr>
+<td>result</td>
+<td>String</td>
+<td>The <a href="transactions.html#transaction-results">Ripple transaction status code</a> for the transaction. A value of <code>"tesSUCCESS"</code> indicates a successful transaction.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>The time the ledger containing this transaction was validated, as a <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 extended format</a> string in the form <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String (Quoted decimal)</td>
+<td>The amount of XRP charged as a transaction fee.</td>
+</tr>
+<tr>
+<td>source_balance_changes</td>
+<td>Array</td>
+<td>Array of <a href="#amount_object">Amount objects</a> indicating changes in balances held by the account sending the transaction as a result of the transaction.</td>
+</tr>
+<tr>
+<td>destination_balance_changes</td>
+<td>Array</td>
+<td>Array of <a href="#amount_object">Amount objects</a> indicating changes in balances held by the account receiving the transaction as a result of the transaction.</td>
+</tr>
+<tr>
+<td>order_changes</td>
+<td>Array</td>
+<td>Array of <a href="#amount_object">Amount objects</a> indicating changes to orders caused by the Payment.</td>
+</tr>
+<tr>
+<td>source_amount_submitted</td>
+<td>Object</td>
+<td>An <a href="#amount_object">Amount object</a> indicating the source amount submitted (useful when <code>payment.partial_payment</code> flag is set to <em>true</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="memo-objects">Memo Objects</h3>
+<p><em>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.0">Ripple-REST v1.3.0</a>)</em></p>
+<p>Memo objects represent arbitrary data that can be included in a transaction. The overall size of the <code>memos</code> field cannot exceed 1KB after serialization.</p>
+<p>Each Memo object must have at least one of the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MemoType</td>
+<td>String</td>
+<td>A string using URL-safe characters, conventionally a unique relation type (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo.</td>
+</tr>
+<tr>
+<td>MemoFormat</td>
+<td>String</td>
+<td>A string using URL-safe characters, conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a></td>
+</tr>
+<tr>
+<td>MemoData</td>
+<td>String</td>
+<td>Arbitrary UTF-8 string representing the content of the memo.</td>
+</tr>
+</tbody>
+</table>
+<p>The MemoType and MemoFormat fields should only consist of the following characters: <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&amp;'()*+,;=%</code></p>
+<p>Example of the memos field:</p>
+<pre><code class="js">    "memos": [
+      {
+        "MemoType": "http://example.com/unique/memo/relation",
+        "MemoData": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum是指一篇常用於排版設計領域的拉丁文文章，主要的目的為測試文章或文字在不同字型、版型下看起來的效果。Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
+      },
+      {
+        "MemoData": "Fusce est est, malesuada in tincidunt mattis, auctor eu magna."
+      }
+    ]
+</code></pre>
+<h2 id="order-objects">Order Objects</h2>
+<p><em>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.4.0">Ripple-REST 1.4.0</a>)</em></p>
+<p>An order object describes an offer to exchange two currencies. Order objects are used when creating or looking up individual orders.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String (<code>buy</code> or <code>sell</code>)</td>
+<td>Whether the order is to buy or sell.</td>
+</tr>
+<tr>
+<td>taker_pays</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The amount the taker must pay to consume this order.</td>
+</tr>
+<tr>
+<td>taker_gets</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The amount the taker will get once the order is consumed.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>Number</td>
+<td>The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order.</td>
+</tr>
+<tr>
+<td>passive</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="transactions.html#offercreate-flags">passive</a>.</td>
+</tr>
+<tr>
+<td>sell</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="transactions.html#offercreate-flags">sell</a>.</td>
+</tr>
+<tr>
+<td>immediate_or_cancel</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="transactions.html#offercreate-flags">immediate or cancel</a>.</td>
+</tr>
+<tr>
+<td>fill_or_kill</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="transactions.html#offercreate-flags">fill or kill</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="order-change-objects">Order Change Objects</h2>
+<p>An order change object describes the changes to to a Ripple account's open order due to a transaction.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String (<code>buy</code> or <code>sell</code>)</td>
+<td>Whether the order is to buy or sell.</td>
+</tr>
+<tr>
+<td>taker_pays</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The <code>value</code> of the amount is expressed as the difference between the final amount and original amount.</td>
+</tr>
+<tr>
+<td>taker_gets</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The <code>value</code> of the amount is expressed as the difference between the final amount and original amount.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>Number</td>
+<td>The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String(<code>created</code>, <code>closed</code>, <code>canceled</code>, <code>open</code>)</td>
+<td>The status of the order on the ledger. An order that is partially filled has the status <code>open</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bid-objects">Bid Objects</h2>
+<p>An bid object describes an offer to exchange two currencies, including the current funding status of the offer. Bid objects are used to describe bids and asks when retrieving an order book. </p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String (<code>buy</code> or <code>sell</code>)</td>
+<td>Whether the order is to buy or sell.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The quoted price, denominated in total units of the counter currency per unit of the base currency</td>
+</tr>
+<tr>
+<td>taker_pays_total</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The total amount the taker must pay to consume this order.</td>
+</tr>
+<tr>
+<td>taker_pays_funded</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The actual amount the taker must pay to consume this order, if the order is <a href="transactions.html#lifecycle-of-an-offer">partially funded</a>.</td>
+</tr>
+<tr>
+<td>taker_gets_total</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The total amount the taker will get once the order is consumed.</td>
+</tr>
+<tr>
+<td>taker_gets_funded</td>
+<td>String (<a href="#amount_object">Amount Object</a>)</td>
+<td>The actual amount the taker will get once the order is consumed, if the order is <a href="transactions.html#lifecycle-of-an-offer">partially funded</a>.</td>
+</tr>
+<tr>
+<td>order_maker</td>
+<td>String</td>
+<td>The Ripple address of the account that placed the bid or ask on the order book.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>Number</td>
+<td>The sequence number of the transaction that created the order. Used in combination with account to uniquely identify the order.</td>
+</tr>
+<tr>
+<td>sell</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="https://ripple.com/build/transactions/#offercreate-flags">sell</a>.</td>
+</tr>
+<tr>
+<td>passive</td>
+<td>Boolean</td>
+<td>Whether the order should be <a href="https://ripple.com/build/transactions/#offercreate-flags">passive</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="trustline-objects">Trustline Objects</h2>
+<p>A trustline object describes a link between two accounts that allows one to hold the other's issuances. A trustline can also be two-way, meaning that each can hold balances issued by the other, but that case is less common. In other words, a trustline tracks money owed.</p>
+<p>A trustline with a positive limit indicates an account accepts issuances from the other account (typically an issuing gateway) as payment, up to the limit. An account cannot receive a payment that increases its balance over that trust limit. It is possible, however, to go over a limit by either by trading currencies or by decreasing the limit while already holding a balance.</p>
+<p>From the perspective of an account on one side of the trustline, the trustline has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>String (Address)</td>
+<td>This account</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>String (Address)</td>
+<td>The account at the other end of the trustline</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Currency code for the type of currency that is held on this trustline.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String (Quoted decimal)</td>
+<td>The maximum amount of currency issued by the counterparty account that this account should hold.</td>
+</tr>
+<tr>
+<td>reciprocated_limit</td>
+<td>String (Quoted decimal)</td>
+<td>(Read-only) The maximum amount of currency issued by this account that the counterparty account should hold.</td>
+</tr>
+<tr>
+<td>account_allows_rippling</td>
+<td>Boolean</td>
+<td>If set to false on two trustlines from the same account, payments cannot ripple between them. (See the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a> for details.)</td>
+</tr>
+<tr>
+<td>counterparty_allows_rippling</td>
+<td>Boolean</td>
+<td>(Read-only) If false, the counterparty account has the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a> enabled.</td>
+</tr>
+<tr>
+<td>account_trustline_frozen</td>
+<td>Boolean</td>
+<td>Indicates whether this account has <a href="https://wiki.ripple.com/Freeze">frozen</a> the trustline. (<code>account_froze_trustline</code> prior to <a href="https://github.com/ripple/ripple-rest/releases/tag/1.4.0">v1.4.0</a>)</td>
+</tr>
+<tr>
+<td>counterparty_trustline_frozen</td>
+<td>Boolean</td>
+<td>(Read-only) Indicates whether the counterparty account has <a href="https://wiki.ripple.com/Freeze">frozen</a> the trustline. (<code>counterparty_froze_line</code> prior to <a href="https://github.com/ripple/ripple-rest/releases/tag/1.4.0">v1.4.0</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>The read-only fields indicate portions of the trustline that pertain to the counterparty, and can only be changed by that account. (The <code>counterparty</code> field is technically part of the identity of the trustline. If you "change" it, that just means that you are referring to a different trustline object.)</p>
+<p>A trust line with a limit <em>and</em> a balance of 0 is equivalent to no trust line.</p>
+<h1 id="accounts-1">ACCOUNTS</h1>
+<p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account’s secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="reserves.html">account reserve</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users.</p>
+<h2 id="generate-wallet">Generate Wallet</h2>
+<p>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.0">Ripple-REST v1.3.0</a>)</p>
+<p>Randomly generate keys for a potential new Ripple account.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:9
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#generate-wallet">Try it! &gt;</a></p>
+<p>There are two steps to making a new account on the Ripple network: randomly creating the keys for that account, and sending it enough XRP to meet the account reserve.</p>
+<p>Generating the keys can be done offline, since it does not affect the network at all. To make it easy, Ripple-REST can generate account keys for you.</p>
+<p><em>Caution:</em> Ripple account keys are very sensitive, since they give full control over that account's money on the Ripple network. Do not transmit them to untrusted servers, or unencrypted over the internet (for example, through HTTP instead of HTTPS). There <em>are</em> bad actors who are sniffing around for account keys so they can steal your money!</p>
+<h4 id="response">Response</h4>
+<p>The response is an object with the address and the secret for a potential new account:</p>
+<pre><code class="js">{
+    "success": true,
+    "account": {
+        "address": "raqFu9wswvHYS4q5hZqZxVSYei73DQnKL8",
+        "secret": "shUzHiYxoXX2FgA54j42cXCZ9dTVT"
+    }
+}
+</code></pre>
+<p>The second step is <a href="#payments">making a payment</a> of XRP to the new account address. (Ripple lets you send XRP to any mathematically possible account address, which creates the account if necessary.) The generated account does not exist in the ledger until it receives enough XRP to meet the account reserve.</p>
+<h2 id="get-account-balances">Get Account Balances</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/balances.js#L34" title="Source">[Source]<br/></a></p>
+<p>Retrieve the current balances for the given Ripple account.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:11
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-account-balances">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of the account whose balances to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include any of the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td>String (<a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Code</a>)</td>
+<td>If provided, only include balances in the given currency.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>String (Address)</td>
+<td>If provided, only include balances issued by the provided address (usually a gateway).</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>String</td>
+<td>Server-provided value that marks where to resume pagination.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String (Integer or <code>all</code>)</td>
+<td>(Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use <code>all</code> to return all results</td>
+</tr>
+<tr>
+<td>ledger</td>
+<td>String (ledger hash or sequence, or 'validated', 'current', or 'closed')</td>
+<td>(Defaults to 'validated') Identifying ledger version to pull results from.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> Pagination using <code>limit</code> and <code>marker</code> requires a consistent ledger version, so you must also provide the <code>ledger</code> hash or sequence query parameter to use pagination.</p>
+<p><em>Caution:</em> When an account holds balances on a very large number of trust lines, specifying <code>limit=all</code> may take a long time or even time out. If you experience timeouts, try again later, or specify a smaller limit.</p>
+<h4 id="response-1">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
+  "balances": [
+    {
+      "currency": "XRP",
+      "amount": "1046.29877312",
+      "counterparty": ""
+    },
+    {
+      "currency": "USD",
+      "amount": "512.79",
+      "counterparty": "r...",
+    }
+    ...
+  ]
+}
+</code></pre>
+<p><em>Note:</em> <code>marker</code> will be present in the response when there are additional pages to page through.</p>
+<p>There is one entry in the <code>balances</code> array for the account's XRP balance, and additional entries for each combination of currency code and counterparty.</p>
+<h2 id="get-account-settings">Get Account Settings</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/master/api/settings.js#L53" title="Source">[Source]<br/></a></p>
+<p>Retrieve the current settings for a given account.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:13
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-account-settings">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of the account whose settings to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-2">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "settings": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "transfer_rate": 1004999999,
+    "password_spent": false,
+    "require_destination_tag": true,
+    "require_authorization": false,
+    "disallow_xrp": true,
+    "disable_master": false,
+    "no_freeze": false,
+    "global_freeze": false,
+    "default_ripple": true,
+    "transaction_sequence": "330",
+    "email_hash": "98B4375E1D753E5B91627516F6D70977",
+    "wallet_locator": "",
+    "wallet_size": "",
+    "message_key": "0000000000000000000000070000000300",
+    "domain": "mduo13.com",
+    "signers": ""
+  }
+}
+</code></pre>
+<p>The response contains a <code>settings</code> object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>String</td>
+<td>The Ripple address of this account</td>
+</tr>
+<tr>
+<td>transfer_rate</td>
+<td>String (Quoted decimal number)</td>
+<td>If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision. See <a href="transactions.html#transferrate">TransferRate</a> for details.</td>
+</tr>
+<tr>
+<td>password_spent</td>
+<td>Boolean</td>
+<td>If false, then this account can submit a special <a href="transactions.html#setregularkey">SetRegularKey transaction</a> without a transaction fee.</td>
+</tr>
+<tr>
+<td>require_destination_tag</td>
+<td>Boolean</td>
+<td>If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.)</td>
+</tr>
+<tr>
+<td>require_authorization</td>
+<td>Boolean</td>
+<td>If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.)</td>
+</tr>
+<tr>
+<td>disallow_xrp</td>
+<td>Boolean</td>
+<td>If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.)</td>
+</tr>
+<tr>
+<td>disable_master</td>
+<td>Boolean</td>
+<td>If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account.</td>
+</tr>
+<tr>
+<td>no_freeze</td>
+<td>Boolean</td>
+<td>If true, the account has permanently given up the ability to <a href="https://ripple.com/files/GB-2014-02.pdf">freeze</a> its trust lines.</td>
+</tr>
+<tr>
+<td>global_freeze</td>
+<td>Boolean</td>
+<td>If true, all trust lines connected to the account are <a href="https://ripple.com/files/GB-2014-02.pdf">frozen</a>.</td>
+</tr>
+<tr>
+<td>default_ripple</td>
+<td>Boolean</td>
+<td>If true, enables <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account's trustlines by default. <em>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.5.0-rc1">Ripple-REST v1.5.0</a>)</em></td>
+</tr>
+<tr>
+<td>transaction_sequence</td>
+<td>String (Quoted integer)</td>
+<td>The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.)</td>
+</tr>
+<tr>
+<td>email_hash</td>
+<td>String</td>
+<td>Hash of an email address to be used for generating an avatar image. Conventionally, clients use <a href="http://en.gravatar.com/site/implement/hash/">Gravatar</a> to display this image.</td>
+</tr>
+<tr>
+<td>wallet_locator</td>
+<td>String</td>
+<td>(Not used)</td>
+</tr>
+<tr>
+<td>wallet_size</td>
+<td>String</td>
+<td>(Not used)</td>
+</tr>
+<tr>
+<td>message_key</td>
+<td>String</td>
+<td>A <a href="https://en.bitcoin.it/wiki/Secp256k1">secp256k1</a> public key that should be used to encrypt secret messages to this account.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>String</td>
+<td>The domain that holds this account. Clients can use this to verify the account in the <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a> of the domain.</td>
+</tr>
+<tr>
+<td>signers</td>
+<td>(Undefined)</td>
+<td>(To be used for <a href="https://wiki.ripple.com/M_of_N">Multi-sign</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update-account-settings">Update Account Settings</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/settings.js#L135" title="Source">[Source]<br/></a></p>
+<p>Modify the existing settings for an account.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:15
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#update-account-settings">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of the account whose settings to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<p>The request body must be a JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td>String</td>
+<td>A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured.</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>Object</td>
+<td>A map of settings to change for this account. Any settings not included are left unchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can include the following as a URL query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validated</td>
+<td>Boolean</td>
+<td>If <code>true</code>, the server waits to respond until the account transaction has been successfully validated by the network. A validated transaction has <code>state</code> field of the response set to <code>"validated"</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
+<p>The <code>settings</code> object can contain any of the following fields (any omitted fields are left unchanged):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transfer_rate</td>
+<td>String (Quoted decimal number)</td>
+<td>If set, imposes a fee for transferring balances issued by this account. Must be between 1 and 2, with up to 9 decimal places of precision.</td>
+</tr>
+<tr>
+<td>require_destination_tag</td>
+<td>Boolean</td>
+<td>If true, require a destination tag to send payments to this account. (This is intended to protect users from accidentally omitting the destination tag in a payment to a gateway's hosted wallet.)</td>
+</tr>
+<tr>
+<td>require_authorization</td>
+<td>Boolean</td>
+<td>If true, require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.)</td>
+</tr>
+<tr>
+<td>disallow_xrp</td>
+<td>Boolean</td>
+<td>If true, XRP should not be sent to this account. (Enforced in clients but not in the server, because it could cause accounts to become unusable if all their XRP were spent.)</td>
+</tr>
+<tr>
+<td>disable_master</td>
+<td>Boolean</td>
+<td>If true, the master secret key cannot be used to sign transactions for this account. Can only be set to true if a Regular Key is defined for the account.</td>
+</tr>
+<tr>
+<td>no_freeze</td>
+<td>Boolean</td>
+<td>If true, the account has permanently given up the ability to <a href="https://ripple.com/files/GB-2014-02.pdf">freeze</a> its trust lines. Cannot be set to false after being true.</td>
+</tr>
+<tr>
+<td>global_freeze</td>
+<td>Boolean</td>
+<td>If true, <a href="https://ripple.com/files/GB-2014-02.pdf">freeze</a> all trust lines connected to the account.</td>
+</tr>
+<tr>
+<td>default_ripple</td>
+<td>Boolean</td>
+<td>If true, enables <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account's trustlines by default. <em>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.5.0-rc1">Ripple-REST v1.5.0</a>)</em></td>
+</tr>
+<tr>
+<td>email_hash</td>
+<td>String</td>
+<td>Hash of an email address to be used for generating an avatar image. Conventionally, clients use <a href="http://en.gravatar.com/site/implement/hash/">Gravatar</a> to display this image.</td>
+</tr>
+<tr>
+<td>message_key</td>
+<td>String</td>
+<td>A <a href="https://en.bitcoin.it/wiki/Secp256k1">secp256k1</a> public key that should be used to encrypt secret messages to this account, as hex.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>String</td>
+<td>The domain that holds this account, as lowercase ASCII. Clients can use this to verify the account in the <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> Some of the account setting fields cannot be modified by this method. For example, the <code>password_spent</code> flag is only enabled when the account uses a free SetRegularKey transaction, and only disabled when the account receives a transmission of XRP.</p>
+<h4 id="response-3">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "settings": {
+    "require_destination_tag": false,
+    "require_authorization": false,
+    "disallow_xrp": false,
+    "email_hash": "98b4375e1d753e5b91627516f6d70977",
+    "state": "pending",
+    "ledger": "9248628",
+    "hash": "81FA244915767DAF65B0ACF262C88ABC60E9437A4A1B728F7A9F932E727B82C6"
+  }
+}
+</code></pre>
+<p>The response is a JSON object containing the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>String</td>
+<td>A unique hash that identifies the Ripple transaction to change settings</td>
+</tr>
+<tr>
+<td>ledger</td>
+<td>String (Quoted integer)</td>
+<td>The sequence number of the ledger version where the settings-change transaction was applied.</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>Object</td>
+<td>The settings that were changed, as provided in the request.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="payments-1">PAYMENTS</h1>
+<p><code>ripple-rest</code> provides access to <code>ripple-lib</code>'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if <code>rippled</code> reports an initial error that can be solved automatically.</p>
+<h2 id="prepare-payment">Prepare Payment</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L484" title="Source">[Source]<br/></a></p>
+<p>Get quotes for possible ways to make a particular payment.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:17
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#prepare-payment">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td>String</td>
+<td>The Ripple address for the account that would send the payment.</td>
+</tr>
+<tr>
+<td><code>destination_account</code></td>
+<td>String</td>
+<td>The Ripple address for the account that would receive the payment.</td>
+</tr>
+<tr>
+<td><code>destination_amount</code></td>
+<td>String (<a href="#amounts-in-urls">URL-formatted Amount</a>)</td>
+<td>The amount that the destination account should receive.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include the following as a query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source_currencies</code></td>
+<td>Comma-separated list of source currencies. Each should be an <a href="http://www.xe.com/iso4217.php">ISO 4217 currency code</a>, or a <code>{:currency}+{:counterparty}</code> string.</td>
+<td>Filters possible payments to include only ones that spend the source account's balances in the specified currencies. If a counterparty is not specified, include all issuances of that currency held by the sending account.</td>
+</tr>
+</tbody>
+</table>
+<p>Before you make a payment, it is necessary to figure out the possible ways in which that payment can be made. This method gets a list possible ways to make a payment, but it does not affect the network. This method effectively performs a <a href="rippled-apis.html#ripple-path-find">ripple_path_find</a> and constructs payment objects for the paths it finds.</p>
+<p>You can then choose one of the returned payment objects, modify it as desired (for example, to set slippage values or tags), and then submit the payment for processing.</p>
+<h4 id="response-4">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "payments": [
+    {
+      "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "source_tag": "",
+      "source_amount": {
+        "value": "1.008413509923106",
+        "currency": "USD",
+        "issuer": ""
+      },
+      "source_slippage": "0",
+      "destination_account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+      "destination_tag": "",
+      "destination_amount": {
+        "value": "1",
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "invoice_id": "",
+      "paths": "[[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"account\":\"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"currency\":\"XRP\",\"type\":16,\"type_hex\":\"0000000000000010\"},{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+      "partial_payment": false,
+      "no_direct_ripple": false
+    },
+    {
+      "source_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "source_tag": "",
+      "source_amount": {
+        "value": "61.06103",
+        "currency": "XRP",
+        "issuer": ""
+      },
+      "source_slippage": "0",
+      "destination_account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+      "destination_tag": "",
+      "destination_amount": {
+        "value": "1",
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "invoice_id": "",
+      "paths": "[[{\"currency\":\"USD\",\"issuer\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rHAwwozJw6FHfnJfRQaFXrkGHocGoaNYSy\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rEtr3Kzh5MmhPbeNu6PDtQZsKBpgFEEEo5\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}],[{\"currency\":\"USD\",\"issuer\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rKvPTQrD8ap1Y8TSmKjcK6G7q7Kvx7RAqQ\",\"type\":1,\"type_hex\":\"0000000000000001\"},{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\",\"type\":1,\"type_hex\":\"0000000000000001\"}]]",
+      "partial_payment": false,
+      "no_direct_ripple": false
+    }
+  ]
+}
+</code></pre>
+<p>You can then select the desired payment, modify it if necessary, and submit the payment object to the <a href="#submit-payment"><code>POST /v1/accounts/{address}/payments</code></a> endpoint for processing.</p>
+<p><strong>NOTE:</strong> This command may be quite slow. If the command times out, please try it again.</p>
+<h2 id="submit-payment">Submit Payment</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L52" title="Source">[Source]<br/></a></p>
+<p>Submit a payment object to be processed and executed.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:19
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#submit-payment">Try it! &gt;</a></p>
+<p>The JSON body of the request includes the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>payment</td>
+<td><a href="#payment_object">Payment object</a></td>
+<td>The payment to send. You can generate a payment object using the <a href="#prepare-payment">Prepare Payment</a> method.</td>
+</tr>
+<tr>
+<td>client_resource_id</td>
+<td>String</td>
+<td>A unique identifier for this payment. You can generate one using the <a href="#create-client-resource-id"><code>GET /v1/uuid</code></a> method.</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>String</td>
+<td>A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured.</td>
+</tr>
+<tr>
+<td>last_ledger_sequence</td>
+<td>String</td>
+<td>(Optional) A string representation of a ledger sequence number. If this parameter is not set, it defaults to the current ledger sequence plus an appropriate buffer.</td>
+</tr>
+<tr>
+<td>max_fee</td>
+<td>String</td>
+<td>(Optional) The maximum transaction fee to allow, as a decimal amount of XRP.</td>
+</tr>
+<tr>
+<td>fixed_fee</td>
+<td>String</td>
+<td>(Optional) The exact transaction fee the payer wishes to pay to the server, as a decimal amount of XRP.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
+<p><em>Note:</em> The transaction fee is determined as follows:</p>
+<ol>
+<li>If <code>fixed_fee</code> is included, that exact value is used for the transaction fee. Otherwise, the transaction fee is set dynamically based on the server's current fee.</li>
+<li>If <code>max_fee</code> is included and the transaction fee is higher than <code>max_fee</code>, then the transaction is rejected without being submitted. This is true regardless of whether the fee was fixed or dynamically set. Otherwise, the transaction is submitted to the <code>rippled</code> server with the specified fee.</li>
+<li>If the transaction succeeds, the sending account loses the whole amount of the transaction fee, even if it was higher than the server's current fee. </li>
+<li>If the transaction fails because the fee was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.</li>
+</ol>
+<p>Consequently, you can use <code>max_fee</code> as a "set-it-and-forget-it" safeguard on the fees you are willing to pay.</p>
+<p>Optionally, you can include the following as a URL query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validated</td>
+<td>Boolean</td>
+<td>If <code>true</code>, the server waits to respond until the payment has been successfully validated by the network and returns the payment object. Otherwise, the server responds immediately with a message indicating that the transaction was received for processing.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-5">Response</h4>
+<p>The response can take two formats, depending on the <code>validated</code> query parameter:</p>
+<ul>
+<li>If <code>validated</code> is set to <code>true</code>, then the response matches the format from <a href="#confirm-payment">Confirm Payment</a>.</li>
+<li>If <code>validated</code> is omitted or set to <code>false</code>, then the response is a JSON object as follows:</li>
+</ul>
+<pre><code class="js">{
+  "success": true,
+  "client_resource_id": "123",
+  "status_url": ".../v1/accounts/r1.../payments/123"
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Boolean</td>
+<td>A value of <code>true</code> only indicates that the request was received, not that the transaction was processed.</td>
+</tr>
+<tr>
+<td>client_resource_id</td>
+<td>String</td>
+<td>The client resource ID provided in the request</td>
+</tr>
+<tr>
+<td>status_url</td>
+<td>String</td>
+<td>A URL that you can GET to check the status of the request. This refers to the <a href="#confirm-payment">Confirm Payment</a> method.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confirm-payment">Confirm Payment</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L270" title="Source">[Source]<br/></a></p>
+<p>Retrieve the details of a payment, including the current state of the transaction and the result of transaction processing.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:21
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#confirm-payment">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of an account involved in the transaction.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>A unique identifier for the transaction: either a client resource ID or a transaction hash.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-6">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "payment": {
+    "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "source_tag": "",
+    "source_amount": {
+      "value": "0.00001",
+      "currency": "XRP",
+      "issuer": ""
+    },
+    "source_slippage": "0",
+    "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "destination_tag": "",
+    "destination_amount": {
+      "value": "0.00000005080000000000001",
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+    },
+    "invoice_id": "",
+    "paths": "[]",
+    "no_direct_ripple": false,
+    "partial_payment": true,
+    "direction": "outgoing",
+    "result": "tesSUCCESS",
+    "timestamp": "2014-09-17T21:47:00.000Z",
+    "fee": "0.00001",
+    "source_balance_changes": [
+      {
+        "currency": "XRP",
+        "value": "-0.00002",
+        "issuer": ""
+      }
+    ],
+    "destination_balance_changes": [
+      {
+        "currency": "USD",
+        "value": "5.08e-8",
+        "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+      }
+    ],
+    "order_changes": [],
+    "destination_amount_submitted": {
+      "value": "0.01",
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+    },
+    "source_amount_submitted": {
+      "value": "0.00001",
+      "currency": "XRP",
+      "issuer": ""
+    }
+  },
+  "client_resource_id": "",
+  "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+  "ledger": "8924146",
+  "state": "validated"
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>payment</td>
+<td>Object</td>
+<td>A <a href="#payment-objects">payment object</a> for the transaction.</td>
+</tr>
+<tr>
+<td>client_resource_id</td>
+<td>String</td>
+<td>The <a href="#client-resource-ids">client resource identifier</a> used for this payment.</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>String (Transaction Hash)</td>
+<td>A hash value that uniquely identifies this transaction in the Ripple network.</td>
+</tr>
+<tr>
+<td>ledger</td>
+<td>String (Ledger Index)</td>
+<td>(May be omitted) The sequence number of the ledger that includes this transaction, if this transaction is in a ledger.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>Whether or not the transaction is included in a ledger that has been validated by consensus.</td>
+</tr>
+</tbody>
+</table>
+<p><em>New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.4.0">v1.4.0</a> - The <code>hash</code>, <code>ledger</code>, and <code>state</code> fields have been moved to the top level. Previously, they were included as part of the Payment object.</em></p>
+<p>If the <code>state</code> field has the value <code>validated</code>, then the payment has been finalized, and is included in the shared global ledger. However, this does not necessarily mean that it succeeded. Check the <code>result</code> field of the Payment for a value of <code>"tesSUCCESS"</code> to see if the payment was successfully executed. If the <code>payment.partial_payment</code> flag is <em>true</em>, then you should also consult the <code>payment.destination_balance_changes</code> array to see how much currency was actually delivered to the destination account.</p>
+<p>Processing a payment can take several seconds to complete, depending on the <a href="https://ripple.com/consensus-whitepaper/">consensus process</a>. If the payment does not exist yet, or has not been validated, you should wait a few seconds before checking again.</p>
+<h2 id="get-payment-history">Get Payment History</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L394" title="Source">[Source]<br/></a></p>
+<p>Retrieve a selection of payments that affected the specified account.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:23
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-payment-history">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of an account involved in the transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_account</td>
+<td>String (Address)</td>
+<td>If provided, only include payments sent by a given account.</td>
+</tr>
+<tr>
+<td>destination_account</td>
+<td>String (Address)</td>
+<td>If provided, only include payments received by a given account.</td>
+</tr>
+<tr>
+<td>exclude_failed</td>
+<td>Boolean</td>
+<td>If true, only include successful transactions. Defaults to false.</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>If provided, only include payments of the given type. Valid values include <code>"incoming"</code> (payments received by this account) and <code>"outgoing"</code> (payments sent by this account).</td>
+</tr>
+<tr>
+<td>earliest_first</td>
+<td>Boolean</td>
+<td>If true, sort results with the oldest payments first. Defaults to false (sort with the most recent payments first).</td>
+</tr>
+<tr>
+<td>start_ledger</td>
+<td>Integer (Ledger sequence number)</td>
+<td>If provided, exclude payments from ledger versions older than the given ledger.</td>
+</tr>
+<tr>
+<td>end_ledger</td>
+<td>Integer (Ledger sequence number)</td>
+<td>If provided, exclude payments from ledger versions newer than the given ledger.</td>
+</tr>
+<tr>
+<td>results_per_page</td>
+<td>Integer</td>
+<td>The maximum number of payments to be returned at once.  Defaults to 10.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Integer</td>
+<td>The page number for the results to return, if more than <code>results_per_page</code> are available. The first page of results is page <code>1</code>, the second page is number <code>2</code>, and so on.  Defaults to <code>1</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-7">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "payments": [
+    {
+      "payment": {
+        "source_account": "rBvktWhzs4MQDaFYScsqPCB5YufRDXwKDC",
+        "source_tag": "",
+        "source_amount": {
+          "value": "1166313.057",
+          "currency": "JPY",
+          "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+        },
+        "source_slippage": "0",
+        "destination_account": "rBvktWhzs4MQDaFYScsqPCB5YufRDXwKDC",
+        "destination_tag": "",
+        "destination_amount": {
+          "value": "600000",
+          "currency": "XRP",
+          "issuer": ""
+        },
+        "invoice_id": "",
+        "paths": "[[{\"currency\":\"XRP\",\"type\":16,\"type_hex\":\"0000000000000010\"}]]",
+        "no_direct_ripple": false,
+        "partial_payment": false,
+        "direction": "passthrough",
+        "result": "tesSUCCESS",
+        "timestamp": "2015-02-06T03:59:30.000Z",
+        "fee": "0.012",
+        "source_balance_changes": [
+          {
+            "currency": "JPY",
+            "value": "-1164533.852420654",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+          },
+          {
+            "currency": "XRP",
+            "value": "599999.988",
+            "issuer": ""
+          }
+        ],
+        "destination_balance_changes": [
+          {
+            "currency": "JPY",
+            "value": "-1164533.852420654",
+            "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+          },
+          {
+            "currency": "XRP",
+            "value": "599999.988",
+            "issuer": ""
+          }
+        ],
+        "order_changes": [
+          {
+            "taker_pays": {
+              "currency": "JPY",
+              "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+              "value": "-67605.3"
+            },
+            "taker_gets": {
+              "currency": "XRP",
+              "counterparty": "",
+              "value": "-34300"
+            },
+            "sequence": 3751,
+            "status": "closed"
+          }
+        ],
+        "memos": [
+          {
+            "MemoType": "636C69656E74",
+            "MemoFormat": "7274312E332E31",
+            "parsed_memo_type": "client",
+            "parsed_memo_format": "rt1.3.1"
+          }
+        ]
+      },
+      "client_resource_id": "",
+      "hash": "E485D1E18D946ACD410AD79F51E2C57E887CC206286E6CE0A1CA80FC75C24643",
+      "ledger": "11547185",
+      "state": "validated"
+    }
+  ]
+}
+</code></pre>
+<p>If the length of the <code>payments</code> array is equal to <code>results_per_page</code>, then there may be more results. To get them, increment the <code>page</code> query paramter and run the request again.</p>
+<p><em>Note:</em> It is not more efficient to specify more filter values, because Ripple-REST has to retrieve the full list of payments from the <code>rippled</code> before it can filter them.</p>
+<h1 id="orders-1">ORDERS</h1>
+<h2 id="place-order">Place Order</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L161" title="Source">[Source]<br/></a></p>
+<p>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.2-rc4">Ripple-REST v1.3.2</a>)</p>
+<p>Places an order to exchange currencies.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:25
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#place-order">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address the account creating the order.</td>
+</tr>
+</tbody>
+</table>
+<p>The following parameters are required in the JSON body of the request:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td>String</td>
+<td>A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Object (<a href="#order-objects">Order</a>)</td>
+<td>The order to place.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can include the following as a URL query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validated</td>
+<td>String</td>
+<td><code>true</code> or <code>false</code>. When set to <code>true</code>, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the <code>state</code> attribute set to <code>"validated"</code> in the response.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
+<h4 id="response-8">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "order": {
+    "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
+    "ledger": "9592219",
+    "state": "validated",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+    "taker_pays": {
+      "currency": "JPY",
+      "counterparty": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6",
+      "value": "4000"
+    },
+    "taker_gets": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": ".25"
+    },
+    "fee": "0.012",
+    "type": "sell",
+    "sequence": 99
+  }
+}
+</code></pre>
+<h2 id="cancel-order">Cancel Order</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L250" title="Source">[Source]<br/></a></p>
+<p>Deletes a previous order to exchange currencies.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:27
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#cancel-order">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of an account involved in the transaction.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Integer</td>
+<td>The <code>sequence</code> number of the order to cancel.</td>
+</tr>
+</tbody>
+</table>
+<p>The following parameters are required in the JSON body of the request:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td>String</td>
+<td>A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> Some older client libraries do not support a body for the DELETE method. If this is a problem for you, please <a href="https://ripplelabs.atlassian.net/browse/RLJS">file an issue in Ripple Labs' bug tracker</a>.</p>
+<p>Optionally, you can include the following as a URL query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validated</td>
+<td>String</td>
+<td><code>true</code> or <code>false</code>. When set to <code>true</code>, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the <code>state</code> attribute set to <code>"validated"</code> in the response.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
+<h4 id="response-9">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "order": {
+    "hash": "71AE74B03DE3B9A06C559AD4D173A362D96B7D2A5AA35F56B9EF21543D627F34",
+    "ledger": "9592219",
+    "state": "validated",
+    "account": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+    "fee": "0.012",
+    "offer_sequence": 99,
+    "sequence": 100
+  }
+}
+</code></pre>
+<h2 id="get-account-orders">Get Account Orders</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L38" title="Source">[Source]<br/></a></p>
+<p>Retrieves all open currency-exchange orders associated with the Ripple address.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:29
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-account-orders">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address whose orders to look up.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>marker</td>
+<td>String</td>
+<td>Start position in response paging.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String (Integer)</td>
+<td>(Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400.</td>
+</tr>
+<tr>
+<td>ledger</td>
+<td>String</td>
+<td>Ledger to request paged results from. Use the ledger's hash.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> Pagination using <code>limit</code> and <code>marker</code> requires a consistent ledger version, so you must also provide the <code>ledger</code> query parameter to use pagination. <code>marker</code> will be present in the response when there are additional pages to page through.</p>
+<h4 id="response-10">Response</h4>
+<p>The response is an object with a <code>orders</code> array, where each member is a <a href="#order-objects">order object</a>.</p>
+<pre><code class="js">{
+  "success": true,
+  "ledger": 11561783,
+  "validated": true,
+  "orders": [
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "11205.2494363431"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "9933.731769807718"
+      },
+      "sequence": 11,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "9229.29"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "10447.55628"
+      },
+      "sequence": 12,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5600"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "5000"
+      },
+      "sequence": 13,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "4.7"
+      },
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "997.876857"
+      },
+      "sequence": 14,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "999"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "4.74525"
+      },
+      "sequence": 15,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5.35"
+      },
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "998.134328"
+      },
+      "sequence": 16,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "999"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "5.96403"
+      },
+      "sequence": 17,
+      "passive": false
+    },
+    {
+      "type": "buy",
+      "taker_gets": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "1103.64"
+      },
+      "taker_pays": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "976.6725663716827"
+      },
+      "sequence": 18,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rDZBotqkN4MywSxm9HDtX4m7V6SRkFo7By",
+        "value": "986.89"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "1116.17259"
+      },
+      "sequence": 19,
+      "passive": false
+    },
+    {
+      "type": "sell",
+      "taker_gets": {
+        "currency": "USD",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "value": "2"
+      },
+      "taker_pays": {
+        "currency": "CAD",
+        "counterparty": "rLr7umFScvEZnj3AJzzZjm25yCZYh3tMwc",
+        "value": "2"
+      },
+      "sequence": 21,
+      "passive": false
+    }
+  ]
+}
+
+</code></pre>
+<h2 id="get-order-transaction">Get Order Transaction</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L505" title="Source">[Source]<br/></a></p>
+<p>Get the details of an order transaction. An order transaction either <a href="#place-order">places an order</a> or <a href="#cancel-order">cancels an order</a>.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:31
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-order-transaction">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address whose orders to look up.</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>String</td>
+<td>The transaction hash for the order</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-11">Response</h4>
+<p>An example response for an order transaction to place an order:</p>
+<pre><code class="js">{
+  "success": true,
+  "hash": "D53A3B99AC0C3CAF35D72178390ACA94CD42479A98CEA438EEAFF338E5FEB76D",
+  "ledger": 11349675,
+  "validated": true,
+  "timestamp": "2015-01-26T17:49:30.000Z",
+  "fee": "0.012",
+  "action": "order_create",
+  "direction": "outgoing",
+  "order": {
+    "account": "rEQWVz1qN4DWw5J17s3DgXQzUuVYDSpK6M",
+    "taker_pays": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "10000000"
+    },
+    "taker_gets": {
+      "currency": "JPY",
+      "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+      "value": "0.0001"
+    },
+    "passive": false,
+    "immediate_or_cancel": false,
+    "fill_or_kill": false,
+    "type": "buy",
+    "sequence": 26
+  },
+  "balance_changes": [
+    {
+      "counterparty": "",
+      "currency": "XRP",
+      "value": "-0.012"
+    }
+  ],
+  "order_changes": [
+    {
+      "taker_pays": {
+        "currency": "XRP",
+        "counterparty": "",
+        "value": "10000000"
+      },
+      "taker_gets": {
+        "currency": "JPY",
+        "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+        "value": "0.0001"
+      },
+      "sequence": 26,
+      "status": "created"
+    }
+  ]
+}
+
+</code></pre>
+<p>An example response for an order transaction that cancels an order:</p>
+<pre><code class="js">{
+  "success": true,
+  "hash": "3D948699072B40312AE313E7E8297EED83080C9A4D5B564BCACF0951ABF00AC5",
+  "ledger": 11236693,
+  "validated": true,
+  "timestamp": "2015-01-20T21:46:00.000Z",
+  "fee": "0.012",
+  "action": "order_cancel",
+  "direction": "outgoing",
+  "order": {
+    "account": "rEQWVz1qN4DWw5J17s3DgXQzUuVYDSpK6M",
+    "type": "cancel",
+    "sequence": 22,
+    "cancel_sequence": 20
+  },
+  "balance_changes": [{
+    "counterparty": "",
+    "currency": "XRP",
+    "value": "-0.012"
+  }],
+  "order_changes": [{
+    "taker_pays": {
+      "currency": "XRP",
+      "counterparty": "",
+      "value": "0"
+    },
+    "taker_gets": {
+      "currency": "JPY",
+      "counterparty": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN",
+      "value": "0"
+    },
+    "sequence": 20,
+    "status": "canceled"
+  }]
+}
+</code></pre>
+<p>The response includes the original <a href="#order-objects"><code>order</code></a>, if the <code>action</code> is <code>order_create</code>.</p>
+<p>For transactions that cancel orders, the <code>order</code> object describes the transaction that canceled the original order.</p>
+<p>The response also includes <code>balance_changes</code> and <a href="#order-change-objects"><code>order changes</code></a>
+for the perspective account (e.g., the Ripple account address used in the URI).</p>
+<p>The <code>direction</code> of the transaction is either <code>incoming</code>, <code>outgoing</code> or <code>unaffected</code>. Outgoing transactions are made by the perspective account. Incoming transactions affect the perspective account.</p>
+<h2 id="get-order-book">Get Order Book</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/59ea02d634ac4a308db2ba21781efbc02f5ccf53/api/orders.js#L38" title="Source">[Source]<br/></a></p>
+<p>Retrieves the top of the order book for a currency pair.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:34
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-order-book">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address whose orders to look up.</td>
+</tr>
+<tr>
+<td>base</td>
+<td>String</td>
+<td>The base currency as <code>currency+counterparty</code> (e.g., <code>USD+</code>)</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>String</td>
+<td>The counter currency as <code>currency+counterparty</code> (e.g., <code>BTC+</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limit</td>
+<td>String (Integer)</td>
+<td>(Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-12">Response</h4>
+<p>The response includes <code>bids</code> and <code>asks</code> arrays that contain <a href="#bid-objects">bid objects</a></p>
+<pre><code class="js">{
+  "success": true,
+  "order_book": "BTC+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/USD+rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "ledger": "11082710",
+  "validated": true,
+  "bids": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.60000000000017358109"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "610.8241466511631"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "2.299789708776968"
+    },
+    "order_maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+    "sequence": 550,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "265.53485133502987091805"
+    },
+    "taker_gets_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_gets_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "57.55101250864556"
+    },
+    "taker_pays_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "taker_pays_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.2167361919510613"
+    },
+    "order_maker": "rQE5Z3FgVnRMbVfS6xiVQFgB4J3X162FVD",
+    "sequence": 114646,
+    "passive": false,
+    "sell": false
+  }],
+  "asks": [{
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "267.73999242396369106028"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1.112931117688904"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "297.9761690184206"
+    },
+    "order_maker": "rwmnMXpRXFqHLYzwyeggJQ8fu5bPyxqup1",
+    "sequence": 145474,
+    "passive": false,
+    "sell": false
+  }, {
+    "price": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "taker_gets_funded": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "5205797604790419e-26"
+    },
+    "taker_gets_total": {
+      "currency": "BTC",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "1"
+    },
+    "taker_pays_funded": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.00000001403173538341179"
+    },
+    "taker_pays_total": {
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "269.5405478403477"
+    },
+    "order_maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+    "sequence": 52688,
+    "passive": false,
+    "sell": true
+  }]
+}
+</code></pre>
+<h1 id="trustlines-1">TRUSTLINES</h1>
+<h2 id="get-trustlines">Get Trustlines</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L18" title="Source">[Source]<br/></a></p>
+<p>Retrieves all trustlines associated with the Ripple address.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:36
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-trustlines">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address whose trustlines to look up.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td>String (<a href="http://www.xe.com/iso4217.php">ISO4217 currency code</a>)</td>
+<td>Filter results to include only trustlines for the given currency.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>String (Address)</td>
+<td>Filter results to include only trustlines to the given account.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>String</td>
+<td>Start position in response paging.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String (Integer or 'all')</td>
+<td>(Defaults to 200) Max results per response. Cannot be less than 10. Cannot be greater than 400. Use 'all' to return all results</td>
+</tr>
+<tr>
+<td>ledger</td>
+<td>String (ledger hash or sequence, or 'validated', 'current', or 'closed')</td>
+<td>(Defaults to 'validated') Identifying ledger version to pull results from.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> Pagination using <code>limit</code> and <code>marker</code> requires a consistent ledger version, so you must also provide the <code>ledger</code> query parameter to use pagination.</p>
+<h4 id="response-13">Response</h4>
+<p>The response is an object with a <code>lines</code> array, where each member is a <a href="#trustline-objects">trustline object</a>.</p>
+<pre><code class="js">{
+  "success": true,
+  "marker": "0C812C919D343EAE789B29E8027C62C5792C22172D37EA2B2C0121D2381F80E1",
+  "limit": 200,
+  "ledger": 10478339,
+  "validated": true,
+  "lines": [
+    {
+      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "currency": "USD",
+      "trust_limit": "100",
+      "reciprocated_trust_limit": "0",
+      "account_allows_rippling": false,
+      "counterparty_allows_rippling": true
+    },
+    {
+      "account": "rPs7nVbSops6xm4v77wpoPFf549cqjzUy9",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs58B",
+      "currency": "BTC",
+      "trust_limit": "5",
+      "reciprocated_trust_limit": "0",
+      "account_allows_rippling": false,
+      "counterparty_allows_rippling": true
+    }
+  ]
+}
+</code></pre>
+<p><em>Note:</em> <code>marker</code> will be present in the response when there are additional pages to page through.</p>
+<h2 id="grant-trustline">Grant Trustline</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/trustlines.js#L88" title="Source">[Source]<br/></a></p>
+<p>Creates or modifies a trustline.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:38
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#grant-trustline">Try it! &gt;</a></p>
+<p>The following parameters are required in the JSON body of the request:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td>String</td>
+<td>A secret key for your Ripple account. This is either the master secret, or a regular secret, if your account has one configured.</td>
+</tr>
+<tr>
+<td>trustline</td>
+<td>Object (<a href="#trustline-objects">Trustline</a>)</td>
+<td>The trustline object to set. Ignores fields not controlled by this account. Any fields that are omitted are unchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can include the following as a URL query parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validated</td>
+<td>String</td>
+<td><code>true</code> or <code>false</code>. When set to <code>true</code>, will force the request to wait until the trustline transaction has been successfully validated by the server. A validated transaction will have the <code>state</code> attribute set to <code>"validated"</code> in the response.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
+<p><em>Note:</em> Since a trustline occupies space in the ledger, <a href="reserves.html">a trustline increases the XRP the account must hold in reserve</a>. You cannot create more trustlines if you do not have sufficient XRP to pay the reserve. This applies to the account extending trust, not to the account receiving it. A trustline with a limit <em>and</em> a balance of 0 is equivalent to no trust line.</p>
+<h4 id="response-14">Response</h4>
+<p>A successful response uses the <code>201 Created</code> HTTP response code, and provides a JSON object that includes the trustline fields as saved, an identifying hash for the transaction that modified the trustline, and the sequence number of the ledger version that included the transaction.</p>
+<pre><code class="js">{
+  "success": true,
+  "trustline": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "limit": "5",
+    "currency": "USD",
+    "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+    "account_allows_rippling": false,
+    "account_trustline_frozen": false,
+    "state": "pending",
+    "ledger": "9302926",
+    "hash": "57695598CD32333F67A70DC6EBC3501D71569CE11C9803162CBA61990D89C1EE"
+  }
+}
+</code></pre>
+<h1 id="notifications-1">NOTIFICATIONS</h1>
+<p>Notifications provide a mechanism to monitor for any kind of transactions that modify your Ripple account. Unlike the <a href="#get-payment-history">Get Payment History</a> method, notifications include <em>all</em> types of transactions, but each is described in less detail.</p>
+<p>Notifications are sorted in order of when they occurred, so you can save the most recently-known transaction and easily iterate forward to find any notifications that are newer than that.</p>
+<h2 id="check-notifications">Check Notifications</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/notifications.js" title="Source">[Source]<br/></a></p>
+<p>Get a notification for the specific transaction hash, along with links to previous and next notifications, if available.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:40
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#check-notifications">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The Ripple account address of an account involved in the transaction.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>A unique identifier for the transaction this notification describes -- either a client resource ID or a Ripple transaction hash</td>
+</tr>
+</tbody>
+</table>
+<p>You can find a transaction <code>hash</code> in a few places:</p>
+<ul>
+<li>From the response when you submit a transaction (via <a href="#submit-payment">Submit Payment</a>, <a href="#update-account-settings">Update Account Settings</a>, or <a href="#grant-trustline">Grant Trustline</a></li>
+<li>From objects in the <a href="#get-payment-history">payment history</a>.</li>
+<li>From the <code>previous_hash</code> or <code>next_hash</code> fields of another Check Notifications response.</li>
+</ul>
+<h4 id="response-15">Response</h4>
+<p>A successful response contains a notification object, for example:</p>
+<pre><code class="js">{
+  "success": true,
+  "notification": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "type": "payment",
+    "direction": "outgoing",
+    "state": "validated",
+    "result": "tesSUCCESS",
+    "ledger": "8924146",
+    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "timestamp": "2014-09-17T21:47:00.000Z",
+    "transaction_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments/9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "previous_hash": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+    "previous_notification_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/notifications/8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+    "next_hash": "AE79DE34230403EA2769B4DA21A0D4D2FD7A18518DBA0A4C5B6352AFD844D22A",
+    "next_notification_url": "http://api.ripple.com:5990/v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/notifications/AE79DE34230403EA2769B4DA21A0D4D2FD7A18518DBA0A4C5B6352AFD844D22A"
+  }
+}
+</code></pre>
+<p>If the server has any notifications that are older than this one, the <code>previous_hash</code> field contains a hash you can use to call this method again to get the previous one. The <code>previous_notification_url</code> contains the same information, but already formatted into a URL you can perform a GET request on. If no older notifications are available, both fields are either omitted, or provided as an empty string.</p>
+<p>The <code>next_hash</code> and <code>next_notification_url</code> fields work the same way, but they provide information on newer notifications instead.</p>
+<p><em>Caution:</em> If you are accessing the REST API through a proxy, you may not be able to access the URLs as provided. (See <a href="https://ripplelabs.atlassian.net/browse/RA-129">RA-129</a> for status and details.)</p>
+<h1 id="rippled-server-status">RIPPLED SERVER STATUS</h1>
+<p>The following two endpoints can be used to check if the <code>ripple-rest</code> API is currently connected to a <code>rippled</code> server, and to retrieve information about the current status of the API.</p>
+<h2 id="check-connection">Check Connection</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L33" title="Source">[Source]<br/></a></p>
+<p>Perform a simple ping to make sure that the server is working properly.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:42
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#check-connection">Try it! &gt;</a></p>
+<h4 id="response-16">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "connected": true
+}
+</code></pre>
+<p>If the server has any problems, for example with connecting to the <code>rippled</code> server, it returns an error message instead.</p>
+<h2 id="get-server-status">Get Server Status</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L14" title="Source">[Source]<br/></a></p>
+<p>Retrieve information about the current status of the Ripple-REST API and the <code>rippled</code> server it is connected to.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:44
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#get-server-status">Try it! &gt;</a></p>
+<h4 id="response-17">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "api_documentation_url": "https://github.com/ripple/ripple-rest",
+  "rippled_server_url": "wss://s1.ripple.com:443",
+  "rippled_server_status": {
+    "build_version": "0.26.3-sp2",
+    "complete_ledgers": "32570-9306249",
+    "hostid": "MERT",
+    "io_latency_ms": 1,
+    "last_close": {
+      "converge_time_s": 3.021,
+      "proposers": 5
+    },
+    "load_factor": 1,
+    "peers": 49,
+    "pubkey_node": "n9LpPSgwfihQDRX68dykxtNCm4gi2dBEJCga7uwV7uztoRSswms8",
+    "server_state": "full",
+    "validated_ledger": {
+      "age": 9,
+      "base_fee_xrp": 0.00001,
+      "hash": "7C3F4489091BAE5DCADE3B1A8A2C1E7E5C938FA4483660FD1A4098C4EC4805CD",
+      "reserve_base_xrp": 20,
+      "reserve_inc_xrp": 5,
+      "seq": 9306249
+    },
+    "validation_quorum": 3
+  }
+}
+</code></pre>
+<p>The parameters in a successful response are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api_documentation_url</td>
+<td>String</td>
+<td>A URL that contains more information about the software, typically the <a href="https://github.com/ripple/ripple-rest">Ripple-REST Github Project</a>.</td>
+</tr>
+<tr>
+<td>rippled_server_url</td>
+<td>String</td>
+<td>The URL of the <code>rippled</code> server that Ripple-REST is using to interface with the Ripple Network</td>
+</tr>
+<tr>
+<td>rippled_server_status</td>
+<td>Object</td>
+<td>Various information about the <code>rippled</code> server</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>rippled_server_status</code> object may have any of the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>build_version</td>
+<td>String</td>
+<td>The <code>rippled</code> software version number</td>
+</tr>
+<tr>
+<td>complete_ledgers</td>
+<td>String</td>
+<td>A range (possibly a disjointed range) of ledger versions that the server has on hand</td>
+</tr>
+<tr>
+<td>hostid</td>
+<td>String</td>
+<td>The hostname of the machine running the <code>rippled</code> server</td>
+</tr>
+<tr>
+<td>io_latency_ms</td>
+<td>Number</td>
+<td>The number of milliseconds spent waiting for I/O operations to complete. A high number indicates too much load on the server, which can be improved with more RAM and faster hard disks.</td>
+</tr>
+<tr>
+<td>last_close</td>
+<td>Object</td>
+<td>Some information about the most recently-closed ledger</td>
+</tr>
+<tr>
+<td>last_close.converge_time_s</td>
+<td>Number</td>
+<td>How many seconds it took to reach consensus on the this ledger version</td>
+</tr>
+<tr>
+<td>last_close.proposers</td>
+<td>Number</td>
+<td>How many trusted validators were involved in the consensus process for this ledger version</td>
+</tr>
+<tr>
+<td>load_factor</td>
+<td>Number</td>
+<td>The load factor the server is currently enforcing, as a multiplier for the base transaction fee. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor.</td>
+</tr>
+<tr>
+<td>peers</td>
+<td>Number</td>
+<td>How many other <code>rippled</code> servers this server is connected to</td>
+</tr>
+<tr>
+<td>pubkey_node</td>
+<td>String</td>
+<td>Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.)</td>
+</tr>
+<tr>
+<td>server_state</td>
+<td>String</td>
+<td>A string indicating to what extent the server is participating in the network. See <a href="rippled-apis.html#possible-server-states">Possible Server States in the rippled documentation</a> for more details.</td>
+</tr>
+<tr>
+<td>validated_ledger</td>
+<td>Object</td>
+<td>Information about the fully-validated ledger with the highest sequence number (the most recent)</td>
+</tr>
+<tr>
+<td>validated_ledger.age</td>
+<td>Unsigned Integer</td>
+<td>The time since the ledger was closed, in seconds</td>
+</tr>
+<tr>
+<td>validated_ledger.base_fee_xrp</td>
+<td>Number</td>
+<td>Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005</td>
+</tr>
+<tr>
+<td>validated_ledger.hash</td>
+<td>String</td>
+<td>Unique hash for the ledger, as hex</td>
+</tr>
+<tr>
+<td>validated_ledger.reserve_base_xrp</td>
+<td>Unsigned Integer</td>
+<td>Minimum amount of XRP (not drops) necessary for every account to keep in reserve</td>
+</tr>
+<tr>
+<td>validated_ledger.reserve_inc_xrp</td>
+<td>Unsigned Integer</td>
+<td>Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger</td>
+</tr>
+<tr>
+<td>validated_ledger.seq</td>
+<td>Unsigned Integer</td>
+<td>Identifying sequence number of this ledger version</td>
+</tr>
+<tr>
+<td>validation_quorum</td>
+<td>Number</td>
+<td>Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations.</td>
+</tr>
+</tbody>
+</table>
+<!--Note: keep the above table up-to-date with the server_info command in the rippled documentation -->
+<h1 id="utilities-1">UTILITIES</h1>
+<h2 id="retrieve-ripple-transaction">Retrieve Ripple Transaction</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/transactions.js#L118" title="Source">[Source]<br/></a></p>
+<p>Returns a Ripple transaction, in its complete, original format.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:46
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#retrieve-ripple-transaction">Try it! &gt;</a></p>
+<p>The following URL parameters are required by this API endpoint:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>String</td>
+<td>A unique identifier for the Ripple transaction to retrieve -- either a client resource ID or a Ripple transaction hash.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-18">Response</h4>
+<p>The result is a JSON object, whose <code>transaction</code> field has the requested transaction. See the <a href="transactions.html">Transaction format documentation</a> for a complete explanation of the fields of a transaction.</p>
+<pre><code class="js">{
+  "success": true,
+  "transaction": {
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": {
+      "currency": "USD",
+      "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+      "value": "0.01"
+    },
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Fee": "10",
+    "Flags": 131072,
+    "SendMax": "10",
+    "Sequence": 11,
+    "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+    "TransactionType": "Payment",
+    "TxnSignature": "304402206B62F24BA371DF6E8F2F5A4D0C006F4081494B8ED49F9B2C453FF50B58AB170702200886487FFD272799E5C88547692AD7DD48B04E10070F7A1F36D7AF73CCFB708D",
+    "hash": "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E",
+    "inLedger": 8924146,
+    "ledger_index": 8924146,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+              "Balance": "20357167562",
+              "Flags": 0,
+              "OwnerCount": 44,
+              "Sequence": 709
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "0193CB8318BDB270B775835373E8789F5357CEF712DF3275F92A8CEE97E352FE",
+            "PreviousFields": {
+              "Balance": "20357167552"
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "Balance": "230999889",
+              "Domain": "6D64756F31332E636F6D",
+              "Flags": 0,
+              "MessageKey": "0000000000000000000000070000000300",
+              "OwnerCount": 0,
+              "Sequence": 12
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+            "PreviousFields": {
+              "Balance": "230999909",
+              "Sequence": 11
+            },
+            "PreviousTxnID": "8496C20AEB453803CB80474B59AB1E8FAA26725561EFF5AF41BD588B325AFBA8",
+            "PreviousTxnLgrSeq": 8889845
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-19.84529319487081"
+              },
+              "Flags": 2228224,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+                "value": "0"
+              },
+              "HighNode": "0000000000000002",
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "0"
+              },
+              "LowNode": "0000000000000010"
+            },
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "2E103526973EF8CCE3340125DD66D6BF84DD8473EF693EC5E06B2ACBF2BAC155",
+            "PreviousFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-19.84529324567081"
+              }
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rUrgXPxenRbjnFDXKWUhH8mBJcQ2CyPfkG",
+              "BookDirectory": "3A574D1E645D05EA27A5D011AECF6C78FFB028AA9B584C245D06FE5809E78102",
+              "BookNode": "0000000000000000",
+              "Flags": 0,
+              "OwnerNode": "0000000000000003",
+              "Sequence": 696,
+              "TakerGets": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "15.2299999492"
+              },
+              "TakerPays": "2998031486"
+            },
+            "LedgerEntryType": "Offer",
+            "LedgerIndex": "350327BB97B7707F4E7B8670C42F886E29B9C9615D4A8D93FC730DD17770D9B4",
+            "PreviousFields": {
+              "TakerGets": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "15.23"
+              },
+              "TakerPays": "2998031496"
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-0.0100000508"
+              },
+              "Flags": 131072,
+              "HighLimit": {
+                "currency": "USD",
+                "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "value": "100"
+              },
+              "HighNode": "0000000000000000",
+              "LowLimit": {
+                "currency": "USD",
+                "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+                "value": "0"
+              },
+              "LowNode": "000000000000000B"
+            },
+            "LedgerEntryType": "RippleState",
+            "LedgerIndex": "E3DC31319B6C121387EAE05253AF71CAF98360BF1419249DD1A218A9B4C121A9",
+            "PreviousFields": {
+              "Balance": {
+                "currency": "USD",
+                "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                "value": "-0.01"
+              }
+            },
+            "PreviousTxnID": "41F8D5612778AC1318599217E53198940EF16063A3F4B73DECE33EA0901FA96A",
+            "PreviousTxnLgrSeq": 8924070
+          }
+        }
+      ],
+      "DeliveredAmount": {
+        "currency": "USD",
+        "issuer": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc",
+        "value": "0.00000005080000000000001"
+      },
+      "TransactionIndex": 5,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "validated": true,
+    "date": 464305620
+  }
+}
+</code></pre>
+<h2 id="retrieve-transaction-fee">Retrieve Transaction Fee</h2>
+<p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L42" title="Source">[Source]<br/></a></p>
+<p>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1">Ripple-REST v1.3.1</a>)</p>
+<p>Retrieve the current transaction fee, in XRP, for the <code>rippled</code> server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:48
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#retrieve-transaction-fee">Try it! &gt;</a></p>
+<h4 id="response-19">Response</h4>
+<p>The response is a JSON object, whose <code>fee</code> field is a string containing a decimal amount of XRP that the <code>rippled</code> server requires to be destroyed in order to process and relay the transaction to the network.</p>
+<pre><code class="js">{
+  "success": true,
+  "fee": "0.012"
+}
+</code></pre>
+<h2 id="create-client-resource-id">Create Client Resource ID</h2>
+<p>Generate a universally-unique identifier suitable for use as the Client Resource ID for a payment.</p>
+<div class="multicode">
+
+*REST*
+
+
+wzxhzdk:50
+
+
+</div>
+<p><a class="button" href="rest-api-tool.html#generate-uuid">Try it! &gt;</a></p>
+<h4 id="response-20">Response</h4>
+<pre><code class="js">{
+  "success": true,
+  "uuid": "a5a8fe40-3795-4b10-b2b6-f05f3ca31db9"
+}
+</code></pre>
         </div>
     </div>
     </div>
@@ -148,6 +3303,12 @@
             <div class="col-md-3">
 		        <h4>Documentation</h4>
 			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="ripple-rest.html">Ripple-REST</a></li>
@@ -158,12 +3319,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
 			    </ul>
 			</div>
 			<div class="col-md-3">

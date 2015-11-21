@@ -12,10 +12,13 @@ import os, sys, re
 import json
 import argparse
 
-##Necessary for pandoc, prince
+##Necessary for prince
 import subprocess
 
-#Python markdown works instead of pandoc
+#Fetch markdown sources from another repo
+import requests
+
+#Used for processing and post-processing of markdown
 from markdown import markdown
 from bs4 import BeautifulSoup
 
@@ -152,23 +155,30 @@ def render_pages(precompiled, target=DEFAULT_TARGET):
             
     
             if precompiled:
-                filein = os.path.join(CONTENT_PATH, currentpage["md"])
-                
-                ## Old: read markdown from file
-                #with open(filein) as f:
-                    #md_in = f.read()
-                ## New: read markdown as a template
-                print("pre-processing markdown file",currentpage["md"])
-                md_raw = pp_env.get_template(currentpage["md"])
-                md_in = md_raw.render(target=target,pages=pages)
+                if "http:" in currentpage["md"] or "https:" in currentpage["md"]:
+                    #No pre-processing for remote pages
+                    print("fetching remote page",currentpage["name"])
+                    try:
+                        r = requests.get(currentpage["md"])
+                        if r.status_code == 200:
+                            md_in = r.text
+                        else:
+                            raise requests.RequestException("Status code for page was not 200")
+                    except:
+                        print("Skipping page",currentpage["name"],"due to error fetching contents")
+                        continue
+                    print("done")
+                    
+                else:
+                    ## Read markdown as a template
+                    filein = os.path.join(CONTENT_PATH, currentpage["md"])
+                    print("pre-processing markdown file",currentpage["md"])
+                    md_raw = pp_env.get_template(currentpage["md"])
+                    md_in = md_raw.render(target=target,pages=pages)
                 
                 print("parsing markdown for", currentpage["name"])
                 doc_html = parse_markdown(md_in, target, pages)
                 
-#                ## Old Pandoc markdown parsing way
-#                args = ['pandoc', filein, '-F', BUTTONIZE_FILTER, '-t', 'html']
-#                print("compiling: running ", " ".join(args),"...")
-#                doc_html = subprocess.check_output(args, universal_newlines=True)
                 print("done")
                 
                 print("rendering page",currentpage["name"],"...")
@@ -254,14 +264,15 @@ def make_pdf(outfile):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
             description='Generate static site from markdown and templates.')
-    parser.add_argument("-p", "--pre_parse", action="store_true",
-                       help="Parse markdown; otherwise, use Flatdoc")
+    parser.add_argument("-f", "--flatdoc", action="store_true",
+                       help="Use Flatdoc instead of parsing pages")
     parser.add_argument("-w","--watch", action="store_true",
                        help="Watch for changes and re-generate the files. This runs until force-quit.")
     parser.add_argument("--pdf", type=str, 
             help="Generate a PDF, too. Requires Prince.")
     parser.add_argument("--target", "-t", type=str, default=DEFAULT_TARGET)
     args = parser.parse_args()
+    pre_parse = not args.flatdoc
     
     if args.pdf:
         if args.pdf[-4:] != ".pdf":
@@ -272,10 +283,10 @@ if __name__ == "__main__":
     
     #Not an accident that we go on to re-gen files in non-PDF format
     print("rendering pages now")
-    render_pages(precompiled=args.pre_parse, target=args.target)
+    render_pages(precompiled=pre_parse, target=args.target)
     print("all done")
     
     if args.watch:
         print("watching for changes...")
-        watch(args.pre_parse, args.pdf, args.target)
+        watch(pre_parse, args.pdf, args.target)
     

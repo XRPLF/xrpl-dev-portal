@@ -29,18 +29,12 @@
 
     <!-- syntax selection js -->
     <script src="js/multicodetab.js"></script>
-    <!-- Code to load contents via Flatdoc  -->
-    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
-    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
     <script>
-        $(".flatdoc-content").empty();
-        $(".content-root .menubar .menu").empty();
-        Flatdoc.run({
-          fetcher: Flatdoc.file('content/charts_api.md')
-        });
-        $(document).on('flatdoc:ready', function() {
-            $().multicode_tabs();
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
             hljs.initHighlighting();
+            make_code_expandable();
         });
     </script>
 
@@ -57,7 +51,7 @@
     
   
 </head>
-<body  role='flatdoc' class='no-literate'>
+<body  class='no-literate'>
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -72,6 +66,17 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
@@ -81,6 +86,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -89,17 +95,6 @@
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
                     <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -136,9 +131,1500 @@
     <div class='content-root'>
         <div class='menubar'>
             <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
             </div>
         </div>
-        <div role='flatdoc-content' class='content'>
+        <div class='content'>
+	        <h1 id="ripple-charts-api">Ripple Charts API</h1>
+<p>The Ripple Charts API, also known as the <strong>Data API</strong>, provides past and present information about the state of the Ripple Network through an HTTP API, with additional information calculated for analysis purposes. The Ripple Charts API is used as a data source by applications such as <a href="https://www.ripplecharts.com/">Ripple Charts</a> and <a href="https://www.ripple.com/">ripple.com</a>.</p>
+<p>(The API does not follow the conventions of a REST API, but you can use an HTTP client to access it in the same way you would access a REST API.)</p>
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#api-method-reference">API Method Reference</a></li>
+</ul>
+<h1 id="architecture">Architecture</h1>
+<p>The Ripple Charts API is a <a href="https://nodejs.org/">Node.js</a> application that uses <a href="http://hbase.apache.org/">HBase</a> as its datastore.</p>
+<h2 id="components">Components</h2>
+<h3 id="ledger-importer">Ledger Importer</h3>
+<p>The ledger importer imports ledgers from the Ripple Network into the data store.  The process is set up to import continously in real time as ledgers are validated, and also import historical ledgers.</p>
+<h3 id="data-store">Data Store</h3>
+<p>The data store uses HBase to store ledgers. This is not as flexible as the old CouchDB data store, but it scales much better.</p>
+<h3 id="api-server">API Server</h3>
+<p>Accessing the historical data is not done by querying the database directly but through a node.js API server.  The server takes requests in the form of JSON data, interprets it into one or several database queries, processes the data as necessary and returns the results.</p>
+<h1 id="setup">Setup</h1>
+<p>Setup for the Ripple Charts API on top of HBase is not currently documented.</p>
+<h2 id="start-api-service">Start API Service</h2>
+<p>The following command starts the API service:</p>
+<p><code>grunt watch</code></p>
+<p>(This requires read permissions to the database. Write permissions are not necessary.)</p>
+<h2 id="start-ledger-importer">Start Ledger Importer</h2>
+<p>The following command starts the ledger importer service:</p>
+<p><code>node db/importer</code></p>
+<p>Alternatively, you can use the experimental websocket-based importer:</p>
+<p><code>node db/import</code></p>
+<p>(Either way, you need write permission to the database.)</p>
+<h1 id="formatting-conventions">Formatting Conventions</h1>
+<p>Requests to the Charts API generally take the same format:</p>
+<ul>
+<li>Use the HTTP POST method</li>
+<li>The URL defines the API method to use</li>
+<li>All parameters are in the request body.</li>
+<li>The <code>Content-Type</code> header has the value <code>application/json</code>. <strong>Caution:</strong> If you omit or specify the wrong Content-Type, the API may respond with misleading error messages such as <code>{"error":"Please specify an account"}</code></li>
+</ul>
+<h2 id="dates-and-times">Dates and Times</h2>
+<p>The Ripple Charts API uses Moment.js to parse strings, and therefore accepts <a href="http://momentjs.com/docs/#supported-iso-8601-strings">any date-time string that Moment.js recognizes</a> as input.</p>
+<p>The Ripple Charts API always outputs dates in UTC, in the following format:</p>
+<p>YYYY-MM-DDThh-mm-ss+00:00</p>
+<p>For example:
+<code>2015-03-01T00:00:00+00:00</code>
+(midnight exactly on March 3, 2015 UTC)</p>
+<h2 id="currency-objects">Currency Objects</h2>
+<p>Many methods define <strong>a currency</strong> as an object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Three-letter <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Code</a> string, or a 160-bit hex string according to Ripple's internal <a href="https://wiki.ripple.com/Currency_format">Currency format</a>.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>String</td>
+<td>Account address of the counterparty holding the currency. Usually an issuing gateway in the Ripple network. Omitted or <code>null</code> for XRP.</td>
+</tr>
+</tbody>
+</table>
+<p>Some methods describe <strong>an amount of currency</strong>, for example a quantity traded in a currency exchange. In <a href="#response-formats">JSON format</a>, this takes the form of a nested JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Same as the <code>currency</code> field of a currency object.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>String</td>
+<td>Same as the <code>issuer</code> field of a currency object.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Number</td>
+<td>The quantity of the currency exchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>In <a href="#response-formats">CSV or array format</a>, a currency amount is specified as three separate attributes that correspond to the fields of the JSON object. The name of the fields depends on the context: for example, the <code>baseAmount</code> column is equivalent to the <code>amount</code> field of the <code>base</code> currency amount object.</p>
+<p><strong>Warning:</strong> JavaScript's native number type does not support <code>rippled</code>'s full range of precision. When dealing with very large or very small numbers, the <code>amount</code> values returned by the Charts API lose precision.</p>
+<h2 id="response-formats">Response Formats</h2>
+<p>Several methods provide a <code>format</code> parameter, which lets you request results in one of three formats:</p>
+<ul>
+<li><code>csv</code> - <a href="http://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated-values</a> table. The first line is a row of column headers, and each subsequent line represents one result or interval, with its attributes in columns. The columns are separated by comma (<code>,</code>) characters.</li>
+<li><code>json</code> - The request contains some top-level information at the top level, and a <code>results</code> array. Each member of the <code>results</code> array is a JSON object with attributes and values that represent one result or interval.</li>
+<li><strong>Two-dimensional array format</strong> - If neither <code>csv</code> nor <code>json</code> is specified, the API returns an array of JSON arrays, in a format that resembles CSV. The first member of the top-level array is an array of table headers, and each subsequent member is a nested array representing one result or interval, with its members corresponding to the attribute names in the header row.</li>
+</ul>
+<h1 id="api-method-reference">API Method Reference</h1>
+<p>To use a method in this document, append the path for that method to the hostname of the Charts API instance you want to use.  Ripple Labs runs a public instance of the Ripple Charts API with full data, available at:</p>
+<p><strong>https://api.ripplecharts.com</strong></p>
+<p>The API provides the following methods:</p>
+<ul>
+<li><a href="#accounts-created">Accounts Created - <code>POST /api/accounts_created</code></a></li>
+<li><a href="#exchange-rates">Exchange Rates - <code>POST /api/exchange_rates</code></a></li>
+<li><a href="#issuer-capitalization">Issuer Capitalization - <code>POST /api/issuer_capitalization</code></a></li>
+<li><a href="#market-traders">Market Traders - <code>POST /api/market_traders</code></a></li>
+<li><a href="#offers-exercised">Offers Exercised - <code>POST /api/offers_exercised</code></a></li>
+<li><a href="#top-markets">Top Markets - <code>POST /api/top_markets</code></a></li>
+</ul>
+<p>As of August 19, 2015, the following methods are no longer available: Account Transaction Stats, Account Transactions, Account Offers Exercised, Ledgers Closed, Offers, Total Network Value, Total Value Sent, Transaction Stats, and Value Sent.</p>
+<h2 id="accounts-created">Accounts Created</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/develop/api/routes/accountsCreated.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve information about the creation of new Ripple accounts.</p>
+<h4 id="request-format">Request Format</h4>
+<div class="multicode">
+
+*Reduced*
+
+
+wzxhzdk:0
+
+
+*Expanded*
+
+
+wzxhzdk:1
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#accounts-created">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information starting at this time.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information ending at this time.</td>
+</tr>
+<tr>
+<td>timeIncrement</td>
+<td>String</td>
+<td>(Optional) Divide results into intervals of the specified length: <code>week</code>, <code>day</code>, <code>hour</code>. The value <code>all</code> collapses the results into just one interval. Defaults to <code>all</code>.</td>
+</tr>
+<tr>
+<td>descending</td>
+<td>Boolean</td>
+<td>(Optional) If true, return results in descending order. Defaults to false.</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>Boolean</td>
+<td>(Optional) If <code>false</code>, include accounts individually instead of collapsing them into results over time. Ignored if <code>timeIncrement</code> is provided. Defaults to <code>true</code>.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>(Optional) If reduce is <code>false</code>, this value defines the maximum number of transactions to return in one response. Use with <code>offset</code> to paginate results. Defaults to 500.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Number</td>
+<td>(Optional) If reduce is <code>false</code>, this value defines a number of transactions to skip before returning results. Use with <code>limit</code> to paginate results. Defaults to 0.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>String</td>
+<td>(Optional) The <a href="#response-formats">Response Format</a> to use: <code>csv</code> or <code>json</code>. If omitted, defaults to a CSV-like JSON array format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format">Response Format</h4>
+<p>The format of the response depends on the <code>format</code> and <code>reduce</code> parameters from the request. See <a href="#response-formats">Response Format</a> for details. Examples of successful responses:</p>
+<div class="multicode">
+
+*Reduced*
+
+
+wzxhzdk:2
+
+
+*Expanded*
+
+
+wzxhzdk:3
+
+
+</div>
+<p><strong>If results are reduced</strong> (the default), then each result represents an interval of time, with the following attributes, in order:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The time this interval begins</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Number</td>
+<td>The number of accounts created (successfully funded with the XRP reserve) in this interval.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>If the results are not reduced</strong> (the request specified <code>reduce</code> as false and did not include a <code>timeIncrement</code>), then each result represents an individual account that was created, with the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The time this account was created, as defined by the close time of the ledger containing the transaction that created it.</td>
+</tr>
+<tr>
+<td>account</td>
+<td>String (Ripple Address)</td>
+<td>The address of the newly-created account.</td>
+</tr>
+<tr>
+<td>txHash</td>
+<td>String (Transaction Hash)</td>
+<td>The identifying hash of the transaction that created this account.</td>
+</tr>
+<tr>
+<td>ledgerIndex</td>
+<td>Number</td>
+<td>The sequence number of the ledger when this account was created.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exchange-rates">Exchange Rates</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/develop/api/routes/exchangeRates.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve information about the exchange rates between one or more pairs of currency, based on trading activity in the network.</p>
+<h4 id="request-format-1">Request Format</h4>
+<div class="multicode">
+
+*Multiple*
+
+
+wzxhzdk:4
+
+
+*Single*
+
+
+wzxhzdk:5
+
+
+*Live*
+
+
+wzxhzdk:6
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#exchange-rates">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pairs</td>
+<td>Array</td>
+<td>(Optional) Array of currency pairs to compare. Each member of the array should be an object with a <code>base</code> field and a <code>counter</code> field, whose values are <a href="#currency-objects">Currency Objects</a>. If <code>live</code> is true, each pair can also include a <code>depth</code> field specifying how deep to dig into the order book to calculate the live rate.</td>
+</tr>
+<tr>
+<td>base</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>(Optional) One currency to compare. Ignored if <code>pairs</code> provided.</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>(Optional) The other currency to compare. Ignored if <code>pairs</code> provided.</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>Number</td>
+<td>(Optional) Ignored unless <code>live</code> is true. Ignored if <code>pairs</code> is provided. Retrieve exchange rates for this amount of the <code>counter</code> currency. Provides a more accurate picture when the best orders in the market do not have enough volume to fully satisfy an exchange. Defaults to 0 (use the first bid and ask only).</td>
+</tr>
+<tr>
+<td>range</td>
+<td>String</td>
+<td>(Optional) Time period over which the exchange rate is calculated: <code>year</code>, <code>month</code>, <code>week</code>, <code>day</code>, or <code>hour</code>. Defaults to <code>day</code>. Ignored if <code>live</code> is true.</td>
+</tr>
+<tr>
+<td>last</td>
+<td>Boolean</td>
+<td>(Optional) If true, only return the price from the most recent exchange, without calculating <a href="https://en.wikipedia.org/wiki/Volume-weighted_average_price">VWAP</a>. Use for a faster response. Defaults to false.</td>
+</tr>
+<tr>
+<td>live</td>
+<td>Boolean</td>
+<td>(Optional) If true, retrieve the current price directly from the Ripple network instead, as the midpoint between weighted average of the bid and asks up to the depth specified . Otherwise, use historical data from the past <code>range</code> amount of time. Defaults to false.</td>
+</tr>
+</tbody>
+</table>
+<p>You must provide either <code>pairs</code> or both <code>base</code> and <code>counter</code>.</p>
+<h4 id="response-format-1">Response Format</h4>
+<p>Examples of successful responses:</p>
+<div class="multicode">
+
+*Single*
+
+
+wzxhzdk:7
+
+
+*Multiple*
+
+
+wzxhzdk:8
+
+
+*Live*
+
+
+wzxhzdk:9
+
+
+</div>
+<p>A successful result contains a JSON array. Each member of the array represents a currency pair, as an object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>The base currency specified for this pair, possibly including a <code>name</code> field with the Ripple Name for the <code>issuer</code> address.</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>The counter currency specified for this pair, possibly including a <code>name</code> field with the Ripple Name for the <code>issuer</code> address.</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>Number</td>
+<td>(May be omitted) The depth to search for this currency pair, if provided.</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>Number</td>
+<td>(May be omitted) The amount of the counter currency that you can purchase with 1 unit of the base currency. By default, this is calculated <a href="https://en.wikipedia.org/wiki/Volume-weighted_average_price">volume-weighted average price</a> for all exchanges executed during the <code>range</code> period from the request. If the request specified <code>live</code> as true, this is instead calculated as the midpoint between the weighted average of current bid and ask rates in the network up to the specified <code>depth</code>. Omitted if the request specified <code>last</code> as <code>true</code>.</td>
+</tr>
+<tr>
+<td>last</td>
+<td>Number</td>
+<td>(May be omitted) The rate of the single most recent exchange to take place.</td>
+</tr>
+</tbody>
+</table>
+<p>If no exchanges are found for a currency pair from the request, that pair is omitted from the response.</p>
+<h2 id="issuer-capitalization">Issuer Capitalization</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/develop/api/routes/issuerCapitalization.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve the total capitalization (outstanding balance) of specified currency issuers over time.</p>
+<h4 id="request-format-2">Request Format</h4>
+<div class="multicode">
+
+*Request*
+
+
+wzxhzdk:10
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#issuer-capitalization">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currencies</td>
+<td>Array of <a href="#currency-objects">Currency Objects</a>)</td>
+<td>A list of currency/issuer pairs to look up.</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information starting at this time.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information ending at this time.</td>
+</tr>
+<tr>
+<td>timeIncrement</td>
+<td>String</td>
+<td>(Optional) Divide results into intervals of the specified length: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, or <code>second</code>. The value <code>all</code> collapses the results into just one interval. Defaults to <code>all</code>. Ignored if <code>reduce</code> is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-2">Response Format</h4>
+<p>An example of a successful response:</p>
+<pre><code>[
+    {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "name": "Bitstamp",
+        "hotwallets": [
+            "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1",
+            "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX"
+        ],
+        "results": [
+            [
+                "2014-01-01T00:00:00+00:00",
+                2182532.512563024
+            ],
+            [
+                "2014-02-01T00:00:00+00:00",
+                1672428.6072806932
+            ],
+            [
+                "2014-03-01T00:00:00+00:00",
+                1475205.4287192414
+            ],
+            [
+                "2014-04-01T00:00:00+00:00",
+                1475129.7523240475
+            ],
+            [
+                "2014-05-01T00:00:00+00:00",
+                1641170.5998081048
+            ],
+            [
+                "2014-06-01T00:00:00+00:00",
+                2823512.0227728607
+            ],
+            [
+                "2014-07-01T00:00:00+00:00",
+                2181718.7345464956
+            ],
+            [
+                "2014-08-01T00:00:00+00:00",
+                2150290.1475041625
+            ],
+            [
+                "2014-09-01T00:00:00+00:00",
+                1370978.1335410434
+            ],
+            [
+                "2014-10-01T00:00:00+00:00",
+                1386720.726560316
+            ],
+            [
+                "2014-11-01T00:00:00+00:00",
+                1171158.4417431813
+            ],
+            [
+                "2014-12-01T00:00:00+00:00",
+                1651264.0460538066
+            ],
+            [
+                "2015-01-01T00:00:00+00:00",
+                2272895.4608580153
+            ]
+        ]
+    },
+    {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+        "name": "SnapSwap",
+        "hotwallets": [
+            "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+            "rQsAshmCjPsxkYnxY9GnmBTAeEUaePDAie",
+            "rEk9i7G8ac1kUs1mFjtze1qjj9FzGvXAG",
+            "rsTQ7iwrCik9Ugc3zbpcbo2K3SbAdYJss1",
+            "rwm98fCBS8tV1YB8CGho8zUPW5J7N41th2",
+            "rnd8KJ4qeip6FPJvC1fyv82nW2Lm8C8KjQ",
+            "r5ymZSvtdNgbKVc8ay1Jhmq5f9QgnvEtj"
+        ],
+        "results": [
+            [
+                "2014-01-01T00:00:00+00:00",
+                308414.17014300067
+            ],
+            [
+                "2014-02-01T00:00:00+00:00",
+                221127.8278553265
+            ],
+            [
+                "2014-03-01T00:00:00+00:00",
+                189103.31201476356
+            ],
+            [
+                "2014-04-01T00:00:00+00:00",
+                166239.66201052035
+            ],
+            [
+                "2014-05-01T00:00:00+00:00",
+                181126.05199917927
+            ],
+            [
+                "2014-06-01T00:00:00+00:00",
+                352360.96199815325
+            ],
+            [
+                "2014-07-01T00:00:00+00:00",
+                406900.8018140941
+            ],
+            [
+                "2014-08-01T00:00:00+00:00",
+                522981.4027866862
+            ],
+            [
+                "2014-09-01T00:00:00+00:00",
+                823727.7361699624
+            ],
+            [
+                "2014-10-01T00:00:00+00:00",
+                1285657.1682029555
+            ],
+            [
+                "2014-11-01T00:00:00+00:00",
+                1162233.7115210893
+            ],
+            [
+                "2014-12-01T00:00:00+00:00",
+                1631690.8946927704
+            ],
+            [
+                "2015-01-01T00:00:00+00:00",
+                3778040.482102244
+            ]
+        ]
+    }
+]
+</code></pre>
+<p>A successful result contains a <strong>JSON array</strong> of objects representing the issuers from the request. Each member object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Currency code of the currency described by this record.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>String (Ripple Address)</td>
+<td>The account address of the gateway issuing this currency.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The name of this gateway, which usually corresponds to the Ripple Name of the account.</td>
+</tr>
+<tr>
+<td>hotwallets</td>
+<td>Array of Ripple Addresses</td>
+<td>Hot wallets controlled by this gateway. Assets held by these accounts are not counted towards the capitalization.</td>
+</tr>
+<tr>
+<td>results</td>
+<td>Array of Arrays</td>
+<td>The capitalization of the issuer/currency pair as an array of intervals. Each nested array has two values: a String (<a href="#dates-and-times">Date-Time</a>) specifying the beginning of the interval, and a number representing the total units of the currency distributed through the network at the time.</td>
+</tr>
+</tbody>
+</table>
+<p>The list of gateway names and hot wallets is defined by the <a href="https://github.com/ripple/ripple-data-api/blob/a6c23a8c1bc5f073f2dd2bf32e8d763b66b6a2e3/api/gateways.json">gateways.json</a> file in the server tree. In the future, this may be <a href="https://ripplelabs.atlassian.net/browse/RD-75">expanded to use host-meta</a>.</p>
+<h2 id="market-traders">Market Traders</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/develop/api/routes/marketTraders.js" title="Source">[Source]<br/></a></p>
+<p>Return a list of accounts that participated in trading a specified currency exchange.</p>
+<h4 id="request-format-3">Request Format</h4>
+<div class="multicode">
+
+*Transactions Included*
+
+
+wzxhzdk:12
+
+
+*Default Markets*
+
+
+wzxhzdk:13
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#market-traders">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>(Optional) One of the currencies being exchanged. Required if <code>counter</code> is specified.</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>(Optional) The other of the currencies being exchanged. Required if <code>base</code> is specified.</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>(Optional) Retrieve information starting at this time. If omitted, use the <code>period</code> ending at the current time.</td>
+</tr>
+<tr>
+<td>period</td>
+<td>String</td>
+<td>(Optional) One of the following values: <code>3d</code> (three days), <code>7d</code> (seven days), or <code>24h</code> (24 hours). Defaults to <code>24h</code>.</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>Boolean</td>
+<td>(Optional) If true, include individual transactions in the response. Defaults to false. Ignored if <code>format</code> is csv.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>String</td>
+<td>(Optional) The <a href="#response-formats">Response Format</a> to use: <code>csv</code> or <code>json</code>. If omitted, defaults to a CSV-like JSON array format.</td>
+</tr>
+</tbody>
+</table>
+<p>If both <code>base</code> and <code>counter</code> are omitted, the API combines the results from a <a href="https://github.com/ripple/ripple-data-api/blob/2d456ace25c7ee157ed510b801ccc987b58d5d92/api/routes/marketTraders.js#L81-L92">hardcoded list of popular markets</a> with XRP as the base currency.</p>
+<p><strong>Note:</strong> This method <em>does not</em> have an <code>endTime</code> parameter.</p>
+<h4 id="response-format-3">Response Format</h4>
+<p>The format of the response depends on the <code>format</code> and <code>reduce</code> parameters from the request. See <a href="#response-formats">Response Format</a> for details. Examples of successful responses:</p>
+<div class="multicode">
+
+*Transactions Included*
+
+
+wzxhzdk:14
+
+
+*Default Markets*
+
+
+wzxhzdk:15
+
+
+</div>
+<p>A successful result contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>String (Account Address)</td>
+<td>The account of the trader.</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>Object</td>
+<td>Object with <code>baseVolume</code> (volume of base currency bought), <code>counterVolume</code> (volume of counter currency used to buy the base currency), and <code>count</code> (number of buy transactions) fields describing the activity of this account.</td>
+</tr>
+<tr>
+<td>sell</td>
+<td>Object</td>
+<td>Object with <code>baseVolume</code> (volume of base currency sold), <code>counterVolume</code> (volume of counter acquired by selling the base currency), and <code>count</code> (number of sell transactions) fields describing the activity of this account.</td>
+</tr>
+<tr>
+<td>baseVolume</td>
+<td>Number</td>
+<td>The total amount of the base currency exchanged.</td>
+</tr>
+<tr>
+<td>counterVolume</td>
+<td>Number</td>
+<td>The total amount of the counter currency exchanged.</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Number</td>
+<td>The number of exchanges this account performed.</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>Array</td>
+<td>(Omitted unless the request specified <code>transactions</code> as true) Array of transactions sent that this account participated in.</td>
+</tr>
+</tbody>
+</table>
+<p>If transactions are included, each transaction is represented as an array with the following fields in order:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The approximate time this transaction occurred.</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>The amount of the counter currency received for each unit of the base spent.</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>The amount of base currency in this transaction.</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>The amount of counter currency in this transaction.</td>
+</tr>
+<tr>
+<td>String (Ripple Address)</td>
+<td>One party to this transaction.</td>
+</tr>
+<tr>
+<td>String (Ripple Address)</td>
+<td>The other party to this transaction.</td>
+</tr>
+<tr>
+<td>String (Transaction Hash)</td>
+<td>The identifying hash for this transaction. (This may be <code>null</code> for very old transactions.)</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>The sequence number of the ledger that included this transaction.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="offers-exercised">Offers Exercised</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/master/api/routes/offersExercised.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve information about currency-exchange orders being exercised on the network, for a specific pair of currencies and timeframe.</p>
+<div class="multicode">
+
+*15-minute increments*
+
+
+wzxhzdk:16
+
+
+*Expanded*
+
+
+wzxhzdk:17
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#offers-exercised">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>One of the currencies being exchanged.</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>The other of the currencies being exchanged.</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information starting at this time.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information ending at this time.</td>
+</tr>
+<tr>
+<td>timeIncrement</td>
+<td>String</td>
+<td>(Optional) Divide results into intervals of the specified length: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, or <code>second</code>. The value <code>all</code> collapses the results into just one interval. Defaults to <code>all</code>.</td>
+</tr>
+<tr>
+<td>timeMultiple</td>
+<td>Number</td>
+<td>(Optional) Create larger intervals that are this many times the size of the <code>timeIncrement</code> (for example, 15-minute intervals). Defaults to 1.</td>
+</tr>
+<tr>
+<td>descending</td>
+<td>Boolean</td>
+<td>(Optional) If true, return results in descending order. Defaults to false.</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>Boolean</td>
+<td>(Optional) If <code>false</code>, include transactions individually instead of collapsing them into results over time. Defaults to <code>true</code>. Ignored if <code>timeIncrement</code> is provided.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>(Optional) If reduce is <code>false</code>, this value defines the maximum number of transactions to return in one response. Use with <code>offset</code> to paginate results. Defaults to 500.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Number</td>
+<td>(Optional) If reduce is <code>false</code>, this value defines a number of transactions to skip before returning results. Use with <code>limit</code> to paginate results. Defaults to 0.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>String</td>
+<td>(Optional) The <a href="#response-formats">Response Format</a> to use: <code>csv</code> or <code>json</code>. If omitted, defaults to a CSV-like JSON array format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-4">Response Format</h4>
+<p>The format of the response depends on the <code>format</code> and <code>reduce</code> parameters from the request. See <a href="#response-formats">Response Format</a> for details. Examples of successful responses:</p>
+<div class="multicode">
+
+*15-minute increments*
+
+
+wzxhzdk:18
+
+
+*Expanded*
+
+
+wzxhzdk:19
+
+
+</div>
+<p><strong>If results are reduced</strong> (the default), then each result represents an interval of time, with the following attributes, in order:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The start time of this interval.</td>
+</tr>
+<tr>
+<td>baseVolume</td>
+<td>Number</td>
+<td>Total amount of the base currency traded in this interval.</td>
+</tr>
+<tr>
+<td>counterVolume</td>
+<td>Number</td>
+<td>Total amount of the counter currency traded in this interval.</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Number</td>
+<td>Number of trades in this interval.</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Number</td>
+<td>Price of the first trade in this interval.</td>
+</tr>
+<tr>
+<td>high</td>
+<td>Number</td>
+<td>Highest price traded in this interval. (Most counter currency received per unit of base currency spent.)</td>
+</tr>
+<tr>
+<td>low</td>
+<td>Number</td>
+<td>Lowest price traded in this interval. (Least counter currency received per unit of base currency spent.)</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Number</td>
+<td>Price of the last trade in this interval.</td>
+</tr>
+<tr>
+<td>vwap</td>
+<td>Number</td>
+<td><a href="http://en.wikipedia.org/wiki/Volume-weighted_average_price">Volume weighted average price</a> of trades in this interval.</td>
+</tr>
+<tr>
+<td>openTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The time at which the first trade in this interval occurred.</td>
+</tr>
+<tr>
+<td>closeTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The time at which the last trade in this interval occurred.</td>
+</tr>
+<tr>
+<td>partial</td>
+<td>Boolean</td>
+<td>If true, this row may not include all trades in the interval due to the alignment of the requested time period. For example, a time interval of 1 minute was requested, but the end time for the range was 3:45:30.</td>
+</tr>
+</tbody>
+</table>
+<p>All prices are represented as the amount of the counter currency received for each unit of the base-currency spent.</p>
+<p>The time of an exchange is defined as the close time of the ledger that contained the transaction exercising the exchange.</p>
+<p>Note: The API omits intervals during which no exchanges occurred. This means that the rows may not be sequential. (They <em>are</em> in order, but with gaps for empty intervals.)</p>
+<p><strong>If the results are not reduced</strong> (the request used <code>"reduce":false</code>), then each result represents an individual transaction that caused a currency exchange, with the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The time this transaction occurred, as defined by the close time of the ledger that included it.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Number</td>
+<td>The amount of the counter currency received for each unit of the base-currency spent in this trade.</td>
+</tr>
+<tr>
+<td>baseAmount</td>
+<td>Number</td>
+<td>Total amount of the base currency spent in this trade.</td>
+</tr>
+<tr>
+<td>counterAmount</td>
+<td>Number</td>
+<td>Total amount of the counter currency received in this trade.</td>
+</tr>
+<tr>
+<td>account</td>
+<td>String</td>
+<td>The Ripple address of the account providing the base currency.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>String (Ripple Address)</td>
+<td>The Ripple address of the account providing the counter currency.</td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td>String (Transaction Hash)</td>
+<td>The identifying hash of the transaction where this transaction occurred.</td>
+</tr>
+<tr>
+<td>ledgerIndex</td>
+<td>Number</td>
+<td>The sequence number of the ledger that included this transaction.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="top-markets">Top Markets</h2>
+<p><a href="https://github.com/ripple/ripple-data-api/blob/develop/api/routes/totalTradeVolume.js" title="Source">[Source]<br/></a></p>
+<p>Returns the total trade volume for <a href="https://github.com/ripple/ripple-data-api/blob/develop/api/library/metrics/tradeVolume.js">a selection of the largest currency-exchange markets in the Ripple Network</a> during a given time period.</p>
+<p>The total volume is normalized in terms of XRP and then optionally converted to another specified currency.</p>
+<h4 id="request-format-4">Request Format</h4>
+<div class="multicode">
+
+*Request*
+
+
+wzxhzdk:20
+
+
+</div>
+<p><a class="button" href="charts-api-tool.html#top-markets">Try it! &gt;</a></p>
+<p>The request includes the following body parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>String (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>Retrieve information from the interval containing or starting from this time. Defaults to 24 hours before the current time.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>String</td>
+<td>Return results from an interval of this length.</td>
+</tr>
+<tr>
+<td>exchange</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>(Optional) Represent the volume of each market in terms of this currency. Defaults to XRP.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-5">Response Format</h4>
+<p>An example of a successful response:</p>
+<pre><code class="js">{
+  "rowkey": "trade_volume|week|20150105000000",
+  "components": [
+    {
+      "base": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0004093940882798027,
+      "count": 12818,
+      "amount": 1058808.8475284327,
+      "convertedAmount": 1058808.8475284327
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 5038,
+      "amount": 1211.8976720489186,
+      "convertedAmount": 328802.69694533286
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.002517187670715517,
+      "count": 5792,
+      "amount": 1886016.212859644,
+      "convertedAmount": 306740.69197435805
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.002487380215448072,
+      "count": 7069,
+      "amount": 2631245.752126516,
+      "convertedAmount": 433072.6959400096
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0024999228710402563,
+      "count": 20660,
+      "amount": 1318591.835624731,
+      "convertedAmount": 215936.1429155409
+    },
+    {
+      "base": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0003945533232038895,
+      "count": 33575,
+      "amount": 1480087.1064381741,
+      "convertedAmount": 1535759.2393204158
+    },
+    {
+      "base": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.00033245421053307723,
+      "count": 13892,
+      "amount": 326411.42570749344,
+      "convertedAmount": 401952.82176561374
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.0000014787515510977754,
+      "count": 22939,
+      "amount": 5535.83428387394,
+      "convertedAmount": 1532602.165544437
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rJHygWcTLVpSXkowott6kzgZU6viQSVYM1"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.00002019256666183595,
+      "count": 4,
+      "amount": 0.00008287404598700001,
+      "convertedAmount": 0.0016802294164530685
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.048446318835714555,
+      "count": 11387,
+      "amount": 90721573.94254778,
+      "convertedAmount": 766639.7972870923
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.049622732367643606,
+      "count": 7604,
+      "amount": 97770194.62368087,
+      "convertedAmount": 806617.0035207476
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rJRi8WW24gt9X85PHAxfWNPCizMMhqUQwg"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.04957853568065961,
+      "count": 650,
+      "amount": 21241310.716636248,
+      "convertedAmount": 175399.8361451728
+    },
+    {
+      "base": {
+        "currency": "KRW",
+        "issuer": "rUkMKjQitpgAM5WTGk79xpjT38DEJY283d"
+      },
+      "counter": {
+        "currency": "XRP"
+      },
+      "rate": 0.45875087906923134,
+      "count": 3309,
+      "amount": 643024533.754439,
+      "convertedAmount": 573841.8273378739
+    },
+    {
+      "base": {
+        "currency": "EUR",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.00033245421053307723,
+      "count": 4408,
+      "amount": 89233.81725732498,
+      "convertedAmount": 109885.19953232592
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 1135,
+      "amount": 308.8960869071788,
+      "convertedAmount": 83807.29561038432
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0000014787515510977754,
+      "count": 5705,
+      "amount": 1097.9447905182549,
+      "convertedAmount": 303967.29333071
+    },
+    {
+      "base": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "BTC",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0000015089406113337684,
+      "count": 1855,
+      "amount": 588.0555584971066,
+      "convertedAmount": 159546.6828982718
+    },
+    {
+      "base": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.0004093940882798027,
+      "count": 3623,
+      "amount": 536607.4024021383,
+      "convertedAmount": 536607.4024021383
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.002517187670715517,
+      "count": 871,
+      "amount": 426317.9599118283,
+      "convertedAmount": 69336.13037513298
+    },
+    {
+      "base": {
+        "currency": "CNY",
+        "issuer": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.002487380215448072,
+      "count": 833,
+      "amount": 415914.584286911,
+      "convertedAmount": 68454.74245510166
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "rate": 0.048446318835714555,
+      "count": 441,
+      "amount": 2687850.8059423557,
+      "convertedAmount": 22713.59840285114
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "USD",
+        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "rate": 0.048446318835714555,
+      "count": 5186,
+      "amount": 27619591.096972037,
+      "convertedAmount": 233398.48284757807
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "CNY",
+        "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+      },
+      "rate": 0.048446318835714555,
+      "count": 1008,
+      "amount": 7269403.650447986,
+      "convertedAmount": 61429.86611439055
+    },
+    {
+      "base": {
+        "currency": "JPY",
+        "issuer": "rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6"
+      },
+      "counter": {
+        "currency": "JPY",
+        "issuer": "r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN"
+      },
+      "rate": 0.048446318835714555,
+      "count": 2852,
+      "amount": 26542137.8118745,
+      "convertedAmount": 224293.4978679679
+    }
+  ],
+  "count": 172654,
+  "endTime": "2015-01-12T00:00:00+00:00",
+  "exchange": {
+    "currency": "USD",
+    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  "exchangeRate": 0.020233489275945527,
+  "startTime": "2015-01-05T00:00:00+00:00",
+  "total": 10009613.959742112
+}
+</code></pre>
+<p>A successful result contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>Object (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The starting time from the request.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Object (<a href="#dates-and-times">Date-Time</a>)</td>
+<td>The ending time from the request.</td>
+</tr>
+<tr>
+<td>exchange</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>The currency from the request that is used to express the volume.</td>
+</tr>
+<tr>
+<td>exchangeRate</td>
+<td>Number</td>
+<td>The amount of the <code>exchange</code> currency that can be bought for 1 XRP.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>Number</td>
+<td>The total volume traded across all markets, in terms of the <code>exchange</code> currency.</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Number</td>
+<td>The total number of trades in all the markets.</td>
+</tr>
+<tr>
+<td>components</td>
+<td>Array</td>
+<td>The market volumes of each market in the list of top markets.</td>
+</tr>
+</tbody>
+</table>
+<p>Each member of the <code>components</code> array has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>One of the currencies that defines this market.</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>Object (<a href="#currency-objects">Currency Object</a>)</td>
+<td>The other currency that defines this market.</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>Number</td>
+<td>The amount of the <code>exchange</code> currency necessary to buy 1 unit of the <code>base</code> currency.</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Number</td>
+<td>The number of trades in this market during the requested time period.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Number</td>
+<td>Total amount of the base currency traded in this market during the requested time period.</td>
+</tr>
+<tr>
+<td>convertedAmount</td>
+<td>Number</td>
+<td>Total amount of currency traded in this market during the requested time period, in terms of the <code>exchange</code> currency.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> If there are no trades in a market during the requested period, the <code>rate</code> is defined as 0.</p>
         </div>
     </div>
     </div>
@@ -148,6 +1634,12 @@
             <div class="col-md-3">
 		        <h4>Documentation</h4>
 			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="ripple-rest.html">Ripple-REST</a></li>
@@ -158,12 +1650,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
 			    </ul>
 			</div>
 			<div class="col-md-3">

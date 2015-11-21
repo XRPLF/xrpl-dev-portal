@@ -29,18 +29,12 @@
 
     <!-- syntax selection js -->
     <script src="js/multicodetab.js"></script>
-    <!-- Code to load contents via Flatdoc  -->
-    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
-    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
     <script>
-        $(".flatdoc-content").empty();
-        $(".content-root .menubar .menu").empty();
-        Flatdoc.run({
-          fetcher: Flatdoc.file('content/fees.md')
-        });
-        $(document).on('flatdoc:ready', function() {
-            $().multicode_tabs();
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
             hljs.initHighlighting();
+            make_code_expandable();
         });
     </script>
 
@@ -57,7 +51,7 @@
     
   
 </head>
-<body  role='flatdoc' class='no-literate'>
+<body  class='no-literate'>
  	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -72,6 +66,17 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
@@ -81,6 +86,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -89,17 +95,6 @@
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
                     <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -136,9 +131,24 @@
     <div class='content-root'>
         <div class='menubar'>
             <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
             </div>
         </div>
-        <div role='flatdoc-content' class='content'>
+        <div class='content'>
+	        <h1 id="fees-disambiguation">Fees (Disambiguation)</h1>
+<p>The Ripple Consensus Ledger is a decentralized ledger, secured by cryptography, and operated by a distributed peer-to-peer network of servers. This means that no one party, not even the Ripple, Inc., can charge a fee for access to the network.</p>
+<p>However, the rules of the Ripple Consensus Ledger include several types of fees, including the <a href="tx-cost.html"><em>transaction cost</em></a> and <a href="reserves.html"><em>reserve requirement</em></a>, which protect the ledger against abuse. (These neutral fees are not paid to anyone.) There are also several optional ways that users of the Consensus Ledger can collect fees from each other, both inside and outside the Ripple Consensus Ledger.</p>
+<h2 id="in-the-ledger">In the Ledger</h2>
+<p>The <em>transaction cost</em> (sometimes called the transaction fee) is a miniscule amount of XRP destroyed in order to send a transaction. This cost scales with the load of the network, which protects it from being overwhelmed with spam. See <a href="tx-cost.html">Transaction Cost</a> for more information.</p>
+<p>The <em>account reserve</em> is a minimum amount of XRP that an account must possess. It scales with the number of objects the account owns in the ledger. This serves to disincentivize spam that would increase the size of the ledger. See <a href="reserves.html">Reserves</a> for more information.</p>
+<p><em>Transfer fees</em> are optional percentage fees that gateways can charge to transfer the currencies they issue to other accounts within the Ripple Consensus Ledger. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a> for more information.</p>
+<p><em>Trust line quality</em> is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations that are similar to charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.</p>
+<h2 id="outside-the-ledger">Outside the Ledger</h2>
+<p>While the above values are the only fees built into the ledger, people can still invent ways to charge fees outside the Ripple ledger. A common example is withdrawal or deposit fees charged by gateways, which are assessed when you use the gateway to get money into or out of the Ripple Consensus Ledger. This may cover the costs of transferring balances on traditional payment rails, or it may be in addition to those costs.</p>
+<p>Many other fees are also possible. Businesses might charge for access, account maintenance, exchange services (especially when buying XRP on a private market instead of directly within the Ripple Consensus Ledger) and any number of other services. Always be aware of the fee schedule before doing business with any gateway or other financial institution.</p>
         </div>
     </div>
     </div>
@@ -148,6 +158,12 @@
             <div class="col-md-3">
 		        <h4>Documentation</h4>
 			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
                     <li><a href="ripple-rest.html">Ripple-REST</a></li>
@@ -158,12 +174,7 @@
                     <li><a href="historical_data.html">Historical Data API</a></li>
                     <li><a href="charts_api.html">Ripple Charts API</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
 			    </ul>
 			</div>
 			<div class="col-md-3">
