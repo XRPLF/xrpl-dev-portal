@@ -19,7 +19,7 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 The Ripple protocol provides a ledger shared across all nodes in the network.  Through a process of consensus and validation, the network agrees on order in which transactions are applied to (or omitted from) the ledger.  <!--See Ripple Ledger Consensus and Validation[b] for an overview of this process.-->
 
-Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction fee](transactions.html#transaction-fees) increases after an application sends a transaction.  If the fee increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global base fee decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
+Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](tx-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
 
 Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.
 
@@ -35,7 +35,7 @@ Ripple provides several APIs for submitting transactions ([rippled](rippled-apis
    - Malformed or nonsensical transactions are rejected immediately.
    - Well formed transactions may provisionally succeed, then later fail.
    - Well formed transactions may provisionally fail, then later succeed.
-3. Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied in order to claim a fee for being propagated through the network.
+3. Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied in order to enforce a cost for being propagated through the network.
 4. The validated ledger includes the transaction, and its effects are reflected in the ledger state.
    - Transaction results are no longer provisional, success or failure is now final and immutable.
 
@@ -478,7 +478,7 @@ Finally the server state might indicate one or more gaps in the transaction hist
 ### Ripple-REST - Submitting and Verifying Payments
 
 
-The [Ripple-REST API](ripple-rest.html) provides an interface to Ripple via a [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer).  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, `LastLedgerSequence`, and fee.
+The [Ripple-REST API](ripple-rest.html) provides an interface to Ripple via a [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer).  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, `LastLedgerSequence`, and transaction cost.
 
 This examples that follow refer to Ripple-REST API for *payments*.  The REST methods for setting trust lines and modifying account settings does not follow the same pattern.  See [RLJS-126](https://ripplelabs.atlassian.net/browse/RLJS-126) for additional details.
 
@@ -704,7 +704,7 @@ ripple-lib provides a high level API for creating transactions.  In this example
       amount: ‘10/FOO/rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W'
     });
 
-Note that ripple-lib will automatically provide additional details before the transaction is signed and submitted.  These details include an account transaction Sequence, `LastLedgerSequence` and Fee.
+Note that ripple-lib will automatically provide additional details before the transaction is signed and submitted.  These details include an account transaction Sequence, `LastLedgerSequence` and transaction cost.
 
 Before submitting, applications should persist the transaction details, so that status may be verified in the event of a failure.  Applications have an opportunity to do this by implementing [transaction event handlers](https://github.com/ripple/ripple-lib/blob/61afca2337927a4f331ae02770ccdad5d9bdef17/docs/REFERENCE.md#transaction-events).  The `presubmit` event handler is appropriate for saving data before a transaction is submitted to the network.  During normal operation, a `state` event is emitted whenever the transaction status changes, including final validation.
 
@@ -820,7 +820,7 @@ ripple-lib will re-submit a transaction in response to certain errors.  Prior to
 
 The example above shows the transaction after 1 failed attempts, before a second attempt is  submitted.  Note that `tx.submittedIDs[0]` is the updated hash which applications should persist.
 
-The `tx.result` is the **provisional** result of the **prior** submission attempt.  In this example the initial submit failed with `telINSUF_FEE_P`, which could happen if the network adjusts the fee calculated by ripple-lib immediately before the transaction is processed.
+The `tx.result` is the **provisional** result of the **prior** submission attempt.  In this example the initial submit failed with `telINSUF_FEE_P`, which could happen if the network adjusts the transaction cost calculated by ripple-lib immediately before the transaction is processed.
 
 
 
@@ -1022,7 +1022,7 @@ If the ledger history were not complete through the `LastLedgerSequence`, the ap
 ## Additional Resources
 
 - [Transaction Format](transactions.html)
-- [Transaction Fees](transactions.html#transaction-fees)
+- [Transaction Cost](tx-cost.html)
 - Documentation of [`LastLedgerSequence`](transactions.html#lastledgersequence)
 - [Overview of Ripple Ledger Consensus Process](http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/)
 - [Reaching Consensus in Ripple](https://ripple.com/knowledge_center/reaching-consensus-in-ripple/)
