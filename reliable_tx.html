@@ -154,7 +154,7 @@
 <p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
 <h2 id="background">Background</h2>
 <p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a process of consensus and validation, the network agrees on order in which transactions are applied to (or omitted from) the ledger.  <!--See Ripple Ledger Consensus and Validation[b] for an overview of this process.--></p>
-<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="transactions.html#transaction-fees">transaction fee</a> increases after an application sends a transaction.  If the fee increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global base fee decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
+<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="tx-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
 <p>Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.</p>
 <h3 id="transaction-timeline">Transaction Timeline</h3>
 <p>Ripple provides several APIs for submitting transactions (<a href="rippled-apis.html">rippled</a>, ripple-lib, <a href="ripple-rest.html">Ripple-REST</a>).  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
@@ -164,7 +164,7 @@
 <li>Malformed or nonsensical transactions are rejected immediately.</li>
 <li>Well formed transactions may provisionally succeed, then later fail.</li>
 <li>Well formed transactions may provisionally fail, then later succeed.</li>
-<li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied in order to claim a fee for being propagated through the network.</li>
+<li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied in order to enforce a cost for being propagated through the network.</li>
 <li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.</li>
 <li>Transaction results are no longer provisional, success or failure is now final and immutable.</li>
 </ol>
@@ -507,7 +507,7 @@
 <p>The server state may indicate a last validated ledger sequence number less than the specified <code>LastLedgerSequence</code>.  If so, the <code>txnNotFound</code> indicates either (a) the submitted transaction failed to be distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it will be processed at most once.</p>
 <p>Finally the server state might indicate one or more gaps in the transaction history. The <code>completed_ledgers</code> field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and <code>LastLedgerSequence</code>), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) in order to determine that a <code>txnNotFound</code> result is immutable.</p>
 <h3 id="ripple-rest-submitting-and-verifying-payments">Ripple-REST - Submitting and Verifying Payments</h3>
-<p>The <a href="ripple-rest.html">Ripple-REST API</a> provides an interface to Ripple via a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful API</a>.  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, <code>LastLedgerSequence</code>, and fee.</p>
+<p>The <a href="ripple-rest.html">Ripple-REST API</a> provides an interface to Ripple via a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful API</a>.  It provides robust payment submission features, which include referencing payments by client provided identifiers, re-submitting payments in response to some errors, and automatically calculating transaction parameters such as account sequence, <code>LastLedgerSequence</code>, and transaction cost.</p>
 <p>This examples that follow refer to Ripple-REST API for <em>payments</em>.  The REST methods for setting trust lines and modifying account settings does not follow the same pattern.  See <a href="https://ripplelabs.atlassian.net/browse/RLJS-126">RLJS-126</a> for additional details.</p>
 <h4 id="construct-the-transaction-1">Construct the Transaction</h4>
 <p>In Ripple-REST, a GET request retrieves the path options for a payment.  The following example issues 10 FOO (a made-up currency) from one account to another.</p>
@@ -676,7 +676,7 @@ Content-Type: application/json
   amount: ‘10/FOO/rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W'
 });
 </code></pre>
-<p>Note that ripple-lib will automatically provide additional details before the transaction is signed and submitted.  These details include an account transaction Sequence, <code>LastLedgerSequence</code> and Fee.</p>
+<p>Note that ripple-lib will automatically provide additional details before the transaction is signed and submitted.  These details include an account transaction Sequence, <code>LastLedgerSequence</code> and transaction cost.</p>
 <p>Before submitting, applications should persist the transaction details, so that status may be verified in the event of a failure.  Applications have an opportunity to do this by implementing <a href="https://github.com/ripple/ripple-lib/blob/61afca2337927a4f331ae02770ccdad5d9bdef17/docs/REFERENCE.md#transaction-events">transaction event handlers</a>.  The <code>presubmit</code> event handler is appropriate for saving data before a transaction is submitted to the network.  During normal operation, a <code>state</code> event is emitted whenever the transaction status changes, including final validation.</p>
 <p>The example implementation (below) of a these event handlers simply logs some information about the transaction, in order to show some of the data available to applications.  Live applications should implement handlers to <strong>synchronously</strong> persist transactions details, and should throw an error if unable to save the data.</p>
 <pre><code>// The 'presubmit' handler receives events before the transaction
@@ -775,7 +775,7 @@ tx.on('state', function(state) {
      transaction_hash: '2120732F77002A9138DE110408EA06C2064F032BC9D44A28C46267C607594203' } }
 </code></pre>
 <p>The example above shows the transaction after 1 failed attempts, before a second attempt is  submitted.  Note that <code>tx.submittedIDs[0]</code> is the updated hash which applications should persist.</p>
-<p>The <code>tx.result</code> is the <strong>provisional</strong> result of the <strong>prior</strong> submission attempt.  In this example the initial submit failed with <code>telINSUF_FEE_P</code>, which could happen if the network adjusts the fee calculated by ripple-lib immediately before the transaction is processed.</p>
+<p>The <code>tx.result</code> is the <strong>provisional</strong> result of the <strong>prior</strong> submission attempt.  In this example the initial submit failed with <code>telINSUF_FEE_P</code>, which could happen if the network adjusts the transaction cost calculated by ripple-lib immediately before the transaction is processed.</p>
 <h4 id="verify-the-transaction-1">Verify the Transaction</h4>
 <p>During normal operation, events emitted by ripple-lib inform an application of the result of a transaction.  The <code>state</code> event will emit with <code>tx.state: 'pending'</code> with a provisional result; and finally if successful with <code>tx.state: 'validated'</code> and <code>tx.finalized: true</code>.</p>
 <pre><code>- State Event Hander: validated -
@@ -946,7 +946,7 @@ remote.requestTransaction(hash, function(err, result) {
 <h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="transactions.html">Transaction Format</a></li>
-<li><a href="transactions.html#transaction-fees">Transaction Fees</a></li>
+<li><a href="tx-cost.html">Transaction Cost</a></li>
 <li>Documentation of <a href="transactions.html#lastledgersequence"><code>LastLedgerSequence</code></a></li>
 <li><a href="http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
 <li><a href="https://ripple.com/knowledge_center/reaching-consensus-in-ripple/">Reaching Consensus in Ripple</a></li>

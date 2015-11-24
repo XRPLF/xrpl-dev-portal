@@ -2030,17 +2030,12 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>total_coins</td>
 <td>String</td>
-<td>Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.)</td>
+<td>Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.)</td>
 </tr>
 <tr>
 <td>transaction_hash</td>
 <td>String</td>
 <td>Hash of the transaction information included in this ledger, as hex</td>
-</tr>
-<tr>
-<td>validated</td>
-<td>Boolean</td>
-<td>(<a href="https://ripplelabs.atlassian.net/browse/RIPD-569">Upcoming</a>) If included and set to <code>true</code>, the information in this request describes a validated ledger version. Otherwise, the information is subject to change.</td>
 </tr>
 </tbody>
 </table>
@@ -3459,15 +3454,15 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>fee_mult_max</td>
 <td>Integer</td>
-<td>(Optional) If the transaction <code>Fee</code> is omitted, this field limits the <code>Fee</code> value that is automatically filled so that it is less than or equal to the long-term base fee times this value.</td>
+<td>(Optional) If the <code>Fee</code> parameter (<a href="tx-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
 </tr>
 </tbody>
 </table>
 <p>The server automatically attempts to fill in certain fields from the <code>tx_json</code> object if they are omitted, unless you specified <code>offline</code> as true. Otherwise, the following fields from the <a href="transactions.html">transaction format</a> are automatically filled in:</p>
 <ul>
 <li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless <code>offline</code> is true.</li>
-<li><code>Fee</code> - The server can automatically fill in an appropriate transaction fee (in drops of XRP) unless you specified <code>offline</code> as true. Otherwise, you must fill in the appropriate fee. Be careful: a malicious server can specify an excessively high fee. Automatically filled unless <code>offline</code> is true.<ul>
-<li>If <code>fee_mult_max</code> is included, and the automatically generated Fee is greater than the long-term base fee times <code>fee_mult_max</code>, then the transaction fails with the error <code>rpcHIGH_FEE</code>. This way, you can let the server fill in the current minimum <code>Fee</code> value as long as the current load fee is not too high.</li>
+<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server <a href="tx-cost.html#automatically-specifying-the-transaction-cost">automatically provides an appropriate transaction cost</a> unless you specified <code>offline</code> as true. If you specify <code>offline</code> as true, you must fill in the transaction cost in the <code>Fee</code> parameter. Be careful: a malicious server can specify an excessively high transaction cost.<ul>
+<li>If <code>fee_mult_max</code> is included, and the automatically provided <code>Fee</code> value is greater than the long-term base transaction cost times <code>fee_mult_max</code>, then the transaction fails with the error <code>rpcHIGH_FEE</code>. This way, you can let the server fill in the current minimum <code>Fee</code> value as long as the current load-based transaction cost is not too high.</li>
 </ul>
 </li>
 <li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a <a href="#ripple-path-find">ripple_path_find</a>. Only filled if <code>build_path</code> is provided. </li>
@@ -3519,7 +3514,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>highFee</code> - The <code>fee_mult_max</code> parameter was specified, but the server's current fee multiplier exceeds the specified one.</li>
+<li><code>highFee</code> - The <code>fee_mult_max</code> parameter was specified, but the server's current transaction cost multiplier exceeds the specified one.</li>
 <li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.</li>
 <li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.</li>
 </ul>
@@ -3614,7 +3609,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>fee_mult_max</td>
 <td>Integer</td>
-<td>(Optional) If the transaction <code>Fee</code> is omitted, this field limits the <code>Fee</code> value that is automatically filled so that it is less than or equal to the long-term base fee times this value.</td>
+<td>(Optional) If the <code>Fee</code> parameter is omitted, this field limits the automatically-provided <code>Fee</code> value so that it is less than or equal to the long-term base transaction cost times this value.</td>
 </tr>
 </tbody>
 </table>
@@ -4048,12 +4043,12 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>fee_base</td>
 <td>Unsigned Integer</td>
-<td>Cost of the 'reference transaction' in drops of XRP. (See <a href="https://ripple.com/wiki/Transaction_Fee#Fee_Terminology">Transaction Fee Terminology</a> If the ledger includes a <a href="transactions.html#setfee">SetFee pseudo-transaction</a> the new transaction cost applies to all transactions after this ledger.</td>
+<td>Cost of the 'reference transaction' in drops of XRP. (See <a href="tx-cost.html">Transaction Cost</a> If the ledger includes a <a href="transactions.html#setfee">SetFee pseudo-transaction</a> the new transaction cost applies to all transactions after this ledger.</td>
 </tr>
 <tr>
 <td>fee_ref</td>
 <td>Unsigned Integer</td>
-<td>Cost of the 'reference transaction' in 'fee units'. (See <a href="https://ripple.com/wiki/Transaction_Fee#Fee_Terminology">Transaction Fee Terminology</a></td>
+<td>Cost of the 'reference transaction' in 'fee units'.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
@@ -4451,7 +4446,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing, as a multiplier on the base transaction fee. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. See <a href="https://ripple.com/wiki/Calculating_the_Transaction_Fee">Calculating Transaction Fees</a> for more details. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
+<td>The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -4600,7 +4595,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>load_base</td>
 <td>Number</td>
-<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction fees are doubled. See <a href="https://ripple.com/wiki/Calculating_the_Transaction_Fee">Calculating Transaction Fees</a> for more details.</td>
+<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction fees are doubled.</td>
 </tr>
 <tr>
 <td>load_factor</td>

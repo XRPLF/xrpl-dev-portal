@@ -181,7 +181,7 @@
 <h4 id="utilities">Utilities</h4>
 <ul>
 <li><a href="#retrieve-ripple-transaction">Retrieve Ripple Transaction - <code>GET /v1/transactions/{:id}</code></a></li>
-<li><a href="#retrieve-transaction-fee">Retrieve Transaction Fee - <code>GET /v1/transaction-fee</code></a></li>
+<li><a href="#retrieve-transaction-cost">Retrieve Transaction Cost - <code>GET /v1/transaction-fee</code></a></li>
 <li><a href="#create-client-resource-id">Generate UUID - <code>GET /v1/uuid</code></a></li>
 </ul>
 <h2 id="api-overview">API Overview</h2>
@@ -1350,7 +1350,7 @@ check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
 </tbody>
 </table>
 <h1 id="payments-1">PAYMENTS</h1>
-<p><code>ripple-rest</code> provides access to <code>ripple-lib</code>'s robust transaction submission processes. This means that it will set the fee, manage the transaction sequence numbers, sign the transaction with your secret, and resubmit the transaction up to 10 times if <code>rippled</code> reports an initial error that can be solved automatically.</p>
+<p><code>ripple-rest</code> provides access to <code>ripple-lib</code>'s robust transaction submission processes. This means that it automatically manages the transaction cost and sequence number, signs the transaction with your secret, and resubmits the transaction up to 10 times if <code>rippled</code> reports an initial error that can be solved automatically.</p>
 <h2 id="prepare-payment">Prepare Payment</h2>
 <p><a href="https://github.com/ripple/ripple-rest/blob/a268d7058b9bf20d48a1b61d86093756e5274512/api/payments.js#L484" title="Source">[Source]<br/></a></p>
 <p>Get quotes for possible ways to make a particular payment.</p>
@@ -1507,24 +1507,24 @@ check process ripple-rest with pidfile /var/run/ripple-rest/ripple-rest.pid
 <tr>
 <td>max_fee</td>
 <td>String</td>
-<td>(Optional) The maximum transaction fee to allow, as a decimal amount of XRP.</td>
+<td>(Optional) The maximum <a href="tx-cost.html">transaction cost</a> to allow, as a decimal amount of XRP.</td>
 </tr>
 <tr>
 <td>fixed_fee</td>
 <td>String</td>
-<td>(Optional) The exact transaction fee the payer wishes to pay to the server, as a decimal amount of XRP.</td>
+<td>(Optional) The exact <a href="tx-cost.html">transaction cost</a> to pay, as a decimal amount of XRP.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>DO NOT SUBMIT YOUR SECRET TO AN UNTRUSTED REST API SERVER</strong> -- The secret key can be used to send transactions from your account, including spending all the balances it holds. For the public server, only use test accounts.</p>
-<p><em>Note:</em> The transaction fee is determined as follows:</p>
+<p><em>Note:</em> The <a href="tx-cost.html">transaction cost</a> is determined as follows:</p>
 <ol>
-<li>If <code>fixed_fee</code> is included, that exact value is used for the transaction fee. Otherwise, the transaction fee is set dynamically based on the server's current fee.</li>
-<li>If <code>max_fee</code> is included and the transaction fee is higher than <code>max_fee</code>, then the transaction is rejected without being submitted. This is true regardless of whether the fee was fixed or dynamically set. Otherwise, the transaction is submitted to the <code>rippled</code> server with the specified fee.</li>
-<li>If the transaction succeeds, the sending account loses the whole amount of the transaction fee, even if it was higher than the server's current fee. </li>
-<li>If the transaction fails because the fee was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.</li>
+<li>If <code>fixed_fee</code> is included, that exact value is used for the transaction cost. Otherwise, the transaction cost is set dynamically based on the server's current cost.</li>
+<li>If <code>max_fee</code> is included and the server requires a transaction cost that is higher than <code>max_fee</code>, then the transaction is rejected without being submitted. This is true regardless of whether the transaction cost was fixed or dynamically set. Otherwise, the transaction is submitted to the <code>rippled</code> server with the specified transaction cost.</li>
+<li>If the transaction succeeds, the sending account loses the whole amount of the transaction cost, even if it was higher than the server's current requirement. </li>
+<li>If the transaction fails because the transaction cost was not high enough, Ripple-REST automatically resubmits it later. In this case, return to step 1.</li>
 </ol>
-<p>Consequently, you can use <code>max_fee</code> as a "set-it-and-forget-it" safeguard on the fees you are willing to pay.</p>
+<p>Consequently, you can use <code>max_fee</code> as a "set-it-and-forget-it" safeguard on the transaction cost you are willing to pay.</p>
 <p>Optionally, you can include the following as a URL query parameter:</p>
 <table>
 <thead>
@@ -2987,7 +2987,7 @@ for the perspective account (e.g., the Ripple account address used in the URI).<
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing, as a multiplier for the base transaction fee. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor.</td>
+<td>The load factor the server is currently enforcing, as a multiplier for the base <a href="tx-cost.html">transaction cost</a>. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor.</td>
 </tr>
 <tr>
 <td>peers</td>
@@ -3017,7 +3017,7 @@ for the perspective account (e.g., the Ripple account address used in the URI).<
 <tr>
 <td>validated_ledger.base_fee_xrp</td>
 <td>Number</td>
-<td>Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005</td>
+<td>Base <a href="tx-cost.html">transaction cost</a>, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005</td>
 </tr>
 <tr>
 <td>validated_ledger.hash</td>
@@ -3255,10 +3255,10 @@ for the perspective account (e.g., the Ripple account address used in the URI).<
   }
 }
 </code></pre>
-<h2 id="retrieve-transaction-fee">Retrieve Transaction Fee</h2>
+<h2 id="retrieve-transaction-cost">Retrieve Transaction Cost</h2>
 <p><a href="https://github.com/ripple/ripple-rest/blob/develop/api/info.js#L42" title="Source">[Source]<br/></a></p>
 <p>(New in <a href="https://github.com/ripple/ripple-rest/releases/tag/1.3.1-rc1">Ripple-REST v1.3.1</a>)</p>
-<p>Retrieve the current transaction fee, in XRP, for the <code>rippled</code> server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median fee among the connected servers.</p>
+<p>Retrieve the current <a href="tx-cost.html">transaction cost</a>, in XRP, for the <code>rippled</code> server Ripple-REST is connected to. If Ripple-REST is connected to multiple rippled servers, returns the median transaction cost among the connected servers.</p>
 <div class="multicode">
 
 *REST*

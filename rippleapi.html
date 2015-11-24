@@ -156,6 +156,7 @@
 <li><a href="#transaction-fees">Transaction Fees</a></li>
 <li><a href="#transaction-instructions">Transaction Instructions</a></li>
 <li><a href="#transaction-id">Transaction ID</a></li>
+<li><a href="#transaction-memos">Transaction Memos</a></li>
 <li><a href="#transaction-specifications">Transaction Specifications</a></li>
 <li><a href="#payment">Payment</a></li>
 <li><a href="#trustline">Trustline</a></li>
@@ -232,16 +233,68 @@ All the code snippets in this documentation assume that you have surrounded them
 <aside class="notice">
 If you omit the "catch" section, errors may not be visible.
 </aside>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authorization</td>
+<td>string</td>
+<td><em>Optional</em> Username and password for HTTP basic authentication to the rippled server in the format <strong>username:password</strong>.</td>
+</tr>
+<tr>
+<td>feeCushion</td>
+<td>number</td>
+<td><em>Optional</em> Factor to multiply estimated fee by to provide a cushion in case the required fee rises during submission of a transaction. Defaults to <code>1.2</code>.</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>uri string</td>
+<td><em>Optional</em> URI for HTTP/HTTPS proxy to use to connect to the rippled server.</td>
+</tr>
+<tr>
+<td>proxyAuthorization</td>
+<td>string</td>
+<td><em>Optional</em> Username and password for HTTP basic authentication to the proxy in the format <strong>username:password</strong>.</td>
+</tr>
+<tr>
+<td>servers</td>
+<td>array\&lt;uri string&gt;</td>
+<td><em>Optional</em> Array of rippled servers to connect to. Currently only one server is supported.</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>integer</td>
+<td><em>Optional</em> Timeout in milliseconds before considering a request to have failed.</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, log rippled requests and responses to stdout.</td>
+</tr>
+<tr>
+<td>trustedCertificates</td>
+<td>array\&lt;string&gt;</td>
+<td><em>Optional</em> Array of PEM-formatted SSL certificates to trust when connecting to a proxy. This is useful if you want to use a self-signed certificate on the proxy server. Note: Each element must contain a single certificate; concatenated certificates are not valid.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="installation">Installation</h3>
 <ol>
 <li>Install <a href="https://nodejs.org">NodeJS</a> and the Node Package Manager (npm). Most Linux distros have a package for NodeJS, but make sure you have version <code>0.12.0</code> or higher.</li>
 <li>Use npm to install <a href="https://babeljs.io/">Babel</a> globally:
-      npm install -g babel</li>
+      <code>npm install -g babel</code></li>
 <li>Use npm to install RippleAPI:
-      npm install ripple-lib</li>
+      <code>npm install ripple-lib</code></li>
 </ol>
 <p>After you have installed ripple-lib, you can create scripts using the <a href="#boilerplate">boilerplate</a> and run them using babel-node:
-      babel-node script.js</p>
+      <code>babel-node script.js</code></p>
 <aside class="notice">
 Instead of using babel-node in production, we recommend using Babel to transpile to ECMAScript 5 first.
 </aside>
@@ -249,27 +302,30 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="ripple-address">Ripple Address</h2>
 <pre><code class="json">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 </code></pre>
-<p>Every Ripple account has an <em>address</em>, which is a base58-encoding of a hash of the account's public key.</p>
+<p>Every Ripple account has an <em>address</em>, which is a base58-encoding of a hash of the account's public key. Ripple addresses always start with the lowercase letter <code>r</code>.</p>
 <h2 id="account-sequence-number">Account Sequence Number</h2>
-<p>Every Ripple account has a <em>sequence number</em> that is used to order transactions. Every transaction must have a sequence number and transaction can only be executed in order by sequence number. This prevents one transaction from executing twice and transactions executing out of order. The sequence number starts at <code>1</code> and increments for each transaction that the account makes.</p>
+<p>Every Ripple account has a <em>sequence number</em> that is used to keep transactions in order. Every transaction must have a sequence number. A transaction can only be executed if it has the next sequence number in order, of the account sending it. This prevents one transaction from executing twice and transactions executing out of order. The sequence number starts at <code>1</code> and increments for each transaction that the account makes.</p>
 <h2 id="currency">Currency</h2>
 <p>Currencies are represented as either 3-character currency codes or 40-character uppercase hexadecimal strings. We recommend using uppercase <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Codes</a> only. The string "XRP" is disallowed on trustlines because it is reserved for the Ripple native currency. The following characters are permitted: all uppercase and lowercase letters, digits, as well as the symbols <code>?</code>, <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>&lt;</code>, <code>&gt;</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, and <code>|</code>.</p>
 <h2 id="value">Value</h2>
-<p>A <em>value</em> is a quantity of a currency represented as a decimal string (string encoding is used because javascript numbers do not have sufficient precision).</p>
-<p>An XRP value has 6 significant digits past the decimal point. A non-XRP value has 16 total digits of precision.</p>
+<p>A <em>value</em> is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. XRP has different precision from other currencies.</p>
+<p><strong>XRP</strong> has 6 significant digits past the decimal point. In other words, XRP cannot be divided into positive values smaller than <code>0.000001</code> (1e-6). XRP has a maximum value of <code>100000000000</code> (1e11).</p>
+<p><strong>Non-XRP values</strong> have 15 decimal digits of precision, with a maximum value of <code>9999999999999999e80</code>. The smallest positive non-XRP value is <code>1e-81</code>.</p>
 <h2 id="amount">Amount</h2>
+<p>Example amount:</p>
 <pre><code class="json">{
   "currency": "USD",
   "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
   "value": "100"
 }
 </code></pre>
+<p>Example XRP amount:</p>
 <pre><code class="json">{
   "currency": "XRP",
   "value": "2000"
 }
 </code></pre>
-<p>An <em>amount</em> is data structure representing a currency, a quantity of that currency, and the counterparty on the trustline that holds the value (for all currencies besides "XRP").</p>
+<p>An <em>amount</em> is data structure representing a currency, a quantity of that currency, and the counterparty on the trustline that holds the value. For XRP, there is no counterparty.</p>
 <p>A <em>lax amount</em> allows the counterparty to be omitted for all currencies. If the counterparty is not specified in an amount within a transaction specification, then any counterparty may be used for that amount.</p>
 <p>A <em>lax lax amount</em> allows either or both the counterparty and value to be omitted.</p>
 <p>A <em>balance</em> is an amount than can have a negative value.</p>
@@ -312,7 +368,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <tbody>
 <tr>
 <td><a href="#payment">payment</a></td>
-<td>A <code>payment</code> transaction represents a transfer of value from one account to another. Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.</td>
+<td>A <code>payment</code> transaction represents a transfer of value from one account to another. Depending on the <a href="https://ripple.com/build/paths/">path</a> taken, additional exchanges of value may occur atomically to facilitate the payment.</td>
 </tr>
 <tr>
 <td><a href="#order">order</a></td>
@@ -347,16 +403,26 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="transaction-flow">Transaction Flow</h2>
 <p>Executing a transaction with <code>RippleAPI</code> requires the following four steps:</p>
 <ol>
-<li>prepare - Create an unsigned transaction based on a <a href="#transaction-specifications">specification</a> and <a href="#transaction-instructions">instructions</a>.</li>
-<li>sign - Cryptographically sign the transaction locally and save the <a href="#transaction-id">transaction ID</a>. Signing is how the owner of an account authorizes a transaction to take place.</li>
-<li>submit - Submit the transaction to the connected server.</li>
-<li>verify - Verify that the transaction got validated by querying with <a href="#gettransaction">getTransaction</a>. This is necessary because transactions may fail even if they were successfully submitted. It is recommended that you specify a <code>maxLedgerVersion</code> in the instructions when preparing a transaction because without it there is no way to know that a failed transaction will never succeeed in the future. It is impossible for a transaction to succeed after the network ledger version exceeds the <code>maxLedgerVersion</code> provided in the transaction instructions.</li>
+<li>Prepare - Create an unsigned transaction based on a <a href="#transaction-specifications">specification</a> and <a href="#transaction-instructions">instructions</a>. There is a method to prepare each type of transaction:<ul>
+<li><a href="#preparepayment">preparePayment</a></li>
+<li><a href="#preparetrustline">prepareTrustline</a></li>
+<li><a href="#prepareorder">prepareOrder</a></li>
+<li><a href="#prepareordercancellation">prepareOrderCancellation</a></li>
+<li><a href="#preparesettings">prepareSettings</a></li>
+<li><a href="#preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</a></li>
+<li><a href="#preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</a></li>
+<li><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
+</ul>
+</li>
+<li><a href="#sign">Sign</a> - Cryptographically sign the transaction locally and save the <a href="#transaction-id">transaction ID</a>. Signing is how the owner of an account authorizes a transaction to take place.</li>
+<li><a href="#submit">Submit</a> - Submit the transaction to the connected server.</li>
+<li>Verify - Verify that the transaction got validated by querying with <a href="#gettransaction">getTransaction</a>. This is necessary because transactions may fail even if they were successfully submitted.</li>
 </ol>
 <h2 id="transaction-fees">Transaction Fees</h2>
-<p>Every transaction requires a <em>fee</em> to be paid in XRP. The fee is destroyed; it is not sent to any other party. The purpose of the fee is to prevent denial of service attacks on the Ripple network.</p>
-<p>You can choose the size of the fee you want to pay or let a default be used. The fee is like a bid in an auction for slots in the next ledger closing. If the fee you choose is too low, your transaction will not be included in the next ledger closing. You can get an estimate of the fee required to be included in the next ledger closing with the <a href="#getfee">getFee</a> method.</p>
+<p>Every transaction must destroy a small amount of XRP as a cost to send the transaction. This is also called a <em>transaction fee</em>. The transaction cost is designed to increase along with the load on the Ripple network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>You can choose the size of the fee you want to pay or let a default be used. You can get an estimate of the fee required to be included in the next ledger closing with the <a href="#getfee">getFee</a> method.</p>
 <h2 id="transaction-instructions">Transaction Instructions</h2>
-<p>Transactions instructions indicates how to execute a transaction, complementary with the <a href="#transaction-specifications">transaction specification</a>.</p>
+<p>Transaction instructions indicate how to execute a transaction, complementary with the <a href="#transaction-specifications">transaction specification</a>.</p>
 <table>
 <thead>
 <tr>
@@ -393,10 +459,40 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 </tbody>
 </table>
+<p>We recommended that you specify a <code>maxLedgerVersion</code> because without it there is no way to know that a failed transaction will never succeeed in the future. It is impossible for a transaction to succeed after the network ledger version exceeds the transaction's <code>maxLedgerVersion</code>.</p>
 <h2 id="transaction-id">Transaction ID</h2>
 <pre><code class="json">"F4AB442A6D4CBB935D66E1DA7309A5FC71C7143ED4049053EC14E3875B0CF9BF"
 </code></pre>
-<p>A hash of the transaction that can be used to identify it. A transaction can be looked up by its ID using the <a href="#gettransaction">getTransaction</a> method.</p>
+<p>A transaction ID is a 64-bit hexadecimal string that uniquely identifies the transaction. The transaction ID is derived from the transaction instruction and specifications, using a strong hash function.</p>
+<p>You can look up a transaction by ID using the <a href="#gettransaction">getTransaction</a> method.</p>
+<h2 id="transaction-memos">Transaction Memos</h2>
+<p>Every transaction can optionally have an array of memos for user applications. The <code>memos</code> field in each <a href="#transaction-specifications">transaction specification</a> is an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>string</td>
+<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
+</tr>
+</tbody>
+</table>
 <h1 id="transaction-specifications">Transaction Specifications</h1>
 <p>A <em>transaction specification</em> specifies what a transaction should do. Each <a href="#transaction-types">Transaction Type</a> has its own type of specification.</p>
 <h2 id="payment">Payment</h2>
@@ -482,28 +578,8 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 <tr>
 <td>memos</td>
-<td>array</td>
+<td><a href="#transaction-memos">memos</a></td>
 <td><em>Optional</em> Array of memos to attach to the transaction.</td>
-</tr>
-<tr>
-<td>memos[]</td>
-<td>object</td>
-<td>Memo objects represent arbitrary data that can be included in a transaction</td>
-</tr>
-<tr>
-<td><em>memos[].</em> data</td>
-<td>string</td>
-<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> format</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> type</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
 </tr>
 <tr>
 <td>noDirectRipple</td>
@@ -572,6 +648,11 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <td>frozen</td>
 <td>boolean</td>
 <td><em>Optional</em> If true, the trustline is frozen, which means that funds can only be sent to the owner.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
 </tr>
 <tr>
 <td>qualityIn</td>
@@ -643,6 +724,11 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <td><em>Optional</em> Treat the offer as an <a href="http://en.wikipedia.org/wiki/Immediate_or_cancel">Immediate or Cancel order</a>. If enabled, the offer will never become a ledger node: it only attempts to match existing offers in the ledger.</td>
 </tr>
 <tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
 <td>passive</td>
 <td>boolean</td>
 <td><em>Optional</em> If enabled, the offer will not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It will still consume offers that cross it.</td>
@@ -661,7 +747,8 @@ Instead of using babel-node in production, we recommend using Babel to transpile
     "currency": "XRP",
     "value": "2"
   },
-  "immediateOrCancel": true
+  "passive": true,
+  "fillOrKill": true
 }
 </code></pre>
 <h2 id="order-cancellation">Order Cancellation</h2>
@@ -680,10 +767,17 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <td><a href="#account-sequence-number">sequence</a></td>
 <td>The <a href="#account-sequence-number">account sequence number</a> of the order to cancel.</td>
 </tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="example-3">Example</h3>
-<pre><code class="json">23
+<pre><code class="json">{
+  "orderSequence": 23
+}
 </code></pre>
 <h2 id="settings">Settings</h2>
 <p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
@@ -730,6 +824,11 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <td>globalFreeze</td>
 <td>boolean</td>
 <td><em>Optional</em> Freeze all assets issued by this account.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
 </tr>
 <tr>
 <td>messageKey</td>
@@ -841,28 +940,8 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 <tr>
 <td>memos</td>
-<td>array</td>
+<td><a href="#transaction-memos">memos</a></td>
 <td><em>Optional</em> Array of memos to attach to the transaction.</td>
-</tr>
-<tr>
-<td>memos[]</td>
-<td>object</td>
-<td>Memo objects represent arbitrary data that can be included in a transaction</td>
-</tr>
-<tr>
-<td><em>memos[].</em> data</td>
-<td>string</td>
-<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> format</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> type</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
 </tr>
 </tbody>
 </table>
@@ -910,28 +989,8 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 <tr>
 <td>memos</td>
-<td>array</td>
+<td><a href="#transaction-memos">memos</a></td>
 <td><em>Optional</em> Array of memos to attach to the transaction.</td>
-</tr>
-<tr>
-<td>memos[]</td>
-<td>object</td>
-<td>Memo objects represent arbitrary data that can be included in a transaction</td>
-</tr>
-<tr>
-<td><em>memos[].</em> data</td>
-<td>string</td>
-<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> format</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> type</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
 </tr>
 </tbody>
 </table>
@@ -969,28 +1028,8 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 <tr>
 <td>memos</td>
-<td>array</td>
+<td><a href="#transaction-memos">memos</a></td>
 <td><em>Optional</em> Array of memos to attach to the transaction.</td>
-</tr>
-<tr>
-<td>memos[]</td>
-<td>object</td>
-<td>Memo objects represent arbitrary data that can be included in a transaction</td>
-</tr>
-<tr>
-<td><em>memos[].</em> data</td>
-<td>string</td>
-<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> format</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
-</tr>
-<tr>
-<td><em>memos[].</em> type</td>
-<td>string</td>
-<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
 </tr>
 <tr>
 <td>method</td>
@@ -1017,7 +1056,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="connect">connect</h2>
 <p><code>connect(): Promise&lt;void&gt;</code></p>
 <p>Tells the RippleAPI instance to connect to its server(s).</p>
-<h3 id="parameters">Parameters</h3>
+<h3 id="parameters-1">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value">Return Value</h3>
 <p>This method returns a promise that resolves with a void value when a connection is established.</p>
@@ -1026,7 +1065,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="disconnect">disconnect</h2>
 <p><code>disconnect(): Promise&lt;void&gt;</code></p>
 <p>Tells the RippleAPI instance to disconnect from its server(s).</p>
-<h3 id="parameters-1">Parameters</h3>
+<h3 id="parameters-2">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-1">Return Value</h3>
 <p>This method returns a promise that resolves with a void value when a connection is destroyed.</p>
@@ -1035,7 +1074,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="isconnected">isConnected</h2>
 <p><code>isConnected(): boolean</code></p>
 <p>Checks if the RippleAPI instance is connected to its server(s).</p>
-<h3 id="parameters-2">Parameters</h3>
+<h3 id="parameters-3">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-2">Return Value</h3>
 <p>This method returns <code>true</code> if connected and <code>false</code> if not connected.</p>
@@ -1047,7 +1086,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="getserverinfo">getServerInfo</h2>
 <p><code>getServerInfo(): Promise&lt;object&gt;</code></p>
 <p>Get status information about the server that the RippleAPI instance is connected to.</p>
-<h3 id="parameters-3">Parameters</h3>
+<h3 id="parameters-4">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-3">Return Value</h3>
 <p>This method returns a promise that resolves with an object with the following structure:</p>
@@ -1207,7 +1246,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="getfee">getFee</h2>
 <p><code>getFee(): Promise&lt;number&gt;</code></p>
 <p>Returns the estimated transaction fee for the server(s) the RippleAPI instance is connected to.</p>
-<h3 id="parameters-4">Parameters</h3>
+<h3 id="parameters-5">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-4">Return Value</h3>
 <p>This method returns a promise that resolves with a floating point value representing the estimated fee to submit a transaction, expressed in XRP.</p>
@@ -1219,7 +1258,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="getledgerversion">getLedgerVersion</h2>
 <p><code>getLedgerVersion(): Promise&lt;number&gt;</code></p>
 <p>Returns the most recent validated ledger version number known to the connected server.</p>
-<h3 id="parameters-5">Parameters</h3>
+<h3 id="parameters-6">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-5">Return Value</h3>
 <p>This method returns a promise that resolves with a positive integer representing the most recent validated ledger version number known to the connected server.</p>
@@ -1233,7 +1272,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h2 id="gettransaction">getTransaction</h2>
 <p><code>getTransaction(id: string, options: Object): Promise&lt;Object&gt;</code></p>
 <p>Retrieves a transaction by its <a href="#transaction-id">Transaction ID</a>.</p>
-<h3 id="parameters-6">Parameters</h3>
+<h3 id="parameters-7">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1480,7 +1519,7 @@ return api.getTransaction(id).then(transaction =&gt; {
 <h2 id="gettransactions">getTransactions</h2>
 <p><code>getTransactions(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
 <p>Retrieves historical transactions of an account.</p>
-<h3 id="parameters-7">Parameters</h3>
+<h3 id="parameters-8">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1750,7 +1789,7 @@ return api.getTransactions(address).then(transaction =&gt; {
 <h2 id="gettrustlines">getTrustlines</h2>
 <p><code>getTrustlines(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
 <p>Returns trustlines for a specified account.</p>
-<h3 id="parameters-8">Parameters</h3>
+<h3 id="parameters-9">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1840,7 +1879,7 @@ return api.getTransactions(address).then(transaction =&gt; {
 </tr>
 <tr>
 <td><em>state.</em> balance</td>
-<td><a href="#value">value</a></td>
+<td><a href="#value">signedValue</a></td>
 <td>The balance on the trustline, representing which party owes the other and by how much.</td>
 </tr>
 </tbody>
@@ -1953,7 +1992,7 @@ return api.getTrustlines(address).then(trustlines =&gt;
 <h2 id="getbalances">getBalances</h2>
 <p><code>getBalances(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
 <p>Returns balances for a specified account.</p>
-<h3 id="parameters-9">Parameters</h3>
+<h3 id="parameters-10">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2158,7 +2197,7 @@ return api.getBalances(address).then(balances =&gt;
 <h2 id="getbalancesheet">getBalanceSheet</h2>
 <p><code>getBalanceSheet(address: string, options: Object): Promise&lt;Object&gt;</code></p>
 <p>Returns aggregate balances by currency plus a breakdown of assets and obligations for a specified account.</p>
-<h3 id="parameters-10">Parameters</h3>
+<h3 id="parameters-11">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2296,7 +2335,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 <h2 id="getpaths">getPaths</h2>
 <p><code>getPaths(pathfind: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
 <p>Finds paths to send a payment. Paths are options for how to route a payment.</p>
-<h3 id="parameters-11">Parameters</h3>
+<h3 id="parameters-12">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2513,7 +2552,7 @@ return api.getPaths(pathfind)
 <h2 id="getorders">getOrders</h2>
 <p><code>getOrders(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
 <p>Returns open orders for the specified account. Open orders are orders that have not yet been fully executed and are still in the order book.</p>
-<h3 id="parameters-12">Parameters</h3>
+<h3 id="parameters-13">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2932,7 +2971,7 @@ return api.getOrders(address).then(orders =&gt;
 <h2 id="getorderbook">getOrderbook</h2>
 <p><code>getOrderbook(address: string, orderbook: Object, options: Object): Promise&lt;Object&gt;</code></p>
 <p>Returns open orders for the specified account. Open orders are orders that have not yet been fully executed and are still in the order book.</p>
-<h3 id="parameters-13">Parameters</h3>
+<h3 id="parameters-14">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -3596,7 +3635,7 @@ return api.getOrderbook(address, orderbook)
 <h2 id="getsettings">getSettings</h2>
 <p><code>getSettings(address: string, options: Object): Promise&lt;Object&gt;</code></p>
 <p>Returns settings for the specified account. Note: For account data that is not modifiable by the user, see <a href="#getaccountinfo">getAccountInfo</a>.</p>
-<h3 id="parameters-14">Parameters</h3>
+<h3 id="parameters-15">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -3670,6 +3709,11 @@ return api.getOrderbook(address, orderbook)
 <td><em>Optional</em> Freeze all assets issued by this account.</td>
 </tr>
 <tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
 <td>messageKey</td>
 <td>string</td>
 <td><em>Optional</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
@@ -3722,7 +3766,7 @@ return api.getSettings(address).then(settings =&gt;
 <h2 id="getaccountinfo">getAccountInfo</h2>
 <p><code>getAccountInfo(address: string, options: Object): Promise&lt;Object&gt;</code></p>
 <p>Returns information for the specified account. Note: For account data that is modifiable by the user, see <a href="#getsettings">getSettings</a>.</p>
-<h3 id="parameters-15">Parameters</h3>
+<h3 id="parameters-16">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -3808,7 +3852,7 @@ return api.getAccountInfo(address).then(info =&gt;
 <h2 id="getledger">getLedger</h2>
 <p><code>getLedger(options: Object): Promise&lt;Object&gt;</code></p>
 <p>Returns header information for the specified ledger (or the most recent validated ledger if no ledger is specified). Optionally, all the transactions that were validated in the ledger or the account state information can be returned with the ledger header.</p>
-<h3 id="parameters-16">Parameters</h3>
+<h3 id="parameters-17">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -3953,7 +3997,7 @@ return api.getAccountInfo(address).then(info =&gt;
 <h2 id="preparepayment">preparePayment</h2>
 <p><code>preparePayment(address: string, payment: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a payment transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-17">Parameters</h3>
+<h3 id="parameters-18">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4056,7 +4100,7 @@ return api.preparePayment(address, payment).then(prepared =&gt;
 <h2 id="preparetrustline">prepareTrustline</h2>
 <p><code>prepareTrustline(address: string, trustline: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a trustline transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-18">Parameters</h3>
+<h3 id="parameters-19">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4150,7 +4194,7 @@ return api.preparePayment(address, trustline).then(prepared =&gt;
 <h2 id="prepareorder">prepareOrder</h2>
 <p><code>prepareOrder(address: string, order: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare an order transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-19">Parameters</h3>
+<h3 id="parameters-20">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4180,7 +4224,7 @@ return api.preparePayment(address, trustline).then(prepared =&gt;
 <h3 id="return-value-19">Return Value</h3>
 <p>This method returns a promise that resolves with an object with the following structure:</p>
 <aside class="notice">
-All "prepare" methods have the same return type.
+All "prepare*" methods have the same return type.
 </aside>
 <table>
 <thead>
@@ -4231,24 +4275,25 @@ const order = {
     "currency": "XRP",
     "value": "2"
   },
-  "immediateOrCancel": true
+  "passive": true,
+  "fillOrKill": true
 };
 return api.prepareOrder(address, order)
   .then(prepared =&gt; {/* ... */});
 </code></pre>
 <pre><code class="json">{
-  "txJSON": "{\"Flags\":2147614720,\"TransactionType\":\"OfferCreate\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"TakerGets\":\"2000000\",\"TakerPays\":{\"value\":\"10.1\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "txJSON": "{\"Flags\":2147811328,\"TransactionType\":\"OfferCreate\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"TakerGets\":\"2000000\",\"TakerPays\":{\"value\":\"10.1\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"LastLedgerSequence\":8819954,\"Fee\":\"12\",\"Sequence\":23}",
   "instructions": {
     "fee": "0.000012",
     "sequence": 23,
-    "maxLedgerVersion": 8820051
+    "maxLedgerVersion": 8819954
   }
 }
 </code></pre>
 <h2 id="prepareordercancellation">prepareOrderCancellation</h2>
-<p><code>prepareOrderCancellation(address: string, sequence: number, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p><code>prepareOrderCancellation(address: string, orderCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare an order cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-20">Parameters</h3>
+<h3 id="parameters-21">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4264,9 +4309,9 @@ return api.prepareOrder(address, order)
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
-<td>sequence</td>
-<td><a href="#account-sequence-number">sequence</a></td>
-<td>The account sequence number of the transaction that created the order to cancel.</td>
+<td>orderCancellation</td>
+<td><a href="#order-cancellation">orderCancellation</a></td>
+<td>The specification of the order cancellation to prepare.</td>
 </tr>
 <tr>
 <td>instructions</td>
@@ -4278,7 +4323,7 @@ return api.prepareOrder(address, order)
 <h3 id="return-value-20">Return Value</h3>
 <p>This method returns a promise that resolves with an object with the following structure:</p>
 <aside class="notice">
-All "prepare" methods have the same return type.
+All "prepare*" methods have the same return type.
 </aside>
 <table>
 <thead>
@@ -4318,7 +4363,7 @@ All "prepare" methods have the same return type.
 </table>
 <h3 id="example-28">Example</h3>
 <pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
-const sequence = 123;
+const orderCancellation = {orderSequence: 123};
 return api.prepareOrderCancellation(address, sequence)
   .then(prepared =&gt; {/* ... */});
 </code></pre>
@@ -4334,7 +4379,7 @@ return api.prepareOrderCancellation(address, sequence)
 <h2 id="preparesettings">prepareSettings</h2>
 <p><code>prepareSettings(address: string, settings: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a settings transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-21">Parameters</h3>
+<h3 id="parameters-22">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4417,7 +4462,7 @@ return api.prepareSettings(address, settings)
 <h2 id="preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</h2>
 <p><code>prepareSuspendedPaymentCreation(address: string, suspendedPaymentCreation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment creation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-22">Parameters</h3>
+<h3 id="parameters-23">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4521,7 +4566,7 @@ return api.prepareSuspendedPaymentCreation(address, suspendedPaymentCreation).th
 <h2 id="preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</h2>
 <p><code>prepareSuspendedPaymentCancellation(address: string, suspendedPaymentCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-23">Parameters</h3>
+<h3 id="parameters-24">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4610,7 +4655,7 @@ return api.prepareSuspendedPaymentCancellation(address, suspendedPaymentCancella
 <h2 id="preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</h2>
 <p><code>prepareSuspendedPaymentExecution(address: string, suspendedPaymentExecution: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment execution transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-24">Parameters</h3>
+<h3 id="parameters-25">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4702,7 +4747,7 @@ return api.prepareSuspendedPaymentExecution(address, suspendedPaymentExecution).
 <h2 id="sign">sign</h2>
 <p><code>sign(txJSON: string, secret: string): {signedTransaction: string, id: string}</code></p>
 <p>Sign a prepared transaction. The signed transaction must subsequently be <a href="#submit">submitted</a>.</p>
-<h3 id="parameters-25">Parameters</h3>
+<h3 id="parameters-26">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4760,7 +4805,7 @@ return api.sign(txJSON, secret);
 <h2 id="submit">submit</h2>
 <p><code>submit(signedTransaction: string): Promise&lt;Object&gt;</code></p>
 <p>Submits a signed transaction. The transaction is not guaranteed to succeed; it must be verified with <a href="#gettransaction">getTransaction</a>.</p>
-<h3 id="parameters-26">Parameters</h3>
+<h3 id="parameters-27">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4813,7 +4858,7 @@ return api.submit(signedTransaction)
 <h2 id="generateaddress">generateAddress</h2>
 <p><code>generateAddress(): {address: string, secret: string}</code></p>
 <p>Generate a new Ripple address and corresponding secret.</p>
-<h3 id="parameters-27">Parameters</h3>
+<h3 id="parameters-28">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-27">Return Value</h3>
 <p>This method returns an object with the following structure:</p>
@@ -4850,7 +4895,7 @@ return api.submit(signedTransaction)
 <h2 id="computeledgerhash">computeLedgerHash</h2>
 <p><code>computeLedgerHash(ledger: Object): string</code></p>
 <p>Compute the hash of a ledger.</p>
-<h3 id="parameters-28">Parameters</h3>
+<h3 id="parameters-29">Parameters</h3>
 <aside class="notice">
 The parameter to this method has the same structure as the return value of getLedger.
 </aside>
