@@ -43,6 +43,8 @@ MULTICODE_TAB_TARGETS = ["local","ripple.com"]
 
 MC_START_REGEX = re.compile("<!-- *<div class='multicode'[^>]*> *-->")
 MC_END_REGEX = re.compile("<!-- *</div> *-->")
+DOCTOC_START = "<!-- START doctoc generated TOC please keep comment here to allow auto update -->"
+DOCTOC_END = "<!-- END doctoc generated TOC please keep comment here to allow auto update -->"
 
 def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
     ## Python markdown requires markdown="1" on HTML block elements
@@ -58,6 +60,12 @@ def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
 #    
 #    md = re.sub("(<div[^>]*)>", add_markdown_class, md)
 #    print("done")
+    
+    #Strip out doctoc Table of Contents for RippleAPI
+    doctoc_start_i = md.find(DOCTOC_START)
+    doctoc_end_i = md.find(DOCTOC_END)
+    if doctoc_start_i != -1 and doctoc_end_i != -1:
+        md = md[:doctoc_start_i]+md[doctoc_end_i+len(DOCTOC_END):]
     
     #the actual markdown parsing is the easy part
     print("parsing markdown...")
