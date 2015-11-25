@@ -7,5 +7,5 @@ dependencies:
     - pip3 install jinja2 requests beautifulsoup4 markdown watchdog
 test:
   override:
-    - ./parse_pages.py -p
+    - ./parse_pages.py
     - ./check_links.py
