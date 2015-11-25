@@ -144,6 +144,7 @@
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#boilerplate">Boilerplate</a></li>
+<li><a href="#offline-functionality">Offline functionality</a></li>
 <li><a href="#basic-types">Basic Types</a></li>
 <li><a href="#ripple-address">Ripple Address</a></li>
 <li><a href="#account-sequence-number">Account Sequence Number</a></li>
@@ -217,7 +218,7 @@ Using RippleAPI, you can:</p>
 <pre><code class="javascript">const {RippleAPI} = require('ripple-lib');
 
 const api = new RippleAPI({
-  servers: ['wss://s1.ripple.com'] //Public rippled server hosted by Ripple, Inc.
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
 });
 api.connect().then(() =&gt; {
   /* insert code here */
@@ -226,7 +227,7 @@ api.connect().then(() =&gt; {
 }).catch(console.error);
 </code></pre>
 <p>RippleAPI is designed to work in <a href="https://nodejs.org">NodeJS</a> (version <code>0.12.0</code> or greater) using <a href="https://babeljs.io/">Babel</a> for <a href="https://babeljs.io/docs/learn-es2015/">ECMAScript 6</a> support.</p>
-<p>The code samples in this documentation are written in ES6, but <code>RippleAPI</code> will work with ES5 also. Regardless of whether you use ES5 or ES6, the methods that return promises will return <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise_">ES6-style promises</a>.</p>
+<p>The code samples in this documentation are written in ES6, but <code>RippleAPI</code> will work with ES5 also. Regardless of whether you use ES5 or ES6, the methods that return promises will return <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-style promises</a>.</p>
 <aside class="notice">
 All the code snippets in this documentation assume that you have surrounded them with this boilerplate.
 </aside>
@@ -234,6 +235,7 @@ All the code snippets in this documentation assume that you have surrounded them
 If you omit the "catch" section, errors may not be visible.
 </aside>
 <h3 id="parameters">Parameters</h3>
+<p>The RippleAPI constructor optionally takes one argument, an object with the following options:</p>
 <table>
 <thead>
 <tr>
@@ -264,9 +266,9 @@ If you omit the "catch" section, errors may not be visible.
 <td><em>Optional</em> Username and password for HTTP basic authentication to the proxy in the format <strong>username:password</strong>.</td>
 </tr>
 <tr>
-<td>servers</td>
-<td>array\&lt;uri string&gt;</td>
-<td><em>Optional</em> Array of rippled servers to connect to. Currently only one server is supported.</td>
+<td>server</td>
+<td>uri string</td>
+<td><em>Optional</em> URI for rippled websocket port to connect to. Must start with <code>wss://</code> or <code>ws://</code>.</td>
 </tr>
 <tr>
 <td>timeout</td>
@@ -285,6 +287,7 @@ If you omit the "catch" section, errors may not be visible.
 </tr>
 </tbody>
 </table>
+<p>If you omit the <code>server</code> parameter, RippleAPI operates <a href="#offline-functionality">offline</a>.</p>
 <h3 id="installation">Installation</h3>
 <ol>
 <li>Install <a href="https://nodejs.org">NodeJS</a> and the Node Package Manager (npm). Most Linux distros have a package for NodeJS, but make sure you have version <code>0.12.0</code> or higher.</li>
@@ -298,6 +301,28 @@ If you omit the "catch" section, errors may not be visible.
 <aside class="notice">
 Instead of using babel-node in production, we recommend using Babel to transpile to ECMAScript 5 first.
 </aside>
+<h2 id="offline-functionality">Offline functionality</h2>
+<p>RippleAPI can also function without internet connectivity. This can be useful in order to generate secrets and sign transactions from a secure, isolated machine.</p>
+<p>To instantiate RippleAPI in offline mode, use the following boilerplate code:</p>
+<pre><code class="javascript">const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI();
+/* insert code here */
+</code></pre>
+<p>Methods that depend on the state of the Ripple Consensus Ledger are unavailable in offline mode. To prepare transactions offline, you <strong>must</strong> specify  the <code>fee</code>, <code>sequence</code>, and <code>maxLedgerVersion</code> parameters in the <a href="#transaction-instructions">transaction instructions</a>. The following methods should work offline:</p>
+<ul>
+<li><a href="#preparepayment">preparePayment</a></li>
+<li><a href="#preparetrustline">prepareTrustline</a></li>
+<li><a href="#prepareorder">prepareOrder</a></li>
+<li><a href="#prepareordercancellation">prepareOrderCancellation</a></li>
+<li><a href="#preparesettings">prepareSettings</a></li>
+<li><a href="#preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</a></li>
+<li><a href="#preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</a></li>
+<li><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
+<li><a href="#sign">sign</a></li>
+<li><a href="#generateaddress">generateAddress</a></li>
+<li><a href="#computeledgerhash">computeLedgerHash</a></li>
+</ul>
 <h1 id="basic-types">Basic Types</h1>
 <h2 id="ripple-address">Ripple Address</h2>
 <pre><code class="json">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
@@ -400,6 +425,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 </tbody>
 </table>
+<p>The three "suspended payment" transaction types are not supported by the production Ripple peer-to-peer network at this time. They are available for testing purposes if you <a href="#boilerplate">configure RippleAPI</a> to connect to the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> instead.</p>
 <h2 id="transaction-flow">Transaction Flow</h2>
 <p>Executing a transaction with <code>RippleAPI</code> requires the following four steps:</p>
 <ol>
@@ -459,7 +485,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </tr>
 </tbody>
 </table>
-<p>We recommended that you specify a <code>maxLedgerVersion</code> because without it there is no way to know that a failed transaction will never succeeed in the future. It is impossible for a transaction to succeed after the network ledger version exceeds the transaction's <code>maxLedgerVersion</code>.</p>
+<p>We recommended that you specify a <code>maxLedgerVersion</code> so that you can quickly determine that a failed transaction will never succeeed in the future. It is impossible for a transaction to succeed after the network ledger version exceeds the transaction's <code>maxLedgerVersion</code>. If you omit <code>maxLedgerVersion</code>, the "prepare<em>" method automatically supplies a <code>maxLedgerVersion</code> equal to the current ledger plus 3, which it includes in the return value from the "prepare</em>" method.</p>
 <h2 id="transaction-id">Transaction ID</h2>
 <pre><code class="json">"F4AB442A6D4CBB935D66E1DA7309A5FC71C7143ED4049053EC14E3875B0CF9BF"
 </code></pre>
@@ -524,7 +550,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <tr>
 <td><em>source.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td><em>source.</em> maxAmount</td>
@@ -549,7 +575,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <tr>
 <td><em>destination.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
@@ -679,7 +705,14 @@ Instead of using babel-node in production, we recommend using Babel to transpile
   "qualityIn": 0.91,
   "qualityOut": 0.87,
   "ripplingDisabled": true,
-  "frozen": false
+  "frozen": false,
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
 }
 </code></pre>
 <h2 id="order">Order</h2>
@@ -869,7 +902,14 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </table>
 <h3 id="example-4">Example</h3>
 <pre><code class="json">{
-  "domain": "ripple.com"
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
 }
 </code></pre>
 <h2 id="suspended-payment-creation">Suspended Payment Creation</h2>
@@ -901,7 +941,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <tr>
 <td><em>source.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td>destination</td>
@@ -921,7 +961,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <tr>
 <td><em>destination.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td>allowCancelAfter</td>
@@ -1055,7 +1095,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <h1 id="api-methods">API Methods</h1>
 <h2 id="connect">connect</h2>
 <p><code>connect(): Promise&lt;void&gt;</code></p>
-<p>Tells the RippleAPI instance to connect to its server(s).</p>
+<p>Tells the RippleAPI instance to connect to its rippled server.</p>
 <h3 id="parameters-1">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value">Return Value</h3>
@@ -1064,7 +1104,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <p>See <a href="#boilerplate">Boilerplate</a> for code sample.</p>
 <h2 id="disconnect">disconnect</h2>
 <p><code>disconnect(): Promise&lt;void&gt;</code></p>
-<p>Tells the RippleAPI instance to disconnect from its server(s).</p>
+<p>Tells the RippleAPI instance to disconnect from its rippled server.</p>
 <h3 id="parameters-2">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-1">Return Value</h3>
@@ -1073,7 +1113,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 <p>See <a href="#boilerplate">Boilerplate</a> for code sample</p>
 <h2 id="isconnected">isConnected</h2>
 <p><code>isConnected(): boolean</code></p>
-<p>Checks if the RippleAPI instance is connected to its server(s).</p>
+<p>Checks if the RippleAPI instance is connected to its rippled server.</p>
 <h3 id="parameters-3">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-2">Return Value</h3>
@@ -1245,7 +1285,7 @@ Instead of using babel-node in production, we recommend using Babel to transpile
 </code></pre>
 <h2 id="getfee">getFee</h2>
 <p><code>getFee(): Promise&lt;number&gt;</code></p>
-<p>Returns the estimated transaction fee for the server(s) the RippleAPI instance is connected to.</p>
+<p>Returns the estimated transaction fee for the rippled server the RippleAPI instance is connected to.</p>
 <h3 id="parameters-5">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-4">Return Value</h3>
@@ -2431,7 +2471,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 <tr>
 <td><em>source.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td><em>source.</em> maxAmount</td>
@@ -2456,7 +2496,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 <tr>
 <td><em>destination.</em> tag</td>
 <td>integer</td>
-<td><em>Optional</em> An arbitrary unsigned 32-bit integer most commonly used to identify a non-Ripple account.</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
@@ -4177,13 +4217,20 @@ const trustline = {
   "qualityIn": 0.91,
   "qualityOut": 0.87,
   "ripplingDisabled": true,
-  "frozen": false
+  "frozen": false,
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
 };
 return api.preparePayment(address, trustline).then(prepared =&gt;
   {/* ... */});
 </code></pre>
 <pre><code class="json">{
-  "txJSON": "{\"Flags\":2149711872,\"TransactionType\":\"TrustSet\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"LimitAmount\":{\"value\":\"10000\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"QualityIn\":910000000,\"QualityOut\":870000000,\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "txJSON": "{\"TransactionType\":\"TrustSet\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"LimitAmount\":{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\",\"value\":\"10000\"},\"Flags\":2149711872,\"QualityIn\":910000000,\"QualityOut\":870000000,\"Memos\":[{\"Memo\":{\"MemoData\":\"7465787465642064617461\",\"MemoType\":\"74657374\",\"MemoFormat\":\"706C61696E2F74657874\"}}],\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
   "instructions": {
     "fee": "0.000012",
     "sequence": 23,
@@ -4450,18 +4497,33 @@ All "prepare*" methods have the same return type.
 <h3 id="example-29">Example</h3>
 <pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
 const settings = {
-  "domain": "ripple.com"
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
 };
 return api.prepareSettings(address, settings)
   .then(prepared =&gt; {/* ... */});
 </code></pre>
 <pre><code class="json">{
-  "domain": "ripple.com"
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
 }
 </code></pre>
 <h2 id="preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</h2>
 <p><code>prepareSuspendedPaymentCreation(address: string, suspendedPaymentCreation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment creation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-23">Parameters</h3>
 <table>
 <thead>
@@ -4566,6 +4628,7 @@ return api.prepareSuspendedPaymentCreation(address, suspendedPaymentCreation).th
 <h2 id="preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</h2>
 <p><code>prepareSuspendedPaymentCancellation(address: string, suspendedPaymentCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-24">Parameters</h3>
 <table>
 <thead>
@@ -4655,6 +4718,7 @@ return api.prepareSuspendedPaymentCancellation(address, suspendedPaymentCancella
 <h2 id="preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</h2>
 <p><code>prepareSuspendedPaymentExecution(address: string, suspendedPaymentExecution: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment execution transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-25">Parameters</h3>
 <table>
 <thead>
