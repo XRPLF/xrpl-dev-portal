@@ -121,9 +121,52 @@ def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
     html2 = str(soup)
     print("done")
     return html2
+
+MARKDOWN_LINK_REGEX = re.compile(r"(\[([^\]]+)\]\(([^:)]+)\)|\[([^\]]+)\]:\s*(\S+)$)", re.MULTILINE)
+def githubify_markdown(md, target=DEFAULT_TARGET, pages=None):
+    if not pages:
+        pages = get_pages()
+
+    class MDLink:
+        def __init__(self, fullmatch, label, url, label2, url2):
+            self.fullmatch = fullmatch
+            if label:
+                self.label = label
+                self.url = url
+                self.is_reflink = False
+            elif label2:
+                self.label = label2
+                self.url = url2
+                self.is_reflink = True
+        
+        def to_markdown(self):
+            s = "["
+            s += self.label
+            s += "]"
+            if self.is_reflink:
+                s += ": "
+                s += self.url
+            else:
+                s += "("
+                s += self.url
+                s += ")"
+            return s
+
+    links = [MDLink(*m) for m in MARKDOWN_LINK_REGEX.findall(md)]
     
-def get_pages(target=None):
-    print("reading page manifest...")
+    for link in links:
+        for page in pages:
+            if target in page:
+                #There's a replacement link for this
+                local_url = page["html"]
+                target_url = page[target]
+                if link.url[:len(local_url)] == local_url:
+                    link.url = link.url.replace(local_url, target_url)
+                    md = md.replace(link.fullmatch, link.to_markdown())
+    
+    return md
+    
+def get_pages(target=None,verbose=True):
     with open(PAGE_MANIFEST_FILE) as f:
         pages = json.load(f)
     
@@ -132,7 +175,6 @@ def get_pages(target=None):
         pages = [page for page in pages
                  if "targets" not in page or target in page["targets"]
                 ]
-    print("done")
     return pages
 
 def render_pages(precompiled, target=DEFAULT_TARGET):
@@ -271,6 +313,15 @@ def make_pdf(outfile):
     print("generating PDF: running ", " ".join(args),"...")
     prince_resp = subprocess.check_output(args, universal_newlines=True)
 
+
+def githubify(md_file_name, target=DEFAULT_TARGET):
+    filein = os.path.join(CONTENT_PATH, md_file_name)
+    with open(filein, "r") as f:
+        md = f.read()
+    pages = get_pages()
+    print(githubify_markdown(md, target=target, pages=pages))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
             description='Generate static site from markdown and templates.')
@@ -280,9 +331,14 @@ if __name__ == "__main__":
                        help="Watch for changes and re-generate the files. This runs until force-quit.")
     parser.add_argument("--pdf", type=str, 
             help="Generate a PDF, too. Requires Prince.")
+    parser.add_argument("-g","--githubify", type=str, help="Output md prepared for GitHub")
     parser.add_argument("--target", "-t", type=str, default=DEFAULT_TARGET)
     args = parser.parse_args()
     pre_parse = not args.flatdoc
+    
+    if args.githubify:
+        githubify(args.githubify, args.target)
+        exit(0)
     
     if args.pdf:
         if args.pdf[-4:] != ".pdf":
