@@ -36,14 +36,14 @@
         "name": "Transaction Cost",
         "md": "tx-cost.md",
         "html": "tx-cost.html",
-        "ripple.com": "https://wiki.ripple.com/Transaction_Fee",
+        "ripple.com": "https://ripple.com/build/transaction-cost/",
         "category": "Concepts"
     },
     {
         "name": "Fee Voting",
         "md": "fee-voting.md",
         "html": "fee-voting.html",
-        "ripple.com": "https://wiki.ripple.com/Understanding:_Transaction_and_Reserve_fee_setting",
+        "ripple.com": "https://ripple.com/build/fee-voting/",
         "category": "Concepts"
     },
     {
