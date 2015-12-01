@@ -1,7 +1,7 @@
 Ripple Data API v2
 ==================
 
-The Ripple Data API v2 provides access to raw and processed information about changes in the Ripple Consensus Ledger. This information is stored in a database for easy access, which frees `rippled` servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as a source of processed analytic data to applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a database for easy access, which frees `rippled` servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
 
 Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
@@ -9,7 +9,7 @@ Ripple provides a live instance of the Data API with as complete a transaction r
 
 
 ## More Information ##
-The Ripple Data API v2 is an evolution of the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). 
+The Ripple Data API v2 replaces the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). 
 
 * [API Methods](#api-method-reference)
 * [API Conventions](#api-conventions)
@@ -17,7 +17,7 @@ The Ripple Data API v2 is an evolution of the [Historical Database v1](historica
 * [Source Code on Github](https://github.com/ripple/rippled-historical-database)
 * [Release Notes](https://github.com/ripple/rippled-historical-database/releases)
 
-[v2.0.4]: https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2
+[v2.0.4]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4
 
 
 # API Method Reference #
@@ -3300,11 +3300,13 @@ The Historical Database requires the following software installed first:
 * [npm](https://www.npmjs.org/)
 * [git](http://git-scm.com/) (optional) for installation and updating.
 
+Version 2 of the Historical Database requires HBase instead of [PostgreSQL](http://www.postgresql.org/). Postgres support is deprecated.
+
 ### Installation Process ###
 
-For v2 (hbase):
+Starting in 
 
-  1. Set up an hbase cluster
+  1. Install HBase. For production use, configure it in distributed mode.
   2. Clone the rippled Historical Database Git Repository:
     `git clone https://github.com/ripple/rippled-historical-database.git`
     (You can also download and extract a zipped release instead.)
@@ -3312,7 +3314,7 @@ For v2 (hbase):
     `cd rippled-historical-database`
     `npm install`
     The install script will also create the required config files: `config/api.config.json` and `config/import.config.json`
-  4. Modify the API and import config files as needed. If you only wish to run the v2 endpoints, remove the `postgres` section from the api config file.
+  4. Modify the API and import config files as needed. Remove the `postgres` section from `api.config.json`.
 
 Reports, stats, and aggregated exchange data needs additional processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
 
@@ -3346,19 +3348,13 @@ The Live Ledger Importer is a service that connects to a `rippled` server using 
 
 The Live Ledger Importer includes a secondary process that runs periodically to validate the data already imported and check for gaps in the ledger history.
 
-The Live Ledger Importer can import to one or more different data stores concurrently. If you have configured the historical database to use another storage scheme, you can use the `--type` parameter to specify the database type or types to use. If not specified, the `rippled` Historical Database defaults to PostgreSQL.
+The Live Ledger Importer can import to one or more different data stores concurrently. If you have configured the historical database to use another storage scheme, you can use the `--type` parameter to specify the database type or types to use.
 
-Here are some examples:
+Example usage:
 
 ```
-// defaults to Hbase:
+// start loading records into HBase:
 $ node import/live
-
-// Use Postgres instead:
-$ node import/live --type postgres
-
-// Use PostgreSQL and Hbase simultaneously:
-$ node import/live --type postgres,hbase
 ```
 
 ### Backfiller ###
@@ -3371,13 +3367,10 @@ The `--stopIndex` parameter defines the oldest ledger to retrieve. The Backfille
 
 **Warning:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. Ripple, Inc. used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
 
-Here are some examples:
+Example usage:
 
 ```
-// retrieve everything to PostgreSQL
-node import/postgres/backfill
-
-// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in hbase
+// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
 ```
 
