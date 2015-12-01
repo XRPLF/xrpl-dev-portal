@@ -110,9 +110,11 @@ def parse_markdown(md, target=DEFAULT_TARGET, pages=None):
             for page in pages:
                 if target in page:
                     #There's a replacement link for this env
-                    if page["html"] in link["href"]:
-                        link["href"] = link["href"].replace(page["html"],
-                                                            page[target])
+                    local_url = page["html"]
+                    target_url = page[target]
+                    if link["href"][:len(local_url)] == local_url:
+                        link["href"] = link["href"].replace(local_url,
+                                                            target_url)
         print("done")
     
     print("re-rendering HTML")
