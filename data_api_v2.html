@@ -428,42 +428,42 @@
 <tr>
 <td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and later</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td>end</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and earlier</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td>type</td>
 <td>String</td>
-<td>filter transactions for a specific transaction type</td>
+<td>Filter transactions to a specific <a href="transactions.html">transaction type</a>.</td>
 </tr>
 <tr>
 <td>result</td>
 <td>String</td>
-<td>filter transactions for a specific transaction result</td>
+<td>Filter transactions for a specific <a href="transactions.html#transaction-results">transaction result</a>.</td>
 </tr>
 <tr>
 <td>binary</td>
 <td>Boolean</td>
-<td>return transactions in binary form</td>
+<td>If true, return transactions in binary form. Defaults to false.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>max results per page (defaults to 20). Cannot be more than 100.</td>
+<td>Max results per page (defaults to 20). Cannot be more than 100.</td>
 </tr>
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>The pagination marker from a previous response</td>
+<td><a href="#pagination">Pagination</a> marker from a previous response.</td>
 </tr>
 </tbody>
 </table>
@@ -648,12 +648,12 @@
 <tr>
 <td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and later</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td>end</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and earlier</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td>interval</td>
@@ -663,7 +663,7 @@
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>Reverse cronological order</td>
+<td>Reverse chronological order.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -673,7 +673,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td>format</td>
@@ -701,12 +701,12 @@
 <tr>
 <td>count</td>
 <td>Integer</td>
-<td>Number of Transactions returned.</td>
+<td>Number of Transactions returned</td>
 </tr>
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>payments</td>
@@ -873,47 +873,47 @@
 <tr>
 <td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and later</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td>end</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and earlier</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td>interval</td>
 <td>String</td>
-<td>Aggregation interval: <code>1minute</code>, <code>5minute</code>, <code>15minute</code>, <code>30minute</code>, <code>1hour</code>, <code>2hour</code>, <code>4hour</code>, <code>1day</code>, <code>3day</code>, <code>7day</code>, or <code>1month</code></td>
+<td>Aggregation interval: <code>1minute</code>, <code>5minute</code>, <code>15minute</code>, <code>30minute</code>, <code>1hour</code>, <code>2hour</code>, <code>4hour</code>, <code>1day</code>, <code>3day</code>, <code>7day</code>, or <code>1month</code>. Defaults to non-aggregated results.</td>
 </tr>
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>reverse chronological order</td>
+<td>If true, return results in reverse chronological order.</td>
 </tr>
 <tr>
 <td>reduce</td>
 <td>Boolean</td>
-<td>aggregate all individual results.</td>
+<td>Aggregate all individual results. Defaults to false.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>max results per page (defaults to 200). Cannot be more than 20,000 if <code>reduce</code> is true. Otherwise cannot be more than 1,000.</td>
+<td>Maximum results per page (defaults to 200). Cannot be more than 20,000 if <code>reduce</code> is true. Otherwise cannot be more than 1,000.</td>
 </tr>
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td>autobridged</td>
 <td>Boolean</td>
-<td>return only results from autobridged exchanges</td>
+<td>If true, filter results to autobridged exchanges only.</td>
 </tr>
 <tr>
 <td>format</td>
 <td>String</td>
-<td>format of returned results: <code>csv</code>,<code>json</code> defaults to <code>json</code></td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code></td>
 </tr>
 </tbody>
 </table>
@@ -941,7 +941,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>exchanges</td>
@@ -1221,7 +1221,7 @@
 <pre><code>GET /v2/reports/{:date}
 </code></pre>
 </div>
-<p>This method requires the following URL parameters:</p>
+<p>This method uses the following URL parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1251,12 +1251,12 @@
 <tr>
 <td>accounts</td>
 <td>Boolean</td>
-<td>Include lists of counterparty accounts</td>
+<td>If true, include lists of counterparty accounts. Defaults to false.</td>
 </tr>
 <tr>
 <td>payments</td>
 <td>Boolean</td>
-<td>Include lists of individual payments</td>
+<td>If true, include lists of individual payments. Defaults to false.</td>
 </tr>
 <tr>
 <td>format</td>
@@ -1271,7 +1271,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 </tbody>
 </table>
@@ -1304,7 +1304,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker.</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td>reports</td>
@@ -1450,9 +1450,9 @@
 <td>Filter results to one or more metrics (in a comma-separated list). Requires the <code>family</code> of the metrics to be specified. By default, provides all metrics in the family.</td>
 </tr>
 <tr>
-<td>end</td>
+<td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and earlier</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td>end</td>
@@ -1472,17 +1472,17 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td>format</td>
 <td>String</td>
-<td>Format of returned results: <code>csv</code>,<code>json</code> defaults to <code>json</code></td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1499,7 +1499,7 @@
 <tbody>
 <tr>
 <td>type</td>
-<td>All Ripple transaction types, including <code>Payment</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>.</td>
+<td>All Ripple <a href="transactions.html">transaction types</a>, including <code>Payment</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>.</td>
 <td>Number of transactions of the given type that occurred during the interval.</td>
 </tr>
 <tr>
@@ -1582,7 +1582,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>stats</td>
@@ -1619,7 +1619,7 @@
 </code></pre>
 <h2 id="get-capitalization">Get Capitalization</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js" title="Source">[Source]<br/></a></p>
-<p>Get capitalization data for a specific currency and issuer. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>Get the total amount of a single currency issued by a single issuer, also known as the <a href="https://en.wikipedia.org/wiki/Market_capitalization">market capitalization</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
 <h4 id="request-format-9">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -1656,12 +1656,12 @@
 <tr>
 <td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Start time of query range. Defaults to the most recent sample.</td>
+<td>Start time of query range. Defaults to <code>2013-01-01T00:00:00Z</code>.</td>
 </tr>
 <tr>
 <td>end</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>End time of query range</td>
+<td>End time of query range. Defaults to the current time.</td>
 </tr>
 <tr>
 <td>interval</td>
@@ -1676,17 +1676,17 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>Reverse cronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td>adjusted</td>
 <td>Boolean</td>
-<td>If true, adjust results by removing known issuer owned wallets. Defaults to true.</td>
+<td>If true, do not count known issuer-owned wallets towards market capitalization. Defaults to true.</td>
 </tr>
 <tr>
 <td>format</td>
@@ -1695,6 +1695,7 @@
 </tr>
 </tbody>
 </table>
+<p>If the request omits both <code>start</code> and <code>end</code>, the API returns only the most recent sample.</p>
 <h4 id="response-format-9">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
@@ -1729,7 +1730,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>rows</td>
@@ -1738,7 +1739,7 @@
 </tr>
 </tbody>
 </table>
-<p>Each issuer capitalization object has the following fields:</p>
+<p>Each <strong>issuer capitalization object</strong> has the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -2066,6 +2067,7 @@
 <h2 id="get-exchange-volume">Get Exchange Volume</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
 <p>Get aggregated exchange volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-11">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -2115,7 +2117,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -2279,6 +2281,7 @@
 <h2 id="get-payment-volume">Get Payment Volume</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
 <p>Get aggregated payment volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-12">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -2328,7 +2331,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -2378,12 +2381,12 @@
 <tr>
 <td>currency</td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>This object represents payment volume for this currency.</td>
+<td>The currency of this payment volume object.</td>
 </tr>
 <tr>
 <td>issuer</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted for XRP) This object represents payment volume for the currency issued by this account.</td>
+<td>(Omitted for XRP) The issuer of this payment volume object.</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2475,7 +2478,8 @@
 </code></pre>
 <h2 id="get-issued-value">Get Issued Value</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
-<p>Get total capitalization for a selection of major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-13">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -2520,7 +2524,7 @@
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -2643,7 +2647,7 @@
 </code></pre>
 <h2 id="get-all-gateways">Get All Gateways</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
-<p>Get information about known gateways. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
 <h4 id="request-format-14">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -2653,8 +2657,7 @@
 <p>This method takes no query parameters.</p>
 <h4 id="response-format-14">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body.</p>
-<p>Each field in the top level JSON object is a <a href="#currency-code">Currency Code</a>. The content of each field is an array of gateway objects that issue that currency.</p>
-<p>Each gateway object represents a gateway, and has the following fields:</p>
+<p>Each field in the top level JSON object is a <a href="#currency-code">Currency Code</a>. The content of each field is an array of objects, representing gateways that issue that currency. Each object has the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -2677,7 +2680,7 @@
 <tr>
 <td>featured</td>
 <td>Boolean</td>
-<td>Whether this gateway considered a "featured" issuer of the currency. Ripple, Inc. decides which gateways to feature based on responsible business practices, volume, and other measures.</td>
+<td>Whether this gateway is considered a "featured" issuer of the currency. Ripple, Inc. decides which gateways to feature based on responsible business practices, volume, and other measures.</td>
 </tr>
 <tr>
 <td>label</td>
@@ -2744,7 +2747,7 @@
 </code></pre>
 <h2 id="get-gateway">Get Gateway</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
-<p>Get information about a specific known gateway. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
+<p>Get information about a specific gateway from <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">the Data API's list of known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
 <h4 id="request-format-15">Request Format</h4>
 <div class="multicode">
 <p><em>REST</em></p>
@@ -2793,17 +2796,17 @@
 <tr>
 <td>accounts</td>
 <td>Array</td>
-<td>A list of issuing accounts used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
+<td>A list of <a href="gateway_guide.html#hot-and-cold-wallets">issuing accounts</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
 </tr>
 <tr>
 <td>hotwallets</td>
 <td>Array of <a href="#addresses">Address</a>es</td>
-<td>The addresses of the Ripple accounts this gateway uses as hot wallets.</td>
+<td>The addresses of the Ripple accounts this gateway uses as <a href="gateway_guide.html#hot-and-cold-wallets">hot wallets</a>.</td>
 </tr>
 <tr>
 <td>domain</td>
 <td>String</td>
-<td>The domain name where this gateway does business. Typically it has a <code>ripple.txt</code> hosted there.</td>
+<td>The domain name where this gateway does business. Typically the gateway hosts a <a href="https://wiki.ripple.com/Ripple.txt"><code>ripple.txt</code></a> there.</td>
 </tr>
 <tr>
 <td>normalized</td>
@@ -2830,7 +2833,7 @@
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The <a href="#addresses">Address</a> of an issuing account (cold wallet) used by this gateway.</td>
+<td>The <a href="#addresses">Address</a> of an <a href="gateway_guide.html#hot-and-cold-wallets">issuing account</a> (cold wallet) used by this gateway.</td>
 </tr>
 <tr>
 <td>currencies</td>
@@ -2968,7 +2971,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>descending</td>
@@ -3016,7 +3019,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>accounts</td>
@@ -3256,7 +3259,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>balances</td>
@@ -3348,17 +3351,17 @@ Content-Type: image/svg+xml
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>Index of ledger for historical orders</td>
+<td>Get orders as of this ledger. Not compatible with <code>ledger_hash</code> or <code>date</code>.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>Ledger hash for historical orders</td>
+<td>Get orders as of this ledger. Not compatible with <code>ledger_index</code> or <code>date</code>.</td>
 </tr>
 <tr>
 <td>date</td>
-<td>String</td>
-<td>UTC date for historical orders.</td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Get orders at this time. Not compatible with <code>ledger_index</code> or <code>ledger_hash</code>.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3372,6 +3375,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
+<p>If none of <code>ledger_index</code>, <code>ledger_hash</code>, or <code>date</code> are specified, the API uses the most current data available.</p>
 <h4 id="response-format-20">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
@@ -3391,17 +3395,17 @@ Content-Type: image/svg+xml
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>ledger index for orders query</td>
+<td><code>ledger_index</code> of the ledger version used.</td>
 </tr>
 <tr>
 <td>close_time</td>
 <td>String</td>
-<td>close time of the ledger</td>
+<td>Close time of the ledger version used.</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>String</td>
-<td>number of results returned, if limit was exceeded</td>
+<td>The <code>limit</code> from the request.</td>
 </tr>
 <tr>
 <td>orders</td>
@@ -3438,7 +3442,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>specification.totalPrice</td>
 <td><a href="#balance-objects-and-balance-change-objects">Balance Object</a></td>
-<td>The maximum amount of the counter currency that will spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled.</td>
+<td>The maximum amount of the counter currency that will be spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled.</td>
 </tr>
 <tr>
 <td>properties</td>
@@ -3575,7 +3579,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>type</td>
 <td>String</td>
-<td>Restrict results to a specified transaction type</td>
+<td>Restrict results to a specified <a href="transactions.html">transaction type</a></td>
 </tr>
 <tr>
 <td>result</td>
@@ -3600,7 +3604,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -3633,7 +3637,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>transactions</td>
@@ -3869,7 +3873,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -3902,7 +3906,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>payments</td>
@@ -4024,7 +4028,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response</td>
 </tr>
 <tr>
 <td>format</td>
@@ -4057,7 +4061,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
 <td>exchanges</td>
@@ -4156,27 +4160,27 @@ Content-Type: image/svg+xml
 <tr>
 <td>currency</td>
 <td>String</td>
-<td>Restrict results to specified currency</td>
+<td>Restrict results to specified currency.</td>
 </tr>
 <tr>
 <td>issuer</td>
 <td>String</td>
-<td>Restrict results to specified counterparty/issuer</td>
+<td>Restrict results to specified counterparty/issuer.</td>
 </tr>
 <tr>
 <td>start</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Start time of query range</td>
+<td>Start time of query range.</td>
 </tr>
 <tr>
 <td>end</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>End time of query range</td>
+<td>End time of query range.</td>
 </tr>
 <tr>
 <td>descending</td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -4186,12 +4190,12 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>Pagination key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td>format</td>
 <td>String</td>
-<td>Format of returned results: <code>csv</code>,<code>json</code> defaults to <code>json</code></td>
+<td>Format of returned results: <code>csv</code> or<code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -4219,12 +4223,12 @@ Content-Type: image/svg+xml
 <tr>
 <td>marker</td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td>exchanges</td>
 <td>Array of <a href="#balance-change-descriptors">balance change descriptors</a></td>
-<td>The requested balance changes</td>
+<td>The requested balance changes.</td>
 </tr>
 </tbody>
 </table>
@@ -4501,7 +4505,7 @@ Content-Type: image/svg+xml
 </ul>
 <h2 id="pagination">Pagination</h2>
 <p>Many queries may return more data than is reasonable to return in a single HTTP response. The Data API uses a "limit and marker" system to control how much is returned in a single response ("page") and to query for additional content.</p>
-<p>The <code>limit</code> query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary by based on the method. Most of the time, the <code>limit</code> is <strong>200</strong> by default, and can be set as high as <strong>1000</strong>. Any value over the maximum <code>limit</code> value is treated as the maximum instead.</p>
+<p>The <code>limit</code> query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the <code>limit</code> is <strong>200</strong> by default, and can be set as high as <strong>1000</strong>. If you specify a <code>limit</code> larger than the maximum, the API uses the maximum value instead.</p>
 <p>When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field <code>marker</code> which indicates that you can retrieve additional results by including the contents of the <code>marker</code> field as the <code>marker</code> query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the <code>marker</code> parameter, that indicates that you have reached the end of the queryable data.</p>
 <p>When a <code>marker</code> is or would be present, the response contains a <a href="https://tools.ietf.org/html/rfc5988#section-5"><code>Link</code> header</a> with <code>rel="next"</code>. This is a full URL to the next page of results. You can use this to paginate over results when the response is in <code>csv</code> format instead of <code>json</code>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v0.0.4-rc2">v2.0.4</a>)</em></p>
 <h2 id="transaction-objects">Transaction Objects</h2>
@@ -4915,7 +4919,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="payment-objects">Payment Objects</h2>
-<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the <code>Payment</code> transaction type, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
+<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the <code>Payment</code> <a href="transactions.html">transaction type</a>, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
 <p>Payment objects have the following fields:</p>
 <table>
 <thead>

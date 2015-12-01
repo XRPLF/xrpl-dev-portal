@@ -255,14 +255,14 @@ Optionally, you can include the following query parameters:
 
 | Field      | Value | Description |
 |------------|-------|-------------|
-| start      | String - [Timestamp][]  | Filter results to this time and later |
-| end        | String - [Timestamp][]  | Filter results to this time and earlier |
-| descending | Boolean | reverse chronological order |
-| type       | String | filter transactions for a specific transaction type |
-| result     | String | filter transactions for a specific transaction result |
-| binary     | Boolean | return transactions in binary form |
-| limit      | Integer | max results per page (defaults to 20). Cannot be more than 100. |
-| marker     | String | The pagination marker from a previous response |
+| start      | String - [Timestamp][]  | Filter results to this time and later. |
+| end        | String - [Timestamp][]  | Filter results to this time and earlier. |
+| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| type       | String | Filter transactions to a specific [transaction type](transactions.html). |
+| result     | String | Filter transactions for a specific [transaction result](transactions.html#transaction-results). |
+| binary     | Boolean | If true, return transactions in binary form. Defaults to false. |
+| limit      | Integer | Max results per page (defaults to 20). Cannot be more than 100. |
+| marker     | String | [Pagination](#pagination) marker from a previous response. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -423,12 +423,12 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][]  | Filter results to this time and later |
-| end        | String - [Timestamp][]  | Filter results to this time and earlier |
+| start      | String - [Timestamp][]  | Filter results to this time and later. |
+| end        | String - [Timestamp][]  | Filter results to this time and earlier. |
 | interval   | String  | If provided and `currency` is also specified, return results aggregated into intervals of the specified length instead of individual payments. Valid intervals are `day`, `week`, or `month`. |
-| descending | Boolean | Reverse cronological order |
+| descending | Boolean | Reverse chronological order. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
@@ -439,8 +439,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field  | Value | Description |
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of Transactions returned. |
-| marker | String | (May be omitted) Pagination marker |
+| count | Integer | Number of Transactions returned |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | payments | Array of [Payment Objects][], or array of aggregate objects | The requested payments |
 
 
@@ -567,15 +567,15 @@ Optionally, you can also include the following query parameters:
 
 | Field       | Value | Description |
 |-------------|-------|-------------|
-| start       | String - [Timestamp][] | Filter results to this time and later |
-| end         | String - [Timestamp][] | Filter results to this time and earlier |
-| interval    | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month` |
-| descending  | Boolean | reverse chronological order |
-| reduce      | Boolean | aggregate all individual results. |
-| limit       | Integer | max results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
-| marker      | String | pagination key from previously returned response |
-| autobridged | Boolean | return only results from autobridged exchanges |
-| format      | String | format of returned results: `csv`,`json` defaults to `json` |
+| start       | String - [Timestamp][] | Filter results to this time and later. |
+| end         | String - [Timestamp][] | Filter results to this time and earlier. |
+| interval    | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month`. Defaults to non-aggregated results. |
+| descending  | Boolean | If true, return results in reverse chronological order. |
+| reduce      | Boolean | Aggregate all individual results. Defaults to false. |
+| limit       | Integer | Maximum results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
+| marker      | String | [Pagination](#pagination) key from previously returned response. |
+| autobridged | Boolean | If true, filter results to autobridged exchanges only. |
+| format      | String | Format of returned results: `csv` or `json`. Defaults to `json` |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -584,7 +584,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of Transactions returned. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
@@ -814,7 +814,7 @@ GET /v2/reports/{:date}
 
 <!--</div>-->
 
-This method requires the following URL parameters:
+This method uses the following URL parameters:
 
 | Field | Value  | Description |
 |-------|--------|-------------|
@@ -824,11 +824,11 @@ Optionally, you can also include the following query parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| accounts | Boolean | Include lists of counterparty accounts |
-| payments | Boolean | Include lists of individual payments |
+| accounts | Boolean | If true, include lists of counterparty accounts. Defaults to false. |
+| payments | Boolean | If true, include lists of individual payments. Defaults to false. |
 | format   | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
+| marker     | String  | [Pagination](#pagination) key from previously returned response |
 
 #### Response Format ####
 
@@ -839,7 +839,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | result | `success` | Indicates that the body represents a successful response. |
 | date   | String - [Timestamp][] | The date for which this report applies. |
 | count | Integer | Number of reports returned. |
-| marker | String | (May be omitted) Pagination marker. |
+| marker | String | (May be omitted) [Pagination](#pagination) marker. |
 | reports | Array of [Reports Objects][] | The requested reports. Each report pertains to a single account. |
 
 **WARNING:** This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.
@@ -983,13 +983,13 @@ Optionally, you can also include the following query parameters:
 |------------|---------|-------------|
 | family     | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
 | metrics    | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
-| end        | String - [Timestamp][] | Filter results to this time and earlier |
+| start        | String - [Timestamp][] | Filter results to this time and later. |
 | end        | String - [Timestamp][] | Filter results to this time and earlier |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
-| descending | Boolean | Reverse chronological order |
-| format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
+| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 ##### Families and Metrics #####
 
@@ -997,7 +997,7 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
-| type | All Ripple transaction types, including `Payment`, `AccountSet`, `SetRegularKey`, `OfferCreate`, `OfferCancel`, `TrustSet`. | Number of transactions of the given type that occurred during the interval. |
+| type | All Ripple [transaction types](transactions.html), including `Payment`, `AccountSet`, `SetRegularKey`, `OfferCreate`, `OfferCancel`, `TrustSet`. | Number of transactions of the given type that occurred during the interval. |
 | result | All [transaction result codes](transactions.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | metric | Data-API defined Special Transaction Metrics. | (Varies) |
 
@@ -1023,7 +1023,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of reports returned. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
 #### Example ####
@@ -1065,7 +1065,7 @@ Response:
 ## Get Capitalization ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js "Source")
 
-Get capitalization data for a specific currency and issuer. _(New in [v2.0.4][])_
+Get the total amount of a single currency issued by a single issuer, also known as the [market capitalization](https://en.wikipedia.org/wiki/Market_capitalization). _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1090,14 +1090,16 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to the most recent sample. |
-| end        | String - [Timestamp][] | End time of query range |
+| start      | String - [Timestamp][] | Start time of query range. Defaults to `2013-01-01T00:00:00Z`. |
+| end        | String - [Timestamp][] | End time of query range. Defaults to the current time. |
 | interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
-| descending | Boolean | Reverse cronological order |
-| adjusted   | Boolean | If true, adjust results by removing known issuer owned wallets. Defaults to true. |
+| marker     | String  | [Pagination](#pagination) key from previously returned response |
+| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| adjusted   | Boolean | If true, do not count known issuer-owned wallets towards market capitalization. Defaults to true. |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+If the request omits both `start` and `end`, the API returns only the most recent sample.
 
 
 #### Response Format ####
@@ -1109,10 +1111,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | count | Integer | Number of reports returned. |
 | currency | String | Currency requested |
 | issuer | String | Issuer requested |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | rows | Array of issuer capitalization objects | The requested capitalization data |
 
-Each issuer capitalization object has the following fields:
+Each **issuer capitalization object** has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
@@ -1338,6 +1340,8 @@ Response:
 
 Get aggregated exchange volume for a given time period. _(New in [v2.0.4][])_
 
+The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
+
 #### Request Format ####
 
 <!--<div class='multicode'>-->
@@ -1360,7 +1364,7 @@ Optionally, you can include the following query parameters:
 | exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | Pagination key from previously returned response |
+| marker   | String  | [Pagination](#pagination) key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
@@ -1482,6 +1486,8 @@ Response:
 
 Get aggregated payment volume for a given time period. _(New in [v2.0.4][])_
 
+The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
+
 #### Request Format ####
 
 <!--<div class='multicode'>-->
@@ -1504,7 +1510,7 @@ Optionally, you can include the following query parameters:
 | exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | Pagination key from previously returned response |
+| marker   | String  | [Pagination](#pagination) key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
@@ -1520,8 +1526,8 @@ Each object in the `components` array of the Volume Objects represent the volume
 
 | Field  | Value  | Description |
 |--------|--------|-------------|
-| currency | String - [Currency Code][] | This object represents payment volume for this currency. |
-| issuer | String - [Address][] | (Omitted for XRP) This object represents payment volume for the currency issued by this account. |
+| currency | String - [Currency Code][] | The currency of this payment volume object. |
+| issuer | String - [Address][] | (Omitted for XRP) The issuer of this payment volume object. |
 | amount | Number | Total payment volume for this currency during the interval, in units of the currency itself. |
 | count  | Number | The total number of payments in this currency |
 | rate   | Number | The exchange rate between this currency and the display currency. |
@@ -1605,7 +1611,9 @@ Response:
 ## Get Issued Value ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get total capitalization for a selection of major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
+Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
+
+The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
 
 #### Request Format ####
 
@@ -1628,7 +1636,7 @@ Optionally, you can include the following query parameters:
 | exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | limit    | Integer | Max results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | Pagination key from previously returned response |
+| marker   | String  | [Pagination](#pagination) key from previously returned response |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
@@ -1711,7 +1719,7 @@ Response:
 ## Get All Gateways ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
-Get information about known gateways. _(New in [v2.0.4][])_
+Get information about [known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1732,16 +1740,13 @@ This method takes no query parameters.
 
 A successful response uses the HTTP code **200 OK** and has a JSON body.
 
-Each field in the top level JSON object is a [Currency Code][]. The content of each field is an array of gateway objects that issue that currency.
-
-Each gateway object represents a gateway, and has the following fields:
-
+Each field in the top level JSON object is a [Currency Code][]. The content of each field is an array of objects, representing gateways that issue that currency. Each object has the following fields:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
 | name     | String  | A human-readable proper name for the gateway. |
 | account  | String - [Address][] | The issuing account (cold wallet) that issues the currency. |
-| featured | Boolean | Whether this gateway considered a "featured" issuer of the currency. Ripple, Inc. decides which gateways to feature based on responsible business practices, volume, and other measures. |
+| featured | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple, Inc. decides which gateways to feature based on responsible business practices, volume, and other measures. |
 | label    | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
 | assets   | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
 
@@ -1808,7 +1813,7 @@ Response:
 ## Get Gateway ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
-Get information about a specific known gateway. _(New in [v2.0.4][])_
+Get information about a specific gateway from [the Data API's list of known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
 
 #### Request Format ####
 
@@ -1838,9 +1843,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |-------------|--------|-------------|
 | name        | String | Human-readable name of the gateway
 | start\_date | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
-| accounts    | Array | A list of issuing accounts used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
-| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as hot wallets. |
-| domain      | String | The domain name where this gateway does business. Typically it has a `ripple.txt` hosted there. |
+| accounts    | Array | A list of [issuing accounts](gateway_guide.html#hot-and-cold-wallets) (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as [hot wallets](gateway_guide.html#hot-and-cold-wallets). |
+| domain      | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
 | normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
 | assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
 
@@ -1848,7 +1853,7 @@ Each object in the `accounts` field array has the following fields:
 
 | Field      | Value  | Description |
 |------------|--------|-------------|
-| address    | String | The [Address][] of an issuing account (cold wallet) used by this gateway. |
+| address    | String | The [Address][] of an [issuing account](gateway_guide.html#hot-and-cold-wallets) (cold wallet) used by this gateway. |
 | currencies | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple, Inc. decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
 
 #### Example ####
@@ -1981,7 +1986,7 @@ Optionally, you can include the following query parameters:
 | end        | String - [Timestamp][]  | End time of query range |
 | interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
-| marker     | String  | Pagination key from previously returned response |
+| marker     | String  | [Pagination](#pagination) key from previously returned response |
 | descending | Boolean | Reverse chronological order |
 | parent     | String  | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
 | reduce     | Boolean | Return a count of results only |
@@ -1994,7 +1999,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | Number of reports returned. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | accounts | Array | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
 
 ##### Interval Objects #####
@@ -2152,7 +2157,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | ledger_index | Integer | ledger index for balances query |
 | close_time | String | close time of the ledger |
 | limit | String | number of results returned, if limit was exceeded |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | balances | Array of [Balance Object][]s | The requested balances |
 
 #### Example ####
@@ -2232,13 +2237,15 @@ This method requires the following URL parameters:
 
 Optionally, you can also include the following query parameters:
 
-| Field        | Value   | Description |
-|--------------|---------|-------------|
-| ledger_index | Integer | Index of ledger for historical orders |
-| ledger_hash  | String  | Ledger hash for historical orders |
-| date         | String  | UTC date for historical orders. |
-| limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400. |
-| format       | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| Field         | Value   | Description |
+|---------------|---------|-------------|
+| ledger\_index | Integer | Get orders as of this ledger. Not compatible with `ledger_hash` or `date`. |
+| ledger\_hash  | String  | Get orders as of this ledger. Not compatible with `ledger_index` or `date`. |
+| date          | String - [Timestamp][] | Get orders at this time. Not compatible with `ledger_index` or `ledger_hash`. |
+| limit         | Integer | Max results per page (defaults to 200). Cannot be greater than 400. |
+| format        | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+If none of `ledger_index`, `ledger_hash`, or `date` are specified, the API uses the most current data available.
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -2246,9 +2253,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field  | Value | Description |
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
-| ledger_index | Integer | ledger index for orders query |
-| close_time | String | close time of the ledger |
-| limit | String | number of results returned, if limit was exceeded |
+| ledger\_index | Integer | `ledger_index` of the ledger version used. |
+| close\_time | String | Close time of the ledger version used. |
+| limit | String | The `limit` from the request. |
 | orders | Array of order objects | The requested orders |
 
 Each order object has the following fields:
@@ -2258,7 +2265,7 @@ Each order object has the following fields:
 | specification                | Object | Details of this order's current state. |
 | specification.direction      | String | Either `buy` or `sell` |
 | specification.quantity       | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
-| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency that will spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled. |
+| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency that will be spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled. |
 | properties                   | Object | Details of how the order was placed. |
 | properties.maker             | String - [Address][] | The Ripple account that placed the order. |
 | properties.sequence          | Number | The sequence number of the transaction that placed this order. |
@@ -2360,12 +2367,12 @@ Optionally, you can also include the following query parameters:
 | end          | String  | UTC end time of query range |
 | min_sequence | String  | Minimum sequence number to query |
 | max_sequence | String  | Max sequence number to query |
-| type         | String  | Restrict results to a specified transaction type |
+| type         | String  | Restrict results to a specified [transaction type](transactions.html) |
 | result       | String  | Restrict results to specified transaction result |
 | binary       | Boolean | Return results in binary format |
 | descending   | Boolean | Reverse chronological order |
 | limit        | Integer | Max results per page (defaults to 20). Cannot be more than 1,000. |
-| marker       | String  | Pagination key from previously returned response |
+| marker       | String  | [Pagination](#pagination) key from previously returned response |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 
@@ -2377,7 +2384,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `transactions` field. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | transactions | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
 
 #### Example ####
@@ -2557,7 +2564,7 @@ Optionally, you can also include the following query parameters:
 | issuer     | String  | Restrict results to specified issuer |
 | descending | Boolean | Reverse chronological order |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
-| marker     | String  | Pagination key from previously returned response |
+| marker     | String  | [Pagination](#pagination) key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 
@@ -2569,7 +2576,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count  | Integer | The number of objects contained in the `payments` field. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | payments | Array of [payment objects][] | All payments matching the request. |
 
 #### Example ####
@@ -2664,7 +2671,7 @@ Optionally, you can also include the following query parameters:
 | end        | String - [Timestamp][]  | End time of query range |
 | descending | Boolean | Reverse chronological order |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
+| marker     | String  | [Pagination](#pagination) key from previously returned response |
 | format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
 
@@ -2675,7 +2682,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of exchanges returned. |
-| marker | String | (May be omitted) Pagination marker |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
 | exchanges | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
@@ -2767,14 +2774,14 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| currency   | String  | Restrict results to specified currency |
-| issuer     | String  | Restrict results to specified counterparty/issuer |
-| start      | String - [Timestamp][]  | Start time of query range |
-| end        | String - [Timestamp][]  | End time of query range |
-| descending | Boolean | Reverse chronological order |
+| currency   | String  | Restrict results to specified currency. |
+| issuer     | String  | Restrict results to specified counterparty/issuer. |
+| start      | String - [Timestamp][]  | Start time of query range. |
+| end        | String - [Timestamp][]  | End time of query range. |
+| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | Pagination key from previously returned response |
-| format     | String  | Format of returned results: `csv`,`json` defaults to `json` |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
+| format     | String  | Format of returned results: `csv` or`json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -2784,8 +2791,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | result | `success` | Indicates that the body represents a successful response. |
 | count | Integer | Number of balance changes returned. |
-| marker | String | (May be omitted) Pagination marker |
-| exchanges | Array of [balance change descriptors][] | The requested balance changes |
+| marker | String | (May be omitted) [Pagination](#pagination) marker. |
+| exchanges | Array of [balance change descriptors][] | The requested balance changes. |
 
 #### Example ####
 
@@ -3056,7 +3063,7 @@ Currencies in Ripple can be represented in two ways:
 
 Many queries may return more data than is reasonable to return in a single HTTP response. The Data API uses a "limit and marker" system to control how much is returned in a single response ("page") and to query for additional content.
 
-The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary by based on the method. Most of the time, the `limit` is **200** by default, and can be set as high as **1000**. Any value over the maximum `limit` value is treated as the maximum instead.
+The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the `limit` is **200** by default, and can be set as high as **1000**. If you specify a `limit` larger than the maximum, the API uses the maximum value instead.
 
 When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results by including the contents of the `marker` field as the `marker` query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
 
@@ -3191,7 +3198,7 @@ A Payment Summary Object contains a reduced amount of information about a single
 ## Payment Objects ##
 [Payment Objects]: #payment-objects
 
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` transaction type, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` [transaction type](transactions.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
 Payment objects have the following fields:
 
