@@ -5639,7 +5639,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | Field | Type | Description |
 |-------|------|-------------|
-| paths\_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
+| paths\_computed | Array | Array of arrays of objects defining [payment paths](paths.html) |
 | source\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
 
 #### Possible Errors ####
@@ -6090,7 +6090,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | Field | Type | Description |
 |-------|------|-------------|
-| paths\_computed | Array | Array of arrays of objects defining [payment paths](https://ripple.com/wiki/Payment_paths) |
+| paths\_computed | Array | Array of arrays of objects defining [payment paths](paths.html) |
 | source\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path in order for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
