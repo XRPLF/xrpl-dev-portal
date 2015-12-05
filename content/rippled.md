@@ -743,7 +743,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | account_data | Object | Information about the requested account |
 | account_data.Account | String | Address of the requested account |
 | account_data.Balance | String | XRP balance in "drops" represented as a string |
-| account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](transactions.html#accountset-flags) |
+| account_data.Flags | 32-bit unsigned integer | Integer with different bits representing the status of several [account flags](ripple-ledger.html#accountroot-flags) |
 | account_data.LedgerEntryType | String | "AccountRoot" is the type of ledger entry that holds an account's data |
 | account_data.OwnerCount | Integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This is used to calculate the total reserve required to use the account. |
 | account\_data.PreviousTxnID | String | Hash value representing the most recent transaction that affected this account node directly. **Note:** This does not include all changes to the account's trust lines and offers. Use [account_tx](#account-tx) to get a more inclusive list. |
@@ -1124,19 +1124,21 @@ The response follows the [standard format](#response-formatting), with a success
 | ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://ripplelabs.atlassian.net/browse/RIPD-682)) |
 | marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. ([New in 0.26.4](https://ripplelabs.atlassian.net/browse/RIPD-343)) |
 
-Each trust-line object has some combination of the following fields, although not necessarily all of them:
+Each trust-line object has some combination of the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | account | String | The unique address of the account this line applies to. |
 | balance | String | Representation of the numeric balance currently held against this line. A positive balance means that the account holds value; a negative balance means that the account owes value. |
 | currency | String | The currency this line applies to |
-| limit | String | The maximum amount of the given currency that the account is willing to owe the peer account |
-| limit\_peer | String | The maximum amount of currency that the peer account is willing to owe the account |
-| no_ripple | Boolean | Whether or not the account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for this line |
-| no\_ripple\_peer | Boolean | Whether or not the peer account has the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) set for the other direction of this trust line |
+| limit | String | The maximum amount of the given currency that this account is willing to owe the peer account |
+| limit\_peer | String | The maximum amount of currency that the peer account is willing to owe this account |
 | quality\_in | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality\_out | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
+| no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for this line. If omitted, that is the same as `false`. |
+| no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/). If omitted, that is the same as `false`. |
+| freeze | Boolean | (May be omitted) `true` if this account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
+| freeze\_peer | (May be omitted) `true` if the peer account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
 
 #### Possible Errors ####
 

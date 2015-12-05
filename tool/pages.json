@@ -54,6 +54,13 @@
         "category": "Concepts"
     },
     {
+        "name": "Freeze",
+        "md": "freeze.md",
+        "html": "freeze.html",
+        "ripple.com": "https://wiki.ripple.com/Freeze",
+        "category": "Concepts"
+    },
+    {
         "name": "rippled",
         "md":"rippled.md",
         "html":"rippled-apis.html",
