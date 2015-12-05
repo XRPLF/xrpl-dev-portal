@@ -1027,7 +1027,7 @@
 </tbody>
 </table>
 <p><em>Tip:</em> To remove an old offer and replace it with a new one, you can use an <a href="#offercreate">OfferCreate</a> transaction with an <code>OfferSequence</code> parameter, instead of using OfferCancel and another OfferCreate.</p>
-<p>The OfferCancel method returns <a href="https://ripple.com/wiki/Transaction_errors">tesSUCCESS</a> even if it did not find an offer with the matching sequence number.</p>
+<p>The OfferCancel method returns <a href="transactions.html#transaction-results">tesSUCCESS</a> even if it did not find an offer with the matching sequence number.</p>
 <h2 id="trustset">TrustSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp" title="Source">[Source]<br/></a></p>
 <p>Create or modify a trust line linking two accounts.</p>

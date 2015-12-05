@@ -667,7 +667,7 @@ An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledge
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate](#offercreate) transaction with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
-The OfferCancel method returns [tesSUCCESS](https://ripple.com/wiki/Transaction_errors) even if it did not find an offer with the matching sequence number.
+The OfferCancel method returns [tesSUCCESS](transactions.html#transaction-results) even if it did not find an offer with the matching sequence number.
 
 
 ## TrustSet ##

@@ -1,5 +1,5 @@
-## title ##
-[[Source]<br>]( "Source")
+## method_name ##
+[[Source]<br>](https://github.com/ripple/source_code/for_your_method/if_available "Source")
 
 blurb
 
@@ -15,22 +15,22 @@ blurb
 
 </div>
 
-[Try it! >](rest-api-tool.html#prepare-payment)
+[Try it! >](your-api-tool.html#method_name)
 
 
-This method requires the following URL parameters:
-
-| Field | Value | Description |
-|-------|-------|-------------|
-
-
-Optionally, you can also include the following query parameters:
+##### URL Parameters #####
 
 | Field | Value | Description |
 |-------|-------|-------------|
 
 
-The request includes the following body parameters:
+##### Optional Query Parameters #####
+
+| Field | Value | Description |
+|-------|-------|-------------|
+
+
+##### Body Parameters #####
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -40,13 +40,30 @@ Further description
 
 #### Response Format ####
 
-An example of a successful response:
-
-```js
-//actual example here
-```
-
-A successful result contains the following fields:
+A successful result uses the HTTP response code **200 OK** and contains a JSON body with the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
+
+
+#### Example ####
+
+Request:
+
+```
+GET /example/request?params=included
+```
+
+Response:
+
+```js
+200 OK
+{
+    //some JSON here
+}
+```
+
+#### Errors ####
+
+* **error_code** - The problem exists between keyboard and chair
+
