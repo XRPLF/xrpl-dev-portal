@@ -67,8 +67,63 @@ Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical w
 
 Example of submitting a TrustSet transaction to enable an individual freeze:
 
+WebSocket request:
+
 ```
-TODO
+{
+  "id": 12,
+  "command": "submit",
+  "tx_json": {
+    "TransactionType": "TrustSet",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "12000",
+    "Flags": 1048576,
+    "LastLedgerSequence": 18103014,
+    "LimitAmount": {
+      "currency": "USD",
+      "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+      "value": "110"
+    },
+    "Sequence": 340
+  },
+  "secret": "s████████████████████████████",
+  "offline": false,
+  "fee_mult_max": 1000
+}
+```
+
+(Note: Never transmit your account secret to an untrusted server or over an insecure channel.)
+
+WebSocket response:
+
+```
+{
+  "id": 4,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "12001422000400002400000153201B01143A8263D503E871B540C0000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D12409711684000000000002EE0732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402206D3739439DC40BBECD45A02D627D4E0440CB8D583B10780DB73009118BA0B81402203691A664E2175A8B97608650EFCAB5701DB53E5C09DE07DFA2A96DC0DB356BD681144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Fee": "12000",
+      "Flags": 262144,
+      "LastLedgerSequence": 18102914,
+      "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "value": "110"
+      },
+      "Sequence": 339,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "TrustSet",
+      "TxnSignature": "304402206D3739439DC40BBECD45A02D627D4E0440CB8D583B10780DB73009118BA0B81402203691A664E2175A8B97608650EFCAB5701DB53E5C09DE07DFA2A96DC0DB356BD6",
+      "hash": "3EDDC21C710883B8B3F94D7954002AF8D8E27E7B1199B9862E6CA6BFF83B39B8"
+    }
+  }
+}
 ```
 
 
@@ -85,10 +140,60 @@ To enable or disable Individual Freeze on a specific trust line, prepare a *Trus
 
 The rest of the [transaction flow](rippleapi.html#transaction-flow) is the same as any other transaction.
 
-Example code to enable Individual Freeze on a trust line:
+Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust line:
 
-```
-TODO
+```js
+const {RippleAPI} = require('ripple-lib');
+ 
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+
+const issuing_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+const issuing_secret = "s████████████████████████████";
+    //Best practice: get your secret from an encrypted config file instead
+const address_to_freeze = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
+const currency_to_freeze = "USD";
+
+api.connect().then(() => {
+  
+  // Look up current state of trust line
+  var options = {counterparty: address_to_freeze, currency: currency_to_freeze};
+  console.log("looking up", currency_to_freeze, "trust line from", 
+              issuing_address, "to", address_to_freeze);
+  return api.getTrustlines(issuing_address, options);
+  
+}).then(data => {
+
+  //Prepare a trustline transaction to enable freeze
+  if (data.length != 1) {
+    console.log("trustline not found, making a default one");
+    var trustline = {
+      currency: currency_to_freeze,
+      counterparty: address_to_freeze,
+      limit: 0
+    };
+  } else {
+    var trustline = data[0].specification;
+    console.log("trustline found. previous state:", trustline);
+  }
+  
+  trustline.frozen = true;
+  
+  console.log("preparing trustline transaction for line:",trustline);
+  return api.prepareTrustline(issuing_address, trustline);
+  
+}).then(prepared_tx => {
+
+  //Sign and submit the trustline transaction
+  console.log("signing tx:",prepared_tx.txJSON);
+  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
+  console.log("submitting tx:", signed1.id);
+  
+  return api.submit(signed1.signedTransaction)
+}).then(() => {
+  return api.disconnect();
+}).catch(console.error);
 ```
 
 
@@ -171,6 +276,46 @@ The response contains an array of trust lines, for each currency in which the is
 | freeze       | Boolean | (May be omitted) `true` if the issuing account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
 | freeze\_peer | (May be omitted) `true` if the counterparty has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
 
+Example of checking for an individual freeze:
+
+WebSocket Request:
+
+```
+{
+  "id": 15,
+  "command": "account_lines",
+  "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "ledger": "validated",
+  "peer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+}
+```
+
+WebSocket Response:
+
+```
+{
+  "id": 15,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "lines": [
+      {
+        "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "balance": "10",
+        "currency": "USD",
+        "freeze": true,
+        "limit": "110",
+        "limit_peer": "0",
+        "peer_authorized": true,
+        "quality_in": 0,
+        "quality_out": 0
+      }
+    ]
+  }
+}
+```
+
 
 ### Using RippleAPI ###
 
@@ -187,6 +332,47 @@ The response contains an array of trust lines, for each currency in which the is
 |----------------------|---------|-------------|
 | specification.frozen | Boolean | (May be omitted) `true` if the issuing account has frozen the trust line. |
 | counterparty.frozen  | Boolean | (May be omitted) `true` if the counterparty has frozen the trust line. |
+
+Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
+
+```
+const {RippleAPI} = require('ripple-lib');
+ 
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+
+const my_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+const counterparty_address = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
+const frozen_currency = "USD";
+
+api.connect().then(() => {
+  
+  // Look up current state of trust line
+  var options = {counterparty: counterparty_address, currency: frozen_currency};
+  console.log("looking up", frozen_currency, "trust line from", 
+              my_address, "to", counterparty_address);
+  return api.getTrustlines(my_address, options);
+  
+}).then(data => {
+
+  if ( data.length > 1)
+     throw "should only be 1 trust line per counterparty+currency pair";
+  
+  if ( data.length === 0 ) {
+    console.log("No trust line found");
+  } else {
+      var trustline = data[0];
+      console.log("Trust line frozen from our side?", 
+                  trustline.specification.frozen === true);
+      console.log("Trust line frozen from counterparty's side?", 
+                  trustline.counterparty.frozen === true);
+  }
+  
+}).then(() => {
+  return api.disconnect();
+}).catch(console.error);
+```
 
 
 ## Checking for Global Freeze and No Freeze ##
