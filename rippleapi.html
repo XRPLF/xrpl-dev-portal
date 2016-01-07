@@ -157,6 +157,9 @@ Using RippleAPI, you can:</p>
 const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
 });
+api.on('error', (errorCode, errorMessage) =&gt; {
+  console.log(errorCode + ': ' + errorMessage);
+});
 api.connect().then(() =&gt; {
   /* insert code here */
 }).then(() =&gt; {
@@ -170,6 +173,9 @@ All the code snippets in this documentation assume that you have surrounded them
 </aside>
 <aside class="notice">
 If you omit the "catch" section, errors may not be visible.
+</aside>
+<aside class="notice">
+The "error" event is emitted whenever an error occurs that cannot be associated with a specific request. If the listener is not registered, an exception will be thrown whenever the event is emitted.
 </aside>
 <h3 id="parameters">Parameters</h3>
 <p>The RippleAPI constructor optionally takes one argument, an object with the following options:</p>
@@ -188,9 +194,24 @@ If you omit the "catch" section, errors may not be visible.
 <td><em>Optional</em> Username and password for HTTP basic authentication to the rippled server in the format <strong>username:password</strong>.</td>
 </tr>
 <tr>
+<td>certificate</td>
+<td>string</td>
+<td><em>Optional</em> A string containing the certificate key of the client in PEM format. (Can be an array of certificates).</td>
+</tr>
+<tr>
 <td>feeCushion</td>
 <td>number</td>
 <td><em>Optional</em> Factor to multiply estimated fee by to provide a cushion in case the required fee rises during submission of a transaction. Defaults to <code>1.2</code>.</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td><em>Optional</em> A string containing the private key of the client in PEM format. (Can be an array of keys).</td>
+</tr>
+<tr>
+<td>passphrase</td>
+<td>string</td>
+<td><em>Optional</em> The passphrase for the private key of the client.</td>
 </tr>
 <tr>
 <td>proxy</td>
@@ -407,13 +428,13 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td><em>Optional</em> The highest ledger version that the transaction can be included in. If this option and <code>maxLedgerVersionOffset</code> are both omitted, the <code>maxLedgerVersion</code> option will default to 3 greater than the current validated ledger version (equivalent to <code>maxLedgerVersionOffset=3</code>). Use <code>null</code> to not set a maximum ledger version.</td>
 </tr>
 <tr>
 <td>maxLedgerVersionOffset</td>
 <td>integer</td>
-<td><em>Optional</em> Offset from current legder version to highest ledger version that the transaction can be included in.</td>
+<td><em>Optional</em> Offset from current validated legder version to highest ledger version that the transaction can be included in.</td>
 </tr>
 <tr>
 <td>sequence</td>
@@ -1143,7 +1164,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>validatedLedger.</em> baseFeeXRP</td>
-<td>number</td>
+<td><a href="#value">value</a></td>
 <td>Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005.</td>
 </tr>
 <tr>
@@ -1153,12 +1174,12 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>validatedLedger.</em> reserveBaseXRP</td>
-<td>integer</td>
+<td><a href="#value">value</a></td>
 <td>Minimum amount of XRP necessary for every account to keep in reserve.</td>
 </tr>
 <tr>
 <td><em>validatedLedger.</em> reserveIncrementXRP</td>
-<td>integer</td>
+<td><a href="#value">value</a></td>
 <td>Amount of XRP added to the account reserve for each object an account is responsible for in the ledger.</td>
 </tr>
 <tr>
@@ -1211,10 +1232,10 @@ const api = new RippleAPI();
   "serverState": "full",
   "validatedLedger": {
     "age": 5,
-    "baseFeeXRP": 0.00001,
+    "baseFeeXRP": "0.00001",
     "hash": "4482DEE5362332F54A4036ED57EE1767C9F33CF7CE5A6670355C16CECE381D46",
-    "reserveBaseXRP": 20,
-    "reserveIncrementXRP": 5,
+    "reserveBaseXRP": "20",
+    "reserveIncrementXRP": "5",
     "ledgerVersion": 6595042
   },
   "validationQuorum": 3
@@ -1226,11 +1247,11 @@ const api = new RippleAPI();
 <h3 id="parameters-5">Parameters</h3>
 <p>This method has no parameters.</p>
 <h3 id="return-value-4">Return Value</h3>
-<p>This method returns a promise that resolves with a floating point value representing the estimated fee to submit a transaction, expressed in XRP.</p>
+<p>This method returns a promise that resolves with a string encoded floating point value representing the estimated fee to submit a transaction, expressed in XRP.</p>
 <h3 id="example-12">Example</h3>
 <pre><code class="javascript">return api.getFee().then(fee =&gt; {/* ... */});
 </code></pre>
-<pre><code class="json">0.012
+<pre><code class="json">"0.012"
 </code></pre>
 <h2 id="getledgerversion">getLedgerVersion</h2>
 <p><code>getLedgerVersion(): Promise&lt;number&gt;</code></p>
@@ -4037,8 +4058,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4140,8 +4161,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4241,8 +4262,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4340,8 +4361,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4426,8 +4447,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4524,8 +4545,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4629,8 +4650,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4719,8 +4740,8 @@ All "prepare*" methods have the same return type.
 </tr>
 <tr>
 <td><em>instructions.</em> maxLedgerVersion</td>
-<td>integer</td>
-<td><em>Optional</em> The highest ledger version that the transaction can be included in.</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
 </tr>
 </tbody>
 </table>
@@ -4860,7 +4881,32 @@ return api.submit(signedTransaction)
 <p><code>generateAddress(): {address: string, secret: string}</code></p>
 <p>Generate a new Ripple address and corresponding secret.</p>
 <h3 id="parameters-28">Parameters</h3>
-<p>This method has no parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to control how the address and secret are generated.</td>
+</tr>
+<tr>
+<td><em>options.</em> algorithm</td>
+<td>string</td>
+<td><em>Optional</em> The digital signature algorithm to generate an address for. Can be <code>ecdsa-secp256k1</code> (default) or <code>ed25519</code>.</td>
+</tr>
+<tr>
+<td><em>options.</em> entropy</td>
+<td>array\&lt;integer&gt;</td>
+<td><em>Optional</em> The entropy to use to generate the seed.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="return-value-27">Return Value</h3>
 <p>This method returns an object with the following structure:</p>
 <table>
@@ -4885,8 +4931,7 @@ return api.submit(signedTransaction)
 </tbody>
 </table>
 <h3 id="example-35">Example</h3>
-<pre><code class="javascript">return api.generateAddress()
-  .then(result =&gt; {/* ... */});
+<pre><code class="javascript">return api.generateAddress();
 </code></pre>
 <pre><code class="json">{
   "address": "rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f",
@@ -5040,7 +5085,7 @@ return api.computeLedgerHash(ledger);
 <tr>
 <td>reserveBaseXRP</td>
 <td><a href="#value">value</a></td>
-<td>The minimum reserve, in drops of XRP, that is required for an account.</td>
+<td>The minimum reserve, in XRP, that is required for an account.</td>
 </tr>
 <tr>
 <td>reserveIncrementXRP</td>
@@ -5081,11 +5126,19 @@ return api.computeLedgerHash(ledger);
 }
 </code></pre>
 <h2 id="error">error</h2>
-<p>This event is emitted when there is an error on the connection to the server.</p>
+<p>This event is emitted when there is an error on the connection to the server that cannot be associated to a specific request.</p>
 <h3 id="return-value-30">Return Value</h3>
-<p>The first parameter is a string indicating the error type, which may be <code>badMessage</code> (meaning that rippled returned a malformed message), or one of the <a href="https://ripple.com/build/rippled-apis/#universal-errors">rippled Universal Errors</a>. The second parameter is a message explaining the error, or the message that caused the error in the case of <code>badMessage</code>.</p>
+<p>The first parameter is a string indicating the error type:
+<em> <code>badMessage</code> - rippled returned a malformed message
+</em> <code>websocket</code> - the websocket library emitted an error
+* one of the error codes found in the <a href="https://ripple.com/build/rippled-apis/#universal-errors">rippled Universal Errors</a>.</p>
+<p>The second parameter is a message explaining the error.</p>
+<p>The third parameter is:
+<em> the message that caused the error for <code>badMessage</code>
+</em> the error object emitted for <code>websocket</code>
+* the parsed response for rippled errors</p>
 <h3 id="example-38">Example</h3>
-<pre><code class="javascript">api.on('error', (errorCode, errorMessage) =&gt; {
+<pre><code class="javascript">api.on('error', (errorCode, errorMessage, data) =&gt; {
   console.log(errorCode + ': ' + errorMessage);
 });
 </code></pre>
