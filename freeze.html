@@ -146,24 +146,29 @@
 <li><a href="#global-freeze"><strong>Global Freeze</strong></a> - Freeze all counterparties.</li>
 <li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties. Also gives up the ability to end a global freeze.</li>
 </ul>
-<p>Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties.</p>
+<p>Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
+<p>All freeze settings are independent of whether the balance is positive or negative. Either the currency issuer or the currency holder can freeze a trust line. In both cases, the balance on that trust line can only change in transactions that go directly from one party of the trust line to the other.</p>
 <h2 id="individual-freeze">Individual Freeze</h2>
-<p>The Individual Freeze feature is a setting on a trust line. When an issuing account enables the Individual Freeze setting, the counterparty of that trust line can no longer send or receive issuances on the frozen trust line, except in transactions that go directly to and from the issuing account itself. </p>
-<p>A gateway can freeze a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use.</p>
-<p>If the counterparty has trust lines to the issuing account in more than one currency, the issuing account must freeze each trust line individually.</p>
+<p>The <strong>Individual Freeze</strong> feature is a setting on a trust line. When an account enables the Individual Freeze setting, the counterparty of that trust line can no longer send or receive issuances on the frozen trust line, except in transactions that go directly to and from the account itself. </p>
+<p>A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use.</p>
+<p>An individual can freeze the trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including <a href="gateway_guide.html#hot-and-cold-wallets">hot wallets</a> from sending that gateway's issued currency to the individual.</p>
+<p>The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An account cannot enable the Individual Freeze setting if it has previously enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
 <h2 id="global-freeze">Global Freeze</h2>
-<p>The Global Freeze feature is a setting on an account. When an issuing account enables the Global Freeze feature, all counterparties can only send and receive the issuing account's funds directly to and from the issuing account itself. (This includes any <a href="gateway_guide.html#hot-and-cold-wallets">hot wallet</a> accounts.)</p>
+<p>The <strong>Global Freeze</strong> feature is a setting on an account. When an issuing account enables the Global Freeze feature, all counterparties can only send and receive the issuing account's funds directly to and from the issuing account itself. (This includes any <a href="gateway_guide.html#hot-and-cold-wallets">hot wallet</a> accounts.)</p>
 <p>It can be useful to enable Global Freeze on a gateway's <a href="gateway_guide.html#hot-and-cold-wallets">cold wallet</a> if a hot wallet is compromised, or immediately after regaining control of a compromised issuing account. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened.</p>
 <p>It can also be useful to enable Global Freeze if a gateway intends to migrate its cold wallet to a new Ripple account, or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
-<p>An account can always enable the Global Freeze setting. However, if the account has previously enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> the Global Freeze.</p>
+<p>Global Freeze applies to <em>all</em> currencies issued and held by the account. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different accounts for each currency.</p>
+<p>An account can always enable the Global Freeze setting. However, if the account has previously enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> Global Freeze.</p>
 <h2 id="no-freeze">No Freeze</h2>
-<p>The <strong>NoFreeze</strong> feature is a setting on an account that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:</p>
+<p>The <strong>No Freeze</strong> feature is a setting on an account that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:</p>
 <ul>
-<li>The issuing account can no longer use <strong>tfSetFreeze</strong> to freeze an individual counterparty.</li>
-<li>The issuing account can still enable <strong>asfGlobalFreeze</strong> to enact a global freeze, but the account cannot <em>disable</em> <strong>asfGlobalFreeze</strong> to end the global freeze.</li>
+<li>The issuing account can no longer use enable Individual Freeze on any counterparty.</li>
+<li>The issuing account can still enable Global Freeze to enact a global freeze, but the account cannot <em>disable</em> Global Freeze.</li>
 </ul>
 <p>The Ripple Consensus Ledger cannot force a gateway to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
+<p>The No Freeze setting applies to all currencies issued to and from an account. If you want to be able to freeze some currencies but not others, you should use different accounts for each currency.</p>
+<p>You can only enable the No Freeze setting with a transaction signed by your account's master key. You cannot use a <a href="transactions.html#setregularkey">Regular Key</a> or a <a href="https://wiki.ripple.com/Multisign">multi-signed transaction</a> to enable No Freeze.</p>
 <h1 id="technical-details">Technical Details</h1>
 <h2 id="enabling-or-disabling-individual-freeze">Enabling or Disabling Individual Freeze</h2>
 <h3 id="using-rippled">Using <code>rippled</code></h3>
@@ -215,8 +220,7 @@
 </tbody>
 </table>
 <p>Set the <code>Fee</code>, <code>Sequence</code>, and <code>LastLedgerSequence</code> parameters <a href="transactions.html#signing-and-sending-transactions">in the typical way</a>.</p>
-<p>Example of submitting a TrustSet transaction to enable an individual freeze:</p>
-<p>WebSocket request:</p>
+<p>Example of submitting a TrustSet transaction to enable an individual freeze using the <a href="rippled-apis.html#websocket-api">WebSocket API</a>:</p>
 <pre><code>{
   "id": 12,
   "command": "submit",
@@ -238,36 +242,7 @@
   "fee_mult_max": 1000
 }
 </code></pre>
-<p>(Note: Never transmit your account secret to an untrusted server or over an insecure channel.)</p>
-<p>WebSocket response:</p>
-<pre><code>{
-  "id": 4,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "engine_result": "tesSUCCESS",
-    "engine_result_code": 0,
-    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob": "12001422000400002400000153201B01143A8263D503E871B540C0000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D12409711684000000000002EE0732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402206D3739439DC40BBECD45A02D627D4E0440CB8D583B10780DB73009118BA0B81402203691A664E2175A8B97608650EFCAB5701DB53E5C09DE07DFA2A96DC0DB356BD681144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee": "12000",
-      "Flags": 262144,
-      "LastLedgerSequence": 18102914,
-      "LimitAmount": {
-        "currency": "USD",
-        "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-        "value": "110"
-      },
-      "Sequence": 339,
-      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType": "TrustSet",
-      "TxnSignature": "304402206D3739439DC40BBECD45A02D627D4E0440CB8D583B10780DB73009118BA0B81402203691A664E2175A8B97608650EFCAB5701DB53E5C09DE07DFA2A96DC0DB356BD6",
-      "hash": "3EDDC21C710883B8B3F94D7954002AF8D8E27E7B1199B9862E6CA6BFF83B39B8"
-    }
-  }
-}
-</code></pre>
+<p>(<strong>Reminder</strong>: Never transmit your account secret to an untrusted server or over an insecure channel.)</p>
 <h3 id="using-rippleapi">Using RippleAPI</h3>
 <p>To enable or disable Individual Freeze on a specific trust line, prepare a <em>Trustline</em> transaction using the <a href="rippleapi.html#preparetrustline">prepareTrustline</a> method. The fields of the <code>trustline</code> parameter should be set as follows:</p>
 <table>
@@ -358,9 +333,25 @@ api.connect().then(() =&gt; {
 <h2 id="enabling-or-disabling-global-freeze">Enabling or Disabling Global Freeze</h2>
 <h3 id="using-rippled-1">Using <code>rippled</code></h3>
 <p>To enable Global Freeze on an account, send an <code>AccountSet</code> transaction with the <a href="transactions.html#accountset-flags">asfGlobalFreeze flag value</a> in the <code>SetFlag</code> field. To disable Global Freeze, put the asfGlobalFreeze flag value in the <code>ClearFlag</code> field instead.</p>
-<p>Example of submitting an AccountSet transaction to enable Global Freeze:</p>
-<pre><code>TODO
+<p>Example of submitting an AccountSet transaction to enable Global Freeze using the <a href="rippled-apis.html#websocket-api">WebSocket API</a>:</p>
+<pre><code>{
+  "id": 12,
+  "command": "submit",
+  "tx_json": {
+    "TransactionType": "AccountSet",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "12000",
+    "Flags": 0,
+    "SetFlag": 7,
+    "LastLedgerSequence": 18122753,
+    "Sequence": 349
+  },
+  "secret": "s████████████████████████████",
+  "offline": false,
+  "fee_mult_max": 1000
+}
 </code></pre>
+<p>(<strong>Reminder</strong>: Never transmit your account secret to an untrusted server or over an insecure channel.)</p>
 <h3 id="using-rippleapi-1">Using RippleAPI</h3>
 <p>To enable or disable Global Freeze on an account, prepare a <strong>Settings</strong> transaction using the <a href="rippleapi.html#preparesettings">prepareSettings</a> method. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>
@@ -381,14 +372,64 @@ api.connect().then(() =&gt; {
 </table>
 <p>The rest of the <a href="rippleapi.html#transaction-flow">transaction flow</a> is the same as any other transaction.</p>
 <p>Example code to enable Global Freeze on an account:</p>
-<pre><code>TODO
+<pre><code>const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+api.on('error', (errorCode, errorMessage) =&gt; {
+  console.log(errorCode + ': ' + errorMessage);
+});
+
+const issuing_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+const issuing_secret = "s████████████████████████████";
+    //Best practice: get your secret from an encrypted config file instead
+
+api.connect().then(() =&gt; {
+
+  //Prepare a settings transaction to enable global freeze
+  var settings = {
+    "globalFreeze": true
+  }
+
+  console.log("preparing settings transaction for account:",issuing_address);
+  return api.prepareSettings(issuing_address, settings);
+
+}).then(prepared_tx =&gt; {
+
+  //Sign and submit the trustline transaction
+  console.log("signing tx:",prepared_tx.txJSON);
+  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
+  console.log("submitting tx:", signed1.id);
+
+  return api.submit(signed1.signedTransaction)
+}).then(() =&gt; {
+  return api.disconnect();
+}).catch(console.error);
 </code></pre>
 <h2 id="enabling-no-freeze">Enabling No Freeze</h2>
 <h3 id="using-rippled-2">Using <code>rippled</code></h3>
 <p>To enable No Freeze on an account, send an <code>AccountSet</code> transaction with the <a href="transactions.html#accountset-flags">asfNoFreeze flag value</a> in the <code>SetFlag</code> field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.</p>
-<p>Example of submitting an AccountSet transaction to enable No Freeze:</p>
-<pre><code>TODO
+<p>Example of submitting an AccountSet transaction to enable No Freeze using the <a href="rippled-apis.html#websocket-api">WebSocket API</a>:</p>
+<p>WebSocket request:</p>
+<pre><code>{
+  "id": 12,
+  "command": "submit",
+  "tx_json": {
+    "TransactionType": "AccountSet",
+    "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+    "Fee": "12000",
+    "Flags": 0,
+    "SetFlag": 6,
+    "LastLedgerSequence": 18124917,
+    "Sequence": 4
+  },
+  "secret": "s████████████████████████████",
+  "offline": false,
+  "fee_mult_max": 1000
+}
 </code></pre>
+<p>(<strong>Reminder</strong>: Never transmit your account secret to an untrusted server or over an insecure channel.)</p>
 <h3 id="using-rippleapi-2">Using RippleAPI</h3>
 <p>To enable No Freeze on an account, prepare a <strong>Settings</strong> transaction using the <a href="rippleapi.html#preparesettings">prepareSettings</a> method. Once enabled, you cannot disable No Freeze. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>
@@ -409,7 +450,40 @@ api.connect().then(() =&gt; {
 </table>
 <p>You must <a href="rippleapi.html#sign">sign</a> this transaction using the master key. The rest of the <a href="rippleapi.html#transaction-flow">transaction flow</a> is the same as any other transaction.</p>
 <p>Example code to enable No Freeze on an account:</p>
-<pre><code>TODO
+<pre><code>const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+api.on('error', (errorCode, errorMessage) =&gt; {
+  console.log(errorCode + ': ' + errorMessage);
+});
+
+const issuing_address = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
+const issuing_secret = "s████████████████████████████";
+    //Best practice: get your secret from an encrypted config file instead
+
+api.connect().then(() =&gt; {
+
+  //Prepare a settings transaction to enable no freeze
+  var settings = {
+    "noFreeze": true
+  }
+
+  console.log("preparing settings transaction for account:",issuing_address);
+  return api.prepareSettings(issuing_address, settings);
+
+}).then(prepared_tx =&gt; {
+
+  //Sign and submit the trustline transaction
+  console.log("signing tx:",prepared_tx.txJSON);
+  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
+  console.log("submitting tx:", signed1.id);
+
+  return api.submit(signed1.signedTransaction)
+}).then(() =&gt; {
+  return api.disconnect();
+}).catch(console.error);
 </code></pre>
 <h2 id="checking-for-individual-freeze">Checking for Individual Freeze</h2>
 <h3 id="using-rippled-3">Using <code>rippled</code></h3>
@@ -457,13 +531,12 @@ api.connect().then(() =&gt; {
 </tr>
 <tr>
 <td>freeze_peer</td>
+<td>Boolean</td>
 <td>(May be omitted) <code>true</code> if the counterparty has <a href="freeze.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
-<td></td>
 </tr>
 </tbody>
 </table>
-<p>Example of checking for an individual freeze:</p>
-<p>WebSocket Request:</p>
+<p>Example WebSocket request to check for individual freeze:</p>
 <pre><code>{
   "id": 15,
   "command": "account_lines",
@@ -472,7 +545,7 @@ api.connect().then(() =&gt; {
   "peer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
 }
 </code></pre>
-<p>WebSocket Response:</p>
+<p>Example WebSocket response:</p>
 <pre><code>{
   "id": 15,
   "status": "success",
@@ -495,6 +568,7 @@ api.connect().then(() =&gt; {
   }
 }
 </code></pre>
+<p>The field <code>"freeze": true</code> indicates that rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn has enabled Individual Freeze on the USD trust line to rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. The lack of a field <code>"freeze_peer": true</code> indicates that the counterparty has <em>not</em> frozen the trust line.</p>
 <h3 id="using-rippleapi-3">Using RippleAPI</h3>
 <p>To see if a trust line has an Individual Freeze enabled, use the <a href="rippleapi.html#gettrustlines"><code>getTrustlines</code> method</a> with the following parameters:</p>
 <table>
@@ -607,11 +681,54 @@ api.connect().then(() =&gt; {
 <li>If <code>Flags</code> AND <code>0x00400000</code> (<a href="ripple-ledger.html#accountroot-flags">lsfGlobalFreeze</a>) is <em>nonzero</em>: Global Freeze is enabled.</li>
 <li>If <code>Flags</code> AND <code>0x00200000</code> (<a href="ripple-ledger.html#accountroot-flags">lsfNoFreeze</a>) is <em>nonzero</em>: No Freeze is enabled.</li>
 </ul>
-<p>Example request:</p>
-<pre><code>TODO
+<p>Example WebSocket request:</p>
+<pre><code>{
+  "id": 1,
+  "command": "account_info",
+  "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "ledger_index": "validated"
+}
 </code></pre>
-<p>Example response:</p>
-<pre><code>TODO
+<p>WebSocket response:</p>
+<pre><code>{
+  "id": 4,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account_data": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "41320138CA9837B34E82B3B3D6FB1E581D5DE2F0A67B3D62B5B8A8C9C8D970D0",
+      "Balance": "100258663",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 12582912,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 4,
+      "PreviousTxnID": "41320138CA9837B34E82B3B3D6FB1E581D5DE2F0A67B3D62B5B8A8C9C8D970D0",
+      "PreviousTxnLgrSeq": 18123095,
+      "Sequence": 352,
+      "TransferRate": 1004999999,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+      "urlgravatar": "http://www.gravatar.com/avatar/98b4375e1d753e5b91627516f6d70977"
+    },
+    "ledger_hash": "A777B05A293A73E511669B8A4A45A298FF89AD9C9394430023008DB4A6E7FDD5",
+    "ledger_index": 18123249,
+    "validated": true
+  }
+}
+</code></pre>
+<p>In the above example, the <code>Flags</code> value is 12582912. This indicates that has the following flags enabled: lsfGlobalFreeze, lsfDefaultRipple, as demonstrated by the following JavaScript code:</p>
+<pre><code class="js">var lsfGlobalFreeze = 0x00400000;
+var lsfNoFreeze = 0x00200000;
+
+var currentFlags = 12582912;
+
+console.log(currentFlags &amp; lsfGlobalFreeze); //4194304
+//therefore, Global Freeze is enabled
+
+console.log(currentFlags &amp; lsfNoFreeze); //0
+//therefore, No Freeze is not enabled
 </code></pre>
 <h3 id="using-rippleapi-4">Using RippleAPI</h3>
 <p>To see if an account has Global Freeze and/or No Freeze enabled, use the <a href="rippleapi.html#getsettings"><code>getSettings</code> method</a> with the following parameters:</p>
@@ -654,7 +771,25 @@ api.connect().then(() =&gt; {
 </tbody>
 </table>
 <p>Example code:</p>
-<pre><code>TODO
+<pre><code>const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+
+const my_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
+
+api.connect().then(() =&gt; {
+  //Look up settings object
+  return api.getSettings(my_address);
+}).then(settings =&gt; {
+    console.log("Got settings for address",my_address);
+    console.log("Global Freeze enabled?", (settings.globalFreeze === true) );
+    console.log("No Freeze enabled?", (settings.noFreeze === true) );
+
+}).then(() =&gt; {
+  return api.disconnect();
+}).catch(console.error);
 </code></pre>
 <h1 id="see-also">See Also</h1>
 <p><a href="https://ripple.com/files/GB-2014-02.pdf">Gateway Bulletin GB-2014-02 New Feature: Balance Freeze</a></p>
