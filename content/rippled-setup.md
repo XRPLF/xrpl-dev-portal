@@ -193,9 +193,9 @@ A master seed can be used to generate both a validation public key and a Ripple 
 
 The steps below describe how to set the domain field of a validator's Ripple account.
 
-1. Get the validator's account address using the `validation_seed` generated [above](#validator-setup) in step 3:
+1. Get the validator's account address (`account_id`) using the `validation_seed` generated [above](#validator-setup) in step 3:
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose <your-validation-seed>
         {
            "result" : {
               "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -210,23 +210,15 @@ The steps below describe how to set the domain field of a validator's Ripple acc
         }
 
 2. Fund the account by sending it at least 25 XRP.
+    * See [How to Get XRP](https://ripple.com/knowledge_center/how-to-get-xrp/)
 
-3. Set the `Domain` field of the account to match the domain hosting your ripple.txt.
+3. Set the [`Domain` field](https://ripple.com/build/transactions/#domain) of the account to match the domain hosting your ripple.txt
 
-  For example, this can be done using [ripple-cli](https://www.npmjs.com/package/ripple-cli):
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg submit <your-secret-key> '{"TransactionType": "AccountSet", "Account": "<your-account-id>", "Domain": "<your-hex-encoded-domain>", "Fee": "10000"}'
 
-        $ ripple-cli account_set_domain mycooldomain.com
-        {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-            "ledger_hash": "876BC104F7EB386B929E5AD44F14EFA47FE5EB471EA00D70DDA69AE6119193B0",
-            "ledger_index": 1337445,
-            "metadata": {
-              ...
-            }
-        }
+4. Verify that your account's domain has been set.
 
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg account_info <your-account-id>
 
 # Additional Configuration #
 
