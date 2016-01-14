@@ -322,8 +322,8 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <p>The steps below describe how to set the domain field of a validator's Ripple account.</p>
 <ol>
 <li>
-<p>Get the validator's account address using the <code>validation_seed</code> generated <a href="#validator-setup">above</a> in step 3:</p>
-<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
+<p>Get the validator's account address (<code>account_id</code>) using the <code>validation_seed</code> generated <a href="#validator-setup">above</a> in step 3:</p>
+<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose &lt;your-validation-seed&gt;
 {
    "result" : {
       "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -340,24 +340,21 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 </li>
 <li>
 <p>Fund the account by sending it at least 25 XRP.</p>
+<ul>
+<li>See <a href="https://ripple.com/knowledge_center/how-to-get-xrp/">How to Get XRP</a></li>
+</ul>
 </li>
 <li>
-<p>Set the <code>Domain</code> field of the account to match the domain hosting your ripple.txt.</p>
+<p>Set the <a href="https://ripple.com/build/transactions/#domain"><code>Domain</code> field</a> of the account to match the domain hosting your ripple.txt</p>
+<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg submit &lt;your-secret-key&gt; '{"TransactionType": "AccountSet", "Account": "&lt;your-account-id&gt;", "Domain": "&lt;your-hex-encoded-domain&gt;", "Fee": "10000"}'
+</code></pre>
+</li>
+<li>
+<p>Verify that your account's domain has been set.</p>
+<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg account_info &lt;your-account-id&gt;
+</code></pre>
 </li>
 </ol>
-<p>For example, this can be done using <a href="https://www.npmjs.com/package/ripple-cli">ripple-cli</a>:</p>
-<pre><code>    $ ripple-cli account_set_domain mycooldomain.com
-    {
-        "engine_result": "tesSUCCESS",
-        "engine_result_code": 0,
-        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-        "ledger_hash": "876BC104F7EB386B929E5AD44F14EFA47FE5EB471EA00D70DDA69AE6119193B0",
-        "ledger_index": 1337445,
-        "metadata": {
-          ...
-        }
-    }
-</code></pre>
 <h1 id="additional-configuration">Additional Configuration</h1>
 <p><code>rippled</code> should connect to the Ripple network with the default configuration. However, you can modify your settings by editing the <code>rippled.cfg</code> file (located at <code>/opt/ripple/etc/rippled.cfg</code> when installing <code>rippled</code> with yum).</p>
 <p>See <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">the <code>rippled</code> GitHub repository</a> for a description of all configuration options.</p>

@@ -9,17 +9,22 @@ The Ripple Consensus Ledger gives accounts the ability to freeze non-XRP balance
 
 Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.
 
-All freeze settings are independent of whether the balance is positive or negative. Either the currency issuer or the currency holder can freeze a trust line. In both cases, the balance on that trust line can only change in transactions that go directly from one party of the trust line to the other.
+All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.
 
 
 Individual Freeze
 -----------------
 
-The **Individual Freeze** feature is a setting on a trust line. When an account enables the Individual Freeze setting, the counterparty of that trust line can no longer send or receive issuances on the frozen trust line, except in transactions that go directly to and from the account itself. 
+The **Individual Freeze** feature is a setting on a trust line. When an issuing account enables the Individual Freeze setting, the following rules apply:
 
-A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use.
+* Payments can still occur directly between the two parties of the frozen trust line.
+* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer.
+* The counterparty can still receive payments from others on the frozen trust line.
+* The counterparty's offers to sell the currency issued on the frozen trust line are [considered unfunded](transactions.html#lifecycle-of-an-offer).
 
-An individual can freeze the trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [hot wallets](gateway_guide.html#hot-and-cold-wallets) from sending that gateway's issued currency to the individual.
+A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any connector systems the gateway operates. (Otherwise, an account could still engage in undesired activity by sending payments through the gateway's connector.)
+
+An individual can freeze the trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [hot wallets](gateway_guide.html#hot-and-cold-wallets) from sending that gateway's issued currency to the individual. It has no effect on offers.
 
 The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.
 
@@ -29,9 +34,13 @@ An account cannot enable the Individual Freeze setting if it has previously enab
 Global Freeze
 -------------
 
-The **Global Freeze** feature is a setting on an account. When an issuing account enables the Global Freeze feature, all counterparties can only send and receive the issuing account's funds directly to and from the issuing account itself. (This includes any [hot wallet](gateway_guide.html#hot-and-cold-wallets) accounts.)
+The **Global Freeze** feature is a setting on an account. When an issuing account enables the Global Freeze feature, the following rules apply:
 
-It can be useful to enable Global Freeze on a gateway's [cold wallet](gateway_guide.html#hot-and-cold-wallets) if a hot wallet is compromised, or immediately after regaining control of a compromised issuing account. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened.
+* All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any [hot wallet](gateway_guide.html#hot-and-cold-wallets) accounts.)
+* Counterparties of the frozen issuing account can still send and receive payments directly to and from the issuing account.
+* All offers to sell currencies issued by the frozen account are [considered unfunded](transactions.html#lifecycle-of-an-offer).
+
+It can be useful to enable Global Freeze on a gateway's [cold wallet](gateway_guide.html#hot-and-cold-wallets) if a hot wallet is compromised, or immediately after regaining control of a compromised issuing account. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. In addition to enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.
 
 It can also be useful to enable Global Freeze if a gateway intends to migrate its cold wallet to a new Ripple account, or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
 
