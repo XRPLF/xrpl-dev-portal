@@ -9,7 +9,7 @@ Ripple provides a live instance of the Data API with as complete a transaction r
 
 
 ## More Information ##
-The Ripple Data API v2 replaces the [Historical Database v1](historical_data.html) and the [Charts API](charts_api.html). 
+The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](https://github.com/ripple/ripple-data-api/). 
 
 * [API Methods](#api-method-reference)
 * [API Conventions](#api-conventions)
