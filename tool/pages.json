@@ -89,7 +89,7 @@
         "category": "References"
     },
     {
-        "name": "Ripple Consensus Ledger",
+        "name": "Ledger Format",
         "md":"ledger_format.md",
         "html":"ripple-ledger.html",
         "ripple.com": "https://ripple.com/build/ledger-format/",
@@ -108,20 +108,6 @@
         "html":"gateway_guide.html",
         "ripple.com": "https://ripple.com/build/gateway-guide/",
         "category": "Tutorials"
-    },
-    {
-        "name": "Historical Data API",
-        "md": "historical_data.md",
-        "html": "historical_data.html",
-        "ripple.com": "https://ripple.com/build/historical-database/",
-        "category": "References"
-    },
-    {
-        "name": "Ripple Charts API",
-        "md": "charts_api.md",
-        "html": "charts_api.html",
-        "ripple.com": "https://ripple.com/build/charts-api/",
-        "category": "References"
     },
     {
         "name": "Ripple Data API v2",
@@ -148,31 +134,11 @@
         "targets": ["local","ripple.com"]
     },
     {
-        "name": "Historical Database API Tool",
-        "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-historical.js",
-        "category": "API Tools",
-        "rest_host": "https://history.ripple.com",
-        "ripple.com": "https://ripple.com/build/historical-database-api-tool/",
-        "html": "historicaldb-api-tool.html",
-        "targets": ["local","ripple.com"]
-    },
-    {
         "name": "WebSocket API Tool",
         "template":"template-ripple-api-tool.html",
         "category": "API Tools",
         "ripple.com": "https://ripple.com/build/websocket-tool/",
         "html": "ripple-api-tool.html",
-        "targets": ["local","ripple.com"]
-    },
-    {
-        "name": "Charts API Tool",
-        "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-charts.js",
-        "category": "API Tools",
-        "rest_host": "https://api.ripplecharts.com",
-        "ripple.com": "https://ripple.com/build/charts-api-tool/",
-        "html": "charts-api-tool.html",
         "targets": ["local","ripple.com"]
     },
     {
