@@ -128,57 +128,7 @@ The rest of the [transaction flow](rippleapi.html#transaction-flow) is the same 
 Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust line:
 
 ```js
-const {RippleAPI} = require('ripple-lib');
- 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
-});
-
-const issuing_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
-const issuing_secret = "s████████████████████████████";
-    //Best practice: get your secret from an encrypted config file instead
-const address_to_freeze = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
-const currency_to_freeze = "USD";
-
-api.connect().then(() => {
-  
-  // Look up current state of trust line
-  var options = {counterparty: address_to_freeze, currency: currency_to_freeze};
-  console.log("looking up", currency_to_freeze, "trust line from", 
-              issuing_address, "to", address_to_freeze);
-  return api.getTrustlines(issuing_address, options);
-  
-}).then(data => {
-
-  //Prepare a trustline transaction to enable freeze
-  if (data.length != 1) {
-    console.log("trustline not found, making a default one");
-    var trustline = {
-      currency: currency_to_freeze,
-      counterparty: address_to_freeze,
-      limit: 0
-    };
-  } else {
-    var trustline = data[0].specification;
-    console.log("trustline found. previous state:", trustline);
-  }
-  
-  trustline.frozen = true;
-  
-  console.log("preparing trustline transaction for line:",trustline);
-  return api.prepareTrustline(issuing_address, trustline);
-  
-}).then(prepared_tx => {
-
-  //Sign and submit the trustline transaction
-  console.log("signing tx:",prepared_tx.txJSON);
-  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
-  console.log("submitting tx:", signed1.id);
-  
-  return api.submit(signed1.signedTransaction)
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+{% include 'code_samples/freeze/set-individual-freeze.js' %}
 ```
 
 
@@ -222,43 +172,10 @@ To enable or disable Global Freeze on an account, prepare a **Settings** transac
 
 The rest of the [transaction flow](rippleapi.html#transaction-flow) is the same as any other transaction.
 
-Example code to enable Global Freeze on an account:
+Example JavaScript (ECMAScript 6) code to enable Global Freeze on an account:
 
-```
-const {RippleAPI} = require('ripple-lib');
- 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
-});
-api.on('error', (errorCode, errorMessage) => {
-  console.log(errorCode + ': ' + errorMessage);
-});
-
-const issuing_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
-const issuing_secret = "s████████████████████████████";
-    //Best practice: get your secret from an encrypted config file instead
-
-api.connect().then(() => {
-
-  //Prepare a settings transaction to enable global freeze
-  var settings = {
-    "globalFreeze": true
-  }
-  
-  console.log("preparing settings transaction for account:",issuing_address);
-  return api.prepareSettings(issuing_address, settings);
-  
-}).then(prepared_tx => {
-
-  //Sign and submit the trustline transaction
-  console.log("signing tx:",prepared_tx.txJSON);
-  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
-  console.log("submitting tx:", signed1.id);
-  
-  return api.submit(signed1.signedTransaction)
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+```js
+{% include 'code_samples/freeze/set-global-freeze.js' %}
 ```
 
 
@@ -304,43 +221,10 @@ To enable No Freeze on an account, prepare a **Settings** transaction using the 
 
 You must [sign](rippleapi.html#sign) this transaction using the master key. The rest of the [transaction flow](rippleapi.html#transaction-flow) is the same as any other transaction.
 
-Example code to enable No Freeze on an account:
+Example JavaScript (ECMAScript 6) code to enable No Freeze on an account:
 
-```
-const {RippleAPI} = require('ripple-lib');
- 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
-});
-api.on('error', (errorCode, errorMessage) => {
-  console.log(errorCode + ': ' + errorMessage);
-});
-
-const issuing_address = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
-const issuing_secret = "s████████████████████████████";
-    //Best practice: get your secret from an encrypted config file instead
-
-api.connect().then(() => {
-
-  //Prepare a settings transaction to enable no freeze
-  var settings = {
-    "noFreeze": true
-  }
-  
-  console.log("preparing settings transaction for account:",issuing_address);
-  return api.prepareSettings(issuing_address, settings);
-  
-}).then(prepared_tx => {
-
-  //Sign and submit the trustline transaction
-  console.log("signing tx:",prepared_tx.txJSON);
-  var signed1 = api.sign(prepared_tx.txJSON, issuing_secret);
-  console.log("submitting tx:", signed1.id);
-  
-  return api.submit(signed1.signedTransaction)
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+```js
+{% include 'code_samples/freeze/set-no-freeze.js' %}
 ```
 
 
@@ -422,43 +306,8 @@ The response contains an array of trust lines, for each currency in which the is
 
 Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
 
-```
-const {RippleAPI} = require('ripple-lib');
- 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
-});
-
-const my_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
-const counterparty_address = "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v";
-const frozen_currency = "USD";
-
-api.connect().then(() => {
-  
-  // Look up current state of trust line
-  var options = {counterparty: counterparty_address, currency: frozen_currency};
-  console.log("looking up", frozen_currency, "trust line from", 
-              my_address, "to", counterparty_address);
-  return api.getTrustlines(my_address, options);
-  
-}).then(data => {
-
-  if ( data.length > 1)
-     throw "should only be 1 trust line per counterparty+currency pair";
-  
-  if ( data.length === 0 ) {
-    console.log("No trust line found");
-  } else {
-      var trustline = data[0];
-      console.log("Trust line frozen from our side?", 
-                  trustline.specification.frozen === true);
-      console.log("Trust line frozen from counterparty's side?", 
-                  trustline.counterparty.frozen === true);
-  }
-  
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+```js
+{% include 'code_samples/freeze/check-individual-freeze.js' %}
 ```
 
 
@@ -551,28 +400,10 @@ Look for the following values in the response object:
 | noFreeze      | Boolean | (May be omitted) `true` if No Freeze is enabled. |
 | globalFreeze  | Boolean | (May be omitted) `true` if Global Freeze is enabled. |
 
-Example code:
+Example JavaScript (ECMAScript 6) code to check whether an account has Global Freeze or No Freeze enabled:
 
-```
-const {RippleAPI} = require('ripple-lib');
- 
-const api = new RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
-});
-
-const my_address = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn";
-
-api.connect().then(() => {
-  //Look up settings object
-  return api.getSettings(my_address);
-}).then(settings => {
-    console.log("Got settings for address",my_address);
-    console.log("Global Freeze enabled?", (settings.globalFreeze === true) );
-    console.log("No Freeze enabled?", (settings.noFreeze === true) );
-    
-}).then(() => {
-  return api.disconnect();
-}).catch(console.error);
+```js
+{% include 'code_samples/freeze/check-global-freeze-no-freeze.js' %}
 ```
 
 # See Also #
