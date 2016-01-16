@@ -34,9 +34,10 @@ An account cannot enable the Individual Freeze setting if it has previously enab
 Global Freeze
 -------------
 
-The **Global Freeze** feature is a setting on an account. When an issuing account enables the Global Freeze feature, the following rules apply:
+The **Global Freeze** feature is a setting on an account. [//]: # (Is this not the case for the other Freeze settings?) When an issuing account enables the Global Freeze feature, the following rules apply:
 
 * All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any [hot wallet](gateway_guide.html#hot-and-cold-wallets) accounts.)
+    [//]: # (Again, maybe add a clarifying sentence here, "This means that..." or in the next point. )
 * Counterparties of the frozen issuing account can still send and receive payments directly to and from the issuing account.
 * All offers to sell currencies issued by the frozen account are [considered unfunded](transactions.html#lifecycle-of-an-offer).
 
@@ -55,7 +56,9 @@ No Freeze
 The **No Freeze** feature is a setting on an account that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:
 
 * The issuing account can no longer use enable Individual Freeze on any counterparty.
+    [//]: # ("can no longer enable")
 * The issuing account can still enable Global Freeze to enact a global freeze, but the account cannot _disable_ Global Freeze.
+    [//]: # (To clarify, perhaps: "the account cannot disable Global Freeze once it's enabled")
 
 The Ripple Consensus Ledger cannot force a gateway to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to _disable_ a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.
 
@@ -409,3 +412,5 @@ Example JavaScript (ECMAScript 6) code to check whether an account has Global Fr
 # See Also #
 
 [Gateway Bulletin GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
+
+[//] # (Ugh, I hate that this PDF is all we have for "See Also." No other alternative that I can think of, though.)
