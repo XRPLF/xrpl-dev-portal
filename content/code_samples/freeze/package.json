@@ -1,8 +1,7 @@
 {
   "name": "freeze-examples",
-  "version": "0.0.1",
-  "license": "UNLICENSED",
-  "private": true,
+  "version": "0.0.2",
+  "license": "MIT",
   "dependencies": {
     "ripple-lib": "*",
     "babel-cli": "^6.0.0",

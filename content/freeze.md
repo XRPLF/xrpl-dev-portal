@@ -5,7 +5,7 @@ The Ripple Consensus Ledger gives accounts the ability to freeze non-XRP balance
 
 * [**Individual Freeze**](#individual-freeze) - Freeze one counterparty.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
-* [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties. Also gives up the ability to end a global freeze.
+* [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
 Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.
 
@@ -18,13 +18,13 @@ Individual Freeze
 The **Individual Freeze** feature is a setting on a trust line. When an issuing account enables the Individual Freeze setting, the following rules apply:
 
 * Payments can still occur directly between the two parties of the frozen trust line.
-* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer.
+* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen issuances directly to the issuer.
 * The counterparty can still receive payments from others on the frozen trust line.
 * The counterparty's offers to sell the currency issued on the frozen trust line are [considered unfunded](transactions.html#lifecycle-of-an-offer).
 
-A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any connector systems the gateway operates. (Otherwise, an account could still engage in undesired activity by sending payments through the gateway's connector.)
+A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any other systems the gateway operates that are connected to the Ripple Consensus Ledger. (Otherwise, an account might still be able to engage in undesired activity by sending payments through the gateway.)
 
-An individual can freeze the trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [hot wallets](gateway_guide.html#hot-and-cold-wallets) from sending that gateway's issued currency to the individual. It has no effect on offers.
+An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [hot wallets](gateway_guide.html#hot-and-cold-wallets), from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.
 
@@ -54,7 +54,7 @@ No Freeze
 
 The **No Freeze** feature is a setting on an account that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:
 
-* The issuing account can no longer use enable Individual Freeze on any counterparty.
+* The issuing account can no longer enable Individual Freeze on trust lines to any counterparty.
 * The issuing account can still enable Global Freeze to enact a global freeze, but the account cannot _disable_ Global Freeze.
 
 The Ripple Consensus Ledger cannot force a gateway to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to _disable_ a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.
@@ -408,4 +408,5 @@ Example JavaScript (ECMAScript 6) code to check whether an account has Global Fr
 
 # See Also #
 
-[Gateway Bulletin GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
+* [Gateway Bulletin GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
+* [Freeze Code Samples](https://github.com/ripple/ripple-dev-portal/tree/gh-pages/content/code_samples/freeze)
