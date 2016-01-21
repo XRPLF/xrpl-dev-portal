@@ -81,7 +81,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
@@ -99,7 +98,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                    <li><a href="rest-api-tool.html">Ripple-REST API Tool</a></li>
                     <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
                     <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
               </ul>
@@ -346,20 +344,16 @@
 <h3 id="apis-and-middleware">APIs and Middleware</h3>
 <p>There are several interfaces you can use to connect to Ripple, depending on your needs and your existing software:</p>
 <ul>
-<li><a href="rippled-apis.html"><code>rippled</code></a> provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.<ul>
-<li>The official client library to rippled, <a href="https://github.com/ripple/ripple-lib">ripple-lib</a> is available for JavaScript, and provides extended convenience features.</li>
-</ul>
-</li>
-<li><a href="ripple-rest.html">Ripple-REST</a> provides an easy-to-use RESTful API on top of <code>rippled</code>. In particular, Ripple-REST is designed to be easier to use from statically-typed languages.</li>
+<li><a href="rippled-apis.html"><code>rippled</code></a> provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.</li>
+<li><a href="rippleapi.html">RippleAPI</a> provides a simple API for JavaScript applications.</li>
 </ul>
 <h2 id="tool-security">Tool Security</h2>
 <p>Any time you submit a Ripple transaction, it must be signed using your secret. However, having your secret means having full control over your account. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own server or client application to sign the transactions before sending them out.</p>
-<p>The examples in this document show Ripple-REST API methods that include an account secret. This is only safe if you control the Ripple-REST server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could operate your own <code>rippled</code> server; or you can use a client application such as <code>ripple-lib</code> to perform local signing before submitting your transactions to a third-party server.</p>
+<p>The examples in this document show API methods that include an account secret. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could use <a href="rippleapi.html">RippleAPI</a> to perform local signing before submitting your transactions to a third-party server.</p>
 <h2 id="defaultripple">DefaultRipple</h2>
 <p>The DefaultRipple flag controls whether the balances held in an account's trust lines are <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">allowed to ripple</a> by default. Rippling is what allows users to trade issuances, so a gateway must allow rippling on all the trust lines connected to its issuing (cold wallet) account.</p>
 <p>Before asking users to trust its issuing account, a gateway should enable the DefaultRipple flag on that account. Otherwise, the gateway must individually disable the NoRipple flag for each trust line that other accounts extend to it.</p>
-<p><em>Note:</em> Ripple-REST (as of version 1.4.0) does not yet support retrieving or setting the DefaultRipple flag.</p>
-<p>The following is an example of using a local <a href="ripple-rest.html#update-account-settings"><code>rippled</code> JSON-RPC API</a> to enable the DefaultRipple flag:</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> submitting an AccountSet transaction to enable the DefaultRipple flag:</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:8088/
 {
@@ -409,134 +403,104 @@
 <p>We recommend making a user interface to generate a destination tag on-demand when a user intends to send money to the gateway. Then, consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.</p>
 <p>Enable the <a href="#requiredest">RequireDest</a> flag on your hot and cold wallet accounts so that users must use a destination tag to indicate where funds should go when they send Ripple payments to your gateway.</p>
 <h2 id="disallowxrp">DisallowXRP</h2>
-<p>The DisallowXRP flag (<code>disallow_xrp</code> in Ripple-REST) is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around. </p>
+<p>The DisallowXRP flag is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around. </p>
 <p>An issuing gateway that does not trade XRP should enable the DisallowXRP flag on all gateway hot and cold wallets. A private exchange that trades in XRP should only enable the DisallowXRP flag on accounts that are not expected to receive XRP.</p>
-<p>The following is an example of a <a href="ripple-rest.html#update-account-settings">Ripple-REST Update Account Settings request</a> to enable the DisallowXRP flag:</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> submitting an AccountSet transaction to enable the DisallowXRP flag:</p>
 <p>Request:</p>
-<pre><code>POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
-
+<pre><code>POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "disallow_xrp": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 3,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 </code></pre>
 <p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<p>Response:</p>
-<pre><code>200 OK
-
-{
-  "success": true,
-  "settings": {
-    "hash": "AC0F7D7735CDDC6D859D0EC4E96A571F71F7481750F4C6C975FC8075801A6FB5",
-    "ledger": "10560577",
-    "state": "validated",
-    "require_destination_tag": false,
-    "require_authorization": false,
-    "disallow_xrp": true
-  }
-}
-</code></pre>
-<p>The value <code>"disallow_xrp": true</code> indicates that the DisallowXRP flag is enabled. A successful response shows <code>"state": "validated"</code> when the change has been accepted into a validated Ripple ledger.</p>
 <h2 id="requiredest">RequireDest</h2>
 <p>The <code>RequireDest</code> flag (<code>require_destination_tag</code> in Ripple-REST) is designed to prevent users from sending payments to your account while accidentally forgetting the <a href="#source-and-destination-tags">destination tag</a> that identifies who should be credited for the payment. When enabled, the Ripple Network rejects any payment to your account that does not specify a destination tag.</p>
 <p>We recommend enabling the RequireDest flag on all gateway hot and cold wallets.</p>
-<p>The following is an example of a <a href="ripple-rest.html#update-account-settings">Ripple-REST Update Account Settings request</a> to enable the RequireDest flag.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> submitting an AccountSet transaction to enable the RequireDest flag:</p>
 <p>Request:</p>
-<pre><code>POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
-
+<pre><code>POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "require_destination_tag": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 1,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 </code></pre>
 <p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<p>Response:</p>
-<pre><code>200 OK
-
-{
-  "success": true,
-  "settings": {
-    "hash": "F3D2EE87D597BA50EA3A94027583110925E8BAAFE41511F937D65423B18BC2A3",
-    "ledger": "10560755",
-    "state": "validated",
-    "require_destination_tag": true,
-    "require_authorization": false,
-    "disallow_xrp": false
-  }
-}
-</code></pre>
-<p>The value <code>"require_destination_tag": true</code> indicates that the RequireDest flag has been enabled. A successful response shows <code>"state": "validated"</code> when the change has been accepted into a validated Ripple ledger.</p>
 <h2 id="requireauth">RequireAuth</h2>
 <p>The <code>RequireAuth</code> flag (<code>require_authorization</code> in Ripple-REST) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. </p>
 <p>We recommend enabling RequireAuth for all hot wallet (and warm wallet) accounts, as a precaution. Separately, the Authorized Accounts feature involves <a href="#with-cold-wallets">setting the RequireAuth flag on your cold wallet</a>.</p>
 <p>You can only enable RequireAuth if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple network.</p>
 <h3 id="with-hot-wallets">With Hot Wallets</h3>
 <p>We recommend enabling <code>RequireAuth</code> for all hot wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.</p>
-<p>The following is an example of a <a href="ripple-rest.html#update-account-settings">Ripple-REST Update Account Settings request</a> to enable the RequireDest flag. (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> submitting an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)</p>
 <p>Request:</p>
-<pre><code>POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/settings?validated=true
-
+<pre><code>POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "require_authorization": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 2,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<p>Response:</p>
-<pre><code>{
-  "success": true,
-  "settings": {
-    "hash": "687702E0C3952E2227B2F7A0B34933EAADD72A572B234D31360AD83D3F193A78",
-    "ledger": "10596929",
-    "state": "validated",
-    "require_destination_tag": false,
-    "require_authorization": true,
-    "disallow_xrp": false
-  }
-}
-</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em> </p>
 <h3 id="with-cold-wallets">With Cold Wallets</h3>
 <p>You may also enable <code>RequireAuth</code> for your cold wallet in order to use the <a href="#authorized-accounts">Authorized Accounts</a> feature. The procedure to enable the RequireAuth flag for a cold wallet is the same as <a href="#with-hot-wallets">with hot wallets</a>.</p>
 <p>If ACME decides to use Authorized Accounts, ACME creates an interface for users to get their Ripple trust lines authorized by ACME's cold account. After Alice has extended a trust line to ACME from her Ripple account, she goes through the interface on ACME's website to require ACME authorize her trust line. ACME confirms that it has validated Alice's identity information, and then sends a TrustSet transaction to authorize Alice's trust line.</p>
-<p>The following is an example of using the <a href="ripple-rest.html#grant-trustline">Ripple-REST Grant Trustline method</a> to authorize the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> to send a TrustSet transaction authorizing the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:</p>
 <p>Request:</p>
-<pre><code>POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
+<pre><code>POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "trustline": {
-    "limit": "0",
-    "currency": "USD",
-    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "authorized": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "15000",
+                "TransactionType": "TrustSet",
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": 0
+                },
+                "Flags": 65536
+            }
+        }
+    ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<p>Response:</p>
-<pre><code>201 Created
-{
-  "success": true,
-  "trustline": {
-    "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-    "limit": "0",
-    "currency": "USD",
-    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "account_allows_rippling": true,
-    "account_trustline_frozen": false,
-    "authorized": true
-  },
-  "hash": "4509288EE17F01C83FC7D45850EB066A795EE5DBA17BB4DC98DD4023D31EEE5B",
-  "ledger": "11158585",
-  "state": "validated"
-}
-</code></pre>
-<p>A successful response shows <code>"state": "validated"</code> when the change has been accepted into a validated Ripple ledger.</p>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em> </p>
 <h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments</h2>
 <p>In order to robustly monitor incoming payments, gateways should do the following:</p>
 <ul>
@@ -656,20 +620,6 @@
 }
 </code></pre>
 <p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<h2 id="setting-trust-lines-in-ripple-trade">Setting Trust Lines in Ripple Trade</h2>
-<p>As part of the <a href="#hot-and-cold-wallets">Hot and Cold Wallets</a> model, each hot or warm wallet must have a trust line to the cold wallet. You can manually set up those trust lines by following these steps in the Ripple Trade client.</p>
-<ol>
-<li>Log in and go to the <strong>Fund</strong> tab:
-    <img alt="Fund tab" src="img/connectgateway_01.png"/></li>
-<li>Click <strong>Gateways</strong> in the sidebar:
-    <img alt="Gateways" src="img/connectgateway_02.png"/></li>
-<li>Enter the Ripple Name or Ripple Address of the Gateway's <strong>cold wallet</strong>, and click <strong>Save</strong>.
-    <img alt="Enter gateway's name or address, then save" src="img/connectgateway_03.png"/></li>
-<li>Enter the Ripple Trade password, and click <strong>Submit</strong>. (This allows access to send a transaction to the Ripple Network to create the trust line.)
-    <img alt="Enter password and submit" src="img/connectgateway_04.png"/></li>
-<li>When the page shows a green "Gateway connected" box, the transaction to create the trust line has succeeded and the Ripple Network has validated it.
-    <img alt="Gateway connected" src="img/connectgateway_05.png"/></li>
-</ol>
 <h2 id="reliable-transaction-submission">Reliable Transaction Submission</h2>
 <p>The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:</p>
 <ul>
@@ -679,14 +629,13 @@
 <p>In order to achieve this, there are several steps you can take when submitting transactions:</p>
 <ul>
 <li>Persist details of the transaction before submitting it.</li>
-<li>Use the <code>LastLedgerSequence</code> parameter. (Ripple-REST and ripple-lib do this by default.)</li>
+<li>Use the <code>LastLedgerSequence</code> parameter. (RippleAPI does this by default.)</li>
 <li>Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
 </ul>
 <p>For additional information, consult the <a href="reliable_tx.html">Reliable Transaction Submission</a> guide.</p>
-<h2 id="rippletxt-and-host-meta">ripple.txt and host-meta</h2>
-<p>The <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a> and host-meta standards provide a way to publish information about your gateway so that automated tools and applications can read and understand it.</p>
+<h2 id="rippletxt">ripple.txt</h2>
+<p>The <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a> standard provides a way to publish information about your gateway so that automated tools and applications can read and understand it.</p>
 <p>For example, if you run a validating <code>rippled</code> server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple account addresses you control, to protect against impostors or confusion.</p>
-<p>We recommend implementing one or both of ripple.txt and host-meta. (In the future, we expect ripple.txt to become obsolete, but not yet.)</p>
         </div>
     </div>
     </div>
@@ -705,7 +654,6 @@
                     <li><a href="freeze.html">Freeze</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>

@@ -81,7 +81,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
@@ -99,7 +98,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                    <li><a href="rest-api-tool.html">Ripple-REST API Tool</a></li>
                     <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
                     <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
               </ul>
@@ -152,14 +150,14 @@
 </ul>
 <h1 id="technical-details">Technical Details</h1>
 <p>The transfer fee is represented by a setting on the issuing (<strong>cold wallet</strong>) account. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% or greater than 100%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different cold wallets to issue each currency.</p>
-<h2 id="ripple-rest">Ripple-REST</h2>
-<p>In Ripple-REST, the transfer fee is specified in the <code>transfer_rate</code> field, as a decimal which represents the amount you must send in order for the recipient to get 1 unit of the same currency. A <code>transfer_rate</code> of <code>1.005</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transfer_rate</code> is set at <code>1.0</code>, indicating no fee. The value of <code>transfer_rate</code> cannot be less than <code>1.0</code> or more than <code>2.0</code>. However, the value <code>0</code> is special: it is equivalent to <code>1.0</code>, meaning no fee.</p>
-<p>A gateway can use the <a href="https://ripple.com/build/ripple-rest/#update-account-settings">Update Account Settings method</a> with its cold wallet to change the <code>transfer_rate</code> for its issuances.</p>
-<p>You can check an account's <code>transfer_rate</code> with the <a href="https://ripple.com/build/ripple-rest/#get-account-settings">Get Account Settings method</a>.</p>
+<h2 id="rippleapi">RippleAPI</h2>
+<p>In RippleAPI, the transfer fee is specified in the <code>transferRate</code> field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A <code>transferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transferRate</code> is set to no fee. The value of <code>transferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. The value <code>null</code> is special: it is equivalent to <code>1000000000</code>, meaning no fee.</p>
+<p>A gateway can send a <a href="rippleapi.html#settings">Settings transaction</a> with its cold wallet to change the <code>transferRate</code> for its issuances.</p>
+<p>You can check an account's <code>transferRate</code> with the <a href="rippleapi.html#getsettings">getSettings method</a>.</p>
 <h2 id="rippled">rippled</h2>
-<p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transfer_rate</code> is set at <code>1000000000</code>, indicating no fee. The value of <code>TransferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. However, value <code>0</code> is special: it is equivalent to <code>1000000000</code>, meaning no fee.</p>
-<p>A gateway can submit an <a href="https://ripple.com/build/transactions/#accountset">AccountSet transaction</a> from its cold wallet to change the <code>TransferRate</code> for its issuances. </p>
-<p>You can check an account's <code>TransferRate</code> with the <a href="https://ripple.com/build/rippled-apis/#account-info">account_info command</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
+<p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set at <code>1000000000</code>, indicating no fee. The value of <code>TransferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. However, value <code>0</code> is special: it is equivalent to <code>1000000000</code>, meaning no fee.</p>
+<p>A gateway can submit an <a href="transactions.html#accountset">AccountSet transaction</a> from its cold wallet to change the <code>TransferRate</code> for its issuances. </p>
+<p>You can check an account's <code>TransferRate</code> with the <a href="rippled-apis.html#account-info"><code>account_info</code> command</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
         </div>
     </div>
     </div>
@@ -178,7 +176,6 @@
                     <li><a href="freeze.html">Freeze</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
