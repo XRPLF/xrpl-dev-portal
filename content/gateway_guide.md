@@ -368,7 +368,7 @@ Enable the [RequireDest](#requiredest) flag on your hot and cold wallet accounts
 
 ## DisallowXRP ##
 
-The DisallowXRP flag is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around. 
+The DisallowXRP setting (`disallowIncomingXRP` in RippleAPI) is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around.
 
 An issuing gateway that does not trade XRP should enable the DisallowXRP flag on all gateway hot and cold wallets. A private exchange that trades in XRP should only enable the DisallowXRP flag on accounts that are not expected to receive XRP.
 
@@ -724,8 +724,8 @@ The first requirement to bouncing payments is [robustly monitoring for incoming 
 
 Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.
 
-* To send a Partial Payment using `rippled`, enable the [tfPartialPayment flag](transactions.html#payment-flags) on the transaction.
-* To send a Partial Payment using RippleAPI, set the `allowPartialPayment` field of the [Payment object](rippleapi.html#payment) to `true`.
+* To send a Partial Payment using `rippled`, enable the [tfPartialPayment flag](transactions.html#payment-flags) on the transaction. Set the `Amount` field to the amount you received and omit the `SendMax` field.
+* To send a Partial Payment using RippleAPI, set the `allowPartialPayment` field of the [Payment object](rippleapi.html#payment) to `true`. Set the `source.maxAmount` and `destination.amount` both equal to the amount you received.
 
 It is conventional that you take the `SourceTag` field from the incoming payment (`source.tag` in RippleAPI) and use that value as the `DestinationTag` field (`destination.tag` in RippleAPI) for the return payment.
 
