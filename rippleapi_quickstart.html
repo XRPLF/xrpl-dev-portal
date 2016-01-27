@@ -159,8 +159,9 @@
 <pre><code>{
   "name": "my_ripple_experiment",
   "version": "0.0.1",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
+  "//": "Change the license to something appropriate. You may want to use 'UNLICENSED' if you are just starting out.",
   "dependencies": {
     "ripple-lib": "*",
     "babel-cli": "^6.0.0",
@@ -193,6 +194,198 @@ npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 git commit -m "ignore node_modules"
 </code></pre>
 <h1 id="first-rippleapi-script">First RippleAPI Script</h1>
+<p>With RippleAPI installed, it's time to test that it works. Here's a simple script that uses RippleAPI to retrieve information on a specific account:</p>
+<pre><code>'use strict';
+const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server
+});
+api.connect().then(() =&gt; {
+  /* begin custom code ------------------------------------ */
+  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+
+  console.log('getting account info for', my_address);
+  return api.getAccountInfo(my_address);
+
+// info =&gt; {...} is just a shorter syntax for function(info) {...}
+}).then(info =&gt; {
+  console.log(info);
+  console.log('getAccountInfo done');
+
+  /* end custom code -------------------------------------- */
+}).then(() =&gt; {
+  return api.disconnect();
+}).then(()=&gt; {
+  console.log('done and disconnected.');
+}).catch(console.error);
+</code></pre>
+<h2 id="running-the-script">Running the script</h2>
+<p>RippleAPI and the script both use the ECMAScript 6 version of JavaScript, which is (at this time) not supported by Node.js natively. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the <code>babel-node</code> binary, which NPM installs in the <code>node_modules/.bin/</code> directory of your project. Thus, running the script looks like this:</p>
+<pre><code>./node_modules/.bin/babel-node get-account-info.js
+</code></pre>
+<p>Output:</p>
+<pre><code>getting account info for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
+{ sequence: 359,
+  xrpBalance: '75.181663',
+  ownerCount: 4,
+  previousInitiatedTransactionID: 'E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9',
+  previousAffectingTransactionID: 'E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9',
+  previousAffectingTransactionLedgerVersion: 18489336 }
+getAccountInfo done
+done and disconnected.
+</code></pre>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>Even for a simple script, there's a lot packed into that, including quite a few conventions that are part of standard JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.</p>
+<h3 id="script-opening">Script opening</h3>
+<pre><code>'use strict';
+const {RippleAPI} = require('ripple-lib');
+</code></pre>
+<p>The opening line enables <a href="https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
+<p>The second line imports RippleAPI into the current scope using Node.js's require function. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring assignment</a> assigns it to the variable name <code>RippleAPI</code> instead of <code>ripple-lib</code> (which is the name of the package, for historical reasons).</p>
+<h3 id="instantiating-the-api">Instantiating the API</h3>
+<pre><code>const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server
+});
+</code></pre>
+<p>This section creates a new instance of the RippleAPI class, assigning it to the variable <code>api</code>. (The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const"><code>const</code> keyword</a> means you can't reassign the value <code>api</code> to some other value. The internal state of the object can still change, though.)</p>
+<p>The one argument to the constructor is an options object, which has <a href="rippleapi.html#parameters">a variety of options</a>. The <code>server</code> parameter tells it where it should connect to a <code>rippled</code> server.</p>
+<ul>
+<li>The example <code>server</code> setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.</li>
+<li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="rippleapi.html#offline-functionality">offline mode</a> instead, which severely limits what you can do with it.</li>
+<li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production Ripple Consensus Ledger.</li>
+<li>If you <a href="rippled-setup.html">run your own <code>rippled</code></a>, you can instruct it to connect to your local server. For example, you might say <code>server: 'ws://localhost:5005'</code> instead.</li>
+</ul>
+<h3 id="connecting-and-promises">Connecting and Promises</h3>
+<pre><code>api.connect().then(() =&gt; {
+</code></pre>
+<p>The <a href="rippleapi.html#connect">connect() method</a> is one of many RippleAPI methods that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, which is a special kind of JavaScript object. A Promise is designed to perform some asynchronous operation, like querying a the Ripple Consensus Ledger.</p>
+<p>When you get a Promise back from some expression (like <code>api.connect()</code>), you call the Promise's <code>then</code> method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class objects</a>.</p>
+<p>When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the <code>then</code> method is another Promise object, so you can "chain" that into another <code>then</code> method, or the Promise's <code>catch</code> method, which also takes a callback. The callback you provide to <code>catch</code> gets called if something goes wrong.</p>
+<p>Finally, we have more new ECMAScript 6 syntax - an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>. Arrow functions are just a shorter way of defining anonymous functions, which is pretty convenient when you're defining lots of one-off functions as callbacks, like we are here. The syntax <code>()=&gt; {...}</code> is mostly equivalent to <code>function() {...}</code>. If you want an anonymous function with one parameter, you can use a syntax like <code>info =&gt; {...}</code> instead, which is basically just <code>function(info) {...}</code> as well.</p>
+<h3 id="custom-code">Custom code</h3>
+<pre><code>  /* begin custom code ------------------------------------ */
+  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+
+  console.log('getting account info for',my_address);
+  return api.getAccountInfo(my_address);
+
+}).then( info =&gt; {
+  console.log(info);
+  console.log('getAccountInfo done');
+
+  /* end custom code -------------------------------------- */
+</code></pre>
+<p>This is the part that really defines what this script does, so this is the part you will probably spend the most time customizing.</p>
+<p>The example code looks up a Ripple account (belonging to <a href="https://github.com/mDuo13/">this writer</a>) by its address. You can substitute your own address, if you want.</p>
+<p>The <code>console.log()</code> function is a built-in tool in both Node.js and web browsers, which writes out to the console; this example includes lots of console output to make it easier to understand what the code is doing.</p>
+<p>Keep in mind that the example code starts in the middle of a callback function (called when RippleAPI finishes connecting). That function calls RippleAPI's <a href="rippleapi.html#getaccountinfo"><code>getAccountInfo</code></a> method, and returns the results.</p>
+<p>The results of that API method are another Promise, so the line <code>}).then( info =&gt; {</code> passes in another anonymous callback function to run when the second Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called <code>info</code>, which holds the -- actual -- return value from the <code>getAccountInfo</code> API method. The rest of this callback function just outputs that return value to the console.</p>
+<h3 id="cleanup">Cleanup</h3>
+<pre><code>}).then(() =&gt; {
+  return api.disconnect();
+}).then(()=&gt; {
+  console.log('done and disconnected.');
+}).catch(console.error);
+</code></pre>
+<p>The remainder of the sample code is mostly more <a href="rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes.</p>
+<p>Finally, we get to the <code>catch</code> method of this entire long Promise chain. If any of the Promises or their callback functions encounters an error, the callback provided here will run. One thing worth noting: instead of defining a new anonymous callback function here, we can just pass in the standard <code>console.error</code> function, which writes whatever arguments it gets out to the console. If you so desired, you could define a smarter callback function here which might intelligently catch certain error types.</p>
+<h1 id="waiting-for-validation">Waiting for Validation</h1>
+<p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="reliable_tx.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
+<pre><code>'use strict';
+/* import RippleAPI and support libraies*/
+const {RippleAPI} = require('ripple-lib');
+const assert = require('assert');
+
+/* Credentials of the account placing the offer */
+const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+const my_secret = 's████████████████████████████';
+
+/* Define the order to place here */
+const my_order = {
+  'direction': 'buy',
+  'quantity': {
+    'currency': '',
+    'counterparty': '',
+    'value': ''
+  },
+  'totalPrice': {
+    'currency': '',
+    'counterparty': '',
+    'value': ''
+  }
+};
+
+/* milliseconds to wait between ledger checks*/
+const INTERVAL = 1000;
+/* Instantiate RippleAPI */
+const api = new RippleAPI({server: 'wss://s1.ripple.com'});
+/* number of ledgers to check for valid transaction before fail */
+const ledgerOffset = 5;
+const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
+
+
+/* function to verify a transaction is on the RCL */
+function verifyTransaction(hash, options) {
+  console.log('Verifing Transaction');
+  return api.getTransaction(hash, options).then(data =&gt; {
+    console.log('Result: ', data.outcome.result);
+    console.log('Validated in Ledger: ', data.outcome.ledgerVersion);
+    console.log('Sequence: ', data.sequence);
+    return data.outcome.result === 'tesSUCCESS';
+  }).catch(error =&gt; {
+    /* if transaction not on current ledger try again until max ledger hit */
+    if (error instanceof api.errors.PendingLedgerVersionError) {
+      return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; verifyTransaction(hash, options)
+        .then(resolve, reject), INTERVAL);
+      });
+    }
+    return result;// TODO: Fix this. It's currently undefined.
+  });
+}
+
+
+/* function to prepare, sign, and submit a transaction to the RCL
+success verifies the transaction is being considered for the next ledger.
+Still requires vlaidation */
+function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
+  const signedData = api.sign(prepared.txJSON, secret);
+  return api.submit(signedData.signedTransaction).then(data =&gt; {
+    console.log('Result: ', data.resultCode);
+    console.log('Message: ', data.resultMessage);
+    /* if transaction was not successfully submitted throw error */
+    assert.strictEqual(data.resultCode, 'tesSUCCESS');
+    /* if successfully submitted fire off validation workflow */
+    const options = {
+      minLedgerVersion: lastClosedLedgerVersion,
+      maxLedgerVersion: prepared.instructions.maxLedgerVersion
+    };
+    return new Promise((resolve, reject) =&gt; {
+      setTimeout(() =&gt; verifyTransaction(signedData.id, options)
+    .then(resolve, reject), INTERVAL);
+    });
+  });
+}
+
+
+api.connect().then(() =&gt; {
+  console.log('Connected');
+  return api.prepareOrder(my_addr, my_order, my_instructions);
+}).then(prepared =&gt; {
+  console.log('Order Prepared');
+  return api.getLedger().then(ledger =&gt; {
+    console.log('Current Ledger', ledger.ledgerVersion);
+    return submitTransaction(ledger.ledgerVersion, prepared, my_secret);
+  });
+}).then(() =&gt; {
+  api.disconnect().then(() =&gt; {
+    console.log('api disconnected');
+    process.exit();
+  });
+}).catch(console.error);
+
+</code></pre>
         </div>
     </div>
     </div>
