@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Fee Voting - Ripple Developer Portal</title>
+    <title>RippleAPI Quick Start Guide - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -134,46 +134,65 @@
             </div>
         </div>
         <div class='content'>
-	        <h1 id="fee-voting">Fee Voting</h1>
-<p>Validators can vote for changes to basic <a href="tx-cost.html">transaction cost</a> as well as <a href="reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
-<p>Operators of <a href="rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Recommended Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reference_fee</td>
-<td>Amount of XRP, in <em>drops</em>, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers.</td>
-<td><code>10</code> (0.00001 XRP)</td>
-</tr>
-<tr>
-<td>account_reserve</td>
-<td>Minimum amount of XRP, in <em>drops</em>, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger.</td>
-<td><code>20000000</code> (20 XRP)</td>
-</tr>
-<tr>
-<td>owner_reserve</td>
-<td>Additional amount of XRP, in <em>drops</em>, that an account must have on reserve for <em>each</em> object it owns in the ledger.</td>
-<td><code>5000000</code> (5 XRP)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="voting-process">Voting Process</h3>
-<p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
-<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
-<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="transactions.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
-<p>In short:</p>
-<ul>
-<li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
-<li><strong>Flag ledger</strong>: Validators tally votes and decide what SetFee to include, if any.</li>
-<li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
-<li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee psuedotransaction achieved consensus.</li>
-</ul>
+	        <h1 id="rippleapi-quick-start-guide">RippleAPI Quick Start Guide</h1>
+<p>This tutorial guides you through the basics of building a simple Ripple-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="rippleapi.html">RippleAPI</a>, a simple JavaScript API for accessing the Ripple Consensus Ledger.</p>
+<h1 id="environment-setup">Environment Setup</h1>
+<p>The first step to using RippleAPI successfully is setting up your development environment.</p>
+<h2 id="install-nodejs-and-npm">Install Node.js and npm</h2>
+<p>RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. Specifically, RippleAPI requires Node.js version 0.12, version 4.x, or higher.</p>
+<p>This step depends on your operating system. We recommend <a href="https://nodejs.org/en/download/package-manager/">the official instructions for installing Node.js using a package manager</a> for your operating system. If the packages for Node.js and <code>npm</code> (Node Package Manager) are separate (this includes Arch Linux, CentOS, Fedora, and RHEL), you should make sure to install both.</p>
+<p>After you have installed Node.js, you can check whether it's installed by checking the version of the <code>node</code> binary from a commandline:</p>
+<pre><code>node --version
+</code></pre>
+<p>On some platforms, the binary is named <code>nodejs</code> instead:</p>
+<pre><code>nodejs --version
+</code></pre>
+<h2 id="use-npm-to-install-rippleapi-and-dependencies">Use NPM to install RippleAPI and dependencies</h2>
+<p>RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). In order to use the new features of ECMAScript 6, RippleAPI depends on <a href="https://babeljs.io">Babel-Node</a> and its ES2015 presets. Fortunately you can use <code>npm</code> to install RippleAPI and these dependencies all at once.</p>
+<h4 id="1-create-a-new-directory-for-your-project">1. Create a new directory for your project</h4>
+<p>For example, to create a folder called <code>my_ripple_experiment</code>:</p>
+<pre><code>mkdir my_ripple_experiment &amp;&amp; cd my_ripple_experiment
+</code></pre>
+<p>Alternatively, you can <a href="https://help.github.com/articles/create-a-repo/">create a repo on GitHub</a> in order to share your work. After setting it up, <a href="https://help.github.com/articles/cloning-a-repository/">clone the repo</a> to your local machine and <code>cd</code> into that directory.</p>
+<h4 id="2-create-a-new-packagejson-file-for-your-project">2. Create a new <code>package.json</code> file for your project.</h4>
+<p>Here's a good template:</p>
+<pre><code>{
+  "name": "my_ripple_experiment",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "ripple-lib": "*",
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "*"
+  },
+  "babel": {
+    "presets": ["es2015"]
+  },
+  "devDependencies": {
+    "eslint": "*"
+  }
+}
+</code></pre>
+<p>This includes RippleAPI itself (<code>ripple-lib</code>), Babel (<code>babel-cli</code>), the ECMAScript 6 presets for Babel (<code>babel-preset-es2015</code>). It also has the optional add-on <a href="http://eslint.org/">ESLint</a> (<code>eslint</code>) for checking your code quality.</p>
+<h4 id="3-use-npm-to-install-the-dependencies">3. Use NPM to install the dependencies.</h4>
+<pre><code>npm install
+</code></pre>
+<p>This automatically installs all the dependencies defined in the <code>package.json</code> into the local folder <code>node_modules/</code>. (We recommend <em>not</em> using <code>npm -g</code> to install the dependencies globally.)</p>
+<p>The install process may take a while, and may end with a few warnings. The following warnings are benign, and do not indicate a real problem:</p>
+<pre><code>npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
+</code></pre>
+<h4 id="4-optional-tell-git-to-ignore-the-node-modules-folder">4. (Optional) Tell Git to ignore the <code>node_modules</code> folder.</h4>
+<p>If you are using Git to manage your repository, it's considered a good practice to omit the <code>node_modules</code> folder from the Git repo. Other people who check out your code can use <code>npm</code> to install the dependencies, and you don't have to keep the repo synchronized with changes to other people's code. Edit the <code>.gitignore</code> file and add the following line to it:</p>
+<pre><code>/node_modules/
+</code></pre>
+<p>Save and commit the changes:</p>
+<pre><code>git add .gitignore
+git commit -m "ignore node_modules"
+</code></pre>
+<h1 id="first-rippleapi-script">First RippleAPI Script</h1>
         </div>
     </div>
     </div>
