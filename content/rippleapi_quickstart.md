@@ -37,7 +37,13 @@ For example, to create a folder called `my_ripple_experiment`:
 mkdir my_ripple_experiment && cd my_ripple_experiment
 ```
 
-Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) in order to share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
+Optionally, initiate a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) repository in that directory so you can track changes to your code.
+
+```
+git init
+```
+
+Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) in order to version and share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
 
 #### 2. Create a new `package.json` file for your project.
 
@@ -67,7 +73,7 @@ npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 
 #### 4. (Optional) Tell Git to ignore the `node_modules` folder.
 
-If you are using Git to manage your repository, it's considered a good practice to omit the `node_modules` folder from the Git repo. Other people who check out your code can use `npm` to install the dependencies, and you don't have to keep the repo synchronized with changes to other people's code. Edit the `.gitignore` file and add the following line to it:
+If you are using Git to manage your repository, it's considered a good practice to omit the `node_modules` folder from the Git repo. Other people who check out your code can use `npm` to install the dependencies, and you don't have to keep the repo synchronized with changes to your modules. Edit the `.gitignore` file and add the following line to it:
 
 ```
 /node_modules/
