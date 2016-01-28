@@ -11,27 +11,26 @@ const my_secret = 's████████████████████
 const my_order = {
   'direction': 'buy',
   'quantity': {
-    'currency': '',
-    'counterparty': '',
-    'value': ''
+    'currency': 'FOO',
+    'counterparty': 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v',
+    'value': '100'
   },
   'totalPrice': {
-    'currency': '',
-    'counterparty': '',
-    'value': ''
+    'currency': 'XRP',
+    'value': '1000'
   }
 };
 
-/* milliseconds to wait between ledger checks*/
+/* Milliseconds to wait between checks for a new ledger. */
 const INTERVAL = 1000;
-/* Instantiate RippleAPI */
-const api = new RippleAPI({server: 'wss://s1.ripple.com'});
+/* Instantiate RippleAPI. Uses s2 (full history server) */
+const api = new RippleAPI({server: 'wss://s2.ripple.com'});
 /* number of ledgers to check for valid transaction before fail */
 const ledgerOffset = 5;
 const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
 
 
-/* function to verify a transaction is on the RCL */
+/* Verify a transaction is in a validated RCL version */
 function verifyTransaction(hash, options) {
   console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data => {
@@ -40,14 +39,14 @@ function verifyTransaction(hash, options) {
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
   }).catch(error => {
-    /* if transaction not on current ledger try again until max ledger hit */
+    /* if transaction not in latest validated ledger try again until max ledger hit */
     if (error instanceof api.errors.PendingLedgerVersionError) {
       return new Promise((resolve, reject) => {
         setTimeout(() => verifyTransaction(hash, options)
 		.then(resolve, reject), INTERVAL);
       });
     }
-    return result;// TODO: Fix this. It's currently undefined.
+    return error;
   });
 }
 
