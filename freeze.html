@@ -78,10 +78,18 @@
               </ul>
             </li>
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                     <li><a href="rippled-apis.html">rippled</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
@@ -89,17 +97,8 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
-                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                    <li><a href="rest-api-tool.html">Ripple-REST API Tool</a></li>
                     <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
                     <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
               </ul>
@@ -140,7 +139,7 @@
 <ul>
 <li><a href="#individual-freeze"><strong>Individual Freeze</strong></a> - Freeze one counterparty.</li>
 <li><a href="#global-freeze"><strong>Global Freeze</strong></a> - Freeze all counterparties.</li>
-<li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties. Also gives up the ability to end a global freeze.</li>
+<li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.</li>
 </ul>
 <p>Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
 <p>All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.</p>
@@ -148,12 +147,12 @@
 <p>The <strong>Individual Freeze</strong> feature is a setting on a trust line. When an issuing account enables the Individual Freeze setting, the following rules apply:</p>
 <ul>
 <li>Payments can still occur directly between the two parties of the frozen trust line.</li>
-<li>The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer.</li>
+<li>The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen issuances directly to the issuer.</li>
 <li>The counterparty can still receive payments from others on the frozen trust line.</li>
 <li>The counterparty's offers to sell the currency issued on the frozen trust line are <a href="transactions.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any connector systems the gateway operates. (Otherwise, an account could still engage in undesired activity by sending payments through the gateway's connector.)</p>
-<p>An individual can freeze the trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including <a href="gateway_guide.html#hot-and-cold-wallets">hot wallets</a> from sending that gateway's issued currency to the individual. It has no effect on offers.</p>
+<p>A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any other systems the gateway operates that are connected to the Ripple Consensus Ledger. (Otherwise, an account might still be able to engage in undesired activity by sending payments through the gateway.)</p>
+<p>An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including <a href="gateway_guide.html#hot-and-cold-wallets">hot wallets</a>, from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.</p>
 <p>The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An account cannot enable the Individual Freeze setting if it has previously enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
 <h2 id="global-freeze">Global Freeze</h2>
@@ -170,7 +169,7 @@
 <h2 id="no-freeze">No Freeze</h2>
 <p>The <strong>No Freeze</strong> feature is a setting on an account that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:</p>
 <ul>
-<li>The issuing account can no longer use enable Individual Freeze on any counterparty.</li>
+<li>The issuing account can no longer enable Individual Freeze on trust lines to any counterparty.</li>
 <li>The issuing account can still enable Global Freeze to enact a global freeze, but the account cannot <em>disable</em> Global Freeze.</li>
 </ul>
 <p>The Ripple Consensus Ledger cannot force a gateway to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
@@ -815,7 +814,10 @@ api.connect().then(() =&gt; {
 }).catch(console.error);
 </code></pre>
 <h1 id="see-also">See Also</h1>
-<p><a href="https://ripple.com/files/GB-2014-02.pdf">Gateway Bulletin GB-2014-02 New Feature: Balance Freeze</a></p>
+<ul>
+<li><a href="https://ripple.com/files/GB-2014-02.pdf">Gateway Bulletin GB-2014-02 New Feature: Balance Freeze</a></li>
+<li><a href="https://github.com/ripple/ripple-dev-portal/tree/gh-pages/content/code_samples/freeze">Freeze Code Samples</a></li>
+</ul>
         </div>
     </div>
     </div>
@@ -832,9 +834,9 @@ api.connect().then(() =&gt; {
                     <li><a href="fee-voting.html">Fee Voting</a></li>
                     <li><a href="reserves.html">Reserves</a></li>
                     <li><a href="freeze.html">Freeze</a></li>
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
                     <li><a href="rippled-apis.html">rippled</a></li>
                     <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="ripple-rest.html">Ripple-REST</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
                     <li><a href="ripple-ledger.html">Ledger Format</a></li>
                     <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>

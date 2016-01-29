@@ -61,6 +61,12 @@
         "category": "Concepts"
     },
     {
+        "name": "RippleAPI Quick Start Guide",
+        "md": "rippleapi_quickstart.md",
+        "html": "rippleapi_quickstart.html",
+        "category": "Tutorials"
+    },
+    {
         "name": "rippled",
         "md":"rippled.md",
         "html":"rippled-apis.html",
@@ -73,13 +79,6 @@
         "html":"rippled-setup.html",
         "ripple.com": "https://ripple.com/build/rippled-setup/",
         "category": "Tutorials"
-    },
-    {
-        "name": "Ripple-REST",
-        "md": "ripplerest_api.md",
-        "html": "ripple-rest.html",
-        "ripple.com": "https://ripple.com/build/ripple-rest/",
-        "category": "References"
     },
     {
         "name": "Transactions",
@@ -122,16 +121,6 @@
         "html": "rippleapi.html",
         "ripple.com": "https://ripple.com/build/rippleapi/",
         "category": "References"
-    },
-    {
-        "name": "Ripple-REST API Tool",
-        "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-ripplerest.js",
-        "category": "API Tools",
-        "rest_host": "https://api.ripple.com",
-        "ripple.com": "https://ripple.com/build/rest-tool/",
-        "html": "rest-api-tool.html",
-        "targets": ["local","ripple.com"]
     },
     {
         "name": "WebSocket API Tool",

@@ -284,15 +284,14 @@ Contact [partners@ripple.com](mailto:partners@ripple.com) to see how Ripple Labs
 There are several interfaces you can use to connect to Ripple, depending on your needs and your existing software:
 
 * [`rippled`](rippled-apis.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.
-    * The official client library to rippled, [ripple-lib](https://github.com/ripple/ripple-lib) is available for JavaScript, and provides extended convenience features.
-* [Ripple-REST](ripple-rest.html) provides an easy-to-use RESTful API on top of `rippled`. In particular, Ripple-REST is designed to be easier to use from statically-typed languages.
+* [RippleAPI](rippleapi.html) provides a simple API for JavaScript applications.
 
 
 ## Tool Security ##
 
 Any time you submit a Ripple transaction, it must be signed using your secret. However, having your secret means having full control over your account. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own server or client application to sign the transactions before sending them out.
 
-The examples in this document show Ripple-REST API methods that include an account secret. This is only safe if you control the Ripple-REST server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could operate your own `rippled` server; or you can use a client application such as `ripple-lib` to perform local signing before submitting your transactions to a third-party server.
+The examples in this document show API methods that include an account secret. This is only safe if you control `rippled` server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could use [RippleAPI](rippleapi.html) to perform local signing before submitting your transactions to a third-party server.
 
 
 ## DefaultRipple ##
@@ -301,9 +300,7 @@ The DefaultRipple flag controls whether the balances held in an account's trust 
 
 Before asking users to trust its issuing account, a gateway should enable the DefaultRipple flag on that account. Otherwise, the gateway must individually disable the NoRipple flag for each trust line that other accounts extend to it.
 
-*Note:* Ripple-REST (as of version 1.4.0) does not yet support retrieving or setting the DefaultRipple flag.
-
-The following is an example of using a local [`rippled` JSON-RPC API](ripple-rest.html#update-account-settings) to enable the DefaultRipple flag:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction to enable the DefaultRipple flag:
 
 Request:
 
@@ -371,22 +368,30 @@ Enable the [RequireDest](#requiredest) flag on your hot and cold wallet accounts
 
 ## DisallowXRP ##
 
-The DisallowXRP flag (`disallow_xrp` in Ripple-REST) is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around. 
+The DisallowXRP setting (`disallowIncomingXRP` in RippleAPI) is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around.
 
 An issuing gateway that does not trade XRP should enable the DisallowXRP flag on all gateway hot and cold wallets. A private exchange that trades in XRP should only enable the DisallowXRP flag on accounts that are not expected to receive XRP.
 
-The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to enable the DisallowXRP flag:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction to enable the DisallowXRP flag:
 
 Request:
 
 ```
-POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
-
+POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "disallow_xrp": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "10000",
+                "Flags": 0,
+                "SetFlag": 3,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 ```
 
@@ -395,110 +400,123 @@ _(**Reminder:** Don't send your secret to a server you do not control.)_
 Response:
 
 ```
-200 OK
-
 {
-  "success": true,
-  "settings": {
-    "hash": "AC0F7D7735CDDC6D859D0EC4E96A571F71F7481750F4C6C975FC8075801A6FB5",
-    "ledger": "10560577",
-    "state": "validated",
-    "require_destination_tag": false,
-    "require_authorization": false,
-    "disallow_xrp": true
-  }
+	"result": {
+		"engine_result": "tesSUCCESS",
+		"engine_result_code": 0,
+		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+		"status": "success",
+		"tx_blob": "12000322000000002400000164202100000003684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+		"tx_json": {
+			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+			"Fee": "10000",
+			"Flags": 0,
+			"Sequence": 356,
+			"SetFlag": 3,
+			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+			"TransactionType": "AccountSet",
+			"TxnSignature": "3045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D",
+			"hash": "096A89DA55A6A1C8C9EE1BCD15A8CADCC52E6D2591393F680243ECEB93161B33"
+		}
+	}
 }
 ```
-
-The value `"disallow_xrp": true` indicates that the DisallowXRP flag is enabled. A successful response shows `"state": "validated"` when the change has been accepted into a validated Ripple ledger.
 
 
 ## RequireDest ##
 
-The `RequireDest` flag (`require_destination_tag` in Ripple-REST) is designed to prevent users from sending payments to your account while accidentally forgetting the [destination tag](#source-and-destination-tags) that identifies who should be credited for the payment. When enabled, the Ripple Network rejects any payment to your account that does not specify a destination tag.
+The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to prevent users from sending payments to your account while accidentally forgetting the [destination tag](#source-and-destination-tags) that identifies who should be credited for the payment. When enabled, the Ripple Consensus Ledger rejects any payment to your account that does not specify a destination tag.
 
-We recommend enabling the RequireDest flag on all gateway hot and cold wallets.
+We recommend enabling the `RequireDest` flag on all gateway hot and cold wallets.
 
-The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to enable the RequireDest flag.
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction to enable the `RequireDest` flag:
 
 Request:
 
 ```
-POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
-
+POST http://localhost:5005/
+Content-Type: application/json
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "require_destination_tag": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 1,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 ```
+
 _(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
 ```
 200 OK
-
 {
-  "success": true,
-  "settings": {
-    "hash": "F3D2EE87D597BA50EA3A94027583110925E8BAAFE41511F937D65423B18BC2A3",
-    "ledger": "10560755",
-    "state": "validated",
-    "require_destination_tag": true,
-    "require_authorization": false,
-    "disallow_xrp": false
-  }
+	"result": {
+		"engine_result": "tesSUCCESS",
+		"engine_result_code": 0,
+		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+		"status": "success",
+		"tx_blob": "12000322000000002400000161202100000003684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+		"tx_json": {
+			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+			"Fee": "15000",
+			"Flags": 0,
+			"Sequence": 353,
+			"SetFlag": 3,
+			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+			"TransactionType": "AccountSet",
+			"TxnSignature": "3045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F",
+			"hash": "59025DD6C9848679BA433448A1DD95833F2F4B64B03E214D074C7A5B6E3E3E70"
+		}
+	}
 }
 ```
 
-The value `"require_destination_tag": true` indicates that the RequireDest flag has been enabled. A successful response shows `"state": "validated"` when the change has been accepted into a validated Ripple ledger.
-
-
 ## RequireAuth ##
 
-The `RequireAuth` flag (`require_authorization` in Ripple-REST) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. 
+The `RequireAuth` setting (`requireAuthorization` in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. 
 
-We recommend enabling RequireAuth for all hot wallet (and warm wallet) accounts, as a precaution. Separately, the Authorized Accounts feature involves [setting the RequireAuth flag on your cold wallet](#with-cold-wallets).
+We recommend enabling `RequireAuth` for all hot wallet and warm wallet accounts, as a precaution. Separately, the Authorized Accounts feature involves [setting the `RequireAuth` flag on your cold wallet](#with-cold-wallets).
 
-You can only enable RequireAuth if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple network.
+You can only enable `RequireAuth` if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple Consensus Ledger.
 
 ### With Hot Wallets ###
 
 We recommend enabling `RequireAuth` for all hot wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.
 
-The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to enable the RequireDest flag. (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)
 
 Request:
 
 ```
-POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/settings?validated=true
-
+POST http://localhost:5005/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "require_authorization": true
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 2,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
 ```
+
 _(**Reminder:** Don't send your secret to a server you do not control.)_
-
-Response:
-
-```
-{
-  "success": true,
-  "settings": {
-    "hash": "687702E0C3952E2227B2F7A0B34933EAADD72A572B234D31360AD83D3F193A78",
-    "ledger": "10596929",
-    "state": "validated",
-    "require_destination_tag": false,
-    "require_authorization": true,
-    "disallow_xrp": false
-  }
-}
-```
 
 ### With Cold Wallets ###
 
@@ -506,46 +524,37 @@ You may also enable `RequireAuth` for your cold wallet in order to use the [Auth
 
 If ACME decides to use Authorized Accounts, ACME creates an interface for users to get their Ripple trust lines authorized by ACME's cold account. After Alice has extended a trust line to ACME from her Ripple account, she goes through the interface on ACME's website to require ACME authorize her trust line. ACME confirms that it has validated Alice's identity information, and then sends a TrustSet transaction to authorize Alice's trust line.
 
-The following is an example of using the [Ripple-REST Grant Trustline method](ripple-rest.html#grant-trustline) to authorize the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
+
+
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send a TrustSet transaction authorizing the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
 Request:
 
 ```
-POST /v1/accounts/rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW/trustlines?validated=true
+POST http://localhost:8088/
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "trustline": {
-    "limit": "0",
-    "currency": "USD",
-    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "authorized": true
-  }
-}
-```
-_(**Reminder:** Don't send your secret to a server you do not control.)_
-
-Response:
-
-```
-201 Created
-{
-  "success": true,
-  "trustline": {
-    "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-    "limit": "0",
-    "currency": "USD",
-    "counterparty": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "account_allows_rippling": true,
-    "account_trustline_frozen": false,
-    "authorized": true
-  },
-  "hash": "4509288EE17F01C83FC7D45850EB066A795EE5DBA17BB4DC98DD4023D31EEE5B",
-  "ledger": "11158585",
-  "state": "validated"
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "15000",
+                "TransactionType": "TrustSet",
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": 0
+                },
+                "Flags": 65536
+            }
+        }
+    ]
 }
 ```
 
-A successful response shows `"state": "validated"` when the change has been accepted into a validated Ripple ledger.
+_(**Reminder:** Don't send your secret to a server you do not control.)_ 
+
 
 ## Robustly Monitoring for Payments ##
 
@@ -553,103 +562,158 @@ In order to robustly monitor incoming payments, gateways should do the following
 
 * Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.
 * Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code `tesSUCCESS` can change non-XRP balances. Only transactions from a validated ledger are final.
-* [Look out for Partial Payments](https://ripple.com/files/GB-2014-06.pdf "Partial Payment Flag Gateway Bulletin"). If an incoming transaction has a `destination_balance_changes` field (Ripple-REST) or a `meta.delivered_amount` field (WebSocket/JSON-RPC), then use that to see how much money *actually* got delivered to the destination account. Payments with the partial-payment flag enabled are considered "successful" if any non-zero amount is delivered, even miniscule amounts. (The flag is called `"partial_payment": true` in REST, and `tfPartialPayment` in WebSocket/JSON-RPC) 
+* [Look out for Partial Payments](https://ripple.com/files/GB-2014-06.pdf "Partial Payment Flag Gateway Bulletin"). Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.
+    * In `rippled`, check the transaction for a `meta.delivered_amount` field. If present, that field indicates how much money *actually* got delivered to the `Destination` account.
+    * In RippleAPI, you can search the `outcome.BalanceChanges` field to see how much the destination account received. In some cases, this can be divided into multiple parts on different trust lines.
 * Some transactions modify your balances without being payments directly to or from one of your accounts. For example, if ACME sets a nonzero [TransferRate](#transferrate), then ACME's cold wallet's outstanding obligations decrease each time Bob and Charlie exchange ACME issuances. See [TransferRate](#transferrate) for more information. 
 
 To make things simpler for your users, we recommend monitoring for incoming payments to hot wallets and the cold wallet, and treating the two equivalently.
 
 As an added precaution, we recommend comparing the balances of your Ripple cold wallet account with the Ripple-backing funds in your internal accounting system each time there is a new Ripple ledger. The cold wallet shows all outstanding issuances as negative balances, which should match the positive assets you have allocated to Ripple outside the network. If the two do not match up, then you should suspend processing payments in and out of Ripple until you have resolved the discrepancy. 
 
-* Use the [Get Account Balances method](ripple-rest.html#get-account-balances) (Ripple-REST) or the [`account_lines` command](rippled-apis.html#account-lines) (rippled) to check your balances.
+* Use [`rippled`'s `account_lines` command](rippled-apis.html#account-lines) or [RippleAPI's `getTrustlines` method](rippleapi.html#gettrustlines) to check your balances.
 * If you have a [TransferRate](#transferrate) set, then your obligations within the Ripple network decrease slightly whenever other users transfer your issuances among themselves.
 
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transfer_rate` in Ripple-REST) defines a fee to charge for transferring issuances from one Ripple account to another. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
+The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one Ripple account to another. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
-The following is an example of a [Ripple-REST Update Account Settings request](ripple-rest.html#update-account-settings) to set the TransferRate for a fee of 0.5%.
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction for cold wallet account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
 Request:
 
 ```
-POST /v1/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/settings?validated=true
 
 {
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "settings": {
-    "transfer_rate": 1.005
-  }
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "10000",
+                "Flags": 0,
+                "TransferRate": 1005000000,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
 }
-
 ```
-_(**Reminder:** Don't send your secret to a server you do not control.)_
 
 Response:
 
 ```
-200 OK
-
 {
-  "success": true,
-  "settings": {
-    "transfer_rate": 1.005,
-    "require_destination_tag": false,
-    "require_authorization": false,
-    "disallow_xrp": false
-  },
-  "hash": "4D098C181DE0A21A55ACBD362E5ADBF24EA2493BD4E56F2137DBAF113327AB4E",
-  "ledger": "11158720",
-  "state": "validated"
+	"result": {
+		"engine_result": "tesSUCCESS",
+		"engine_result_code": 0,
+		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+		"status": "success",
+		"tx_blob": "1200032200000000240000000F2B3BE71540684000000000002710732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF74473045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E8114204288D2E47F8EF6C99BCC457966320D12409711",
+		"tx_json": {
+			"Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+			"Fee": "10000",
+			"Flags": 0,
+			"Sequence": 15,
+			"SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+			"TransactionType": "AccountSet",
+			"TransferRate": 1005000000,
+			"TxnSignature": "3045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E",
+			"hash": "24360352FBF5597F313E5985C1766BB4A0D277CE63219AC0C0D81014C1E663BB"
+		}
+	}
 }
 ```
 
-The field `transfer_rate` in the `settings` object should have the value you set. A successful response shows `"state": "validated"` when the change has been accepted into a validated Ripple ledger.
-
 ### TransferRate with Hot and Warm Wallets ###
 
-All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. You can accomplish this by setting the `source_amount` plus `slippage` (Ripple-REST) or the `SendMax` (rippled) parameters higher than the destination amount.
+All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. In other words, your hot wallet must pay back a little of the money your cold wallet issued it each time you make a payment.
 
-**Note:** The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment with `source_amount` and `destination_amount` of 5 EUR.ACME (and `slippage` of 0) would succeed if sent to ACME's cold wallet, but it would fail if sent to ACME's hot wallet. The hot wallet payment would only succeed if the `source_amount` plus `slippage` was at least 5.05 EUR.ACME.) If you accept payments to both accounts, you may want to adjust the amount you credit users in your external system to make up for fees they paid to redeem with the hot wallet.
+* In `rippled`'s APIs, you can accomplish this by setting the [`SendMax` transaction parameter](transactions.html#payment) higher than the destination `Amount` parameter.
+* In RippleAPI, you can accomplish this by setting the `source.maxAmount` parameter higher than the `destination.amount` parameter; or, by setting the `source.amount` parameter higher than the `destination.minAmount` parameter.
+
+**Note:** The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment to deliver 5 EUR.ACME from a user account to ACME's cold wallet would still only cost 5 EUR.ACME. However, the user would need to send 5.05 EUR.ACME in order to deliver 5 EUR.ACME to the hot wallet.) If you accept payments out of Ripple through both accounts, you may want to adjust the amount you credit users in your external system when customers send payments through the hot wallet, to compensate for the TransferRate the customer pays.
 
 
 ## Sending Payments to Users ##
 
-When you build an automated system to send payments into Ripple for your users, you must ensure that it constructs payments carefully. Malicious users are constantly trying to find ways to trick a system into paying them more money than it should. If you use Ripple-REST to construct payments, we recommend **not using** the Prepare Payment endpoint for payments from a hot wallet to a user. Sending from a hot wallet to a properly-configured user account requires only a default path, but the Prepare Payment method looks for _all_ possible paths to the destination account, including ones that have a higher `source_amount` than necessary.
+When you build an automated system to send payments into Ripple for your users, you must ensure that it constructs payments carefully. Malicious users are constantly trying to find ways to trick a system into paying them more money than it should.
 
-The following template can be used with Ripple-REST's [Submit Payment method](ripple-rest.html#submit-payment). You should also follow the [reliable transaction submission](#reliable-transaction-submission) guidelines and persist a copy of the transaction before submitting it.
+One common pitfall is performing pathfinding before sending sending a payment to users in Ripple. If you specify the issuers correctly, the [default paths](paths.html#default-paths) are sufficient to deliver the currency as intended. 
+
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send a payment from the hot wallet rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the user account raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the cold wallet rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
+
+Request:
 
 ```
-POST /v1/accounts/<HOT WALLET ADDRESS>/payments
 {
-  "secret": <HOT WALLET SECRET KEY>,
-  "client_resource_id": <UNIQUE CLIENT RESOURCE ID>,
-  "payment": {
-      "source_account": <HOT WALLET ADDRESS>,
-      "source_amount": {
-        "value": <DESTINATION AMOUNT, for example "100">,
-        "currency": <CURRENCY>,
-        "issuer": <COLD WALLET ADDRESS>
-      },
-      "source_slippage": <DESTINATION AMOUNT * TRANSFER FEE, for example "0.5">,
-      "source_tag": <OPTIONAL SOURCE TAG>,
-      "destination_account": <CUSTOMER ADDRESS>,
-      "destination_amount": {
-        "value": <DESTINATION AMOUNT>,
-        "currency": <CURRENCY>,
-        "issuer": <COLD WALLET ADDRESS>
-      }
-  }
+	"method": "submit",
+	"params": [{
+		"secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+		"tx_json": {
+			"TransactionType": "Payment",
+			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+			"Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+			"Amount": {
+				"currency": "USD",
+				"value": "0.13",
+				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+			},
+			"SendMax": {
+				"currency": "USD",
+				"value": "0.13065",
+				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+			},
+			"Fee": "10000"
+		}
+	}]
 }
 ```
 
 *Reminder: Don't send your secret to a server you do not control.*
 
-In particular, note the following features of the payment object:
+Response:
 
-- No `paths` field. The payment will only succeed if it can use a default path, which is preferable. Using less direct paths can become much more expensive.
-- The `issuer` of both the `source_amount` and the `destination_amount` is the cold wallet. This ensures that the transaction sends and delivers issuances from the cold wallet account, and not from some other gateway.
-- The `source_amount` uses the same `value` as the `destination_amount`. The [transfer fee](#transferrate), if there is one, is covered by the `slippage` field.
+```
+{
+	"result": {
+		"engine_result": "tesSUCCESS",
+		"engine_result_code": 0,
+		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+		"status": "success",
+		"tx_blob": "1200002280000000240000016561D4449E57D63540000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D1240971168400000000000271069D444A4413C6628000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D12409711732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143A4C02EA95AD6AC3BED92FA036E0BBFB712C030C",
+		"tx_json": {
+			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+			"Amount": {
+				"currency": "USD",
+				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+				"value": "0.13"
+			},
+			"Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+			"Fee": "10000",
+			"Flags": 2147483648,
+			"SendMax": {
+				"currency": "USD",
+				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+				"value": "0.13065"
+			},
+			"Sequence": 357,
+			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+			"TransactionType": "Payment",
+			"TxnSignature": "304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD",
+			"hash": "37B4AA5C77A8EB889164CA012E6F064A46B6B7B51677003FC3617F614608C60B"
+		}
+	}
+}
+```
+
+In particular, note the following features of the [Payment Transaction](transactions.html#payment):
+
+- No `Paths` field. The payment will only succeed if it can use a [default path](paths.html#default-paths), which is preferable. Using less direct paths can become much more expensive.
+- The `issuer` of both the `SendMax` and the `Amount` is the cold wallet. This ensures that the transaction sends and delivers issuances from the cold wallet account, and not from some other gateway.
+- The `value` of the `SendMax` amount is slightly higher than the destination `Amount`, in order to compensate for the [transfer fee](#transferrate). In this case, the transfer fee is 0.5%, so the `SendMax` amount is exactly 1.005 times the destination `Amount`.
 
 
 ## Bouncing Payments ##
@@ -658,64 +722,15 @@ When your hot or cold wallet receives a payment whose purpose is unclear, we rec
 
 The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The [Partial Payment Flag Gateway Bulletin](https://ripple.com/files/GB-2014-06.pdf) explains how to avoid a common problem.
 
-Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple network. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.
+Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.
 
-To send a Partial Payment in Ripple-REST, set the `partial_payment` field to true in the object returned by the [Prepare Payment method](ripple-rest.html#prepare-payment) before submitting it. Set the `source_amount` to be equal to the `destination_amount`. and the `slippage` to `"0"`. As long as your hot and cold wallets only send the currencies that your cold wallet issues, you should also remove the `paths` field, which is not necessary for simple payments. You should always specify your cold wallet as the issuer of the funds you want to deliver. (You can specify the issuer in the Prepare Payment request, or modify the `issuer` field of the `destination_amount` in the object you get back.)
+* To send a Partial Payment using `rippled`, enable the [tfPartialPayment flag](transactions.html#payment-flags) on the transaction. Set the `Amount` field to the amount you received and omit the `SendMax` field.
+* To send a Partial Payment using RippleAPI, set the `allowPartialPayment` field of the [Payment object](rippleapi.html#payment) to `true`. Set the `source.maxAmount` and `destination.amount` both equal to the amount you received.
 
-It is conventional that you take the Source Tag from the incoming payment (`source_tag` in Ripple-REST) and use that value as the Destination Tag (`destination_tag` in Ripple-REST) for the return payment.
+It is conventional that you take the `SourceTag` field from the incoming payment (`source.tag` in RippleAPI) and use that value as the `DestinationTag` field (`destination.tag` in RippleAPI) for the return payment.
 
 To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again. 
 
-The following is an example of a [Ripple-REST Submit Payment request](ripple-rest.html#submit-payment) to send a return payment. Particularly important fields include the [*destination_tag*](#source-and-destination-tags), setting `"slippage": "0"`, `"partial_payment": true`, the lack of a `"paths"` field, and the `issuer` of the `destination_amount` being the cold wallet:
-
-```
-POST /v1/accounts/rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv/payments?validated=true
-
-{
-  "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-  "client_resource_id": "fc521224-bdd8-4463-94a4-b26cb760fc92",
-  "last_ledger_sequence": "10968788",
-  "max_fee": "1.0",
-  "payment": {
-    "source_account": "rBEXjfD3MuXKATePRwrk4AqgqzuD9JjQqv",
-    "source_tag": "479686",
-    "source_amount": {
-      "value": "2",
-      "currency": "EUR",
-      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-    },
-    "source_slippage": "0",
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_tag": "803489",
-    "destination_amount": {
-      "value": "2",
-      "currency": "EUR",
-      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-    },
-    "invoice_id": "",
-    "partial_payment": true,
-    "no_direct_ripple": false
-  }
-}
-```
-_(**Reminder:** Don't send your secret to a server you do not control.)_
-
-
-## Setting Trust Lines in Ripple Trade ##
-
-As part of the [Hot and Cold Wallets](#hot-and-cold-wallets) model, each hot or warm wallet must have a trust line to the cold wallet. You can manually set up those trust lines by following these steps in the Ripple Trade client.
-
-1. Log in and go to the **Fund** tab:
-    ![Fund tab](img/connectgateway_01.png)
-2. Click **Gateways** in the sidebar:
-    ![Gateways](img/connectgateway_02.png)
-3. Enter the Ripple Name or Ripple Address of the Gateway's **cold wallet**, and click **Save**.
-    ![Enter gateway's name or address, then save](img/connectgateway_03.png)
-4. Enter the Ripple Trade password, and click **Submit**. (This allows access to send a transaction to the Ripple Network to create the trust line.)
-    ![Enter password and submit](img/connectgateway_04.png)
-5. When the page shows a green "Gateway connected" box, the transaction to create the trust line has succeeded and the Ripple Network has validated it.
-    ![Gateway connected](img/connectgateway_05.png)
-    
 
 ## Reliable Transaction Submission ##
 
@@ -727,16 +742,15 @@ The goal of reliably submitting transactions is to achieve the following two pro
 In order to achieve this, there are several steps you can take when submitting transactions:
 
 * Persist details of the transaction before submitting it.
-* Use the `LastLedgerSequence` parameter. (Ripple-REST and ripple-lib do this by default.)
+* Use the `LastLedgerSequence` parameter. (RippleAPI does this by default.)
 * Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For additional information, consult the [Reliable Transaction Submission](reliable_tx.html) guide.
 
 
-## ripple.txt and host-meta ##
+## ripple.txt ##
 
-The [ripple.txt](https://wiki.ripple.com/Ripple.txt) and host-meta standards provide a way to publish information about your gateway so that automated tools and applications can read and understand it.
+The [ripple.txt](https://wiki.ripple.com/Ripple.txt) standard provides a way to publish information about your gateway so that automated tools and applications can read and understand it.
 
 For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple account addresses you control, to protect against impostors or confusion.
 
-We recommend implementing one or both of ripple.txt and host-meta. (In the future, we expect ripple.txt to become obsolete, but not yet.)

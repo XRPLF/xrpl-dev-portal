@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>RippleAPI Quick Start Guide - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Flatdoc theme -->
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="vendor/docco.min.css">
+    <script src="vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="js/multicodetab.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="js/expandcode.js"></script>
+    <script src="js/fixsidebarscroll.js"></script>
+    
+    <!-- Custom Stylesheets -->
+    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
+    
+  
+</head>
+<body  class='no-literate'>
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                    <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+				</ul>
+                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <script type="text/javascript">
+    if (window.location.host.indexOf("github.io") > -1) {
+        document.write("<div style='background-color:red; color:white; position:fixed; top: 50px; right: 150px; padding: 10px 20px;'>DRAFT</div>");
+    }
+    </script>
+    <div class='wrapper'>
+    <div class='content-root'>
+        <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
+            </div>
+        </div>
+        <div class='content'>
+	        <h1 id="rippleapi-quick-start-guide">RippleAPI Quick Start Guide</h1>
+<p>This tutorial guides you through the basics of building a simple Ripple-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="rippleapi.html">RippleAPI</a>, a simple JavaScript API for accessing the Ripple Consensus Ledger.</p>
+<h1 id="environment-setup">Environment Setup</h1>
+<p>The first step to using RippleAPI successfully is setting up your development environment.</p>
+<h2 id="install-nodejs-and-npm">Install Node.js and npm</h2>
+<p>RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. Specifically, RippleAPI requires Node.js version 0.12, version 4.x, or higher.</p>
+<p>This step depends on your operating system. We recommend <a href="https://nodejs.org/en/download/package-manager/">the official instructions for installing Node.js using a package manager</a> for your operating system. If the packages for Node.js and <code>npm</code> (Node Package Manager) are separate (this includes Arch Linux, CentOS, Fedora, and RHEL), you should make sure to install both.</p>
+<p>After you have installed Node.js, you can check whether it's installed by checking the version of the <code>node</code> binary from a commandline:</p>
+<pre><code>node --version
+</code></pre>
+<p>On some platforms, the binary is named <code>nodejs</code> instead:</p>
+<pre><code>nodejs --version
+</code></pre>
+<h2 id="use-npm-to-install-rippleapi-and-dependencies">Use NPM to install RippleAPI and dependencies</h2>
+<p>RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). In order to use the new features of ECMAScript 6, RippleAPI depends on <a href="https://babeljs.io">Babel-Node</a> and its ES2015 presets. Fortunately you can use <code>npm</code> to install RippleAPI and these dependencies all at once.</p>
+<h4 id="1-create-a-new-directory-for-your-project">1. Create a new directory for your project</h4>
+<p>For example, to create a folder called <code>my_ripple_experiment</code>:</p>
+<pre><code>mkdir my_ripple_experiment &amp;&amp; cd my_ripple_experiment
+</code></pre>
+<p>Optionally, initiate a <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> repository in that directory so you can track changes to your code.</p>
+<pre><code>git init
+</code></pre>
+<p>Alternatively, you can <a href="https://help.github.com/articles/create-a-repo/">create a repo on GitHub</a> in order to version and share your work. After setting it up, <a href="https://help.github.com/articles/cloning-a-repository/">clone the repo</a> to your local machine and <code>cd</code> into that directory.</p>
+<h4 id="2-create-a-new-packagejson-file-for-your-project">2. Create a new <code>package.json</code> file for your project.</h4>
+<p>Here's a good template:</p>
+<pre><code>{
+  "name": "my_ripple_experiment",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "//": "Change the license to something appropriate. You may want to use 'UNLICENSED' if you are just starting out.",
+  "dependencies": {
+    "ripple-lib": "*",
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "*"
+  },
+  "babel": {
+    "presets": ["es2015"]
+  },
+  "devDependencies": {
+    "eslint": "*"
+  }
+}
+</code></pre>
+<p>This includes RippleAPI itself (<code>ripple-lib</code>), Babel (<code>babel-cli</code>), the ECMAScript 6 presets for Babel (<code>babel-preset-es2015</code>). It also has the optional add-on <a href="http://eslint.org/">ESLint</a> (<code>eslint</code>) for checking your code quality.</p>
+<h4 id="3-use-npm-to-install-the-dependencies">3. Use NPM to install the dependencies.</h4>
+<pre><code>npm install
+</code></pre>
+<p>This automatically installs all the dependencies defined in the <code>package.json</code> into the local folder <code>node_modules/</code>. (We recommend <em>not</em> using <code>npm -g</code> to install the dependencies globally.)</p>
+<p>The install process may take a while, and may end with a few warnings. The following warnings are benign, and do not indicate a real problem:</p>
+<pre><code>npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
+</code></pre>
+<h4 id="4-optional-tell-git-to-ignore-the-node-modules-folder">4. (Optional) Tell Git to ignore the <code>node_modules</code> folder.</h4>
+<p>If you are using Git to manage your repository, it's considered a good practice to omit the <code>node_modules</code> folder from the Git repo. Other people who check out your code can use <code>npm</code> to install the dependencies, and you don't have to keep the repo synchronized with changes to your modules. Edit the <code>.gitignore</code> file and add the following line to it:</p>
+<pre><code>/node_modules/
+</code></pre>
+<p>Save and commit the changes:</p>
+<pre><code>git add .gitignore
+git commit -m "ignore node_modules"
+</code></pre>
+<h1 id="first-rippleapi-script">First RippleAPI Script</h1>
+<p>With RippleAPI installed, it's time to test that it works. Here's a simple script that uses RippleAPI to retrieve information on a specific account:</p>
+<pre><code>'use strict';
+const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server
+});
+api.connect().then(() =&gt; {
+  /* begin custom code ------------------------------------ */
+  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+
+  console.log('getting account info for', my_address);
+  return api.getAccountInfo(my_address);
+
+// info =&gt; {...} is just a shorter syntax for function(info) {...}
+}).then(info =&gt; {
+  console.log(info);
+  console.log('getAccountInfo done');
+
+  /* end custom code -------------------------------------- */
+}).then(() =&gt; {
+  return api.disconnect();
+}).then(()=&gt; {
+  console.log('done and disconnected.');
+}).catch(console.error);
+</code></pre>
+<h2 id="running-the-script">Running the script</h2>
+<p>RippleAPI and the script both use the ECMAScript 6 version of JavaScript, which is (at this time) not supported by Node.js natively. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the <code>babel-node</code> binary, which NPM installs in the <code>node_modules/.bin/</code> directory of your project. Thus, running the script looks like this:</p>
+<pre><code>./node_modules/.bin/babel-node get-account-info.js
+</code></pre>
+<p>Output:</p>
+<pre><code>getting account info for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
+{ sequence: 359,
+  xrpBalance: '75.181663',
+  ownerCount: 4,
+  previousInitiatedTransactionID: 'E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9',
+  previousAffectingTransactionID: 'E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9',
+  previousAffectingTransactionLedgerVersion: 18489336 }
+getAccountInfo done
+done and disconnected.
+</code></pre>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>Even for a simple script, there's a lot packed into that, including some syntax and conventions that are recent developments in JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.</p>
+<h3 id="script-opening">Script opening</h3>
+<pre><code>'use strict';
+const {RippleAPI} = require('ripple-lib');
+</code></pre>
+<p>The opening line enables <a href="https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
+<p>The second line imports RippleAPI into the current scope using Node.js's require function. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring assignment</a> assigns it to the variable name <code>RippleAPI</code> instead of <code>ripple-lib</code> (which is the name of the package, for historical reasons).</p>
+<h3 id="instantiating-the-api">Instantiating the API</h3>
+<pre><code>const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server
+});
+</code></pre>
+<p>This section creates a new instance of the RippleAPI class, assigning it to the variable <code>api</code>. (The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const"><code>const</code> keyword</a> means you can't reassign the value <code>api</code> to some other value. The internal state of the object can still change, though.)</p>
+<p>The one argument to the constructor is an options object, which has <a href="rippleapi.html#parameters">a variety of options</a>. The <code>server</code> parameter tells it where it should connect to a <code>rippled</code> server.</p>
+<ul>
+<li>The example <code>server</code> setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.</li>
+<li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="rippleapi.html#offline-functionality">offline mode</a> instead, which severely limits what you can do with it.</li>
+<li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production Ripple Consensus Ledger.</li>
+<li>If you <a href="rippled-setup.html">run your own <code>rippled</code></a>, you can instruct it to connect to your local server. For example, you might say <code>server: 'ws://localhost:5005'</code> instead.</li>
+</ul>
+<h3 id="connecting-and-promises">Connecting and Promises</h3>
+<pre><code>api.connect().then(() =&gt; {
+</code></pre>
+<p>The <a href="rippleapi.html#connect">connect() method</a> is one of many RippleAPI methods that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, which is a special kind of JavaScript object. A Promise is designed to perform some asynchronous operation, like querying a the Ripple Consensus Ledger.</p>
+<p>When you get a Promise back from some expression (like <code>api.connect()</code>), you call the Promise's <code>then</code> method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class objects</a>.</p>
+<p>When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the <code>then</code> method is another Promise object, so you can "chain" that into another <code>then</code> method, or the Promise's <code>catch</code> method, which also takes a callback. The callback you provide to <code>catch</code> gets called if something goes wrong.</p>
+<p>Finally, we have more new ECMAScript 6 syntax - an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>. Arrow functions are just a shorter way of defining anonymous functions, which is pretty convenient when you're defining lots of one-off functions as callbacks, like we are here. The syntax <code>()=&gt; {...}</code> is mostly equivalent to <code>function() {...}</code>. If you want an anonymous function with one parameter, you can use a syntax like <code>info =&gt; {...}</code> instead, which is basically just <code>function(info) {...}</code> as well.</p>
+<h3 id="custom-code">Custom code</h3>
+<pre><code>  /* begin custom code ------------------------------------ */
+  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+
+  console.log('getting account info for',my_address);
+  return api.getAccountInfo(my_address);
+
+}).then( info =&gt; {
+  console.log(info);
+  console.log('getAccountInfo done');
+
+  /* end custom code -------------------------------------- */
+</code></pre>
+<p>This is the part that really defines what this script does, so this is the part you will probably spend the most time customizing.</p>
+<p>The example code looks up a Ripple account (belonging to <a href="https://github.com/mDuo13/">this writer</a>) by its address. You can substitute your own address, if you want.</p>
+<p>The <code>console.log()</code> function is a built-in tool in both Node.js and web browsers, which writes out to the console; this example includes lots of console output to make it easier to understand what the code is doing.</p>
+<p>Keep in mind that the example code starts in the middle of a callback function (called when RippleAPI finishes connecting). That function calls RippleAPI's <a href="rippleapi.html#getaccountinfo"><code>getAccountInfo</code></a> method, and returns the results.</p>
+<p>The results of that API method are another Promise, so the line <code>}).then( info =&gt; {</code> passes in another anonymous callback function to run when the second Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called <code>info</code>, which holds the -- actual -- return value from the <code>getAccountInfo</code> API method. The rest of this callback function just outputs that return value to the console.</p>
+<h3 id="cleanup">Cleanup</h3>
+<pre><code>}).then(() =&gt; {
+  return api.disconnect();
+}).then(()=&gt; {
+  console.log('done and disconnected.');
+}).catch(console.error);
+</code></pre>
+<p>The remainder of the sample code is mostly more <a href="rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes.</p>
+<p>Finally, we get to the <code>catch</code> method of this entire long Promise chain. If any of the Promises or their callback functions encounters an error, the callback provided here will run. One thing worth noting: instead of defining a new anonymous callback function here, we can just pass in the standard <code>console.error</code> function, which writes whatever arguments it gets out to the console. If you so desired, you could define a smarter callback function here which might intelligently catch certain error types.</p>
+<h1 id="waiting-for-validation">Waiting for Validation</h1>
+<p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="reliable_tx.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
+<pre><code>'use strict';
+/* import RippleAPI and support libraies*/
+const {RippleAPI} = require('ripple-lib');
+const assert = require('assert');
+
+/* Credentials of the account placing the order */
+const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+const my_secret = 's████████████████████████████';
+
+/* Define the order to place here */
+const my_order = {
+  'direction': 'buy',
+  'quantity': {
+    'currency': 'FOO',
+    'counterparty': 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v',
+    'value': '100'
+  },
+  'totalPrice': {
+    'currency': 'XRP',
+    'value': '1000'
+  }
+};
+
+/* Milliseconds to wait between checks for a new ledger. */
+const INTERVAL = 1000;
+/* Instantiate RippleAPI. Uses s2 (full history server) */
+const api = new RippleAPI({server: 'wss://s2.ripple.com'});
+/* number of ledgers to check for valid transaction before fail */
+const ledgerOffset = 5;
+const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
+
+
+/* Verify a transaction is in a validated RCL version */
+function verifyTransaction(hash, options) {
+  console.log('Verifing Transaction');
+  return api.getTransaction(hash, options).then(data =&gt; {
+    console.log('Final Result: ', data.outcome.result);
+    console.log('Validated in Ledger: ', data.outcome.ledgerVersion);
+    console.log('Sequence: ', data.sequence);
+    return data.outcome.result === 'tesSUCCESS';
+  }).catch(error =&gt; {
+    /* if transaction not in latest validated ledger try again until max ledger hit */
+    if (error instanceof api.errors.PendingLedgerVersionError) {
+      return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; verifyTransaction(hash, options)
+        .then(resolve, reject), INTERVAL);
+      });
+    }
+    return error;
+  });
+}
+
+
+/* function to prepare, sign, and submit a transaction to the RCL
+success verifies the transaction is being considered for the next ledger.
+Still requires vlaidation */
+function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
+  const signedData = api.sign(prepared.txJSON, secret);
+  return api.submit(signedData.signedTransaction).then(data =&gt; {
+    console.log('Tentative Result: ', data.resultCode);
+    console.log('Tentative Message: ', data.resultMessage);
+    /* if transaction was not successfully submitted throw error */
+    assert.strictEqual(data.resultCode, 'tesSUCCESS');
+    /* if successfully submitted fire off validation workflow */
+    const options = {
+      minLedgerVersion: lastClosedLedgerVersion,
+      maxLedgerVersion: prepared.instructions.maxLedgerVersion
+    };
+    return new Promise((resolve, reject) =&gt; {
+      setTimeout(() =&gt; verifyTransaction(signedData.id, options)
+    .then(resolve, reject), INTERVAL);
+    });
+  });
+}
+
+
+api.connect().then(() =&gt; {
+  console.log('Connected');
+  return api.prepareOrder(my_addr, my_order, my_instructions);
+}).then(prepared =&gt; {
+  console.log('Order Prepared');
+  return api.getLedger().then(ledger =&gt; {
+    console.log('Current Ledger', ledger.ledgerVersion);
+    return submitTransaction(ledger.ledgerVersion, prepared, my_secret);
+  });
+}).then(() =&gt; {
+  api.disconnect().then(() =&gt; {
+    console.log('api disconnected');
+    process.exit();
+  });
+}).catch(console.error);
+
+</code></pre>
+<p>This code uses </p>
+<h1 id="rippleapi-in-web-browsers">RippleAPI in Web Browsers</h1>
+<p>The process of using RippleAPI in a web browser is slightly different.</p>
+<h2 id="build-instructions">Build Instructions</h2>
+<p>Before you can use RippleAPI in a browser, you need to compile a browser-compatible version. The following process creates a single JavaScript file you can include in a webpage.</p>
+<h4 id="1-download-a-copy-of-the-rippleapi-git-repository">1. Download a copy of the RippleAPI git repository.</h4>
+<p>If you have <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> installed, you can clone the repository and check out the <strong>release</strong> branch, which always has the latest official release:</p>
+<pre><code>git clone https://github.com/ripple/ripple-lib.git
+cd ripple-lib
+checkout release
+</code></pre>
+<p>Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the <a href="https://github.com/ripple/ripple-lib/releases">RippleAPI releases page</a> and extract it.</p>
+<h4 id="2-install-dependencies-using-npm">2. Install dependencies using NPM</h4>
+<p>You need to have <a href="#install-nodejs-and-npm">NPM (Node.js Package Manager) installed</a> first.</p>
+<p>Then, from within the <code>ripple-lib</code> directory, you can use NPM to install all the necessary dependencies:</p>
+<pre><code>npm install
+</code></pre>
+<p>(We recommend <em>not</em> using <code>npm -g</code> to install dependencies globally.)</p>
+<p>This can take a while, and may include some warnings. The following warnings are benign and do not indicate a problem:</p>
+<pre><code>npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+</code></pre>
+<h4 id="3-use-gulp-to-build-a-single-javascript-output">3. Use Gulp to build a single JavaScript output</h4>
+<p>RippleAPI comes with code to use the <a href="http://gulpjs.com/">gulp</a> package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it:</p>
+<pre><code>./node_modules/.bin/gulp
+</code></pre>
+<p>This may take a little while. It outputs several things, and creates a new <code>build/</code> folder, which contains the files you want.</p>
+<p>The file <code>build/ripple-&lt;VERSION NUMBER&gt;.js</code> is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in <code>-min.js</code> is the same thing, but with the content <a href="https://en.wikipedia.org/wiki/Minification_%28programming%29">minified</a> for faster loading.</p>
+<h2 id="example-browser-usage">Example Browser Usage</h2>
+<p>The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public <code>rippled</code> server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named <code>ripple</code>, which contains the <code>RippleAPI</code> class.</p>
+<p>To use this example, you must first <a href="#build-instructions">build RippleAPI</a> and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Modify the first <code>&lt;script&gt;</code> tag in this example to use the correct file name for the version of RippleAPI you built.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="ripple-0.16.5.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    console.log(ripple);
+    var api = new ripple.RippleAPI({server:'wss://s1.ripple.com/'});
+    api.connect().then(()=&gt;{
+        return api.getServerInfo();
+    }).then(server_info=&gt;{
+    document.body.innerHTML += `&lt;p&gt;Connected to rippled server!&lt;/p&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;
+          &lt;td&gt;${ server_info.buildVersion }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;
+          &lt;td&gt;${ server_info.completeLedgers }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;
+          &lt;td&gt;${ server_info.hostID }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.ledgerVersion }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.hash }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.age }&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;`;
+    });
+  &lt;/script&gt;
+  &lt;style type="text/css"&gt;
+    td, th { border: 1px solid black; padding: 5px; }
+    table { border-collapse: collapse; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+    </div>
+    </div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+		        <h4>Documentation</h4>
+			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Resources</h4>
+				<ul class="footer_links">
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Ripple Projects</h4>
+				<ul class="footer_links">
+					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+					<li><a href="https://ripple.com/graph">Ripple Graph</a>
+					<li><a href="http://codius.org/">Codius</a>
+				</ul>
+			</div>
+			<div class="col-md-3">
+		        <h4>Ripple Labs</h4>
+			    <ul class="footer_links">
+				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
+                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
+                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
+                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
+                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
+                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
+                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
+                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
+			    </ul>
+      		</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
