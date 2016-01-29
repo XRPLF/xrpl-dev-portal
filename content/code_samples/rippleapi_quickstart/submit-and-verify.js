@@ -3,7 +3,7 @@
 const {RippleAPI} = require('ripple-lib');
 const assert = require('assert');
 
-/* Credentials of the account placing the offer */
+/* Credentials of the account placing the order */
 const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 const my_secret = 's████████████████████████████';
 
@@ -34,7 +34,7 @@ const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
 function verifyTransaction(hash, options) {
   console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data => {
-    console.log('Result: ', data.outcome.result);
+    console.log('Final Result: ', data.outcome.result);
     console.log('Validated in Ledger: ', data.outcome.ledgerVersion);
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
@@ -57,8 +57,8 @@ Still requires vlaidation */
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
   const signedData = api.sign(prepared.txJSON, secret);
   return api.submit(signedData.signedTransaction).then(data => {
-    console.log('Result: ', data.resultCode);
-    console.log('Message: ', data.resultMessage);
+    console.log('Tentative Result: ', data.resultCode);
+    console.log('Tentative Message: ', data.resultMessage);
     /* if transaction was not successfully submitted throw error */
     assert.strictEqual(data.resultCode, 'tesSUCCESS');
     /* if successfully submitted fire off validation workflow */
