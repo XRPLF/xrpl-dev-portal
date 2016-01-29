@@ -148,7 +148,7 @@
 <li>The JSON-RPC API relies on simple request-response communication via HTTP or HTTPS. (The <code>rippled</code> server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.</li>
 <li>The <code>rippled</code> program can also be used as a quick commandline client to make JSON-RPC requests to a running <code>rippled</code> server. This is only intended for administrative purposes, and is not a supported API.</li>
 </ul>
-<p>In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. JSON-RPC must open and close an HTTP connection for each individual message. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. However, all three have valid use cases and will continue to be supported for the foreseeable future.</p>
+<p>In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. On the other hand, there is widespread support for JSON-RPC because you can use a standard HTTP library to connect to <code>rippled</code>'s JSON-RPC API.</p>
 <h2 id="changes-to-the-apis">Changes to the APIs</h2>
 <p>The WebSocket and JSON-RPC APIs are still in development, and are subject to change. If you want to be notified of upcoming changes and future versions of <code>rippled</code>, subscribe to the Ripple Server mailing list:</p>
 <p><a href="https://groups.google.com/forum/#!forum/ripple-server">https://groups.google.com/forum/#!forum/ripple-server</a></p>
@@ -158,36 +158,70 @@
 <p>The <a href="https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854">example config file</a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
 <h3 id="websocket-api">WebSocket API</h3>
 <p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="ripple-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p>
+<h4 id="request-formatting">Request Formatting</h4>
+<p>After you open a WebSocket to the <code>rippled</code> server, you can send commands as a <a href="http://www.w3schools.com/json/">JSON</a> object, with the following attributes:</p>
+<ul>
+<li>Put command name in top-level <code>"command"</code> field</li>
+<li>All the relevant parameters for the command are also in the top level</li>
+<li>Optionally include an <code>"id"</code> field with an arbitrary value. The response to this request uses the same <code>"id"</code> field. This way, even if responses arrive out of order, you know which request prompted which response.</li>
+</ul>
+<p>The response comes as a JSON object.</p>
+<h4 id="public-servers">Public Servers</h4>
 <p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p>
 <table>
 <thead>
 <tr>
 <th>Domain</th>
 <th>Port</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>s1.ripple.com</td>
 <td>443</td>
+<td><code>wss://</code> only; general purpose server</td>
+</tr>
+<tr>
+<td>s2.ripple.com</td>
+<td>443</td>
+<td><code>wss://</code> only; full-history server</td>
 </tr>
 </tbody>
 </table>
 <p>These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own <code>rippled</code> server or contract someone you trust to do so.</p>
 <h3 id="json-rpc">JSON-RPC</h3>
-<p>You can use any HTTP client (like <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Poster for Firefox</a> or <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman for Chrome</a>) to make JSON-RPC calls a <code>rippled</code> server. </p>
+<p>You can use any HTTP client (like <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Poster for Firefox</a> or <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman for Chrome</a>) to make JSON-RPC calls a <code>rippled</code> server. Most programming languages have a library for making HTTP requests built in.</p>
+<h4 id="request-formatting-1">Request Formatting</h4>
+<p>To make a JSON-RPC request, send an HTTP <strong>POST</strong> request to the root path (<code>/</code>) on the port and IP where the <code>rippled</code> server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS v1.2. For security reasons, <code>rippled</code> <em>does not support</em> SSL v3 or earlier.</p>
+<p>Always include a <code>Content-Type</code> header with the value <code>application/json</code>.</p>
+<p>If you plan on making multiple requests, use <a href="http://tools.ietf.org/html/rfc7230#section-6.3">Keep-Alives</a> so that you do not have to close and re-open the connection in between requests.</p>
+<p>Send request body as a <a href="http://www.w3schools.com/json/">JSON</a> object with the following attributes:</p>
+<ul>
+<li>Put the command in the top-level <code>"method"</code> field</li>
+<li>Include a top-level <code>"params"</code> field. The contents of this field should be <strong>a one-item array</strong> where the one items is a nested JSON object with all the parameters for the command.</li>
+</ul>
+<p>The response is also a JSON object.</p>
+<h4 id="public-servers-1">Public Servers</h4>
 <p>Currently, Ripple Labs maintains a set of public JSON-RPC servers at:</p>
 <table>
 <thead>
 <tr>
 <th>Domain</th>
 <th>Port</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>s1.ripple.com</td>
 <td>51234</td>
+<td>General purpose server</td>
+</tr>
+<tr>
+<td>s2.ripple.com</td>
+<td>51234</td>
+<td>Full-history server</td>
 </tr>
 </tbody>
 </table>
@@ -196,14 +230,9 @@
 <p>The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. As a commandline client, <code>rippled</code> connects to the local instance. For example:</p>
 <pre><code>rippled --conf=/etc/rippled.cfg server_info
 </code></pre>
-<h2 id="request-formatting">Request Formatting</h2>
-<p>Both the WebSocket API and the JSON-RPC API use <a href="http://www.w3schools.com/json/">JSON</a> for requests and responses. The methods and parameters available on both APIs are generally the same, but the exact formatting is slightly different between the two. The commandline interface supports the same commands, with the parameters in the commandline as well.</p>
-<ul>
-<li>A WebSocket request puts the command name in the <code>"command"</code> field alongside the command's parameters at the top level of the JSON object, with an optional <code>"id"</code> field that will be returned with the response, so you can identify responses that come back out of order. </li>
-<li>A JSON-RPC request puts the command in the <code>"method"</code> field, with parameters in a separate object, as the first member of a <code>"params"</code> array. There is no <code>"id"</code> field, since all responses are direct replies to the requests.</li>
-<li>The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. </li>
-</ul>
-<h4 id="example-request">Example Request</h4>
+<h4 id="request-formatting-2">Request Formatting</h4>
+<p>The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them.</p>
+<h2 id="example-request">Example Request</h2>
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
@@ -448,7 +477,7 @@ Null method
 <tr>
 <td>result.request</td>
 <td>Object</td>
-<td>A copy of the request that prompted this error, in JSON format. <strong><em>Caution:</em></strong> If the request contained any account secrets, they are copied here! <strong><em>Note:</em></strong> The request is re-formatted in WebSocket format, regardless of the request made. This may be changed in the future: See <a href="https://ripplelabs.atlassian.net/browse/RIPD-279">RIPD-279</a>.</td>
+<td>A copy of the request that prompted this error, in JSON format. <strong>Caution:</strong> If the request contained any account secrets, they are copied here! <strong>Note:</strong> The request is re-formatted in WebSocket format, regardless of the request made.</td>
 </tr>
 </tbody>
 </table>
@@ -546,7 +575,7 @@ Null method
 <h4 id="specifying-currencies-without-amounts">Specifying Currencies Without Amounts</h4>
 <p>If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the <code>value</code> field.</p>
 <p>If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with <em>only</em> a <code>currency</code> field. Never include an <code>issuer</code> field for XRP.</p>
-<p>Finally, if you are specifying a non-currency for a payment or path definition, and the recipient account of the payment trusts multiple gateways that issue the same currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the <code>issuer</code> value in the JSON object.</p>
+<p>Finally, if the recipient account of the payment trusts multiple gateways for a currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the <code>issuer</code> value in the JSON object.</p>
 <h3 id="specifying-time">Specifying Time</h3>
 <p>The <code>rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is similar to the way the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p>
 <p>Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.</p>
@@ -673,8 +702,7 @@ Null method
     "command": "account_currencies",
     "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
     "strict": true,
-    "ledger_index": "validated",
-    "account_index": 0
+    "ledger_index": "validated"
 }
 </code></pre>
 <p><em>JSON-RPC</em></p>
@@ -830,7 +858,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><em>Note:</em> The currencies that an account can send or receive are defined based on a simple check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>does not</em> check whether the trust line is frozen or authorized.</p>
+<p><em>Note:</em> The currencies that an account can send or receive are defined based on a simple check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>doesn't</em> check whether the trust line is <a href="freeze.html">frozen</a> or authorized.</p>
 <h4 id="possible-errors">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -997,7 +1025,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>validated</td>
 <td>Boolean</td>
-<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-275">New in version 0.26</a>)</td>
+<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. (<a href="https://wiki.ripple.com/Rippled-0.26.0">New in version 0.26</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1068,12 +1096,12 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-343">New in 0.26.4</a>)</td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>(Optional) Server-provided value to specify where to resume retrieving data from. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-343">New in 0.26.4</a>)</td>
+<td>(Optional) Server-provided value to specify where to resume retrieving data from. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1390,22 +1418,22 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-343">New in 0.26.4</a>)</td>
+<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1482,7 +1510,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>actNotFound</code> - The address specified in the <code>account</code> field of the request does not correspond to an account in the ledger.</li>
 <li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
-<li><code>actMalformed</code> - If the <code>marker</code> field provided is not acceptable. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-684">RIPD-684</a>)</li>
+<li><code>actMalformed</code> - If the <code>marker</code> field provided is not acceptable.</li>
 </ul>
 <h2 id="account-offers">account_offers</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp" title="Source">[Source]<br/></a></p>
@@ -1494,8 +1522,8 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <pre><code>{
   "id": 2,
   "command": "account_offers",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "ledger_index": "current"
+  "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+  "ledger": "current"
 }
 </code></pre>
 <p><em>JSON-RPC</em></p>
@@ -1503,7 +1531,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
     "method": "account_offers",
     "params": [
         {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
             "ledger_index": "current"
         }
     ]
@@ -1548,12 +1576,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-344">New in 0.26.4</a>)</td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-344">New in 0.26.4</a>)</td>
+<td>Server-provided value to specify where to resume retrieving data from. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1563,23 +1591,40 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-  "id": 2,
+  "id": 9,
   "status": "success",
   "type": "response",
   "result": {
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+    "ledger_current_index": 18539550,
     "offers": [
       {
         "flags": 0,
-        "seq": 1399,
-        "taker_gets": "16666666",
+        "quality": "0.00000000574666765650638",
+        "seq": 6577664,
+        "taker_gets": "33687728098",
+        "taker_pays": {
+          "currency": "EUR",
+          "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+          "value": "193.5921774819578"
+        }
+      },
+      {
+        "flags": 0,
+        "quality": "7989247009094510e-27",
+        "seq": 6572128,
+        "taker_gets": "2361918758",
         "taker_pays": {
           "currency": "XAU",
-          "issuer": "rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx",
-          "value": "0.0001"
+          "issuer": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
+          "value": "0.01886995237307572"
         }
-      }
-    ]
+      },
+
+      ...
+
+    ],
+    "validated": false
   }
 }
 </code></pre>
@@ -1587,9 +1632,45 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <pre><code>200 OK
 {
     "result": {
-        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-        "offers": [],
-        "status": "success"
+        "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+        "ledger_current_index": 18539596,
+        "offers": [{
+            "flags": 0,
+            "quality": "0.000000007599140009999998",
+            "seq": 6578020,
+            "taker_gets": "29740867287",
+            "taker_pays": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                "value": "226.0050145327418"
+            }
+        }, {
+            "flags": 0,
+            "quality": "7989247009094510e-27",
+            "seq": 6572128,
+            "taker_gets": "2361918758",
+            "taker_pays": {
+                "currency": "XAU",
+                "issuer": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
+                "value": "0.01886995237307572"
+            }
+        }, {
+            "flags": 0,
+            "quality": "0.00000004059594001318974",
+            "seq": 6576905,
+            "taker_gets": "3892952574",
+            "taker_pays": {
+                "currency": "CNY",
+                "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+                "value": "158.0380691682966"
+            }
+        },
+
+        ...
+
+        ],
+        "status": "success",
+        "validated": false
     }
 }
 </code></pre>
@@ -1617,22 +1698,22 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-682">New in 0.26.4-sp1</a>)</td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. (<a href="https://ripplelabs.atlassian.net/browse/RIPD-344">New in 0.26.4</a>)</td>
+<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1666,6 +1747,11 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <td>String or Object</td>
 <td>The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a>)</td>
 </tr>
+<tr>
+<td>quality</td>
+<td>Number</td>
+<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. _(<a href="https://wiki.ripple.com/Rippled-0.29.0">New in version 0.29.0</a>)</td>
+</tr>
 </tbody>
 </table>
 <h4 id="possible-errors-3">Possible Errors</h4>
@@ -1674,7 +1760,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>actNotFound</code> - The address specified in the <code>account</code> field of the request does not correspond to an account in the ledger.</li>
 <li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
-<li><code>actMalformed</code> - If the <code>marker</code> field provided is not acceptable. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-684">RIPD-684</a>)</li>
+<li><code>actMalformed</code> - If the <code>marker</code> field provided is not acceptable.</li>
 </ul>
 <h2 id="account-objects">account_objects</h2>
 <p><a href="https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp" title="Source">[Source]<br/></a></p>
@@ -3469,7 +3555,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <h2 id="wallet-propose">wallet_propose</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>wallet_propose</code> method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The <code>wallet_propose</code> command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)</p>
-<p><em>The <code>wallet_propose</code> request is an admin command that cannot be run by unpriviledged users!</em> (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)</p>
+<p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em> (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)</p>
 <h4 id="request-format-8">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -4449,7 +4535,7 @@ rippled ledger_current
 <h2 id="ledger-request">ledger_request</h2>
 <p><a href="https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_request</code> command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.</p>
-<p><em>The <code>ledger_request</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>ledger_request</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-14">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -4594,7 +4680,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ledger-accept">ledger_accept</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_accept</code> method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the <code>rippled</code> server is running stand-alone mode.</p>
-<p><em>The <code>ledger_accept</code> method is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>ledger_accept</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-15">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -6010,7 +6096,7 @@ rippled tx_history 0
 </ul>
 <h2 id="path-find">path_find</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" title="Source">[Source]<br/></a></p>
-<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a path along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p>
+<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p>
 <p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code>subcommand</code> parameter:</p>
 <ul>
 <li><code>create</code> - Start sending pathfinding information </li>
@@ -6661,7 +6747,7 @@ rippled tx_history 0
 </ul>
 <h2 id="ripple-path-find">ripple_path_find</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>ripple_path_find</code> method is a simplified version of <a href="#path-find"><code>path_find</code></a> that provides a single response to be used to make a payment transaction immediately. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code>path_find</code></a> instead where possible.</p>
+<p>The <code>ripple_path_find</code> method is a simplified version of <a href="#path-find"><code>path_find</code></a> that provides a single response with a <a href="paths.html">payment path</a> you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code>path_find</code></a> instead where possible.</p>
 <p>Although the <code>rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<strong><em>Note:</em></strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
 <h4 id="request-format-22">Request Format</h4>
 <p>An example of the request format:</p>
@@ -7121,7 +7207,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>build_path</td>
 <td>Boolean</td>
-<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-173">RIPD-173</a> for status.)</td>
+<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td>fee_mult_max</td>
@@ -7321,7 +7407,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>build_path</td>
 <td>Boolean</td>
-<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-173">RIPD-173</a> for status.)</td>
+<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td>fee_mult_max</td>
@@ -7580,7 +7666,6 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note:</em></strong> The other parameters of this command (<code>marker</code>, <code>proof</code>, and <code>autobridge</code>) cannot be fully implemented with the current design. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-295">RIPD-295</a> for more information).</p>
 <p>Normally, offers that are not funded are omitted; however, offers made by the specified <code>taker</code> account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.</p>
 <h4 id="response-format-25">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -8242,7 +8327,6 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
-<li><em>Unknown Stream</em> - One or more the members of the <code>streams</code> field in the request was not recognized as a valid stream name. (The response does not use an exact code; this is a bug. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-702">RIPD-702</a> for details and status.)</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
 <li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong><em>Note</em></strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)</li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
@@ -8314,32 +8398,129 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p><em>JSON-RPC</em></p>
 <pre><code>200 OK
 {
-    "result": {
-        "info": {
-            "build_version": "0.26.3",
-            "complete_ledgers": "32570-8696244",
-            "hostid": "AIR",
-            "io_latency_ms": 1,
-            "last_close": {
-                "converge_time_s": 3.123,
-                "proposers": 5
+   "result" : {
+      "info" : {
+         "build_version" : "0.30.1-b15",
+         "complete_ledgers" : "32570-18217433",
+         "hostid" : "sjc13",
+         "io_latency_ms" : 1,
+         "last_close" : {
+            "converge_time_s" : 2.001,
+            "proposers" : 4
+         },
+         "load" : {
+            "job_types" : [
+               {
+                  "job_type" : "untrustedValidation",
+                  "peak_time" : 2,
+                  "per_second" : 2
+               },
+               {
+                  "avg_time" : 1,
+                  "job_type" : "ledgerRequest",
+                  "peak_time" : 82,
+                  "per_second" : 6
+               },
+               {
+                  "job_type" : "untrustedProposal",
+                  "per_second" : 3
+               },
+               {
+                  "avg_time" : 1,
+                  "in_progress" : 2,
+                  "job_type" : "clientCommand",
+                  "peak_time" : 39,
+                  "per_second" : 1
+               },
+               {
+                  "in_progress" : 1,
+                  "job_type" : "updatePaths"
+               },
+               {
+                  "job_type" : "transaction",
+                  "peak_time" : 1
+               },
+               {
+                  "avg_time" : 29,
+                  "job_type" : "writeObjects",
+                  "peak_time" : 209
+               },
+               {
+                  "avg_time" : 28,
+                  "job_type" : "acceptLedger",
+                  "peak_time" : 88
+               },
+               {
+                  "job_type" : "trustedProposal",
+                  "peak_time" : 2,
+                  "per_second" : 2
+               },
+               {
+                  "job_type" : "peerCommand",
+                  "per_second" : 529
+               },
+               {
+                  "avg_time" : 29,
+                  "job_type" : "diskAccess",
+                  "peak_time" : 209
+               },
+               {
+                  "avg_time" : 316,
+                  "job_type" : "pathFind",
+                  "peak_time" : 2663
+               },
+               {
+                  "job_type" : "SyncReadNode",
+                  "per_second" : 135
+               },
+               {
+                  "job_type" : "WriteNode",
+                  "peak_time" : 2,
+                  "per_second" : 77
+               }
+            ],
+            "threads" : 6
+         },
+         "load_factor" : 1000,
+         "load_factor_net" : 1000,
+         "peers" : 66,
+         "pubkey_node" : "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
+         "pubkey_validator" : "none",
+         "server_state" : "full",
+         "state_accounting" : {
+            "connected" : {
+               "duration_us" : "102137155",
+               "transitions" : 1
             },
-            "load_factor": 1,
-            "peers": 62,
-            "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
-            "server_state": "full",
-            "validated_ledger": {
-                "age": 3,
-                "base_fee_xrp": 1e-05,
-                "hash": "43660857C8FD74D8D5B9D6D9E3D4BE11FAD92985F6B8C9A406DC1F87FF6CB77F",
-                "reserve_base_xrp": 20,
-                "reserve_inc_xrp": 5,
-                "seq": 8696244
+            "disconnected" : {
+               "duration_us" : "1126989",
+               "transitions" : 1
             },
-            "validation_quorum": 3
-        },
-        "status": "success"
-    }
+            "full" : {
+               "duration_us" : "233465512872",
+               "transitions" : 514
+            },
+            "syncing" : {
+               "duration_us" : "1480415394",
+               "transitions" : 514
+            },
+            "tracking" : {
+               "duration_us" : "25881256",
+               "transitions" : 514
+            }
+         },
+         "uptime" : 235075,
+         "validated_ledger" : {
+            "base_fee_xrp" : 1e-05,
+            "hash" : "EB4EB596D85381AAE54196648FC3FAD28A49091CF03ACF7812EF1D311252656C",
+            "reserve_base_xrp" : 20,
+            "reserve_inc_xrp" : 5,
+            "seq" : 18217433
+         },
+         "validation_quorum" : 3
+      },
+      "status" : "success"
+   }
 }
 </code></pre>
 </div>
@@ -9426,7 +9607,7 @@ Connecting to 127.0.0.1:5005
 <h4 id="possible-errors-34">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>internal</code> if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return <code>invalidParams</code> instead. See <a href="https://ripplelabs.atlassian.net/browse/RIPD-916">RPD-916</a> for status.)</li>
+<li><code>internal</code> if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return <code>invalidParams</code> instead.)</li>
 </ul>
 <h2 id="log-level">log_level</h2>
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>
@@ -9739,7 +9920,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="validation-seed">validation_seed</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>validation_seed</code> command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.</p>
-<p><em>The <code>validation_seed</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-39">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9834,7 +10015,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="peers">peers</h2>
 <p><a href="https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>peers</code> command returns a list of all other <code>rippled</code> servers currently connected to this one, including information on their connection and sync status.</p>
-<p><em>The <code>peers</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-40">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -10133,7 +10314,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="print">print</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>print</code> command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.</p>
-<p><em>The <code>print</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-41">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -10493,7 +10674,7 @@ rippled -q json ledger_closed '{}'
 <h2 id="connect">connect</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>connect</code> command forces the rippled server to connect to a specific peer rippled server.</p>
-<p><em>The <code>connect</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-45">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -10591,7 +10772,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="stop">stop</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp" title="Source">[Source]<br/></a></p>
 <p>Gracefully shuts down the server.</p>
-<p><em>The <code>stop</code> request is an admin command that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-46">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
