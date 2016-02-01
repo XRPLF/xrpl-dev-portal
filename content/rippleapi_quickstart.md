@@ -118,7 +118,7 @@ done and disconnected.
 
 ## Understanding the script ##
 
-Even for a simple script, there's a lot packed into that, including quite a few conventions that are part of standard JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.
+Even for a simple script, there's a lot packed into that, including some syntax and conventions that are recent developments in JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.
 
 ### Script opening ###
 
@@ -209,3 +209,72 @@ One of the biggest challenges in using the Ripple Consensus Ledger (or any decen
 ```
 {% include 'code_samples/rippleapi_quickstart/submit-and-verify.js' %}
 ```
+
+This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.
+
+Unfortunately, there are occasional tricky race conditions where very similar code might miss a confirmed transaction. This has to do with the fact that `rippled` returns a "not found" error if you look for a transaction that isn't in a ledger it has on hand. It's extremely unlikely to happen in the code as written, but it's possible that similar code with a larger interval between checks, or delayed due a power outage, may indicate that the transaction was not validated even when it was. This only occurs if the `rippled` server has an incomplete ledger history, either because it deletes or has not yet written the ledger where the submitted transaction was validated. The best solution is to check what ledger versions are available before taking any action to re-submit a transaction. See [Reliable Transaction Submission](reliable_tx.html) for a more thorough explanation.
+
+
+
+# RippleAPI in Web Browsers #
+
+The process of using RippleAPI in a web browser is slightly different.
+
+## Build Instructions ##
+
+Before you can use RippleAPI in a browser, you need to compile a browser-compatible version. The following process creates a single JavaScript file you can include in a webpage.
+
+#### 1. Download a copy of the RippleAPI git repository.
+
+If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed, you can clone the repository and check out the **release** branch, which always has the latest official release:
+
+```
+git clone https://github.com/ripple/ripple-lib.git
+cd ripple-lib
+checkout release
+```
+
+Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.
+
+
+#### 2. Install dependencies using NPM
+
+You need to have [NPM (Node.js Package Manager) installed](#install-nodejs-and-npm) first.
+
+Then, from within the `ripple-lib` directory, you can use NPM to install all the necessary dependencies:
+
+```
+npm install
+```
+
+(We recommend _not_ using `npm -g` to install dependencies globally.)
+
+This can take a while, and may include some warnings. The following warnings are benign and do not indicate a problem:
+
+```
+npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+```
+
+#### 3. Use Gulp to build a single JavaScript output
+
+RippleAPI comes with code to use the [gulp](http://gulpjs.com/) package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it:
+
+```
+./node_modules/.bin/gulp
+```
+
+This may take a little while. It outputs several things, and creates a new `build/` folder, which contains the files you want.
+
+The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading.
+
+## Example Browser Usage ##
+
+The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
+
+To use this example, you must first [build RippleAPI](#build-instructions) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Modify the first `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
+
+```
+{% include 'code_samples/rippleapi_quickstart/browser-demo.html' %}
+```
+

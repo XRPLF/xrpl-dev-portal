@@ -153,7 +153,10 @@
 <p>For example, to create a folder called <code>my_ripple_experiment</code>:</p>
 <pre><code>mkdir my_ripple_experiment &amp;&amp; cd my_ripple_experiment
 </code></pre>
-<p>Alternatively, you can <a href="https://help.github.com/articles/create-a-repo/">create a repo on GitHub</a> in order to share your work. After setting it up, <a href="https://help.github.com/articles/cloning-a-repository/">clone the repo</a> to your local machine and <code>cd</code> into that directory.</p>
+<p>Optionally, initiate a <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> repository in that directory so you can track changes to your code.</p>
+<pre><code>git init
+</code></pre>
+<p>Alternatively, you can <a href="https://help.github.com/articles/create-a-repo/">create a repo on GitHub</a> in order to version and share your work. After setting it up, <a href="https://help.github.com/articles/cloning-a-repository/">clone the repo</a> to your local machine and <code>cd</code> into that directory.</p>
 <h4 id="2-create-a-new-packagejson-file-for-your-project">2. Create a new <code>package.json</code> file for your project.</h4>
 <p>Here's a good template:</p>
 <pre><code>{
@@ -186,7 +189,7 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 </code></pre>
 <h4 id="4-optional-tell-git-to-ignore-the-node-modules-folder">4. (Optional) Tell Git to ignore the <code>node_modules</code> folder.</h4>
-<p>If you are using Git to manage your repository, it's considered a good practice to omit the <code>node_modules</code> folder from the Git repo. Other people who check out your code can use <code>npm</code> to install the dependencies, and you don't have to keep the repo synchronized with changes to other people's code. Edit the <code>.gitignore</code> file and add the following line to it:</p>
+<p>If you are using Git to manage your repository, it's considered a good practice to omit the <code>node_modules</code> folder from the Git repo. Other people who check out your code can use <code>npm</code> to install the dependencies, and you don't have to keep the repo synchronized with changes to your modules. Edit the <code>.gitignore</code> file and add the following line to it:</p>
 <pre><code>/node_modules/
 </code></pre>
 <p>Save and commit the changes:</p>
@@ -236,7 +239,7 @@ getAccountInfo done
 done and disconnected.
 </code></pre>
 <h2 id="understanding-the-script">Understanding the script</h2>
-<p>Even for a simple script, there's a lot packed into that, including quite a few conventions that are part of standard JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.</p>
+<p>Even for a simple script, there's a lot packed into that, including some syntax and conventions that are recent developments in JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.</p>
 <h3 id="script-opening">Script opening</h3>
 <pre><code>'use strict';
 const {RippleAPI} = require('ripple-lib');
@@ -297,7 +300,7 @@ const {RippleAPI} = require('ripple-lib');
 const {RippleAPI} = require('ripple-lib');
 const assert = require('assert');
 
-/* Credentials of the account placing the offer */
+/* Credentials of the account placing the order */
 const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 const my_secret = 's████████████████████████████';
 
@@ -328,7 +331,7 @@ const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
 function verifyTransaction(hash, options) {
   console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data =&gt; {
-    console.log('Result: ', data.outcome.result);
+    console.log('Final Result: ', data.outcome.result);
     console.log('Validated in Ledger: ', data.outcome.ledgerVersion);
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
@@ -351,8 +354,8 @@ Still requires vlaidation */
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
   const signedData = api.sign(prepared.txJSON, secret);
   return api.submit(signedData.signedTransaction).then(data =&gt; {
-    console.log('Result: ', data.resultCode);
-    console.log('Message: ', data.resultMessage);
+    console.log('Tentative Result: ', data.resultCode);
+    console.log('Tentative Message: ', data.resultMessage);
     /* if transaction was not successfully submitted throw error */
     assert.strictEqual(data.resultCode, 'tesSUCCESS');
     /* if successfully submitted fire off validation workflow */
@@ -384,6 +387,73 @@ api.connect().then(() =&gt; {
   });
 }).catch(console.error);
 
+</code></pre>
+<p>This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.</p>
+<p>Unfortunately, there are occasional tricky race conditions where very similar code might miss a confirmed transaction. This has to do with the fact that <code>rippled</code> returns a "not found" error if you look for a transaction that isn't in a ledger it has on hand. It's extremely unlikely to happen in the code as written, but it's possible that similar code with a larger interval between checks, or delayed due a power outage, may indicate that the transaction was not validated even when it was. This only occurs if the <code>rippled</code> server has an incomplete ledger history, either because it deletes or has not yet written the ledger where the submitted transaction was validated. The best solution is to check what ledger versions are available before taking any action to re-submit a transaction. See <a href="reliable_tx.html">Reliable Transaction Submission</a> for a more thorough explanation.</p>
+<h1 id="rippleapi-in-web-browsers">RippleAPI in Web Browsers</h1>
+<p>The process of using RippleAPI in a web browser is slightly different.</p>
+<h2 id="build-instructions">Build Instructions</h2>
+<p>Before you can use RippleAPI in a browser, you need to compile a browser-compatible version. The following process creates a single JavaScript file you can include in a webpage.</p>
+<h4 id="1-download-a-copy-of-the-rippleapi-git-repository">1. Download a copy of the RippleAPI git repository.</h4>
+<p>If you have <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> installed, you can clone the repository and check out the <strong>release</strong> branch, which always has the latest official release:</p>
+<pre><code>git clone https://github.com/ripple/ripple-lib.git
+cd ripple-lib
+checkout release
+</code></pre>
+<p>Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the <a href="https://github.com/ripple/ripple-lib/releases">RippleAPI releases page</a> and extract it.</p>
+<h4 id="2-install-dependencies-using-npm">2. Install dependencies using NPM</h4>
+<p>You need to have <a href="#install-nodejs-and-npm">NPM (Node.js Package Manager) installed</a> first.</p>
+<p>Then, from within the <code>ripple-lib</code> directory, you can use NPM to install all the necessary dependencies:</p>
+<pre><code>npm install
+</code></pre>
+<p>(We recommend <em>not</em> using <code>npm -g</code> to install dependencies globally.)</p>
+<p>This can take a while, and may include some warnings. The following warnings are benign and do not indicate a problem:</p>
+<pre><code>npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+</code></pre>
+<h4 id="3-use-gulp-to-build-a-single-javascript-output">3. Use Gulp to build a single JavaScript output</h4>
+<p>RippleAPI comes with code to use the <a href="http://gulpjs.com/">gulp</a> package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it:</p>
+<pre><code>./node_modules/.bin/gulp
+</code></pre>
+<p>This may take a little while. It outputs several things, and creates a new <code>build/</code> folder, which contains the files you want.</p>
+<p>The file <code>build/ripple-&lt;VERSION NUMBER&gt;.js</code> is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in <code>-min.js</code> is the same thing, but with the content <a href="https://en.wikipedia.org/wiki/Minification_%28programming%29">minified</a> for faster loading.</p>
+<h2 id="example-browser-usage">Example Browser Usage</h2>
+<p>The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public <code>rippled</code> server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named <code>ripple</code>, which contains the <code>RippleAPI</code> class.</p>
+<p>To use this example, you must first <a href="#build-instructions">build RippleAPI</a> and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Modify the first <code>&lt;script&gt;</code> tag in this example to use the correct file name for the version of RippleAPI you built.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="ripple-0.16.5.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    console.log(ripple);
+    var api = new ripple.RippleAPI({server:'wss://s1.ripple.com/'});
+    api.connect().then(()=&gt;{
+        return api.getServerInfo();
+    }).then(server_info=&gt;{
+    document.body.innerHTML += `&lt;p&gt;Connected to rippled server!&lt;/p&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;
+          &lt;td&gt;${ server_info.buildVersion }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;
+          &lt;td&gt;${ server_info.completeLedgers }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;
+          &lt;td&gt;${ server_info.hostID }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.ledgerVersion }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.hash }&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;
+          &lt;td&gt;${ server_info.validatedLedger.age }&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;`;
+    });
+  &lt;/script&gt;
+  &lt;style type="text/css"&gt;
+    td, th { border: 1px solid black; padding: 5px; }
+    table { border-collapse: collapse; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
         </div>
     </div>
