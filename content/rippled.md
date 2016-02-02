@@ -5161,7 +5161,7 @@ The request includes the following parameters:
 | destination\_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
 | send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_ |
-| paths | Array | (Optional) Array of arrays of objects, representing paths to confirm. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| paths | Array | (Optional) Array of arrays of objects, representing [payment paths](paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -5544,7 +5544,7 @@ The initial response follows the [standard format](#response-formatting), with a
 
 | Field | Type | Description |
 |-------|------|-------------|
-| alternatives | Array | Array of objects with suggested paths to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
+| alternatives | Array | Array of objects with suggested [paths](paths.html) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
 | destination\_account | String | Unique address of the account that would receive a transaction |
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
 | id | (Various) | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
@@ -5566,7 +5566,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 #### Asynchronous Follow-ups ####
 
-In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
+In addition to the initial response, the server sends more messages in a similar format to update on the status of [payment paths](paths.html) over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
 
 If the follow-up includes `"full_reply": true`, then this is the best path that rippled can find as of the current ledger.
 
@@ -6674,6 +6674,7 @@ The `streams` parameter provides access to the following default streams of info
 * `ledger` - Sends a message whenever the consensus process declares a new validated ledger
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
 * `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even some transactions that don't succeed are included](transactions.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.)
+* `validations` - Sends a message whenever the server receives a validation message from a server it trusts. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -6684,8 +6685,6 @@ Each member of the `books` array, if provided, is an object with the following f
 | taker | String | Unique base-58 account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
 | snapshot | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | both | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
-
-The field `proof` is reserved for future use.
 
 #### Response Format ####
 
@@ -6709,7 +6708,7 @@ The response follows the [standard format](#response-formatting). The fields con
 
 * `accounts` and `accounts_proposed` - No fields returned
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change. 
-* *Stream: transactions* and *Stream: transactions_proposed* - No fields returned
+* *Stream: transactions*, *Stream: transactions_proposed*, and *Stream: validations* - No fields returned
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
 
@@ -6764,7 +6763,32 @@ The fields from a ledger stream message are as follows:
 | reserve\_base | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new base reserve applies after this ledger. |
 | reserve\_inc | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](transactions.html#setfee) the new owner reserve applies after this ledger.  |
 | txn\_count | Unsigned Integer | Number of new transactions included in this ledger |
-| validated\_ledgers | String | Range of ledgers that the server has available. This may be discontiguous. |
+| validated\_ledgers | String | (May be omitted) Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
+
+
+#### Stream: validations Message ####
+
+The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:
+
+```
+{
+  "type": "validationReceived",
+  "ledger_hash": "7B0B865DC3B648E35B1EB21FAD9501A765E6523B382CB182AC63DBE7D3DA5CC2",
+  "signature": "3045022100FA33615FCE1DDF56D0EEE0B750414D9C41FBE31B59A17B6A139F65A500ACA11702205B1129FFE78E2A4BC6BE98213C8172E2416780AB6F757D9067A2DBE224865495",
+  "validation_public_key": "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj"
+}
+```
+
+The fields from a validations stream message are as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| type | String | `validationReceived` indicates this is from the validations stream |
+| ledger\_hash | String | The identifying hash of the proposed ledger that this server declares validated by consensus. |
+| signature | String | The signature that the validator used to sign its vote for this ledger. |
+| validation\_public\_key | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
+
+
 
 #### Transaction Messages ####
 
@@ -7002,14 +7026,16 @@ An example of the request format:
 <!-- <div class='multicode'> -->
 
 *WebSocket*
+
 ```
 {
-  "id": 11,
+  "id": 1,
   "command": "server_info"
 }
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "server_info",
@@ -7017,6 +7043,13 @@ An example of the request format:
         {}
     ]
 }
+```
+
+*Commandline*
+
+```
+#Syntax: server_info
+rippled server_info
 ```
 
 <!-- </div> -->
@@ -7034,32 +7067,102 @@ An example of a successful response:
 *WebSocket*
 ```
 {
-  "id": 11,
+  "id": 1,
   "status": "success",
   "type": "response",
   "result": {
     "info": {
-      "build_version": "0.25.2",
-      "complete_ledgers": "32570-7695432",
-      "hostid": "AIR",
+      "build_version": "0.30.1-rc3",
+      "complete_ledgers": "18611104-18614732",
+      "hostid": "trace",
       "io_latency_ms": 1,
       "last_close": {
-        "converge_time_s": 2.037,
+        "converge_time_s": 4.003,
         "proposers": 5
       },
-      "load_factor": 1,
-      "peers": 56,
-      "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
-      "server_state": "full",
+      "load": {
+        "job_types": [
+          {
+            "job_type": "untrustedProposal",
+            "per_second": 2
+          },
+          {
+            "in_progress": 1,
+            "job_type": "clientCommand"
+          },
+          {
+            "job_type": "transaction",
+            "per_second": 4
+          },
+          {
+            "job_type": "batch",
+            "per_second": 3
+          },
+          {
+            "job_type": "writeObjects",
+            "per_second": 2
+          },
+          {
+            "job_type": "trustedProposal",
+            "per_second": 1
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 108
+          },
+          {
+            "job_type": "diskAccess",
+            "per_second": 1
+          },
+          {
+            "job_type": "processTransaction",
+            "per_second": 4
+          },
+          {
+            "job_type": "WriteNode",
+            "per_second": 63
+          }
+        ],
+        "threads": 6
+      },
+      "load_factor": 1000,
+      "load_factor_net": 1000,
+      "peers": 10,
+      "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+      "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+      "server_state": "proposing",
+      "state_accounting": {
+        "connected": {
+          "duration_us": "150510079",
+          "transitions": 1
+        },
+        "disconnected": {
+          "duration_us": "1827731",
+          "transitions": 1
+        },
+        "full": {
+          "duration_us": "166972201508",
+          "transitions": 1853
+        },
+        "syncing": {
+          "duration_us": "6249156726",
+          "transitions": 1854
+        },
+        "tracking": {
+          "duration_us": "13035222",
+          "transitions": 1854
+        }
+      },
+      "uptime": 173379,
       "validated_ledger": {
         "age": 3,
         "base_fee_xrp": 0.00001,
-        "hash": "274C27799A91DF08603AF9B5CB03372ECF844B6D643CAF69F25205C9509E212F",
+        "hash": "04F7CF4EACC57140C8088F6BFDC8A824BB3ED5717C3DAA6642101F9FB446226C",
         "reserve_base_xrp": 20,
         "reserve_inc_xrp": 5,
-        "seq": 7695432
+        "seq": 18614732
       },
-      "validation_quorum": 3
+      "validation_quorum": 4
     }
   }
 }
@@ -7071,124 +7174,81 @@ An example of a successful response:
 {
    "result" : {
       "info" : {
-         "build_version" : "0.30.1-b15",
-         "complete_ledgers" : "32570-18217433",
-         "hostid" : "sjc13",
+         "build_version" : "0.30.1-rc3",
+         "complete_ledgers" : "18611104-18614536",
+         "hostid" : "trace",
          "io_latency_ms" : 1,
          "last_close" : {
-            "converge_time_s" : 2.001,
-            "proposers" : 4
+            "converge_time_s" : 3.002,
+            "proposers" : 5
          },
          "load" : {
             "job_types" : [
-               {
-                  "job_type" : "untrustedValidation",
-                  "peak_time" : 2,
-                  "per_second" : 2
-               },
-               {
-                  "avg_time" : 1,
-                  "job_type" : "ledgerRequest",
-                  "peak_time" : 82,
-                  "per_second" : 6
-               },
                {
                   "job_type" : "untrustedProposal",
                   "per_second" : 3
                },
                {
-                  "avg_time" : 1,
-                  "in_progress" : 2,
-                  "job_type" : "clientCommand",
-                  "peak_time" : 39,
+                  "in_progress" : 1,
+                  "job_type" : "clientCommand"
+               },
+               {
+                  "job_type" : "writeObjects",
                   "per_second" : 1
                },
                {
-                  "in_progress" : 1,
-                  "job_type" : "updatePaths"
-               },
-               {
-                  "job_type" : "transaction",
-                  "peak_time" : 1
-               },
-               {
-                  "avg_time" : 29,
-                  "job_type" : "writeObjects",
-                  "peak_time" : 209
-               },
-               {
-                  "avg_time" : 28,
-                  "job_type" : "acceptLedger",
-                  "peak_time" : 88
-               },
-               {
                   "job_type" : "trustedProposal",
-                  "peak_time" : 2,
-                  "per_second" : 2
+                  "per_second" : 1
                },
                {
                   "job_type" : "peerCommand",
-                  "per_second" : 529
-               },
-               {
-                  "avg_time" : 29,
-                  "job_type" : "diskAccess",
-                  "peak_time" : 209
-               },
-               {
-                  "avg_time" : 316,
-                  "job_type" : "pathFind",
-                  "peak_time" : 2663
-               },
-               {
-                  "job_type" : "SyncReadNode",
-                  "per_second" : 135
+                  "per_second" : 61
                },
                {
                   "job_type" : "WriteNode",
-                  "peak_time" : 2,
-                  "per_second" : 77
+                  "per_second" : 41
                }
             ],
             "threads" : 6
          },
          "load_factor" : 1000,
          "load_factor_net" : 1000,
-         "peers" : 66,
-         "pubkey_node" : "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
-         "pubkey_validator" : "none",
-         "server_state" : "full",
+         "peers" : 10,
+         "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+         "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+         "server_state" : "proposing",
          "state_accounting" : {
             "connected" : {
-               "duration_us" : "102137155",
+               "duration_us" : "150510079",
                "transitions" : 1
             },
             "disconnected" : {
-               "duration_us" : "1126989",
+               "duration_us" : "1827731",
                "transitions" : 1
             },
             "full" : {
-               "duration_us" : "233465512872",
-               "transitions" : 514
+               "duration_us" : "166170134942",
+               "transitions" : 1838
             },
             "syncing" : {
-               "duration_us" : "1480415394",
-               "transitions" : 514
+               "duration_us" : "6196072160",
+               "transitions" : 1839
             },
             "tracking" : {
-               "duration_us" : "25881256",
-               "transitions" : 514
+               "duration_us" : "9023236",
+               "transitions" : 1839
             }
          },
-         "uptime" : 235075,
+         "uptime" : 172520,
          "validated_ledger" : {
+            "age" : 4,
             "base_fee_xrp" : 1e-05,
-            "hash" : "EB4EB596D85381AAE54196648FC3FAD28A49091CF03ACF7812EF1D311252656C",
+            "hash" : "B69EDD86AB57C6F80F5AA6D4246AC2C9EC0BE0E49649FBC46EEE12DE56500DCA",
             "reserve_base_xrp" : 20,
             "reserve_inc_xrp" : 5,
-            "seq" : 18217433
+            "seq" : 18614536
          },
-         "validation_quorum" : 3
+         "validation_quorum" : 4
       },
       "status" : "success"
    }
@@ -7214,16 +7274,20 @@ The `info` object may have some arrangement of the following fields:
 | load\_factor | Number | The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. **Note:** This `load_factor` is calculated as the ratio of the `load_factor` and the `load_base` that are reported by the [`server_state` command](#server-state) |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.) |
-| pubkey_validator | String | *Admin only* Public key used by this node to sign ledger validations; . |
-| server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
-| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
-| validated_ledger.age | Unsigned Integer | The time since the ledger was closed, in seconds |
-| validated_ledger.base_fee_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
-| validated_ledger.hash | String | Unique hash for the ledger, as hex |
-| validated_ledger.reserve_base_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
-| validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
-| validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
-| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| pubkey\_validator | String | *Admin only* Public key used by this node to sign ledger validations. |
+| server\_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
+| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| uptime | Number | Number of consecutive seconds that the server has been operational. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| validated\_ledger | Object | Information about the fully-validated ledger with the highest [Ledger Index][] (the most recent) |
+| validated\_ledger.age | Number | The time since the ledger was closed, in seconds |
+| validated\_ledger.base\_fee\_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
+| validated\_ledger.hash | String | Unique hash for the ledger, as hex |
+| validated\_ledger.reserve\_base\_xrp | Unsigned Integer | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
+| validated\_ledger.reserve\_inc\_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
+| validated\_ledger.seq | Number - [Ledger Index][] | The ledger index of the latest validate ledger |
+| validation\_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
 #### Possible Errors ####
 
@@ -7242,14 +7306,16 @@ An example of the request format:
 <!-- <div class='multicode'> -->
 
 *WebSocket*
+
 ```
 {
-  "id": 12,
+  "id": 2,
   "command": "server_state"
 }
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "server_state",
@@ -7257,6 +7323,13 @@ An example of the request format:
         {}
     ]
 }
+```
+
+*Commandline*
+
+```
+#Syntax: server_state
+rippled server_state
 ```
 
 <!-- </div> -->
@@ -7280,63 +7353,188 @@ An example of a successful response:
   "type": "response",
   "result": {
     "state": {
-      "build_version": "0.25.2",
-      "complete_ledgers": "32570-7696746",
+      "build_version": "0.30.1-rc3",
+      "complete_ledgers": "18611104-18615049",
       "io_latency_ms": 1,
       "last_close": {
-        "converge_time": 2097,
-        "proposers": 4
+        "converge_time": 3003,
+        "proposers": 5
+      },
+      "load": {
+        "job_types": [
+          {
+            "job_type": "untrustedProposal",
+            "peak_time": 1,
+            "per_second": 3
+          },
+          {
+            "in_progress": 1,
+            "job_type": "clientCommand"
+          },
+          {
+            "avg_time": 12,
+            "job_type": "writeObjects",
+            "peak_time": 345,
+            "per_second": 2
+          },
+          {
+            "job_type": "trustedProposal",
+            "per_second": 1
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 64
+          },
+          {
+            "avg_time": 33,
+            "job_type": "diskAccess",
+            "peak_time": 526
+          },
+          {
+            "job_type": "WriteNode",
+            "per_second": 55
+          }
+        ],
+        "threads": 6
       },
       "load_base": 256,
-      "load_factor": 256,
-      "peers": 61,
-      "pubkey_node": "n9L4DuE6NsZiVWyYdHcYbKoELTXr4fs32VY8bdic5c4uVrfrADmX",
-      "server_state": "full",
+      "load_factor": 256000,
+      "peers": 10,
+      "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+      "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+      "server_state": "proposing",
+      "state_accounting": {
+        "connected": {
+          "duration_us": "150510079",
+          "transitions": 1
+        },
+        "disconnected": {
+          "duration_us": "1827731",
+          "transitions": 1
+        },
+        "full": {
+          "duration_us": "168295542987",
+          "transitions": 1865
+        },
+        "syncing": {
+          "duration_us": "6294237352",
+          "transitions": 1866
+        },
+        "tracking": {
+          "duration_us": "13035524",
+          "transitions": 1866
+        }
+      },
+      "uptime": 174748,
       "validated_ledger": {
         "base_fee": 10,
-        "close_time": 458432860,
-        "hash": "95A05F232C8C4B4DC313CB91A4C823A221120DD8692395150A3012876C8CD772",
+        "close_time": 507693650,
+        "hash": "FEB17B15FB64E3AF8D371E6AAFCFD8B92775BB80AB953803BD73EA8EC75ECA34",
         "reserve_base": 20000000,
         "reserve_inc": 5000000,
-        "seq": 7696746
+        "seq": 18615049
       },
-      "validation_quorum": 3
+      "validation_quorum": 4
     }
   }
 }
 ```
 
 *JSON-RPC*
+
 ```
 200 OK
 {
-    "result": {
-        "state": {
-            "build_version": "0.26.3",
-            "complete_ledgers": "32570-8696244",
-            "io_latency_ms": 1,
-            "last_close": {
-                "converge_time": 2120,
-                "proposers": 5
+   "result" : {
+      "state" : {
+         "build_version" : "0.30.1-rc3",
+         "complete_ledgers" : "18611104-18615037",
+         "io_latency_ms" : 1,
+         "last_close" : {
+            "converge_time" : 2001,
+            "proposers" : 5
+         },
+         "load" : {
+            "job_types" : [
+               {
+                  "job_type" : "untrustedProposal",
+                  "per_second" : 2
+               },
+               {
+                  "in_progress" : 1,
+                  "job_type" : "clientCommand"
+               },
+               {
+                  "job_type" : "writeObjects",
+                  "per_second" : 2
+               },
+               {
+                  "avg_time" : 2,
+                  "job_type" : "acceptLedger",
+                  "peak_time" : 6
+               },
+               {
+                  "job_type" : "trustedProposal",
+                  "per_second" : 1
+               },
+               {
+                  "job_type" : "peerCommand",
+                  "per_second" : 80
+               },
+               {
+                  "job_type" : "diskAccess",
+                  "per_second" : 1
+               },
+               {
+                  "job_type" : "WriteNode",
+                  "per_second" : 91
+               }
+            ],
+            "threads" : 6
+         },
+         "load_base" : 256,
+         "load_factor" : 256000,
+         "peers" : 10,
+         "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+         "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+         "server_state" : "proposing",
+         "state_accounting" : {
+            "connected" : {
+               "duration_us" : "150510079",
+               "transitions" : 1
             },
-            "load_base": 256,
-            "load_factor": 256,
-            "peers": 58,
-            "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
-            "server_state": "full",
-            "validated_ledger": {
-                "base_fee": 10,
-                "close_time": 463192610,
-                "hash": "43660857C8FD74D8D5B9D6D9E3D4BE11FAD92985F6B8C9A406DC1F87FF6CB77F",
-                "reserve_base": 20000000,
-                "reserve_inc": 5000000,
-                "seq": 8696244
+            "disconnected" : {
+               "duration_us" : "1827731",
+               "transitions" : 1
             },
-            "validation_quorum": 3
-        },
-        "status": "success"
-    }
+            "full" : {
+               "duration_us" : "168241260112",
+               "transitions" : 1865
+            },
+            "syncing" : {
+               "duration_us" : "6294237352",
+               "transitions" : 1866
+            },
+            "tracking" : {
+               "duration_us" : "13035524",
+               "transitions" : 1866
+            }
+         },
+         "uptime" : 174693,
+         "validated_ledger" : {
+            "base_fee" : 10,
+            "close_time" : 507693592,
+            "hash" : "1C26209AE593C7EB5123363B3152D86514845FBD42CC6B05111D57F62D02B113",
+            "reserve_base" : 20000000,
+            "reserve_inc" : 5000000,
+            "seq" : 18615037
+         },
+         "validation_quorum" : 4
+      },
+      "status" : "success"
+   }
 }
+
 ```
 
 <!-- </div> -->
@@ -7348,36 +7546,41 @@ The `state` object may have some arrangement of the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | build_version | String | The version number of the running `rippled` version. |
-| complete_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
-| io_latency_ms | Number | Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| complete\_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
+| io\_latency\_ms | Number | Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
 | load | Object | *Admin only* Detailed information about the current load state of the server |
-| load.job_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
+| load.job\_types | Array | *Admin only* Information about the rate of different types of jobs being performed by the server and how much time it spends on each. |
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool, performing various Ripple Network operations. |
 | load\_base | Number | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction fees are doubled. |
 | load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the load\_base determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
-| pubkey_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in rippled's local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
-| pubkey_validator | String | *Admin only* Public key used by this server (along with the corresponding private key) to sign proposed ledgers for validation. |
-| server_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
-| validated_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
-| validated_ledger.base_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
-| validated_ledger.close_time | Number | Time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
-| validated_ledger.hash | String | Unique hash of this ledger version, as hex |
-| validated_ledger.reserve_base | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
-| validated_ledger.reserve_inc | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
-| validated_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
-| validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| pubkey\_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in `rippled`'s local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
+| pubkey\_validator | String | *Admin only* Public key of the keypair used by this server to sign proposed ledgers for validation. |
+| server\_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
+| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| uptime | Number | Number of consecutive seconds that the server has been operational. (New in [version 0.30.1](https://wiki.ripple.com/Rippled-0.30.1)) |
+| validated\_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
+| validated\_ledger.base\_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
+| validated\_ledger.close_time | Number | Time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| validated\_ledger.hash | String | Unique hash of this ledger version, as hex |
+| validated\_ledger.reserve\_base | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
+| validated\_ledger.reserve\_inc | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
+| validated\_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
+| validation\_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
+
 
 ## can_delete ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
 With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted. 
 
-_The `can_delete` method is an admin command that cannot be run by unpriviledged users._
+_The `can_delete` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 
@@ -7418,7 +7621,7 @@ The request includes the following optional parameter:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| can_delete | String or Integer | The maximum ledger to allow to be deleted. For `ledger_index` or `ledger_hash`, see [Specifying a Ledger](#specifying-ledgers). `never` sets the value to 0, and effectively disables online deletion until another `can_delete` is appropriately called.  `always` sets the value to the maximum possible ledger (4294967295), and online deletion will occur as of each configured `online_delete` interval. `now` triggers online deletion at the next validated ledger that meets or exceeds the configured `online_delete` interval, but no further. |
+| can\_delete | String or Integer | The maximum ledger to allow to be deleted. For `ledger_index` or `ledger_hash`, see [Specifying a Ledger](#specifying-ledgers). `never` sets the value to 0, and effectively disables online deletion until another `can_delete` is appropriately called.  `always` sets the value to the maximum possible ledger (4294967295), and online deletion will occur as of each configured `online_delete` interval. `now` triggers online deletion at the next validated ledger that meets or exceeds the configured `online_delete` interval, but no further. |
 
 If no parameter is specified, no change is made.
 
@@ -7427,7 +7630,7 @@ a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| can_delete | Integer | The maximum ledger index that may be removed by the online deletion routine. |
+| can\_delete | Integer | The maximum ledger index that may be removed by the online deletion routine. |
 
 Use this command with no parameter to query the existing `can_delete` setting.
 
@@ -7445,7 +7648,7 @@ Use this command with no parameter to query the existing `can_delete` setting.
 
 The `consensus_info` command provides information about the consensus process for debugging purposes.
 
-_The `consensus_info` method is an admin command that cannot be run by unpriviledged users._
+_The `consensus_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -7676,7 +7879,7 @@ The results of the `consensus_info` command can vary dramatically if you run it 
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches. 
 
-_The `fetch_info` method is an admin command that cannot be run by unpriviledged users._
+_The `fetch_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -7835,7 +8038,7 @@ The fields describing a fetch in progress are subject to change without notice. 
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory. 
 
-_The `get_counts` method is an admin command that cannot be run by unpriviledged users._
+_The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -7986,7 +8189,7 @@ For most other entries, the value indicates the number of objects of that type c
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers. 
 
-_The `ledger_cleaner` method is an admin command that cannot be run by unpriviledged users._
+_The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -8056,7 +8259,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
-_The `log_level` method is an admin command that cannot be run by unpriviledged users._
+_The `log_level` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -8193,7 +8396,7 @@ Otherwise, the request contains the following field:
 
 The `logrotate` command closes and reopens the log file. This is intended to facilitate log rotation on Linux file systems.
 
-_The `logrotate` method is an admin command that cannot be run by unpriviledged users._
+_The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:
@@ -8270,7 +8473,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 Use the `validation_create` command to generate the keys for a rippled [validating node](rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
-_The `validation_create` method is an admin command that cannot be run by unpriviledged users._
+_The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
 #### Request Format ####
 An example of the request format:

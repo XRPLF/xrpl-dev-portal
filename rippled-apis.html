@@ -6033,7 +6033,7 @@ rippled tx_history 0
 <tr>
 <td>paths</td>
 <td>Array</td>
-<td>(Optional) Array of arrays of objects, representing paths to confirm. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
+<td>(Optional) Array of arrays of objects, representing <a href="paths.html">payment paths</a> to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
 </tr>
 </tbody>
 </table>
@@ -6420,7 +6420,7 @@ rippled tx_history 0
 <tr>
 <td>alternatives</td>
 <td>Array</td>
-<td>Array of objects with suggested paths to take, as described below. If empty, then no paths were found connecting the source and destination accounts.</td>
+<td>Array of objects with suggested <a href="paths.html">paths</a> to take, as described below. If empty, then no paths were found connecting the source and destination accounts.</td>
 </tr>
 <tr>
 <td>destination_account</td>
@@ -6478,7 +6478,7 @@ rippled tx_history 0
 <li><code>noEvents</code> - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See <a href="#ripple-path-find">ripple_path_find</a> for a pathfinding method that <em>is</em> compatible with JSON-RPC.)</li>
 </ul>
 <h4 id="asynchronous-follow-ups">Asynchronous Follow-ups</h4>
-<p>In addition to the initial response, the server sends more messages in a similar format to update on the status of the paths over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
+<p>In addition to the initial response, the server sends more messages in a similar format to update on the status of <a href="paths.html">payment paths</a> over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
 <p>If the follow-up includes <code>"full_reply": true</code>, then this is the best path that rippled can find as of the current ledger.</p>
 <p>Here is an example of an asychronous follow-up from a path_find create request:</p>
 <div class="multicode">
@@ -7767,6 +7767,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
 <li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
 <li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="transactions.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
+<li><code>validations</code> - Sends a message whenever the server receives a validation message from a server it trusts. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 </ul>
 <p>Each member of the <code>books</code> array, if provided, is an object with the following fields:</p>
 <table>
@@ -7805,7 +7806,6 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 </tbody>
 </table>
-<p>The field <code>proof</code> is reserved for future use.</p>
 <h4 id="response-format-26">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
@@ -7822,7 +7822,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <ul>
 <li><code>accounts</code> and <code>accounts_proposed</code> - No fields returned</li>
 <li><em>Stream: server</em> - Information about the server status, such as <code>load_base</code> (the current load level of the server), <code>random</code> (a randomly-generated value), and others, subject to change. </li>
-<li><em>Stream: transactions</em> and <em>Stream: transactions_proposed</em> - No fields returned</li>
+<li><em>Stream: transactions</em>, <em>Stream: transactions_proposed</em>, and <em>Stream: validations</em> - No fields returned</li>
 <li><em>Stream: ledger</em> - Information about the ledgers on hand and current fee schedule, such as <code>fee_base</code> (current base fee for transactions in XRP), <code>fee_ref</code> (current base fee for transactions in fee units), <code>ledger_hash</code> (hash of the latest validated ledger), <code>reserve_base</code> (minimum reserve for accounts), and more.</li>
 <li><code>books</code> - No fields returned by default. If <code>"snapshot": true</code> is set in the request, returns <code>offers</code> (an array of offer definition objects defining the order book)</li>
 </ul>
@@ -7915,7 +7915,48 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>validated_ledgers</td>
 <td>String</td>
-<td>Range of ledgers that the server has available. This may be discontiguous.</td>
+<td>(May be omitted) Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="stream-validations-message">Stream: validations Message</h4>
+<p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
+<pre><code>{
+  "type": "validationReceived",
+  "ledger_hash": "7B0B865DC3B648E35B1EB21FAD9501A765E6523B382CB182AC63DBE7D3DA5CC2",
+  "signature": "3045022100FA33615FCE1DDF56D0EEE0B750414D9C41FBE31B59A17B6A139F65A500ACA11702205B1129FFE78E2A4BC6BE98213C8172E2416780AB6F757D9067A2DBE224865495",
+  "validation_public_key": "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj"
+}
+</code></pre>
+<p>The fields from a validations stream message are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td><code>validationReceived</code> indicates this is from the validations stream</td>
+</tr>
+<tr>
+<td>ledger_hash</td>
+<td>String</td>
+<td>The identifying hash of the proposed ledger that this server declares validated by consensus.</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>String</td>
+<td>The signature that the validator used to sign its vote for this ledger.</td>
+</tr>
+<tr>
+<td>validation_public_key</td>
+<td>String</td>
+<td>The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the <code>signature</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -8213,7 +8254,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-  "id": 11,
+  "id": 1,
   "command": "server_info"
 }
 </code></pre>
@@ -8225,6 +8266,10 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
     ]
 }
 </code></pre>
+<p><em>Commandline</em></p>
+<pre><code>#Syntax: server_info
+rippled server_info
+</code></pre>
 </div>
 <p><a class="button" href="ripple-api-tool.html#server_info">Try it! &gt;</a></p>
 <p>The request does not takes any parameters.</p>
@@ -8233,32 +8278,102 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-  "id": 11,
+  "id": 1,
   "status": "success",
   "type": "response",
   "result": {
     "info": {
-      "build_version": "0.25.2",
-      "complete_ledgers": "32570-7695432",
-      "hostid": "AIR",
+      "build_version": "0.30.1-rc3",
+      "complete_ledgers": "18611104-18614732",
+      "hostid": "trace",
       "io_latency_ms": 1,
       "last_close": {
-        "converge_time_s": 2.037,
+        "converge_time_s": 4.003,
         "proposers": 5
       },
-      "load_factor": 1,
-      "peers": 56,
-      "pubkey_node": "n9LVtEwRBRfLhrs5cZcKYiYMw6wT9MgmAZEMQEXmX4Bwkq4D6hc1",
-      "server_state": "full",
+      "load": {
+        "job_types": [
+          {
+            "job_type": "untrustedProposal",
+            "per_second": 2
+          },
+          {
+            "in_progress": 1,
+            "job_type": "clientCommand"
+          },
+          {
+            "job_type": "transaction",
+            "per_second": 4
+          },
+          {
+            "job_type": "batch",
+            "per_second": 3
+          },
+          {
+            "job_type": "writeObjects",
+            "per_second": 2
+          },
+          {
+            "job_type": "trustedProposal",
+            "per_second": 1
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 108
+          },
+          {
+            "job_type": "diskAccess",
+            "per_second": 1
+          },
+          {
+            "job_type": "processTransaction",
+            "per_second": 4
+          },
+          {
+            "job_type": "WriteNode",
+            "per_second": 63
+          }
+        ],
+        "threads": 6
+      },
+      "load_factor": 1000,
+      "load_factor_net": 1000,
+      "peers": 10,
+      "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+      "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+      "server_state": "proposing",
+      "state_accounting": {
+        "connected": {
+          "duration_us": "150510079",
+          "transitions": 1
+        },
+        "disconnected": {
+          "duration_us": "1827731",
+          "transitions": 1
+        },
+        "full": {
+          "duration_us": "166972201508",
+          "transitions": 1853
+        },
+        "syncing": {
+          "duration_us": "6249156726",
+          "transitions": 1854
+        },
+        "tracking": {
+          "duration_us": "13035222",
+          "transitions": 1854
+        }
+      },
+      "uptime": 173379,
       "validated_ledger": {
         "age": 3,
         "base_fee_xrp": 0.00001,
-        "hash": "274C27799A91DF08603AF9B5CB03372ECF844B6D643CAF69F25205C9509E212F",
+        "hash": "04F7CF4EACC57140C8088F6BFDC8A824BB3ED5717C3DAA6642101F9FB446226C",
         "reserve_base_xrp": 20,
         "reserve_inc_xrp": 5,
-        "seq": 7695432
+        "seq": 18614732
       },
-      "validation_quorum": 3
+      "validation_quorum": 4
     }
   }
 }
@@ -8268,124 +8383,81 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 {
    "result" : {
       "info" : {
-         "build_version" : "0.30.1-b15",
-         "complete_ledgers" : "32570-18217433",
-         "hostid" : "sjc13",
+         "build_version" : "0.30.1-rc3",
+         "complete_ledgers" : "18611104-18614536",
+         "hostid" : "trace",
          "io_latency_ms" : 1,
          "last_close" : {
-            "converge_time_s" : 2.001,
-            "proposers" : 4
+            "converge_time_s" : 3.002,
+            "proposers" : 5
          },
          "load" : {
             "job_types" : [
-               {
-                  "job_type" : "untrustedValidation",
-                  "peak_time" : 2,
-                  "per_second" : 2
-               },
-               {
-                  "avg_time" : 1,
-                  "job_type" : "ledgerRequest",
-                  "peak_time" : 82,
-                  "per_second" : 6
-               },
                {
                   "job_type" : "untrustedProposal",
                   "per_second" : 3
                },
                {
-                  "avg_time" : 1,
-                  "in_progress" : 2,
-                  "job_type" : "clientCommand",
-                  "peak_time" : 39,
+                  "in_progress" : 1,
+                  "job_type" : "clientCommand"
+               },
+               {
+                  "job_type" : "writeObjects",
                   "per_second" : 1
                },
                {
-                  "in_progress" : 1,
-                  "job_type" : "updatePaths"
-               },
-               {
-                  "job_type" : "transaction",
-                  "peak_time" : 1
-               },
-               {
-                  "avg_time" : 29,
-                  "job_type" : "writeObjects",
-                  "peak_time" : 209
-               },
-               {
-                  "avg_time" : 28,
-                  "job_type" : "acceptLedger",
-                  "peak_time" : 88
-               },
-               {
                   "job_type" : "trustedProposal",
-                  "peak_time" : 2,
-                  "per_second" : 2
+                  "per_second" : 1
                },
                {
                   "job_type" : "peerCommand",
-                  "per_second" : 529
-               },
-               {
-                  "avg_time" : 29,
-                  "job_type" : "diskAccess",
-                  "peak_time" : 209
-               },
-               {
-                  "avg_time" : 316,
-                  "job_type" : "pathFind",
-                  "peak_time" : 2663
-               },
-               {
-                  "job_type" : "SyncReadNode",
-                  "per_second" : 135
+                  "per_second" : 61
                },
                {
                   "job_type" : "WriteNode",
-                  "peak_time" : 2,
-                  "per_second" : 77
+                  "per_second" : 41
                }
             ],
             "threads" : 6
          },
          "load_factor" : 1000,
          "load_factor_net" : 1000,
-         "peers" : 66,
-         "pubkey_node" : "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
-         "pubkey_validator" : "none",
-         "server_state" : "full",
+         "peers" : 10,
+         "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+         "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+         "server_state" : "proposing",
          "state_accounting" : {
             "connected" : {
-               "duration_us" : "102137155",
+               "duration_us" : "150510079",
                "transitions" : 1
             },
             "disconnected" : {
-               "duration_us" : "1126989",
+               "duration_us" : "1827731",
                "transitions" : 1
             },
             "full" : {
-               "duration_us" : "233465512872",
-               "transitions" : 514
+               "duration_us" : "166170134942",
+               "transitions" : 1838
             },
             "syncing" : {
-               "duration_us" : "1480415394",
-               "transitions" : 514
+               "duration_us" : "6196072160",
+               "transitions" : 1839
             },
             "tracking" : {
-               "duration_us" : "25881256",
-               "transitions" : 514
+               "duration_us" : "9023236",
+               "transitions" : 1839
             }
          },
-         "uptime" : 235075,
+         "uptime" : 172520,
          "validated_ledger" : {
+            "age" : 4,
             "base_fee_xrp" : 1e-05,
-            "hash" : "EB4EB596D85381AAE54196648FC3FAD28A49091CF03ACF7812EF1D311252656C",
+            "hash" : "B69EDD86AB57C6F80F5AA6D4246AC2C9EC0BE0E49649FBC46EEE12DE56500DCA",
             "reserve_base_xrp" : 20,
             "reserve_inc_xrp" : 5,
-            "seq" : 18217433
+            "seq" : 18614536
          },
-         "validation_quorum" : 3
+         "validation_quorum" : 4
       },
       "status" : "success"
    }
@@ -8461,7 +8533,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>pubkey_validator</td>
 <td>String</td>
-<td><em>Admin only</em> Public key used by this node to sign ledger validations; .</td>
+<td><em>Admin only</em> Public key used by this node to sign ledger validations.</td>
 </tr>
 <tr>
 <td>server_state</td>
@@ -8469,13 +8541,33 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states">Possible Server States</a> for more details.</td>
 </tr>
 <tr>
+<td>state_accounting</td>
+<td>Object</td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>state_accounting.*.duration_us</td>
+<td>String</td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>state_accounting.*.transitions</td>
+<td>Number</td>
+<td>The number of times the server has transitioned into this state. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>Number</td>
+<td>Number of consecutive seconds that the server has been operational. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
 <td>validated_ledger</td>
 <td>Object</td>
-<td>Information about the fully-validated ledger with the highest sequence number (the most recent)</td>
+<td>Information about the fully-validated ledger with the highest <a href="#ledger-index">Ledger Index</a> (the most recent)</td>
 </tr>
 <tr>
 <td>validated_ledger.age</td>
-<td>Unsigned Integer</td>
+<td>Number</td>
 <td>The time since the ledger was closed, in seconds</td>
 </tr>
 <tr>
@@ -8500,8 +8592,8 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 <tr>
 <td>validated_ledger.seq</td>
-<td>Unsigned Integer</td>
-<td>Identifying sequence number of this ledger version</td>
+<td>Number - <a href="#ledger-index">Ledger Index</a></td>
+<td>The ledger index of the latest validate ledger</td>
 </tr>
 <tr>
 <td>validation_quorum</td>
@@ -8522,7 +8614,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-  "id": 12,
+  "id": 2,
   "command": "server_state"
 }
 </code></pre>
@@ -8533,6 +8625,10 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
         {}
     ]
 }
+</code></pre>
+<p><em>Commandline</em></p>
+<pre><code>#Syntax: server_state
+rippled server_state
 </code></pre>
 </div>
 <p><a class="button" href="ripple-api-tool.html#server_state">Try it! &gt;</a></p>
@@ -8547,27 +8643,88 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
   "type": "response",
   "result": {
     "state": {
-      "build_version": "0.25.2",
-      "complete_ledgers": "32570-7696746",
+      "build_version": "0.30.1-rc3",
+      "complete_ledgers": "18611104-18615049",
       "io_latency_ms": 1,
       "last_close": {
-        "converge_time": 2097,
-        "proposers": 4
+        "converge_time": 3003,
+        "proposers": 5
+      },
+      "load": {
+        "job_types": [
+          {
+            "job_type": "untrustedProposal",
+            "peak_time": 1,
+            "per_second": 3
+          },
+          {
+            "in_progress": 1,
+            "job_type": "clientCommand"
+          },
+          {
+            "avg_time": 12,
+            "job_type": "writeObjects",
+            "peak_time": 345,
+            "per_second": 2
+          },
+          {
+            "job_type": "trustedProposal",
+            "per_second": 1
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 64
+          },
+          {
+            "avg_time": 33,
+            "job_type": "diskAccess",
+            "peak_time": 526
+          },
+          {
+            "job_type": "WriteNode",
+            "per_second": 55
+          }
+        ],
+        "threads": 6
       },
       "load_base": 256,
-      "load_factor": 256,
-      "peers": 61,
-      "pubkey_node": "n9L4DuE6NsZiVWyYdHcYbKoELTXr4fs32VY8bdic5c4uVrfrADmX",
-      "server_state": "full",
+      "load_factor": 256000,
+      "peers": 10,
+      "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+      "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+      "server_state": "proposing",
+      "state_accounting": {
+        "connected": {
+          "duration_us": "150510079",
+          "transitions": 1
+        },
+        "disconnected": {
+          "duration_us": "1827731",
+          "transitions": 1
+        },
+        "full": {
+          "duration_us": "168295542987",
+          "transitions": 1865
+        },
+        "syncing": {
+          "duration_us": "6294237352",
+          "transitions": 1866
+        },
+        "tracking": {
+          "duration_us": "13035524",
+          "transitions": 1866
+        }
+      },
+      "uptime": 174748,
       "validated_ledger": {
         "base_fee": 10,
-        "close_time": 458432860,
-        "hash": "95A05F232C8C4B4DC313CB91A4C823A221120DD8692395150A3012876C8CD772",
+        "close_time": 507693650,
+        "hash": "FEB17B15FB64E3AF8D371E6AAFCFD8B92775BB80AB953803BD73EA8EC75ECA34",
         "reserve_base": 20000000,
         "reserve_inc": 5000000,
-        "seq": 7696746
+        "seq": 18615049
       },
-      "validation_quorum": 3
+      "validation_quorum": 4
     }
   }
 }
@@ -8575,33 +8732,96 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p><em>JSON-RPC</em></p>
 <pre><code>200 OK
 {
-    "result": {
-        "state": {
-            "build_version": "0.26.3",
-            "complete_ledgers": "32570-8696244",
-            "io_latency_ms": 1,
-            "last_close": {
-                "converge_time": 2120,
-                "proposers": 5
+   "result" : {
+      "state" : {
+         "build_version" : "0.30.1-rc3",
+         "complete_ledgers" : "18611104-18615037",
+         "io_latency_ms" : 1,
+         "last_close" : {
+            "converge_time" : 2001,
+            "proposers" : 5
+         },
+         "load" : {
+            "job_types" : [
+               {
+                  "job_type" : "untrustedProposal",
+                  "per_second" : 2
+               },
+               {
+                  "in_progress" : 1,
+                  "job_type" : "clientCommand"
+               },
+               {
+                  "job_type" : "writeObjects",
+                  "per_second" : 2
+               },
+               {
+                  "avg_time" : 2,
+                  "job_type" : "acceptLedger",
+                  "peak_time" : 6
+               },
+               {
+                  "job_type" : "trustedProposal",
+                  "per_second" : 1
+               },
+               {
+                  "job_type" : "peerCommand",
+                  "per_second" : 80
+               },
+               {
+                  "job_type" : "diskAccess",
+                  "per_second" : 1
+               },
+               {
+                  "job_type" : "WriteNode",
+                  "per_second" : 91
+               }
+            ],
+            "threads" : 6
+         },
+         "load_base" : 256,
+         "load_factor" : 256000,
+         "peers" : 10,
+         "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
+         "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+         "server_state" : "proposing",
+         "state_accounting" : {
+            "connected" : {
+               "duration_us" : "150510079",
+               "transitions" : 1
             },
-            "load_base": 256,
-            "load_factor": 256,
-            "peers": 58,
-            "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
-            "server_state": "full",
-            "validated_ledger": {
-                "base_fee": 10,
-                "close_time": 463192610,
-                "hash": "43660857C8FD74D8D5B9D6D9E3D4BE11FAD92985F6B8C9A406DC1F87FF6CB77F",
-                "reserve_base": 20000000,
-                "reserve_inc": 5000000,
-                "seq": 8696244
+            "disconnected" : {
+               "duration_us" : "1827731",
+               "transitions" : 1
             },
-            "validation_quorum": 3
-        },
-        "status": "success"
-    }
+            "full" : {
+               "duration_us" : "168241260112",
+               "transitions" : 1865
+            },
+            "syncing" : {
+               "duration_us" : "6294237352",
+               "transitions" : 1866
+            },
+            "tracking" : {
+               "duration_us" : "13035524",
+               "transitions" : 1866
+            }
+         },
+         "uptime" : 174693,
+         "validated_ledger" : {
+            "base_fee" : 10,
+            "close_time" : 507693592,
+            "hash" : "1C26209AE593C7EB5123363B3152D86514845FBD42CC6B05111D57F62D02B113",
+            "reserve_base" : 20000000,
+            "reserve_inc" : 5000000,
+            "seq" : 18615037
+         },
+         "validation_quorum" : 4
+      },
+      "status" : "success"
+   }
 }
+
 </code></pre>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a <code>state</code> object as its only field.</p>
@@ -8663,17 +8883,37 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>pubkey_node</td>
 <td>String</td>
-<td>Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in rippled's local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects.</td>
+<td>Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in <code>rippled</code>'s local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects.</td>
 </tr>
 <tr>
 <td>pubkey_validator</td>
 <td>String</td>
-<td><em>Admin only</em> Public key used by this server (along with the corresponding private key) to sign proposed ledgers for validation.</td>
+<td><em>Admin only</em> Public key of the keypair used by this server to sign proposed ledgers for validation.</td>
 </tr>
 <tr>
 <td>server_state</td>
 <td>String</td>
 <td>A string indicating to what extent the server is participating in the network. See <a href="#possible-server-states">Possible Server States</a> for more details.</td>
+</tr>
+<tr>
+<td>state_accounting</td>
+<td>Object</td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>state_accounting.*.duration_us</td>
+<td>String</td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>state_accounting.*.transitions</td>
+<td>Number</td>
+<td>The number of times the server has transitioned into this state. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>Number</td>
+<td>Number of consecutive seconds that the server has been operational. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -8724,7 +8964,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <h2 id="can-delete">can_delete</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp" title="Source">[Source]<br/></a></p>
 <p>With <code>online_delete</code> and <code>advisory_delete</code> configuration options enabled, the <code>can_delete</code> method informs the rippled server of the latest ledger which may be deleted. </p>
-<p><em>The <code>can_delete</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>can_delete</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-31">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -8798,7 +9038,7 @@ a successful result containing the following fields:</p>
 <h2 id="consensus-info">consensus_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>consensus_info</code> command provides information about the consensus process for debugging purposes.</p>
-<p><em>The <code>consensus_info</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>consensus_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-32">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9041,7 +9281,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="fetch-info">fetch_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>fetch_info</code> command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches. </p>
-<p><em>The <code>fetch_info</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>fetch_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-33">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9227,7 +9467,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="get-counts">get_counts</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory. </p>
-<p><em>The <code>get_counts</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-34">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9381,7 +9621,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ledger-cleaner">ledger_cleaner</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers. </p>
-<p><em>The <code>ledger_cleaner</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-35">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9480,7 +9720,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="log-level">log_level</h2>
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>log_level</code> command changes the <code>rippled</code> server's logging verbosity, or returns the current logging level for each category (called a <em>partition</em>) of log messages.</p>
-<p><em>The <code>log_level</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-36">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9619,7 +9859,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="logrotate">logrotate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>logrotate</code> command closes and reopens the log file. This is intended to facilitate log rotation on Linux file systems.</p>
-<p><em>The <code>logrotate</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -9683,7 +9923,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="validation-create">validation_create</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="rippled-setup.html#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
-<p><em>The <code>validation_create</code> method is an admin command that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
