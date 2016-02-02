@@ -94,11 +94,19 @@ body .content-root {
 .code_sample code.expanded,
 .code_sample .hljs.expanded {
     max-height: none;
-    width: 100%;
+    position: absolute;
 }
 
 .code_sample { position: relative; }
 .code_sample .code_toggler { position: absolute; bottom: 0; right: 0; }
+
+.code-placeholder {
+    margin: 11px;
+}
+
+.content-root pre {
+    overflow: visible;
+}
 
 .content code { color: #111; }
 

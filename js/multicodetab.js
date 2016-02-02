@@ -49,7 +49,7 @@ jQuery.fn.multicode_tabs_pandoc = function() {
         
         cb_area.children('pre').each(function(index2,el2) {
             var linkid = 'code-'+index+'-'+index2;
-            $(el2).wrap("<div id='"+linkid+"'>");
+            $(el2).wrap("<div id='"+linkid+"' class='code_sample'>");
             //also put in a link to this in the tab header ul
             $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
         });

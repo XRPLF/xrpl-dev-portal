@@ -1,7 +1,20 @@
 var toggle_cs = function(eo) {
     //eo = $("#"+id);
     var wrapper = $(eo.target).parent();
-    wrapper.find("code").toggleClass('expanded');
+    var code_el = wrapper.find("code");
+    code_el.toggleClass('expanded');
+    var placeholders = wrapper.find(".code-placeholder");
+    if (placeholders.length) {
+        console.log("bye bye placeholders");
+        placeholders.remove();
+    } else {
+        console.log("makin' a placeholder");
+        code_el.after("<div class='code-placeholder' style='width:"
+                            + code_el.width()
+                            + "px; height:"
+                            + code_el.height()
+                            + "px;'>&nbsp;</div>");
+    }
     current_button_text = wrapper.find(".code_toggler").val();
     $(eo.target).val(current_button_text == 'Expand' ? "Collapse" : "Expand");
 }
@@ -14,9 +27,7 @@ function make_code_expandable() {
     });
 
     var cs = $('.code_sample');
-    cs.find("code").dblclick(function(eo) {
-        $(eo.target).toggleClass('expanded');
-    });
+    cs.find("code").dblclick(toggle_cs);
     cs.find("code").attr('title', 'Double-click to expand/collapse');
     var newbtn = $("<input type='button' class='code_toggler' value='Expand' />");
     newbtn.appendTo(cs);
