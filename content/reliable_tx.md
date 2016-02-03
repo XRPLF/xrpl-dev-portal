@@ -17,7 +17,7 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 ## Background
 
-The Ripple protocol provides a ledger shared across all nodes in the network.  Through a process of consensus and validation, the network agrees on order in which transactions are applied to (or omitted from) the ledger.
+The Ripple protocol provides a ledger shared across all nodes in the network.  Through a [process of consensus and validation](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
 
 Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](tx-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.
 
@@ -46,7 +46,7 @@ APIs may return provisional results based on the result of applying candidate tr
 
 While applying transactions, `rippled` servers use the *last validated ledger*, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it comprise the ledger history.
 
-Each validated ledger instances has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number, but different hash values. Only one version can ever be validated.
+Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.
 
 Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each `rippled` server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.
 
@@ -136,7 +136,7 @@ In order to implement the transaction submission and verification best practices
 5. Determine the final result of a transaction
     * Final results are an immutable part of the ledger history.
 
-An application's means of performing these actions depends on the API the application uses.  These interfaces may be any of:
+An application's means of performing these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
 1. [`rippled`'s internal APIs](rippled-apis.html)
 2. [RippleAPI](rippleapi.html)

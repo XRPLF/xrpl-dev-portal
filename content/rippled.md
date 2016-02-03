@@ -5,10 +5,10 @@ The core peer-to-peer server that operates the Ripple Network is called `rippled
 * [`rippled` Setup](rippled-setup.html)
 * [API Reference](#api-methods)
 * [Transaction Reference](transactions.html)
-* Client Library - [Javascript](https://github.com/ripple/ripple-lib)
+* JavaScript Client Library - [RippleAPI](rippleapi.html)
 
 # WebSocket and JSON-RPC APIs #
-If you want to communicate directly with the `rippled` server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command.
+If you want to communicate directly with a `rippled` server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Alternatively, you can use [RippleAPI](rippleapi.html), which is a simplified JavaScript client library, which communicates directly with a `rippled` server from [Node.js](http://nodejs.org/) or a web browser.
 
 * The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The `rippled` server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.
 * The JSON-RPC API relies on simple request-response communication via HTTP or HTTPS. (The `rippled` server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.
@@ -7216,8 +7216,6 @@ The `info` object may have some arrangement of the following fields:
 | validated_ledger.reserve_inc_xrp | Unsigned Integer | Amount of XRP (not drops) added to the account reserve for each object an account is responsible for in the ledger |
 | validated_ledger.seq | Unsigned Integer | Identifying sequence number of this ledger version |
 | validation_quorum | Number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations. |
-
-<!--Note: keep the above table up-to-date with the Get Server Status method in the Ripple-REST documentation -->
 
 #### Possible Errors ####
 

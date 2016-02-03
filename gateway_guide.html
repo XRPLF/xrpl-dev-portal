@@ -495,11 +495,11 @@ Content-Type: application/json
 }
 </code></pre>
 <h2 id="requireauth">RequireAuth</h2>
-<p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. </p>
-<p>We recommend enabling <code>RequireAuth</code> for all hot wallet and warm wallet accounts, as a precaution. Separately, the Authorized Accounts feature involves <a href="#with-cold-wallets">setting the <code>RequireAuth</code> flag on your cold wallet</a>.</p>
+<p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them.</p>
+<p>We recommend always <a href="#enabling-requireauth">enabling <code>RequireAuth</code></a> for hot wallet and warm wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.</p>
+<p>If you want to use the <a href="#authorized-accounts">Authorized Accounts</a> feature, you must also enable <code>RequireAuth</code> on your cold wallet. When using Authorized Accounts, your cold wallet must <a href="#authorizing-trust-lines">submit a <code>TrustSet</code> transaction to approve each trust line</a> that customers open to your cold wallet.</p>
 <p>You can only enable <code>RequireAuth</code> if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple Consensus Ledger.</p>
-<h3 id="with-hot-wallets">With Hot Wallets</h3>
-<p>We recommend enabling <code>RequireAuth</code> for all hot wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.</p>
+<h3 id="enabling-requireauth">Enabling RequireAuth</h3>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
@@ -520,9 +520,9 @@ Content-Type: application/json
 }
 </code></pre>
 <p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
-<h3 id="with-cold-wallets">With Cold Wallets</h3>
-<p>You may also enable <code>RequireAuth</code> for your cold wallet in order to use the <a href="#authorized-accounts">Authorized Accounts</a> feature. The procedure to enable the RequireAuth flag for a cold wallet is the same as <a href="#with-hot-wallets">with hot wallets</a>.</p>
-<p>If ACME decides to use Authorized Accounts, ACME creates an interface for users to get their Ripple trust lines authorized by ACME's cold account. After Alice has extended a trust line to ACME from her Ripple account, she goes through the interface on ACME's website to require ACME authorize her trust line. ACME confirms that it has validated Alice's identity information, and then sends a TrustSet transaction to authorize Alice's trust line.</p>
+<h3 id="authorizing-trust-lines">Authorizing Trust Lines</h3>
+<p>If you are using the <a href="#authorized-accounts">Authorized Accounts</a> feature, then after enabling the <code>RequireAuth</code> setting for your cold wallet, users cannot hold balances issued by your cold wallet unless you first authorize their trust lines.</p>
+<p>To authorize a trust line, submit a TrustSet transaction from your cold wallet, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="transactions.html#trustset-flags">tfSetfAuth</a> flag for the transaction.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="rippled-apis.html#submit"><code>submit</code> command</a> to send a TrustSet transaction authorizing the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:8088/
@@ -552,7 +552,7 @@ Content-Type: application/json
 <ul>
 <li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
 <li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
-<li><a href="https://ripple.com/files/GB-2014-06.pdf" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments</a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
+<li><a href="https://ripple.com/knowledge_center/partial-payment-flag/" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments</a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
 <li>In <code>rippled</code>, check the transaction for a <code>meta.delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> account.</li>
 <li>In RippleAPI, you can search the <code>outcome.BalanceChanges</code> field to see how much the destination account received. In some cases, this can be divided into multiple parts on different trust lines.</li>
 </ul>
@@ -684,7 +684,7 @@ Content-Type: application/json
 </ul>
 <h2 id="bouncing-payments">Bouncing Payments</h2>
 <p>When your hot or cold wallet receives a payment whose purpose is unclear, we recommend that you make an attempt to return the money to its sender. While this is more work than simply pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically. </p>
-<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The <a href="https://ripple.com/files/GB-2014-06.pdf">Partial Payment Flag Gateway Bulletin</a> explains how to avoid a common problem.</p>
+<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The <a href="https://ripple.com/knowledge_center/partial-payment-flag/">Partial Payment Flag Gateway Bulletin</a> explains how to avoid a common problem.</p>
 <p>Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.</p>
 <ul>
 <li>To send a Partial Payment using <code>rippled</code>, enable the <a href="transactions.html#payment-flags">tfPartialPayment flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field.</li>

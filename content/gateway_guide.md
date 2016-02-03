@@ -483,15 +483,15 @@ Response:
 
 ## RequireAuth ##
 
-The `RequireAuth` setting (`requireAuthorization` in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them. 
+The `RequireAuth` setting (`requireAuthorization` in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them.
 
-We recommend enabling `RequireAuth` for all hot wallet and warm wallet accounts, as a precaution. Separately, the Authorized Accounts feature involves [setting the `RequireAuth` flag on your cold wallet](#with-cold-wallets).
+We recommend always [enabling `RequireAuth`](#enabling-requireauth) for hot wallet and warm wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.
+
+If you want to use the [Authorized Accounts](#authorized-accounts) feature, you must also enable `RequireAuth` on your cold wallet. When using Authorized Accounts, your cold wallet must [submit a `TrustSet` transaction to approve each trust line](#authorizing-trust-lines) that customers open to your cold wallet.
 
 You can only enable `RequireAuth` if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple Consensus Ledger.
 
-### With Hot Wallets ###
-
-We recommend enabling `RequireAuth` for all hot wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.
+### Enabling RequireAuth ###
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)
 
@@ -518,13 +518,11 @@ POST http://localhost:5005/
 
 _(**Reminder:** Don't send your secret to a server you do not control.)_
 
-### With Cold Wallets ###
+### Authorizing Trust Lines ###
 
-You may also enable `RequireAuth` for your cold wallet in order to use the [Authorized Accounts](#authorized-accounts) feature. The procedure to enable the RequireAuth flag for a cold wallet is the same as [with hot wallets](#with-hot-wallets).
+If you are using the [Authorized Accounts](#authorized-accounts) feature, then after enabling the `RequireAuth` setting for your cold wallet, users cannot hold balances issued by your cold wallet unless you first authorize their trust lines.
 
-If ACME decides to use Authorized Accounts, ACME creates an interface for users to get their Ripple trust lines authorized by ACME's cold account. After Alice has extended a trust line to ACME from her Ripple account, she goes through the interface on ACME's website to require ACME authorize her trust line. ACME confirms that it has validated Alice's identity information, and then sends a TrustSet transaction to authorize Alice's trust line.
-
-
+To authorize a trust line, submit a TrustSet transaction from your cold wallet, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](transactions.html#trustset-flags) flag for the transaction.
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](rippled-apis.html#submit) to send a TrustSet transaction authorizing the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
@@ -562,7 +560,7 @@ In order to robustly monitor incoming payments, gateways should do the following
 
 * Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.
 * Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code `tesSUCCESS` can change non-XRP balances. Only transactions from a validated ledger are final.
-* [Look out for Partial Payments](https://ripple.com/files/GB-2014-06.pdf "Partial Payment Flag Gateway Bulletin"). Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.
+* [Look out for Partial Payments](https://ripple.com/knowledge_center/partial-payment-flag/ "Partial Payment Flag Gateway Bulletin"). Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.
     * In `rippled`, check the transaction for a `meta.delivered_amount` field. If present, that field indicates how much money *actually* got delivered to the `Destination` account.
     * In RippleAPI, you can search the `outcome.BalanceChanges` field to see how much the destination account received. In some cases, this can be divided into multiple parts on different trust lines.
 * Some transactions modify your balances without being payments directly to or from one of your accounts. For example, if ACME sets a nonzero [TransferRate](#transferrate), then ACME's cold wallet's outstanding obligations decrease each time Bob and Charlie exchange ACME issuances. See [TransferRate](#transferrate) for more information. 
@@ -720,7 +718,7 @@ In particular, note the following features of the [Payment Transaction](transact
 
 When your hot or cold wallet receives a payment whose purpose is unclear, we recommend that you make an attempt to return the money to its sender. While this is more work than simply pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically. 
 
-The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The [Partial Payment Flag Gateway Bulletin](https://ripple.com/files/GB-2014-06.pdf) explains how to avoid a common problem.
+The first requirement to bouncing payments is [robustly monitoring for incoming payments](#robustly-monitoring-for-payments). You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The [Partial Payment Flag Gateway Bulletin](https://ripple.com/knowledge_center/partial-payment-flag/) explains how to avoid a common problem.
 
 Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.
 

@@ -139,10 +139,10 @@
 <li><a href="rippled-setup.html"><code>rippled</code> Setup</a></li>
 <li><a href="#api-methods">API Reference</a></li>
 <li><a href="transactions.html">Transaction Reference</a></li>
-<li>Client Library - <a href="https://github.com/ripple/ripple-lib">Javascript</a></li>
+<li>JavaScript Client Library - <a href="rippleapi.html">RippleAPI</a></li>
 </ul>
 <h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1>
-<p>If you want to communicate directly with the <code>rippled</code> server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command.</p>
+<p>If you want to communicate directly with a <code>rippled</code> server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Alternatively, you can use <a href="rippleapi.html">RippleAPI</a>, which is a simplified JavaScript client library, which communicates directly with a <code>rippled</code> server from <a href="http://nodejs.org/">Node.js</a> or a web browser.</p>
 <ul>
 <li>The WebSocket API uses the <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSocket protocol</a>, available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The <code>rippled</code> server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.</li>
 <li>The JSON-RPC API relies on simple request-response communication via HTTP or HTTPS. (The <code>rippled</code> server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.</li>
@@ -4515,7 +4515,6 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </tr>
 </tbody>
 </table>
-<!--Note: keep the above table up-to-date with the Get Server Status method in the Ripple-REST documentation -->
 <h4 id="possible-errors-28">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
