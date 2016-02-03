@@ -1,14 +1,14 @@
 'use strict';
 /* import RippleAPI and support libraies*/
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 const assert = require('assert');
 
 /* Credentials of the account placing the order */
-const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
-const my_secret = 's████████████████████████████';
+const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+const mySecret = 's████████████████████████████';
 
 /* Define the order to place here */
-const my_order = {
+const myOrder = {
   'direction': 'buy',
   'quantity': {
     'currency': 'FOO',
@@ -27,7 +27,7 @@ const INTERVAL = 1000;
 const api = new RippleAPI({server: 'wss://s2.ripple.com'});
 /* number of ledgers to check for valid transaction before fail */
 const ledgerOffset = 5;
-const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
+const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
 
 /* Verify a transaction is in a validated RCL version */
@@ -39,7 +39,8 @@ function verifyTransaction(hash, options) {
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
   }).catch(error => {
-    /* if transaction not in latest validated ledger try again until max ledger hit */
+    /* if transaction not in latest validated ledger,
+       try again until max ledger hit */
     if (error instanceof api.errors.PendingLedgerVersionError) {
       return new Promise((resolve, reject) => {
         setTimeout(() => verifyTransaction(hash, options)
@@ -76,12 +77,12 @@ function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
 
 api.connect().then(() => {
   console.log('Connected');
-  return api.prepareOrder(my_addr, my_order, my_instructions);
+  return api.prepareOrder(myAddr, myOrder, myInstructions);
 }).then(prepared => {
   console.log('Order Prepared');
   return api.getLedger().then(ledger => {
     console.log('Current Ledger', ledger.ledgerVersion);
-    return submitTransaction(ledger.ledgerVersion, prepared, my_secret);
+    return submitTransaction(ledger.ledgerVersion, prepared, mySecret);
   });
 }).then(() => {
   api.disconnect().then(() => {
