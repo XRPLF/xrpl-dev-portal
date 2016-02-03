@@ -124,12 +124,12 @@ Even for a simple script, there's a lot packed into that, including some syntax 
 
 ```
 'use strict';
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 ```
 
 The opening line enables [strict mode](https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/). This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: [Restrictions on Code in Strict Mode](https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1).
 
-The second line imports RippleAPI into the current scope using Node.js's require function. The [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) assigns it to the variable name `RippleAPI` instead of `ripple-lib` (which is the name of the package, for historical reasons).
+The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is just one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.js).
 
 ### Instantiating the API ###
 
@@ -144,7 +144,7 @@ This section creates a new instance of the RippleAPI class, assigning it to the 
 The one argument to the constructor is an options object, which has [a variety of options](rippleapi.html#parameters). The `server` parameter tells it where it should connect to a `rippled` server.
 
 * The example `server` setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.
-* If you don't include the `server` option, RippleAPI runs in [offline mode](rippleapi.html#offline-functionality) instead, which severely limits what you can do with it.
+* If you don't include the `server` option, RippleAPI runs in [offline mode](rippleapi.html#offline-functionality) instead, which only provides methods that don't need network connectivity.
 * You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production Ripple Consensus Ledger.
 * If you [run your own `rippled`](rippled-setup.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
 
@@ -212,7 +212,11 @@ One of the biggest challenges in using the Ripple Consensus Ledger (or any decen
 
 This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.
 
-Unfortunately, there are occasional tricky race conditions where very similar code might miss a confirmed transaction. This has to do with the fact that `rippled` returns a "not found" error if you look for a transaction that isn't in a ledger it has on hand. It's extremely unlikely to happen in the code as written, but it's possible that similar code with a larger interval between checks, or delayed due a power outage, may indicate that the transaction was not validated even when it was. This only occurs if the `rippled` server has an incomplete ledger history, either because it deletes or has not yet written the ledger where the submitted transaction was validated. The best solution is to check what ledger versions are available before taking any action to re-submit a transaction. See [Reliable Transaction Submission](reliable_tx.html) for a more thorough explanation.
+In rare cases (particularly with a large delay or a loss of power), the `rippled` server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the `maxLedgerVersion`. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns `MissingLedgerHistoryError` in this case.
+
+If you are the administrator of the `rippled` server, you can [manually request the missing ledger(s)](rippled-apis.html#ledger-request). Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at `s2.ripple.com` for this purpose.)
+
+See [Reliable Transaction Submission](reliable_tx.html) for a more thorough explanation.
 
 
 
@@ -258,13 +262,30 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 
 #### 3. Use Gulp to build a single JavaScript output
 
-RippleAPI comes with code to use the [gulp](http://gulpjs.com/) package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it:
+RippleAPI comes with code to use the [gulp](http://gulpjs.com/) package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it. RippleAPI's configuration makes this easy:
 
 ```
-./node_modules/.bin/gulp
+npm run build
 ```
 
-This may take a little while. It outputs several things, and creates a new `build/` folder, which contains the files you want.
+Output:
+
+```
+> ripple-lib@0.16.5 build /home/username/ripple-lib
+> gulp
+
+[15:22:30] Using gulpfile /home/username/ripple-lib/Gulpfile.js
+[15:22:30] Starting 'build'...
+[15:22:30] Starting 'build-debug'...
+[15:22:42] Finished 'build' after 12 s
+[15:22:42] Starting 'build-min'...
+[15:22:42] Finished 'build-debug' after 12 s
+[15:22:51] Finished 'build-min' after 9.83 s
+[15:22:51] Starting 'default'...
+[15:22:51] Finished 'default' after 4.58 μs
+```
+
+This may take a while. At the end, the build process creates a new `build/` folder, which contains the files you want.
 
 The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading.
 

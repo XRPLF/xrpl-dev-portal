@@ -199,19 +199,18 @@ git commit -m "ignore node_modules"
 <h1 id="first-rippleapi-script">First RippleAPI Script</h1>
 <p>With RippleAPI installed, it's time to test that it works. Here's a simple script that uses RippleAPI to retrieve information on a specific account:</p>
 <pre><code>'use strict';
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 
 const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public rippled server
 });
 api.connect().then(() =&gt; {
   /* begin custom code ------------------------------------ */
-  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+  const myAddress = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
-  console.log('getting account info for', my_address);
-  return api.getAccountInfo(my_address);
+  console.log('getting account info for', myAddress);
+  return api.getAccountInfo(myAddress);
 
-// info =&gt; {...} is just a shorter syntax for function(info) {...}
 }).then(info =&gt; {
   console.log(info);
   console.log('getAccountInfo done');
@@ -219,7 +218,7 @@ api.connect().then(() =&gt; {
   /* end custom code -------------------------------------- */
 }).then(() =&gt; {
   return api.disconnect();
-}).then(()=&gt; {
+}).then(() =&gt; {
   console.log('done and disconnected.');
 }).catch(console.error);
 </code></pre>
@@ -242,10 +241,10 @@ done and disconnected.
 <p>Even for a simple script, there's a lot packed into that, including some syntax and conventions that are recent developments in JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.</p>
 <h3 id="script-opening">Script opening</h3>
 <pre><code>'use strict';
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 </code></pre>
 <p>The opening line enables <a href="https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
-<p>The second line imports RippleAPI into the current scope using Node.js's require function. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring assignment</a> assigns it to the variable name <code>RippleAPI</code> instead of <code>ripple-lib</code> (which is the name of the package, for historical reasons).</p>
+<p>The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is just one of <a href="https://github.com/ripple/ripple-lib/blob/develop/src/index.js">the modules <code>ripple-lib</code> exports</a>.</p>
 <h3 id="instantiating-the-api">Instantiating the API</h3>
 <pre><code>const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public rippled server
@@ -255,7 +254,7 @@ const {RippleAPI} = require('ripple-lib');
 <p>The one argument to the constructor is an options object, which has <a href="rippleapi.html#parameters">a variety of options</a>. The <code>server</code> parameter tells it where it should connect to a <code>rippled</code> server.</p>
 <ul>
 <li>The example <code>server</code> setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.</li>
-<li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="rippleapi.html#offline-functionality">offline mode</a> instead, which severely limits what you can do with it.</li>
+<li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="rippleapi.html#offline-functionality">offline mode</a> instead, which only provides methods that don't need network connectivity.</li>
 <li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production Ripple Consensus Ledger.</li>
 <li>If you <a href="rippled-setup.html">run your own <code>rippled</code></a>, you can instruct it to connect to your local server. For example, you might say <code>server: 'ws://localhost:5005'</code> instead.</li>
 </ul>
@@ -297,15 +296,15 @@ const {RippleAPI} = require('ripple-lib');
 <p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="reliable_tx.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
 <pre><code>'use strict';
 /* import RippleAPI and support libraies*/
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 const assert = require('assert');
 
 /* Credentials of the account placing the order */
-const my_addr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
-const my_secret = 's████████████████████████████';
+const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+const mySecret = 's████████████████████████████';
 
 /* Define the order to place here */
-const my_order = {
+const myOrder = {
   'direction': 'buy',
   'quantity': {
     'currency': 'FOO',
@@ -324,7 +323,7 @@ const INTERVAL = 1000;
 const api = new RippleAPI({server: 'wss://s2.ripple.com'});
 /* number of ledgers to check for valid transaction before fail */
 const ledgerOffset = 5;
-const my_instructions = {maxLedgerVersionOffset: ledgerOffset};
+const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
 
 /* Verify a transaction is in a validated RCL version */
@@ -336,7 +335,8 @@ function verifyTransaction(hash, options) {
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
   }).catch(error =&gt; {
-    /* if transaction not in latest validated ledger try again until max ledger hit */
+    /* if transaction not in latest validated ledger,
+       try again until max ledger hit */
     if (error instanceof api.errors.PendingLedgerVersionError) {
       return new Promise((resolve, reject) =&gt; {
         setTimeout(() =&gt; verifyTransaction(hash, options)
@@ -373,12 +373,12 @@ function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
 
 api.connect().then(() =&gt; {
   console.log('Connected');
-  return api.prepareOrder(my_addr, my_order, my_instructions);
+  return api.prepareOrder(myAddr, myOrder, myInstructions);
 }).then(prepared =&gt; {
   console.log('Order Prepared');
   return api.getLedger().then(ledger =&gt; {
     console.log('Current Ledger', ledger.ledgerVersion);
-    return submitTransaction(ledger.ledgerVersion, prepared, my_secret);
+    return submitTransaction(ledger.ledgerVersion, prepared, mySecret);
   });
 }).then(() =&gt; {
   api.disconnect().then(() =&gt; {
@@ -389,7 +389,9 @@ api.connect().then(() =&gt; {
 
 </code></pre>
 <p>This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.</p>
-<p>Unfortunately, there are occasional tricky race conditions where very similar code might miss a confirmed transaction. This has to do with the fact that <code>rippled</code> returns a "not found" error if you look for a transaction that isn't in a ledger it has on hand. It's extremely unlikely to happen in the code as written, but it's possible that similar code with a larger interval between checks, or delayed due a power outage, may indicate that the transaction was not validated even when it was. This only occurs if the <code>rippled</code> server has an incomplete ledger history, either because it deletes or has not yet written the ledger where the submitted transaction was validated. The best solution is to check what ledger versions are available before taking any action to re-submit a transaction. See <a href="reliable_tx.html">Reliable Transaction Submission</a> for a more thorough explanation.</p>
+<p>In rare cases (particularly with a large delay or a loss of power), the <code>rippled</code> server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the <code>maxLedgerVersion</code>. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns <code>MissingLedgerHistoryError</code> in this case.</p>
+<p>If you are the administrator of the <code>rippled</code> server, you can <a href="rippled-apis.html#ledger-request">manually request the missing ledger(s)</a>. Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at <code>s2.ripple.com</code> for this purpose.)</p>
+<p>See <a href="reliable_tx.html">Reliable Transaction Submission</a> for a more thorough explanation.</p>
 <h1 id="rippleapi-in-web-browsers">RippleAPI in Web Browsers</h1>
 <p>The process of using RippleAPI in a web browser is slightly different.</p>
 <h2 id="build-instructions">Build Instructions</h2>
@@ -412,10 +414,24 @@ checkout release
 npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
 </code></pre>
 <h4 id="3-use-gulp-to-build-a-single-javascript-output">3. Use Gulp to build a single JavaScript output</h4>
-<p>RippleAPI comes with code to use the <a href="http://gulpjs.com/">gulp</a> package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it:</p>
-<pre><code>./node_modules/.bin/gulp
+<p>RippleAPI comes with code to use the <a href="http://gulpjs.com/">gulp</a> package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it. RippleAPI's configuration makes this easy:</p>
+<pre><code>npm run build
 </code></pre>
-<p>This may take a little while. It outputs several things, and creates a new <code>build/</code> folder, which contains the files you want.</p>
+<p>Output:</p>
+<pre><code>&gt; ripple-lib@0.16.5 build /home/username/ripple-lib
+&gt; gulp
+
+[15:22:30] Using gulpfile /home/username/ripple-lib/Gulpfile.js
+[15:22:30] Starting 'build'...
+[15:22:30] Starting 'build-debug'...
+[15:22:42] Finished 'build' after 12 s
+[15:22:42] Starting 'build-min'...
+[15:22:42] Finished 'build-debug' after 12 s
+[15:22:51] Finished 'build-min' after 9.83 s
+[15:22:51] Starting 'default'...
+[15:22:51] Finished 'default' after 4.58 μs
+</code></pre>
+<p>This may take a while. At the end, the build process creates a new <code>build/</code> folder, which contains the files you want.</p>
 <p>The file <code>build/ripple-&lt;VERSION NUMBER&gt;.js</code> is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in <code>-min.js</code> is the same thing, but with the content <a href="https://en.wikipedia.org/wiki/Minification_%28programming%29">minified</a> for faster loading.</p>
 <h2 id="example-browser-usage">Example Browser Usage</h2>
 <p>The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public <code>rippled</code> server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named <code>ripple</code>, which contains the <code>RippleAPI</code> class.</p>
@@ -427,24 +443,24 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
   &lt;script&gt;
     console.log(ripple);
     var api = new ripple.RippleAPI({server:'wss://s1.ripple.com/'});
-    api.connect().then(()=&gt;{
+    api.connect().then(function() {
         return api.getServerInfo();
-    }).then(server_info=&gt;{
-    document.body.innerHTML += `&lt;p&gt;Connected to rippled server!&lt;/p&gt;
-      &lt;table&gt;
-        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;
-          &lt;td&gt;${ server_info.buildVersion }&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;
-          &lt;td&gt;${ server_info.completeLedgers }&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;
-          &lt;td&gt;${ server_info.hostID }&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;
-          &lt;td&gt;${ server_info.validatedLedger.ledgerVersion }&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;
-          &lt;td&gt;${ server_info.validatedLedger.hash }&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;
-          &lt;td&gt;${ server_info.validatedLedger.age }&lt;/td&gt;&lt;/tr&gt;
-      &lt;/table&gt;`;
+    }).then(function(server_info) {
+    document.body.innerHTML += "&lt;p&gt;Connected to rippled server!&lt;/p&gt;" +
+"      &lt;table&gt;" +
+"        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.buildVersion + "&lt;/td&gt;&lt;/tr&gt;" +
+"        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.completeLedgers + "&lt;/td&gt;&lt;/tr&gt;" +
+"        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.hostID + "&lt;/td&gt;&lt;/tr&gt;" +
+"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.validatedLedger.ledgerVersion + "&lt;/td&gt;&lt;/tr&gt;" +
+"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.validatedLedger.hash + "&lt;/td&gt;&lt;/tr&gt;" +
+"        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;" +
+"          &lt;td&gt;" + server_info.validatedLedger.age + "&lt;/td&gt;&lt;/tr&gt;" +
+"      &lt;/table&gt;";
     });
   &lt;/script&gt;
   &lt;style type="text/css"&gt;

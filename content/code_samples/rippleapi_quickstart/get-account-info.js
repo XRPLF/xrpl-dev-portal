@@ -1,17 +1,16 @@
 'use strict';
-const {RippleAPI} = require('ripple-lib');
+const RippleAPI = require('ripple-lib').RippleAPI;
 
 const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public rippled server
 });
 api.connect().then(() => {
   /* begin custom code ------------------------------------ */
-  const my_address = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
+  const myAddress = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
-  console.log('getting account info for', my_address);
-  return api.getAccountInfo(my_address);
+  console.log('getting account info for', myAddress);
+  return api.getAccountInfo(myAddress);
 
-// info => {...} is just a shorter syntax for function(info) {...}
 }).then(info => {
   console.log(info);
   console.log('getAccountInfo done');
@@ -19,6 +18,6 @@ api.connect().then(() => {
   /* end custom code -------------------------------------- */
 }).then(() => {
   return api.disconnect();
-}).then(()=> {
+}).then(() => {
   console.log('done and disconnected.');
 }).catch(console.error);
