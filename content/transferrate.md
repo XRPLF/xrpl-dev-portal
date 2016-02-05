@@ -26,19 +26,19 @@ In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to de
 
 The transfer fee is represented by a setting on the issuing (**cold wallet**) account. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% or greater than 100%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different cold wallets to issue each currency.
 
-## Ripple-REST ##
+## RippleAPI ##
 
-In Ripple-REST, the transfer fee is specified in the `transfer_rate` field, as a decimal which represents the amount you must send in order for the recipient to get 1 unit of the same currency. A `transfer_rate` of `1.005` is equivalent to a transfer fee of 0.5%. By default, the `transfer_rate` is set at `1.0`, indicating no fee. The value of `transfer_rate` cannot be less than `1.0` or more than `2.0`. However, the value `0` is special: it is equivalent to `1.0`, meaning no fee.
+In RippleAPI, the transfer fee is specified in the `transferRate` field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A `transferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `transferRate` is set to no fee. The value of `transferRate` cannot be less than `1000000000` or more than `2000000000`. The value `null` is special: it is equivalent to `1000000000`, meaning no fee.
 
-A gateway can use the [Update Account Settings method](https://ripple.com/build/ripple-rest/#update-account-settings) with its cold wallet to change the `transfer_rate` for its issuances.
+A gateway can send a [Settings transaction](rippleapi.html#settings) with its cold wallet to change the `transferRate` for its issuances.
 
-You can check an account's `transfer_rate` with the [Get Account Settings method](https://ripple.com/build/ripple-rest/#get-account-settings).
+You can check an account's `transferRate` with the [getSettings method](rippleapi.html#getsettings).
 
 ## rippled ##
 
-In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `transfer_rate` is set at `1000000000`, indicating no fee. The value of `TransferRate` cannot be less than `1000000000` or more than `2000000000`. However, value `0` is special: it is equivalent to `1000000000`, meaning no fee.
+In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set at `1000000000`, indicating no fee. The value of `TransferRate` cannot be less than `1000000000` or more than `2000000000`. However, value `0` is special: it is equivalent to `1000000000`, meaning no fee.
 
-A gateway can submit an [AccountSet transaction](https://ripple.com/build/transactions/#accountset) from its cold wallet to change the `TransferRate` for its issuances. 
+A gateway can submit an [AccountSet transaction](transactions.html#accountset) from its cold wallet to change the `TransferRate` for its issuances. 
 
-You can check an account's `TransferRate` with the [account_info command](https://ripple.com/build/rippled-apis/#account-info). If the `TransferRate` is omitted, then that indicates no fee.
+You can check an account's `TransferRate` with the [`account_info` command](rippled-apis.html#account-info). If the `TransferRate` is omitted, then that indicates no fee.
 
