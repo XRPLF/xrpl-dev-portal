@@ -158,7 +158,7 @@ There are several prerequisites that ACME must meet in order for this to happen:
 - ACME must have an account on the Ripple network. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See [Hot and Cold Wallets](#hot-and-cold-wallets) for more information.
     - ACME must enable the [DefaultRipple Flag](#defaultripple) on its issuing account in order for users to send and receive its issuances.
 - Alice must create a trustline from her Ripple account to ACME's issuing (cold wallet) account. She can do this from any Ripple client application as long as she knows the address or Ripple Name of ACME's cold wallet.
-    - In order to do this, Alice needs to find the address of ACME's cold wallet. ACME can publicize its cold wallet address on its website, or have its gateway listed in a client such as Ripple Trade. See [Setting Trust Lines in Ripple Trade](#setting-trust-lines-in-ripple-trade).
+    - In order to do this, Alice needs to find the address of ACME's cold wallet. ACME can publicize its cold wallet address on its website, or have the developers of .
 - ACME must create a user interface for Alice to send funds from ACME into Ripple.
     - In order to do this, ACME needs to know Alice's Ripple address. ACME can have Alice input her Ripple addresss as part of the interface, or ACME can require Alice to input and verify her Ripple address in advance.
 
