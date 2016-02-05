@@ -308,7 +308,8 @@ def watch(pre_parse, pdf, target):
     patterns = ["*tool/pages.json", "*tool/template-*.html"]
     if pre_parse:
         #md only prompts HTML change if pre-parsed
-        patterns.append("*content/*.md", "content/code_samples/*")
+        patterns.append("*content/*.md")
+        patterns.append("content/code_samples/*")
     event_handler = UpdaterHandler(patterns=patterns)
     observer = Observer()
     observer.schedule(event_handler, path, recursive=True)

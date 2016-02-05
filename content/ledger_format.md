@@ -147,7 +147,7 @@ There are two kinds of Directories:
 
 Example Directories:
 
-<div class='multicode'>
+<!-- <div class='multicode'> -->
 
 *Offer Directory*
 
@@ -184,7 +184,7 @@ Example Directories:
 }
 ```
 
-</div>
+<!-- </div> -->
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
