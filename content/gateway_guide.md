@@ -237,7 +237,7 @@ Ripple provides the ability to freeze assets issued by the gateway in Ripple as 
 * Gateways can freeze all issuances created by their cold wallet, in case of a compromised gateway account or for migrating cold wallets.
 * Furthermore, gateways can permanently opt out of their ability to freeze issuances at all. This allows a gateway to assure its users that it will continue to provide "physical-money-like" services.
 
-For more information, see the [Gateway Bulletin on Freezes](https://ripple.com/files/GB-2014-02.pdf).
+For more information, see the [Freeze article](freeze.html).
 
 
 ## Authorized Accounts ##

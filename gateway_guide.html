@@ -315,7 +315,7 @@
 <li>Gateways can freeze all issuances created by their cold wallet, in case of a compromised gateway account or for migrating cold wallets.</li>
 <li>Furthermore, gateways can permanently opt out of their ability to freeze issuances at all. This allows a gateway to assure its users that it will continue to provide "physical-money-like" services.</li>
 </ul>
-<p>For more information, see the <a href="https://ripple.com/files/GB-2014-02.pdf">Gateway Bulletin on Freezes</a>.</p>
+<p>For more information, see the <a href="freeze.html">Freeze article</a>.</p>
 <h2 id="authorized-accounts">Authorized Accounts</h2>
 <p>Ripple's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown Ripple accounts cannot hold the currency your gateway issues. We feel this is <em>not necessary</em> in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the Ripple network.)</p>
 <p>To use the Authorized Accounts feature, a gateway enables the <code>RequireAuth</code> flag for its cold wallet account, and then individually approves each user account's trust line before sending issuances in Ripple to that account.</p>
