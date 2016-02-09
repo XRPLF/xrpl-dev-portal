@@ -77,7 +77,7 @@ Submission and verification are two separate procedures which may be implemented
 
 ### Submission
 
-[Persist](https://en.wikipedia.org/wiki/Persistence_(computer_science%29) details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.
+[Persist](https://en.wikipedia.org/wiki/Persistence_%28computer_science%29) details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.
 
 The submission process:
 
