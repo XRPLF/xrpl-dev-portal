@@ -73,7 +73,7 @@ If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org
 Send request body as a [JSON](http://www.w3schools.com/json/) object with the following attributes:
 
 * Put the command in the top-level `"method"` field
-* Include a top-level `"params"` field. The contents of this field should be **a one-item array** where the one items is a nested JSON object with all the parameters for the command.
+* Include a top-level `"params"` field. The contents of this field should be **a one-item array** containing only a nested JSON object with all the parameters for the command.
 
 The response is also a JSON object.
 
@@ -998,7 +998,7 @@ Each trust-line object has some combination of the following fields:
 | no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for this line. If omitted, that is the same as `false`. |
 | no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/). If omitted, that is the same as `false`. |
 | freeze | Boolean | (May be omitted) `true` if this account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
-| freeze\_peer | (May be omitted) `true` if the peer account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
+| freeze\_peer | Boolean | (May be omitted) `true` if the peer account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
 
 #### Possible Errors ####
 

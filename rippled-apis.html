@@ -199,7 +199,7 @@
 <p>Send request body as a <a href="http://www.w3schools.com/json/">JSON</a> object with the following attributes:</p>
 <ul>
 <li>Put the command in the top-level <code>"method"</code> field</li>
-<li>Include a top-level <code>"params"</code> field. The contents of this field should be <strong>a one-item array</strong> where the one items is a nested JSON object with all the parameters for the command.</li>
+<li>Include a top-level <code>"params"</code> field. The contents of this field should be <strong>a one-item array</strong> containing only a nested JSON object with all the parameters for the command.</li>
 </ul>
 <p>The response is also a JSON object.</p>
 <h4 id="public-servers-1">Public Servers</h4>
@@ -1367,8 +1367,8 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 </tr>
 <tr>
 <td>freeze_peer</td>
+<td>Boolean</td>
 <td>(May be omitted) <code>true</code> if the peer account has <a href="freeze.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
-<td></td>
 </tr>
 </tbody>
 </table>
