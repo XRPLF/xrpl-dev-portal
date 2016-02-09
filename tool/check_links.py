@@ -17,13 +17,16 @@ def checkLinks(offline=False):
     externalCache = []
     atRoot = True
     broken_links = []
-    
+    num_links_checked = 0
     for dirpath, dirnames, filenames in os.walk("../"):
       if atRoot:
         dirnames.remove('tool')
         atRoot = False
       for fname in filenames:
-        fullPath = os.path.join(dirpath, fname);
+        fullPath = os.path.join(dirpath, fname)
+        if "/node_modules/" in fullPath or ".git" in fullPath:
+          print("skipping ignored dir:", fullPath)
+          continue
         if fullPath.endswith(".html"):
           soup = getSoup(fullPath)
           links = soup.find_all('a')
@@ -36,6 +39,7 @@ def checkLinks(offline=False):
             if not endpoint.strip():
               print("Empty link in",fullPath)
               broken_links.append( (fullPath, endpoint) )
+              num_links_checked += 1
             
             elif endpoint == "#":
               continue
@@ -48,6 +52,8 @@ def checkLinks(offline=False):
               if offline:
                 print("Offline - Skipping remote URL %s"%(endpoint))
                 continue
+                
+              num_links_checked += 1
               if endpoint not in externalCache:
                 print("Testing remote URL %s"%(endpoint))
                 try:
@@ -69,11 +75,11 @@ def checkLinks(offline=False):
                 else:
                   print("...success.")
                   externalCache.append(endpoint)
-
             
               
             elif '#' in endpoint:
               print("Testing local link %s from %s"%(endpoint, fullPath))
+              num_links_checked += 1
               filename,anchor = endpoint.split("#",1)
               if filename == "":
                 fullTargetPath = fullPath
@@ -91,6 +97,7 @@ def checkLinks(offline=False):
                   continue
 
               elif fullTargetPath != "../":
+                num_links_checked += 1
                 targetSoup = getSoup(fullTargetPath)
                 if not targetSoup.find(id=anchor) and not targetSoup.find(
                         "a",attrs={"name":anchor}):
@@ -106,10 +113,11 @@ def checkLinks(offline=False):
               continue
 
             else:
+              num_links_checked += 1
               if not os.path.exists(os.path.join(dirpath, endpoint)):
                 print("Broken local link in %s to %s"%(fullPath, endpoint))
                 broken_links.append( (fullPath, endpoint) )
-    return broken_links
+    return broken_links, num_links_checked
 
 #Sometimes, a link is not really problematic, but the link checker detects it as
 # such and the easiest solution is to ignore it.
@@ -127,7 +135,10 @@ if __name__ == "__main__":
                         help="Exit with error even on known problems")
     args = parser.parse_args()
     
-    broken_links = checkLinks(args.offline)
+    broken_links, num_links_checked = checkLinks(args.offline)
+    
+    print("---------------------------------------")
+    print("Link check report. %d links checked."%num_links_checked)
     
     if not args.strict:
       unknown_broken_links = [(page,link) for page,link in broken_links 
