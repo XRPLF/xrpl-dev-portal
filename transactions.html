@@ -746,13 +746,13 @@
 <tr>
 <td>asfNoFreeze</td>
 <td>6</td>
-<td>Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled.</td>
+<td>Permanently give up the ability to <a href="freeze.html">freeze individual trust lines or disable Global Freeze</a>. This flag can never be disabled after being enabled.</td>
 <td>lsfNoFreeze</td>
 </tr>
 <tr>
 <td>asfGlobalFreeze</td>
 <td>7</td>
-<td>Freeze all assets issued by this account.</td>
+<td><a href="freeze.html">Freeze</a> all assets issued by this account.</td>
 <td>lsfGlobalFreeze</td>
 </tr>
 <tr>
@@ -914,7 +914,7 @@
 <ul>
 <li>If the creator no longer has any of the <code>TakerGets</code> currency.</li>
 <li>The offer becomes funded again when the creator obtains more of that currency.</li>
-<li>If the currency required to fund the offer is held in a <a href="https://wiki.ripple.com/Freeze">frozen trust line</a>.</li>
+<li>If the currency required to fund the offer is held in a <a href="freeze.html">frozen trust line</a>.</li>
 <li>The offer becomes funded again when the trust line is no longer frozen.</li>
 <li>If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See <a href="#offers-and-trust">Offers and Trust</a>.)</li>
 <li>The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.</li>
@@ -1129,13 +1129,13 @@
 <td>tfSetFreeze</td>
 <td>0x00100000</td>
 <td>1048576</td>
-<td><a href="https://wiki.ripple.com/Freeze">Freeze</a> the trustline.</td>
+<td><a href="freeze.html">Freeze</a> the trustline.</td>
 </tr>
 <tr>
 <td>tfClearFreeze</td>
 <td>0x00200000</td>
 <td>2097152</td>
-<td>Unfreeze the trustline.</td>
+<td><a href="freeze.html">Unfreeze</a> the trustline.</td>
 </tr>
 </tbody>
 </table>
@@ -1849,7 +1849,7 @@
 <tr>
 <td>tecFROZEN</td>
 <td>137</td>
-<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="https://ripple.com/files/GB-2014-02.pdf">global freeze</a>.</td>
+<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="freeze.html">global freeze</a>.</td>
 </tr>
 <tr>
 <td>tecNO_TARGET</td>

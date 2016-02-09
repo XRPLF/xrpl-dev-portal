@@ -467,8 +467,8 @@ The available AccountSet flags are:
 | asfDisallowXRP | 3 | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) | lsfDisallowXRP |
 | asfDisableMaster | 4 | Disallow use of the master key. Can only be enabled if the account has a [RegularKey](#setregularkey) configured. | lsfDisableMaster |
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
-| asfNoFreeze | 6 | Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled. | lsfNoFreeze |
-| asfGlobalFreeze | 7 | Freeze all assets issued by this account. | lsfGlobalFreeze |
+| asfNoFreeze | 6 | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](freeze.html). This flag can never be disabled after being enabled. | lsfNoFreeze |
+| asfGlobalFreeze | 7 | [Freeze](freeze.html) all assets issued by this account. | lsfGlobalFreeze |
 | asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
 _New in [rippled 0.28.0][]:_ You cannot send a transaction that enables `asfDisableMaster` or `asfNoFreeze` using a [regular key](#setregularkey). You must use the master key to sign the transaction.
@@ -572,7 +572,7 @@ It is possible for an offer to become temporarily or permanently *unfunded*:
 
 * If the creator no longer has any of the `TakerGets` currency.
   * The offer becomes funded again when the creator obtains more of that currency.
-* If the currency required to fund the offer is held in a [frozen trust line](https://wiki.ripple.com/Freeze).
+* If the currency required to fund the offer is held in a [frozen trust line](freeze.html).
   * The offer becomes funded again when the trust line is no longer frozen.
 * If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
   * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
@@ -726,8 +726,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | tfSetfAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
 | tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
 | tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
-| tfSetFreeze | 0x00100000 | 1048576 | [Freeze](https://wiki.ripple.com/Freeze) the trustline.
-| tfClearFreeze | 0x00200000 | 2097152 | Unfreeze the trustline. |
+| tfSetFreeze | 0x00100000 | 1048576 | [Freeze](freeze.html) the trustline.
+| tfClearFreeze | 0x00200000 | 2097152 | [Unfreeze](freeze.html) the trustline. |
 
 
 # Pseudo-Transactions #
@@ -1016,7 +1016,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
 | tecNO\_LINE | 135 | The `TakerPays` field of the [OfferCreate transaction](#offercreate) specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, tecNO\_AUTH occurs instead. |
 | tecINSUFF\_FEE | 136 | The account sending the transaction does not possess enough XRP to pay the specified `Fee`. This error only occurs if the transaction has already been propagated through the network to achieve consensus, |
-| tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](https://ripple.com/files/GB-2014-02.pdf). |
+| tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](freeze.html). |
 | tecNO\_TARGET | 138 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecNO\_PERMISSION | 139 | **FORTHCOMING** Part of multi-signature transactions. |
 | tecNO\_ENTRY | 140 | **FORTHCOMING** Part of multi-signature transactions. |
