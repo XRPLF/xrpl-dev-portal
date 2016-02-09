@@ -1566,22 +1566,22 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. <em>(<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1603,7 +1603,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>seq</td>
 <td>Unsigned integer</td>
-<td>Sequence number of the transaction that created this entry. (Transaction sequence numbers are relative to accounts.)</td>
+<td>Sequence number of the transaction that created this entry. (Transaction <a href="#account-sequence">sequence numbers</a> are relative to accounts.)</td>
 </tr>
 <tr>
 <td>taker_gets</td>
@@ -1618,7 +1618,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>quality</td>
 <td>Number</td>
-<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. _(<a href="https://wiki.ripple.com/Rippled-0.29.0">New in version 0.29.0</a>)</td>
+<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <em>(<a href="https://wiki.ripple.com/Rippled-0.29.0">New in version 0.29.0</a>)</em></td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>Unsigned integer</td>
+<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="transactions.html#expiration">Offer Expiration</a>. <em>(<a href="https://wiki.ripple.com/Rippled-0.30.1">New in 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>

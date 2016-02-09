@@ -1062,8 +1062,8 @@ A request can include the following parameters:
 |-------|------|-------------|
 | account | String | A unique identifier for the account, most commonly the account's [Address][]. |
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
-| ledger_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
-| ledger_index | (Optional) [Ledger Index][] | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
+| ledger\_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
+| ledger\_index | (Optional) [Ledger Index][] | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. ([New in 0.26.4](https://wiki.ripple.com/Rippled-0.26.4)) |
 | marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. ([New in 0.26.4](https://wiki.ripple.com/Rippled-0.26.4)) |
 
@@ -1174,10 +1174,10 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique [Address][] identifying the account that made the offers |
 | offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
-| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. ([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1)) |
-| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1)) |
-| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. ([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1)) |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. ([New in 0.26.4](https://wiki.ripple.com/Rippled-0.26.4)) |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. _([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1))_ |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. _([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1))_ |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. _([New in 0.26.4-sp1](https://github.com/ripple/rippled/releases/tag/0.26.4-sp1))_ |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. _([New in 0.26.4](https://wiki.ripple.com/Rippled-0.26.4))_ |
 
 
 Each offer object contains the following fields:
@@ -1185,10 +1185,11 @@ Each offer object contains the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | flags | Unsigned integer | Options set for this offer entry as bit-flags. |
-| seq | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction sequence numbers are relative to accounts.) |
+| seq | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](#account-sequence) are relative to accounts.) |
 | taker_gets | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | taker_pays | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
-| quality | Number | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. _([New in version 0.29.0](https://wiki.ripple.com/Rippled-0.29.0)) |
+| quality | Number | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. _([New in version 0.29.0](https://wiki.ripple.com/Rippled-0.29.0))_ |
+| expiration | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](transactions.html#expiration). _([New in 0.30.1](https://wiki.ripple.com/Rippled-0.30.1))_ |
 
 #### Possible Errors ####
 
