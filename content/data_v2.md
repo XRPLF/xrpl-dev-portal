@@ -2996,26 +2996,13 @@ In other words, XRP has the same precision as a 64-bit unsigned integer where ea
 ### Addresses ###
 [Address]: #addresses
 
-Ripple Accounts are identified by a base-58 Ripple Address, which is derived from the account's master public key. An address is represented as a String in JSON, with the following characteristics:
+{% include 'data_types/address.md' %}
 
-* Between 25 and 35 characters in length
-* Starts with the character `r`
-* Case-sensitive
-* Base-58 encoded using only the following characters: `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz` That's alphanumeric characters, excluding zero (`0`), capital O (`O`), capital I (`I`), and lowercase L (`l`).
-* Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.
 
 ### Hashes ###
 [Hash]: #hashes
 
-Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a SHA-512 hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered identical.
-
-A Ripple hash value has the following characteristics:
-
-* Exactly 64 characters in length
-* [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
-* Typically written in upper case.
-
-**Note:** SHA-512Half has similar security to the officially-defined _SHA-512/256_ hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function (since support for SHA-512/256 is not common in cryptographic libraries as of this writing).
+{% include 'data_types/hash.md' %}
 
 
 ### Timestamps ###
@@ -3038,26 +3025,17 @@ All dates and times are written in ISO 8601 Timestamp Format, using UTC. This fo
 ### Ledger Index ###
 [Ledger Index]: #ledger-index
 
-A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.
-
-Two ledgers with the same ledger index are guaranteed to have identical contents _if they are validated by consensus_. Ledgers that are not validated by consensus may have different contents even with the same ledger index. (The [Hash][] values of two ledgers can tell you whether those ledgers have the exact same contents.)
+{% include 'data_types/ledger_index.md' %}
 
 ### Account Sequence ###
 [Sequence Number]: #account-sequence
 
-A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.
-
-Every [account object in the Ripple Consensus Ledger](ripple-ledger.html#accountroot) has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a `Sequence` field that matches the sending account's current `Sequence` number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.
-
-Every [Offer node in the Ripple Consensus Ledger](ripple-ledger.html#offer) is marked with the sending `Account` [Address][] and the `Sequence` value of the [OfferCreate transaction](transactions.html#offercreate) that created it. These two fields, together, uniquely identify the Offer.
+{% include 'data_types/account_sequence.md' %}
 
 ### Currency Code ###
 [Currency Code]: #currency-code
 
-Currencies in Ripple can be represented in two ways:
-
-* As three-letter [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php). These currency codes must be written in uppercase ("USD" is valid, "usd" is not). Ripple permits currency codes that are not officially approved, including currency codes with digits in them.
-* As 160-bit hexadecimal values, such as `0158415500000000C1F76FF6ECB0BAC600000000`, according to Ripple's internal [Currency Format](https://wiki.ripple.com/Currency_format). This representation is uncommon.
+{% include 'data_types/currency_code.md' %}
 
 ## Pagination ##
 
