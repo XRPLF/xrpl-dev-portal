@@ -3568,8 +3568,10 @@ rippled wallet_propose test
 }
 </code></pre>
 <p><em>Commandline</em></p>
-<pre><code>#Syntax: ledger ledger_index|ledger_hash [full]
-rippled ledger current false
+<pre><code>#Syntax: ledger ledger_index|ledger_hash [full|tx]
+# "full" is equivalent to "full": true
+# "tx" is equivalent to "transactions": true
+rippled ledger current
 </code></pre>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ledger">Try it! &gt;</a></p>
@@ -3596,7 +3598,7 @@ rippled ledger current false
 <tr>
 <td>full</td>
 <td>Boolean</td>
-<td>(Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code> <em>Admin required</em></td>
+<td>(Optional, defaults to false)  <strong>Admin required</strong> If true, return full information on the entire ledger. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
 </tr>
 <tr>
 <td>expand</td>

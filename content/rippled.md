@@ -2911,6 +2911,7 @@ An example of the request format:
 <!-- <div class='multicode'> -->
 
 *WebSocket*
+
 ```
 {
     "command": "ledger",
@@ -2923,6 +2924,7 @@ An example of the request format:
 ```
 
 *JSON-RPC*
+
 ```
 {
     "method": "ledger",
@@ -2939,9 +2941,12 @@ An example of the request format:
 ```
 
 *Commandline*
+
 ```
-#Syntax: ledger ledger_index|ledger_hash [full]
-rippled ledger current false
+#Syntax: ledger ledger_index|ledger_hash [full|tx]
+# "full" is equivalent to "full": true
+# "tx" is equivalent to "transactions": true
+rippled ledger current
 ```
 
 <!-- </div> -->
@@ -2954,7 +2959,7 @@ The request can contain the following parameters:
 |-------|------|-------------|
 | accounts | Boolean | (Optional, defaults to false) If true, return information on accounts in the ledger. *Admin required.* If enabled, this method returns a large amount of data, which may cause the request to fail due to a timeout, depending on the server load and capabilities. |
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions in the specified ledger version. |
-| full | Boolean | (Optional, defaults to false) If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand` *Admin required* |
+| full | Boolean | (Optional, defaults to false)  **Admin required** If true, return full information on the entire ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) **Caution:** This is a very large amount of data -- on the order of several hundred megabytes! |
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes |
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
