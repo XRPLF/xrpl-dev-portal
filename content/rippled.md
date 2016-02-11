@@ -8675,7 +8675,7 @@ An example of the request format:
 
 ```
 {
-    "id": 5,
+    "id": 2,
     "command": "peers"
 }
 ```
@@ -8696,102 +8696,233 @@ An example of a successful response:
 
 <!-- <div class='multicode'> -->
 
+*WebSocket*
+
+```
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "cluster": {},
+    "peers": [
+      {
+        "address": "184.172.237.226:51235",
+        "complete_ledgers": "14534883 - 18828973",
+        "latency": 117,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 54,
+        "public_key": "n9KNYm52mgcUQ7R2RA4kyw9Nk1yc6S35PaiuyqjYsy6UjhCXpw12",
+        "uptime": 55036,
+        "version": "rippled-0.30.0-hf1"
+      },
+      {
+        "address": "54.186.248.91:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 91,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 62,
+        "public_key": "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
+        "uptime": 83814,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "54.84.21.230:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 202,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 60,
+        "public_key": "n9KJb7NMxGySRcjCqh69xEPMUhwJx22qntYYXsnUqYgjsJhNoW7g",
+        "uptime": 99625,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "72.251.233.162:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 36,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 66,
+        "public_key": "n9M8RSk6hrvXZKFQ6CxPbJsjt73xW1xsnjn7G69VAMbE2j4sBQNQ",
+        "uptime": 99619,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "162.217.98.136:51235",
+        "complete_ledgers": "32570 - 18828973",
+        "latency": 118,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 69,
+        "public_key": "n944PcXEoZaiEHnwFD92xA4bxsS7jjYb27WcdDQwkHYyk1MWTEsX",
+        "uptime": 99625,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "72.251.233.163:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 51,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 61,
+        "public_key": "n94ne2Z5dX8qcJNa8cPtAbtn21gEaCoEduS8TwdGAhi1iLfCUMDm",
+        "uptime": 99625,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "54.186.73.52:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 72,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 60,
+        "public_key": "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
+        "uptime": 99625,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "72.251.233.165:51235",
+        "complete_ledgers": "18827949 - 18828973",
+        "latency": 40,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 63,
+        "public_key": "n9M77Uc9CSaSFZqt5V7sxPR4kFwbha7hwUFBD5v5kZt2SQjBeoDs",
+        "uptime": 99625,
+        "version": "rippled-0.30.1"
+      },
+      {
+        "address": "72.251.232.173:51235",
+        "complete_ledgers": "32570 - 18828973",
+        "latency": 40,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 71,
+        "public_key": "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
+        "uptime": 99625,
+        "version": "rippled-0.31.0-b6"
+      },
+      {
+        "address": "98.167.120.212:51235",
+        "complete_ledgers": "18828845 - 18828973",
+        "latency": 99,
+        "ledger": "50A2577CE6EB8A92847C443BDA45F5C5F0A22B9C6F4B47DBA0C12BDA75001D01",
+        "load": 60,
+        "public_key": "n9LDBRoqPYY7RdkNXbX1dqZXVtUKcSqzs2CZPhTH7ymA9X7Xzmpj",
+        "uptime": 99625,
+        "version": "rippled-0.30.1-rc4"
+      }
+    ]
+  }
+}
+```
+
 *JSON-RPC*
 
 ```
 {
    "result" : {
+      "cluster" : {},
       "peers" : [
          {
-            "address" : "54.86.175.122:51235",
-            "complete_ledgers" : "14088526 - 14089550",
-            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
-            "load" : 1,
-            "public_key" : "n94rE1SydpHTvJ4NyX9vC1cdeDmYP5nQSXTyeMnLh8jMJSRdcy9Q",
-            "version" : "rippled-0.28.1-hf2"
+            "address" : "184.172.237.226:51235",
+            "complete_ledgers" : "14535005 - 18828957",
+            "latency" : 114,
+            "ledger" : "80FCB89BC5B90D2B9C2CE33786738809796F04FB9CB1E5EEE768DD9A9C399FB0",
+            "load" : 47,
+            "public_key" : "n9KNYm52mgcUQ7R2RA4kyw9Nk1yc6S35PaiuyqjYsy6UjhCXpw12",
+            "uptime" : 54976,
+            "version" : "rippled-0.30.0-hf1"
          },
          {
-            "address" : "192.170.145.70:51235",
-            "complete_ledgers" : "14088527 - 14089551",
-            "latency" : 2913,
-            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
-            "load" : 10,
-            "public_key" : "n9L7jeMAVM28wfzhdzoYZqcvBRkP5p6ZCvidgqmyEa62ThUdCE1x",
-            "version" : "rippled-0.28.0-rc3"
+            "address" : "54.186.248.91:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 68,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 56,
+            "public_key" : "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
+            "uptime" : 83754,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "192.170.145.69:51235",
-            "complete_ledgers" : "14088527 - 14089551",
-            "latency" : 7802,
-            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
-            "load" : 10,
-            "public_key" : "n94JPD9sx9TetuJGn1ju5TRDG87Di7EEbUbXWCdjj52GKqZUsnKA",
-            "version" : "rippled-0.28.1-hf2"
+            "address" : "54.84.21.230:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 135,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 54,
+            "public_key" : "n9KJb7NMxGySRcjCqh69xEPMUhwJx22qntYYXsnUqYgjsJhNoW7g",
+            "uptime" : 99565,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "74.201.214.197:51235",
-            "complete_ledgers" : "14088531 - 14089555",
-            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
-            "load" : 4,
-            "public_key" : "n9LAPy9VbzXtodR4W58umSwwcbQsf9ZgFv1bpsd95CAgo7GWUvM4",
-            "version" : "rippled-0.28.1-hf2"
+            "address" : "72.251.233.162:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 24,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 61,
+            "public_key" : "n9M8RSk6hrvXZKFQ6CxPbJsjt73xW1xsnjn7G69VAMbE2j4sBQNQ",
+            "uptime" : 99560,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "93.190.138.234:51235",
-            "complete_ledgers" : "13948110 - 14089552",
-            "ledger" : "99288D510F63FDAC3F91BB410E4E251B050F92DF196CA33946A2F339DFF7483E",
-            "load" : 52,
-            "public_key" : "n9LYLVRw987hj8tyDdt2gVXZyrq4NvXF5vi4YwZPUNGaoPkqo4PH",
-            "version" : "rippled-0.28.0-b18"
+            "address" : "162.217.98.136:51235",
+            "complete_ledgers" : "32570 - 18828958",
+            "latency" : 88,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 55,
+            "public_key" : "n944PcXEoZaiEHnwFD92xA4bxsS7jjYb27WcdDQwkHYyk1MWTEsX",
+            "uptime" : 99566,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "192.170.145.77:51235",
-            "complete_ledgers" : "32570 - 14089555",
-            "ledger" : "BFFF0AA3C71F9E1690F1B5537416CAEA2A038C896650FC5BB6E1057E464088ED",
-            "load" : 4,
-            "public_key" : "n9LwcmtjDAJQz4u8DZCMGQ9GXHuMEV4Cf8KpPL9NgqAV2puxdYc2",
-            "version" : "rippled-0.28.1-hf2"
+            "address" : "72.251.233.163:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 24,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 56,
+            "public_key" : "n94ne2Z5dX8qcJNa8cPtAbtn21gEaCoEduS8TwdGAhi1iLfCUMDm",
+            "uptime" : 99566,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "188.166.17.21:52345",
-            "complete_ledgers" : "14089423 - 14089551",
-            "latency" : 7894,
-            "ledger" : "2DBD1EAD2BAE89C01C183BE818B35C2E67BB2D0B07922C58A57A399B1ABD48BA",
-            "load" : 8,
-            "public_key" : "n9M3pWqDot5jyDRSdre6AZQVTA4RFXwUzWZHfj8m2dqMX1S99erB",
-            "version" : "rippled-0.27.0"
+            "address" : "54.186.73.52:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 51,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 56,
+            "public_key" : "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
+            "uptime" : 99566,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "198.204.238.130:51235",
-            "complete_ledgers" : "14087551 - 14089551",
-            "latency" : 3427,
-            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
-            "load" : 8,
-            "public_key" : "n94PN5sKswgBVjmg5UcJs2dwjSippFrbZXnHALvCm52LY1L3KGLT",
-            "version" : "rippled-0.27.4"
+            "address" : "72.251.233.165:51235",
+            "complete_ledgers" : "18827934 - 18828958",
+            "latency" : 25,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 56,
+            "public_key" : "n9M77Uc9CSaSFZqt5V7sxPR4kFwbha7hwUFBD5v5kZt2SQjBeoDs",
+            "uptime" : 99566,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "162.217.98.92:51235",
-            "complete_ledgers" : "14088527 - 14089551",
-            "latency" : 2694,
-            "ledger" : "D4D34FBDCF5AD9E9C1EF80FF3B37C161B6C1A30A393332296DCEBBD01DBD6EE5",
-            "load" : 7,
-            "public_key" : "n9L4MyAQHZgtnhUSYeNmbc2SeveoBbxu9kWDyxckijGgj5WuKmy2",
-            "version" : "rippled-0.28.1-hf2"
+            "address" : "72.251.232.173:51235",
+            "complete_ledgers" : "32570 - 18828958",
+            "latency" : 24,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 81,
+            "public_key" : "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
+            "uptime" : 99566,
+            "version" : "rippled-0.31.0-b6"
          },
          {
-            "address" : "72.251.233.166:51235",
-            "complete_ledgers" : "14088531 - 14089555",
-            "latency" : 9358,
-            "ledger" : "77A37B94DDA7F1501076CC344F7DC0556684AFEB6ADA6EFF066977DCA3FB994F",
-            "load" : 88,
-            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
-            "version" : "rippled-0.28.0-rc3"
+            "address" : "98.167.120.212:51235",
+            "complete_ledgers" : "18828830 - 18828957",
+            "latency" : 137,
+            "ledger" : "9447480E351221123B1A454356435A66C188D9794B0197A060637E19F074B421",
+            "load" : 54,
+            "public_key" : "n9LDBRoqPYY7RdkNXbX1dqZXVtUKcSqzs2CZPhTH7ymA9X7Xzmpj",
+            "uptime" : 99566,
+            "version" : "rippled-0.30.1-rc4"
          }
       ],
       "status" : "success"
    }
 }
+
 ```
 
 *Commandline*
@@ -8916,6 +9047,7 @@ The response follows the [standard format](#response-formatting), with a success
 | public\_key | String | (May be omitted) A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
 | sanity | String | (May be omitted) Whether this peer is following the same rules and ledger sequence as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. |
 | status | String | (May be omitted) The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
+| uptime | Number | The number of seconds that your `rippled` server has been continuously connected to this peer. |
 | version | string | (May be omitted) The `rippled` version number of the peer server |
 
 #### Possible Errors ####
