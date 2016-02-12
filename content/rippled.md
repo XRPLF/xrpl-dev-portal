@@ -3702,16 +3702,66 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
-      "error" : "ledgerNotFound",
-      "hash" : "D6E25136ADF43DED49C886A6D049436DDC8F8CC02C84E7C89DE67E209F0FAAB6",
-      "have_header" : false,
-      "peers" : 2,
+      "acquiring" : {
+         "hash" : "01DDD89B6605E20338B8EEB8EB2B0E0DD2F685A2B164F3790C4D634B5734CC26",
+         "have_header" : false,
+         "peers" : 2,
+         "timeouts" : 0
+      },
+      "error" : "lgrNotFound",
+      "error_code" : 20,
+      "error_message" : "acquiring ledger containing requested index",
       "request" : {
          "command" : "ledger_request",
-         "ledger_index" : 13800000
+         "ledger_index" : 18851277
       },
-      "status" : "error",
-      "timeouts" : 0
+      "status" : "error"
+   }
+}
+```
+
+*Commandline (in-progress)*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "hash" : "EB68B5B4F6F06BF59B6D7532BCB98BB98E2F10C2435D895217AA0AA7E910FBD5",
+      "have_header" : true,
+      "have_state" : false,
+      "have_transactions" : false,
+      "needed_state_hashes" : [
+         "C46F7B9E795135447AF24BAF999AB8FC1612A997F6EAAF8B784C226FF0BD8E25",
+         "E48F528E4FC2A1DC492C6264B27B420E2285B2A3ECF3A253DB480DA5BFB7F858",
+         "B62CD0B2E1277F78BC279FA037F3F747587299B60D23A551C3F63DD137DC0CF8",
+         "30014C55701FB8426E496A47B297BEC9E8F5BFA47763CC22DBD9024CC81D39DD",
+         "7EB59A853913898FCEA7B701637F33B1054BD36C32A0B910B612EFB9CDFF6334",
+         "07ECAD3066D62583883979A2FADAADC8F7D89FA07375843C8A47452639AB2421",
+         "97A87E5246AF78463485CB27E08D561E22AAF33D5E2F08FE2FACAE0D05CB5478",
+         "50A0525E238629B32324C9F59B4ECBEFE3C21DC726DB9AB3B6758BD1838DFF68",
+         "8C541B1ED47C9282E2A28F0B7F3DDFADF06644CAB71B15A3E67D04C5FAFE9BF4",
+         "2C6CC536C778D8C0F601E35DA7DD9888C288897E4F603E76357CE2F47E8A7A9F",
+         "309E78DEC67D5725476A59E114850556CC693FB6D92092997ADE97E3EFF473CC",
+         "8EFF61B6A636AF6B4314CAC0C08F4FED0759E1F782178A822EDE98275E5E4B10",
+         "9535645E5D249AC0B6126005B79BB981CBA00286E00154D20A3BCF65743EA3CA",
+         "69F5D6FCB41D1E6CEA5ADD42CBD194086B45E957D497DF7AEE62ADAD485660CE",
+         "07E93A95DBB0B8A00925DE0DF6D27E41CACC77EF75055A89815006109D82EAD3",
+         "7FDF25F660235DCAD649676E3E6729DF920A9B0B4B6A3B090A3C64D7BDE2FB20"
+      ],
+      "needed_transaction_hashes" : [
+         "BA914854F2F5EDFCBD6E3E0B168E5D4CD0FC92927BEE408C6BD38D4F52505A34",
+         "AE3A2DB537B01EB33BB3A677242DE52C9AE0A64BD9222EE55E52855276E7EA2A",
+         "E145F737B255D93769673CBA6DEBA4F6AC7387A309DAACC72EA5B07ECF03C215",
+         "073A118552AA60E1D3C6BE6F65E4AFA01C582D9C41CCC2887244C19D9BFA7741",
+         "562DB8580CD3FE19AF5CEA61C2858C10091151B924DBF2AEB7CBB8722E683204",
+         "437C0D1C2391057079E9539CF028823D29E6437A965284F6E54CEBF1D25C5D56",
+         "1F069486AF5533883609E5C8DB907E97273D9A782DF26F5E5811F1C42ED63A3D",
+         "CAA6B7DA68EBA71254C218C81A9EA029A179694BDD0D75A49FB03A7D57BCEE49"
+      ],
+      "peers" : 6,
+      "status" : "success",
+      "timeouts" : 1
    }
 }
 ```
@@ -3748,24 +3798,32 @@ Connecting to 127.0.0.1:5005
 
 <!-- </div> -->
 
+The three possible response formats are as follows:
 
-The fields of the "failure" response (the ledger was requested, but has not been fully retrieved yet) can include any of the following:
+1. When returning a `lgrNotFound` error, the response has a field, `acquiring` with a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
+2. When the response represents an in-progress attempt to acquire the ledger, the body of the result is a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
+3. When the ledger is fully available, the response is a representation of the [ledger header](ripple-ledger.html#header-format).
+
+#### Ledger Request Object ####
+
+When the server is in the progress of fetching a ledger, but has not yet finished, the `rippled` server returns a ledger request object indicating its progress towards fetching the ledger. This object has the following fields:
 
 | Field                       | Type    | Description |
 |-----------------------------|---------|-------------|
-| hash                        | String  | The [Hash][] of the requested ledger, if the server knows it. |
+| hash                        | String  | (May be omitted) The [Hash][] of the requested ledger, if the server knows it. |
 | have\_header                | Boolean | Whether the server has the header section of the requested ledger. |
-| have\_state                 | Boolean | (May be omitted) Whether the server has the state section of the requested ledger. |
+| have\_state                 | Boolean | (May be omitted) Whether the server has the [account-state section](ripple-ledger.html#tree-format) of the requested ledger. |
 | have\_transactions          | Boolean | (May be omitted) Whether the server has the transaction section of the requested ledger. |
-| needed\_state\_hashes       | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the state tree that the server still needs to retrieve. |
+| needed\_state\_hashes       | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the [state tree](ripple-ledger.html#tree-format) that the server still needs to retrieve. |
 | needed\_transaction\_hashes | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the transaction tree that the server still needs to retrieve. |
 | peers                       | Number  | How many peers the server is querying in its attempt to find this ledger. |
+| timeouts                    | Number  | Number of times this attempt to fetch the ledger has timed out so far. |
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
-* `ledgerNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger.
+* `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. _(**Note:** Prior to [version 0.30.1][], this error used the code `ledgerNotFound` instead.)_
 
 
 ## ledger_accept ##
