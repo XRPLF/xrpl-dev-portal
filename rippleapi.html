@@ -244,7 +244,7 @@ The "error" event is emitted whenever an error occurs that cannot be associated 
 <ol>
 <li>Install <a href="https://nodejs.org">NodeJS</a> and the Node Package Manager (npm). Most Linux distros have a package for NodeJS, but make sure you have version <code>0.12.0</code> or higher.</li>
 <li>Use npm to install <a href="https://babeljs.io/">Babel</a> globally:
-      <code>npm install -g babel</code></li>
+      <code>npm install -g babel-cli</code></li>
 <li>Use npm to install RippleAPI:
       <code>npm install ripple-lib</code></li>
 </ol>
@@ -392,7 +392,7 @@ const api = new RippleAPI();
 <li><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
 </ul>
 </li>
-<li><a href="#sign">Sign</a> - Cryptographically sign the transaction locally and save the <a href="#transaction-id">transaction ID</a>. Signing is how the owner of an account authorizes a transaction to take place.</li>
+<li><a href="#sign">Sign</a> - Cryptographically sign the transaction locally and save the <a href="#transaction-id">transaction ID</a>. Signing is how the owner of an account authorizes a transaction to take place. For multisignature transactions, the <code>signedTransaction</code> fields returned by <code>sign</code> must be collected and passed to the <a href="#combine">combine</a> method.</li>
 <li><a href="#submit">Submit</a> - Submit the transaction to the connected server.</li>
 <li>Verify - Verify that the transaction got validated by querying with <a href="#gettransaction">getTransaction</a>. This is necessary because transactions may fail even if they were successfully submitted.</li>
 </ol>
@@ -434,6 +434,11 @@ const api = new RippleAPI();
 <td>sequence</td>
 <td><a href="#account-sequence-number">sequence</a></td>
 <td><em>Optional</em> The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td>signersCount</td>
+<td>integer</td>
+<td><em>Optional</em> Number of signers that will be signing this transaction.</td>
 </tr>
 </tbody>
 </table>
@@ -844,6 +849,36 @@ const api = new RippleAPI();
 <td>requireDestinationTag</td>
 <td>boolean</td>
 <td><em>Optional</em> Requires incoming payments to specify a destination tag.</td>
+</tr>
+<tr>
+<td>signers</td>
+<td>object</td>
+<td><em>Optional</em> Settings that determine what sets of accounts can be used to sign a transaction on behalf of this account using multisigning.</td>
+</tr>
+<tr>
+<td><em>signers.</em> threshold</td>
+<td>integer</td>
+<td><em>Optional</em> A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value <code>0</code>.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights</td>
+<td>array</td>
+<td><em>Optional</em> Weights of signatures for each signer.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights[]</td>
+<td>object</td>
+<td>An association of an address and a weight.</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>A Ripple account address</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> weight</td>
+<td>integer</td>
+<td>The weight that the signature of this account counts as towards the threshold.</td>
 </tr>
 <tr>
 <td>transferRate</td>
@@ -1408,6 +1443,11 @@ const api = new RippleAPI();
 <td>The ordering index of the transaction in the ledger.</td>
 </tr>
 <tr>
+<td><em>outcome.</em> deliveredAmount</td>
+<td><a href="#amount">amount</a></td>
+<td><em>Optional</em> For payment transactions, it is impossible to reliably compute the actual delivered amount from the balanceChanges due to fixed precision. If the payment is not a partial payment and the transaction succeeded, the deliveredAmount should always be considered to be the amount specified in the transaction.</td>
+</tr>
+<tr>
 <td><em>outcome.</em> timestamp</td>
 <td>date-time string</td>
 <td><em>Optional</em> The timestamp when the transaction was validated. (May be missing when requesting transactions in binary mode.)</td>
@@ -1446,6 +1486,11 @@ return api.getTransaction(id).then(transaction =&gt; {
     "result": "tesSUCCESS",
     "timestamp": "2013-03-12T23:56:50.000Z",
     "fee": "0.00001",
+    "deliveredAmount": {
+      "currency": "USD",
+      "value": "0.001",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    },
     "balanceChanges": {
       "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
         {
@@ -1623,6 +1668,11 @@ return api.getTransactions(address).then(transaction =&gt; {
     "outcome": {
       "result": "tesSUCCESS",
       "fee": "0.00001",
+      "deliveredAmount": {
+        "currency": "USD",
+        "value": "0.001",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+      },
       "balanceChanges": {
         "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
           {
@@ -1715,6 +1765,11 @@ return api.getTransactions(address).then(transaction =&gt; {
     "outcome": {
       "result": "tesSUCCESS",
       "fee": "0.00001",
+      "deliveredAmount": {
+        "currency": "USD",
+        "value": "0.001",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+      },
       "balanceChanges": {
         "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
           {
@@ -3736,6 +3791,36 @@ return api.getOrderbook(address, orderbook)
 <td><em>Optional</em> Requires incoming payments to specify a destination tag.</td>
 </tr>
 <tr>
+<td>signers</td>
+<td>object</td>
+<td><em>Optional</em> Settings that determine what sets of accounts can be used to sign a transaction on behalf of this account using multisigning.</td>
+</tr>
+<tr>
+<td><em>signers.</em> threshold</td>
+<td>integer</td>
+<td><em>Optional</em> A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value <code>0</code>.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights</td>
+<td>array</td>
+<td><em>Optional</em> Weights of signatures for each signer.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights[]</td>
+<td>object</td>
+<td>An association of an address and a weight.</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>A Ripple account address</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> weight</td>
+<td>integer</td>
+<td>The weight that the signature of this account counts as towards the threshold.</td>
+</tr>
+<tr>
 <td>transferRate</td>
 <td>number,null</td>
 <td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, represented as billionths of a unit. Use <code>null</code> to set no fee.</td>
@@ -4761,7 +4846,7 @@ return api.prepareSuspendedPaymentExecution(address, suspendedPaymentExecution).
 }
 </code></pre>
 <h2 id="sign">sign</h2>
-<p><code>sign(txJSON: string, secret: string): {signedTransaction: string, id: string}</code></p>
+<p><code>sign(txJSON: string, secret: string, options: Object): {signedTransaction: string, id: string}</code></p>
 <p>Sign a prepared transaction. The signed transaction must subsequently be <a href="#submit">submitted</a>.</p>
 <h3 id="parameters-26">Parameters</h3>
 <table>
@@ -4782,6 +4867,16 @@ return api.prepareSuspendedPaymentExecution(address, suspendedPaymentExecution).
 <td>secret</td>
 <td>secret string</td>
 <td>The secret of the account that is initiating the transaction.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options that control the type of signature that will be generated.</td>
+</tr>
+<tr>
+<td><em>options.</em> signAs</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> The account that the signature should count for in multisigning.</td>
 </tr>
 </tbody>
 </table>
@@ -4818,10 +4913,63 @@ return api.sign(txJSON, secret);
   "id": "02ACE87F1996E3A23690A5BB7F1774BF71CCBA68F79805831B42ABAD5913D6F4"
 }
 </code></pre>
+<h2 id="combine">combine</h2>
+<p><code>combine(signedTransactions: Array&lt;string&gt;): {signedTransaction: string, id: string}</code></p>
+<p>Combines signed transactions from multiple accounts for a multisignature transaction. The signed transaction must subsequently be <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-27">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransactions</td>
+<td>array\&lt;string&gt;</td>
+<td>An array of signed transactions (from the output of <a href="#sign">sign</a>) to combine.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-26">Return Value</h3>
+<p>This method returns an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransaction</td>
+<td>string</td>
+<td>The signed transaction represented as an uppercase hexadecimal string.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="#transaction-id">id</a></td>
+<td>The <a href="#transaction-id">Transaction ID</a> of the signed transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-34">Example</h3>
+<pre><code class="javascript">const signedTransactions = [ "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E0107321026C784C1987F83BACBF02CD3E484AFC84ADE5CA6B36ED4DCA06D5BA233B9D382774473045022100E484F54FF909469FA2033E22EFF3DF8EDFE62217062680BB2F3EDF2F185074FE0220350DB29001C710F0450DAF466C5D819DC6D6A3340602DE9B6CB7DA8E17C90F798114FE9337B0574213FA5BCC0A319DBB4A7AC0CCA894E1F1",
+  "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E01073210287AAAB8FBE8C4C4A47F6F1228C6E5123A7ED844BFE88A9B22C2F7CC34279EEAA74473045022100B09DDF23144595B5A9523B20E605E138DC6549F5CA7B5984D7C32B0E3469DF6B022018845CA6C203D4B6288C87DDA439134C83E7ADF8358BD41A8A9141A9B631419F8114517D9B9609229E0CDFE2428B586738C5B2E84D45E1F1" ];
+return api.combine(signedTransactions);
+</code></pre>
+<pre><code class="json">{
+  "signedTransaction": "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E01073210287AAAB8FBE8C4C4A47F6F1228C6E5123A7ED844BFE88A9B22C2F7CC34279EEAA74473045022100B09DDF23144595B5A9523B20E605E138DC6549F5CA7B5984D7C32B0E3469DF6B022018845CA6C203D4B6288C87DDA439134C83E7ADF8358BD41A8A9141A9B631419F8114517D9B9609229E0CDFE2428B586738C5B2E84D45E1E0107321026C784C1987F83BACBF02CD3E484AFC84ADE5CA6B36ED4DCA06D5BA233B9D382774473045022100E484F54FF909469FA2033E22EFF3DF8EDFE62217062680BB2F3EDF2F185074FE0220350DB29001C710F0450DAF466C5D819DC6D6A3340602DE9B6CB7DA8E17C90F798114FE9337B0574213FA5BCC0A319DBB4A7AC0CCA894E1F1",
+  "id": "8A3BFD2214B4C8271ED62648FCE9ADE4EE82EF01827CF7D1F7ED497549A368CC"
+}
+</code></pre>
 <h2 id="submit">submit</h2>
 <p><code>submit(signedTransaction: string): Promise&lt;Object&gt;</code></p>
 <p>Submits a signed transaction. The transaction is not guaranteed to succeed; it must be verified with <a href="#gettransaction">getTransaction</a>.</p>
-<h3 id="parameters-27">Parameters</h3>
+<h3 id="parameters-28">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4838,7 +4986,7 @@ return api.sign(txJSON, secret);
 </tr>
 </tbody>
 </table>
-<h3 id="return-value-26">Return Value</h3>
+<h3 id="return-value-27">Return Value</h3>
 <p>This method returns an object with the following structure:</p>
 <table>
 <thead>
@@ -4861,7 +5009,7 @@ return api.sign(txJSON, secret);
 </tr>
 </tbody>
 </table>
-<h3 id="example-34">Example</h3>
+<h3 id="example-35">Example</h3>
 <pre><code class="javascript">const signedTransaction = '12000322800000002400000017201B0086955368400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D874473045022100BDE09A1F6670403F341C21A77CF35BA47E45CDE974096E1AA5FC39811D8269E702203D60291B9A27F1DCABA9CF5DED307B4F23223E0B6F156991DB601DFB9C41CE1C770A726970706C652E636F6D81145E7B112523F68D2F5E879DB4EAC51C6698A69304';
 return api.submit(signedTransaction)
   .then(result =&gt; {/* ... */});
@@ -4874,7 +5022,7 @@ return api.submit(signedTransaction)
 <h2 id="generateaddress">generateAddress</h2>
 <p><code>generateAddress(): {address: string, secret: string}</code></p>
 <p>Generate a new Ripple address and corresponding secret.</p>
-<h3 id="parameters-28">Parameters</h3>
+<h3 id="parameters-29">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -4901,7 +5049,7 @@ return api.submit(signedTransaction)
 </tr>
 </tbody>
 </table>
-<h3 id="return-value-27">Return Value</h3>
+<h3 id="return-value-28">Return Value</h3>
 <p>This method returns an object with the following structure:</p>
 <table>
 <thead>
@@ -4924,7 +5072,7 @@ return api.submit(signedTransaction)
 </tr>
 </tbody>
 </table>
-<h3 id="example-35">Example</h3>
+<h3 id="example-36">Example</h3>
 <pre><code class="javascript">return api.generateAddress();
 </code></pre>
 <pre><code class="json">{
@@ -4935,7 +5083,7 @@ return api.submit(signedTransaction)
 <h2 id="computeledgerhash">computeLedgerHash</h2>
 <p><code>computeLedgerHash(ledger: Object): string</code></p>
 <p>Compute the hash of a ledger.</p>
-<h3 id="parameters-29">Parameters</h3>
+<h3 id="parameters-30">Parameters</h3>
 <aside class="notice">
 The parameter to this method has the same structure as the return value of getLedger.
 </aside>
@@ -5030,9 +5178,9 @@ The parameter to this method has the same structure as the return value of getLe
 </tr>
 </tbody>
 </table>
-<h3 id="return-value-28">Return Value</h3>
+<h3 id="return-value-29">Return Value</h3>
 <p>This method returns an uppercase hexadecimal string representing the hash of the ledger.</p>
-<h3 id="example-36">Example</h3>
+<h3 id="example-37">Example</h3>
 <pre><code class="javascript">const ledger = {
   "stateHash": "D9ABF622DA26EEEE48203085D4BC23B0F77DC6F8724AC33D975DA3CA492D2E44",
   "closeTime": "2015-08-12T01:01:10.000Z",
@@ -5051,7 +5199,7 @@ return api.computeLedgerHash(ledger);
 <h1 id="api-events">API Events</h1>
 <h2 id="ledger">ledger</h2>
 <p>This event is emitted whenever a new ledger version is validated on the connected server.</p>
-<h3 id="return-value-29">Return Value</h3>
+<h3 id="return-value-30">Return Value</h3>
 <table>
 <thead>
 <tr>
@@ -5103,7 +5251,7 @@ return api.computeLedgerHash(ledger);
 </tr>
 </tbody>
 </table>
-<h3 id="example-37">Example</h3>
+<h3 id="example-38">Example</h3>
 <pre><code class="javascript">api.on('ledger', ledger =&gt; {
   console.log(JSON.stringify(ledger, null, 2));
 });
@@ -5121,7 +5269,7 @@ return api.computeLedgerHash(ledger);
 </code></pre>
 <h2 id="error">error</h2>
 <p>This event is emitted when there is an error on the connection to the server that cannot be associated to a specific request.</p>
-<h3 id="return-value-30">Return Value</h3>
+<h3 id="return-value-31">Return Value</h3>
 <p>The first parameter is a string indicating the error type:
 <em> <code>badMessage</code> - rippled returned a malformed message
 </em> <code>websocket</code> - the websocket library emitted an error
@@ -5131,7 +5279,7 @@ return api.computeLedgerHash(ledger);
 <em> the message that caused the error for <code>badMessage</code>
 </em> the error object emitted for <code>websocket</code>
 * the parsed response for rippled errors</p>
-<h3 id="example-38">Example</h3>
+<h3 id="example-39">Example</h3>
 <pre><code class="javascript">api.on('error', (errorCode, errorMessage, data) =&gt; {
   console.log(errorCode + ': ' + errorMessage);
 });

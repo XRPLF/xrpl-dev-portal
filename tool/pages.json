@@ -111,7 +111,7 @@
     },
     {
         "name": "RippleAPI",
-        "md": "https://raw.githubusercontent.com/ripple/ripple-lib/0.16.2/docs/index.md",
+        "md": "https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md",
         "html": "rippleapi.html",
         "ripple.com": "https://ripple.com/build/rippleapi/",
         "category": "References"
