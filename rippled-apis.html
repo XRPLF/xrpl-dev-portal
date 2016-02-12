@@ -7215,8 +7215,13 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </tr>
 <tr>
 <td>fee_mult_max</td>
-<td>Number</td>
-<td>(Optional) If the <code>Fee</code> parameter (<a href="tx-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value. <em>(Starting in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>, this can be a decimal instead of an integer.)</em> TODO</td>
+<td>Integer</td>
+<td>(Optional) If the <code>Fee</code> parameter (<a href="tx-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
+</tr>
+<tr>
+<td>fee_div_max</td>
+<td>Integer</td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="tx-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, signing fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -7417,6 +7422,11 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <td>fee_mult_max</td>
 <td>Integer</td>
 <td>(Optional) If the <code>Fee</code> parameter is omitted, this field limits the automatically-provided <code>Fee</code> value so that it is less than or equal to the long-term base transaction cost times this value.</td>
+</tr>
+<tr>
+<td>fee_div_max</td>
+<td>Integer</td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="tx-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
