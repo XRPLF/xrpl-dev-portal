@@ -6785,11 +6785,12 @@ The following parameters are deprecated and may be removed without further notic
 
 The `streams` parameter provides access to the following default streams of information:
 
-* `server` - Sends a message whenever the status of the rippled server (for example, network connectivity) changes
+* `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes
 * `ledger` - Sends a message whenever the consensus process declares a new validated ledger
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
 * `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (__*Note:*__ [Even some transactions that don't succeed are included](transactions.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.)
 * `validations` - Sends a message whenever the server receives a validation message from a server it trusts. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
+* `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
 
 Each member of the `books` array, if provided, is an object with the following fields:
 

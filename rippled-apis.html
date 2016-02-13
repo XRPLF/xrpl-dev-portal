@@ -7917,11 +7917,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The following parameters are deprecated and may be removed without further notice: <code>user</code>, <code>password</code>, <code>rt_accounts</code>.</p>
 <p>The <code>streams</code> parameter provides access to the following default streams of information:</p>
 <ul>
-<li><code>server</code> - Sends a message whenever the status of the rippled server (for example, network connectivity) changes</li>
+<li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes</li>
 <li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
 <li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
 <li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="transactions.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message from a server it trusts. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
+<li><code>peer_status</code> - <strong>(Admin only)</strong> Information about connected peer <code>rippled</code> servers, especially with regards to the consensus process.</li>
 </ul>
 <p>Each member of the <code>books</code> array, if provided, is an object with the following fields:</p>
 <table>
