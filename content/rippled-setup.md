@@ -74,7 +74,7 @@ A `rippled` server should run comfortably on commodity hardware, to make it easy
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
 - RAM: 4+GB
 
-Amazon EC2's m3.medium or m3.large VM sizes may be appropriate depending on your workload. (Validating servers need more resources.)
+Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Validating servers need more resources.)
 
 Naturally, a fast network connection is preferable.
 
