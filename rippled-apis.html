@@ -1095,7 +1095,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>validated</td>
 <td>Boolean</td>
-<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. (<a href="https://wiki.ripple.com/Rippled-0.26.0">New in version 0.26</a>)</td>
+<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.0">version 0.26.0</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1166,12 +1166,12 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>(Optional) Server-provided value to specify where to resume retrieving data from. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>(Optional) Server-provided value to specify where to resume retrieving data from. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1286,22 +1286,22 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. (<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no additional pages after this one. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1444,12 +1444,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from. (<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</td>
+<td>Server-provided value to specify where to resume retrieving data from. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1566,22 +1566,22 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(<a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">New in 0.26.4-sp1</a>)</em></td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. <em>(<a href="https://wiki.ripple.com/Rippled-0.26.4">New in 0.26.4</a>)</em></td>
+<td>Server-defined value. Pass this to the next call in order to resume where this call left off. Omitted when there are no pages of information after this one. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.26.4">version 0.26.4</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1618,12 +1618,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>quality</td>
 <td>Number</td>
-<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <em>(<a href="https://wiki.ripple.com/Rippled-0.29.0">New in version 0.29.0</a>)</em></td>
+<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.29.0">version 0.29.0</a>)</em></td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>Unsigned integer</td>
-<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="transactions.html#expiration">Offer Expiration</a>. <em>(<a href="https://wiki.ripple.com/Rippled-0.30.1">New in 0.30.1</a>)</em></td>
+<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="transactions.html#expiration">Offer Expiration</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -3173,7 +3173,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </ul>
 <h2 id="gateway-balances">gateway_balances</h2>
 <p><a href="https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by specific "hot wallet" addresses. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.2">version 0.28.2</a>.)</em></p>
+<p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by specific "hot wallet" addresses. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.28.2">version 0.28.2</a>.)</em></p>
 <h4 id="request-format-7">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -3545,12 +3545,14 @@ rippled wallet_propose test
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
+    "id": 14,
     "command": "ledger",
+    "ledger_index": "validated",
     "full": false,
     "accounts": false,
     "transactions": false,
     "expand": false,
-    "ledger_index": "current"
+    "owner_funds": false
 }
 </code></pre>
 <p><em>JSON-RPC</em></p>
@@ -3558,11 +3560,12 @@ rippled wallet_propose test
     "method": "ledger",
     "params": [
         {
+            "ledger_index": "validated",
             "accounts": false,
-            "expand": false,
             "full": false,
-            "ledger_index": "current",
-            "transactions": false
+            "transactions": false,
+            "expand": false,
+            "owner_funds": false
         }
     ]
 }
@@ -3586,29 +3589,9 @@ rippled ledger current
 </thead>
 <tbody>
 <tr>
-<td>accounts</td>
-<td>Boolean</td>
-<td>(Optional, defaults to false) If true, return information on accounts in the ledger. <em>Admin required.</em> If enabled, this method returns a large amount of data, which may cause the request to fail due to a timeout, depending on the server load and capabilities.</td>
-</tr>
-<tr>
-<td>transactions</td>
-<td>Boolean</td>
-<td>(Optional, defaults to false) If true, return information on transactions in the specified ledger version.</td>
-</tr>
-<tr>
-<td>full</td>
-<td>Boolean</td>
-<td>(Optional, defaults to false)  <strong>Admin required</strong> If true, return full information on the entire ledger. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
-</tr>
-<tr>
-<td>expand</td>
-<td>Boolean</td>
-<td>(Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes</td>
-</tr>
-<tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td>(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>).</td>
 </tr>
 <tr>
 <td>ledger_index</td>
@@ -3616,9 +3599,34 @@ rippled ledger current
 <td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
+<td>full</td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) <strong>Admin required</strong> If true, return full information on the entire ledger. Ignored if you did not specify a ledger. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) <strong>Admin required.</strong> If true, return information on accounts in the ledger. Ignored if you did not specify a ledger. <strong>Caution:</strong> This returns a very large amount of data!</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) If true, return information on transactions in the specified ledger version. Ignored if you did not specify a ledger.</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of just hashes. Ignored unless transactions and/or accounts are requested.</td>
+</tr>
+<tr>
+<td>owner_funds</td>
+<td>Boolean</td>
+<td>(Optional, defaults to false) Include <code>owner_funds</code> field in the metadata of OfferCreate transactions in the response. Ignored unless transactions are included and <code>expand</code> is true.</td>
+</tr>
+<tr>
 <td>binary</td>
 <td>Boolean</td>
-<td>(Optional, defaults to false) If <code>transactions</code> and <code>expand</code> are both true, and this option is also true, return transaction information in binary format instead of JSON format. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0">rippled v0.28.0</a>)</em></td>
+<td>(Optional, defaults to false) If <code>transactions</code> and <code>expand</code> are both true, and this option is also true, return transaction information in binary format instead of JSON format. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.28.0">version 0.28.0</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -3628,26 +3636,31 @@ rippled ledger current
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-  "id": 14,
+  "id": 4,
   "status": "success",
   "type": "response",
   "result": {
     "ledger": {
       "accepted": true,
-      "account_hash": "03AC618315876C2B1F50EBB570C84BB11AB7FFE571CFE173E898326C8281C623",
-      "close_time": 453452750,
-      "close_time_human": "2014-May-15 07:05:50",
+      "account_hash": "FD2709F6C07284C3EE85EDE32AC452D9013A89D9B9E781D67D9784457E86A9BB",
+      "close_flags": 0,
+      "close_time": 508541181,
+      "close_time_human": "2016-Feb-11 21:26:21",
       "close_time_resolution": 10,
       "closed": true,
-      "hash": "957034715D2A4065820E3EC1413FCE23AB4A6496C150A355C691B1F9A985416C",
-      "ledger_hash": "957034715D2A4065820E3EC1413FCE23AB4A6496C150A355C691B1F9A985416C",
-      "ledger_index": "6636643",
-      "parent_hash": "22128FF378D06A0040B9C67D38EBBB2C175CB7ACDDA1F8772266338E97D90BAF",
-      "seqNum": "6636643",
-      "totalCoins": "99999990220863890",
-      "total_coins": "99999990220863890",
-      "transaction_hash": "D5B2F85496B00841A9FE16BFB91CBA4DA1C3D337CAD9F4EE13A0D7D8F198D02C"
-    }
+      "hash": "F1433E9D15F33E746B8820DEEE4879F48181704364E459332561DF8E52E4EB7E",
+      "ledger_hash": "F1433E9D15F33E746B8820DEEE4879F48181704364E459332561DF8E52E4EB7E",
+      "ledger_index": "18851530",
+      "parent_close_time": 508541180,
+      "parent_hash": "8300B70AA5A865961DED7DAC5B88047028762D5946ECA887D09D32DE442E2305",
+      "seqNum": "18851530",
+      "totalCoins": "99998102799411646",
+      "total_coins": "99998102799411646",
+      "transaction_hash": "E0DB0471A1D198611E1C050ADA4AE74EEB38CEC26E0550663E0FCB1364212A3B"
+    },
+    "ledger_hash": "F1433E9D15F33E746B8820DEEE4879F48181704364E459332561DF8E52E4EB7E",
+    "ledger_index": 18851530,
+    "validated": true
   }
 }
 </code></pre>
@@ -3656,12 +3669,27 @@ rippled ledger current
 {
     "result": {
         "ledger": {
-            "closed": false,
-            "ledger_index": "8696231",
-            "parent_hash": "A9008337AA9441B8961D9F97183B8BFB3EECFAA7D2FA65545B4CB552AEA65909",
-            "seqNum": "8696231"
+            "accepted": true,
+            "account_hash": "B089E7CD4F5167249951611AAEC863D4BF84FF098500E9CB50561F1A89EED825",
+            "close_flags": 0,
+            "close_time": 508541222,
+            "close_time_human": "2016-Feb-11 21:27:02",
+            "close_time_resolution": 10,
+            "closed": true,
+            "hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+            "ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+            "ledger_index": "18851543",
+            "parent_close_time": 508541221,
+            "parent_hash": "C382DB117F2D5AAECFBFB43EA509F8E56D6E1D1297CE00C0D02A3EE695ABB78F",
+            "seqNum": "18851543",
+            "totalCoins": "99998102795090646",
+            "total_coins": "99998102795090646",
+            "transaction_hash": "BEC71A3CAD11BFC4E4013CD109F220E0850E9A3808B15FAA6DAE4D898970EFAF"
         },
-        "status": "success"
+        "ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+        "ledger_index": 18851543,
+        "status": "success",
+        "validated": true
     }
 }
 </code></pre>
@@ -3677,29 +3705,69 @@ rippled ledger current
 </thead>
 <tbody>
 <tr>
-<td>account_hash</td>
+<td>ledger</td>
+<td>Object</td>
+<td>The complete header data of this ledger.</td>
+</tr>
+<tr>
+<td>ledger.account_hash</td>
 <td>String</td>
 <td>Hash of all account state information in this ledger, as hex</td>
 </tr>
 <tr>
-<td>close_time</td>
+<td>ledger.accounts</td>
+<td>Array</td>
+<td>(Omitted unless requested) All the <a href="ripple-ledger.html">account-state information</a> in this ledger.</td>
+</tr>
+<tr>
+<td>ledger.close_time</td>
 <td>Integer</td>
 <td>The time this ledger was closed, in seconds since the <a href="#specifying-time">Ripple Epoch</a></td>
 </tr>
 <tr>
-<td>close_time_human</td>
+<td>ledger.close_time_human</td>
 <td>String</td>
 <td>The time this ledger was closed, in human-readable format</td>
 </tr>
 <tr>
-<td>close_time_resolution</td>
+<td>ledger.close_time_resolution</td>
 <td>Integer</td>
-<td>Approximate number of seconds between closing one ledger version and closing the next one</td>
+<td>Ledger close times are rounded to within this many seconds.</td>
 </tr>
 <tr>
-<td>closed</td>
+<td>ledger.closed</td>
 <td>Boolean</td>
 <td>Whether or not this ledger has been closed</td>
+</tr>
+<tr>
+<td>ledger.ledger_hash</td>
+<td>String</td>
+<td>Unique identifying hash of the entire ledger.</td>
+</tr>
+<tr>
+<td>ledger.ledger_index</td>
+<td>String</td>
+<td>The <a href="#ledger-index">Ledger Index</a> of this ledger, as a quoted integer</td>
+</tr>
+<tr>
+<td>ledger.parent_hash</td>
+<td>String</td>
+<td>Unique identifying hash of the ledger that came immediately before this one.</td>
+</tr>
+<tr>
+<td>ledger.total_coins</td>
+<td>String</td>
+<td>Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.)</td>
+</tr>
+<tr>
+<td>ledger.transaction_hash</td>
+<td>String</td>
+<td>Hash of the transaction information included in this ledger, as hex</td>
+</tr>
+<tr>
+<td>ledger.transactions</td>
+<td>Array</td>
+<td>(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="#hashes">Hash</a> strings. If expanded, contains full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
@@ -3708,27 +3776,29 @@ rippled ledger current
 </tr>
 <tr>
 <td>ledger_index</td>
-<td>String</td>
-<td>Ledger sequence number as a quoted integer</td>
-</tr>
-<tr>
-<td>parent_hash</td>
-<td>String</td>
-<td>Unique identifying hash of the ledger that came immediately before this one.</td>
-</tr>
-<tr>
-<td>total_coins</td>
-<td>String</td>
-<td>Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.)</td>
-</tr>
-<tr>
-<td>transaction_hash</td>
-<td>String</td>
-<td>Hash of the transaction information included in this ledger, as hex</td>
+<td>Number</td>
+<td>The <a href="#ledger-index">Ledger Index</a> of this ledger.</td>
 </tr>
 </tbody>
 </table>
 <p>The following fields are deprecated and may be removed without further notice: <code>accepted</code>, <code>hash</code>, <code>seqNum</code>, <code>totalCoins</code>.</p>
+<p><strong>Note on <code>owner_funds</code>:</strong> If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="transactions.html#offercreate">OfferCreate-type transaction</a>. The purpose of this field is to make it easier to track the <a href="transactions.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly different than the version of this field in <a href="#order-book-streams">Order Book subscription streams</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner_funds</td>
+<td>String</td>
+<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is <a href="freeze.html">frozen</a>.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="possible-errors-9">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -4458,16 +4528,63 @@ rippled ledger_current
 Connecting to 127.0.0.1:5005
 {
    "result" : {
-      "error" : "ledgerNotFound",
-      "hash" : "D6E25136ADF43DED49C886A6D049436DDC8F8CC02C84E7C89DE67E209F0FAAB6",
-      "have_header" : false,
-      "peers" : 2,
+      "acquiring" : {
+         "hash" : "01DDD89B6605E20338B8EEB8EB2B0E0DD2F685A2B164F3790C4D634B5734CC26",
+         "have_header" : false,
+         "peers" : 2,
+         "timeouts" : 0
+      },
+      "error" : "lgrNotFound",
+      "error_code" : 20,
+      "error_message" : "acquiring ledger containing requested index",
       "request" : {
          "command" : "ledger_request",
-         "ledger_index" : 13800000
+         "ledger_index" : 18851277
       },
-      "status" : "error",
-      "timeouts" : 0
+      "status" : "error"
+   }
+}
+</code></pre>
+<p><em>Commandline (in-progress)</em></p>
+<pre><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "hash" : "EB68B5B4F6F06BF59B6D7532BCB98BB98E2F10C2435D895217AA0AA7E910FBD5",
+      "have_header" : true,
+      "have_state" : false,
+      "have_transactions" : false,
+      "needed_state_hashes" : [
+         "C46F7B9E795135447AF24BAF999AB8FC1612A997F6EAAF8B784C226FF0BD8E25",
+         "E48F528E4FC2A1DC492C6264B27B420E2285B2A3ECF3A253DB480DA5BFB7F858",
+         "B62CD0B2E1277F78BC279FA037F3F747587299B60D23A551C3F63DD137DC0CF8",
+         "30014C55701FB8426E496A47B297BEC9E8F5BFA47763CC22DBD9024CC81D39DD",
+         "7EB59A853913898FCEA7B701637F33B1054BD36C32A0B910B612EFB9CDFF6334",
+         "07ECAD3066D62583883979A2FADAADC8F7D89FA07375843C8A47452639AB2421",
+         "97A87E5246AF78463485CB27E08D561E22AAF33D5E2F08FE2FACAE0D05CB5478",
+         "50A0525E238629B32324C9F59B4ECBEFE3C21DC726DB9AB3B6758BD1838DFF68",
+         "8C541B1ED47C9282E2A28F0B7F3DDFADF06644CAB71B15A3E67D04C5FAFE9BF4",
+         "2C6CC536C778D8C0F601E35DA7DD9888C288897E4F603E76357CE2F47E8A7A9F",
+         "309E78DEC67D5725476A59E114850556CC693FB6D92092997ADE97E3EFF473CC",
+         "8EFF61B6A636AF6B4314CAC0C08F4FED0759E1F782178A822EDE98275E5E4B10",
+         "9535645E5D249AC0B6126005B79BB981CBA00286E00154D20A3BCF65743EA3CA",
+         "69F5D6FCB41D1E6CEA5ADD42CBD194086B45E957D497DF7AEE62ADAD485660CE",
+         "07E93A95DBB0B8A00925DE0DF6D27E41CACC77EF75055A89815006109D82EAD3",
+         "7FDF25F660235DCAD649676E3E6729DF920A9B0B4B6A3B090A3C64D7BDE2FB20"
+      ],
+      "needed_transaction_hashes" : [
+         "BA914854F2F5EDFCBD6E3E0B168E5D4CD0FC92927BEE408C6BD38D4F52505A34",
+         "AE3A2DB537B01EB33BB3A677242DE52C9AE0A64BD9222EE55E52855276E7EA2A",
+         "E145F737B255D93769673CBA6DEBA4F6AC7387A309DAACC72EA5B07ECF03C215",
+         "073A118552AA60E1D3C6BE6F65E4AFA01C582D9C41CCC2887244C19D9BFA7741",
+         "562DB8580CD3FE19AF5CEA61C2858C10091151B924DBF2AEB7CBB8722E683204",
+         "437C0D1C2391057079E9539CF028823D29E6437A965284F6E54CEBF1D25C5D56",
+         "1F069486AF5533883609E5C8DB907E97273D9A782DF26F5E5811F1C42ED63A3D",
+         "CAA6B7DA68EBA71254C218C81A9EA029A179694BDD0D75A49FB03A7D57BCEE49"
+      ],
+      "peers" : 6,
+      "status" : "success",
+      "timeouts" : 1
    }
 }
 </code></pre>
@@ -4499,7 +4616,14 @@ Connecting to 127.0.0.1:5005
 
 </code></pre>
 </div>
-<p>The fields of the "failure" response (the ledger was requested, but has not been fully retrieved yet) can include any of the following:</p>
+<p>The three possible response formats are as follows:</p>
+<ol>
+<li>When returning a <code>lgrNotFound</code> error, the response has a field, <code>acquiring</code> with a <a href="#ledger-request-object">Ledger Request Object</a> indicating the progress of fetching the ledger from the peer-to-peer network.</li>
+<li>When the response represents an in-progress attempt to acquire the ledger, the body of the result is a <a href="#ledger-request-object">Ledger Request Object</a> indicating the progress of fetching the ledger from the peer-to-peer network.</li>
+<li>When the ledger is fully available, the response is a representation of the <a href="ripple-ledger.html#header-format">ledger header</a>.</li>
+</ol>
+<h4 id="ledger-request-object">Ledger Request Object</h4>
+<p>When the server is in the progress of fetching a ledger, but has not yet finished, the <code>rippled</code> server returns a ledger request object indicating its progress towards fetching the ledger. This object has the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -4512,7 +4636,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>hash</td>
 <td>String</td>
-<td>The <a href="#hashes">Hash</a> of the requested ledger, if the server knows it.</td>
+<td>(May be omitted) The <a href="#hashes">Hash</a> of the requested ledger, if the server knows it.</td>
 </tr>
 <tr>
 <td>have_header</td>
@@ -4522,7 +4646,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>have_state</td>
 <td>Boolean</td>
-<td>(May be omitted) Whether the server has the state section of the requested ledger.</td>
+<td>(May be omitted) Whether the server has the <a href="ripple-ledger.html#tree-format">account-state section</a> of the requested ledger.</td>
 </tr>
 <tr>
 <td>have_transactions</td>
@@ -4532,7 +4656,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>needed_state_hashes</td>
 <td>Array of Strings</td>
-<td>(May be omitted) Up to 16 hashes of nodes in the state tree that the server still needs to retrieve.</td>
+<td>(May be omitted) Up to 16 hashes of nodes in the <a href="ripple-ledger.html#tree-format">state tree</a> that the server still needs to retrieve.</td>
 </tr>
 <tr>
 <td>needed_transaction_hashes</td>
@@ -4544,13 +4668,18 @@ Connecting to 127.0.0.1:5005
 <td>Number</td>
 <td>How many peers the server is querying in its attempt to find this ledger.</td>
 </tr>
+<tr>
+<td>timeouts</td>
+<td>Number</td>
+<td>Number of times this attempt to fetch the ledger has timed out so far.</td>
+</tr>
 </tbody>
 </table>
 <h4 id="possible-errors-14">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.</li>
-<li><code>ledgerNotFound</code> - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger.</li>
+<li><code>lgrNotFound</code> - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. <em>(<strong>Note:</strong> Prior to <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>, this error used the code <code>ledgerNotFound</code> instead.)</em></li>
 </ul>
 <h2 id="ledger-accept">ledger_accept</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp" title="Source">[Source]<br/></a></p>
@@ -6030,12 +6159,12 @@ rippled tx_history 0
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.0">version 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
 </tr>
 <tr>
 <td>send_max</td>
 <td>String or Object</td>
-<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em></td>
+<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.0">version 0.30.0</a>)</em></td>
 </tr>
 <tr>
 <td>paths</td>
@@ -6452,7 +6581,7 @@ rippled tx_history 0
 <tr>
 <td>full_reply</td>
 <td>Boolean</td>
-<td>If <code>false</code>, this is the result of an incomplete search, and a subsequent reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but rippled won't find it.) Until you close the pathfinding request, rippled will continue to send updates each time a new ledger closes. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">rippled 0.29.0</a>)</em></td>
+<td>If <code>false</code>, this is the result of an incomplete search, and a subsequent reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but rippled won't find it.) Until you close the pathfinding request, rippled will continue to send updates each time a new ledger closes. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.29.0">version 0.29.0</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -6701,12 +6830,12 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.2">rippled 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.0">version 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
 </tr>
 <tr>
 <td>send_max</td>
 <td>String or Object</td>
-<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.2">rippled 0.30.0</a>)</em></td>
+<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.0">version 0.30.0</a>)</em></td>
 </tr>
 <tr>
 <td>source_currencies</td>
@@ -7089,6 +7218,11 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <td>Integer</td>
 <td>(Optional) If the <code>Fee</code> parameter (<a href="tx-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
 </tr>
+<tr>
+<td>fee_div_max</td>
+<td>Integer</td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="tx-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, signing fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+</tr>
 </tbody>
 </table>
 <p>The server automatically attempts to fill in certain fields from the <code>tx_json</code> object if they are omitted, unless you specified <code>offline</code> as true. Otherwise, the following fields from the <a href="transactions.html">transaction format</a> are automatically filled in:</p>
@@ -7288,6 +7422,11 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <td>fee_mult_max</td>
 <td>Integer</td>
 <td>(Optional) If the <code>Fee</code> parameter is omitted, this field limits the automatically-provided <code>Fee</code> value so that it is less than or equal to the long-term base transaction cost times this value.</td>
+</tr>
+<tr>
+<td>fee_div_max</td>
+<td>Integer</td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="tx-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -7694,15 +7833,16 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <h4 id="request-format-27">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
-<p><em>WebSocket - accounts</em></p>
+<p><em>Subscribe to accounts</em></p>
 <pre><code>{
   "id": "Example watch Bitstamp's hot wallet",
   "command": "subscribe",
   "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
 }
 </code></pre>
-<p><em>WebSocket - offer book</em></p>
+<p><em>Subscribe to order book</em></p>
 <pre><code>{
+    "id": "Example subscribe to XRP/GateHub USD order book",
     "command": "subscribe",
     "books": [
         {
@@ -7711,11 +7851,18 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
             },
             "taker_gets": {
                 "currency": "USD",
-                "issuer": "rUQTpMqAF5jhykj4FExVeXakrZpiKF6cQV"
+                "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"
             },
             "snapshot": true
         }
     ]
+}
+</code></pre>
+<p><em>Subscribe to ledger stream</em></p>
+<pre><code>{
+  "id": "Example watch for new validated ledgers",
+  "command": "subscribe",
+  "streams": ["ledger"]
 }
 </code></pre>
 </div>
@@ -7770,11 +7917,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The following parameters are deprecated and may be removed without further notice: <code>user</code>, <code>password</code>, <code>rt_accounts</code>.</p>
 <p>The <code>streams</code> parameter provides access to the following default streams of information:</p>
 <ul>
-<li><code>server</code> - Sends a message whenever the status of the rippled server (for example, network connectivity) changes</li>
+<li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes</li>
 <li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
 <li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
 <li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="transactions.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message from a server it trusts. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
+<li><code>peer_status</code> - <strong>(Admin only)</strong> Information about connected peer <code>rippled</code> servers, especially with regards to the consensus process.</li>
 </ul>
 <p>Each member of the <code>books</code> array, if provided, is an object with the following fields:</p>
 <table>
@@ -7847,10 +7995,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>dstIsrMalformed</code> - The <code>issuer</code> field of one or more <code>taker_gets</code> sub-fields of the <code>books</code> field in the request is not valid.</li>
 <li><code>badMarket</code> - One or more desired order books in the <code>books</code> field does not exist; for example, offers to exchange a currency for itself.</li>
 </ul>
-<h3 id="subscription-stream-messages">Subscription Stream Messages</h3>
 <p>When you subscribe to a particular stream, you will receive periodic responses on that stream until you unsubscribe or close the WebSocket connection. The content of those responses depends on what you subscribed to. Here are some examples:</p>
-<h4 id="stream-ledger-message">Stream: ledger Message</h4>
-<p>The ledger stream only sends <code>ledgerClosed</code> messages when <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> declares a new validated ledger. The message identifies the ledger and provides some information about its contents.</p>
+<h3 id="ledger-stream">Ledger Stream</h3>
+<p>The <code>ledger</code> stream only sends <code>ledgerClosed</code> messages when <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> declares a new validated ledger. The message identifies the ledger and provides some information about its contents.</p>
 <pre><code>{
   "type": "ledgerClosed",
   "fee_base": 10,
@@ -7926,7 +8073,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 </tbody>
 </table>
-<h4 id="stream-validations-message">Stream: validations Message</h4>
+<h3 id="validations-stream">Validations Stream</h3>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
 <pre><code>{
   "type": "validationReceived",
@@ -7967,8 +8114,16 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 </tbody>
 </table>
-<h4 id="transaction-messages">Transaction Messages</h4>
-<p>Most other subscriptions result in messages about transactions. The <code>transactions_proposed</code> stream, strictly speaking, is a superset of the <code>transactions</code> stream: it includes all validated transactions, as well as some suggested transactions that have not yet been included in a validated ledger and may never be. You can identify these "in-flight" transactions by their fields:</p>
+<h3 id="transaction-streams">Transaction Streams</h3>
+<p>Many subscriptions result in messages about transactions, including the following:</p>
+<ul>
+<li>The <code>transactions</code> stream</li>
+<li>The <code>transactions_proposed</code> stream</li>
+<li><code>accounts</code> subscriptions</li>
+<li><code>accounts_proposed</code> subscriptions</li>
+<li><code>book</code> (Order Book) subscriptions</li>
+</ul>
+<p>The <code>transactions_proposed</code> stream, strictly speaking, is a superset of the <code>transactions</code> stream: it includes all validated transactions, as well as some suggested transactions that have not yet been included in a validated ledger and may never be. You can identify these "in-flight" transactions by their fields:</p>
 <ul>
 <li>The <code>validated</code> field is missing or has a value of <code>false</code>.</li>
 <li>There is no <code>meta</code> or <code>metadata</code> field.</li>
@@ -8075,6 +8230,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
   "validated": true
 }
 </code></pre>
+<p>Transaction stream messages have the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -8087,7 +8243,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>type</td>
 <td>String</td>
-<td><code>transaction</code> indicates this is the notification of a transaction, which could come from the <code>transactions</code> or <code>transactions_proposed</code> streams, or from watching a particular account</td>
+<td><code>transaction</code> indicates this is the notification of a transaction, which could come from several possible streams.</td>
 </tr>
 <tr>
 <td>engine_result</td>
@@ -8133,6 +8289,237 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <td>validated</td>
 <td>Boolean</td>
 <td>If true, this transaction is included in a validated ledger. Responses from the <code>transaction</code> stream should always be validated.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="peer-status-stream">Peer Status Stream</h3>
+<p>The admin-only <code>peer_status</code> stream reports a large amount of information regarding the activities of other <code>rippled</code> servers to which this server is connected, in particular regarding their status in the consensus process.</p>
+<p>Example of a Peer Status stream message:</p>
+<pre><code>{
+    "action": "CLOSING_LEDGER",
+    "date": 508546525,
+    "ledger_hash": "4D4CD9CD543F0C1EF023CC457F5BEFEA59EEF73E4552542D40E7C4FA08D3C320",
+    "ledger_index": 18853106,
+    "ledger_index_max": 18853106,
+    "ledger_index_min": 18852082,
+    "type": "peerStatusChange"
+}
+</code></pre>
+<p>Peer Status stream messages represent some event where the status of the peer <code>rippled</code> server changed. These messages are JSON objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td><code>peerStatusChange</code> indicates this comes from the Peer Status stream.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>The type of event that prompted this message. See <a href="#peer-status-events">Peer Status Events</a> for possible values.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Number</td>
+<td>The time this event occurred, in seconds since the <a href="#specifying-time">Ripple Epoch</a>.</td>
+</tr>
+<tr>
+<td>ledger_hash</td>
+<td>String</td>
+<td>(May be omitted) The identifying <a href="#hashes">Hash</a> of a ledger version to which this message pertains.</td>
+</tr>
+<tr>
+<td>ledger_index</td>
+<td>Number</td>
+<td>(May be omitted) The <a href="#ledger-index">Ledger Index</a> of a ledger version to which this message pertains.</td>
+</tr>
+<tr>
+<td>ledger_index_max</td>
+<td>Number</td>
+<td>(May be omitted) The largest <a href="#ledger-index">Ledger Index</a> the peer has currently available.</td>
+</tr>
+<tr>
+<td>ledger_index_min</td>
+<td>Number</td>
+<td>(May be omitted) The smallest <a href="#ledger-index">Ledger Index</a> the peer has currently available.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="peer-status-events">Peer Status Events</h4>
+<p>The <code>action</code> field of a Peer Status stream message can have the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLOSING_LEDGER</td>
+<td>The peer closed a ledger version with this <a href="#ledger-index">Ledger Index</a>, which usually means it is about to start consensus.</td>
+</tr>
+<tr>
+<td>ACCEPTED_LEDGER</td>
+<td>The peer built this ledger version as the result of a consensus round. <strong>Note:</strong> This ledger is still not certain to become immutably validated.</td>
+</tr>
+<tr>
+<td>SWITCHED_LEDGER</td>
+<td>The peer concluded it was not following the rest of the network and switched to a different ledger version.</td>
+</tr>
+<tr>
+<td>LOST_SYNC</td>
+<td>The peer fell behind the rest of the network state regarding which ledger versions are validated and which are undergoing consensus.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="order-book-streams">Order Book Streams</h3>
+<p>When you subscribe to one or more order books with the <code>books</code> field, you get back any transactions that affect those order books. </p>
+<p>Example order book stream message:</p>
+<pre><code>{
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "ledger_hash": "08547DD866F099CCB3666F113116B7AA2DF520FA2E3011DD1FF9C9C04A6C7C3E",
+    "ledger_index": 18852105,
+    "meta": {
+        "AffectedNodes": [{
+            "ModifiedNode": {
+                "FinalFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "AccountTxnID": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
+                    "Balance": "3070332374272",
+                    "Flags": 0,
+                    "OwnerCount": 23,
+                    "RegularKey": "r9S56zu6QeJD5d8A7QMfLAeYavgB9dhaX4",
+                    "Sequence": 12142921
+                },
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "2880A9B4FB90A306B576C2D532BFE390AB3904642647DCF739492AA244EF46D1",
+                "PreviousFields": {
+                    "AccountTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
+                    "Balance": "3070332385272",
+                    "Sequence": 12142920
+                },
+                "PreviousTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
+                "PreviousTxnLgrSeq": 18852102
+            }
+        }, {
+            "ModifiedNode": {
+                "FinalFields": {
+                    "Flags": 0,
+                    "IndexPrevious": "00000000000022D2",
+                    "Owner": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "RootIndex": "F435FBBEC9654204D7151A01E686BAA8CB325A472D7B61C7916EA58B59355767"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "29A543B6681AD7FC8AFBD1386DAE7385F02F9B8C4756A467DF6834AB54BBC9DB"
+            }
+        }, {
+            "ModifiedNode": {
+                "FinalFields": {
+                    "ExchangeRate": "4C1BA999A513EF78",
+                    "Flags": 0,
+                    "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+                    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+                    "TakerPaysCurrency": "0000000000000000000000005553440000000000",
+                    "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78"
+            }
+        }, {
+            "CreatedNode": {
+                "LedgerEntryType": "Offer",
+                "LedgerIndex": "92E235EE80D2B28A89BEE2C905D4545C2A004FD5D4097679C8A3FB25507FD9EB",
+                "NewFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "Expiration": 508543674,
+                    "OwnerNode": "00000000000022F4",
+                    "Sequence": 12142920,
+                    "TakerGets": "6537121438",
+                    "TakerPays": {
+                        "currency": "USD",
+                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+                        "value": "50.9"
+                    }
+                }
+            }
+        }, {
+            "DeletedNode": {
+                "FinalFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "BookNode": "0000000000000000",
+                    "Expiration": 508543133,
+                    "Flags": 0,
+                    "OwnerNode": "00000000000022F4",
+                    "PreviousTxnID": "58B3279C2D56AAC3D9B06106E637C01E3D911E9D31E2FE4EA0D886AC9F4DEE1E",
+                    "PreviousTxnLgrSeq": 18851945,
+                    "Sequence": 12142889,
+                    "TakerGets": "6537121438",
+                    "TakerPays": {
+                        "currency": "USD",
+                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+                        "value": "50.9"
+                    }
+                },
+                "LedgerEntryType": "Offer",
+                "LedgerIndex": "D3436CE21925E1CB12C5C444963B47D7EA0CD9A0E387926DC76B23FE5CD1C15F"
+            }
+        }],
+        "TransactionIndex": 26,
+        "TransactionResult": "tesSUCCESS"
+    },
+    "status": "closed",
+    "transaction": {
+        "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+        "Expiration": 508543674,
+        "Fee": "11000",
+        "Flags": 2147483648,
+        "LastLedgerSequence": 18852106,
+        "OfferSequence": 12142889,
+        "Sequence": 12142920,
+        "SigningPubKey": "034841BF24BD72C7CC371EBD87CCBF258D8ADB05C18DE207130364A97D8A3EA524",
+        "TakerGets": "6537121438",
+        "TakerPays": {
+            "currency": "USD",
+            "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+            "value": "50.9"
+        },
+        "TransactionType": "OfferCreate",
+        "TxnSignature": "3045022100B9AD678A773FB61F8F9B565713C80CBF187A2F9EB8E9CE0DAC7B839CA6F4B04C02200613D173A0636CD9BE13F2E3EBD13A16932B5B7D8A96BB5F6D561CA5CDBC4AD3",
+        "date": 508543090,
+        "hash": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
+        "owner_funds": "3070197374272"
+    },
+    "type": "transaction",
+    "validated": true
+}
+</code></pre>
+<p>The format of an order book stream message is the same as that of <a href="#transaction-streams">transaction stream messages</a>, except that <code>OfferCreate</code> transactions also contain the following field:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transaction.owner_funds</td>
+<td>String</td>
+<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is <a href="freeze.html">frozen</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -8550,22 +8937,22 @@ rippled server_info
 <tr>
 <td>state_accounting</td>
 <td>Object</td>
-<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.duration_us</td>
 <td>String</td>
-<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.transitions</td>
 <td>Number</td>
-<td>The number of times the server has transitioned into this state. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>The number of times the server has transitioned into this state. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>Number of consecutive seconds that the server has been operational. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>Number of consecutive seconds that the server has been operational. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -8905,22 +9292,22 @@ rippled server_state
 <tr>
 <td>state_accounting</td>
 <td>Object</td>
-<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.duration_us</td>
 <td>String</td>
-<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.transitions</td>
 <td>Number</td>
-<td>The number of times the server has transitioned into this state. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>The number of times the server has transitioned into this state. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>Number of consecutive seconds that the server has been operational. (New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</td>
+<td>Number of consecutive seconds that the server has been operational. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -10376,104 +10763,154 @@ Connecting to 127.0.0.1:5005
 Connecting to 127.0.0.1:5005
 {
    "result" : {
+      "cluster" : {},
       "peers" : [
          {
-            "address" : "162.217.98.91:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 93,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 15,
-            "public_key" : "n94szsuScMEjP4Nu7c3mndcyjWJELepZcASEkDMcDSwXhHH6Sn37",
-            "version" : "rippled-0.28.1-rc3"
+            "address" : "72.251.232.173:51235",
+            "complete_ledgers" : "32570 - 18851276",
+            "latency" : 22,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 20,
+            "public_key" : "n9JveA1hHDGjZECaYC7KM4JP8NXXzNXAxixbzcLTGnrsFZsA9AD1",
+            "uptime" : 26,
+            "version" : "rippled-0.31.0-b6"
          },
          {
-            "address" : "54.186.248.91:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 68,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 17,
-            "public_key" : "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
-            "version" : "rippled-0.28.1-rc3"
+            "address" : "169.53.155.36:51235",
+            "complete_ledgers" : "12920801 - 18851275",
+            "latency" : 127,
+            "load" : 16,
+            "public_key" : "n9L42gouyppsmsMXXUdByXnVDUZv1eu6KLZUWUkNHsukzv3pr7po",
+            "uptime" : 18,
+            "version" : "rippled-0.30.0-hf1"
+         },
+         {
+            "address" : "169.53.155.44:51235",
+            "complete_ledgers" : "12920779 - 18851276",
+            "latency" : 20,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 49,
+            "public_key" : "n94BpoEqEf1PxpAv3Bmyy2WoKHyeMpHPH4tcj6P9NW98zdzEyRhi",
+            "uptime" : 50,
+            "version" : "rippled-0.30.0-hf1"
+         },
+         {
+            "address" : "192.170.145.77:51235",
+            "complete_ledgers" : "32570 - 18851277",
+            "latency" : 145,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 29,
+            "public_key" : "n9LwcmtjDAJQz4u8DZCMGQ9GXHuMEV4Cf8KpPL9NgqAV2puxdYc2",
+            "uptime" : 51,
+            "version" : "rippled-0.30.1"
          },
          {
             "address" : "162.217.98.136:51235",
-            "complete_ledgers" : "32570 - 14015062",
-            "latency" : 97,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 32,
+            "complete_ledgers" : "32570 - 18851277",
+            "latency" : 83,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 30,
             "public_key" : "n944PcXEoZaiEHnwFD92xA4bxsS7jjYb27WcdDQwkHYyk1MWTEsX",
-            "version" : "rippled-0.28.1-rc3"
+            "uptime" : 50,
+            "version" : "rippled-0.30.1"
          },
          {
-            "address" : "54.186.73.52:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 68,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 14,
-            "public_key" : "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
-            "version" : "rippled-0.28.1-rc3"
+            "address" : "184.172.237.241:51235",
+            "complete_ledgers" : "14153089 - 18851277",
+            "latency" : 104,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 29,
+            "public_key" : "n9L3LdCTVYUhCKtQtxiHrQ5ocNXVqZFiEJpF5pX9DXahYLrvi5R7",
+            "uptime" : 51,
+            "version" : "rippled-0.30.0-hf1"
          },
          {
-            "address" : "72.251.233.165:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 39,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 15,
-            "public_key" : "n9M77Uc9CSaSFZqt5V7sxPR4kFwbha7hwUFBD5v5kZt2SQjBeoDs",
-            "version" : "rippled-0.28.1-hf1"
+            "address" : "99.110.49.91:51301",
+            "complete_ledgers" : "32570 - 18851277",
+            "latency" : 152,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 55,
+            "public_key" : "n9LGv3xKVqhxq6vcTfmJZhxyhjywsZbvJvpFbZRXzzz5uQ64xTLy",
+            "uptime" : 51,
+            "version" : "rippled-0.31.0-b6"
          },
          {
-            "address" : "72.251.233.164:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 35,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 15,
-            "public_key" : "n9LWq5vQbx9nrm5ERkjbvNmAN8erdoShdHWiHYj18Gbo3ExsnFDE",
-            "version" : "rippled-0.28.1-rc3"
+            "address" : "169.53.155.45:51235",
+            "complete_ledgers" : "12920779 - 18851277",
+            "latency" : 15,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 30,
+            "public_key" : "n9MRiHyMk43YpqATWeT8Zyu4HJq1btb5oNKmnHTkLJKQg9LQQq3v",
+            "uptime" : 51,
+            "version" : "rippled-0.30.0-hf1"
          },
          {
-            "address" : "162.217.98.90:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 114,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 14,
-            "public_key" : "n9KJB2KWFQcqQcnjNN9wLZ5KPYjFcoVpvZ94m6t34tvjV5PquhCc",
-            "version" : "rippled-0.28.1-rc3"
-         },
-         {
-            "address" : "72.251.233.166:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 20,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 9,
-            "public_key" : "n9MdrPRH9tQ6RDwwP4M41GJHTqgsVnBX2YLJd9XdYdgFzxSefdi8",
-            "version" : "rippled-0.28.0-rc3"
-         },
-         {
-            "address" : "72.251.233.163:51235",
-            "complete_ledgers" : "14014038 - 14015062",
-            "latency" : 31,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 16,
-            "public_key" : "n94ne2Z5dX8qcJNa8cPtAbtn21gEaCoEduS8TwdGAhi1iLfCUMDm",
-            "version" : "rippled-0.28.1-rc3"
-         },
-         {
-            "address" : "72.251.232.171:51235",
-            "complete_ledgers" : "32570 - 14015062",
-            "latency" : 32,
-            "ledger" : "4DBECEB8DA331D9616FFAE4146A919D7A1BA7D06938239258FBD8A82C37585A7",
-            "load" : 44,
-            "public_key" : "n9LJekVe9sUpxf1PEhWX3Csg63oShsTLMEfJ1mL4kpuzDu3bxotS",
-            "version" : "rippled-0.28.1-rc3"
+            "address" : "54.186.248.91:51235",
+            "complete_ledgers" : "18850253 - 18851277",
+            "latency" : 63,
+            "ledger" : "592C723DDBB1C5119F0D8288894060C83C8C2975A061D7C9971427D6798098F5",
+            "load" : 36,
+            "public_key" : "n9MT5EjnV912KGuBUqPs4tpdhzMPGcnDBrTuWkD9sWQHJ1kDcUcz",
+            "uptime" : 51,
+            "version" : "rippled-0.30.1"
          }
       ],
       "status" : "success"
    }
 }
+
 </code></pre>
 </div>
-<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a <code>peers</code> array. Each member of the peers array is a peer object with the following fields:</p>
+<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster</td>
+<td>Object</td>
+<td>Summary of other <code>rippled</code> servers in the same cluster, if <a href="rippled-setup.html#clustering">configured as a cluster</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+</tr>
+<tr>
+<td>peers</td>
+<td>Array</td>
+<td>Array of peer objects.</td>
+</tr>
+</tbody>
+</table>
+<p>Each field of the <code>cluster</code> object is the public key of that <code>rippled</code> server's identifying keypair. (This is the same value that that server returns as <code>pubkey_node</code> in the <a href="#server-info"><code>server_info</code> command</a>.) The contents of that field are an object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>The display name for this cluster member as defined in the config file.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>Number</td>
+<td>(May be omitted) The load multiplier this cluster member is applying to the <a href="tx-cost.html">transaction cost</a></td>
+</tr>
+<tr>
+<td>age</td>
+<td>Number</td>
+<td>The number of seconds since the last cluster report from this cluster member.</td>
+</tr>
+</tbody>
+</table>
+<p>Each member of the <code>peers</code> array is a peer object with the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -10546,7 +10983,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>The number of seconds that your <code>rippled</code> server has been continuously connected to this peer.</td>
+<td>The number of seconds that your <code>rippled</code> server has been continuously connected to this peer. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>version</td>
@@ -11086,6 +11523,7 @@ Connecting to 127.0.0.1:5005
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
+<!---- rippled release notes links ---->
         </div>
     </div>
     </div>
