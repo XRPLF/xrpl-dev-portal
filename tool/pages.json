@@ -61,6 +61,12 @@
         "category": "Concepts"
     },
     {
+        "name": "RippleAPI Quick Start Guide",
+        "md": "rippleapi_quickstart.md",
+        "html": "rippleapi_quickstart.html",
+        "category": "Tutorials"
+    },
+    {
         "name": "rippled",
         "md":"rippled.md",
         "html":"rippled-apis.html",
