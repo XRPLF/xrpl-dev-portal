@@ -1,4 +1,4 @@
-# RippleAPI Quick Start Guide #
+# RippleAPI Beginners Guide #
 
 This tutorial guides you through the basics of building a simple Ripple-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](rippleapi.html), a simple JavaScript API for accessing the Ripple Consensus Ledger.
 
