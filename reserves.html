@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Reserves - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Flatdoc theme -->
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="vendor/docco.min.css">
+    <script src="vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="js/multicodetab.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="js/expandcode.js"></script>
+    <script src="js/fixsidebarscroll.js"></script>
+    
+    <!-- Custom Stylesheets -->
+    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
+    
+  
+</head>
+<body  class='no-literate'>
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                    <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+				</ul>
+                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <script type="text/javascript">
+    if (window.location.host.indexOf("github.io") > -1) {
+        document.write("<div style='background-color:red; color:white; position:fixed; top: 50px; right: 150px; padding: 10px 20px;'>DRAFT</div>");
+    }
+    </script>
+    <div class='wrapper'>
+    <div class='content-root'>
+        <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
+            </div>
+        </div>
+        <div class='content'>
+	        <h1 id="reserves">Reserves</h1>
+<p>The Ripple Consensus Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match <a href="https://en.wikipedia.org/wiki/Moore's_law">Moore's Law</a> so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
+<p>Each account in the shared global ledger must hold a minimum of XRP in order to submit transactions, and it cannot send this XRP to other accounts. You cannot create a new account unless you send enough XRP to meet the minimum reserve requirement.</p>
+<p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an account that owns no additional objects in the ledger.)</p>
+<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
+<p>The reserve requirement is divided into two parts:</p>
+<ul>
+<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every account in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
+<li>The <strong>Owner Reserve</strong> is an additional requirement that scales with the number of objects that the account owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
+</ul>
+<h3 id="owner-reserves">Owner Reserves</h3>
+<p>Many objects in the ledger are owned by a particular account, and therefore count toward the reserve requirement of that account. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
+<ul>
+<li><a href="ripple-ledger.html#offer">Offers</a> are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an <a href="transactions.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="transactions.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
+<li><a href="ripple-ledger.html#ripplestate">Trust lines</a> are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See <a href="ripple-ledger.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
+<li><a href="ripple-ledger.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
+</ul>
+<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
+<p>The Ripple Consensus Ledger considers an <a href="transactions.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not possess enough XRP to meet the additional reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="transactions.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
+<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
+<p>During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the <a href="tx-cost.html">transaction cost</a> destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.</p>
+<p>When an account has less XRP than its current reserve requirement, it cannot send new transactions. Even so, it continues to exist in the ledger, as all accounts do. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.</p>
+<p><strong>Exception:</strong> When an account is below the reserve requirement, it can send new <a href="transactions.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="ripple-ledger.html#ripplestate">trust lines</a>, or <a href="ripple-ledger.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
+<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
+<p>The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="fee-voting.html">Fee Voting</a> for more information.</p>
+        </div>
+    </div>
+    </div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+		        <h4>Documentation</h4>
+			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Resources</h4>
+				<ul class="footer_links">
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Ripple Projects</h4>
+				<ul class="footer_links">
+					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+					<li><a href="https://ripple.com/graph">Ripple Graph</a>
+					<li><a href="http://codius.org/">Codius</a>
+				</ul>
+			</div>
+			<div class="col-md-3">
+		        <h4>Ripple Labs</h4>
+			    <ul class="footer_links">
+				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
+                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
+                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
+                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
+                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
+                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
+                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
+                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
+			    </ul>
+      		</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

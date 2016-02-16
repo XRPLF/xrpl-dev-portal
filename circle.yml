@@ -4,7 +4,7 @@ dependencies:
   pre:
     - pyenv global 3.4.0
   override:
-    - pip3 install jinja2 requests beautifulsoup4
+    - pip3 install jinja2 requests beautifulsoup4 markdown watchdog
 test:
   override:
     - ./parse_pages.py

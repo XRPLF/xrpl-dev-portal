@@ -1,98 +1,143 @@
 [
     {
-        "name": "rippled",
-        "md":"rippled.md",
-        "html":"rippled-apis.html"
+        "name": "Overview",
+        "template":"template-index.html",
+        "html": "index.html",
+        "targets": ["local", "ripple.com"]
     },
     {
-        "name": "rippled Setup",
-        "md":"rippled-setup.md",
-        "html":"rippled-setup.html"
+        "name": "Ripple Developer Resources",
+        "template":"template-pdf_intro.html",
+        "html": "pdf_intro.html",
+        "targets": ["pdf"]
     },
     {
-        "name": "Ripple-REST",
-        "md": "ripplerest_api.md",
-        "html": "ripple-rest.html"
+        "name": "Paths",
+        "md":"paths.md",
+        "html":"paths.html",
+        "ripple.com": "https://ripple.com/build/paths/",
+        "category": "Concepts"
     },
     {
-        "name": "Transactions",
-        "md":"tx_format.md",
-        "html":"transactions.html"
-    },
-    {
-        "name": "The Ledger",
-        "md":"ledger_format.md",
-        "html":"ripple-ledger.html"
-    },
-    {
-        "name": "Reliable Transaction Submission",
-        "md":"reliable_tx.md",
-        "html":"reliable_tx.html"
-    },
-    {
-        "name": "Gateway Guide",
-        "md":"gateway_guide.md",
-        "html":"gateway_guide.html"
-    },
-    {
-        "name": "Historical Data API",
-        "md": "historical_data.md",
-        "html": "historical_data.html"
-    },
-    {
-        "name": "Ripple Charts API",
-        "md": "charts_api.md",
-        "html": "charts_api.html"
-    },
-    {
-        "name": "Gateway Services",
-        "md":"gateway_services_spec.md",
-        "html":"gateway_services.html"
+        "name": "Fees (Disambiguation)",
+        "md": "fees.md",
+        "html": "fees.html",
+        "ripple.com": "https://ripple.com/knowledge_center/fees-disambiguation/",
+        "category": "Concepts"
     },
     {
         "name": "Transfer Fees",
         "md":"transferrate.md",
-        "html":"transfer_fees.html"
+        "html":"transfer_fees.html",
+        "ripple.com": "https://ripple.com/knowledge_center/transfer-fees/",
+        "category": "Concepts"
     },
     {
-        "name": "Whitepapers",
-        "md":"whitepapers.md",
-        "html":"whitepapers.html"
+        "name": "Transaction Cost",
+        "md": "tx-cost.md",
+        "html": "tx-cost.html",
+        "ripple.com": "https://ripple.com/build/transaction-cost/",
+        "category": "Concepts"
     },
     {
-        "name": "Overview",
-        "template":"template-index.html",
-        "html": "index.html"
+        "name": "Fee Voting",
+        "md": "fee-voting.md",
+        "html": "fee-voting.html",
+        "ripple.com": "https://ripple.com/build/fee-voting/",
+        "category": "Concepts"
     },
     {
-        "name": "Ripple-REST API Tool",
-        "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-ripplerest.js",
-        "is_apitool": true,
-        "rest_host": "https://api.ripple.com",
-        "html": "rest-api-tool.html"
+        "name": "Reserves",
+        "md": "reserves.md",
+        "html": "reserves.html",
+        "ripple.com": "https://ripple.com/build/reserves/",
+        "category": "Concepts"
     },
     {
-        "name": "Historical Database API Tool",
-        "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-historical.js",
-        "is_apitool": true,
-        "rest_host": "https://history.ripple.com",
-        "html": "historicaldb-api-tool.html"
+        "name": "Freeze",
+        "md": "freeze.md",
+        "html": "freeze.html",
+        "ripple.com": "https://ripple.com/build/freeze/",
+        "category": "Concepts"
+    },
+    {
+        "name": "RippleAPI Quick Start Guide",
+        "md": "rippleapi_quickstart.md",
+        "html": "rippleapi_quickstart.html",
+        "category": "Tutorials"
+    },
+    {
+        "name": "rippled",
+        "md":"rippled.md",
+        "html":"rippled-apis.html",
+        "ripple.com": "https://ripple.com/build/rippled-apis/",
+        "category": "References"
+    },
+    {
+        "name": "rippled Setup",
+        "md":"rippled-setup.md",
+        "html":"rippled-setup.html",
+        "ripple.com": "https://ripple.com/build/rippled-setup/",
+        "category": "Tutorials"
+    },
+    {
+        "name": "Transactions",
+        "md":"tx_format.md",
+        "html":"transactions.html",
+        "ripple.com": "https://ripple.com/build/transactions/",
+        "category": "References"
+    },
+    {
+        "name": "Ledger Format",
+        "md":"ledger_format.md",
+        "html":"ripple-ledger.html",
+        "ripple.com": "https://ripple.com/build/ledger-format/",
+        "category": "References"
+    },
+    {
+        "name": "Reliable Transaction Submission",
+        "md":"reliable_tx.md",
+        "html":"reliable_tx.html",
+        "ripple.com": "https://ripple.com/build/reliable-transaction-submission/",
+        "category": "Tutorials"
+    },
+    {
+        "name": "Gateway Guide",
+        "md":"gateway_guide.md",
+        "html":"gateway_guide.html",
+        "ripple.com": "https://ripple.com/build/gateway-guide/",
+        "category": "Tutorials"
+    },
+    {
+        "name": "Ripple Data API v2",
+        "md": "data_v2.md",
+        "html": "data_api_v2.html",
+        "ripple.com": "https://ripple.com/build/data-api-v2/",
+        "category": "References"
+    },
+    {
+        "name": "RippleAPI",
+        "md": "https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md",
+        "html": "rippleapi.html",
+        "ripple.com": "https://ripple.com/build/rippleapi/",
+        "category": "References"
     },
     {
         "name": "WebSocket API Tool",
         "template":"template-ripple-api-tool.html",
-        "is_apitool": true,
-        "html": "ripple-api-tool.html"
+        "category": "API Tools",
+        "ripple.com": "https://ripple.com/build/websocket-tool/",
+        "html": "ripple-api-tool.html",
+        "targets": ["local","ripple.com"]
     },
     {
-        "name": "Charts API Tool",
+        "name": "Data API v2 Tool",
         "template":"template-rest-api-tool.html",
-        "methods_js": "js/apitool-methods-charts.js",
-        "is_apitool": true,
-        "rest_host": "https://api.ripplecharts.com",
-        "html": "charts-api-tool.html"
+        "methods_js": "js/apitool-methods-data_v2.js",
+        "category": "API Tools",
+        "rest_host": "https://data.ripple.com",
+        "html": "data-api-v2-tool.html",
+        "targets": ["local","ripple.com"]
     }
 ]
 

@@ -1,35 +1,25 @@
 # Operating rippled Servers #
 
-The core server of the Ripple peer-to-peer network is [`rippled`](rippled-apis.html). Anyone can run their own `rippled` server (also known as a _`rippled` node_) that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server perform validations and participate in the consensus process.
+The core server of the Ripple peer-to-peer network is [`rippled`](rippled-apis.html). Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server perform validations and participate in the consensus process.
+
+This page contains instructions for:
+
+* [Installing `rippled`](#installing-rippled)
+* [Participating in the Consensus Process](#running-a-validator)
 
 
 ## Types of rippled Servers ##
 
 The `rippled` server software can run in several modes depending on its configuration, including:
 
-* Stock node - follows the network with a local copy of the ledger.
-* Validating node - participates in consensus.
-* Stand-alone mode - for basic testing.
+* Stock server - follows the network with a local copy of the ledger.
+* Validating server, or _validator_ for short - participates in consensus.
+* `rippled` server in stand-alone mode - for basic testing. Does not communicate to other `rippled` servers.
 
-You can also run `rippled` as a client application for accessing [rippled APIs](rippled-apis.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
-
-
-## Parallel Networks ##
-
-Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.
-
-However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple Labs started the [Ripple Test Net](https://rippletest.net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple Labs gives away for free to parties interested in developing applications on the Test Net. XRP is automatically generated and distributed to wallets for all new accounts on rippletest.net.
-
-**Caution:** Ripple Labs makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
-
-Over time, there may also be additional, smaller test networks for specific purposes.
-
-### Parallel Networks and Consensus ###
-
-There is no `rippled` setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of `rippled` instances only trust other members of the same group, each group continues to operate as a parallel network. Even if malicious or misbehaving nodes connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
+You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-apis.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
 
-## Reasons to Run a Stock Node ##
+## Reasons to Run a Stock Server ##
 
 There are lots of reasons you might want to run your own `rippled` server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it.
 
@@ -41,185 +31,114 @@ It is important that you can trust the `rippled` you use, so you can be certain 
 
 Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so `rippled` has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.
 
-Finally, if you run a validating node, you can use a stock node as a proxy to the public network while keeping your validating node on a private subnet only accessible to the outside world through the stock node. This makes it more difficult to compromise the integrity of your validating node.
+Finally, if you run a validating server, you can use a stock server as a proxy to the public network while keeping your validating server on a private subnet only accessible to the outside world through the stock server. This makes it more difficult to compromise the integrity of your validating server.
 
 
-## Reasons to Run a Validating Node ##
+## Reasons to Run a Validator ##
 
-The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators _not to collude_. The more operators with different interests there are who run validating nodes, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple peer-to-peer network, it is in your interest to contribute to the consensus process.
+The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators _not to collude_. The more operators with different interests there are who run validators, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple peer-to-peer network, it is in your interest to contribute to the consensus process.
 
-Not all `rippled` nodes need to be validating nodes: trusting additional nodes from the same operator does not provide additional protection against collusion. However, an organization may run nodes in multiple regions in order to provide better redundancy in case of natural disasters and other emergencies.
+Not all `rippled` servers need to be validators: trusting additional servers from the same operator does not provide additional protection against collusion. It could be useful for an organization to run validators in multiple regions in order to provide better redundancy in case of natural disasters and other emergencies.
 
-If your organization runs a validating node, you may also run one or more stock nodes, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
+If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
 
+### Properties of a Good Validator ###
+
+There are several properties that define a good validator. The more of these properties your server embodies, the more reason others have to include your server in their list of trusted validators:
+
+* **Availability**. An ideal validator should always be running, submitting validation votes for every proposed ledger.
+    * Basically, strive for 100% uptime.
+* **Agreement**. A validator's votes should match the outcome of the consensus process as often as possible. To do otherwise could indicate that the validator's software is outdated, buggy, or intentionally biased.
+    * Always run the latest `rippled` release without modifications.
+* **Timeliness**. A validator's votes should arrive quickly, and not after a consensus round has already finished.
+    * A fast internet connection helps with this.
+* **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
+    * Setting up [Domain Verification](#domain-verification) is a good start.
+
+At present, Ripple, Inc. cannot recommend any validators aside from the 5 core validators run by Ripple, Inc.: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on the validators currently operating, see [validators.ripple.com](https://validators.ripple.com).
+
+# Installing rippled #
+
+For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
+
+Production `rippled` instances can [use Ripple's binary executable](#installation-on-centosred-hat-with-yum), available from the Ripple [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.
 
 ## System Requirements ##
 
 A `rippled` server should run comfortably on commodity hardware, to make it easy to participate in the network. At present, we recommend the following:
 
 - Operating System:
-    - Production: Ubuntu Linux (latest LTS) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
 - RAM: 4+GB
 
-Amazon EC2's m3.medium or m3.large VM sizes may be appropriate depending on your workload. (Validating nodes need more resources.)
+Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Validating servers need more resources.)
 
 Naturally, a fast network connection is preferable.
 
 
-## Clustering ##
+## Installation on CentOS/Red Hat with yum  ##
 
-If you are running multiple `rippled` servers in a single datacenter, you can configure your nodes to operate in a cluster to maximize efficiency. Operating your `rippled` servers in a cluster provides the following benefits:
+This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
-* Clustered nodes share the work of cryptography. If one node has verified the authenticity of a message, the other nodes in the cluster trust it and do not re-verify.
-* Clustered nodes share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all nodes of the cluster at once.
-* Clustered nodes always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.
+1. Install the Ripple rpm repository:
 
-To enable clustering, modify the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
+        $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
 
-* List the IP addresses of each other node under the `[ips_fixed]` section.
-* Generate a unique seed (using the [`validation_create` command](rippled-apis.html#validation-seed)) for each of your nodes, and configure it under the `[node_seed]` section. The `rippled` node uses this key to sign its messages to other nodes in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
-* Add the public keys (for peer communication) of each of your other nodes under the `[cluster_nodes]` section.
+2. Install the `rippled` software package:
+
+        $ sudo yum install --enablerepo=ripple-stable rippled
+
+3. Configure the `rippled` service to start on system boot:
+
+        $ sudo systemctl enable rippled.service
+
+4. Start the `rippled` service
+
+        $ sudo systemctl start rippled.service
+
+It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the Ripple peer-to-peer network.
+
+[rippled commands](https://ripple.com/build/rippled-apis/#list-of-public-commands) can be run with:
+
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg <command>
 
 
+## Updating rippled ##
 
-# Installing rippled #
+Run the following commands to update to the latest release of `rippled`:
 
-For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
-
-Production `rippled` instances can use Ripple Labs' binary executable, available from the Ripple Labs apt-get repository. 
-
-
-## Binary Installation on Ubuntu ##
-
-This document assumes that you are using Ubuntu 14.04.
-
-1. Install the Ripple apt repository:
-
-        $ sudo apt-get install software-properties-common
-        $ sudo apt-add-repository 'deb http://mirrors.ripple.com/ubuntu/ trusty stable contrib'
-        $ sudo apt-get update
-
-2. Install the `rippled` package:
-
-        $ sudo apt-get install rippled
-
-3. Configure `rippled` in `/etc/rippled/rippled.cfg`:
-
-        [server]
-        port_peer
-        port_rpc
-        port_ws
-
-        [port_peer]
-        port = 51235
-        ip = 0.0.0.0
-        protocol = peer
-
-        [port_rpc]
-        port = 51234
-        ip = 0.0.0.0
-        admin = 127.0.0.1
-        protocol = http
-
-        [port_ws]
-        port = 51233
-        ip = 0.0.0.0
-        admin = 127.0.0.1
-        protocol = ws
-
-        [ssl_verify]
-        0
-
-        [sntp_servers]
-        time.windows.com
-        time.apple.com
-        time.nist.gov
-        pool.ntp.org
-
-        [node_db]
-        type=nudb
-        path=/var/lib/rippled/db/nudb
-
-        [database_path]
-        /var/lib/rippled/db
-
-        [debug_logfile]
-        /var/log/rippled/debug.log
-
-        [rpc_startup]
-        {"command": "log_level", "severity": "warning"}
-
-   See [the rippled GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for additional configuration options.
-
-4. (Optional) If connecting to a [parallel network](#parallel-networks), add IP addresses of parallel network nodes to `rippled.cfg`:
-
-  For example the following IP addresses are the current [Ripple Test Net](#parallel-networks) validators:
-
-        [ips]
-        52.16.66.76 51235
-        52.11.28.194 51235
-        54.94.245.104 51235
-        52.11.181.30 51235
-        52.68.19.29 51235
-        41.79.78.42 51235
-
-5. Add trusted validation public keys to `rippled.cfg`:
-
-  The default configuration includes validators operated by Ripple Labs for the production Ripple peer-to-peer network:
-  
-        [validators]
-        n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7 RL1
-        n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj RL2
-        n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C RL3
-        n9KiYM9CgngLvtRCQHZwgC2gjpdaZcCcbt3VboxiNFcKuwFVujzS RL4
-        n9LdgEtkmGB9E2h3K4Vp7iGUaKuq23Zr32ehxiU8FWY7xoxbWTSA RL5
-
-  If you want to connect to the [Ripple Test Net](#parallel-networks), you could add the validation public keys of the Ripple Labs validators on that network instead:
-
-        [validators]
-        n9LYyd8eUVd54NQQWPAJRFPM1bghJjaf1rkdji2haF4zVjeAPjT2
-        n9KcuH7Y4q4SD3KoS5uXLhcDVvexpnYkwciCbcX131ehM5ek2BB6
-        n9LeE7e1c35m96BfFbUu1HKyJfqwiPvwNk6YxT5ewuZYsvwZqprp
-        n9Kk6U5nSF8EggfmTpMdna96UuXWAVwSsDSXRkXeZ5vLcAFk77tr
-        n9LXZBs2aBiNsgBkhVJJjDX4xA4DoEBLycF6q8zRhXD1Zu3Kwbe4
-        n9MnXUt5Qcx3BuBYKJfS4fqSohgkT79NGjXnZeD9joKvP3A5RNGm
-
-6. Adjust the validation quorum value in `rippled.cfg`:
-
-  This sets the minimum of trusted validations a ledger must have before the server considers it fully validated. Note that if you are validating, your validation counts.
-
-  For example, a validation quorum for a new [Ripple Test Net](#parallel-networks) validator could be set as follows:
-
-        [validation_quorum]
-        4
-
-7. Restart rippled:
-
+        $ sudo yum update --enablerepo=ripple-stable rippled
+        $ sudo systemctl daemon-reload
         $ sudo service rippled restart
-        
-It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` node that you can use for local signing and API access to the Ripple peer-to-peer network.
+
+You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
 
 
+# Running a Validator #
 
-# Running a Validating Node #
+Running a `rippled` validator that participates in the Consensus process is simple:
 
-Becoming a validator that participates in the network involves several steps. Initially, the network probably ignores any validations your node provides: this is called being an _untrusted validator_. Later, after the operators of other `rippled` validators add your node to their configuration, your node's validations actually contribute to the consensus process. At this point, you have become a _trusted validator_.
+1. [Enable validation](#validator-setup) on your `rippled` server.
+    * At first, your server is an _untrusted validator_. Others can see the validations your server issues, but they disregard them in the consensus process.
+2. Share the public key with the public, especially other `rippled` operators.
+3. When other `rippled` operators add your public key to their list of trusted servers, you have become a _trusted validator_.
+    * Also see [Properties of a Good Validator](#properties-of-a-good-validator) for best practices.
 
 
 ## Validator Setup ##
 
-1. [Install and configure a `rippled` node.](#installing-rippled)
+1. [Install and configure a `rippled` server.](#installing-rippled)
 
 2. Start `rippled`:
 
         $ sudo service rippled start
 
-3. Generate a validation public key and seed and save the output to a secure place::
+3. Generate a validation public key and seed, and save the output to a secure place:
 
-        $ rippled --conf /etc/rippled/rippled.cfg -q validation_create
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg -q validation_create
         {
             "status" : "success",
             "validation_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
@@ -237,12 +156,32 @@ Becoming a validator that participates in the network involves several steps. In
         $ sudo service rippled restart
 
 
+## Public-Facing Server ##
+
+To protect a production validator from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
+
+1. [Set up the `rippled` validator.](#validator-setup)
+
+2. [Set up one or more stock `rippled` servers.](#installing-rippled)
+
+3. Configure the validator and stock `rippled` servers to be [clustered](#clustering) with each other.
+
+4. Make the following configuration changes to your validator:
+    * Copy the `[ips_fixed]` list and paste it under `[ips]`. These fields should contain only the IP addresses and ports of the public-facing rippled(s). The validator will connect to only these peers.
+    * Change `[peer_private]` to `1` to prevent its IP address from being forwarded.
+
+5. Configure the validator host machine's firewall to only accept inbound connections from its public-facing rippled(s).
+
+Remember to restart `rippled` for config changes to take effect.
+
+Take care not to publish the IP address of your validator.
+
 
 ## Domain Verification ##
 
-Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple.txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
+Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. [Publishing a ripple.txt](#ripple-txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
 
-### ripple.txt ###
+### ripple.txt <a name="ripple-txt"></a> ###
 
 Publish a [ripple.txt](https://wiki.ripple.com/Ripple.txt) page at your domain with a signed SSL certificate.
 
@@ -254,9 +193,9 @@ A master seed can be used to generate both a validation public key and a Ripple 
 
 The steps below describe how to set the domain field of a validator's Ripple account.
 
-1. Get the validator's account address using the `validation_seed` generated [above](#validator-setup) in step 3:
+1. Get the validator's account address (`account_id`) using the `validation_seed` generated [above](#validator-setup) in step 3:
 
-        $ rippled wallet_propose ssdecohJMDPFuUPDkmG1w4objZyp4
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose <your-validation-seed>
         {
            "result" : {
               "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -271,19 +210,63 @@ The steps below describe how to set the domain field of a validator's Ripple acc
         }
 
 2. Fund the account by sending it at least 25 XRP.
+    * See [How to Get XRP](https://ripple.com/knowledge_center/how-to-get-xrp/)
 
-3. Set the `Domain` field of the account to match the domain hosting your ripple.txt.
+3. Set the [`Domain` field](https://ripple.com/build/transactions/#domain) of the account to match the domain hosting your ripple.txt
 
-  For example, this can be done using [ripple-cli](https://www.npmjs.com/package/ripple-cli):
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg submit <your-secret-key> '{"TransactionType": "AccountSet", "Account": "<your-account-id>", "Domain": "<your-hex-encoded-domain>", "Fee": "10000"}'
 
-        $ ripple-cli account_set_domain mycooldomain.com
-        {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-            "ledger_hash": "876BC104F7EB386B929E5AD44F14EFA47FE5EB471EA00D70DDA69AE6119193B0",
-            "ledger_index": 1337445,
-            "metadata": {
-              ...
-            }
-        }
+4. Verify that your account's domain has been set.
+
+        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg account_info <your-account-id>
+
+# Additional Configuration #
+
+`rippled` should connect to the Ripple network with the default configuration. However, you can modify your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
+
+See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
+
+Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
+
+        $ chown -R rippled:rippled <configured path>
+
+You will need to restart `rippled` for any configuration changes to take effect:
+
+        $ sudo service rippled restart
+
+
+## Parallel Networks ##
+
+Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.
+
+However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the [Ripple Test Net](https://ripple.com/build/ripple-test-net/), an "alternate universe" network, which can act as a testing ground for applications and the `rippled` server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple [gives away for free](https://ripple.com/build/ripple-test-net/) to parties interested in developing applications on the Test Net.
+
+**Caution:** Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.
+
+Over time, there may also be additional, smaller test networks for specific purposes.
+
+### Parallel Networks and Consensus ###
+
+There is no `rippled` setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of `rippled` instances only trust other members of the same group, each group continues to operate as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
+
+
+## Clustering ##
+
+If you are running multiple `rippled` servers in a single datacenter, you can configure those servers to operate in a cluster to maximize efficiency. Operating your `rippled` servers in a cluster provides the following benefits:
+
+* Clustered `rippled` servers share the work of cryptography. If one server has verified the authenticity of a message, the other servers in the cluster trust it and do not re-verify.
+* Clustered servers share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all servers of the cluster at once.
+* Clustered servers always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.
+
+To enable clustering, modify the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
+
+* List the IP address and port of each other server under the `[ips_fixed]` section. The port should be the one from the other servers' `protocol = peer` setting in their `rippled.cfg`. Example:
+
+        [ips_fixed]
+        192.168.0.1 51235
+        192.168.0.2 51235
+
+* Generate a unique seed (using the [`validation_create` command](rippled-apis.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
+* Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.
+
+

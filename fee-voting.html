@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Fee Voting - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Flatdoc theme -->
+    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
+    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="vendor/docco.min.css">
+    <script src="vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="js/multicodetab.js"></script>
+    <!-- Markdown content already parsed+included; just do the code tab stuff -->
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="js/expandcode.js"></script>
+    <script src="js/fixsidebarscroll.js"></script>
+    
+    <!-- Custom Stylesheets -->
+    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
+    
+  
+</head>
+<body  class='no-literate'>
+ 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                    <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                    <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+				</ul>
+                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <script type="text/javascript">
+    if (window.location.host.indexOf("github.io") > -1) {
+        document.write("<div style='background-color:red; color:white; position:fixed; top: 50px; right: 150px; padding: 10px 20px;'>DRAFT</div>");
+    }
+    </script>
+    <div class='wrapper'>
+    <div class='content-root'>
+        <div class='menubar'>
+            <div class='menu section' role='flatdoc-menu'>
+                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+                <script type="text/javascript">
+
+                </script>
+            </div>
+        </div>
+        <div class='content'>
+	        <h1 id="fee-voting">Fee Voting</h1>
+<p>Validators can vote for changes to basic <a href="tx-cost.html">transaction cost</a> as well as <a href="reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
+<p>Operators of <a href="rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Recommended Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reference_fee</td>
+<td>Amount of XRP, in <em>drops</em>, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers.</td>
+<td><code>10</code> (0.00001 XRP)</td>
+</tr>
+<tr>
+<td>account_reserve</td>
+<td>Minimum amount of XRP, in <em>drops</em>, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger.</td>
+<td><code>20000000</code> (20 XRP)</td>
+</tr>
+<tr>
+<td>owner_reserve</td>
+<td>Additional amount of XRP, in <em>drops</em>, that an account must have on reserve for <em>each</em> object it owns in the ledger.</td>
+<td><code>5000000</code> (5 XRP)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voting-process">Voting Process</h3>
+<p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
+<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
+<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="transactions.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
+<p>In short:</p>
+<ul>
+<li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
+<li><strong>Flag ledger</strong>: Validators tally votes and decide what SetFee to include, if any.</li>
+<li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
+<li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee psuedotransaction achieved consensus.</li>
+</ul>
+        </div>
+    </div>
+    </div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+		        <h4>Documentation</h4>
+			    <ul class="footer_links">
+                    <li><a href="paths.html">Paths</a></li>
+                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                    <li><a href="tx-cost.html">Transaction Cost</a></li>
+                    <li><a href="fee-voting.html">Fee Voting</a></li>
+                    <li><a href="reserves.html">Reserves</a></li>
+                    <li><a href="freeze.html">Freeze</a></li>
+                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                    <li><a href="rippled-apis.html">rippled</a></li>
+                    <li><a href="rippled-setup.html">rippled Setup</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
+                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                    <li><a href="rippleapi.html">RippleAPI</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Resources</h4>
+				<ul class="footer_links">
+				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
+					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3">
+			    <h4>Ripple Projects</h4>
+				<ul class="footer_links">
+					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
+					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
+					<li><a href="https://ripple.com/graph">Ripple Graph</a>
+					<li><a href="http://codius.org/">Codius</a>
+				</ul>
+			</div>
+			<div class="col-md-3">
+		        <h4>Ripple Labs</h4>
+			    <ul class="footer_links">
+				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
+                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
+                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
+                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
+                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
+                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
+                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
+                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
+			    </ul>
+      		</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

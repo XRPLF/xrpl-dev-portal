@@ -147,7 +147,7 @@ There are two kinds of Directories:
 
 Example Directories:
 
-<div class='multicode'>
+<!-- <div class='multicode'> -->
 
 *Offer Directory*
 
@@ -184,7 +184,7 @@ Example Directories:
 }
 ```
 
-</div>
+<!-- </div> -->
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
@@ -371,9 +371,9 @@ RippleState nodes can have the following flag values:
 
 ### Contributing to the Owner Reserve ###
 
-If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's owner reserve. In a RippleState node, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
+If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's [owner reserve](reserves.html#owner-reserves). In a RippleState node, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
 
-The values that count towards a a trust line's non-default state are as follows:
+The values that count towards a trust line's non-default state are as follows:
 
 | High account responsible if... | Low account responsible if... |
 |-----------------------|----------------------|

@@ -122,7 +122,7 @@ input {
 }
 a {
   color: #3a87ad;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:hover {
   color: #228a8a;
