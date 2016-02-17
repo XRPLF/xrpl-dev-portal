@@ -1,0 +1,430 @@
+/* Big draft warning at top of page so it's hard to mix up with the live site */
+.draft-warning {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    float: right;
+}
+
+/* Images should occupy the full main column width if possible */
+.page-template-template-dev-portal-php .content img {
+  width: 100%;
+  height: auto;
+}
+
+/* Underline links in Dev Portal content */
+.page-template-template-dev-portal-php .main a {
+  text-decoration: underline !important;
+}
+
+/* "Button-style" links should look like buttons, not links */
+.page-template-template-dev-portal-php a.button {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+/* Code Tabs stuff */
+.page-template-template-dev-portal-php .multicode {
+  color: #000;
+  margin: 12px 0px 0px 0px;
+  padding: 0 0 0 0;
+  z-index: 1;
+  padding-left: 10px;
+  position: relative;
+}
+.page-template-template-dev-portal-php .multicode ul {
+  margin: 0 !important;
+  padding: 0;
+}
+.page-template-template-dev-portal-php .multicode pre {
+  padding-top: 0;
+  clear: both;
+}
+.page-template-template-dev-portal-php .multicode li {
+  display: block;
+  float: left;
+  overflow: hidden;
+  list-style-type: none;
+  margin-right: 5px;
+  border-top: 1px solid #DBDDE2;
+}
+.page-template-template-dev-portal-php .multicode ul > li:before {
+  background: none;
+  border: none;
+}
+.page-template-template-dev-portal-php .multicode a,
+.page-template-template-dev-portal-php a.current {
+  color: black;
+  background: #DFE2E7;
+  border: 1px solid #DBDDE2;
+  padding: 1em 1em 0 1em;
+  margin: 0px;
+  text-decoration: none;
+}
+.page-template-template-dev-portal-php .multicode a.current {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  color: black;
+}
+.page-template-template-dev-portal-php .multicode a:hover {
+  color: black;
+  background: white;
+}
+/* End of code tabs stuff */
+
+.page-template-template-dev-portal-php .button {
+  border-radius: 5px;
+  background-color: #27a2db;
+  padding: 5px 20px;
+  text-align: center;
+  cursor: default;
+  margin: 10px 0;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ffffff;
+  -o-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.page-template-template-dev-portal-php .button:hover {
+  background-color: #43bded;
+  -o-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+.page-template-template-dev-portal-php pre {
+  overflow: visible;
+  word-wrap: normal;
+}
+.page-template-template-dev-portal-php pre code {
+  white-space: pre;
+}
+.page-template-template-dev-portal-php .code_sample pre {
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.page-template-template-dev-portal-php .code_sample pre code {
+  overflow: auto;
+  max-height: 14em;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+.page-template-template-dev-portal-php .code_sample pre code.expanded {
+  overflow: visible;
+  max-height: none;
+  position: absolute;
+  min-width: 661px;
+}
+.page-template-template-dev-portal-php .code_sample .code_toggler {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.page-template-template-dev-portal-php .navbar-default {
+  border-bottom: none;
+}
+.page-template-template-dev-portal-php .wrap.container {
+  margin-top: 110px;
+}
+.page-template-template-dev-portal-php .main {
+  z-index: 5;
+  border-left: 1px solid #cccccc;
+  padding-left: 40px;
+}
+.page-template-template-dev-portal-php .content {
+  padding-bottom: 50px;
+}
+.page-template-template-dev-portal-php .level-1 {
+  margin: 10px 0 3px 0;
+  text-transform: uppercase;
+}
+.page-template-template-dev-portal-php .level-1 a {
+  color: #000000;
+  font-family: 'open_sansbold', sans-serif;
+  letter-spacing: .04em;
+}
+.page-template-template-dev-portal-php .level-2 {
+  margin-left: 2em;
+}
+.page-template-template-dev-portal-php .level-3 {
+  margin-left: 4em;
+}
+.page-template-template-dev-portal-php .level-3 a {
+  color: #999999;
+}
+.page-template-template-dev-portal-php .level-3 a:hover {
+  color: #666;
+}
+.page-template-template-dev-portal-php ul#dev_nav_sidebar {
+  padding-left: 5px;
+  list-style-type: none;
+  max-width: 370px;
+}
+.page-template-template-dev-portal-php .dev_nav_wrapper {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+  top: 130px;
+  bottom: 35px;
+}
+.page-template-template-dev-portal-php td {
+  border: 1px solid #dbdde2;
+  padding: 0.2em;
+}
+.page-template-template-dev-portal-php th {
+  padding: 0.2em;
+}
+.page-template-template-dev-portal-php .content a[title="Source"] {
+  float: right;
+  padding-left: 20px;
+}
+.page-template-template-dev-portal-php .content table {
+  clear: right;
+}
+.page-template-template-dev-portal-php h1:before,
+.page-template-template-dev-portal-php h2:before,
+.page-template-template-dev-portal-php h3:before {
+  display: block;
+  content: " ";
+  margin-top: -130px;
+  height: 130px;
+  visibility: hidden;
+}
+@media (max-width: 1200px) {
+  .page-template-template-dev-portal-php .dev_nav_wrapper {
+    max-width: 300px;
+  }
+}
+@media (max-width: 992px) {
+  .page-template-template-dev-portal-php .dev_nav_wrapper {
+    max-width: 230px;
+  }
+}
+@media (max-width: 768px) {
+  .page-template-template-dev-portal-php .dev_nav_wrapper,
+  .page-template-template-dev-portal-php .sidebar {
+    display: none;
+  }
+  .page-template-template-dev-portal-php .main {
+    border-left: none;
+    padding-left: 0px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+}
+@media (min-width: 768px) {
+  .page-template-template-dev-portal-php .main {
+    float: right;
+  }
+}
+@media (max-width: 480px) {
+  .page-template-template-dev-portal-php html {
+    overflow-x: hidden !important;
+  }
+}
+@media print {
+  .page-template-template-dev-portal-php {
+    /* undo code tabs */
+    /* wrap code, not scroll */
+    /* Source URLs are too big to float */
+    /* Show URLs after links - even for anchors */
+    /* Drop header, footer, google translate */
+    /* table of contents can't scroll */
+    /* better margins on main content */
+    /* crazy print-section-numbering idea */
+  }
+  .page-template-template-dev-portal-php .multicode > div {
+    display: block !important;
+  }
+  .page-template-template-dev-portal-php .multicode > ul {
+    display: none !important;
+  }
+  .page-template-template-dev-portal-php .multicode > em,
+  .page-template-template-dev-portal-php .multicode > p > em {
+    display: block !important;
+    page-break-after: avoid;
+  }
+  .page-template-template-dev-portal-php .multicode > p {
+    display: block !important;
+  }
+  .page-template-template-dev-portal-php pre {
+    white-space: pre-wrap;
+    max-height: none !important;
+    overflow: visible;
+    page-break-inside: auto;
+    word-wrap: break-word;
+  }
+  .page-template-template-dev-portal-php pre code {
+    white-space: pre-wrap !important;
+  }
+  .page-template-template-dev-portal-php .content a[title="Source"] {
+    float: none;
+  }
+  .page-template-template-dev-portal-php .main a:after {
+    content: " (" attr(href) ")";
+  }
+  .page-template-template-dev-portal-php header,
+  .page-template-template-dev-portal-php footer {
+    display: none;
+  }
+  .page-template-template-dev-portal-php #goog-gt-tt {
+    display: none;
+  }
+  .page-template-template-dev-portal-php .wrap.container {
+    margin-top: 0 !important;
+  }
+  .page-template-template-dev-portal-php .dev_nav_wrapper {
+    position: static !important;
+  }
+  .page-template-template-dev-portal-php .sidebar:before {
+    display: none !important;
+  }
+  .page-template-template-dev-portal-php .sidebar {
+    padding-top: 0 !important;
+    display: block !important;
+    float: none !important;
+  }
+  .page-template-template-dev-portal-php h1 {
+    page-break-before: always;
+  }
+  .page-template-template-dev-portal-php .main {
+    float: none !important;
+    width: 85% !important;
+    border-left: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+  .page-template-template-dev-portal-php .main {
+    counter-reset: level1;
+    counter-reset: level2;
+    counter-reset: level3;
+  }
+  .page-template-template-dev-portal-php .main h1 {
+    counter-increment: level1;
+    counter-reset: level2;
+  }
+  .page-template-template-dev-portal-php .main h1:before {
+    content: counter(level1) ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+  }
+  .page-template-template-dev-portal-php .main h2 {
+    counter-reset: level3;
+  }
+  .page-template-template-dev-portal-php .main h2:before {
+    counter-increment: level2;
+    content: counter(level1) "." counter(level2) ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+  }
+  .page-template-template-dev-portal-php .main h3:before {
+    counter-increment: level3;
+    content: counter(level1) "." counter(level2) "." counter(level3) ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+  }
+  .page-template-template-dev-portal-php .menubar,
+  .page-template-template-dev-portal-php .dev_nav_wrapper {
+    counter-reset: toclevel1;
+  }
+  .page-template-template-dev-portal-php .level-1 {
+    counter-reset: toclevel2;
+  }
+  .page-template-template-dev-portal-php .level-1:before {
+    counter-increment: toclevel1;
+    content: counters(toclevel1, ".") ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+  .page-template-template-dev-portal-php .level-2 {
+    counter-reset: toclevel3;
+  }
+  .page-template-template-dev-portal-php .level-2:before {
+    counter-increment: toclevel2;
+    content: counters(toclevel1, ".") "." counters(toclevel2, ".") ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+  .page-template-template-dev-portal-php .level-3:before {
+    counter-increment: toclevel3;
+    content: counters(toclevel1, ".") "." counters(toclevel2, ".") "." counters(toclevel3, ".") ". " !important;
+    display: inline !important;
+    background: none !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+}
+
+/*------------- Code Tabs -----------------------------------------*/
+.multicode {
+	color: #000;
+	border-bottom: 1px solid #DBDDE2;
+	margin: 12px 0px 0px 0px;
+	padding: 0 0 0 0;
+	z-index: 1;
+	padding-left: 10px;
+}
+	
+.multicode ul {
+    padding-bottom: 0;
+}
+
+.multicode pre {
+    padding-top: 0;
+}
+
+.multicode li {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none;
+}
+
+.multicode ul > li:before {
+    background: none;
+    border: none;
+}
+
+.multicode a, a.current {
+	color: black;
+	background: #DFE2E7;
+	border: 1px solid #DBDDE2;
+	padding: 1em 1em 0 1em;
+	margin: 0px;
+	text-decoration: none; }
+
+.multicode a.current {
+	background: #fff;
+	border-bottom: 1px solid #fff; 
+    color : black;
+}
+
+.multicode a:hover {
+	color: black;
+	background: white; 
+}
+
+.multicode a.current:hover {}
+

@@ -13,121 +13,78 @@
 
     <!-- jQuery -->
     <script src="vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="css/ripple.css" rel="stylesheet" />
+    <link href="css/devportal.css" rel="stylesheet" />
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
     <script src="js/bootstrap.min.js"></script>
 
     {% block head %}
     
     {% endblock %}
-    
-    <!-- Custom Stylesheets -->
-    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
-    
-    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
-    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
-    
-  
+
 </head>
-<body {% block bodyattrs %}{% endblock %}>
- 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            {% for cat in categories %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat}} <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-              {% for page in pages %}
-    		        {% if page.category == cat %}
-                    <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-                    {% endif %}
-              {% endfor %}
-              </ul>
-            </li>
-            {% endfor %}
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
-                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
-                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
-					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
-                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
-				</ul>
-                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    <script type="text/javascript">
-    if (window.location.host.indexOf("github.io") > -1) {
-        document.write("<div style='background-color:red; color:white; position:fixed; top: 50px; right: 150px; padding: 10px 20px;'>DRAFT</div>");
-    }
-    </script>
-    <div class='wrapper'>
-        {% block contentroot %}{% endblock %}
-    </div>
-<footer class="footer">
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php {% if currentpage.sidebar %}sidebar-primary{% endif %} wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-		        <h4>Documentation</h4>
-			    <ul class="footer_links">
-			        {% for page in pages %}
-	    		        {% if page.md %}
-                    <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-			    </ul>
-			</div>
-			<div class="col-md-3">
-			    <h4>Resources</h4>
-				<ul class="footer_links">
-				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
-                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
-					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
-					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3">
-			    <h4>Ripple Projects</h4>
-				<ul class="footer_links">
-					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
-					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
-					<li><a href="https://ripple.com/graph">Ripple Graph</a>
-					<li><a href="http://codius.org/">Codius</a>
-				</ul>
-			</div>
-			<div class="col-md-3">
-		        <h4>Ripple Labs</h4>
-			    <ul class="footer_links">
-				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
-                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
-                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
-                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
-                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
-                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
-                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
-                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
-			    </ul>
-      		</div>
-        </div>
-    </div>
-</footer>
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu" class="nav navbar-nav">
+          {% for cat in categories %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat}} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            {% for page in pages %}
+    	       {% if page.category == cat %}
+                  <li><a href="{{ page.html }}">{{ page.name }}</a></li>
+                  {% endif %}
+            {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      {% if currentpage.sidebar %}
+      <aside class="sidebar" role="complementary">
+          {% block sidebar %}{% endblock %}
+      </aside>
+      {% endif %}
+      <main class="main" role="main">
+          {% block main %}{% endblock %}
+      </main>
+  </div>
+
+{% include 'template-footer.html' %}
+
 {% block endbody %}{% endblock %}
 </body>
 </html>

@@ -1,40 +1,38 @@
 {% extends "template-base.html" %}
-{% block contentroot %}
-    <div class='content-root'>
-        <div id='wrapper'>
-            <div style="clear:both;"></div>
-            <div id='command_wrapper'>
-            <ul id='command_list'>
-            </ul>
-                <div id='command_table'>
-                    <div id='io_wrapper'>
-                        <div id='input' class='io'>
-                            <h2>REST Request</h2>
-                            <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                                <h4>Test accounts only!</h4>
-                                <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-                            </div>
-                            <div style="clear:both;"></div>
-                            <h3 id='selected_command' title='Reference information'></h3>
-                            <p id='description'></p>
-                            <div id='invalid'>Invalid JSON</div>
-                            <div id='rest_url_wrapper'>
-                                <p><span id='rest_host'>{{ currentpage.rest_host }}</span><span id='rest_url'></span></p>
-                            </div>
-                            <div id='request_body'></div>
-                            <div id='request_options'>
-                                <div class="button btn btn-primary api" id='request_button'>Send request</div>
-                            </div>
+{% block main %}
+    <div id='wrapper'>
+        <div style="clear:both;"></div>
+        <div id='command_wrapper'>
+        <ul id='command_list'>
+        </ul>
+            <div id='command_table'>
+                <div id='io_wrapper'>
+                    <div id='input' class='io'>
+                        <h2>REST Request</h2>
+                        <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                            <h4>Test accounts only!</h4>
+                            <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
                         </div>
-                        <div id='output' class='io'>
-                            <h2>Response</h2>
-                            <div>
-                                <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                                <span id='rest_responsecode'></span>
-                            </div>
-                            <div id='response_body'></div>
-                            <div id='tooltip'></div>
+                        <div style="clear:both;"></div>
+                        <h3 id='selected_command' title='Reference information'></h3>
+                        <p id='description'></p>
+                        <div id='invalid'>Invalid JSON</div>
+                        <div id='rest_url_wrapper'>
+                            <p><span id='rest_host'>{{ currentpage.rest_host }}</span><span id='rest_url'></span></p>
                         </div>
+                        <div id='request_body'></div>
+                        <div id='request_options'>
+                            <div class="button btn btn-primary api" id='request_button'>Send request</div>
+                        </div>
+                    </div>
+                    <div id='output' class='io'>
+                        <h2>Response</h2>
+                        <div>
+                            <img class="loader" src="img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                            <span id='rest_responsecode'></span>
+                        </div>
+                        <div id='response_body'></div>
+                        <div id='tooltip'></div>
                     </div>
                 </div>
             </div>

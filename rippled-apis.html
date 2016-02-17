@@ -13,15 +13,14 @@
 
     <!-- jQuery -->
     <script src="vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="css/ripple.css" rel="stylesheet" />
+    <link href="css/devportal.css" rel="stylesheet" />
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
     <script src="js/bootstrap.min.js"></script>
 
-
-    <!-- Flatdoc theme -->
-    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
 
     <!-- syntax highlighting -->
     <link rel="stylesheet" href="vendor/docco.min.css">
@@ -29,7 +28,6 @@
 
     <!-- syntax selection js -->
     <script src="js/multicodetab.js"></script>
-    <!-- Markdown content already parsed+included; just do the code tab stuff -->
     <script>
         $(document).ready(function() {
             $().multicode_tabs_pandoc();
@@ -40,101 +38,91 @@
 
     <script src="js/expandcode.js"></script>
     <script src="js/fixsidebarscroll.js"></script>
-    
-    <!-- Custom Stylesheets -->
-    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
-    
-    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
-    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
-    
-  
-</head>
-<body  class='no-literate'>
- 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./"><img class="small_logo" src="assets/img/ripple_logo_small.png"></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
-                    <li><a href="freeze.html">Freeze</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
-                    <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
-                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="rippled-apis.html">rippled</a></li>
-                    <li><a href="transactions.html">Transactions</a></li>
-                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
-                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="rippleapi.html">RippleAPI</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                    <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
-                    <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
-                    <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
-                    <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
-					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
-                    <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
-				</ul>
-                <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    <script type="text/javascript">
-    if (window.location.host.indexOf("github.io") > -1) {
-        document.write("<div style='background-color:red; color:white; position:fixed; top: 50px; right: 150px; padding: 10px 20px;'>DRAFT</div>");
-    }
-    </script>
-    <div class='wrapper'>
-    <div class='content-root'>
-        <div class='menubar'>
-            <div class='menu section' role='flatdoc-menu'>
-                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
-                <script type="text/javascript">
 
-                </script>
-            </div>
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu" class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="paths.html">Paths</a></li>
+                  <li><a href="fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="transfer_fees.html">Transfer Fees</a></li>
+                  <li><a href="tx-cost.html">Transaction Cost</a></li>
+                  <li><a href="fee-voting.html">Fee Voting</a></li>
+                  <li><a href="reserves.html">Reserves</a></li>
+                  <li><a href="freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
+                  <li><a href="rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
+                  <li><a href="gateway_guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="rippled-apis.html">rippled</a></li>
+                  <li><a href="transactions.html">Transactions</a></li>
+                  <li><a href="ripple-ledger.html">Ledger Format</a></li>
+                  <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
+                  <li><a href="rippleapi.html">RippleAPI</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
         </div>
-        <div class='content'>
-	        <h1 id="rippled">rippled</h1>
+    </div>
+    <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="rippled">rippled</h1>
 <p>The core peer-to-peer server that operates the Ripple Network is called <code>rippled</code>. Each <code>rippled</code> server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for <code>rippled</code> is written in C++, and is <a href="https://github.com/ripple/rippled">available on GitHub under an open-source license</a>.</p>
 <ul>
 <li><a href="rippled-setup.html"><code>rippled</code> Setup</a></li>
@@ -11525,66 +11513,61 @@ Connecting to 127.0.0.1:5005
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <!---- rippled release notes links ---->
-        </div>
     </div>
-    </div>
-<footer class="footer">
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-		        <h4>Documentation</h4>
-			    <ul class="footer_links">
-                    <li><a href="paths.html">Paths</a></li>
-                    <li><a href="fees.html">Fees (Disambiguation)</a></li>
-                    <li><a href="transfer_fees.html">Transfer Fees</a></li>
-                    <li><a href="tx-cost.html">Transaction Cost</a></li>
-                    <li><a href="fee-voting.html">Fee Voting</a></li>
-                    <li><a href="reserves.html">Reserves</a></li>
-                    <li><a href="freeze.html">Freeze</a></li>
-                    <li><a href="rippleapi_quickstart.html">RippleAPI Quick Start Guide</a></li>
-                    <li><a href="rippled-apis.html">rippled</a></li>
-                    <li><a href="rippled-setup.html">rippled Setup</a></li>
-                    <li><a href="transactions.html">Transactions</a></li>
-                    <li><a href="ripple-ledger.html">Ledger Format</a></li>
-                    <li><a href="reliable_tx.html">Reliable Transaction Submission</a></li>
-                    <li><a href="gateway_guide.html">Gateway Guide</a></li>
-                    <li><a href="data_api_v2.html">Ripple Data API v2</a></li>
-                    <li><a href="rippleapi.html">RippleAPI</a></li>
-			    </ul>
-			</div>
-			<div class="col-md-3">
-			    <h4>Resources</h4>
-				<ul class="footer_links">
-				    <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
-                    <li><a href="https://ripple.com/brand-guidelines/">Brand Use and Guidelines</a></li>
-					<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
-					<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3">
-			    <h4>Ripple Projects</h4>
-				<ul class="footer_links">
-					<li><a href="https://www.rippletrade.com">Ripple Trade</a>
-					<li><a href="https://www.ripplecharts.com">Ripple Charts</a>
-					<li><a href="https://ripple.com/graph">Ripple Graph</a>
-					<li><a href="http://codius.org/">Codius</a>
-				</ul>
-			</div>
-			<div class="col-md-3">
-		        <h4>Ripple Labs</h4>
-			    <ul class="footer_links">
-				    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/10/ripple_labs_bylaws.pdf">Corporate Bylaws</a></li>
-                    <li><a href="https://www.ripplelabs.com/wp-content/uploads/2014/09/ripple_labs_code_of_conduct1.pdf">Code of Conduct</a></li>
-                    <li><a href="https://www.ripplelabs.com/team/">Team</a></li>
-                    <li><a href="https://www.ripplelabs.com/careers/">Careers</a></li>
-                    <li><a href="https://www.ripplelabs.com/investors/">Investors</a></li>
-                    <li><a href="https://www.ripplelabs.com/advisors/">Advisors</a></li>
-                    <li><a href="https://www.ripplelabs.com/xrp-distribution/">XRP Distribution</a></li>
-                    <li><a href="https://www.ripplelabs.com/contact/">Contact</a></li>
-			    </ul>
-      		</div>
-        </div>
-    </div>
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="/terms-of-use/">Terms</a></span>
+				    <span><a href="/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
 </footer>
 </body>
 </html>
