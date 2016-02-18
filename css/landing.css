@@ -1,0 +1,112 @@
+.page-template-template-dev-portal-php .main {
+    border-left: 0;
+}
+
+/************
+  jumbotron
+*********** */
+
+.jumbotron {
+ 	margin-top: 50px;
+ 	margin-bottom: 0;
+}
+
+.jumbotron p {
+ 	font-size: 14px;
+	font-weight: 400; 	
+}
+
+.main_callout {
+	padding-top:10px;
+}
+
+.join {
+	font-weight: 500 !important;
+}
+
+img.large_logo {
+	padding: 10px 20px 10px 10px;
+	width: 100%;
+}
+
+
+.jumbotron p.api_btn {
+	/* text-align: center; 
+	padding: 20px;*/
+}
+
+.jumbotron h4 {
+	font-weight: 800;
+}
+
+@media (min-width: 992px) {
+
+	.jumbotron .col-md-6 {
+		padding-left: 60px;
+	}
+	
+}
+
+/************
+Main content
+*********** */
+
+.main_title {
+	font-size: 30px;
+	font-weight: 300;
+	margin-top:10px;
+}
+
+.description h2{
+	font-size: 24px;
+	font-weight: 600;
+	margin: 20px 0 15px 0;
+}
+
+.build-index .top {
+    background: #f4f6f7 none repeat scroll 0 0;
+}
+
+.build-index ul {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0;
+}
+
+.build-index ul li {
+    border: 1px solid #ccc;
+    border-top-width: 0;
+    font-size: 14px;
+    list-style: outside none none;
+    padding: 5px;
+}
+
+.build-index ul li.top {
+    border-top-width: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.build-index .dev_heading {
+    font-family: "Open Sans",sans-serif;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.last {
+	margin-bottom: 40px;
+}
+
+.description.highlight {
+	background: #f5f5f5;
+	padding-bottom: 15px;
+	margin: 22px 0;
+}
+
+@media (max-width: 992px) {
+	.description.highlight {
+		padding-top: 10px;
+	}
+}
+

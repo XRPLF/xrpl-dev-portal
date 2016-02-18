@@ -19,7 +19,7 @@
     <link href="css/devportal.css" rel="stylesheet" />
 
     <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap.min.js"></script>
 
     
 
@@ -39,7 +39,7 @@
 
     <div class="subnav dev_nav">
       <div class="container">
-        <ul id="menu-dev-menu" class="menu" class="nav navbar-nav">
+        <ul id="menu-dev-menu" class="menu">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -98,13 +98,13 @@
 
   <div class="wrap container" role="document">
       <aside class="sidebar" role="complementary">
+    <ul id='command_list'>
+    </ul>
       </aside>
       <main class="main" role="main">
     <div id='wrapper'>
         <div style="clear:both;"></div>
         <div id='command_wrapper'>
-        <ul id='command_list'>
-        </ul>
             <div id='command_table'>
                 <div id='io_wrapper'>
                     <div id='input' class='io'>
@@ -122,7 +122,7 @@
                         </div>
                         <div id='request_body'></div>
                         <div id='request_options'>
-                            <div class="button btn btn-primary api" id='request_button'>Send request</div>
+                            <a class="button btn btn-primary api" id='request_button'>Send request</a>
                         </div>
                     </div>
                     <div id='output' class='io'>
@@ -194,8 +194,8 @@
 	</div><!-- /.container -->
 </footer>
 
-    <link rel='stylesheet' type='text/css' href='css/api-style.css'/>
-    <link rel='stylesheet' type='text/css' href='css/codemirror.css'/>
+    <link rel='stylesheet' type='text/css' href='css/api-tools.css'/>
+    <link rel='stylesheet' type='text/css' href='vendor/codemirror.css'/>
     <script type='text/javascript' src='js/es5-shim.js'></script>
     <script src='vendor/codemirror.min.js'></script>
     <script type='text/javascript' src='js/cm-javascript.min.js'></script>

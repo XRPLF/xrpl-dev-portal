@@ -158,7 +158,7 @@ function select_request(request) {
         $(description).html(command.description);
         
         if (command.link) {
-            $(description).append(" <a class='link_underline' href='" + 
+            $(description).append(" <a class='button btn btn-primary' href='" + 
                 DOC_BASE+command.link+"'>Read more</a>");
         }
         

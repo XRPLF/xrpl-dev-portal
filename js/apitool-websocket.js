@@ -15,18 +15,17 @@ var urlParams;
 
   var request_button  = $('#request_button');
   var online_state    = $('#online_state');
-  var command_wrapper = $('#command_wrapper');
-  var command_list    = $(command_wrapper).find('#command_list');
+  var command_list    = $('#command_list');
   var commands        = $(command_list).find('li');
-  var command_table   = $(command_wrapper).find('#command_table');
-  var input           = $(command_wrapper).find('#input');
+  var command_table   = $('#command_table');
+  var input           = $('#input');
   var description     = $(input).find('#description');
   var options         = $(input).find('#options');
-  var output          = $(command_wrapper).find('#output');
-  var response        = $(command_wrapper).find('#response');
-  var request         = $(command_wrapper).find('#request');
-  var status          = $(command_wrapper).find('#status');
-  var info            = $(command_wrapper).find('#info');
+  var output          = $('#output');
+  var response        = $('#response');
+  var request         = $('#request');
+  var status          = $('#status');
+  var info            = $('#info');
   var spinner = $(".loader");
   
   var BASE_HOST_DEFAULT = 's2.ripple.com';
@@ -380,7 +379,7 @@ var urlParams;
     if (command._description) {
       //$(description).html(command._description).show();
       $(description).html(command._description);
-      $(description).append(" <a class='btn btn-primary' href='"+command._link+"'>Read more</a>");
+      $(description).append(" <a class='button btn btn-primary' href='"+command._link+"'>Read more</a>");
     } else {
       $(description).hide();
     }

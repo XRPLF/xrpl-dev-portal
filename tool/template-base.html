@@ -19,7 +19,7 @@
     <link href="css/devportal.css" rel="stylesheet" />
 
     <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap.min.js"></script>
 
     {% block head %}
     
@@ -41,7 +41,7 @@
 
     <div class="subnav dev_nav">
       <div class="container">
-        <ul id="menu-dev-menu" class="menu" class="nav navbar-nav">
+        <ul id="menu-dev-menu" class="menu">
           {% for cat in categories %}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat}} <span class="caret"></span></a>
