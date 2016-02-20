@@ -2,11 +2,11 @@
 {% block head %}
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="vendor/docco.min.css">
-    <script src="vendor/highlight.min.js"></script>
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
-    <script src="js/multicodetab.js"></script>
+    <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
             $().multicode_tabs_pandoc();
@@ -15,8 +15,8 @@
         });
     </script>
 
-    <script src="js/expandcode.js"></script>
-    <script src="js/fixsidebarscroll.js"></script>
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
 {% endblock %}
 
 {% block sidebar %}
@@ -25,7 +25,7 @@
         <div id="cont">
         </div>
     </div>
-    <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
   {% elif currentpage.sidebar == "category-toc" %}
     <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
         <div id="cont">
