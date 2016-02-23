@@ -1,0 +1,5351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>RippleAPI - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: References</a></li>
+                <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
+                <li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
+                <li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
+                <li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
+                <li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="introduction">Introduction</h1>
+<p>RippleAPI is the official client library to the Ripple Consensus Ledger. Currently, RippleAPI is only available in JavaScript. 
+Using RippleAPI, you can:</p>
+<ul>
+<li><a href="#gettransaction">Query transactions from the network</a></li>
+<li><a href="#sign">Sign</a> transactions securely without connecting to any server</li>
+<li><a href="#submit">Submit</a> transactions to the Ripple Consensus Ledger, including <a href="#payment">Payments</a>, <a href="#order">Orders</a>, <a href="#settings">Settings changes</a>, and <a href="#transaction-types">other types</a></li>
+<li><a href="#generateaddress">Generate a new Ripple Address</a></li>
+<li>... and <a href="#api-methods">much more</a>.</li>
+</ul>
+<p>RippleAPI only provides access to <em>validated</em>, <em>immutable</em> transaction data.</p>
+<h2 id="boilerplate">Boilerplate</h2>
+<p>Use the following <a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate code</a> to wrap your custom code using RippleAPI.</p>
+<pre><code class="javascript">const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI({
+  server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
+});
+api.on('error', (errorCode, errorMessage) =&gt; {
+  console.log(errorCode + ': ' + errorMessage);
+});
+api.connect().then(() =&gt; {
+  /* insert code here */
+}).then(() =&gt; {
+  return api.disconnect();
+}).catch(console.error);
+</code></pre>
+<p>RippleAPI is designed to work in <a href="https://nodejs.org">NodeJS</a> (version <code>0.12.0</code> or greater) using <a href="https://babeljs.io/">Babel</a> for <a href="https://babeljs.io/docs/learn-es2015/">ECMAScript 6</a> support.</p>
+<p>The code samples in this documentation are written in ES6, but <code>RippleAPI</code> will work with ES5 also. Regardless of whether you use ES5 or ES6, the methods that return promises will return <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-style promises</a>.</p>
+<aside class="notice">
+All the code snippets in this documentation assume that you have surrounded them with this boilerplate.
+</aside>
+<aside class="notice">
+If you omit the "catch" section, errors may not be visible.
+</aside>
+<aside class="notice">
+The "error" event is emitted whenever an error occurs that cannot be associated with a specific request. If the listener is not registered, an exception will be thrown whenever the event is emitted.
+</aside>
+<h3 id="parameters">Parameters</h3>
+<p>The RippleAPI constructor optionally takes one argument, an object with the following options:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authorization</td>
+<td>string</td>
+<td><em>Optional</em> Username and password for HTTP basic authentication to the rippled server in the format <strong>username:password</strong>.</td>
+</tr>
+<tr>
+<td>certificate</td>
+<td>string</td>
+<td><em>Optional</em> A string containing the certificate key of the client in PEM format. (Can be an array of certificates).</td>
+</tr>
+<tr>
+<td>feeCushion</td>
+<td>number</td>
+<td><em>Optional</em> Factor to multiply estimated fee by to provide a cushion in case the required fee rises during submission of a transaction. Defaults to <code>1.2</code>.</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td><em>Optional</em> A string containing the private key of the client in PEM format. (Can be an array of keys).</td>
+</tr>
+<tr>
+<td>passphrase</td>
+<td>string</td>
+<td><em>Optional</em> The passphrase for the private key of the client.</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>uri string</td>
+<td><em>Optional</em> URI for HTTP/HTTPS proxy to use to connect to the rippled server.</td>
+</tr>
+<tr>
+<td>proxyAuthorization</td>
+<td>string</td>
+<td><em>Optional</em> Username and password for HTTP basic authentication to the proxy in the format <strong>username:password</strong>.</td>
+</tr>
+<tr>
+<td>server</td>
+<td>uri string</td>
+<td><em>Optional</em> URI for rippled websocket port to connect to. Must start with <code>wss://</code> or <code>ws://</code>.</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>integer</td>
+<td><em>Optional</em> Timeout in milliseconds before considering a request to have failed.</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, log rippled requests and responses to stdout.</td>
+</tr>
+<tr>
+<td>trustedCertificates</td>
+<td>array\&lt;string&gt;</td>
+<td><em>Optional</em> Array of PEM-formatted SSL certificates to trust when connecting to a proxy. This is useful if you want to use a self-signed certificate on the proxy server. Note: Each element must contain a single certificate; concatenated certificates are not valid.</td>
+</tr>
+</tbody>
+</table>
+<p>If you omit the <code>server</code> parameter, RippleAPI operates <a href="#offline-functionality">offline</a>.</p>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>Install <a href="https://nodejs.org">NodeJS</a> and the Node Package Manager (npm). Most Linux distros have a package for NodeJS, but make sure you have version <code>0.12.0</code> or higher.</li>
+<li>Use npm to install <a href="https://babeljs.io/">Babel</a> globally:
+      <code>npm install -g babel-cli</code></li>
+<li>Use npm to install RippleAPI:
+      <code>npm install ripple-lib</code></li>
+</ol>
+<p>After you have installed ripple-lib, you can create scripts using the <a href="#boilerplate">boilerplate</a> and run them using babel-node:
+      <code>babel-node script.js</code></p>
+<aside class="notice">
+Instead of using babel-node in production, we recommend using Babel to transpile to ECMAScript 5 first.
+</aside>
+<h2 id="offline-functionality">Offline functionality</h2>
+<p>RippleAPI can also function without internet connectivity. This can be useful in order to generate secrets and sign transactions from a secure, isolated machine.</p>
+<p>To instantiate RippleAPI in offline mode, use the following boilerplate code:</p>
+<pre><code class="javascript">const {RippleAPI} = require('ripple-lib');
+
+const api = new RippleAPI();
+/* insert code here */
+</code></pre>
+<p>Methods that depend on the state of the Ripple Consensus Ledger are unavailable in offline mode. To prepare transactions offline, you <strong>must</strong> specify  the <code>fee</code>, <code>sequence</code>, and <code>maxLedgerVersion</code> parameters in the <a href="#transaction-instructions">transaction instructions</a>. The following methods should work offline:</p>
+<ul>
+<li><a href="#preparepayment">preparePayment</a></li>
+<li><a href="#preparetrustline">prepareTrustline</a></li>
+<li><a href="#prepareorder">prepareOrder</a></li>
+<li><a href="#prepareordercancellation">prepareOrderCancellation</a></li>
+<li><a href="#preparesettings">prepareSettings</a></li>
+<li><a href="#preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</a></li>
+<li><a href="#preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</a></li>
+<li><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
+<li><a href="#sign">sign</a></li>
+<li><a href="#generateaddress">generateAddress</a></li>
+<li><a href="#computeledgerhash">computeLedgerHash</a></li>
+</ul>
+<h1 id="basic-types">Basic Types</h1>
+<h2 id="ripple-address">Ripple Address</h2>
+<pre><code class="json">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+</code></pre>
+<p>Every Ripple account has an <em>address</em>, which is a base58-encoding of a hash of the account's public key. Ripple addresses always start with the lowercase letter <code>r</code>.</p>
+<h2 id="account-sequence-number">Account Sequence Number</h2>
+<p>Every Ripple account has a <em>sequence number</em> that is used to keep transactions in order. Every transaction must have a sequence number. A transaction can only be executed if it has the next sequence number in order, of the account sending it. This prevents one transaction from executing twice and transactions executing out of order. The sequence number starts at <code>1</code> and increments for each transaction that the account makes.</p>
+<h2 id="currency">Currency</h2>
+<p>Currencies are represented as either 3-character currency codes or 40-character uppercase hexadecimal strings. We recommend using uppercase <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Codes</a> only. The string "XRP" is disallowed on trustlines because it is reserved for the Ripple native currency. The following characters are permitted: all uppercase and lowercase letters, digits, as well as the symbols <code>?</code>, <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>&lt;</code>, <code>&gt;</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, and <code>|</code>.</p>
+<h2 id="value">Value</h2>
+<p>A <em>value</em> is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. XRP has different precision from other currencies.</p>
+<p><strong>XRP</strong> has 6 significant digits past the decimal point. In other words, XRP cannot be divided into positive values smaller than <code>0.000001</code> (1e-6). XRP has a maximum value of <code>100000000000</code> (1e11).</p>
+<p><strong>Non-XRP values</strong> have 15 decimal digits of precision, with a maximum value of <code>9999999999999999e80</code>. The smallest positive non-XRP value is <code>1e-81</code>.</p>
+<h2 id="amount">Amount</h2>
+<p>Example amount:</p>
+<pre><code class="json">{
+  "currency": "USD",
+  "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+  "value": "100"
+}
+</code></pre>
+<p>Example XRP amount:</p>
+<pre><code class="json">{
+  "currency": "XRP",
+  "value": "2000"
+}
+</code></pre>
+<p>An <em>amount</em> is data structure representing a currency, a quantity of that currency, and the counterparty on the trustline that holds the value. For XRP, there is no counterparty.</p>
+<p>A <em>lax amount</em> allows the counterparty to be omitted for all currencies. If the counterparty is not specified in an amount within a transaction specification, then any counterparty may be used for that amount.</p>
+<p>A <em>lax lax amount</em> allows either or both the counterparty and value to be omitted.</p>
+<p>A <em>balance</em> is an amount than can have a negative value.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td><a href="#currency">currency</a></td>
+<td>The three-character code or hexadecimal string used to denote currencies</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> The Ripple address of the account that owes or is owed the funds (omitted if <code>currency</code> is "XRP")</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#value">value</a></td>
+<td><em>Optional</em> The quantity of the currency, denoted as a string to retain floating point precision</td>
+</tr>
+</tbody>
+</table>
+<h1 id="transaction-overview">Transaction Overview</h1>
+<h2 id="transaction-types">Transaction Types</h2>
+<p>A transaction type is specified by the strings in the first column in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#payment">payment</a></td>
+<td>A <code>payment</code> transaction represents a transfer of value from one account to another. Depending on the <a href="https://ripple.com/build/paths/">path</a> taken, additional exchanges of value may occur atomically to facilitate the payment.</td>
+</tr>
+<tr>
+<td><a href="#order">order</a></td>
+<td>An <code>order</code> transaction creates a limit order. It defines an intent to exchange currencies, and creates an order in the Ripple Consensus Ledger's order book if not completely fulfilled when placed. Orders can be partially fulfilled.</td>
+</tr>
+<tr>
+<td><a href="#order-cancellation">orderCancellation</a></td>
+<td>An <code>orderCancellation</code> transaction cancels an order in the Ripple Consensus Ledger's order book.</td>
+</tr>
+<tr>
+<td><a href="#trustline">trustline</a></td>
+<td>A <code>trustline</code> transactions creates or modifies a trust line between two accounts.</td>
+</tr>
+<tr>
+<td><a href="#settings">settings</a></td>
+<td>A <code>settings</code> transaction modifies the settings of an account in the Ripple Consensus Ledger.</td>
+</tr>
+<tr>
+<td><a href="#suspended-payment-creation">suspendedPaymentCreation</a></td>
+<td>A <code>suspendedPaymentCreation</code> transaction creates a suspended payment on the ledger, which locks XRP until a cryptographic condition is met or it expires. It is like an escrow service where the Ripple network acts as the escrow agent.</td>
+</tr>
+<tr>
+<td><a href="#suspended-payment-cancellation">suspendedPaymentCancellation</a></td>
+<td>A <code>suspendedPaymentCancellation</code> transaction unlocks the funds in a suspended payment and sends them back to the creator of the suspended payment, but it will only work after the suspended payment expires.</td>
+</tr>
+<tr>
+<td><a href="#suspended-payment-execution">suspendedPaymentExecution</a></td>
+<td>A <code>suspendedPaymentExecution</code> transaction unlocks the funds in a suspended payment and sends them to the destination of the suspended payment, but it will only work if the cryptographic condition is provided.</td>
+</tr>
+</tbody>
+</table>
+<p>The three "suspended payment" transaction types are not supported by the production Ripple peer-to-peer network at this time. They are available for testing purposes if you <a href="#boilerplate">configure RippleAPI</a> to connect to the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> instead.</p>
+<h2 id="transaction-flow">Transaction Flow</h2>
+<p>Executing a transaction with <code>RippleAPI</code> requires the following four steps:</p>
+<ol>
+<li>Prepare - Create an unsigned transaction based on a <a href="#transaction-specifications">specification</a> and <a href="#transaction-instructions">instructions</a>. There is a method to prepare each type of transaction:<ul>
+<li><a href="#preparepayment">preparePayment</a></li>
+<li><a href="#preparetrustline">prepareTrustline</a></li>
+<li><a href="#prepareorder">prepareOrder</a></li>
+<li><a href="#prepareordercancellation">prepareOrderCancellation</a></li>
+<li><a href="#preparesettings">prepareSettings</a></li>
+<li><a href="#preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</a></li>
+<li><a href="#preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</a></li>
+<li><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
+</ul>
+</li>
+<li><a href="#sign">Sign</a> - Cryptographically sign the transaction locally and save the <a href="#transaction-id">transaction ID</a>. Signing is how the owner of an account authorizes a transaction to take place. For multisignature transactions, the <code>signedTransaction</code> fields returned by <code>sign</code> must be collected and passed to the <a href="#combine">combine</a> method.</li>
+<li><a href="#submit">Submit</a> - Submit the transaction to the connected server.</li>
+<li>Verify - Verify that the transaction got validated by querying with <a href="#gettransaction">getTransaction</a>. This is necessary because transactions may fail even if they were successfully submitted.</li>
+</ol>
+<h2 id="transaction-fees">Transaction Fees</h2>
+<p>Every transaction must destroy a small amount of XRP as a cost to send the transaction. This is also called a <em>transaction fee</em>. The transaction cost is designed to increase along with the load on the Ripple network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>You can choose the size of the fee you want to pay or let a default be used. You can get an estimate of the fee required to be included in the next ledger closing with the <a href="#getfee">getFee</a> method.</p>
+<h2 id="transaction-instructions">Transaction Instructions</h2>
+<p>Transaction instructions indicate how to execute a transaction, complementary with the <a href="#transaction-specifications">transaction specification</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fee</td>
+<td><a href="#value">value</a></td>
+<td><em>Optional</em> An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td>maxFee</td>
+<td><a href="#value">value</a></td>
+<td><em>Optional</em> The maximum fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td>maxLedgerVersion</td>
+<td>integer,null</td>
+<td><em>Optional</em> The highest ledger version that the transaction can be included in. If this option and <code>maxLedgerVersionOffset</code> are both omitted, the <code>maxLedgerVersion</code> option will default to 3 greater than the current validated ledger version (equivalent to <code>maxLedgerVersionOffset=3</code>). Use <code>null</code> to not set a maximum ledger version.</td>
+</tr>
+<tr>
+<td>maxLedgerVersionOffset</td>
+<td>integer</td>
+<td><em>Optional</em> Offset from current validated legder version to highest ledger version that the transaction can be included in.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td><em>Optional</em> The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td>signersCount</td>
+<td>integer</td>
+<td><em>Optional</em> Number of signers that will be signing this transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>We recommended that you specify a <code>maxLedgerVersion</code> so that you can quickly determine that a failed transaction will never succeeed in the future. It is impossible for a transaction to succeed after the network ledger version exceeds the transaction's <code>maxLedgerVersion</code>. If you omit <code>maxLedgerVersion</code>, the "prepare<em>" method automatically supplies a <code>maxLedgerVersion</code> equal to the current ledger plus 3, which it includes in the return value from the "prepare</em>" method.</p>
+<h2 id="transaction-id">Transaction ID</h2>
+<pre><code class="json">"F4AB442A6D4CBB935D66E1DA7309A5FC71C7143ED4049053EC14E3875B0CF9BF"
+</code></pre>
+<p>A transaction ID is a 64-bit hexadecimal string that uniquely identifies the transaction. The transaction ID is derived from the transaction instruction and specifications, using a strong hash function.</p>
+<p>You can look up a transaction by ID using the <a href="#gettransaction">getTransaction</a> method.</p>
+<h2 id="transaction-memos">Transaction Memos</h2>
+<p>Every transaction can optionally have an array of memos for user applications. The <code>memos</code> field in each <a href="#transaction-specifications">transaction specification</a> is an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>string</td>
+<td><em>Optional</em> Arbitrary string, conventionally containing the content of the memo.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td><em>Optional</em> Conventionally containing information on how the memo is encoded, for example as a <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME type</a>. Only characters allowed in URLs are permitted.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><em>Optional</em> Conventionally, a unique relation (according to <a href="http://tools.ietf.org/html/rfc5988#section-4">RFC 5988</a>) that defines the format of this memo. Only characters allowed in URLs are permitted.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="transaction-specifications">Transaction Specifications</h1>
+<p>A <em>transaction specification</em> specifies what a transaction should do. Each <a href="#transaction-types">Transaction Type</a> has its own type of specification.</p>
+<h2 id="payment">Payment</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>object</td>
+<td>The source of the funds to be sent.</td>
+</tr>
+<tr>
+<td><em>source.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send from.</td>
+</tr>
+<tr>
+<td><em>source.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>An exact amount to send. If the counterparty is not specified, amounts with any counterparty may be used. (This field is exclusive with source.maxAmount)</td>
+</tr>
+<tr>
+<td><em>source.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td><em>source.</em> maxAmount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>The maximum amount to send. (This field is exclusive with source.amount)</td>
+</tr>
+<tr>
+<td>destination</td>
+<td>object</td>
+<td>The destination of the funds to be sent.</td>
+</tr>
+<tr>
+<td><em>destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to receive at.</td>
+</tr>
+<tr>
+<td><em>destination.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>An exact amount to deliver to the recipient. If the counterparty is not specified, amounts with any counterparty may be used. (This field is exclusive with destination.minAmount).</td>
+</tr>
+<tr>
+<td><em>destination.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td><em>destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send to.</td>
+</tr>
+<tr>
+<td><em>destination.</em> minAmount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>The minimum amount to be delivered. (This field is exclusive with destination.amount)</td>
+</tr>
+<tr>
+<td>allowPartialPayment</td>
+<td>boolean</td>
+<td><em>Optional</em> A boolean that, if set to true, indicates that this payment should go through even if the whole amount cannot be delivered because of a lack of liquidity or funds in the source account account</td>
+</tr>
+<tr>
+<td>invoiceID</td>
+<td>string</td>
+<td><em>Optional</em> A 256-bit hash that can be used to identify a particular payment.</td>
+</tr>
+<tr>
+<td>limitQuality</td>
+<td>boolean</td>
+<td><em>Optional</em> Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of destination.amount:source.maxAmount.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>noDirectRipple</td>
+<td>boolean</td>
+<td><em>Optional</em> A boolean that can be set to true if paths are specified and the sender would like the Ripple Network to disregard any direct paths from the source account to the destination account. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet</td>
+</tr>
+<tr>
+<td>paths</td>
+<td>string</td>
+<td><em>Optional</em> The paths of trustlines and orders to use in executing the payment.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example</h3>
+<pre><code class="json">{
+  "source": {
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "maxAmount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "destination": {
+    "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+    "amount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  }
+}
+</code></pre>
+<h2 id="trustline">Trustline</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td><a href="#currency">currency</a></td>
+<td>The currency this trustline applies to.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account this trustline extends trust to.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td><a href="#value">value</a></td>
+<td>The maximum amount that the owner of the trustline can be owed through the trustline.</td>
+</tr>
+<tr>
+<td>authorized</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, authorize the counterparty to hold issuances from this account.</td>
+</tr>
+<tr>
+<td>frozen</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, the trustline is frozen, which means that funds can only be sent to the owner.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>qualityIn</td>
+<td>number</td>
+<td><em>Optional</em> Incoming balances on this trustline are valued at this ratio.</td>
+</tr>
+<tr>
+<td>qualityOut</td>
+<td>number</td>
+<td><em>Optional</em> Outgoing balances on this trustline are valued at this ratio.</td>
+</tr>
+<tr>
+<td>ripplingDisabled</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, payments cannot ripple through this trustline.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-1">Example</h3>
+<pre><code class="json">{
+  "currency": "USD",
+  "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+  "limit": "10000",
+  "qualityIn": 0.91,
+  "qualityOut": 0.87,
+  "ripplingDisabled": true,
+  "frozen": false,
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
+}
+</code></pre>
+<h2 id="order">Order</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Equal to "buy" for buy orders and "sell" for sell orders.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><a href="#amount">amount</a></td>
+<td>The amount of currency to buy or sell.</td>
+</tr>
+<tr>
+<td>totalPrice</td>
+<td><a href="#amount">amount</a></td>
+<td>The total price to be paid for the <code>quantity</code> to be bought or sold.</td>
+</tr>
+<tr>
+<td>expirationTime</td>
+<td>date-time string</td>
+<td><em>Optional</em> Time after which the offer is no longer active, as an <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 date-time</a>.</td>
+</tr>
+<tr>
+<td>fillOrKill</td>
+<td>boolean</td>
+<td><em>Optional</em> Treat the offer as a <a href="http://en.wikipedia.org/wiki/Fill_or_kill">Fill or Kill order</a>. Only attempt to match existing offers in the ledger, and only do so if the entire quantity can be exchanged.</td>
+</tr>
+<tr>
+<td>immediateOrCancel</td>
+<td>boolean</td>
+<td><em>Optional</em> Treat the offer as an <a href="http://en.wikipedia.org/wiki/Immediate_or_cancel">Immediate or Cancel order</a>. If enabled, the offer will never become a ledger node: it only attempts to match existing offers in the ledger.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>passive</td>
+<td>boolean</td>
+<td><em>Optional</em> If enabled, the offer will not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It will still consume offers that cross it.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-2">Example</h3>
+<pre><code class="json">{
+  "direction": "buy",
+  "quantity": {
+    "currency": "USD",
+    "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+    "value": "10.1"
+  },
+  "totalPrice": {
+    "currency": "XRP",
+    "value": "2"
+  },
+  "passive": true,
+  "fillOrKill": true
+}
+</code></pre>
+<h2 id="order-cancellation">Order Cancellation</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderSequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The <a href="#account-sequence-number">account sequence number</a> of the order to cancel.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3">Example</h3>
+<pre><code class="json">{
+  "orderSequence": 23
+}
+</code></pre>
+<h2 id="settings">Settings</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultRipple</td>
+<td>boolean</td>
+<td><em>Optional</em> Enable <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account’s trust lines by default. (New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.3">rippled 0.27.3</a>)</td>
+</tr>
+<tr>
+<td>disableMasterKey</td>
+<td>boolean</td>
+<td><em>Optional</em> Disallows use of the master key to sign transactions for this account.</td>
+</tr>
+<tr>
+<td>disallowIncomingXRP</td>
+<td>boolean</td>
+<td><em>Optional</em> Indicates that client applications should not send XRP to this account. Not enforced by rippled.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td><em>Optional</em>  The domain that owns this account, as a hexadecimal string representing the ASCII for the domain in lowercase.</td>
+</tr>
+<tr>
+<td>emailHash</td>
+<td>string,null</td>
+<td><em>Optional</em> Hash of an email address to be used for generating an avatar image. Conventionally, clients use Gravatar to display this image. Use <code>null</code> to clear.</td>
+</tr>
+<tr>
+<td>enableTransactionIDTracking</td>
+<td>boolean</td>
+<td><em>Optional</em> Track the ID of this account’s most recent transaction.</td>
+</tr>
+<tr>
+<td>globalFreeze</td>
+<td>boolean</td>
+<td><em>Optional</em> Freeze all assets issued by this account.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>messageKey</td>
+<td>string</td>
+<td><em>Optional</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
+</tr>
+<tr>
+<td>noFreeze</td>
+<td>boolean</td>
+<td><em>Optional</em> Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled.</td>
+</tr>
+<tr>
+<td>passwordSpent</td>
+<td>boolean</td>
+<td><em>Optional</em> Indicates that the account has used its free SetRegularKey transaction.</td>
+</tr>
+<tr>
+<td>regularKey</td>
+<td><a href="#ripple-address">address</a>,null</td>
+<td><em>Optional</em> The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. Use <code>null</code> to remove the regular key.</td>
+</tr>
+<tr>
+<td>requireAuthorization</td>
+<td>boolean</td>
+<td><em>Optional</em> If set, this account must individually approve other users in order for those users to hold this account’s issuances.</td>
+</tr>
+<tr>
+<td>requireDestinationTag</td>
+<td>boolean</td>
+<td><em>Optional</em> Requires incoming payments to specify a destination tag.</td>
+</tr>
+<tr>
+<td>signers</td>
+<td>object</td>
+<td><em>Optional</em> Settings that determine what sets of accounts can be used to sign a transaction on behalf of this account using multisigning.</td>
+</tr>
+<tr>
+<td><em>signers.</em> threshold</td>
+<td>integer</td>
+<td><em>Optional</em> A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value <code>0</code>.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights</td>
+<td>array</td>
+<td><em>Optional</em> Weights of signatures for each signer.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights[]</td>
+<td>object</td>
+<td>An association of an address and a weight.</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>A Ripple account address</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> weight</td>
+<td>integer</td>
+<td>The weight that the signature of this account counts as towards the threshold.</td>
+</tr>
+<tr>
+<td>transferRate</td>
+<td>number,null</td>
+<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, represented as billionths of a unit. Use <code>null</code> to set no fee.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-4">Example</h3>
+<pre><code class="json">{
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
+}
+</code></pre>
+<h2 id="suspended-payment-creation">Suspended Payment Creation</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>object</td>
+<td>Fields pertaining to the source of the payment.</td>
+</tr>
+<tr>
+<td><em>source.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send from.</td>
+</tr>
+<tr>
+<td><em>source.</em> maxAmount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>The maximum amount to send. (This field is exclusive with source.amount)</td>
+</tr>
+<tr>
+<td><em>source.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td>destination</td>
+<td>object</td>
+<td>Fields pertaining to the destination of the payment.</td>
+</tr>
+<tr>
+<td><em>destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to receive at.</td>
+</tr>
+<tr>
+<td><em>destination.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>An exact amount to deliver to the recipient. If the counterparty is not specified, amounts with any counterparty may be used. (This field is exclusive with destination.minAmount).</td>
+</tr>
+<tr>
+<td><em>destination.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td>allowCancelAfter</td>
+<td>date-time string</td>
+<td><em>Optional</em> If present, the suspended payment may be cancelled after this time.</td>
+</tr>
+<tr>
+<td>allowExecuteAfter</td>
+<td>date-time string</td>
+<td><em>Optional</em> If present, the suspended payment can not be executed before this time.</td>
+</tr>
+<tr>
+<td>digest</td>
+<td>string</td>
+<td><em>Optional</em> If present, proof is required upon execution.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-5">Example</h3>
+<pre><code class="json">{
+  "source": {
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "maxAmount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "destination": {
+    "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+    "amount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "allowCancelAfter": "2014-09-24T21:21:50.000Z"
+}
+</code></pre>
+<h2 id="suspended-payment-cancellation">Suspended Payment Cancellation</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the owner of the suspended payment to cancel.</td>
+</tr>
+<tr>
+<td>suspensionSequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The <a href="#account-sequence-number">account sequence number</a> of the <a href="#suspended-payment-creation">Suspended Payment Creation</a> transaction for the suspended payment to cancel.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-6">Example</h3>
+<pre><code class="json">{
+  "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "suspensionSequence": 1234
+}
+</code></pre>
+<h2 id="suspended-payment-execution">Suspended Payment Execution</h2>
+<p>See <a href="#transaction-types">Transaction Types</a> for a description.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the owner of the suspended payment to execute.</td>
+</tr>
+<tr>
+<td>suspensionSequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The <a href="#account-sequence-number">account sequence number</a> of the <a href="#suspended-payment-creation">Suspended Payment Creation</a> transaction for the suspended payment to execute.</td>
+</tr>
+<tr>
+<td>digest</td>
+<td>string</td>
+<td><em>Optional</em> The original <code>digest</code> from the suspended payment creation transaction. This is sha256 hash of <code>proof</code> string. It is replicated here so that the relatively expensive hashing operation can be delegated to a server without ledger history and the server with ledger history only has to do a quick comparison of the old digest with the new digest.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>method</td>
+<td>integer</td>
+<td><em>Optional</em> The method for verifying the proof; only method <code>1</code> is supported.</td>
+</tr>
+<tr>
+<td>proof</td>
+<td>string</td>
+<td><em>Optional</em> A value that produces the digest when hashed. It must be 32 charaters long and contain only 8-bit characters.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-7">Example</h3>
+<pre><code class="json">{
+  "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "suspensionSequence": 1234,
+  "method": 1,
+  "digest": "712C36933822AD3A3D136C5DF97AA863B69F9CE88B2D6CE6BDD11BFDE290C19D",
+  "proof": "this must have 32 characters...."
+}
+</code></pre>
+<h1 id="api-methods">API Methods</h1>
+<h2 id="connect">connect</h2>
+<p><code>connect(): Promise&lt;void&gt;</code></p>
+<p>Tells the RippleAPI instance to connect to its rippled server.</p>
+<h3 id="parameters-1">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value">Return Value</h3>
+<p>This method returns a promise that resolves with a void value when a connection is established.</p>
+<h3 id="example-8">Example</h3>
+<p>See <a href="#boilerplate">Boilerplate</a> for code sample.</p>
+<h2 id="disconnect">disconnect</h2>
+<p><code>disconnect(): Promise&lt;void&gt;</code></p>
+<p>Tells the RippleAPI instance to disconnect from its rippled server.</p>
+<h3 id="parameters-2">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value-1">Return Value</h3>
+<p>This method returns a promise that resolves with a void value when a connection is destroyed.</p>
+<h3 id="example-9">Example</h3>
+<p>See <a href="#boilerplate">Boilerplate</a> for code sample</p>
+<h2 id="isconnected">isConnected</h2>
+<p><code>isConnected(): boolean</code></p>
+<p>Checks if the RippleAPI instance is connected to its rippled server.</p>
+<h3 id="parameters-3">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value-2">Return Value</h3>
+<p>This method returns <code>true</code> if connected and <code>false</code> if not connected.</p>
+<h3 id="example-10">Example</h3>
+<pre><code class="javascript">return api.isConnected();
+</code></pre>
+<pre><code class="json">true
+</code></pre>
+<h2 id="getserverinfo">getServerInfo</h2>
+<p><code>getServerInfo(): Promise&lt;object&gt;</code></p>
+<p>Get status information about the server that the RippleAPI instance is connected to.</p>
+<h3 id="parameters-4">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value-3">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buildVersion</td>
+<td>string</td>
+<td>The version number of the running rippled version.</td>
+</tr>
+<tr>
+<td>completeLedgers</td>
+<td>string</td>
+<td>Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. “2500-5000,32570-7695432”.</td>
+</tr>
+<tr>
+<td>hostID</td>
+<td>string</td>
+<td>On an admin request, returns the hostname of the server running the rippled instance; otherwise, returns a unique four letter word.</td>
+</tr>
+<tr>
+<td>ioLatencyMs</td>
+<td>number</td>
+<td>Amount of time spent waiting for I/O operations to be performed, in milliseconds. If this number is not very, very low, then the rippled server is probably having serious load issues.</td>
+</tr>
+<tr>
+<td>lastClose</td>
+<td>object</td>
+<td>Information about the last time the server closed a ledger.</td>
+</tr>
+<tr>
+<td><em>lastClose.</em> convergeTimeS</td>
+<td>number</td>
+<td>The time it took to reach a consensus for the last ledger closing, in seconds.</td>
+</tr>
+<tr>
+<td><em>lastClose.</em> proposers</td>
+<td>integer</td>
+<td>Number of trusted validators participating in the ledger closing.</td>
+</tr>
+<tr>
+<td>loadFactor</td>
+<td>number</td>
+<td>The load factor the server is currently enforcing, as a multiplier on the base transaction fee. The load factor is determined by the highest of the individual server’s load factor, cluster’s load factor, and the overall network’s load factor.</td>
+</tr>
+<tr>
+<td>peers</td>
+<td>integer</td>
+<td>How many other rippled servers the node is currently connected to.</td>
+</tr>
+<tr>
+<td>pubkeyNode</td>
+<td>string</td>
+<td>Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can just create a new pair of keys.)</td>
+</tr>
+<tr>
+<td>serverState</td>
+<td>string</td>
+<td>A string indicating to what extent the server is participating in the network. See <a href="https://ripple.com/build/rippled-apis/#possible-server-states">Possible Server States</a> for more details.</td>
+</tr>
+<tr>
+<td>validatedLedger</td>
+<td>object</td>
+<td>Information about the fully-validated ledger with the highest sequence number (the most recent).</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> age</td>
+<td>integer</td>
+<td>The time since the ledger was closed, in seconds.</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> baseFeeXRP</td>
+<td><a href="#value">value</a></td>
+<td>Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005.</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> hash</td>
+<td>string</td>
+<td>Unique hash for the ledger, as an uppercase hexadecimal string.</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> reserveBaseXRP</td>
+<td><a href="#value">value</a></td>
+<td>Minimum amount of XRP necessary for every account to keep in reserve.</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> reserveIncrementXRP</td>
+<td><a href="#value">value</a></td>
+<td>Amount of XRP added to the account reserve for each object an account is responsible for in the ledger.</td>
+</tr>
+<tr>
+<td><em>validatedLedger.</em> ledgerVersion</td>
+<td>integer</td>
+<td>Identifying sequence number of this ledger version.</td>
+</tr>
+<tr>
+<td>validationQuorum</td>
+<td>number</td>
+<td>Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations.</td>
+</tr>
+<tr>
+<td>load</td>
+<td>object</td>
+<td><em>Optional</em> <em>(Admin only)</em> Detailed information about the current load state of the server.</td>
+</tr>
+<tr>
+<td><em>load.</em> jobTypes</td>
+<td>array\&lt;object&gt;</td>
+<td><em>(Admin only)</em> Information about the rate of different types of jobs being performed by the server and how much time it spends on each.</td>
+</tr>
+<tr>
+<td><em>load.</em> threads</td>
+<td>number</td>
+<td><em>(Admin only)</em> The number of threads in the server’s main job pool, performing various Ripple Network operations.</td>
+</tr>
+<tr>
+<td>pubkeyValidator</td>
+<td>string</td>
+<td><em>Optional</em> <em>(Admin only)</em> Public key used by this node to sign ledger validations.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-11">Example</h3>
+<pre><code class="javascript">return api.getServerInfo().then(info =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "buildVersion": "0.24.0-rc1",
+  "completeLedgers": "32570-6595042",
+  "hostID": "ARTS",
+  "ioLatencyMs": 1,
+  "lastClose": {
+    "convergeTimeS": 2.007,
+    "proposers": 4
+  },
+  "loadFactor": 1,
+  "peers": 53,
+  "pubkeyNode": "n94wWvFUmaKGYrKUGgpv1DyYgDeXRGdACkNQaSe7zJiy5Znio7UC",
+  "serverState": "full",
+  "validatedLedger": {
+    "age": 5,
+    "baseFeeXRP": "0.00001",
+    "hash": "4482DEE5362332F54A4036ED57EE1767C9F33CF7CE5A6670355C16CECE381D46",
+    "reserveBaseXRP": "20",
+    "reserveIncrementXRP": "5",
+    "ledgerVersion": 6595042
+  },
+  "validationQuorum": 3
+}
+</code></pre>
+<h2 id="getfee">getFee</h2>
+<p><code>getFee(): Promise&lt;number&gt;</code></p>
+<p>Returns the estimated transaction fee for the rippled server the RippleAPI instance is connected to.</p>
+<h3 id="parameters-5">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value-4">Return Value</h3>
+<p>This method returns a promise that resolves with a string encoded floating point value representing the estimated fee to submit a transaction, expressed in XRP.</p>
+<h3 id="example-12">Example</h3>
+<pre><code class="javascript">return api.getFee().then(fee =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">"0.012"
+</code></pre>
+<h2 id="getledgerversion">getLedgerVersion</h2>
+<p><code>getLedgerVersion(): Promise&lt;number&gt;</code></p>
+<p>Returns the most recent validated ledger version number known to the connected server.</p>
+<h3 id="parameters-6">Parameters</h3>
+<p>This method has no parameters.</p>
+<h3 id="return-value-5">Return Value</h3>
+<p>This method returns a promise that resolves with a positive integer representing the most recent validated ledger version number known to the connected server.</p>
+<h3 id="example-13">Example</h3>
+<pre><code class="javascript">return api.getLedgerVersion().then(ledgerVersion =&gt; {
+  /* ... */
+});
+</code></pre>
+<pre><code class="json">16869039
+</code></pre>
+<h2 id="gettransaction">getTransaction</h2>
+<p><code>getTransaction(id: string, options: Object): Promise&lt;Object&gt;</code></p>
+<p>Retrieves a transaction by its <a href="#transaction-id">Transaction ID</a>.</p>
+<h3 id="parameters-7">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#transaction-id">id</a></td>
+<td>A hash of a transaction used to identify the transaction, represented in hexadecimal.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to limit the ledger versions to search.</td>
+</tr>
+<tr>
+<td><em>options.</em> maxLedgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> The highest ledger version to search</td>
+</tr>
+<tr>
+<td><em>options.</em> minLedgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> The lowest ledger version to search.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-6">Return Value</h3>
+<p>This method returns a promise that resolves with a transaction object containing the following fields.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#transaction-id">id</a></td>
+<td>A hash of the transaction that can be used to identify it.</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that initiated the transaction.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The account sequence number of the transaction for the account that initiated it.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#transaction-types">transactionType</a></td>
+<td>The type of the tranasction.</td>
+</tr>
+<tr>
+<td>specification</td>
+<td>object</td>
+<td>A specification that would produce the same outcome as this transaction. The structure of the specification depends on the value of the <code>type</code> field (see <a href="#transaction-types">Transaction Types</a> for details). <em>Note:</em> This is <strong>not</strong> necessarily the same as the original specification.</td>
+</tr>
+<tr>
+<td>outcome</td>
+<td>object</td>
+<td>The outcome of the transaction (what effects it had).</td>
+</tr>
+<tr>
+<td><em>outcome.</em> result</td>
+<td>string</td>
+<td>Result code returned by rippled. See <a href="https://ripple.com/build/transactions/#full-transaction-response-list">Transaction Results</a> for a complete list.</td>
+</tr>
+<tr>
+<td><em>outcome.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>The XRP fee that was charged for the transaction.</td>
+</tr>
+<tr>
+<td><em>outcome.balanceChanges.</em> *</td>
+<td>array\&lt;<a href="#amount">balance</a>&gt;</td>
+<td>Key is the ripple address; value is an array of signed amounts representing changes of balances for that address.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.</em> *</td>
+<td>array</td>
+<td>Key is the maker's ripple address; value is an array of changes</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.</em> *[]</td>
+<td>object</td>
+<td>A change to an order.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> direction</td>
+<td>string</td>
+<td>Equal to "buy" for buy orders and "sell" for sell orders.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> quantity</td>
+<td><a href="#amount">amount</a></td>
+<td>The amount to be bought or sold by the maker.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> totalPrice</td>
+<td><a href="#amount">amount</a></td>
+<td>The total amount to be paid or received by the taker.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The order sequence number, used to identify the order for cancellation</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> status</td>
+<td>string</td>
+<td>The status of the order. One of "created", "filled", "partially-filled", "cancelled".</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> expirationTime</td>
+<td>date-time string</td>
+<td><em>Optional</em> The time after which the order expires, if any.</td>
+</tr>
+<tr>
+<td><em>outcome.orderbookChanges.*[].</em> makerExchangeRate</td>
+<td><a href="#value">value</a></td>
+<td><em>Optional</em> The exchange rate between the <code>quantity</code> currency and the <code>totalPrice</code> currency from the point of view of the maker.</td>
+</tr>
+<tr>
+<td><em>outcome.</em> ledgerVersion</td>
+<td>integer</td>
+<td>The ledger version that the transaction was validated in.</td>
+</tr>
+<tr>
+<td><em>outcome.</em> indexInLedger</td>
+<td>integer</td>
+<td>The ordering index of the transaction in the ledger.</td>
+</tr>
+<tr>
+<td><em>outcome.</em> deliveredAmount</td>
+<td><a href="#amount">amount</a></td>
+<td><em>Optional</em> For payment transactions, it is impossible to reliably compute the actual delivered amount from the balanceChanges due to fixed precision. If the payment is not a partial payment and the transaction succeeded, the deliveredAmount should always be considered to be the amount specified in the transaction.</td>
+</tr>
+<tr>
+<td><em>outcome.</em> timestamp</td>
+<td>date-time string</td>
+<td><em>Optional</em> The timestamp when the transaction was validated. (May be missing when requesting transactions in binary mode.)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-14">Example</h3>
+<pre><code class="javascript">const id = '01CDEAA89BF99D97DFD47F79A0477E1DCC0989D39F70E8AACBFE68CC83BD1E94';
+return api.getTransaction(id).then(transaction =&gt; {
+  /* ... */
+});
+</code></pre>
+<pre><code class="json">{
+  "type": "payment",
+  "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "sequence": 4,
+  "id": "F4AB442A6D4CBB935D66E1DA7309A5FC71C7143ED4049053EC14E3875B0CF9BF",
+  "specification": {
+    "source": {
+      "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "maxAmount": {
+        "currency": "XRP",
+        "value": "1.112209"
+      }
+    },
+    "destination": {
+      "address": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+      "amount": {
+        "currency": "USD",
+        "value": "0.001"
+      }
+    },
+    "paths": "[[{\"currency\":\"USD\",\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"type\":48,\"type_hex\":\"0000000000000030\"},{\"account\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"currency\":\"USD\",\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"type\":49,\"type_hex\":\"0000000000000031\"}]]"
+  },
+  "outcome": {
+    "result": "tesSUCCESS",
+    "timestamp": "2013-03-12T23:56:50.000Z",
+    "fee": "0.00001",
+    "deliveredAmount": {
+      "currency": "USD",
+      "value": "0.001",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    },
+    "balanceChanges": {
+      "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
+        {
+          "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+          "currency": "USD",
+          "value": "-0.001"
+        },
+        {
+          "counterparty": "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr",
+          "currency": "USD",
+          "value": "0.001002"
+        }
+      ],
+      "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM": [
+        {
+          "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+          "currency": "USD",
+          "value": "0.001"
+        }
+      ],
+      "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
+        {
+          "currency": "XRP",
+          "value": "-1.101208"
+        }
+      ],
+      "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
+        {
+          "currency": "XRP",
+          "value": "1.101198"
+        },
+        {
+          "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+          "currency": "USD",
+          "value": "-0.001002"
+        }
+      ]
+    },
+    "orderbookChanges": {
+      "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
+        {
+          "direction": "buy",
+          "quantity": {
+            "currency": "XRP",
+            "value": "1.101198"
+          },
+          "totalPrice": {
+            "currency": "USD",
+            "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+            "value": "0.001002"
+          },
+          "makerExchangeRate": "1099",
+          "sequence": 58,
+          "status": "partially-filled"
+        }
+      ]
+    },
+    "ledgerVersion": 348860,
+    "indexInLedger": 0
+  }
+}
+</code></pre>
+<h2 id="gettransactions">getTransactions</h2>
+<p><code>getTransactions(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
+<p>Retrieves historical transactions of an account.</p>
+<h3 id="parameters-8">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account to get transactions for.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to filter the resulting transactions.</td>
+</tr>
+<tr>
+<td><em>options.</em> binary</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, the transactions will be sent from the server in a condensed binary format rather than JSON.</td>
+</tr>
+<tr>
+<td><em>options.</em> counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> If provided, only return transactions with this account as a counterparty to the transaction.</td>
+</tr>
+<tr>
+<td><em>options.</em> earliestFirst</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, sort transactions so that the earliest ones come first. By default, the newest transactions will come first.</td>
+</tr>
+<tr>
+<td><em>options.</em> excludeFailures</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, the result will omit transactions that did not succeed.</td>
+</tr>
+<tr>
+<td><em>options.</em> initiated</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, return only transactions initiated by the account specified by <code>address</code>. If false, return only transactions not initiated by the account specified by <code>address</code>.</td>
+</tr>
+<tr>
+<td><em>options.</em> limit</td>
+<td>integer</td>
+<td><em>Optional</em> If specified, return at most this many transactions.</td>
+</tr>
+<tr>
+<td><em>options.</em> maxLedgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return only transactions in this ledger version or lower.</td>
+</tr>
+<tr>
+<td><em>options.</em> minLedgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return only transactions in this ledger verion or higher.</td>
+</tr>
+<tr>
+<td><em>options.</em> start</td>
+<td>string</td>
+<td><em>Optional</em> If specified, this transaction will be the first transaction in the result.</td>
+</tr>
+<tr>
+<td><em>options.</em> types</td>
+<td>array\&lt;<a href="#transaction-types">transactionType</a>&gt;</td>
+<td><em>Optional</em> Only return transactions of the specified <a href="#transaction-types">Transaction Types</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-7">Return Value</h3>
+<p>This method returns a promise that resolves with an array of transaction object in the same format as <a href="#gettransaction">getTransaction</a>.</p>
+<h3 id="example-15">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getTransactions(address).then(transaction =&gt; {
+  /* ... */
+});
+</code></pre>
+<pre><code class="json">[
+  {
+    "type": "payment",
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "sequence": 4,
+    "id": "99404A34E8170319521223A6C604AF48B9F1E3000C377E6141F9A1BF60B0B865",
+    "specification": {
+      "memos": [
+        {
+          "type": "client",
+          "format": "rt1.5.2"
+        }
+      ],
+      "source": {
+        "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "maxAmount": {
+          "currency": "XRP",
+          "value": "1.112209"
+        }
+      },
+      "destination": {
+        "address": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+        "amount": {
+          "currency": "USD",
+          "value": "0.001"
+        }
+      },
+      "paths": "[[{\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"currency\":\"USD\"},{\"account\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"currency\":\"USD\"}]]"
+    },
+    "outcome": {
+      "result": "tesSUCCESS",
+      "fee": "0.00001",
+      "deliveredAmount": {
+        "currency": "USD",
+        "value": "0.001",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+      },
+      "balanceChanges": {
+        "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
+          {
+            "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+            "currency": "USD",
+            "value": "-0.001"
+          },
+          {
+            "counterparty": "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr",
+            "currency": "USD",
+            "value": "0.001002"
+          }
+        ],
+        "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM": [
+          {
+            "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+            "currency": "USD",
+            "value": "0.001"
+          }
+        ],
+        "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
+          {
+            "currency": "XRP",
+            "value": "-1.101208"
+          }
+        ],
+        "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
+          {
+            "currency": "XRP",
+            "value": "1.101198"
+          },
+          {
+            "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+            "currency": "USD",
+            "value": "-0.001002"
+          }
+        ]
+      },
+      "orderbookChanges": {
+        "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
+          {
+            "direction": "buy",
+            "quantity": {
+              "currency": "XRP",
+              "value": "1.101198"
+            },
+            "totalPrice": {
+              "currency": "USD",
+              "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+              "value": "0.001002"
+            },
+            "makerExchangeRate": "1099",
+            "sequence": 58,
+            "status": "partially-filled"
+          }
+        ]
+      },
+      "ledgerVersion": 348859,
+      "indexInLedger": 0
+    }
+  },
+  {
+    "type": "payment",
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "id": "99404A34E8170319521223A6C604AF48B9F1E3000C377E6141F9A1BF60B0B865",
+    "sequence": 4,
+    "specification": {
+      "memos": [
+        {
+          "type": "client",
+          "format": "rt1.5.2"
+        }
+      ],
+      "source": {
+        "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "maxAmount": {
+          "currency": "XRP",
+          "value": "1.112209"
+        }
+      },
+      "destination": {
+        "address": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+        "amount": {
+          "currency": "USD",
+          "value": "0.001"
+        }
+      },
+      "paths": "[[{\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"currency\":\"USD\"},{\"account\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"issuer\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"currency\":\"USD\"}]]"
+    },
+    "outcome": {
+      "result": "tesSUCCESS",
+      "fee": "0.00001",
+      "deliveredAmount": {
+        "currency": "USD",
+        "value": "0.001",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+      },
+      "balanceChanges": {
+        "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo": [
+          {
+            "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+            "currency": "USD",
+            "value": "-0.001"
+          },
+          {
+            "counterparty": "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr",
+            "currency": "USD",
+            "value": "0.001002"
+          }
+        ],
+        "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM": [
+          {
+            "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+            "currency": "USD",
+            "value": "0.001"
+          }
+        ],
+        "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
+          {
+            "currency": "XRP",
+            "value": "-1.101208"
+          }
+        ],
+        "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
+          {
+            "currency": "XRP",
+            "value": "1.101198"
+          },
+          {
+            "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+            "currency": "USD",
+            "value": "-0.001002"
+          }
+        ]
+      },
+      "orderbookChanges": {
+        "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
+          {
+            "direction": "buy",
+            "quantity": {
+              "currency": "XRP",
+              "value": "1.101198"
+            },
+            "totalPrice": {
+              "currency": "USD",
+              "counterparty": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+              "value": "0.001002"
+            },
+            "makerExchangeRate": "1099",
+            "sequence": 58,
+            "status": "partially-filled"
+          }
+        ]
+      },
+      "ledgerVersion": 348858,
+      "indexInLedger": 0
+    }
+  }
+]
+</code></pre>
+<h2 id="gettrustlines">getTrustlines</h2>
+<p><code>getTrustlines(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
+<p>Returns trustlines for a specified account.</p>
+<h3 id="parameters-9">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account to get trustlines for.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to filter and determine which trustlines to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> Only return trustlines with this counterparty.</td>
+</tr>
+<tr>
+<td><em>options.</em> currency</td>
+<td><a href="#currency">currency</a></td>
+<td><em>Optional</em> Only return trustlines for this currency.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return trustlines as they were in this historical ledger version.</td>
+</tr>
+<tr>
+<td><em>options.</em> limit</td>
+<td>integer</td>
+<td><em>Optional</em> Return at most this many trustlines.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-8">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>specification</td>
+<td><a href="#trustline">trustline</a></td>
+<td>A trustline specification that would produce this trustline in its current state.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>object</td>
+<td>Properties of the trustline from the perspective of the counterparty.</td>
+</tr>
+<tr>
+<td><em>counterparty.</em> limit</td>
+<td><a href="#value">value</a></td>
+<td>The maximum amount that the counterparty can be owed through the trustline.</td>
+</tr>
+<tr>
+<td><em>counterparty.</em> authorized</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, the counterparty authorizes this party to hold issuances from the counterparty.</td>
+</tr>
+<tr>
+<td><em>counterparty.</em> frozen</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, the trustline is frozen, which means that funds can only be sent to the counterparty.</td>
+</tr>
+<tr>
+<td><em>counterparty.</em> ripplingDisabled</td>
+<td>boolean</td>
+<td><em>Optional</em> If true, payments cannot ripple through this trustline.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>object</td>
+<td>Properties of the trustline regarding it's current state that are not part of the specification.</td>
+</tr>
+<tr>
+<td><em>state.</em> balance</td>
+<td><a href="#value">signedValue</a></td>
+<td>The balance on the trustline, representing which party owes the other and by how much.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-16">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getTrustlines(address).then(trustlines =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">[
+  {
+    "specification": {
+      "limit": "5",
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "ripplingDisabled": true,
+      "frozen": true
+    },
+    "counterparty": {
+      "limit": "0"
+    },
+    "state": {
+      "balance": "2.497605752725159"
+    }
+  },
+  {
+    "specification": {
+      "limit": "5000",
+      "currency": "USD",
+      "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    },
+    "counterparty": {
+      "limit": "0"
+    },
+    "state": {
+      "balance": "0"
+    }
+  },
+  {
+    "specification": {
+      "limit": "1",
+      "currency": "USD",
+      "counterparty": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"
+    },
+    "counterparty": {
+      "limit": "0"
+    },
+    "state": {
+      "balance": "1"
+    }
+  },
+  {
+    "specification": {
+      "limit": "1",
+      "currency": "USD",
+      "counterparty": "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+      "ripplingDisabled": true
+    },
+    "counterparty": {
+      "limit": "0"
+    },
+    "state": {
+      "balance": "0"
+    }
+  },
+  {
+    "specification": {
+      "limit": "500",
+      "currency": "USD",
+      "counterparty": "rfF3PNkwkq1DygW2wum2HK3RGfgkJjdPVD",
+      "ripplingDisabled": true
+    },
+    "counterparty": {
+      "limit": "0"
+    },
+    "state": {
+      "balance": "35"
+    }
+  },
+  {
+    "specification": {
+      "limit": "0",
+      "currency": "USD",
+      "counterparty": "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2"
+    },
+    "counterparty": {
+      "limit": "100",
+      "ripplingDisabled": true
+    },
+    "state": {
+      "balance": "0"
+    }
+  },
+  {
+    "specification": {
+      "limit": "0",
+      "currency": "USD",
+      "counterparty": "rEhDDUUNxpXgEHVJtC2cjXAgyx5VCFxdMF",
+      "frozen": true
+    },
+    "counterparty": {
+      "limit": "1"
+    },
+    "state": {
+      "balance": "0"
+    }
+  }
+]
+</code></pre>
+<h2 id="getbalances">getBalances</h2>
+<p><code>getBalances(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
+<p>Returns balances for a specified account.</p>
+<h3 id="parameters-10">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account to get balances for.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to filter and determine which balances to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> Only return balances with this counterparty.</td>
+</tr>
+<tr>
+<td><em>options.</em> currency</td>
+<td><a href="#currency">currency</a></td>
+<td><em>Optional</em> Only return balances for this currency.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return balances as they were in this historical ledger version.</td>
+</tr>
+<tr>
+<td><em>options.</em> limit</td>
+<td>integer</td>
+<td><em>Optional</em> Return at most this many balances.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-9">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>currency</td>
+<td><a href="#currency">currency</a></td>
+<td>The three-character code or hexadecimal string used to denote currencies</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#value">signedValue</a></td>
+<td>The balance on the trustline</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> The Ripple address of the account that owes or is owed the funds.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-17">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getBalances(address).then(balances =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">[
+  {
+    "value": "922.913243",
+    "currency": "XRP"
+  },
+  {
+    "value": "0",
+    "currency": "ASP",
+    "counterparty": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"
+  },
+  {
+    "value": "0",
+    "currency": "XAU",
+    "counterparty": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"
+  },
+  {
+    "value": "2.497605752725159",
+    "currency": "USD",
+    "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+  },
+  {
+    "value": "481.992867407479",
+    "currency": "MXN",
+    "counterparty": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4"
+  },
+  {
+    "value": "0.793598266778297",
+    "currency": "EUR",
+    "counterparty": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"
+  },
+  {
+    "value": "0",
+    "currency": "CNY",
+    "counterparty": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"
+  },
+  {
+    "value": "1.294889190631542",
+    "currency": "DYM",
+    "counterparty": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E"
+  },
+  {
+    "value": "0.3488146605801446",
+    "currency": "CHF",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  {
+    "value": "2.114103174931847",
+    "currency": "BTC",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  {
+    "value": "0",
+    "currency": "USD",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  {
+    "value": "-0.00111",
+    "currency": "BTC",
+    "counterparty": "rpgKWEmNqSDAGFhy5WDnsyPqfQxbWxKeVd"
+  },
+  {
+    "value": "-0.1010780000080207",
+    "currency": "BTC",
+    "counterparty": "rBJ3YjwXi2MGbg7GVLuTXUWQ8DjL7tDXh4"
+  },
+  {
+    "value": "1",
+    "currency": "USD",
+    "counterparty": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"
+  },
+  {
+    "value": "8.07619790068559",
+    "currency": "CNY",
+    "counterparty": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"
+  },
+  {
+    "value": "7.292695098901099",
+    "currency": "JPY",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  {
+    "value": "0",
+    "currency": "AUX",
+    "counterparty": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"
+  },
+  {
+    "value": "0",
+    "currency": "USD",
+    "counterparty": "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X"
+  },
+  {
+    "value": "12.41688780720394",
+    "currency": "EUR",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  {
+    "value": "35",
+    "currency": "USD",
+    "counterparty": "rfF3PNkwkq1DygW2wum2HK3RGfgkJjdPVD"
+  },
+  {
+    "value": "-5",
+    "currency": "JOE",
+    "counterparty": "rwUVoVMSURqNyvocPCcvLu3ygJzZyw8qwp"
+  },
+  {
+    "value": "0",
+    "currency": "USD",
+    "counterparty": "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2"
+  },
+  {
+    "value": "0",
+    "currency": "JOE",
+    "counterparty": "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2"
+  },
+  {
+    "value": "0",
+    "currency": "015841551A748AD2C1F76FF6ECB0CCCD00000000",
+    "counterparty": "rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx"
+  },
+  {
+    "value": "0",
+    "currency": "USD",
+    "counterparty": "rEhDDUUNxpXgEHVJtC2cjXAgyx5VCFxdMF"
+  }
+]
+</code></pre>
+<h2 id="getbalancesheet">getBalanceSheet</h2>
+<p><code>getBalanceSheet(address: string, options: Object): Promise&lt;Object&gt;</code></p>
+<p>Returns aggregate balances by currency plus a breakdown of assets and obligations for a specified account.</p>
+<h3 id="parameters-11">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The Ripple address of the account to get the balance sheet of.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to determine how the balances will be calculated.</td>
+</tr>
+<tr>
+<td><em>options.</em> excludeAddresses</td>
+<td>array\&lt;<a href="#ripple-address">address</a>&gt;</td>
+<td><em>Optional</em> Addresses to exclude from the balance totals.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Get the balance sheet as of this historical ledger version.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-10">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assets</td>
+<td>array\&lt;<a href="#amount">amount</a>&gt;</td>
+<td><em>Optional</em> Total amounts held that are issued by others. For the recommended gateway configuration, there should be none.</td>
+</tr>
+<tr>
+<td>balances</td>
+<td>array\&lt;<a href="#amount">amount</a>&gt;</td>
+<td><em>Optional</em> Amounts issued to the hotwallet accounts from the request. The keys are hot wallet addresses and the values are arrays of currency amounts they hold. The issuer (omitted from the currency amounts) is the account from the request.</td>
+</tr>
+<tr>
+<td>obligations</td>
+<td>array</td>
+<td><em>Optional</em> Total amounts issued to accounts that are not hot wallets, as a map of currencies to the total value issued.</td>
+</tr>
+<tr>
+<td>obligations[]</td>
+<td>object</td>
+<td>An amount that is owed.</td>
+</tr>
+<tr>
+<td><em>obligations[].</em> currency</td>
+<td><a href="#currency">currency</a></td>
+<td>The three-character code or hexadecimal string used to denote currencies</td>
+</tr>
+<tr>
+<td><em>obligations[].</em> value</td>
+<td><a href="#value">value</a></td>
+<td>A string representation of a non-negative floating point number</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-18">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getBalanceSheet(address).then(balanceSheet =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "balances": [
+    {
+    "counterparty": "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
+    "currency": "EUR",
+    "value": "29826.1965999999"
+  },
+  {
+    "counterparty": "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
+    "currency": "USD",
+    "value": "10.0"
+  },
+  {
+    "counterparty": "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt",
+    "currency": "USD",
+    "value": "13857.70416"
+  }
+  ],
+  "assets": [
+    {
+    "counterparty": "r9F6wk8HkXrgYWoJ7fsv4VrUBVoqDVtzkH",
+    "currency": "BTC",
+    "value": "5444166510000000e-26"
+  },
+  {
+    "counterparty": "r9F6wk8HkXrgYWoJ7fsv4VrUBVoqDVtzkH",
+    "currency": "USD",
+    "value": "100.0"
+  },
+  {
+    "counterparty": "rwmUaXsWtXU4Z843xSYwgt1is97bgY8yj6",
+    "currency": "BTC",
+    "value": "8700000000000000e-30"
+  }
+  ],
+  "obligations": [
+    {
+      "currency": "BTC",
+      "value": "5908.324927635318"
+    },
+    {
+      "currency": "EUR",
+      "value": "992471.7419793958"
+    },
+    {
+      "currency": "GBP",
+      "value": "4991.38706013193"
+    },
+    {
+      "currency": "USD",
+      "value": "1997134.20229482"
+    }
+  ]
+}
+</code></pre>
+<h2 id="getpaths">getPaths</h2>
+<p><code>getPaths(pathfind: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
+<p>Finds paths to send a payment. Paths are options for how to route a payment.</p>
+<h3 id="parameters-12">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pathfind</td>
+<td>object</td>
+<td>Specification of a pathfind request.</td>
+</tr>
+<tr>
+<td><em>pathfind.</em> source</td>
+<td>object</td>
+<td>Properties of the source of funds.</td>
+</tr>
+<tr>
+<td><em>pathfind.source.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The Ripple address of the account where funds will come from.</td>
+</tr>
+<tr>
+<td><em>pathfind.source.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td><em>Optional</em> The amount of funds to send.</td>
+</tr>
+<tr>
+<td><em>pathfind.source.</em> currencies</td>
+<td>array</td>
+<td><em>Optional</em> An array of currencies (with optional counterparty) that may be used in the payment paths.</td>
+</tr>
+<tr>
+<td><em>pathfind.source.</em> currencies[]</td>
+<td>object</td>
+<td>A currency with optional counterparty.</td>
+</tr>
+<tr>
+<td><em>pathfind.source.currencies[].</em> currency</td>
+<td><a href="#currency">currency</a></td>
+<td>The three-character code or hexadecimal string used to denote currencies</td>
+</tr>
+<tr>
+<td><em>pathfind.source.currencies[].</em> counterparty</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> The counterparty for the currency; if omitted any counterparty may be used.</td>
+</tr>
+<tr>
+<td><em>pathfind.</em> destination</td>
+<td>object</td>
+<td>Properties of the destination of funds.</td>
+</tr>
+<tr>
+<td><em>pathfind.destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send to.</td>
+</tr>
+<tr>
+<td><em>pathfind.destination.</em> amount</td>
+<td><a href="#amount">laxLaxAmount</a></td>
+<td>The amount to be received by the receiver (<code>value</code> may be ommitted if a source amount is specified).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-11">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source</td>
+<td>object</td>
+<td>Properties of the source of the payment.</td>
+</tr>
+<tr>
+<td><em>source.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send from.</td>
+</tr>
+<tr>
+<td><em>source.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>An exact amount to send. If the counterparty is not specified, amounts with any counterparty may be used. (This field is exclusive with source.maxAmount)</td>
+</tr>
+<tr>
+<td><em>source.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td><em>source.</em> maxAmount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>The maximum amount to send. (This field is exclusive with source.amount)</td>
+</tr>
+<tr>
+<td>destination</td>
+<td>object</td>
+<td>Properties of the destination of the payment.</td>
+</tr>
+<tr>
+<td><em>destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to receive at.</td>
+</tr>
+<tr>
+<td><em>destination.</em> amount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>An exact amount to deliver to the recipient. If the counterparty is not specified, amounts with any counterparty may be used. (This field is exclusive with destination.minAmount).</td>
+</tr>
+<tr>
+<td><em>destination.</em> tag</td>
+<td>integer</td>
+<td><em>Optional</em> An arbitrary unsigned 32-bit integer that identifies a reason for payment or a non-Ripple account.</td>
+</tr>
+<tr>
+<td><em>destination.</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address to send to.</td>
+</tr>
+<tr>
+<td><em>destination.</em> minAmount</td>
+<td><a href="#amount">laxAmount</a></td>
+<td>The minimum amount to be delivered. (This field is exclusive with destination.amount)</td>
+</tr>
+<tr>
+<td>paths</td>
+<td>string</td>
+<td>The paths of trustlines and orders to use in executing the payment.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-19">Example</h3>
+<pre><code class="javascript">const pathfind = {
+  "source": {
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+  },
+  "destination": {
+    "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+    "amount": {
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+      "value": "100"
+    }
+  }
+};
+return api.getPaths(pathfind)
+  .then(paths =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">[
+  {
+    "source": {
+      "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "maxAmount": {
+        "currency": "JPY",
+        "value": "0.1117218827811721"
+      }
+    },
+    "destination": {
+      "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+      "amount": {
+        "currency": "USD",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+        "value": "100"
+      }
+    },
+    "paths": "[[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
+  },
+  {
+    "source": {
+      "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "maxAmount": {
+        "currency": "USD",
+        "value": "0.001002"
+      }
+    },
+    "destination": {
+      "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+      "amount": {
+        "currency": "USD",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+        "value": "100"
+      }
+    },
+    "paths": "[[{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
+  },
+  {
+    "source": {
+      "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "maxAmount": {
+        "currency": "XRP",
+        "value": "0.207669"
+      }
+    },
+    "destination": {
+      "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+      "amount": {
+        "currency": "USD",
+        "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+        "value": "100"
+      }
+    },
+    "paths": "[[{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"currency\":\"USD\",\"issuer\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\"},{\"account\":\"rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc\"},{\"account\":\"rf9X8QoYnWLHMHuDfjkmRcD2UE5qX5aYV\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"currency\":\"USD\",\"issuer\":\"rDVdJ62foD1sn7ZpxtXyptdkBSyhsQGviT\"},{\"account\":\"rDVdJ62foD1sn7ZpxtXyptdkBSyhsQGviT\"},{\"account\":\"rfQPFZ3eLcaSUKjUy7A3LAmDNM4F9Hz9j1\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
+  }
+]
+</code></pre>
+<h2 id="getorders">getOrders</h2>
+<p><code>getOrders(address: string, options: Object): Promise&lt;Array&lt;Object&gt;&gt;</code></p>
+<p>Returns open orders for the specified account. Open orders are orders that have not yet been fully executed and are still in the order book.</p>
+<h3 id="parameters-13">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The Ripple address of the account to get open orders for.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options that determine what orders will be returned.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return orders as of this historical ledger version.</td>
+</tr>
+<tr>
+<td><em>options.</em> limit</td>
+<td>integer</td>
+<td><em>Optional</em> At most this many orders will be returned.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-12">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>specification</td>
+<td><a href="#order">order</a></td>
+<td>An order specification that would create an order equivalent to the current state of this order.</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>object</td>
+<td>Properties of the order not in the specification.</td>
+</tr>
+<tr>
+<td><em>properties.</em> maker</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that submitted the order.</td>
+</tr>
+<tr>
+<td><em>properties.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The account sequence number of the transaction that created this order.</td>
+</tr>
+<tr>
+<td><em>properties.</em> makerExchangeRate</td>
+<td><a href="#value">value</a></td>
+<td>The exchange rate from the point of view of the account that submitted the order (also known as "quality").</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-20">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getOrders(address).then(orders =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">[
+  {
+    "specification": {
+      "direction": "sell",
+      "quantity": {
+        "currency": "EUR",
+        "value": "17.70155237781915",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "1122.990930900328",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 719930,
+      "makerExchangeRate": "63.44025128030504"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "EUR",
+        "value": "750",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "19.11697137482289",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 756999,
+      "makerExchangeRate": "39.23215583132338"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "19.50899530491766",
+        "counterparty": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "18.46856867857617",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 757002,
+      "makerExchangeRate": "1.056334989703257"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "1445.796633544794",
+        "counterparty": "rpDMez6pm6dBve2TJsmDpv7Yae6V5Pyvy2"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "14.40727807030772",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 757003,
+      "makerExchangeRate": "100.3518240218094"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "750",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "totalPrice": {
+        "currency": "NZD",
+        "value": "9.178557969538755",
+        "counterparty": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 782148,
+      "makerExchangeRate": "81.7121820757743"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "500",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "9.94768291869523",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 787368,
+      "makerExchangeRate": "50.26296114247091"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "10000",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "9.994805759894176",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 787408,
+      "makerExchangeRate": "1000.519693952099"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "MXN",
+        "value": "15834.53653918684",
+        "counterparty": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "11.67691646304319",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 803438,
+      "makerExchangeRate": "1356.054621894598"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "3968.240250979598",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      },
+      "totalPrice": {
+        "currency": "XAU",
+        "value": "0.03206299605333101",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 807858,
+      "makerExchangeRate": "123763.8630020459"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "4139.022125516302",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "totalPrice": {
+        "currency": "XAU",
+        "value": "0.03347459066593226",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 807896,
+      "makerExchangeRate": "123646.6837435794"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "XRP",
+        "value": "115760.19"
+      },
+      "totalPrice": {
+        "currency": "NZD",
+        "value": "6.840555705",
+        "counterparty": "rsP3mgGb2tcYUrxiLFiHJiQXhsziegtwBc"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 814018,
+      "makerExchangeRate": "16922.62953364839"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "902.4050961259154",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "totalPrice": {
+        "currency": "EUR",
+        "value": "14.40843766044656",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 827522,
+      "makerExchangeRate": "62.63032241192674"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "181.4887131319798",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      },
+      "totalPrice": {
+        "currency": "XAG",
+        "value": "1.128432823485989",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 833591,
+      "makerExchangeRate": "160.8325363767064"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "1814.887131319799",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      },
+      "totalPrice": {
+        "currency": "XAG",
+        "value": "1.128432823485991",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 833592,
+      "makerExchangeRate": "1608.325363767062"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "USD",
+        "value": "118.6872603846736",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      },
+      "totalPrice": {
+        "currency": "XAG",
+        "value": "0.7283371225235964",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 838954,
+      "makerExchangeRate": "162.9564891233845"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "XAU",
+        "value": "1",
+        "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
+      },
+      "totalPrice": {
+        "currency": "XRP",
+        "value": "2229.229447"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 843730,
+      "makerExchangeRate": "0.0004485854972648762"
+    }
+  },
+  {
+    "specification": {
+      "direction": "buy",
+      "quantity": {
+        "currency": "EUR",
+        "value": "750",
+        "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
+      },
+      "totalPrice": {
+        "currency": "USD",
+        "value": "17.77537376072202",
+        "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      }
+    },
+    "properties": {
+      "maker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "sequence": 844068,
+      "makerExchangeRate": "42.19320561670911"
+    }
+  }
+]
+</code></pre>
+<h2 id="getorderbook">getOrderbook</h2>
+<p><code>getOrderbook(address: string, orderbook: Object, options: Object): Promise&lt;Object&gt;</code></p>
+<p>Returns open orders for the specified account. Open orders are orders that have not yet been fully executed and are still in the order book.</p>
+<h3 id="parameters-14">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>Address of an account to use as point-of-view. (This affects which unfunded offers are returned.)</td>
+</tr>
+<tr>
+<td>orderbook</td>
+<td>object</td>
+<td>The order book to get.</td>
+</tr>
+<tr>
+<td><em>orderbook.</em> base</td>
+<td>object</td>
+<td>A currency-counterparty pair, or just currency if it's XRP</td>
+</tr>
+<tr>
+<td><em>orderbook.</em> counter</td>
+<td>object</td>
+<td>A currency-counterparty pair, or just currency if it's XRP</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to determine what to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Return the order book as of this historical ledger version.</td>
+</tr>
+<tr>
+<td><em>options.</em> limit</td>
+<td>integer</td>
+<td><em>Optional</em> Return at most this many orders from the order book.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-13">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure (Note: the structures of <code>bids</code> and <code>asks</code> are identical):</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bids</td>
+<td>array</td>
+<td>The buy orders in the order book.</td>
+</tr>
+<tr>
+<td>bids[]</td>
+<td>object</td>
+<td>An order in the order book.</td>
+</tr>
+<tr>
+<td><em>bids[].</em> specification</td>
+<td><a href="#order">order</a></td>
+<td>An order specification that would create an order equivalent to the current state of this order.</td>
+</tr>
+<tr>
+<td><em>bids[].</em> properties</td>
+<td>object</td>
+<td>Properties of the order not in the specification.</td>
+</tr>
+<tr>
+<td><em>bids[].properties.</em> maker</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that submitted the order.</td>
+</tr>
+<tr>
+<td><em>bids[].properties.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The account sequence number of the transaction that created this order.</td>
+</tr>
+<tr>
+<td><em>bids[].properties.</em> makerExchangeRate</td>
+<td><a href="#value">value</a></td>
+<td>The exchange rate from the point of view of the account that submitted the order (also known as "quality").</td>
+</tr>
+<tr>
+<td><em>bids[].</em> state</td>
+<td>object</td>
+<td><em>Optional</em> The state of the order.</td>
+</tr>
+<tr>
+<td><em>bids[].state.</em> fundedAmount</td>
+<td><a href="#amount">amount</a></td>
+<td>How much of the amount the maker would have to pay that the maker currently holds.</td>
+</tr>
+<tr>
+<td><em>bids[].state.</em> priceOfFundedAmount</td>
+<td><a href="#amount">amount</a></td>
+<td>How much the <code>fundedAmount</code> would convert to through the exchange rate of this order.</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>array</td>
+<td>The sell orders in the order book.</td>
+</tr>
+<tr>
+<td>asks[]</td>
+<td>object</td>
+<td>An order in the order book.</td>
+</tr>
+<tr>
+<td><em>asks[].</em> specification</td>
+<td><a href="#order">order</a></td>
+<td>An order specification that would create an order equivalent to the current state of this order.</td>
+</tr>
+<tr>
+<td><em>asks[].</em> properties</td>
+<td>object</td>
+<td>Properties of the order not in the specification.</td>
+</tr>
+<tr>
+<td><em>asks[].properties.</em> maker</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that submitted the order.</td>
+</tr>
+<tr>
+<td><em>asks[].properties.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The account sequence number of the transaction that created this order.</td>
+</tr>
+<tr>
+<td><em>asks[].properties.</em> makerExchangeRate</td>
+<td><a href="#value">value</a></td>
+<td>The exchange rate from the point of view of the account that submitted the order (also known as "quality").</td>
+</tr>
+<tr>
+<td><em>asks[].</em> state</td>
+<td>object</td>
+<td><em>Optional</em> The state of the order.</td>
+</tr>
+<tr>
+<td><em>asks[].state.</em> fundedAmount</td>
+<td><a href="#amount">amount</a></td>
+<td>How much of the amount the maker would have to pay that the maker currently holds.</td>
+</tr>
+<tr>
+<td><em>asks[].state.</em> priceOfFundedAmount</td>
+<td><a href="#amount">amount</a></td>
+<td>How much the <code>fundedAmount</code> would convert to through the exchange rate of this order.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-21">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const orderbook = {
+  "base": {
+    "currency": "USD",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  },
+  "counter": {
+    "currency": "BTC",
+    "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  }
+};
+return api.getOrderbook(address, orderbook)
+  .then(orderbook =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "bids": [
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "93.030522464522",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.2849323720855092",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rwBYyfufTzk77zUSKEu4MvixfarC35av1J",
+        "sequence": 386940,
+        "makerExchangeRate": "326.5003614141928"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "1",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.00302447007930511",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rwjsRktX1eguUr1pHTffyHnC4uyrvX58V1",
+        "sequence": 207855,
+        "makerExchangeRate": "330.6364334177034"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "99.34014894048333",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.3",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-25T01:14:43.000Z"
+      },
+      "properties": {
+        "maker": "raudnGKfTK23YKfnS7ixejHrqGERTYNFXk",
+        "sequence": 110103,
+        "makerExchangeRate": "331.1338298016111"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "268.754",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.8095",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rPyYxUGK8L4dgEvjPs3aRc1B1jEiLr3Hx5",
+        "sequence": 392,
+        "makerExchangeRate": "332"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "BTC",
+          "value": "0.8078974385735969",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "USD",
+          "value": "268.2219496064341",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "152.0098333185607",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.4499999999999999",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-25T01:14:44.000Z"
+      },
+      "properties": {
+        "maker": "raudnGKfTK23YKfnS7ixejHrqGERTYNFXk",
+        "sequence": 110105,
+        "makerExchangeRate": "337.7996295968016"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "1.308365894430151",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.003768001830745216",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rDbsCJr5m8gHDCNEHCZtFxcXHsD4S9jH83",
+        "sequence": 110061,
+        "makerExchangeRate": "347.2306949944844"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "176.3546101589987",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.5",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-25T00:41:38.000Z"
+      },
+      "properties": {
+        "maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+        "sequence": 35788,
+        "makerExchangeRate": "352.7092203179974"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "179.48",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.5",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rN6jbxx4H6NxcnmkzBxQnbCWLECNKrgSSf",
+        "sequence": 491,
+        "makerExchangeRate": "358.96"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "BTC",
+          "value": "0.499001996007984",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "USD",
+          "value": "179.1217564870259",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "288.7710263794967",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.8",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-25T00:41:39.000Z"
+      },
+      "properties": {
+        "maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+        "sequence": 35789,
+        "makerExchangeRate": "360.9637829743709"
+      }
+    },
+    {
+      "specification": {
+        "direction": "buy",
+        "quantity": {
+          "currency": "USD",
+          "value": "182.9814890090516",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.5",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rUeCeioKJkbYhv4mRGuAbZpPcqkMCoYq6N",
+        "sequence": 5255,
+        "makerExchangeRate": "365.9629780181032"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "BTC",
+          "value": "0.2254411038203033",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "USD",
+          "value": "82.50309772176658",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    }
+  ],
+  "asks": [
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "3205.1",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "10",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+        "sequence": 434,
+        "makerExchangeRate": "0.003120027456241615"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "1599.063669386278",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "4.99707396683212",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rDYCRhpahKEhCFV25xScg67Bwf4W9sTYAm",
+        "sequence": 233,
+        "makerExchangeRate": "0.003125"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "143.1050962074379",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.4499999999999999",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-25T01:14:44.000Z"
+      },
+      "properties": {
+        "maker": "raudnGKfTK23YKfnS7ixejHrqGERTYNFXk",
+        "sequence": 110104,
+        "makerExchangeRate": "0.003144542101755081"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "USD",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "BTC",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "254.329207354604",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.8",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-24T21:44:11.000Z"
+      },
+      "properties": {
+        "maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+        "sequence": 35625,
+        "makerExchangeRate": "0.003145529403882357"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "USD",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "BTC",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "390.4979",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "1.23231134568807",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rwBYyfufTzk77zUSKEu4MvixfarC35av1J",
+        "sequence": 387756,
+        "makerExchangeRate": "0.003155743848271834"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "1",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.003160328237957649",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rwjsRktX1eguUr1pHTffyHnC4uyrvX58V1",
+        "sequence": 208927,
+        "makerExchangeRate": "0.003160328237957649"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "4725",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "15",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+        "sequence": 429,
+        "makerExchangeRate": "0.003174603174603175"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "1.24252537879871",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "0.003967400879423823",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "rDbsCJr5m8gHDCNEHCZtFxcXHsD4S9jH83",
+        "sequence": 110099,
+        "makerExchangeRate": "0.003193013959408667"
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "496.5429474010489",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "1.6",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "expirationTime": "2014-12-24T21:44:12.000Z"
+      },
+      "properties": {
+        "maker": "rDVBvAQScXrGRGnzrxRrcJPeNLeLeUTAqE",
+        "sequence": 35627,
+        "makerExchangeRate": "0.003222279177208227"
+      },
+      "state": {
+        "fundedAmount": {
+          "currency": "USD",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "priceOfFundedAmount": {
+          "currency": "BTC",
+          "value": "0",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      }
+    },
+    {
+      "specification": {
+        "direction": "sell",
+        "quantity": {
+          "currency": "USD",
+          "value": "3103",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        },
+        "totalPrice": {
+          "currency": "BTC",
+          "value": "10",
+          "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+        }
+      },
+      "properties": {
+        "maker": "r49y2xKuKVG2dPkNHgWQAV61cjxk8gryjQ",
+        "sequence": 431,
+        "makerExchangeRate": "0.003222687721559781"
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="getsettings">getSettings</h2>
+<p><code>getSettings(address: string, options: Object): Promise&lt;Object&gt;</code></p>
+<p>Returns settings for the specified account. Note: For account data that is not modifiable by the user, see <a href="#getaccountinfo">getAccountInfo</a>.</p>
+<h3 id="parameters-15">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account to get the settings of.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options that affect what to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Get the settings as of this historical ledger version.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-14">Return Value</h3>
+<p>This method returns a promise that resolves with an array of objects with the following structure (Note: all fields are optional as they will not be shown if they are set to their default value):</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultRipple</td>
+<td>boolean</td>
+<td><em>Optional</em> Enable <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account’s trust lines by default. (New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.3">rippled 0.27.3</a>)</td>
+</tr>
+<tr>
+<td>disableMasterKey</td>
+<td>boolean</td>
+<td><em>Optional</em> Disallows use of the master key to sign transactions for this account.</td>
+</tr>
+<tr>
+<td>disallowIncomingXRP</td>
+<td>boolean</td>
+<td><em>Optional</em> Indicates that client applications should not send XRP to this account. Not enforced by rippled.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td><em>Optional</em>  The domain that owns this account, as a hexadecimal string representing the ASCII for the domain in lowercase.</td>
+</tr>
+<tr>
+<td>emailHash</td>
+<td>string,null</td>
+<td><em>Optional</em> Hash of an email address to be used for generating an avatar image. Conventionally, clients use Gravatar to display this image. Use <code>null</code> to clear.</td>
+</tr>
+<tr>
+<td>enableTransactionIDTracking</td>
+<td>boolean</td>
+<td><em>Optional</em> Track the ID of this account’s most recent transaction.</td>
+</tr>
+<tr>
+<td>globalFreeze</td>
+<td>boolean</td>
+<td><em>Optional</em> Freeze all assets issued by this account.</td>
+</tr>
+<tr>
+<td>memos</td>
+<td><a href="#transaction-memos">memos</a></td>
+<td><em>Optional</em> Array of memos to attach to the transaction.</td>
+</tr>
+<tr>
+<td>messageKey</td>
+<td>string</td>
+<td><em>Optional</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
+</tr>
+<tr>
+<td>noFreeze</td>
+<td>boolean</td>
+<td><em>Optional</em> Permanently give up the ability to freeze individual trust lines. This flag can never be disabled after being enabled.</td>
+</tr>
+<tr>
+<td>passwordSpent</td>
+<td>boolean</td>
+<td><em>Optional</em> Indicates that the account has used its free SetRegularKey transaction.</td>
+</tr>
+<tr>
+<td>regularKey</td>
+<td><a href="#ripple-address">address</a>,null</td>
+<td><em>Optional</em> The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. Use <code>null</code> to remove the regular key.</td>
+</tr>
+<tr>
+<td>requireAuthorization</td>
+<td>boolean</td>
+<td><em>Optional</em> If set, this account must individually approve other users in order for those users to hold this account’s issuances.</td>
+</tr>
+<tr>
+<td>requireDestinationTag</td>
+<td>boolean</td>
+<td><em>Optional</em> Requires incoming payments to specify a destination tag.</td>
+</tr>
+<tr>
+<td>signers</td>
+<td>object</td>
+<td><em>Optional</em> Settings that determine what sets of accounts can be used to sign a transaction on behalf of this account using multisigning.</td>
+</tr>
+<tr>
+<td><em>signers.</em> threshold</td>
+<td>integer</td>
+<td><em>Optional</em> A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value <code>0</code>.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights</td>
+<td>array</td>
+<td><em>Optional</em> Weights of signatures for each signer.</td>
+</tr>
+<tr>
+<td><em>signers.</em> weights[]</td>
+<td>object</td>
+<td>An association of an address and a weight.</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>A Ripple account address</td>
+</tr>
+<tr>
+<td><em>signers.weights[].</em> weight</td>
+<td>integer</td>
+<td>The weight that the signature of this account counts as towards the threshold.</td>
+</tr>
+<tr>
+<td>transferRate</td>
+<td>number,null</td>
+<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, represented as billionths of a unit. Use <code>null</code> to set no fee.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-22">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getSettings(address).then(settings =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "requireDestinationTag": true,
+  "disallowIncomingXRP": true,
+  "emailHash": "23463B99B62A72F26ED677CC556C44E8",
+  "domain": "example.com",
+  "transferRate": 1.002
+}
+</code></pre>
+<h2 id="getaccountinfo">getAccountInfo</h2>
+<p><code>getAccountInfo(address: string, options: Object): Promise&lt;Object&gt;</code></p>
+<p>Returns information for the specified account. Note: For account data that is modifiable by the user, see <a href="#getsettings">getSettings</a>.</p>
+<h3 id="parameters-16">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account to get the account info of.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options that affect what to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Get the account info as of this historical ledger version.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-15">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The next (smallest unused) sequence number for this account.</td>
+</tr>
+<tr>
+<td>xrpBalance</td>
+<td><a href="#value">value</a></td>
+<td>The XRP balance owned by the account.</td>
+</tr>
+<tr>
+<td>ownerCount</td>
+<td>integer</td>
+<td>Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This is used to calculate the total reserve required to use the account.</td>
+</tr>
+<tr>
+<td>previousAffectingTransactionID</td>
+<td>string</td>
+<td>Hash value representing the most recent transaction that affected this account node directly. <strong>Note:</strong> This does not include changes to the account’s trust lines and offers.</td>
+</tr>
+<tr>
+<td>previousAffectingTransactionLedgerVersion</td>
+<td>integer</td>
+<td>The ledger version that the transaction identified by the <code>previousAffectingTransactionID</code> was validated in.</td>
+</tr>
+<tr>
+<td>previousInitiatedTransactionID</td>
+<td>string</td>
+<td><em>Optional</em> Hash value representing the most recent transaction that was initiated by this account.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-23">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+return api.getAccountInfo(address).then(info =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "sequence": 23,
+  "xrpBalance": "922.913243",
+  "ownerCount": 1,
+  "previousAffectingTransactionID": "19899273706A9E040FDB5885EE991A1DC2BAD878A0D6E7DBCFB714E63BF737F7",
+  "previousAffectingTransactionLedgerVersion": 6614625
+}
+</code></pre>
+<h2 id="getledger">getLedger</h2>
+<p><code>getLedger(options: Object): Promise&lt;Object&gt;</code></p>
+<p>Returns header information for the specified ledger (or the most recent validated ledger if no ledger is specified). Optionally, all the transactions that were validated in the ledger or the account state information can be returned with the ledger header.</p>
+<h3 id="parameters-17">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options affecting what ledger and how much data to return.</td>
+</tr>
+<tr>
+<td><em>options.</em> includeAllData</td>
+<td>boolean</td>
+<td><em>Optional</em> Include full transactions and/or state information if <code>includeTransactions</code> and/or <code>includeState</code> is set.</td>
+</tr>
+<tr>
+<td><em>options.</em> includeState</td>
+<td>boolean</td>
+<td><em>Optional</em> Return an array of hashes for all state data or an array of all state data in this ledger version, depending on whether <code>includeAllData</code> is set.</td>
+</tr>
+<tr>
+<td><em>options.</em> includeTransactions</td>
+<td>boolean</td>
+<td><em>Optional</em> Return an array of hashes for each transaction or an array of all transactions that were validated in this ledger version, depending on whether <code>includeAllData</code> is set.</td>
+</tr>
+<tr>
+<td><em>options.</em> ledgerVersion</td>
+<td>integer</td>
+<td><em>Optional</em> Get ledger data for this historical ledger version.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-16">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stateHash</td>
+<td>string</td>
+<td>Hash of all state information in this ledger.</td>
+</tr>
+<tr>
+<td>closeTime</td>
+<td>date-time string</td>
+<td>The time at which this ledger was closed.</td>
+</tr>
+<tr>
+<td>closeTimeResolution</td>
+<td>integer</td>
+<td>Approximate number of seconds between closing one ledger version and closing the next one.</td>
+</tr>
+<tr>
+<td>closeFlags</td>
+<td>integer</td>
+<td>A bit-map of flags relating to the closing of this ledger. Currently, the ledger has only one flag defined for <code>closeFlags</code>: <strong>sLCF_NoConsensusTime</strong> (value 1). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>closeTime</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>closeTime</code>.)</td>
+</tr>
+<tr>
+<td>ledgerHash</td>
+<td>string</td>
+<td>Unique identifying hash of the entire ledger.</td>
+</tr>
+<tr>
+<td>ledgerVersion</td>
+<td>integer</td>
+<td>The ledger version of this ledger.</td>
+</tr>
+<tr>
+<td>parentLedgerHash</td>
+<td>string</td>
+<td>Unique identifying hash of the ledger that came immediately before this one.</td>
+</tr>
+<tr>
+<td>parentCloseTime</td>
+<td>date-time string</td>
+<td>The time at which the previous ledger was closed.</td>
+</tr>
+<tr>
+<td>totalDrops</td>
+<td><a href="#value">value</a></td>
+<td>Total number of drops (1/1,000,000th of an XRP) in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.)</td>
+</tr>
+<tr>
+<td>transactionHash</td>
+<td>string</td>
+<td>Hash of the transaction information included in this ledger.</td>
+</tr>
+<tr>
+<td>rawState</td>
+<td>string</td>
+<td><em>Optional</em> A JSON string containing all state data for this ledger in rippled JSON format.</td>
+</tr>
+<tr>
+<td>rawTransactions</td>
+<td>string</td>
+<td><em>Optional</em> A JSON string containing rippled format transaction JSON for all transactions that were validated in this ledger.</td>
+</tr>
+<tr>
+<td>stateHashes</td>
+<td>array\&lt;string&gt;</td>
+<td><em>Optional</em> An array of hashes of all state data in this ledger.</td>
+</tr>
+<tr>
+<td>transactionHashes</td>
+<td>array\&lt;<a href="#transaction-id">id</a>&gt;</td>
+<td><em>Optional</em> An array of hashes of all transactions that were validated in this ledger.</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>array\&lt;<a href="#gettransaction">getTransaction</a>&gt;</td>
+<td><em>Optional</em> Array of all transactions that were validated in this ledger. Transactions are represented in the same format as the return value of <a href="#gettransaction">getTransaction</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-24">Example</h3>
+<pre><code class="javascript">return api.getLedger()
+  .then(ledger =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "stateHash": "EC028EC32896D537ECCA18D18BEBE6AE99709FEFF9EF72DBD3A7819E918D8B96",
+  "closeTime": "2014-09-24T21:21:50.000Z",
+  "closeTimeResolution": 10,
+  "closeFlags": 0,
+  "ledgerHash": "0F7ED9F40742D8A513AE86029462B7A6768325583DF8EE21B7EC663019DD6A0F",
+  "ledgerVersion": 9038214,
+  "parentLedgerHash": "4BB9CBE44C39DC67A1BE849C7467FE1A6D1F73949EA163C38A0121A15E04FFDE",
+  "parentCloseTime": "2014-09-24T21:21:40.000Z",
+  "totalDrops": "99999973964317514",
+  "transactionHash": "ECB730839EB55B1B114D5D1AD2CD9A932C35BA9AB6D3A8C2F08935EAC2BAC239"
+}
+</code></pre>
+<h2 id="preparepayment">preparePayment</h2>
+<p><code>preparePayment(address: string, payment: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a payment transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-18">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>payment</td>
+<td><a href="#payment">payment</a></td>
+<td>The specification of the payment to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-17">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-25">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const payment = {
+  "source": {
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "maxAmount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "destination": {
+    "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+    "amount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  }
+};
+return api.preparePayment(address, payment).then(prepared =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147483648,\"TransactionType\":\"Payment\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"Destination\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"Amount\":{\"value\":\"0.01\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"SendMax\":{\"value\":\"0.01\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="preparetrustline">prepareTrustline</h2>
+<p><code>prepareTrustline(address: string, trustline: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a trustline transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-19">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>trustline</td>
+<td><a href="#trustline">trustline</a></td>
+<td>The specification of the trustline to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-18">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-26">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const trustline = {
+  "currency": "USD",
+  "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+  "limit": "10000",
+  "qualityIn": 0.91,
+  "qualityOut": 0.87,
+  "ripplingDisabled": true,
+  "frozen": false,
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
+};
+return api.preparePayment(address, trustline).then(prepared =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"TransactionType\":\"TrustSet\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"LimitAmount\":{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\",\"value\":\"10000\"},\"Flags\":2149711872,\"QualityIn\":910000000,\"QualityOut\":870000000,\"Memos\":[{\"Memo\":{\"MemoData\":\"7465787465642064617461\",\"MemoType\":\"74657374\",\"MemoFormat\":\"706C61696E2F74657874\"}}],\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="prepareorder">prepareOrder</h2>
+<p><code>prepareOrder(address: string, order: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare an order transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-20">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>order</td>
+<td><a href="#order">order</a></td>
+<td>The specification of the order to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-19">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-27">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const order = {
+  "direction": "buy",
+  "quantity": {
+    "currency": "USD",
+    "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM",
+    "value": "10.1"
+  },
+  "totalPrice": {
+    "currency": "XRP",
+    "value": "2"
+  },
+  "passive": true,
+  "fillOrKill": true
+};
+return api.prepareOrder(address, order)
+  .then(prepared =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147811328,\"TransactionType\":\"OfferCreate\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"TakerGets\":\"2000000\",\"TakerPays\":{\"value\":\"10.1\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"LastLedgerSequence\":8819954,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8819954
+  }
+}
+</code></pre>
+<h2 id="prepareordercancellation">prepareOrderCancellation</h2>
+<p><code>prepareOrderCancellation(address: string, orderCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare an order cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-21">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>orderCancellation</td>
+<td><a href="#order-cancellation">orderCancellation</a></td>
+<td>The specification of the order cancellation to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-20">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-28">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const orderCancellation = {orderSequence: 123};
+return api.prepareOrderCancellation(address, sequence)
+  .then(prepared =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147483648,\"TransactionType\":\"OfferCancel\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"OfferSequence\":23,\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="preparesettings">prepareSettings</h2>
+<p><code>prepareSettings(address: string, settings: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a settings transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-22">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>settings</td>
+<td><a href="#settings">settings</a></td>
+<td>The specification of the settings to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-21">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-29">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const settings = {
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
+};
+return api.prepareSettings(address, settings)
+  .then(prepared =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "domain": "ripple.com",
+  "memos": [
+    {
+      "type": "test",
+      "format": "plain/text",
+      "data": "texted data"
+    }
+  ]
+}
+</code></pre>
+<h2 id="preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</h2>
+<p><code>prepareSuspendedPaymentCreation(address: string, suspendedPaymentCreation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a suspended payment creation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<h3 id="parameters-23">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>suspendedPaymentCreation</td>
+<td><a href="#suspended-payment-creation">suspendedPaymentCreation</a></td>
+<td>The specification of the suspended payment creation to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-22">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-30">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const suspendedPaymentCreation = {
+  "source": {
+    "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "maxAmount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "destination": {
+    "address": "rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo",
+    "amount": {
+      "value": "0.01",
+      "currency": "USD",
+      "counterparty": "rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM"
+    }
+  },
+  "allowCancelAfter": "2014-09-24T21:21:50.000Z"
+};
+return api.prepareSuspendedPaymentCreation(address, suspendedPaymentCreation).then(prepared =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147483648,\"TransactionType\":\"SuspendedPaymentCreate\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"Destination\":\"rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo\",\"Amount\":{\"value\":\"0.01\",\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},\"CancelAfter\":464908910,\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</h2>
+<p><code>prepareSuspendedPaymentCancellation(address: string, suspendedPaymentCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a suspended payment cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<h3 id="parameters-24">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>suspendedPaymentCancellation</td>
+<td><a href="#suspended-payment-cancellation">suspendedPaymentCancellation</a></td>
+<td>The specification of the suspended payment cancellation to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-23">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-31">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const suspendedPaymentCancellation = {
+  "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "suspensionSequence": 1234
+};
+return api.prepareSuspendedPaymentCancellation(address, suspendedPaymentCancellation).then(prepared =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147483648,\"TransactionType\":\"SuspendedPaymentCancel\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"Owner\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"OfferSequence\":1234,\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</h2>
+<p><code>prepareSuspendedPaymentExecution(address: string, suspendedPaymentExecution: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
+<p>Prepare a suspended payment execution transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
+<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<h3 id="parameters-25">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>The address of the account that is creating the transaction.</td>
+</tr>
+<tr>
+<td>suspendedPaymentExecution</td>
+<td><a href="#suspended-payment-execution">suspendedPaymentExecution</a></td>
+<td>The specification of the suspended payment execution to prepare.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#transaction-instructions">instructions</a></td>
+<td><em>Optional</em> Instructions for executing the transaction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-24">Return Value</h3>
+<p>This method returns a promise that resolves with an object with the following structure:</p>
+<aside class="notice">
+All "prepare*" methods have the same return type.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>The prepared transaction in rippled JSON format.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>object</td>
+<td>The instructions for how to execute the transaction after adding automatic defaults.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> fee</td>
+<td><a href="#value">value</a></td>
+<td>An exact fee to pay for the transaction. See <a href="#transaction-fees">Transaction Fees</a> for more information.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> sequence</td>
+<td><a href="#account-sequence-number">sequence</a></td>
+<td>The initiating account's sequence number for this transaction.</td>
+</tr>
+<tr>
+<td><em>instructions.</em> maxLedgerVersion</td>
+<td>integer,null</td>
+<td>The highest ledger version that the transaction can be included in. Set to <code>null</code> if there is no maximum.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-32">Example</h3>
+<pre><code class="javascript">const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
+const suspendedPaymentExecution = {
+  "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "suspensionSequence": 1234,
+  "method": 1,
+  "digest": "712C36933822AD3A3D136C5DF97AA863B69F9CE88B2D6CE6BDD11BFDE290C19D",
+  "proof": "this must have 32 characters...."
+};
+return api.prepareSuspendedPaymentExecution(address, suspendedPaymentExecution).then(prepared =&gt;
+  {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "txJSON": "{\"Flags\":2147483648,\"TransactionType\":\"SuspendedPaymentFinish\",\"Account\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"Owner\":\"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59\",\"OfferSequence\":1234,\"Method\":1,\"Digest\":\"712C36933822AD3A3D136C5DF97AA863B69F9CE88B2D6CE6BDD11BFDE290C19D\",\"Proof\":\"74686973206D757374206861766520333220636861726163746572732E2E2E2E\",\"LastLedgerSequence\":8820051,\"Fee\":\"12\",\"Sequence\":23}",
+  "instructions": {
+    "fee": "0.000012",
+    "sequence": 23,
+    "maxLedgerVersion": 8820051
+  }
+}
+</code></pre>
+<h2 id="sign">sign</h2>
+<p><code>sign(txJSON: string, secret: string, options: Object): {signedTransaction: string, id: string}</code></p>
+<p>Sign a prepared transaction. The signed transaction must subsequently be <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-26">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txJSON</td>
+<td>string</td>
+<td>Transaction represented as a JSON string in rippled format.</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>secret string</td>
+<td>The secret of the account that is initiating the transaction.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options that control the type of signature that will be generated.</td>
+</tr>
+<tr>
+<td><em>options.</em> signAs</td>
+<td><a href="#ripple-address">address</a></td>
+<td><em>Optional</em> The account that the signature should count for in multisigning.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-25">Return Value</h3>
+<p>This method returns an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransaction</td>
+<td>string</td>
+<td>The signed transaction represented as an uppercase hexadecimal string.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="#transaction-id">id</a></td>
+<td>The <a href="#transaction-id">Transaction ID</a> of the signed transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-33">Example</h3>
+<pre><code class="javascript">const txJSON = '{"Flags":2147483648,"TransactionType":"AccountSet","Account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59","Domain":"726970706C652E636F6D","LastLedgerSequence":8820051,"Fee":"12","Sequence":23}';
+const secret = 'shsWGZcmZz6YsWWmcnpfr6fLTdtFV';
+return api.sign(txJSON, secret);
+</code></pre>
+<pre><code class="json">{
+  "signedTransaction": "12000322800000002400000017201B0086955368400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D874473045022100BDE09A1F6670403F341C21A77CF35BA47E45CDE974096E1AA5FC39811D8269E702203D60291B9A27F1DCABA9CF5DED307B4F23223E0B6F156991DB601DFB9C41CE1C770A726970706C652E636F6D81145E7B112523F68D2F5E879DB4EAC51C6698A69304",
+  "id": "02ACE87F1996E3A23690A5BB7F1774BF71CCBA68F79805831B42ABAD5913D6F4"
+}
+</code></pre>
+<h2 id="combine">combine</h2>
+<p><code>combine(signedTransactions: Array&lt;string&gt;): {signedTransaction: string, id: string}</code></p>
+<p>Combines signed transactions from multiple accounts for a multisignature transaction. The signed transaction must subsequently be <a href="#submit">submitted</a>.</p>
+<h3 id="parameters-27">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransactions</td>
+<td>array\&lt;string&gt;</td>
+<td>An array of signed transactions (from the output of <a href="#sign">sign</a>) to combine.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-26">Return Value</h3>
+<p>This method returns an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransaction</td>
+<td>string</td>
+<td>The signed transaction represented as an uppercase hexadecimal string.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="#transaction-id">id</a></td>
+<td>The <a href="#transaction-id">Transaction ID</a> of the signed transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-34">Example</h3>
+<pre><code class="javascript">const signedTransactions = [ "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E0107321026C784C1987F83BACBF02CD3E484AFC84ADE5CA6B36ED4DCA06D5BA233B9D382774473045022100E484F54FF909469FA2033E22EFF3DF8EDFE62217062680BB2F3EDF2F185074FE0220350DB29001C710F0450DAF466C5D819DC6D6A3340602DE9B6CB7DA8E17C90F798114FE9337B0574213FA5BCC0A319DBB4A7AC0CCA894E1F1",
+  "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E01073210287AAAB8FBE8C4C4A47F6F1228C6E5123A7ED844BFE88A9B22C2F7CC34279EEAA74473045022100B09DDF23144595B5A9523B20E605E138DC6549F5CA7B5984D7C32B0E3469DF6B022018845CA6C203D4B6288C87DDA439134C83E7ADF8358BD41A8A9141A9B631419F8114517D9B9609229E0CDFE2428B586738C5B2E84D45E1F1" ];
+return api.combine(signedTransactions);
+</code></pre>
+<pre><code class="json">{
+  "signedTransaction": "12000322800000002400000004201B000000116840000000000F42407300770B6578616D706C652E636F6D811407C532442A675C881BA1235354D4AB9D023243A6F3E01073210287AAAB8FBE8C4C4A47F6F1228C6E5123A7ED844BFE88A9B22C2F7CC34279EEAA74473045022100B09DDF23144595B5A9523B20E605E138DC6549F5CA7B5984D7C32B0E3469DF6B022018845CA6C203D4B6288C87DDA439134C83E7ADF8358BD41A8A9141A9B631419F8114517D9B9609229E0CDFE2428B586738C5B2E84D45E1E0107321026C784C1987F83BACBF02CD3E484AFC84ADE5CA6B36ED4DCA06D5BA233B9D382774473045022100E484F54FF909469FA2033E22EFF3DF8EDFE62217062680BB2F3EDF2F185074FE0220350DB29001C710F0450DAF466C5D819DC6D6A3340602DE9B6CB7DA8E17C90F798114FE9337B0574213FA5BCC0A319DBB4A7AC0CCA894E1F1",
+  "id": "8A3BFD2214B4C8271ED62648FCE9ADE4EE82EF01827CF7D1F7ED497549A368CC"
+}
+</code></pre>
+<h2 id="submit">submit</h2>
+<p><code>submit(signedTransaction: string): Promise&lt;Object&gt;</code></p>
+<p>Submits a signed transaction. The transaction is not guaranteed to succeed; it must be verified with <a href="#gettransaction">getTransaction</a>.</p>
+<h3 id="parameters-28">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signedTransaction</td>
+<td>string</td>
+<td>A signed transaction as returned by <a href="#sign">sign</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-27">Return Value</h3>
+<p>This method returns an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resultCode</td>
+<td>string</td>
+<td>The result code returned by rippled. <a href="http://pages.lightthenight.org/gba/SanFran15/ripple">List of tranasction responses</a></td>
+</tr>
+<tr>
+<td>resultMessage</td>
+<td>string</td>
+<td>Human-readable explanation of the status of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-35">Example</h3>
+<pre><code class="javascript">const signedTransaction = '12000322800000002400000017201B0086955368400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D874473045022100BDE09A1F6670403F341C21A77CF35BA47E45CDE974096E1AA5FC39811D8269E702203D60291B9A27F1DCABA9CF5DED307B4F23223E0B6F156991DB601DFB9C41CE1C770A726970706C652E636F6D81145E7B112523F68D2F5E879DB4EAC51C6698A69304';
+return api.submit(signedTransaction)
+  .then(result =&gt; {/* ... */});
+</code></pre>
+<pre><code class="json">{
+  "resultCode": "tesSUCCESS",
+  "resultMessage": "The transaction was applied. Only final in a validated ledger."
+}
+</code></pre>
+<h2 id="generateaddress">generateAddress</h2>
+<p><code>generateAddress(): {address: string, secret: string}</code></p>
+<p>Generate a new Ripple address and corresponding secret.</p>
+<h3 id="parameters-29">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td>object</td>
+<td><em>Optional</em> Options to control how the address and secret are generated.</td>
+</tr>
+<tr>
+<td><em>options.</em> algorithm</td>
+<td>string</td>
+<td><em>Optional</em> The digital signature algorithm to generate an address for. Can be <code>ecdsa-secp256k1</code> (default) or <code>ed25519</code>.</td>
+</tr>
+<tr>
+<td><em>options.</em> entropy</td>
+<td>array\&lt;integer&gt;</td>
+<td><em>Optional</em> The entropy to use to generate the seed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-28">Return Value</h3>
+<p>This method returns an object with the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><a href="#ripple-address">address</a></td>
+<td>A randomly generated Ripple account address.</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>secret string</td>
+<td>The secret corresponding to the <code>address</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-36">Example</h3>
+<pre><code class="javascript">return api.generateAddress();
+</code></pre>
+<pre><code class="json">{
+  "address": "rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f",
+  "secret": "sp6JS7f14BuwFY8Mw6bTtLKWauoUs"
+}
+</code></pre>
+<h2 id="computeledgerhash">computeLedgerHash</h2>
+<p><code>computeLedgerHash(ledger: Object): string</code></p>
+<p>Compute the hash of a ledger.</p>
+<h3 id="parameters-30">Parameters</h3>
+<aside class="notice">
+The parameter to this method has the same structure as the return value of getLedger.
+</aside>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ledger</td>
+<td>object</td>
+<td>The ledger header to hash.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> stateHash</td>
+<td>string</td>
+<td>Hash of all state information in this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> closeTime</td>
+<td>date-time string</td>
+<td>The time at which this ledger was closed.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> closeTimeResolution</td>
+<td>integer</td>
+<td>Approximate number of seconds between closing one ledger version and closing the next one.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> closeFlags</td>
+<td>integer</td>
+<td>A bit-map of flags relating to the closing of this ledger. Currently, the ledger has only one flag defined for <code>closeFlags</code>: <strong>sLCF_NoConsensusTime</strong> (value 1). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>closeTime</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>closeTime</code>.)</td>
+</tr>
+<tr>
+<td><em>ledger.</em> ledgerHash</td>
+<td>string</td>
+<td>Unique identifying hash of the entire ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> ledgerVersion</td>
+<td>integer</td>
+<td>The ledger version of this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> parentLedgerHash</td>
+<td>string</td>
+<td>Unique identifying hash of the ledger that came immediately before this one.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> parentCloseTime</td>
+<td>date-time string</td>
+<td>The time at which the previous ledger was closed.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> totalDrops</td>
+<td><a href="#value">value</a></td>
+<td>Total number of drops (1/1,000,000th of an XRP) in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.)</td>
+</tr>
+<tr>
+<td><em>ledger.</em> transactionHash</td>
+<td>string</td>
+<td>Hash of the transaction information included in this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> rawState</td>
+<td>string</td>
+<td><em>Optional</em> A JSON string containing all state data for this ledger in rippled JSON format.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> rawTransactions</td>
+<td>string</td>
+<td><em>Optional</em> A JSON string containing rippled format transaction JSON for all transactions that were validated in this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> stateHashes</td>
+<td>array\&lt;string&gt;</td>
+<td><em>Optional</em> An array of hashes of all state data in this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> transactionHashes</td>
+<td>array\&lt;<a href="#transaction-id">id</a>&gt;</td>
+<td><em>Optional</em> An array of hashes of all transactions that were validated in this ledger.</td>
+</tr>
+<tr>
+<td><em>ledger.</em> transactions</td>
+<td>array\&lt;<a href="#gettransaction">getTransaction</a>&gt;</td>
+<td><em>Optional</em> Array of all transactions that were validated in this ledger. Transactions are represented in the same format as the return value of <a href="#gettransaction">getTransaction</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value-29">Return Value</h3>
+<p>This method returns an uppercase hexadecimal string representing the hash of the ledger.</p>
+<h3 id="example-37">Example</h3>
+<pre><code class="javascript">const ledger = {
+  "stateHash": "D9ABF622DA26EEEE48203085D4BC23B0F77DC6F8724AC33D975DA3CA492D2E44",
+  "closeTime": "2015-08-12T01:01:10.000Z",
+  "parentCloseTime": "2015-08-12T01:01:00.000Z",
+  "closeFlags": 0,
+  "closeTimeResolution": 10,
+  "ledgerVersion": 15202439,
+  "parentLedgerHash": "12724A65B030C15A1573AA28B1BBB5DF3DA4589AA3623675A31CAE69B23B1C4E",
+  "totalDrops": "99998831688050493",
+  "transactionHash": "325EACC5271322539EEEC2D6A5292471EF1B3E72AE7180533EFC3B8F0AD435C8"
+};
+return api.computeLedgerHash(ledger);
+</code></pre>
+<pre><code class="json">"F4D865D83EB88C1A1911B9E90641919A1314F36E1B099F8E95FE3B7C77BE3349"
+</code></pre>
+<h1 id="api-events">API Events</h1>
+<h2 id="ledger">ledger</h2>
+<p>This event is emitted whenever a new ledger version is validated on the connected server.</p>
+<h3 id="return-value-30">Return Value</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseFeeXRP</td>
+<td><a href="#value">value</a></td>
+<td>Base fee, in XRP.</td>
+</tr>
+<tr>
+<td>ledgerHash</td>
+<td>string</td>
+<td>Unique hash of the ledger that was closed, as hex.</td>
+</tr>
+<tr>
+<td>ledgerTimestamp</td>
+<td>date-time string</td>
+<td>The time at which this ledger closed.</td>
+</tr>
+<tr>
+<td>reserveBaseXRP</td>
+<td><a href="#value">value</a></td>
+<td>The minimum reserve, in XRP, that is required for an account.</td>
+</tr>
+<tr>
+<td>reserveIncrementXRP</td>
+<td><a href="#value">value</a></td>
+<td>The increase in account reserve that is added for each item the account owns, such as offers or trust lines.</td>
+</tr>
+<tr>
+<td>transactionCount</td>
+<td>integer</td>
+<td>Number of new transactions included in this ledger.</td>
+</tr>
+<tr>
+<td>ledgerVersion</td>
+<td>integer</td>
+<td>Ledger version of the ledger that closed.</td>
+</tr>
+<tr>
+<td>validatedLedgerVersions</td>
+<td>string</td>
+<td>Range of ledgers that the server has available. This may be discontiguous.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-38">Example</h3>
+<pre><code class="javascript">api.on('ledger', ledger =&gt; {
+  console.log(JSON.stringify(ledger, null, 2));
+});
+</code></pre>
+<pre><code class="json">{
+  "baseFeeXRP": "0.00001",
+  "ledgerVersion": 14804627,
+  "ledgerHash": "9141FA171F2C0CE63E609466AF728FF66C12F7ACD4B4B50B0947A7F3409D593A",
+  "ledgerTimestamp": "2015-07-23T05:50:40.000Z",
+  "reserveBaseXRP": "20",
+  "reserveIncrementXRP": "5",
+  "transactionCount": 19,
+  "validatedLedgerVersions": "13983423-14804627"
+}
+</code></pre>
+<h2 id="error">error</h2>
+<p>This event is emitted when there is an error on the connection to the server that cannot be associated to a specific request.</p>
+<h3 id="return-value-31">Return Value</h3>
+<p>The first parameter is a string indicating the error type:
+<em> <code>badMessage</code> - rippled returned a malformed message
+</em> <code>websocket</code> - the websocket library emitted an error
+* one of the error codes found in the <a href="https://ripple.com/build/rippled-apis/#universal-errors">rippled Universal Errors</a>.</p>
+<p>The second parameter is a message explaining the error.</p>
+<p>The third parameter is:
+<em> the message that caused the error for <code>badMessage</code>
+</em> the error object emitted for <code>websocket</code>
+* the parsed response for rippled errors</p>
+<h3 id="example-39">Example</h3>
+<pre><code class="javascript">api.on('error', (errorCode, errorMessage, data) =&gt; {
+  console.log(errorCode + ': ' + errorMessage);
+});
+</code></pre>
+<pre><code>tooBusy: The server is too busy to help you now.
+</code></pre>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+				    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
+</footer>
+</body>
+</html>

@@ -1,18 +1,12 @@
 {% extends "template-base.html" %}
 {% block head %}
 
-    <!-- Flatdoc theme -->
-    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-    <script src="vendor/flatdoc/v/0.8.0/theme-white/script.js"></script>
-
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="vendor/docco.min.css">
-    <script src="vendor/highlight.min.js"></script>
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
-    <script src="js/multicodetab.js"></script>
-    {% if precompiled %}
-    <!-- Markdown content already parsed+included; just do the code tab stuff -->
+    <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
             $().multicode_tabs_pandoc();
@@ -20,46 +14,34 @@
             make_code_expandable();
         });
     </script>
-    {% else %}
-    <!-- Code to load contents via Flatdoc  -->
-    <script src="vendor/flatdoc/v/0.8.0/legacy.js"></script>
-    <script src="vendor/flatdoc/v/0.8.0/flatdoc.js"></script>
-    <script>
-        $(".flatdoc-content").empty();
-        $(".content-root .menubar .menu").empty();
-        Flatdoc.run({
-          fetcher: Flatdoc.file('content/{{ currentpage.md }}')
-        });
-        $(document).on('flatdoc:ready', function() {
-            $().multicode_tabs();
-            hljs.initHighlighting();
-        });
-    </script>
-    {% endif %}
 
-    <script src="js/expandcode.js"></script>
-    <script src="js/fixsidebarscroll.js"></script>
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
 {% endblock %}
 
-{% block bodyattrs %}{% if not precompiled %} role='flatdoc'{% endif %} class='no-literate'{% endblock %}
-  
-{% block contentroot %}
-    <div class='content-root'>
-        <div class='menubar'>
-            <div class='menu section' role='flatdoc-menu'>
-                {% if precompiled %}
-                <script type="text/javascript" src="js/jquery.gensidebar.js"></script>
-                <script type="text/javascript">
+{% block sidebar %}
+  {% if currentpage.sidebar %}
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: {{ currentpage.category }}</a></li>
+            {% for page in pages %}
+	          {% if page.category == currentpage.category %}
+                <li class="level-2"><a href="{{ page.html }}">{{ page.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
+  {% endif %}
+{% endblock %}
 
-                </script>
-                {% endif %}
-            </div>
-        </div>
-        <div {% if not precompiled %}role='flatdoc-content' {% endif %}class='content'>
-            {% if precompiled %}
-	        {{ content }}
-	        {% endif %}
-        </div>
+{% block main %}
+    <div class='content'>
+        {{ content }}
     </div>
 {% endblock %}
 
