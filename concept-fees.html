@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Data API v2 Tool - Ripple Developer Portal</title>
+    <title>Fees (Disambiguation) - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -21,7 +21,23 @@
     <!-- Bootstrap JS -->
     <script src="assets/vendor/bootstrap.min.js"></script>
 
-    
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
 
 </head>
 
@@ -104,45 +120,37 @@
 
   <div class="wrap container" role="document">
       <aside class="sidebar" role="complementary">
-    <ul id='command_list'>
-    </ul>
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: Concepts</a></li>
+                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
+                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
       </aside>
       <main class="main" role="main">
-    <div id='wrapper'>
-        <div style="clear:both;"></div>
-        <div id='command_wrapper'>
-            <div id='command_table'>
-                <div id='io_wrapper'>
-                    <div id='input' class='io'>
-                        <h2>REST Request</h2>
-                        <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                            <h4>Test accounts only!</h4>
-                            <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <h3 id='selected_command' title='Reference information'></h3>
-                        <p id='description'></p>
-                        <div id='invalid'>Invalid JSON</div>
-                        <div id='rest_url_wrapper'>
-                            <p><span id='rest_host'>https://data.ripple.com</span><span id='rest_url'></span></p>
-                        </div>
-                        <div id='request_body'></div>
-                        <div id='request_options'>
-                            <a class="button btn btn-primary api" id='request_button'>Send request</a>
-                        </div>
-                    </div>
-                    <div id='output' class='io'>
-                        <h2>Response</h2>
-                        <div>
-                            <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                            <span id='rest_responsecode'></span>
-                        </div>
-                        <div id='response_body'></div>
-                        <div id='tooltip'></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class='content'>
+        <h1 id="fees-disambiguation">Fees (Disambiguation)</h1>
+<p>The Ripple Consensus Ledger is a decentralized ledger, secured by cryptography, and operated by a distributed peer-to-peer network of servers. This means that no one party, not even the Ripple, Inc., can charge a fee for access to the network.</p>
+<p>However, the rules of the Ripple Consensus Ledger include several types of fees, including the <a href="concept-transaction-cost.html"><em>transaction cost</em></a> and <a href="concept-reserves.html"><em>reserve requirement</em></a>, which protect the ledger against abuse. (These neutral fees are not paid to anyone.) There are also several optional ways that users of the Consensus Ledger can collect fees from each other, both inside and outside the Ripple Consensus Ledger.</p>
+<h2 id="in-the-ledger">In the Ledger</h2>
+<p>The <em><strong>transaction cost</strong></em> (sometimes called the transaction fee) is a miniscule amount of XRP destroyed in order to send a transaction. This cost scales with the load of the network, which protects the peer-to-peer network from spam. See <a href="concept-transaction-cost.html">Transaction Cost</a> for more information.</p>
+<p>The <em><strong>account reserve</strong></em> is a minimum amount of XRP that an account must possess. It scales with the number of objects the account owns in the ledger. This disincentivizes users from increasing the size of the ledger needlessly. See <a href="concept-reserves.html">Reserves</a> for more information.</p>
+<p><em><strong>Transfer fees</strong></em> are optional percentage fees that gateways can charge to transfer the currencies they issue to other accounts within the Ripple Consensus Ledger. See <a href="concept-transfer-fees.html">Transfer Fees</a> for more information.</p>
+<p><em><strong>Trust line quality</strong></em> is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations that are similar to charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.</p>
+<h2 id="outside-the-ledger">Outside the Ledger</h2>
+<p>While the above values are the only fees built into the Ripple Consensus Ledger, people can still invent ways to charge fees associated with the ledger. A common example is withdrawal or deposit fees charged by gateways, which are assessed when you use the gateway to get money into or out of the Ripple Consensus Ledger. This may cover the costs of transferring balances on traditional payment rails, or it may be in addition to those costs.</p>
+<p>Many other fees are also possible. Businesses might charge for access, account maintenance, exchange services (especially when buying XRP on a private market instead of directly within the Ripple Consensus Ledger) and any number of other services. Always be aware of the fee schedule before doing business with any gateway or other financial institution.</p>
     </div>
       </main>
   </div>
@@ -199,15 +207,5 @@
 	    </div><!-- /.row -->
 	</div><!-- /.container -->
 </footer>
-
-    <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
-    <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
-    <script type='text/javascript' src='assets/js/es5-shim.js'></script>
-    <script type='text/javascript' src='assets/vendor/codemirror.min.js'></script>
-    <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>
-    <script type='text/javascript' src='assets/js/jquery.autosize.input.min.js'></script>
-    <script type='text/javascript' src='assets/js/apitool-rest.js'></script>
-    <script type='text/javascript' src='assets/js/apitool-methods-data_v2.js'></script>
-
 </body>
 </html>

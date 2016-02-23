@@ -12,49 +12,27 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- jQuery -->
-    <script src="vendor/jquery-1.11.1.min.js"></script>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Flatdoc theme -->
-    <link  href='vendor/flatdoc/v/0.8.0/theme-white/style.css' rel='stylesheet'>
-
-    <!-- syntax highlighting -->
-    <link rel="stylesheet" href="vendor/docco.min.css">
-    <script src="vendor/highlight.min.js"></script>
-
-    <!-- syntax selection js -->
-    <script src="js/multicodetab.js"></script>
-    {% if precompiled %}
-    <!-- skip all the fancy javascript -->
-
-    {% else %}
-    <!-- pdfs should use precompiled only! -->
-    ERROR: PDF should use precompiled only
-    {% endif %}
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
     
-    <!-- Custom Stylesheets -->
-    <link href="font/fonts.css" rel="stylesheet" type="text/css" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    {% block head %}
     
-    <link href="css/pdf.css" rel="stylesheet" type="text/css" />
-    
-    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
-    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" />
-    
-  
+    {% endblock %}
+
 </head>
-<body class='no-literate'>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
 
     <div class='wrapper'>
-    <div class='content-root'>
-        <div role='flatdoc-content' class='content'>
-	        {{ content }}
-        </div>
-    </div>
+    <main class="main" role="main">
+        {{ content }}
+    </main>
     </div>
 
 </body>

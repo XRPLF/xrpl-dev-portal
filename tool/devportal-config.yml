@@ -1,0 +1,186 @@
+# Relative paths work OK as long as you start the tool from its local dir
+template_path: .
+
+# This folder gets copied into the output directory
+template_static_path: ../assets
+
+# Templates should have filenames starting in template-
+default_template: template-doc.html
+pdf_template: template-forpdf.html
+
+# HTML, PDF, GFM all get output here
+out_path: ..
+
+# MD files should be here (and in subdirs)
+content_path: ../content
+
+# This folder gets copied into the output directory
+content_static_path: ../img
+
+# PDF creation needs a dir for temporary files
+temporary_files_path: /tmp/
+
+prince_executable: prince
+
+targets:
+    # First member is the default that gets built when target not specified
+    -   name: local
+        multicode_tabs: true
+    -   name: ripple.com
+        multicode_tabs: true
+
+pages:
+# Intro pages is not directly replicated on ripple.com at this time
+    -   name: Overview
+        html: index.html
+        sidebar: false
+        template: template-index.html
+
+# References are exhaustive lists of commands and options
+    -   name: rippled
+        category: References
+        html: reference-rippled.html
+        md: reference-rippled.md
+        ripple.com: https://ripple.com/build/rippled-apis/
+        sidebar: true
+
+    -   name: Transaction Format
+        category: References
+        html: reference-transaction-format.html
+        md: reference-transaction-format.md
+        ripple.com: https://ripple.com/build/transactions/
+        sidebar: true
+
+    -   name: Ledger Format
+        category: References
+        html: reference-ledger-format.html
+        md: reference-ledger-format.md
+        ripple.com: https://ripple.com/build/ledger-format/
+        sidebar: true
+
+    -   name: RippleAPI
+        category: References
+        html: reference-rippleapi.html
+        # Currently this is the only page that's fetched remotely.
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md
+        ripple.com: https://ripple.com/build/rippleapi/
+        sidebar: true
+
+    -   name: Ripple Data API v2
+        category: References
+        html: reference-data-api.html
+        md: reference-data-api.md
+        ripple.com: https://ripple.com/build/data-api-v2/
+        sidebar: true
+
+# Tutorials are step-by-step guides to a specific goal
+    -   name: RippleAPI Beginners Guide
+        category: Tutorials
+        html: tutorial-rippleapi-beginners-guide.html
+        md: tutorial-rippleapi-beginners-guide.md
+        ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
+        sidebar: true
+
+    -   name: rippled Setup
+        category: Tutorials
+        html: tutorial-rippled-setup.html
+        md: tutorial-rippled-setup.md
+        ripple.com: https://ripple.com/build/rippled-setup/
+        sidebar: true
+
+    -   name: Reliable Transaction Submission
+        category: Tutorials
+        html: tutorial-reliable-transaction-submission.html
+        md: tutorial-reliable-transaction-submission.md
+        ripple.com: https://ripple.com/build/reliable-transaction-submission/
+        sidebar: true
+
+# Concepts are introductions that explain a topic.
+# In the Dev Portal, these are mostly summaries of RCL features.
+    -   name: Paths
+        category: Concepts
+        html: concept-paths.html
+        md: concept-paths.md
+        ripple.com: https://ripple.com/build/paths/
+        sidebar: true
+
+    -   name: Fees (Disambiguation)
+        category: Concepts
+        html: concept-fees.html
+        md: concept-fees.md
+        ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
+        sidebar: true
+
+    -   name: Transfer Fees
+        category: Concepts
+        html: concept-transfer-fees.html
+        md: concept-transfer-fees.md
+        ripple.com: https://ripple.com/knowledge_center/transfer-fees/
+        sidebar: true
+
+    -   name: Transaction Cost
+        category: Concepts
+        html: concept-transaction-cost.html
+        md: concept-transaction-cost.md
+        ripple.com: https://ripple.com/build/transaction-cost/
+        sidebar: true
+
+    -   name: Fee Voting
+        category: Concepts
+        html: concept-fee-voting.html
+        md: concept-fee-voting.md
+        ripple.com: https://ripple.com/build/fee-voting/
+        sidebar: true
+
+    -   name: Reserves
+        category: Concepts
+        html: concept-reserves.html
+        md: concept-reserves.md
+        ripple.com: https://ripple.com/build/reserves/
+        sidebar: true
+
+    -   name: Freeze
+        category: Concepts
+        html: concept-freeze.html
+        md: concept-freeze.md
+        ripple.com: https://ripple.com/build/freeze/
+        sidebar: true
+
+# "Best Practices" documents are mostly in the same category as tutorials
+    -   name: Issuing and Operational Acounts
+        category: Best Practices
+        html: concept-issuing-and-operational-accounts.html
+        md: concept-issuing-and-operational-accounts.md
+        # TODO publish this article separately on the website
+        ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
+        sidebar: true
+
+        # The Gateway Guide is kind of a poor fit for the "tutorials" category
+    -   name: Gateway Guide
+        category: Best Practices
+        html: tutorial-gateway-guide.html
+        md: tutorial-gateway-guide.md
+        ripple.com: https://ripple.com/build/gateway-guide/
+        sidebar: true
+
+# API tools are interactive software for interfacing with real APIs
+    -   name: WebSocket API Tool
+        category: API Tools
+        html: ripple-api-tool.html
+        ripple.com: https://ripple.com/build/websocket-tool/
+        sidebar: true
+        targets:
+            - local
+            - ripple.com
+        template: template-ripple-api-tool.html
+
+    -   name: Data API v2 Tool
+        category: API Tools
+        html: data-api-v2-tool.html
+        methods_js: js/apitool-methods-data_v2.js
+        rest_host: https://data.ripple.com
+        sidebar: true
+        targets:
+            - local
+            - ripple.com
+        template: template-rest-api-tool.html

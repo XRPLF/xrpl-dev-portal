@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Ledger Format - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: References</a></li>
+                <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
+                <li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
+                <li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
+                <li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
+                <li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="the-ledger">The Ledger</h1>
+<p>The point of the Ripple software is to maintain a shared, global ledger that is open to all, so that individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by maintaining a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> maintains a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
+<p><img alt="Diagram: Each ledger is the result of applying transactions to the previous ledger version." src="img/ledger-process.png"/></p>
+<p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 1 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.</p>
+<p>A single ledger version consists of several components:</p>
+<p><img alt="Diagram: A ledger has transactions, a state node, and a header with the close time and validation info" src="img/ledger-components.png"/></p>
+<ul>
+<li>A <strong>header</strong> - The ledger's unique index (sequence number), hashes of the other contents, and other metadata.</li>
+<li>A <strong>transaction tree</strong> - The <a href="reference-transaction-format.html">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to modify the ledger.</li>
+<li>A <strong>state tree</strong> - All the <a href="#ledger-node-types">ledger nodes</a> that contain the settings, balances, and objects in the ledger as of this version.</li>
+</ul>
+<h2 id="tree-format">Tree Format</h2>
+<p>As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an <code>index</code>. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like <code>"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"</code>. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the <code>index</code> (key) of a ledger node with the <code>ledger_index</code> (sequence number) of a ledger.</p>
+<p>In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.</p>
+<p>In the case of state nodes, <code>rippled</code> usually includes the <code>index</code> of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a <a href="https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94">namespace identifier</a>. The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This ensures every index is unique. For a hash function, <code>rippled</code> uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.</p>
+<p><img alt="Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding." src="img/ledger-indexes.png"/></p>
+<h2 id="header-format">Header Format</h2>
+<p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/ledger/ReadView.h#L68" title="Source">[Source]<br/></a></p>
+<p>Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the <a href="reference-rippled.html#ledger"><code>ledger</code> command</a>. The contents of the ledger header are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ledger_index</td>
+<td>String</td>
+<td>UInt32</td>
+<td>The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number.</td>
+</tr>
+<tr>
+<td>ledger_hash</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The SHA-512Half of the ledger header, excluding the <code>ledger_hash</code> itself. This serves as a unique identifier for this ledger and all its contents.</td>
+</tr>
+<tr>
+<td>account_hash</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The SHA-512Half of this ledger's state tree information.</td>
+</tr>
+<tr>
+<td>close_time</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the <code>close_time_resolution</code>, so it is possible for subsequent ledgers to have the same value.</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>Boolean</td>
+<td>bool</td>
+<td>If true, this transaction is no longer accepting new transactions. (However, unless this ledger is validated, it might be replaced by a different ledger with a different set of transactions.)</td>
+</tr>
+<tr>
+<td>parent_hash</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The <code>ledger_hash</code> value of the previous ledger that was used to build this one. If there are different versions of the previous ledger by sequence number, this indicates from which one the ledger was derived.</td>
+</tr>
+<tr>
+<td>total_coins</td>
+<td>String</td>
+<td>UInt64</td>
+<td>The total number of drops of XRP owned by accounts in the ledger. This subtracts XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone.</td>
+</tr>
+<tr>
+<td>transaction_hash</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The SHA-512Half of the transactions included in this ledger.</td>
+</tr>
+<tr>
+<td>close_time_resolution</td>
+<td>Number</td>
+<td>Uint8</td>
+<td>An integer in the range [2,120] indicating the maximum number of seconds by which the <code>close_time</code> could be rounded.</td>
+</tr>
+<tr>
+<td>closeFlags</td>
+<td>(Omitted)</td>
+<td>UInt8</td>
+<td>A bit-map of flags relating to the closing of this ledger.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="close-flags">Close Flags</h3>
+<p>Currently, the ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
+<p>The <code>closeFlags</code> field is not included in any JSON representations of a ledger, but it is a part of the binary representation of a ledger, and is one of the fields that determine the ledger's hash.</p>
+<h1 id="ledger-node-types">Ledger Node Types</h1>
+<p>There are several different kinds of nodes that can appear in the ledger's state tree:</p>
+<ul>
+<li><a href="#accountroot"><strong>AccountRoot</strong> - The settings, XRP balance, and other metadata for one account.</a></li>
+<li><a href="#directorynode"><strong>DirectoryNode</strong> - Contains links to other nodes.</a></li>
+<li><a href="#offer"><strong>Offer</strong> - An offer to exchange currencies, known in finance as an <em>order</em>.</a></li>
+<li><a href="#ripplestate"><strong>RippleState</strong> - Links two accounts, tracking the balance of one currency between them. The concept of a <em>trust line</em> is really an abstraction of this node type.</a></li>
+</ul>
+<p>Each ledger node consists of several fields. In the peer protocol that <code>rippled</code> servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other <a href="reference-rippled.html"><code>rippled</code> APIs</a>, ledger nodes are represented as JSON objects.</p>
+<h2 id="accountroot">AccountRoot</h2>
+<p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" title="Source">[Source]<br/></a></p>
+<p>The <code>AccountRoot</code> node type describes a single <em>account</em> object. Example <code>AccountRoot</code> node:</p>
+<pre><code>{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "AccountTxnID": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
+    "Balance": "148446663",
+    "Domain": "6D64756F31332E636F6D",
+    "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+    "Flags": 8388608,
+    "LedgerEntryType": "AccountRoot",
+    "MessageKey": "0000000000000000000000070000000300",
+    "OwnerCount": 3,
+    "PreviousTxnID": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
+    "PreviousTxnLgrSeq": 14091160,
+    "Sequence": 336,
+    "TransferRate": 1004999999,
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+}
+</code></pre>
+<p>The <code>AccountRoot</code> node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LedgerEntryType</td>
+<td>String</td>
+<td>UInt16</td>
+<td>The value <code>0x61</code>, mapped to the string <code>AccountRoot</code>, indicates that this node is an AccountRoot object.</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>AccountID</td>
+<td>The identifying address of this account, such as rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn.</td>
+</tr>
+<tr>
+<td><a href="#accountroot-flags">Flags</a></td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A bit-map of boolean flags enabled for this account.</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.)</td>
+</tr>
+<tr>
+<td>Balance</td>
+<td>String</td>
+<td>Amount</td>
+<td>The account's current XRP balance in drops, represented as a string.</td>
+</tr>
+<tr>
+<td>OwnerCount</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The number of objects this account owns in the ledger, which contributes to its owner reserve.</td>
+</tr>
+<tr>
+<td>PreviousTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>PreviousTxnLgrSeq</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>AccountTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>(Optional) The identifying hash of the transaction most recently submitted by this account.</td>
+</tr>
+<tr>
+<td>RegularKey</td>
+<td>String</td>
+<td>AccountID</td>
+<td>(Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction</a> to change this value.</td>
+</tr>
+<tr>
+<td>EmailHash</td>
+<td>String</td>
+<td>Hash128</td>
+<td>(Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a href="https://en.gravatar.com/">Gravatar</a>.</td>
+</tr>
+<tr>
+<td>WalletLocator</td>
+<td>String</td>
+<td>Hash256</td>
+<td>(Optional) <strong>DEPRECATED</strong>. Do not use.</td>
+</tr>
+<tr>
+<td>WalletSize</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) <strong>DEPRECATED</strong>. Do not use.</td>
+</tr>
+<tr>
+<td>MessageKey</td>
+<td>String</td>
+<td>VariableLength</td>
+<td>(Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes.</td>
+</tr>
+<tr>
+<td>TransferRate</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) A <a href="https://ripple.com/knowledge_center/transfer-fees/">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>String</td>
+<td>VariableLength</td>
+<td>(Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="accountroot-flags">AccountRoot Flags</h3>
+<p>There are several options which can be either enabled or disabled for an account. These options can be changed with an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>AccountRoot nodes can have the following flag values:</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Description</th>
+<th>Corresponding <a href="reference-transaction-format.html#accountset-flags">AccountSet Flag</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsfPasswordSpent</td>
+<td>0x00010000</td>
+<td>65536</td>
+<td>Indicates that the account has used its free SetRegularKey transaction.</td>
+<td>(None)</td>
+</tr>
+<tr>
+<td>lsfRequireDestTag</td>
+<td>0x00020000</td>
+<td>131072</td>
+<td>Requires incoming payments to specify a Destination Tag.</td>
+<td>asfRequireDest</td>
+</tr>
+<tr>
+<td>lsfRequireAuth</td>
+<td>0x00040000</td>
+<td>262144</td>
+<td>This account must individually approve other users in order for those users to hold this account's issuances.</td>
+<td>asfRequireAuth</td>
+</tr>
+<tr>
+<td>lsfDisallowXRP</td>
+<td>0x00080000</td>
+<td>524288</td>
+<td>Client applications should not send XRP to this account. Not enforced by <code>rippled</code>.</td>
+<td>asfDisallowXRP</td>
+</tr>
+<tr>
+<td>lsfDisableMaster</td>
+<td>0x00100000</td>
+<td>1048576</td>
+<td>Disallows use of the master key to sign transactions for this account.</td>
+<td>asfDisableMaster</td>
+</tr>
+<tr>
+<td>lsfNoFreeze</td>
+<td>0x00200000</td>
+<td>209715</td>
+<td>This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
+<td>asfNoFreeze</td>
+</tr>
+<tr>
+<td>lsfGlobalFreeze</td>
+<td>0x00400000</td>
+<td>4194304</td>
+<td>All assets issued by this account are frozen.</td>
+<td>asfGlobalFreeze</td>
+</tr>
+<tr>
+<td>lsfDefaultRipple</td>
+<td>0x00800000</td>
+<td>8388608</td>
+<td>Enable <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account's trust lines by default. Required for gateways; discouraged for other accounts.</td>
+<td>asfDefaultRipple</td>
+</tr>
+</tbody>
+</table>
+<h3 id="accountroot-index-format">AccountRoot index format</h3>
+<p>The <code>index</code> of an AccountRoot node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Account space key (<code>a</code>)</li>
+<li>The AccountID of the account</li>
+</ul>
+<h2 id="directorynode">DirectoryNode</h2>
+<p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44" title="Source">[Source]<br/></a></p>
+<p>The <code>DirectoryNode</code> node type provides a list of links to other nodes in the ledger's state tree. A single conceptual <em>Directory</em>　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 <a href="#tree-format">indexes</a> of other nodes. The first node is called the root of the directory, and all nodes other than the root node can be added or deleted as necessary.</p>
+<p>There are two kinds of Directories:</p>
+<ul>
+<li><strong>Owner directories</strong> list other nodes owned by an account, such as RippleState or Offer nodes.</li>
+<li><strong>Offer directories</strong> list the offers currently available in the distributed exchange. A single Offer Directory contains all the offers that have the same exchange rate for the same issuances.</li>
+</ul>
+<p>Example Directories:</p>
+<div class="multicode">
+<p><em>Offer Directory</em></p>
+<pre><code>{
+    "ExchangeRate": "4F069BA8FF484000",
+    "Flags": 0,
+    "Indexes": [
+        "AD7EAE148287EF12D213A251015F86E6D4BD34B3C4A0A1ED9A17198373F908AD"
+    ],
+    "LedgerEntryType": "DirectoryNode",
+    "RootIndex": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000",
+    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+    "TakerPaysCurrency": "0000000000000000000000004A50590000000000",
+    "TakerPaysIssuer": "5BBC0F22F61D9224A110650CFE21CC0C4BE13098",
+    "index": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000"
+}
+</code></pre>
+<p><em>Owner Directory</em></p>
+<pre><code>{
+    "Flags": 0,
+    "Indexes": [
+        "AD7EAE148287EF12D213A251015F86E6D4BD34B3C4A0A1ED9A17198373F908AD",
+        "E83BBB58949A8303DF07172B16FB8EFBA66B9191F3836EC27A4568ED5997BAC5"
+    ],
+    "LedgerEntryType": "DirectoryNode",
+    "Owner": "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ",
+    "RootIndex": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94",
+    "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
+}
+</code></pre>
+</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LedgerEntryType</td>
+<td>Number</td>
+<td>UInt16</td>
+<td>The value <code>0x64</code>, mapped to the string <code>DirectoryNode</code>, indicates that this node is part of a Directory.</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects.</td>
+</tr>
+<tr>
+<td>RootIndex</td>
+<td>Number</td>
+<td>Hash256</td>
+<td>The index of root node for this directory.</td>
+</tr>
+<tr>
+<td>Indexes</td>
+<td>Array</td>
+<td>Vector256</td>
+<td>The contents of this Directory: an array of indexes to other nodes.</td>
+</tr>
+<tr>
+<td>IndexNext</td>
+<td>Number</td>
+<td>UInt64</td>
+<td>(Optional) If this Directory consists of multiple nodes, this index links to the next node in the chain, wrapping around at the end.</td>
+</tr>
+<tr>
+<td>IndexPrevious</td>
+<td>Number</td>
+<td>UInt64</td>
+<td>(Optional) If this Directory consists of multiple nodes, this index links to the previous node in the chain, wrapping around at the beginning.</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>String</td>
+<td>AccountID</td>
+<td>(Owner Directories only) The address of the account that owns the objects in this directory.</td>
+</tr>
+<tr>
+<td>ExchangeRate</td>
+<td>Number</td>
+<td>UInt64</td>
+<td>(Offer Directories only) <strong>DEPRECATED</strong>. Do not use.</td>
+</tr>
+<tr>
+<td>TakerPaysCurrency</td>
+<td>String</td>
+<td>Hash160</td>
+<td>(Offer Directories only) The currency code of the TakerPays amount from the offers in this directory.</td>
+</tr>
+<tr>
+<td>TakerPaysIssuer</td>
+<td>String</td>
+<td>Hash160</td>
+<td>(Offer Directories only) The issuer of the TakerPays amount from the offers in this directory.</td>
+</tr>
+<tr>
+<td>TakerGetsCurrency</td>
+<td>String</td>
+<td>Hash160</td>
+<td>(Offer Directories only) The currency code of the TakerGets amount from the offers in this directory.</td>
+</tr>
+<tr>
+<td>TakerGetsIssuer</td>
+<td>String</td>
+<td>Hash160</td>
+<td>(Offer Directories only) The issuer of the TakerGets amount from the offers in this directory.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="directory-index-formats">Directory index formats</h3>
+<p>There are three different formulas for creating the index of a DirectoryNode, depending on whether the DirectoryNode represents:</p>
+<ul>
+<li>The first page (also called the root) of an Owner Directory,</li>
+<li>The first page of an Offer Directory, <em>or</em></li>
+<li>Subsequent pages of either type</li>
+</ul>
+<p><strong>The first page of an Owner Directory</strong> has an <code>index</code> that is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Owner Directory space key (<code>O</code>, capital letter O)</li>
+<li>The AccountID from the <code>Owner</code> field.</li>
+</ul>
+<p><strong>The first page of an Offer Directory</strong> has a special <code>index</code>: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (An index is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Book Directory space key (<code>B</code>)</li>
+<li>The 160-bit currency code from the <code>TakerPaysCurrency</code></li>
+<li>The 160-bit currency code from the <code>TakerGetsCurrency</code></li>
+<li>The AccountID from the <code>TakerPaysIssuer</code></li>
+<li>The AccountID from the <code>TakerGetsIssuer</code></li>
+</ul>
+<p>The lower 64 bits of an Offer Directory's index represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in Ripple's internal amount format.</p>
+<p><strong>If the DirectoryNode is not the first page in the Directory</strong> (regardless of whether it is an Owner Directory or an Offer Directory), then it has an <code>index</code> that is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Directory Node space key (<code>d</code>)</li>
+<li>The <code>index</code> of the root DirectoryNode</li>
+<li>The page number of this node. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)</li>
+</ul>
+<h2 id="offer">Offer</h2>
+<p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
+<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, which is currently in an order book in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
+<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> will automatically prune any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
+<p>Example Offer node:</p>
+<pre><code>{
+    "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
+    "BookDirectory": "ACC27DE91DBA86FC509069EAF4BC511D73128B780F2E54BF5E07A369E2446000",
+    "BookNode": "0000000000000000",
+    "Flags": 131072,
+    "LedgerEntryType": "Offer",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
+    "PreviousTxnLgrSeq": 14524914,
+    "Sequence": 866,
+    "TakerGets": {
+        "currency": "XAG",
+        "issuer": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH",
+        "value": "37"
+    },
+    "TakerPays": "79550000000",
+    "index": "96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"
+}
+</code></pre>
+<p>An Offer node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LedgerEntryType</td>
+<td>String</td>
+<td>UInt16</td>
+<td>The value <code>0x6F</code>, mapped to the string <code>Offer</code>, indicates that this node is an Offer object.</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A bit-map of boolean flags enabled for this offer.</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>AccountID</td>
+<td>The address of the account that owns this offer.</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate</a> transaction that created this Offer node. Used in combination with the <code>Account</code> to identify this Offer.</td>
+</tr>
+<tr>
+<td>TakerPays</td>
+<td>String or Object</td>
+<td>Amount</td>
+<td>The remaining amount and type of currency requested by the offer creator.</td>
+</tr>
+<tr>
+<td>TakerGets</td>
+<td>String or Object</td>
+<td>Amount</td>
+<td>The remaining amount and type of currency being provided by the offer creator.</td>
+</tr>
+<tr>
+<td>BookDirectory</td>
+<td>String</td>
+<td>UInt256</td>
+<td>The index of the <a href="#directorynode">Offer Directory</a> that links to this offer.</td>
+</tr>
+<tr>
+<td>BookNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>A hint indicating which page of the offer directory links to this node, in case the directory consists of multiple nodes.</td>
+</tr>
+<tr>
+<td>OwnerNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. <strong>Note:</strong> The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+</tr>
+<tr>
+<td>PreviousTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>PreviousTxnLgrSeq</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>Expiration</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) Indicates the time after which this offer will be considered unfunded. See <a href="reference-rippled.html#specifying-time">Specifying Time</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="offer-flags">Offer Flags</h3>
+<p>There are several options which can be either enabled or disabled when an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>Offer nodes can have the following flag values:</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Description</th>
+<th>Corresponding <a href="reference-transaction-format.html#offercreate-flags">OfferCreate Flag</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsfPassive</td>
+<td>0x00010000</td>
+<td>65536</td>
+<td>The node was placed as a passive offer. This has no effect on the node in the ledger.</td>
+<td>tfPassive</td>
+</tr>
+<tr>
+<td>lsfSell</td>
+<td>0x00020000</td>
+<td>131072</td>
+<td>The node was placed as a sell offer. This has no effect on the node in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the node enters the ledger).</td>
+<td>tfSell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="offer-index-format">Offer index format</h3>
+<p>The <code>index</code> of an Offer node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Offer space key (<code>o</code>)</li>
+<li>The AccountID of the account placing the offer</li>
+<li>The Sequence number of the transaction that created the offer</li>
+</ul>
+<h2 id="ripplestate">RippleState</h2>
+<p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" title="Source">[Source]<br/></a></p>
+<p>The <code>RippleState</code> node type connects two accounts in a single currency. Conceptually, a RippleState node represents two <em>trust lines</em> between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so <code>rippled</code> deletes RippleState nodes when their properties are entirely default.</p>
+<p>Since no account is privileged in the Ripple ledger, a RippleState node sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".</p>
+<p>Example RippleState node:</p>
+<pre><code>{
+    "Balance": {
+        "currency": "USD",
+        "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+        "value": "-10"
+    },
+    "Flags": 393216,
+    "HighLimit": {
+        "currency": "USD",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "value": "110"
+    },
+    "HighNode": "0000000000000000",
+    "LedgerEntryType": "RippleState",
+    "LowLimit": {
+        "currency": "USD",
+        "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "value": "0"
+    },
+    "LowNode": "0000000000000000",
+    "PreviousTxnID": "E3FE6EA3D48F0C2B639448020EA4F03D4F4F8FFDB243A852A0F59177921B4879",
+    "PreviousTxnLgrSeq": 14090896,
+    "index": "9CA88CDEDFF9252B3DE183CE35B038F57282BC9503CDFA1923EF9A95DF0D6F7B"
+}
+</code></pre>
+<p>A RippleState node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th>Internal Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LedgerEntryType</td>
+<td>String</td>
+<td>UInt16</td>
+<td>The value <code>0x72</code>, mapped to the string <code>RippleState</code>, indicates that this node is a RippleState object.</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A bit-map of boolean options enabled for this node.</td>
+</tr>
+<tr>
+<td>Balance</td>
+<td>Object</td>
+<td>Amount</td>
+<td>The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value <a href="https://wiki.ripple.com/Accounts#ACCOUNT_ONE">ACCOUNT_ONE</a>.</td>
+</tr>
+<tr>
+<td>LowLimit</td>
+<td>Object</td>
+<td>Amount</td>
+<td>The limit that the low account has set on the trust line. The <code>issuer</code> is the address of the low account that set this limit.</td>
+</tr>
+<tr>
+<td>HighLimit</td>
+<td>Object</td>
+<td>Amount</td>
+<td>The limit that the high account has set on the trust line. The <code>issuer</code> is the address of the high account that set this limit.</td>
+</tr>
+<tr>
+<td>PreviousTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>PreviousTxnLgrSeq</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>LowNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>(Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes.</td>
+</tr>
+<tr>
+<td>HighNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>(Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes.</td>
+</tr>
+<tr>
+<td>LowQualityIn</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
+</tr>
+<tr>
+<td>LowQualityOut</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
+</tr>
+<tr>
+<td>HighQualityIn</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
+</tr>
+<tr>
+<td>HighQualityOut</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>(Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ripplestate-flags">RippleState Flags</h3>
+<p>There are several options which can be either enabled or disabled for a trust line. These options can be changed with a <a href="reference-transaction-format.html#trustset">TrustSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>RippleState nodes can have the following flag values:</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Description</th>
+<th>Corresponding <a href="reference-transaction-format.html#trustset-flags">TrustSet Flag</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsfLowReserve</td>
+<td>0x00010000</td>
+<td>65536</td>
+<td>This RippleState node <a href="#contributing-to-the-owner-reserve">contributes to the low account's owner reserve</a>.</td>
+<td>(None)</td>
+</tr>
+<tr>
+<td>lsfHighReserve</td>
+<td>0x00020000</td>
+<td>131072</td>
+<td>This RippleState node <a href="#contributing-to-the-owner-reserve">contributes to the high account's owner reserve</a>.</td>
+<td>(None)</td>
+</tr>
+<tr>
+<td>lsfLowAuth</td>
+<td>0x00040000</td>
+<td>262144</td>
+<td>The low account has authorized the high account to hold the low account's issuances.</td>
+<td>tfSetAuth</td>
+</tr>
+<tr>
+<td>lsfHighAuth</td>
+<td>0x00080000</td>
+<td>524288</td>
+<td>The high account has authorized the low account to hold the high account's issuances.</td>
+<td>tfSetAuth</td>
+</tr>
+<tr>
+<td>lsfLowNoRipple</td>
+<td>0x00100000</td>
+<td>1048576</td>
+<td>The low account <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
+<td>tfSetNoRipple</td>
+</tr>
+<tr>
+<td>lsfHighNoRipple</td>
+<td>0x00200000</td>
+<td>2097152</td>
+<td>The high account <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
+<td>tfSetNoRipple</td>
+</tr>
+<tr>
+<td>lsfLowFreeze</td>
+<td>0x00400000</td>
+<td>4194304</td>
+<td>The low account has frozen the trust line, preventing the high account from transferring the asset.</td>
+<td>tfSetFreeze</td>
+</tr>
+<tr>
+<td>lsfHighFreeze</td>
+<td>0x00800000</td>
+<td>8388608</td>
+<td>The high account has frozen the trust line, preventing the low account from transferring the asset.</td>
+<td>tfSetFreeze</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contributing-to-the-owner-reserve">Contributing to the Owner Reserve</h3>
+<p>If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's <a href="concept-reserves.html#owner-reserves">owner reserve</a>. In a RippleState node, the <code>lsfLowReserve</code> and <code>lsfHighReserve</code> flags indicate which account(s) are responsible for the owner reserve. The <code>rippled</code> server automatically sets these flags when it modifies a trust line.</p>
+<p>The values that count towards a trust line's non-default state are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>High account responsible if...</th>
+<th>Low account responsible if...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Balance</code> is negative (the high account holds currency)</td>
+<td><code>Balance</code> is positive (the low account holds currency)</td>
+</tr>
+<tr>
+<td><code>HighLimit</code> is not <code>0</code></td>
+<td><code>LowLimit</code> is not <code>0</code></td>
+</tr>
+<tr>
+<td><code>LowQualityIn</code> is not <code>0</code> and not <code>1000000000</code></td>
+<td><code>HighQualityIn</code> is not <code>0</code> and not <code>1000000000</code></td>
+</tr>
+<tr>
+<td><code>LowQualityOut</code> is not <code>0</code> and not <code>1000000000</code></td>
+<td><code>HighQualityOut</code> is not <code>0</code> and not <code>1000000000</code></td>
+</tr>
+<tr>
+<td><strong>lsfHighNoRipple</strong> flag is not in its default state</td>
+<td><strong>lsfLowNoRipple</strong> flag is not in its default state</td>
+</tr>
+<tr>
+<td><strong>lsfHighFreeze</strong> flag is enabled</td>
+<td><strong>lsfLowFreeze</strong> flag is enabled</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>lsfLowAuth</strong> and <strong>lsfHighAuth</strong> flags do not count against the default state, because they cannot be disabled.</p>
+<p>The default state of the two NoRipple flags depends on the state of the <a href="#accountroot-flags">lsfDefaultRipple flag</a> in their corresponding AccountRoot nodes. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is <em>enabled</em> for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is <em>disabled</em> (rippling is enabled) for an account's trust lines by default. <strong>Note:</strong> Prior to the introduction of the DefaultRipple flags in <code>rippled</code> version 0.27.3 (March 10, 2015), the default state for all trust lines was with lsfNoRipple disabled (rippling enabled).</p>
+<p>Fortunately, <code>rippled</code> uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. If an account modifies a trust line, <code>rippled</code> re-evaluates whether that individual trust line is in its default state and should contribute the owner reserve.</p>
+<h3 id="ripplestate-index-format">RippleState index format</h3>
+<p>The <code>index</code> of a RippleState node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The RippleState space key (<code>r</code>)</li>
+<li>The AccountID of the low account</li>
+<li>The AccountID of the high account</li>
+<li>The 160-bit currency code of the trust line(s)</li>
+</ul>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+				    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
+</footer>
+</body>
+</html>

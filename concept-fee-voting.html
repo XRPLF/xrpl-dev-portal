@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Data API v2 Tool - Ripple Developer Portal</title>
+    <title>Fee Voting - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -21,7 +21,23 @@
     <!-- Bootstrap JS -->
     <script src="assets/vendor/bootstrap.min.js"></script>
 
-    
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
 
 </head>
 
@@ -104,45 +120,66 @@
 
   <div class="wrap container" role="document">
       <aside class="sidebar" role="complementary">
-    <ul id='command_list'>
-    </ul>
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: Concepts</a></li>
+                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
+                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
       </aside>
       <main class="main" role="main">
-    <div id='wrapper'>
-        <div style="clear:both;"></div>
-        <div id='command_wrapper'>
-            <div id='command_table'>
-                <div id='io_wrapper'>
-                    <div id='input' class='io'>
-                        <h2>REST Request</h2>
-                        <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                            <h4>Test accounts only!</h4>
-                            <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <h3 id='selected_command' title='Reference information'></h3>
-                        <p id='description'></p>
-                        <div id='invalid'>Invalid JSON</div>
-                        <div id='rest_url_wrapper'>
-                            <p><span id='rest_host'>https://data.ripple.com</span><span id='rest_url'></span></p>
-                        </div>
-                        <div id='request_body'></div>
-                        <div id='request_options'>
-                            <a class="button btn btn-primary api" id='request_button'>Send request</a>
-                        </div>
-                    </div>
-                    <div id='output' class='io'>
-                        <h2>Response</h2>
-                        <div>
-                            <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                            <span id='rest_responsecode'></span>
-                        </div>
-                        <div id='response_body'></div>
-                        <div id='tooltip'></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class='content'>
+        <h1 id="fee-voting">Fee Voting</h1>
+<p>Validators can vote for changes to basic <a href="concept-transaction-cost.html">transaction cost</a> as well as <a href="concept-reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
+<p>Operators of <a href="tutorial-rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Recommended Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reference_fee</td>
+<td>Amount of XRP, in <em>drops</em>, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers.</td>
+<td><code>10</code> (0.00001 XRP)</td>
+</tr>
+<tr>
+<td>account_reserve</td>
+<td>Minimum amount of XRP, in <em>drops</em>, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger.</td>
+<td><code>20000000</code> (20 XRP)</td>
+</tr>
+<tr>
+<td>owner_reserve</td>
+<td>Additional amount of XRP, in <em>drops</em>, that an account must have on reserve for <em>each</em> object it owns in the ledger.</td>
+<td><code>5000000</code> (5 XRP)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voting-process">Voting Process</h3>
+<p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
+<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
+<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
+<p>In short:</p>
+<ul>
+<li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
+<li><strong>Flag ledger</strong>: Validators tally votes and decide what SetFee to include, if any.</li>
+<li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
+<li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee psuedotransaction achieved consensus.</li>
+</ul>
     </div>
       </main>
   </div>
@@ -199,15 +236,5 @@
 	    </div><!-- /.row -->
 	</div><!-- /.container -->
 </footer>
-
-    <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
-    <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
-    <script type='text/javascript' src='assets/js/es5-shim.js'></script>
-    <script type='text/javascript' src='assets/vendor/codemirror.min.js'></script>
-    <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>
-    <script type='text/javascript' src='assets/js/jquery.autosize.input.min.js'></script>
-    <script type='text/javascript' src='assets/js/apitool-rest.js'></script>
-    <script type='text/javascript' src='assets/js/apitool-methods-data_v2.js'></script>
-
 </body>
 </html>

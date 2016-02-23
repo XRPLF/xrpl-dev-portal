@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Reliable Transaction Submission - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
+                <li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                <li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                <li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+        </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="reliable-transaction-submission">Reliable Transaction Submission</h1>
+<p>Gateways and back-end applications should use the best practices described here to ensure that transactions are validated or rejected in a verifiable and timely fashion.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
+<p>The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:</p>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotency</a> - Transactions will be processed once and only once, or not at all.</li>
+<li>Verifiability - Applications can determine the final result of a transaction.</li>
+</ol>
+<p>Applications which fail to implement best practices are at risk of the following errors:</p>
+<ol>
+<li>Submitting transactions which are inadvertently never executed.</li>
+<li>Mistaking provisional transaction results for their final, immutable results.</li>
+<li>Failing to find authoritative results of transactions previously applied to the ledger.</li>
+</ol>
+<p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
+<h2 id="background">Background</h2>
+<p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
+<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
+<p>Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.</p>
+<h3 id="transaction-timeline">Transaction Timeline</h3>
+<p>Ripple provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
+<ol>
+<li>An account owner creates and signs a transaction.</li>
+<li>The owner submits the transaction to the network as a candidate transaction.</li>
+<li>Malformed or nonsensical transactions are rejected immediately.</li>
+<li>Well-formed transactions may provisionally succeed, then later fail.</li>
+<li>Well-formed transactions may provisionally fail, then later succeed.</li>
+<li>Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, by consuming a different offer and achieving a better or worse exchange rate than the provisional execution.)</li>
+<li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, in order to enforce a cost for being propagated through the network.</li>
+<li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.</li>
+<li>Transaction results are no longer provisional, success or failure is now final and immutable.</li>
+</ol>
+<p><em>Note:</em> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction, and does not indicate the transaction will be finally applied to the ledger.</p>
+<p>APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, <em>immutable</em>, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.</p>
+<p>While applying transactions, <code>rippled</code> servers use the <em>last validated ledger</em>, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it comprise the ledger history.</p>
+<p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>
+<p>Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each <code>rippled</code> server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.</p>
+<h3 id="lastledgersequence">LastLedgerSequence</h3>
+<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
+<p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not promptly validated yet could become viable at some point in the future. Gateways and other back-end applications should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the sequence number of the last validated ledger[1] to ensure that a transaction is validated or rejected in a predictable and timely fashion.</p>
+<p>Applications using rippled APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="reliable-transactions-submission">Reliable Transactions Submission</h3>
+<p>Applications submitting transactions should employ the following practices in order to submit reliably even in the event that a process dies or other failure occurs.  Application transaction results must be verified so that applications can act on the final, validated results.</p>
+<p>Submission and verification are two separate procedures which may be implemented using the logic described in this document.</p>
+<ol>
+<li>Submission - The transaction is submitted to the network and a provisional result is returned.</li>
+<li>Verification - The authoritative result is determined by examining validated ledgers.</li>
+</ol>
+<h3 id="submission">Submission</h3>
+<p><a href="https://en.wikipedia.org/wiki/Persistence_%28computer_science%29">Persist</a> details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.</p>
+<p>The submission process:</p>
+<ol>
+<li>Construct and sign the transaction</li>
+<li>Include <code>LastLedgerSequence</code> parameter</li>
+<li>Persist the transaction details, saving:</li>
+<li>Transaction hash</li>
+<li><code>LastLedgerSequence</code></li>
+<li>Account ID and sequence number</li>
+<li>Application-specific data, as needed</li>
+<li>Submit the transaction</li>
+</ol>
+<h3 id="verification">Verification</h3>
+<p>During normal operation, applications may check the status of submitted transactions by their hashes; or, depending on the API used, receive notifications when transactions have been validated (or failed).  This normal operation may be interrupted, for example by network failures or power failures.  In case of such interruption applications need to reliably verify the status of transactions which may or may not have been submitted to the network prior to the interruption.</p>
+<p>On restart, or the determination of a new last validated ledger (pseudocode):</p>
+<pre><code>For each persisted transaction without validated result:
+    Query transaction by hash
+    If (result appears in validated ledger)
+        Persist the final result
+        If (result code is tesSUCCESS)
+            Application may act based on successful transaction
+        Else
+            Application may act based on failure
+            Maybe resubmit with new LastLedgerSequence and Fee
+    Else if (LastLedgerSequence &gt; newest validated ledger)
+        Wait for more ledgers to be validated
+    Else
+        If (server has contiguous ledger history up to and
+            including the ledger identified by LastLedgerSequence)
+            The transaction failed
+            Submit a new transaction, if appropriate for application
+        Else
+            Repeat submission of original transaction
+</code></pre>
+<h2 id="technical-application">Technical Application</h2>
+<p>In order to implement the transaction submission and verification best practices, applications need to perform the following actions.</p>
+<ol>
+<li>Determine the signing account's next sequence number<ul>
+<li>Each transaction has an account-specific sequence number.  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.</li>
+</ul>
+</li>
+<li>Decide on a <code>LastLedgerSequence</code><ul>
+<li>A transaction's <code>LastLedgerSequence</code> is calculated from the last validated ledger sequence number.</li>
+</ul>
+</li>
+<li>Construct and sign the transaction<ul>
+<li>Persist the details of a signed transaction before submission.</li>
+</ul>
+</li>
+<li>Submit the transaction<ul>
+<li>Initial results are provisional and subject to change.</li>
+</ul>
+</li>
+<li>Determine the final result of a transaction<ul>
+<li>Final results are an immutable part of the ledger history.</li>
+</ul>
+</li>
+</ol>
+<p>An application's means of performing these actions depends on the API the application uses.  An application may use any of the following interfaces:</p>
+<ol>
+<li><a href="reference-rippled.html"><code>rippled</code>'s internal APIs</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li>Any number of other software APIs layered on top of <code>rippled</code></li>
+</ol>
+<h3 id="rippled-submitting-and-verifying-transactions">rippled - Submitting and Verifying Transactions</h3>
+<h4 id="determine-the-account-sequence">Determine the Account Sequence</h4>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#account-info">account_info</a> method to learn an account's sequence number in the last validated ledger.</p>
+<p>JSON-RPC Request:</p>
+<pre><code>{
+  "method": "account_info",
+  "params": [
+    {
+      "account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+      "ledger": "validated"
+    }
+  ]
+}
+</code></pre>
+<p>Response body:</p>
+<pre><code>{
+    "result": {
+        "validated": true,
+        "status": "success",
+        "ledger_index": 10266396,
+        "account_data": {
+            "index": "96AB97A1BBC37F4F8A22CE28109E0D39D709689BDF412FE8EDAFB57A55E37F38",
+            "Sequence": 4,
+            "PreviousTxnLgrSeq": 9905632,
+            "PreviousTxnID": "CAEE0E34B3DB50A7A0CA486E3A236513531DE9E52EAC47CE4C26332CC847DE26",
+            "OwnerCount": 2,
+            "LedgerEntryType": "AccountRoot",
+            "Flags": 0,
+            "Balance": "49975988",
+            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+        }
+    }
+}
+</code></pre>
+<p>In this example, the account's sequence is <strong>4</strong> (note <code>"Sequence": 4</code>, in <code>"account_data"</code>) as of the last validated ledger (note <code>"ledger": "validated"</code> in the request, and <code>"validated": "true"</code> in the response).</p>
+<p>If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  In order to submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.</p>
+<h4 id="determine-the-last-validated-ledger">Determine the Last Validated Ledger</h4>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#server-state">server_state</a> command which returns the ledger sequence number of the last validated ledger.</p>
+<p>Request:</p>
+<pre><code>{
+  "id": "client id 1",
+  "method": "server_state"
+}
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "status": "success",
+        "state": {
+            "validation_quorum": 3,
+            "validated_ledger": {
+                "seq": 10268596,
+                "reserve_inc": 5000000,
+                "reserve_base": 20000000,
+                "hash": "0E0901DA980251B8A4CCA17AB4CA6C3168FE83FA1D3F781AFC5B9B097FD209EF",
+                "close_time": 470798600,
+                "base_fee": 10
+            },
+            "server_state": "full",
+            "published_ledger": 10268596,
+            "pubkey_node": "n9LGg37Ya2SS9TdJ4XEuictrJmHaicdgTKiPJYi8QRSdvQd3xMnK",
+            "peers": 58,
+            "load_factor": 256000,
+            "load_base": 256,
+            "last_close": {
+                "proposers": 5,
+                "converge_time": 3004
+            },
+            "io_latency_ms": 2,
+            "fetch_pack": 10121,
+            "complete_ledgers": "10256331-10256382,10256412-10268596",
+            "build_version": "0.26.4-sp3-private"
+        }
+    }
+}
+</code></pre>
+<p>In this example the last validated ledger sequence number is 10268596 (found under <code>result.state.validated_ledger</code> in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server will eventually retrieve that portion of the ledger history.</p>
+<h4 id="construct-the-transaction">Construct the Transaction</h4>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) from a gateway to another Ripple account.</p>
+<p>Request:</p>
+<pre><code>{
+    "method": "sign",
+    "params": [
+        {
+            "offline": true,
+            "secret": "sssssssssssssssssssssssssssss",
+            "tx_json": {
+               "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+                "Sequence": 4,
+                "LastLedgerSequence": 10268600,
+                "Fee": 10000,
+                "Amount": {
+                    "currency": "FOO",
+                    "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+                    "value": "10"
+                },
+                "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+                "TransactionType": "Payment"
+            }
+        }
+    ]
+}
+</code></pre>
+<p>Notice the application specifies the account sequence <code>"Sequence": 4</code>, learned from an earlier call to <code>account_info</code>, to avoid <code>tefPAST_SEQ</code> errors.</p>
+<p>Notice also the <code>LastLedgerSequence</code> based on the last validated ledger our application learned from <code>server_state</code>.  The recommendation for backend applications is to use <em>(last validated ledger sequence + 4)</em>. Alternately, use a value of <em>(current ledger + 3)</em>.  If <code>LastLedgerSequence</code> is miscalculated and less than the last validated ledger, the transaction will fail with <code>tefMAX_LEDGER</code> error.</p>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "tx_json": {
+            "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+            "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
+            "TransactionType": "Payment",
+            "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
+            "Sequence": 4,
+            "LastLedgerSequence": 10268600,
+            "Flags": 2147483648,
+            "Fee": "10000",
+            "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+            "Amount": {
+                "value": "10",
+                "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+                "currency": "FOO"
+            },
+            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+        },
+        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
+        "status": "success"
+    }
+}
+</code></pre>
+<p>Applications should persist the transaction's hash before submitting.  The result of the <code>sign</code> method includes the hash under <code>tx_json</code>.</p>
+<h4 id="submit-the-transaction">Submit the transaction</h4>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#submit"><code>submit</code> method</a>, allowing us to submit the signed transaction.  This uses the <code>tx_blob</code> parameter that was returned by the <code>sign</code> method.</p>
+<p>Request:</p>
+<pre><code>{
+    "method": "submit",
+    "params": [
+        {
+        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C"
+        }
+    ]
+}
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "tx_json": {
+            "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+            "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
+            "TransactionType": "Payment",
+            "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
+            "Sequence": 4,
+            "LastLedgerSequence": 10268600,
+            "Flags": 2147483648,
+            "Fee": "10000",
+            "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+            "Amount": {
+                "value": "10",
+                "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+                "currency": "FOO"
+            },
+            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+        },
+        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
+        "status": "success",
+        "engine_result_message": "The transaction was applied.",
+        "engine_result_code": 0,
+        "engine_result": "tesSUCCESS"
+    }
+}
+</code></pre>
+<p>This a <strong>preliminary</strong> result.  Final results are only available from validated ledgers.  The lack of a <code>"validated": true</code> field indicates that this is <strong>not an immutable result</strong>.</p>
+<h4 id="verify-the-transaction">Verify the Transaction</h4>
+<p>The transaction hash, generated when the transaction was signed, is passed to the <a href="reference-rippled.html#tx"><code>tx</code> method</a> to retrieve the result of a transaction.</p>
+<p>Request:</p>
+<pre><code>{
+    "method": "tx",
+    "params": [
+        {
+            "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+            "binary": false
+        }
+    ]
+}
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "validated": true,
+        "status": "success",
+        "meta": {
+            "TransactionResult": "tesSUCCESS",
+            "TransactionIndex": 2,
+            "AffectedNodes": [...]
+        },
+        "ledger_index": 10268599[d],
+        "inLedger": 10268599,
+        "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+        "date": 470798270,
+        "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
+        "TransactionType": "Payment",
+        "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
+        "Sequence": 4,
+        "LastLedgerSequence": 10268600,
+        "Flags": 2147483648,
+        "Fee": "10000",
+        "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+        "Amount": {
+            "value": "10",
+            "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+            "currency": "FOO"
+        },
+        "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+    }
+}
+</code></pre>
+<p>This example response shows <code>"validated": true</code>, indicating the transaction has been included in a validated ledger and therefore the result of the transaction is immutable.  Further, the metadata includes <code>"TransactionResult": "tesSUCCESS"</code>, indicating the transaction was applied to the ledger.</p>
+<p>If the response does not include <code>"validated": true</code>, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the <code>tx</code> method again, allowing enough time for the network to validate subsequent ledger instances.  It may be necessary to wait for the ledger specified in <code>LastLedgerSequence</code> to be validated, although if the transaction is included in an earlier validated ledger the result become immutable at that time.</p>
+<h4 id="verify-missing-transaction">Verify Missing Transaction</h4>
+<p>Applications must handle cases where a call to the <a href="reference-rippled.html#tx"><code>tx</code> method</a> returns a <code>txnNotFound</code> error.</p>
+<pre><code>{
+    "result": {
+        "status": "error",
+        "request": {
+            "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE56",
+            "command": "tx",
+            "binary": false
+        },
+        "error_message": "Transaction not found.",
+        "error_code": 24,
+        "error": "txnNotFound"
+    }
+}
+</code></pre>
+<p>The <code>txnNotFound</code> result code occurs in cases where the transaction has failed to be included in any ledger.  However, it could also occur when a rippled instance does not have a complete ledger history, or if the transaction has not yet propagated to the rippled instance.  Applications should make further queries to determine how to react.</p>
+<p>The <a href="reference-rippled.html#server-state"><code>server_state</code> method</a> (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under <code>result.state.complete_ledgers</code>.</p>
+<pre><code>{
+    "result": {
+        "status": "success",
+        "state": {
+            "validation_quorum": 3,
+            "validated_ledger": {
+                "seq": 10269447,
+                "reserve_inc": 5000000,
+                "reserve_base": 20000000,
+                "hash": "D05C7ECC66DD6F4FEA3A6394F209EB5D6824A76C16438F562A1749CCCE7EAFC2",
+                "close_time": 470802340,
+                "base_fee": 10
+            },
+            "server_state": "full",
+            "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
+            "peers": 84,
+            "load_factor": 256000,
+            "load_base": 256,
+            "last_close": {
+                "proposers": 5,
+                "converge_time": 2002
+            },
+            "io_latency_ms": 1,
+            "complete_ledgers": "10256331-10256382,10256412-10269447",
+            "build_version": "0.26.4-sp3-private"
+        }
+    }
+}
+</code></pre>
+<p>Our example transaction specified <code>LastLedgerSequence</code> 10268600, based on the last validated ledger at the time, plus four.  So to determine whether our missing transaction has permanently failed, our <code>rippled</code> server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, <strong>and</strong> <code>tx</code> returns <code>txnNotFound</code>, then the transaction has failed and will never be included in any ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated <code>LastLedgerSequence</code>.</p>
+<p>The server state may indicate a last validated ledger sequence number less than the specified <code>LastLedgerSequence</code>.  If so, the <code>txnNotFound</code> indicates either (a) the submitted transaction failed to be distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it will be processed at most once.</p>
+<p>Finally the server state might indicate one or more gaps in the transaction history. The <code>completed_ledgers</code> field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and <code>LastLedgerSequence</code>), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) in order to determine that a <code>txnNotFound</code> result is immutable.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li>Documentation of <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a></li>
+<li><a href="http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
+<li><a href="https://ripple.com/knowledge_center/reaching-consensus-in-ripple/">Reaching Consensus in Ripple</a></li>
+</ul>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+				    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
+</footer>
+</body>
+</html>
