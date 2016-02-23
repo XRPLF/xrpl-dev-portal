@@ -42,21 +42,21 @@ pages:
         html: reference-rippled.html
         md: reference-rippled.md
         ripple.com: https://ripple.com/build/rippled-apis/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: Transaction Format
         category: References
         html: reference-transaction-format.html
         md: reference-transaction-format.md
         ripple.com: https://ripple.com/build/transactions/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: Ledger Format
         category: References
         html: reference-ledger-format.html
         md: reference-ledger-format.md
         ripple.com: https://ripple.com/build/ledger-format/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: RippleAPI
         category: References
@@ -64,14 +64,14 @@ pages:
         # Currently this is the only page that's fetched remotely.
         md: https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md
         ripple.com: https://ripple.com/build/rippleapi/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: Ripple Data API v2
         category: References
         html: reference-data-api.html
         md: reference-data-api.md
         ripple.com: https://ripple.com/build/data-api-v2/
-        sidebar: page-toc
+        sidebar: true
 
 # Tutorials are step-by-step guides to a specific goal
     -   name: RippleAPI Beginners Guide
@@ -79,21 +79,21 @@ pages:
         html: tutorial-rippleapi-beginners-guide.html
         md: tutorial-rippleapi-beginners-guide.md
         ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: rippled Setup
         category: Tutorials
         html: tutorial-rippled-setup.html
         md: tutorial-rippled-setup.md
         ripple.com: https://ripple.com/build/rippled-setup/
-        sidebar: page-toc
+        sidebar: true
 
     -   name: Reliable Transaction Submission
         category: Tutorials
         html: tutorial-reliable-transaction-submission.html
         md: tutorial-reliable-transaction-submission.md
         ripple.com: https://ripple.com/build/reliable-transaction-submission/
-        sidebar: page-toc
+        sidebar: true
 
 # Concepts are introductions that explain a topic.
 # In the Dev Portal, these are mostly summaries of RCL features.
@@ -102,49 +102,49 @@ pages:
         html: concept-paths.html
         md: concept-paths.md
         ripple.com: https://ripple.com/build/paths/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Fees (Disambiguation)
         category: Concepts
         html: concept-fees.html
         md: concept-fees.md
         ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Transfer Fees
         category: Concepts
         html: concept-transfer-fees.html
         md: concept-transfer-fees.md
         ripple.com: https://ripple.com/knowledge_center/transfer-fees/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Transaction Cost
         category: Concepts
         html: concept-transaction-cost.html
         md: concept-transaction-cost.md
         ripple.com: https://ripple.com/build/transaction-cost/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Fee Voting
         category: Concepts
         html: concept-fee-voting.html
         md: concept-fee-voting.md
         ripple.com: https://ripple.com/build/fee-voting/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Reserves
         category: Concepts
         html: concept-reserves.html
         md: concept-reserves.md
         ripple.com: https://ripple.com/build/reserves/
-        sidebar: category-toc
+        sidebar: true
 
     -   name: Freeze
         category: Concepts
         html: concept-freeze.html
         md: concept-freeze.md
         ripple.com: https://ripple.com/build/freeze/
-        sidebar: category-toc
+        sidebar: true
 
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Acounts
@@ -153,7 +153,7 @@ pages:
         md: concept-issuing-and-operational-accounts.md
         # TODO publish this article separately on the website
         ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
-        sidebar: page-toc
+        sidebar: true
 
         # The Gateway Guide is kind of a poor fit for the "tutorials" category
     -   name: Gateway Guide
@@ -161,14 +161,14 @@ pages:
         html: tutorial-gateway-guide.html
         md: tutorial-gateway-guide.md
         ripple.com: https://ripple.com/build/gateway-guide/
-        sidebar: page-toc
+        sidebar: true
 
 # API tools are interactive software for interfacing with real APIs
     -   name: WebSocket API Tool
         category: API Tools
         html: ripple-api-tool.html
         ripple.com: https://ripple.com/build/websocket-tool/
-        sidebar: custom
+        sidebar: true
         targets:
             - local
             - ripple.com
@@ -179,7 +179,7 @@ pages:
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
-        sidebar: custom
+        sidebar: true
         targets:
             - local
             - ripple.com

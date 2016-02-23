@@ -20,24 +20,21 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% if currentpage.sidebar == "page-toc" %}
-    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
-        <div id="cont">
-        </div>
-    </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
-  {% elif currentpage.sidebar == "category-toc" %}
+  {% if currentpage.sidebar %}
     <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
         <div id="cont">
             <ul id="dev_nav_sidebar">
-                <li class="level-1">{{ currentpage.category }}</li>
+                <li class="level-1"><a href="index.html">Category: {{ currentpage.category }}</a></li>
             {% for page in pages %}
 	          {% if page.category == currentpage.category %}
                 <li class="level-2"><a href="{{ page.html }}">{{ page.name }}</a></li>
               {% endif %}
             {% endfor %}
             </ul>
+            <hr />
+            <h5>In this page:</h5>
         </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
   {% endif %}
 {% endblock %}
