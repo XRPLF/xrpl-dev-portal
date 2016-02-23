@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Paths - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+            <ul id="dev_nav_sidebar">
+                <li class="level-1">Concepts</li>
+                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
+                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+        </div>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="paths">Paths</h1>
+<p>In the Ripple Consensus Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver via market makers. Paths also enable complex settlement of offsetting debts.</p>
+<p>A single Payment transaction in the Ripple Consensus Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a <em>path set</em>, which is a collection of possible paths to take. The paths in a path set must start and end with the same currency.</p>
+<p>Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.</p>
+<h2 id="path-steps">Path Steps</h2>
+<p>A path is made of steps that connect the sender to the receiver of the payment. Every step is either:</p>
+<ul>
+<li>Rippling through another account in the same currency</li>
+<li>Exchanging currency at an order book</li>
+</ul>
+<p>Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">Understanding the NoRipple Flag</a> for more examples of rippling.</p>
+<p>In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)</p>
+<p>In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to <a href="https://ripple.com/knowledge_center/transfer-fees/">transfer fees</a>, trust line quality, or rounding.</p>
+<p><a href="img/paths-examples.png"><img alt="Diagram of three example paths" src="img/paths-examples.png"/></a></p>
+<h1 id="technical-details">Technical Details</h1>
+<h2 id="pathfinding">Pathfinding</h2>
+<p>The <code>rippled</code> API has two methods that can be used for pathfinding. The <a href="reference-rippled.html#ripple-path-find"><code>ripple_path_find</code> command</a> does a one-time lookup of possible path sets. The <a href="reference-rippled.html#path-find"><code>path_find</code> command</a> (WebSocket only) expands on the initial search with follow-up responses whenever a ledger closes or the server finds a better path.</p>
+<p>You can have <code>rippled</code> automatically fill in paths when you sign it, by including the <code>build_path</code> field in a request to the <a href="reference-rippled.html#sign"><code>sign</code> command</a> or <a href="reference-rippled.html#sign-and-submit-mode"><code>submit</code> command (sign-and-submit mode)</a>. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit.)</p>
+<p>Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so <code>rippled</code> is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.</p>
+<h2 id="implied-steps">Implied Steps</h2>
+<p>By convention, several steps of a path are implied by the <a href="reference-transaction-format.html#payment">fields of the Payment transaction</a>: specifically, the <code>Account</code> (sender), <code>Destination</code> (receiver), <code>Amount</code> (currency and amount to be delivered) and <code>SendMax</code> (currency and amount to be sent, if specified). The implied steps are as follows:</p>
+<ul>
+<li>The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's <code>Account</code> field.</li>
+<li>If the transaction includes a <code>SendMax</code> field with an <code>issuer</code> that is not the sender of the transaction, that issuer is implied to be the second step of the path.<ul>
+<li>If <code>issuer</code> of the <code>SendMax</code> <em>is</em> the sending account, then the path starts at the sending account, and may use any of that account's trust lines in the given currency. See <a href="reference-transaction-format.html#special-issuer-values-for-sendmax-and-amount">special values for SendMax and Amount</a> for details.</li>
+</ul>
+</li>
+<li>If the <code>Amount</code> field of the transaction includes an <code>issuer</code> that is not the same as the <code>Destination</code> of the transaction, that issuer is implied to be the second-to-last step of the path.</li>
+<li>Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's <code>Destination</code> field.</li>
+</ul>
+<h2 id="default-paths">Default Paths</h2>
+<p>In addition to any paths that are specified in the transaction, a transaction can also execute along the <em>default path</em>. The default path is the simplest possible way to connect the <a href="#implied-steps">implied steps</a> of the transaction.</p>
+<p>The default path could be any of the following:</p>
+<ul>
+<li>If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment will ripple through the accounts involved. This path will only work if there are trust lines connecting those accounts.<ul>
+<li>If <code>SendMax</code> is omitted, or the <code>issuer</code> of the <code>SendMax</code> is the sender, the default path needs a trust line from the sending <code>Account</code> to the <code>issuer</code> of the destination <code>Amount</code> in order to work.</li>
+<li>If the <code>SendMax</code> and <code>Amount</code> have different <code>issuer</code> values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple, Inc. typically discourages issuers from trusting one another directly.</li>
+</ul>
+</li>
+<li>For cross-currency transactions, the default path uses the order book between the source currency (as specified in the <code>SendMax</code> field) and the destination currency (as specified in the <code>Amount</code> field).</li>
+</ul>
+<p>The following diagram enumerates all possible default paths:
+<a href="img/paths-default_paths.png"><img alt="Diagram of default paths" src="img/paths-default_paths.png"/></a></p>
+<p>You can use the <a href="reference-transaction-format.html#payment-flags"><code>tfNoDirectRipple</code> flag</a> to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.</p>
+<h2 id="path-specifications">Path Specifications</h2>
+<p>A path set is an array. Each member of the path set is another array that represents an individual <em>path</em>. Each member of a path is an object that specifies the step. A step has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>String - Address</td>
+<td>(Optional) If present, this path step represents rippling through the specified account.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String - currency code</td>
+<td>(Optional) If present, this path step represents changing currencies through an order book. The currency specified indicates the new currency.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>String - Address</td>
+<td>(Optional) If the path step represents changing currencies through an order book, this field indicates the issuer of the new currency. This field is not present when changing to XRP.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Integer</td>
+<td><strong>DEPRECATED</strong> (Optional) An indicator of which other fields are present.</td>
+</tr>
+<tr>
+<td>type_hex</td>
+<td>String</td>
+<td><strong>DEPRECATED</strong>: (Optional) A hexadecimal representation of the <code>type</code> field.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>type</code> field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value (Hex)</th>
+<th>Value (Decimal)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01</td>
+<td>1</td>
+<td>A change of account (rippling): the <code>account</code> field is present.</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>16</td>
+<td>A change of currency: the <code>currency</code> field is present.</td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>32</td>
+<td>A change of issuer: the <code>issuer</code> field is present.</td>
+</tr>
+</tbody>
+</table>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+				    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
+</footer>
+</body>
+</html>

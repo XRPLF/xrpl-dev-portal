@@ -28,143 +28,159 @@ targets:
         multicode_tabs: true
     -   name: ripple.com
         multicode_tabs: true
-    -   name: pdf
-        multicode_tabs: false
 
 pages:
+# Intro pages is not directly replicated on ripple.com at this time
     -   name: Overview
         html: index.html
         sidebar: false
         template: template-index.html
 
+# References are exhaustive lists of commands and options
+    -   name: rippled
+        category: References
+        html: reference-rippled.html
+        md: reference-rippled.md
+        ripple.com: https://ripple.com/build/rippled-apis/
+        sidebar: page-toc
+
+    -   name: Transaction Format
+        category: References
+        html: reference-transaction-format.html
+        md: reference-transaction-format.md
+        ripple.com: https://ripple.com/build/transactions/
+        sidebar: page-toc
+
+    -   name: Ledger Format
+        category: References
+        html: reference-ledger-format.html
+        md: reference-ledger-format.md
+        ripple.com: https://ripple.com/build/ledger-format/
+        sidebar: page-toc
+
+    -   name: RippleAPI
+        category: References
+        html: reference-rippleapi.html
+        # Currently this is the only page that's fetched remotely.
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md
+        ripple.com: https://ripple.com/build/rippleapi/
+        sidebar: page-toc
+
+    -   name: Ripple Data API v2
+        category: References
+        html: reference-data-api.html
+        md: reference-data-api.md
+        ripple.com: https://ripple.com/build/data-api-v2/
+        sidebar: page-toc
+
+# Tutorials are step-by-step guides to a specific goal
+    -   name: RippleAPI Beginners Guide
+        category: Tutorials
+        html: tutorial-rippleapi-beginners-guide.html
+        md: tutorial-rippleapi-beginners-guide.md
+        ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
+        sidebar: page-toc
+
+    -   name: rippled Setup
+        category: Tutorials
+        html: tutorial-rippled-setup.html
+        md: tutorial-rippled-setup.md
+        ripple.com: https://ripple.com/build/rippled-setup/
+        sidebar: page-toc
+
+    -   name: Reliable Transaction Submission
+        category: Tutorials
+        html: tutorial-reliable-transaction-submission.html
+        md: tutorial-reliable-transaction-submission.md
+        ripple.com: https://ripple.com/build/reliable-transaction-submission/
+        sidebar: page-toc
+
+# Concepts are introductions that explain a topic.
+# In the Dev Portal, these are mostly summaries of RCL features.
     -   name: Paths
         category: Concepts
-        html: paths.html
-        md: paths.md
+        html: concept-paths.html
+        md: concept-paths.md
         ripple.com: https://ripple.com/build/paths/
         sidebar: category-toc
 
     -   name: Fees (Disambiguation)
         category: Concepts
-        html: fees.html
-        md: fees.md
+        html: concept-fees.html
+        md: concept-fees.md
         ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
         sidebar: category-toc
 
     -   name: Transfer Fees
         category: Concepts
-        html: transfer_fees.html
-        md: transferrate.md
+        html: concept-transfer-fees.html
+        md: concept-transfer-fees.md
         ripple.com: https://ripple.com/knowledge_center/transfer-fees/
         sidebar: category-toc
 
     -   name: Transaction Cost
         category: Concepts
-        html: tx-cost.html
-        md: tx-cost.md
+        html: concept-transaction-cost.html
+        md: concept-transaction-cost.md
         ripple.com: https://ripple.com/build/transaction-cost/
         sidebar: category-toc
 
-    -   category: Concepts
-        html: fee-voting.html
-        md: fee-voting.md
-        name: Fee Voting
+    -   name: Fee Voting
+        category: Concepts
+        html: concept-fee-voting.html
+        md: concept-fee-voting.md
         ripple.com: https://ripple.com/build/fee-voting/
         sidebar: category-toc
 
-    -   category: Concepts
-        html: reserves.html
-        md: reserves.md
-        name: Reserves
+    -   name: Reserves
+        category: Concepts
+        html: concept-reserves.html
+        md: concept-reserves.md
         ripple.com: https://ripple.com/build/reserves/
         sidebar: category-toc
 
-    -   category: Concepts
-        html: freeze.html
-        md: freeze.md
-        name: Freeze
+    -   name: Freeze
+        category: Concepts
+        html: concept-freeze.html
+        md: concept-freeze.md
         ripple.com: https://ripple.com/build/freeze/
         sidebar: category-toc
 
-    -   category: Tutorials
-        html: rippleapi_quickstart.html
-        md: rippleapi_quickstart.md
-        name: RippleAPI Quick Start Guide
+# "Best Practices" documents are mostly in the same category as tutorials
+    -   name: Issuing and Operational Acounts
+        category: Best Practices
+        html: concept-issuing-and-operational-accounts.html
+        md: concept-issuing-and-operational-accounts.md
+        # TODO publish this article separately on the website
+        ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
         sidebar: page-toc
 
-    -   category: References
-        html: rippled-apis.html
-        md: rippled.md
-        name: rippled
-        ripple.com: https://ripple.com/build/rippled-apis/
-        sidebar: page-toc
-
-    -   category: Tutorials
-        html: rippled-setup.html
-        md: rippled-setup.md
-        name: rippled Setup
-        ripple.com: https://ripple.com/build/rippled-setup/
-        sidebar: page-toc
-
-    -   category: References
-        html: transactions.html
-        md: tx_format.md
-        name: Transactions
-        ripple.com: https://ripple.com/build/transactions/
-        sidebar: page-toc
-
-    -   category: References
-        html: ripple-ledger.html
-        md: ledger_format.md
-        name: Ledger Format
-        ripple.com: https://ripple.com/build/ledger-format/
-        sidebar: page-toc
-
-    -   category: Tutorials
-        html: reliable_tx.html
-        md: reliable_tx.md
-        name: Reliable Transaction Submission
-        ripple.com: https://ripple.com/build/reliable-transaction-submission/
-        sidebar: page-toc
-
-    -   category: Tutorials
-        html: gateway_guide.html
-        md: gateway_guide.md
-        name: Gateway Guide
+        # The Gateway Guide is kind of a poor fit for the "tutorials" category
+    -   name: Gateway Guide
+        category: Best Practices
+        html: tutorial-gateway-guide.html
+        md: tutorial-gateway-guide.md
         ripple.com: https://ripple.com/build/gateway-guide/
         sidebar: page-toc
 
-    -   category: References
-        html: data_api_v2.html
-        md: data_v2.md
-        name: Ripple Data API v2
-        ripple.com: https://ripple.com/build/data-api-v2/
-        sidebar: page-toc
-
-    -   category: References
-        html: rippleapi.html
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md
-        name: RippleAPI
-        ripple.com: https://ripple.com/build/rippleapi/
-        sidebar: page-toc
-
-    -   category: API Tools
+# API tools are interactive software for interfacing with real APIs
+    -   name: WebSocket API Tool
+        category: API Tools
         html: ripple-api-tool.html
-        name: WebSocket API Tool
         ripple.com: https://ripple.com/build/websocket-tool/
         sidebar: custom
         targets:
-        - local
-        - ripple.com
+            - local
+            - ripple.com
         template: template-ripple-api-tool.html
 
-    -   category: API Tools
+    -   name: Data API v2 Tool
+        category: API Tools
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
-        name: Data API v2 Tool
         rest_host: https://data.ripple.com
         sidebar: custom
         targets:
-        - local
-        - ripple.com
+            - local
+            - ripple.com
         template: template-rest-api-tool.html

@@ -499,7 +499,7 @@ if __name__ == "__main__":
         if cli_args.pdf[-4:] != ".pdf":
             exit("PDF filename must end in .pdf")
         logging.info("making a pdf...")
-        make_pdf(cli_args.pdf)
+        make_pdf(cli_args.pdf, target=cli_args.target)
         logging.info("pdf done")
 
     else:

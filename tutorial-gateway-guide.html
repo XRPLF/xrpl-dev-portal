@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Gateway Guide - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().multicode_tabs_pandoc();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+            </ul>
+            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+        <div id="cont">
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="becoming-a-ripple-gateway">Becoming a Ripple Gateway</h1>
+<p>Expanding an existing online financial system to support Ripple is a relatively simple task. Gateways are the businesses that link the Ripple network to the rest of the world. By becoming a Ripple gateway, existing online financial services, such as payment systems and digital currency exchange, can gain several advantages:</p>
+<ul>
+<li>By enabling its users to send and receive value in Ripple, the business increases its value proposition to users.</li>
+<li>By accepting payments from the Ripple network, the business increases the number of ways that users can fund accounts at its business, even internationally.</li>
+<li>The business can use Ripple-related services as a new source of revenue.</li>
+</ul>
+<p>This document explains the concepts and steps necessary to become a Ripple gateway. In this document, we use a fictional online currency exchange named "ACME" and its users as examples, to show how ACME can expand its business to include being a Ripple gateway.</p>
+<h2 id="contact-information">Contact Information</h2>
+<p>You are not on your own. Ripple Labs depends on the success of individual gateways, so we are here to help. Please contact us if you need any assistance building and growing your gateway.</p>
+<ul>
+<li>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> for enterprise-class integrations, infrastructure advice, and other business development needs.</li>
+<li>Contact <a href="mailto:developers@ripple.com">developers@ripple.com</a> for technical questions, clarifications, bug reports, and feature requests.</li>
+</ul>
+<h2 id="ripple-gateways-explained">Ripple Gateways Explained</h2>
+<p>A Ripple <em><em>Gateway</em></em> is an entity that exchanges value in the Ripple Network for value outside Ripple, so it connects Ripple to the outside world. There are three major models that gateways can follow, with different purposes and modes of operation. </p>
+<ul>
+<li>An <strong>Issuing Gateway</strong> receives money (or other assets of value) outside of Ripple, and creates <em><em>issuances</em></em> in the Ripple Network. This provides a direct way for users to get money in and out of Ripple. This document focuses primarily on how to become an issuing gateway.</li>
+<li>A <strong>Private Exchange</strong> lets its users purchase and trade XRP among users of the private exchange. This is similar to being an exchange for any other commodity or cryptocurrency. However, unlike other cryptocurrencies, there is also an exchange built into the Ripple protocol itself.</li>
+<li>A <strong>Merchant</strong> accepts payment within Ripple for goods or services outside the network. Unlike an issuing gateway, a merchant business does not create its own currency, but accepts issuances that are created by other gateways. This guide does not describe how to accept Ripple payments as a merchant.</li>
+</ul>
+<h3 id="ripple-trust-lines-and-issuances">Ripple Trust Lines and Issuances</h3>
+<p>All assets in Ripple, except for the native cryptocurrency XRP, are represented as <em>issuances</em>, which are digital assets that reflect traditional assets held by a gateway. Within Ripple, issuances can be sent and traded without the gateway's intervention and very low barriers to entry. Issuances get their value from gateway's agreement to honor the obligation that the issuances represent; there is no computer system that can force a Ripple gateway to honor that obligation. Therefore, Ripple's <em>trust lines</em> ensure that users only hold issuances from gateways they trust to pay out when needed.</p>
+<p>A "trust line" is link between two accounts in Ripple that represents an explicit statement of willingness to hold gateway debt obligations. When a user sends money into Ripple, a Gateway takes custody of those assets outside of Ripple, and sends issuances within the Ripple network to the user. When a user sends money out of Ripple, she makes a Ripple payment to the gateway, and the gateway then sends the assets to the user in the outside world.</p>
+<h3 id="xrp">XRP</h3>
+<p>XRP is the native <a href="https://ripple.com/knowledge_center/math-based-currency/">cryptocurrency</a> of the Ripple network. Like issuances, XRP can be freely sent and exchanged by users in the network. Unlike issuances, XRP is not connected to a trust line, and can be sent directly from any Ripple account to any other, without going through a gateway or market maker. This helps make XRP a convenient bridge currency to facilitate currency exchanges.</p>
+<p>XRP also serves other purposes in the Ripple network, in particular as <a href="https://ripple.com/knowledge_center/abuse-protection/">a protective measure against spamming the network</a>. All Ripple accounts need a small reserve of XRP in order to pay the network costs of maintaining their accounts and sending transactions. The anti-spam network fees are destroyed, not paid to any party.</p>
+<p>Issuing gateways do not need to accumulate or exchange XRP. They must only maintain a small balance of XRP to send transactions on the network. The XRP equivalent of $10 USD should be enough for a busy gateway to operate for a year.</p>
+<p>Private exchanges and market makers may choose to hold additional XRP to use as a means of exchange. Ripple Labs <strong>does not</strong> promote XRP as a speculative investment.</p>
+<h3 id="liquidity-and-currency-exchange-within-ripple">Liquidity and Currency Exchange Within Ripple</h3>
+<p>The Ripple network contains a distributed financial exchange, where any user can place and fulfill bids to exchange currencies (issuances and XRP). Cross-currency payments automatically use the financial exchange to convert currency atomically at the time of sending. In this way, users who choose to become market makers provide the liquidity that makes the Ripple Network useful.</p>
+<p>When adding a new gateway to the Ripple network, it is important to establish liquidity to other popular currencies. Because liquidity is provided by third-party market makers, a gateway can provide currency-exchange services through Ripple without having to keep a large reserve of currencies or shoulder the risk of financial exchange.</p>
+<p><a href="https://www.rippletrade.com/">Ripple Trade</a> is the official client application, and it is used by a large number of market makers to participate in the global exchange. To make it easier on users to trade in ACME issuances, Ripple Labs can add a shortcut to ACME's gateway in Ripple Trade, so long as ACME meets <a href="https://ripple.com/files/GB-2015-02.pdf">certain best-practice requirements</a>.</p>
+<p>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> for help establishing a market between your gateway and others, and about getting your gateway listed in Ripple Trade.</p>
+<h2 id="suggested-business-practices">Suggested Business Practices</h2>
+<p>The value of a gateway's issuances in Ripple comes directly from users' trust that users can redeem them with the gateway when needed. Since a gateway cannot pay out if it shuts down, it is also in customers' interest that a gateway does not shut down. There are a number of precaution a gateway can take that reduce the risk of business interruptions:</p>
+<ul>
+<li>Use <a href="#hot-and-cold-wallets">Hot and Cold Wallets</a> to limit your risk profile on the network.</li>
+<li>Comply with anti-money-laundering regulations for your jurisdiction, such as the <a href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act">Bank Secrecy Act</a>. This usually includes requirements to collect <a href="http://en.wikipedia.org/wiki/Know_your_customer">"Know-Your-Customer" (KYC) information</a>.</li>
+<li>Read and stay up-to-date with <a href="https://ripple.com/knowledge_center/gateway-bulletins/">Gateway Bulletins</a>, which provide news and suggestions for Ripple gateways.</li>
+<li>Clearly publicize all your policies and fees.</li>
+</ul>
+<h3 id="hot-and-cold-wallets">Hot and Cold Wallets</h3>
+<p>We strongly recommend that gateways use multiple Ripple ledger accounts with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
+<ul>
+<li>An <strong>issuing account</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
+<li>One or more <strong>operational accounts</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
+<li>Optional <strong>standby accounts</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
+</ul>
+<p>For more information, see <a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Accounts</a></p>
+<h3 id="funds-lifecycle">Funds Lifecycle</h3>
+<p>Funds in Ripple tend to flow in a cycle, from the cold wallet to the warm wallets, then the warm wallets, to customers, and eventually from customers back to the cold wallet. Issuances (any non-XRP balance in Ripple) are always tied to a trust line, so each payment "ripples" through ACME's issuing account on the trust lines connected to it. Ultimately, the lifecycle of issuances in Ripple looks something like this:</p>
+<p><img alt="Funds flow diagram" src="img/e2g-funds_flow.png"/></p>
+<ol>
+<li>Alice <a href="#sending-from-gateway-to-ripple">initiates a payment from ACME to Ripple</a>. Outside of Ripple, ACME debits Alice's account. Then ACME sends a Ripple payment of EUR.ACME from ACME's hot wallet account to Alice's Ripple account.</li>
+<li>ACME refills its hot wallet using EUR.ACME from its warm wallet.</li>
+<li>ACME refills its warm wallet by issuing new EUR.ACME from its cold wallet.</li>
+<li>Alice <a href="#sending-from-ripple-to-gateway">initiates a payment from Ripple to ACME</a>. This is basically the reverse of the initial step. Alice redeems issuances of EUR.ACME by sending them to ACME's cold wallet. Outside of Ripple, ACME credits Alice for the amount it received.</li>
+</ol>
+<h2 id="fees-and-revenue-sources">Fees and Revenue Sources</h2>
+<p>There are several ways in which a gateway can seek to benefit financially from Ripple integration. These can include:</p>
+<ul>
+<li>Withdrawal and Deposit fees. It is typical for a gateway to charge a small fee (such as 1%) for the service of adding or removing money from Ripple. You have the power to determine the rate you credit people when they move money onto and off of Ripple through your gateway.</li>
+<li>Transfer fees. You can set a percentage fee to charge automatically when Ripple users send each other issuances created by your account. This amount is debited from the Ripple ledger, decreasing your obligation each time your issuances change hands. See <a href="#transferrate">TransferRate</a> for details.</li>
+<li>Indirect revenue from value added. Ripple integration can provide valuable functionality for your customers that distinguishes your business from your competitors.</li>
+<li>Interest on Ripple-backed funds. You can keep some of your Ripple-backing currency in an external account that earns interest. Just make sure you can always access enough funds to service customer withdrawals.</li>
+<li><a href="#market-makers">Market making</a>. A gateway can also make offers to buy and sell its issuances for other issuances on Ripple, providing liquidity to cross-currency payments and possibly making a profit. (As with any market making opportunity, profits are not guaranteed.)</li>
+</ul>
+<h3 id="choosing-fee-rates">Choosing Fee Rates</h3>
+<p>Fees imposed by gateways are optional. Obviously, higher fees mean more revenue when a gateway's services are used. On the other hand, having high fees decreases the desirability of your gateway's issuances and services, which incentivizes customers to use other gateways instead. Consider the fees that are charged by other gateways, especially ones issuing similar currencies, as well as traditional payment systems outside of Ripple, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market will pay.</p>
+<h1 id="ripple-integration">Ripple Integration</h1>
+<h2 id="before-ripple-integration">Before Ripple Integration</h2>
+<p>Our example exchange, ACME, already accepts withdrawals and deposits from users using some existing system, and uses an internal accounting system to track how much balance each user has with the exchange. Such a system can be modeled simply with a balance sheet and tracking how much currency each user has on hand.</p>
+<p>In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of equity that belongs to ACME itself. Alice deposits €5, so ACME adds her to its balance sheet and ends up with €10.</p>
+<p><img alt="Alice sends €5 to ACME. ACME adds her balance to its balance sheet." src="img/e2g-01.png"/></p>
+<p><strong>Assumptions:</strong> To integrate with Ripple, we assume that an exchange such as ACME meets the following assumptions:</p>
+<ul>
+<li>ACME already has a system to accept deposits and withdrawals from some outside payment source. </li>
+<li>ACME waits for deposits to clear before crediting them internally.</li>
+<li>ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.<ul>
+<li>ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.</li>
+</ul>
+</li>
+</ul>
+<h2 id="sending-from-gateway-to-ripple">Sending from Gateway to Ripple</h2>
+<p>Ripple payments can automatically bridge between currencies, but an issuing gateway normally only sends single-currency payments that go directly to users. This means debiting a user's current balance, and then sending the equivalent amount of issuances in Ripple to the user's Ripple account. </p>
+<p>An example flow for a payment into Ripple:</p>
+<ol>
+<li>Alice asks to send €3 of her ACME balance into Ripple.</li>
+<li>Internally, ACME debits Alice's balance €3.</li>
+<li>ACME submits a Ripple transaction, sending €3 to Alice's Ripple address. The €3 is marked in the Ripple network as being "issued" by ACME (3 EUR.ACME).</li>
+</ol>
+<p><strong>Assumptions:</strong> </p>
+<ul>
+<li>Alice already has an account in the Ripple network separate from her ACME account, which she manages using an application such as Ripple Trade.</li>
+</ul>
+<p><img alt="ACME issues 3 EUR.ACME to Alice on Ripple" src="img/e2g-02.png"/></p>
+<h3 id="requirements-for-sending-to-ripple">Requirements for Sending to Ripple</h3>
+<p>There are several prerequisites that ACME must meet in order for this to happen:</p>
+<ul>
+<li>ACME modifies its core accounting system to track money that is backing funds issued on the Ripple Network. ACME can query Ripple to see who holds its Ripple issuances at any time.<ul>
+<li>Optionally, a gateway can take additional steps to separate the assets backing the gateway's Ripple issuances. For example, the funds allocated to Ripple can be stored in a separate "Ripple Escrow" bank account. A cryptocurrency exchange can create a separate wallet to hold the funds allocated to Ripple, as publicly-verifiable proof to customers that the gateway is solvent.</li>
+</ul>
+</li>
+<li>ACME must have an account on the Ripple network. Our best practices recommend actually having at least two accounts: a "cold wallet" account to issue currency, and one or more "hot wallet" accounts that perform day-to-day transactions. See <a href="#hot-and-cold-wallets">Hot and Cold Wallets</a> for more information.<ul>
+<li>ACME must enable the <a href="#defaultripple">DefaultRipple Flag</a> on its issuing account in order for users to send and receive its issuances.</li>
+</ul>
+</li>
+<li>Alice must create a trustline from her Ripple account to ACME's issuing (cold wallet) account. She can do this from any Ripple client application as long as she knows the address or Ripple Name of ACME's cold wallet.<ul>
+<li>In order to do this, Alice needs to find the address of ACME's cold wallet. ACME can publicize its cold wallet address on its website, or have the developers of .</li>
+</ul>
+</li>
+<li>ACME must create a user interface for Alice to send funds from ACME into Ripple.<ul>
+<li>In order to do this, ACME needs to know Alice's Ripple address. ACME can have Alice input her Ripple addresss as part of the interface, or ACME can require Alice to input and verify her Ripple address in advance.</li>
+</ul>
+</li>
+</ul>
+<p>See <a href="#sending-payments-to-users">Sending Payments to Users</a> for an example of how to send payments into Ripple.</p>
+<h2 id="sending-from-ripple-to-gateway">Sending from Ripple to Gateway</h2>
+<p>A payment out of Ripple means the Gateway receives a payment in the Ripple network, and credits a user outside of Ripple.</p>
+<p>An example flow of a payment out of Ripple:</p>
+<ol>
+<li>Bob sends Ripple transaction of €1 to ACME's cold wallet.</li>
+<li>In its internal accounting, credits Bob's balance €1.</li>
+</ol>
+<p>Payments going from Ripple to a gateway can be single-currency or cross-currency payments. Users can choose the exchange rates in a Ripple client application such as Ripple Trade, so that the gateway receives issuances created by its cold wallet account.</p>
+<h3 id="requirements-for-receiving-from-ripple">Requirements for Receiving from Ripple</h3>
+<p>In addition to the <a href="#requirements-for-sending-to-ripple">requirements for sending into Ripple</a>, there are several prerequisites that ACME must meet in order to process payments coming from Ripple:</p>
+<ul>
+<li>ACME must monitor its cold and hot wallet Ripple accounts for incoming payments.</li>
+<li>ACME must know which user to credit internally for the incoming payments.<ul>
+<li>We recommend that ACME should <a href="#bouncing-payments">bounce any unrecognized incoming payments</a> back to their sender.</li>
+<li>Typically, the preferred method of recognizing incoming payments is through <a href="#source-and-destination-tags">destination tags</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="precautions">Precautions</h2>
+<p>Processing payments to and from Ripple naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:</p>
+<ul>
+<li>Protect yourself against reversible deposits. Ripple payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.</li>
+<li>When sending into Ripple, specify the cold wallet as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other accounts.</li>
+<li>Before sending a payment into Ripple, double check the cost of the payment. A simple payment from your hot wallet to a customer should not cost more than the destination amount plus any <a href="#transferrate">transfer fee</a> you have set.</li>
+<li>Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you, and it is also an important element of most anti-money-laundering regulations. This is especially important because the users sending money from Ripple could be different than the ones that initially received the money in Ripple.</li>
+<li>Follow the guidelines for <a href="#reliable-transaction-submission">reliable transaction submission</a> when sending Ripple transactions.</li>
+<li><a href="#robustly-monitoring-for-payments">Robustly monitor for incoming payments</a>, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a <a href="reference-transaction-format.html#partial-payments">partial payment</a>.</li>
+<li>Track your obligations and balances within the Ripple network, and compare with your assets off the network. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.</li>
+<li>Proactively avoid ambiguous situations. We recommend the following:<ul>
+<li>Enable the <a href="#disallowxrp"><code>DisallowXRP</code> flag</a> for the cold wallet account and all hot wallet accounts, so users do not accidentally send you XRP. (Private exchanges should <em>not</em> set this flag, since they trade XRP normally.)</li>
+<li>Enable the <a href="#requiredest"><code>RequireDest</code> flag</a> for the cold wallet account and all hot wallet accounts, so users do not accidentally send a payment without the destination tag to indicate who should be credited.</li>
+<li>Enable the <a href="#requireauth"><code>RequireAuth</code> flag</a> on all hot wallet accounts so they cannot unintentionally create their own issuances.</li>
+</ul>
+</li>
+<li>Monitor for suspicious or abusive behavior. For example, a user could repeatedly withdraw and deposit funds in Ripple, as a denial of service attack that effectively empties the hot wallet. Suspend users whose accounts are involved in suspicious behavior by not processing their Ripple payments.</li>
+</ul>
+<h2 id="trading-on-ripple">Trading on Ripple</h2>
+<p>After the issuances have been created in Ripple, they can be freely transferred and traded by Ripple users. There are several consequences of this situation:</p>
+<ul>
+<li>Anyone can buy/sell EUR.ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.<ul>
+<li>This includes users who do not have an account with ACME Exchange. In order to withdraw the funds successfully from ACME, users still have to create ACME accounts.</li>
+<li>Optionally, use the <a href="#authorized-accounts">Authorized Accounts</a> feature to limit who can hold EUR.ACME on Ripple.</li>
+<li>If a gateway determines that a user has acted in bad faith, the gateway can <a href="#freezes">Freeze</a> that user's trust line to the gateway, so that the user can no longer trade in the gateway's issuances.</li>
+</ul>
+</li>
+<li>Ripple users trading and sending EUR.ACME to one another requires no intervention by ACME.</li>
+<li>All exchanges and balances on Ripple are publicly viewable in the shared, global ledger. </li>
+</ul>
+<p>The following diagram depicts a simple Ripple payment sending 2EUR.ACME from Alice to Charlie. ACME can query Ripple to see updates to its balances any time after the transaction has occurred:</p>
+<p><img alt="Alice's sends 2 EUR.ACME from her trust line to Charlie's" src="img/e2g-03.png"/></p>
+<h2 id="market-makers">Market Makers</h2>
+<p>Exchanging EUR.ACME for other currencies within Ripple requires market makers who are willing to exchange other Ripple issuances for EUR.ACME. Market makers are just Ripple accounts with trust lines for EUR.ACME as well as other currencies or issuers, who create orders (called "offers" in the Ripple ledger) to exchange currency. The cost of exchanging EUR.ACME for another currency depends on the quantity and quality of orders. </p>
+<p>To facilitate exchanging currency, ACME may decide to become its own market maker. For various reasons, we recommend using a separate Ripple account for trading. Because market making can result in financial losses, gateways that choose to act as market makers should not use customer funds for market making.</p>
+<p>For more information about how and why to become a market maker, see the <a href="https://ripple.com/files/ripple_mm.pdf">Maket Makers Whitepaper (PDF)</a>.</p>
+<h2 id="freezes">Freezes</h2>
+<p>Ripple provides the ability to freeze assets issued by the gateway in Ripple as a means of complying with regulatory requirements:</p>
+<ul>
+<li>Gateways can freeze individual account issuances, in case a user account shows suspicious activity or violates a gateway's terms of use.</li>
+<li>Gateways can freeze all issuances created by their cold wallet, in case of a compromised gateway account or for migrating cold wallets.</li>
+<li>Furthermore, gateways can permanently opt out of their ability to freeze issuances at all. This allows a gateway to assure its users that it will continue to provide "physical-money-like" services.</li>
+</ul>
+<p>For more information, see the <a href="concept-freeze.html">Freeze article</a>.</p>
+<h2 id="authorized-accounts">Authorized Accounts</h2>
+<p>Ripple's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown Ripple accounts cannot hold the currency your gateway issues. We feel this is <em>not necessary</em> in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the Ripple network.)</p>
+<p>To use the Authorized Accounts feature, a gateway enables the <code>RequireAuth</code> flag for its cold wallet account, and then individually approves each user account's trust line before sending issuances in Ripple to that account.</p>
+<p>You must authorize trust lines using the same cold wallet account that issues the currency, which unfortunately means an increased risk exposure for that account. The process for sending funds into Ripple with RequireAuth enabled looks like the following:</p>
+<ol>
+<li>ACME publishes the address of its cold wallet to users.</li>
+<li>Alice extends a trust line from her Ripple account to ACME's cold wallet, indicating that she is willing to hold ACME's issuances.</li>
+<li>ACME's cold wallet sends a transaction authorizing Alice's trust line.</li>
+</ol>
+<p>See <a href="#requireauth">RequireAuth</a> for technical details on how to use authorized accounts.</p>
+<h2 id="source-and-destination-tags">Source and Destination Tags</h2>
+<p><em>Destination Tags</em> are a feature of Ripple payments can be used to identify the beneficiary or destination for a payment. For example, a Ripple payment to a gateway may include a destination tag to indicate which customer should be credited for the payment. A gateway should maintain an internal mapping of destination tags to (non-Ripple) account records. </p>
+<p>Similarly, <em>Source Tags</em> indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.</p>
+<p>We recommend providing several kinds of Destination Tags for different purposes:</p>
+<ul>
+<li>Direct mappings to user accounts</li>
+<li>Matching the Source Tags on outgoing payments (in case your payments get bounced)</li>
+<li>Tags for quotes, which expire</li>
+<li>Other disposable destination tags that users can generate.</li>
+</ul>
+<p>See <a href="#generating-source-and-destination-tags">Generating Source and Destination Tags</a> for recommendations on the tehnical details of making and using Source Tags and Destination Tags.</p>
+<h1 id="technical-details">Technical Details</h1>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>For the gateway's own security as well as the stability of the network, we recommend that each gateway operate its own <code>rippled</code> servers, along with any other important infrastructure necessary for the gateway's operation. Ripple Labs provides detailed and individualized recommendations to businesses interested in operating a significant Ripple-based business.</p>
+<p>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> to see how Ripple Labs can help.</p>
+<h3 id="apis-and-middleware">APIs and Middleware</h3>
+<p>There are several interfaces you can use to connect to Ripple, depending on your needs and your existing software:</p>
+<ul>
+<li><a href="reference-rippled.html"><code>rippled</code></a> provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.</li>
+<li><a href="reference-rippleapi.html">RippleAPI</a> provides a simple API for JavaScript applications.</li>
+</ul>
+<h2 id="tool-security">Tool Security</h2>
+<p>Any time you submit a Ripple transaction, it must be signed using your secret. However, having your secret means having full control over your account. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own server or client application to sign the transactions before sending them out.</p>
+<p>The examples in this document show API methods that include an account secret. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could use <a href="reference-rippleapi.html">RippleAPI</a> to perform local signing before submitting your transactions to a third-party server.</p>
+<h2 id="defaultripple">DefaultRipple</h2>
+<p>The DefaultRipple flag controls whether the balances held in an account's trust lines are <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">allowed to ripple</a> by default. Rippling is what allows users to trade issuances, so a gateway must allow rippling on all the trust lines connected to its issuing (cold wallet) account.</p>
+<p>Before asking users to trust its issuing account, a gateway should enable the DefaultRipple flag on that account. Otherwise, the gateway must individually disable the NoRipple flag for each trust line that other accounts extend to it.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the DefaultRipple flag:</p>
+<p>Request:</p>
+<pre><code>POST http://localhost:8088/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 8,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200032200000000240000003E202100000008684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A333581144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Fee": "15000",
+            "Flags": 0,
+            "Sequence": 62,
+            "SetFlag": 8,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100D8F2DEF27DE313E3F0D1E189BF5AC8879F591045950E2A33787C3051169038C80220728A548F188F882EA40A416CCAF2AC52F3ED679563BBE1BAC014BB9E773A3335",
+            "hash": "665B27B64CE658704FFD326A4FE2F5F5B5E67EACA61DE08258A59D35B883E1D5"
+        }
+    }
+}
+</code></pre>
+<p>To confirm that an account has DefaultRipple enabled, look up the account using the <a href="reference-rippled.html#account-info">account_info command</a>, specifying a validated ledger version. Use <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND">a bitwise-AND operator</a> to compare the <code>Flags</code> field with 0x00800000 (the <a href="reference-ledger-format.html#accountroot-flags">ledger flag lsfDefaultRipple</a>). If the result of the bitwise-AND operation is nonzero, then the account has DefaultRipple enabled.</p>
+<h2 id="generating-source-and-destination-tags">Generating Source and Destination Tags</h2>
+<p>You need a scheme to create Source and Destination tags for your users and payments. (See <a href="#source-and-destination-tags">Source and Destination Tags</a> for an explanation of what Source and Destination Tags are.)</p>
+<p>For greater privacy and security, we recommend <em>not</em> using monotonically-incrementing numbers as destination tags that correlate 1:1 with users. Instead, we recommend using convenient internal IDs, but mapping those to destination tags through the use of a quick hash or cipher function such as <a href="http://en.wikipedia.org/wiki/Hasty_Pudding_cipher">Hasty Pudding</a>. You should set aside ranges of internal numbers for different uses of destination tags.</p>
+<p>After passing the internal numbers through your hash function, you can use the result as a destination tag. You should check for collisions just to be safe, and do not reuse destination tags unless they have explicit expiration dates (like quotes and user-generated tags).</p>
+<p>We recommend making a user interface to generate a destination tag on-demand when a user intends to send money to the gateway. Then, consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.</p>
+<p>Enable the <a href="#requiredest">RequireDest</a> flag on your hot and cold wallet accounts so that users must use a destination tag to indicate where funds should go when they send Ripple payments to your gateway.</p>
+<h2 id="disallowxrp">DisallowXRP</h2>
+<p>The DisallowXRP setting (<code>disallowIncomingXRP</code> in RippleAPI) is designed to discourage users from sending XRP to an account by accident. This reduces the costs and effort of bouncing undesired payments, if you operate a gateway that does not trade XRP. The DisallowXRP flag is not strictly enforced, because doing so could allow accounts to become permanently unusable if they run out of XRP. Client applications should honor the DisallowXRP flag, but it is intentionally possible to work around.</p>
+<p>An issuing gateway that does not trade XRP should enable the DisallowXRP flag on all gateway hot and cold wallets. A private exchange that trades in XRP should only enable the DisallowXRP flag on accounts that are not expected to receive XRP.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the DisallowXRP flag:</p>
+<p>Request:</p>
+<pre><code>POST http://localhost:8088/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "10000",
+                "Flags": 0,
+                "SetFlag": 3,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "12000322000000002400000164202100000003684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Fee": "10000",
+            "Flags": 0,
+            "Sequence": 356,
+            "SetFlag": 3,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100C2E38177E92C3998EB2C22978595784BC4CABCF7D57DE71FCF6CF162FB683A1D02205942D42C440D860B4CF7BB0DF77E4F2C529695854835B2F76DC2D09644FCBB2D",
+            "hash": "096A89DA55A6A1C8C9EE1BCD15A8CADCC52E6D2591393F680243ECEB93161B33"
+        }
+    }
+}
+</code></pre>
+<h2 id="requiredest">RequireDest</h2>
+<p>The <code>RequireDest</code> setting (<code>requireDestinationTag</code> in RippleAPI) is designed to prevent users from sending payments to your account while accidentally forgetting the <a href="#source-and-destination-tags">destination tag</a> that identifies who should be credited for the payment. When enabled, the Ripple Consensus Ledger rejects any payment to your account that does not specify a destination tag.</p>
+<p>We recommend enabling the <code>RequireDest</code> flag on all gateway hot and cold wallets.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the <code>RequireDest</code> flag:</p>
+<p>Request:</p>
+<pre><code>POST http://localhost:5005/
+Content-Type: application/json
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 1,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p>Response:</p>
+<pre><code>200 OK
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "12000322000000002400000161202100000003684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Fee": "15000",
+            "Flags": 0,
+            "Sequence": 353,
+            "SetFlag": 3,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F",
+            "hash": "59025DD6C9848679BA433448A1DD95833F2F4B64B03E214D074C7A5B6E3E3E70"
+        }
+    }
+}
+</code></pre>
+<h2 id="requireauth">RequireAuth</h2>
+<p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in RippleAPI) prevents a Ripple account's issuances from being held by other users unless the issuer approves them.</p>
+<p>We recommend always <a href="#enabling-requireauth">enabling <code>RequireAuth</code></a> for hot wallet and warm wallet accounts, and then never approving any accounts, in order to prevent hot wallets from creating issuances even by accident. This is a purely precuationary measure, and does not impede the ability of those accounts to transfer issuances created by the cold wallet, as they are intended to do.</p>
+<p>If you want to use the <a href="#authorized-accounts">Authorized Accounts</a> feature, you must also enable <code>RequireAuth</code> on your cold wallet. When using Authorized Accounts, your cold wallet must <a href="#authorizing-trust-lines">submit a <code>TrustSet</code> transaction to approve each trust line</a> that customers open to your cold wallet.</p>
+<p>You can only enable <code>RequireAuth</code> if the account owns no trust lines and no offers in the Ripple ledger, so you must decide whether or not to use it before you start doing business in the Ripple Consensus Ledger.</p>
+<h3 id="enabling-requireauth">Enabling RequireAuth</h3>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the account is used as a hot wallet or cold wallet.)</p>
+<p>Request:</p>
+<pre><code>POST http://localhost:5005/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 2,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<h3 id="authorizing-trust-lines">Authorizing Trust Lines</h3>
+<p>If you are using the <a href="#authorized-accounts">Authorized Accounts</a> feature, then after enabling the <code>RequireAuth</code> setting for your cold wallet, users cannot hold balances issued by your cold wallet unless you first authorize their trust lines.</p>
+<p>To authorize a trust line, submit a TrustSet transaction from your cold wallet, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="reference-transaction-format.html#trustset-flags">tfSetfAuth</a> flag for the transaction.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send a TrustSet transaction authorizing the (customer) account rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the (cold wallet) account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:</p>
+<p>Request:</p>
+<pre><code>POST http://localhost:8088/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "15000",
+                "TransactionType": "TrustSet",
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": 0
+                },
+                "Flags": 65536
+            }
+        }
+    ]
+}
+</code></pre>
+<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em> </p>
+<h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments</h2>
+<p>In order to robustly monitor incoming payments, gateways should do the following:</p>
+<ul>
+<li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
+<li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
+<li><a href="https://ripple.com/knowledge_center/partial-payment-flag/" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments</a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
+<li>In <code>rippled</code>, check the transaction for a <code>meta.delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> account.</li>
+<li>In RippleAPI, you can search the <code>outcome.BalanceChanges</code> field to see how much the destination account received. In some cases, this can be divided into multiple parts on different trust lines.</li>
+</ul>
+</li>
+<li>Some transactions modify your balances without being payments directly to or from one of your accounts. For example, if ACME sets a nonzero <a href="#transferrate">TransferRate</a>, then ACME's cold wallet's outstanding obligations decrease each time Bob and Charlie exchange ACME issuances. See <a href="#transferrate">TransferRate</a> for more information. </li>
+</ul>
+<p>To make things simpler for your users, we recommend monitoring for incoming payments to hot wallets and the cold wallet, and treating the two equivalently.</p>
+<p>As an added precaution, we recommend comparing the balances of your Ripple cold wallet account with the Ripple-backing funds in your internal accounting system each time there is a new Ripple ledger. The cold wallet shows all outstanding issuances as negative balances, which should match the positive assets you have allocated to Ripple outside the network. If the two do not match up, then you should suspend processing payments in and out of Ripple until you have resolved the discrepancy. </p>
+<ul>
+<li>Use <a href="reference-rippled.html#account-lines"><code>rippled</code>'s <code>account_lines</code> command</a> or <a href="reference-rippleapi.html#gettrustlines">RippleAPI's <code>getTrustlines</code> method</a> to check your balances.</li>
+<li>If you have a <a href="#transferrate">TransferRate</a> set, then your obligations within the Ripple network decrease slightly whenever other users transfer your issuances among themselves.</li>
+</ul>
+<h2 id="transferrate">TransferRate</h2>
+<p>The <em>TransferRate</em> setting (<code>transferRate</code> in RippleAPI) defines a fee to charge for transferring issuances from one Ripple account to another. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a> in the Knowledge Center for more information.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction for cold wallet account rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.</p>
+<p>Request:</p>
+<pre><code>
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "10000",
+                "Flags": 0,
+                "TransferRate": 1005000000,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200032200000000240000000F2B3BE71540684000000000002710732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF74473045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E8114204288D2E47F8EF6C99BCC457966320D12409711",
+        "tx_json": {
+            "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+            "Fee": "10000",
+            "Flags": 0,
+            "Sequence": 15,
+            "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+            "TransactionType": "AccountSet",
+            "TransferRate": 1005000000,
+            "TxnSignature": "3045022100AAFC3360BE151299523A93F445D5F6EB58AF5A4F8586C8B7818D6C6069660B40022022F46BCDA8FEE256AEB0BA2E92947EF4571F92354AB703E3E6D77FEF7ECBF64E",
+            "hash": "24360352FBF5597F313E5985C1766BB4A0D277CE63219AC0C0D81014C1E663BB"
+        }
+    }
+}
+</code></pre>
+<h3 id="transferrate-with-hot-and-warm-wallets">TransferRate with Hot and Warm Wallets</h3>
+<p>All Ripple Accounts, including the hot wallet, are subject to the TransferRate. If you set a nonzero TransferRate, then you must send extra (to pay the TransferRate) when making payments to users from your hot wallet. In other words, your hot wallet must pay back a little of the money your cold wallet issued it each time you make a payment.</p>
+<ul>
+<li>In <code>rippled</code>'s APIs, you can accomplish this by setting the <a href="reference-transaction-format.html#payment"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter.</li>
+<li>In RippleAPI, you can accomplish this by setting the <code>source.maxAmount</code> parameter higher than the <code>destination.amount</code> parameter; or, by setting the <code>source.amount</code> parameter higher than the <code>destination.minAmount</code> parameter.</li>
+</ul>
+<p><strong>Note:</strong> The TransferRate does not apply when sending issuances back to the account that created them. The account that created issuances must always accept them at face value on Ripple. This means that users don't have to pay the TransferRate if they send payments to the cold wallet directly, but they do when sending to the hot wallet. (For example, if ACME sets a TransferRate of 1%, a Ripple payment to deliver 5 EUR.ACME from a user account to ACME's cold wallet would still only cost 5 EUR.ACME. However, the user would need to send 5.05 EUR.ACME in order to deliver 5 EUR.ACME to the hot wallet.) If you accept payments out of Ripple through both accounts, you may want to adjust the amount you credit users in your external system when customers send payments through the hot wallet, to compensate for the TransferRate the customer pays.</p>
+<h2 id="sending-payments-to-users">Sending Payments to Users</h2>
+<p>When you build an automated system to send payments into Ripple for your users, you must ensure that it constructs payments carefully. Malicious users are constantly trying to find ways to trick a system into paying them more money than it should.</p>
+<p>One common pitfall is performing pathfinding before sending sending a payment to users in Ripple. If you specify the issuers correctly, the <a href="concept-paths.html#default-paths">default paths</a> are sufficient to deliver the currency as intended. </p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send a payment from the hot wallet rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the user account raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the cold wallet rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.</p>
+<p>Request:</p>
+<pre><code>{
+    "method": "submit",
+    "params": [{
+        "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+        "tx_json": {
+            "TransactionType": "Payment",
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+            "Amount": {
+                "currency": "USD",
+                "value": "0.13",
+                "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+            },
+            "SendMax": {
+                "currency": "USD",
+                "value": "0.13065",
+                "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+            },
+            "Fee": "10000"
+        }
+    }]
+}
+</code></pre>
+<p><em>Reminder: Don't send your secret to a server you do not control.</em></p>
+<p>Response:</p>
+<pre><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200002280000000240000016561D4449E57D63540000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D1240971168400000000000271069D444A4413C6628000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D12409711732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143A4C02EA95AD6AC3BED92FA036E0BBFB712C030C",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "value": "0.13"
+            },
+            "Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "SendMax": {
+                "currency": "USD",
+                "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "value": "0.13065"
+            },
+            "Sequence": 357,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD",
+            "hash": "37B4AA5C77A8EB889164CA012E6F064A46B6B7B51677003FC3617F614608C60B"
+        }
+    }
+}
+</code></pre>
+<p>In particular, note the following features of the <a href="reference-transaction-format.html#payment">Payment Transaction</a>:</p>
+<ul>
+<li>No <code>Paths</code> field. The payment will only succeed if it can use a <a href="concept-paths.html#default-paths">default path</a>, which is preferable. Using less direct paths can become much more expensive.</li>
+<li>The <code>issuer</code> of both the <code>SendMax</code> and the <code>Amount</code> is the cold wallet. This ensures that the transaction sends and delivers issuances from the cold wallet account, and not from some other gateway.</li>
+<li>The <code>value</code> of the <code>SendMax</code> amount is slightly higher than the destination <code>Amount</code>, in order to compensate for the <a href="#transferrate">transfer fee</a>. In this case, the transfer fee is 0.5%, so the <code>SendMax</code> amount is exactly 1.005 times the destination <code>Amount</code>.</li>
+</ul>
+<h2 id="bouncing-payments">Bouncing Payments</h2>
+<p>When your hot or cold wallet receives a payment whose purpose is unclear, we recommend that you make an attempt to return the money to its sender. While this is more work than simply pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically. </p>
+<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a user for more than they sent you! (This is particularly important if your bounce process is automated.) The <a href="https://ripple.com/knowledge_center/partial-payment-flag/">Partial Payment Flag Gateway Bulletin</a> explains how to avoid a common problem.</p>
+<p>Second, you should send bounced payments as Partial Payments. Since other Ripple users can manipulate the cost of pathways between your accounts, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from an automated hot wallet or a human-operated warm wallet.</p>
+<ul>
+<li>To send a Partial Payment using <code>rippled</code>, enable the <a href="reference-transaction-format.html#payment-flags">tfPartialPayment flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field.</li>
+<li>To send a Partial Payment using RippleAPI, set the <code>allowPartialPayment</code> field of the <a href="reference-rippleapi.html#payment">Payment object</a> to <code>true</code>. Set the <code>source.maxAmount</code> and <code>destination.amount</code> both equal to the amount you received.</li>
+</ul>
+<p>It is conventional that you take the <code>SourceTag</code> field from the incoming payment (<code>source.tag</code> in RippleAPI) and use that value as the <code>DestinationTag</code> field (<code>destination.tag</code> in RippleAPI) for the return payment.</p>
+<p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again. </p>
+<h2 id="reliable-transaction-submission">Reliable Transaction Submission</h2>
+<p>The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:</p>
+<ul>
+<li>Idempotency - Transactions will be processed once and only once, or not at all.</li>
+<li>Verifiability - Applications can determine the final result of a transaction.</li>
+</ul>
+<p>In order to achieve this, there are several steps you can take when submitting transactions:</p>
+<ul>
+<li>Persist details of the transaction before submitting it.</li>
+<li>Use the <code>LastLedgerSequence</code> parameter. (RippleAPI does this by default.)</li>
+<li>Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
+</ul>
+<p>For additional information, consult the <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a> guide.</p>
+<h2 id="rippletxt">ripple.txt</h2>
+<p>The <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a> standard provides a way to publish information about your gateway so that automated tools and applications can read and understand it.</p>
+<p>For example, if you run a validating <code>rippled</code> server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple account addresses you control, to protect against impostors or confusion.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+
+       		<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+   		        <h4>Resources<hr></h4>
+   		        <ul id="menu-resources" class="menu">
+   		            <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+	                <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+                    <li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+                    <li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &#038; Reports</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+				    <span>&copy; 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+				    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+				    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+			    </div>
+       		</div><!-- /.absolute_bottom_footer -->
+       		
+	    </div><!-- /.row -->
+	</div><!-- /.container -->
+</footer>
+</body>
+</html>
