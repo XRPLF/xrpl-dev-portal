@@ -120,9 +120,12 @@ def markdown_in_div_elements(md):
 def substitute_links_for_target(soup, target):
     """Replaces local-html-links with appropriate substitutions
        for the given target"""
-    logger.info("... modifying links for target", target["name"])
-    if not pages:
-        pages = get_pages()
+    target = get_target(target)
+    
+    logger.info("... modifying links for target: %s" % target["name"])
+    # We actually want to get all pages, even the ones that aren't built as
+    # part of this target, in case those pages have replacement links.
+    pages = get_pages()
 
     links = soup.find_all("a", href=re.compile(r"^[^.]+\.html"))
     for link in links:
@@ -240,6 +243,7 @@ def get_pages(target=None):
     """Read pages from config and return an object, optionally filtered
        to just the pages that this target cares about"""
 
+    target = get_target(target)
     pages = config["pages"]
 
     if target["name"]:
