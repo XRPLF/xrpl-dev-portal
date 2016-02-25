@@ -424,6 +424,11 @@ def make_pdf(outfile, target=None):
     # Prince will need the static files, so copy them over
     copy_static_files(out_path=temp_files_path)
 
+    # Make sure the path we're going to write the PDF to exists    
+    if not os.path.isdir(config["out_path"]):
+        logging.info("creating build folder %s" % config["out_path"])
+        os.makedirs(config["out_path"])
+    
     # Start preparing the prince command
     args = [config["prince_executable"], '-o', outfile]
     # Each HTML output file in the target is another arg to prince
