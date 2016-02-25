@@ -321,7 +321,7 @@ def render_pages(target=None, for_pdf=False):
     pages = get_pages(target)
     categories = get_categories(pages)
 
-    env = Environment(loader=FileSystemLoader(os.path.curdir))
+    env = Environment(loader=FileSystemLoader(config["template_path"]))
     env.lstrip_blocks = True
     env.trim_blocks = True
     
@@ -499,7 +499,8 @@ if __name__ == "__main__":
         if cli_args.pdf[-4:] != ".pdf":
             exit("PDF filename must end in .pdf")
         logging.info("making a pdf...")
-        make_pdf(cli_args.pdf, target=cli_args.target)
+        pdf_path = os.path.join(config["out_path"], cli_args.pdf)
+        make_pdf(pdf_path, target=cli_args.target)
         logging.info("pdf done")
 
     else:
