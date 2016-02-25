@@ -172,7 +172,7 @@ def parse_markdown(md, target=None, pages=None):
                                     "markdown.extensions.toc"])
 
     # If target uses multicode tabs, uncomment the divs now
-    if target["multicode_tabs"]:
+    if "multicode_tabs" in target and target["multicode_tabs"]:
         html = enable_multicode(html)
 
     # At this point, HTML manipulations are easier on a soup than a string
@@ -319,7 +319,7 @@ def copy_static_files(template_static=True, content_static=True, out_path=None):
         copy_tree(content_static_src, content_static_dst)
 
 
-def render_pages(target=None, for_pdf=False):
+def render_pages(target=None, for_pdf=False, bypass_errors=False):
     """Parse and render all pages in target, writing files to out_path."""
     target = get_target(target)
     pages = get_pages(target)
@@ -349,9 +349,14 @@ def render_pages(target=None, for_pdf=False):
                                                    pp_env=pp_env,
                                                    target=target)
             except Exception as e:
-                print("Skipping page", currentpage["name"], 
-                      "due to error fetching contents:", e)
-                continue
+                if bypass_errors:
+                    logging.warning( ("Skipping page %s " +
+                          "due to error fetching contents: %s") %
+                           (currentpage["name"], e) )
+                    continue
+                else:
+                    exit("Error when fetching page %s: %s" %
+                         (currentpage["name"], e) )
             
             html_content = parse_markdown(md_content, target, pages)
         else:
@@ -392,10 +397,12 @@ def watch(pdf_file, target):
         """Updates to pattern-matched files means rendering."""
         def on_any_event(self, event):
             logging.info("got event!")
+            # bypass_errors=True because Watch shouldn't
+            #  just die if a file is temporarily not found
             if pdf_file:
-                make_pdf(pdf_file, target=target)
+                make_pdf(pdf_file, target=target, bypass_errors=True)
             else:
-                render_pages(target)
+                render_pages(target, bypass_errors=True)
             logging.info("done rendering")
 
     patterns = ["*template-*.html",
@@ -417,11 +424,11 @@ def watch(pdf_file, target):
     observer.join()
 
 
-def make_pdf(outfile, target=None):
+def make_pdf(outfile, target=None, bypass_errors=False):
     """Use prince to convert several HTML files into a PDF"""
     logging.info("rendering PDF-able versions of pages...")
     target = get_target(target)
-    render_pages(target=target, for_pdf=True)
+    render_pages(target=target, for_pdf=True, bypass_errors=bypass_errors)
 
     temp_files_path = config["temporary_files_path"]
     
@@ -480,6 +487,8 @@ if __name__ == "__main__":
                         help="Output to this folder (overrides config file)")
     parser.add_argument("--quiet", "-q", action="store_true",
                         help="Suppress status messages")
+    parser.add_argument("--bypass_errors", "-b", action="store_true",
+                        help="Continue building if some contents not found")
     parser.add_argument("--config", "-c", type=str,
                         help="Specify path to an alternate config file.")
     parser.add_argument("--copy_static", "-s", action="store_true",
@@ -509,12 +518,14 @@ if __name__ == "__main__":
             exit("PDF filename must end in .pdf")
         logging.info("making a pdf...")
         pdf_path = os.path.join(config["out_path"], cli_args.pdf)
-        make_pdf(pdf_path, target=cli_args.target)
+        make_pdf(pdf_path, target=cli_args.target,
+                 bypass_errors=cli_args.bypass_errors)
         logging.info("pdf done")
 
     else:
         logging.info("rendering pages...")
-        render_pages(target=cli_args.target)
+        render_pages(target=cli_args.target,
+                     bypass_errors=cli_args.bypass_errors)
         logging.info("done rendering")
     
         if cli_args.copy_static:
@@ -523,5 +534,6 @@ if __name__ == "__main__":
 
     if cli_args.watch:
         logging.info("watching for changes...")
-        watch(cli_args.pdf, cli_args.target)
+        pdf_path = os.path.join(config["out_path"], cli_args.pdf)
+        watch(pdf_path, cli_args.target)
 
