@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-from bs4 import BeautifulSoup
 import requests
-import os, argparse
+import os
+import yaml
+import argparse
+from bs4 import BeautifulSoup
+
+DEFAULT_CONFIG_FILE = "devportal-config.yml"
 
 soupsCache = {}
 def getSoup(fullPath):
@@ -15,13 +19,12 @@ def getSoup(fullPath):
 
 def checkLinks(offline=False):
     externalCache = []
-    atRoot = True
     broken_links = []
     num_links_checked = 0
-    for dirpath, dirnames, filenames in os.walk("../"):
-      if atRoot:
-        dirnames.remove('tool')
-        atRoot = False
+    for dirpath, dirnames, filenames in os.walk(config["out_path"]):
+      if os.path.abspath(dirpath) == os.path.abspath(config["template_path"]):
+        # don't try to parse and linkcheck the templates
+        continue
       for fname in filenames:
         fullPath = os.path.join(dirpath, fname)
         if "/node_modules/" in fullPath or ".git" in fullPath:
@@ -61,8 +64,8 @@ def checkLinks(offline=False):
                 except Exception as e:
                   print("Error occurred:",e)
                   code = 500
-                if code == 405:
-                  #HEAD not allowed -- does GET work?
+                if code == 405 or code == 404:
+                  #HEAD didn't work, maybe GET will?
                   try:
                     code = requests.get(endpoint).status_code
                   except Exception as e:
@@ -119,12 +122,18 @@ def checkLinks(offline=False):
                 broken_links.append( (fullPath, endpoint) )
     return broken_links, num_links_checked
 
-#Sometimes, a link is not really problematic, but the link checker detects it as
-# such and the easiest solution is to ignore it.
-KNOWN_PROBLEMS = [
-    "https://validators.ripple.com", #I don't know why, but Python doesn't like the cert here. Firefox is OK with it.
-    "https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation", #Needs outside intervention. Ticket: IN-1168
-]
+
+
+def load_config(config_file=DEFAULT_CONFIG_FILE):
+    """Reload config from a YAML file."""
+    global config
+    print("loading config file %s..." % config_file)
+    with open(config_file, "r") as f:
+        config = yaml.load(f)
+        assert(config["out_path"])
+        assert(type(config["known_broken_links"]) == list)
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -133,7 +142,16 @@ if __name__ == "__main__":
                        help="Check local anchors only")
     parser.add_argument("-s", "--strict", action="store_true",
                         help="Exit with error even on known problems")
+    parser.add_argument("--config", "-c", type=str,
+                        help="Specify path to an alternate config file.")
     args = parser.parse_args()
+    
+    if args.config:
+        load_config(args.config)
+    else:
+        load_config()
+    
+    
     
     broken_links, num_links_checked = checkLinks(args.offline)
     
@@ -141,8 +159,8 @@ if __name__ == "__main__":
     print("Link check report. %d links checked."%num_links_checked)
     
     if not args.strict:
-      unknown_broken_links = [(page,link) for page,link in broken_links 
-                        if link not in KNOWN_PROBLEMS]
+      unknown_broken_links = [ (page,link) for page,link in broken_links 
+                        if link not in config["known_broken_links"] ]
     
     if not broken_links:
       print("Success! No broken links found.")

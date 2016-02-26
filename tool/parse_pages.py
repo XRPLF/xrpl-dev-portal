@@ -184,7 +184,7 @@ def parse_markdown(md, target=None, pages=None):
     #buttonize links ending in >
     buttonize_try_it(soup)
 
-    # Replace links for live site
+    # Replace links for any non-default target
     if target["name"] != config["targets"][0]["name"]:
         substitute_links_for_target(soup, target)
 
@@ -374,6 +374,12 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
                                                categories=categories,
                                                pages=pages,
                                                content=html_content)
+        
+        # Experimental: replace links in full HTML, not just content
+        soup = BeautifulSoup(out_html, "html.parser")
+        if target["name"] != config["targets"][0]["name"]:
+            substitute_links_for_target(soup, target)
+        out_html = str(soup)
         
         if for_pdf:
             out_path = config["temporary_files_path"]
