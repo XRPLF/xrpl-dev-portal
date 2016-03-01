@@ -30,7 +30,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs_pandoc();
+            $().multicode_tabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -120,9 +120,9 @@
 
   <div class="wrap container" role="document">
       <aside class="sidebar" role="complementary">
-    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+    <div class="dev_nav_wrapper">
         <div id="cont">
-            <ul id="dev_nav_sidebar">
+            <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: References</a></li>
                 <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
                 <li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
@@ -185,6 +185,11 @@
 <li><a href="#get-account-exchanges">Get Account Exchanges - <code>GET /v2/accounts/{:address}/exchanges</code></a></li>
 <li><a href="#get-account-balance-changes">Get Account Balance Changes - <code>GET /v2/accounts/{:address}/balance_changes</code></a></li>
 <li><a href="#get-account-reports">Get Account Reports - <code>GET /v2/accounts/{:address}/reports</code></a></li>
+</ul>
+<p>Health Checks:</p>
+<ul>
+<li><a href="#health-check-api">API Health Check - <code>GET /v2/health/api</code></a></li>
+<li><a href="#health-check-ledger-importer">Importer Health Check - <code>GET /v2/health/importer</code></a></li>
 </ul>
 <h2 id="get-ledger">Get Ledger</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js" title="Source">[Source]<br/></a></p>
@@ -4430,6 +4435,219 @@ Content-Type: image/svg+xml
       "total_value_sent": 0
     }
   ]
+}
+</code></pre>
+<h2 id="health-check-api">Health Check - API</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p>Check the health of the API service.</p>
+<div class="multicode">
+<p><em>REST</em></p>
+<pre><code>GET /v2/health/api
+</code></pre>
+</div>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>threshold</td>
+<td>Integer</td>
+<td>Consider the API unhealthy if the database does not respond within this amount of time, in seconds. Defaults to 5 seconds.</td>
+</tr>
+<tr>
+<td>verbose</td>
+<td>Boolean</td>
+<td>If true, return a JSON response with data points. By default, return an integer value only.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-27">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>. </p>
+<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>API service is up, and response time to HBase is less than <code>threshold</code> value from request.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>API service is up, but response time to HBase is greater than <code>threshold</code> value from request.</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>API service was unable to contact HBase, or received an error in connecting.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>0-2</td>
+<td>Health value, as defined above.</td>
+</tr>
+<tr>
+<td>response_time</td>
+<td>String - Human-readable time</td>
+<td>The actual response time of the database.</td>
+</tr>
+<tr>
+<td>response_time_threshold</td>
+<td>String - Human-readable time</td>
+<td>The maximum response time to be considered healthy.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-27">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/health/api?verbose=true
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+  score: 0,
+  response_time: "0.389s",
+  response_time_threshold: "5s"
+}
+</code></pre>
+<h2 id="health-check-ledger-importer">Health Check - Ledger Importer</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p>Check the health of the Ledger Importer Service.</p>
+<div class="multicode">
+<p><em>REST - Importer Health</em></p>
+<pre><code>GET /v2/health/importer
+</code></pre>
+</div>
+<p>Optionally, you can also include the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>threshold</td>
+<td>Integer</td>
+<td>Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest validated ledger was imported. Defaults to 300 seconds.</td>
+</tr>
+<tr>
+<td>threshold2</td>
+<td>Integer</td>
+<td>Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest ledger of any kind was imported. Defaults to 60 seconds.</td>
+</tr>
+<tr>
+<td>verbose</td>
+<td>Boolean</td>
+<td>If true, return a JSON response with data points. By default, return an integer value only.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-28">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>. </p>
+<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>The most recent imported ledger was less than <code>threshold2</code> (Default: 60) seconds ago, and most recent validated ledger was less than <code>threshold</code> seconds ago.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>The most recent imported ledger was less than <code>threshold2</code> (Default: 60) seconds ago, but the most recent validated ledger is older than <code>threshold</code> seconds.</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>The most recent imported ledger was more than <code>threshold2</code> seconds ago.</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>An error occurred when connecting to HBase, or the API was unable to determine when a ledger was most recently imported.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>0-3</td>
+<td>Health value, as defined above.</td>
+</tr>
+<tr>
+<td>response_time</td>
+<td>String</td>
+<td>The actual response time of the database.</td>
+</tr>
+<tr>
+<td>ledger_gap</td>
+<td>String - Human-readable time</td>
+<td>Difference between the close time of the last saved ledger and the current time.</td>
+</tr>
+<tr>
+<td>ledger_gap_threshold</td>
+<td>String - Human-readable time</td>
+<td>Maximum ledger gap to be considered healthy.</td>
+</tr>
+<tr>
+<td>valildation_gap</td>
+<td>String - Human-readable time</td>
+<td>Difference between the close time of the last imported validated ledger and the current time.</td>
+</tr>
+<tr>
+<td>validation_gap_threshold</td>
+<td>String - Human-readable time</td>
+<td>Maximum validation gap to be considered healthy.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-28">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/health/importer?verbose=true
+</code></pre>
+<p>Response:</p>
+<pre><code>{
+    "score": 0,
+    "response_time": "0.081s",
+    "ledger_gap": "1.891s",
+    "ledger_gap_threshold": "5.00m",
+    "validation_gap": "29.894s",
+    "validation_gap_threshold": "15.00m"
 }
 </code></pre>
 <h1 id="api-conventions">API Conventions</h1>

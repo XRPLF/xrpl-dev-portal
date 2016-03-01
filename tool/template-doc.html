@@ -9,7 +9,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs_pandoc();
+            $().multicode_tabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -21,9 +21,9 @@
 
 {% block sidebar %}
   {% if currentpage.sidebar %}
-    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+    <div class="dev_nav_wrapper">
         <div id="cont">
-            <ul id="dev_nav_sidebar">
+            <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: {{ currentpage.category }}</a></li>
             {% for page in pages %}
 	          {% if page.category == currentpage.category %}

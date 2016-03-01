@@ -5,10 +5,8 @@ var toggle_cs = function(eo) {
     code_el.toggleClass('expanded');
     var placeholders = wrapper.find(".code-placeholder");
     if (placeholders.length) {
-        console.log("bye bye placeholders");
         placeholders.remove();
     } else {
-        console.log("makin' a placeholder");
         code_el.after("<div class='code-placeholder' style='width:"
                             + code_el.width()
                             + "px; height:"
@@ -32,6 +30,8 @@ function make_code_expandable() {
     var newbtn = $("<input type='button' class='code_toggler' value='Expand' />");
     newbtn.appendTo(cs);
     $(".code_toggler").click(toggle_cs);
+    
+    /* fix expand/collapse and tab click hierarchy */
+    cs.css("position","relative");
+    $(".multicode .code_sample").css("position","static");
 }
-
-$(document).on('flatdoc:ready', make_code_expandable);

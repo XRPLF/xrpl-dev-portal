@@ -30,7 +30,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs_pandoc();
+            $().multicode_tabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -120,9 +120,9 @@
 
   <div class="wrap container" role="document">
       <aside class="sidebar" role="complementary">
-    <div class="dev_nav_wrapper" style="margin-bottom: 0px;">
+    <div class="dev_nav_wrapper">
         <div id="cont">
-            <ul id="dev_nav_sidebar">
+            <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
                 <li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
                 <li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
