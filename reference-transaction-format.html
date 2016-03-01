@@ -184,10 +184,14 @@
 </code></pre>
 <p>After doing that, you generate the signed binary format for the transaction. There are two ways to do this:</p>
 <ol>
-<li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.</li>
-<li><a href="https://github.com/ripple/ripple-lib">ripple-lib</a> has an implementation of offline signing.</li>
-<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)</li>
+<li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
+<li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> to perform offline signing.</li>
+</ul>
+</li>
+<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)<ul>
 <li>As a shortcut, you can use the <a href="reference-rippled.html#submit">submit command</a> with a <code>tx_json</code> object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.</li>
+</ul>
+</li>
 </ol>
 <p>In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using <code>rippled</code>'s <a href="reference-rippled.html#submit">submit command</a>. Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:</p>
 <pre><code>{
@@ -824,7 +828,7 @@
 <p>Accounts can protect against unwanted incoming payments for non-XRP currencies simply by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
 <h3 id="transferrate">TransferRate</h3>
 <p>The TransferRate field specifies a fee to charge whenever a gateway's issuances change hands. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees article</a> in the Knowledge Center for more information.</p>
-<p>In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>120000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
+<p>In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
 <p>A SetRegularKey transaction changes the regular key used by the account to sign future transactions.</p>
