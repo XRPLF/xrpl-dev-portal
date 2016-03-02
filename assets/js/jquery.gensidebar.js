@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   tableOfContents = $("<ul id='dev_nav_sidebar'>").appendTo(".sidebar #cont")
+   tableOfContents = $("<ul class='dev_nav_sidebar'>").appendTo(".sidebar #cont")
    $("h1, h2, h3").each(function() { 
         indent_level = this.tagName.toLowerCase().substr(1);
         if (this.id) { //only show headers with IDs. which should be all of them.
