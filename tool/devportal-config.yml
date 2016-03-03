@@ -184,3 +184,14 @@ pages:
             - local
             - ripple.com
         template: template-rest-api-tool.html
+
+# Link Checker Config ------------------------------------------------------- #
+
+#Sometimes, a link is not really problematic, but the link checker detects it
+# as such and the easiest solution is to ignore it.
+known_broken_links:
+    # Strangely, Python doesn't like the cert here. Firefox is OK with it.
+    - https://validators.ripple.com
+    # Zendesk hasn't updated the cert. See ticket IN-1168
+    - https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation
+    

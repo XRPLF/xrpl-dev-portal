@@ -1,38 +1,3 @@
-// Original code to adapt the markup for tabs.
-// Expects markup in the form of:
-// <div class='multicode'>
-//   <em>tab 1 title</em>
-//   <code>tab 1 code block</code>
-//   <em>tab 2 title</em>
-//   <code>tab 2 code block</code>
-// </div>
-jQuery.fn.multicode_tabs = function() {
-    $('.multicode').each(function(index,el) {
-        cb_area = $(el);
-        cb_area.attr('id', "code-"+index);
-        // make a ul to house the tab headers
-        cb_area.prepend("<ul class='codetabs'></ul>");
-        
-        // for each code, give it a unique ID and wrap it in a pre
-        cb_area.children('code').each(function(index2,el2) {
-            var linkid = 'code-'+index+'-'+index2;
-            $(el2).wrap("<div id='"+linkid+"' class='code_sample'><pre>");
-            //also put in a link to this in the tab header ul
-            $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
-        });
-        
-        //use the ems to fill in the tab headers for each block
-        $(el).children('em').each(function(index2, el2) {
-            $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
-        });
-    });
-    $('.multicode em').hide();
-    
-    $('.multicode').minitabs();
-}
-
-
-// Variant version for the HTML that Pandoc generates
 // Expects markup in the form of:
 // <div class='multicode'>
 //   <p><em>tab 1 title</em></p>
@@ -40,7 +5,7 @@ jQuery.fn.multicode_tabs = function() {
 //   <p><em>tab 2 title</em></p>
 //   <pre><code>tab 2 code block</code></pre>
 // </div>
-jQuery.fn.multicode_tabs_pandoc = function() {
+jQuery.fn.multicode_tabs = function() {
     $('.multicode').each(function(index,el) {
         cb_area = $(el);
         cb_area.attr('id', "code-"+index);
@@ -59,6 +24,7 @@ jQuery.fn.multicode_tabs_pandoc = function() {
         });
     });
     $('.multicode p').hide();
+    $('.multicode .code_sample').css("position","static");
     
     $('.multicode').minitabs();
 }

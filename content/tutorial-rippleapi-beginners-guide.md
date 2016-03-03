@@ -2,15 +2,17 @@
 
 This tutorial guides you through the basics of building a simple Ripple-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](reference-rippleapi.html), a simple JavaScript API for accessing the Ripple Consensus Ledger.
 
+The scripts and configuration files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart).
+
 # Environment Setup #
 
 The first step to using RippleAPI successfully is setting up your development environment.
 
 ## Install Node.js and npm ##
 
-RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. Specifically, RippleAPI requires Node.js version 0.12, version 4.x, or higher.
+RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher.
 
-This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and `npm` (Node Package Manager) are separate (this includes Arch Linux, CentOS, Fedora, and RHEL), you should make sure to install both.
+This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and `npm` (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
 
 After you have installed Node.js, you can check whether it's installed by checking the version of the `node` binary from a commandline:
 
@@ -27,11 +29,11 @@ nodejs --version
 
 ## Use NPM to install RippleAPI and dependencies ##
 
-RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). In order to use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. Fortunately you can use `npm` to install RippleAPI and these dependencies all at once.
+RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). In order to use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
 
 #### 1. Create a new directory for your project
 
-For example, to create a folder called `my_ripple_experiment`:
+Create a folder called (for example) `my_ripple_experiment`:
 
 ```
 mkdir my_ripple_experiment && cd my_ripple_experiment
@@ -47,13 +49,17 @@ Alternatively, you can [create a repo on GitHub](https://help.github.com/article
 
 #### 2. Create a new `package.json` file for your project.
 
-Here's a good template:
+Use the following template, which includes:
+
+* RippleAPI itself (`ripple-lib`)
+* Babel (`babel-cli`)
+* The ECMAScript 6 presets for Babel (`babel-preset-es2015`)
+* (Optional) [ESLint](http://eslint.org/) (`eslint`) for checking code quality.
 
 ```
 {% include 'code_samples/rippleapi_quickstart/package.json' %}
 ```
 
-This includes RippleAPI itself (`ripple-lib`), Babel (`babel-cli`), the ECMAScript 6 presets for Babel (`babel-preset-es2015`). It also has the optional add-on [ESLint](http://eslint.org/) (`eslint`) for checking your code quality.
 
 #### 3. Use NPM to install the dependencies.
 
@@ -63,7 +69,7 @@ npm install
 
 This automatically installs all the dependencies defined in the `package.json` into the local folder `node_modules/`. (We recommend _not_ using `npm -g` to install the dependencies globally.)
 
-The install process may take a while, and may end with a few warnings. The following warnings are benign, and do not indicate a real problem:
+The install process may take a while and end with a few warnings. You may safely ignore the following warnings:
 
 ```
 npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
@@ -71,24 +77,11 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 ```
 
-#### 4. (Optional) Tell Git to ignore the `node_modules` folder.
 
-If you are using Git to manage your repository, it's considered a good practice to omit the `node_modules` folder from the Git repo. Other people who check out your code can use `npm` to install the dependencies, and you don't have to keep the repo synchronized with changes to your modules. Edit the `.gitignore` file and add the following line to it:
-
-```
-/node_modules/
-```
-
-Save and commit the changes:
-
-```
-git add .gitignore
-git commit -m "ignore node_modules"
-```
 
 # First RippleAPI Script ##
 
-With RippleAPI installed, it's time to test that it works. Here's a simple script that uses RippleAPI to retrieve information on a specific account:
+This script, `get-account-info.js`, simply fetches information about a hard-coded account. Use it to test that RippleAPI works:
 
 ```
 {% include 'code_samples/rippleapi_quickstart/get-account-info.js' %}
@@ -118,7 +111,7 @@ done and disconnected.
 
 ## Understanding the script ##
 
-Even for a simple script, there's a lot packed into that, including some syntax and conventions that are recent developments in JavaScript. Understanding these concepts will help you write better code using RippleAPI, so let's divide the sample code into smaller chunks that are easier to understand.
+In addition to RippleAPI-specific code, this script uses syntax and conventions that are recent developments in JavaScript. Let's divide the sample code into smaller chunks to explain each one.
 
 ### Script opening ###
 
@@ -154,13 +147,13 @@ The one argument to the constructor is an options object, which has [a variety o
 api.connect().then(() => {
 ```
 
-The [connect() method](reference-rippleapi.html#connect) is one of many RippleAPI methods that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), which is a special kind of JavaScript object. A Promise is designed to perform some asynchronous operation, like querying a the Ripple Consensus Ledger.
+The [connect() method](reference-rippleapi.html#connect) is one of many RippleAPI methods that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), which is a special kind of JavaScript object. A Promise is designed to perform an asynchronous operation that returns a value later, such as querying the Ripple Consensus Ledger.
 
 When you get a Promise back from some expression (like `api.connect()`), you call the Promise's `then` method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are [first-class objects](https://en.wikipedia.org/wiki/First-class_function).
 
 When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the `then` method is another Promise object, so you can "chain" that into another `then` method, or the Promise's `catch` method, which also takes a callback. The callback you provide to `catch` gets called if something goes wrong.
 
-Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are just a shorter way of defining anonymous functions, which is pretty convenient when you're defining lots of one-off functions as callbacks, like we are here. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is basically just `function(info) {...}` as well.
+Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is basically just `function(info) {...}` as well.
 
 ### Custom code ###
 
@@ -180,13 +173,13 @@ Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://deve
 
 This is the part that really defines what this script does, so this is the part you will probably spend the most time customizing.
 
-The example code looks up a Ripple account (belonging to [this writer](https://github.com/mDuo13/)) by its address. You can substitute your own address, if you want.
+The example code looks up a Ripple account by its address. Try running the code with different addresses to see different results.
 
-The `console.log()` function is a built-in tool in both Node.js and web browsers, which writes out to the console; this example includes lots of console output to make it easier to understand what the code is doing.
+The `console.log()` function is built into both Node.js and web browsers, and writes out to the console. This example includes lots of console output to make it easier to understand what the code is doing.
 
 Keep in mind that the example code starts in the middle of a callback function (called when RippleAPI finishes connecting). That function calls RippleAPI's [`getAccountInfo`](reference-rippleapi.html#getaccountinfo) method, and returns the results.
 
-The results of that API method are another Promise, so the line `}).then( info => {` passes in another anonymous callback function to run when the second Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called `info`, which holds the -- actual -- return value from the `getAccountInfo` API method. The rest of this callback function just outputs that return value to the console.
+The `getAccountInfo` API method returns another Promise, so the line `}).then( info => {` defines another anonymous callback function to run when this Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called `info`, which holds the asynchronous return value from the `getAccountInfo` API method. The rest of this callback function outputs that return value to the console.
 
 ### Cleanup ###
 
@@ -198,9 +191,9 @@ The results of that API method are another Promise, so the line `}).then( info =
 }).catch(console.error);
 ```
 
-The remainder of the sample code is mostly more [boilerplate code](reference-rippleapi.html#boilerplate). The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes.
+The remainder of the sample code is mostly more [boilerplate code](reference-rippleapi.html#boilerplate). The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on [RippleAPI events](reference-rippleapi.html#api-events), do not disconnect until you are done waiting for events.
 
-Finally, we get to the `catch` method of this entire long Promise chain. If any of the Promises or their callback functions encounters an error, the callback provided here will run. One thing worth noting: instead of defining a new anonymous callback function here, we can just pass in the standard `console.error` function, which writes whatever arguments it gets out to the console. If you so desired, you could define a smarter callback function here which might intelligently catch certain error types.
+The `catch` method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard `console.error` function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.
 
 # Waiting for Validation #
 

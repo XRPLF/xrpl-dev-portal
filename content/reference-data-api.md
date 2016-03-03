@@ -57,6 +57,11 @@ Account Methods:
 * [Get Account Balance Changes - `GET /v2/accounts/{:address}/balance_changes`](#get-account-balance-changes)
 * [Get Account Reports - `GET /v2/accounts/{:address}/reports`](#get-account-reports)
 
+Health Checks:
+
+* [API Health Check - `GET /v2/health/api`](#health-check-api)
+* [Importer Health Check - `GET /v2/health/importer`](#health-check-ledger-importer)
+
 
 ## Get Ledger ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
@@ -2957,6 +2962,139 @@ Response:
   ]
 }
 ```
+
+
+
+## Health Check - API ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js "Source")
+
+Check the health of the API service.
+
+<!--<div class='multicode'>-->
+
+*REST*
+
+```
+GET /v2/health/api
+```
+
+<!--</div>-->
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| threshold  | Integer  | Consider the API unhealthy if the database does not respond within this amount of time, in seconds. Defaults to 5 seconds. |
+| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK**. By default, the response body is an **integer health value only**. 
+
+The health value `0` always indicates a healthy status. Other health values are defined as follows:
+
+| Value | Meaning |
+|-------|---------|
+| `0`   | API service is up, and response time to HBase is less than `threshold` value from request. |
+| `1`   | API service is up, but response time to HBase is greater than `threshold` value from request. |
+| `2`   | API service was unable to contact HBase, or received an error in connecting. |
+
+If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| score | 0-2 | Health value, as defined above. |
+| response\_time | String - Human-readable time | The actual response time of the database. |
+| response\_time\_threshold | String - Human-readable time | The maximum response time to be considered healthy. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/health/api?verbose=true
+```
+
+Response:
+
+```
+{
+  score: 0,
+  response_time: "0.389s",
+  response_time_threshold: "5s"
+}
+```
+
+
+## Health Check - Ledger Importer ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js "Source")
+
+Check the health of the Ledger Importer Service.
+
+<!--<div class='multicode'>-->
+
+*REST - Importer Health*
+
+```
+GET /v2/health/importer
+```
+
+<!--</div>-->
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| threshold  | Integer | Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest validated ledger was imported. Defaults to 300 seconds. |
+| threshold2 | Integer | Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest ledger of any kind was imported. Defaults to 60 seconds. |
+| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK**. By default, the response body is an **integer health value only**. 
+
+The health value `0` always indicates a healthy status. Other health values are defined as follows:
+
+| Value | Meaning |
+|-------|---------|
+| `0`   | The most recent imported ledger was less than `threshold2` (Default: 60) seconds ago, and most recent validated ledger was less than `threshold` seconds ago. |
+| `1`   | The most recent imported ledger was less than `threshold2` (Default: 60) seconds ago, but the most recent validated ledger is older than `threshold` seconds. |
+| `2`   | The most recent imported ledger was more than `threshold2` seconds ago. |
+| `3`   | An error occurred when connecting to HBase, or the API was unable to determine when a ledger was most recently imported. |
+
+If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| score  | 0-3 | Health value, as defined above. |
+| response\_time | String | The actual response time of the database. |
+| ledger\_gap | String - Human-readable time | Difference between the close time of the last saved ledger and the current time. |
+| ledger\_gap\_threshold | String - Human-readable time | Maximum ledger gap to be considered healthy. |
+| valildation\_gap | String - Human-readable time | Difference between the close time of the last imported validated ledger and the current time. |
+| validation\_gap\_threshold | String - Human-readable time | Maximum validation gap to be considered healthy. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/health/importer?verbose=true
+```
+
+Response:
+
+```
+{
+	"score": 0,
+	"response_time": "0.081s",
+	"ledger_gap": "1.891s",
+	"ledger_gap_threshold": "5.00m",
+	"validation_gap": "29.894s",
+	"validation_gap_threshold": "15.00m"
+}
+```
+
+
 
 
 # API Conventions #
