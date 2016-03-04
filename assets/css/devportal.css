@@ -1,3 +1,7 @@
+.navbar-header {
+    float: left;
+}
+
 /* Big draft warning at top of page so it's hard to mix up with the live site */
 .draft-warning {
     background-color: red;
@@ -209,9 +213,15 @@
 @media (max-width: 768px) {
   .page-template-template-dev-portal-php .dev_nav_wrapper,
   .page-template-template-dev-portal-php .sidebar {
-    display: none;
+    display: block;
+    clear: both;
+    overflow-y: inherit;
+    position: static;
+    max-width: 100%;
   }
   .page-template-template-dev-portal-php .main {
+    position: static;
+    clear: both;
     border-left: none;
     padding-left: 0px;
     overflow-wrap: break-word;
