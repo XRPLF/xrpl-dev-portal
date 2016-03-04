@@ -18,6 +18,10 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 * [Release Notes](https://github.com/ripple/rippled-historical-database/releases)
 
 [v2.0.4]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4
+[v2.0.5]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.5
+[v2.0.6]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.6
+[v2.0.7]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.7
+[v2.0.8]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.8
 
 
 # API Method Reference #
@@ -79,6 +83,8 @@ GET /v2/ledgers/{:identifier}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-ledger)
 
 The following URL parameters are required by this API endpoint:
 
@@ -149,6 +155,8 @@ GET /v2/transactions/{:hash}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-transaction)
 
 The following URL parameters are required by this API endpoint:
 
@@ -255,6 +263,8 @@ GET /v2/transactions/
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-transactions)
 
 Optionally, you can include the following query parameters:
 
@@ -418,11 +428,13 @@ GET /v2/payments/{:currency}
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-payments)
+
 This method accepts the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| :currency | String | (Optional) Currency code, followed by `+` and an issuer. (Or just `XRP`.) If omitted, return payments for all currencies. |
+| :currency | String | (Optional) Currency code, followed by `+` and a counterparty address. (Or just `XRP`.) If omitted, return payments for all currencies. |
 
 Optionally, you can also include the following query parameters:
 
@@ -561,6 +573,8 @@ GET /v2/exchanges/{:base}/{:counter}
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-exchanges)
+
 This method requires the following URL parameters:
 
 | Field | Value | Description |
@@ -690,6 +704,8 @@ GET /v2/exchange_rates/{:base}/{:counter}
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-exchange-rates)
+
 This method requires the following URL parameters:
 
 | Field    | Value  | Description |
@@ -755,6 +771,8 @@ GET /v2/normalize
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#normalize)
+
 This method uses the following query parameters:
 
 | Field             | Value   | Description |
@@ -818,6 +836,8 @@ GET /v2/reports/{:date}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-daily-reports)
 
 This method uses the following URL parameters:
 
@@ -981,6 +1001,7 @@ GET /v2/stats
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-stats)
 
 Optionally, you can also include the following query parameters:
 
@@ -1083,6 +1104,8 @@ GET /v2/capitaliztion/{:currency}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-capitalization)
 
 This method requires the following URL parameters:
 
@@ -1207,6 +1230,8 @@ GET /v2/active_accounts/{:base}/{:counter}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-active-accounts)
 
 This method requires the following URL parameters:
 
@@ -1359,6 +1384,8 @@ GET /v2/network/exchange_volume
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-exchange-volume)
+
 Optionally, you can include the following query parameters:
 
 | Field    | Value   | Description |
@@ -1505,6 +1532,8 @@ GET /v2/network/payment_volume
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-payment-volume)
+
 Optionally, you can include the following query parameters:
 
 | Field    | Value   | Description |
@@ -1632,6 +1661,8 @@ GET /v2/network/issued_value
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-issued-value)
+
 Optionally, you can include the following query parameters:
 
 | Field  | Value   | Description |
@@ -1738,6 +1769,8 @@ GET /v2/gateways/
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-all-gateways)
+
 This method takes no query parameters.
 
 
@@ -1831,6 +1864,8 @@ GET /v2/gateways/{:gateway}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-gateway)
 
 This method requires the following URL parameters:
 
@@ -1983,6 +2018,8 @@ GET /v2/accounts
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-accounts)
+
 Optionally, you can include the following query parameters:
 
 | Field      | Value   | Description |
@@ -2078,6 +2115,8 @@ GET /v2/accounts/{:address}
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-account)
+
 
 This method requires the following URL parameters:
 
@@ -2135,6 +2174,8 @@ GET /v2/accounts/{:address}/balances
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-account-balances)
+
 This method requires the following URL parameters:
 
 | Field    | Value  | Description |
@@ -2149,7 +2190,7 @@ Optionally, you can also include the following query parameters:
 | ledger_hash  | String  | Ledger hash for historical balances |
 | date         | String  | UTC date for historical balances. |
 | currency     | String  | Restrict results to specified currency |
-| issuer       | String  | Restrict results to specified counterparty/issuer |
+| counterparty | String  | Restrict results to specified counterparty/issuer |
 | limit        | Integer | Max results per page (defaults to 200). Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results.) |
 | format       | String  | Format of returned results: `csv`,`json` defaults to `json` |
 
@@ -2170,49 +2211,34 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?date=2015-08-01T00:00:00Z
+GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?currency=USD&date=2015-01-01T00:00:00Z&limit=3
 ```
 
 Response:
 
 ```
 {
-    "result": "success",
-    "ledger_index": 14979795,
-    "close_time": "2015-08-01T00:00:00",
-    "validated": true,
-    "balances": [
-        {
-            "value": "148.446663",
-            "currency": "XRP",
-            "counterparty": ""
-        },
-        {
-            "value": "-11.0301",
-            "currency": "USD",
-            "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
-        },
-        {
-            "value": "0.0001",
-            "currency": "USD",
-            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-        },
-        {
-            "value": "0",
-            "currency": "USD",
-            "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-        },
-        {
-            "value": "10",
-            "currency": "USD",
-            "counterparty": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
-        },
-        {
-            "value": "0",
-            "currency": "USD",
-            "counterparty": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
-        }
-    ]
+  "result": "success",
+  "ledger_index": 10852618,
+  "close_time": "2015-01-01T00:00:00Z",
+  "limit": 3,
+  "balances": [
+    {
+      "currency": "USD",
+      "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "value": "-11.0301"
+    },
+    {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "0.0001"
+    },
+    {
+      "currency": "USD",
+      "counterparty": "rweYz56rfmQ98cAdRaeTxQS9wVMGnrdsFp",
+      "value": "0"
+    }
+  ]
 }
 ```
 
@@ -2233,6 +2259,8 @@ GET /v2/account/{:address}/orders
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-account-orders)
 
 This method requires the following URL parameters:
 
@@ -2356,6 +2384,8 @@ GET /v2/accounts/{:address}/transactions
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-account-transaction-history)
 
 This method requires the following URL parameters:
 
@@ -2485,6 +2515,8 @@ GET /v2/accounts/{:address}/transactions/{:sequence}
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-transaction-by-account-and-sequence)
+
 This method requires the following URL parameters:
 
 | Field     | Value   | Description |
@@ -2550,6 +2582,8 @@ GET /v2/accounts/{:address}/payments
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-account-payments)
 
 This method requires the following URL parameters:
 
@@ -2658,6 +2692,8 @@ GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-account-exchanges-all)
 
 This method requires the following URL parameters:
 
@@ -2768,6 +2804,8 @@ GET /v2/accounts/{:address}/balance_changes/
 
 <!--</div>-->
 
+[Try it! >](data-api-v2-tool.html#get-account-balance-changes)
+
 This method requires the following URL parameters:
 
 | Field    | Value  | Description |
@@ -2780,7 +2818,7 @@ Optionally, you can also include the following query parameters:
 | Field      | Value   | Description |
 |------------|---------|-------------|
 | currency   | String  | Restrict results to specified currency. |
-| issuer     | String  | Restrict results to specified counterparty/issuer. |
+| counterparty | String  | Restrict results to specified counterparty/issuer. |
 | start      | String - [Timestamp][]  | Start time of query range. |
 | end        | String - [Timestamp][]  | End time of query range. |
 | descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
@@ -2875,6 +2913,8 @@ GET /v2/accounts/{:address}/reports/{:date}
 ```
 
 <!--</div>-->
+
+[Try it! >](data-api-v2-tool.html#get-account-reports-by-day)
 
 This method requires the following URL parameters:
 
