@@ -179,6 +179,20 @@ pages:
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
+        doc_page: reference-data-api.html
+        sidebar: true
+        targets:
+            - local
+            - ripple.com
+        template: template-rest-api-tool.html
+
+    -   name: rippled JSON-RPC Tool
+        # This tool requires a local server w/ reverse proxy
+        category: API Tools
+        html: tool-jsonrpc.html
+        methods_js: js/apitool-methods-jsonrpc.js
+        rest_host: http://localhost/rippled
+        doc_page: reference-rippled.html
         sidebar: true
         targets:
             - local

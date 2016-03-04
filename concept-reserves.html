@@ -47,45 +47,46 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="reference-rippled.html">rippled</a></li>
-<li><a href="reference-transaction-format.html">Transaction Format</a></li>
-<li><a href="reference-ledger-format.html">Ledger Format</a></li>
-<li><a href="reference-rippleapi.html">RippleAPI</a></li>
-<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
+<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
+<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
+<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
-<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
-<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
+<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
+<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-paths.html">Paths</a></li>
-<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li><a href="concept-fee-voting.html">Fee Voting</a></li>
-<li><a href="concept-reserves.html">Reserves</a></li>
-<li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="https://ripple.com/build/paths/">Paths</a></li>
+<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
+<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
+<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
+<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
+<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
+<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
-<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -109,13 +110,13 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Concepts</a></li>
-<li class="level-2"><a href="concept-paths.html">Paths</a></li>
-<li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-<li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-<li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
-<li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
-<li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+<li class="level-2"><a href="https://ripple.com/build/paths/">Paths</a></li>
+<li class="level-2"><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
+<li class="level-2"><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
+<li class="level-2"><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
+<li class="level-2"><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
+<li class="level-2"><a href="https://ripple.com/build/reserves/">Reserves</a></li>
+<li class="level-2"><a href="https://ripple.com/build/freeze/">Freeze</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -138,18 +139,18 @@
 <h3 id="owner-reserves">Owner Reserves</h3>
 <p>Many objects in the ledger are owned by a particular account, and therefore count toward the reserve requirement of that account. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
 <ul>
-<li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
-<li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
-<li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
+<li><a href="https://ripple.com/build/ledger-format/#offer">Offers</a> are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an <a href="https://ripple.com/build/transactions/#offercancel">OfferCancel transaction</a>, or by sending an <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
+<li><a href="https://ripple.com/build/ledger-format/#ripplestate">Trust lines</a> are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See <a href="https://ripple.com/build/ledger-format/#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
+<li><a href="https://ripple.com/build/ledger-format/#directorynode">Owner directories</a> list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
 </ul>
 <h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
-<p>The Ripple Consensus Ledger considers an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not possess enough XRP to meet the additional reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
+<p>The Ripple Consensus Ledger considers an <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not possess enough XRP to meet the additional reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="https://ripple.com/build/transactions/#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
 <h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
-<p>During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the <a href="concept-transaction-cost.html">transaction cost</a> destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.</p>
+<p>During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.</p>
 <p>When an account has less XRP than its current reserve requirement, it cannot send new transactions. Even so, it continues to exist in the ledger, as all accounts do. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.</p>
-<p><strong>Exception:</strong> When an account is below the reserve requirement, it can send new <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="reference-ledger-format.html#ripplestate">trust lines</a>, or <a href="reference-ledger-format.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
+<p><strong>Exception:</strong> When an account is below the reserve requirement, it can send new <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="https://ripple.com/build/ledger-format/#ripplestate">trust lines</a>, or <a href="https://ripple.com/build/ledger-format/#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
 <h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
-<p>The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+<p>The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="https://ripple.com/build/fee-voting/">Fee Voting</a> for more information.</p>
 </div>
 </main>
 </div>

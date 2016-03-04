@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="width=device-width" name="viewport">
-<title>Issuing and Operational Acounts - Ripple Developer Portal</title>
+<title>rippled JSON-RPC Tool - Ripple Developer Portal</title>
 <!-- favicon -->
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -16,21 +16,7 @@
 <link href="assets/css/devportal.css" rel="stylesheet"/>
 <!-- Bootstrap JS -->
 <script src="assets/vendor/bootstrap.min.js"></script>
-<!-- syntax highlighting -->
-<link href="assets/vendor/docco.min.css" rel="stylesheet">
-<script src="assets/vendor/highlight.min.js"></script>
-<!-- syntax selection js -->
-<script src="assets/js/multicodetab.js"></script>
-<script>
-        $(document).ready(function() {
-            $().multicode_tabs();
-            hljs.initHighlighting();
-            make_code_expandable();
-        });
-    </script>
-<script src="assets/js/expandcode.js"></script>
-<script src="assets/js/fixsidebarscroll.js"></script>
-</link></link></link></meta></meta></meta></head>
+</link></link></meta></meta></meta></head>
 <body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
 <header class="banner navbar navbar-default navbar-fixed-top initial_header" role="banner">
 <div class="container">
@@ -106,40 +92,51 @@
 </header>
 <div class="wrap container" role="document">
 <aside class="sidebar" role="complementary">
-<div class="dev_nav_wrapper">
-<div id="cont">
-<ul class="dev_nav_sidebar">
-<li class="level-1"><a href="index.html">Category: Best Practices</a></li>
-<li class="level-2"><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li class="level-2"><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<ul id="command_list">
 </ul>
-<hr/>
-<h5>In this page:</h5>
-</div>
-<script src="assets/js/jquery.gensidebar.js" type="text/javascript"></script>
-</div>
 </aside>
 <main class="main" role="main">
-<div class="content">
-<h1 id="issuing-and-operational-accounts">Issuing and Operational Accounts</h1>
-<p>For any financial institution doing business using the Ripple Consensus Ledger, we strongly recommend that the institution use multiple Ripple ledger accounts with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
-<ul>
-<li>An <strong>issuing account</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
-<li>One or more <strong>operational accounts</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
-<li>Optional <strong>standby accounts</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
-</ul>
-<h2 id="the-risk">The Risk</h2>
-<p>If a malicious person compromises a institution's issuing account (cold wallet), that person could create an unlimited amount of new issuances and trade them in the decentralized exchange. This would make it difficult to distinguish legitimately-obtained issuances and redeem them fairly. In this case, the institution must create a new issuing account, and all users with trust lines to the old issuing account must create new trust lines to the new account. Thus, it's best to keep your issuing account as secure as possible.</p>
-<h2 id="separation-of-roles">Separation of Roles</h2>
-<p>The issuing account is like a vault. It serves as the asset issuer, and should remain offline. The secret key that is used for this account is kept offline, accessible to only a few trusted operators. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the operational account's balance. Because the issuing account is creating the issuances, customer accounts holding those issuances must create trust lines to the issuing account.</p>
-<p>An operational account is like a cash register. It makes payments on behalf of the institution by sending issuances created by the issuing account. The secret key for an operational account is, by necessity, stored on a server that is connected to the outside internet, usually in a configuration file on a public-facing server. Because it holds issuances created by the issuing account, each operational account must create a trust line to the issuing account. Customers do not, and should not, trust operational accounts. An institution can use one or more operational accounts, but it's easiest to configure the financial institution's software to use just a single operational account.</p>
-<p>(Unlike a cash register, an operational account does not have to handle incoming payments from users, because the issuing account can receive and monitor payments without using its secret key. To make things simple for your users, we recommend treating incoming payments to the operational and issuing accounts as the same.)</p>
-<p>Each operational account has a limited balance of the issuances. If an operational account is compromised, the financial institution only loses as much currency as that operational account holds. Customers do not need to change any configuration in order to receive funds from a new operational account. However, the institution must monitor operational accounts balances so that those accounts don't run out of funds during ordinary operation.</p>
-<h3 id="standby-accounts">Standby Accounts</h3>
-<p>Another optional step that an institution can take to balance risk and convenience is to use "standby accounts" as an intermediate step between the issuing account and operational accounts. The institution can operate additional accounts as standby accounts, whose keys not stored online, but are entrusted to different trusted users.</p>
-<p>When an operational account is running low on funds, a trusted user can use a standby accountto refill the operational account's balance. When the standby accounts run low on funds, the institution can use the issuing account to send more currency to a standby account in a single transaction, and the standby accounts can distribute that currency among themselves if necessary. This improves security of the issuing account, allowing it to make fewer total transactions, without leaving too much money in the control of a single automated system.</p>
-<p>As with operational accounts, standby accounts must trust the issuing account, and should not be trusted by users. All precautions that apply to operational accounts also apply to standby accounts.</p>
+<div id="wrapper">
+<div style="clear:both;"></div>
+<div id="command_wrapper">
+<div id="command_table">
+<div id="io_wrapper">
+<div class="io" id="input">
+<h2>REST Request</h2>
+<div class="alert alert-danger" id="test_warning" style="display:none;">
+<h4>Test accounts only!</h4>
+<p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
 </div>
+<div style="clear:both;"></div>
+<h3 id="selected_command" title="Reference information"></h3>
+<p id="description"></p>
+<div id="invalid">Invalid JSON</div>
+<div id="rest_url_wrapper">
+<p><span id="rest_host">http://localhost/rippled</span><span id="rest_url"></span></p>
+</div>
+<div id="request_body"></div>
+<div id="request_options">
+<a class="button btn btn-primary api" id="request_button">Send request</a>
+</div>
+</div>
+<div class="io" id="output">
+<h2>Response</h2>
+<div>
+<img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+<span id="rest_responsecode"></span>
+</div>
+<div id="response_body"></div>
+<div id="tooltip"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    // Set some constants for the REST tool script
+    var URL_BASE = 'http://localhost/rippled';
+    var DOC_BASE = 'https://ripple.com/build/rippled-apis/';
+    </script>
 </main>
 </div>
 <footer class="content-info" role="contentinfo">
@@ -188,5 +185,13 @@
 </div><!-- /.row -->
 </div><!-- /.container -->
 </footer>
+<link href="assets/css/api-tools.css" rel="stylesheet" type="text/css"/>
+<link href="assets/vendor/codemirror.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/es5-shim.js" type="text/javascript"></script>
+<script src="assets/vendor/codemirror.min.js" type="text/javascript"></script>
+<script src="assets/vendor/cm-javascript.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.autosize.input.min.js" type="text/javascript"></script>
+<script src="assets/js/apitool-rest.js" type="text/javascript"></script>
+<script src="assets/js/apitool-methods-jsonrpc.js" type="text/javascript"></script>
 </body>
 </html>

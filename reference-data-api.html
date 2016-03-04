@@ -47,45 +47,46 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="reference-rippled.html">rippled</a></li>
-<li><a href="reference-transaction-format.html">Transaction Format</a></li>
-<li><a href="reference-ledger-format.html">Ledger Format</a></li>
-<li><a href="reference-rippleapi.html">RippleAPI</a></li>
-<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
+<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
+<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
+<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
-<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
-<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
+<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
+<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-paths.html">Paths</a></li>
-<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li><a href="concept-fee-voting.html">Fee Voting</a></li>
-<li><a href="concept-reserves.html">Reserves</a></li>
-<li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="https://ripple.com/build/paths/">Paths</a></li>
+<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
+<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
+<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
+<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
+<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
+<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
-<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -109,11 +110,11 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: References</a></li>
-<li class="level-2"><a href="reference-rippled.html">rippled</a></li>
-<li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
-<li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
-<li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
-<li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
+<li class="level-2"><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
+<li class="level-2"><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
+<li class="level-2"><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
+<li class="level-2"><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li class="level-2"><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -185,6 +186,7 @@
 <pre><code>GET /v2/ledgers/{:identifier}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-ledger">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
 <table>
 <thead>
@@ -282,6 +284,7 @@
 <pre><code>GET /v2/transactions/{:hash}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-transaction">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
 <table>
 <thead>
@@ -405,6 +408,7 @@
 <pre><code>GET /v2/transactions/
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-transactions">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -433,12 +437,12 @@
 <tr>
 <td>type</td>
 <td>String</td>
-<td>Filter transactions to a specific <a href="reference-transaction-format.html">transaction type</a>.</td>
+<td>Filter transactions to a specific <a href="https://ripple.com/build/transactions/">transaction type</a>.</td>
 </tr>
 <tr>
 <td>result</td>
 <td>String</td>
-<td>Filter transactions for a specific <a href="reference-transaction-format.html#transaction-results">transaction result</a>.</td>
+<td>Filter transactions for a specific <a href="https://ripple.com/build/transactions/#transaction-results">transaction result</a>.</td>
 </tr>
 <tr>
 <td>binary</td>
@@ -608,6 +612,7 @@
 <pre><code>GET /v2/payments/{:currency}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-payments">Try it! &gt;</a></p>
 <p>This method accepts the following URL parameters:</p>
 <table>
 <thead>
@@ -621,7 +626,7 @@
 <tr>
 <td>:currency</td>
 <td>String</td>
-<td>(Optional) Currency code, followed by <code>+</code> and an issuer. (Or just <code>XRP</code>.) If omitted, return payments for all currencies.</td>
+<td>(Optional) Currency code, followed by <code>+</code> and a counterparty address. (Or just <code>XRP</code>.) If omitted, return payments for all currencies.</td>
 </tr>
 </tbody>
 </table>
@@ -828,6 +833,7 @@
 <pre><code>GET /v2/exchanges/{:base}/{:counter}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-exchanges">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -1021,6 +1027,7 @@
 <pre><code>GET /v2/exchange_rates/{:base}/{:counter}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-exchange-rates">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -1109,6 +1116,7 @@
 <pre><code>GET /v2/normalize
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#normalize">Try it! &gt;</a></p>
 <p>This method uses the following query parameters:</p>
 <table>
 <thead>
@@ -1211,6 +1219,7 @@
 <pre><code>GET /v2/reports/{:date}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-daily-reports">Try it! &gt;</a></p>
 <p>This method uses the following URL parameters:</p>
 <table>
 <thead>
@@ -1419,6 +1428,7 @@
 <pre><code>GET /v2/stats
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-stats">Try it! &gt;</a></p>
 <p>Optionally, you can also include the following query parameters:</p>
 <table>
 <thead>
@@ -1489,12 +1499,12 @@
 <tbody>
 <tr>
 <td>type</td>
-<td>All Ripple <a href="reference-transaction-format.html">transaction types</a>, including <code>Payment</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>.</td>
+<td>All Ripple <a href="https://ripple.com/build/transactions/">transaction types</a>, including <code>Payment</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>.</td>
 <td>Number of transactions of the given type that occurred during the interval.</td>
 </tr>
 <tr>
 <td>result</td>
-<td>All <a href="reference-transaction-format.html#transaction-results">transaction result codes</a> (string codes, not the numeric codes), including <code>tesSUCCESS</code>, <code>tecPATH_DRY</code>, and many others.</td>
+<td>All <a href="https://ripple.com/build/transactions/#transaction-results">transaction result codes</a> (string codes, not the numeric codes), including <code>tesSUCCESS</code>, <code>tecPATH_DRY</code>, and many others.</td>
 <td>Number of transactions that resulted in the given code during the interval.</td>
 </tr>
 <tr>
@@ -1616,6 +1626,7 @@
 <pre><code>GET /v2/capitaliztion/{:currency}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-capitalization">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -1815,6 +1826,7 @@
 <pre><code>GET /v2/active_accounts/{:base}/{:counter}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-active-accounts">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -2064,6 +2076,7 @@
 <pre><code>GET /v2/network/exchange_volume
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-exchange-volume">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -2278,6 +2291,7 @@
 <pre><code>GET /v2/network/payment_volume
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-payment-volume">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -2476,6 +2490,7 @@
 <pre><code>GET /v2/network/issued_value
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-issued-value">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -2644,6 +2659,7 @@
 <pre><code>GET /v2/gateways/
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-all-gateways">Try it! &gt;</a></p>
 <p>This method takes no query parameters.</p>
 <h4 id="response-format-14">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body.</p>
@@ -2744,6 +2760,7 @@
 <pre><code>GET /v2/gateways/{:gateway}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-gateway">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -2786,12 +2803,12 @@
 <tr>
 <td>accounts</td>
 <td>Array</td>
-<td>A list of <a href="concept-issuing-and-operational-accounts.html">issuing accounts</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
+<td>A list of <a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">issuing accounts</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
 </tr>
 <tr>
 <td>hotwallets</td>
 <td>Array of <a href="#addresses">Address</a>es</td>
-<td>The addresses of the Ripple accounts this gateway uses as <a href="concept-issuing-and-operational-accounts.html">operational accounts</a>.</td>
+<td>The addresses of the Ripple accounts this gateway uses as <a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">operational accounts</a>.</td>
 </tr>
 <tr>
 <td>domain</td>
@@ -2823,7 +2840,7 @@
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The <a href="#addresses">Address</a> of an <a href="concept-issuing-and-operational-accounts.html">issuing account</a> (cold wallet) used by this gateway.</td>
+<td>The <a href="#addresses">Address</a> of an <a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">issuing account</a> (cold wallet) used by this gateway.</td>
 </tr>
 <tr>
 <td>currencies</td>
@@ -2928,6 +2945,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-accounts">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -3086,6 +3104,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3151,6 +3170,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/balances
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-balances">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3199,7 +3219,7 @@ Content-Type: image/svg+xml
 <td>Restrict results to specified currency</td>
 </tr>
 <tr>
-<td>issuer</td>
+<td>counterparty</td>
 <td>String</td>
 <td>Restrict results to specified counterparty/issuer</td>
 </tr>
@@ -3260,46 +3280,31 @@ Content-Type: image/svg+xml
 </table>
 <h4 id="example-19">Example</h4>
 <p>Request:</p>
-<pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?date=2015-08-01T00:00:00Z
+<pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?currency=USD&amp;date=2015-01-01T00:00:00Z&amp;limit=3
 </code></pre>
 <p>Response:</p>
 <pre><code>{
-    "result": "success",
-    "ledger_index": 14979795,
-    "close_time": "2015-08-01T00:00:00",
-    "validated": true,
-    "balances": [
-        {
-            "value": "148.446663",
-            "currency": "XRP",
-            "counterparty": ""
-        },
-        {
-            "value": "-11.0301",
-            "currency": "USD",
-            "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
-        },
-        {
-            "value": "0.0001",
-            "currency": "USD",
-            "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-        },
-        {
-            "value": "0",
-            "currency": "USD",
-            "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-        },
-        {
-            "value": "10",
-            "currency": "USD",
-            "counterparty": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
-        },
-        {
-            "value": "0",
-            "currency": "USD",
-            "counterparty": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"
-        }
-    ]
+  "result": "success",
+  "ledger_index": 10852618,
+  "close_time": "2015-01-01T00:00:00Z",
+  "limit": 3,
+  "balances": [
+    {
+      "currency": "USD",
+      "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "value": "-11.0301"
+    },
+    {
+      "currency": "USD",
+      "counterparty": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "value": "0.0001"
+    },
+    {
+      "currency": "USD",
+      "counterparty": "rweYz56rfmQ98cAdRaeTxQS9wVMGnrdsFp",
+      "value": "0"
+    }
+  ]
 }
 </code></pre>
 <h2 id="get-account-orders">Get Account Orders</h2>
@@ -3311,6 +3316,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/account/{:address}/orders
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-orders">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3519,6 +3525,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/transactions
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-transaction-history">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3569,7 +3576,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>type</td>
 <td>String</td>
-<td>Restrict results to a specified <a href="reference-transaction-format.html">transaction type</a></td>
+<td>Restrict results to a specified <a href="https://ripple.com/build/transactions/">transaction type</a></td>
 </tr>
 <tr>
 <td>result</td>
@@ -3711,6 +3718,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-transaction-by-account-and-sequence">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3798,6 +3806,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/payments
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-payments">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -3958,6 +3967,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-exchanges-all">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -4120,6 +4130,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/balance_changes/
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-balance-changes">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -4153,7 +4164,7 @@ Content-Type: image/svg+xml
 <td>Restrict results to specified currency.</td>
 </tr>
 <tr>
-<td>issuer</td>
+<td>counterparty</td>
 <td>String</td>
 <td>Restrict results to specified counterparty/issuer.</td>
 </tr>
@@ -4279,6 +4290,7 @@ Content-Type: image/svg+xml
 <pre><code>GET /v2/accounts/{:address}/reports/{:date}
 </code></pre>
 </div>
+<p><a class="button" href="data-api-v2-tool.html#get-account-reports-by-day">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -4692,7 +4704,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>rrrrrrrrrrrrrrrrrrrrBZbvji</td>
 <td>ACCOUNT_ONE</td>
-<td>An address that is the base-58 encoding of the value <code>1</code>. In the ledger, <a href="reference-ledger-format.html#ripplestate">RippleState entries</a> use this address as a placeholder for the issuer of a trust line balance.</td>
+<td>An address that is the base-58 encoding of the value <code>1</code>. In the ledger, <a href="https://ripple.com/build/ledger-format/#ripplestate">RippleState entries</a> use this address as a placeholder for the issuer of a trust line balance.</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -4746,8 +4758,8 @@ Content-Type: image/svg+xml
 </ul>
 <h3 id="account-sequence">Account Sequence</h3>
 <p>A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.</p>
-<p>Every <a href="reference-ledger-format.html#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.</p>
-<p>Every <a href="reference-ledger-format.html#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
+<p>Every <a href="https://ripple.com/build/ledger-format/#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.</p>
+<p>Every <a href="https://ripple.com/build/ledger-format/#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
 <h3 id="currency-code">Currency Code</h3>
 <p>There are two kinds of currency code in the Ripple Consensus Ledger:</p>
 <ul>
@@ -4789,7 +4801,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>tx</td>
 <td>Object</td>
-<td>The fields of this transaction object, as defined by the <a href="reference-transaction-format.html">Transaction Format</a></td>
+<td>The fields of this transaction object, as defined by the <a href="https://ripple.com/build/transactions/">Transaction Format</a></td>
 </tr>
 <tr>
 <td>meta</td>
@@ -5170,7 +5182,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="payment-objects">Payment Objects</h2>
-<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the <code>Payment</code> <a href="reference-transaction-format.html">transaction type</a>, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
+<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the <code>Payment</code> <a href="https://ripple.com/build/transactions/">transaction type</a>, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
 <p>Payment objects have the following fields:</p>
 <table>
 <thead>

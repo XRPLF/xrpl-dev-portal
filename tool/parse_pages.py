@@ -365,15 +365,25 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         if "template" in currentpage:
             # Use a template other than the default one
             template = env.get_template(currentpage["template"])
+            
+            #do link substitution for "doc_page" param
+            if "doc_page" in currentpage:
+                doc_page = next(p for p in pages 
+                    if p["html"] == currentpage["doc_page"])
+                if target["name"] in doc_page:
+                    currentpage["doc_page"] = doc_page[target["name"]]
+            
             out_html = template.render(currentpage=currentpage,
                                        categories=categories,
                                        pages=pages,
-                                       content=html_content)
+                                       content=html_content,
+                                       target=target)
         else:
             out_html = default_template.render(currentpage=currentpage,
                                                categories=categories,
                                                pages=pages,
-                                               content=html_content)
+                                               content=html_content,
+                                               target=target)
         
         # Experimental: replace links in full HTML, not just content
         soup = BeautifulSoup(out_html, "html.parser")
@@ -540,6 +550,9 @@ if __name__ == "__main__":
 
     if cli_args.watch:
         logging.info("watching for changes...")
-        pdf_path = os.path.join(config["out_path"], cli_args.pdf)
-        watch(pdf_path, cli_args.target)
+        if cli_args.pdf:
+            pdf_path = os.path.join(config["out_path"], cli_args.pdf)
+            watch(pdf_path, cli_args.target)
+        else:
+            watch(None, cli_args.target)
 

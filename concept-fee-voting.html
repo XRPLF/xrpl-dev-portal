@@ -47,45 +47,46 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="reference-rippled.html">rippled</a></li>
-<li><a href="reference-transaction-format.html">Transaction Format</a></li>
-<li><a href="reference-ledger-format.html">Ledger Format</a></li>
-<li><a href="reference-rippleapi.html">RippleAPI</a></li>
-<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
+<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
+<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
+<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
-<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
-<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
+<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
+<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-paths.html">Paths</a></li>
-<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li><a href="concept-fee-voting.html">Fee Voting</a></li>
-<li><a href="concept-reserves.html">Reserves</a></li>
-<li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="https://ripple.com/build/paths/">Paths</a></li>
+<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
+<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
+<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
+<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
+<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
+<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
-<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
+<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -109,13 +110,13 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Concepts</a></li>
-<li class="level-2"><a href="concept-paths.html">Paths</a></li>
-<li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-<li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-<li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
-<li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
-<li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+<li class="level-2"><a href="https://ripple.com/build/paths/">Paths</a></li>
+<li class="level-2"><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
+<li class="level-2"><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
+<li class="level-2"><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
+<li class="level-2"><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
+<li class="level-2"><a href="https://ripple.com/build/reserves/">Reserves</a></li>
+<li class="level-2"><a href="https://ripple.com/build/freeze/">Freeze</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -126,8 +127,8 @@
 <main class="main" role="main">
 <div class="content">
 <h1 id="fee-voting">Fee Voting</h1>
-<p>Validators can vote for changes to basic <a href="concept-transaction-cost.html">transaction cost</a> as well as <a href="concept-reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
-<p>Operators of <a href="tutorial-rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
+<p>Validators can vote for changes to basic <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> as well as <a href="https://ripple.com/build/reserves/">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
+<p>Operators of <a href="https://ripple.com/build/rippled-setup/#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
 <table>
 <thead>
 <tr>
@@ -157,7 +158,7 @@
 <h3 id="voting-process">Voting Process</h3>
 <p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
 <p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
-<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
+<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="https://ripple.com/build/transactions/#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
 <p>In short:</p>
 <ul>
 <li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
