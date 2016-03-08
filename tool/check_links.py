@@ -81,6 +81,9 @@ def checkLinks(offline=False):
             
               
             elif '#' in endpoint:
+              if fname in config["ignore_anchors_in"]:
+                print("Ignoring anchor %s in dynamic page %s"%(endpoint,fname))
+                continue
               print("Testing local link %s from %s"%(endpoint, fullPath))
               num_links_checked += 1
               filename,anchor = endpoint.split("#",1)
@@ -92,10 +95,10 @@ def checkLinks(offline=False):
                 print("Broken local link in %s to %s"%(fullPath, endpoint))
                 broken_links.append( (fullPath, endpoint) )
 
-              elif "-api-tool.html" in fullTargetPath:
-                  #These pages are populated dynamically, so BeatifulSoup wouldn't
+              elif filename in config["ignore_anchors_in"]:
+                  #Some pages are populated dynamically, so BeatifulSoup wouldn't
                   # be able to find anchors in them anyway
-                  print("Skipping anchor link in %s to API tool %s" % 
+                  print("Skipping anchor link in %s to dynamic page %s" % 
                         (fullPath, endpoint))
                   continue
 
