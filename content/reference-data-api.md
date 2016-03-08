@@ -2599,8 +2599,10 @@ Optionally, you can also include the following query parameters:
 | start      | String - [Timestamp][]  | Start time of query range |
 | end        | String - [Timestamp][]  | End time of query range |
 | type       | String  | Type of payment - `sent` or `received` |
-| currency   | String  | Restrict results to specified currency |
-| issuer     | String  | Restrict results to specified issuer |
+| currency   | String - [Currency Code][] | Filter results to specified currency |
+| issuer     | String - [Address][] | Filter results to specified issuer |
+| source\_tag | Integer | Filter results to specified source tag |
+| destination\_tag | Integer | Filter results to specified destination tag |
 | descending | Boolean | Reverse chronological order |
 | limit      | Integer | Max results per page (defaults to 200). Cannot be more than 1,000. |
 | marker     | String  | [Pagination](#pagination) key from previously returned response |
@@ -2644,7 +2646,6 @@ Response:
           "value": "1"
         }
       ],
-      "transaction_cost": "1.0E-5",
       "source_balance_changes": [
         {
           "counterparty": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -2652,14 +2653,16 @@ Response:
           "value": "-1"
         }
       ],
+      "tx_index": 1,
       "currency": "USD",
       "destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "executed_time": "2014-06-02T22:47:50",
+      "executed_time": "2014-06-02T22:47:50Z",
       "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "ledger_index": 6979192,
       "source": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "source_currency": "USD",
-      "tx_hash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E"
+      "tx_hash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E",
+      "transaction_cost": "1.0E-5"
     }
   ]
 }
@@ -2851,40 +2854,38 @@ Response:
 {
   "result": "success",
   "count": 3,
-  "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20150616212230|000014091020|00003|$",
+  "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20160122235211|000018425487|00010|00001",
   "balance_changes": [
     {
-      "change": "-0.012",
-      "final_balance": "148.446663",
-      "tx_index": 1,
+      "amount_change": "-0.012",
+      "final_balance": "75.169663",
+      "tx_index": 7,
       "change_type": "transaction_cost",
       "currency": "XRP",
-      "executed_time": "2015-06-16T21:32:40",
-      "ledger_index": 14091160,
-      "tx_hash": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
-      "node_index": null
+      "executed_time": "2016-01-29T22:57:20Z",
+      "ledger_index": 18555460,
+      "tx_hash": "2B44EBE00728D04658E597A85EC4F71D20503B31ABBF556764AD8F7A80BA72F6"
     },
     {
-      "change": "-0.012",
-      "final_balance": "148.458663",
-      "tx_index": 20,
-      "change_type": "transaction_cost",
-      "currency": "XRP",
-      "executed_time": "2015-06-16T21:22:40",
-      "ledger_index": 14091022,
-      "tx_hash": "26C1C876D709380DF7136F307B84E7F16CD74381F82E9B2D352A92069C880D66",
-      "node_index": null
-    },
-    {
-      "change": "-30.0",
-      "final_balance": "148.470663",
-      "node_index": 0,
-      "tx_index": 3,
+      "amount_change": "-25.0",
+      "final_balance": "75.181663",
+      "node_index": 1,
+      "tx_index": 4,
       "change_type": "payment_source",
       "currency": "XRP",
-      "executed_time": "2015-06-16T21:22:30",
-      "ledger_index": 14091020,
-      "tx_hash": "73699F26E2A4A8703EB48684FF38CD6362B7ABF217576AB460CBAA64D383D9EC"
+      "executed_time": "2016-01-26T08:32:20Z",
+      "ledger_index": 18489336,
+      "tx_hash": "E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9"
+    },
+    {
+      "amount_change": "-0.01",
+      "final_balance": "100.181663",
+      "tx_index": 4,
+      "change_type": "transaction_cost",
+      "currency": "XRP",
+      "executed_time": "2016-01-26T08:32:20Z",
+      "ledger_index": 18489336,
+      "tx_hash": "E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9"
     }
   ]
 }
@@ -3365,6 +3366,8 @@ Payment objects have the following fields:
 | destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
 | source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
 | transaction\_cost | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
+| destination\_tag | Integer | (May be omitted) A [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
+| source\_tag | Integer | (May be omitted) A [source tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
 | currency | String - [Currency Code][] | The currency that the `destination` account received. |
 | destination | String - [Address][] | The account that received the payment. |
 | executed\_time | String - [Timestamp][] | The time the ledger that included this payment closed. |
@@ -3400,14 +3403,14 @@ Balance Change Descriptors have the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| change | [String - Number][] | The difference in the amount of currency held before and after this change. |
+| amount\_change | [String - Number][] | The difference in the amount of currency held before and after this change. _(Prior to [v2.0.6][], this field was called `change`.)_ |
 | final\_balance | [String - Number][] | The balance after the change occurred. |
 | node\_index | Number (or `null`)| This balance change is represented by the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
 | tx\_index | Number | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
 | change\_type | String | One of several [](#change-types) describing what caused this balance change to occur. |
 | currency | String - [Currency Code][] | The change affected this currency. |
 | executed\_time | String - [Timestamp][] | The time the change occurred. (This is based on the close time of the ledger that included the transaction that executed the change. |
-| issuer | String - [Address][] | (Omitted for XRP) The `currency` was issued by this account. |
+| counterparty | String - [Address][] | (Omitted for XRP) The `currency` is held in a trust line to or from this account. _(Prior to [v2.0.6][], this field was called `issuer`.)_ |
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included the transaction that executed this balance change. |
 | tx\_hash | String - [Hash][] | The identifying hash of the transaction that executed this balance change. |
 
