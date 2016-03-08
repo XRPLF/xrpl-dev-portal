@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,11 +110,11 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: References</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li class="level-2"><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li class="level-2"><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li class="level-2"><a href="reference-rippled.html">rippled</a></li>
+<li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -171,22 +171,22 @@
 <p>After doing that, you generate the signed binary format for the transaction. There are two ways to do this:</p>
 <ol>
 <li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
-<li>You can use <a href="https://ripple.com/build/rippleapi/#sign">RippleAPI</a> to perform offline signing.</li>
+<li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> to perform offline signing.</li>
 </ul>
 </li>
-<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="https://ripple.com/build/rippled-apis/#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)<ul>
-<li>As a shortcut, you can use the <a href="https://ripple.com/build/rippled-apis/#submit">submit command</a> with a <code>tx_json</code> object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.</li>
+<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)<ul>
+<li>As a shortcut, you can use the <a href="reference-rippled.html#submit">submit command</a> with a <code>tx_json</code> object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.</li>
 </ul>
 </li>
 </ol>
-<p>In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using <code>rippled</code>'s <a href="https://ripple.com/build/rippled-apis/#submit">submit command</a>. Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:</p>
+<p>In either case, signing a transaction generates a binary blob that can be submitted to the network. This means using <code>rippled</code>'s <a href="reference-rippled.html#submit">submit command</a>. Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:</p>
 <pre><code>{
   "id": 2,
   "command": "submit",
   "tx_blob" : "120000240000000461D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000F732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74483046022100982064CDD3F052D22788DB30B52EEA8956A32A51375E72274E417328EBA31E480221008F522C9DB4B0F31E695AA013843958A10DE8F6BA7D6759BEE645F71A7EB240BE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
 }
 </code></pre>
-<p>After a transaction has been submitted, if it gets accepted into a validated ledger, you can view the final transaction using the API. For example, here is what the WebSocket API <a href="https://ripple.com/build/rippled-apis/#tx">tx command</a> shows for the same transaction. The field names that begin with capital letters are part of the ledger object; the fields that begin with lower-case letters are additional information generated by the server for the request:</p>
+<p>After a transaction has been submitted, if it gets accepted into a validated ledger, you can view the final transaction using the API. For example, here is what the WebSocket API <a href="reference-rippled.html#tx">tx command</a> shows for the same transaction. The field names that begin with capital letters are part of the ledger object; the fields that begin with lower-case letters are additional information generated by the server for the request:</p>
 <pre><code>{
   "id": 6,
   "status": "success",
@@ -287,9 +287,9 @@
 <li>Confirm that the transaction was either included in a validated ledger, or that it has expired due to <code>LastLedgerSequence</code>. </li>
 <li>If a transaction fails or expires, you can modify and resubmit it.</li>
 </ol>
-<p>Main article: <a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></p>
+<p>Main article: <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></p>
 <h3 id="identifying-transactions">Identifying Transactions</h3>
-<p>The <code>"hash"</code> is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the <a href="https://ripple.com/build/rippled-apis/#account-tx">account_tx command</a>.</p>
+<p>The <code>"hash"</code> is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the <a href="reference-rippled.html#account-tx">account_tx command</a>.</p>
 <p>The transaction hash can be used as a "proof of payment" since anyone can <a href="#looking-up-transaction-results">look up the transaction by its hash</a> in order to verify its final status.</p>
 <h2 id="common-fields">Common Fields</h2>
 <p>Every transaction type has the same set of fundamental fields:</p>
@@ -375,14 +375,14 @@
 <h3 id="auto-fillable-fields">Auto-fillable Fields</h3>
 <p>Some fields can be automatically filled in before the transaction is signed, either by a <code>rippled</code> server or by the library used for offline signing. Both <a href="https://github.com/ripple/ripple-lib">ripple-lib</a> and <code>rippled</code> can automatically provide the following values:</p>
 <ul>
-<li><code>Fee</code> - Automatically fill in the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> based on the network. (<em>Note:</em> <code>rippled</code>'s <a href="https://ripple.com/build/rippled-apis/#sign">sign command</a> supports limits on how high the filled-in-value is, using the <code>fee_mult_max</code> parameter.)</li>
+<li><code>Fee</code> - Automatically fill in the <a href="concept-transaction-cost.html">transaction cost</a> based on the network. (<em>Note:</em> <code>rippled</code>'s <a href="reference-rippled.html#sign">sign command</a> supports limits on how high the filled-in-value is, using the <code>fee_mult_max</code> parameter.)</li>
 <li><code>Sequence</code> - Automatically use the next sequence number for the account sending the transaction.</li>
 </ul>
 <p>For a production system, we recommend <em>not</em> leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.</p>
 <p>The <a href="#paths"><code>Paths</code> field</a> of the <a href="#payment">Payment</a> transaction type can also be automatically filled in. </p>
 <h3 id="transaction-cost">Transaction Cost</h3>
 <p>In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This transaction cost is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
-<p>The <code>Fee</code> field specifies an amount, in <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for this transaction. If the transaction is included in a validated leger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="https://ripple.com/build/transaction-cost/#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="https://ripple.com/build/transaction-cost/#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
+<p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for this transaction. If the transaction is included in a validated leger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
 <p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
 <p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want to perform the same transaction again, you can perform an <a href="#accountset">AccountSet</a> transaction with no options.</p>
@@ -390,7 +390,7 @@
 <p>This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.</p>
 <p>In this way, an AccountSet transaction with no options is the canonical "<a href="http://en.wikipedia.org/wiki/NOP">no-op</a>" transaction.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
-<p>We strongly recommend that you specify the <code>LastLedgerSequence</code> parameter on every transaction. Provide a value of about 3 higher than <a href="https://ripple.com/build/rippled-apis/#ledger">the most recent ledger index</a> to ensure that your transaction is either validated or rejected within a matter of seconds.</p>
+<p>We strongly recommend that you specify the <code>LastLedgerSequence</code> parameter on every transaction. Provide a value of about 3 higher than <a href="reference-rippled.html#ledger">the most recent ledger index</a> to ensure that your transaction is either validated or rejected within a matter of seconds.</p>
 <p>Without the <code>LastLedgerSequence</code> parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the load-based <a href="#transaction-cost">transaction cost</a> of the network increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) transaction cost in order to send another transaction canceling it. Later, if the transaction cost decreases again, the transaction may become viable again. The <code>LastLedgerSequence</code> places a hard upper limit on how long the transaction can wait to be validated or rejected.</p>
 <h3 id="accounttxnid">AccountTxnID</h3>
 <p>The <code>AccountTxnID</code> field lets you chain your transactions together, so that a current transaction is not valid unless the previous one (by Sequence Number) is also valid and matches the transaction you expected.</p>
@@ -501,7 +501,7 @@
 <td>Amount</td>
 <td>String (XRP)<br/>Object (Otherwise)</td>
 <td>Amount</td>
-<td>The amount of currency to deliver. <em>Note:</em> If the <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> is set, this is not the amount actually received. (Formatted as per <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">Specifying Currency Amounts</a>.)</td>
+<td>The amount of currency to deliver. <em>Note:</em> If the <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> is set, this is not the amount actually received. (Formatted as per <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a>.)</td>
 </tr>
 <tr>
 <td>Destination</td>
@@ -531,7 +531,7 @@
 <td>SendMax</td>
 <td>String/Object</td>
 <td>Amount</td>
-<td>(Optional) Highest amount of source currency this transaction is allowed to cost, including <a href="https://ripple.com/knowledge_center/transfer-fees/">transfer fees</a>, exchange rates, and <a href="http://en.wikipedia.org/wiki/Slippage_%28finance%29">slippage</a>. Does not include the <a href="#transaction-cost">XRP destroyed as a cost for submitting the transaction</a>. (Also see <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">Specifying Currency Amounts</a>) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments.</td>
+<td>(Optional) Highest amount of source currency this transaction is allowed to cost, including <a href="concept-transfer-fees.html">transfer fees</a>, exchange rates, and <a href="http://en.wikipedia.org/wiki/Slippage_%28finance%29">slippage</a>. Does not include the <a href="#transaction-cost">XRP destroyed as a cost for submitting the transaction</a>. (Also see <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a>) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments.</td>
 </tr>
 <tr>
 <td>DeliverMin</td>
@@ -542,14 +542,14 @@
 </tbody>
 </table>
 <h3 id="special-issuer-values-for-sendmax-and-amount">Special issuer Values for SendMax and Amount</h3>
-<p>Most of the time, the <code>issuer</code> field of a non-XRP <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">currency amount</a> indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the <code>issuer</code> field in the <code>Amount</code> and <code>SendMax</code> fields of a payment.</p>
+<p>Most of the time, the <code>issuer</code> field of a non-XRP <a href="reference-rippled.html#specifying-currency-amounts">currency amount</a> indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the <code>issuer</code> field in the <code>Amount</code> and <code>SendMax</code> fields of a payment.</p>
 <ul>
 <li>There is only ever one balance for the same currency between two accounts. This means that, sometimes, the <code>issuer</code> field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.</li>
 <li>When the <code>issuer</code> field of the destination <code>Amount</code> field matches the <code>Destination</code> account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. </li>
 <li>When the <code>issuer</code> field of the <code>SendMax</code> field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.</li>
 </ul>
 <h3 id="creating-accounts">Creating Accounts</h3>
-<p>The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the <a href="https://ripple.com/build/reserves/">account reserve</a> to a mathematically-valid account address that does not exist yet. When the payment is processed, a new <a href="https://ripple.com/build/ledger-format/#accountroot">AccountRoot node</a> will be added to the ledger to reflect the newly-created account.</p>
+<p>The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the <a href="concept-reserves.html">account reserve</a> to a mathematically-valid account address that does not exist yet. When the payment is processed, a new <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> will be added to the ledger to reflect the newly-created account.</p>
 <p>If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.</p>
 <h3 id="paths">Paths</h3>
 <p>If present, the <code>Paths</code> field must contain a <em>path set</em> - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books in order to achieve the best rate.</p>
@@ -560,7 +560,7 @@
 </ul>
 <p>If the <code>Paths</code> field is provided, the server decides at transaction processing time which paths to use, from the provided set plus a <em>default path</em> (the simplest possible way to connect the specified accounts). This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.</p>
 <p>The <code>Paths</code> field must not be an empty array, nor an array whose members are all empty arrays.</p>
-<p>For more information, see <a href="https://ripple.com/build/paths/">Paths</a>.</p>
+<p>For more information, see <a href="concept-paths.html">Paths</a>.</p>
 <h3 id="payment-flags">Payment Flags</h3>
 <p>Transactions of the Payment type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
 <table>
@@ -611,7 +611,7 @@
 <p>In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my <code>SendMax</code> of 20 USD and a destination <code>Amount</code> of 100 CNY, then the limit quality is still <code>5</code>. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about <code>6.3</code>, but it rejects the ¥5/$2 offer because that offer's quality of <code>2.5</code> is worse than the quality limit of <code>5</code>. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.</p>
 <h2 id="accountset">AccountSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp" title="Source">[Source]<br/></a></p>
-<p>An AccountSet transaction modifies the properties of an <a href="https://ripple.com/build/ledger-format/#accountroot">account in the Ripple Consensus Ledger</a>.</p>
+<p>An AccountSet transaction modifies the properties of an <a href="reference-ledger-format.html#accountroot">account in the Ripple Consensus Ledger</a>.</p>
 <p>Example AccountSet:</p>
 <pre><code>{
     "TransactionType": "AccountSet",
@@ -741,13 +741,13 @@
 <tr>
 <td>asfNoFreeze</td>
 <td>6</td>
-<td>Permanently give up the ability to <a href="https://ripple.com/build/freeze/">freeze individual trust lines or disable Global Freeze</a>. This flag can never be disabled after being enabled.</td>
+<td>Permanently give up the ability to <a href="concept-freeze.html">freeze individual trust lines or disable Global Freeze</a>. This flag can never be disabled after being enabled.</td>
 <td>lsfNoFreeze</td>
 </tr>
 <tr>
 <td>asfGlobalFreeze</td>
 <td>7</td>
-<td><a href="https://ripple.com/build/freeze/">Freeze</a> all assets issued by this account.</td>
+<td><a href="concept-freeze.html">Freeze</a> all assets issued by this account.</td>
 <td>lsfGlobalFreeze</td>
 </tr>
 <tr>
@@ -845,8 +845,8 @@
 </tbody>
 </table>
 <p>Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the <code>RegularKey</code> field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the <a href="#accountset-flags">asfDisableMaster account flag</a>.)</p>
-<p>A Regular Key pair is generated in the same way as any other Ripple keys (for example, with <a href="https://ripple.com/build/rippled-apis/#wallet-propose">wallet_propose</a>), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.</p>
-<p>If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. In some cases, you can even send a <a href="https://ripple.com/build/transaction-cost/#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>A Regular Key pair is generated in the same way as any other Ripple keys (for example, with <a href="reference-rippled.html#wallet-propose">wallet_propose</a>), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.</p>
+<p>If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCreate transaction is effectively a <a href="http://en.wikipedia.org/wiki/limit_order">limit order</a>. It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
@@ -879,7 +879,7 @@
 <td><a href="#expiration">Expiration</a></td>
 <td>Unsigned Integer</td>
 <td>UInt32</td>
-<td>(Optional) Time after which the offer is no longer active, in <a href="https://ripple.com/build/rippled-apis/#specifying-time">seconds since the Ripple Epoch</a>.</td>
+<td>(Optional) Time after which the offer is no longer active, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td>OfferSequence</td>
@@ -909,7 +909,7 @@
 <ul>
 <li>If the creator no longer has any of the <code>TakerGets</code> currency.</li>
 <li>The offer becomes funded again when the creator obtains more of that currency.</li>
-<li>If the currency required to fund the offer is held in a <a href="https://ripple.com/build/freeze/">frozen trust line</a>.</li>
+<li>If the currency required to fund the offer is held in a <a href="concept-freeze.html">frozen trust line</a>.</li>
 <li>The offer becomes funded again when the trust line is no longer frozen.</li>
 <li>If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See <a href="#offers-and-trust">Offers and Trust</a>.)</li>
 <li>The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.</li>
@@ -926,10 +926,10 @@
 </ul>
 <h4 id="tracking-unfunded-offers">Tracking Unfunded Offers</h4>
 <p>Tracking the funding status of all offers can be computationally taxing. In particular, accounts that are actively trading may have a large number of offers open and be frequently involved in transactions that affect the funding status of their offers. Because of this, <code>rippled</code> does not proactively find and remove offers.</p>
-<p>A client application can locally track the funding status of offers. To do this, first retreive an order book using the <a href="https://ripple.com/build/rippled-apis/#book-offers"><code>book_offers</code> command</a> and check the <code>taker_gets_funded</code> field of offers. Then,  <a href="https://ripple.com/build/rippled-apis/#subscribe">subscribe</a> to the <code>transactions</code> stream and watch the transaction metadata to see which offers are modified.</p>
+<p>A client application can locally track the funding status of offers. To do this, first retreive an order book using the <a href="reference-rippled.html#book-offers"><code>book_offers</code> command</a> and check the <code>taker_gets_funded</code> field of offers. Then,  <a href="reference-rippled.html#subscribe">subscribe</a> to the <code>transactions</code> stream and watch the transaction metadata to see which offers are modified.</p>
 <h3 id="offers-and-trust">Offers and Trust</h3>
 <p>The limit values of trust lines (See <a href="#trustset">TrustSet</a>) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.</p>
-<p>However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because <a href="https://ripple.com/build/reserves/">trust lines increase the reserve an account must hold</a>, any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.</p>
+<p>However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because <a href="concept-reserves.html">trust lines increase the reserve an account must hold</a>, any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.</p>
 <p>A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.</p>
 <h3 id="offer-preference">Offer Preference</h3>
 <p>Existing offers are grouped by "quality", which is measured as the ratio between <code>TakerGets</code> and <code>TakerPays</code>. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.</p>
@@ -937,7 +937,7 @@
 <h3 id="expiration">Expiration</h3>
 <p>Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time occurs prior to the most-recently validated ledger. In other words, an offer with an <code>Expiration</code> field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.</p>
 <p>You can determine the final disposition of an offer with an <code>Expiration</code> as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.</p>
-<p><em>Note:</em> Since only new transactions can modify the ledger, an expired offer can remain on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="https://ripple.com/build/rippled-apis/#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server encounters it while processing.</p>
+<p><em>Note:</em> Since only new transactions can modify the ledger, an expired offer can remain on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server encounters it while processing.</p>
 <h3 id="auto-bridging">Auto-Bridging</h3>
 <p>Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
 <p>Example: <em>Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader in order to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers.</em></p>
@@ -1048,7 +1048,7 @@
 <td><a href="#trust-limits">LimitAmount</a></td>
 <td>Object</td>
 <td>Amount</td>
-<td>Object defining the trust line to create or modify, in the same format as <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">currency amounts</a>.</td>
+<td>Object defining the trust line to create or modify, in the same format as <a href="reference-rippled.html#specifying-currency-amounts">currency amounts</a>.</td>
 </tr>
 <tr>
 <td>LimitAmount.currency</td>
@@ -1086,7 +1086,7 @@
 <p>All balances on the Ripple Network, except for XRP, represent value owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is responsible for paying the balance back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account.</p>
 <p>Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing gateway defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network. (The Ripple Ledger will still reflect that you possess the same balance with that issuing gateway, but you won't be able to redeem, making it unlikely to be worth anything.)</p>
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="#offercreate">trading</a>, or when you decrease the limit on your trust line.</p>
-<p>Since a trust line occupies space in the ledger, <a href="https://ripple.com/build/reserves/">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
+<p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
 <p>The default state of all flags is off, except for the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
 <p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: You can pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0.</p>
@@ -1124,13 +1124,13 @@
 <td>tfSetFreeze</td>
 <td>0x00100000</td>
 <td>1048576</td>
-<td><a href="https://ripple.com/build/freeze/">Freeze</a> the trustline.</td>
+<td><a href="concept-freeze.html">Freeze</a> the trustline.</td>
 </tr>
 <tr>
 <td>tfClearFreeze</td>
 <td>0x00200000</td>
 <td>2097152</td>
-<td><a href="https://ripple.com/build/freeze/">Unfreeze</a> the trustline.</td>
+<td><a href="concept-freeze.html">Unfreeze</a> the trustline.</td>
 </tr>
 </tbody>
 </table>
@@ -1168,7 +1168,7 @@
 </tbody>
 </table>
 <h2 id="setfee">SetFee</h2>
-<p>A change in <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> or <a href="https://ripple.com/build/reserves/">account reserve</a> requirements. This is typically in response to changes in the load on the network.</p>
+<p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements. This is typically in response to changes in the load on the network.</p>
 <p><em>Note:</em> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
 <pre><code>{
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
@@ -1199,7 +1199,7 @@
 <td>BaseFee</td>
 <td>String</td>
 <td>UInt64</td>
-<td>The charge, in drops of XRP, for the reference transaction, as hex. (This is the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> before scaling for load.)</td>
+<td>The charge, in drops of XRP, for the reference transaction, as hex. (This is the <a href="concept-transaction-cost.html">transaction cost</a> before scaling for load.)</td>
 </tr>
 <tr>
 <td>ReferenceFeeUnits</td>
@@ -1223,7 +1223,7 @@
 </table>
 <h1 id="transaction-results">Transaction Results</h1>
 <h2 id="immediate-response">Immediate Response</h2>
-<p>The response from the <a href="https://ripple.com/build/rippled-apis/#submit"><code>submit</code> command</a> contains a provisional result from the <code>rippled</code> server indicating what happened during local processing of the transaction. </p>
+<p>The response from the <a href="reference-rippled.html#submit"><code>submit</code> command</a> contains a provisional result from the <code>rippled</code> server indicating what happened during local processing of the transaction. </p>
 <p>The response from <code>submit</code> contains the following fields:</p>
 <table>
 <thead>
@@ -1258,7 +1258,7 @@
 </code></pre>
 <p><strong><em>Note:</em></strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
 <h2 id="looking-up-transaction-results">Looking up Transaction Results</h2>
-<p>To see the final result of a transaction, use the <a href="https://ripple.com/build/rippled-apis/#tx"><code>tx</code> command</a>, <a href="https://ripple.com/build/rippled-apis/#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus. </p>
+<p>To see the final result of a transaction, use the <a href="reference-rippled.html#tx"><code>tx</code> command</a>, <a href="reference-rippled.html#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus. </p>
 <table>
 <thead>
 <tr>
@@ -1326,7 +1326,7 @@
 <tr>
 <td>Claimed cost only</td>
 <td><a href="#tec-codes">tec</a></td>
-<td>The transaction did not achieve its intended purpose, but the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> was destroyed. This result is not final unless it appears in a validated ledger.</td>
+<td>The transaction did not achieve its intended purpose, but the <a href="concept-transaction-cost.html">transaction cost</a> was destroyed. This result is not final unless it appears in a validated ledger.</td>
 </tr>
 <tr>
 <td>Client library error</td>
@@ -1338,7 +1338,7 @@
 <p>The distinction between a local error (<code>tel</code>) and a malformed transaction (<code>tem</code>) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a <code>tel</code> error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.</p>
 <p>By contrast, a <code>tem</code> error implies that no server anywhere can apply the transaction, regardless of settings. Either the transaction breaks the rules of the protocol, it is unacceptably ambiguous, or it is completely nonsensical. The only way a malformed transaction could become valid is through changes in the protocol; for example, if a new feature is adopted, then transactions using that feature could be considered malformed by servers that are running older software which predates that feature.</p>
 <h2 id="claimed-cost-justification">Claimed Cost Justification</h2>
-<p>Although it may seem unfair to charge a <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> for a failed transaction, the <code>tec</code> class of errors exists for good reasons:</p>
+<p>Although it may seem unfair to charge a <a href="concept-transaction-cost.html">transaction cost</a> for a failed transaction, the <code>tec</code> class of errors exists for good reasons:</p>
 <ul>
 <li>Transactions submitted after the failed one do not have to have their Sequence values renumbered. Incorporating the failed transaction into a ledger uses up the transaction's sequence number, preserving the expected sequence.</li>
 <li>Distributing the transaction throughout the network increases network load. Enforcing a cost makes it harder for attackers to abuse the network with failed transactions.</li>
@@ -1414,7 +1414,7 @@
 <tr>
 <td><a href="#delivered-amount">delivered_amount</a></td>
 <td>Object or String</td>
-<td>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.0">rippled 0.27.0</a>) The <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">amount</a> actually received by the <code>Destination</code> account. Use this field to determine how much was delivered, regardless of whether the transaction is a <a href="#partial-payments">partial payment</a>.</td>
+<td>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.0">rippled 0.27.0</a>) The <a href="reference-rippled.html#specifying-currency-amounts">amount</a> actually received by the <code>Destination</code> account. Use this field to determine how much was delivered, regardless of whether the transaction is a <a href="#partial-payments">partial payment</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1460,7 +1460,7 @@
 </tr>
 <tr>
 <td>telINSUF_FEE_P</td>
-<td>The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> requirement, which is derived from its load level.</td>
+<td>The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="concept-transaction-cost.html">transaction cost</a> requirement, which is derived from its load level.</td>
 </tr>
 <tr>
 <td>telNO_DST_PARTIAL</td>
@@ -1492,7 +1492,7 @@
 </tr>
 <tr>
 <td>temBAD_CURRENCY</td>
-<td>The transaction improperly specified a currency field. See <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">Specifying Currency Amounts</a> for the correct format.</td>
+<td>The transaction improperly specified a currency field. See <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a> for the correct format.</td>
 </tr>
 <tr>
 <td>temBAD_EXPIRATION</td>
@@ -1721,7 +1721,7 @@
 </tbody>
 </table>
 <h3 id="tec-codes">tec Codes</h3>
-<p>These codes indicate that the transaction failed, but it was applied to a ledger in order to apply the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a>. They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.</p>
+<p>These codes indicate that the transaction failed, but it was applied to a ledger in order to apply the <a href="concept-transaction-cost.html">transaction cost</a>. They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.</p>
 <table>
 <thead>
 <tr>
@@ -1754,7 +1754,7 @@
 <tr>
 <td>tecUNFUNDED_PAYMENT</td>
 <td>104</td>
-<td>The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: <a href="https://ripple.com/build/reserves/">Reserves</a>)</td>
+<td>The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
 <td>tecFAILED_PROCESSING</td>
@@ -1769,12 +1769,12 @@
 <tr>
 <td>tecINSUF_RESERVE_LINE</td>
 <td>122</td>
-<td>The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="https://ripple.com/build/reserves/">Reserves</a>) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO_LINE_INSUF_RESERVE for the other case.)</td>
+<td>The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO_LINE_INSUF_RESERVE for the other case.)</td>
 </tr>
 <tr>
 <td>tecINSUF_RESERVE_OFFER</td>
 <td>123</td>
-<td>The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: <a href="https://ripple.com/build/reserves/">Reserves</a>)</td>
+<td>The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
 <td>tecNO_DST</td>
@@ -1789,7 +1789,7 @@
 <tr>
 <td>tecNO_LINE_INSUF_RESERVE</td>
 <td>126</td>
-<td>The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="https://ripple.com/build/reserves/">Reserves</a>) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF_RESERVE_LINE for the other case.)</td>
+<td>The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF_RESERVE_LINE for the other case.)</td>
 </tr>
 <tr>
 <td>tecNO_LINE_REDUNDANT</td>
@@ -1844,7 +1844,7 @@
 <tr>
 <td>tecFROZEN</td>
 <td>137</td>
-<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="https://ripple.com/build/freeze/">global freeze</a>.</td>
+<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="concept-freeze.html">global freeze</a>.</td>
 </tr>
 <tr>
 <td>tecNO_TARGET</td>
@@ -1916,11 +1916,11 @@
 </tr>
 <tr>
 <td>tejMaxFeeExceeded</td>
-<td>The <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> that would be necessary to send the transaction is higher than the maximum transaction cost setting, which is either the <code>_MaxFee</code> parameter of the Transaction (if provided) or the maximum transaction cost configured for the remote. The default value is 1 XRP (100000 drops).</td>
+<td>The <a href="concept-transaction-cost.html">transaction cost</a> that would be necessary to send the transaction is higher than the maximum transaction cost setting, which is either the <code>_MaxFee</code> parameter of the Transaction (if provided) or the maximum transaction cost configured for the remote. The default value is 1 XRP (100000 drops).</td>
 </tr>
 <tr>
 <td>tejMaxLedger</td>
-<td>Currently-validated ledgers have surpassed the <code>LastLedgerSequence</code> parameter of the transaction without including it, so it can no longer succeed. (Also see <a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a>.) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes.</td>
+<td>Currently-validated ledgers have surpassed the <code>LastLedgerSequence</code> parameter of the transaction without including it, so it can no longer succeed. (Also see <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a>.) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes.</td>
 </tr>
 <tr>
 <td>tejSecretInvalid</td>

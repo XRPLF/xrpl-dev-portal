@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,11 +110,11 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: References</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li class="level-2"><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li class="level-2"><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li class="level-2"><a href="reference-rippled.html">rippled</a></li>
+<li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -127,13 +127,13 @@
 <h1 id="rippled">rippled</h1>
 <p>The core peer-to-peer server that operates the Ripple Network is called <code>rippled</code>. Each <code>rippled</code> server connects to the Ripple Network, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for <code>rippled</code> is written in C++, and is <a href="https://github.com/ripple/rippled">available on GitHub under an open-source license</a>.</p>
 <ul>
-<li><a href="https://ripple.com/build/rippled-setup/"><code>rippled</code> Setup</a></li>
+<li><a href="tutorial-rippled-setup.html"><code>rippled</code> Setup</a></li>
 <li><a href="#api-methods">API Reference</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Reference</a></li>
-<li>JavaScript Client Library - <a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li><a href="reference-transaction-format.html">Transaction Reference</a></li>
+<li>JavaScript Client Library - <a href="reference-rippleapi.html">RippleAPI</a></li>
 </ul>
 <h1 id="websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</h1>
-<p>If you want to communicate directly with a <code>rippled</code> server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Alternatively, you can use <a href="https://ripple.com/build/rippleapi/">RippleAPI</a>, which is a simplified JavaScript client library, which communicates directly with a <code>rippled</code> server from <a href="http://nodejs.org/">Node.js</a> or a web browser.</p>
+<p>If you want to communicate directly with a <code>rippled</code> server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Alternatively, you can use <a href="reference-rippleapi.html">RippleAPI</a>, which is a simplified JavaScript client library, which communicates directly with a <code>rippled</code> server from <a href="http://nodejs.org/">Node.js</a> or a web browser.</p>
 <ul>
 <li>The WebSocket API uses the <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSocket protocol</a>, available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The <code>rippled</code> server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.</li>
 <li>The JSON-RPC API relies on simple request-response communication via HTTP or HTTPS. (The <code>rippled</code> server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.</li>
@@ -145,10 +145,10 @@
 <p><a href="https://groups.google.com/forum/#!forum/ripple-server">https://groups.google.com/forum/#!forum/ripple-server</a></p>
 <h2 id="connecting-to-rippled">Connecting to rippled</h2>
 <p>Before you can run any commands against a <code>rippled</code> server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network.</p>
-<p>Alternatively, you can <a href="https://ripple.com/build/rippled-setup/">run your own local copy of <code>rippled</code></a>. This is required if you want to access any of the <a href="#list-of-admin-commands">Admin Commands</a>. In this case, you should use whatever IP and port you configured the server to bind. (For example, <code>127.0.0.1:54321</code>) Additionally, in order to access admin functionality, you must connect from a port/IP address marked as admin in the config file.</p>
+<p>Alternatively, you can <a href="tutorial-rippled-setup.html">run your own local copy of <code>rippled</code></a>. This is required if you want to access any of the <a href="#list-of-admin-commands">Admin Commands</a>. In this case, you should use whatever IP and port you configured the server to bind. (For example, <code>127.0.0.1:54321</code>) Additionally, in order to access admin functionality, you must connect from a port/IP address marked as admin in the config file.</p>
 <p>The <a href="https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854">example config file</a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
 <h3 id="websocket-api">WebSocket API</h3>
-<p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="https://ripple.com/build/websocket-tool/">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p>
+<p>If you are just looking to try out some methods on the Ripple network, you can skip writing your own WebSocket code and go straight to using the API at the <a href="ripple-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can build your own client in Javascript to run in a browser (See <a href="http://www.websocket.org/echo.html">this example</a> ) or possibly <a href="https://github.com/einaros/ws">Node.js</a>.</p>
 <h4 id="request-formatting">Request Formatting</h4>
 <p>After you open a WebSocket to the <code>rippled</code> server, you can send commands as a <a href="http://www.w3schools.com/json/">JSON</a> object, with the following attributes:</p>
 <ul>
@@ -530,7 +530,7 @@ Null method
 <tr>
 <td>rrrrrrrrrrrrrrrrrrrrBZbvji</td>
 <td>ACCOUNT_ONE</td>
-<td>An address that is the base-58 encoding of the value <code>1</code>. In the ledger, <a href="https://ripple.com/build/ledger-format/#ripplestate">RippleState entries</a> use this address as a placeholder for the issuer of a trust line balance.</td>
+<td>An address that is the base-58 encoding of the value <code>1</code>. In the ledger, <a href="reference-ledger-format.html#ripplestate">RippleState entries</a> use this address as a placeholder for the issuer of a trust line balance.</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -564,8 +564,8 @@ Null method
 <p><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="account-sequence">Account Sequence</h3>
 <p>A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.</p>
-<p>Every <a href="https://ripple.com/build/ledger-format/#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.</p>
-<p>Every <a href="https://ripple.com/build/ledger-format/#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
+<p>Every <a href="reference-ledger-format.html#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.</p>
+<p>Every <a href="reference-ledger-format.html#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
 <h3 id="ledger-index">Ledger Index</h3>
 <p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
 <p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For closed ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
@@ -606,8 +606,8 @@ Null method
 <td>Specified as an object</td>
 </tr>
 <tr>
-<td>Tracked in <a href="https://ripple.com/build/ledger-format/#accountroot">accounts</a></td>
-<td>Tracked in <a href="https://ripple.com/build/ledger-format/#ripplestate">trust lines</a></td>
+<td>Tracked in <a href="reference-ledger-format.html#accountroot">accounts</a></td>
+<td>Tracked in <a href="reference-ledger-format.html#ripplestate">trust lines</a></td>
 </tr>
 <tr>
 <td>Can never be created; can only be destroyed</td>
@@ -726,7 +726,7 @@ Null method
 <p>The format of the <code>marker</code> field is intentionally undefined. Each server can define a <code>marker</code> field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server, can have different <code>marker</code> definitions. Each <code>marker</code> is ephemeral, and may not work as expected after 10 minutes.</p>
 <h2 id="modifying-the-ledger">Modifying the Ledger</h2>
 <p>All changes to Ripple's global shared ledger happen as the result of transactions. Consequently, this means that there is <em>only one</em> public API method that causes a change in the state of the Ripple Network at all: the <a href="#submit"><em>submit</em></a> command. Most of the other methods represent different ways to view the data represented in the Ripple Network, and the remaining ones just generate data for your convenience. (The <a href="#wallet-propose">wallet_propose</a>, <a href="#path-find">path_find</a>, and <a href="#random">random</a> commands fall into this category.)</p>
-<p>For more information on the various transactions you can submit, consult the <a href="https://ripple.com/build/transactions/">Transaction Format</a>.</p>
+<p>For more information on the various transactions you can submit, consult the <a href="reference-transaction-format.html">Transaction Format</a>.</p>
 <h1 id="api-methods">API Methods</h1>
 <p>API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.</p>
 <h2 id="list-of-public-commands">List of Public Commands</h2>
@@ -791,7 +791,7 @@ Null method
 <li><a href="#json"><code>json</code> - Pass JSON through the commandline</a></li>
 </ul>
 <h1 id="account-information">Account Information</h1>
-<p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="https://ripple.com/build/reserves/">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p>
+<p>Accounts are the core unit of authentication in the Ripple Network. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="concept-reserves.html">reserve for an account</a> increases with the amount of data it is responsible for in the shared ledger.) It is expected that accounts will correspond loosely to individual users. </p>
 <h2 id="account-currencies">account_currencies</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>account_currencies</code> command retrieves a simple list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)</p>
@@ -820,7 +820,7 @@ Null method
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#account_currencies">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#account_currencies">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -959,7 +959,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><em>Note:</em> The currencies that an account can send or receive are defined based on a simple check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>doesn't</em> check whether the trust line is <a href="https://ripple.com/build/freeze/">frozen</a> or authorized.</p>
+<p><em>Note:</em> The currencies that an account can send or receive are defined based on a simple check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>doesn't</em> check whether the trust line is <a href="concept-freeze.html">frozen</a> or authorized.</p>
 <h4 id="possible-errors">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -999,7 +999,7 @@ Null method
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#account_info">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#account_info">Try it! &gt;</a></p>
 <p>The request contains the following parameters:</p>
 <table>
 <thead>
@@ -1071,7 +1071,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>account_data</td>
 <td>Object</td>
-<td>The <a href="https://ripple.com/build/ledger-format/#accountroot">AccountRoot ledger node</a> with this account's information, as stored in the ledger.</td>
+<td>The <a href="reference-ledger-format.html#accountroot">AccountRoot ledger node</a> with this account's information, as stored in the ledger.</td>
 </tr>
 <tr>
 <td>ledger_current_index</td>
@@ -1123,7 +1123,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#account_lines">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#account_lines">Try it! &gt;</a></p>
 <p>The request accepts the following paramters:</p>
 <table>
 <thead>
@@ -1354,12 +1354,12 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>freeze</td>
 <td>Boolean</td>
-<td>(May be omitted) <code>true</code> if this account has <a href="https://ripple.com/build/freeze/">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
+<td>(May be omitted) <code>true</code> if this account has <a href="concept-freeze.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
 </tr>
 <tr>
 <td>freeze_peer</td>
 <td>Boolean</td>
-<td>(May be omitted) <code>true</code> if the peer account has <a href="https://ripple.com/build/freeze/">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
+<td>(May be omitted) <code>true</code> if the peer account has <a href="concept-freeze.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1401,7 +1401,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#account_offers">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#account_offers">Try it! &gt;</a></p>
 <p>A request can include the following parameters:</p>
 <table>
 <thead>
@@ -1614,7 +1614,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>expiration</td>
 <td>Unsigned integer</td>
-<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="https://ripple.com/build/transactions/#expiration">Offer Expiration</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="reference-transaction-format.html#expiration">Offer Expiration</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -1628,7 +1628,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 </ul>
 <h2 id="account-objects">account_objects</h2>
 <p><a href="https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>account_objects</code> command returns the raw <a href="https://ripple.com/build/ledger-format/">ledger format</a> for all objects owned by an account, such as <a href="https://ripple.com/build/transactions/#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
+<p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account, such as <a href="reference-transaction-format.html#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and tickets (which are part of forthcoming multi-sign code). For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
 <h4 id="request-format-4">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -2237,7 +2237,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <tr>
 <td>account_objects</td>
 <td>Array</td>
-<td>Array of objects owned by this account. Each object is in its raw <a href="https://ripple.com/build/ledger-format/">ledger format</a>.</td>
+<td>Array of objects owned by this account. Each object is in its raw <a href="reference-ledger-format.html">ledger format</a>.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
@@ -2320,7 +2320,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#account_tx">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#account_tx">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -3008,7 +3008,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>transactions</td>
 <td>Boolean</td>
-<td>(Optional) If <code>true</code>, include an array of suggested <a href="https://ripple.com/build/transactions/">transactions</a>, as JSON objects, that you can sign and submit to fix the problems. Defaults to false.</td>
+<td>(Optional) If <code>true</code>, include an array of suggested <a href="reference-transaction-format.html">transactions</a>, as JSON objects, that you can sign and submit to fix the problems. Defaults to false.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3151,7 +3151,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td>transactions</td>
 <td>Array</td>
-<td>(May be omitted) If the request specified <code>transactions</code> as <code>true</code>, this is an array of JSON objects, each of which is the JSON form of a <a href="https://ripple.com/build/transactions/">transaction</a> that should fix one of the described problems. The length of this array is the same as the <code>problems</code> array, and each entry is intended to fix the problem described at the same index into that array.</td>
+<td>(May be omitted) If the request specified <code>transactions</code> as <code>true</code>, this is an array of JSON objects, each of which is the JSON form of a <a href="reference-transaction-format.html">transaction</a> that should fix one of the described problems. The length of this array is the same as the <code>problems</code> array, and each entry is intended to fix the problem described at the same index into that array.</td>
 </tr>
 </tbody>
 </table>
@@ -3520,7 +3520,7 @@ rippled wallet_propose test
 </tr>
 </tbody>
 </table>
-<p>The key generated by this method can also be used as a regular key for an account if you use the <a href="https://ripple.com/build/transactions/#setregularkey">SetRegularKey transaction type</a> to do so.</p>
+<p>The key generated by this method can also be used as a regular key for an account if you use the <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction type</a> to do so.</p>
 <h4 id="possible-errors-8">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -3568,7 +3568,7 @@ rippled wallet_propose test
 rippled ledger current
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ledger">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ledger">Try it! &gt;</a></p>
 <p>The request can contain the following parameters:</p>
 <table>
 <thead>
@@ -3708,7 +3708,7 @@ rippled ledger current
 <tr>
 <td>ledger.accounts</td>
 <td>Array</td>
-<td>(Omitted unless requested) All the <a href="https://ripple.com/build/ledger-format/">account-state information</a> in this ledger.</td>
+<td>(Omitted unless requested) All the <a href="reference-ledger-format.html">account-state information</a> in this ledger.</td>
 </tr>
 <tr>
 <td>ledger.close_time</td>
@@ -3773,7 +3773,7 @@ rippled ledger current
 </tbody>
 </table>
 <p>The following fields are deprecated and may be removed without further notice: <code>accepted</code>, <code>hash</code>, <code>seqNum</code>, <code>totalCoins</code>.</p>
-<p><strong>Note on <code>owner_funds</code>:</strong> If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate-type transaction</a>. The purpose of this field is to make it easier to track the <a href="https://ripple.com/build/transactions/#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly different than the version of this field in <a href="#order-book-streams">Order Book subscription streams</a>:</p>
+<p><strong>Note on <code>owner_funds</code>:</strong> If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="reference-transaction-format.html#offercreate">OfferCreate-type transaction</a>. The purpose of this field is to make it easier to track the <a href="reference-transaction-format.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly different than the version of this field in <a href="#order-book-streams">Order Book subscription streams</a>:</p>
 <table>
 <thead>
 <tr>
@@ -3786,7 +3786,7 @@ rippled ledger current
 <tr>
 <td>owner_funds</td>
 <td>String</td>
-<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is <a href="https://ripple.com/build/freeze/">frozen</a>.</td>
+<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is <a href="concept-freeze.html">frozen</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -3822,7 +3822,7 @@ rippled ledger current
 rippled ledger_closed
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ledger_closed">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ledger_closed">Try it! &gt;</a></p>
 <p>This method accepts no parameters.</p>
 <h4 id="response-format-10">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -3900,7 +3900,7 @@ rippled ledger_closed
 rippled ledger_current
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ledger_current">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ledger_current">Try it! &gt;</a></p>
 <p>The request contains no parameters.</p>
 <h4 id="response-format-11">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -4236,7 +4236,7 @@ rippled ledger_current
 <tr>
 <td>LedgerEntryType</td>
 <td>String</td>
-<td>(Only included if <code>"binary":false</code>) String indicating what type of ledger node this object represents. See <a href="https://ripple.com/build/ledger-format/">ledger format</a> for the full list.</td>
+<td>(Only included if <code>"binary":false</code>) String indicating what type of ledger node this object represents. See <a href="reference-ledger-format.html">ledger format</a> for the full list.</td>
 </tr>
 <tr>
 <td>(Additional fields)</td>
@@ -4258,7 +4258,7 @@ rippled ledger_current
 </ul>
 <h2 id="ledger-entry">ledger_entry</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>ledger_entry</code> method returns a single ledger node from the Ripple Consensus Ledger in its raw format. See <a href="https://ripple.com/build/ledger-format/">ledger format</a> for information on the different types of objects you can retrieve.</p>
+<p>The <code>ledger_entry</code> method returns a single ledger node from the Ripple Consensus Ledger in its raw format. See <a href="reference-ledger-format.html">ledger format</a> for information on the different types of objects you can retrieve.</p>
 <p><strong><em>Note:</em></strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <h4 id="request-format-13">Request Format</h4>
 <p>An example of the request format:</p>
@@ -4285,14 +4285,14 @@ rippled ledger_current
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ledger_entry">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ledger_entry">Try it! &gt;</a></p>
 <p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p>
 <ol>
 <li><code>index</code> - Retrieve any type of ledger node by its unique index</li>
-<li><code>account_root</code> - Retrieve an <a href="https://ripple.com/build/ledger-format/#accountroot">AccountRoot node</a>, similar to the <a href="#account-info">account_info</a> command</li>
-<li><code>directory</code> - Retrieve a <a href="https://ripple.com/build/ledger-format/#directorynode">DirectoryNode</a>, which contains a list of other nodes</li>
-<li><code>offer</code> - Retrieve an <a href="https://ripple.com/build/ledger-format/#offer">Offer node</a>, which defines an offer to exchange currency</li>
-<li><code>ripple_state</code> - Retrieve a <a href="https://ripple.com/build/ledger-format/#ripplestate">RippleState node</a>, which tracks a (non-XRP) currency balance between two accounts.</li>
+<li><code>account_root</code> - Retrieve an <a href="reference-ledger-format.html#accountroot">AccountRoot node</a>, similar to the <a href="#account-info">account_info</a> command</li>
+<li><code>directory</code> - Retrieve a <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>, which contains a list of other nodes</li>
+<li><code>offer</code> - Retrieve an <a href="reference-ledger-format.html#offer">Offer node</a>, which defines an offer to exchange currency</li>
+<li><code>ripple_state</code> - Retrieve a <a href="reference-ledger-format.html#ripplestate">RippleState node</a>, which tracks a (non-XRP) currency balance between two accounts.</li>
 </ol>
 <p>If you specify more than one of the above items, the server will retrieve only of them; it is undefined which one will be chosen.</p>
 <p>The full list of parameters recognized by this method is as follows:</p>
@@ -4313,17 +4313,17 @@ rippled ledger_current
 <tr>
 <td>account_root</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Optional) Specify an <a href="https://ripple.com/build/ledger-format/#accountroot">AccountRoot node</a> to retrieve.</td>
+<td>(Optional) Specify an <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> to retrieve.</td>
 </tr>
 <tr>
 <td>directory</td>
 <td>Object or String</td>
-<td>(Optional) Specify a <a href="https://ripple.com/build/ledger-format/#directorynode">DirectoryNode</a>. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the <a href="https://ripple.com/build/ledger-format/#tree-format">unique index</a> to the directory, in hex. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
+<td>(Optional) Specify a <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the directory, in hex. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
 </tr>
 <tr>
 <td>directory.sub_index</td>
 <td>Unsigned Integer</td>
-<td>(Optional) If provided, jumps to a further sub-node in the <a href="https://ripple.com/build/ledger-format/#directorynode">DirectoryNode</a>.</td>
+<td>(Optional) If provided, jumps to a further sub-node in the <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>.</td>
 </tr>
 <tr>
 <td>directory.dir_root</td>
@@ -4338,7 +4338,7 @@ rippled ledger_current
 <tr>
 <td>offer</td>
 <td>Object or String</td>
-<td>(Optional) Specify an <a href="https://ripple.com/build/ledger-format/#offer">Offer node</a> to retrieve. If a string, interpret as the <a href="https://ripple.com/build/ledger-format/#tree-format">unique index</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
+<td>(Optional) Specify an <a href="reference-ledger-format.html#offer">Offer node</a> to retrieve. If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
 </tr>
 <tr>
 <td>offer.account</td>
@@ -4358,12 +4358,12 @@ rippled ledger_current
 <tr>
 <td>ripple_state.accounts</td>
 <td>Array</td>
-<td>(Required if <code>ripple_state</code> specified) 2-length array of account <a href="#addresses">Address</a>es, defining the two accounts linked by this <a href="https://ripple.com/build/ledger-format/#ripplestate">RippleState node</a></td>
+<td>(Required if <code>ripple_state</code> specified) 2-length array of account <a href="#addresses">Address</a>es, defining the two accounts linked by this <a href="reference-ledger-format.html#ripplestate">RippleState node</a></td>
 </tr>
 <tr>
 <td>ripple_state.currency</td>
 <td>String</td>
-<td>(Required if <code>ripple_state</code> specified) <a href="#currency-codes">Currency Code</a> of the <a href="https://ripple.com/build/ledger-format/#ripplestate">RippleState node</a> to retrieve.</td>
+<td>(Required if <code>ripple_state</code> specified) <a href="#currency-codes">Currency Code</a> of the <a href="reference-ledger-format.html#ripplestate">RippleState node</a> to retrieve.</td>
 </tr>
 <tr>
 <td>binary</td>
@@ -4453,7 +4453,7 @@ rippled ledger_current
 <tr>
 <td>node</td>
 <td>Object</td>
-<td>(Omitted if <code>"binary": true</code> specified.) Object containing the data of this ledger node, according to the <a href="https://ripple.com/build/ledger-format/">ledger format</a>.</td>
+<td>(Omitted if <code>"binary": true</code> specified.) Object containing the data of this ledger node, according to the <a href="reference-ledger-format.html">ledger format</a>.</td>
 </tr>
 <tr>
 <td>node_binary</td>
@@ -4611,7 +4611,7 @@ Connecting to 127.0.0.1:5005
 <ol>
 <li>When returning a <code>lgrNotFound</code> error, the response has a field, <code>acquiring</code> with a <a href="#ledger-request-object">Ledger Request Object</a> indicating the progress of fetching the ledger from the peer-to-peer network.</li>
 <li>When the response represents an in-progress attempt to acquire the ledger, the body of the result is a <a href="#ledger-request-object">Ledger Request Object</a> indicating the progress of fetching the ledger from the peer-to-peer network.</li>
-<li>When the ledger is fully available, the response is a representation of the <a href="https://ripple.com/build/ledger-format/#header-format">ledger header</a>.</li>
+<li>When the ledger is fully available, the response is a representation of the <a href="reference-ledger-format.html#header-format">ledger header</a>.</li>
 </ol>
 <h4 id="ledger-request-object">Ledger Request Object</h4>
 <p>When the server is in the progress of fetching a ledger, but has not yet finished, the <code>rippled</code> server returns a ledger request object indicating its progress towards fetching the ledger. This object has the following fields:</p>
@@ -4637,7 +4637,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>have_state</td>
 <td>Boolean</td>
-<td>(May be omitted) Whether the server has the <a href="https://ripple.com/build/ledger-format/#tree-format">account-state section</a> of the requested ledger.</td>
+<td>(May be omitted) Whether the server has the <a href="reference-ledger-format.html#tree-format">account-state section</a> of the requested ledger.</td>
 </tr>
 <tr>
 <td>have_transactions</td>
@@ -4647,7 +4647,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>needed_state_hashes</td>
 <td>Array of Strings</td>
-<td>(May be omitted) Up to 16 hashes of nodes in the <a href="https://ripple.com/build/ledger-format/#tree-format">state tree</a> that the server still needs to retrieve.</td>
+<td>(May be omitted) Up to 16 hashes of nodes in the <a href="reference-ledger-format.html#tree-format">state tree</a> that the server still needs to retrieve.</td>
 </tr>
 <tr>
 <td>needed_transaction_hashes</td>
@@ -4758,7 +4758,7 @@ rippled ledger_accept
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#tx">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#tx">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -4910,7 +4910,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 }
 </code></pre>
 </div>
-<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the fields of the <a href="https://ripple.com/build/transactions/">Transaction object</a> as well as the following additional fields:</p>
+<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the fields of the <a href="reference-transaction-format.html">Transaction object</a> as well as the following additional fields:</p>
 <table>
 <thead>
 <tr>
@@ -4948,7 +4948,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 <tr>
 <td>(Various)</td>
 <td>(Various)</td>
-<td>Other fields from the <a href="https://ripple.com/build/transactions/">Transaction object</a></td>
+<td>Other fields from the <a href="reference-transaction-format.html">Transaction object</a></td>
 </tr>
 </tbody>
 </table>
@@ -4988,7 +4988,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#transaction_entry">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#transaction_entry">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -5176,7 +5176,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <tr>
 <td>tx_json</td>
 <td>Object</td>
-<td>JSON representation of the <a href="https://ripple.com/build/transactions/">Transaction object</a></td>
+<td>JSON representation of the <a href="reference-transaction-format.html">Transaction object</a></td>
 </tr>
 </tbody>
 </table>
@@ -5224,7 +5224,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 rippled tx_history 0
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#tx_history">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#tx_history">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -6082,7 +6082,7 @@ rippled tx_history 0
 </tr>
 </tbody>
 </table>
-<p>The fields included in each transaction object vary slightly depending on the type of transaction. See <a href="https://ripple.com/build/transactions/">Transaction Format</a> for details.</p>
+<p>The fields included in each transaction object vary slightly depending on the type of transaction. See <a href="reference-transaction-format.html">Transaction Format</a> for details.</p>
 <h4 id="possible-errors-18">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -6091,7 +6091,7 @@ rippled tx_history 0
 </ul>
 <h2 id="path-find">path_find</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" title="Source">[Source]<br/></a></p>
-<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="https://ripple.com/build/paths/">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p>
+<p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="concept-paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see <a href="#ripple-path-find"><code>ripple_path_find</code></a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account. </p>
 <p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code>subcommand</code> parameter:</p>
 <ul>
 <li><code>create</code> - Start sending pathfinding information </li>
@@ -6121,7 +6121,7 @@ rippled tx_history 0
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#path_find">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#path_find">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -6160,7 +6160,7 @@ rippled tx_history 0
 <tr>
 <td>paths</td>
 <td>Array</td>
-<td>(Optional) Array of arrays of objects, representing <a href="https://ripple.com/build/paths/">payment paths</a> to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
+<td>(Optional) Array of arrays of objects, representing <a href="concept-paths.html">payment paths</a> to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
 </tr>
 </tbody>
 </table>
@@ -6547,7 +6547,7 @@ rippled tx_history 0
 <tr>
 <td>alternatives</td>
 <td>Array</td>
-<td>Array of objects with suggested <a href="https://ripple.com/build/paths/">paths</a> to take, as described below. If empty, then no paths were found connecting the source and destination accounts.</td>
+<td>Array of objects with suggested <a href="concept-paths.html">paths</a> to take, as described below. If empty, then no paths were found connecting the source and destination accounts.</td>
 </tr>
 <tr>
 <td>destination_account</td>
@@ -6589,7 +6589,7 @@ rippled tx_history 0
 <tr>
 <td>paths_computed</td>
 <td>Array</td>
-<td>Array of arrays of objects defining <a href="https://ripple.com/build/paths/">payment paths</a></td>
+<td>Array of arrays of objects defining <a href="concept-paths.html">payment paths</a></td>
 </tr>
 <tr>
 <td>source_amount</td>
@@ -6605,7 +6605,7 @@ rippled tx_history 0
 <li><code>noEvents</code> - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See <a href="#ripple-path-find">ripple_path_find</a> for a pathfinding method that <em>is</em> compatible with JSON-RPC.)</li>
 </ul>
 <h4 id="asynchronous-follow-ups">Asynchronous Follow-ups</h4>
-<p>In addition to the initial response, the server sends more messages in a similar format to update on the status of <a href="https://ripple.com/build/paths/">payment paths</a> over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
+<p>In addition to the initial response, the server sends more messages in a similar format to update on the status of <a href="concept-paths.html">payment paths</a> over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
 <p>If the follow-up includes <code>"full_reply": true</code>, then this is the best path that rippled can find as of the current ledger.</p>
 <p>Here is an example of an asychronous follow-up from a path_find create request:</p>
 <div class="multicode">
@@ -6742,7 +6742,7 @@ rippled tx_history 0
 </ul>
 <h2 id="ripple-path-find">ripple_path_find</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>ripple_path_find</code> method is a simplified version of <a href="#path-find"><code>path_find</code></a> that provides a single response with a <a href="https://ripple.com/build/paths/">payment path</a> you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code>path_find</code></a> instead where possible.</p>
+<p>The <code>ripple_path_find</code> method is a simplified version of <a href="#path-find"><code>path_find</code></a> that provides a single response with a <a href="concept-paths.html">payment path</a> you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use <a href="#path-find"><code>path_find</code></a> instead where possible.</p>
 <p>Although the <code>rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<strong><em>Note:</em></strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
 <h4 id="request-format-22">Request Format</h4>
 <p>An example of the request format:</p>
@@ -6797,7 +6797,7 @@ rippled tx_history 0
 rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ripple_path_find">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ripple_path_find">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -7100,7 +7100,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td>paths_computed</td>
 <td>Array</td>
-<td>Array of arrays of objects defining <a href="https://ripple.com/build/paths/">payment paths</a></td>
+<td>Array of arrays of objects defining <a href="concept-paths.html">payment paths</a></td>
 </tr>
 <tr>
 <td>source_amount</td>
@@ -7173,7 +7173,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#sign">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#sign">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -7187,7 +7187,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>tx_json</td>
 <td>Object</td>
-<td><a href="https://ripple.com/build/transactions/">Transaction definition</a> in JSON format</td>
+<td><a href="reference-transaction-format.html">Transaction definition</a> in JSON format</td>
 </tr>
 <tr>
 <td>secret</td>
@@ -7207,19 +7207,19 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>fee_mult_max</td>
 <td>Integer</td>
-<td>(Optional) If the <code>Fee</code> parameter (<a href="https://ripple.com/build/transaction-cost/">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
+<td>(Optional) If the <code>Fee</code> parameter (<a href="concept-transaction-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
 </tr>
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, signing fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, signing fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
-<p>The server automatically attempts to fill in certain fields from the <code>tx_json</code> object if they are omitted, unless you specified <code>offline</code> as true. Otherwise, the following fields from the <a href="https://ripple.com/build/transactions/">transaction format</a> are automatically filled in:</p>
+<p>The server automatically attempts to fill in certain fields from the <code>tx_json</code> object if they are omitted, unless you specified <code>offline</code> as true. Otherwise, the following fields from the <a href="reference-transaction-format.html">transaction format</a> are automatically filled in:</p>
 <ul>
 <li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless <code>offline</code> is true.</li>
-<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server <a href="https://ripple.com/build/transaction-cost/#automatically-specifying-the-transaction-cost">automatically provides an appropriate transaction cost</a> unless you specified <code>offline</code> as true. If you specify <code>offline</code> as true, you must fill in the transaction cost in the <code>Fee</code> parameter. Be careful: a malicious server can specify an excessively high transaction cost.<ul>
+<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">automatically provides an appropriate transaction cost</a> unless you specified <code>offline</code> as true. If you specify <code>offline</code> as true, you must fill in the transaction cost in the <code>Fee</code> parameter. Be careful: a malicious server can specify an excessively high transaction cost.<ul>
 <li>If <code>fee_mult_max</code> is included, and the automatically provided <code>Fee</code> value is greater than the long-term base transaction cost times <code>fee_mult_max</code>, then the transaction fails with the error <code>rpcHIGH_FEE</code>. This way, you can let the server fill in the current minimum <code>Fee</code> value as long as the current load-based transaction cost is not too high.</li>
 </ul>
 </li>
@@ -7298,7 +7298,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>tx_json</td>
 <td>Object</td>
-<td>JSON specification of the <a href="https://ripple.com/build/transactions/">complete transaction</a> as signed, including any fields that were automatically filled in</td>
+<td>JSON specification of the <a href="reference-transaction-format.html">complete transaction</a> as signed, including any fields that were automatically filled in</td>
 </tr>
 </tbody>
 </table>
@@ -7318,7 +7318,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </ul>
 <h2 id="submit">submit</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>submit</code> method sends a <a href="https://ripple.com/build/transactions/">transaction</a> to the network to be confirmed and included in future ledgers. </p>
+<p>The <code>submit</code> method sends a <a href="reference-transaction-format.html">transaction</a> to the network to be confirmed and included in future ledgers. </p>
 <p>This command has two modes:</p>
 <ul>
 <li>Submit-only mode takes a signed, serialized transaction as a binary blob, and submits it to the network as-is. Since signed transaction objects are immutable, no portion of the transaction can be modified or automatically filled in after submission.</li>
@@ -7372,7 +7372,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#submit">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h3 id="sign-and-submit-mode">Sign-and-Submit Mode</h3>
 <p>A sign-and-submit request includes the following parameters:</p>
 <table>
@@ -7387,7 +7387,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>tx_json</td>
 <td>Object</td>
-<td><a href="https://ripple.com/build/transactions/">Transaction definition</a> in JSON format, optionally omitting any auto-fillable fields.</td>
+<td><a href="reference-transaction-format.html">Transaction definition</a> in JSON format, optionally omitting any auto-fillable fields.</td>
 </tr>
 <tr>
 <td>secret</td>
@@ -7417,7 +7417,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -7467,7 +7467,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#submit">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h4 id="response-format-24">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
@@ -7565,7 +7565,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 </tr>
 </tbody>
 </table>
-<p><strong><em>Caution:</em></strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="https://ripple.com/build/transactions/#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
+<p><strong><em>Caution:</em></strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
 <p><strong><em>Caution:</em></strong> If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:</p>
 <ul>
 <li>Do not write an error including your secret to a log file that can be seen by multiple people</li>
@@ -7628,7 +7628,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#book_offers">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#book_offers">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -7773,7 +7773,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>offers</td>
 <td>Array</td>
-<td>Array of offer objects, each of which has the fields of an <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a></td>
+<td>Array of offer objects, each of which has the fields of an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a></td>
 </tr>
 </tbody>
 </table>
@@ -7857,7 +7857,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#subscribe">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#subscribe">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -7911,7 +7911,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes</li>
 <li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
 <li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
-<li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="https://ripple.com/build/transactions/#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
+<li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="reference-transaction-format.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message from a server it trusts. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 <li><code>peer_status</code> - <strong>(Admin only)</strong> Information about connected peer <code>rippled</code> servers, especially with regards to the consensus process.</li>
 </ul>
@@ -8020,7 +8020,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>fee_base</td>
 <td>Unsigned Integer</td>
-<td>Cost of the 'reference transaction' in drops of XRP. (See <a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a> If the ledger includes a <a href="https://ripple.com/build/transactions/#setfee">SetFee pseudo-transaction</a> the new transaction cost applies to all transactions after this ledger.</td>
+<td>Cost of the 'reference transaction' in drops of XRP. (See <a href="concept-transaction-cost.html">Transaction Cost</a> If the ledger includes a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> the new transaction cost applies to all transactions after this ledger.</td>
 </tr>
 <tr>
 <td>fee_ref</td>
@@ -8045,12 +8045,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>reserve_base</td>
 <td>Unsigned Integer</td>
-<td>The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a <a href="https://ripple.com/build/transactions/#setfee">SetFee pseudo-transaction</a> the new base reserve applies after this ledger.</td>
+<td>The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> the new base reserve applies after this ledger.</td>
 </tr>
 <tr>
 <td>reserve_inc</td>
 <td>Unsigned Integer</td>
-<td>The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a <a href="https://ripple.com/build/transactions/#setfee">SetFee pseudo-transaction</a> the new owner reserve applies after this ledger.</td>
+<td>The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> the new owner reserve applies after this ledger.</td>
 </tr>
 <tr>
 <td>txn_count</td>
@@ -8239,12 +8239,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>engine_result</td>
 <td>String</td>
-<td>String <a href="https://ripple.com/build/transactions/#result-categories">Transaction result code</a></td>
+<td>String <a href="reference-transaction-format.html#result-categories">Transaction result code</a></td>
 </tr>
 <tr>
 <td>engine_result_code</td>
 <td>Number</td>
-<td>Numeric <a href="https://ripple.com/build/transactions/#result-categories">transaction response code</a>, if applicable.</td>
+<td>Numeric <a href="reference-transaction-format.html#result-categories">transaction response code</a>, if applicable.</td>
 </tr>
 <tr>
 <td>engine_result_message</td>
@@ -8274,7 +8274,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>transaction</td>
 <td>Object</td>
-<td>The <a href="https://ripple.com/build/transactions/">definition of the transaction</a> in JSON format</td>
+<td>The <a href="reference-transaction-format.html">definition of the transaction</a> in JSON format</td>
 </tr>
 <tr>
 <td>validated</td>
@@ -8510,7 +8510,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>transaction.owner_funds</td>
 <td>String</td>
-<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is <a href="https://ripple.com/build/freeze/">frozen</a>.</td>
+<td>Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is <a href="concept-freeze.html">frozen</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -8542,7 +8542,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 }
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#unsubscribe">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#unsubscribe">Try it! &gt;</a></p>
 <p>The parameters in the request are specified almost exactly like the parameters to <a href="#subscribe"><code>subscribe</code></a>, except that they are used to define which subscriptions to end instead. The parameters are:</p>
 <table>
 <thead>
@@ -8656,7 +8656,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 rippled server_info
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#server_info">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#server_info">Try it! &gt;</a></p>
 <p>The request does not takes any parameters.</p>
 <h4 id="response-format-28">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -9016,7 +9016,7 @@ rippled server_info
 rippled server_state
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#server_state">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#server_state">Try it! &gt;</a></p>
 <p>The request does not takes any parameters.</p>
 <h4 id="response-format-29">Response Format</h4>
 <p>An example of a successful response:</p>
@@ -10307,7 +10307,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="validation-create">validation_create</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" title="Source">[Source]<br/></a></p>
-<p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="https://ripple.com/build/rippled-setup/#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
+<p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="tutorial-rippled-setup.html#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
 <p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
@@ -10865,7 +10865,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>cluster</td>
 <td>Object</td>
-<td>Summary of other <code>rippled</code> servers in the same cluster, if <a href="https://ripple.com/build/rippled-setup/#clustering">configured as a cluster</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+<td>Summary of other <code>rippled</code> servers in the same cluster, if <a href="tutorial-rippled-setup.html#clustering">configured as a cluster</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -10892,7 +10892,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>fee</td>
 <td>Number</td>
-<td>(May be omitted) The load multiplier this cluster member is applying to the <a href="https://ripple.com/build/transaction-cost/">transaction cost</a></td>
+<td>(May be omitted) The load multiplier this cluster member is applying to the <a href="concept-transaction-cost.html">transaction cost</a></td>
 </tr>
 <tr>
 <td>age</td>
@@ -11225,7 +11225,7 @@ Connecting to 127.0.0.1:5005
 rippled ping
 </code></pre>
 </div>
-<p><a class="button" href="https://ripple.com/build/websocket-tool/#ping">Try it! &gt;</a></p>
+<p><a class="button" href="ripple-api-tool.html#ping">Try it! &gt;</a></p>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-40">Response Format</h4>
 <p>An example of a successful response:</p>

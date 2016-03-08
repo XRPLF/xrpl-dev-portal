@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,11 +110,11 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: References</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li class="level-2"><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li class="level-2"><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li class="level-2"><a href="reference-rippled.html">rippled</a></li>
+<li class="level-2"><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li class="level-2"><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li class="level-2"><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li class="level-2"><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -132,7 +132,7 @@
 <p><img alt="Diagram: A ledger has transactions, a state node, and a header with the close time and validation info" src="img/ledger-components.png"/></p>
 <ul>
 <li>A <strong>header</strong> - The ledger's unique index (sequence number), hashes of the other contents, and other metadata.</li>
-<li>A <strong>transaction tree</strong> - The <a href="https://ripple.com/build/transactions/">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to modify the ledger.</li>
+<li>A <strong>transaction tree</strong> - The <a href="reference-transaction-format.html">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to modify the ledger.</li>
 <li>A <strong>state tree</strong> - All the <a href="#ledger-node-types">ledger nodes</a> that contain the settings, balances, and objects in the ledger as of this version.</li>
 </ul>
 <h2 id="tree-format">Tree Format</h2>
@@ -142,7 +142,7 @@
 <p><img alt="Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding." src="img/ledger-indexes.png"/></p>
 <h2 id="header-format">Header Format</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/ledger/ReadView.h#L68" title="Source">[Source]<br/></a></p>
-<p>Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the <a href="https://ripple.com/build/rippled-apis/#ledger"><code>ledger</code> command</a>. The contents of the ledger header are as follows:</p>
+<p>Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the <a href="reference-rippled.html#ledger"><code>ledger</code> command</a>. The contents of the ledger header are as follows:</p>
 <table>
 <thead>
 <tr>
@@ -226,7 +226,7 @@
 <li><a href="#offer"><strong>Offer</strong> - An offer to exchange currencies, known in finance as an <em>order</em>.</a></li>
 <li><a href="#ripplestate"><strong>RippleState</strong> - Links two accounts, tracking the balance of one currency between them. The concept of a <em>trust line</em> is really an abstraction of this node type.</a></li>
 </ul>
-<p>Each ledger node consists of several fields. In the peer protocol that <code>rippled</code> servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other <a href="https://ripple.com/build/rippled-apis/"><code>rippled</code> APIs</a>, ledger nodes are represented as JSON objects.</p>
+<p>Each ledger node consists of several fields. In the peer protocol that <code>rippled</code> servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other <a href="reference-rippled.html"><code>rippled</code> APIs</a>, ledger nodes are represented as JSON objects.</p>
 <h2 id="accountroot">AccountRoot</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" title="Source">[Source]<br/></a></p>
 <p>The <code>AccountRoot</code> node type describes a single <em>account</em> object. Example <code>AccountRoot</code> node:</p>
@@ -316,7 +316,7 @@
 <td>RegularKey</td>
 <td>String</td>
 <td>AccountID</td>
-<td>(Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a <a href="https://ripple.com/build/transactions/#setregularkey">SetRegularKey transaction</a> to change this value.</td>
+<td>(Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction</a> to change this value.</td>
 </tr>
 <tr>
 <td>EmailHash</td>
@@ -357,7 +357,7 @@
 </tbody>
 </table>
 <h3 id="accountroot-flags">AccountRoot Flags</h3>
-<p>There are several options which can be either enabled or disabled for an account. These options can be changed with an <a href="https://ripple.com/build/transactions/#accountset">AccountSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>There are several options which can be either enabled or disabled for an account. These options can be changed with an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
 <p>AccountRoot nodes can have the following flag values:</p>
 <table>
 <thead>
@@ -366,7 +366,7 @@
 <th>Hex Value</th>
 <th>Decimal Value</th>
 <th>Description</th>
-<th>Corresponding <a href="https://ripple.com/build/transactions/#accountset-flags">AccountSet Flag</a></th>
+<th>Corresponding <a href="reference-transaction-format.html#accountset-flags">AccountSet Flag</a></th>
 </tr>
 </thead>
 <tbody>
@@ -587,8 +587,8 @@
 </ul>
 <h2 id="offer">Offer</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
-<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, which is currently in an order book in Ripple's distributed exchange. An <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
-<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> will automatically prune any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="https://ripple.com/build/transactions/#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
+<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, which is currently in an order book in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
+<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> will automatically prune any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
 <p>Example Offer node:</p>
 <pre><code>{
     "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
@@ -642,7 +642,7 @@
 <td>Sequence</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The <code>Sequence</code> value of the <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate</a> transaction that created this Offer node. Used in combination with the <code>Account</code> to identify this Offer.</td>
+<td>The <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate</a> transaction that created this Offer node. Used in combination with the <code>Account</code> to identify this Offer.</td>
 </tr>
 <tr>
 <td>TakerPays</td>
@@ -690,12 +690,12 @@
 <td>Expiration</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>(Optional) Indicates the time after which this offer will be considered unfunded. See <a href="https://ripple.com/build/rippled-apis/#specifying-time">Specifying Time</a> for details.</td>
+<td>(Optional) Indicates the time after which this offer will be considered unfunded. See <a href="reference-rippled.html#specifying-time">Specifying Time</a> for details.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="offer-flags">Offer Flags</h3>
-<p>There are several options which can be either enabled or disabled when an <a href="https://ripple.com/build/transactions/#offercreate">OfferCreate transaction</a> creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>There are several options which can be either enabled or disabled when an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
 <p>Offer nodes can have the following flag values:</p>
 <table>
 <thead>
@@ -704,7 +704,7 @@
 <th>Hex Value</th>
 <th>Decimal Value</th>
 <th>Description</th>
-<th>Corresponding <a href="https://ripple.com/build/transactions/#offercreate-flags">OfferCreate Flag</a></th>
+<th>Corresponding <a href="reference-transaction-format.html#offercreate-flags">OfferCreate Flag</a></th>
 </tr>
 </thead>
 <tbody>
@@ -853,7 +853,7 @@
 </tbody>
 </table>
 <h3 id="ripplestate-flags">RippleState Flags</h3>
-<p>There are several options which can be either enabled or disabled for a trust line. These options can be changed with a <a href="https://ripple.com/build/transactions/#trustset">TrustSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
+<p>There are several options which can be either enabled or disabled for a trust line. These options can be changed with a <a href="reference-transaction-format.html#trustset">TrustSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <em>lsf</em>.</p>
 <p>RippleState nodes can have the following flag values:</p>
 <table>
 <thead>
@@ -862,7 +862,7 @@
 <th>Hex Value</th>
 <th>Decimal Value</th>
 <th>Description</th>
-<th>Corresponding <a href="https://ripple.com/build/transactions/#trustset-flags">TrustSet Flag</a></th>
+<th>Corresponding <a href="reference-transaction-format.html#trustset-flags">TrustSet Flag</a></th>
 </tr>
 </thead>
 <tbody>
@@ -925,7 +925,7 @@
 </tbody>
 </table>
 <h3 id="contributing-to-the-owner-reserve">Contributing to the Owner Reserve</h3>
-<p>If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's <a href="https://ripple.com/build/reserves/#owner-reserves">owner reserve</a>. In a RippleState node, the <code>lsfLowReserve</code> and <code>lsfHighReserve</code> flags indicate which account(s) are responsible for the owner reserve. The <code>rippled</code> server automatically sets these flags when it modifies a trust line.</p>
+<p>If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's <a href="concept-reserves.html#owner-reserves">owner reserve</a>. In a RippleState node, the <code>lsfLowReserve</code> and <code>lsfHighReserve</code> flags indicate which account(s) are responsible for the owner reserve. The <code>rippled</code> server automatically sets these flags when it modifies a trust line.</p>
 <p>The values that count towards a trust line's non-default state are as follows:</p>
 <table>
 <thead>

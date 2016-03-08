@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,13 +110,13 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Concepts</a></li>
-<li class="level-2"><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li class="level-2"><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li class="level-2"><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li class="level-2"><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li class="level-2"><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li class="level-2"><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li class="level-2"><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li class="level-2"><a href="concept-paths.html">Paths</a></li>
+<li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+<li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -145,12 +145,12 @@
 <p>The transfer fee is represented by a setting on the issuing (<strong>cold wallet</strong>) account. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% or greater than 100%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different cold wallets to issue each currency.</p>
 <h2 id="rippleapi">RippleAPI</h2>
 <p>In RippleAPI, the transfer fee is specified in the <code>transferRate</code> field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A <code>transferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transferRate</code> is set to no fee. The value of <code>transferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. The value <code>null</code> is special: it is equivalent to <code>1000000000</code>, meaning no fee.</p>
-<p>A gateway can send a <a href="https://ripple.com/build/rippleapi/#settings">Settings transaction</a> with its cold wallet to change the <code>transferRate</code> for its issuances.</p>
-<p>You can check an account's <code>transferRate</code> with the <a href="https://ripple.com/build/rippleapi/#getsettings">getSettings method</a>.</p>
+<p>A gateway can send a <a href="reference-rippleapi.html#settings">Settings transaction</a> with its cold wallet to change the <code>transferRate</code> for its issuances.</p>
+<p>You can check an account's <code>transferRate</code> with the <a href="reference-rippleapi.html#getsettings">getSettings method</a>.</p>
 <h2 id="rippled">rippled</h2>
 <p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set at <code>1000000000</code>, indicating no fee. The value of <code>TransferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. However, value <code>0</code> is special: it is equivalent to <code>1000000000</code>, meaning no fee.</p>
-<p>A gateway can submit an <a href="https://ripple.com/build/transactions/#accountset">AccountSet transaction</a> from its cold wallet to change the <code>TransferRate</code> for its issuances. </p>
-<p>You can check an account's <code>TransferRate</code> with the <a href="https://ripple.com/build/rippled-apis/#account-info"><code>account_info</code> command</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
+<p>A gateway can submit an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> from its cold wallet to change the <code>TransferRate</code> for its issuances. </p>
+<p>You can check an account's <code>TransferRate</code> with the <a href="reference-rippled.html#account-info"><code>account_info</code> command</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
 </div>
 </main>
 </div>

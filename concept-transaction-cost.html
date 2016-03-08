@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,13 +110,13 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Concepts</a></li>
-<li class="level-2"><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li class="level-2"><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li class="level-2"><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li class="level-2"><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li class="level-2"><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li class="level-2"><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li class="level-2"><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li class="level-2"><a href="concept-paths.html">Paths</a></li>
+<li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+<li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -135,45 +135,45 @@
 <h2 id="beneficiaries-of-the-transaction-cost">Beneficiaries of the Transaction Cost</h2>
 <p>The transaction cost is not paid to any party: the XRP is irrevocably destroyed. Since no new XRP can ever be created, this makes XRP more scarce, and consequently benefits all holders of XRP by making XRP more valuable.</p>
 <h2 id="load-scaling">Load Scaling</h2>
-<p>Each <code>rippled</code> server independently scales the transaction cost based on its current load. If you submit a transaction with a <code>Fee</code> value that is lower than current load-based transaction cost of the <code>rippled</code> server, that server neither applies nor relays the transaction. (<strong>Note:</strong> If you submit a transaction through an <a href="https://ripple.com/build/rippled-apis/#connecting-to-rippled">admin connection</a>, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> unless its <code>Fee</code> value meets the requirements of a majority of servers.</p>
+<p>Each <code>rippled</code> server independently scales the transaction cost based on its current load. If you submit a transaction with a <code>Fee</code> value that is lower than current load-based transaction cost of the <code>rippled</code> server, that server neither applies nor relays the transaction. (<strong>Note:</strong> If you submit a transaction through an <a href="reference-rippled.html#connecting-to-rippled">admin connection</a>, the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> unless its <code>Fee</code> value meets the requirements of a majority of servers.</p>
 <h2 id="querying-the-transaction-cost">Querying the Transaction Cost</h2>
 <p>The <code>rippled</code> APIs have two ways to query the transaction cost: the <code>server_info</code> command (intended for humans) and the <code>server_state</code> command (intended for machines).</p>
 <h3 id="server-info">server_info</h3>
-<p>The <a href="https://ripple.com/build/rippled-apis/#server-info"><code>server_info</code> command</a> reports the unscaled minimum XRP cost, as of the previous ledger, as <code>validated_ledger.base_fee_xrp</code>, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that <code>base_fee_xrp</code> value by the <code>load_factor</code> parameter in the same response, which represents the server's current load level. In other words:</p>
+<p>The <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> reports the unscaled minimum XRP cost, as of the previous ledger, as <code>validated_ledger.base_fee_xrp</code>, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that <code>base_fee_xrp</code> value by the <code>load_factor</code> parameter in the same response, which represents the server's current load level. In other words:</p>
 <p><strong>Current Transaction Cost in XRP = <code>base_fee_xrp</code> × <code>load_factor</code></strong></p>
 <h3 id="server-state">server_state</h3>
-<p>The <a href="https://ripple.com/build/rippled-apis/#server-state"><code>server_state</code> command</a> returns a direct representation of <code>rippled</code>'s internal load calculations. In this case, the effective load rate is the ratio of the current <code>load_factor</code> to the <code>load_base</code>. The <code>validated_ledger.base_fee</code> parameter reports the minimum transaction cost in <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">drops of XRP</a>. This design enables <code>rippled</code> to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:</p>
+<p>The <a href="reference-rippled.html#server-state"><code>server_state</code> command</a> returns a direct representation of <code>rippled</code>'s internal load calculations. In this case, the effective load rate is the ratio of the current <code>load_factor</code> to the <code>load_base</code>. The <code>validated_ledger.base_fee</code> parameter reports the minimum transaction cost in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>. This design enables <code>rippled</code> to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:</p>
 <p><strong>Current Transaction Cost in Drops = (<code>base_fee</code> × <code>load_factor</code>) ÷ <code>load_base</code></strong></p>
 <h2 id="specifying-the-transaction-cost">Specifying the Transaction Cost</h2>
-<p>Every signed transaction must include the transaction cost in the <a href="https://ripple.com/build/transactions/#common-fields"><code>Fee</code> field</a>. Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.</p>
+<p>Every signed transaction must include the transaction cost in the <a href="reference-transaction-format.html#common-fields"><code>Fee</code> field</a>. Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.</p>
 <p>As a rule, the Ripple Consensus Ledger executes transactions <em>exactly</em> as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the <code>Fee</code> field, even if it is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's reserve requirement.</p>
 <p>Before signing a transaction, we recommend <a href="#querying-the-transaction-cost">looking up the current load-based transaction cost</a>. If the transaction cost is currently high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.</p>
 <h3 id="automatically-specifying-the-transaction-cost">Automatically Specifying the Transaction Cost</h3>
 <p>When you sign a transaction online, you can omit the <code>Fee</code> field. In this case, <code>rippled</code> or ripple-lib looks up an appropriate value based on the state of the peer-to-peer network, and includes it before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:</p>
 <ul>
 <li>If the network's transaction cost goes up between signing and distributing the transaction, the transaction may not be confirmed.<ul>
-<li>In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a <code>LastLedgerSequence</code> parameter or until you cancel it with a new transaction that uses the same <code>Sequence</code> number. See <a href="https://ripple.com/build/reliable-transaction-submission/">reliable transaction submission</a> for best practices.</li>
+<li>In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a <code>LastLedgerSequence</code> parameter or until you cancel it with a new transaction that uses the same <code>Sequence</code> number. See <a href="tutorial-reliable-transaction-submission.html">reliable transaction submission</a> for best practices.</li>
 </ul>
 </li>
 <li>You do not know in advance exactly what value you are signing for the <code>Fee</code> field.<ul>
-<li>If you are using <code>rippled</code>, you can also use the <code>fee_mult_max</code> parameter of the <a href="https://ripple.com/build/rippled-apis/#sign"><code>sign</code> command</a> to set a limit to the load scaling you are willing to sign.</li>
+<li>If you are using <code>rippled</code>, you can also use the <code>fee_mult_max</code> parameter of the <a href="reference-rippled.html#sign"><code>sign</code> command</a> to set a limit to the load scaling you are willing to sign.</li>
 </ul>
 </li>
 <li>You cannot look up the current transaction cost from an offline machine.</li>
 </ul>
 <h2 id="transaction-costs-and-failed-transactions">Transaction Costs and Failed Transactions</h2>
-<p>Since the purpose of the transaction cost is to protect the peer-to-peer Ripple network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, in order to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, <code>rippled</code> servers attempt to include failed transactions in ledgers, with <a href="https://ripple.com/build/transactions/#result-categories"><code>tec</code> status codes</a> ("tec" stands for "Transaction Engine - Claimed fee only").</p>
+<p>Since the purpose of the transaction cost is to protect the peer-to-peer Ripple network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, in order to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, <code>rippled</code> servers attempt to include failed transactions in ledgers, with <a href="reference-transaction-format.html#result-categories"><code>tec</code> status codes</a> ("tec" stands for "Transaction Engine - Claimed fee only").</p>
 <p>The transaction cost is only debited from the sender's XRP balance when the transaction actually becomes included in a validated ledger. This is true whether the transaction is considered successful or fails with a <code>tec</code> code.</p>
-<p>If a transaction's failure is <a href="https://ripple.com/build/transactions/#finality-of-results">final</a>, the <code>rippled</code> server does not relay it to the network. Consequently, that transaction does not get included in a validated ledger, and it cannot have any effect on anyone's XRP balance.</p>
+<p>If a transaction's failure is <a href="reference-transaction-format.html#finality-of-results">final</a>, the <code>rippled</code> server does not relay it to the network. Consequently, that transaction does not get included in a validated ledger, and it cannot have any effect on anyone's XRP balance.</p>
 <h3 id="insufficient-xrp">Insufficient XRP</h3>
-<p>When a <code>rippled</code> server initially evaluates a transaction, it rejects the transaction with the error code <code>terINSUF_FEE_B</code> if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a <code>ter</code> (Retry) code, the <code>rippled</code> server retries the transaction without relaying it to the network, until the transaction's outcome is <a href="https://ripple.com/build/transactions/#finality-of-results">final</a>.</p>
+<p>When a <code>rippled</code> server initially evaluates a transaction, it rejects the transaction with the error code <code>terINSUF_FEE_B</code> if the sending account does not have a high enough XRP balance to pay the XRP transaction cost. Since this is a <code>ter</code> (Retry) code, the <code>rippled</code> server retries the transaction without relaying it to the network, until the transaction's outcome is <a href="reference-transaction-format.html#finality-of-results">final</a>.</p>
 <p>When a transaction has already been distributed to the network, but the account does not have sufficient XRP to pay the transaction cost, the result code <code>tecINSUFF_FEE</code> occurs instead. In this case, the account pays all the XRP it can, ending with 0 XRP. This can occur because <code>rippled</code> decides whether to relay the transaction to the network based on its in-progress ledger, but transactions may be dropped or reordered when building the consensus ledger.</p>
 <h2 id="key-reset-transaction">Key Reset Transaction</h2>
-<p>As a special case, an account can send a <a href="https://ripple.com/build/transactions/#setregularkey">SetRegularKey</a> transaction with a transaction cost of <code>0</code>, as long as the account's <a href="https://ripple.com/build/ledger-format/#accountroot-flags">lsfPasswordSpent flag</a> is disabled. This transaction must be signed by the account's <em>master key</em>. Sending this transaction enables the lsfPasswordSpent flag.</p>
+<p>As a special case, an account can send a <a href="reference-transaction-format.html#setregularkey">SetRegularKey</a> transaction with a transaction cost of <code>0</code>, as long as the account's <a href="reference-ledger-format.html#accountroot-flags">lsfPasswordSpent flag</a> is disabled. This transaction must be signed by the account's <em>master key</em>. Sending this transaction enables the lsfPasswordSpent flag.</p>
 <p>This feature is designed to allow you to recover an account if the regular key is compromised, without worrying about whether the compromised account has any XRP available. This way, you can regain control of the account before you send additional XRP to it.</p>
-<p>The <a href="https://ripple.com/build/ledger-format/#accountroot-flags">lsfPasswordSpent flag</a> starts out disabled. If enabled, it gets disabled again when the account receives a <a href="https://ripple.com/build/transactions/#payment">Payment</a> of XRP.</p>
+<p>The <a href="reference-ledger-format.html#accountroot-flags">lsfPasswordSpent flag</a> starts out disabled. If enabled, it gets disabled again when the account receives a <a href="reference-transaction-format.html#payment">Payment</a> of XRP.</p>
 <h2 id="changing-the-transaction-cost">Changing the Transaction Cost</h2>
-<p>In addition to short-term scaling to account for load, the Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="https://ripple.com/build/fee-voting/">Fee Voting</a> for more information.</p>
+<p>In addition to short-term scaling to account for load, the Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
 </div>
 </main>
 </div>

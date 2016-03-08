@@ -47,44 +47,44 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippled-apis/">rippled</a></li>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/ledger-format/">Ledger Format</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
-<li><a href="https://ripple.com/build/data-api-v2/">Ripple Data API v2</a></li>
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/paths/">Paths</a></li>
-<li><a href="https://ripple.com/knowledge_center/fees-disambiguation/">Fees (Disambiguation)</a></li>
-<li><a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li><a href="https://ripple.com/build/fee-voting/">Fee Voting</a></li>
-<li><a href="https://ripple.com/build/reserves/">Reserves</a></li>
-<li><a href="https://ripple.com/build/freeze/">Freeze</a></li>
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/gateway-guide/#hot-and-cold-wallets">Issuing and Operational Acounts</a></li>
-<li><a href="https://ripple.com/build/gateway-guide/">Gateway Guide</a></li>
+<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://ripple.com/build/websocket-tool/">WebSocket API Tool</a></li>
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
 <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
@@ -110,9 +110,9 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippleapi-beginners-guide/">RippleAPI Beginners Guide</a></li>
-<li class="level-2"><a href="https://ripple.com/build/rippled-setup/">rippled Setup</a></li>
-<li class="level-2"><a href="https://ripple.com/build/reliable-transaction-submission/">Reliable Transaction Submission</a></li>
+<li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
 </ul>
 <hr/>
 <h5>In this page:</h5>
@@ -138,10 +138,10 @@
 <p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
 <h2 id="background">Background</h2>
 <p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
-<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="https://ripple.com/build/transaction-cost/">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
+<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
 <p>Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.</p>
 <h3 id="transaction-timeline">Transaction Timeline</h3>
-<p>Ripple provides several APIs for submitting transactions, including <a href="https://ripple.com/build/rippled-apis/"><code>rippled</code></a>, and <a href="https://ripple.com/build/rippleapi/">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
+<p>Ripple provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
 <ol>
 <li>An account owner creates and signs a transaction.</li>
 <li>The owner submits the transaction to the network as a candidate transaction.</li>
@@ -159,9 +159,9 @@
 <p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>
 <p>Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each <code>rippled</code> server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
-<p><a href="https://ripple.com/build/transactions/#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
+<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
 <p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not promptly validated yet could become viable at some point in the future. Gateways and other back-end applications should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the sequence number of the last validated ledger[1] to ensure that a transaction is validated or rejected in a predictable and timely fashion.</p>
-<p>Applications using rippled APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="https://ripple.com/build/rippleapi/#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
+<p>Applications using rippled APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="reliable-transactions-submission">Reliable Transactions Submission</h3>
 <p>Applications submitting transactions should employ the following practices in order to submit reliably even in the event that a process dies or other failure occurs.  Application transaction results must be verified so that applications can act on the final, validated results.</p>
@@ -231,13 +231,13 @@
 </ol>
 <p>An application's means of performing these actions depends on the API the application uses.  An application may use any of the following interfaces:</p>
 <ol>
-<li><a href="https://ripple.com/build/rippled-apis/"><code>rippled</code>'s internal APIs</a></li>
-<li><a href="https://ripple.com/build/rippleapi/">RippleAPI</a></li>
+<li><a href="reference-rippled.html"><code>rippled</code>'s internal APIs</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
 <li>Any number of other software APIs layered on top of <code>rippled</code></li>
 </ol>
 <h3 id="rippled-submitting-and-verifying-transactions">rippled - Submitting and Verifying Transactions</h3>
 <h4 id="determine-the-account-sequence">Determine the Account Sequence</h4>
-<p><code>rippled</code> provides the <a href="https://ripple.com/build/rippled-apis/#account-info">account_info</a> method to learn an account's sequence number in the last validated ledger.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#account-info">account_info</a> method to learn an account's sequence number in the last validated ledger.</p>
 <p>JSON-RPC Request:</p>
 <pre><code>{
   "method": "account_info",
@@ -272,7 +272,7 @@
 <p>In this example, the account's sequence is <strong>4</strong> (note <code>"Sequence": 4</code>, in <code>"account_data"</code>) as of the last validated ledger (note <code>"ledger": "validated"</code> in the request, and <code>"validated": "true"</code> in the response).</p>
 <p>If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  In order to submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.</p>
 <h4 id="determine-the-last-validated-ledger">Determine the Last Validated Ledger</h4>
-<p><code>rippled</code> provides the <a href="https://ripple.com/build/rippled-apis/#server-state">server_state</a> command which returns the ledger sequence number of the last validated ledger.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#server-state">server_state</a> command which returns the ledger sequence number of the last validated ledger.</p>
 <p>Request:</p>
 <pre><code>{
   "id": "client id 1",
@@ -313,7 +313,7 @@
 </code></pre>
 <p>In this example the last validated ledger sequence number is 10268596 (found under <code>result.state.validated_ledger</code> in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server will eventually retrieve that portion of the ledger history.</p>
 <h4 id="construct-the-transaction">Construct the Transaction</h4>
-<p><code>rippled</code> provides the <a href="https://ripple.com/build/rippled-apis/#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) from a gateway to another Ripple account.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) from a gateway to another Ripple account.</p>
 <p>Request:</p>
 <pre><code>{
     "method": "sign",
@@ -367,7 +367,7 @@
 </code></pre>
 <p>Applications should persist the transaction's hash before submitting.  The result of the <code>sign</code> method includes the hash under <code>tx_json</code>.</p>
 <h4 id="submit-the-transaction">Submit the transaction</h4>
-<p><code>rippled</code> provides the <a href="https://ripple.com/build/rippled-apis/#submit"><code>submit</code> method</a>, allowing us to submit the signed transaction.  This uses the <code>tx_blob</code> parameter that was returned by the <code>sign</code> method.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#submit"><code>submit</code> method</a>, allowing us to submit the signed transaction.  This uses the <code>tx_blob</code> parameter that was returned by the <code>sign</code> method.</p>
 <p>Request:</p>
 <pre><code>{
     "method": "submit",
@@ -408,7 +408,7 @@
 </code></pre>
 <p>This a <strong>preliminary</strong> result.  Final results are only available from validated ledgers.  The lack of a <code>"validated": true</code> field indicates that this is <strong>not an immutable result</strong>.</p>
 <h4 id="verify-the-transaction">Verify the Transaction</h4>
-<p>The transaction hash, generated when the transaction was signed, is passed to the <a href="https://ripple.com/build/rippled-apis/#tx"><code>tx</code> method</a> to retrieve the result of a transaction.</p>
+<p>The transaction hash, generated when the transaction was signed, is passed to the <a href="reference-rippled.html#tx"><code>tx</code> method</a> to retrieve the result of a transaction.</p>
 <p>Request:</p>
 <pre><code>{
     "method": "tx",
@@ -454,7 +454,7 @@
 <p>This example response shows <code>"validated": true</code>, indicating the transaction has been included in a validated ledger and therefore the result of the transaction is immutable.  Further, the metadata includes <code>"TransactionResult": "tesSUCCESS"</code>, indicating the transaction was applied to the ledger.</p>
 <p>If the response does not include <code>"validated": true</code>, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the <code>tx</code> method again, allowing enough time for the network to validate subsequent ledger instances.  It may be necessary to wait for the ledger specified in <code>LastLedgerSequence</code> to be validated, although if the transaction is included in an earlier validated ledger the result become immutable at that time.</p>
 <h4 id="verify-missing-transaction">Verify Missing Transaction</h4>
-<p>Applications must handle cases where a call to the <a href="https://ripple.com/build/rippled-apis/#tx"><code>tx</code> method</a> returns a <code>txnNotFound</code> error.</p>
+<p>Applications must handle cases where a call to the <a href="reference-rippled.html#tx"><code>tx</code> method</a> returns a <code>txnNotFound</code> error.</p>
 <pre><code>{
     "result": {
         "status": "error",
@@ -470,7 +470,7 @@
 }
 </code></pre>
 <p>The <code>txnNotFound</code> result code occurs in cases where the transaction has failed to be included in any ledger.  However, it could also occur when a rippled instance does not have a complete ledger history, or if the transaction has not yet propagated to the rippled instance.  Applications should make further queries to determine how to react.</p>
-<p>The <a href="https://ripple.com/build/rippled-apis/#server-state"><code>server_state</code> method</a> (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under <code>result.state.complete_ledgers</code>.</p>
+<p>The <a href="reference-rippled.html#server-state"><code>server_state</code> method</a> (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under <code>result.state.complete_ledgers</code>.</p>
 <pre><code>{
     "result": {
         "status": "success",
@@ -505,9 +505,9 @@
 <p>Finally the server state might indicate one or more gaps in the transaction history. The <code>completed_ledgers</code> field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and <code>LastLedgerSequence</code>), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) in order to determine that a <code>txnNotFound</code> result is immutable.</p>
 <h2 id="additional-resources">Additional Resources</h2>
 <ul>
-<li><a href="https://ripple.com/build/transactions/">Transaction Format</a></li>
-<li><a href="https://ripple.com/build/transaction-cost/">Transaction Cost</a></li>
-<li>Documentation of <a href="https://ripple.com/build/transactions/#lastledgersequence"><code>LastLedgerSequence</code></a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li>Documentation of <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a></li>
 <li><a href="http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
 <li><a href="https://ripple.com/knowledge_center/reaching-consensus-in-ripple/">Reaching Consensus in Ripple</a></li>
 </ul>
