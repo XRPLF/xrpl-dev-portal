@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="width=device-width" name="viewport">
-<title>Issuing and Operational Acounts - Ripple Developer Portal</title>
+<title>Issuing and Operational Addresses - Ripple Developer Portal</title>
 <!-- favicon -->
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -77,7 +77,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
@@ -110,7 +110,7 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Best Practices</a></li>
-<li class="level-2"><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li class="level-2"><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li class="level-2"><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 <hr/>
@@ -121,24 +121,27 @@
 </aside>
 <main class="main" role="main">
 <div class="content">
-<h1 id="issuing-and-operational-accounts">Issuing and Operational Accounts</h1>
-<p>For any financial institution doing business using the Ripple Consensus Ledger, we strongly recommend that the institution use multiple Ripple ledger accounts with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
+<h1 id="issuing-and-operational-addresses">Issuing and Operational Addresses</h1>
+<p>For any financial institution doing business using the Ripple Consensus Ledger, we strongly recommend that the institution use multiple Ripple ledger addresses with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
 <ul>
-<li>An <strong>issuing account</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
-<li>One or more <strong>operational accounts</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
-<li>Optional <strong>standby accounts</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
+<li>An <strong>issuing address</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
+<li>One or more <strong>operational addresses</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
+<li>Optional <strong>standby addresses</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
 </ul>
 <h2 id="the-risk">The Risk</h2>
-<p>If a malicious person compromises a institution's issuing account (cold wallet), that person could create an unlimited amount of new issuances and trade them in the decentralized exchange. This would make it difficult to distinguish legitimately-obtained issuances and redeem them fairly. In this case, the institution must create a new issuing account, and all users with trust lines to the old issuing account must create new trust lines to the new account. Thus, it's best to keep your issuing account as secure as possible.</p>
+<p>If a malicious person learns the secret key behind a institution's issuing address (cold wallet), that person could create an unlimited amount of new issuances and trade them in the decentralized exchange. This would make it difficult to distinguish legitimately-obtained issuances and redeem them fairly. In this case, the institution must create a new issuing address, and all users with trust lines to the old issuing address must create new trust lines to the new address. Thus, it's best to keep the secret key to your issuing address as secure as possible.</p>
 <h2 id="separation-of-roles">Separation of Roles</h2>
-<p>The issuing account is like a vault. It serves as the asset issuer, and should remain offline. The secret key that is used for this account is kept offline, accessible to only a few trusted operators. Periodically, a human operator creates and signs a transaction (preferably from an entirely offline machine) in order to refill the operational account's balance. Because the issuing account is creating the issuances, customer accounts holding those issuances must create trust lines to the issuing account.</p>
-<p>An operational account is like a cash register. It makes payments on behalf of the institution by sending issuances created by the issuing account. The secret key for an operational account is, by necessity, stored on a server that is connected to the outside internet, usually in a configuration file on a public-facing server. Because it holds issuances created by the issuing account, each operational account must create a trust line to the issuing account. Customers do not, and should not, trust operational accounts. An institution can use one or more operational accounts, but it's easiest to configure the financial institution's software to use just a single operational account.</p>
-<p>(Unlike a cash register, an operational account does not have to handle incoming payments from users, because the issuing account can receive and monitor payments without using its secret key. To make things simple for your users, we recommend treating incoming payments to the operational and issuing accounts as the same.)</p>
-<p>Each operational account has a limited balance of the issuances. If an operational account is compromised, the financial institution only loses as much currency as that operational account holds. Customers do not need to change any configuration in order to receive funds from a new operational account. However, the institution must monitor operational accounts balances so that those accounts don't run out of funds during ordinary operation.</p>
-<h3 id="standby-accounts">Standby Accounts</h3>
-<p>Another optional step that an institution can take to balance risk and convenience is to use "standby accounts" as an intermediate step between the issuing account and operational accounts. The institution can operate additional accounts as standby accounts, whose keys not stored online, but are entrusted to different trusted users.</p>
-<p>When an operational account is running low on funds, a trusted user can use a standby accountto refill the operational account's balance. When the standby accounts run low on funds, the institution can use the issuing account to send more currency to a standby account in a single transaction, and the standby accounts can distribute that currency among themselves if necessary. This improves security of the issuing account, allowing it to make fewer total transactions, without leaving too much money in the control of a single automated system.</p>
-<p>As with operational accounts, standby accounts must trust the issuing account, and should not be trusted by users. All precautions that apply to operational accounts also apply to standby accounts.</p>
+<p>The issuing address is like a vault. The secret keys used for this address should be kept offline, accessible to only a few trusted operators. The issuing address is responsible for creating issuances (any non-XRP currencies) in the Ripple Consensus Ledger. Customer addresses and operational addresses must create accounting relationships to the issuing address in order to hold those issuances.</p>
+<p>Periodically, a human operator creates and signs a transaction from the issuing address in order to refill the balance of the operational address(es). Ideally, the secret key used to sign these transactions should never be accessible from any internet-connected computer.</p>
+<p>An operational address is like a cash register. It makes payments on behalf of the institution by sending issuances created by the issuing address. The secret key for an operational address is, by necessity, stored on a server that is connected to the outside internet, usually in a configuration file. (The secret key can be stored encrypted, but the server must decrypt it in order to sign transactions.)</p>
+<p>Customers do not, and should not, create accounting relationships (trust lines) to an operational address. An institution can use one or more operational addresses, but it's easiest to configure the financial institution's software to use just a single operational address.</p>
+<p>(Unlike a cash register, an operational address does not have to handle incoming payments from users, because the issuing address can receive and monitor payments without using its secret key. To make things simple for customers, we recommend treating incoming payments to the operational and issuing addresses as the same.)</p>
+<p>Each operational address has a limited balance of issuances. If an operational address's secret key is compromised, the financial institution only loses as much currency as that operational address holds. Customers do not need to change any configuration in order to receive funds from a new operational address.</p>
+<p>The drawback to this separation of roles, aside from the initial setup, is that the institution must monitor operational the balances of operational addresses so that those addresses don't run out of funds during ordinary operation.</p>
+<h3 id="standby-addresses">Standby Addresses</h3>
+<p>Another optional step that an institution can take to balance risk and convenience is to use "standby addresses" as an intermediate step between the issuing address and operational addresses. The institution can fund additional Ripple addresses as standby addresses, whose keys are not stored online, but are entrusted to different trusted users.</p>
+<p>When an operational address is running low on funds, a trusted user can use a standby address to refill the operational address's balance. When the standby addresses run low on funds, the institution can use the issuing address to send more currency to a standby address in a single transaction, and the standby addresses can distribute that currency among themselves if necessary. This improves security of the issuing address, allowing it to make fewer total transactions, without leaving too much money in the control of a single automated system.</p>
+<p>As with operational addresses, standby addresses must trust the issuing address, and should not be trusted by users. All precautions that apply to operational addresses also apply to standby addresses.</p>
 </div>
 </main>
 </div>

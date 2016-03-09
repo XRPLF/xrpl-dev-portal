@@ -77,7 +77,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
@@ -2803,12 +2803,12 @@
 <tr>
 <td>accounts</td>
 <td>Array</td>
-<td>A list of <a href="concept-issuing-and-operational-accounts.html">issuing accounts</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
+<td>A list of <a href="concept-issuing-and-operational-addresses.html">issuing addresses</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
 </tr>
 <tr>
 <td>hotwallets</td>
 <td>Array of <a href="#addresses">Address</a>es</td>
-<td>The addresses of the Ripple accounts this gateway uses as <a href="concept-issuing-and-operational-accounts.html">operational accounts</a>.</td>
+<td>The addresses of the Ripple accounts this gateway uses as <a href="concept-issuing-and-operational-addresses.html">operational addresses</a> (hot wallets).</td>
 </tr>
 <tr>
 <td>domain</td>
@@ -2840,7 +2840,7 @@
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The <a href="#addresses">Address</a> of an <a href="concept-issuing-and-operational-accounts.html">issuing account</a> (cold wallet) used by this gateway.</td>
+<td>The <a href="#addresses">Address</a> of an <a href="concept-issuing-and-operational-addresses.html">issuing address</a> (cold wallet) used by this gateway.</td>
 </tr>
 <tr>
 <td>currencies</td>
@@ -4760,9 +4760,10 @@ Content-Type: image/svg+xml
 <p>(As of <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>, the offset <code>+00:00</code> is no longer used.)</p>
 <h3 id="ledger-index">Ledger Index</h3>
 <p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
-<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For closed ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
+<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
 <ul>
 <li>Two different <code>rippled</code> servers may have different contents for a current ledger with the same ledger index, due to latency in propagating transactions throughout the network.</li>
+<li>There may be multiple closed ledger versions competing to be validated by consensus. These ledger versions have the same sequence number but different contents (and different hashes). Only one of these closed ledgers can become validated.</li>
 <li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. Therefore, the hash of a ledger is not calculated until the ledger is closed.</li>
 </ul>
 <h3 id="account-sequence">Account Sequence</h3>

@@ -147,10 +147,10 @@ pages:
         sidebar: true
 
 # "Best Practices" documents are mostly in the same category as tutorials
-    -   name: Issuing and Operational Acounts
+    -   name: Issuing and Operational Addresses
         category: Best Practices
-        html: concept-issuing-and-operational-accounts.html
-        md: concept-issuing-and-operational-accounts.md
+        html: concept-issuing-and-operational-addresses.html
+        md: concept-issuing-and-operational-addresses.md
         # TODO publish this article separately on the website
         ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
         sidebar: true

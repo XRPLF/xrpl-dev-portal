@@ -77,7 +77,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
@@ -568,9 +568,10 @@ Null method
 <p>Every <a href="reference-ledger-format.html#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
 <h3 id="ledger-index">Ledger Index</h3>
 <p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
-<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For closed ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
+<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
 <ul>
 <li>Two different <code>rippled</code> servers may have different contents for a current ledger with the same ledger index, due to latency in propagating transactions throughout the network.</li>
+<li>There may be multiple closed ledger versions competing to be validated by consensus. These ledger versions have the same sequence number but different contents (and different hashes). Only one of these closed ledgers can become validated.</li>
 <li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. Therefore, the hash of a ledger is not calculated until the ledger is closed.</li>
 </ul>
 <h3 id="specifying-ledgers">Specifying Ledgers</h3>

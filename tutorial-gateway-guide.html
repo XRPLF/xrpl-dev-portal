@@ -77,7 +77,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
@@ -110,7 +110,7 @@
 <div id="cont">
 <ul class="dev_nav_sidebar">
 <li class="level-1"><a href="index.html">Category: Best Practices</a></li>
-<li class="level-2"><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li class="level-2"><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li class="level-2"><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 <hr/>
@@ -166,11 +166,11 @@
 <h3 id="hot-and-cold-wallets">Hot and Cold Wallets</h3>
 <p>We strongly recommend that gateways use multiple Ripple ledger accounts with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
 <ul>
-<li>An <strong>issuing account</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
-<li>One or more <strong>operational accounts</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
-<li>Optional <strong>standby accounts</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
+<li>An <strong>issuing address</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
+<li>One or more <strong>operational addresses</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
+<li>Optional <strong>standby addresses</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
 </ul>
-<p>For more information, see <a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Accounts</a></p>
+<p>For more information, see <a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></p>
 <h3 id="funds-lifecycle">Funds Lifecycle</h3>
 <p>Funds in Ripple tend to flow in a cycle, from the cold wallet to the warm wallets, then the warm wallets, to customers, and eventually from customers back to the cold wallet. Issuances (any non-XRP balance in Ripple) are always tied to a trust line, so each payment "ripples" through ACME's issuing account on the trust lines connected to it. Ultimately, the lifecycle of issuances in Ripple looks something like this:</p>
 <p><img alt="Funds flow diagram" src="img/e2g-funds_flow.png"/></p>

@@ -1883,8 +1883,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |-------------|--------|-------------|
 | name        | String | Human-readable name of the gateway
 | start\_date | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
-| accounts    | Array | A list of [issuing accounts](concept-issuing-and-operational-accounts.html) (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
-| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as [operational accounts](concept-issuing-and-operational-accounts.html). |
+| accounts    | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as [operational addresses](concept-issuing-and-operational-addresses.html) (hot wallets). |
 | domain      | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
 | normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
 | assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
@@ -1893,7 +1893,7 @@ Each object in the `accounts` field array has the following fields:
 
 | Field      | Value  | Description |
 |------------|--------|-------------|
-| address    | String | The [Address][] of an [issuing account](concept-issuing-and-operational-accounts.html) (cold wallet) used by this gateway. |
+| address    | String | The [Address][] of an [issuing address](concept-issuing-and-operational-addresses.html) (cold wallet) used by this gateway. |
 | currencies | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple, Inc. decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
 
 #### Example ####
