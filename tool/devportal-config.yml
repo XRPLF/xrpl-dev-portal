@@ -177,6 +177,7 @@ pages:
     -   name: Data API v2 Tool
         category: API Tools
         html: data-api-v2-tool.html
+        ripple.com: https://ripple.com/build/data-api-tool/
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
         doc_page: reference-data-api.html
