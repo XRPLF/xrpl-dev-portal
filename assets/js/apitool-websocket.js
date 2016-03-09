@@ -12,6 +12,7 @@ var urlParams;
 })();
 
 ;(function() {
+  var DOC_BASE = 'reference-rippled.html';
 
   var request_button  = $('#request_button');
   var online_state    = $('#online_state');
@@ -118,17 +119,17 @@ var urlParams;
 
   Request('server_info', {
     _description: 'Get information about the state of the server for human consumption. Results are subject to change without notice.',
-    _link: 'rippled-apis.html#server-info'
+    _link: DOC_BASE + '#server-info'
   });
 
   Request('server_state', {
     _description: 'Get information about the state of the server for machine consumption.',
-    _link: 'rippled-apis.html#server-state'
+    _link: DOC_BASE + '#server-state'
   });
 
   Request('ping', {
     _description: 'Check connectivity to the server.',
-    _link: 'rippled-apis.html#ping'
+    _link: DOC_BASE + '#ping'
   });
 
   /* ---- ---- */
@@ -137,7 +138,7 @@ var urlParams;
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Start receiving selected streams from the server.',
-    _link: 'rippled-apis.html#subscribe',
+    _link: DOC_BASE + '#subscribe',
     _stream: true
   });
 
@@ -145,7 +146,7 @@ var urlParams;
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Stop receiving selected streams from the server.',
-    _link: 'rippled-apis.html#unsubscribe',
+    _link: DOC_BASE + '#unsubscribe',
     _stream: true
   });
 
@@ -159,7 +160,7 @@ var urlParams;
     transactions:  true,
     accounts:      true,
     _description: 'Returns ledger information.',
-    _link: 'rippled-apis.html#ledger'
+    _link: DOC_BASE + '#ledger'
   });
 
   Request('ledger_entry', {
@@ -168,17 +169,17 @@ var urlParams;
     ledger_index:   'validated',
     ledger_hash:  void(0),
     _description: 'Get a single node from the ledger',
-    _link: 'rippled-apis.html#ledger-entry'
+    _link: DOC_BASE + '#ledger-entry'
   });
 
   Request('ledger_closed', {
     _description: 'Get the most recent closed ledger index.',
-    _link: 'rippled-apis.html#ledger-closed'
+    _link: DOC_BASE + '#ledger-closed'
   });
 
   Request('ledger_current', {
     _description: 'Get the current in-progress ledger index.',
-    _link: 'rippled-apis.html#ledger-current'
+    _link: DOC_BASE + '#ledger-current'
   });
 
   /* ---- ---- */
@@ -186,7 +187,7 @@ var urlParams;
   Request('account_info', {
     account: sample_address,
     _description: 'Get information about the specified account.',
-    _link: 'rippled-apis.html#account-info'
+    _link: DOC_BASE + '#account-info'
   });
 
   Request('account_lines', {
@@ -194,7 +195,7 @@ var urlParams;
     account_index:  void(0),
     ledger:         'current',
     _description: "Get a list of trust lines connected to an account.",
-    _link: 'rippled-apis.html#account-lines'
+    _link: DOC_BASE + '#account-lines'
   });
 
   Request('account_offers', {
@@ -202,7 +203,7 @@ var urlParams;
     account_index:  void(0),
     ledger:         'current',
     _description: 'Get a list of offers created by an account.',
-    _link: 'rippled-apis.html#account-offers'
+    _link: DOC_BASE + '#account-offers'
   });
 
   Request('account_tx', {
@@ -215,7 +216,7 @@ var urlParams;
     forward:           false,
     marker:            void(0),
     _description: 'Get a list of transactions that applied to a specified account.',
-    _link: 'rippled-apis.html#account-tx'
+    _link: DOC_BASE + '#account-tx'
   });
   
   Request('account_currencies', {
@@ -224,7 +225,7 @@ var urlParams;
     ledger_index:      "validated",
     account_index:     0,
     _description: 'Returns a list of currencies the account can send or receive.',
-    _link: 'rippled-apis.html#account-currencies'
+    _link: DOC_BASE + '#account-currencies'
   });
   
   Request('gateway_balances', {
@@ -234,7 +235,7 @@ var urlParams;
     ledger_index:      "validated",
     account_index:     0,
     _description: 'Returns a list of currencies the account can send or receive.',
-    _link: 'rippled-apis.html#gateway-balances'
+    _link: DOC_BASE + '#gateway-balances'
   });
 
   /* ---- ---- */
@@ -244,19 +245,19 @@ var urlParams;
     ledger_index:  348734,
     ledger_hash:   void(0),
     _description: 'Get information about a specified transaction.',
-    _link: 'rippled-apis.html#transaction-entry'
+    _link: DOC_BASE + '#transaction-entry'
   });
 
   Request('tx', {
     transaction: sample_tx,
     _description: 'Returns information about a specified transaction.',
-    _link: 'rippled-apis.html#tx'
+    _link: DOC_BASE + '#tx'
   });
 
   Request('tx_history', {
     start: 10,
     _description: 'Returns the last N transactions starting from start index, in descending order, by ledger sequence number. Server sets N.',
-    _link: 'rippled-apis.html#tx-history'
+    _link: DOC_BASE + '#tx-history'
   });
 
   Request('book_offers', {
@@ -272,7 +273,7 @@ var urlParams;
     },
     limit: 10,
     _description: 'Returns a snapshot of the offers for an order book.',
-    _link: 'rippled-apis.html#book-offers'
+    _link: DOC_BASE + '#book-offers'
   });
 
   Request('path_find', {
@@ -285,7 +286,7 @@ var urlParams;
         "issuer": sample_address_2
     },
     _description: 'Start or stop searching for payment paths between specified accounts.',
-    _link: 'rippled-apis.html#path-find',
+    _link: DOC_BASE + '#path-find',
     _stream: true
   });
 
@@ -301,7 +302,7 @@ var urlParams;
         "issuer": sample_address_2
     },
     _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
-    _link: 'rippled-apis.html#ripple-path-find'
+    _link: DOC_BASE + '#ripple-path-find'
   });
 
   Request('submit', {
@@ -315,7 +316,7 @@ var urlParams;
       Flags: 0
     },
     _description: 'Submits a transaction to the network.',
-    _link: 'rippled-apis.html#submit',
+    _link: DOC_BASE + '#submit',
     _takes_secret: true
   });
   
@@ -334,7 +335,7 @@ var urlParams;
    offline: false,
    fee_mult_max: 1000,
    _description: 'Sends a transaction to be signed by the server.',
-   _link: 'rippled-apis.html#sign',
+   _link: DOC_BASE + '#sign',
     _takes_secret: true
 });
 

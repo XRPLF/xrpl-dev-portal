@@ -318,6 +318,17 @@ def copy_static_files(template_static=True, content_static=True, out_path=None):
                                            os.path.basename(content_static_src))
         copy_tree(content_static_src, content_static_dst)
 
+def setup_pp_env():
+    pp_env = Environment(loader=FileSystemLoader(config["content_path"]))
+    #Example: if we want to add custom functions to the md files
+    #pp_env.globals['foo'] = lambda x: "FOO %s"%x
+    return pp_env
+
+def setup_html_env():
+    env = Environment(loader=FileSystemLoader(config["template_path"]))
+    env.lstrip_blocks = True
+    env.trim_blocks = True
+    return env
 
 def render_pages(target=None, for_pdf=False, bypass_errors=False):
     """Parse and render all pages in target, writing files to out_path."""
@@ -325,9 +336,11 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
     pages = get_pages(target)
     categories = get_categories(pages)
 
-    env = Environment(loader=FileSystemLoader(config["template_path"]))
-    env.lstrip_blocks = True
-    env.trim_blocks = True
+    # Preprocess Markdown using this Jinja environment
+    pp_env = setup_pp_env()
+
+    # Insert generated HTML into templates using this Jinja environment
+    env = setup_html_env()
     
     if for_pdf:
         logging.info("reading pdf template...")
@@ -335,10 +348,6 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
     else:
         logging.info("reading default template...")
         default_template = env.get_template(config["default_template"])
-
-    pp_env = Environment(loader=FileSystemLoader(config["content_path"]))
-    #Example: if we want to add custom functions to the md files
-    #pp_env.globals['foo'] = lambda x: "FOO %s"%x
 
     for currentpage in pages:
         if "md" in currentpage:
@@ -365,15 +374,25 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         if "template" in currentpage:
             # Use a template other than the default one
             template = env.get_template(currentpage["template"])
+            
+            #do link substitution for "doc_page" param
+            if "doc_page" in currentpage:
+                doc_page = next(p for p in pages 
+                    if p["html"] == currentpage["doc_page"])
+                if target["name"] in doc_page:
+                    currentpage["doc_page"] = doc_page[target["name"]]
+            
             out_html = template.render(currentpage=currentpage,
                                        categories=categories,
                                        pages=pages,
-                                       content=html_content)
+                                       content=html_content,
+                                       target=target)
         else:
             out_html = default_template.render(currentpage=currentpage,
                                                categories=categories,
                                                pages=pages,
-                                               content=html_content)
+                                               content=html_content,
+                                               target=target)
         
         # Experimental: replace links in full HTML, not just content
         soup = BeautifulSoup(out_html, "html.parser")
@@ -461,18 +480,25 @@ def githubify(md_file_name, target=None):
     """Wrapper - make the markdown resemble GitHub flavor"""
     target = get_target(target)
     
-    filein = os.path.join(CONTENT_PATH, md_file_name)
-    with open(filein, "r") as f:
-        md = f.read()
+#    filein = os.path.join(config["content_path"], md_file_name)
+#    logging.info("opening source md file %s"%filein)
+#    with open(filein, "r") as f:
+#        md = f.read()
     pages = get_pages()
+    logging.info("getting markdown for page %s" % md_file_name)
+    md = get_markdown_for_page(md_file_name,
+                               pp_env=setup_pp_env(),
+                               target=target)
     
+    logging.info("githubifying markdown...")
     rendered_md = githubify_markdown(md, target=target, pages=pages)
     
-    if not os.path.isdir(out_path):
-        logging.info("creating build folder %s" % out_path)
-        os.makedirs(out_path)
+    if not os.path.isdir(config["out_path"]):
+        logging.info("creating build folder %s" % config["out_path"])
+        os.makedirs(config["out_path"])
     
     fileout = os.path.join(config["out_path"], md_file_name)
+    logging.info("writing generated file to path: %s"%fileout)
     with open(fileout, "w") as f:
         f.write(rendered_md)
 
@@ -540,6 +566,9 @@ if __name__ == "__main__":
 
     if cli_args.watch:
         logging.info("watching for changes...")
-        pdf_path = os.path.join(config["out_path"], cli_args.pdf)
-        watch(pdf_path, cli_args.target)
+        if cli_args.pdf:
+            pdf_path = os.path.join(config["out_path"], cli_args.pdf)
+            watch(pdf_path, cli_args.target)
+        else:
+            watch(None, cli_args.target)
 

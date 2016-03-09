@@ -77,7 +77,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="concept-issuing-and-operational-accounts.html">Issuing and Operational Acounts</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
 <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
 </ul>
 </li>
@@ -86,6 +86,7 @@
 <ul class="dropdown-menu" role="menu">
 <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
 <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -143,18 +144,18 @@
 <li>The counterparty's offers to sell the currency issued on the frozen trust line are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
 <p>A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any other systems the gateway operates that are connected to the Ripple Consensus Ledger. (Otherwise, an account might still be able to engage in undesired activity by sending payments through the gateway.)</p>
-<p>An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including <a href="concept-issuing-and-operational-accounts.html">operational accounts</a>, from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.</p>
+<p>An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>, from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.</p>
 <p>The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An account cannot enable the Individual Freeze setting if it has previously enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
 <h2 id="global-freeze">Global Freeze</h2>
 <p>The <strong>Global Freeze</strong> feature is a setting on an account. When an issuing account enables the Global Freeze feature, the following rules apply:</p>
 <ul>
-<li>All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any <a href="concept-issuing-and-operational-accounts.html">operational accounts</a>.)</li>
+<li>All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>.)</li>
 <li>Counterparties of the frozen issuing account can still send and receive payments directly to and from the issuing account.</li>
 <li>All offers to sell currencies issued by the frozen account are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>It can be useful to enable Global Freeze on a gateway's <a href="concept-issuing-and-operational-accounts.html">issuing account</a> if an operational account is compromised, or immediately after regaining control of a compromised issuing account. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. In addition to enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
-<p>It can also be useful to enable Global Freeze if a gateway intends to migrate to a new <a href="concept-issuing-and-operational-accounts.html">issuing account</a>, or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
+<p>It can be useful to enable Global Freeze on a gateway's <a href="concept-issuing-and-operational-addresses.html">issuing account</a> if the secret key to an operational address is compromised, or immediately after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. In addition to enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
+<p>It can also be useful to enable Global Freeze if a gateway intends to migrate to a new <a href="concept-issuing-and-operational-addresses.html">issuing account</a>, or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
 <p>Global Freeze applies to <em>all</em> currencies issued and held by the account. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different accounts for each currency.</p>
 <p>An account can always enable the Global Freeze setting. However, if the account has previously enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> Global Freeze.</p>
 <h2 id="no-freeze">No Freeze</h2>

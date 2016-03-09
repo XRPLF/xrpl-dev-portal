@@ -24,7 +24,7 @@ The **Individual Freeze** feature is a setting on a trust line. When an issuing 
 
 A gateway can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the gateway's terms of use. The gateway should also freeze the counterparty in any other systems the gateway operates that are connected to the Ripple Consensus Ledger. (Otherwise, an account might still be able to engage in undesired activity by sending payments through the gateway.)
 
-An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [operational accounts](concept-issuing-and-operational-accounts.html), from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.
+An individual account can freeze its trust line to a gateway. This has no effect on transactions between the gateway and other users. It does, however, prevent other accounts, including [operational addresses](concept-issuing-and-operational-addresses.html), from sending that gateway's issued currency to the individual account. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single currency only. In order to freeze multiple currencies with a particular counterparty, the account must enable Individual Freeze on the trust lines for each currency individually.
 
@@ -36,13 +36,13 @@ Global Freeze
 
 The **Global Freeze** feature is a setting on an account. When an issuing account enables the Global Freeze feature, the following rules apply:
 
-* All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any [operational accounts](concept-issuing-and-operational-accounts.html).)
+* All counterparties of the frozen issuing account can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects any [operational addresses](concept-issuing-and-operational-addresses.html).)
 * Counterparties of the frozen issuing account can still send and receive payments directly to and from the issuing account.
 * All offers to sell currencies issued by the frozen account are [considered unfunded](reference-transaction-format.html#lifecycle-of-an-offer).
 
-It can be useful to enable Global Freeze on a gateway's [issuing account](concept-issuing-and-operational-accounts.html) if an operational account is compromised, or immediately after regaining control of a compromised issuing account. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. In addition to enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.
+It can be useful to enable Global Freeze on a gateway's [issuing account](concept-issuing-and-operational-addresses.html) if the secret key to an operational address is compromised, or immediately after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. In addition to enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.
 
-It can also be useful to enable Global Freeze if a gateway intends to migrate to a new [issuing account](concept-issuing-and-operational-accounts.html), or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
+It can also be useful to enable Global Freeze if a gateway intends to migrate to a new [issuing account](concept-issuing-and-operational-addresses.html), or if the gateway intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
 
 Global Freeze applies to _all_ currencies issued and held by the account. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different accounts for each currency.
 
