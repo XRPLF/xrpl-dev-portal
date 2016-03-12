@@ -1,6 +1,6 @@
 # Transfer Fees #
 
-The *TransferRate* setting in the shared Ripple ledger allows issuing gateways to charge users a "transfer fee" for sending that gateway's issuances to other users. When a gateway sets the transfer fee, it costs extra to send a transfer of that gateway's issuances. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing gateway, and is no longer tracked in the Ripple network. The transfer fee does not apply when sending or receiving *directly* to and from the issuing account, but it does apply when transferring from a hot wallet to another user. 
+The `TransferRate` setting in the Ripple Consensus Ledger allows [issuing gateways](https://ripple.com/knowledge_center/gateways/) to charge users a _transfer fee_ for sending that gateway's issuances to other users. When a gateway sets a transfer fee, it costs extra to send a transfer of that gateway's issuances. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing gateway, and is no longer tracked in the Ripple Consensus Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from a [hot wallet](concept-issuing-and-operational-addresses.html) to another user.
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -10,7 +10,7 @@ The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie
 
 ![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in Ripple](img/e2g-with_transferrate.png)
 
-## Transfer Fees in Longer Paths ##
+## Transfer Fees in Payment Paths ##
 
 A transfer fee applies whenever an individual transfer would shift issuances from one party to another through the issuing account. In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the initial sender of a payment must send enough to account for all fees. For example:
 
@@ -38,7 +38,6 @@ You can check an account's `transferRate` with the [getSettings method](referenc
 
 In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send in order for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set at `1000000000`, indicating no fee. The value of `TransferRate` cannot be less than `1000000000` or more than `2000000000`. However, value `0` is special: it is equivalent to `1000000000`, meaning no fee.
 
-A gateway can submit an [AccountSet transaction](reference-transaction-format.html#accountset) from its cold wallet to change the `TransferRate` for its issuances. 
+A gateway can submit an [AccountSet transaction](reference-transaction-format.html#accountset) from its cold wallet to change the `TransferRate` for its issuances.
 
 You can check an account's `TransferRate` with the [`account_info` command](reference-rippled.html#account-info). If the `TransferRate` is omitted, then that indicates no fee.
-
