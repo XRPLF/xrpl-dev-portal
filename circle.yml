@@ -4,8 +4,8 @@ dependencies:
   pre:
     - pyenv global 3.4.0
   override:
-    - pip3 install jinja2 requests beautifulsoup4 markdown watchdog
+    - pip3 install -r packages.txt
 test:
   override:
-    - ./parse_pages.py
-    - ./check_links.py
+    - ./dactyl_build.py
+    - ./dactyl_link_checker.py
