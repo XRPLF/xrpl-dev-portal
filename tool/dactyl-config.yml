@@ -222,3 +222,8 @@ known_broken_links:
     - https://validators.ripple.com
     # Zendesk hasn't updated the cert. See ticket IN-1168
     - https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation
+
+# Style Checker Config ------------------------------------------------------ #
+
+word_substitutions_file: word_substitutions.yaml
+phrase_substitutions_file: phrase_substitutions.yaml

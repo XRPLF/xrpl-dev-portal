@@ -19,12 +19,26 @@ from bs4 import BeautifulSoup
 
 import dactyl_build
 
+DEFAULT_CONFIG_FILE = "dactyl-config.yml"
+
 logger = logging.getLogger()
 
-with open("word_substitutions.yaml", "r") as f:
-	UNPLAIN_WORDS = yaml.load(f)
-with open("phrase_substitutions.yaml", "r") as f:
-	UNPLAIN_PHRASES = yaml.load(f)
+def load_config(config_file=DEFAULT_CONFIG_FILE):
+	global config
+	dactyl_build.load_config(config_file)
+	config = dactyl_build.config
+
+	if "word_substitutions_file" in config:
+		with open(config["word_substitutions_file"], "r") as f:
+			config["disallowed_words"] = yaml.load(f)
+	else:
+		logging.warning("No 'word_substitutions_file' found in config.")
+
+	if "phrase_substitutions_file" in config:
+		with open(config["phrase_substitutions_file"], "r") as f:
+			config["disallowed_phrases"] = yaml.load(f)
+	else:
+		logging.warning("No 'phrase_substitutions_file' found in config.")
 
 def check_all_pages(target=None):
     """Reads all pages for a target and checks them for style."""
@@ -43,7 +57,7 @@ def check_all_pages(target=None):
         html = dactyl_build.parse_markdown(page, pages=pages, target=target)
         soup = BeautifulSoup(html, "html.parser")
 
-        content_elements = ["p","li","h1","h2","h3","h4","h5","h6"]
+        content_elements = ["p","li", "td","h1","h2","h3","h4","h5","h6"]
         passages = []
         for el in soup.find_all(content_elements):
             for passage in el.stripped_strings:
@@ -64,10 +78,10 @@ def check_passage(passage):
     tokens = re.split(r"\s+", passage)
     for t in tokens:
         logging.debug
-        if t.lower() in UNPLAIN_WORDS:
+        if t.lower() in config["disallowed_words"]:
             issues.append( ("Unplain Word", t) )
 
-    for phrase,sub in UNPLAIN_PHRASES.items():
+    for phrase,sub in config["disallowed_phrases"].items():
         if phrase in passage.lower():
             #logging.warn("Unplain phrase: %s; suggest %s instead" % (phrase, sub))
             issues.append( ("Unplain Phrase", phrase) )
@@ -79,17 +93,17 @@ if __name__ == "__main__":
         description="Check content files for style issues.")
     parser.add_argument("--config", "-c", type=str,
         help="Specify path to an alternate config file.")
-    parser.add_argument("--quiet", "-q", action="store_true",
-                        help="Suppress status messages")
+    parser.add_argument("--verbose", "-v", action="store_true",
+                        help="Show status messages")
     cli_args = parser.parse_args()
 
-    if not cli_args.quiet:
+    if cli_args.verbose:
         logging.basicConfig(level=logging.INFO)
 
     if cli_args.config:
-        dactyl_build.load_config(cli_args.config)
+        load_config(cli_args.config)
     else:
-        dactyl_build.load_config()
+        load_config()
 
     issues = check_all_pages()
     if issues:
@@ -100,11 +114,11 @@ if __name__ == "__main__":
             c = collections.Counter(issuelist)
             for i, count_i in c.items():
                 if i[0]=="Unplain Phrase":
-                    print("   Discouraged phrase: %s (%d instances); suggest ''%s' instead." %
-                                    ( i[1], count_i, UNPLAIN_PHRASES[i[1].lower()] ))
+                    print("   Discouraged phrase: %s (%d instances); suggest '%s' instead." %
+                                    ( i[1], count_i, config["disallowed_phrases"][i[1].lower()] ))
                 elif i[0]=="Unplain Word":
-                    print("   Discouraged word: %s (%d instances); suggest ''%s' instead." %
-                                    ( i[1], count_i, UNPLAIN_WORDS[i[1].lower()] ))
+                    print("   Discouraged word: %s (%d instances); suggest '%s' instead." %
+                                    ( i[1], count_i, config["disallowed_words"][i[1].lower()] ))
                 else:
                     print("   %s: %s (%d instances)" % (i[0], i[1], count_i))
         exit(1)
