@@ -25,9 +25,15 @@ prince_executable: prince
 targets:
     # First member is the default that gets built when target not specified
     -   name: local
-        multicode_tabs: true
+        filters:
+            - multicode_tabs
+            - standardize_header_ids
+            - buttonize
     -   name: ripple.com
-        multicode_tabs: true
+        filters:
+            - multicode_tabs
+            - standardize_header_ids
+            - buttonize
 
 pages:
 # Intro pages is not directly replicated on ripple.com at this time
@@ -64,6 +70,8 @@ pages:
         # Currently this is the only page that's fetched remotely.
         md: https://raw.githubusercontent.com/ripple/ripple-lib/0.16.7/docs/index.md
         ripple.com: https://ripple.com/build/rippleapi/
+        filters:
+            - remove_doctoc
         sidebar: true
 
     -   name: Ripple Data API v2
@@ -214,4 +222,8 @@ known_broken_links:
     - https://validators.ripple.com
     # Zendesk hasn't updated the cert. See ticket IN-1168
     - https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation
-    
+
+# Style Checker Config ------------------------------------------------------ #
+
+word_substitutions_file: word_substitutions.yaml
+phrase_substitutions_file: phrase_substitutions.yaml

@@ -2,3 +2,4 @@
 *~
 .DS_Store
 content/code_samples/*/node_modules/
+__pycache__

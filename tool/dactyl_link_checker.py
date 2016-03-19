@@ -5,7 +5,7 @@ import yaml
 import argparse
 from bs4 import BeautifulSoup
 
-DEFAULT_CONFIG_FILE = "devportal-config.yml"
+DEFAULT_CONFIG_FILE = "dactyl-config.yml"
 
 soupsCache = {}
 def getSoup(fullPath):
@@ -43,10 +43,10 @@ def checkLinks(offline=False):
               print("Empty link in",fullPath)
               broken_links.append( (fullPath, endpoint) )
               num_links_checked += 1
-            
+
             elif endpoint == "#":
               continue
-            
+
             elif "mailto:" in endpoint:
               print("Skipping email link in %s to %s"%(fullPath, endpoint))
               continue
@@ -55,7 +55,7 @@ def checkLinks(offline=False):
               if offline:
                 print("Offline - Skipping remote URL %s"%(endpoint))
                 continue
-                
+
               num_links_checked += 1
               if endpoint not in externalCache:
                 print("Testing remote URL %s"%(endpoint))
@@ -71,15 +71,15 @@ def checkLinks(offline=False):
                   except Exception as e:
                     print("Error occurred:",e)
                     code = 500
-                
+
                 if code < 200 or code >= 400:
                   print("Broken remote link in %s to %s"%(fullPath, endpoint))
                   broken_links.append( (fullPath, endpoint) )
                 else:
                   print("...success.")
                   externalCache.append(endpoint)
-            
-              
+
+
             elif '#' in endpoint:
               if fname in config["ignore_anchors_in"]:
                 print("Ignoring anchor %s in dynamic page %s"%(endpoint,fname))
@@ -98,7 +98,7 @@ def checkLinks(offline=False):
               elif filename in config["ignore_anchors_in"]:
                   #Some pages are populated dynamically, so BeatifulSoup wouldn't
                   # be able to find anchors in them anyway
-                  print("Skipping anchor link in %s to dynamic page %s" % 
+                  print("Skipping anchor link in %s to dynamic page %s" %
                         (fullPath, endpoint))
                   continue
 
@@ -153,26 +153,25 @@ if __name__ == "__main__":
         load_config(args.config)
     else:
         load_config()
-    
-    
-    
+
+
+
     broken_links, num_links_checked = checkLinks(args.offline)
-    
+
     print("---------------------------------------")
     print("Link check report. %d links checked."%num_links_checked)
-    
+
     if not args.strict:
-      unknown_broken_links = [ (page,link) for page,link in broken_links 
+      unknown_broken_links = [ (page,link) for page,link in broken_links
                         if link not in config["known_broken_links"] ]
-    
+
     if not broken_links:
       print("Success! No broken links found.")
     else:
       print("%d broken links found:"%(len(broken_links)))
       [print("File:",fname,"Link:",link) for fname,link in broken_links]
-      
+
       if args.strict or unknown_broken_links:
           exit(1)
-      
-      print("Success - all broken links are known problems.")
 
+      print("Success - all broken links are known problems.")
