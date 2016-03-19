@@ -183,12 +183,14 @@ th {
   padding: 0;
 }
 @media print {
+/*
   * {
     text-shadow: none !important;
     color: #000 !important;
     background: transparent !important;
     box-shadow: none !important;
   }
+*/
   a,
   a:visited {
     text-decoration: underline;

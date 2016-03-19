@@ -1,4 +1,16 @@
-a:after {
+a[href^="#"]:after {
     display: none !important;
 }
 
+.main code {
+    color: black;
+}
+
+.main .hljs {
+    background: transparent;
+}
+
+.main pre {
+  background: transparent;
+  box-decoration-break: slice;
+}

@@ -437,7 +437,7 @@ def make_pdf(outfile, target=None, bypass_errors=False):
         os.makedirs(config["out_path"])
 
     # Start preparing the prince command
-    args = [config["prince_executable"], '-o', outfile]
+    args = [config["prince_executable"], '--javascript', '-o', outfile]
     # Each HTML output file in the target is another arg to prince
     pages = get_pages(target)
     args += [os.path.join(temp_files_path, p["html"]) for p in pages]
