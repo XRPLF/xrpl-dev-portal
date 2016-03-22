@@ -14,3 +14,10 @@ a[href^="#"]:after {
   background: transparent;
   box-decoration-break: slice;
 }
+
+/* Disable header numbering */
+.page-template-template-dev-portal.page-template-template-dev-portal-php h1:before,
+.page-template-template-dev-portal.page-template-template-dev-portal-php h2:before,
+.page-template-template-dev-portal.page-template-template-dev-portal-php h3:before {
+   content: none !important;
+}
