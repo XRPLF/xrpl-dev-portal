@@ -39,12 +39,19 @@ targets:
         filters:
         - standardize_header_ids
 
+    -   name: rippled-setup
+        filters:
+        - standardize_header_ids
+
 pages:
 # Intro pages is not directly replicated on ripple.com at this time
     -   name: Overview
         html: index.html
         sidebar: false
         template: template-index.html
+        targets:
+            - local
+            - ripple.com
 
 # References are exhaustive lists of commands and options
     -   name: rippled
@@ -53,6 +60,9 @@ pages:
         md: reference-rippled.md
         ripple.com: https://ripple.com/build/rippled-apis/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Transaction Format
         category: References
@@ -60,6 +70,9 @@ pages:
         md: reference-transaction-format.md
         ripple.com: https://ripple.com/build/transactions/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Ledger Format
         category: References
@@ -67,6 +80,9 @@ pages:
         md: reference-ledger-format.md
         ripple.com: https://ripple.com/build/ledger-format/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: RippleAPI
         category: References
@@ -77,6 +93,9 @@ pages:
         filters:
             - remove_doctoc
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Ripple Data API v2
         category: References
@@ -84,6 +103,9 @@ pages:
         md: reference-data-api.md
         ripple.com: https://ripple.com/build/data-api-v2/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
 # Tutorials are step-by-step guides to a specific goal
     -   name: RippleAPI Beginners Guide
@@ -92,6 +114,9 @@ pages:
         md: tutorial-rippleapi-beginners-guide.md
         ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: rippled Setup
         category: Tutorials
@@ -99,6 +124,10 @@ pages:
         md: tutorial-rippled-setup.md
         ripple.com: https://ripple.com/build/rippled-setup/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
+            - rippled-setup
 
     -   name: Reliable Transaction Submission
         category: Tutorials
@@ -106,6 +135,9 @@ pages:
         md: tutorial-reliable-transaction-submission.md
         ripple.com: https://ripple.com/build/reliable-transaction-submission/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
 # Concepts are introductions that explain a topic.
 # In the Dev Portal, these are mostly summaries of RCL features.
@@ -115,6 +147,9 @@ pages:
         md: concept-paths.md
         ripple.com: https://ripple.com/build/paths/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Fees (Disambiguation)
         category: Concepts
@@ -122,6 +157,9 @@ pages:
         md: concept-fees.md
         ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Transfer Fees
         category: Concepts
@@ -129,6 +167,9 @@ pages:
         md: concept-transfer-fees.md
         ripple.com: https://ripple.com/knowledge_center/transfer-fees/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Transaction Cost
         category: Concepts
@@ -136,6 +177,9 @@ pages:
         md: concept-transaction-cost.md
         ripple.com: https://ripple.com/build/transaction-cost/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Fee Voting
         category: Concepts
@@ -143,6 +187,9 @@ pages:
         md: concept-fee-voting.md
         ripple.com: https://ripple.com/build/fee-voting/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Reserves
         category: Concepts
@@ -150,6 +197,9 @@ pages:
         md: concept-reserves.md
         ripple.com: https://ripple.com/build/reserves/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Freeze
         category: Concepts
@@ -157,6 +207,9 @@ pages:
         md: concept-freeze.md
         ripple.com: https://ripple.com/build/freeze/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Addresses
@@ -166,6 +219,9 @@ pages:
         # TODO publish this article separately on the website
         ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
         # The Gateway Guide is kind of a poor fit for the "tutorials" category
     -   name: Gateway Guide
@@ -174,6 +230,9 @@ pages:
         md: tutorial-gateway-guide.md
         ripple.com: https://ripple.com/build/gateway-guide/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
 # API tools are interactive software for interfacing with real APIs
     -   name: WebSocket API Tool
