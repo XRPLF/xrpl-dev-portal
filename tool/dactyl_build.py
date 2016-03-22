@@ -342,6 +342,7 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         else:
             html_content = ""
 
+        current_time = time.strftime("%B %d, %Y")
         if "template" in currentpage:
             # Use a template other than the default one
             template = env.get_template(currentpage["template"])
@@ -357,13 +358,15 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
                                        categories=categories,
                                        pages=pages,
                                        content=html_content,
-                                       target=target)
+                                       target=target,
+                                       current_time=current_time)
         else:
             out_html = default_template.render(currentpage=currentpage,
                                                categories=categories,
                                                pages=pages,
                                                content=html_content,
-                                               target=target)
+                                               target=target,
+                                               current_time=current_time)
 
         # Experimental: replace links in full HTML, not just content
         soup = BeautifulSoup(out_html, "html.parser")
