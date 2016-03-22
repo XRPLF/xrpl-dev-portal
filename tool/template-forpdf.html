@@ -8,21 +8,31 @@
     <title>{{ currentpage.name }} - Ripple Developer Portal</title>
 
     <!-- favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery-1.11.1.min.js"></script>
-    
+
     <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
     <link href="assets/css/ripple.css" rel="stylesheet" />
     <link href="assets/css/devportal.css" rel="stylesheet" />
+    <link href="assets/css/pdf.css" rel="stylesheet" />
 
     <!-- Bootstrap JS -->
     <script src="assets/vendor/bootstrap.min.js"></script>
 
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <script src="assets/vendor/highlight.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            hljs.initHighlighting();
+        });
+    </script>
+
     {% block head %}
-    
+
     {% endblock %}
 
 </head>
@@ -37,4 +47,3 @@
 
 </body>
 </html>
-

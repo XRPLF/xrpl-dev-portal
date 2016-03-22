@@ -35,6 +35,10 @@ targets:
             - standardize_header_ids
             - buttonize
 
+    -   name: printable
+        filters:
+        - standardize_header_ids
+
 pages:
 # Intro pages is not directly replicated on ripple.com at this time
     -   name: Overview
