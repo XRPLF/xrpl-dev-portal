@@ -172,6 +172,13 @@ pages:
         ripple.com: https://wiki.ripple.com/Understanding:_Feature_adoption
         sidebar: true
 
+    -   name: Stand-Alone Mode
+        category: Concepts
+        html: concept-stand-alone-mode.html
+        md: concept-stand-alone-mode.md
+        ripple.com: https://wiki.ripple.com/Rippled#--standalone.2C_-a
+        sidebar: true
+
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Addresses
         category: Best Practices

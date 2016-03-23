@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="width=device-width" name="viewport">
-<title>Reserves - Ripple Developer Portal</title>
+<title>Stand-Alone Mode - Ripple Developer Portal</title>
 <!-- favicon -->
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -131,31 +131,56 @@
 </aside>
 <main class="main" role="main">
 <div class="content">
-<h1 id="reserves">Reserves</h1>
-<p>The Ripple Consensus Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match <a href="https://en.wikipedia.org/wiki/Moore's_law">Moore's Law</a> so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
-<p>Each account in the shared global ledger must hold a minimum of XRP in order to submit transactions, and it cannot send this XRP to other accounts. You cannot create a new account unless you send enough XRP to meet the minimum reserve requirement.</p>
-<p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an account that owns no additional objects in the ledger.)</p>
-<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
-<p>The reserve requirement is divided into two parts:</p>
+<h1 id="stand-alone-mode">Stand-Alone Mode</h1>
+<p>You can run <code>rippled</code> in stand-alone mode without a consensus of trusted servers. In stand-alone mode, <code>rippled</code> does not communicate with any other servers in the Ripple peer-to-peer network, but you can perform most of the same actions on your local server only. Stand-alone provides a method for testing <code>rippled</code> behavior, including the effects of <a href="concept-amendments.html">Amendments</a> before those Amendments have gone into effect across the decentralized network.</p>
+<p>When you run <code>rippled</code> in stand-alone mode, you have to tell it what ledger version to start from:</p>
 <ul>
-<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every account in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
-<li>The <strong>Owner Reserve</strong> is an additional requirement that scales with the number of objects that the account owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
+<li>Create a <a href="#new-genesis-ledger">new genesis ledger</a> from scratch.</li>
+<li><a href="#load-saved-ledger">Load an existing ledger version</a> from disk.</li>
 </ul>
-<h3 id="owner-reserves">Owner Reserves</h3>
-<p>Many objects in the ledger are owned by a particular account, and therefore count toward the reserve requirement of that account. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
+<p><strong>Caution:</strong> In stand-alone mode, you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>.</p>
+<h2 id="new-genesis-ledger">New Genesis Ledger</h2>
+<p>In stand-alone mode, you can have <code>rippled</code> create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple network. (This is very useful for unit tests, among other things.)</p>
 <ul>
-<li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
-<li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
-<li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
+<li>To start <code>rippled</code> in stand-alone mode with a new genesis ledger, use the <code>-a</code> and <code>--start</code> options:</li>
 </ul>
-<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
-<p>The Ripple Consensus Ledger considers an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not possess enough XRP to meet the additional reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
-<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
-<p>During transaction processing, a transaction can only be successful if the sending account possesses at least the reserve requirement in XRP. In the process, the <a href="concept-transaction-cost.html">transaction cost</a> destroys some of the sending account's XRP balance. This can cause an account to go below the reserve requirement.</p>
-<p>When an account has less XRP than its current reserve requirement, it cannot send new transactions. Even so, it continues to exist in the ledger, as all accounts do. Unless the reserve requirements decrease, the only way for the account to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.</p>
-<p><strong>Exception:</strong> When an account is below the reserve requirement, it can send new <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="reference-ledger-format.html#ripplestate">trust lines</a>, or <a href="reference-ledger-format.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
-<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
-<p>The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+<pre><code>rippled -a --start --conf=/path/to/rippled.cfg
+</code></pre>
+<p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis account</a> holds all 100 billion XRP. The keys of the genesis account are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
+<p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
+<p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
+<h2 id="load-saved-ledger">Load Saved Ledger</h2>
+<p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
+<h3 id="1-to-retrieve-existing-ledgers-start-rippled-normally">1. To retrieve existing ledgers, start <code>rippled</code> normally:</h3>
+<pre><code>rippled --conf=/path/to/rippled.cfg
+</code></pre>
+<h3 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced:</h3>
+<p>When <code>rippled</code> is synced with the state of the network, the response from the <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> shows a <code>server_state</code> value that is <code>full</code>, <code>proposing</code>, or <code>validating</code>.</p>
+<h3 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions:</h3>
+<p>If you only want the most recent ledger, you can skip this step.</p>
+<p>If you want to load a specific historical ledger version, use the <a href="reference-rippled.html#ledger-request"><code>ledger_request</code> command</a> to make <code>rippled</code> fetch it. If <code>rippled</code> does not already have the ledger version, you may have to run the <code>ledger_request</code> command multiple times until it has finished retrieving the ledger.</p>
+<p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it.</p>
+<h3 id="4-shut-down-rippled">4. Shut down <code>rippled</code>:</h3>
+<pre><code>rippled stop --conf=/path/to/rippled.cfg
+</code></pre>
+<h3 id="5-start-rippled-in-stand-alone-mode-loading-the-saved-ledger">5. Start <code>rippled</code> in stand-alone mode, loading the saved ledger.</h3>
+<p>To load the most recent ledger version, you can use the <code>-a</code> and <code>--load</code> options:</p>
+<pre><code>rippled -a --load --conf=/path/to/rippled.cfg
+</code></pre>
+<p>To instead load a specific historical ledger, use the <code>--ledger</code> parameter with the ledger index or identifying hash of the ledger version to load:</p>
+<pre><code>rippled -a --ledger 19860944 --conf=/path/to/rippled.cfg
+</code></pre>
+<p><span class="draft-comment">(TODO: test this)</span></p>
+<h3 id="6-manually-advance-the-ledger">6. Manually advance the ledger.</h3>
+<p>When you load a ledger with <code>--ledger</code> in stand-alone mode, it goes to the current open ledger, so you need to <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a> to finalize it:</p>
+<pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
+</code></pre>
+<h2 id="advancing-ledgers-in-stand-alone-mode">Advancing Ledgers in Stand-Alone Mode</h2>
+<p>In stand-alone mode, <code>rippled</code> does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a>:</p>
+<pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
+</code></pre>
+<p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Ripple Ledger Consensus Process</a>.)</p>
+<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since different <code>rippled</code> servers may see transactions in a different order.) When using <code>rippled</code> in stand-alone mode, it is important to manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. <strong>Note:</strong> You can safely submit multiple transactions from a single account to a single ledger, because <code>rippled</code> sorts transactions from the same account in ascending order by <code>Sequence</code> number.</p>
 </div>
 </main>
 </div>
