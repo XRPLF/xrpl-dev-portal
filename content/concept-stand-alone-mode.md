@@ -26,6 +26,8 @@ In a genesis ledger, the [genesis account](reference-rippled.html#special-addres
 
 **Secret:** `snoPBrXtMeMyMHUVTgbuqAfg1SUTb` ("masterpassphrase")
 
+**Caution:** If you create a new genesis ledger, the hard-coded default [Reserve](concept-reserves.html) is **200 XRP** minimum for an account, with an increment of **50 XRP** per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: [Fee Voting](concept-fee-voting.html))
+
 
 Load Saved Ledger
 -------------------------------------------------------------------------------

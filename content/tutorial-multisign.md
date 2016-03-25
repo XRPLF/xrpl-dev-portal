@@ -34,16 +34,17 @@ This step is not strictly necessary. For this process, we generate and fund a ne
     Connecting to 127.0.0.1:5005
     {
        "result" : {
-          "account_id" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+          "account_id" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
           "key_type" : "secp256k1",
-          "master_key" : "NED MANA SPA BLUR HERS HEAT RED NIBS MAIN MELT NOB RARE",
-          "master_seed" : "shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq",
-          "master_seed_hex" : "99C7F2DCD88218372B7509ADF7DC562B",
-          "public_key" : "aBPvx491i2ZPVzmxoAmAVq5qXAxAZgmjfxoMTxFCg9Xxf2xwVVLc",
-          "public_key_hex" : "0303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D",
+          "master_key" : "LOST FOUR ALOE ABE SLUG ITS HACK MAGI SOCK BASS APE DELL",
+          "master_seed" : "sn1CmMEkPijNrfyr8HJqsgP416dr3",
+          "master_seed_hex" : "E42AD02985BB56923DFC1D002DB510B3",
+          "public_key" : "aBQgQDutj8YUc7ZRtfj86dnzPCvPcRHtUszxeCCDMgZ7Zq1Thfri",
+          "public_key_hex" : "03668837C3DCA0F4858587703524E61BB40128B9F6910B80B4655E152CAEE2E321",
           "status" : "success"
        }
     }
+
 
 As always, be sure that an account's secret key never gets transmitted to anyone you don't trust with full control of that account, and certainly not unencrypted over the network.
 
@@ -52,12 +53,12 @@ As always, be sure that an account's secret key never gets transmitted to anyone
 
 Again, this step is only necessary if you are setting up a new account to use multi-signing for this example.
 
-    $ rippled submit <your existing account secret> '{
-    >   "TransactionType" : "Payment",
-    >   "Account" : "<your existing account address>",
-    >   "Destination" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-    >   "Amount" : "100000000",
-    >   "Flags": 2147483648
+    $ rippled submit snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{
+    > "TransactionType": "Payment",
+    > "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    > "Destination": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    > "Amount": "100000000",
+    > "Flags": 2147483648
     > }'
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
@@ -67,22 +68,24 @@ Again, this step is only necessary if you are setting up a new account to use mu
           "engine_result_code" : 0,
           "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
           "status" : "success",
-          "tx_blob" : "1200002280000000240000001E614000000005F5E10068400000000000000A7321023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC67446304402207AB5D16F58E9E6ADBBDD24837CAB80D871860E47EB0840FE57403FB979755A6D022015FE7A8838BEE6C18962C246D6D27791B7EE34B93415AE3824D12564E7A886C6811493B89AFCAD4C8EAC2B131C1331FEF12AE1522BBE83142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1",
+          "tx_blob" : "12000022800000002400000004614000000005F5E10068400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100ED13CDD4B8F6BA836F7732A029316393A5D9B50712FE79972236ECAD850F813802203148D8944B0BF3D30A3177EFCE6A9F12B3F5A3C3AFF7B73E9A7D65B370E526EE8114B5F762798A53D543A014CAF8B297CFF8F2F937E88314A3780F5CB5A44D366520FC44055E8ED44D9A2270",
           "tx_json" : {
-             "Account" : "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+             "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
              "Amount" : "100000000",
-             "Destination" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+             "Destination" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
              "Fee" : "10",
              "Flags" : 2147483648,
-             "Sequence" : 30,
-             "SigningPubKey" : "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+             "Sequence" : 4,
+             "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
              "TransactionType" : "Payment",
-             "TxnSignature" : "304402207AB5D16F58E9E6ADBBDD24837CAB80D871860E47EB0840FE57403FB979755A6D022015FE7A8838BEE6C18962C246D6D27791B7EE34B93415AE3824D12564E7A886C6",
-             "hash" : "8C7A4D35D71CE80DA4EDAC91D620B6A348B7691B78AA2896284135378E10E0C2"
+             "TxnSignature" : "3045022100ED13CDD4B8F6BA836F7732A029316393A5D9B50712FE79972236ECAD850F813802203148D8944B0BF3D30A3177EFCE6A9F12B3F5A3C3AFF7B73E9A7D65B370E526EE",
+             "hash" : "64FAA44F671E2CBB4E1E4156FCDA72BA3C32EF951C94EDDFEBEBE8BEC3F55696"
           }
        }
     }
 
+
+Make sure that the `engine_result` value in the response is **tesSUCCESS**. Otherwise, the transaction failed.
 
 ## 3. Close the ledger ##
 
@@ -105,7 +108,9 @@ If you are running `rippled` in stand-alone mode, you must manually close the le
 
 Before you can multi-sign transactions, you must associate a SignerList with your account, so that RCL knows which keys can be used to sign for you. You do this with a [SignerListSet transaction](reference-transaction-format.html#signerlistset).
 
-In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list. The `Account` values you use in your list can be funded accounts that exist in the ledger or just unused addresses.
+The `Account` values in your SignerList can be the addresses of funded accounts that exist in the ledger, or you can generate new addresses that are not currently in use. For funded accounts in the SignerList, a regular key associated with the account can contribute to a multi-signature, and the master key secret can be used only if it is not disabled. For unfunded addresses, only the master key associated with that address can be used to contribute to a multi-signature.
+
+In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
 
     $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
     >     "Flags": 0,
@@ -177,6 +182,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
+Make sure that the `engine_result` value in the response is **tesSUCCESS**. Otherwise, the transaction failed.
 
 ## 5. Close the ledger again ##
 
@@ -189,7 +195,7 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
     Connecting to 127.0.0.1:5005
     {
        "result" : {
-          "ledger_current_index" : 16061438,
+          "ledger_current_index" : 6,
           "status" : "success"
        }
     }
@@ -197,21 +203,21 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
 
 ## 6. Confirm the presence of the new signer list using account_objects ##
 
-Normally an account has lots of different types of objects, but for this new account, the only thing we've done is add a SignerList, so it should be easy to find in the results of the [`account_objects` command](reference-rippled.html#account-objects).
+Normally an account can own many objects of different types (such as trust lines and offers). For this tutorial, we created a new account, so the SignerList is the only object in the response from the [`account_objects` command](reference-rippled.html#account-objects).
 
-    $ rippled account_objects rnBFvgZphmN39GWzUJeUitaP22Fr9be75H
+    $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
-          "account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+          "account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
           "account_objects" : [
              {
                 "Flags" : 0,
                 "LedgerEntryType" : "SignerList",
                 "OwnerNode" : "0000000000000000",
-                "PreviousTxnID" : "3950D98AD20DA52EBB1F3937EF32F382D74092A4C8DF9A0B1A06ED25200B5756",
-                "PreviousTxnLgrSeq" : 16061437,
+                "PreviousTxnID" : "8FDC18960455C196A8C4DE0D24799209A21F4A17E32102B5162BD79466B90222",
+                "PreviousTxnLgrSeq" : 5,
                 "SignerEntries" : [
                    {
                       "SignerEntry" : {
@@ -234,14 +240,40 @@ Normally an account has lots of different types of objects, but for this new acc
                 ],
                 "SignerListID" : 0,
                 "SignerQuorum" : 3,
-                "index" : "92373B9F1683001079764527F0BD553ED8656A9934FE641A7F0A0BF4DB230E0E"
+                "index" : "79FD203E4DDDF2EA78B798C963487120C048C78652A28682425E47C96D016F92"
+             },
+             {
+                "Balance" : {
+                   "currency" : "USD",
+                   "issuer" : "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                   "value" : "0"
+                },
+                "Flags" : 2162688,
+                "HighLimit" : {
+                   "currency" : "USD",
+                   "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                   "value" : "0"
+                },
+                "HighNode" : "0000000000000000",
+                "LedgerEntryType" : "RippleState",
+                "LowLimit" : {
+                   "currency" : "USD",
+                   "issuer" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+                   "value" : "100"
+                },
+                "LowNode" : "0000000000000000",
+                "PreviousTxnID" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6",
+                "PreviousTxnLgrSeq" : 6,
+                "index" : "93E317B32022977C77810A2C558FBB28E30E744C68E73720622B797F957EC5FA"
              }
           ],
-          "ledger_current_index" : 16061438,
+          "ledger_hash" : "56E81069F06492FB410A70218C08169BE3AB3CFD5AEA20E999662D81DC361D9F",
+          "ledger_index" : 5,
           "status" : "success",
-          "validated" : false
+          "validated" : true
        }
     }
+
 
 
 ## 7. Create a new transaction that you plan to multi-sign ##
@@ -263,7 +295,7 @@ Here's an example transaction we can send from our test account:
         },
         "Sequence": 2,
         "SigningPubKey":"",
-        "Fee": "12000"
+        "Fee": "30000"
     }
 
 (If you started from a fresh ledger, you first need to fund the account
@@ -276,103 +308,110 @@ it sometimes takes a while to collect signatures from multiple sources, you may
 want to include additional buffer in case the load fee increases in that time.
 
 
-## 8. Get a signature using the sign_for command ##
+## 8. Get one signature ##
 
-    $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2's secret> '{
-    >     "TransactionType": "TrustSet",
-    >     "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-    >     "Flags": 262144,
-    >     "LimitAmount": {
-    >       "currency": "USD",
-    >       "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    >       "value": "100"
-    >     },
-    >     "Sequence": 2,
-    >     "SigningPubKey":"",
-    >     "Fee": "12000"
+The [`sign_for` command](reference-rippled.html#sign-for) takes an address and related secret, and a transaction in JSON form. It generates a signature for that transaction, using the secret key and address specified. By using this, you can provide signatures that contribute to a multi-signed transaction. (The signatures should come from the members of your SignerList.)
+
+    $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{ "TransactionType": "TrustSet", "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC", "Flags": 262144, "LimitAmount": { "currency": "USD", "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "value": "100" }, "Sequence": 2, "SigningPubKey":"", "Fee": "30000" }'
+    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Connecting to 127.0.0.1:5005
+    {
+       "result" : {
+          "status" : "success",
+          "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
+          "tx_json" : {
+             "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+             "Fee" : "30000",
+             "Flags" : 262144,
+             "LimitAmount" : {
+                "currency" : "USD",
+                "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "value" : "100"
+             },
+             "Sequence" : 2,
+             "Signers" : [
+                {
+                   "Signer" : {
+                      "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                      "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                      "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+                   }
+                }
+             ],
+             "SigningPubKey" : "",
+             "TransactionType" : "TrustSet",
+             "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
+          }
+       }
+    }
+
+Save the `tx_json` field of the response: it has the new signature in the `Signers` field.
+
+The `tx_blob` is not very useful at this point, unless you're "multi-signing" a transaction with only one signature.
+
+
+## 9. Get additional signatures the same way ##
+
+You can collect additional signatures for the same transaction in parallel by using the `sign_for` command with the same transaction JSON. You can also collect additional signatures in serial: if you provide the `tx_json` value from a previous `sign_for` response, the response appends a signature to the existing Signers array.
+
+    $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
+    >    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    >    "Fee" : "30000",
+    >    "Flags" : 262144,
+    >    "LimitAmount" : {
+    >       "currency" : "USD",
+    >       "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    >       "value" : "100"
+    >    },
+    >    "Sequence" : 2,
+    >    "Signers" : [
+    >       {
+    >          "Signer" : {
+    >             "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    >             "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+    >             "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+    >          }
+    >       }
+    >    ],
+    >    "SigningPubKey" : "",
+    >    "TransactionType" : "TrustSet",
+    >    "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
     > }'
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
-          "Signers" : [
-             {
-                "Signer" : {
-                   "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                   "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                   "TxnSignature" : "304502210093EED0F75190385282C6369EE3C5C0FCC65227917F545EC8848B94E17105BC3D022073B3FB14452056FF8E966736150E2D75F3B7460AD7DEF6E2932ECD6690B6C3FE"
-                }
-             }
-          ],
           "status" : "success",
-          "tx_blob" : "1200142200040000240000000263D5038D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002EE0730081142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1",
+          "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B744630440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
           "tx_json" : {
-             "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-             "Fee" : "12000",
+             "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+             "Fee" : "30000",
              "Flags" : 262144,
              "LimitAmount" : {
                 "currency" : "USD",
-                "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
                 "value" : "100"
              },
              "Sequence" : 2,
-             "SigningPubKey" : "",
-             "TransactionType" : "TrustSet",
-             "hash" : "4622B2893AF3A70B4DB1FF86B25C10E92B71973895143E66029567A8541A8060"
-          }
-       }
-    }
-
-The valuable part in the response is the `Signers` field. This is the part that you're going to need later in order to construct the full, multi-signed transaction.
-
-The other parts, such as the `tx_blob`, are not very useful at this point, unless you're "multi-signing" a transaction with only one signature.
-
-
-## 9. Get additional signatures the same way ##
-
-If the accounts in your SignerList are funded accounts, the secret key you use to sign for those accounts can come from the regular key (if they have one), or the master key (unless it's disabled). For accounts that don't exist in the ledger, you can only use the master secret associated with the address.
-
-    $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy's secret> '{
-        "TransactionType": "TrustSet",
-        "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-        "Flags": 262144,
-        "LimitAmount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "100"
-        },            
-        "Sequence": 2,
-        "SigningPubKey":"",
-        "Fee": "12000"
-    }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "Signers" : [
-             {
-                "Signer" : {
-                   "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                   "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-                   "TxnSignature" : "304402204C1A4FFE1628A4BBEA4E8BEDE7C7080B94299704207479D1334096721629DB9802206BB07EBAB23EA288D5714CF7D3231D041BBB2AFD973D24ED693197C4881DC2E1"
+             "Signers" : [
+                {
+                   "Signer" : {
+                      "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                      "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                      "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+                   }
+                },
+                {
+                   "Signer" : {
+                      "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                      "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                      "TxnSignature" : "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+                   }
                 }
-             }
-          ],
-          "status" : "success",
-          "tx_blob" : "1200142200040000240000000263D5038D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002EE0730081142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1",
-          "tx_json" : {
-             "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-             "Fee" : "12000",
-             "Flags" : 262144,
-             "LimitAmount" : {
-                "currency" : "USD",
-                "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "value" : "100"
-             },
-             "Sequence" : 2,
+             ],
              "SigningPubKey" : "",
              "TransactionType" : "TrustSet",
-             "hash" : "4622B2893AF3A70B4DB1FF86B25C10E92B71973895143E66029567A8541A8060"
+             "hash" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
           }
        }
     }
@@ -382,84 +421,81 @@ Depending on the SignerList you configured, you may need to repeat this step sev
 
 ## 10. Combine the signatures and submit ##
 
-Take the contents of all the `Signers` arrays from all the responses, and concatenate them in to a single `Signers` array field. The commandline syntax for the [`submit_multisigned` command](reference-rippled.html#submit-multisigned) takes a single JSON object with two elements: this combined `Signers` array; and `tx_json`, which is the transaction JSON that they signed.
+The commandline syntax for the [`submit_multisigned` command](reference-rippled.html#submit-multisigned) takes a single transaction JSON containing a `Signers` array, so you need to combine all the signatures from the all the responses into a single `Signers` array field with all the signatures. If you collected signatures serially, the `tx_json` from the last response is sufficient.
 
-This command actually submits the transaction for inclusion in the ledger. In online mode, this relays it to other members of the network.
+The `submit_multisigned` command actually submits the transaction for inclusion in the ledger. In online mode, this also relays it to other members of the network.
 
-    $ rippled submit_multisigned '    {
-    >         "Signers": [
-    >             {
-    >                 "Signer" : {
-    >                    "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-    >                    "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-    >                    "TxnSignature" : "304402204C1A4FFE1628A4BBEA4E8BEDE7C7080B94299704207479D1334096721629DB9802206BB07EBAB23EA288D5714CF7D3231D041BBB2AFD973D24ED693197C4881DC2E1"
+    $ rippled submit_multisigned '{
+    >              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    >              "Fee" : "30000",
+    >              "Flags" : 262144,
+    >              "LimitAmount" : {
+    >                 "currency" : "USD",
+    >                 "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    >                 "value" : "100"
+    >              },
+    >              "Sequence" : 2,
+    >              "Signers" : [
+    >                 {
+    >                    "Signer" : {
+    >                       "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    >                       "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+    >                       "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+    >                    }
+    >                 },
+    >                 {
+    >                    "Signer" : {
+    >                       "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+    >                       "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+    >                       "TxnSignature" : "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+    >                    }
     >                 }
-    >             },
-    >             {
-    >                 "Signer" : {
-    >                    "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-    >                    "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-    >                    "TxnSignature" : "304502210093EED0F75190385282C6369EE3C5C0FCC65227917F545EC8848B94E17105BC3D022073B3FB14452056FF8E966736150E2D75F3B7460AD7DEF6E2932ECD6690B6C3FE"
-    >                 }
-    >             }
-    >         ],
-    >         "tx_json": {
-    >             "TransactionType": "TrustSet",
-    >             "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-    >             "Flags": 262144,
-    >             "LimitAmount": {
-    >               "currency": "USD",
-    >               "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    >               "value": "100"
-    >             },
-    >             "Sequence": 2,
-    >             "SigningPubKey":"",
-    >             "Fee": "12000"
-    >         }
-    >     }'
+    >              ],
+    >              "SigningPubKey" : "",
+    >              "TransactionType" : "TrustSet",
+    >              "hash" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+    >           }'
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
-       "result" : {
-          "engine_result" : "tesSUCCESS",
-          "engine_result_code" : 0,
-          "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-          "status" : "success",
-          "tx_blob" : "1200142200040000240000000263D5038D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002EE0730081142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF7447304502210093EED0F75190385282C6369EE3C5C0FCC65227917F545EC8848B94E17105BC3D022073B3FB14452056FF8E966736150E2D75F3B7460AD7DEF6E2932ECD6690B6C3FE8114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B7446304402204C1A4FFE1628A4BBEA4E8BEDE7C7080B94299704207479D1334096721629DB9802206BB07EBAB23EA288D5714CF7D3231D041BBB2AFD973D24ED693197C4881DC2E181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
-          "tx_json" : {
-             "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-             "Fee" : "12000",
-             "Flags" : 262144,
-             "LimitAmount" : {
-                "currency" : "USD",
-                "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "value" : "100"
-             },
-             "Sequence" : 2,
-             "Signers" : [
-                {
-                   "Signer" : {
-                      "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                      "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                      "TxnSignature" : "304502210093EED0F75190385282C6369EE3C5C0FCC65227917F545EC8848B94E17105BC3D022073B3FB14452056FF8E966736150E2D75F3B7460AD7DEF6E2932ECD6690B6C3FE"
-                   }
-                },
-                {
-                   "Signer" : {
-                      "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                      "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-                      "TxnSignature" : "304402204C1A4FFE1628A4BBEA4E8BEDE7C7080B94299704207479D1334096721629DB9802206BB07EBAB23EA288D5714CF7D3231D041BBB2AFD973D24ED693197C4881DC2E1"
-                   }
-                }
-             ],
-             "SigningPubKey" : "",
-             "TransactionType" : "TrustSet",
-             "hash" : "878C1C988305D87070F3E961FC27AC9D02C46FFDD92FC7EBB74E962344E58C78"
-          }
-       }
+    	"result": {
+    		"engine_result": "tesSUCCESS",
+    		"engine_result_code": 0,
+    		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    		"status": "success",
+    		"tx_blob": "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B744630440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
+    		"tx_json": {
+    			"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    			"Fee": "30000",
+    			"Flags": 262144,
+    			"LimitAmount": {
+    				"currency": "USD",
+    				"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    				"value": "100"
+    			},
+    			"Sequence": 2,
+    			"Signers": [{
+    				"Signer": {
+    					"Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    					"SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+    					"TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+    				}
+    			}, {
+    				"Signer": {
+    					"Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+    					"SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+    					"TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+    				}
+    			}],
+    			"SigningPubKey": "",
+    			"TransactionType": "TrustSet",
+    			"hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+    		}
+    	}
     }
 
-Take note of the `hash` value from the response (In this case, it's `878C1C988305D87070F3E961FC27AC9D02C46FFDD92FC7EBB74E962344E58C78`) so you can check the results of the transaction later.
+
+Take note of the `hash` value from the response so you can check the results of the transaction later.  (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
 
 
 ## 14. Close the ledger one last time ##
@@ -473,7 +509,7 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
     Connecting to 127.0.0.1:5005
     {
        "result" : {
-          "ledger_current_index" : 16061439,
+          "ledger_current_index" : 7,
           "status" : "success"
        }
     }
@@ -483,126 +519,117 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
 
 Use the hash value from the response to the `submit_multisigned` command.
 
-    $ rippled tx 878C1C988305D87070F3E961FC27AC9D02C46FFDD92FC7EBB74E962344E58C78
+    $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
-       "result" : {
-          "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-          "Fee" : "12000",
-          "Flags" : 262144,
-          "LimitAmount" : {
-             "currency" : "USD",
-             "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-             "value" : "100"
-          },
-          "Sequence" : 2,
-          "Signers" : [
-             {
-                "Signer" : {
-                   "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                   "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                   "TxnSignature" : "304502210093EED0F75190385282C6369EE3C5C0FCC65227917F545EC8848B94E17105BC3D022073B3FB14452056FF8E966736150E2D75F3B7460AD7DEF6E2932ECD6690B6C3FE"
-                }
-             },
-             {
-                "Signer" : {
-                   "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                   "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-                   "TxnSignature" : "304402204C1A4FFE1628A4BBEA4E8BEDE7C7080B94299704207479D1334096721629DB9802206BB07EBAB23EA288D5714CF7D3231D041BBB2AFD973D24ED693197C4881DC2E1"
-                }
-             }
-          ],
-          "SigningPubKey" : "",
-          "TransactionType" : "TrustSet",
-          "date" : 496881900,
-          "hash" : "878C1C988305D87070F3E961FC27AC9D02C46FFDD92FC7EBB74E962344E58C78",
-          "inLedger" : 16061438,
-          "ledger_index" : 16061438,
-          "meta" : {
-             "AffectedNodes" : [
-                {
-                   "ModifiedNode" : {
-                      "LedgerEntryType" : "AccountRoot",
-                      "LedgerIndex" : "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-                      "PreviousTxnID" : "6ECC8C16B76D9B9AB099CA96DD653D8A321C34F1E5972D5EE6DBA19418F4D0CC",
-                      "PreviousTxnLgrSeq" : 16061436
-                   }
-                },
-                {
-                   "ModifiedNode" : {
-                      "FinalFields" : {
-                         "Flags" : 0,
-                         "Owner" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                         "RootIndex" : "3B9C0CE77FCE7BCEE1A68F1E26AC467AF326239D0D816CE705E4A0E2DAD03F6D"
-                      },
-                      "LedgerEntryType" : "DirectoryNode",
-                      "LedgerIndex" : "3B9C0CE77FCE7BCEE1A68F1E26AC467AF326239D0D816CE705E4A0E2DAD03F6D"
-                   }
-                },
-                {
-                   "CreatedNode" : {
-                      "LedgerEntryType" : "RippleState",
-                      "LedgerIndex" : "3C75A1F3DB61406AC2A9493038E8394A73F103C9229695AC7E57EB0F8AFC69E4",
-                      "NewFields" : {
-                         "Balance" : {
-                            "currency" : "USD",
-                            "issuer" : "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                            "value" : "0"
-                         },
-                         "Flags" : 65536,
-                         "HighLimit" : {
-                            "currency" : "USD",
-                            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                            "value" : "0"
-                         },
-                         "LowLimit" : {
-                            "currency" : "USD",
-                            "issuer" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-                            "value" : "100"
-                         }
-                      }
-                   }
-                },
-                {
-                   "ModifiedNode" : {
-                      "FinalFields" : {
-                         "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-                         "Balance" : "109978000",
-                         "Flags" : 0,
-                         "OwnerCount" : 6,
-                         "Sequence" : 3
-                      },
-                      "LedgerEntryType" : "AccountRoot",
-                      "LedgerIndex" : "3D728C1F82CFE419F2DC58707D1AD06E985A29217D21A991ADF154184B664F4F",
-                      "PreviousFields" : {
-                         "Balance" : "109990000",
-                         "OwnerCount" : 5,
-                         "Sequence" : 2
-                      },
-                      "PreviousTxnID" : "3950D98AD20DA52EBB1F3937EF32F382D74092A4C8DF9A0B1A06ED25200B5756",
-                      "PreviousTxnLgrSeq" : 16061437
-                   }
-                },
-                {
-                   "ModifiedNode" : {
-                      "FinalFields" : {
-                         "Flags" : 0,
-                         "Owner" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
-                         "RootIndex" : "95DA402B4D58FBFF6BAA4CB84BBC21348CC273949B61FEBCE758410EF90D147D"
-                      },
-                      "LedgerEntryType" : "DirectoryNode",
-                      "LedgerIndex" : "95DA402B4D58FBFF6BAA4CB84BBC21348CC273949B61FEBCE758410EF90D147D"
-                   }
-                }
-             ],
-             "TransactionIndex" : 0,
-             "TransactionResult" : "tesSUCCESS"
-          },
-          "status" : "success",
-          "validated" : true
-       }
+    	"result": {
+    		"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    		"Fee": "30000",
+    		"Flags": 262144,
+    		"LimitAmount": {
+    			"currency": "USD",
+    			"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    			"value": "100"
+    		},
+    		"Sequence": 2,
+    		"Signers": [{
+    			"Signer": {
+    				"Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    				"SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+    				"TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+    			}
+    		}, {
+    			"Signer": {
+    				"Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+    				"SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+    				"TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+    			}
+    		}],
+    		"SigningPubKey": "",
+    		"TransactionType": "TrustSet",
+    		"date": 512172510,
+    		"hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6",
+    		"inLedger": 6,
+    		"ledger_index": 6,
+    		"meta": {
+    			"AffectedNodes": [{
+    				"ModifiedNode": {
+    					"LedgerEntryType": "AccountRoot",
+    					"LedgerIndex": "2B6AC232AA4C4BE41BF49D2459FA4A0347E1B543A4C92FCEE0821C0201E2E9A8",
+    					"PreviousTxnID": "B7E1D33DB7DEA3BB65BFAB2C80E02125F47FCCF6C957A7FDECD915B3EBE0C1DD",
+    					"PreviousTxnLgrSeq": 4
+    				}
+    			}, {
+    				"CreatedNode": {
+    					"LedgerEntryType": "RippleState",
+    					"LedgerIndex": "93E317B32022977C77810A2C558FBB28E30E744C68E73720622B797F957EC5FA",
+    					"NewFields": {
+    						"Balance": {
+    							"currency": "USD",
+    							"issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+    							"value": "0"
+    						},
+    						"Flags": 2162688,
+    						"HighLimit": {
+    							"currency": "USD",
+    							"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    							"value": "0"
+    						},
+    						"LowLimit": {
+    							"currency": "USD",
+    							"issuer": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    							"value": "100"
+    						}
+    					}
+    				}
+    			}, {
+    				"ModifiedNode": {
+    					"FinalFields": {
+    						"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    						"Balance": "999960000",
+    						"Flags": 0,
+    						"OwnerCount": 6,
+    						"Sequence": 3
+    					},
+    					"LedgerEntryType": "AccountRoot",
+    					"LedgerIndex": "A6B1BA6F2D70813100908EA84ABB7783695050312735E2C3665259F388804EA0",
+    					"PreviousFields": {
+    						"Balance": "999990000",
+    						"OwnerCount": 5,
+    						"Sequence": 2
+    					},
+    					"PreviousTxnID": "8FDC18960455C196A8C4DE0D24799209A21F4A17E32102B5162BD79466B90222",
+    					"PreviousTxnLgrSeq": 5
+    				}
+    			}, {
+    				"ModifiedNode": {
+    					"FinalFields": {
+    						"Flags": 0,
+    						"Owner": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    						"RootIndex": "C2728175908D82FB1DE6676F203D8D3C056995A9FA9B369EF326523F1C65A1DE"
+    					},
+    					"LedgerEntryType": "DirectoryNode",
+    					"LedgerIndex": "C2728175908D82FB1DE6676F203D8D3C056995A9FA9B369EF326523F1C65A1DE"
+    				}
+    			}, {
+    				"CreatedNode": {
+    					"LedgerEntryType": "DirectoryNode",
+    					"LedgerIndex": "D8120FC732737A2CF2E9968FDF3797A43B457F2A81AA06D2653171A1EA635204",
+    					"NewFields": {
+    						"Owner": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    						"RootIndex": "D8120FC732737A2CF2E9968FDF3797A43B457F2A81AA06D2653171A1EA635204"
+    					}
+    				}
+    			}],
+    			"TransactionIndex": 0,
+    			"TransactionResult": "tesSUCCESS"
+    		},
+    		"status": "success",
+    		"validated": true
+    	}
     }
+
 
 In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
 
