@@ -29,15 +29,20 @@ targets:
             - multicode_tabs
             - standardize_header_ids
             - buttonize
+
     -   name: ripple.com
         filters:
             - multicode_tabs
             - standardize_header_ids
             - buttonize
-
-    -   name: printable
-        filters:
-        - standardize_header_ids
+        image_subs:
+            "img/funds_flow_diagram.png": https://ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
+            "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
+            "img/e2g-02.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-02.png
+            "img/e2g-03.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-03.png
+            "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
+            "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
+            "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
 
     -   name: rippled-setup
         filters:
@@ -216,8 +221,7 @@ pages:
         category: Best Practices
         html: concept-issuing-and-operational-addresses.html
         md: concept-issuing-and-operational-addresses.md
-        # TODO publish this article separately on the website
-        ripple.com: https://ripple.com/build/gateway-guide/#hot-and-cold-wallets
+        ripple.com: https://ripple.com/knowledge_center/issuing-operational-addresses/
         sidebar: true
         targets:
             - local
@@ -283,8 +287,6 @@ ignore_anchors_in:
 known_broken_links:
     # Strangely, Python doesn't like the cert here. Firefox is OK with it.
     - https://validators.ripple.com
-    # Zendesk hasn't updated the cert. See ticket IN-1168
-    - https://support.ripplelabs.com/hc/en-us/categories/200194196-Set-Up-Activation
 
 # Style Checker Config ------------------------------------------------------ #
 

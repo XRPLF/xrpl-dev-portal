@@ -73,7 +73,7 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
 
 def substitute_links_for_target(soup, target):
     """Replaces local-html-links with appropriate substitutions
-       for the given target"""
+       for the given target, and images likewise"""
     target = get_target(target)
 
     logger.info("... modifying links for target: %s" % target["name"])
@@ -91,6 +91,25 @@ def substitute_links_for_target(soup, target):
                 if link["href"][:len(local_url)] == local_url:
                     link["href"] = link["href"].replace(local_url,
                                                         target_url)
+
+
+    if "image_subs" in target:
+        images = soup.find_all("img")
+        for img in images:
+            local_path = img["src"]
+            if local_path in target["image_subs"]:
+                logger.info("... replacing image path '%s' with '%s'" %
+                            (local_path, target["image_subs"][local_path]))
+                img["src"] = target["image_subs"][local_path]
+
+        image_links = soup.find_all("a",
+                href=re.compile(r"^[^.]+\.(png|jpg|jpeg|gif|svg)"))
+        for img_link in image_links:
+            local_path = img_link["href"]
+            if local_path in target["image_subs"]:
+                logger.info("... replacing image link '%s' with '%s'" %
+                            (local_path, target["image_subs"][local_path]))
+                img_link["href"] = target["image_subs"][local_path]
 
 def get_target(target):
     """Get a target by name, or return the default target object.
