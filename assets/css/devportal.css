@@ -202,7 +202,7 @@
 }
 @media (max-width: 1200px) {
   .page-template-template-dev-portal-php .dev_nav_wrapper {
-    max-width: 300px;
+    max-width: 290px;
   }
 }
 @media (max-width: 992px) {
@@ -396,7 +396,7 @@
 	z-index: 1;
 	padding-left: 10px;
 }
-	
+
 .multicode ul {
     padding-bottom: 0;
 }
@@ -426,14 +426,13 @@
 
 .multicode a.current {
 	background: #fff;
-	border-bottom: 1px solid #fff; 
+	border-bottom: 1px solid #fff;
     color : black;
 }
 
 .multicode a:hover {
 	color: black;
-	background: white; 
+	background: white;
 }
 
 .multicode a.current:hover {}
-
