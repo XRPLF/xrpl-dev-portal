@@ -1,116 +1,80 @@
-Introduction to Multi-Signing
-===============================================================================
+How to Multi-Sign
+=============================
 
-Multi-signing in Ripple is the act of authorizing transactions for the Ripple Consensus Ledger by using a combination of multiple secret keys. After setting up multi-signing for an account, you can put the master secret in cold storage, or even disable the master key entirely. With multiple secret keys required to authorize a multi-signature, you can improve security in several ways.
+Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
 
-* If you keep an account's keys on different devices, a malicious user must compromise multiple machines in order to send transactions on your behalf.
-* If the keys to an account are in the custody of entirely different people, those people must collaborate in order to send transaction from that account.
-* You can use the SignerList as a backup, to delegate a group of others who can send transactions for you if you are unavailable or unable to sign using your regular key.
-* Even more uses than can be described here.
+Benefits of multi-signing include:
+
+* You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.
+* You can share custody of an address between multiple people, each of whom only has one of several keys necessary to send transactions from that address.
+* You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.
+* ... and more.
+
+To use multi-signing:
+
+1. [The Ripple peer-to-peer network must have multi-signing enabled.](#availability-of-multi-signing)
+2. [Set up a list of signers on your account.](#setting-up-multi-sign)
+3. [Send transactions using multiple signatures.](#sending-a-multi-signed-transaction)
 
 
 Availability of Multi-Signing
--------------------------------------------------------------------------------
+-----------------------------
 
 Multi-signing is built into `rippled` starting with version **0.31.0**. Because multi-signing is a change in transaction processing, the change is due to be enabled by an **Amendment** to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see [Amendments](concept-amendments.html).
 
-You can test multi-signing by running `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with the Multi-Sign feature enabled. To enable Multi-Sign for testing, add the following stanza to your `rippled.cfg`:
+If you want to test multi-signing before it becomes available in the production network, or without risking real money, you can do so by running `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with the MultiSign feature enabled. To enable multi-signing for testing, add the following stanza to your `rippled.cfg`:
 
     [features]
     MultiSign
 
 
-How to Multi-Sign
-===============================================================================
+Setting up Multi-Signing
+------------------------
 
-The basic process of Multi-Signing a transaction is necessarily more complex than the process of signing a transaction with a single master key or regular key.
+To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
-## 1. (Optional) Generate keys for a new wallet ##
 
-This step is not strictly necessary. For this process, we generate and fund a new Ripple account and then set up multi-signing for that account. To set up multi-signing on an existing Ripple account, skip ahead to [Step 4: creating a signer list](4-create-a-signerlist-on-the-new-account-with-a-signerlistset-transaction).
+### 1. Prepare a funded address ###
+
+You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](concept-reserves.html) and [transaction cost](concept-transaction-cost.html), increasing with the number of signers and signatures you use.
+
+If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with a new genesis ledger, you must:
+
+1. Generate keys for a new address, or reuse keys you already have.
+2. Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 [drops of XRP](reference-rippled.html#specifying-currency-amounts).)
+3. Manually close the ledger.
+
+
+### 2. Prepare member keys ###
+
+You need several sets of Ripple keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [`wallet_propose` command](reference-rippled.html#wallet-propose). For example:
 
     $ rippled wallet_propose
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
-       "result" : {
-          "account_id" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-          "key_type" : "secp256k1",
-          "master_key" : "LOST FOUR ALOE ABE SLUG ITS HACK MAGI SOCK BASS APE DELL",
-          "master_seed" : "sn1CmMEkPijNrfyr8HJqsgP416dr3",
-          "master_seed_hex" : "E42AD02985BB56923DFC1D002DB510B3",
-          "public_key" : "aBQgQDutj8YUc7ZRtfj86dnzPCvPcRHtUszxeCCDMgZ7Zq1Thfri",
-          "public_key_hex" : "03668837C3DCA0F4858587703524E61BB40128B9F6910B80B4655E152CAEE2E321",
-          "status" : "success"
-       }
+        "result" : {
+            "account_id" : "rnRJ4dpSBKDR2M1itf4Ah6tZZm5xuNZFPH",
+            "key_type" : "secp256k1",
+            "master_key" : "FLOG SEND GOES CUFF GAGE FAT ANTI DEL GUM TIRE ISLE BEAR",
+            "master_seed" : "snheH5UUjU4CWqiNVLny2k21TyKPC",
+            "master_seed_hex" : "A9F859765EB8614D26809836382AFB82",
+            "public_key" : "aBR4hxFXcDNHnGYvTiqb2KU8TTTV1cYV9wXTAuz2DjBm7S8TYEBU",
+            "public_key_hex" : "03C09A5D112B393D531E4F092E3A5769A5752129F0A9C55C61B3A226BB9B567B9B",
+            "status" : "success"
+        }
     }
 
-
-As always, be sure that an account's secret key never gets transmitted to anyone you don't trust with full control of that account, and certainly not unencrypted over the network.
-
-
-## 2. Fund the new account with an existing wallet ##
-
-Again, this step is only necessary if you are setting up a new account to use multi-signing for this example.
-
-    $ rippled submit snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{
-    > "TransactionType": "Payment",
-    > "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    > "Destination": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-    > "Amount": "100000000",
-    > "Flags": 2147483648
-    > }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "engine_result" : "tesSUCCESS",
-          "engine_result_code" : 0,
-          "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-          "status" : "success",
-          "tx_blob" : "12000022800000002400000004614000000005F5E10068400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100ED13CDD4B8F6BA836F7732A029316393A5D9B50712FE79972236ECAD850F813802203148D8944B0BF3D30A3177EFCE6A9F12B3F5A3C3AFF7B73E9A7D65B370E526EE8114B5F762798A53D543A014CAF8B297CFF8F2F937E88314A3780F5CB5A44D366520FC44055E8ED44D9A2270",
-          "tx_json" : {
-             "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-             "Amount" : "100000000",
-             "Destination" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-             "Fee" : "10",
-             "Flags" : 2147483648,
-             "Sequence" : 4,
-             "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-             "TransactionType" : "Payment",
-             "TxnSignature" : "3045022100ED13CDD4B8F6BA836F7732A029316393A5D9B50712FE79972236ECAD850F813802203148D8944B0BF3D30A3177EFCE6A9F12B3F5A3C3AFF7B73E9A7D65B370E526EE",
-             "hash" : "64FAA44F671E2CBB4E1E4156FCDA72BA3C32EF951C94EDDFEBEBE8BEC3F55696"
-          }
-       }
-    }
+Take note of the `account_id` (Ripple Address) and `master_seed` (Ripple secret key) for each one you generate.
 
 
-Make sure that the `engine_result` value in the response is **tesSUCCESS**. Otherwise, the transaction failed.
+### 3. Send SignerListSet transaction ###
 
-## 3. Close the ledger ##
-
-If you are using the live network, you can wait for the ledger to close automatically as the result of consensus. This typically takes 4-7 seconds.
-
-If you are running `rippled` in stand-alone mode, you must manually close the ledger with the [`ledger_accept` command](reference-rippled.html#ledger-accept).
-
-    $ rippled ledger_accept
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "ledger_current_index" : 16061437,
-          "status" : "success"
-       }
-    }
-
-
-## 4. Create a SignerList on the new account with a SignerListSet transaction ##
-
-Before you can multi-sign transactions, you must associate a SignerList with your account, so that RCL knows which keys can be used to sign for you. You do this with a [SignerListSet transaction](reference-transaction-format.html#signerlistset).
-
-The `Account` values in your SignerList can be the addresses of funded accounts that exist in the ledger, or you can generate new addresses that are not currently in use. For funded accounts in the SignerList, a regular key associated with the account can contribute to a multi-signature, and the master key secret can be used only if it is not disabled. For unfunded addresses, only the master key associated with that address can be used to contribute to a multi-signature.
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) a [SignerListSet transaction](reference-transaction-format.html#signerlistset) in the normal (single-signature) way. This associates a SignerList with your Ripple address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
 
 In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
+
+**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
 
     $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
     >     "Flags": 0,
@@ -182,13 +146,16 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
-Make sure that the `engine_result` value in the response is **tesSUCCESS**. Otherwise, the transaction failed.
+Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed.
 
-## 5. Close the ledger again ##
+**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](concept-reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 
-As before, on the live network, you can wait for the ledger to close automatically.
 
-If running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+### 4. Close the ledger ###
+
+On the live network, you can wait 4-7 seconds for the ledger to close automatically.
+
+If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
 
     $ rippled ledger_accept
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -201,9 +168,11 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
     }
 
 
-## 6. Confirm the presence of the new signer list using account_objects ##
+### 5. Confirm the new signer list ###
 
-Normally an account can own many objects of different types (such as trust lines and offers). For this tutorial, we created a new account, so the SignerList is the only object in the response from the [`account_objects` command](reference-rippled.html#account-objects).
+Use the [`account_objects` command](reference-rippled.html#account-objects) to confirm that the SignerList is associated with the address in the latest validated ledger.
+
+Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.
 
     $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -241,30 +210,6 @@ Normally an account can own many objects of different types (such as trust lines
                 "SignerListID" : 0,
                 "SignerQuorum" : 3,
                 "index" : "79FD203E4DDDF2EA78B798C963487120C048C78652A28682425E47C96D016F92"
-             },
-             {
-                "Balance" : {
-                   "currency" : "USD",
-                   "issuer" : "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                   "value" : "0"
-                },
-                "Flags" : 2162688,
-                "HighLimit" : {
-                   "currency" : "USD",
-                   "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-                   "value" : "0"
-                },
-                "HighNode" : "0000000000000000",
-                "LedgerEntryType" : "RippleState",
-                "LowLimit" : {
-                   "currency" : "USD",
-                   "issuer" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-                   "value" : "100"
-                },
-                "LowNode" : "0000000000000000",
-                "PreviousTxnID" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6",
-                "PreviousTxnLgrSeq" : 6,
-                "index" : "93E317B32022977C77810A2C558FBB28E30E744C68E73720622B797F957EC5FA"
              }
           ],
           "ledger_hash" : "56E81069F06492FB410A70218C08169BE3AB3CFD5AEA20E999662D81DC361D9F",
@@ -274,45 +219,65 @@ Normally an account can own many objects of different types (such as trust lines
        }
     }
 
+If the SignerList is present with the expected contents, then your address is ready to multi-sign.
+
+### 6. Further steps ###
+
+At this point, your address is ready to [send a multi-signed transaction](#sending-a-multi-signed-transaction). You may also want to:
+
+* Disable the address's master key by sending an [AccountSet transaction](reference-transaction-format.html#accountset) using the `asfDisableMaster` flag.
+* Remove the address's regular key (if you previously set one) by sending a [SetRegularKey transaction](reference-transaction-format.html#setregularkey).
 
 
-## 7. Create a new transaction that you plan to multi-sign ##
+Sending a Multi-Signed Transaction
+----------------------------------
 
-You have to specify _everything_ about this transaction, including `Fee` and
-`Sequence`. Also include the field `SigningPubKey` as an empty string -- this
-indicates that the transaction is multi-signed.
+Before you can multi-sign a transaction, first check that [multi-sign is available](#availability-of-multi-signing) and [set up multi-signing](#set-up-multi-sign) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
 
-Here's an example transaction we can send from our test account:
+### 1. Create the transaction ##
+
+Create a JSON object that represents the transaction you want to submit. You have to specify _everything_ about this transaction, including `Fee` and `Sequence`. Also include the field `SigningPubKey` as an empty string, to indicate that the transaction is multi-signed.
+
+Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal [transaction cost](concept-transaction-cost.html), where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the [transaction cost's load scaling](concept-transaction-cost.html#load-scaling) increases in that time.
+
+Here's an example transaction ready to be multi-signed:
 
     {
         "TransactionType": "TrustSet",
-        "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
         "Flags": 262144,
         "LimitAmount": {
-          "currency": "USD",
-          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-          "value": "100"
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "100"
         },
         "Sequence": 2,
-        "SigningPubKey":"",
+        "SigningPubKey": "",
         "Fee": "30000"
     }
 
-(If you started from a fresh ledger, you first need to fund the account
-specified by the `issuer` in this example, and then manually close the ledger.)
-
-Keep in mind that the `Fee` for multi-signed transactions is significantly
-higher than for regularly-signed transactions. It should be (N+1) times the
-normal fee, where N is the number of signatures you plan to provide. Given that
-it sometimes takes a while to collect signatures from multiple sources, you may
-want to include additional buffer in case the load fee increases in that time.
+(This transaction creates an accounting relationship from rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC to rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh with a maximum balance of 100 USD.)
 
 
-## 8. Get one signature ##
+### 2. Get one signature ###
 
-The [`sign_for` command](reference-rippled.html#sign-for) takes an address and related secret, and a transaction in JSON form. It generates a signature for that transaction, using the secret key and address specified. By using this, you can provide signatures that contribute to a multi-signed transaction. (The signatures should come from the members of your SignerList.)
+Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
-    $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{ "TransactionType": "TrustSet", "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC", "Flags": 262144, "LimitAmount": { "currency": "USD", "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "value": "100" }, "Sequence": 2, "SigningPubKey":"", "Fee": "30000" }'
+**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
+
+    $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{
+    >     "TransactionType": "TrustSet",
+    >     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    >     "Flags": 262144,
+    >     "LimitAmount": {
+    >         "currency": "USD",
+    >         "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    >         "value": "100"
+    >     },
+    >     "Sequence": 2,
+    >     "SigningPubKey": "",
+    >     "Fee": "30000"
+    > }'
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
@@ -345,14 +310,17 @@ The [`sign_for` command](reference-rippled.html#sign-for) takes an address and r
        }
     }
 
-Save the `tx_json` field of the response: it has the new signature in the `Signers` field.
-
-The `tx_blob` is not very useful at this point, unless you're "multi-signing" a transaction with only one signature.
+Save the `tx_json` field of the response: it has the new signature in the `Signers` field. You can discard the value of the `tx_blob` field.
 
 
-## 9. Get additional signatures the same way ##
+### 3. Get additional signatures ###
 
-You can collect additional signatures for the same transaction in parallel by using the `sign_for` command with the same transaction JSON. You can also collect additional signatures in serial: if you provide the `tx_json` value from a previous `sign_for` response, the response appends a signature to the existing Signers array.
+You can collect additional signatures in parallel or in serial:
+
+* In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
+* In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
+
+**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
 
     $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
     >    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -416,14 +384,14 @@ You can collect additional signatures for the same transaction in parallel by us
        }
     }
 
-Depending on the SignerList you configured, you may need to repeat this step several times in order to get signatures from all the necessary parties.
+Depending on the SignerList you configured, you may need to repeat this step several times to get signatures from all the necessary parties.
 
 
-## 10. Combine the signatures and submit ##
+### 4. Combine signatures and submit ###
 
-The commandline syntax for the [`submit_multisigned` command](reference-rippled.html#submit-multisigned) takes a single transaction JSON containing a `Signers` array, so you need to combine all the signatures from the all the responses into a single `Signers` array field with all the signatures. If you collected signatures serially, the `tx_json` from the last response is sufficient.
+If you collected the signatures in serial, the `tx_json` from the last `sign_for` response has all the signatures assembled, so you can use that as the argument to the [`submit_multisigned` command](reference-rippled.html#submit-multisigned).
 
-The `submit_multisigned` command actually submits the transaction for inclusion in the ledger. In online mode, this also relays it to other members of the network.
+If you collected the signatures in parallel, you must manually construct a `tx_json` object with all the signatures included. Take the `Signers` arrays from all the `sign_for` responses, and combine their contents into a single `Signers` array that has each signature. Add the combined `Signers` array to the original transaction JSON value, and use that as the argument to the [`submit_multisigned` command](reference-rippled.html#submit-multisigned).
 
     $ rippled submit_multisigned '{
     >              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -498,11 +466,11 @@ The `submit_multisigned` command actually submits the transaction for inclusion 
 Take note of the `hash` value from the response so you can check the results of the transaction later.  (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
 
 
-## 14. Close the ledger one last time ##
+### 5. Close the ledger ##
 
-As before, on the live network, you can wait 4-7 seconds for the ledger to close automatically.
+If you are using the live network, you can wait 4-7 seconds for the ledger to close automatically.
 
-If running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
 
     $ rippled ledger_accept
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -515,9 +483,13 @@ If running `rippled` in stand-alone mode, use the [`ledger_accept` command](refe
     }
 
 
-## 15. Confirm the results of the transaction ##
+### 6. Confirm transaction results ###
 
-Use the hash value from the response to the `submit_multisigned` command.
+Use the hash value from the response to the `submit_multisigned` command to look up the transaction using the [`tx` command](reference-rippled.html#tx). In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
+
+On the live network, you must also confirm that the `validated` field is set to the boolean `true`. If the field is not `true`, you might need to wait longer for the consensus process to finish; or your transaction may be unable to be included in a ledger for some reason.
+
+In stand-alone mode, the server automatically considers a ledger to be `validated` if it has been manually closed.
 
     $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -629,10 +601,3 @@ Use the hash value from the response to the `submit_multisigned` command.
     		"validated": true
     	}
     }
-
-
-In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
-
-On the live network, you must also confirm that the `validated` field is set to the boolean `true`. If the field is not `true`, you might need to wait longer for the consensus process to finish; or your transaction may be unable to be included in a ledger for some reason.
-
-In stand-alone mode, the server automatically considers a ledger to be `validated` if it has been manually closed.

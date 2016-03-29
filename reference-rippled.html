@@ -7320,6 +7320,8 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.</li>
 <li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.</li>
 </ul>
+<h2 id="sign-for">sign_for</h2>
+<p>The <code>sign_for</code> command provides one signature for a multi-signed transaction. takes an address and related secret, and a transaction in JSON form. (TODO: finish this section.) It generates a signature for that transaction, using the secret key and address specified. By using this, you can provide signatures that contribute to a multi-signed transaction. (The signatures should come from the members of your SignerList.)</p>
 <h2 id="submit">submit</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>submit</code> method sends a <a href="reference-transaction-format.html">transaction</a> to the network to be confirmed and included in future ledgers.</p>
@@ -7588,6 +7590,8 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <li><code>internalSubmit</code> - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
 <li><code>internalJson</code> - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
 </ul>
+<h2 id="submit-multisigned">submit_multisigned</h2>
+<p>The <code>submit_multisigned</code> command takes a transaction specification with multiple signatures and applies that transaction. (TODO: finish this section.)</p>
 <h2 id="book-offers">book_offers</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>book_offers</code> method retrieves a list of offers, also known as the <a href="http://www.investopedia.com/terms/o/order-book.asp">order book</a>, between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.</p>

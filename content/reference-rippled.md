@@ -6296,6 +6296,12 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
 
 
+## sign_for ##
+
+The `sign_for` command provides one signature for a multi-signed transaction. takes an address and related secret, and a transaction in JSON form. (TODO: finish this section.) It generates a signature for that transaction, using the secret key and address specified. By using this, you can provide signatures that contribute to a multi-signed transaction. (The signatures should come from the members of your SignerList.)
+
+
+
 ## submit ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
@@ -6524,6 +6530,12 @@ __*Caution:*__ If this command results in an error messages, the message can con
 * `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 * `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 * `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+
+
+## submit_multisigned ##
+
+The `submit_multisigned` command takes a transaction specification with multiple signatures and applies that transaction. (TODO: finish this section.)
+
 
 
 ## book_offers ##

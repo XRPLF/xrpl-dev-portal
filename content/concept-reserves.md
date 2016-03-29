@@ -21,6 +21,7 @@ Many objects in the ledger are owned by a particular account, and therefore coun
 
 * [Offers](reference-ledger-format.html#offer) are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an [OfferCancel transaction](reference-transaction-format.html#offercancel), or by sending an [OfferCreate transaction](reference-transaction-format.html#offercreate) that contains an `OfferSequence` parameter.
 * [Trust lines](reference-ledger-format.html#ripplestate) are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See [Contributing to the Owner Reserve](reference-ledger-format.html#contributing-to-the-owner-reserve) for details.
+* A single [SignerList](reference-ledger-format.html#signerlist) counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 * [Owner directories](reference-ledger-format.html#directorynode) list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.
 
 #### Owner Reserve Edge Cases ####
@@ -40,4 +41,3 @@ When an account has less XRP than its current reserve requirement, it cannot sen
 ## Changing the Reserve Requirements ##
 
 The Ripple Consensus Ledger has a mechanism for changing the reserve requirements in order to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
-

@@ -451,6 +451,8 @@ A SignerList node has the following fields:
 | PreviousTxnID   | String    | Hash256       | The identifying hash of the transaction that most recently modified this node. |
 | PreviousTxnLgrSeq | Number  | UInt32        | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
 
+The `SignerEntries` may be any combination of funded and unfunded addresses that use either secp256k1 or ed25519 keys.
+
 ### SignerEntry object ###
 
 Each member of the `SignerEntries` field is an object that describes that signer in the list. A SignerEntry has the following fields:
@@ -465,4 +467,3 @@ When processing a multi-signed transaction, the server dereferences the `Account
 ### SignerLists and Reserves ###
 
 A SignerList contributes to the [Account Reserve](https://wiki.ripple.com/Reserves). The SignerList itself counts as two objects, and each member of the list counts as one, so that the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
-

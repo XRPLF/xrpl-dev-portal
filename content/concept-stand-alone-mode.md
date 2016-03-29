@@ -1,7 +1,7 @@
 Stand-Alone Mode
 ===============================================================================
 
-You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the Ripple peer-to-peer network, but you can perform most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior, including the effects of [Amendments](concept-amendments.html) before those Amendments have gone into effect across the decentralized network.
+You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the Ripple peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior, including the effects of [Amendments](concept-amendments.html) before those Amendments have gone into effect across the decentralized network.
 
 When you run `rippled` in stand-alone mode, you have to tell it what ledger version to start from:
 
@@ -12,7 +12,7 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
 
 New Genesis Ledger
 -------------------------------------------------------------------------------
-In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple network. (This is very useful for unit tests, among other things.)
+In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)
 
 * To start `rippled` in stand-alone mode with a new genesis ledger, use the `-a` and `--start` options:
 
@@ -27,6 +27,7 @@ In a genesis ledger, the [genesis account](reference-rippled.html#special-addres
 **Secret:** `snoPBrXtMeMyMHUVTgbuqAfg1SUTb` ("masterpassphrase")
 
 **Caution:** If you create a new genesis ledger, the hard-coded default [Reserve](concept-reserves.html) is **200 XRP** minimum for an account, with an increment of **50 XRP** per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: [Fee Voting](concept-fee-voting.html))
+
 
 
 Load Saved Ledger
@@ -75,7 +76,7 @@ rippled -a --ledger 19860944 --conf=/path/to/rippled.cfg
 
 ### 6. Manually advance the ledger. ###
 
-When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you need to [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode) to finalize it:
+When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode):
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
@@ -93,4 +94,4 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 
 In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/).)
 
-Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since different `rippled` servers may see transactions in a different order.) When using `rippled` in stand-alone mode, it is important to manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. **Note:** You can safely submit multiple transactions from a single account to a single ledger, because `rippled` sorts transactions from the same account in ascending order by `Sequence` number.
+Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since different `rippled` servers may see transactions in a different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. **Note:** You can safely submit multiple transactions from a single account to a single ledger, because `rippled` sorts transactions from the same account in ascending order by `Sequence` number.

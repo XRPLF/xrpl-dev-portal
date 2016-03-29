@@ -146,6 +146,7 @@
 <ul>
 <li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the account that placed them. An Offer can be automatically removed from the ledger if it is fully consumed or if it is found unfunded during transaction processing. Alternatively, the owner can cancel an offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
 <li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two accounts. The owner reserve can apply to one or both of the accounts, depending on whether the fields that account controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
+<li>A single <a href="reference-ledger-format.html#signerlist">SignerList</a> counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</li>
 <li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an account's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
 </ul>
 <h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>

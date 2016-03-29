@@ -147,15 +147,36 @@
 </ul>
 <p>Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.</p>
 <ul>
-<li><a href="#signing-and-sending-transactions">Signing and Sending Transactions</a></li>
+<li><a href="#authorizing-transactions">Authorized Transactions</a></li>
 <li><a href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
 <li><a href="#transaction-results">Transaction Results - How to find and interpret transaction results</a></li>
 <li><a href="#full-transaction-response-list">Full Transaction Response List - Complete table of all error codes</a></li>
 </ul>
-<h2 id="signing-and-sending-transactions">Signing and Sending Transactions</h2>
-<p>Signing a transaction cryptographically proves that the person in charge of the account sending the transaction is authorized to do so. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
-<p>You sign a transaction using a secret key: either the master secret, or a regular secret if the account has a regular key pair associated with it. (See <a href="#setregularkey">SetRegularKey</a> for details.) If your account has a SignerList associated with it, you can use a <a href="#multi-signing">multi-signature</a> instead.</p>
-<p>Typically, you create a transaction in JSON format first. Here is an example of an unsigned Payment-type transaction in JSON:</p>
+<h2 id="authorizing-transactions">Authorizing Transactions</h2>
+<p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to perform a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
+<p>A transaction can be authorized by any of the following types of signatures:</p>
+<ul>
+<li>A single signature from the master secret key that is mathematically associated with the address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
+<li>A single signature that matches a regular key enabled for the address. You can enable, remove, or replace a regular key using a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
+<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers enabled for the address. You can enable, remove, or replace a list of signers using a <a href="#SignerListSet">SignerListSet transaction</a>.</li>
+</ul>
+<p>Any signature type can authorize any type of transaction, with the following exceptions:</p>
+<ul>
+<li>Only the master key can <a href="#accountset-flags">disable the master key</a>.</li>
+<li>Only the master key can <a href="concept-freeze.html#no-freeze">permanently give up the ability to freeze</a>.</li>
+<li>You can never remove the last method of signing transactions from an address.</li>
+</ul>
+<h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions</h2>
+<p>Sending a transaction to the Ripple Consensus Ledger involves several steps:</p>
+<ol>
+<li>Create an unsigned transaction in JSON format.</li>
+<li>Use one or more signatures to <a href="#authorizing-transactions">authorize the transaction</a>.</li>
+<li>Submit a transaction to a <code>rippled</code> server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
+<li>The <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> determines which provisional transactions get included in the next validated ledger.</li>
+<li>The <code>rippled</code> servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
+<li>If enough <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="#transaction-results">results of the transactions</a> in that ledger are immutable.</li>
+</ol>
+<p>Here is an example of an unsigned <a href="#payment">Payment-type transaction</a> in JSON:</p>
 <pre><code>{
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -276,28 +297,9 @@
 }
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
-<p>Multi-signing in Ripple is the act of authorizing transactions for the Ripple
-Consensus Ledger by using a combination of multiple secret keys. Multi-signing
-allows various use cases including:</p>
-<ul>
-<li>If you require keys from different devices, a malicious user must compromise multiple machines in order to send transactions on your behalf.</li>
-<li>If the keys to an account are in the custody of entirely different people, those people must collaborate in order to send transaction from that account.</li>
-<li>Delegate a group of others who can send transactions for you if you are unavailable or unable to sign normally.</li>
-<li>... and more.</li>
-</ul>
-<p>To set up multi-signing for an account, the process is straightforward:</p>
-<ol>
-<li>Use a <a href="#signerlistset">SignerListSet transaction</a> to define which accounts or keys can, together, authorize transactions for this account.</li>
-<li>Optionally disable the master key with an <a href="#accountset">AccountSet transaction</a> using the <code>asfDisableMaster</code> flag.</li>
-<li>Optionally remove the existing regular key (if any) with a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
-</ol>
-<p>After an account has a SignerList associated with it, the process of submitting a multi-signed transaction is as follows:</p>
-<ol>
-<li>Create the transaction to be signed as a JSON object</li>
-<li>Generate a signature for each account using the <a href="rippled-apis.html#sign-for"><code>sign_for</code> command</a>.</li>
-<li>Combine the signatures and submit using the <a href="rippled-apis.html#submit-multisigned"><code>submit_multisigned</code> command</a>.</li>
-</ol>
-<p>Main article: <a href="multisign.html">How to Multi-Sign</a></p>
+<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can use multi-signing in addition to, or instead of, a master key, a <a href="#setregularkey">regular key</a>, or both.</p>
+<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the signer list.</p>
+<p>For more information, see <a href="tutorial-multisign.html">How to Multi-Sign</a>.</p>
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>
 <ul>
@@ -883,7 +885,7 @@ allows various use cases including:</p>
 <p>In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
-<p>A SetRegularKey transaction changes the regular key used by the account to sign future transactions.</p>
+<p>A SetRegularKey transaction changes the regular key associated with an address.</p>
 <pre><code>{
     "Flags": 0,
     "TransactionType": "SetRegularKey",
@@ -905,14 +907,15 @@ allows various use cases including:</p>
 <tr>
 <td>RegularKey</td>
 <td>String</td>
-<td>Account</td>
-<td>(Optional) The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. If omitted, removes the existing regular key.</td>
+<td>AccountID</td>
+<td>(Optional) A base-58-encoded <a href="reference-rippled.html#addresses">Ripple address</a> to use as the regular key. If omitted, removes the existing regular key.</td>
 </tr>
 </tbody>
 </table>
-<p>Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the <code>RegularKey</code> field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (Other methods of signing transactions can also be used, including <a href="#multi-signing">multi-signing</a> or the master key.</p>
-<p>A Regular Key pair is generated in the same way as any other Ripple keys (for example, with <a href="rippled-apis.html#wallet-propose">wallet_propose</a>), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key). The Master Key can be <a href="#accountset-flags">disabled</a> but it cannot be changed. Therefore, it is beneficial to security sign transactions with a Regular Key instead of the master key whenever possible. For even greater security, you can use <a href="#multi-signing">multi-signing</a>, but multi-signing costs additional XRP in transaction fees and reserves.</p>
-<p>If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your account. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>In addition to the master key, which is mathematically-related to an address, you can associate <strong>at most 1 additional key pair</strong> with an address using this type of transaction. The additional key pair is called a <em>regular key</em>. If your address has a regular key pair defined, you can use the secret key of the regular key pair to <a href="#authorizing-transactions">authorize transactions</a>.</p>
+<p>A regular key pair is generated in the same way as any other Ripple keys (for example, with <a href="reference-rippled.html#wallet-propose">wallet_propose</a>), but it can be changed. A master key pair is an intrinsic part of an address's identity (the address is derived from the master public key). You can <a href="#accountset-flags">disable</a> a master key but you cannot change it.</p>
+<p>You can protect your master secret by using a regular key instead of the master key to sign transactions where possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>For even greater security, you can use <a href="#multi-signing">multi-signing</a>, but multi-signing requires additional XRP for the <a href="concept-transaction-cost.html">transaction cost</a> and <a href="concept-reserves.html">reserve</a>.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCreate transaction is effectively a <a href="http://en.wikipedia.org/wiki/limit_order">limit order</a>. It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
@@ -1202,7 +1205,7 @@ allows various use cases including:</p>
 </table>
 <h2 id="signerlistset">SignerListSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp" title="Source">[Source]<br/></a></p>
-<p>The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to multi-sign a transaction.</p>
+<p>The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction.</p>
 <p>Example SignerListSet:</p>
 <pre><code>{
     "Flags": 0,
@@ -1252,13 +1255,14 @@ allows various use cases including:</p>
 <td>SignerEntries</td>
 <td>Array</td>
 <td>Array</td>
-<td>(Omitted when deleting) Array of <a href="ripple-ledger.html#signerentry-object">SignerEntry objects</a>, indicating the addresses and weights of signers in this list. A SignerList must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the <code>Account</code> submitting the transaction appear in the list.</td>
+<td>(Omitted when deleting) Array of <a href="reference-ledger-format.html#signerentry-object">SignerEntry objects</a>, indicating the addresses and weights of signers in this list. A SignerList must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the <code>Account</code> submitting the transaction appear in the list.</td>
 </tr>
 </tbody>
 </table>
 <p>An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set <code>SignerQuorum</code> to <code>0</code> <em>and</em> omit the <code>SignerEntries</code> field. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>. A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.</p>
 <p>You cannot create a SignerList such that the SignerQuorum could never be met. The SignerQuorum must be greater than 0 but less than or equal to the sum of the <code>SignerWeight</code> values in the list. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>.</p>
-<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="ripple-ledger.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a Regular Key configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
+<p>You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.</p>
+<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="ripple-ledger.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
 <h1 id="pseudo-transactions">Pseudo-Transactions</h1>
 <p>Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.</p>
 <p>Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:</p>
