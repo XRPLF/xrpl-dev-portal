@@ -300,7 +300,7 @@
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
 <p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can use multi-signing in addition to, or instead of, a master key, a <a href="#setregularkey">regular key</a>, or both.</p>
-<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the signer list.</p>
+<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the SignerList.</p>
 <p>For more information, see <a href="tutorial-multisign.html">How to Multi-Sign</a>.</p>
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>
@@ -1350,10 +1350,16 @@
 <td>UInt32</td>
 <td>The incremental reserve, in drops</td>
 </tr>
+<tr>
+<td>LedgerSequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="enableamendment">EnableAmendment</h2>
-<p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">Amendment process</a> for changes in transaction processing. This can indicate that a proposed Amendment gained or lost majority approval, or that an Amendment has been enabled.</p>
+<p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">amendment process</a> for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.</p>
 <p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
 <table>
 <thead>
@@ -1369,19 +1375,19 @@
 <td>Amendment</td>
 <td>String</td>
 <td>Hash256</td>
-<td>A unique identifier for the Amendment. This is not intended to be a human-readable name. See <a href="concept-amendments.html">Amendments</a> for a list of known Amendments.</td>
+<td>A unique identifier for the amendment. This is not intended to be a human-readable name. See <a href="concept-amendments.html">Amendments</a> for a list of known amendments.</td>
 </tr>
 <tr>
 <td>LedgerSequence</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The index of the ledger version where this Amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+<td>The index of the ledger version where this amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="enableamendment-flags">EnableAmendment Flags</h3>
-<p>The <code>Flags</code> value of the EnableAmendment pseudo-transaction indicates the status of the Amendment at the time of the ledger including the pseudo-transaction.</p>
-<p>A <code>Flags</code> value of <code>0</code> (no flags) indicates that the Amendment has been enabled, and applies to all ledgers afterward. Other <code>Flags</code> values are as follows:</p>
+<p>The <code>Flags</code> value of the EnableAmendment pseudo-transaction indicates the status of the amendment at the time of the ledger including the pseudo-transaction.</p>
+<p>A <code>Flags</code> value of <code>0</code> (no flags) indicates that the amendment has been enabled, and applies to all ledgers afterward. Other <code>Flags</code> values are as follows:</p>
 <table>
 <thead>
 <tr>
@@ -1396,13 +1402,13 @@
 <td>tfGotMajority</td>
 <td>0x00010000</td>
 <td>65536</td>
-<td>Support for this Amendment increased to at least 80% of trusted validators starting with this ledger version.</td>
+<td>Support for this amendment increased to at least 80% of trusted validators starting with this ledger version.</td>
 </tr>
 <tr>
 <td>tfLostMajority</td>
 <td>0x00020000</td>
 <td>131072</td>
-<td>Support for this Amendment decreased to less than 80% of trusted validators starting with this ledger version.</td>
+<td>Support for this amendment decreased to less than 80% of trusted validators starting with this ledger version.</td>
 </tr>
 </tbody>
 </table>

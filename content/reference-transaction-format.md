@@ -183,7 +183,7 @@ After a transaction has been submitted, if it gets accepted into a validated led
 
 Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an [Amendment](concept-amendments.html) to the Ripple Consensus Protocol. You can use multi-signing in addition to, or instead of, a master key, a [regular key](#setregularkey), or both.
 
-The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the signer list.
+The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the SignerList.
 
 For more information, see [How to Multi-Sign](tutorial-multisign.html).
 
@@ -877,28 +877,29 @@ A change in [transaction cost](concept-transaction-cost.html) or [account reserv
 | ReferenceFeeUnits | Unsigned Integer | UInt32 | The cost, in fee units, of the reference transaction |
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
+| LedgerSequence | Number | UInt32 | The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ## EnableAmendment ##
 
-Tracks the progress of the [Amendment process](concept-amendments.html#amendment-process) for changes in transaction processing. This can indicate that a proposed Amendment gained or lost majority approval, or that an Amendment has been enabled.
+Tracks the progress of the [amendment process](concept-amendments.html#amendment-process) for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.
 
 **Note:** You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| Amendment | String | Hash256 | A unique identifier for the Amendment. This is not intended to be a human-readable name. See [Amendments](concept-amendments.html) for a list of known Amendments. |
-| LedgerSequence | Number | UInt32 | The index of the ledger version where this Amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+| Amendment | String | Hash256 | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](concept-amendments.html) for a list of known amendments. |
+| LedgerSequence | Number | UInt32 | The index of the ledger version where this amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ### EnableAmendment Flags ###
 
-The `Flags` value of the EnableAmendment pseudo-transaction indicates the status of the Amendment at the time of the ledger including the pseudo-transaction.
+The `Flags` value of the EnableAmendment pseudo-transaction indicates the status of the amendment at the time of the ledger including the pseudo-transaction.
 
-A `Flags` value of `0` (no flags) indicates that the Amendment has been enabled, and applies to all ledgers afterward. Other `Flags` values are as follows:
+A `Flags` value of `0` (no flags) indicates that the amendment has been enabled, and applies to all ledgers afterward. Other `Flags` values are as follows:
 
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
-| tfGotMajority | 0x00010000 | 65536 | Support for this Amendment increased to at least 80% of trusted validators starting with this ledger version. |
-| tfLostMajority | 0x00020000 | 131072 | Support for this Amendment decreased to less than 80% of trusted validators starting with this ledger version. |
+| tfGotMajority | 0x00010000 | 65536 | Support for this amendment increased to at least 80% of trusted validators starting with this ledger version. |
+| tfLostMajority | 0x00020000 | 131072 | Support for this amendment decreased to less than 80% of trusted validators starting with this ledger version. |
 
 
 
