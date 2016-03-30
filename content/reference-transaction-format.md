@@ -12,10 +12,12 @@ There are several different types of transactions that perform different actions
 * [OfferCreate - Submit an order to exchange currency](#offercreate)
 * [OfferCancel - Withdraw a currency-exchange order](#offercancel)
 * [TrustSet - Add or modify a trust line](#trustset)
+* [SignerListSet - Set multi-signing settings](#signerlistset)
 
-Additionally, there are *Psuedo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
+Additionally, there are *Pseudo-Transactions* that are not created and submitted in the usual way, but may appear in ledgers:
 
 * [SetFee - Adjust the minimum transaction cost or account reserve](#setfee)
+* [EnableAmendment - Apply a change to transaction processing](#enableamendment)
 
 Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.
 
@@ -30,9 +32,9 @@ In the decentralized Ripple Consensus Ledger, a digital signature proves that a 
 
 A transaction can be authorized by any of the following types of signatures:
 
-* A single signature from the master secret key that is mathematically associated with the address. You can disable or enable the master key using an [AccountSet transaction](#accountset).
-* A single signature that matches a regular key enabled for the address. You can enable, remove, or replace a regular key using a [SetRegularKey transaction](#setregularkey).
-* A [multi-signature](#multi-signing) that matches a list of signers enabled for the address. You can enable, remove, or replace a list of signers using a [SignerListSet transaction](#SignerListSet).
+* A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction](#accountset).
+* A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction](#setregularkey).
+* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction](#SignerListSet).
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
@@ -223,7 +225,7 @@ Every transaction type has the same set of fundamental fields:
 | [Memos](#memos) | Array of Objects | Array | (Optional) Additional arbitrary information used to identify this transaction. |
 | [Sequence](#canceling-or-skipping-a-transaction) | Unsigned Integer | UInt32 | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey | String | PubKey | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| [Signers](#signers-field) | Array | Array | (Optional) Array of objects that represent a multi-signature which authorizes this transaction. |
+| [Signers](#signers-field) | Array | Array | (Optional) Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
 | SourceTag | Unsigned Integer | UInt32 | (Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType | String | UInt16 | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, and `SignerListSet`. |
 | TxnSignature | String | VariableLength | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
@@ -519,7 +521,7 @@ The available AccountSet flags are:
 | asfGlobalFreeze | 7 | [Freeze](concept-freeze.html) all assets issued by this account. | lsfGlobalFreeze |
 | asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
-_New in [rippled 0.28.0][]:_ You cannot send a transaction that enables `asfDisableMaster` or `asfNoFreeze` using a [regular key](#setregularkey). You must use the master key to sign the transaction.
+_New in [rippled 0.28.0][]:_ In order to enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature.
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -765,7 +767,7 @@ A trust line with settings in the default state is equivalent to no trust line.
 
 The default state of all flags is off, except for the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), whose default state depends on the DefaultRipple flag.
 
-The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: You can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
+The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: The [`TrustSetAuth` Amendment](concept-amendments.html#trustsetauth) would allow you to pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.
 
 ### TrustSet Flags ###
 
@@ -848,9 +850,9 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 
 ## SetFee ##
 
-A change in [transaction cost](concept-transaction-cost.html) or [account reserve](concept-reserves.html) requirements. This is typically in response to changes in the load on the network.
+A change in [transaction cost](concept-transaction-cost.html) or [account reserve](concept-reserves.html) requirements as a result of [Fee Voting](concept-fee-voting.html).
 
-*Note:* You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
+**Note:** You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
 
 ```
 {
@@ -876,8 +878,27 @@ A change in [transaction cost](concept-transaction-cost.html) or [account reserv
 | ReserveBase | Unsigned Integer | UInt32 | The base reserve, in drops |
 | ReserveIncrement | Unsigned Integer | UInt32 | The incremental reserve, in drops |
 
+## EnableAmendment ##
 
+Tracks the progress of the [Amendment process](concept-amendments.html#amendment-process) for changes in transaction processing. This can indicate that a proposed Amendment gained or lost majority approval, or that an Amendment has been enabled.
 
+**Note:** You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.
+
+| Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
+|-------|-----------|--------------------------------------------------------|-------------|
+| Amendment | String | Hash256 | A unique identifier for the Amendment. This is not intended to be a human-readable name. See [Amendments](concept-amendments.html) for a list of known Amendments. |
+| LedgerSequence | Number | UInt32 | The index of the ledger version where this Amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+
+### EnableAmendment Flags ###
+
+The `Flags` value of the EnableAmendment pseudo-transaction indicates the status of the Amendment at the time of the ledger including the pseudo-transaction.
+
+A `Flags` value of `0` (no flags) indicates that the Amendment has been enabled, and applies to all ledgers afterward. Other `Flags` values are as follows:
+
+| Flag Name | Hex Value | Decimal Value | Description |
+|-----------|-----------|---------------|-------------|
+| tfGotMajority | 0x00010000 | 65536 | Support for this Amendment increased to at least 80% of trusted validators starting with this ledger version. |
+| tfLostMajority | 0x00020000 | 131072 | Support for this Amendment decreased to less than 80% of trusted validators starting with this ledger version. |
 
 
 
@@ -1074,7 +1095,7 @@ These codes indicate that the transaction failed to apply, but the transaction c
 | tefBAD\_SIGNATURE | The transaction was [multi-signed](#multi-signing), but contained a signature for an address not part of a SignerList associated with the sending account. |
 | tefBAD\_QUORUM | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |
 | tefNOT\_MULTI\_SIGNING | The transaction was [multi-signed](#multi-signing), but the sending account has no SignerList defined. |
-| tefBAD\_AUTH\_MASTER | <span class='draft-comment'>(something to do with the key not being the right one for this account)</span> |
+| tefBAD\_AUTH\_MASTER | The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address. |
 
 ### ter Codes ###
 
@@ -1122,8 +1143,8 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
 | tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
-| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of signing transactions. This could be a [SetRegularKey transaction](#setregularkey) to remove the Regular Key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the Master Key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED` instead.) |
-| tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.) |
+| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED` instead.) |
+| tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
 | tecOWNERS | 132 | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |
 | tecNO\_AUTH | 134 | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |

@@ -140,10 +140,12 @@
 <li><a href="#offercreate">OfferCreate - Submit an order to exchange currency</a></li>
 <li><a href="#offercancel">OfferCancel - Withdraw a currency-exchange order</a></li>
 <li><a href="#trustset">TrustSet - Add or modify a trust line</a></li>
+<li><a href="#signerlistset">SignerListSet - Set multi-signing settings</a></li>
 </ul>
-<p>Additionally, there are <em>Psuedo-Transactions</em> that are not created and submitted in the usual way, but may appear in ledgers:</p>
+<p>Additionally, there are <em>Pseudo-Transactions</em> that are not created and submitted in the usual way, but may appear in ledgers:</p>
 <ul>
 <li><a href="#setfee">SetFee - Adjust the minimum transaction cost or account reserve</a></li>
+<li><a href="#enableamendment">EnableAmendment - Apply a change to transaction processing</a></li>
 </ul>
 <p>Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.</p>
 <ul>
@@ -156,9 +158,9 @@
 <p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to perform a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
 <p>A transaction can be authorized by any of the following types of signatures:</p>
 <ul>
-<li>A single signature from the master secret key that is mathematically associated with the address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
-<li>A single signature that matches a regular key enabled for the address. You can enable, remove, or replace a regular key using a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
-<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers enabled for the address. You can enable, remove, or replace a list of signers using a <a href="#SignerListSet">SignerListSet transaction</a>.</li>
+<li>A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
+<li>A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
+<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a <a href="#SignerListSet">SignerListSet transaction</a>.</li>
 </ul>
 <p>Any signature type can authorize any type of transaction, with the following exceptions:</p>
 <ul>
@@ -382,7 +384,7 @@
 <td><a href="#signers-field">Signers</a></td>
 <td>Array</td>
 <td>Array</td>
-<td>(Optional) Array of objects that represent a multi-signature which authorizes this transaction.</td>
+<td>(Optional) Array of objects that represent a <a href="#multi-signing">multi-signature</a> which authorizes this transaction.</td>
 </tr>
 <tr>
 <td>SourceTag</td>
@@ -826,7 +828,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> You cannot send a transaction that enables <code>asfDisableMaster</code> or <code>asfNoFreeze</code> using a <a href="#setregularkey">regular key</a>. You must use the master key to sign the transaction.</p>
+<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> In order to enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature.</p>
 <p>The following <a href="#flags">Transaction flags</a>, specific to the AccountSet transaction type, serve the same purpose, but are discouraged:</p>
 <table>
 <thead>
@@ -1158,7 +1160,7 @@
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
 <p>The default state of all flags is off, except for the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
-<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: You can pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0.</p>
+<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: The <a href="concept-amendments.html#trustsetauth"><code>TrustSetAuth</code> Amendment</a> would allow you to pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.</p>
 <h3 id="trustset-flags">TrustSet Flags</h3>
 <p>Transactions of the TrustSet type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
 <table>
@@ -1297,8 +1299,8 @@
 </tbody>
 </table>
 <h2 id="setfee">SetFee</h2>
-<p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements. This is typically in response to changes in the load on the network.</p>
-<p><em>Note:</em> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements as a result of <a href="concept-fee-voting.html">Fee Voting</a>.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
 <pre><code>{
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",
@@ -1347,6 +1349,60 @@
 <td>Unsigned Integer</td>
 <td>UInt32</td>
 <td>The incremental reserve, in drops</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enableamendment">EnableAmendment</h2>
+<p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">Amendment process</a> for changes in transaction processing. This can indicate that a proposed Amendment gained or lost majority approval, or that an Amendment has been enabled.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amendment</td>
+<td>String</td>
+<td>Hash256</td>
+<td>A unique identifier for the Amendment. This is not intended to be a human-readable name. See <a href="concept-amendments.html">Amendments</a> for a list of known Amendments.</td>
+</tr>
+<tr>
+<td>LedgerSequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The index of the ledger version where this Amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enableamendment-flags">EnableAmendment Flags</h3>
+<p>The <code>Flags</code> value of the EnableAmendment pseudo-transaction indicates the status of the Amendment at the time of the ledger including the pseudo-transaction.</p>
+<p>A <code>Flags</code> value of <code>0</code> (no flags) indicates that the Amendment has been enabled, and applies to all ledgers afterward. Other <code>Flags</code> values are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tfGotMajority</td>
+<td>0x00010000</td>
+<td>65536</td>
+<td>Support for this Amendment increased to at least 80% of trusted validators starting with this ledger version.</td>
+</tr>
+<tr>
+<td>tfLostMajority</td>
+<td>0x00020000</td>
+<td>131072</td>
+<td>Support for this Amendment decreased to less than 80% of trusted validators starting with this ledger version.</td>
 </tr>
 </tbody>
 </table>
@@ -1805,7 +1861,7 @@
 </tr>
 <tr>
 <td>tefBAD_AUTH_MASTER</td>
-<td><span class="draft-comment">(something to do with the key not being the right one for this account)</span></td>
+<td>The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address.</td>
 </tr>
 </tbody>
 </table>
@@ -1966,12 +2022,12 @@
 <tr>
 <td>tecNO_ALTERNATIVE_KEY</td>
 <td>130</td>
-<td>The transaction tried to remove the only available method of signing transactions. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the Regular Key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the Master Key. (Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>, this was called <code>tecMASTER_DISABLED</code> instead.)</td>
+<td>The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>, this was called <code>tecMASTER_DISABLED</code> instead.)</td>
 </tr>
 <tr>
 <td>tecNO_REGULAR_KEY</td>
 <td>131</td>
-<td>The <a href="#accountset">AccountSet transaction</a> tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.)</td>
+<td>The <a href="#accountset">AccountSet transaction</a> tried to disable the master key, but the account does not have another way to <a href="#authorizing-transactions">authorize transactions</a>. If <a href="#multi-signing">multi-signing</a> is enabled, this code is deprecated and <code>tecNO_ALTERNATIVE_KEY</code> is used instead.</td>
 </tr>
 <tr>
 <td>tecOWNERS</td>
