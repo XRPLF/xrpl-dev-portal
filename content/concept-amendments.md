@@ -7,9 +7,9 @@ When an Amendment has been enabled, it applies permanently to all ledger version
 
 ## Background ##
 
-Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. This could cause anything from minor inconveniences (a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot rely on their own) to serious problems: consensus might be unable to validate new ledger versions because servers are unable to reach a consensus who agree to the exact same result.
+Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If only a portion of validators have upgraded to a new version of the software, this could cause anything from minor inconveniences (a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot rely on their own) to serious problems: consensus might be unable to validate new ledger versions because servers are unable to reach a consensus who agree to the exact same result.
 
-In theory, this could prompt a situation where the Ripple Consensus Ledger cannot make progress because only a portion of validators have upgraded to a new version of the software. Amendments provide solution to this problem, so that new features can be enabled only when enough validators support those features.
+Amendments provide solution to this problem, so that new features can be enabled only when enough validators support those features.
 
 Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) do not require Amendments.
 
@@ -28,8 +28,11 @@ In the flag ledger itself, there is nothing unusual. However, during that time, 
 
 A server only inserts the pseudo-transaction to enable an amendment if all of the following conditions are met:
 
-* There is a validated ledger which closed at least two weeks prior to the current flag ledger, which includes an EnableAmendment pseudo-transaction for this amendment with the `tfGotMajority` flag enabled.
-* There are no EnableAmendment pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the validated ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
+* The amendment has not already been enabled.
+* A previous ledger includes an EnableAmendment pseudo-transaction for this amendment with the `tfGotMajority` flag enabled.
+* The previous ledger in question is an ancestor of the current ledger.
+* The previous ledger in question has a close time that is at least **two weeks** before the close time of the latest flag ledger.
+* There are no EnableAmendment pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the consensus ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
 
 It is theoretically possible (but extremely unlikely) that a `tfLostMajority` EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the `tfLostMajority` pseudo-transaction has no effect.
 
@@ -40,6 +43,20 @@ Operators of `rippled` validators can choose which amendments to support or reje
 The operator of a `rippled` validator can "veto" an amendment using the [`feature` command](reference-rippled.html#feature). In this case, that validator never sends a vote in favor of the amendment. If enough trusted validators veto an amendment, then the amendment does not apply.
 
 As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple on releasing new features.
+
+## Testing Amendments ##
+
+If you want to see how `rippled` behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use `rippled`'s configuration file to forcibly enable a feature. This is intended for development purposes only.
+
+Because other members of the consensus network probably do not have the feature enabled, you should not use this feature while connecting to the production network. While testing with features forcibly enabled, you should run `rippled` in [Stand-Alone Mode](concept-stand-alone-mode.html).
+
+To forcibly enable a feature, add a `[features]` stanza to your `rippled.cfg` file. In this stanza, add the short names of the features to enable, one per line. For example:
+
+```
+[features]
+MultiSign
+TrustSetAuth
+```
 
 
 
