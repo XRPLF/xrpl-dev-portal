@@ -281,7 +281,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 <h1 id="waiting-for-validation">Waiting for Validation</h1>
 <p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
 <pre><code>'use strict';
-/* import RippleAPI and support libraies*/
+/* import RippleAPI and support libraries */
 const RippleAPI = require('ripple-lib').RippleAPI;
 const assert = require('assert');
 
@@ -372,7 +372,6 @@ api.connect().then(() =&gt; {
     process.exit();
   });
 }).catch(console.error);
-
 </code></pre>
 <p>This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.</p>
 <p>In rare cases (particularly with a large delay or a loss of power), the <code>rippled</code> server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the <code>maxLedgerVersion</code>. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns <code>MissingLedgerHistoryError</code> in this case.</p>

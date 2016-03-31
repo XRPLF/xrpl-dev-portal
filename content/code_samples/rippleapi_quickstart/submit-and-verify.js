@@ -1,5 +1,5 @@
 'use strict';
-/* import RippleAPI and support libraies*/
+/* import RippleAPI and support libraries */
 const RippleAPI = require('ripple-lib').RippleAPI;
 const assert = require('assert');
 
@@ -90,4 +90,3 @@ api.connect().then(() => {
     process.exit();
   });
 }).catch(console.error);
-
