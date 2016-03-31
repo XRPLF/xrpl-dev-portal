@@ -1789,6 +1789,18 @@
 <td>temBAD_QUORUM</td>
 <td>The <a href="#signerlistset">SignerListSet</a> transaction has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
 </tr>
+<tr>
+<td>temUNCERTAIN</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td>temUNKNOWN</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td>temDISABLED</td>
+<td>The transaction requires logic that is currently disabled. Typically this means you are trying to use an <a href="concept-amendments.html">amendment</a> that is not enabled for the current ledger.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="tef-codes">tef Codes</h3>

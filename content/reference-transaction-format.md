@@ -1072,6 +1072,9 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temBAD_WEIGHT | The [SignerListSet](#signerlistset) transaction includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | temBAD_SIGNER | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid: for example, it might be a duplicate, or it might be the account to which the SignerList belongs. |
 | temBAD_QUORUM | The [SignerListSet](#signerlistset) transaction has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
+| temUNCERTAIN | Used internally only. This code should never be returned. |
+| temUNKNOWN | Used internally only. This code should never be returned. |
+| temDISABLED | The transaction requires logic that is currently disabled. Typically this means you are trying to use an [amendment](concept-amendments.html) that is not enabled for the current ledger. |
 
 
 ### tef Codes ###
