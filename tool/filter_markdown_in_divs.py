@@ -9,7 +9,7 @@
 ## compatibility with those.                                                  ##
 ################################################################################
 
-def filter_markdown(md):
+def filter_markdown(md, target=None, page=None):
     """Python markdown requires markdown="1" on HTML block elements
        that contain markdown. AND there's a bug where if you use
        markdown.extensions.extra, it replaces code fences in HTML

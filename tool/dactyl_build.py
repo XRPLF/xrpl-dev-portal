@@ -155,7 +155,7 @@ def parse_markdown(page, target=None, pages=None):
     for filter_name in page_filters:
         if "filter_markdown" in dir(filters[filter_name]):
             logging.info("... applying markdown filter %s" % filter_name)
-            md = filters[filter_name].filter_markdown(md)
+            md = filters[filter_name].filter_markdown(md, target=target, page=page)
 
     # Actually parse the markdown
     logger.info("... parsing markdown...")
@@ -166,7 +166,7 @@ def parse_markdown(page, target=None, pages=None):
     for filter_name in page_filters:
         if "filter_html" in dir(filters[filter_name]):
             logging.info("... applying HTML filter %s" % filter_name)
-            html = filters[filter_name].filter_html(html)
+            html = filters[filter_name].filter_html(html, target=target, page=page)
 
     # Some filters would rather operate on a soup than a string.
     # May as well parse once and re-serialize once.
@@ -176,7 +176,7 @@ def parse_markdown(page, target=None, pages=None):
     for filter_name in page_filters:
         if "filter_soup" in dir(filters[filter_name]):
             logging.info("... applying soup filter %s" % filter_name)
-            filters[filter_name].filter_soup(soup)
+            filters[filter_name].filter_soup(soup, target=target, page=page)
             # ^ the soup filters apply to the same object, passed by reference
 
     # Replace links for any non-default target

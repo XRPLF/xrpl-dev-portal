@@ -9,7 +9,7 @@
 ################################################################################
 import re
 
-def filter_soup(soup):
+def filter_soup(soup, target=None, page=None):
     """replace underscores with dashes in h1,h2,etc. for backwards compatibility"""
     headers = soup.find_all(name=re.compile("h[0-9]"), id=True)
     for h in headers:

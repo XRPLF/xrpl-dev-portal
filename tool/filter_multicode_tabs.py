@@ -10,7 +10,7 @@
 ################################################################################
 import re
 
-def filter_html(html):
+def filter_html(html, target=None, page=None):
     """Uncomment multicode tab divs"""
     MC_START_REGEX = re.compile("<!-- *<div class=['\"]multicode['\"][^>]*> *-->")
     MC_END_REGEX = re.compile("<!-- *</div> *-->")

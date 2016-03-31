@@ -124,6 +124,7 @@
 </aside>
 <main class="main" role="main">
 <div class="content">
+<p style="margin-top: 1em; font-style: italic">Updated for <a href="https://github.com/ripple/ripple-lib/releases/0.16.10" title="view on GitHub">version 0.16.10</a></p>
 <h1 id="introduction">Introduction</h1>
 <p>RippleAPI is the official client library to the Ripple Consensus Ledger. Currently, RippleAPI is only available in JavaScript. 
 Using RippleAPI, you can:</p>
@@ -144,6 +145,14 @@ const api = new RippleAPI({
 });
 api.on('error', (errorCode, errorMessage) =&gt; {
   console.log(errorCode + ': ' + errorMessage);
+});
+api.on('connected', () =&gt; {
+  console.log('connected');
+});
+api.on('disconnected', (code) =&gt; {
+  // code - [close code](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent) sent by the server
+  // will be 1000 if this was normal closure
+  console.log('disconnected, code:', code);
 });
 api.connect().then(() =&gt; {
   /* insert code here */
@@ -1351,7 +1360,7 @@ const api = new RippleAPI();
 <tr>
 <td>type</td>
 <td><a href="#transaction-types">transactionType</a></td>
-<td>The type of the tranasction.</td>
+<td>The type of the transaction.</td>
 </tr>
 <tr>
 <td>specification</td>
@@ -4254,7 +4263,7 @@ const trustline = {
     }
   ]
 };
-return api.preparePayment(address, trustline).then(prepared =&gt;
+return api.prepareTrustline(address, trustline).then(prepared =&gt;
   {/* ... */});
 </code></pre>
 <pre><code class="json">{
@@ -4991,7 +5000,7 @@ return api.combine(signedTransactions);
 <tr>
 <td>resultCode</td>
 <td>string</td>
-<td>The result code returned by rippled. <a href="http://pages.lightthenight.org/gba/SanFran15/ripple">List of tranasction responses</a></td>
+<td>The result code returned by rippled. <a href="https://ripple.com/build/transactions/#full-transaction-response-list">List of transaction responses</a></td>
 </tr>
 <tr>
 <td>resultMessage</td>
@@ -5276,6 +5285,26 @@ return api.computeLedgerHash(ledger);
 });
 </code></pre>
 <pre><code>tooBusy: The server is too busy to help you now.
+</code></pre>
+<h2 id="connected">connected</h2>
+<p>This event is emitted after connection successfully opened.</p>
+<h3 id="example-40">Example</h3>
+<pre><code class="javascript">api.on('connected', () =&gt; {
+  console.log('Connection is open now.');
+});
+</code></pre>
+<h2 id="disconnected">disconnected</h2>
+<p>This event is emitted when connection is closed.</p>
+<h3 id="return-value-32">Return Value</h3>
+<p>The only parameter is a number containing the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent">close code</a> send by the server.</p>
+<h3 id="example-41">Example</h3>
+<pre><code class="javascript">api.on('disconnected', (code) =&gt; {
+  if (code !== 1000) {
+    console.log('Connection is closed due to error.');
+  } else {
+    console.log('Connection is closed normally.');
+  }
+});
 </code></pre>
 </div>
 </main>

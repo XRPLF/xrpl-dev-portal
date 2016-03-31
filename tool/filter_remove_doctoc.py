@@ -8,7 +8,7 @@
 ################################################################################
 
 
-def filter_markdown(md):
+def filter_markdown(md, target=None, page=None):
     """Strip out doctoc Table of Contents for RippleAPI"""
     DOCTOC_START = "<!-- START doctoc generated TOC please keep comment here to allow auto update -->"
     DOCTOC_END = "<!-- END doctoc generated TOC please keep comment here to allow auto update -->"
