@@ -382,9 +382,9 @@ Many API methods require you to specify an instance of the ledger, with the data
 1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
-	* `validated` for the most recent ledger that has been validated by the whole network
-	* `closed` for the most recent ledger that has been closed for modifications and proposed for validation by the node
-	* `current` for the node's current working version of the ledger.
+    * `validated` for the most recent ledger that has been validated by the whole network
+    * `closed` for the most recent ledger that has been closed for modifications and proposed for validation by the node
+    * `current` for the node's current working version of the ledger.
 
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
@@ -435,9 +435,9 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 ```
 {
-	"currency": "USD",
-	"value": "153.75",
-	"issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+    "currency": "USD",
+    "value": "153.75",
+    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
 
@@ -1125,47 +1125,47 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
-		"ledger_current_index": 18539596,
-		"offers": [{
-			"flags": 0,
-			"quality": "0.000000007599140009999998",
-			"seq": 6578020,
-			"taker_gets": "29740867287",
-			"taker_pays": {
-				"currency": "USD",
-				"issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-				"value": "226.0050145327418"
-			}
-		}, {
-			"flags": 0,
-			"quality": "7989247009094510e-27",
-			"seq": 6572128,
-			"taker_gets": "2361918758",
-			"taker_pays": {
-				"currency": "XAU",
-				"issuer": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
-				"value": "0.01886995237307572"
-			}
-		}, {
-			"flags": 0,
-			"quality": "0.00000004059594001318974",
-			"seq": 6576905,
-			"taker_gets": "3892952574",
-			"taker_pays": {
-				"currency": "CNY",
-				"issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
-				"value": "158.0380691682966"
-			}
-		},
+    "result": {
+        "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+        "ledger_current_index": 18539596,
+        "offers": [{
+            "flags": 0,
+            "quality": "0.000000007599140009999998",
+            "seq": 6578020,
+            "taker_gets": "29740867287",
+            "taker_pays": {
+                "currency": "USD",
+                "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                "value": "226.0050145327418"
+            }
+        }, {
+            "flags": 0,
+            "quality": "7989247009094510e-27",
+            "seq": 6572128,
+            "taker_gets": "2361918758",
+            "taker_pays": {
+                "currency": "XAU",
+                "issuer": "rrh7rf1gV2pXAoqA8oYbpHd8TKv5ZQeo67",
+                "value": "0.01886995237307572"
+            }
+        }, {
+            "flags": 0,
+            "quality": "0.00000004059594001318974",
+            "seq": 6576905,
+            "taker_gets": "3892952574",
+            "taker_pays": {
+                "currency": "CNY",
+                "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+                "value": "158.0380691682966"
+            }
+        },
 
-		...
+        ...
 
-		],
-		"status": "success",
-		"validated": false
-	}
+        ],
+        "status": "success",
+        "validated": false
+    }
 }
 ```
 
@@ -3016,30 +3016,30 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"ledger": {
-			"accepted": true,
-			"account_hash": "B089E7CD4F5167249951611AAEC863D4BF84FF098500E9CB50561F1A89EED825",
-			"close_flags": 0,
-			"close_time": 508541222,
-			"close_time_human": "2016-Feb-11 21:27:02",
-			"close_time_resolution": 10,
-			"closed": true,
-			"hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
-			"ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
-			"ledger_index": "18851543",
-			"parent_close_time": 508541221,
-			"parent_hash": "C382DB117F2D5AAECFBFB43EA509F8E56D6E1D1297CE00C0D02A3EE695ABB78F",
-			"seqNum": "18851543",
-			"totalCoins": "99998102795090646",
-			"total_coins": "99998102795090646",
-			"transaction_hash": "BEC71A3CAD11BFC4E4013CD109F220E0850E9A3808B15FAA6DAE4D898970EFAF"
-		},
-		"ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
-		"ledger_index": 18851543,
-		"status": "success",
-		"validated": true
-	}
+    "result": {
+        "ledger": {
+            "accepted": true,
+            "account_hash": "B089E7CD4F5167249951611AAEC863D4BF84FF098500E9CB50561F1A89EED825",
+            "close_flags": 0,
+            "close_time": 508541222,
+            "close_time_human": "2016-Feb-11 21:27:02",
+            "close_time_resolution": 10,
+            "closed": true,
+            "hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+            "ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+            "ledger_index": "18851543",
+            "parent_close_time": 508541221,
+            "parent_hash": "C382DB117F2D5AAECFBFB43EA509F8E56D6E1D1297CE00C0D02A3EE695ABB78F",
+            "seqNum": "18851543",
+            "totalCoins": "99998102795090646",
+            "total_coins": "99998102795090646",
+            "transaction_hash": "BEC71A3CAD11BFC4E4013CD109F220E0850E9A3808B15FAA6DAE4D898970EFAF"
+        },
+        "ledger_hash": "85E6D422F1A3AE0BEA315C4F09CD0B45022312A4BBF0D308246E901536B61157",
+        "ledger_index": 18851543,
+        "status": "success",
+        "validated": true
+    }
 }
 ```
 
@@ -6301,6 +6301,8 @@ __*Caution:*__ If this command results in an error messages, the message can con
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled.
+
 #### Request Format ####
 An example of the request format:
 
@@ -6310,24 +6312,24 @@ An example of the request format:
 
 ```
 {
-	"id": "sign_for_example",
-	"command": "sign_for",
-	"account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
-	"seed": "s████████████████████████████",
-	"key_type": "ed25519",
-	"tx_json": {
-		"TransactionType": "TrustSet",
-		"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-		"Flags": 262144,
-		"LimitAmount": {
-			"currency": "USD",
-			"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-			"value": "100"
-		},
-		"Sequence": 2,
-		"SigningPubKey": "",
-		"Fee": "30000"
-	}
+    "id": "sign_for_example",
+    "command": "sign_for",
+    "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
+    "seed": "s████████████████████████████",
+    "key_type": "ed25519",
+    "tx_json": {
+        "TransactionType": "TrustSet",
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Flags": 262144,
+        "LimitAmount": {
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "100"
+        },
+        "Sequence": 2,
+        "SigningPubKey": "",
+        "Fee": "30000"
+    }
 }
 ```
 
@@ -6363,17 +6365,17 @@ POST http://localhost:5005/
 ```
 #Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
 rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
-	"TransactionType": "TrustSet",
-	"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-	"Flags": 262144,
-	"LimitAmount": {
-		"currency": "USD",
-		"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-		"value": "100"
-	},
-	"Sequence": 2,
-	"SigningPubKey": "",
-	"Fee": "30000"
+    "TransactionType": "TrustSet",
+    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    "Flags": 262144,
+    "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "value": "100"
+    },
+    "Sequence": 2,
+    "SigningPubKey": "",
+    "Fee": "30000"
 }'
 ```
 
@@ -6728,13 +6730,13 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| engine_result | String | Code indicating the status of the transaction, for example `tesSUCCESS` |
-| engine_result_code | Integer | Numeric code indicating the status of the transaction, directly correlated to `engine_result` |
-| engine_result_message | String | Human-readable explanation of the status of the transaction |
+| engine_result | String | Code indicating the preliminary result of the transaction, for example `tesSUCCESS` |
+| engine_result_code | Integer | Numeric code indicating the preliminary result of the transaction, directly correlated to `engine_result` |
+| engine_result_message | String | Human-readable explanation of the transaction's preliminary result |
 | tx_blob | String | The complete transaction in hex string format |
 | tx_json | Object | The complete transaction in JSON format |
 
-__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does not necessarily indicate that the transaction has taken place. There are many cases that can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the network since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](reference-transaction-format.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+__*Caution:*__ Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](reference-transaction-format.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 __*Caution:*__ If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
 
@@ -6759,75 +6761,220 @@ __*Caution:*__ If this command results in an error messages, the message can con
 ## submit_multisigned ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (TODO: finish this)
+The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
+
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled.
 
 #### Request Format ####
 An example of the request format:
 
-<div class='multicode'>
+<!-- <div class='multicode'> -->
 
 *WebSocket*
 
 ```
-//actual example here
+{
+    "id": "submit_multisigned_example",
+    "command": "submit_multisigned",
+    "tx_json": {
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee": "30000",
+        "Flags": 262144,
+        "LimitAmount": {
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "0"
+        },
+        "Sequence": 4,
+        "Signers": [{
+            "Signer": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+            }
+        }, {
+            "Signer": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
+                "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+            }
+        }],
+        "SigningPubKey": "",
+        "TransactionType": "TrustSet",
+        "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+    }
+}
 ```
 
-*Second tab*
+*JSON-RPC*
 
 ```
-//second example here
+{
+    "method": "submit_multisigned",
+    "params": [
+        {
+            "tx_json": {
+                "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+                "Fee": "30000",
+                "Flags": 262144,
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                    "value": "0"
+                },
+                "Sequence": 4,
+                "Signers": [
+                    {
+                        "Signer": {
+                            "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                            "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                            "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+                        }
+                    },
+                    {
+                        "Signer": {
+                            "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                            "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
+                            "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+                        }
+                    }
+                ],
+                "SigningPubKey": "",
+                "TransactionType": "TrustSet",
+                "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+            }
+        }
+    ]
+}
 ```
 
-</div>
+*Commandline*
+
+```
+#Syntax: submit_multisigned <tx_json>
+rippled submit_multisigned '{
+    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    "Fee": "30000",
+    "Flags": 262144,
+    "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "value": "0"
+    },
+    "Sequence": 4,
+    "Signers": [
+        {
+            "Signer": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+            }
+        },
+        {
+            "Signer": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
+                "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+            }
+        }
+    ],
+    "SigningPubKey": "",
+    "TransactionType": "TrustSet",
+    "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+}'
+```
+
+<!-- </div> -->
 
 The request includes the following parameters:
 
-| Field | Type | Description |
-|-------|------|-------------|
-
-
-
-
-
-
-
+| Field    | Type   | Description |
+|----------|--------|-------------|
+| tx\_json | Object | [Transaction in JSON format](reference-transaction-format.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](reference-ledger-format.html#signerlist). |
+| fail\_hard | Boolean | (Optional) If true, (TODO) whatever fail_hard actually does. |
 
 #### Response Format ####
 
 An example of a successful response:
 
-<div class='multicode'>
+<!-- <div class='multicode'> -->
 
 *WebSocket*
 
 ```
-//actual example here
+//TODO: actual example here
 ```
 
-*Second tab*
+*JSON-RPC*
 
 ```
-//second example here
+200 OK
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "120014220004000024000000046380000000000000000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF74473045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B78114204288D2E47F8EF6C99BCC457966320D12409711E1E010732103398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C174473045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D0881143A4C02EA95AD6AC3BED92FA036E0BBFB712C030CE1F1",
+        "tx_json": {
+            "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+            "Fee": "30000",
+            "Flags": 262144,
+            "LimitAmount": {
+                "currency": "USD",
+                "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "value": "0"
+            },
+            "Sequence": 4,
+            "Signers": [
+                {
+                    "Signer": {
+                        "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                        "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                        "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+                    }
+                },
+                {
+                    "Signer": {
+                        "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                        "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
+                        "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+                    }
+                }
+            ],
+            "SigningPubKey": "",
+            "TransactionType": "TrustSet",
+            "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+        }
+    }
+}
 ```
 
-</div>
+<!-- </div> -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-
-
-
-
+| engine\_result | String | Code indicating the preliminary result of the transaction, for example `tesSUCCESS` |
+| engine\_result\_code | Integer | Numeric code indicating the preliminary result of the transaction, directly correlated to `engine_result` |
+| engine\_result\_message | String | Human-readable explanation of the preliminary transaction result |
+| tx\_blob | String | The complete [transaction](reference-transaction-format.html) in hex string format |
+| tx\_json | Object | The complete [transaction](reference-transaction-format.html) in JSON format |
 
 #### Possible Errors ####
 
-* Any of the [universal error types](#universal-errors).
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
-* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+TODO: confirm this list (copy-pasta from traditional submit)
 
+* Any of the [universal error types](#universal-errors).
+* `invalidTransaction` - The transaction is malformed or otherwise invalid.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
+* `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 
 
 
@@ -7338,12 +7485,12 @@ Transaction stream messages have the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
-| engine_result | String | String [Transaction result code](reference-transaction-format.html#result-categories) |
-| engine_result_code | Number | Numeric [transaction response code](reference-transaction-format.html#result-categories), if applicable. |
-| engine_result_message | String | Human-readable explanation for the transaction response |
-| ledger_current_index | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
-| ledger_hash | String | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
-| ledger_index | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
+| engine\_result | String | String [Transaction result code](reference-transaction-format.html#result-categories) |
+| engine\_result\_code | Number | Numeric [transaction response code](reference-transaction-format.html#result-categories), if applicable. |
+| engine\_result\_message | String | Human-readable explanation for the transaction response |
+| ledger\_current\_index | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
+| ledger\_hash | String | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
+| ledger\_index | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
 | meta | Object | (Omitted for unvalidated transactions) Various metadata about the transaction, including which ledger entries it affected |
 | transaction | Object | The [definition of the transaction](reference-transaction-format.html) in JSON format |
 | validated | Boolean | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
@@ -7357,13 +7504,13 @@ Example of a Peer Status stream message:
 
 ```
 {
-	"action": "CLOSING_LEDGER",
-	"date": 508546525,
-	"ledger_hash": "4D4CD9CD543F0C1EF023CC457F5BEFEA59EEF73E4552542D40E7C4FA08D3C320",
-	"ledger_index": 18853106,
-	"ledger_index_max": 18853106,
-	"ledger_index_min": 18852082,
-	"type": "peerStatusChange"
+    "action": "CLOSING_LEDGER",
+    "date": 508546525,
+    "ledger_hash": "4D4CD9CD543F0C1EF023CC457F5BEFEA59EEF73E4552542D40E7C4FA08D3C320",
+    "ledger_index": 18853106,
+    "ledger_index_max": 18853106,
+    "ledger_index_min": 18852082,
+    "type": "peerStatusChange"
 }
 ```
 
@@ -7399,126 +7546,126 @@ Example order book stream message:
 
 ```
 {
-	"engine_result": "tesSUCCESS",
-	"engine_result_code": 0,
-	"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-	"ledger_hash": "08547DD866F099CCB3666F113116B7AA2DF520FA2E3011DD1FF9C9C04A6C7C3E",
-	"ledger_index": 18852105,
-	"meta": {
-		"AffectedNodes": [{
-			"ModifiedNode": {
-				"FinalFields": {
-					"Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-					"AccountTxnID": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
-					"Balance": "3070332374272",
-					"Flags": 0,
-					"OwnerCount": 23,
-					"RegularKey": "r9S56zu6QeJD5d8A7QMfLAeYavgB9dhaX4",
-					"Sequence": 12142921
-				},
-				"LedgerEntryType": "AccountRoot",
-				"LedgerIndex": "2880A9B4FB90A306B576C2D532BFE390AB3904642647DCF739492AA244EF46D1",
-				"PreviousFields": {
-					"AccountTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
-					"Balance": "3070332385272",
-					"Sequence": 12142920
-				},
-				"PreviousTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
-				"PreviousTxnLgrSeq": 18852102
-			}
-		}, {
-			"ModifiedNode": {
-				"FinalFields": {
-					"Flags": 0,
-					"IndexPrevious": "00000000000022D2",
-					"Owner": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-					"RootIndex": "F435FBBEC9654204D7151A01E686BAA8CB325A472D7B61C7916EA58B59355767"
-				},
-				"LedgerEntryType": "DirectoryNode",
-				"LedgerIndex": "29A543B6681AD7FC8AFBD1386DAE7385F02F9B8C4756A467DF6834AB54BBC9DB"
-			}
-		}, {
-			"ModifiedNode": {
-				"FinalFields": {
-					"ExchangeRate": "4C1BA999A513EF78",
-					"Flags": 0,
-					"RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-					"TakerGetsCurrency": "0000000000000000000000000000000000000000",
-					"TakerGetsIssuer": "0000000000000000000000000000000000000000",
-					"TakerPaysCurrency": "0000000000000000000000005553440000000000",
-					"TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
-				},
-				"LedgerEntryType": "DirectoryNode",
-				"LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78"
-			}
-		}, {
-			"CreatedNode": {
-				"LedgerEntryType": "Offer",
-				"LedgerIndex": "92E235EE80D2B28A89BEE2C905D4545C2A004FD5D4097679C8A3FB25507FD9EB",
-				"NewFields": {
-					"Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-					"BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-					"Expiration": 508543674,
-					"OwnerNode": "00000000000022F4",
-					"Sequence": 12142920,
-					"TakerGets": "6537121438",
-					"TakerPays": {
-						"currency": "USD",
-						"issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-						"value": "50.9"
-					}
-				}
-			}
-		}, {
-			"DeletedNode": {
-				"FinalFields": {
-					"Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-					"BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-					"BookNode": "0000000000000000",
-					"Expiration": 508543133,
-					"Flags": 0,
-					"OwnerNode": "00000000000022F4",
-					"PreviousTxnID": "58B3279C2D56AAC3D9B06106E637C01E3D911E9D31E2FE4EA0D886AC9F4DEE1E",
-					"PreviousTxnLgrSeq": 18851945,
-					"Sequence": 12142889,
-					"TakerGets": "6537121438",
-					"TakerPays": {
-						"currency": "USD",
-						"issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-						"value": "50.9"
-					}
-				},
-				"LedgerEntryType": "Offer",
-				"LedgerIndex": "D3436CE21925E1CB12C5C444963B47D7EA0CD9A0E387926DC76B23FE5CD1C15F"
-			}
-		}],
-		"TransactionIndex": 26,
-		"TransactionResult": "tesSUCCESS"
-	},
-	"status": "closed",
-	"transaction": {
-		"Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-		"Expiration": 508543674,
-		"Fee": "11000",
-		"Flags": 2147483648,
-		"LastLedgerSequence": 18852106,
-		"OfferSequence": 12142889,
-		"Sequence": 12142920,
-		"SigningPubKey": "034841BF24BD72C7CC371EBD87CCBF258D8ADB05C18DE207130364A97D8A3EA524",
-		"TakerGets": "6537121438",
-		"TakerPays": {
-			"currency": "USD",
-			"issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-			"value": "50.9"
-		},
-		"TransactionType": "OfferCreate",
-		"TxnSignature": "3045022100B9AD678A773FB61F8F9B565713C80CBF187A2F9EB8E9CE0DAC7B839CA6F4B04C02200613D173A0636CD9BE13F2E3EBD13A16932B5B7D8A96BB5F6D561CA5CDBC4AD3",
-		"date": 508543090,
-		"hash": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
-		"owner_funds": "3070197374272"
-	},
-	"type": "transaction",
-	"validated": true
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "ledger_hash": "08547DD866F099CCB3666F113116B7AA2DF520FA2E3011DD1FF9C9C04A6C7C3E",
+    "ledger_index": 18852105,
+    "meta": {
+        "AffectedNodes": [{
+            "ModifiedNode": {
+                "FinalFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "AccountTxnID": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
+                    "Balance": "3070332374272",
+                    "Flags": 0,
+                    "OwnerCount": 23,
+                    "RegularKey": "r9S56zu6QeJD5d8A7QMfLAeYavgB9dhaX4",
+                    "Sequence": 12142921
+                },
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "2880A9B4FB90A306B576C2D532BFE390AB3904642647DCF739492AA244EF46D1",
+                "PreviousFields": {
+                    "AccountTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
+                    "Balance": "3070332385272",
+                    "Sequence": 12142920
+                },
+                "PreviousTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
+                "PreviousTxnLgrSeq": 18852102
+            }
+        }, {
+            "ModifiedNode": {
+                "FinalFields": {
+                    "Flags": 0,
+                    "IndexPrevious": "00000000000022D2",
+                    "Owner": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "RootIndex": "F435FBBEC9654204D7151A01E686BAA8CB325A472D7B61C7916EA58B59355767"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "29A543B6681AD7FC8AFBD1386DAE7385F02F9B8C4756A467DF6834AB54BBC9DB"
+            }
+        }, {
+            "ModifiedNode": {
+                "FinalFields": {
+                    "ExchangeRate": "4C1BA999A513EF78",
+                    "Flags": 0,
+                    "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+                    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+                    "TakerPaysCurrency": "0000000000000000000000005553440000000000",
+                    "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78"
+            }
+        }, {
+            "CreatedNode": {
+                "LedgerEntryType": "Offer",
+                "LedgerIndex": "92E235EE80D2B28A89BEE2C905D4545C2A004FD5D4097679C8A3FB25507FD9EB",
+                "NewFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "Expiration": 508543674,
+                    "OwnerNode": "00000000000022F4",
+                    "Sequence": 12142920,
+                    "TakerGets": "6537121438",
+                    "TakerPays": {
+                        "currency": "USD",
+                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+                        "value": "50.9"
+                    }
+                }
+            }
+        }, {
+            "DeletedNode": {
+                "FinalFields": {
+                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
+                    "BookNode": "0000000000000000",
+                    "Expiration": 508543133,
+                    "Flags": 0,
+                    "OwnerNode": "00000000000022F4",
+                    "PreviousTxnID": "58B3279C2D56AAC3D9B06106E637C01E3D911E9D31E2FE4EA0D886AC9F4DEE1E",
+                    "PreviousTxnLgrSeq": 18851945,
+                    "Sequence": 12142889,
+                    "TakerGets": "6537121438",
+                    "TakerPays": {
+                        "currency": "USD",
+                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+                        "value": "50.9"
+                    }
+                },
+                "LedgerEntryType": "Offer",
+                "LedgerIndex": "D3436CE21925E1CB12C5C444963B47D7EA0CD9A0E387926DC76B23FE5CD1C15F"
+            }
+        }],
+        "TransactionIndex": 26,
+        "TransactionResult": "tesSUCCESS"
+    },
+    "status": "closed",
+    "transaction": {
+        "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
+        "Expiration": 508543674,
+        "Fee": "11000",
+        "Flags": 2147483648,
+        "LastLedgerSequence": 18852106,
+        "OfferSequence": 12142889,
+        "Sequence": 12142920,
+        "SigningPubKey": "034841BF24BD72C7CC371EBD87CCBF258D8ADB05C18DE207130364A97D8A3EA524",
+        "TakerGets": "6537121438",
+        "TakerPays": {
+            "currency": "USD",
+            "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+            "value": "50.9"
+        },
+        "TransactionType": "OfferCreate",
+        "TxnSignature": "3045022100B9AD678A773FB61F8F9B565713C80CBF187A2F9EB8E9CE0DAC7B839CA6F4B04C02200613D173A0636CD9BE13F2E3EBD13A16932B5B7D8A96BB5F6D561CA5CDBC4AD3",
+        "date": 508543090,
+        "hash": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
+        "owner_funds": "3070197374272"
+    },
+    "type": "transaction",
+    "validated": true
 }
 ```
 
