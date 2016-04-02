@@ -40,9 +40,30 @@ It is theoretically possible (but extremely unlikely) that a `tfLostMajority` En
 
 Operators of `rippled` validators can choose which amendments to support or reject using the [`feature` command](reference-rippled.html#feature). This decides which amendments the validator votes for in the [amendment process](#amendment-process). By default, `rippled` votes in favor of every amendment it knows about.
 
-The operator of a `rippled` validator can "veto" an amendment using the [`feature` command](reference-rippled.html#feature). In this case, that validator never sends a vote in favor of the amendment. If enough trusted validators veto an amendment, then the amendment does not apply.
+The operator of a `rippled` validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.
 
 As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple on releasing new features.
+
+### Configuring Amendment Voting ###
+
+You can temporarily configure an amendment using the [`feature` command](reference-rippled.html#feature). To make a persistent change to your server's support for an amendment, modify your server's `rippled.cfg` file.
+
+Use the `[veto_amendments]` stanza to list amendments you do not want the server to vote for. Each line should contains one amendment's unique ID, optionally followed by the short name for the amendment. For example:
+
+```
+[veto_amendments]
+C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 Tickets
+DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 SusPay
+```
+
+Use the `[amendments]` stanza to list amendments you want to vote for. (Even if you do not list them here, by default a server votes for all the amendments it knows how to apply.) Each line should contains one amendment's unique ID, optionally followed by the short name for the amendment. For example:
+
+```
+[amendments]
+4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 MultiSign
+42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE FeeEscalation
+```
+
 
 ## Testing Amendments ##
 
