@@ -756,7 +756,9 @@ Null method
 <li><a href="#server-info"><code>server_info</code> - Retrieve status of the server in human-readable format</a></li>
 <li><a href="#server-state"><code>server_state</code> - Retrieve status of the server in machine-readable format</a></li>
 <li><a href="#sign"><code>sign</code> - Cryptographically sign a transaction</a></li>
+<li><a href="#sign-for"><code>sign_for</code> - Contribute to a multi-signature</a></li>
 <li><a href="#submit"><code>submit</code> - Send a transaction to the network</a></li>
+<li><a href="#submit-multisigned"><code>submit_multisigned</code> - Send a multi-signed transaction to the network</a></li>
 <li><a href="#subscribe"><code>subscribe</code> - Listen for updates about a particular subject</a></li>
 <li><a href="#transaction-entry"><code>transaction_entry</code> - Retrieve info about a transaction from a particular ledger version</a></li>
 <li><a href="#tx"><code>tx</code> - Retrieve info about a transaction from all the ledgers on hand</a></li>
@@ -769,6 +771,7 @@ Null method
 <li><a href="#can-delete"><code>can_delete</code> - Allow online deletion of ledgers up to a specific ledger</a></li>
 <li><a href="#connect"><code>connect</code> - Force the rippled server to connect to a specific peer</a></li>
 <li><a href="#consensus-info"><code>consensus_info</code> - Get information about the state of consensus as it happens</a></li>
+<li><a href="#feature"><code>feature</code> - Get information about protocol amendments</a></li>
 <li><a href="#fetch-info"><code>fetch_info</code> - Get information about the server's sync with the network</a></li>
 <li><a href="#get-counts"><code>get_counts</code> - Get statistics about the server's internals and memory usage</a></li>
 <li><a href="#ledger-accept"><code>ledger_accept</code> - Close and advance the ledger in stand-alone mode</a></li>
@@ -7848,7 +7851,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <div class="multicode">
 <p><em>WebSocket</em></p>
 <pre><code>{
-    "id": "submit_multisigned_example",
+    "id": "submit_multisigned_example"
     "command": "submit_multisigned",
     "tx_json": {
         "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -7857,25 +7860,25 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         "LimitAmount": {
             "currency": "USD",
             "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-            "value": "0"
+            "value": "100"
         },
-        "Sequence": 4,
+        "Sequence": 2,
         "Signers": [{
             "Signer": {
                 "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
                 "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                "TxnSignature": "3045022100CC9C56DF51251CB04BB047E5F3B5EF01A0F4A8A549D7A20A7402BF54BA744064022061EF8EF1BCCBF144F480B32508B1D10FD4271831D5303F920DE41C64671CB5B7"
+                "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
             }
         }, {
             "Signer": {
-                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-                "SigningPubKey": "03398A4EDAE8EE009A5879113EAA5BA15C7BB0F612A87F4103E793AC919BD1E3C1",
-                "TxnSignature": "3045022100FEE8D8FA2D06CE49E9124567DCA265A21A9F5465F4A9279F075E4CE27E4430DE022042D5305777DA1A7801446780308897699412E4EDF0E1AEFDF3C8A0532BDE4D08"
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
             }
         }],
         "SigningPubKey": "",
         "TransactionType": "TrustSet",
-        "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
+        "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
     }
 }
 </code></pre>
@@ -7970,7 +7973,7 @@ rippled submit_multisigned '{
 <tr>
 <td>fail_hard</td>
 <td>Boolean</td>
-<td>(Optional) If true, (TODO) whatever fail_hard actually does.</td>
+<td>(Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers.</td>
 </tr>
 </tbody>
 </table>
@@ -7978,7 +7981,47 @@ rippled submit_multisigned '{
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
-<pre><code>//TODO: actual example here
+<pre><code>{
+  "id": "submit_multisigned_example",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B744630440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
+    "tx_json": {
+      "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+      "Fee": "30000",
+      "Flags": 262144,
+      "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "value": "100"
+      },
+      "Sequence": 2,
+      "Signers": [
+        {
+          "Signer": {
+            "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+            "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+            "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+          }
+        },
+        {
+          "Signer": {
+            "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+            "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+            "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+          }
+        }
+      ],
+      "SigningPubKey": "",
+      "TransactionType": "TrustSet",
+      "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+    }
+  }
+}
 </code></pre>
 <p><em>JSON-RPC</em></p>
 <pre><code>200 OK
@@ -8061,17 +8104,11 @@ rippled submit_multisigned '{
 </tbody>
 </table>
 <h4 id="possible-errors-26">Possible Errors</h4>
-<p>TODO: confirm this list (copy-pasta from traditional submit)</p>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>invalidTransaction</code> - The transaction is malformed or otherwise invalid.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>highFee</code> - The <code>fee_mult_max</code> parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)</li>
-<li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)</li>
-<li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)</li>
-<li><code>internalTransaction</code> - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
-<li><code>internalSubmit</code> - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
-<li><code>internalJson</code> - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.</li>
+<li><code>srcActMalformed</code> - The <code>Account</code> field from the <code>tx_json</code> was invalid or missing.</li>
+<li><code>internal</code> - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.</li>
 </ul>
 <h2 id="book-offers">book_offers</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp" title="Source">[Source]<br/></a></p>
@@ -10338,11 +10375,201 @@ Connecting to 127.0.0.1:5005
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
+<h2 id="feature">feature</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp" title="Source">[Source]<br/></a></p>
+<p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>.</p>
+<p>You can use the <code>feature</code> command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the <code>rippled.cfg</code> file. See <a href="concept-amendments.html#configuring-amendment-voting">Configuring Amendment Voting</a> for more information.</p>
+<p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<h4 id="request-format-36">Request Format</h4>
+<p>An example of the request format:</p>
+<div class="multicode">
+<p><em>WebSocket - list all</em></p>
+<pre><code>{
+  "id": "list_all_features",
+  "command": "feature"
+}
+</code></pre>
+<p><em>WebSocket - reject</em></p>
+<pre><code>{
+  "id": "reject_multi_sign",
+  "command": "feature",
+  "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+  "vetoed": true
+}
+</code></pre>
+<p><em>JSON-RPC</em></p>
+<pre><code>{
+    "method": "feature",
+    "params": [
+        {
+            "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+            "vetoed": false
+        }
+    ]
+}
+</code></pre>
+<p><em>Commandline</em></p>
+<pre><code>#Syntax: feature [&lt;feature_id&gt; [accept|reject]]
+rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
+</code></pre>
+</div>
+<p>The request includes the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feature</td>
+<td>String</td>
+<td>(Optional) The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments.</td>
+</tr>
+<tr>
+<td>vetoed</td>
+<td>Boolean</td>
+<td>(Optional; ignored unless <code>feature</code> also specified) If true, instructs the server to vote against the amendment specified by <code>feature</code>. If false, instructs the server to vote in favor of the amendment.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the <code>feature</code> field. For example, you might want to do this if you plan to upgrade soon to a new <code>rippled</code> version that <em>does</em> support the amendment.</p>
+<h4 id="response-format-34">Response Format</h4>
+<p>An example of a successful response:</p>
+<div class="multicode">
+<p><em>WebSocket - list all</em></p>
+<pre><code>{
+  "id": "list_all_features",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "features": {
+      "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE": {
+        "enabled": false,
+        "name": "FeeEscalation",
+        "supported": true,
+        "vetoed": false
+      },
+      "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+        "enabled": false,
+        "name": "MultiSign",
+        "supported": true,
+        "vetoed": false
+      },
+      "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC": {
+        "enabled": false,
+        "name": "TrustSetAuth",
+        "supported": true,
+        "vetoed": false
+      },
+      "C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490": {
+        "enabled": false,
+        "name": "Tickets",
+        "supported": true,
+        "vetoed": false
+      },
+      "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13": {
+        "enabled": false,
+        "name": "SusPay",
+        "supported": true,
+        "vetoed": false
+      }
+    }
+  }
+}
+</code></pre>
+<p><em>WebSocket - reject</em></p>
+<pre><code>{
+    "id": "reject_multi_sign",
+    "status": "success",
+    "type": "response",
+    "result": {
+        "features": {
+            "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+                "enabled": false,
+                "name": "MultiSign",
+                "supported": true,
+                "vetoed": true
+            }
+        }
+    }
+}
+</code></pre>
+<p><em>JSON-RPC</em></p>
+<pre><code>200 OK
+{
+    "result": {
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+            "enabled": false,
+            "name": "MultiSign",
+            "supported": true,
+            "vetoed": false
+        },
+        "status": "success"
+    }
+}
+</code></pre>
+<p><em>Commandline</em></p>
+<pre><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result": {
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+            "enabled": false,
+            "name": "MultiSign",
+            "supported": true,
+            "vetoed": false
+        },
+        "status": "success"
+    }
+}
+</code></pre>
+</div>
+<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing <strong>a map of amendments</strong> as a JSON object. The keys of the object are amendment IDs. The values for each key are <em>amendment objects</em> that describe the status of the amendment with that ID. If the request specified a <code>feature</code>, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>Boolean</td>
+<td>Whether this amendment is currently enabled in the latest ledger.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>(May be omitted) The human-readable name for this amendment, if known.</td>
+</tr>
+<tr>
+<td>supported</td>
+<td>Boolean</td>
+<td>Whether this server knows how to apply this amendment.</td>
+</tr>
+<tr>
+<td>vetoed</td>
+<td>Boolean</td>
+<td>Whether the server has been instructed to vote against this amendment.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caution:</strong> The <code>name</code> for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.</p>
+<h4 id="possible-errors-35">Possible Errors</h4>
+<ul>
+<li>Any of the <a href="#universal-errors">universal error types</a>.</li>
+<li><code>badFeature</code> - The <code>feature</code> specified was invalidly formatted, or the server does not know an amendment with that name.</li>
+</ul>
 <h2 id="get-counts">get_counts</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.</p>
 <p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-36">Request Format</h4>
+<h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10384,7 +10611,7 @@ rippled get_counts 100
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-34">Response Format</h4>
+<h4 id="response-format-35">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10487,7 +10714,7 @@ Connecting to 127.0.0.1:5005
 </tbody>
 </table>
 <p>For most other entries, the value indicates the number of objects of that type currently in memory.</p>
-<h4 id="possible-errors-35">Possible Errors</h4>
+<h4 id="possible-errors-36">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -10496,7 +10723,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.</p>
 <p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-37">Request Format</h4>
+<h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10555,7 +10782,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-35">Response Format</h4>
+<h4 id="response-format-36">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10586,7 +10813,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-36">Possible Errors</h4>
+<h4 id="possible-errors-37">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>internal</code> if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return <code>invalidParams</code> instead.)</li>
@@ -10595,7 +10822,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>log_level</code> command changes the <code>rippled</code> server's logging verbosity, or returns the current logging level for each category (called a <em>partition</em>) of log messages.</p>
 <p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-38">Request Format</h4>
+<h4 id="request-format-39">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10633,7 +10860,7 @@ rippled log_level PathRequest debug
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-36">Response Format</h4>
+<h4 id="response-format-37">Response Format</h4>
 <p>Examples of successful responses:</p>
 <div class="multicode">
 <p><em>Commandline (set log level)</em></p>
@@ -10725,7 +10952,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-37">Possible Errors</h4>
+<h4 id="possible-errors-38">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -10734,7 +10961,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>logrotate</code> command closes and reopens the log file. This is intended to facilitate log rotation on Linux file systems.</p>
 <p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-39">Request Format</h4>
+<h4 id="request-format-40">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10748,7 +10975,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-37">Response Format</h4>
+<h4 id="response-format-38">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10790,7 +11017,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-38">Possible Errors</h4>
+<h4 id="possible-errors-39">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -10798,7 +11025,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="tutorial-rippled-setup.html#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
 <p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-40">Request Format</h4>
+<h4 id="request-format-41">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10841,7 +11068,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 </tbody>
 </table>
 <p><strong>Note:</strong> The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the <code>secret</code> when generating new credentials for the first time.</p>
-<h4 id="response-format-38">Response Format</h4>
+<h4 id="response-format-39">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10894,7 +11121,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-39">Possible Errors</h4>
+<h4 id="possible-errors-40">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>badSeed</code> - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.</li>
@@ -10903,7 +11130,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>validation_seed</code> command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.</p>
 <p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-41">Request Format</h4>
+<h4 id="request-format-42">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10935,7 +11162,7 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-39">Response Format</h4>
+<h4 id="response-format-40">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10989,7 +11216,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-40">Possible Errors</h4>
+<h4 id="possible-errors-41">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>badSeed</code> - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.</li>
@@ -10998,7 +11225,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>peers</code> command returns a list of all other <code>rippled</code> servers currently connected to this one, including information on their connection and sync status.</p>
 <p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-42">Request Format</h4>
+<h4 id="request-format-43">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11012,7 +11239,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no additional parameters.</p>
-<h4 id="response-format-40">Response Format</h4>
+<h4 id="response-format-41">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11472,7 +11699,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-41">Possible Errors</h4>
+<h4 id="possible-errors-42">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -11480,7 +11707,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>print</code> command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.</p>
 <p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-43">Request Format</h4>
+<h4 id="request-format-44">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11494,7 +11721,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-41">Response Format</h4>
+<h4 id="response-format-42">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>Commandline</em></p>
@@ -11683,7 +11910,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. Additional fields in the result depend on the internal state of the <code>rippled</code> server. The results of this command are subject to change without notice.</p>
-<h4 id="possible-errors-42">Possible Errors</h4>
+<h4 id="possible-errors-43">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -11692,7 +11919,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ping">ping</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ping</code> command returns an acknowledgement, so that clients can test the connection status and latency.</p>
-<h4 id="request-format-44">Request Format</h4>
+<h4 id="request-format-45">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11716,7 +11943,7 @@ rippled ping
 </div>
 <p><a class="button" href="ripple-api-tool.html#ping">Try it! &gt;</a></p>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-42">Response Format</h4>
+<h4 id="response-format-43">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11737,14 +11964,14 @@ rippled ping
 </code></pre>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p>
-<h4 id="possible-errors-43">Possible Errors</h4>
+<h4 id="possible-errors-44">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <h2 id="random">random</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p>
-<h4 id="request-format-45">Request Format</h4>
+<h4 id="request-format-46">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11767,7 +11994,7 @@ rippled random
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-43">Response Format</h4>
+<h4 id="response-format-44">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11807,14 +12034,14 @@ rippled random
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-44">Possible Errors</h4>
+<h4 id="possible-errors-45">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>internal</code> - Some internal error occurred, possibly relating to the random number generator.</li>
 </ul>
 <h2 id="json">json</h2>
 <p>The <code>json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.</p>
-<h4 id="request-format-46">Request Format</h4>
+<h4 id="request-format-47">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>Commandline</em></p>
@@ -11822,7 +12049,7 @@ rippled random
 rippled -q json ledger_closed '{}'
 </code></pre>
 </div>
-<h4 id="response-format-44">Response Format</h4>
+<h4 id="response-format-45">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11840,7 +12067,7 @@ rippled -q json ledger_closed '{}'
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>connect</code> command forces the rippled server to connect to a specific peer rippled server.</p>
 <p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-47">Request Format</h4>
+<h4 id="request-format-48">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11888,7 +12115,7 @@ rippled connect 192.170.145.88 51235
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-45">Response Format</h4>
+<h4 id="response-format-46">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -11928,7 +12155,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-45">Possible Errors</h4>
+<h4 id="possible-errors-46">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -11938,7 +12165,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp" title="Source">[Source]<br/></a></p>
 <p>Gracefully shuts down the server.</p>
 <p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-48">Request Format</h4>
+<h4 id="request-format-49">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11960,7 +12187,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-46">Response Format</h4>
+<h4 id="response-format-47">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -11999,7 +12226,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-46">Possible Errors</h4>
+<h4 id="possible-errors-47">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
