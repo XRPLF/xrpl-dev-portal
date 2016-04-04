@@ -31,6 +31,8 @@ If you want to test multi-signing before it becomes available in the production 
 Setting up Multi-Signing
 ------------------------
 
+Before you can set up multi-signing, first check that [multi-signing is available](#availability-of-multi-signing).
+
 To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
 
@@ -232,7 +234,7 @@ At this point, your address is ready to [send a multi-signed transaction](#sendi
 Sending a Multi-Signed Transaction
 ----------------------------------
 
-Before you can multi-sign a transaction, first check that [multi-sign is available](#availability-of-multi-signing) and [set up multi-signing](#set-up-multi-sign) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
+Before you can multi-sign a transaction, first  [set up multi-signing](#set-up-multi-sign) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
 
 ### 1. Create the transaction ##
 

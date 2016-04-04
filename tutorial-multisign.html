@@ -148,6 +148,7 @@
 MultiSign
 </code></pre>
 <h2 id="setting-up-multi-signing">Setting up Multi-Signing</h2>
+<p>Before you can set up multi-signing, first check that <a href="#availability-of-multi-signing">multi-signing is available</a>.</p>
 <p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
 <h3 id="1-prepare-a-funded-address">1. Prepare a funded address</h3>
 <p>You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
@@ -321,7 +322,7 @@ Connecting to 127.0.0.1:5005
 <li>Remove the address's regular key (if you previously set one) by sending a <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction</a>.</li>
 </ul>
 <h2 id="sending-a-multi-signed-transaction">Sending a Multi-Signed Transaction</h2>
-<p>Before you can multi-sign a transaction, first check that <a href="#availability-of-multi-signing">multi-sign is available</a> and <a href="#set-up-multi-sign">set up multi-signing</a> for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.</p>
+<p>Before you can multi-sign a transaction, first  <a href="#set-up-multi-sign">set up multi-signing</a> for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.</p>
 <h3 id="1-create-the-transaction">1. Create the transaction</h3>
 <p>Create a JSON object that represents the transaction you want to submit. You have to specify <em>everything</em> about this transaction, including <code>Fee</code> and <code>Sequence</code>. Also include the field <code>SigningPubKey</code> as an empty string, to indicate that the transaction is multi-signed.</p>
 <p>Keep in mind that the <code>Fee</code> for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal <a href="concept-transaction-cost.html">transaction cost</a>, where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the <a href="concept-transaction-cost.html#load-scaling">transaction cost's load scaling</a> increases in that time.</p>

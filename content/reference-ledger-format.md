@@ -4,20 +4,20 @@ The point of the Ripple software is to maintain a shared, global ledger that is 
 
 ![Diagram: Each ledger is the result of applying transactions to the previous ledger version.](img/ledger-process.png)
 
-The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 1 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
+The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a [ledger index](#ledger-index) which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.
 
 A single ledger version consists of several components:
 
 ![Diagram: A ledger has transactions, a state node, and a header with the close time and validation info](img/ledger-components.png)
 
-* A **header** - The ledger's unique index (sequence number), hashes of the other contents, and other metadata.
+* A **header** - The [ledger index](#ledger-index), hashes of its other contents, and other metadata.
 * A **transaction tree** - The [transactions](reference-transaction-format.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to modify the ledger.
 * A **state tree** - All the [ledger nodes](#ledger-node-types) that contain the settings, balances, and objects in the ledger as of this version.
 
 
 ## Tree Format ##
 
-As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (key) of a ledger node with the `ledger_index` (sequence number) of a ledger.
+As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an `index`. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (key) of a ledger node with the [`ledger_index` (sequence number) of a ledger](#ledger-index).
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
 
@@ -33,18 +33,23 @@ Every ledger version has a unique header that describes the contents. You can lo
 
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|-------------------|-------------|
-| ledger\_index   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
+| [ledger\_index](#ledger-index)   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
 | ledger\_hash    | String    | Hash256           | The SHA-512Half of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
 | account\_hash   | String    | Hash256           | The SHA-512Half of this ledger's state tree information. |
 | close\_time     | Number    | UInt32            | The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the `close_time_resolution`, so it is possible for subsequent ledgers to have the same value. |
 | closed          | Boolean   | bool              | If true, this transaction is no longer accepting new transactions. (However, unless this ledger is validated, it might be replaced by a different ledger with a different set of transactions.) |
-| parent\_hash    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger by sequence number, this indicates from which one the ledger was derived. |
+| parent\_hash    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived. |
 | total\_coins    | String    | UInt64            | The total number of drops of XRP owned by accounts in the ledger. This subtracts XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
 | transaction\_hash | String  | Hash256           | The SHA-512Half of the transactions included in this ledger. |
 | close\_time\_resolution | Number | Uint8        | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. |
-| closeFlags      | (Omitted) | UInt8             | A bit-map of flags relating to the closing of this ledger. |
+| [closeFlags](#close-flags) | (Omitted) | UInt8             | A bit-map of flags relating to the closing of this ledger. |
 
 [Internal Type]: https://wiki.ripple.com/Binary_Format
+
+
+### Ledger Index ###
+{% include 'data_types/ledger_index.md' %}
+[Hash]: reference-rippled.html#hashes
 
 ### Close Flags ###
 
@@ -100,7 +105,7 @@ The `AccountRoot` node has the following fields:
 | Balance         | String | Amount | The account's current XRP balance in drops, represented as a string. |
 | OwnerCount      | Number | UInt32 | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
 | PreviousTxnID   | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
-| PreviousTxnLgrSeq | Number | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 | AccountTxnID    | String | Hash256 | (Optional) The identifying hash of the transaction most recently submitted by this account. |
 | RegularKey      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction](reference-transaction-format.html#setregularkey) to change this value. |
 | EmailHash       | String | Hash128 | (Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
@@ -127,7 +132,7 @@ AccountRoot nodes can have the following flag values:
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this account are frozen. | asfGlobalFreeze |
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. Required for gateways; discouraged for other accounts. | asfDefaultRipple |
 
-### AccountRoot index format ###
+### AccountRoot Index Format ###
 
 The `index` of an AccountRoot node is the SHA-512Half of the following values put together:
 
@@ -201,7 +206,7 @@ Example Directories:
 | TakerGetsCurrency | String    | Hash160   | (Offer Directories only) The currency code of the TakerGets amount from the offers in this directory. |
 | TakerGetsIssuer   | String    | Hash160   | (Offer Directories only) The issuer of the TakerGets amount from the offers in this directory. |
 
-### Directory index formats ###
+### Directory Index Formats ###
 
 There are three different formulas for creating the index of a DirectoryNode, depending on whether the DirectoryNode represents:
 
@@ -275,7 +280,7 @@ An Offer node has the following fields:
 | BookNode          | String    | UInt64    | A hint indicating which page of the offer directory links to this node, in case the directory consists of multiple nodes. |
 | OwnerNode         | String    | UInt64    | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | PreviousTxnID     | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
-| PreviousTxnLgrSeq | Number | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 | Expiration        | Number    | UInt32    | (Optional) Indicates the time after which this offer will be considered unfunded. See [Specifying Time](reference-rippled.html#specifying-time) for details. |
 
 ### Offer Flags ###
@@ -289,7 +294,7 @@ Offer nodes can have the following flag values:
 | lsfPassive | 0x00010000 | 65536 | The node was placed as a passive offer. This has no effect on the node in the ledger. | tfPassive |
 | lsfSell   | 0x00020000 | 131072 | The node was placed as a sell offer. This has no effect on the node in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the node enters the ledger). | tfSell |
 
-### Offer index format ###
+### Offer Index Format ###
 
 The `index` of an Offer node is the SHA-512Half of the following values put together:
 
@@ -344,7 +349,7 @@ A RippleState node has the following fields:
 | LowLimit        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | HighLimit       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | PreviousTxnID   | String    | Hash256 | The identifying hash of the transaction that most recently modified this node. |
-| PreviousTxnLgrSeq | Number  | UInt32 | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number  | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 | LowNode         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | HighNode        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple nodes. |
 | LowQualityIn    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
@@ -390,7 +395,7 @@ The default state of the two NoRipple flags depends on the state of the [lsfDefa
 
 Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. If an account modifies a trust line, `rippled` re-evaluates whether that individual trust line is in its default state and should contribute the owner reserve.
 
-### RippleState index format ###
+### RippleState Index Format ###
 
 The `index` of a RippleState node is the SHA-512Half of the following values put together:
 
@@ -447,23 +452,23 @@ A SignerList node has the following fields:
 | OwnerNode       | String    | UInt64        | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes. |
 | SignerQuorum    | Number    | UInt32        | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
 | SignerEntries   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |
-| SignerListID    | Number    | UInt32        | An ID for this signer list. Currently always set to `0`. If a future update allows multiple signer lists for an account, this may change. |
+| SignerListID    | Number    | UInt32        | An ID for this signer list. Currently always set to `0`. If a future [amendment](concept-amendments.html) allows multiple signer lists for an account, this may change. |
 | PreviousTxnID   | String    | Hash256       | The identifying hash of the transaction that most recently modified this node. |
-| PreviousTxnLgrSeq | Number  | UInt32        | The sequence number (`ledger_index`) of the ledger that contains the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number  | UInt32        | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 
 The `SignerEntries` may be any combination of funded and unfunded addresses that use either secp256k1 or ed25519 keys.
 
-### SignerEntry object ###
+### SignerEntry Object ###
 
 Each member of the `SignerEntries` field is an object that describes that signer in the list. A SignerEntry has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
-| Account         | String    | AccountID     | An address whose signature contributes to the multi-signature. This does not need to be a funded Ripple account. |
-| SignerWeight    | Number    | UInt16        | The weight of signatures from this signer. A multi-signature is only valid of the sum weight of the signatures provided meets or exceeds the SignerList's `SignerQuorum` value. |
+| Account         | String    | AccountID     | A  Ripple address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger. |
+| SignerWeight    | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the SignerList's `SignerQuorum` value. |
 
-When processing a multi-signed transaction, the server dereferences the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot node](#accountroot), then only the master secret associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. Even if the account has a SignerList configured, a multi-signature cannot be used as a valid component to another multi-signature. (In other words, "multi-level" multi-signing is disallowed.)
+When processing a multi-signed transaction, the server dereferences the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot node](#accountroot), then only the master secret associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as a component of another multi-signature.
 
 ### SignerLists and Reserves ###
 
-A SignerList contributes to the [Account Reserve](https://wiki.ripple.com/Reserves). The SignerList itself counts as two objects, and each member of the list counts as one, so that the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
+A SignerList contributes to its owner's [reserve requirement](concept-reserves.html). The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
