@@ -1084,19 +1084,19 @@
 <td>Account</td>
 <td>String</td>
 <td>AccountID</td>
-<td>An address whose signature contributes to the multi-signature. This does not need to be a funded Ripple account.</td>
+<td>A  Ripple address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger.</td>
 </tr>
 <tr>
 <td>SignerWeight</td>
 <td>Number</td>
 <td>UInt16</td>
-<td>The weight of signatures from this signer. A multi-signature is only valid of the sum weight of the signatures provided meets or exceeds the SignerList's <code>SignerQuorum</code> value.</td>
+<td>The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the SignerList's <code>SignerQuorum</code> value.</td>
 </tr>
 </tbody>
 </table>
-<p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. Even if the account has a SignerList configured, a multi-signature cannot be used as a valid component to another multi-signature. (In other words, "multi-level" multi-signing is disallowed.)</p>
+<p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as a component of another multi-signature.</p>
 <h3 id="signerlists-and-reserves">SignerLists and Reserves</h3>
-<p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one, so that the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
+<p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
 </div>
 </main>
 </div>
