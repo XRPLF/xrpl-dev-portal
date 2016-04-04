@@ -146,32 +146,38 @@
 </ul>
 <pre><code>rippled -a --start --conf=/path/to/rippled.cfg
 </code></pre>
-<p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis account</a> holds all 100 billion XRP. The keys of the genesis account are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
+<p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
 <p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
 <p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
-<p><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for an account, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
+<p><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
 <h2 id="load-saved-ledger">Load Saved Ledger</h2>
 <p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
-<h3 id="1-to-retrieve-existing-ledgers-start-rippled-normally">1. To retrieve existing ledgers, start <code>rippled</code> normally:</h3>
+<h3 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h3>
+<p>To load an existing ledger, you must first retrieve that ledger from the network. Start <code>rippled</code> in networked mode as normal:</p>
 <pre><code>rippled --conf=/path/to/rippled.cfg
 </code></pre>
-<h3 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced:</h3>
-<p>When <code>rippled</code> is synced with the state of the network, the response from the <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> shows a <code>server_state</code> value that is <code>full</code>, <code>proposing</code>, or <code>validating</code>.</p>
-<h3 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions:</h3>
+<h3 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced.</h3>
+<p>Use the <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> to check the state of your server relative to the network. Your server is synced when the <code>server_state</code> value shows any of the following values:</p>
+<ul>
+<li><code>full</code></li>
+<li><code>proposing</code></li>
+<li><code>validating</code>.</li>
+</ul>
+<h3 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions.</h3>
 <p>If you only want the most recent ledger, you can skip this step.</p>
 <p>If you want to load a specific historical ledger version, use the <a href="reference-rippled.html#ledger-request"><code>ledger_request</code> command</a> to make <code>rippled</code> fetch it. If <code>rippled</code> does not already have the ledger version, you may have to run the <code>ledger_request</code> command multiple times until it has finished retrieving the ledger.</p>
 <p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it.</p>
-<h3 id="4-shut-down-rippled">4. Shut down <code>rippled</code>:</h3>
+<h3 id="4-shut-down-rippled">4. Shut down <code>rippled</code>.</h3>
+<p>Use the <a href="reference-rippled.html#stop"><code>stop</code> command</a>:</p>
 <pre><code>rippled stop --conf=/path/to/rippled.cfg
 </code></pre>
-<h3 id="5-start-rippled-in-stand-alone-mode-loading-the-saved-ledger">5. Start <code>rippled</code> in stand-alone mode, loading the saved ledger.</h3>
-<p>To load the most recent ledger version, you can use the <code>-a</code> and <code>--load</code> options:</p>
+<h3 id="5-start-rippled-in-stand-alone-mode">5. Start <code>rippled</code> in stand-alone mode.</h3>
+<p>To load the most recent ledger version, you can use the <code>-a</code> and <code>--load</code> options when starting the server:</p>
 <pre><code>rippled -a --load --conf=/path/to/rippled.cfg
 </code></pre>
-<p>To instead load a specific historical ledger, use the <code>--ledger</code> parameter with the ledger index or identifying hash of the ledger version to load:</p>
-<pre><code>rippled -a --ledger 19860944 --conf=/path/to/rippled.cfg
+<p>To instead load a specific historical ledger, use the <code>--load</code> parameter along with the <code>--ledger</code> parameter, providing the ledger index or identifying hash of the ledger version to load:</p>
+<pre><code>rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 </code></pre>
-<p><span class="draft-comment">(TODO: test this)</span></p>
 <h3 id="6-manually-advance-the-ledger">6. Manually advance the ledger.</h3>
 <p>When you load a ledger with <code>--ledger</code> in stand-alone mode, it goes to the current open ledger, so you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>:</p>
 <pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
@@ -181,7 +187,7 @@
 <pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
 </code></pre>
 <p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Ripple Ledger Consensus Process</a>.)</p>
-<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since different <code>rippled</code> servers may see transactions in a different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. <strong>Note:</strong> You can safely submit multiple transactions from a single account to a single ledger, because <code>rippled</code> sorts transactions from the same account in ascending order by <code>Sequence</code> number.</p>
+<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. <strong>Note:</strong> You can safely submit multiple transactions from a single address to a single ledger, because <code>rippled</code> sorts transactions from the same address in ascending order by <code>Sequence</code> number.</p>
 </div>
 </main>
 </div>
