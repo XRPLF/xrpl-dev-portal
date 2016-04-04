@@ -46,12 +46,14 @@ Any signature type can authorize any type of transaction, with the following exc
 
 Sending a transaction to the Ripple Consensus Ledger involves several steps:
 
-1. Create an unsigned transaction in JSON format.
+1. Create an [unsigned transaction in JSON format](#unsigned-transaction-format).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](tutorial-rippled-setup.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](#transaction-results) in that ledger are immutable.
+
+### Unsigned Transaction Format ###
 
 Here is an example of an unsigned [Payment-type transaction](#payment) in JSON:
 
@@ -71,7 +73,7 @@ Here is an example of an unsigned [Payment-type transaction](#payment) in JSON:
 }
 ```
 
-After doing that, you generate the signed binary format for the transaction. For transactions authorized by only a single signature, you have two options:
+The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
     * You can use [RippleAPI](reference-rippleapi.html#sign) to perform offline signing.
@@ -181,9 +183,9 @@ After a transaction has been submitted, if it gets accepted into a validated led
 
 ### Multi-Signing ###
 
-Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an [Amendment](concept-amendments.html) to the Ripple Consensus Protocol. You can use multi-signing in addition to, or instead of, a master key, a [regular key](#setregularkey), or both.
+Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an [Amendment](concept-amendments.html) to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
 
-The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the SignerList.
+The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 
 For more information, see [How to Multi-Sign](tutorial-multisign.html).
 
@@ -326,7 +328,7 @@ The `Signers` field contains a [multi-signature](#multi-signing), which has sign
 
 The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](ripple-ledger.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 
-Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-siganture increases the `Fee` required by the amount of the minimum transaction fee. For example, if the current minimum `Fee` value to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would cost `40000` drops to relay.
+Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the [transaction cost](concept-transaction-cost.html) required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would need a `Fee` value of at least `40000` drops to relay.
 
 
 
@@ -576,7 +578,7 @@ In addition to the master key, which is mathematically-related to an address, yo
 
 A regular key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](reference-rippled.html#wallet-propose)), but it can be changed. A master key pair is an intrinsic part of an address's identity (the address is derived from the master public key). You can [disable](#accountset-flags) a master key but you cannot change it.
 
-You can protect your master secret by using a regular key instead of the master key to sign transactions where possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
+You can protect your master secret by using a regular key instead of the master key to sign transactions whenever possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
 
 For even greater security, you can use [multi-signing](#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
 
@@ -822,7 +824,7 @@ Example SignerListSet:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| SignerQuorum | Number | UInt32 | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete a SignerList, use the value `0`. |
+| SignerQuorum | Number | UInt32 | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a SignerList, use the value `0`. |
 | SignerEntries | Array | Array | (Omitted when deleting) Array of [SignerEntry objects](reference-ledger-format.html#signerentry-object), indicating the addresses and weights of signers in this list. A SignerList must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. |
 
 An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set `SignerQuorum` to `0` _and_ omit the `SignerEntries` field. Otherwise, the transaction fails with the error [temMALFORMED](#tem-codes). A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.
@@ -1070,7 +1072,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temREDUNDANT\_SEND\_MAX | _(Removed in [rippled 0.28.0][])_ |
 | temRIPPLE\_EMPTY | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
 | temBAD_WEIGHT | The [SignerListSet](#signerlistset) transaction includes a `SignerWeight` that is invalid, for example a zero or negative value. |
-| temBAD_SIGNER | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid: for example, it might be a duplicate, or it might be the account to which the SignerList belongs. |
+| temBAD_SIGNER | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
 | temBAD_QUORUM | The [SignerListSet](#signerlistset) transaction has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
 | temUNCERTAIN | Used internally only. This code should never be returned. |
 | temUNKNOWN | Used internally only. This code should never be returned. |
@@ -1147,7 +1149,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_LINE\_REDUNDANT | 127 | The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist. |
 | tecPATH\_DRY | 128 | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecUNFUNDED | 129 | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
-| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED` instead.) |
+| tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED`.) |
 | tecNO\_REGULAR\_KEY | 131 | The [AccountSet transaction](#accountset) tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
 | tecOWNERS | 132 | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecNO\_ISSUER | 133 | The account specified in the `issuer` field of a currency amount does not exist. |

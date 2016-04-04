@@ -171,13 +171,14 @@
 <h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions</h2>
 <p>Sending a transaction to the Ripple Consensus Ledger involves several steps:</p>
 <ol>
-<li>Create an unsigned transaction in JSON format.</li>
+<li>Create an <a href="#unsigned-transaction-format">unsigned transaction in JSON format</a>.</li>
 <li>Use one or more signatures to <a href="#authorizing-transactions">authorize the transaction</a>.</li>
 <li>Submit a transaction to a <code>rippled</code> server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
 <li>The <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> determines which provisional transactions get included in the next validated ledger.</li>
 <li>The <code>rippled</code> servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
 <li>If enough <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="#transaction-results">results of the transactions</a> in that ledger are immutable.</li>
 </ol>
+<h3 id="unsigned-transaction-format">Unsigned Transaction Format</h3>
 <p>Here is an example of an unsigned <a href="#payment">Payment-type transaction</a> in JSON:</p>
 <pre><code>{
   "TransactionType" : "Payment",
@@ -193,7 +194,7 @@
   "Sequence": 2,
 }
 </code></pre>
-<p>After doing that, you generate the signed binary format for the transaction. For transactions authorized by only a single signature, you have two options:</p>
+<p>The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
 <ol>
 <li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
 <li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> to perform offline signing.</li>
@@ -299,8 +300,8 @@
 }
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
-<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can use multi-signing in addition to, or instead of, a master key, a <a href="#setregularkey">regular key</a>, or both.</p>
-<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can achieve several different configurations using the weight and quorum values of the SignerList.</p>
+<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
+<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
 <p>For more information, see <a href="tutorial-multisign.html">How to Multi-Sign</a>.</p>
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>
@@ -515,7 +516,7 @@
 </tbody>
 </table>
 <p>The <code>SigningPubKey</code> must be a key that is associated with the <code>Account</code> address. If the referenced <code>Account</code> is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the <a href="ripple-ledger.html#accountroot-flags">lsfDisableMaster</a> flag is enabled. If the referenced <code>Account</code> address is not a funded account in the ledger, then the <code>SigningPubKey</code> must be the master key associated with that address.</p>
-<p>Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-siganture increases the <code>Fee</code> required by the amount of the minimum transaction fee. For example, if the current minimum <code>Fee</code> value to relay a transaction to the network is <code>10000</code> drops, then a multi-signed transaction with 3 entries in the <code>Signers</code> array would cost <code>40000</code> drops to relay.</p>
+<p>Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the <a href="concept-transaction-cost.html">transaction cost</a> required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is <code>10000</code> drops, then a multi-signed transaction with 3 entries in the <code>Signers</code> array would need a <code>Fee</code> value of at least <code>40000</code> drops to relay.</p>
 <h3 id="flags">Flags</h3>
 <p>The <code>Flags</code> field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
 <p>Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the <code>TransactionType</code> field when setting and reading flags.</p>
@@ -916,7 +917,7 @@
 </table>
 <p>In addition to the master key, which is mathematically-related to an address, you can associate <strong>at most 1 additional key pair</strong> with an address using this type of transaction. The additional key pair is called a <em>regular key</em>. If your address has a regular key pair defined, you can use the secret key of the regular key pair to <a href="#authorizing-transactions">authorize transactions</a>.</p>
 <p>A regular key pair is generated in the same way as any other Ripple keys (for example, with <a href="reference-rippled.html#wallet-propose">wallet_propose</a>), but it can be changed. A master key pair is an intrinsic part of an address's identity (the address is derived from the master public key). You can <a href="#accountset-flags">disable</a> a master key but you cannot change it.</p>
-<p>You can protect your master secret by using a regular key instead of the master key to sign transactions where possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>You can protect your master secret by using a regular key instead of the master key to sign transactions whenever possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
 <p>For even greater security, you can use <a href="#multi-signing">multi-signing</a>, but multi-signing requires additional XRP for the <a href="concept-transaction-cost.html">transaction cost</a> and <a href="concept-reserves.html">reserve</a>.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
@@ -1251,7 +1252,7 @@
 <td>SignerQuorum</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete a SignerList, use the value <code>0</code>.</td>
+<td>A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a SignerList, use the value <code>0</code>.</td>
 </tr>
 <tr>
 <td>SignerEntries</td>
@@ -1783,7 +1784,7 @@
 </tr>
 <tr>
 <td>temBAD_SIGNER</td>
-<td>The <a href="#signerlistset">SignerListSet</a> transaction includes a signer who is invalid: for example, it might be a duplicate, or it might be the account to which the SignerList belongs.</td>
+<td>The <a href="#signerlistset">SignerListSet</a> transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
 </tr>
 <tr>
 <td>temBAD_QUORUM</td>
@@ -2040,7 +2041,7 @@
 <tr>
 <td>tecNO_ALTERNATIVE_KEY</td>
 <td>130</td>
-<td>The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>, this was called <code>tecMASTER_DISABLED</code> instead.)</td>
+<td>The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>, this was called <code>tecMASTER_DISABLED</code>.)</td>
 </tr>
 <tr>
 <td>tecNO_REGULAR_KEY</td>
