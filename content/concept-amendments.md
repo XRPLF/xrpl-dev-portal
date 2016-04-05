@@ -7,7 +7,7 @@ When an Amendment has been enabled, it applies permanently to all ledger version
 
 ## Background ##
 
-Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If only a portion of validators have upgraded to a new version of the software, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
+Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If only a portion of _validators_ (`rippled` servers [participating in consensus](tutorial-rippled-setup.html#reasons-to-run-a-validator)) have upgraded to a new version of the software, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
 
 Amendments provide a solution to this problem, so that new features can be enabled only when enough validators support those features.
 
@@ -48,7 +48,7 @@ Operators of `rippled` validators can choose which amendments to support or reje
 
 The operator of a `rippled` validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.
 
-As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple on releasing new features.
+As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple (the company) on releasing new features.
 
 ### Configuring Amendment Voting ###
 
