@@ -17,9 +17,29 @@ You can also [query `rippled` for the current transaction cost](#querying-the-tr
 The transaction cost is not paid to any party: the XRP is irrevocably destroyed. Since no new XRP can ever be created, this makes XRP more scarce, and consequently benefits all holders of XRP by making XRP more valuable.
 
 
-## Load Scaling ##
+## Load Cost and Open Ledger Cost ##
 
-Each `rippled` server independently scales the transaction cost based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](reference-rippled.html#connecting-to-rippled), the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) unless its `Fee` value meets the requirements of a majority of servers.
+When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, there are two thresholds for the transaction cost:
+
+* If the transaction cost does not meet a `rippled` server's load-based transaction cost threshold, the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)
+* If the transaction cost does not meet a `rippled` server's Open Ledger cost threshold, the queues the transaction for the next ledger.
+
+This divides transactions into roughly three categories:
+
+* Transactions that specify a transaction cost so low that they get rejected by the load-based transaction cost.
+* Transactions that specify a transaction cost high enough to be included in the current open ledger.
+* Transactions in between, which get queued for the next open ledger.
+
+
+## Local Load Cost ##
+
+Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](reference-rippled.html#connecting-to-rippled), the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) unless its `Fee` value meets the requirements of a majority of servers.
+
+## Open Ledger Cost ##
+
+A `rippled` server with the [FeeEscalation amendment](concept-amendments.html#feeescalation) enabled has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. The open ledger cost increases exponentially when an in-progress ledger has more transactions than the previous one, so that only transactions which pay more than the normal transaction cost can be included in the current open ledger.
+
+The open ledger cost requirement is proportional to the normal cost of the transaction, not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](reference-transaction-format.html#multi-signing) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
 
 
 ## Querying the Transaction Cost ##
