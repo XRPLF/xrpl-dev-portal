@@ -6304,7 +6304,7 @@ __*Caution:*__ If this command results in an error messages, the message can con
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled.
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. _(New in [version 0.31.0][])_
 
 #### Request Format ####
 An example of the request format:
@@ -6766,7 +6766,7 @@ __*Caution:*__ If this command results in an error messages, the message can con
 
 The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled.
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. _(New in [version 0.31.0][])_
 
 #### Request Format ####
 An example of the request format:
@@ -8830,7 +8830,7 @@ The fields describing a fetch in progress are subject to change without notice. 
 ## feature ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process).
+The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process). _(New in [version 0.31.0][])_
 
 You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](concept-amendments.html#configuring-amendment-voting) for more information.
 

@@ -20,7 +20,7 @@ To use multi-signing:
 Availability of Multi-Signing
 -----------------------------
 
-Multi-signing is built into `rippled` starting with version **0.31.0**. Because multi-signing is a change in transaction processing, the change is due to be enabled by an **Amendment** to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see [Amendments](concept-amendments.html).
+Multi-signing is built into `rippled` starting with [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0). Because multi-signing is a change in transaction processing, the change is due to be enabled by an **Amendment** to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see [Amendments](concept-amendments.html).
 
 If you want to test multi-signing before it becomes available in the production network, or without risking real money, you can do so by running `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with the MultiSign feature enabled. To enable multi-signing for testing, add the following stanza to your `rippled.cfg`:
 

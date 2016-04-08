@@ -7326,7 +7326,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <h2 id="sign-for">sign_for</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>sign_for</code> command provides one signature for a <a href="reference-transaction-format.html#multi-signing">multi-signed transaction</a>.</p>
-<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled.</p>
+<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-24">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -7845,7 +7845,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <h2 id="submit-multisigned">submit_multisigned</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>submit_multisigned</code> command applies a <a href="reference-transaction-format.html#multi-signing">multi-signed</a> transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the <a href="#submit-only-mode"><code>submit</code> command in submit-only mode</a>.)</p>
-<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled.</p>
+<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-27">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -10377,7 +10377,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="feature">feature</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>.</p>
+<p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
 <p>You can use the <code>feature</code> command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the <code>rippled.cfg</code> file. See <a href="concept-amendments.html#configuring-amendment-voting">Configuring Amendment Voting</a> for more information.</p>
 <p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-36">Request Format</h4>

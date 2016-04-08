@@ -792,7 +792,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 ## SignerListSet ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction.
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type is introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [version 0.31.0][])_
 
 Example SignerListSet:
 

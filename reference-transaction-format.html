@@ -1210,7 +1210,7 @@
 </table>
 <h2 id="signerlistset">SignerListSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp" title="Source">[Source]<br/></a></p>
-<p>The SignerListSet transaction creates, modifies, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction.</p>
+<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type is introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in [version 0.31.0][])</em></p>
 <p>Example SignerListSet:</p>
 <pre><code>{
     "Flags": 0,

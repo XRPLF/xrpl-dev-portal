@@ -1,5 +1,7 @@
 # Amendments #
 
+_(New in [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0))_
+
 The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
 
 When an Amendment has been enabled, it applies permanently to all ledger versions after the one that included it. You cannot disable an Amendment, unless you introduce a new Amendment to do so.
@@ -96,8 +98,10 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | TBD |
-| [MultiSign](#multisign)         | v0.31.0    | Expected 2016-04-18 |
-| [FeeEscalation](#feeescalation) | v0.31.0    | Expected 2016-04-11 |
+| [MultiSign](#multisign)         | v0.31.0    | TBD |
+| [FeeEscalation](#feeescalation) | v0.31.0    | TBD |
+
+**Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
 
 ## FeeEscalation ##
 
