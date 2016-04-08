@@ -21,14 +21,14 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, there are two thresholds for the transaction cost:
 
-* If the transaction cost does not meet a `rippled` server's load-based transaction cost threshold, the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)
-* If the transaction cost does not meet a `rippled` server's Open Ledger cost threshold, the queues the transaction for the next ledger.
+* If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)
+* If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the queues the transaction for the next ledger.
 
 This divides transactions into roughly three categories:
 
 * Transactions that specify a transaction cost so low that they get rejected by the load-based transaction cost.
 * Transactions that specify a transaction cost high enough to be included in the current open ledger.
-* Transactions in between, which get queued for the next open ledger.
+* Transactions in between, which get [queued for the next open ledger](#queued-transactions).
 
 
 ## Local Load Cost ##
@@ -37,14 +37,32 @@ Each `rippled` server maintains a cost threshold based on its current load. If y
 
 ## Open Ledger Cost ##
 
-A `rippled` server with the [FeeEscalation amendment](concept-amendments.html#feeescalation) enabled has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. The open ledger cost increases exponentially when an in-progress ledger has more transactions than the previous one, so that only transactions which pay more than the normal transaction cost can be included in the current open ledger.
+A `rippled` server with the [FeeEscalation amendment](concept-amendments.html#feeescalation) enabled has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. The open ledger cost starts out equal to the minimum transaction cost, but increases exponentially when an in-progress ledger has more transactions than the previous one. Only transactions which pay more than the open ledger cost can be included in the current open ledger.
+Transactions that do not meet the open ledger cost are [queued for a following ledger](#queued-transactions) instead.
 
 The open ledger cost requirement is proportional to the normal cost of the transaction, not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](reference-transaction-format.html#multi-signing) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
+
+See also: [Fee Escalation explanation in `rippled` repository](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md).
+
+### Queued Transactions ###
+
+(Requires the [FeeEscalation amendment](concept-amendments.html#feeescalation))
+
+When `rippled` receives a transaction that meet the server's local load cost but not the open ledger cost, the server checks the transaction to see if it is "likely to succeed" in the following ledger. If so, the transaction goes into the transaction queue. Transactions that are "likely to succeed" are properly-formed and are [authorized](reference-transaction-format.html#authorizing-transactions) with valid signatures.
+
+When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first. Transactions that pay the same transaction cost are queued in the order the server receives them.
+
+**Note:** As of `rippled` **version 0.31.0**, the transaction queue supports at most 1 transaction per sending address. This is expected to change in later versions.
+
+**Caution:** The current implementation does not allow transactions with an `AccountTxnID` field in the transaction queue.
+
 
 
 ## Querying the Transaction Cost ##
 
-The `rippled` APIs have two ways to query the transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
+The `rippled` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
+
+If the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, you can use the [`fee` command](reference-rippled.html#fee) to check the open ledger cost.
 
 ### server_info ###
 
