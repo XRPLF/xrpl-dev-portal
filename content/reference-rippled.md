@@ -8791,7 +8791,7 @@ Connecting to 127.0.0.1:5005
                "3ACB84BEE2C45556351FF60FD787D235C9CF5623FB8A35B01446B773598E7CC0",
                "0DD3A8DF69874148057F1F2BF305442FF2E89A76A08B4CC8C051E2ED69B874F3",
                "4AE9A9C4F12A5BD0355037DA40A0B145420A2168A9FEDE43E643BD13062F8ECE",
-               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
+su               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
                "779B2577C5C4BAED6657421448EA506BBF50F86BE363E0924127C4EA17A58BBE"
             ],
             "peers" : 2,
@@ -9015,6 +9015,176 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types](#universal-errors).
 * `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.
+
+
+
+## fee ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
+
+The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalationi) to be enabled. _(New in [version 0.31.0][])_
+
+_The `fee` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+
+#### Request Format ####
+An example of the request format:
+
+<!-- <div class='multicode'> -->
+
+*WebSocket*
+
+```
+{
+  "id": "fee_websocket_example",
+  "command": "fee"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+	"method": "fee",
+	"params": [{}]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: fee
+rippled fee
+```
+
+<!-- </div> -->
+
+The request does not include any parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<!-- <div class='multicode'> -->
+
+*WebSocket*
+
+```
+{
+  "id": "fee_websocket_example",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "current_ledger_size": "14",
+    "current_queue_size": "0",
+    "drops": {
+      "base_fee": "10",
+      "median_fee": "11000",
+      "minimum_fee": "10",
+      "open_ledger_fee": "10"
+    },
+    "expected_ledger_size": "24",
+    "levels": {
+      "median_level": "281600",
+      "minimum_level": "256",
+      "open_ledger_level": "256",
+      "reference_level": "256"
+    },
+    "max_queue_size": "480"
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+	"result": {
+		"current_ledger_size": "56",
+		"current_queue_size": "11",
+		"drops": {
+			"base_fee": "10",
+			"median_fee": "10000",
+			"minimum_fee": "10",
+			"open_ledger_fee": "2653937"
+		},
+		"expected_ledger_size": "55",
+		"levels": {
+			"median_level": "256000",
+			"minimum_level": "256",
+			"open_ledger_level": "67940792",
+			"reference_level": "256"
+		},
+		"max_queue_size": "1100",
+		"status": "success"
+	}
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "current_ledger_size" : "16",
+      "current_queue_size" : "2",
+      "drops" : {
+         "base_fee" : "10",
+         "median_fee" : "11000",
+         "minimum_fee" : "10",
+         "open_ledger_fee" : "3203982"
+      },
+      "expected_ledger_size" : "15",
+      "levels" : {
+         "median_level" : "281600",
+         "minimum_level" : "256",
+         "open_ledger_level" : "82021944",
+         "reference_level" : "256"
+      },
+      "max_queue_size" : "300",
+      "status" : "success"
+   }
+}
+```
+
+<!-- </div> -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field                      | Type   | Description |
+|----------------------------|--------|-------------|
+| current\_ledger\_size      | String (Integer) | Number of transactions provisionally included in the in-progress ledger. |
+| current\_queue\_size       | String (Integer) | Number of transactions currently queued for the next ledger. |
+| drops                      | Object | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of xrp](#specifying-xrp). |
+| drops.base\_fee            | String (Integer) | The transaction cost required for a [reference transaction](#reference-transaction-cost) to be included in a ledger under minimum load. |
+| drops.median\_fee          | String (Integer) | An approximation of the median transaction cost among transactions included in the previous validated ledger. |
+| drops.minimum\_fee         | String (Integer) | The minimum transaction cost for a [reference transaction](#reference-transaction-cost) to be queued for a later ledger. If greater than `base_fee`, the transaction queue is full. |
+| drops.open\_ledger\_fee    | String (Integer) | The minimum transaction cost that a [reference transaction](#reference-transaction-cost) must pay to be included in the current open ledger. |
+| expected\_ledger\_size     | String (Integer) | The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger. |
+| levels                     | Object | Various information about the transaction cost, in _fee levels_. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
+| levels.median\_level       | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in fee levels. |
+| levels.minimum\_level      | String (Integer) | The minimum transaction cost required to be queued for a future ledger.
+| levels.open\_ledger\_level | String (Integer) |
+| levels.reference\_level    | String (Integer) | The equivalent of the minimum transaction cost, represented in fee levels. |
+| max\_queue\_size           | String (Integer) |
+
+### Reference Transaction Cost ###
+
+The "Reference Transaction" is the cheapest possible transaction, in terms of the necessary [transaction cost](concept-transaction-cost.html). Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](reference-transaction-format.html#multi-signing) require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
+
+### Fee Levels ###
+
+_Fee levels_ represent the proportional difference between the minimum cost and the actual cost of a transaction. See the following table for a comparison:
+
+|   | Fee Level | Reference Transaction (Most transactions) | Multi-signed transaction with 4 signatures |
+|---|-------------------------------------------|----------------------------------------------|
+| Minimum cost | 256 | 10 | 50 |
+| Double cost  | 512 | 20 | 100 |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
 
 
 
@@ -10681,3 +10851,4 @@ The response follows the [standard format](#response-formatting), with a success
 [version 0.29.0]: https://wiki.ripple.com/Rippled-0.29.0
 [version 0.30.0]: https://wiki.ripple.com/Rippled-0.30.0
 [version 0.30.1]: https://wiki.ripple.com/Rippled-0.30.1
+[version 0.31.0]: https://wiki.ripple.com/Rippled-0.31.0

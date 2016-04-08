@@ -10300,7 +10300,7 @@ Connecting to 127.0.0.1:5005
                "3ACB84BEE2C45556351FF60FD787D235C9CF5623FB8A35B01446B773598E7CC0",
                "0DD3A8DF69874148057F1F2BF305442FF2E89A76A08B4CC8C051E2ED69B874F3",
                "4AE9A9C4F12A5BD0355037DA40A0B145420A2168A9FEDE43E643BD13062F8ECE",
-               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
+su               "08CBF8CFFEC207F5AC4E4F24BC447011FD8C79D25B344281FBFB4732D7058ED4",
                "779B2577C5C4BAED6657421448EA506BBF50F86BE363E0924127C4EA17A58BBE"
             ],
             "peers" : 2,
@@ -10565,11 +10565,225 @@ Connecting to 127.0.0.1:5005
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>badFeature</code> - The <code>feature</code> specified was invalidly formatted, or the server does not know an amendment with that name.</li>
 </ul>
+<h2 id="fee">fee</h2>
+<p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp" title="Source">[Source]<br/></a></p>
+<p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalationi">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
+<p><em>The <code>fee</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<h4 id="request-format-37">Request Format</h4>
+<p>An example of the request format:</p>
+<div class="multicode">
+<p><em>WebSocket</em></p>
+<pre><code>{
+  "id": "fee_websocket_example",
+  "command": "fee"
+}
+</code></pre>
+<p><em>JSON-RPC</em></p>
+<pre><code>{
+    "method": "fee",
+    "params": [{}]
+}
+</code></pre>
+<p><em>Commandline</em></p>
+<pre><code>#Syntax: fee
+rippled fee
+</code></pre>
+</div>
+<p>The request does not include any parameters.</p>
+<h4 id="response-format-35">Response Format</h4>
+<p>An example of a successful response:</p>
+<div class="multicode">
+<p><em>WebSocket</em></p>
+<pre><code>{
+  "id": "fee_websocket_example",
+  "status": "success",
+  "type": "response",
+  "result": {
+    "current_ledger_size": "14",
+    "current_queue_size": "0",
+    "drops": {
+      "base_fee": "10",
+      "median_fee": "11000",
+      "minimum_fee": "10",
+      "open_ledger_fee": "10"
+    },
+    "expected_ledger_size": "24",
+    "levels": {
+      "median_level": "281600",
+      "minimum_level": "256",
+      "open_ledger_level": "256",
+      "reference_level": "256"
+    },
+    "max_queue_size": "480"
+  }
+}
+</code></pre>
+<p><em>JSON-RPC</em></p>
+<pre><code>200 OK
+{
+    "result": {
+        "current_ledger_size": "56",
+        "current_queue_size": "11",
+        "drops": {
+            "base_fee": "10",
+            "median_fee": "10000",
+            "minimum_fee": "10",
+            "open_ledger_fee": "2653937"
+        },
+        "expected_ledger_size": "55",
+        "levels": {
+            "median_level": "256000",
+            "minimum_level": "256",
+            "open_ledger_level": "67940792",
+            "reference_level": "256"
+        },
+        "max_queue_size": "1100",
+        "status": "success"
+    }
+}
+</code></pre>
+<p><em>Commandline</em></p>
+<pre><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "current_ledger_size" : "16",
+      "current_queue_size" : "2",
+      "drops" : {
+         "base_fee" : "10",
+         "median_fee" : "11000",
+         "minimum_fee" : "10",
+         "open_ledger_fee" : "3203982"
+      },
+      "expected_ledger_size" : "15",
+      "levels" : {
+         "median_level" : "281600",
+         "minimum_level" : "256",
+         "open_ledger_level" : "82021944",
+         "reference_level" : "256"
+      },
+      "max_queue_size" : "300",
+      "status" : "success"
+   }
+}
+</code></pre>
+</div>
+<p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>current_ledger_size</td>
+<td>String (Integer)</td>
+<td>Number of transactions provisionally included in the in-progress ledger.</td>
+</tr>
+<tr>
+<td>current_queue_size</td>
+<td>String (Integer)</td>
+<td>Number of transactions currently queued for the next ledger.</td>
+</tr>
+<tr>
+<td>drops</td>
+<td>Object</td>
+<td>Various information about the transaction cost (the <code>Fee</code> field of a transaction), in <a href="#specifying-xrp">drops of xrp</a>.</td>
+</tr>
+<tr>
+<td>drops.base_fee</td>
+<td>String (Integer)</td>
+<td>The transaction cost required for a <a href="#reference-transaction-cost">reference transaction</a> to be included in a ledger under minimum load.</td>
+</tr>
+<tr>
+<td>drops.median_fee</td>
+<td>String (Integer)</td>
+<td>An approximation of the median transaction cost among transactions included in the previous validated ledger.</td>
+</tr>
+<tr>
+<td>drops.minimum_fee</td>
+<td>String (Integer)</td>
+<td>The minimum transaction cost for a <a href="#reference-transaction-cost">reference transaction</a> to be queued for a later ledger. If greater than <code>base_fee</code>, the transaction queue is full.</td>
+</tr>
+<tr>
+<td>drops.open_ledger_fee</td>
+<td>String (Integer)</td>
+<td>The minimum transaction cost that a <a href="#reference-transaction-cost">reference transaction</a> must pay to be included in the current open ledger.</td>
+</tr>
+<tr>
+<td>expected_ledger_size</td>
+<td>String (Integer)</td>
+<td>The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger.</td>
+</tr>
+<tr>
+<td>levels</td>
+<td>Object</td>
+<td>Various information about the transaction cost, in <em>fee levels</em>. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction.</td>
+</tr>
+<tr>
+<td>levels.median_level</td>
+<td>String (Integer)</td>
+<td>The median transaction cost among transactions in the previous validated ledger, represented in fee levels.</td>
+</tr>
+<tr>
+<td>levels.minimum_level</td>
+<td>String (Integer)</td>
+<td>The minimum transaction cost required to be queued for a future ledger.</td>
+</tr>
+<tr>
+<td>levels.open_ledger_level</td>
+<td>String (Integer)</td>
+<td></td>
+</tr>
+<tr>
+<td>levels.reference_level</td>
+<td>String (Integer)</td>
+<td>The equivalent of the minimum transaction cost, represented in fee levels.</td>
+</tr>
+<tr>
+<td>max_queue_size</td>
+<td>String (Integer)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="reference-transaction-cost">Reference Transaction Cost</h3>
+<p>The "Reference Transaction" is the cheapest possible transaction, in terms of the necessary <a href="concept-transaction-cost.html">transaction cost</a>. Most transactions have the same cost as the reference transaction. Some transactions, such as <a href="reference-transaction-format.html#multi-signing">multi-signed transactions</a> require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.</p>
+<h3 id="fee-levels">Fee Levels</h3>
+<p><em>Fee levels</em> represent the proportional difference between the minimum cost and the actual cost of a transaction. See the following table for a comparison:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Fee Level</th>
+<th>Reference Transaction (Most transactions)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum cost</td>
+<td>256</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Double cost</td>
+<td>512</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<h4 id="possible-errors-36">Possible Errors</h4>
+<ul>
+<li>Any of the <a href="#universal-errors">universal error types</a>.</li>
+</ul>
 <h2 id="get-counts">get_counts</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.</p>
 <p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-37">Request Format</h4>
+<h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10611,7 +10825,7 @@ rippled get_counts 100
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-35">Response Format</h4>
+<h4 id="response-format-36">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10714,7 +10928,7 @@ Connecting to 127.0.0.1:5005
 </tbody>
 </table>
 <p>For most other entries, the value indicates the number of objects of that type currently in memory.</p>
-<h4 id="possible-errors-36">Possible Errors</h4>
+<h4 id="possible-errors-37">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -10723,7 +10937,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.</p>
 <p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-38">Request Format</h4>
+<h4 id="request-format-39">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10782,7 +10996,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-36">Response Format</h4>
+<h4 id="response-format-37">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -10813,7 +11027,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-37">Possible Errors</h4>
+<h4 id="possible-errors-38">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>internal</code> if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return <code>invalidParams</code> instead.)</li>
@@ -10822,7 +11036,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>log_level</code> command changes the <code>rippled</code> server's logging verbosity, or returns the current logging level for each category (called a <em>partition</em>) of log messages.</p>
 <p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-39">Request Format</h4>
+<h4 id="request-format-40">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10860,7 +11074,7 @@ rippled log_level PathRequest debug
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-37">Response Format</h4>
+<h4 id="response-format-38">Response Format</h4>
 <p>Examples of successful responses:</p>
 <div class="multicode">
 <p><em>Commandline (set log level)</em></p>
@@ -10952,7 +11166,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-38">Possible Errors</h4>
+<h4 id="possible-errors-39">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -10961,7 +11175,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>logrotate</code> command closes and reopens the log file. This is intended to facilitate log rotation on Linux file systems.</p>
 <p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-40">Request Format</h4>
+<h4 id="request-format-41">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -10975,7 +11189,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-38">Response Format</h4>
+<h4 id="response-format-39">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -11017,7 +11231,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-39">Possible Errors</h4>
+<h4 id="possible-errors-40">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -11025,7 +11239,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="tutorial-rippled-setup.html#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
 <p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
-<h4 id="request-format-41">Request Format</h4>
+<h4 id="request-format-42">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11068,7 +11282,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 </tbody>
 </table>
 <p><strong>Note:</strong> The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the <code>secret</code> when generating new credentials for the first time.</p>
-<h4 id="response-format-39">Response Format</h4>
+<h4 id="response-format-40">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -11121,7 +11335,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-40">Possible Errors</h4>
+<h4 id="possible-errors-41">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>badSeed</code> - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.</li>
@@ -11130,7 +11344,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>validation_seed</code> command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.</p>
 <p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-42">Request Format</h4>
+<h4 id="request-format-43">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11162,7 +11376,7 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-40">Response Format</h4>
+<h4 id="response-format-41">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -11216,7 +11430,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-41">Possible Errors</h4>
+<h4 id="possible-errors-42">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>badSeed</code> - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.</li>
@@ -11225,7 +11439,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>peers</code> command returns a list of all other <code>rippled</code> servers currently connected to this one, including information on their connection and sync status.</p>
 <p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-43">Request Format</h4>
+<h4 id="request-format-44">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11239,7 +11453,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no additional parameters.</p>
-<h4 id="response-format-41">Response Format</h4>
+<h4 id="response-format-42">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11699,7 +11913,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-42">Possible Errors</h4>
+<h4 id="possible-errors-43">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -11707,7 +11921,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>print</code> command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.</p>
 <p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-44">Request Format</h4>
+<h4 id="request-format-45">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11721,7 +11935,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-42">Response Format</h4>
+<h4 id="response-format-43">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>Commandline</em></p>
@@ -11910,7 +12124,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. Additional fields in the result depend on the internal state of the <code>rippled</code> server. The results of this command are subject to change without notice.</p>
-<h4 id="possible-errors-43">Possible Errors</h4>
+<h4 id="possible-errors-44">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
@@ -11919,7 +12133,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ping">ping</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ping</code> command returns an acknowledgement, so that clients can test the connection status and latency.</p>
-<h4 id="request-format-45">Request Format</h4>
+<h4 id="request-format-46">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11943,7 +12157,7 @@ rippled ping
 </div>
 <p><a class="button" href="ripple-api-tool.html#ping">Try it! &gt;</a></p>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-43">Response Format</h4>
+<h4 id="response-format-44">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11964,14 +12178,14 @@ rippled ping
 </code></pre>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p>
-<h4 id="possible-errors-44">Possible Errors</h4>
+<h4 id="possible-errors-45">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <h2 id="random">random</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p>
-<h4 id="request-format-46">Request Format</h4>
+<h4 id="request-format-47">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -11994,7 +12208,7 @@ rippled random
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-44">Response Format</h4>
+<h4 id="response-format-45">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -12034,14 +12248,14 @@ rippled random
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-45">Possible Errors</h4>
+<h4 id="possible-errors-46">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>internal</code> - Some internal error occurred, possibly relating to the random number generator.</li>
 </ul>
 <h2 id="json">json</h2>
 <p>The <code>json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.</p>
-<h4 id="request-format-47">Request Format</h4>
+<h4 id="request-format-48">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>Commandline</em></p>
@@ -12049,7 +12263,7 @@ rippled random
 rippled -q json ledger_closed '{}'
 </code></pre>
 </div>
-<h4 id="response-format-45">Response Format</h4>
+<h4 id="response-format-46">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -12067,7 +12281,7 @@ rippled -q json ledger_closed '{}'
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>connect</code> command forces the rippled server to connect to a specific peer rippled server.</p>
 <p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-48">Request Format</h4>
+<h4 id="request-format-49">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -12115,7 +12329,7 @@ rippled connect 192.170.145.88 51235
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-46">Response Format</h4>
+<h4 id="response-format-47">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -12155,7 +12369,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-46">Possible Errors</h4>
+<h4 id="possible-errors-47">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -12165,7 +12379,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp" title="Source">[Source]<br/></a></p>
 <p>Gracefully shuts down the server.</p>
 <p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
-<h4 id="request-format-49">Request Format</h4>
+<h4 id="request-format-50">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
 <p><em>WebSocket</em></p>
@@ -12187,7 +12401,7 @@ Connecting to 127.0.0.1:5005
 </code></pre>
 </div>
 <p>The request includes no parameters.</p>
-<h4 id="response-format-47">Response Format</h4>
+<h4 id="response-format-48">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
 <p><em>JSON-RPC</em></p>
@@ -12226,7 +12440,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<h4 id="possible-errors-47">Possible Errors</h4>
+<h4 id="possible-errors-48">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
