@@ -9021,7 +9021,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## fee ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
-The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalationi) to be enabled. _(New in [version 0.31.0][])_
+The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalation) to be enabled. _(New in [version 0.31.0][])_
 
 _The `fee` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
 
@@ -9156,7 +9156,7 @@ The response follows the [standard format](#response-formatting), with a success
 |----------------------------|--------|-------------|
 | current\_ledger\_size      | String (Integer) | Number of transactions provisionally included in the in-progress ledger. |
 | current\_queue\_size       | String (Integer) | Number of transactions currently queued for the next ledger. |
-| drops                      | Object | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of xrp](#specifying-xrp). |
+| drops                      | Object | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of xrp](#specifying-currency-amounts). |
 | drops.base\_fee            | String (Integer) | The transaction cost required for a [reference transaction](#reference-transaction-cost) to be included in a ledger under minimum load. |
 | drops.median\_fee          | String (Integer) | An approximation of the median transaction cost among transactions included in the previous validated ledger. |
 | drops.minimum\_fee         | String (Integer) | The minimum transaction cost for a [reference transaction](#reference-transaction-cost) to be queued for a later ledger. If greater than `base_fee`, the transaction queue is full. |

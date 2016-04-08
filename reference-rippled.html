@@ -10567,7 +10567,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="fee">fee</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalationi">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
+<p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
 <p><em>The <code>fee</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
@@ -10691,7 +10691,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>drops</td>
 <td>Object</td>
-<td>Various information about the transaction cost (the <code>Fee</code> field of a transaction), in <a href="#specifying-xrp">drops of xrp</a>.</td>
+<td>Various information about the transaction cost (the <code>Fee</code> field of a transaction), in <a href="#specifying-currency-amounts">drops of xrp</a>.</td>
 </tr>
 <tr>
 <td>drops.base_fee</td>

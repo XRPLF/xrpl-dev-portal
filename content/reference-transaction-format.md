@@ -34,7 +34,7 @@ A transaction can be authorized by any of the following types of signatures:
 
 * A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction](#accountset).
 * A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction](#setregularkey).
-* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction](#SignerListSet).
+* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction](#signerlistset).
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
@@ -330,7 +330,7 @@ The `Signers` field contains a [multi-signature](#multi-signing), which has sign
 | TxnSignature | String | Blob | A signature for this transaction, verifiable using the `SigningPubKey`. |
 | SigningPubKey | String | PubKey | The public key used to create this signature. |
 
-The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](ripple-ledger.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
+The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](reference-ledger-format.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 
 Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the [transaction cost](concept-transaction-cost.html) required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would need a `Fee` value of at least `40000` drops to relay.
 
@@ -837,7 +837,7 @@ You cannot create a SignerList such that the SignerQuorum could never be met. Th
 
 You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.
 
-You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](ripple-ledger.html#accountroot-flags) enabled) and the account does not have a [Regular Key](#setregularkey) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [tecNO\_ALTERNATIVE\_KEY](#tec-codes).
+You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](reference-ledger-format.html#accountroot-flags) enabled) and the account does not have a [Regular Key](#setregularkey) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [tecNO\_ALTERNATIVE\_KEY](#tec-codes).
 
 
 # Pseudo-Transactions #
@@ -1145,7 +1145,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecFROZEN | 137 | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
 | tecINSUF\_RESERVE\_LINE | 122 | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
 | tecINSUF\_RESERVE\_OFFER | 123 | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](concept-reserves.html)) |
-| tecINSUFFICIENT\_RESERVE | 141 | The [SignerListSet](#signerlistset) or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](ripple-ledger.html#signerlists-and-reserves) for more information. |
+| tecINSUFFICIENT\_RESERVE | 141 | The [SignerListSet](#signerlistset) or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves) for more information. |
 | tecINTERNAL | 144 | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
 | tecNEED\_MASTER\_KEY | 142 | This transaction attempted to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [rippled 0.28.0](https://github.com/ripple/rippled/releases/tag/0.28.0-rc1))_ |
 | tecNO\_ALTERNATIVE\_KEY | 130 | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0), this was called `tecMASTER_DISABLED`.) |

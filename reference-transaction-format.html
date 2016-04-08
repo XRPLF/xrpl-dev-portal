@@ -160,7 +160,7 @@
 <ul>
 <li>A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
 <li>A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
-<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a <a href="#SignerListSet">SignerListSet transaction</a>.</li>
+<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a <a href="#signerlistset">SignerListSet transaction</a>.</li>
 </ul>
 <p>Any signature type can authorize any type of transaction, with the following exceptions:</p>
 <ul>
@@ -517,7 +517,7 @@
 </tr>
 </tbody>
 </table>
-<p>The <code>SigningPubKey</code> must be a key that is associated with the <code>Account</code> address. If the referenced <code>Account</code> is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the <a href="ripple-ledger.html#accountroot-flags">lsfDisableMaster</a> flag is enabled. If the referenced <code>Account</code> address is not a funded account in the ledger, then the <code>SigningPubKey</code> must be the master key associated with that address.</p>
+<p>The <code>SigningPubKey</code> must be a key that is associated with the <code>Account</code> address. If the referenced <code>Account</code> is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the <a href="reference-ledger-format.html#accountroot-flags">lsfDisableMaster</a> flag is enabled. If the referenced <code>Account</code> address is not a funded account in the ledger, then the <code>SigningPubKey</code> must be the master key associated with that address.</p>
 <p>Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the <a href="concept-transaction-cost.html">transaction cost</a> required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is <code>10000</code> drops, then a multi-signed transaction with 3 entries in the <code>Signers</code> array would need a <code>Fee</code> value of at least <code>40000</code> drops to relay.</p>
 <h3 id="flags">Flags</h3>
 <p>The <code>Flags</code> field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
@@ -1267,7 +1267,7 @@
 <p>An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set <code>SignerQuorum</code> to <code>0</code> <em>and</em> omit the <code>SignerEntries</code> field. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>. A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.</p>
 <p>You cannot create a SignerList such that the SignerQuorum could never be met. The SignerQuorum must be greater than 0 but less than or equal to the sum of the <code>SignerWeight</code> values in the list. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>.</p>
 <p>You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.</p>
-<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="ripple-ledger.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
+<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="reference-ledger-format.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
 <h1 id="pseudo-transactions">Pseudo-Transactions</h1>
 <p>Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.</p>
 <p>Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:</p>
@@ -2003,7 +2003,7 @@
 <tr>
 <td>tecINSUFFICIENT_RESERVE</td>
 <td>141</td>
-<td>The <a href="#signerlistset">SignerListSet</a> or other transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. See <a href="ripple-ledger.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
+<td>The <a href="#signerlistset">SignerListSet</a> or other transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
 </tr>
 <tr>
 <td>tecINTERNAL</td>

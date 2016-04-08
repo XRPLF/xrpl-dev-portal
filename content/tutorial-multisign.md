@@ -13,7 +13,7 @@ Benefits of multi-signing include:
 To use multi-signing:
 
 1. [The Ripple peer-to-peer network must have multi-signing enabled.](#availability-of-multi-signing)
-2. [Set up a list of signers on your account.](#setting-up-multi-sign)
+2. [Set up a list of signers on your account.](#setting-up-multi-signing)
 3. [Send transactions using multiple signatures.](#sending-a-multi-signed-transaction)
 
 
@@ -234,13 +234,13 @@ At this point, your address is ready to [send a multi-signed transaction](#sendi
 Sending a Multi-Signed Transaction
 ----------------------------------
 
-Before you can multi-sign a transaction, first  [set up multi-signing](#set-up-multi-sign) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
+Before you can multi-sign a transaction, first  [set up multi-signing](#setting-up-multi-signing) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
 
 ### 1. Create the transaction ##
 
 Create a JSON object that represents the transaction you want to submit. You have to specify _everything_ about this transaction, including `Fee` and `Sequence`. Also include the field `SigningPubKey` as an empty string, to indicate that the transaction is multi-signed.
 
-Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal [transaction cost](concept-transaction-cost.html), where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the [transaction cost's load scaling](concept-transaction-cost.html#load-scaling) increases in that time.
+Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal [transaction cost](concept-transaction-cost.html), where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the [transaction cost](concept-transaction-cost.html) increases in that time.
 
 Here's an example transaction ready to be multi-signed:
 
