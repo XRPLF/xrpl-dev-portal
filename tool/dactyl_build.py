@@ -40,6 +40,12 @@ from watchdog.events import PatternMatchingEventHandler
 # The log level is configurable at runtime (see __main__ below)
 logger = logging.getLogger()
 
+# These fields are special, and pages don't inherit them directly
+RESERVED_KEYS_TARGET = [
+    "name",
+    "display_name",
+    "filters"
+]
 filters = {}
 def load_config(config_file=DEFAULT_CONFIG_FILE):
     """Reload config from a YAML file."""
@@ -70,6 +76,16 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         for filter_name in filternames:
             filters[filter_name] = import_module("filter_"+filter_name)
 
+        # Make pages inherit arbitrary keys from targets
+        for target in config["targets"]:
+            pages = get_pages(target)
+            for p in pages:
+                for key,val in target.items():
+                    if key in RESERVED_KEYS_TARGET:
+                        continue
+                    elif key not in p:
+                        p[key] = val
+
 
 def substitute_links_for_target(soup, target):
     """Replaces local-html-links with appropriate substitutions
@@ -92,7 +108,6 @@ def substitute_links_for_target(soup, target):
                     link["href"] = link["href"].replace(local_url,
                                                         target_url)
 
-
     if "image_subs" in target:
         images = soup.find_all("img")
         for img in images:
@@ -110,6 +125,26 @@ def substitute_links_for_target(soup, target):
                 logger.info("... replacing image link '%s' with '%s'" %
                             (local_path, target["image_subs"][local_path]))
                 img_link["href"] = target["image_subs"][local_path]
+
+
+def substitute_parameter_links(link_parameter, currentpage, target):
+    """Some templates have links in page parameters. Do link substitution for
+       the target on one of those parameters."""
+    target = get_target(target)
+    # We actually want to get all pages, even the ones that aren't built as
+    # part of this target, in case those pages have replacement links.
+    pages = get_pages()
+
+    if link_parameter in currentpage:
+        linked_page = next(p for p in pages
+            if p["html"] == currentpage[link_parameter])
+        if target["name"] in linked_page:
+            #there's a link substitution available
+            currentpage[link_parameter] = linked_page[target["name"]]
+        ## We could warn here, but it would frequently be a false alarm
+        # else:
+        #     logging.warning("No substitution for %s[%s] for this target" %
+        #                     (currentpage["html"],link_parameter))
 
 def get_target(target):
     """Get a target by name, or return the default target object.
@@ -335,11 +370,19 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
     env = setup_html_env()
 
     if for_pdf:
-        logging.info("reading pdf template...")
-        default_template = env.get_template(config["pdf_template"])
+        if "pdf_template" in target:
+            logging.info("reading pdf template from target...")
+            default_template = env.get_template(target["pdf_template"])
+        else:
+            logging.info("reading default pdf template...")
+            default_template = env.get_template(config["pdf_template"])
     else:
-        logging.info("reading default template...")
-        default_template = env.get_template(config["default_template"])
+        if "template" in target:
+            logging.info("reading HTML template from target...")
+            default_template = env.get_template(target["template"])
+        else:
+            logging.info("reading default HTML template...")
+            default_template = env.get_template(config["default_template"])
 
     for currentpage in pages:
         if "md" in currentpage:
@@ -361,37 +404,31 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         else:
             html_content = ""
 
+        # Prepare some parameters for rendering
+        substitute_parameter_links("doc_page", currentpage, target)
         current_time = time.strftime("%B %d, %Y")
-        if "template" in currentpage:
-            # Use a template other than the default one
-            template = env.get_template(currentpage["template"])
 
-            #do link substitution for "doc_page" param
-            if "doc_page" in currentpage:
-                doc_page = next(p for p in pages
-                    if p["html"] == currentpage["doc_page"])
-                if target["name"] in doc_page:
-                    currentpage["doc_page"] = doc_page[target["name"]]
-
-            out_html = template.render(currentpage=currentpage,
-                                       categories=categories,
-                                       pages=pages,
-                                       content=html_content,
-                                       target=target,
-                                       current_time=current_time)
+        # Figure out which template to use
+        if "template" in currentpage and not for_pdf:
+            use_template = env.get_template(currentpage["template"])
+        elif "pdf_template" in currentpage and for_pdf:
+            use_template = env.get_template(currentpage["pdf_template"])
         else:
-            out_html = default_template.render(currentpage=currentpage,
-                                               categories=categories,
-                                               pages=pages,
-                                               content=html_content,
-                                               target=target,
-                                               current_time=current_time)
+            use_template = default_template
 
-        # Experimental: replace links in full HTML, not just content
-        soup = BeautifulSoup(out_html, "html.parser")
-        if target["name"] != config["targets"][0]["name"]:
-            substitute_links_for_target(soup, target)
-        out_html = str(soup)
+        # Render the content into the appropriate template
+        out_html = use_template.render(currentpage=currentpage,
+                                           categories=categories,
+                                           pages=pages,
+                                           content=html_content,
+                                           target=target,
+                                           current_time=current_time)
+
+        # # Experimental: replace links in full HTML, not just content
+        # soup = BeautifulSoup(out_html, "html.parser")
+        # if target["name"] != config["targets"][0]["name"]:
+        #     substitute_links_for_target(soup, target)
+        # out_html = str(soup)
 
         if for_pdf:
             out_path = config["temporary_files_path"]
