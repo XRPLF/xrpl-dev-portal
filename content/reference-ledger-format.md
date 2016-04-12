@@ -408,7 +408,7 @@ The `index` of a RippleState node is the SHA-512Half of the following values put
 ## SignerList ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-The `SignerList` node type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. This node type is introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [version 0.31.0][])_
+The `SignerList` node type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using the [SignerListSet transaction type](reference-transaction-format.html#signerlistset) This node type is introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [version 0.31.0][])_
 
 Example SignerList node:
 

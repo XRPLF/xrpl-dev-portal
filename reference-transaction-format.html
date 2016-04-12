@@ -304,6 +304,17 @@
 <h3 id="multi-signing">Multi-Signing</h3>
 <p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
 <p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
+<p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
+<ul>
+<li>The address sending the transaction (specified in the <code>Account</code> field) must own a <a href="reference-ledger-format.html#signerlist"><code>SignerList</code> in the ledger</a>.</li>
+<li>The transaction must include the <code>SigningPubKey</code> field as an empty string.</li>
+<li>The transaction must include a <a href="#signers-field"><code>Signers</code> field</a> containing an array of signatures.</li>
+<li>The signatures present in the <code>Signers</code> array must match signers defined in the SignerList.</li>
+<li>For the provided signatures, the total <code>weight</code> associated with those signers must be equal or greater than the <code>quorum</code> for the SignerList.</li>
+<li>The <a href="concept-transaction-cost.html">transaction cost</a> (specified in the <code>Fee</code> field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.</li>
+<li>All fields of the transaction must be defined before collecting signatures. You cannot <a href="#auto-fillable-fields">auto-fill</a> any fields.</li>
+<li>If presented in binary form, the <code>Signers</code> array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the <a href="reference-rippled.html#submit-multisigned"><code>submit_multisigned</code> command</a> handles this automatically.)</li>
+</ul>
 <p>For more information, see <a href="tutorial-multisign.html">How to Multi-Sign</a>.</p>
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>

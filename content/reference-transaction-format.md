@@ -191,6 +191,17 @@ Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-tr
 
 The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 
+To successfully submit a multi-signed transaction, you must do all of the following:
+
+* The address sending the transaction (specified in the `Account` field) must own a [`SignerList` in the ledger](reference-ledger-format.html#signerlist).
+* The transaction must include the `SigningPubKey` field as an empty string.
+* The transaction must include a [`Signers` field](#signers-field) containing an array of signatures.
+* The signatures present in the `Signers` array must match signers defined in the SignerList.
+* For the provided signatures, the total `weight` associated with those signers must be equal or greater than the `quorum` for the SignerList.
+* The [transaction cost](concept-transaction-cost.html) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
+* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](#auto-fillable-fields) any fields.
+* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [`submit_multisigned` command](reference-rippled.html#submit-multisigned) handles this automatically.)
+
 For more information, see [How to Multi-Sign](tutorial-multisign.html).
 
 
