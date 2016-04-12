@@ -10696,22 +10696,22 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>drops.base_fee</td>
 <td>String (Integer)</td>
-<td>The transaction cost required for a <a href="#reference-transaction-cost">reference transaction</a> to be included in a ledger under minimum load.</td>
+<td>The transaction cost required for a <a href="#reference-transaction-cost">reference transaction</a> to be included in a ledger under minimum load, represented in drops of XRP.</td>
 </tr>
 <tr>
 <td>drops.median_fee</td>
 <td>String (Integer)</td>
-<td>An approximation of the median transaction cost among transactions included in the previous validated ledger.</td>
+<td>An approximation of the median transaction cost among transactions included in the previous validated ledger, represented in drops of XRP.</td>
 </tr>
 <tr>
 <td>drops.minimum_fee</td>
 <td>String (Integer)</td>
-<td>The minimum transaction cost for a <a href="#reference-transaction-cost">reference transaction</a> to be queued for a later ledger. If greater than <code>base_fee</code>, the transaction queue is full.</td>
+<td>The minimum transaction cost for a <a href="#reference-transaction-cost">reference transaction</a> to be queued for a later ledger, represented in drops of XRP. If greater than <code>base_fee</code>, the transaction queue is full.</td>
 </tr>
 <tr>
 <td>drops.open_ledger_fee</td>
 <td>String (Integer)</td>
-<td>The minimum transaction cost that a <a href="#reference-transaction-cost">reference transaction</a> must pay to be included in the current open ledger.</td>
+<td>The minimum transaction cost that a <a href="#reference-transaction-cost">reference transaction</a> must pay to be included in the current open ledger, represented in drops of XRP.</td>
 </tr>
 <tr>
 <td>expected_ledger_size</td>
@@ -10731,12 +10731,12 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>levels.minimum_level</td>
 <td>String (Integer)</td>
-<td>The minimum transaction cost required to be queued for a future ledger.</td>
+<td>The minimum transaction cost required to be queued for a future ledger, represented in fee levels.</td>
 </tr>
 <tr>
 <td>levels.open_ledger_level</td>
 <td>String (Integer)</td>
-<td></td>
+<td>The minimum transaction cost required to be included in the current open ledger, represented in fee levels.</td>
 </tr>
 <tr>
 <td>levels.reference_level</td>
@@ -10746,7 +10746,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>max_queue_size</td>
 <td>String (Integer)</td>
-<td></td>
+<td>The maximum number of transactions that the <a href="concept-transaction-cost.html#queued-transactions">transaction queue</a> can currently hold.</td>
 </tr>
 </tbody>
 </table>
@@ -10757,21 +10757,34 @@ Connecting to 127.0.0.1:5005
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Fee Level</th>
-<th>Reference Transaction (Most transactions)</th>
+<th>Transaction</th>
+<th>Minimum cost in drops</th>
+<th>Minimum cost in Fee levels</th>
+<th>Double cost in drops</th>
+<th>Double cost in fee levels</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Minimum cost</td>
-<td>256</td>
+<td>Reference transaction (most transactions)</td>
 <td>10</td>
+<td>256</td>
+<td>20</td>
+<td>512</td>
 </tr>
 <tr>
-<td>Double cost</td>
+<td><a href="reference-transaction-format.html#multi-signing">Multi-signed transaction</a> with 4 signatures</td>
+<td>50</td>
+<td>256</td>
+<td>100</td>
 <td>512</td>
-<td>20</td>
+</tr>
+<tr>
+<td><a href="concept-transaction-cost.html#key-reset-transaction">Key reset transaction</a></td>
+<td>0</td>
+<td>(Effectively infinite)</td>
+<td>N/A</td>
+<td>(Effectively infinite)</td>
 </tr>
 </tbody>
 </table>

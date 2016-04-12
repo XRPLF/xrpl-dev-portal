@@ -9157,17 +9157,17 @@ The response follows the [standard format](#response-formatting), with a success
 | current\_ledger\_size      | String (Integer) | Number of transactions provisionally included in the in-progress ledger. |
 | current\_queue\_size       | String (Integer) | Number of transactions currently queued for the next ledger. |
 | drops                      | Object | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of xrp](#specifying-currency-amounts). |
-| drops.base\_fee            | String (Integer) | The transaction cost required for a [reference transaction](#reference-transaction-cost) to be included in a ledger under minimum load. |
-| drops.median\_fee          | String (Integer) | An approximation of the median transaction cost among transactions included in the previous validated ledger. |
-| drops.minimum\_fee         | String (Integer) | The minimum transaction cost for a [reference transaction](#reference-transaction-cost) to be queued for a later ledger. If greater than `base_fee`, the transaction queue is full. |
-| drops.open\_ledger\_fee    | String (Integer) | The minimum transaction cost that a [reference transaction](#reference-transaction-cost) must pay to be included in the current open ledger. |
+| drops.base\_fee            | String (Integer) | The transaction cost required for a [reference transaction](#reference-transaction-cost) to be included in a ledger under minimum load, represented in drops of XRP. |
+| drops.median\_fee          | String (Integer) | An approximation of the median transaction cost among transactions included in the previous validated ledger, represented in drops of XRP. |
+| drops.minimum\_fee         | String (Integer) | The minimum transaction cost for a [reference transaction](#reference-transaction-cost) to be queued for a later ledger, represented in drops of XRP. If greater than `base_fee`, the transaction queue is full. |
+| drops.open\_ledger\_fee    | String (Integer) | The minimum transaction cost that a [reference transaction](#reference-transaction-cost) must pay to be included in the current open ledger, represented in drops of XRP. |
 | expected\_ledger\_size     | String (Integer) | The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger. |
 | levels                     | Object | Various information about the transaction cost, in _fee levels_. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
 | levels.median\_level       | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in fee levels. |
-| levels.minimum\_level      | String (Integer) | The minimum transaction cost required to be queued for a future ledger.
-| levels.open\_ledger\_level | String (Integer) |
+| levels.minimum\_level      | String (Integer) | The minimum transaction cost required to be queued for a future ledger, represented in fee levels. |
+| levels.open\_ledger\_level | String (Integer) | The minimum transaction cost required to be included in the current open ledger, represented in fee levels. |
 | levels.reference\_level    | String (Integer) | The equivalent of the minimum transaction cost, represented in fee levels. |
-| max\_queue\_size           | String (Integer) |
+| max\_queue\_size           | String (Integer) | The maximum number of transactions that the [transaction queue](concept-transaction-cost.html#queued-transactions) can currently hold. |
 
 ### Reference Transaction Cost ###
 
@@ -9177,10 +9177,11 @@ The "Reference Transaction" is the cheapest possible transaction, in terms of th
 
 _Fee levels_ represent the proportional difference between the minimum cost and the actual cost of a transaction. See the following table for a comparison:
 
-|   | Fee Level | Reference Transaction (Most transactions) | Multi-signed transaction with 4 signatures |
-|---|-------------------------------------------|----------------------------------------------|
-| Minimum cost | 256 | 10 | 50 |
-| Double cost  | 512 | 20 | 100 |
+| Transaction | Minimum cost in drops | Minimum cost in Fee levels | Double cost in drops | Double cost in fee levels |
+|-------------|-----------------------|----------------------------|----------------------|---------------------------|
+| Reference transaction (most transactions) | 10 | 256 | 20 | 512 |
+| [Multi-signed transaction](reference-transaction-format.html#multi-signing) with 4 signatures | 50 | 256 | 100 | 512 |
+| [Key reset transaction](concept-transaction-cost.html#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 
 #### Possible Errors ####
 
