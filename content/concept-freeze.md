@@ -82,7 +82,7 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 | LimitAmount.value    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a gateway, this is typically `"0"`. |
 | Flags                | Number | To enable a freeze, use a value with the bit `0x00100000` (tfSetFreeze) enabled. To disable a freeze, use a value with the bit `0x00200000` (tfClearFreeze) enabled instead. |
 
-Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](reference-transaction-format.html#signing-and-sending-transactions).
+Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](reference-transaction-format.html#signing-and-submitting-transactions).
 
 Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](reference-rippled.html#websocket-api):
 

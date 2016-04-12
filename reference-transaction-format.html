@@ -60,6 +60,7 @@
 <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
 <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
 <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -72,6 +73,8 @@
 <li><a href="concept-fee-voting.html">Fee Voting</a></li>
 <li><a href="concept-reserves.html">Reserves</a></li>
 <li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="concept-amendments.html">Amendments</a></li>
+<li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -137,23 +140,46 @@
 <li><a href="#offercreate">OfferCreate - Submit an order to exchange currency</a></li>
 <li><a href="#offercancel">OfferCancel - Withdraw a currency-exchange order</a></li>
 <li><a href="#trustset">TrustSet - Add or modify a trust line</a></li>
+<li><a href="#signerlistset">SignerListSet - Set multi-signing settings</a></li>
 </ul>
-<p>Additionally, there are <em>Psuedo-Transactions</em> that are not created and submitted in the usual way, but may appear in ledgers:</p>
+<p>Additionally, there are <em>Pseudo-Transactions</em> that are not created and submitted in the usual way, but may appear in ledgers:</p>
 <ul>
 <li><a href="#setfee">SetFee - Adjust the minimum transaction cost or account reserve</a></li>
+<li><a href="#enableamendment">EnableAmendment - Apply a change to transaction processing</a></li>
 </ul>
 <p>Transactions are only valid if signed, submitted, and accepted into a validated ledger version. There are many ways a transaction can fail.</p>
 <ul>
-<li><a href="#signing-and-sending-transactions">Signing and Sending Transactions</a></li>
+<li><a href="#authorizing-transactions">Authorized Transactions</a></li>
 <li><a href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
 <li><a href="#transaction-results">Transaction Results - How to find and interpret transaction results</a></li>
 <li><a href="#full-transaction-response-list">Full Transaction Response List - Complete table of all error codes</a></li>
 </ul>
-<h2 id="signing-and-sending-transactions">Signing and Sending Transactions</h2>
-<p>Signing a transaction cryptographically proves that the person in charge of the account sending the transaction is authorized to do so. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
-<p>You can sign a transaction using a secret key: either the master secret, or a regular secret if the account has a regular key pair associated with it. (See <a href="#setregularkey">SetRegularKey</a> for details.)</p>
-<p>Multi-signature transactions are <a href="https://wiki.ripple.com/Multisign">in development</a>.</p>
-<p>Typically, you create a transaction in JSON format first. Here is an example of an unsigned Payment-type transaction in JSON:</p>
+<h2 id="authorizing-transactions">Authorizing Transactions</h2>
+<p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to perform a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
+<p>A transaction can be authorized by any of the following types of signatures:</p>
+<ul>
+<li>A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
+<li>A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a <a href="#setregularkey">SetRegularKey transaction</a>.</li>
+<li>A <a href="#multi-signing">multi-signature</a> that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a <a href="#signerlistset">SignerListSet transaction</a>.</li>
+</ul>
+<p>Any signature type can authorize any type of transaction, with the following exceptions:</p>
+<ul>
+<li>Only the master key can <a href="#accountset-flags">disable the master key</a>.</li>
+<li>Only the master key can <a href="concept-freeze.html#no-freeze">permanently give up the ability to freeze</a>.</li>
+<li>You can never remove the last method of signing transactions from an address.</li>
+</ul>
+<h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions</h2>
+<p>Sending a transaction to the Ripple Consensus Ledger involves several steps:</p>
+<ol>
+<li>Create an <a href="#unsigned-transaction-format">unsigned transaction in JSON format</a>.</li>
+<li>Use one or more signatures to <a href="#authorizing-transactions">authorize the transaction</a>.</li>
+<li>Submit a transaction to a <code>rippled</code> server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
+<li>The <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> determines which provisional transactions get included in the next validated ledger.</li>
+<li>The <code>rippled</code> servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
+<li>If enough <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="#transaction-results">results of the transactions</a> in that ledger are immutable.</li>
+</ol>
+<h3 id="unsigned-transaction-format">Unsigned Transaction Format</h3>
+<p>Here is an example of an unsigned <a href="#payment">Payment-type transaction</a> in JSON:</p>
 <pre><code>{
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -168,13 +194,13 @@
   "Sequence": 2,
 }
 </code></pre>
-<p>After doing that, you generate the signed binary format for the transaction. There are two ways to do this:</p>
+<p>The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
 <ol>
 <li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
 <li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> to perform offline signing.</li>
 </ul>
 </li>
-<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted sub-net, to a server you control.)<ul>
+<li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)<ul>
 <li>As a shortcut, you can use the <a href="reference-rippled.html#submit">submit command</a> with a <code>tx_json</code> object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.</li>
 </ul>
 </li>
@@ -186,7 +212,9 @@
   "tx_blob" : "120000240000000461D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000F732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74483046022100982064CDD3F052D22788DB30B52EEA8956A32A51375E72274E417328EBA31E480221008F522C9DB4B0F31E695AA013843958A10DE8F6BA7D6759BEE645F71A7EB240BE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
 }
 </code></pre>
-<p>After a transaction has been submitted, if it gets accepted into a validated ledger, you can view the final transaction using the API. For example, here is what the WebSocket API <a href="reference-rippled.html#tx">tx command</a> shows for the same transaction. The field names that begin with capital letters are part of the ledger object; the fields that begin with lower-case letters are additional information generated by the server for the request:</p>
+<p>After a transaction has been submitted, you can check its status using the API, for example using the <a href="reference-rippled.html#tx">tx command</a>.</p>
+<p><strong>Caution:</strong> The success of a transaction is not final unless the transaction appears in a <strong>validated</strong> ledger with the result code <code>tesSUCCESS</code>. See also: <a href="#finality-of-results">Finality of Results</a>.</p>
+<p>Example response from the <code>tx</code> command:</p>
 <pre><code>{
   "id": 6,
   "status": "success",
@@ -273,6 +301,21 @@
   }
 }
 </code></pre>
+<h3 id="multi-signing">Multi-Signing</h3>
+<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
+<p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
+<p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
+<ul>
+<li>The address sending the transaction (specified in the <code>Account</code> field) must own a <a href="reference-ledger-format.html#signerlist"><code>SignerList</code> in the ledger</a>.</li>
+<li>The transaction must include the <code>SigningPubKey</code> field as an empty string.</li>
+<li>The transaction must include a <a href="#signers-field"><code>Signers</code> field</a> containing an array of signatures.</li>
+<li>The signatures present in the <code>Signers</code> array must match signers defined in the SignerList.</li>
+<li>For the provided signatures, the total <code>weight</code> associated with those signers must be equal or greater than the <code>quorum</code> for the SignerList.</li>
+<li>The <a href="concept-transaction-cost.html">transaction cost</a> (specified in the <code>Fee</code> field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.</li>
+<li>All fields of the transaction must be defined before collecting signatures. You cannot <a href="#auto-fillable-fields">auto-fill</a> any fields.</li>
+<li>If presented in binary form, the <code>Signers</code> array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the <a href="reference-rippled.html#submit-multisigned"><code>submit_multisigned</code> command</a> handles this automatically.)</li>
+</ul>
+<p>For more information, see <a href="tutorial-multisign.html">How to Multi-Sign</a>.</p>
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>
 <ul>
@@ -284,7 +327,7 @@
 <li>Construct and sign the transaction first, including a <a href="#lastledgersequence"><code>LastLedgerSequence</code></a> parameter that gives the transaction a limited viable lifespan.</li>
 <li>Persist details of the transaction before submitting.</li>
 <li>Submit the transaction.</li>
-<li>Confirm that the transaction was either included in a validated ledger, or that it has expired due to <code>LastLedgerSequence</code>. </li>
+<li>Confirm that the transaction was either included in a validated ledger, or that it has expired due to <code>LastLedgerSequence</code>.</li>
 <li>If a transaction fails or expires, you can modify and resubmit it.</li>
 </ol>
 <p>Main article: <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></p>
@@ -349,7 +392,13 @@
 <td>SigningPubKey</td>
 <td>String</td>
 <td>PubKey</td>
-<td>(Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction.</td>
+<td>(Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the <code>Signers</code> field instead.</td>
+</tr>
+<tr>
+<td><a href="#signers-field">Signers</a></td>
+<td>Array</td>
+<td>Array</td>
+<td>(Optional) Array of objects that represent a <a href="#multi-signing">multi-signature</a> which authorizes this transaction.</td>
 </tr>
 <tr>
 <td>SourceTag</td>
@@ -361,7 +410,7 @@
 <td>TransactionType</td>
 <td>String</td>
 <td>UInt16</td>
-<td>The type of transaction. Valid types include: <code>Payment</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>, <code>AccountSet</code>, and <code>SetRegularKey</code>.</td>
+<td>The type of transaction. Valid types include: <code>Payment</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, and <code>SignerListSet</code>.</td>
 </tr>
 <tr>
 <td>TxnSignature</td>
@@ -379,10 +428,11 @@
 <li><code>Sequence</code> - Automatically use the next sequence number for the account sending the transaction.</li>
 </ul>
 <p>For a production system, we recommend <em>not</em> leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.</p>
-<p>The <a href="#paths"><code>Paths</code> field</a> of the <a href="#payment">Payment</a> transaction type can also be automatically filled in. </p>
+<p>The <a href="#paths"><code>Paths</code> field</a> of the <a href="#payment">Payment</a> transaction type can also be automatically filled in.</p>
 <h3 id="transaction-cost">Transaction Cost</h3>
-<p>In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This transaction cost is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
-<p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for this transaction. If the transaction is included in a validated leger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
+<p>In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
+<p><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
 <p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
 <p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want to perform the same transaction again, you can perform an <a href="#accountset">AccountSet</a> transaction with no options.</p>
@@ -397,7 +447,7 @@
 <p>One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially encounter serious problems like some transactions sending twice and others not at all. Chaining your transactions together with <code>AccountTxnID</code> ensures that, even if both systems are active, only one of them can submit valid transactions at a time.</p>
 <p>In order to use AccountTxnID, you must first set the <a href="#accountset-flags">asfAccountTxnID</a> flag, so that the ledger keeps track of the ID for the account's previous transaction.</p>
 <h3 id="memos">Memos</h3>
-<p>The Memos field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, <code>Memo</code>, which in turn contains another object with <em>one or more</em> of the following fields:</p>
+<p>The <code>Memos</code> field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, <code>Memo</code>, which in turn contains another object with <em>one or more</em> of the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -446,8 +496,42 @@
     "Amount": "1"
 }
 </code></pre>
+<h3 id="signers-field">Signers Field</h3>
+<p>The <code>Signers</code> field contains a <a href="#multi-signing">multi-signature</a>, which has signatures from up to 8 key pairs, that together should authorize the transaction. The <code>Signers</code> list is an array of objects, each with one field, <code>Signer</code>. The <code>Signer</code> field has the following nested fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>AccountID</td>
+<td>The address associated with this signature, as it appears in the SignerList.</td>
+</tr>
+<tr>
+<td>TxnSignature</td>
+<td>String</td>
+<td>Blob</td>
+<td>A signature for this transaction, verifiable using the <code>SigningPubKey</code>.</td>
+</tr>
+<tr>
+<td>SigningPubKey</td>
+<td>String</td>
+<td>PubKey</td>
+<td>The public key used to create this signature.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>SigningPubKey</code> must be a key that is associated with the <code>Account</code> address. If the referenced <code>Account</code> is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the <a href="reference-ledger-format.html#accountroot-flags">lsfDisableMaster</a> flag is enabled. If the referenced <code>Account</code> address is not a funded account in the ledger, then the <code>SigningPubKey</code> must be the master key associated with that address.</p>
+<p>Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the <a href="concept-transaction-cost.html">transaction cost</a> required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is <code>10000</code> drops, then a multi-signed transaction with 3 entries in the <code>Signers</code> array would need a <code>Fee</code> value of at least <code>40000</code> drops to relay.</p>
 <h3 id="flags">Flags</h3>
-<p>The Flags field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
+<p>The <code>Flags</code> field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
 <p>Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the <code>TransactionType</code> field when setting and reading flags.</p>
 <p>The only flag that applies globally to all transactions is as follows:</p>
 <table>
@@ -545,7 +629,7 @@
 <p>Most of the time, the <code>issuer</code> field of a non-XRP <a href="reference-rippled.html#specifying-currency-amounts">currency amount</a> indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the <code>issuer</code> field in the <code>Amount</code> and <code>SendMax</code> fields of a payment.</p>
 <ul>
 <li>There is only ever one balance for the same currency between two accounts. This means that, sometimes, the <code>issuer</code> field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.</li>
-<li>When the <code>issuer</code> field of the destination <code>Amount</code> field matches the <code>Destination</code> account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines. </li>
+<li>When the <code>issuer</code> field of the destination <code>Amount</code> field matches the <code>Destination</code> account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines.</li>
 <li>When the <code>issuer</code> field of the <code>SendMax</code> field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.</li>
 </ul>
 <h3 id="creating-accounts">Creating Accounts</h3>
@@ -603,9 +687,9 @@
 <p>When the <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the <code>Amount</code> field to determine how much your account received instead.</p>
 <h3 id="limit-quality">Limit Quality</h3>
 <p>Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
-<p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality. </p>
+<p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
 <p>By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average <em>average</em> quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the <a href="#transaction-results">transaction result</a> is <code>tecPATH_DRY</code>.</p>
-<p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one market maker is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>. </p>
+<p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one market maker is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>.</p>
 <p>Without the tfLimitQuality flag set, this transaction would succeed, because the $17 it costs me is within my specified <code>SendMax</code>. However, with the tfLimitQuality flag enabled, the transaction would fail instead, because the path to take the second offer has a quality of <code>2.5</code>, which is worse than the limit quality of <code>5</code>.</p>
 <p>The tfLimitQuality flag is most useful when combined with <a href="#partial-payments">partial payments</a>. When both <em>tfPartialPayment</em> and <em>tfLimitQuality</em> are set on a transaction, then the transaction delivers as much of the destination <code>Amount</code> as it can, without using any conversions that are worse than the limit quality.</p>
 <p>In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my <code>SendMax</code> of 20 USD and a destination <code>Amount</code> of 100 CNY, then the limit quality is still <code>5</code>. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about <code>6.3</code>, but it rejects the ¥5/$2 offer because that offer's quality of <code>2.5</code> is worse than the quality limit of <code>5</code>. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.</p>
@@ -729,7 +813,7 @@
 <tr>
 <td>asfDisableMaster</td>
 <td>4</td>
-<td>Disallow use of the master key. Can only be enabled if the account has a <a href="#setregularkey">RegularKey</a> configured.</td>
+<td>Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a <a href="#setregularkey">Regular Key</a> or a <a href="#signerlistset">Signer List</a>.</td>
 <td>lsfDisableMaster</td>
 </tr>
 <tr>
@@ -758,7 +842,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> You cannot send a transaction that enables <code>asfDisableMaster</code> or <code>asfNoFreeze</code> using a <a href="#setregularkey">regular key</a>. You must use the master key to sign the transaction.</p>
+<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> In order to enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature.</p>
 <p>The following <a href="#flags">Transaction flags</a>, specific to the AccountSet transaction type, serve the same purpose, but are discouraged:</p>
 <table>
 <thead>
@@ -817,7 +901,7 @@
 <p>In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
-<p>A SetRegularKey transaction changes the regular key used by the account to sign future transactions.</p>
+<p>A SetRegularKey transaction changes the regular key associated with an address.</p>
 <pre><code>{
     "Flags": 0,
     "TransactionType": "SetRegularKey",
@@ -839,14 +923,15 @@
 <tr>
 <td>RegularKey</td>
 <td>String</td>
-<td>Account</td>
-<td>(Optional) The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. If omitted, removes the existing regular key.</td>
+<td>AccountID</td>
+<td>(Optional) A base-58-encoded <a href="reference-rippled.html#addresses">Ripple address</a> to use as the regular key. If omitted, removes the existing regular key.</td>
 </tr>
 </tbody>
 </table>
-<p>Instead of using an account's master key to sign transactions, you can set an alternate key pair, called the "Regular Key". As long as the public key for this key pair is set in the <code>RegularKey</code> field of an account this way, then the secret of the Regular Key pair can be used to sign transactions. (The master secret can still be used, too, unless you set the <a href="#accountset-flags">asfDisableMaster account flag</a>.)</p>
-<p>A Regular Key pair is generated in the same way as any other Ripple keys (for example, with <a href="reference-rippled.html#wallet-propose">wallet_propose</a>), but it can be changed. A Master Key pair is an intrinsic part of the account's identity (the address is derived from the master public key) so the Master Key cannot be changed. Therefore, using a Regular Key to sign transactions instead of the master key whenever possible is beneficial to security.</p>
-<p>If your regular key is compromised, but the master key is not, you can use this method to regain control of your account. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>In addition to the master key, which is mathematically-related to an address, you can associate <strong>at most 1 additional key pair</strong> with an address using this type of transaction. The additional key pair is called a <em>regular key</em>. If your address has a regular key pair defined, you can use the secret key of the regular key pair to <a href="#authorizing-transactions">authorize transactions</a>.</p>
+<p>A regular key pair is generated in the same way as any other Ripple keys (for example, with <a href="reference-rippled.html#wallet-propose">wallet_propose</a>), but it can be changed. A master key pair is an intrinsic part of an address's identity (the address is derived from the master public key). You can <a href="#accountset-flags">disable</a> a master key but you cannot change it.</p>
+<p>You can protect your master secret by using a regular key instead of the master key to sign transactions whenever possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="#transaction-cost">transaction cost</a>.</p>
+<p>For even greater security, you can use <a href="#multi-signing">multi-signing</a>, but multi-signing requires additional XRP for the <a href="concept-transaction-cost.html">transaction cost</a> and <a href="concept-reserves.html">reserve</a>.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCreate transaction is effectively a <a href="http://en.wikipedia.org/wiki/limit_order">limit order</a>. It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
@@ -1089,7 +1174,7 @@
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
 <p>The default state of all flags is off, except for the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
-<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: You can pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0.</p>
+<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: The <a href="concept-amendments.html#trustsetauth"><code>TrustSetAuth</code> Amendment</a> would allow you to pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.</p>
 <h3 id="trustset-flags">TrustSet Flags</h3>
 <p>Transactions of the TrustSet type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
 <table>
@@ -1134,6 +1219,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="signerlistset">SignerListSet</h2>
+<p><a href="https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp" title="Source">[Source]<br/></a></p>
+<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type is introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in [version 0.31.0][])</em></p>
+<p>Example SignerListSet:</p>
+<pre><code>{
+    "Flags": 0,
+    "TransactionType": "SignerListSet",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "10000",
+    "SignerQuorum": 3,
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SignerWeight": 2
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SignerWeight": 1
+            }
+        }
+    ]
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SignerQuorum</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a SignerList, use the value <code>0</code>.</td>
+</tr>
+<tr>
+<td>SignerEntries</td>
+<td>Array</td>
+<td>Array</td>
+<td>(Omitted when deleting) Array of <a href="reference-ledger-format.html#signerentry-object">SignerEntry objects</a>, indicating the addresses and weights of signers in this list. A SignerList must have at least 1 member and no more than 8 members. No address may appear more than once in the list, nor may the <code>Account</code> submitting the transaction appear in the list.</td>
+</tr>
+</tbody>
+</table>
+<p>An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set <code>SignerQuorum</code> to <code>0</code> <em>and</em> omit the <code>SignerEntries</code> field. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>. A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.</p>
+<p>You cannot create a SignerList such that the SignerQuorum could never be met. The SignerQuorum must be greater than 0 but less than or equal to the sum of the <code>SignerWeight</code> values in the list. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>.</p>
+<p>You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.</p>
+<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="reference-ledger-format.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
 <h1 id="pseudo-transactions">Pseudo-Transactions</h1>
 <p>Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.</p>
 <p>Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:</p>
@@ -1168,8 +1313,8 @@
 </tbody>
 </table>
 <h2 id="setfee">SetFee</h2>
-<p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements. This is typically in response to changes in the load on the network.</p>
-<p><em>Note:</em> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements as a result of <a href="concept-fee-voting.html">Fee Voting</a>.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
 <pre><code>{
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",
@@ -1219,11 +1364,71 @@
 <td>UInt32</td>
 <td>The incremental reserve, in drops</td>
 </tr>
+<tr>
+<td>LedgerSequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enableamendment">EnableAmendment</h2>
+<p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">amendment process</a> for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>JSON Type</th>
+<th><a href="https://wiki.ripple.com/Binary_Format">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amendment</td>
+<td>String</td>
+<td>Hash256</td>
+<td>A unique identifier for the amendment. This is not intended to be a human-readable name. See <a href="concept-amendments.html">Amendments</a> for a list of known amendments.</td>
+</tr>
+<tr>
+<td>LedgerSequence</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The index of the ledger version where this amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enableamendment-flags">EnableAmendment Flags</h3>
+<p>The <code>Flags</code> value of the EnableAmendment pseudo-transaction indicates the status of the amendment at the time of the ledger including the pseudo-transaction.</p>
+<p>A <code>Flags</code> value of <code>0</code> (no flags) indicates that the amendment has been enabled, and applies to all ledgers afterward. Other <code>Flags</code> values are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tfGotMajority</td>
+<td>0x00010000</td>
+<td>65536</td>
+<td>Support for this amendment increased to at least 80% of trusted validators starting with this ledger version.</td>
+</tr>
+<tr>
+<td>tfLostMajority</td>
+<td>0x00020000</td>
+<td>131072</td>
+<td>Support for this amendment decreased to less than 80% of trusted validators starting with this ledger version.</td>
+</tr>
 </tbody>
 </table>
 <h1 id="transaction-results">Transaction Results</h1>
 <h2 id="immediate-response">Immediate Response</h2>
-<p>The response from the <a href="reference-rippled.html#submit"><code>submit</code> command</a> contains a provisional result from the <code>rippled</code> server indicating what happened during local processing of the transaction. </p>
+<p>The response from the <a href="reference-rippled.html#submit"><code>submit</code> command</a> contains a provisional result from the <code>rippled</code> server indicating what happened during local processing of the transaction.</p>
 <p>The response from <code>submit</code> contains the following fields:</p>
 <table>
 <thead>
@@ -1258,7 +1463,7 @@
 </code></pre>
 <p><strong><em>Note:</em></strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
 <h2 id="looking-up-transaction-results">Looking up Transaction Results</h2>
-<p>To see the final result of a transaction, use the <a href="reference-rippled.html#tx"><code>tx</code> command</a>, <a href="reference-rippled.html#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus. </p>
+<p>To see the final result of a transaction, use the <a href="reference-rippled.html#tx"><code>tx</code> command</a>, <a href="reference-rippled.html#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus.</p>
 <table>
 <thead>
 <tr>
@@ -1439,10 +1644,6 @@
 </thead>
 <tbody>
 <tr>
-<td>telLOCAL_ERROR</td>
-<td>Unspecified local error.</td>
-</tr>
-<tr>
 <td>telBAD_DOMAIN</td>
 <td>The transaction specified a domain value (for example, the <code>Domain</code> field of an <a href="#accountset">AccountSet transaction</a>) that cannot be used, probably because it is too long to store in the ledger.</td>
 </tr>
@@ -1463,6 +1664,10 @@
 <td>The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="concept-transaction-cost.html">transaction cost</a> requirement, which is derived from its load level.</td>
 </tr>
 <tr>
+<td>telLOCAL_ERROR</td>
+<td>Unspecified local error.</td>
+</tr>
+<tr>
 <td>telNO_DST_PARTIAL</td>
 <td>The transaction is an XRP payment that would fund a new account, but the <a href="#partial-payments">tfPartialPayment flag</a> was enabled. This is disallowed.</td>
 </tr>
@@ -1478,10 +1683,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>temMALFORMED</td>
-<td>Unspecified problem with the format of the transaction.</td>
-</tr>
 <tr>
 <td>temBAD_AMOUNT</td>
 <td>An amount specified by the transaction (for example the destination <code>Amount</code> or <code>SendMax</code> values of a <a href="#payment">Payment</a>) was invalid, possibly because it was a negative number.</td>
@@ -1560,7 +1761,7 @@
 </tr>
 <tr>
 <td>temDST_IS_SRC</td>
-<td>The <a href="#trustset">TrustSet</a> transaction improperly specified the destination of the trustline (the <code>issuer</code> field of <code>LimitAmount</code>) as the <code>Account</code> sending the transaction. You cannot extend a trustline to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.)</td>
+<td>The <a href="#trustset">TrustSet</a> transaction improperly specified the destination of the trust line (the <code>issuer</code> field of <code>LimitAmount</code>) as the <code>Account</code> sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.)</td>
 </tr>
 <tr>
 <td>temDST_NEEDED</td>
@@ -1575,6 +1776,10 @@
 <td>The transaction includes a <a href="#flags">Flag</a> that does not exist, or includes a contradictory combination of flags.</td>
 </tr>
 <tr>
+<td>temMALFORMED</td>
+<td>Unspecified problem with the format of the transaction.</td>
+</tr>
+<tr>
 <td>temREDUNDANT</td>
 <td>The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
 </tr>
@@ -1585,6 +1790,30 @@
 <tr>
 <td>temRIPPLE_EMPTY</td>
 <td>The <a href="#payment">Payment</a> transaction includes an empty <code>Paths</code> field, but paths are necessary to complete this payment.</td>
+</tr>
+<tr>
+<td>temBAD_WEIGHT</td>
+<td>The <a href="#signerlistset">SignerListSet</a> transaction includes a <code>SignerWeight</code> that is invalid, for example a zero or negative value.</td>
+</tr>
+<tr>
+<td>temBAD_SIGNER</td>
+<td>The <a href="#signerlistset">SignerListSet</a> transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
+</tr>
+<tr>
+<td>temBAD_QUORUM</td>
+<td>The <a href="#signerlistset">SignerListSet</a> transaction has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
+</tr>
+<tr>
+<td>temUNCERTAIN</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td>temUNKNOWN</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td>temDISABLED</td>
+<td>The transaction requires logic that is currently disabled. Typically this means you are trying to use an <a href="concept-amendments.html">amendment</a> that is not enabled for the current ledger.</td>
 </tr>
 </tbody>
 </table>
@@ -1599,48 +1828,48 @@
 </thead>
 <tbody>
 <tr>
-<td>tefFAILURE</td>
-<td>Unspecified failure in applying the transaction.</td>
-</tr>
-<tr>
 <td>tefALREADY</td>
 <td>The same exact transaction has already been applied.</td>
 </tr>
 <tr>
 <td>tefBAD_ADD_AUTH</td>
-<td>Deprecated. This code should never be returned.</td>
+<td><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
 <td>tefBAD_AUTH</td>
 <td>The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the <a href="#setregularkey">Regular Key</a>.)</td>
 </tr>
 <tr>
+<td>tefBAD_AUTH_MASTER</td>
+<td>The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address.</td>
+</tr>
+<tr>
 <td>tefBAD_LEDGER</td>
-<td>While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please <a href="https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&amp;issuetype=1">file a bug</a> to get it fixed.</td>
+<td>While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
+</tr>
+<tr>
+<td>tefBAD_QUORUM</td>
+<td>The transaction was <a href="#multi-signing">multi-signed</a>, but the total weights of all included signatures did not meet the quorum.</td>
+</tr>
+<tr>
+<td>tefBAD_SIGNATURE</td>
+<td>The transaction was <a href="#multi-signing">multi-signed</a>, but contained a signature for an address not part of a SignerList associated with the sending account.</td>
 </tr>
 <tr>
 <td>tefCREATED</td>
-<td>Deprecated. This code should never be returned.</td>
+<td><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
 <td>tefEXCEPTION</td>
-<td>While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please <a href="https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&amp;issuetype=1">file a bug</a> to get it fixed.</td>
+<td>While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
+</tr>
+<tr>
+<td>tefFAILURE</td>
+<td>Unspecified failure in applying the transaction.</td>
 </tr>
 <tr>
 <td>tefINTERNAL</td>
-<td>While attempting to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://ripplelabs.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10800&amp;issuetype=1">file a bug</a> to get it fixed.</td>
-</tr>
-<tr>
-<td>tefNO_AUTH_REQUIRED</td>
-<td>The <a href="#trustset">TrustSet</a> transaction attempted to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
-</tr>
-<tr>
-<td>tefPAST_SEQ</td>
-<td>The sequence number of the transaction is lower than the current sequence number of the account sending the transaction.</td>
-</tr>
-<tr>
-<td>tefWRONG_PRIOR</td>
-<td>The transaction contained an <code>AccountTxnID</code> field (or the deprecated <code>PreviousTxnID</code> field), but the transaction specified there does not match the account's previous transaction.</td>
+<td>While attempting to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
 <td>tefMASTER_DISABLED</td>
@@ -1649,6 +1878,22 @@
 <tr>
 <td>tefMAX_LEDGER</td>
 <td>The transaction included a <a href="#lastledgersequence"><code>LastLedgerSequence</code></a> parameter, but the current ledger's sequence number is already higher than the specified value.</td>
+</tr>
+<tr>
+<td>tefNO_AUTH_REQUIRED</td>
+<td>The <a href="#trustset">TrustSet</a> transaction attempted to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
+</tr>
+<tr>
+<td>tefNOT_MULTI_SIGNING</td>
+<td>The transaction was <a href="#multi-signing">multi-signed</a>, but the sending account has no SignerList defined.</td>
+</tr>
+<tr>
+<td>tefPAST_SEQ</td>
+<td>The sequence number of the transaction is lower than the current sequence number of the account sending the transaction.</td>
+</tr>
+<tr>
+<td>tefWRONG_PRIOR</td>
+<td>The transaction contained an <code>AccountTxnID</code> field (or the deprecated <code>PreviousTxnID</code> field), but the transaction specified there does not match the account's previous transaction.</td>
 </tr>
 </tbody>
 </table>
@@ -1663,27 +1908,31 @@
 </thead>
 <tbody>
 <tr>
-<td>terRETRY</td>
-<td>Unspecified retriable error.</td>
-</tr>
-<tr>
 <td>terFUNDS_SPENT</td>
-<td>Deprecated. This code should never be returned.</td>
+<td><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
 <td>terINSUF_FEE_B</td>
 <td>The account sending the transaction does not have enough XRP to pay the <code>Fee</code> specified in the transaction.</td>
 </tr>
 <tr>
+<td>terLAST</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
 <td>terNO_ACCOUNT</td>
-<td>The account sending the transaction does not exist in the ledger (yet).</td>
+<td>The address sending the transaction is not funded in the ledger (yet).</td>
 </tr>
 <tr>
 <td>terNO_AUTH</td>
-<td>The transaction would involve adding currency issued by an account with <code>lsfRequireAuth</code> enabled to a trustline that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold.</td>
+<td>The transaction would involve adding currency issued by an account with <code>lsfRequireAuth</code> enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold.</td>
 </tr>
 <tr>
 <td>terNO_LINE</td>
+<td>Used internally only. This code should never be returned.</td>
+</tr>
+<tr>
+<td>terNO_RIPPLE</td>
 <td>Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
@@ -1695,12 +1944,8 @@
 <td>The <code>Sequence</code> number of the current transaction is higher than the current sequence number of the account sending the transaction.</td>
 </tr>
 <tr>
-<td>terLAST</td>
-<td>Used internally only. This code should never be returned.</td>
-</tr>
-<tr>
-<td>terNO_RIPPLE</td>
-<td>Used internally only. This code should never be returned.</td>
+<td>terRETRY</td>
+<td>Unspecified retriable error.</td>
 </tr>
 </tbody>
 </table>
@@ -1737,24 +1982,14 @@
 <td>Unspecified failure, with transaction cost destroyed.</td>
 </tr>
 <tr>
-<td>tecPATH_PARTIAL</td>
-<td>101</td>
-<td>The transaction failed because the provided paths did not have enough liquidity to send the full amount.</td>
+<td>tecDIR_FULL</td>
+<td>121</td>
+<td>The address sending the transaction cannot own any more objects in the ledger.</td>
 </tr>
 <tr>
-<td>tecUNFUNDED_ADD</td>
-<td>102</td>
-<td><strong>DEPRECATED.</strong></td>
-</tr>
-<tr>
-<td>tecUNFUNDED_OFFER</td>
-<td>103</td>
-<td>The <a href="#offercreate">OfferCreate transaction</a> failed because the account creating the offer does not have any of the <code>TakerGets</code> currency.</td>
-</tr>
-<tr>
-<td>tecUNFUNDED_PAYMENT</td>
-<td>104</td>
-<td>The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: <a href="concept-reserves.html">Reserves</a>)</td>
+<td>tecDST_TAG_NEEDED</td>
+<td>143</td>
+<td>The <a href="#payment">Payment</a> transaction omitted a destination tag, but the destination account has the <code>lsfRequireDestTag</code> flag enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
 </tr>
 <tr>
 <td>tecFAILED_PROCESSING</td>
@@ -1762,9 +1997,9 @@
 <td>An unspecified error occurred when processing the transaction.</td>
 </tr>
 <tr>
-<td>tecDIR_FULL</td>
-<td>121</td>
-<td>The "owners count" of the account sending the transaction is already maxed out.</td>
+<td>tecFROZEN</td>
+<td>137</td>
+<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="concept-freeze.html">global freeze</a>.</td>
 </tr>
 <tr>
 <td>tecINSUF_RESERVE_LINE</td>
@@ -1777,6 +2012,31 @@
 <td>The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
+<td>tecINSUFFICIENT_RESERVE</td>
+<td>141</td>
+<td>The <a href="#signerlistset">SignerListSet</a> or other transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
+</tr>
+<tr>
+<td>tecINTERNAL</td>
+<td>144</td>
+<td>Unspecified internal error, with transaction cost applied. This error code should not normally be returned.</td>
+</tr>
+<tr>
+<td>tecNEED_MASTER_KEY</td>
+<td>142</td>
+<td>This transaction attempted to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
+</tr>
+<tr>
+<td>tecNO_ALTERNATIVE_KEY</td>
+<td>130</td>
+<td>The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>, this was called <code>tecMASTER_DISABLED</code>.)</td>
+</tr>
+<tr>
+<td>tecNO_AUTH</td>
+<td>134</td>
+<td>The transaction failed because it needs to add a balance on a trust line to an account with the <code>lsfRequireAuth</code> flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO_LINE occurs instead.</td>
+</tr>
+<tr>
 <td>tecNO_DST</td>
 <td>124</td>
 <td>The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received sufficient XRP.)</td>
@@ -1785,6 +2045,21 @@
 <td>tecNO_DST_INSUF_XRP</td>
 <td>125</td>
 <td>The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it.</td>
+</tr>
+<tr>
+<td>tecNO_ENTRY</td>
+<td>140</td>
+<td>Reserved for future use.</td>
+</tr>
+<tr>
+<td>tecNO_ISSUER</td>
+<td>133</td>
+<td>The account specified in the <code>issuer</code> field of a currency amount does not exist.</td>
+</tr>
+<tr>
+<td>tecNO_LINE</td>
+<td>135</td>
+<td>The <code>TakerPays</code> field of the <a href="#offercreate">OfferCreate transaction</a> specifies an asset whose issuer has <code>lsfRequireAuth</code> enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, <code>tecNO_AUTH</code> occurs instead.</td>
 </tr>
 <tr>
 <td>tecNO_LINE_INSUF_RESERVE</td>
@@ -1797,24 +2072,24 @@
 <td>The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist.</td>
 </tr>
 <tr>
-<td>tecPATH_DRY</td>
-<td>128</td>
-<td>The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines.</td>
-</tr>
-<tr>
-<td>tecUNFUNDED</td>
-<td>129</td>
-<td><strong>DEPRECATED.</strong> Replaced by tecUNFUNDED_OFFER and tecUNFUNDED_PAYMENT.</td>
-</tr>
-<tr>
-<td>tecMASTER_DISABLED</td>
-<td>130</td>
-<td>The <a href="#setregularkey">SetRegularKey transaction</a> tried to unset the Regular Key, but the account has the <code>lsfDisableMaster</code> flag enabled. (Unsetting the Regular Key while also leaving the Master Key disabled would make the account unusable.)</td>
+<td>tecNO_PERMISSION</td>
+<td>139</td>
+<td>Reserved for future use.</td>
 </tr>
 <tr>
 <td>tecNO_REGULAR_KEY</td>
 <td>131</td>
-<td>The <a href="#accountset">AccountSet transaction</a> tried to disable the Master Key, but the account does not have a Regular Key set. (Disabling the Master Key without having a Regular Key configured would make the account unusable.)</td>
+<td>The <a href="#accountset">AccountSet transaction</a> tried to disable the master key, but the account does not have another way to <a href="#authorizing-transactions">authorize transactions</a>. If <a href="#multi-signing">multi-signing</a> is enabled, this code is deprecated and <code>tecNO_ALTERNATIVE_KEY</code> is used instead.</td>
+</tr>
+<tr>
+<td>tecNO_TARGET</td>
+<td>138</td>
+<td>Reserved for future use.</td>
+</tr>
+<tr>
+<td>tecOVERSIZE</td>
+<td>145</td>
+<td>This transaction could not be processed, because attempted transaction processing created an excessively large amount of metadata. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1">rippled 0.29.0-hf1</a> )</em></td>
 </tr>
 <tr>
 <td>tecOWNERS</td>
@@ -1822,74 +2097,39 @@
 <td>The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the <a href="#accountset-flags"><code>lsfRequireAuth</code></a> flag if it has any trust lines or available offers.</td>
 </tr>
 <tr>
-<td>tecNO_ISSUER</td>
-<td>133</td>
-<td>The account specified in the <code>issuer</code> field of a currency amount does not exist.</td>
+<td>tecPATH_DRY</td>
+<td>128</td>
+<td>The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines.</td>
 </tr>
 <tr>
-<td>tecNO_AUTH</td>
-<td>134</td>
-<td>The transaction failed because it needs to add a balance on a trust line to an account with the <code>lsfRequireAuth</code> flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO_LINE occurs instead.</td>
+<td>tecPATH_PARTIAL</td>
+<td>101</td>
+<td>The transaction failed because the provided paths did not have enough liquidity to send the full amount.</td>
 </tr>
 <tr>
-<td>tecNO_LINE</td>
-<td>135</td>
-<td>The <code>TakerPays</code> field of the <a href="#offercreate">OfferCreate transaction</a> specifies an asset whose issuer has <code>lsfRequireAuth</code> enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, tecNO_AUTH occurs instead.</td>
+<td>tecUNFUNDED</td>
+<td>129</td>
+<td><strong>DEPRECATED.</strong> Replaced by tecUNFUNDED_OFFER and tecUNFUNDED_PAYMENT.</td>
 </tr>
 <tr>
-<td>tecINSUFF_FEE</td>
-<td>136</td>
-<td>The account sending the transaction does not possess enough XRP to pay the specified <code>Fee</code>. This error only occurs if the transaction has already been propagated through the network to achieve consensus,</td>
+<td>tecUNFUNDED_ADD</td>
+<td>102</td>
+<td><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
-<td>tecFROZEN</td>
-<td>137</td>
-<td>The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="concept-freeze.html">global freeze</a>.</td>
+<td>tecUNFUNDED_PAYMENT</td>
+<td>104</td>
+<td>The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
-<td>tecNO_TARGET</td>
-<td>138</td>
-<td><strong>FORTHCOMING</strong> Part of multi-signature transactions.</td>
-</tr>
-<tr>
-<td>tecNO_PERMISSION</td>
-<td>139</td>
-<td><strong>FORTHCOMING</strong> Part of multi-signature transactions.</td>
-</tr>
-<tr>
-<td>tecNO_ENTRY</td>
-<td>140</td>
-<td><strong>FORTHCOMING</strong> Part of multi-signature transactions.</td>
-</tr>
-<tr>
-<td>tecINSUFFICIENT_RESERVE</td>
-<td>141</td>
-<td><strong>FORTHCOMING</strong> Part of multi-signature transactions. (Code may change; see <a href="https://ripplelabs.atlassian.net/browse/RIPD-743">RIPD-743</a> for status.)</td>
-</tr>
-<tr>
-<td>tecNEED_MASTER_KEY</td>
-<td>142</td>
-<td>This transaction attempted to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
-</tr>
-<tr>
-<td>tecDST_TAG_NEEDED</td>
-<td>143</td>
-<td>The <a href="#payment">Payment</a> transaction omitted a destination tag, but the destination account has the <code>lsfRequireDestTag</code> flag enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
-</tr>
-<tr>
-<td>tecINTERNAL</td>
-<td>144</td>
-<td>Unspecified internal error, with transaction cost applied. This error code should not normally be returned.</td>
-</tr>
-<tr>
-<td>tecOVERSIZE</td>
-<td>145</td>
-<td>This transaction could not be processed, because attempted transaction processing created an excessively large amount of metadata. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1">rippled 0.29.0-hf1</a> )</em></td>
+<td>tecUNFUNDED_OFFER</td>
+<td>103</td>
+<td>The <a href="#offercreate">OfferCreate transaction</a> failed because the account creating the offer does not have any of the <code>TakerGets</code> currency.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="tej-codes">tej Codes</h3>
-<p>These codes are only ever returned by the <code>ripple-lib</code> client library, not by <code>rippled</code> itself. </p>
+<p>These codes are only ever returned by the <code>ripple-lib</code> client library, not by <code>rippled</code> itself.</p>
 <table>
 <thead>
 <tr>

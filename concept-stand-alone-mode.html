@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="width=device-width" name="viewport">
-<title>Fees (Disambiguation) - Ripple Developer Portal</title>
+<title>Stand-Alone Mode - Ripple Developer Portal</title>
 <!-- favicon -->
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -131,19 +131,63 @@
 </aside>
 <main class="main" role="main">
 <div class="content">
-<h1 id="fees-disambiguation">Fees (Disambiguation)</h1>
-<p>The Ripple Consensus Ledger is a decentralized ledger, secured by cryptography and operated by a distributed peer-to-peer network of servers. This means that no one party, not even Ripple, can require a fee for access to the network.</p>
-<p>However, the rules of the Ripple Consensus Ledger include several types of fees, including neutral fees which protect the ledger against abuse. These neutral fees are not paid to anyone. There are also several optional ways that users can collect fees from each other, both inside and outside the Ripple Consensus Ledger.</p>
-<h2 id="in-the-ledger">In the Ledger</h2>
-<h3 id="neutral-fees">Neutral Fees</h3>
-<p>The <em><strong>transaction cost</strong></em> (sometimes called the transaction fee) is a miniscule amount of XRP destroyed in order to send a transaction. This cost scales with the load of the network, which protects the peer-to-peer network from spam. See <a href="concept-transaction-cost.html">Transaction Cost</a> for more information.</p>
-<p>The <em><strong>account reserve</strong></em> is a minimum amount of XRP that an account must possess. It scales with the number of objects the account owns in the ledger. This disincentivizes users from increasing the size of the ledger carelessly or maliciously. See <a href="concept-reserves.html">Reserves</a> for more information.</p>
-<h3 id="optional-fees">Optional Fees</h3>
-<p><em><strong>Transfer fees</strong></em> are optional percentage fees that gateways can charge to transfer the currencies they issue to other accounts within the Ripple Consensus Ledger. See <a href="concept-transfer-fees.html">Transfer Fees</a> for more information.</p>
-<p><em><strong>Trust line quality</strong></em> is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations that are similar to charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.</p>
-<h2 id="outside-the-ledger">Outside the Ledger</h2>
-<p>Although the fees described above are the only fees built into the Ripple Consensus Ledger, people can still invent ways to charge fees associated with the ledger. For example, gateways commonly charge their customers to send money into and out of the Ripple Consensus Ledger.</p>
-<p>Many other fees are also possible. Businesses might charge for access to a client application, maintenance of non-Ripple accounts, exchange services (especially when buying XRP on a private market instead of directly within the Ripple Consensus Ledger) and any number of other services. Always be aware of the fee schedule before doing business with any gateway or other financial institution.</p>
+<h1 id="stand-alone-mode">Stand-Alone Mode</h1>
+<p>You can run <code>rippled</code> in stand-alone mode without a consensus of trusted servers. In stand-alone mode, <code>rippled</code> does not communicate with any other servers in the Ripple peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing <code>rippled</code> behavior without being tied to the live network. For example, you can <a href="concept-amendments.html#testing-amendments">test the effects of Amendments</a> before those Amendments have gone into effect across the decentralized network.</p>
+<p>When you run <code>rippled</code> in stand-alone mode, you have to tell it what ledger version to start from:</p>
+<ul>
+<li>Create a <a href="#new-genesis-ledger">new genesis ledger</a> from scratch.</li>
+<li><a href="#load-saved-ledger">Load an existing ledger version</a> from disk.</li>
+</ul>
+<p><strong>Caution:</strong> In stand-alone mode, you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>.</p>
+<h2 id="new-genesis-ledger">New Genesis Ledger</h2>
+<p>In stand-alone mode, you can have <code>rippled</code> create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)</p>
+<ul>
+<li>To start <code>rippled</code> in stand-alone mode with a new genesis ledger, use the <code>-a</code> and <code>--start</code> options:</li>
+</ul>
+<pre><code>rippled -a --start --conf=/path/to/rippled.cfg
+</code></pre>
+<p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
+<p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
+<p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
+<p><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
+<h2 id="load-saved-ledger">Load Saved Ledger</h2>
+<p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
+<h3 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h3>
+<p>To load an existing ledger, you must first retrieve that ledger from the network. Start <code>rippled</code> in networked mode as normal:</p>
+<pre><code>rippled --conf=/path/to/rippled.cfg
+</code></pre>
+<h3 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced.</h3>
+<p>Use the <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> to check the state of your server relative to the network. Your server is synced when the <code>server_state</code> value shows any of the following values:</p>
+<ul>
+<li><code>full</code></li>
+<li><code>proposing</code></li>
+<li><code>validating</code>.</li>
+</ul>
+<h3 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions.</h3>
+<p>If you only want the most recent ledger, you can skip this step.</p>
+<p>If you want to load a specific historical ledger version, use the <a href="reference-rippled.html#ledger-request"><code>ledger_request</code> command</a> to make <code>rippled</code> fetch it. If <code>rippled</code> does not already have the ledger version, you may have to run the <code>ledger_request</code> command multiple times until it has finished retrieving the ledger.</p>
+<p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it.</p>
+<h3 id="4-shut-down-rippled">4. Shut down <code>rippled</code>.</h3>
+<p>Use the <a href="reference-rippled.html#stop"><code>stop</code> command</a>:</p>
+<pre><code>rippled stop --conf=/path/to/rippled.cfg
+</code></pre>
+<h3 id="5-start-rippled-in-stand-alone-mode">5. Start <code>rippled</code> in stand-alone mode.</h3>
+<p>To load the most recent ledger version, you can use the <code>-a</code> and <code>--load</code> options when starting the server:</p>
+<pre><code>rippled -a --load --conf=/path/to/rippled.cfg
+</code></pre>
+<p>To instead load a specific historical ledger, use the <code>--load</code> parameter along with the <code>--ledger</code> parameter, providing the ledger index or identifying hash of the ledger version to load:</p>
+<pre><code>rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
+</code></pre>
+<h3 id="6-manually-advance-the-ledger">6. Manually advance the ledger.</h3>
+<p>When you load a ledger with <code>--ledger</code> in stand-alone mode, it goes to the current open ledger, so you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>:</p>
+<pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
+</code></pre>
+<h2 id="advancing-ledgers-in-stand-alone-mode">Advancing Ledgers in Stand-Alone Mode</h2>
+<p>In stand-alone mode, <code>rippled</code> does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a>:</p>
+<pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
+</code></pre>
+<p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Ripple Ledger Consensus Process</a>.)</p>
+<p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. <strong>Note:</strong> You can safely submit multiple transactions from a single address to a single ledger, because <code>rippled</code> sorts transactions from the same address in ascending order by <code>Sequence</code> number.</p>
 </div>
 </main>
 </div>

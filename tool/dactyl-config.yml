@@ -149,6 +149,13 @@ pages:
             - local
             - ripple.com
 
+    -   name: Multi-Signing Transactions
+        category: Tutorials
+        html: tutorial-multisign.html
+        md: tutorial-multisign.md
+        ripple.com: https://wiki.ripple.com/Multisign
+        sidebar: true
+
 # Concepts are introductions that explain a topic.
 # In the Dev Portal, these are mostly summaries of RCL features.
     -   name: Paths
@@ -220,6 +227,20 @@ pages:
         targets:
             - local
             - ripple.com
+
+    -   name: Amendments
+        category: Concepts
+        html: concept-amendments.html
+        md: concept-amendments.md
+        ripple.com: https://wiki.ripple.com/Understanding:_Feature_adoption
+        sidebar: true
+
+    -   name: Stand-Alone Mode
+        category: Concepts
+        html: concept-stand-alone-mode.html
+        md: concept-stand-alone-mode.md
+        ripple.com: https://wiki.ripple.com/Rippled#--standalone.2C_-a
+        sidebar: true
 
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Addresses

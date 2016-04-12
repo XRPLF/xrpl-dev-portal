@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="width=device-width" name="viewport">
+<title>Amendments - Ripple Developer Portal</title>
+<!-- favicon -->
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- jQuery -->
+<script src="assets/vendor/jquery-1.11.1.min.js"></script>
+<!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+<link href="assets/css/ripple.css" rel="stylesheet"/>
+<link href="assets/css/devportal.css" rel="stylesheet"/>
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- syntax highlighting -->
+<link href="assets/vendor/docco.min.css" rel="stylesheet">
+<script src="assets/vendor/highlight.min.js"></script>
+<!-- syntax selection js -->
+<script src="assets/js/multicodetab.js"></script>
+<script>
+        $(document).ready(function() {
+            $().multicode_tabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+<script src="assets/js/expandcode.js"></script>
+<script src="assets/js/fixsidebarscroll.js"></script>
+</link></link></link></meta></meta></meta></head>
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+<header class="banner navbar navbar-default navbar-fixed-top initial_header" role="banner">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" href="index.html"><img class="logo" src="assets/img/ripple-logo-color.png"/></a>
+</div><!-- /.navbar-header -->
+<div class="nav">
+<div class="draft-warning">DRAFT PAGE</div>
+</div><!-- /.nav -->
+</div><!-- /.container -->
+<div class="subnav dev_nav">
+<div class="container">
+<ul class="menu" id="menu-dev-menu">
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="concept-amendments.html">Amendments</a></li>
+<li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+<li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Resources <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+<li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+<li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+<li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+<li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+</ul>
+<li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+</li></ul><!-- /#dev-menu -->
+</div><!-- /.subnav .container -->
+</div><!-- /.subnav -->
+</header>
+<div class="wrap container" role="document">
+<aside class="sidebar" role="complementary">
+<div class="dev_nav_wrapper">
+<div id="cont">
+<ul class="dev_nav_sidebar">
+<li class="level-1"><a href="index.html">Category: Concepts</a></li>
+<li class="level-2"><a href="concept-paths.html">Paths</a></li>
+<li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+<li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+<li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+<li class="level-2"><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+</ul>
+<hr/>
+<h5>In this page:</h5>
+</div>
+<script src="assets/js/jquery.gensidebar.js" type="text/javascript"></script>
+</div>
+</aside>
+<main class="main" role="main">
+<div class="content">
+<h1 id="amendments">Amendments</h1>
+<p><em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
+<p>The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires <strong>80% support for two weeks</strong> before it can apply.</p>
+<p>When an Amendment has been enabled, it applies permanently to all ledger versions after the one that included it. You cannot disable an Amendment, unless you introduce a new Amendment to do so.</p>
+<h2 id="background">Background</h2>
+<p>Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If only a portion of <em>validators</em> (<code>rippled</code> servers <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">participating in consensus</a>) have upgraded to a new version of the software, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.</p>
+<p>Amendments provide a solution to this problem, so that new features can be enabled only when enough validators support those features.</p>
+<p>Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> do not require Amendments.</p>
+<h2 id="about-amendments">About Amendments</h2>
+<p>An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A <code>rippled</code> server that wants to use an amendment has code for two modes: without the amendment (previous behavior) and with the amendment (new behavior).</p>
+<p>Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.</p>
+<p>See also: <a href="#known-amendments">Known Amendments</a></p>
+<h2 id="amendment-process">Amendment Process</h2>
+<p>Every 256th ledger is called a "flag" ledger. The process of approving an amendment starts in the ledger version immediately before the flag ledger. When <code>rippled</code> validator servers send validation messages for that ledger, those servers also submit votes in favor of specific amendments. (<a href="concept-fee-voting.html">Fee Voting</a> also occurs around flag ledgers.)</p>
+<p>The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an <a href="reference-transaction-format.html#enableamendment"><code>EnableAmendment</code> pseudo-transaction</a> into the following ledger. The flags of an EnableAmendment pseudo-transaction indicate what the server thinks happened:</p>
+<ul>
+<li>The <code>tfGotMajority</code> flag means that support for the amendment has increased to at least 80% of trusted validators.</li>
+<li>The <code>tfLostMajority</code> flag means that support for the amendment has decreased to less than 80% of trusted validators.</li>
+<li>An EnableAmendment pseudo-transaction with no flags means that support for the amendment has been enabled. (The change in transaction processing applies to every ledger after this one.)</li>
+</ul>
+<p>A server only inserts the pseudo-transaction to enable an amendment if all of the following conditions are met:</p>
+<ul>
+<li>The amendment has not already been enabled.</li>
+<li>A previous ledger includes an EnableAmendment pseudo-transaction for this amendment with the <code>tfGotMajority</code> flag enabled.</li>
+<li>The previous ledger in question is an ancestor of the current ledger.</li>
+<li>The previous ledger in question has a close time that is at least <strong>two weeks</strong> before the close time of the latest flag ledger.</li>
+<li>There are no EnableAmendment pseudo-transactions for this amendment with the <code>tfLostMajority</code> flag enabled in the consensus ledgers between the <code>tfGotMajority</code> pseudo-transaction and the current ledger.</li>
+</ul>
+<p>It is theoretically possible (but extremely unlikely) that a <code>tfLostMajority</code> EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the <code>tfLostMajority</code> pseudo-transaction has no effect.</p>
+<h2 id="amendment-voting">Amendment Voting</h2>
+<p>Operators of <code>rippled</code> validators can choose which amendments to support or reject using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>. This decides which amendments the validator votes for in the <a href="#amendment-process">amendment process</a>. By default, <code>rippled</code> votes in favor of every amendment it knows about.</p>
+<p>The operator of a <code>rippled</code> validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.</p>
+<p>As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple (the company) on releasing new features.</p>
+<h3 id="configuring-amendment-voting">Configuring Amendment Voting</h3>
+<p>You can temporarily configure an amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>. To make a persistent change to your server's support for an amendment, modify your server's <code>rippled.cfg</code> file.</p>
+<p>Use the <code>[veto_amendments]</code> stanza to list amendments you do not want the server to vote for. Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:</p>
+<pre><code>[veto_amendments]
+C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 Tickets
+DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 SusPay
+</code></pre>
+<p>Use the <code>[amendments]</code> stanza to list amendments you want to vote for. (Even if you do not list them here, by default a server votes for all the amendments it knows how to apply.) Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:</p>
+<pre><code>[amendments]
+4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 MultiSign
+42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE FeeEscalation
+</code></pre>
+<h2 id="testing-amendments">Testing Amendments</h2>
+<p>If you want to see how <code>rippled</code> behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use <code>rippled</code>'s configuration file to forcibly enable a feature. This is intended for development purposes only.</p>
+<p>Because other members of the consensus network probably do not have the feature enabled, you should not use this feature while connecting to the production network. While testing with features forcibly enabled, you should run <code>rippled</code> in <a href="concept-stand-alone-mode.html">Stand-Alone Mode</a>.</p>
+<p>To forcibly enable a feature, add a <code>[features]</code> stanza to your <code>rippled.cfg</code> file. In this stanza, add the short names of the features to enable, one per line. For example:</p>
+<pre><code>[features]
+MultiSign
+TrustSetAuth
+</code></pre>
+<h1 id="known-amendments">Known Amendments</h1>
+<p>The following is a comprehensive list of all known amendments and their status on the production Ripple Consensus Ledger:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Introduced</th>
+<th>Enabled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#tickets">Tickets</a></td>
+<td>v0.31.0</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><a href="#suspay">SusPay</a></td>
+<td>v0.31.0</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><a href="#trustsetauth">TrustSetAuth</a></td>
+<td>v0.30.0</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><a href="#multisign">MultiSign</a></td>
+<td>v0.31.0</td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><a href="#feeescalation">FeeEscalation</a></td>
+<td>v0.31.0</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.</p>
+<h2 id="feeescalation">FeeEscalation</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the way the <a href="concept-transaction-cost.html">transaction cost</a> applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost.</p>
+<p>This amendment introduces a fixed-size transaction queue for transactions that were not able to be included in the previous consensus round. If the <code>rippled</code> servers in the consensus network are under heavy load, they queue the transactions with the lowest transaction cost for later ledgers. Each consensus round prioritizes transactions from the queue with the largest transaction cost (<code>Fee</code> value), and includes as many transactions as the consensus network can process. If the transaction queue is full, transactions drop from the queue entirely, starting with the ones that have the lowest transaction cost.</p>
+<p>While the consensus network is under heavy load, legitimate users can pay a higher transaction cost to make sure their transactions get processed. The situation persists until the entire backlog of cheap transactions is processed or discarded.</p>
+<p>A transaction remains in the queue until one of the following happens:</p>
+<ul>
+<li>It gets applied to a validated ledger (regardless of success or failure)</li>
+<li>It becomes invalid (for example, the <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> causes it to expire)</li>
+<li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
+</ul>
+<h2 id="multisign">MultiSign</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+</tr>
+</tbody>
+</table>
+<p>Introduces simple <a href="reference-transaction-format.html#multi-signing">multi-signing</a> as a way to authorize transactions. Creates the <a href="reference-ledger-format.html#signerlist"><code>SignerList</code> ledger node type</a> and the <a href="reference-transaction-format.html#signerlistset"><code>SignerListSet</code> transaction type</a>. Adds the optional <code>Signers</code> field to all transaction types. Modifies some transaction result codes.</p>
+<p>This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."</p>
+<p>Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.</p>
+<p>An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. Therefore, the <code>tecMASTER_DISABLED</code> transaction result code is renamed <code>tecNO_ALTERNATIVE_KEY</code>. The <code>tecNO_REGULAR_KEY</code> transaction result is retired and replaced with <code>tecNO_ALTERNATIVE_KEY</code>. Additionally, this amendment adds the following new <a href="reference-transaction-format.html#result-categories">transaction result codes</a>:</p>
+<ul>
+<li><code>temBAD_SIGNER</code></li>
+<li><code>temBAD_QUORUM</code></li>
+<li><code>temBAD_WEIGHT</code></li>
+<li><code>tefBAD_SIGNATURE</code></li>
+<li><code>tefBAD_QUORUM</code></li>
+<li><code>tefNOT_MULTI_SIGNING</code></li>
+<li><code>tefBAD_AUTH_MASTER</code></li>
+</ul>
+<h2 id="suspay">SusPay</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
+</tr>
+</tbody>
+</table>
+<p>Provides "Suspended Payments" for XRP as a means of escrow within the Ripple Consensus Ledger. Creates the <code>SuspendedPayment</code> ledger node type and the new transaction types <code>SuspendedPaymentCreate</code>, <code>SuspendedPaymentFinish</code>, and <code>SuspendedPaymentCancel</code>.</p>
+<p>This amendment is still in development. The current version is enabled on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>.</p>
+<h2 id="trustsetauth">TrustSetAuth</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+</tr>
+</tbody>
+</table>
+<p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="tutorial-gateway-guide.html#authorized-accounts">Authorized Accounts</a>.</p>
+<p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="reference-transaction-format.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="reference-ledger-format.html#ripplestate"><code>RippleState</code> ledger node</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="reference-ledger-format.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled accordingly. The sender of the transaction must have <a href="reference-ledger-format.html#accountroot-flags"><code>lsfRequireAuth</code> enabled</a>.</p>
+<h2 id="tickets">Tickets</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
+</tr>
+</tbody>
+</table>
+<p>Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the <code>Ticket</code> ledger node type and the transaction types <code>TicketCreate</code> and <code>TicketCancel</code>.</p>
+<p>This amendment is still in development.</p>
+</div>
+</main>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+<div class="row">
+<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+<h4>Resources<hr/></h4>
+<ul class="menu" id="menu-resources">
+<li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+<li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+<li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+<li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+<li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &amp; Reports</a></li>
+<li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+<h4>Regulators<hr/></h4>
+<ul class="menu" id="menu-compliance-regulatory-relations"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+<li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+<h4>Support<hr/></h4>
+<ul class="menu" id="menu-dev-footer-menu">
+<li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+<li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+<li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+<li class="menu-ripple-forum"><a href="https://forum.ripple.com/" target="_blank">Ripple Forum</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+<h4>About<hr/></h4>
+<ul class="menu" id="menu-company-footer">
+<li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+<li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+</ul>
+</section>
+<div class="col-sm-12 absolute_bottom_footer">
+<div class="col-sm-8">
+<span>© 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+<span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+<span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+</div>
+</div><!-- /.absolute_bottom_footer -->
+</div><!-- /.row -->
+</div><!-- /.container -->
+</footer>
+</body>
+</html>

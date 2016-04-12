@@ -60,6 +60,7 @@
 <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
 <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
 <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -72,6 +73,8 @@
 <li><a href="concept-fee-voting.html">Fee Voting</a></li>
 <li><a href="concept-reserves.html">Reserves</a></li>
 <li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="concept-amendments.html">Amendments</a></li>
+<li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
 </ul>
 </li>
 <li class="dropdown">
@@ -127,16 +130,16 @@
 <h1 id="the-ledger">The Ledger</h1>
 <p>The point of the Ripple software is to maintain a shared, global ledger that is open to all, so that individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by maintaining a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> maintains a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
 <p><img alt="Diagram: Each ledger is the result of applying transactions to the previous ledger version." src="img/ledger-process.png"/></p>
-<p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a sequence number (also called a ledger index), starting at 1 and incrementing with each new version. Every closed ledger also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.</p>
+<p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a <a href="#ledger-index">ledger index</a> which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.</p>
 <p>A single ledger version consists of several components:</p>
 <p><img alt="Diagram: A ledger has transactions, a state node, and a header with the close time and validation info" src="img/ledger-components.png"/></p>
 <ul>
-<li>A <strong>header</strong> - The ledger's unique index (sequence number), hashes of the other contents, and other metadata.</li>
+<li>A <strong>header</strong> - The <a href="#ledger-index">ledger index</a>, hashes of its other contents, and other metadata.</li>
 <li>A <strong>transaction tree</strong> - The <a href="reference-transaction-format.html">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to modify the ledger.</li>
 <li>A <strong>state tree</strong> - All the <a href="#ledger-node-types">ledger nodes</a> that contain the settings, balances, and objects in the ledger as of this version.</li>
 </ul>
 <h2 id="tree-format">Tree Format</h2>
-<p>As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an <code>index</code>. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like <code>"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"</code>. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the <code>index</code> (key) of a ledger node with the <code>ledger_index</code> (sequence number) of a ledger.</p>
+<p>As its name might suggest, a ledger's state tree is a tree data structure, with each node identified by a 256-bit value called an <code>index</code>. In JSON, a ledger node's index value is represented as a 64-character hexadecimal string like <code>"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"</code>. Every node in the state tree has an index that you can use as a key to look up the node in the state tree; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the <code>index</code> (key) of a ledger node with the <a href="#ledger-index"><code>ledger_index</code> (sequence number) of a ledger</a>.</p>
 <p>In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.</p>
 <p>In the case of state nodes, <code>rippled</code> usually includes the <code>index</code> of the node along with its contents. However, the index itself is not part of the contents. The index is derived by hashing important contents of the node, along with a <a href="https://github.com/ripple/rippled/blob/ceff6bc2713eaf80feafe56a02f4d636827b89a9/src/ripple/protocol/LedgerFormats.h#L94">namespace identifier</a>. The ledger node type determines which namespace identifier to use as well as which contents to include in the hash. This ensures every index is unique. For a hash function, <code>rippled</code> uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called SHA-512Half, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.</p>
 <p><img alt="Diagram: rippled uses SHA-512Half to generate indexes for ledger nodes. The space key prevents indexes for different node types from colliding." src="img/ledger-indexes.png"/></p>
@@ -154,7 +157,7 @@
 </thead>
 <tbody>
 <tr>
-<td>ledger_index</td>
+<td><a href="#ledger-index">ledger_index</a></td>
 <td>String</td>
 <td>UInt32</td>
 <td>The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number.</td>
@@ -187,7 +190,7 @@
 <td>parent_hash</td>
 <td>String</td>
 <td>Hash256</td>
-<td>The <code>ledger_hash</code> value of the previous ledger that was used to build this one. If there are different versions of the previous ledger by sequence number, this indicates from which one the ledger was derived.</td>
+<td>The <code>ledger_hash</code> value of the previous ledger that was used to build this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived.</td>
 </tr>
 <tr>
 <td>total_coins</td>
@@ -208,13 +211,21 @@
 <td>An integer in the range [2,120] indicating the maximum number of seconds by which the <code>close_time</code> could be rounded.</td>
 </tr>
 <tr>
-<td>closeFlags</td>
+<td><a href="#close-flags">closeFlags</a></td>
 <td>(Omitted)</td>
 <td>UInt8</td>
 <td>A bit-map of flags relating to the closing of this ledger.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="ledger-index">Ledger Index</h3>
+<p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
+<p>The ledger index indicates the order of the ledgers; the <a href="reference-rippled.html#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
+<ul>
+<li>Two different <code>rippled</code> servers may have different contents for a current ledger with the same ledger index, due to latency in propagating transactions throughout the network.</li>
+<li>There may be multiple closed ledger versions competing to be validated by consensus. These ledger versions have the same sequence number but different contents (and different hashes). Only one of these closed ledgers can become validated.</li>
+<li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. Therefore, the hash of a ledger is not calculated until the ledger is closed.</li>
+</ul>
 <h3 id="close-flags">Close Flags</h3>
 <p>Currently, the ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
 <p>The <code>closeFlags</code> field is not included in any JSON representations of a ledger, but it is a part of the binary representation of a ledger, and is one of the fields that determine the ledger's hash.</p>
@@ -304,7 +315,7 @@
 <td>PreviousTxnLgrSeq</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+<td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
 <td>AccountTxnID</td>
@@ -428,7 +439,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="accountroot-index-format">AccountRoot index format</h3>
+<h3 id="accountroot-index-format">AccountRoot Index Format</h3>
 <p>The <code>index</code> of an AccountRoot node is the SHA-512Half of the following values put together:</p>
 <ul>
 <li>The Account space key (<code>a</code>)</li>
@@ -558,7 +569,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="directory-index-formats">Directory index formats</h3>
+<h3 id="directory-index-formats">Directory Index Formats</h3>
 <p>There are three different formulas for creating the index of a DirectoryNode, depending on whether the DirectoryNode represents:</p>
 <ul>
 <li>The first page (also called the root) of an Owner Directory,</li>
@@ -684,7 +695,7 @@
 <td>PreviousTxnLgrSeq</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+<td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
 <td>Expiration</td>
@@ -724,7 +735,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="offer-index-format">Offer index format</h3>
+<h3 id="offer-index-format">Offer Index Format</h3>
 <p>The <code>index</code> of an Offer node is the SHA-512Half of the following values put together:</p>
 <ul>
 <li>The Offer space key (<code>o</code>)</li>
@@ -812,7 +823,7 @@
 <td>PreviousTxnLgrSeq</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The sequence number (<code>ledger_index</code>) of the ledger that contains the transaction that most recently modified this node.</td>
+<td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
 <td>LowNode</td>
@@ -964,7 +975,7 @@
 <p>The <strong>lsfLowAuth</strong> and <strong>lsfHighAuth</strong> flags do not count against the default state, because they cannot be disabled.</p>
 <p>The default state of the two NoRipple flags depends on the state of the <a href="#accountroot-flags">lsfDefaultRipple flag</a> in their corresponding AccountRoot nodes. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is <em>enabled</em> for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is <em>disabled</em> (rippling is enabled) for an account's trust lines by default. <strong>Note:</strong> Prior to the introduction of the DefaultRipple flags in <code>rippled</code> version 0.27.3 (March 10, 2015), the default state for all trust lines was with lsfNoRipple disabled (rippling enabled).</p>
 <p>Fortunately, <code>rippled</code> uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. If an account modifies a trust line, <code>rippled</code> re-evaluates whether that individual trust line is in its default state and should contribute the owner reserve.</p>
-<h3 id="ripplestate-index-format">RippleState index format</h3>
+<h3 id="ripplestate-index-format">RippleState Index Format</h3>
 <p>The <code>index</code> of a RippleState node is the SHA-512Half of the following values put together:</p>
 <ul>
 <li>The RippleState space key (<code>r</code>)</li>
@@ -972,6 +983,120 @@
 <li>The AccountID of the high account</li>
 <li>The 160-bit currency code of the trust line(s)</li>
 </ul>
+<h2 id="signerlist">SignerList</h2>
+<p><a href="https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127" title="Source">[Source]<br/></a></p>
+<p>The <code>SignerList</code> node type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using the <a href="reference-transaction-format.html#signerlistset">SignerListSet transaction type</a> This node type is introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in [version 0.31.0][])</em></p>
+<p>Example SignerList node:</p>
+<pre><code>{
+    "Flags": 0,
+    "LedgerEntryType": "SignerList",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "5904C0DC72C58A83AEFED2FFC5386356AA83FCA6A88C89D00646E51E687CDBE4",
+    "PreviousTxnLgrSeq": 16061435,
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SignerWeight": 2
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SignerWeight": 1
+            }
+        }
+    ],
+    "SignerListID": 0,
+    "SignerQuorum": 3,
+    "index": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7"
+}
+</code></pre>
+<p>A SignerList node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th>Internal Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OwnerNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple nodes.</td>
+</tr>
+<tr>
+<td>SignerQuorum</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more.</td>
+</tr>
+<tr>
+<td>SignerEntries</td>
+<td>Array</td>
+<td>Array</td>
+<td>An array of SignerEntry objects representing the parties who are part of this signer list.</td>
+</tr>
+<tr>
+<td>SignerListID</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>An ID for this signer list. Currently always set to <code>0</code>. If a future <a href="concept-amendments.html">amendment</a> allows multiple signer lists for an account, this may change.</td>
+</tr>
+<tr>
+<td>PreviousTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>PreviousTxnLgrSeq</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>SignerEntries</code> may be any combination of funded and unfunded addresses that use either secp256k1 or ed25519 keys.</p>
+<h3 id="signerentry-object">SignerEntry Object</h3>
+<p>Each member of the <code>SignerEntries</code> field is an object that describes that signer in the list. A SignerEntry has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th>Internal Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>AccountID</td>
+<td>A  Ripple address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger.</td>
+</tr>
+<tr>
+<td>SignerWeight</td>
+<td>Number</td>
+<td>UInt16</td>
+<td>The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the SignerList's <code>SignerQuorum</code> value.</td>
+</tr>
+</tbody>
+</table>
+<p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as a component of another multi-signature.</p>
+<h3 id="signerlists-and-reserves">SignerLists and Reserves</h3>
+<p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
 </div>
 </main>
 </div>

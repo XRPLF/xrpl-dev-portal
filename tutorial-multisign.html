@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="width=device-width" name="viewport">
+<title>Multi-Signing Transactions - Ripple Developer Portal</title>
+<!-- favicon -->
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- jQuery -->
+<script src="assets/vendor/jquery-1.11.1.min.js"></script>
+<!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+<link href="assets/css/ripple.css" rel="stylesheet"/>
+<link href="assets/css/devportal.css" rel="stylesheet"/>
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- syntax highlighting -->
+<link href="assets/vendor/docco.min.css" rel="stylesheet">
+<script src="assets/vendor/highlight.min.js"></script>
+<!-- syntax selection js -->
+<script src="assets/js/multicodetab.js"></script>
+<script>
+        $(document).ready(function() {
+            $().multicode_tabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+<script src="assets/js/expandcode.js"></script>
+<script src="assets/js/fixsidebarscroll.js"></script>
+</link></link></link></meta></meta></meta></head>
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+<header class="banner navbar navbar-default navbar-fixed-top initial_header" role="banner">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" href="index.html"><img class="logo" src="assets/img/ripple-logo-color.png"/></a>
+</div><!-- /.navbar-header -->
+<div class="nav">
+<div class="draft-warning">DRAFT PAGE</div>
+</div><!-- /.nav -->
+</div><!-- /.container -->
+<div class="subnav dev_nav">
+<div class="container">
+<ul class="menu" id="menu-dev-menu">
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">References <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="reference-rippled.html">rippled</a></li>
+<li><a href="reference-transaction-format.html">Transaction Format</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format</a></li>
+<li><a href="reference-rippleapi.html">RippleAPI</a></li>
+<li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tutorials <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Concepts <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="concept-paths.html">Paths</a></li>
+<li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+<li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+<li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+<li><a href="concept-fee-voting.html">Fee Voting</a></li>
+<li><a href="concept-reserves.html">Reserves</a></li>
+<li><a href="concept-freeze.html">Freeze</a></li>
+<li><a href="concept-amendments.html">Amendments</a></li>
+<li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Best Practices <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+<li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">API Tools <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+<li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+<li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Resources <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
+<li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
+<li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
+<li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+<li><a href="https://ripple.com/press-releases/">Press Center</a></li>
+<li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
+</ul>
+<li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+</li></ul><!-- /#dev-menu -->
+</div><!-- /.subnav .container -->
+</div><!-- /.subnav -->
+</header>
+<div class="wrap container" role="document">
+<aside class="sidebar" role="complementary">
+<div class="dev_nav_wrapper">
+<div id="cont">
+<ul class="dev_nav_sidebar">
+<li class="level-1"><a href="index.html">Category: Tutorials</a></li>
+<li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+<li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+<li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li class="level-2"><a href="tutorial-multisign.html">Multi-Signing Transactions</a></li>
+</ul>
+<hr/>
+<h5>In this page:</h5>
+</div>
+<script src="assets/js/jquery.gensidebar.js" type="text/javascript"></script>
+</div>
+</aside>
+<main class="main" role="main">
+<div class="content">
+<h1 id="how-to-multi-sign">How to Multi-Sign</h1>
+<p>Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with <a href="reference-transaction-format.html#setregularkey">regular keys</a> and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
+<p>Benefits of multi-signing include:</p>
+<ul>
+<li>You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.</li>
+<li>You can share custody of an address between multiple people, each of whom only has one of several keys necessary to send transactions from that address.</li>
+<li>You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.</li>
+<li>... and more.</li>
+</ul>
+<p>To use multi-signing:</p>
+<ol>
+<li><a href="#availability-of-multi-signing">The Ripple peer-to-peer network must have multi-signing enabled.</a></li>
+<li><a href="#setting-up-multi-signing">Set up a list of signers on your account.</a></li>
+<li><a href="#sending-a-multi-signed-transaction">Send transactions using multiple signatures.</a></li>
+</ol>
+<h2 id="availability-of-multi-signing">Availability of Multi-Signing</h2>
+<p>Multi-signing is built into <code>rippled</code> starting with <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>. Because multi-signing is a change in transaction processing, the change is due to be enabled by an <strong>Amendment</strong> to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see <a href="concept-amendments.html">Amendments</a>.</p>
+<p>If you want to test multi-signing before it becomes available in the production network, or without risking real money, you can do so by running <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> with the MultiSign feature enabled. To enable multi-signing for testing, add the following stanza to your <code>rippled.cfg</code>:</p>
+<pre><code>[features]
+MultiSign
+</code></pre>
+<h2 id="setting-up-multi-signing">Setting up Multi-Signing</h2>
+<p>Before you can set up multi-signing, first check that <a href="#availability-of-multi-signing">multi-signing is available</a>.</p>
+<p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
+<h3 id="1-prepare-a-funded-address">1. Prepare a funded address</h3>
+<p>You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
+<p>If you started <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> with a new genesis ledger, you must:</p>
+<ol>
+<li>Generate keys for a new address, or reuse keys you already have.</li>
+<li>Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>.)</li>
+<li>Manually close the ledger.</li>
+</ol>
+<h3 id="2-prepare-member-keys">2. Prepare member keys</h3>
+<p>You need several sets of Ripple keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code> command</a>. For example:</p>
+<pre><code>$ rippled wallet_propose
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result" : {
+        "account_id" : "rnRJ4dpSBKDR2M1itf4Ah6tZZm5xuNZFPH",
+        "key_type" : "secp256k1",
+        "master_key" : "FLOG SEND GOES CUFF GAGE FAT ANTI DEL GUM TIRE ISLE BEAR",
+        "master_seed" : "snheH5UUjU4CWqiNVLny2k21TyKPC",
+        "master_seed_hex" : "A9F859765EB8614D26809836382AFB82",
+        "public_key" : "aBR4hxFXcDNHnGYvTiqb2KU8TTTV1cYV9wXTAuz2DjBm7S8TYEBU",
+        "public_key_hex" : "03C09A5D112B393D531E4F092E3A5769A5752129F0A9C55C61B3A226BB9B567B9B",
+        "status" : "success"
+    }
+}
+</code></pre>
+<p>Take note of the <code>account_id</code> (Ripple Address) and <code>master_seed</code> (Ripple secret key) for each one you generate.</p>
+<h3 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction</h3>
+<p><a href="reference-transaction-format.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="reference-transaction-format.html#signerlistset">SignerListSet transaction</a> in the normal (single-signature) way. This associates a SignerList with your Ripple address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.</p>
+<p>In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.</p>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<pre><code>$ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
+&gt;     "Flags": 0,
+&gt;     "TransactionType": "SignerListSet",
+&gt;     "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+&gt;     "Fee": "10000",
+&gt;     "SignerQuorum": 3,
+&gt;     "SignerEntries": [
+&gt;         {
+&gt;             "SignerEntry": {
+&gt;                 "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+&gt;                 "SignerWeight": 2
+&gt;             }
+&gt;         },
+&gt;         {
+&gt;             "SignerEntry": {
+&gt;                 "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+&gt;                 "SignerWeight": 1
+&gt;             }
+&gt;         },
+&gt;         {
+&gt;             "SignerEntry": {
+&gt;                 "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+&gt;                 "SignerWeight": 1
+&gt;             }
+&gt;         }
+&gt;     ]
+&gt; }'
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "engine_result" : "tesSUCCESS",
+      "engine_result_code" : 0,
+      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
+      "status" : "success",
+      "tx_blob" : "12000C2200000000240000000120230000000368400000000000271073210303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D74473045022100BEDFA12502C66DDCB64521972E5356F4DB965F553853D53D4C69B4897F11B4780220595202D1E080345B65BAF8EBD6CA161C227F1B62C7E72EA5CA282B9434A6F04281142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1F4EB1300028114204288D2E47F8EF6C99BCC457966320D12409711E1EB13000181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1EB13000181143A4C02EA95AD6AC3BED92FA036E0BBFB712C030CE1F1",
+      "tx_json" : {
+         "Account" : "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",
+         "Fee" : "10000",
+         "Flags" : 0,
+         "Sequence" : 1,
+         "SignerEntries" : [
+            {
+               "SignerEntry" : {
+                  "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                  "SignerWeight" : 2
+               }
+            },
+            {
+               "SignerEntry" : {
+                  "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                  "SignerWeight" : 1
+               }
+            },
+            {
+               "SignerEntry" : {
+                  "Account" : "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                  "SignerWeight" : 1
+               }
+            }
+         ],
+         "SignerQuorum" : 3,
+         "SigningPubKey" : "0303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D",
+         "TransactionType" : "SignerListSet",
+         "TxnSignature" : "3045022100BEDFA12502C66DDCB64521972E5356F4DB965F553853D53D4C69B4897F11B4780220595202D1E080345B65BAF8EBD6CA161C227F1B62C7E72EA5CA282B9434A6F042",
+         "hash" : "3950D98AD20DA52EBB1F3937EF32F382D74092A4C8DF9A0B1A06ED25200B5756"
+      }
+   }
+}
+</code></pre>
+<p>Make sure that the <a href="reference-transaction-format.html#transaction-results">Transaction Result</a> is <a href="reference-transaction-format.html#tes-success"><strong>tesSUCCESS</strong></a>. Otherwise, the transaction failed.</p>
+<p><strong>Note:</strong> The more members in the SignerList, the more XRP your address must have for purposes of the <a href="concept-reserves.html#owner-reserves">owner reserve</a>. If your address does not have enough XRP, the transaction fails with <a href="reference-transaction-format.html#tec-codes">tecINSUFFICIENT_RESERVE</a>. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</p>
+<h3 id="4-close-the-ledger">4. Close the ledger</h3>
+<p>On the live network, you can wait 4-7 seconds for the ledger to close automatically.</p>
+<p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a> to manually close the ledger:</p>
+<pre><code>$ rippled ledger_accept
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "ledger_current_index" : 6,
+      "status" : "success"
+   }
+}
+</code></pre>
+<h3 id="5-confirm-the-new-signer-list">5. Confirm the new signer list</h3>
+<p>Use the <a href="reference-rippled.html#account-objects"><code>account_objects</code> command</a> to confirm that the SignerList is associated with the address in the latest validated ledger.</p>
+<p>Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.</p>
+<pre><code>$ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+      "account_objects" : [
+         {
+            "Flags" : 0,
+            "LedgerEntryType" : "SignerList",
+            "OwnerNode" : "0000000000000000",
+            "PreviousTxnID" : "8FDC18960455C196A8C4DE0D24799209A21F4A17E32102B5162BD79466B90222",
+            "PreviousTxnLgrSeq" : 5,
+            "SignerEntries" : [
+               {
+                  "SignerEntry" : {
+                     "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                     "SignerWeight" : 2
+                  }
+               },
+               {
+                  "SignerEntry" : {
+                     "Account" : "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+                     "SignerWeight" : 1
+                  }
+               },
+               {
+                  "SignerEntry" : {
+                     "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                     "SignerWeight" : 1
+                  }
+               }
+            ],
+            "SignerListID" : 0,
+            "SignerQuorum" : 3,
+            "index" : "79FD203E4DDDF2EA78B798C963487120C048C78652A28682425E47C96D016F92"
+         }
+      ],
+      "ledger_hash" : "56E81069F06492FB410A70218C08169BE3AB3CFD5AEA20E999662D81DC361D9F",
+      "ledger_index" : 5,
+      "status" : "success",
+      "validated" : true
+   }
+}
+</code></pre>
+<p>If the SignerList is present with the expected contents, then your address is ready to multi-sign.</p>
+<h3 id="6-further-steps">6. Further steps</h3>
+<p>At this point, your address is ready to <a href="#sending-a-multi-signed-transaction">send a multi-signed transaction</a>. You may also want to:</p>
+<ul>
+<li>Disable the address's master key by sending an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> using the <code>asfDisableMaster</code> flag.</li>
+<li>Remove the address's regular key (if you previously set one) by sending a <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction</a>.</li>
+</ul>
+<h2 id="sending-a-multi-signed-transaction">Sending a Multi-Signed Transaction</h2>
+<p>Before you can multi-sign a transaction, first  <a href="#setting-up-multi-signing">set up multi-signing</a> for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.</p>
+<h3 id="1-create-the-transaction">1. Create the transaction</h3>
+<p>Create a JSON object that represents the transaction you want to submit. You have to specify <em>everything</em> about this transaction, including <code>Fee</code> and <code>Sequence</code>. Also include the field <code>SigningPubKey</code> as an empty string, to indicate that the transaction is multi-signed.</p>
+<p>Keep in mind that the <code>Fee</code> for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal <a href="concept-transaction-cost.html">transaction cost</a>, where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the <a href="concept-transaction-cost.html">transaction cost</a> increases in that time.</p>
+<p>Here's an example transaction ready to be multi-signed:</p>
+<pre><code>{
+    "TransactionType": "TrustSet",
+    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    "Flags": 262144,
+    "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "value": "100"
+    },
+    "Sequence": 2,
+    "SigningPubKey": "",
+    "Fee": "30000"
+}
+</code></pre>
+<p>(This transaction creates an accounting relationship from rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC to rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh with a maximum balance of 100 USD.)</p>
+<h3 id="2-get-one-signature">2. Get one signature</h3>
+<p>Use the <a href="reference-rippled.html#sign-for"><code>sign_for</code> command</a> with the secret key and address of one of the members of your SignerList to get a signature for that member.</p>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<pre><code>$ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW &lt;rsA2L..'s secret&gt; '{
+&gt;     "TransactionType": "TrustSet",
+&gt;     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+&gt;     "Flags": 262144,
+&gt;     "LimitAmount": {
+&gt;         "currency": "USD",
+&gt;         "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+&gt;         "value": "100"
+&gt;     },
+&gt;     "Sequence": 2,
+&gt;     "SigningPubKey": "",
+&gt;     "Fee": "30000"
+&gt; }'
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
+      "tx_json" : {
+         "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+         "Fee" : "30000",
+         "Flags" : 262144,
+         "LimitAmount" : {
+            "currency" : "USD",
+            "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value" : "100"
+         },
+         "Sequence" : 2,
+         "Signers" : [
+            {
+               "Signer" : {
+                  "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                  "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                  "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+               }
+            }
+         ],
+         "SigningPubKey" : "",
+         "TransactionType" : "TrustSet",
+         "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
+      }
+   }
+}
+</code></pre>
+<p>Save the <code>tx_json</code> field of the response: it has the new signature in the <code>Signers</code> field. You can discard the value of the <code>tx_blob</code> field.</p>
+<h3 id="3-get-additional-signatures">3. Get additional signatures</h3>
+<p>You can collect additional signatures in parallel or in serial:</p>
+<ul>
+<li>In parallel: Use the <code>sign_for</code> command with the original JSON for the transaction. Each response has a single signature in the <code>Signers</code> array.</li>
+<li>In serial: Use the <code>sign_for</code> command with the <code>tx_json</code> value from the previous <code>sign_for</code> response. Each response adds a new signature to the existing <code>Signers</code> array.</li>
+</ul>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<pre><code>$ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v &lt;rUpy..'s secret&gt; '{
+&gt;    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+&gt;    "Fee" : "30000",
+&gt;    "Flags" : 262144,
+&gt;    "LimitAmount" : {
+&gt;       "currency" : "USD",
+&gt;       "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+&gt;       "value" : "100"
+&gt;    },
+&gt;    "Sequence" : 2,
+&gt;    "Signers" : [
+&gt;       {
+&gt;          "Signer" : {
+&gt;             "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+&gt;             "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+&gt;             "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+&gt;          }
+&gt;       }
+&gt;    ],
+&gt;    "SigningPubKey" : "",
+&gt;    "TransactionType" : "TrustSet",
+&gt;    "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
+&gt; }'
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B744630440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
+      "tx_json" : {
+         "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+         "Fee" : "30000",
+         "Flags" : 262144,
+         "LimitAmount" : {
+            "currency" : "USD",
+            "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value" : "100"
+         },
+         "Sequence" : 2,
+         "Signers" : [
+            {
+               "Signer" : {
+                  "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                  "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                  "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+               }
+            },
+            {
+               "Signer" : {
+                  "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                  "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                  "TxnSignature" : "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+               }
+            }
+         ],
+         "SigningPubKey" : "",
+         "TransactionType" : "TrustSet",
+         "hash" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+      }
+   }
+}
+</code></pre>
+<p>Depending on the SignerList you configured, you may need to repeat this step several times to get signatures from all the necessary parties.</p>
+<h3 id="4-combine-signatures-and-submit">4. Combine signatures and submit</h3>
+<p>If you collected the signatures in serial, the <code>tx_json</code> from the last <code>sign_for</code> response has all the signatures assembled, so you can use that as the argument to the <a href="reference-rippled.html#submit-multisigned"><code>submit_multisigned</code> command</a>.</p>
+<p>If you collected the signatures in parallel, you must manually construct a <code>tx_json</code> object with all the signatures included. Take the <code>Signers</code> arrays from all the <code>sign_for</code> responses, and combine their contents into a single <code>Signers</code> array that has each signature. Add the combined <code>Signers</code> array to the original transaction JSON value, and use that as the argument to the <a href="reference-rippled.html#submit-multisigned"><code>submit_multisigned</code> command</a>.</p>
+<pre><code>$ rippled submit_multisigned '{
+&gt;              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+&gt;              "Fee" : "30000",
+&gt;              "Flags" : 262144,
+&gt;              "LimitAmount" : {
+&gt;                 "currency" : "USD",
+&gt;                 "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+&gt;                 "value" : "100"
+&gt;              },
+&gt;              "Sequence" : 2,
+&gt;              "Signers" : [
+&gt;                 {
+&gt;                    "Signer" : {
+&gt;                       "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+&gt;                       "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+&gt;                       "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+&gt;                    }
+&gt;                 },
+&gt;                 {
+&gt;                    "Signer" : {
+&gt;                       "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+&gt;                       "SigningPubKey" : "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+&gt;                       "TxnSignature" : "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+&gt;                    }
+&gt;                 }
+&gt;              ],
+&gt;              "SigningPubKey" : "",
+&gt;              "TransactionType" : "TrustSet",
+&gt;              "hash" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+&gt;           }'
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1E0107321028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B744630440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1F1",
+        "tx_json": {
+            "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+            "Fee": "30000",
+            "Flags": 262144,
+            "LimitAmount": {
+                "currency": "USD",
+                "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "value": "100"
+            },
+            "Sequence": 2,
+            "Signers": [{
+                "Signer": {
+                    "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                    "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                    "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+                }
+            }, {
+                "Signer": {
+                    "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                    "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                    "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+                }
+            }],
+            "SigningPubKey": "",
+            "TransactionType": "TrustSet",
+            "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+        }
+    }
+}
+</code></pre>
+<p>Take note of the <code>hash</code> value from the response so you can check the results of the transaction later.  (In this case, the hash is <code>BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6</code>.)</p>
+<h3 id="5-close-the-ledger">5. Close the ledger</h3>
+<p>If you are using the live network, you can wait 4-7 seconds for the ledger to close automatically.</p>
+<p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a> to manually close the ledger:</p>
+<pre><code>$ rippled ledger_accept
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "ledger_current_index" : 7,
+      "status" : "success"
+   }
+}
+</code></pre>
+<h3 id="6-confirm-transaction-results">6. Confirm transaction results</h3>
+<p>Use the hash value from the response to the <code>submit_multisigned</code> command to look up the transaction using the <a href="reference-rippled.html#tx"><code>tx</code> command</a>. In particular, check that the <code>TransactionResult</code> is the string <code>tesSUCCESS</code>.</p>
+<p>On the live network, you must also confirm that the <code>validated</code> field is set to the boolean <code>true</code>. If the field is not <code>true</code>, you might need to wait longer for the consensus process to finish; or your transaction may be unable to be included in a ledger for some reason.</p>
+<p>In stand-alone mode, the server automatically considers a ledger to be <code>validated</code> if it has been manually closed.</p>
+<pre><code>$ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
+Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result": {
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee": "30000",
+        "Flags": 262144,
+        "LimitAmount": {
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "100"
+        },
+        "Sequence": 2,
+        "Signers": [{
+            "Signer": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+            }
+        }, {
+            "Signer": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+            }
+        }],
+        "SigningPubKey": "",
+        "TransactionType": "TrustSet",
+        "date": 512172510,
+        "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6",
+        "inLedger": 6,
+        "ledger_index": 6,
+        "meta": {
+            "AffectedNodes": [{
+                "ModifiedNode": {
+                    "LedgerEntryType": "AccountRoot",
+                    "LedgerIndex": "2B6AC232AA4C4BE41BF49D2459FA4A0347E1B543A4C92FCEE0821C0201E2E9A8",
+                    "PreviousTxnID": "B7E1D33DB7DEA3BB65BFAB2C80E02125F47FCCF6C957A7FDECD915B3EBE0C1DD",
+                    "PreviousTxnLgrSeq": 4
+                }
+            }, {
+                "CreatedNode": {
+                    "LedgerEntryType": "RippleState",
+                    "LedgerIndex": "93E317B32022977C77810A2C558FBB28E30E744C68E73720622B797F957EC5FA",
+                    "NewFields": {
+                        "Balance": {
+                            "currency": "USD",
+                            "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                            "value": "0"
+                        },
+                        "Flags": 2162688,
+                        "HighLimit": {
+                            "currency": "USD",
+                            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                            "value": "0"
+                        },
+                        "LowLimit": {
+                            "currency": "USD",
+                            "issuer": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+                            "value": "100"
+                        }
+                    }
+                }
+            }, {
+                "ModifiedNode": {
+                    "FinalFields": {
+                        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+                        "Balance": "999960000",
+                        "Flags": 0,
+                        "OwnerCount": 6,
+                        "Sequence": 3
+                    },
+                    "LedgerEntryType": "AccountRoot",
+                    "LedgerIndex": "A6B1BA6F2D70813100908EA84ABB7783695050312735E2C3665259F388804EA0",
+                    "PreviousFields": {
+                        "Balance": "999990000",
+                        "OwnerCount": 5,
+                        "Sequence": 2
+                    },
+                    "PreviousTxnID": "8FDC18960455C196A8C4DE0D24799209A21F4A17E32102B5162BD79466B90222",
+                    "PreviousTxnLgrSeq": 5
+                }
+            }, {
+                "ModifiedNode": {
+                    "FinalFields": {
+                        "Flags": 0,
+                        "Owner": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+                        "RootIndex": "C2728175908D82FB1DE6676F203D8D3C056995A9FA9B369EF326523F1C65A1DE"
+                    },
+                    "LedgerEntryType": "DirectoryNode",
+                    "LedgerIndex": "C2728175908D82FB1DE6676F203D8D3C056995A9FA9B369EF326523F1C65A1DE"
+                }
+            }, {
+                "CreatedNode": {
+                    "LedgerEntryType": "DirectoryNode",
+                    "LedgerIndex": "D8120FC732737A2CF2E9968FDF3797A43B457F2A81AA06D2653171A1EA635204",
+                    "NewFields": {
+                        "Owner": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                        "RootIndex": "D8120FC732737A2CF2E9968FDF3797A43B457F2A81AA06D2653171A1EA635204"
+                    }
+                }
+            }],
+            "TransactionIndex": 0,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "status": "success",
+        "validated": true
+    }
+}
+</code></pre>
+</div>
+</main>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+<div class="row">
+<section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+<h4>Resources<hr/></h4>
+<ul class="menu" id="menu-resources">
+<li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+<li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+<li class="menu-media-resources"><a href="https://ripple.com/media-resources/">Media Resources</a></li>
+<li class="menu-videos"><a href="https://ripple.com/videos/">Videos</a></li>
+<li class="menu-whitepapers-reports"><a href="https://ripple.com/whitepapers-reports/">Whitepapers &amp; Reports</a></li>
+<li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+<h4>Regulators<hr/></h4>
+<ul class="menu" id="menu-compliance-regulatory-relations"><li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+<li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+<h4>Support<hr/></h4>
+<ul class="menu" id="menu-dev-footer-menu">
+<li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+<li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+<li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+<li class="menu-ripple-forum"><a href="https://forum.ripple.com/" target="_blank">Ripple Forum</a></li>
+</ul>
+</section>
+<section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+<h4>About<hr/></h4>
+<ul class="menu" id="menu-company-footer">
+<li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+<li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+</ul>
+</section>
+<div class="col-sm-12 absolute_bottom_footer">
+<div class="col-sm-8">
+<span>© 2013-2015 Ripple Labs, Inc. All Rights Reserved.</span>
+<span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+<span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+</div>
+</div><!-- /.absolute_bottom_footer -->
+</div><!-- /.row -->
+</div><!-- /.container -->
+</footer>
+</body>
+</html>
