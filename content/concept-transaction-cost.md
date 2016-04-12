@@ -38,7 +38,7 @@ This divides transactions into roughly three categories:
 
 * Transactions that specify a transaction cost so low that they get rejected by the load-based transaction cost.
 * Transactions that specify a transaction cost high enough to be included in the current open ledger.
-* Transactions in between, which get [queued for the next open ledger](#queued-transactions).
+* Transactions in between, which get [queued for a later ledger version](#queued-transactions).
 
 
 ## Local Load Cost ##
@@ -62,7 +62,7 @@ When `rippled` receives a transaction that meet the server's local load cost but
 
  The `rippled` server uses a variety of heuristics to determine which transactions are "likely to be included in a ledger."  Most importantly, those transactions must be properly-formed and [authorized](reference-transaction-format.html#authorizing-transactions) with valid signatures.
 
-When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first. Transactions that pay the same transaction cost are queued in the order the server receives them.
+When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first, proportional to the un-scaled cost of those transactions. Transactions that pay the same transaction cost are queued in the order the server receives them.
 
 **Note:** As of `rippled` **version 0.31.0**, the transaction queue supports at most 1 transaction per sending address. This is expected to change in later versions.
 
