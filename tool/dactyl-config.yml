@@ -149,11 +149,11 @@ pages:
             - local
             - ripple.com
 
-    -   name: Multi-Signing Transactions
+    -   name: How to Multi-Sign
         category: Tutorials
         html: tutorial-multisign.html
         md: tutorial-multisign.md
-        ripple.com: https://wiki.ripple.com/Multisign
+        ripple.com: https://ripple.com/build/how-to-multi-sign/
         sidebar: true
 
 # Concepts are introductions that explain a topic.
@@ -232,14 +232,14 @@ pages:
         category: Concepts
         html: concept-amendments.html
         md: concept-amendments.md
-        ripple.com: https://wiki.ripple.com/Understanding:_Feature_adoption
+        ripple.com: https://ripple.com/build/amendments/
         sidebar: true
 
     -   name: Stand-Alone Mode
         category: Concepts
         html: concept-stand-alone-mode.html
         md: concept-stand-alone-mode.md
-        ripple.com: https://wiki.ripple.com/Rippled#--standalone.2C_-a
+        ripple.com: https://ripple.com/build/stand-alone-mode/
         sidebar: true
 
 # "Best Practices" documents are mostly in the same category as tutorials
