@@ -61,7 +61,7 @@ The Ripple Consensus Ledger cannot force a gateway to honor the obligations that
 
 The No Freeze setting applies to all currencies issued to and from an account. If you want to be able to freeze some currencies but not others, you should use different accounts for each currency.
 
-You can only enable the No Freeze setting with a transaction signed by your account's master key. You cannot use a [Regular Key](reference-transaction-format.html#setregularkey) or a [multi-signed transaction](https://wiki.ripple.com/Multisign) to enable No Freeze.
+You can only enable the No Freeze setting with a transaction signed by your account's master key. You cannot use a [Regular Key](reference-transaction-format.html#setregularkey) or a [multi-signed transaction](reference-transaction-format.html#multi-signing) to enable No Freeze.
 
 
 # Technical Details #

@@ -540,6 +540,7 @@ The `owner_info` command is deprecated. Use [`account_objects`](#account-objects
 * [`connect` - Force the rippled server to connect to a specific peer](#connect)
 * [`consensus_info` - Get information about the state of consensus as it happens](#consensus-info)
 * [`feature` - Get information about protocol amendments](#feature)
+* [`fee` - Get information about transaction cost](#fee)
 * [`fetch_info` - Get information about the server's sync with the network](#fetch-info)
 * [`get_counts` - Get statistics about the server's internals and memory usage](#get-counts)
 * [`ledger_accept` - Close and advance the ledger in stand-alone mode](#ledger-accept)
