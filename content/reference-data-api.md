@@ -1422,7 +1422,7 @@ Each object in the `components` array of the Volume Objects represent the volume
 | amount | Number | The amount of volume in the market, in units of the base currency. |
 | base   | Object | The `currency` and `issuer` that identify the base currency of this market. There is no `issuer` for XRP. |
 | counter | Object | The `currency` and `issuer` that identify the counter currency of this market. There is no `issuer` for XRP. |
-| converted\_amount | Number | The total amount of volume in the market, converted to the display currency. |
+| converted\_amount | Number | The total amount of volume in the market, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
 
 #### Example ####
 
@@ -1570,7 +1570,7 @@ Each object in the `components` array of the Volume Objects represent the volume
 | amount | Number | Total payment volume for this currency during the interval, in units of the currency itself. |
 | count  | Number | The total number of payments in this currency |
 | rate   | Number | The exchange rate between this currency and the display currency. |
-| converted\_amount | Number | Total payment volume for this currency, converted to the display currency. |
+| converted\_amount | Number | Total payment volume for this currency, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
 
 #### Example ####
 
