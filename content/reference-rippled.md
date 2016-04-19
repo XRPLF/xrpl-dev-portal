@@ -6235,9 +6235,9 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 ## sign ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
 
-The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction JSON and secret key.
+The `sign` method takes a [transaction in JSON format](reference-transaction-format.html) and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the [`sign_for` command](#sign-for) instead.
 
-__*Note:*__ It is possible and preferable to sign a transaction without connecting to a server instead of using this command, by using [ripple-lib](https://github.com/ripple/ripple-lib). You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
+**Caution:** Unless you operate the `rippled` server, you should do [local signing with RippleAPI](reference-rippleapi.html#sign) instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.
 
 #### Request Format ####
 An example of the request format:
@@ -6297,12 +6297,21 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 
 [Try it! >](ripple-api-tool.html#sign)
 
+To sign a transaction, you must provide a secret key that can [authorize the transaction](reference-transaction-format.html#authorizing-transactions). You can do this in a few ways:
+
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
+
 The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format |
-| secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| key\_type | String | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional) If the `Fee` parameter ([transaction cost](concept-transaction-cost.html)) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value. |
@@ -6650,11 +6659,10 @@ A submit-only request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| tx_blob | String | Hex representation of the signed transaction to submit. |
+| tx_blob | String | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](reference-transaction-format.html#multi-signing). |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
 #### Request Format ####
-
 
 <!-- <div class='multicode'> -->
 
@@ -6692,15 +6700,26 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ### Sign-and-Submit Mode ###
 
-A sign-and-submit request includes the following parameters:
+This mode is intended for testing. It signs a transaction and immediately submits it. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
+
+You can provide the secret key used to sign the transaction in the following ways:
+
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
+
+The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
-| secret | String | (Required if `tx_json` is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
-| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| key\_type | String | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
+| fail\_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
-| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
+| build\_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional) If the `Fee` parameter is omitted, this field limits the automatically-provided `Fee` value so that it is less than or equal to the long-term base transaction cost times this value. |
 | fee\_div\_max | Integer | (Optional) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, the submit command fails. _(New in [version 0.30.1][])_ |
 

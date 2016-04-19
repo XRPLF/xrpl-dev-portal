@@ -7258,8 +7258,8 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 </ul>
 <h2 id="sign">sign</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>sign</code> method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction JSON and secret key.</p>
-<p><strong><em>Note:</em></strong> It is possible and preferable to sign a transaction without connecting to a server instead of using this command, by using <a href="https://github.com/ripple/ripple-lib">ripple-lib</a>. You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.</p>
+<p>The <code>sign</code> method takes a <a href="reference-transaction-format.html">transaction in JSON format</a> and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the <a href="#sign-for"><code>sign_for</code> command</a> instead.</p>
+<p><strong>Caution:</strong> Unless you operate the <code>rippled</code> server, you should do <a href="reference-rippleapi.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
 <h4 id="request-format-23">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -7308,6 +7308,11 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </code></pre>
 </div>
 <p><a class="button" href="ripple-api-tool.html#sign">Try it! &gt;</a></p>
+<p>To sign a transaction, you must provide a secret key that can <a href="reference-transaction-format.html#authorizing-transactions">authorize the transaction</a>. You can do this in a few ways:</p>
+<ul>
+<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
+<li>Provide a <code>key_type</code> value and exactly one of <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. Omit the <code>secret</code> field. (Not supported by the commandline syntax.)</li>
+</ul>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -7326,7 +7331,27 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>secret</td>
 <td>String</td>
-<td>Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections.</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, seed_hex<code>, or</code>passphrase`.</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td>seed_hex</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td>passphrase</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
+</tr>
+<tr>
+<td>key_type</td>
+<td>String</td>
+<td>(Optional) Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
 </tr>
 <tr>
 <td>offline</td>
@@ -7724,7 +7749,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>tx_blob</td>
 <td>String</td>
-<td>Hex representation of the signed transaction to submit.</td>
+<td>Hex representation of the signed transaction to submit. This can be a <a href="reference-transaction-format.html#multi-signing">multi-signed transaction</a>.</td>
 </tr>
 <tr>
 <td>fail_hard</td>
@@ -7759,7 +7784,13 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 </div>
 <p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h3 id="sign-and-submit-mode">Sign-and-Submit Mode</h3>
-<p>A sign-and-submit request includes the following parameters:</p>
+<p>This mode is intended for testing. It signs a transaction and immediately submits it. You cannot use this mode for <a href="reference-transaction-format.html#multi-signing">multi-signed transactions</a>.</p>
+<p>You can provide the secret key used to sign the transaction in the following ways:</p>
+<ul>
+<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
+<li>Provide a <code>key_type</code> value and exactly one of <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. Omit the <code>secret</code> field. (Not supported by the commandline syntax.)</li>
+</ul>
+<p>The request includes the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -7777,7 +7808,27 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>secret</td>
 <td>String</td>
-<td>(Required if <code>tx_json</code> is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections.</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, seed_hex<code>, or</code>passphrase`.</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td>seed_hex</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td>passphrase</td>
+<td>String</td>
+<td>(Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
+</tr>
+<tr>
+<td>key_type</td>
+<td>String</td>
+<td>(Optional) Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
 </tr>
 <tr>
 <td>fail_hard</td>
