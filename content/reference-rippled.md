@@ -2818,11 +2818,11 @@ The response follows the [standard format](#response-formatting), with a success
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-_(Updated in [version 0.31.0][])_
-
 Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded account in the Ripple Consensus Ledger, an address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+
+_(Updated in [version 0.31.0][])_
 
 #### Request Format ####
 
@@ -2830,21 +2830,47 @@ An example of the request format:
 
 <!-- <div class='multicode'> -->
 
-*WebSocket*
+*WebSocket (with key type)*
+
 ```
 {
     "command": "wallet_propose",
-    "passphrase": "test"
+    "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+    "key_type": "secp256k1"
 }
 ```
 
-*JSON-RPC*
+*WebSocket (no key type)*
+
+```
+{
+    "command": "wallet_propose",
+    "passphrase": "masterpassphrase"
+}
+```
+
+*JSON-RPC (with key type)*
+
 ```
 {
     "method": "wallet_propose",
     "params": [
         {
-            "passphrase": "test"
+            "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+            "key_type": "secp256k1"
+        }
+    ]
+}
+```
+
+*JSON-RPC (no key type)*
+
+```
+{
+    "method": "wallet_propose",
+    "params": [
+        {
+            "passphrase": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
         }
     ]
 }
@@ -2853,23 +2879,45 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: wallet_propose [passphrase]
-rippled wallet_propose test
+rippled wallet_propose masterpassphrase
 ```
 
 <!-- </div> -->
 
-The request can contain the following parameters:
+There are two valid modes for this command, depending on whether the request specifies the `key_type` parameter. If you omit the `key_type`, the request takes _only_ the following parameter (ignoring others):
 
 | Field | Type | Description |
 |-------|------|-------------|
-| passphrase | String | (Optional) Generate the key pair and address from this passphrase. (For example: `masterpassphrase`) Cannot be used with `seed` or `seed_hex`. |
-| seed | String | (Optional) Generate the address from this base-58-encoded seed value. (For example: `ssyXjRurNo75TjXjubby65cD96ak8`.) Cannot be used with `passphrase` or `seed_hex`.  {# TODO: check this #} |
-| seed\_hex | String | (Optional) Generate the address from this seed value in hexadecimal format. Cannot be used with `passphrase` or `seed`. (For example: `02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F`.) {# TODO check this #} |
-| key\_type | String | (Optional) Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1`. Defaults to `secp256k1`. **Caution:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. |
+| passphrase | String | (Optional) Generate a key pair and address from this seed value using the elliptic curve secp256k1. This value can be formatted in hexadecimal, base-58, RFC-1751, or as an arbitrary string. If omitted, use a random seed. |
 
-You can specify at most one of the parameters `passphrase`, `seed`, or `seed_hex`. By default, the `wallet_propose` command generates a keys and an address from a random seed value.
 
-**Caution: Always generate a seed value with a strong source of randomness and keep your seed value secret.** Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+If you specify the `key_type`, you must provide at most one of the following fields: `passphrase`, `seed`, or `seed_hex`. (If you omit all three, `rippled` uses a random seed.) In this mode, the request parameters are as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| key\_type | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1`. **Caution:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. |
+| passphrase | String | (Optional) Generate the key pair and address from this seed value. This is interpreted as a string only. Cannot be used with `seed` or `seed_hex`. |
+| seed | String | (Optional) Generate the key pair and address from this base-58-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. Ignored unless `key_type` is provided. |
+| seed\_hex | String | (Optional) Generate the key pair and address from this seed value in hexadecimal format. Cannot be used with `passphrase` or `seed`. Ignored unless `key_type` is provided. |
+
+The commandline version of this command cannot generate Ed25519 keys.
+
+##### Specifying a Seed #####
+
+**Caution:** For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+
+Cases where you would specify a known seed include:
+
+* Re-calculating your address when you only know the seed associated with that address
+* Testing `rippled` functionality
+* [Validator domain verification](tutorial-rippled-setup.html#account-domain)
+
+If you do specify a seed, you can specify it in any of the following formats:
+
+* As a [base-58](https://en.wikipedia.org/wiki/Base58) secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
+* As an [RFC-1751](https://tools.ietf.org/html/rfc1751) format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
+* As a 128-bit [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
+* An arbitrary string to use as a seed value. For example: `masterpassphrase`.
 
 #### Response Format ####
 
@@ -2880,14 +2928,52 @@ An example of a successful response:
 *WebSocket*
 ```
 {
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "key_type": "secp256k1",
+    "master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+    "master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+    "master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+    "public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+    "public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+{
+	"result": {
+		"account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+		"key_type": "secp256k1",
+		"master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+		"master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+		"master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+		"public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+		"public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+		"status": "success"
+	}
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
    "result" : {
-      "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
+      "account_id" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
       "key_type" : "secp256k1",
-      "master_key" : "AHOY CLAD JUDD NOON MINI CHAD CUBA JAN KANT AMID DEL LETS",
-      "master_seed" : "ssyXjRurNo75TjXjubby65cD96ak8",
-      "master_seed_hex" : "5BDD10A694F2E36CCAC0CBE28CE2AC49",
-      "public_key" : "aBPXjfsA7fY2LLPxRuZ7Sj2ADzoSEGDW4Atd5MgxdHz5FQvGPbqU",
-      "public_key_hex" : "02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F",
+      "master_key" : "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+      "master_seed" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+      "master_seed_hex" : "DEDCE9CE67B451D852FD4E846FCDE31C",
+      "public_key" : "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+      "public_key_hex" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
       "status" : "success"
    }
 }
@@ -2905,7 +2991,7 @@ The response follows the [standard format](#response-formatting), with a success
 | account\_id | String | The [Address][] of the account. |
 | public\_key | String | The public key of the account, in encoded string format. |
 | public\_key\_hex | String | The public key of the account, in hex format. |
-| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. {# TODO: remove unless this gets into 0.31.0 #} |
+{#| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. TODO: uncomment when this gets added in 0.32.0 |#}
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](reference-transaction-format.html#setregularkey) to do so.
 
