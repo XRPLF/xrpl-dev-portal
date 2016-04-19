@@ -779,8 +779,9 @@ The request contains the following parameters:
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
+| signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. _(New in [version 0.31.0][])_ |
 
-The following fields are deprecated and should not be provided: `ident`, `account_index`, `ledger`.
+The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
 #### Response Format ####
 
@@ -818,6 +819,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | Field | Type | Description |
 |-------|------|-------------|
 | account_data | Object | The [AccountRoot ledger node](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
+| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. _(New in [version 0.31.0][])_ |
 | ledger\_current\_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. _(New in [version 0.26.0][])_ |
@@ -2816,9 +2818,11 @@ The response follows the [standard format](#response-formatting), with a success
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
+_(Updated in [version 0.31.0][])_
 
-*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)
+Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded account in the Ripple Consensus Ledger, an address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
+
+*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
 #### Request Format ####
 
@@ -2854,11 +2858,18 @@ rippled wallet_propose test
 
 <!-- </div> -->
 
-The request can contain the following parameter:
+The request can contain the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will use a random number to generate the master key. Outside of testing purposes, keys should always be randomly generated. Some values, which resemble Ripple addresses and some other formats, are prohibited. |
+| passphrase | String | (Optional) Generate the key pair and address from this passphrase. (For example: `masterpassphrase`) Cannot be used with `seed` or `seed_hex`. |
+| seed | String | (Optional) Generate the address from this base-58-encoded seed value. (For example: `ssyXjRurNo75TjXjubby65cD96ak8`.) Cannot be used with `passphrase` or `seed_hex`.  {# TODO: check this #} |
+| seed\_hex | String | (Optional) Generate the address from this seed value in hexadecimal format. Cannot be used with `passphrase` or `seed`. (For example: `02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F`.) {# TODO check this #} |
+| key\_type | String | (Optional) Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1`. Defaults to `secp256k1`. **Caution:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. |
+
+You can specify at most one of the parameters `passphrase`, `seed`, or `seed_hex`. By default, the `wallet_propose` command generates a keys and an address from a random seed value.
+
+**Caution: Always generate a seed value with a strong source of randomness and keep your seed value secret.** Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 #### Response Format ####
 
@@ -2871,6 +2882,7 @@ An example of a successful response:
 {
    "result" : {
       "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
+      "key_type" : "secp256k1",
       "master_key" : "AHOY CLAD JUDD NOON MINI CHAD CUBA JAN KANT AMID DEL LETS",
       "master_seed" : "ssyXjRurNo75TjXjubby65cD96ak8",
       "master_seed_hex" : "5BDD10A694F2E36CCAC0CBE28CE2AC49",
@@ -2887,25 +2899,27 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| master\_seed | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. |
+| master\_seed | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. This is the private key of the key pair. |
 | master\_seed\_hex | String | The master seed, in hex format. |
 | master\_key | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
 | account\_id | String | The [Address][] of the account. |
 | public\_key | String | The public key of the account, in encoded string format. |
 | public\_key\_hex | String | The public key of the account, in hex format. |
+| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. {# TODO: remove unless this gets into 0.31.0 #} |
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](reference-transaction-format.html#setregularkey) to do so.
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `badSeed` - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
+* `invalidParams` - One or more fields are specified incorrectly.
+* `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a Ripple address.
 
 
 
 # Ledger Information #
 
-The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
+The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
 
 ## ledger ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
@@ -5871,7 +5885,7 @@ The request includes the following parameters:
 | destination\_account | String | Unique address of the account that would receive funds in a transaction |
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [version 0.30.0][])_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
 | send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [version 0.30.0][])_ |
-| source\_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
+| source\_currencies | Array | (Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 
@@ -7373,14 +7387,17 @@ The fields from a ledger stream message are as follows:
 
 ### Validations Stream ###
 
+_(New in [version 0.29.0][])_
+
 The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:
 
 ```
 {
   "type": "validationReceived",
-  "ledger_hash": "7B0B865DC3B648E35B1EB21FAD9501A765E6523B382CB182AC63DBE7D3DA5CC2",
-  "signature": "3045022100FA33615FCE1DDF56D0EEE0B750414D9C41FBE31B59A17B6A139F65A500ACA11702205B1129FFE78E2A4BC6BE98213C8172E2416780AB6F757D9067A2DBE224865495",
-  "validation_public_key": "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj"
+  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
+  "ledger_index": "20504721",
+  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
+  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
 }
 ```
 
@@ -7389,7 +7406,8 @@ The fields from a validations stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `validationReceived` indicates this is from the validations stream |
-| ledger\_hash | String | The identifying hash of the proposed ledger that this server declares validated by consensus. |
+| ledger\_hash | String | The identifying hash of the proposed ledger is being validated. _(New in [version 0.30.1][])_ |
+| ledger\_index | String - Integer | The [Ledger Index][] of the proposed ledger. |
 | signature | String | The signature that the validator used to sign its vote for this ledger. |
 | validation\_public\_key | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 

@@ -1053,9 +1053,14 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <td>String or Unsigned Integer</td>
 <td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
+<tr>
+<td>signer_lists</td>
+<td>Boolean</td>
+<td>(Optional) If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></td>
+</tr>
 </tbody>
 </table>
-<p>The following fields are deprecated and should not be provided: <code>ident</code>, <code>account_index</code>, <code>ledger</code>.</p>
+<p>The following fields are deprecated and should not be provided: <code>ident</code>, <code>ledger</code>.</p>
 <h4 id="response-format-1">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
@@ -1095,6 +1100,11 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <td>account_data</td>
 <td>Object</td>
 <td>The <a href="reference-ledger-format.html#accountroot">AccountRoot ledger node</a> with this account's information, as stored in the ledger.</td>
+</tr>
+<tr>
+<td>signer_lists</td>
+<td>Array</td>
+<td>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.) Array of <a href="reference-ledger-format.html#signerlist">SignerList ledger nodes</a> associated with this account for <a href="reference-transaction-format.html#multi-signing">Multi-Signing</a>. Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></td>
 </tr>
 <tr>
 <td>ledger_current_index</td>
@@ -3441,8 +3451,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </ul>
 <h2 id="wallet-propose">wallet_propose</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp" title="Source">[Source]<br/></a></p>
-<p>Use the <code>wallet_propose</code> method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The <code>wallet_propose</code> command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)</p>
-<p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em> (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)</p>
+<p><em>(Updated in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
+<p>Use the <code>wallet_propose</code> method to generate a key pair and Ripple <a href="#addresses">address</a>. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded account in the Ripple Consensus Ledger, an address must <a href="reference-transaction-format.html#creating-accounts">receive a Payment transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
+<p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em> (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)</p>
 <h4 id="request-format-8">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode">
@@ -3467,7 +3478,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 rippled wallet_propose test
 </code></pre>
 </div>
-<p>The request can contain the following parameter:</p>
+<p>The request can contain the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3480,10 +3491,27 @@ rippled wallet_propose test
 <tr>
 <td>passphrase</td>
 <td>String</td>
-<td>(Optional) Specify a passphrase, for testing purposes. If omitted, the server will use a random number to generate the master key. Outside of testing purposes, keys should always be randomly generated. Some values, which resemble Ripple addresses and some other formats, are prohibited.</td>
+<td>(Optional) Generate the key pair and address from this passphrase. (For example: <code>masterpassphrase</code>) Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>String</td>
+<td>(Optional) Generate the address from this base-58-encoded seed value. (For example: <code>ssyXjRurNo75TjXjubby65cD96ak8</code>.) Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
+</tr>
+<tr>
+<td>seed_hex</td>
+<td>String</td>
+<td>(Optional) Generate the address from this seed value in hexadecimal format. Cannot be used with <code>passphrase</code> or <code>seed</code>. (For example: <code>02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F</code>.)</td>
+</tr>
+<tr>
+<td>key_type</td>
+<td>String</td>
+<td>(Optional) Which elliptic curve to use for this key pair. Valid values are <code>ed25519</code> and <code>secp256k1</code>. Defaults to <code>secp256k1</code>. <strong>Caution:</strong> <a href="https://ed25519.cr.yp.to/">Ed25519</a> support is experimental.</td>
 </tr>
 </tbody>
 </table>
+<p>You can specify at most one of the parameters <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code>. By default, the <code>wallet_propose</code> command generates a keys and an address from a random seed value.</p>
+<p><strong>Caution: Always generate a seed value with a strong source of randomness and keep your seed value secret.</strong> Anyone who knows the seed value for an address has full power to <a href="reference-transaction-format.html#authorizing-transactions">send transactions signed by that address</a>. Generally, running this command with no parameters is a good way to generate a random seed.</p>
 <h4 id="response-format-8">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode">
@@ -3491,6 +3519,7 @@ rippled wallet_propose test
 <pre><code>{
    "result" : {
       "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
+      "key_type" : "secp256k1",
       "master_key" : "AHOY CLAD JUDD NOON MINI CHAD CUBA JAN KANT AMID DEL LETS",
       "master_seed" : "ssyXjRurNo75TjXjubby65cD96ak8",
       "master_seed_hex" : "5BDD10A694F2E36CCAC0CBE28CE2AC49",
@@ -3541,16 +3570,22 @@ rippled wallet_propose test
 <td>String</td>
 <td>The public key of the account, in hex format.</td>
 </tr>
+<tr>
+<td>warning</td>
+<td>String</td>
+<td>(May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure.</td>
+</tr>
 </tbody>
 </table>
 <p>The key generated by this method can also be used as a regular key for an account if you use the <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction type</a> to do so.</p>
 <h4 id="possible-errors-8">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>badSeed</code> - The <code>passphrase</code> field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.</li>
+<li><code>invalidParams</code> - One or more fields are specified incorrectly.</li>
+<li><code>badSeed</code> - The request specified a disallowed seed value (in the <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code> fields), such as an empty string, or a string resembling a Ripple address.</li>
 </ul>
 <h1 id="ledger-information">Ledger Information</h1>
-<p>The globally-shared ledger is the core of the Ripple Network. Each <code>rippled</code> server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.</p>
+<p>The globally-shared ledger is the core of the Ripple Network. Each <code>rippled</code> server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.</p>
 <h2 id="ledger">ledger</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp" title="Source">[Source]<br/></a></p>
 <p>Retrieve information about the public ledger.</p>
@@ -6854,7 +6889,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td>source_currencies</td>
 <td>Array</td>
-<td>(Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code>currency</code> field and optional <code>issuer</code> field, similar to <a href="#specifying-currency-amounts">currency amounts</a>.</td>
+<td>(Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code>currency</code> field and optional <code>issuer</code> field, similar to <a href="#specifying-currency-amounts">currency amounts</a>. Cannot contain more than <strong>18</strong> source currencies. By default, uses all source currencies available up to a maximum of <strong>88</strong> different currency/issuer pairs.</td>
 </tr>
 <tr>
 <td>ledger_hash</td>
@@ -8607,12 +8642,14 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tbody>
 </table>
 <h3 id="validations-stream">Validations Stream</h3>
+<p><em>(New in <a href="https://wiki.ripple.com/Rippled-0.29.0">version 0.29.0</a>)</em></p>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
 <pre><code>{
   "type": "validationReceived",
-  "ledger_hash": "7B0B865DC3B648E35B1EB21FAD9501A765E6523B382CB182AC63DBE7D3DA5CC2",
-  "signature": "3045022100FA33615FCE1DDF56D0EEE0B750414D9C41FBE31B59A17B6A139F65A500ACA11702205B1129FFE78E2A4BC6BE98213C8172E2416780AB6F757D9067A2DBE224865495",
-  "validation_public_key": "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj"
+  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
+  "ledger_index": "20504721",
+  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
+  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
 }
 </code></pre>
 <p>The fields from a validations stream message are as follows:</p>
@@ -8633,7 +8670,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>The identifying hash of the proposed ledger that this server declares validated by consensus.</td>
+<td>The identifying hash of the proposed ledger is being validated. <em>(New in <a href="https://wiki.ripple.com/Rippled-0.30.1">version 0.30.1</a>)</em></td>
+</tr>
+<tr>
+<td>ledger_index</td>
+<td>String - Integer</td>
+<td>The <a href="#ledger-index">Ledger Index</a> of the proposed ledger.</td>
 </tr>
 <tr>
 <td>signature</td>
