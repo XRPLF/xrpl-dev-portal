@@ -7511,8 +7511,8 @@ The fields from a validations stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `validationReceived` indicates this is from the validations stream |
-| ledger\_hash | String | The identifying hash of the proposed ledger is being validated. _(New in [version 0.30.1][])_ |
-| ledger\_index | String - Integer | The [Ledger Index][] of the proposed ledger. |
+| ledger\_hash | String | The identifying hash of the proposed ledger is being validated. |
+| ledger\_index | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [version 0.31.0][])_ |
 | signature | String | The signature that the validator used to sign its vote for this ledger. |
 | validation\_public\_key | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
