@@ -165,6 +165,26 @@ Request('Get Issued Value', {
     }
 });
 
+Request('Get Top Currencies', {
+    method: GET,
+    path: "/v2/network/top_currencies/{:date}",
+    description: "Get most used currencies for a given date.",
+    link: "#get-top-currencies",
+    params: {
+        "{:date}": "2016-04-14"
+    }
+});
+
+Request('Get Top Markets', {
+    method: GET,
+    path: "/v2/network/top_markets/{:date}",
+    description: "Get most active markets for a given date.",
+    link: "#get-top-currencies",
+    params: {
+        "{:date}": "2016-04-15"
+    }
+});
+
 Request('Get All Gateways', {
     method: GET,
     path: "/v2/gateways",
@@ -323,5 +343,27 @@ Request('Get Account Reports Range', {
         "{:query_params}": "accounts=true&payments=true&descending=true"
     }
 });
+
+Request('Get Account Transaction Stats', {
+    method: GET,
+    path: "/v2/accounts/{:address}/stats/transactions?{:query_params}",
+    description: "Retrieve daily summaries of transaction activity for an account.",
+    link: "#get-account-transaction-stats",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "limit=2&descending=true"
+    }
+})
+
+Request('Get Account Value Stats', {
+    method: GET,
+    path: "/v2/accounts/{:address}/stats/value?{:query_params}",
+    description: "Retrieve daily summaries of the currency held by an account.",
+    link: "#get-account-value-stats",
+    params: {
+        "{:address}": DEFAULT_ADDRESS_1,
+        "{:query_params}": "limit=2&descending=true"
+    }
+})
 
 //---------- End req. List ---------------------------//
