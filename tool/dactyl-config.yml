@@ -313,8 +313,6 @@ ignore_anchors_in:
 known_broken_links:
     # Strangely, Python doesn't like the cert here. Firefox is OK with it.
     - https://validators.ripple.com
-    # Data API v2.1.0 is not released yet:
-    - https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
 
 # Style Checker Config ------------------------------------------------------ #
 
