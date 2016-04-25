@@ -10,11 +10,12 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
 
 **Caution:** In stand-alone mode, you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode).
 
+
 New Genesis Ledger
 -------------------------------------------------------------------------------
 In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)
 
-* To start `rippled` in stand-alone mode with a new genesis ledger, use the `-a` and `--start` options:
+* To start `rippled` in stand-alone mode with a new genesis ledger, use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--start`](https://wiki.ripple.com/Rippled#--start) options:
 
 ```
 rippled -a --start --conf=/path/to/rippled.cfg
@@ -36,7 +37,7 @@ You can start with a ledger version that was saved to disk if your `rippled` ser
 
 ### 1. Start `rippled` normally. ###
 
-To load an existing ledger, you must first retrieve that ledger from the network. Start `rippled` in networked mode as normal:
+To load an existing ledger, you must first retrieve that ledger from the network. Start `rippled` in online mode as normal:
 
 ```
 rippled --conf=/path/to/rippled.cfg
@@ -48,7 +49,9 @@ Use the [`server_info` command](reference-rippled.html#server-info) to check the
 
 * `full`
 * `proposing`
-* `validating`.
+* `validating`
+
+For more information, see [Possible Server States](reference-rippled.html#possible-server-states).
 
 ### 3. (Optional) Retrieve specific ledger versions. ###
 
@@ -56,7 +59,7 @@ If you only want the most recent ledger, you can skip this step.
 
 If you want to load a specific historical ledger version, use the [`ledger_request` command](reference-rippled.html#ledger-request) to make `rippled` fetch it. If `rippled` does not already have the ledger version, you may have to run the `ledger_request` command multiple times until it has finished retrieving the ledger.
 
-If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it.
+If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)
 
 ### 4. Shut down `rippled`. ###
 
@@ -68,13 +71,13 @@ rippled stop --conf=/path/to/rippled.cfg
 
 ### 5. Start `rippled` in stand-alone mode. ###
 
-To load the most recent ledger version, you can use the `-a` and `--load` options when starting the server:
+To load the most recent ledger version, you can use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--load`](https://wiki.ripple.com/Rippled#--load) options when starting the server:
 
 ```
 rippled -a --load --conf=/path/to/rippled.cfg
 ```
 
-To instead load a specific historical ledger, use the `--load` parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
+To instead load a specific historical ledger, use the [`--load`](https://wiki.ripple.com/Rippled#--load) parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
 
 ```
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
@@ -100,4 +103,4 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 
 In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/).)
 
-Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a previous transaction. Otherwise, the second transaction might be executed before the first transaction when you manually advance the ledger. **Note:** You can safely submit multiple transactions from a single address to a single ledger, because `rippled` sorts transactions from the same address in ascending order by `Sequence` number.
+Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. **Note:** You can safely submit multiple transactions from a single address to a single ledger, because `rippled` sorts transactions from the same address in ascending order by [`Sequence` number](reference-transaction-format.html#common-fields).
