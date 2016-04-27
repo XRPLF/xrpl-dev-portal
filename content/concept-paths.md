@@ -17,7 +17,7 @@ Rippling through another account is the process of moving debt around. In the ty
 
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)
 
-In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](https://ripple.com/knowledge_center/transfer-fees/), trust line quality, or rounding.
+In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](concept-transfer-fees.html), trust line quality, or rounding.
 
 [![Diagram of three example paths](img/paths-examples.png)](img/paths-examples.png)
 
@@ -81,8 +81,3 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | 0x01        | 1               | A change of account (rippling): the `account` field is present. |
 | 0x10        | 16              | A change of currency: the `currency` field is present. |
 | 0x20        | 32              | A change of issuer: the `issuer` field is present. |
-
-
-
-
-
