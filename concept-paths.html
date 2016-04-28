@@ -184,7 +184,7 @@
 <ul>
 <li>If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment will ripple through the accounts involved. This path will only work if there are trust lines connecting those accounts.<ul>
 <li>If <code>SendMax</code> is omitted, or the <code>issuer</code> of the <code>SendMax</code> is the sender, the default path needs a trust line from the sending <code>Account</code> to the <code>issuer</code> of the destination <code>Amount</code> in order to work.</li>
-<li>If the <code>SendMax</code> and <code>Amount</code> have different <code>issuer</code> values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple, Inc. typically discourages issuers from trusting one another directly.</li>
+<li>If the <code>SendMax</code> and <code>Amount</code> have different <code>issuer</code> values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple (the company) typically discourages issuers from trusting one another directly.</li>
 </ul>
 </li>
 <li>For cross-currency transactions, the default path uses the order book between the source currency (as specified in the <code>SendMax</code> field) and the destination currency (as specified in the <code>Amount</code> field).</li>
