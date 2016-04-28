@@ -48,7 +48,7 @@ The response comes as a JSON object.
 
 #### Public Servers ####
 
-Currently Ripple Labs maintains a set of public WebSocket servers at:
+Currently Ripple (the company) maintains a set of public WebSocket servers at:
 
 | Domain        | Port | Notes |
 | ------------- | ---- | ----- |
@@ -79,7 +79,7 @@ The response is also a JSON object.
 
 #### Public Servers ####
 
-Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
+Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
 
 | Domain        | Port  | Notes |
 | ------------- | ----- |---|
@@ -3696,7 +3696,7 @@ You must provide either `ledger_index` or `ledger_hash` but not both.
 
 The response follows the [standard format](#response-formatting). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
 
-**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple Labs' full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
+**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple's full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
 
 A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [`ledger` command](#ledger).
 

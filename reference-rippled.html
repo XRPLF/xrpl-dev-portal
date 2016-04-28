@@ -177,7 +177,7 @@
 </ul>
 <p>The response comes as a JSON object.</p>
 <h4 id="public-servers">Public Servers</h4>
-<p>Currently Ripple Labs maintains a set of public WebSocket servers at:</p>
+<p>Currently Ripple (the company) maintains a set of public WebSocket servers at:</p>
 <table>
 <thead>
 <tr>
@@ -213,7 +213,7 @@
 </ul>
 <p>The response is also a JSON object.</p>
 <h4 id="public-servers-1">Public Servers</h4>
-<p>Currently, Ripple Labs maintains a set of public JSON-RPC servers at:</p>
+<p>Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:</p>
 <table>
 <thead>
 <tr>
@@ -4535,7 +4535,7 @@ rippled ledger_current
 <p>You must provide either <code>ledger_index</code> or <code>ledger_hash</code> but not both.</p>
 <h4 id="response-format-14">Response Format</h4>
 <p>The response follows the <a href="#response-formatting">standard format</a>. However, the request returns a failure response if it does not have the specified ledger <em>even if it successfully instructed the <code>rippled</code> server to start retrieving the ledger</em>.</p>
-<p><strong>Note:</strong> In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="#connect"><code>connect</code> command</a> or the <code>fixed_ips</code> section of the config file to add Ripple Labs' full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
+<p><strong>Note:</strong> In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="#connect"><code>connect</code> command</a> or the <code>fixed_ips</code> section of the config file to add Ripple's full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
 <p>A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the <a href="#ledger"><code>ledger</code> command</a>.</p>
 <div class="multicode">
 <p><em>Commandline (failure)</em></p>
