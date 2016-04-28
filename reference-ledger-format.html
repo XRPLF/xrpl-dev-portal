@@ -87,6 +87,7 @@
                   <li><a href="concept-freeze.html">Freeze</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                  <li><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -449,7 +450,7 @@
 <td>lsfDefaultRipple</td>
 <td>0x00800000</td>
 <td>8388608</td>
-<td>Enable <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account's trust lines by default. Required for gateways; discouraged for other accounts.</td>
+<td>Enable <a href="concept-noripple.html">rippling</a> on this account's trust lines by default. Required for gateways; discouraged for other accounts.</td>
 <td>asfDefaultRipple</td>
 </tr>
 </tbody>
@@ -924,14 +925,14 @@
 <td>lsfLowNoRipple</td>
 <td>0x00100000</td>
 <td>1048576</td>
-<td>The low account <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
+<td>The low account <a href="concept-noripple.html">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
 <td>tfSetNoRipple</td>
 </tr>
 <tr>
 <td>lsfHighNoRipple</td>
 <td>0x00200000</td>
 <td>2097152</td>
-<td>The high account <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
+<td>The high account <a href="concept-noripple.html">has disabled rippling</a> from this trust line to other trust lines with the same account's NoRipple flag set.</td>
 <td>tfSetNoRipple</td>
 </tr>
 <tr>

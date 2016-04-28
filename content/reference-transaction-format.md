@@ -536,7 +536,7 @@ The available AccountSet flags are:
 | asfAccountTxnID | 5 | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) | (None) |
 | asfNoFreeze | 6 | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](concept-freeze.html). This flag can never be disabled after being enabled. | lsfNoFreeze |
 | asfGlobalFreeze | 7 | [Freeze](concept-freeze.html) all assets issued by this account. | lsfGlobalFreeze |
-| asfDefaultRipple | 8 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
+| asfDefaultRipple | 8 | Enable [rippling](concept-noripple.html) on this account's trust lines by default. _(New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))_ | lsfDefaultRipple |
 
 _New in [rippled 0.28.0][]:_ In order to enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature.
 
@@ -782,7 +782,7 @@ Since a trust line occupies space in the ledger, [a trust line increases the XRP
 
 A trust line with settings in the default state is equivalent to no trust line.
 
-The default state of all flags is off, except for the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), whose default state depends on the DefaultRipple flag.
+The default state of all flags is off, except for the [NoRipple flag](concept-noripple.html), whose default state depends on the DefaultRipple flag.
 
 The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: The [`TrustSetAuth` Amendment](concept-amendments.html#trustsetauth) would allow you to pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.
 
@@ -793,8 +793,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | Flag Name | Hex Value | Decimal Value | Description |
 |-----------|-----------|---------------|-------------|
 | tfSetfAuth | 0x00010000 | 65536 | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
-| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for details.) |
+| tfSetNoRipple | 0x00020000 | 131072 | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](concept-noripple.html) for details.) |
+| tfClearNoRipple | 0x00040000 | 262144 | Clears the No-Rippling flag. (See [No Ripple](concept-noripple.html) for details.) |
 | tfSetFreeze | 0x00100000 | 1048576 | [Freeze](concept-freeze.html) the trustline.
 | tfClearFreeze | 0x00200000 | 2097152 | [Unfreeze](concept-freeze.html) the trustline. |
 

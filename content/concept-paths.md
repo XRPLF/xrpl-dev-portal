@@ -13,7 +13,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another account in the same currency
 * Exchanging currency at an order book
 
-Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See [Understanding the NoRipple Flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for more examples of rippling.
+Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See [Understanding the NoRipple Flag](concept-noripple.html) for more examples of rippling.
 
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)
 

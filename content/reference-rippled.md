@@ -1002,8 +1002,8 @@ Each trust-line object has some combination of the following fields:
 | limit\_peer | String | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | quality\_in | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality\_out | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for this line. If omitted, that is the same as `false`. |
-| no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/). If omitted, that is the same as `false`. |
+| no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](concept-noripple.html) for this line. If omitted, that is the same as `false`. |
+| no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](concept-noripple.html). If omitted, that is the same as `false`. |
 | freeze | Boolean | (May be omitted) `true` if this account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 | freeze\_peer | Boolean | (May be omitted) `true` if the peer account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 
@@ -2413,7 +2413,7 @@ Each transaction object includes the following fields, depending on whether it w
 ## noripple_check ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
 
-The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), compared with the recommended settings.
+The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](concept-noripple.html), compared with the recommended settings.
 
 #### Request Format ####
 An example of the request format:

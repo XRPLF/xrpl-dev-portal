@@ -87,6 +87,7 @@
                   <li><a href="concept-freeze.html">Freeze</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                  <li><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -852,7 +853,7 @@
 <tr>
 <td>asfDefaultRipple</td>
 <td>8</td>
-<td>Enable <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">rippling</a> on this account's trust lines by default. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.3">rippled 0.27.3</a>)</em></td>
+<td>Enable <a href="concept-noripple.html">rippling</a> on this account's trust lines by default. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.27.3">rippled 0.27.3</a>)</em></td>
 <td>lsfDefaultRipple</td>
 </tr>
 </tbody>
@@ -1188,7 +1189,7 @@
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="#offercreate">trading</a>, or when you decrease the limit on your trust line.</p>
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
-<p>The default state of all flags is off, except for the <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
+<p>The default state of all flags is off, except for the <a href="concept-noripple.html">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
 <p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: The <a href="concept-amendments.html#trustsetauth"><code>TrustSetAuth</code> Amendment</a> would allow you to pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.</p>
 <h3 id="trustset-flags">TrustSet Flags</h3>
 <p>Transactions of the TrustSet type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
@@ -1212,13 +1213,13 @@
 <td>tfSetNoRipple</td>
 <td>0x00020000</td>
 <td>131072</td>
-<td>Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">No Ripple</a> for details.)</td>
+<td>Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See <a href="concept-noripple.html">No Ripple</a> for details.)</td>
 </tr>
 <tr>
 <td>tfClearNoRipple</td>
 <td>0x00040000</td>
 <td>262144</td>
-<td>Clears the No-Rippling flag. (See <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">No Ripple</a> for details.)</td>
+<td>Clears the No-Rippling flag. (See <a href="concept-noripple.html">No Ripple</a> for details.)</td>
 </tr>
 <tr>
 <td>tfSetFreeze</td>
