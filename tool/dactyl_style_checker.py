@@ -95,6 +95,8 @@ if __name__ == "__main__":
         help="Specify path to an alternate config file.")
     parser.add_argument("--verbose", "-v", action="store_true",
                         help="Show status messages")
+    parser.add_argument("--target", "-t", type=str,
+                        help="Check the specified target.")
     cli_args = parser.parse_args()
 
     if cli_args.verbose:
@@ -105,7 +107,7 @@ if __name__ == "__main__":
     else:
         load_config()
 
-    issues = check_all_pages()
+    issues = check_all_pages(target=cli_args.target)
     if issues:
         num_issues = sum(len(p[1]) for p in issues)
         print("Found %d issues:" % num_issues)
