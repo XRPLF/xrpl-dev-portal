@@ -556,6 +556,9 @@ if __name__ == "__main__":
     parser.add_argument("--copy_static", "-s", action="store_true",
                         help="Copy static files to the out dir",
                         default=False)
+    parser.add_argument("--list_targets_only", "-l", action="store_true",
+                        help="Don't build anything, just display list of "+
+                        "known targets from the config file.")
     cli_args = parser.parse_args()
 
     if not cli_args.quiet:
@@ -565,6 +568,17 @@ if __name__ == "__main__":
         load_config(cli_args.config)
     else:
         load_config()
+
+    if cli_args.list_targets_only:
+        for t in config["targets"]:
+            if "display_name" in t:
+                display_name = t["display_name"]
+            else:
+                display_name = ""
+            print("%s\t\t%s" % (t["name"], display_name))
+
+        #print(" ".join([t["name"] for t in config["targets"]]))
+        exit(0)
 
     if cli_args.out_dir:
         config["out_path"] = cli_args.out_dir
