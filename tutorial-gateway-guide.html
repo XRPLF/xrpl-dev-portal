@@ -87,6 +87,7 @@
                   <li><a href="concept-freeze.html">Freeze</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                  <li><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -344,7 +345,7 @@
 <p>Any time you submit a Ripple transaction, it must be signed using your secret key. The secret key gives full control over your Ripple address. Therefore, you should never transmit your secret to a server operated by someone else. Instead, use your own <code>rippled</code> server, or sign the transactions locally before sending them to a <code>rippled</code> server.</p>
 <p>The examples in this document show API methods that include a secret key. This is only safe if you control <code>rippled</code> server yourself, <em>and</em> you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could use <a href="reference-rippleapi.html">RippleAPI</a> to perform local signing before submitting your transactions to a third-party server.</p>
 <h2 id="defaultripple">DefaultRipple</h2>
-<p>The DefaultRipple flag controls whether the balances in an accounting relationship <a href="https://ripple.com/knowledge_center/understanding-the-noripple-flag/">allowed to ripple</a> by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.</p>
+<p>The DefaultRipple flag controls whether the balances in an accounting relationship <a href="concept-noripple.html">allowed to ripple</a> by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.</p>
 <p>Before asking customers to create accounting relationships to its issuing address, a gateway should enable the DefaultRipple flag on that address. Otherwise, the gateway must individually disable the NoRipple flag for each accounting relationship that other addresses have created.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an AccountSet transaction to enable the DefaultRipple flag:</p>
 <p>Request:</p>

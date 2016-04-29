@@ -13,11 +13,11 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another account in the same currency
 * Exchanging currency at an order book
 
-Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See [Understanding the NoRipple Flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for more examples of rippling.
+Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See [Understanding the NoRipple Flag](concept-noripple.html) for more examples of rippling.
 
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)
 
-In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](https://ripple.com/knowledge_center/transfer-fees/), trust line quality, or rounding.
+In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](concept-transfer-fees.html), trust line quality, or rounding.
 
 [![Diagram of three example paths](img/paths-examples.png)](img/paths-examples.png)
 
@@ -53,7 +53,7 @@ The default path could be any of the following:
 
 * If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment will ripple through the accounts involved. This path will only work if there are trust lines connecting those accounts.
     * If `SendMax` is omitted, or the `issuer` of the `SendMax` is the sender, the default path needs a trust line from the sending `Account` to the `issuer` of the destination `Amount` in order to work.
-    * If the `SendMax` and `Amount` have different `issuer` values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple, Inc. typically discourages issuers from trusting one another directly.
+    * If the `SendMax` and `Amount` have different `issuer` values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple (the company) typically discourages issuers from trusting one another directly.
 * For cross-currency transactions, the default path uses the order book between the source currency (as specified in the `SendMax` field) and the destination currency (as specified in the `Amount` field).
 
 The following diagram enumerates all possible default paths:
@@ -81,8 +81,3 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | 0x01        | 1               | A change of account (rippling): the `account` field is present. |
 | 0x10        | 16              | A change of currency: the `currency` field is present. |
 | 0x20        | 32              | A change of issuer: the `issuer` field is present. |
-
-
-
-
-

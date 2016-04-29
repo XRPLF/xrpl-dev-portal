@@ -130,7 +130,7 @@ AccountRoot nodes can have the following flag values:
 | lsfDisableMaster | 0x00100000 | 1048576 | Disallows use of the master key to sign transactions for this account. | asfDisableMaster |
 | lsfNoFreeze | 0x00200000 | 209715　| This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this account are frozen. | asfGlobalFreeze |
-| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) on this account's trust lines by default. Required for gateways; discouraged for other accounts. | asfDefaultRipple |
+| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](concept-noripple.html) on this account's trust lines by default. Required for gateways; discouraged for other accounts. | asfDefaultRipple |
 
 ### AccountRoot Index Format ###
 
@@ -369,8 +369,8 @@ RippleState nodes can have the following flag values:
 | lsfHighReserve | 0x00020000 |131072 | This RippleState node [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
 | lsfLowAuth | 0x00040000 | 262144 | The low account has authorized the high account to hold the low account's issuances. | tfSetAuth |
 | lsfHighAuth | 0x00080000 | 524288 |  The high account has authorized the low account to hold the high account's issuances. | tfSetAuth |
-| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
-| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](concept-noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](concept-noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
 | lsfLowFreeze | 0x00400000 | 4194304 | The low account has frozen the trust line, preventing the high account from transferring the asset. | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | The high account has frozen the trust line, preventing the low account from transferring the asset. | tfSetFreeze |
 

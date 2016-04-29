@@ -55,7 +55,7 @@ There are several properties that define a good validator. The more of these pro
 * **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
     * Setting up [Domain Verification](#domain-verification) is a good start.
 
-At present, Ripple, Inc. cannot recommend any validators aside from the 5 core validators run by Ripple, Inc.: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on the validators currently operating, see [validators.ripple.com](https://validators.ripple.com).
+At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple (the company): these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on the validators currently operating, see [validators.ripple.com](https://validators.ripple.com).
 
 # Installing rippled #
 
@@ -268,5 +268,3 @@ To enable clustering, modify the following sections of your [config file](https:
 
 * Generate a unique seed (using the [`validation_create` command](reference-rippled.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network. **Note:** This is a different key than the one `rippled` uses to sign ledger proposals for consensus, but it is in the same format.
 * Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.
-
-

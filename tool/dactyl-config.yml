@@ -47,6 +47,12 @@ targets:
             "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
             "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
             "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
+            "img/noripple-01.png": https://ripple.com/wp-content/uploads/2015/04/noripple-01.png
+            "img/noripple-02.png": https://ripple.com/wp-content/uploads/2015/04/noripple-02.png
+            "img/noripple-03.png": https://ripple.com/wp-content/uploads/2015/01/noripple-03.png
+            "img/noripple-04.png": https://ripple.com/wp-content/uploads/2015/01/noripple-04.png
+            "img/noripple-05.png": https://ripple.com/wp-content/uploads/2015/01/noripple-05.png
+            "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
 
     -   name: rippled-setup
         filters:
@@ -234,6 +240,9 @@ pages:
         md: concept-amendments.md
         ripple.com: https://ripple.com/build/amendments/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
 
     -   name: Stand-Alone Mode
         category: Concepts
@@ -241,6 +250,19 @@ pages:
         md: concept-stand-alone-mode.md
         ripple.com: https://ripple.com/build/stand-alone-mode/
         sidebar: true
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Understanding the NoRipple flag
+        category: Concepts
+        html: concept-noripple.html
+        md: concept-noripple.md
+        ripple.com: https://ripple.com/knowledge_center/understanding-the-noripple-flag/
+        sidebar: true
+        targets:
+            - local
+            - ripple.com
 
 # "Best Practices" documents are mostly in the same category as tutorials
     -   name: Issuing and Operational Addresses

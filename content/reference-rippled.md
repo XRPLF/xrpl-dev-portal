@@ -48,7 +48,7 @@ The response comes as a JSON object.
 
 #### Public Servers ####
 
-Currently Ripple Labs maintains a set of public WebSocket servers at:
+Currently Ripple (the company) maintains a set of public WebSocket servers at:
 
 | Domain        | Port | Notes |
 | ------------- | ---- | ----- |
@@ -79,7 +79,7 @@ The response is also a JSON object.
 
 #### Public Servers ####
 
-Currently, Ripple Labs maintains a set of public JSON-RPC servers at:
+Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
 
 | Domain        | Port  | Notes |
 | ------------- | ----- |---|
@@ -1002,8 +1002,8 @@ Each trust-line object has some combination of the following fields:
 | limit\_peer | String | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | quality\_in | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | quality\_out | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) for this line. If omitted, that is the same as `false`. |
-| no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](https://ripple.com/knowledge_center/understanding-the-noripple-flag/). If omitted, that is the same as `false`. |
+| no\_ripple | Boolean | (May be omitted) `true` if this account has enabled the [NoRipple flag](concept-noripple.html) for this line. If omitted, that is the same as `false`. |
+| no\_ripple\_peer | Boolean | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](concept-noripple.html). If omitted, that is the same as `false`. |
 | freeze | Boolean | (May be omitted) `true` if this account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 | freeze\_peer | Boolean | (May be omitted) `true` if the peer account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 
@@ -2413,7 +2413,7 @@ Each transaction object includes the following fields, depending on whether it w
 ## noripple_check ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
 
-The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](https://ripple.com/knowledge_center/understanding-the-noripple-flag/), compared with the recommended settings.
+The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](concept-noripple.html), compared with the recommended settings.
 
 #### Request Format ####
 An example of the request format:
@@ -3696,7 +3696,7 @@ You must provide either `ledger_index` or `ledger_hash` but not both.
 
 The response follows the [standard format](#response-formatting). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
 
-**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple Labs' full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
+**Note:** In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [`connect` command](#connect) or the `fixed_ips` section of the config file to add Ripple's full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
 
 A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [`ledger` command](#ledger).
 

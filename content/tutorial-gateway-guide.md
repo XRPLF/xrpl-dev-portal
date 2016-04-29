@@ -269,7 +269,7 @@ The examples in this document show API methods that include a secret key. This i
 
 ## DefaultRipple ##
 
-The DefaultRipple flag controls whether the balances in an accounting relationship [allowed to ripple](https://ripple.com/knowledge_center/understanding-the-noripple-flag/) by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.
+The DefaultRipple flag controls whether the balances in an accounting relationship [allowed to ripple](concept-noripple.html) by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.
 
 Before asking customers to create accounting relationships to its issuing address, a gateway should enable the DefaultRipple flag on that address. Otherwise, the gateway must individually disable the NoRipple flag for each accounting relationship that other addresses have created.
 
