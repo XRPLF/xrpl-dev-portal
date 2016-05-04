@@ -7,7 +7,7 @@ Every transaction must [specify how much XRP it will destroy](#specifying-the-tr
 
 ## Current Transaction Cost ##
 
-The current transaction cost required by the network for a standard transaction is typically **0.01 XRP** (10,000 drops), although it sometimes increases due to network load.
+The current transaction cost required by the network for a standard transaction is typically **0.01 XRP** (10,000 drops), after load scaling. It sometimes increases due to higher than usual load.
 
 You can also [query `rippled` for the current transaction cost](#querying-the-transaction-cost).
 
@@ -17,7 +17,7 @@ Some transactions have different transaction costs:
 
 | Transaction           | Cost Before Load Scaling |
 |-----------------------|--------------------------|
-| Reference Transaction (Standard cost of most transactions) | 10 drops |
+| [Reference Transaction](#reference-transaction-cost) (Most transactions) | 10 drops |
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
 | [Multi-signed transaction](reference-transaction-format.html#multi-signing) | 10 drops × (1 + Number of Signatures Provided) |
 
@@ -43,14 +43,13 @@ This divides transactions into roughly three categories:
 
 ## Local Load Cost ##
 
-Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](reference-rippled.html#connecting-to-rippled), the server applies and relays the transaction as long as the transaction cost meets the overall minimum.) A transaction is very unlikely to survive [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) unless its `Fee` value meets the requirements of a majority of servers.
+Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](reference-rippled.html#connecting-to-rippled), the server applies and relays the transaction as long as the transaction cost meets the un-scaled minimum.) A transaction is very unlikely to survive [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) unless its `Fee` value meets the requirements of a majority of servers.
 
 ## Open Ledger Cost ##
 
-A `rippled` server with the [FeeEscalation amendment](concept-amendments.html#feeescalation) enabled has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. The open ledger cost starts out equal to the minimum transaction cost, but increases exponentially when an in-progress ledger has more transactions than the previous one. Only transactions which pay more than the open ledger cost can be included in the current open ledger.
-Transactions that do not meet the open ledger cost are [queued for a following ledger](#queued-transactions) instead.
+A `rippled` server with the [FeeEscalation amendment](concept-amendments.html#feeescalation) enabled has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. The open ledger cost starts out equal to the un-scaled minimum transaction cost, but increases exponentially when an in-progress ledger has more transactions than the previous ledger. The open ledger cost also increases if consensus took longer than 5 seconds to approve the previous ledger. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost are [queued for a following ledger](#queued-transactions) instead.
 
-The open ledger cost requirement is proportional to the normal cost of the transaction, not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](reference-transaction-format.html#multi-signing) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
+The open ledger cost requirement is [proportional to the normal cost of the transaction](#fee-levels), not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](reference-transaction-format.html#multi-signing) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
 
 See also: [Fee Escalation explanation in `rippled` repository](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md).
 
@@ -68,6 +67,19 @@ When the current open ledger closes and the server starts a new open ledger, the
 
 **Caution:** The current implementation does not allow transactions with an `AccountTxnID` field in the transaction queue.
 
+## Reference Transaction Cost ##
+
+The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](concept-transaction-cost.html) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](reference-transaction-format.html#multi-signing), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
+
+### Fee Levels ###
+
+_Fee levels_ represent the proportional difference between the minimum cost and the actual cost of a transaction. The [Open Ledger Cost](#open-ledger-cost) is measured in fee levels instead of absolute cost. See the following table for a comparison:
+
+| Transaction | Minimum cost in drops | Minimum cost in Fee levels | Double cost in drops | Double cost in fee levels |
+|-------------|-----------------------|----------------------------|----------------------|---------------------------|
+| Reference transaction (most transactions) | 10 | 256 | 20 | 512 |
+| [Multi-signed transaction](reference-transaction-format.html#multi-signing) with 4 signatures | 50 | 256 | 100 | 512 |
+| [Key reset transaction](concept-transaction-cost.html#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 
 
 ## Querying the Transaction Cost ##
