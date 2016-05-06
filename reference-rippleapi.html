@@ -143,7 +143,7 @@
       </aside>
       <main class="main" role="main">
     <div class='content'>
-        <p style="margin-top: 1em; font-style: italic">Updated for <a href="https://github.com/ripple/ripple-lib/releases/0.16.10" title="view on GitHub">version 0.16.10</a></p>
+        <p style="margin-top: 1em; font-style: italic">Updated for <a href="https://github.com/ripple/ripple-lib/releases/0.17.0" title="view on GitHub">version 0.17.0</a></p>
 <h1 id="introduction">Introduction</h1>
 <p>RippleAPI is the official client library to the Ripple Consensus Ledger. Currently, RippleAPI is only available in JavaScript. 
 Using RippleAPI, you can:</p>
@@ -306,7 +306,7 @@ const api = new RippleAPI();
 <h2 id="value">Value</h2>
 <p>A <em>value</em> is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. XRP has different precision from other currencies.</p>
 <p><strong>XRP</strong> has 6 significant digits past the decimal point. In other words, XRP cannot be divided into positive values smaller than <code>0.000001</code> (1e-6). XRP has a maximum value of <code>100000000000</code> (1e11).</p>
-<p><strong>Non-XRP values</strong> have 15 decimal digits of precision, with a maximum value of <code>9999999999999999e80</code>. The smallest positive non-XRP value is <code>1e-81</code>.</p>
+<p><strong>Non-XRP values</strong> have 16 decimal digits of precision, with a maximum value of <code>9999999999999999e80</code>. The smallest positive non-XRP value is <code>1e-81</code>.</p>
 <h2 id="amount">Amount</h2>
 <p>Example amount:</p>
 <pre><code class="json">{
