@@ -779,8 +779,9 @@ The request contains the following parameters:
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field will only accept a public key or account address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
+| signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. _(New in [version 0.31.0][])_ |
 
-The following fields are deprecated and should not be provided: `ident`, `account_index`, `ledger`.
+The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
 #### Response Format ####
 
@@ -818,6 +819,7 @@ The response follows the [standard format](#response-formatting), with the resul
 | Field | Type | Description |
 |-------|------|-------------|
 | account_data | Object | The [AccountRoot ledger node](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
+| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. _(New in [version 0.31.0][])_ |
 | ledger\_current\_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. _(New in [version 0.26.0][])_ |
@@ -2816,9 +2818,11 @@ The response follows the [standard format](#response-formatting), with a success
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate the keys needed for a new account. The account created this way will only become officially included in the Ripple network when it receives a transaction that provides enough XRP to meet the account reserve. (The `wallet_propose` command does not affect the global network. Technically, it is not strictly necessary for creating a new account: you could generate keys some other way, but that is not recommended.)
+Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
-*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (Since admin commands are not transmitted over the outside network this command is protected against people sniffing the network for account secrets.)
+*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+
+_(Updated in [version 0.31.0][])_
 
 #### Request Format ####
 
@@ -2826,21 +2830,47 @@ An example of the request format:
 
 <!-- <div class='multicode'> -->
 
-*WebSocket*
+*WebSocket (with key type)*
+
 ```
 {
     "command": "wallet_propose",
-    "passphrase": "test"
+    "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+    "key_type": "secp256k1"
 }
 ```
 
-*JSON-RPC*
+*WebSocket (no key type)*
+
+```
+{
+    "command": "wallet_propose",
+    "passphrase": "masterpassphrase"
+}
+```
+
+*JSON-RPC (with key type)*
+
 ```
 {
     "method": "wallet_propose",
     "params": [
         {
-            "passphrase": "test"
+            "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+            "key_type": "secp256k1"
+        }
+    ]
+}
+```
+
+*JSON-RPC (no key type)*
+
+```
+{
+    "method": "wallet_propose",
+    "params": [
+        {
+            "passphrase": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
         }
     ]
 }
@@ -2849,16 +2879,45 @@ An example of the request format:
 *Commandline*
 ```
 #Syntax: wallet_propose [passphrase]
-rippled wallet_propose test
+rippled wallet_propose masterpassphrase
 ```
 
 <!-- </div> -->
 
-The request can contain the following parameter:
+There are two valid modes for this command, depending on whether the request specifies the `key_type` parameter. If you omit the `key_type`, the request takes _only_ the following parameter (ignoring others):
 
 | Field | Type | Description |
 |-------|------|-------------|
-| passphrase | String | (Optional) Specify a passphrase, for testing purposes. If omitted, the server will use a random number to generate the master key. Outside of testing purposes, keys should always be randomly generated. Some values, which resemble Ripple addresses and some other formats, are prohibited. |
+| passphrase | String | (Optional) Generate a key pair and address from this seed value using the elliptic curve secp256k1. This value can be formatted in hexadecimal, base-58, RFC-1751, or as an arbitrary string. If omitted, use a random seed. |
+
+
+If you specify the `key_type`, you must provide at most one of the following fields: `passphrase`, `seed`, or `seed_hex`. (If you omit all three, `rippled` uses a random seed.) In this mode, the request parameters are as follows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| key\_type | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1`. **Caution:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. |
+| passphrase | String | (Optional) Generate the key pair and address from this seed value. This is interpreted as a string only. Cannot be used with `seed` or `seed_hex`. |
+| seed | String | (Optional) Generate the key pair and address from this base-58-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. Ignored unless `key_type` is provided. |
+| seed\_hex | String | (Optional) Generate the key pair and address from this seed value in hexadecimal format. Cannot be used with `passphrase` or `seed`. Ignored unless `key_type` is provided. |
+
+The commandline version of this command cannot generate Ed25519 keys.
+
+##### Specifying a Seed #####
+
+**Caution:** For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+
+Cases where you would specify a known seed include:
+
+* Re-calculating your address when you only know the seed associated with that address
+* Testing `rippled` functionality
+* [Validator domain verification](tutorial-rippled-setup.html#account-domain)
+
+If you do specify a seed, you can specify it in any of the following formats:
+
+* As a [base-58](https://en.wikipedia.org/wiki/Base58) secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
+* As an [RFC-1751](https://tools.ietf.org/html/rfc1751) format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
+* As a 128-bit [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
+* An arbitrary string to use as a seed value. For example: `masterpassphrase`.
 
 #### Response Format ####
 
@@ -2869,13 +2928,52 @@ An example of a successful response:
 *WebSocket*
 ```
 {
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "key_type": "secp256k1",
+    "master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+    "master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+    "master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+    "public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+    "public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"
+  }
+}
+```
+
+*JSON-RPC*
+
+```
+{
+	"result": {
+		"account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+		"key_type": "secp256k1",
+		"master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+		"master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+		"master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+		"public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+		"public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+		"status": "success"
+	}
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
    "result" : {
-      "account_id" : "rp2YHP5k3bSd6LRFT4phDjVMLXQjH4hiaG",
-      "master_key" : "AHOY CLAD JUDD NOON MINI CHAD CUBA JAN KANT AMID DEL LETS",
-      "master_seed" : "ssyXjRurNo75TjXjubby65cD96ak8",
-      "master_seed_hex" : "5BDD10A694F2E36CCAC0CBE28CE2AC49",
-      "public_key" : "aBPXjfsA7fY2LLPxRuZ7Sj2ADzoSEGDW4Atd5MgxdHz5FQvGPbqU",
-      "public_key_hex" : "02CF23BCB1252D153713954AF374F44F82C255170ECAEDB059783128F53288F34F",
+      "account_id" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+      "key_type" : "secp256k1",
+      "master_key" : "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+      "master_seed" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+      "master_seed_hex" : "DEDCE9CE67B451D852FD4E846FCDE31C",
+      "public_key" : "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+      "public_key_hex" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
       "status" : "success"
    }
 }
@@ -2887,25 +2985,27 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| master\_seed | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. |
+| master\_seed | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. This is the private key of the key pair. |
 | master\_seed\_hex | String | The master seed, in hex format. |
 | master\_key | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
 | account\_id | String | The [Address][] of the account. |
 | public\_key | String | The public key of the account, in encoded string format. |
 | public\_key\_hex | String | The public key of the account, in hex format. |
+{#| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. TODO: uncomment when this gets added in 0.32.0 |#}
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](reference-transaction-format.html#setregularkey) to do so.
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `badSeed` - The `passphrase` field of the request has an invalid value, such as an empty string, or a format resembling a Ripple address or Ripple secret.
+* `invalidParams` - One or more fields are specified incorrectly.
+* `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a Ripple address.
 
 
 
 # Ledger Information #
 
-The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After concensus is reached in the network, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
+The globally-shared ledger is the core of the Ripple Network. Each `rippled` server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in the process of advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.
 
 ## ledger ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
@@ -5794,7 +5894,9 @@ If there was no outstanding pathfinding request, an error is returned instead.
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response with a [payment path](concept-paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use [`path_find`](#path-find) instead where possible.
 
-Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (__*Note:*__ A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
+Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.
+
+**Caution:** Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results.
 
 #### Request Format ####
 An example of the request format:
@@ -5870,8 +5972,8 @@ The request includes the following parameters:
 | source\_account | String | Unique address of the account that would send funds in a transaction |
 | destination\_account | String | Unique address of the account that would receive funds in a transaction |
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [version 0.30.0][])_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [version 0.30.0][])_ |
-| source\_currencies | Array | (Optional, defaults to all available) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. _(New in [version 0.30.0][])_ |
+| source\_currencies | Array | (Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 
@@ -6135,9 +6237,9 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 ## sign ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
 
-The `sign` method takes a transaction, specified as JSON, and a secret key, and returns a signed binary representation of the transaction that can be submitted. The result is always different, even when you provide the same transaction JSON and secret key.
+The `sign` method takes a [transaction in JSON format](reference-transaction-format.html) and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the [`sign_for` command](#sign-for) instead.
 
-__*Note:*__ It is possible and preferable to sign a transaction without connecting to a server instead of using this command, by using [ripple-lib](https://github.com/ripple/ripple-lib). You should prefer to do offline signing of a transaction, especially when you do not control the server you are sending a transaction to. An untrustworthy server can abuse its position to change the transaction before signing it, or worse, use your secret to sign additional arbitrary transactions as if they came from you.
+**Caution:** Unless you operate the `rippled` server, you should do [local signing with RippleAPI](reference-rippleapi.html#sign) instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.
 
 #### Request Format ####
 An example of the request format:
@@ -6197,12 +6299,21 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 
 [Try it! >](ripple-api-tool.html#sign)
 
+To sign a transaction, you must provide a secret key that can [authorize the transaction](reference-transaction-format.html#authorizing-transactions). You can do this in a few ways:
+
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
+
 The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format |
-| secret | String | Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| key\_type | String | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional) If the `Fee` parameter ([transaction cost](concept-transaction-cost.html)) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value. |
@@ -6550,11 +6661,10 @@ A submit-only request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| tx_blob | String | Hex representation of the signed transaction to submit. |
+| tx_blob | String | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](reference-transaction-format.html#multi-signing). |
 | fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
 #### Request Format ####
-
 
 <!-- <div class='multicode'> -->
 
@@ -6592,15 +6702,26 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ### Sign-and-Submit Mode ###
 
-A sign-and-submit request includes the following parameters:
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
+
+You can provide the secret key used to sign the transaction in the following ways:
+
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
+
+The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
-| secret | String | (Required if `tx_json` is supplied) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. |
-| fail_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| key\_type | String | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
+| fail\_hard | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
-| build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
+| build\_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional) If the `Fee` parameter is omitted, this field limits the automatically-provided `Fee` value so that it is less than or equal to the long-term base transaction cost times this value. |
 | fee\_div\_max | Integer | (Optional) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, the submit command fails. _(New in [version 0.30.1][])_ |
 
@@ -7373,14 +7494,17 @@ The fields from a ledger stream message are as follows:
 
 ### Validations Stream ###
 
+_(New in [version 0.29.0][])_
+
 The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:
 
 ```
 {
   "type": "validationReceived",
-  "ledger_hash": "7B0B865DC3B648E35B1EB21FAD9501A765E6523B382CB182AC63DBE7D3DA5CC2",
-  "signature": "3045022100FA33615FCE1DDF56D0EEE0B750414D9C41FBE31B59A17B6A139F65A500ACA11702205B1129FFE78E2A4BC6BE98213C8172E2416780AB6F757D9067A2DBE224865495",
-  "validation_public_key": "n9MD5h24qrQqiyBC8aeqqCWvpiBiYQ3jxSr91uiDvmrkyHRdYLUj"
+  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
+  "ledger_index": "20504721",
+  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
+  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
 }
 ```
 
@@ -7389,7 +7513,8 @@ The fields from a validations stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | type | String | `validationReceived` indicates this is from the validations stream |
-| ledger\_hash | String | The identifying hash of the proposed ledger that this server declares validated by consensus. |
+| ledger\_hash | String | The identifying hash of the proposed ledger is being validated. |
+| ledger\_index | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [version 0.31.0][])_ |
 | signature | String | The signature that the validator used to sign its vote for this ledger. |
 | validation\_public\_key | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
@@ -10834,9 +10959,9 @@ The response follows the [standard format](#response-formatting), with a success
 [version 0.26.0]: https://wiki.ripple.com/Rippled-0.26.0
 [version 0.26.4]: https://wiki.ripple.com/Rippled-0.26.4
 [version 0.26.4-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.4-sp1
-[version 0.28.0]: https://wiki.ripple.com/Rippled-0.28.0
-[version 0.28.2]: https://wiki.ripple.com/Rippled-0.28.2
-[version 0.29.0]: https://wiki.ripple.com/Rippled-0.29.0
-[version 0.30.0]: https://wiki.ripple.com/Rippled-0.30.0
-[version 0.30.1]: https://wiki.ripple.com/Rippled-0.30.1
-[version 0.31.0]: https://wiki.ripple.com/Rippled-0.31.0
+[version 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0
+[version 0.28.2]: https://github.com/ripple/rippled/releases/tag/0.28.2
+[version 0.29.0]: https://github.com/ripple/rippled/releases/tag/0.29.0
+[version 0.30.0]: https://github.com/ripple/rippled/releases/tag/0.30.0
+[version 0.30.1]: https://github.com/ripple/rippled/releases/tag/0.30.1
+[version 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
