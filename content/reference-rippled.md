@@ -2818,7 +2818,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded account in the Ripple Consensus Ledger, an address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
+Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
@@ -5894,7 +5894,9 @@ If there was no outstanding pathfinding request, an error is returned instead.
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response with a [payment path](concept-paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making many subsequent calls, you should use [`path_find`](#path-find) instead where possible.
 
-Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (__*Note:*__ A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
+Although the `rippled` server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.
+
+**Caution:** Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results.
 
 #### Request Format ####
 An example of the request format:
@@ -5970,7 +5972,7 @@ The request includes the following parameters:
 | source\_account | String | Unique address of the account that would send funds in a transaction |
 | destination\_account | String | Unique address of the account that would receive funds in a transaction |
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [version 0.30.0][])_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [version 0.30.0][])_ |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. _(New in [version 0.30.0][])_ |
 | source\_currencies | Array | (Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, similar to [currency amounts](#specifying-currency-amounts). Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
@@ -6700,7 +6702,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ### Sign-and-Submit Mode ###
 
-This mode is intended for testing. It signs a transaction and immediately submits it. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
 
 You can provide the secret key used to sign the transaction in the following ways:
 
@@ -10971,9 +10973,9 @@ The response follows the [standard format](#response-formatting), with a success
 [version 0.26.0]: https://wiki.ripple.com/Rippled-0.26.0
 [version 0.26.4]: https://wiki.ripple.com/Rippled-0.26.4
 [version 0.26.4-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.4-sp1
-[version 0.28.0]: https://wiki.ripple.com/Rippled-0.28.0
-[version 0.28.2]: https://wiki.ripple.com/Rippled-0.28.2
-[version 0.29.0]: https://wiki.ripple.com/Rippled-0.29.0
-[version 0.30.0]: https://wiki.ripple.com/Rippled-0.30.0
-[version 0.30.1]: https://wiki.ripple.com/Rippled-0.30.1
-[version 0.31.0]: https://wiki.ripple.com/Rippled-0.31.0
+[version 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0
+[version 0.28.2]: https://github.com/ripple/rippled/releases/tag/0.28.2
+[version 0.29.0]: https://github.com/ripple/rippled/releases/tag/0.29.0
+[version 0.30.0]: https://github.com/ripple/rippled/releases/tag/0.30.0
+[version 0.30.1]: https://github.com/ripple/rippled/releases/tag/0.30.1
+[version 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
