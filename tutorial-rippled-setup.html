@@ -218,8 +218,34 @@
 <pre><code>    $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg &lt;command&gt;
 </code></pre>
 <h2 id="updating-rippled">Updating rippled</h2>
+<h3 id="automatic">Automatic</h3>
+<p>Automatic rippled updates can be enabled with a one-time Cron configuration:</p>
+<ol>
+<li>
+<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, perform a <a href="#manual">manual update</a>.</p>
+</li>
+<li>
+<p>Install <code>crond</code>:</p>
+<pre><code>$ sudo yum install cronie
+</code></pre>
+</li>
+<li>
+<p>Open the crontab file for editing</p>
+<pre><code>$ sudo crontab -e
+</code></pre>
+</li>
+<li>
+<p>Add the following to the crontab file. Be sure to add a blank line at the end of the file.</p>
+<pre><code>RANDOM_DELAY=59
+0 * * * * /opt/ripple/bin/update-rippled.sh
+</code></pre>
+</li>
+</ol>
+<p>The installed <code>rippled</code> package will be updated within an hour of a new release.</p>
+<h3 id="manual">Manual</h3>
 <p>Run the following commands to update to the latest release of <code>rippled</code>:</p>
-<pre><code>    $ sudo yum update --enablerepo=ripple-stable rippled
+<pre><code>    $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
+    $ sudo yum update --enablerepo=ripple-stable rippled
     $ sudo systemctl daemon-reload
     $ sudo service rippled restart
 </code></pre>
@@ -240,7 +266,7 @@
 <h2 id="validator-setup">Validator Setup</h2>
 <ol>
 <li>
-<p><a href="#installing-rippled">Install and configure a <code>rippled</code> server.</a></p>
+<p><a href="#installing-rippled">Install a <code>rippled</code> server.</a></p>
 </li>
 <li>
 <p>Start <code>rippled</code>:</p>
