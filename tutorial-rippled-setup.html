@@ -222,7 +222,7 @@
 <p>Automatic rippled updates can be enabled with a one-time Cron configuration:</p>
 <ol>
 <li>
-<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, perform a <a href="#manual">manual update</a>.</p>
+<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, perform a <a href="#manual">manual update</a> before proceeding.</p>
 </li>
 <li>
 <p>Install <code>crond</code>:</p>
@@ -241,7 +241,7 @@
 </code></pre>
 </li>
 </ol>
-<p>The installed <code>rippled</code> package will be updated within an hour of a new release.</p>
+<p>The installed <code>rippled</code> package will be updated within an hour of a new release. The <code>RANDOM_DELAY</code> acts to stagger when different rippleds update and restart.</p>
 <h3 id="manual">Manual</h3>
 <p>Run the following commands to update to the latest release of <code>rippled</code>:</p>
 <pre><code>    $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
