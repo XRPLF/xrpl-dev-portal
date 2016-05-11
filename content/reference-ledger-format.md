@@ -152,7 +152,7 @@ There are two kinds of Directories:
 
 Example Directories:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Offer Directory*
 
@@ -189,7 +189,7 @@ Example Directories:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
