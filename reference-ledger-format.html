@@ -30,7 +30,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs();
+            $(".multicode").minitabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -494,9 +494,9 @@
 <li><strong>Offer directories</strong> list the offers currently available in the distributed exchange. A single Offer Directory contains all the offers that have the same exchange rate for the same issuances.</li>
 </ul>
 <p>Example Directories:</p>
-<div class="multicode">
-<p><em>Offer Directory</em></p>
-<pre><code>{
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">Offer Directory</a></li><li><a href="#code-0-1">Owner Directory</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><pre><code>{
     "ExchangeRate": "4F069BA8FF484000",
     "Flags": 0,
     "Indexes": [
@@ -510,9 +510,9 @@
     "TakerPaysIssuer": "5BBC0F22F61D9224A110650CFE21CC0C4BE13098",
     "index": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000"
 }
-</code></pre>
-<p><em>Owner Directory</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><pre><code>{
     "Flags": 0,
     "Indexes": [
         "AD7EAE148287EF12D213A251015F86E6D4BD34B3C4A0A1ED9A17198373F908AD",
@@ -523,7 +523,7 @@
     "RootIndex": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94",
     "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <table>
 <thead>

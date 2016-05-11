@@ -103,7 +103,7 @@ The commandline puts the command after any normal (dash-prefaced) commandline op
 
 ## Example Request ##
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -139,13 +139,13 @@ POST http://s1.ripple.com:51234/
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 ## Response Formatting ##
 
 #### Example Successful Response ####
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -214,7 +214,7 @@ HTTP Status: 200 OK
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The fields of a successful response include:
 
@@ -233,7 +233,7 @@ It is impossible to enumerate all the possible ways an error can occur. Some may
 
 Some example errors:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -288,7 +288,7 @@ HTTP Status: 200 OK
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 #### WebSocket API Error Response Format ####
 | Field | Type | Description |
@@ -582,7 +582,7 @@ The `account_currencies` command retrieves a simple list of currencies that an a
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -611,7 +611,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#account_currencies)
 
@@ -630,7 +630,7 @@ The following field is deprecated and should not be provided: `account_index`.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -702,7 +702,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -734,7 +734,7 @@ The `account_info` command retrieves information about an account, its activity,
 
 An example of an account_info request:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -767,7 +767,7 @@ An example of an account_info request:
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#account_info)
 
@@ -787,7 +787,7 @@ The following fields are deprecated and should not be provided: `ident`, `ledger
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -812,7 +812,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
 
@@ -842,7 +842,7 @@ The `account_lines` method returns information about the account's lines of trus
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -869,7 +869,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#account_lines)
 
@@ -890,7 +890,7 @@ The following parameters are deprecated and may be removed without further notic
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -980,7 +980,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
 
@@ -1027,7 +1027,7 @@ The `account_offers` method retrieves a list of offers made by a given account t
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -1061,7 +1061,7 @@ An example of the request format:
 rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#account_offers)
 
@@ -1082,7 +1082,7 @@ The following parameter is deprecated and may be removed without further notice:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -1175,7 +1175,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -1219,7 +1219,7 @@ The `account_objects` command returns the raw [ledger format][] for all objects 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -1258,7 +1258,7 @@ An example of the request format:
 rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -1275,7 +1275,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -1796,7 +1796,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -1829,7 +1829,7 @@ The `account_tx` method retrieves a list of transactions that involved the speci
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -1872,7 +1872,7 @@ An example of the request format:
 rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#account_tx)
 
@@ -1903,7 +1903,7 @@ In the time between requests, `"ledger_index_min": -1` and `"ledger_index_max": 
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -2376,7 +2376,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -2420,7 +2420,7 @@ The `noripple_check` command provides a quick way to check the status of [the De
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -2453,7 +2453,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 **Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
 
@@ -2472,7 +2472,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -2577,7 +2577,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -2603,7 +2603,7 @@ The `gateway_balances` command calculates the total balances issued by a given a
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -2637,7 +2637,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -2653,7 +2653,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -2790,7 +2790,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 **Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
 
@@ -2828,7 +2828,7 @@ _(Updated in [version 0.31.0][])_
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket (with key type)*
 
@@ -2882,7 +2882,7 @@ An example of the request format:
 rippled wallet_propose masterpassphrase
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 There are two valid modes for this command, depending on whether the request specifies the `key_type` parameter. If you omit the `key_type`, the request takes _only_ the following parameter (ignoring others):
 
@@ -2923,7 +2923,7 @@ If you do specify a seed, you can specify it in any of the following formats:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -2979,7 +2979,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new account, including the following fields:
 
@@ -3015,7 +3015,7 @@ Retrieve information about the public ledger.
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -3059,7 +3059,7 @@ An example of the request format:
 rippled ledger current
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ledger)
 
@@ -3082,7 +3082,7 @@ The `ledger` field is deprecated and may be removed without further notice.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3147,7 +3147,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing information about the ledger, including the following fields:
 
@@ -3193,7 +3193,7 @@ The `ledger_closed` method returns the unique identifiers of the most recently c
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3219,7 +3219,7 @@ An example of the request format:
 rippled ledger_closed
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ledger_closed)
 
@@ -3228,7 +3228,7 @@ This method accepts no parameters.
 #### Response Format ####
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3255,7 +3255,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -3278,7 +3278,7 @@ The `ledger_current` method returns the unique identifiers of the current in-pro
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3304,7 +3304,7 @@ An example of the request format:
 rippled ledger_current
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ledger_current)
 
@@ -3314,7 +3314,7 @@ The request contains no parameters.
 #### Response Format ####
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3339,7 +3339,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following field:
 
@@ -3362,7 +3362,7 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3389,7 +3389,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 __*Note:*__ There is no commandline syntax for `ledger_data`. You can use the [`json` command](#json) to access this method from the commandline instead.
 
@@ -3410,7 +3410,7 @@ The `ledger` field is deprecated and may be removed without further notice.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket (binary:true)*
 ```
@@ -3581,7 +3581,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -3619,7 +3619,7 @@ __*Note:*__ There is no commandline version of this method. You can use the [`js
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3646,7 +3646,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ledger_entry)
 
@@ -3686,7 +3686,7 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```{
@@ -3735,7 +3735,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -3763,7 +3763,7 @@ The `ledger_request` command tells server to fetch a specific ledger version fro
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -3781,7 +3781,7 @@ An example of the request format:
 rippled ledger_request 13800000
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -3800,7 +3800,7 @@ The response follows the [standard format](#response-formatting). However, the r
 
 A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [`ledger` command](#ledger).
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Commandline (failure)*
 
@@ -3903,7 +3903,7 @@ Connecting to 127.0.0.1:5005
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The three possible response formats are as follows:
 
@@ -3944,7 +3944,7 @@ The `ledger_accept` method forces the server to close the current-working ledger
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -3960,7 +3960,7 @@ An example of the request format:
 rippled ledger_accept
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request accepts no parameters.
 
@@ -4008,7 +4008,7 @@ The `tx` method retrieves information on a single transaction.
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -4037,7 +4037,7 @@ An example of the request format:
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#tx)
 
@@ -4052,7 +4052,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -4181,7 +4181,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the fields of the [Transaction object](reference-transaction-format.html) as well as the following additional fields:
 
@@ -4211,7 +4211,7 @@ The `transaction_entry` method retrieves information on a single transaction fro
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -4245,7 +4245,7 @@ An example of the request format:
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#transaction_entry)
 
@@ -4263,7 +4263,7 @@ __*Note:*__ This method does not support retrieving information from the current
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -4394,7 +4394,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -4432,7 +4432,7 @@ __*Caution:*__ This method is deprecated, and may be removed without further not
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -4461,7 +4461,7 @@ An example of the request format:
 rippled tx_history 0
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#tx_history)
 
@@ -4475,7 +4475,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5295,7 +5295,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -5336,7 +5336,7 @@ A client can only have one pathfinding request open at a time. If another pathfi
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5354,7 +5354,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#path_find)
 
@@ -5375,7 +5375,7 @@ The server also recognizes the following fields, but the results of using them a
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5744,7 +5744,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The initial response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -5778,7 +5778,7 @@ If the follow-up includes `"full_reply": true`, then this is the best path that 
 
 Here is an example of an asychronous follow-up from a path_find create request:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5798,7 +5798,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 ### path_find close ###
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L46 "Source")
@@ -5808,7 +5808,7 @@ The `close` subcommand of `path_find` instructs the server to stop sending infor
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5819,7 +5819,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -5852,7 +5852,7 @@ The `status` subcommand of `path_find` requests an immediate update about the cl
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -5863,7 +5863,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -5901,7 +5901,7 @@ Although the `rippled` server attempts to find the cheapest path or combination 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -5961,7 +5961,7 @@ An example of the request format:
 rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ripple_path_find)
 
@@ -5981,7 +5981,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -6200,7 +6200,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -6244,7 +6244,7 @@ The `sign` method takes a [transaction in JSON format](reference-transaction-for
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -6295,7 +6295,7 @@ An example of the request format:
 rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#sign)
 
@@ -6330,7 +6330,7 @@ The server automatically attempts to fill in certain fields from the `tx_json` o
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -6387,7 +6387,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -6421,7 +6421,7 @@ This command requires the [MultiSign amendment](concept-amendments.html#multisig
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -6494,7 +6494,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 }'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -6514,7 +6514,7 @@ You must provide exactly 1 field with the secret key. You can use any of the fol
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -6623,7 +6623,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -6666,7 +6666,7 @@ A submit-only request includes the following parameters:
 
 #### Request Format ####
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -6695,7 +6695,7 @@ A submit-only request includes the following parameters:
 submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#submit)
 
@@ -6730,7 +6730,7 @@ See the [sign command](#sign) for detailed information on how the server automat
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -6779,7 +6779,7 @@ An example of the request format:
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#submit)
 
@@ -6787,7 +6787,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -6849,7 +6849,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -6893,7 +6893,7 @@ This command requires the [MultiSign amendment](concept-amendments.html#multisig
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -7009,7 +7009,7 @@ rippled submit_multisigned '{
 }'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -7022,7 +7022,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -7115,7 +7115,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -7144,7 +7144,7 @@ The `book_offers` method retrieves a list of offers, also known as the [order bo
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -7192,7 +7192,7 @@ An example of the request format:
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#book_offers)
 
@@ -7213,7 +7213,7 @@ Normally, offers that are not funded are omitted; however, offers made by the sp
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -7288,7 +7288,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -7335,7 +7335,7 @@ The `subscribe` method requests periodic notifications from the server when cert
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Subscribe to accounts*
 
@@ -7378,7 +7378,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#subscribe)
 
@@ -7419,7 +7419,7 @@ Each member of the `books` array, if provided, is an object with the following f
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -7431,7 +7431,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting). The fields contained in the response vary depending on what subscriptions were included in the request.
 
@@ -7846,7 +7846,7 @@ The `unsubscribe` command tells the server to stop sending messages for a partic
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -7871,7 +7871,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#unsubscribe)
 
@@ -7898,7 +7898,7 @@ The objects in the `books` array are defined almost like the ones from subscribe
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -7910,7 +7910,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
 
@@ -7943,7 +7943,7 @@ The `server_info` command asks the server for a human-readable version of variou
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -7972,7 +7972,7 @@ An example of the request format:
 rippled server_info
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#server_info)
 
@@ -7982,7 +7982,7 @@ The request does not takes any parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -8175,7 +8175,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing an `info` object as its only field.
 
@@ -8223,7 +8223,7 @@ The `server_state` command asks the server for various machine-readable informat
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -8252,7 +8252,7 @@ An example of the request format:
 rippled server_state
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#server_state)
 
@@ -8262,7 +8262,7 @@ The request does not takes any parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -8457,7 +8457,7 @@ An example of a successful response:
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing a `state` object as its only field.
 
@@ -8506,7 +8506,7 @@ _The `can_delete` method is an [admin command](#connecting-to-rippled) that cann
 
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -8535,7 +8535,7 @@ An example of the request format:
 rippled can_delete 11320417
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following optional parameter:
 
@@ -8573,7 +8573,7 @@ _The `consensus_info` method is an [admin command](#connecting-to-rippled) that 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -8602,7 +8602,7 @@ An example of the request format:
 rippled consensus_info
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request has no parameters.
 
@@ -8610,7 +8610,7 @@ The request has no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -8765,7 +8765,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -8804,7 +8804,7 @@ _The `fetch_info` method is an [admin command](#connecting-to-rippled) that cann
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -8836,7 +8836,7 @@ An example of the request format:
 rippled fetch_info
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -8848,7 +8848,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -8929,7 +8929,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -8965,7 +8965,7 @@ _The `feature` method is an [admin command](#connecting-to-rippled) that cannot 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket - list all*
 
@@ -9008,7 +9008,7 @@ An example of the request format:
 rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9023,7 +9023,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket - list all*
 
@@ -9124,7 +9124,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing **a map of amendments** as a JSON object. The keys of the object are amendment IDs. The values for each key are _amendment objects_ that describe the status of the amendment with that ID. If the request specified a `feature`, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:
 
@@ -9154,7 +9154,7 @@ _The `fee` method is an [admin command](#connecting-to-rippled) that cannot be r
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9181,7 +9181,7 @@ An example of the request format:
 rippled fee
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request does not include any parameters.
 
@@ -9189,7 +9189,7 @@ The request does not include any parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9274,7 +9274,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -9311,7 +9311,7 @@ _The `get_counts` method is an [admin command](#connecting-to-rippled) that cann
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9343,7 +9343,7 @@ An example of the request format:
 rippled get_counts 100
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9355,7 +9355,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -9434,7 +9434,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting). The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
 
@@ -9462,7 +9462,7 @@ _The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9475,7 +9475,7 @@ An example of the request format:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9493,7 +9493,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -9508,7 +9508,7 @@ An example of a successful response:
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -9532,7 +9532,7 @@ _The `log_level` method is an [admin command](#connecting-to-rippled) that canno
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9552,7 +9552,7 @@ An example of the request format:
 rippled log_level PathRequest debug
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9565,7 +9565,7 @@ The request includes the following parameters:
 
 Examples of successful responses:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Commandline (set log level)*
 
@@ -9643,7 +9643,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting). The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
 
@@ -9669,7 +9669,7 @@ _The `logrotate` method is an [admin command](#connecting-to-rippled) that canno
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9686,7 +9686,7 @@ An example of the request format:
 rippled logrotate
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes no parameters.
 
@@ -9694,7 +9694,7 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -9723,7 +9723,7 @@ Connecting to 127.0.0.1:5005
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -9746,7 +9746,7 @@ _The `validation_create` method is an [admin command](#connecting-to-rippled) th
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9778,7 +9778,7 @@ An example of the request format:
 rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9792,7 +9792,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -9822,7 +9822,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -9848,7 +9848,7 @@ The `validation_seed` command temporarily sets the secret value that rippled use
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9867,7 +9867,7 @@ An example of the request format:
 rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -9879,7 +9879,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -9910,7 +9910,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -9936,7 +9936,7 @@ The `peers` command returns a list of all other `rippled` servers currently conn
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -9953,7 +9953,7 @@ An example of the request format:
 rippled peers
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes no additional parameters.
 
@@ -9961,7 +9961,7 @@ The request includes no additional parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -10297,7 +10297,7 @@ Connecting to 127.0.0.1:5005
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing a JSON object with the following fields:
 
@@ -10348,7 +10348,7 @@ The `print` command returns the current status of various internal subsystems, i
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -10365,7 +10365,7 @@ An example of the request format:
 rippled print
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes no parameters.
 
@@ -10373,7 +10373,7 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Commandline*
 
@@ -10562,7 +10562,7 @@ Connecting to 127.0.0.1:5005
 
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting). Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
 
@@ -10584,7 +10584,7 @@ The `ping` command returns an acknowledgement, so that clients can test the conn
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -10610,7 +10610,7 @@ An example of the request format:
 rippled ping
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](ripple-api-tool.html#ping)
 
@@ -10620,7 +10620,7 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -10642,7 +10642,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
 
@@ -10659,7 +10659,7 @@ The `random` command provides a random number to be used as a source of entropy 
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -10685,7 +10685,7 @@ An example of the request format:
 rippled random
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes no parameters.
 
@@ -10693,7 +10693,7 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 ```
@@ -10718,7 +10718,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following field:
 
@@ -10739,7 +10739,7 @@ The `json` method is a proxy to running other commands, and accepts the paramete
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *Commandline*
 ```
@@ -10747,13 +10747,13 @@ An example of the request format:
 rippled -q json ledger_closed '{}'
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 #### Response Format ####
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -10767,7 +10767,7 @@ An example of a successful response:
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
 
@@ -10782,7 +10782,7 @@ The `connect` command forces the rippled server to connect to a specific peer ri
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -10816,7 +10816,7 @@ An example of the request format:
 rippled connect 192.170.145.88 51235
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
 
@@ -10829,7 +10829,7 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -10856,7 +10856,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 
@@ -10881,7 +10881,7 @@ Gracefully shuts down the server.
 #### Request Format ####
 An example of the request format:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
 
@@ -10909,7 +10909,7 @@ An example of the request format:
 rippled stop
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The request includes no parameters.
 
@@ -10917,7 +10917,7 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- <div class='multicode'> -->
+<!-- MULTICODE_BLOCK_START -->
 
 *JSON-RPC*
 
@@ -10943,7 +10943,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-<!-- </div> -->
+<!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
 

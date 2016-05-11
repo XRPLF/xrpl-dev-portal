@@ -79,7 +79,7 @@ Retrieve a specific Ledger by hash, index, date, or latest validated.
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -87,7 +87,7 @@ Retrieve a specific Ledger by hash, index, date, or latest validated.
 GET /v2/ledgers/{:identifier}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-ledger)
 
@@ -151,7 +151,7 @@ Retrieve a specific transaction by its identifying hash.
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -159,7 +159,7 @@ Retrieve a specific transaction by its identifying hash.
 GET /v2/transactions/{:hash}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-transaction)
 
@@ -259,7 +259,7 @@ Retrieve transactions by time
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -267,7 +267,7 @@ Retrieve transactions by time
 GET /v2/transactions/
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-transactions)
 
@@ -417,7 +417,7 @@ Results can be returned as individual payments, or aggregated to a specific list
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST - All Currencies*
 
@@ -431,7 +431,7 @@ GET /v2/payments/
 GET /v2/payments/{:currency}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-payments)
 
@@ -568,7 +568,7 @@ Retrieve Exchanges for a given currency pair over time.  Results can be returned
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -576,7 +576,7 @@ Retrieve Exchanges for a given currency pair over time.  Results can be returned
 GET /v2/exchanges/{:base}/{:counter}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-exchanges)
 
@@ -699,7 +699,7 @@ Retrieve an exchange rate for a given currency pair at a specific time.
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -707,7 +707,7 @@ Retrieve an exchange rate for a given currency pair at a specific time.
 GET /v2/exchange_rates/{:base}/{:counter}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-exchange-rates)
 
@@ -766,7 +766,7 @@ Convert an amount from one currency and issuer to another, using the network exc
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -774,7 +774,7 @@ Convert an amount from one currency and issuer to another, using the network exc
 GET /v2/normalize
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#normalize)
 
@@ -832,7 +832,7 @@ Retrieve per account per day aggregated payment summaries
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -840,7 +840,7 @@ Retrieve per account per day aggregated payment summaries
 GET /v2/reports/{:date}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-daily-reports)
 
@@ -996,7 +996,7 @@ Retrieve statistics about transaction activity in the Ripple Consensus Ledger, d
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1004,7 +1004,7 @@ Retrieve statistics about transaction activity in the Ripple Consensus Ledger, d
 GET /v2/stats
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-stats)
 
@@ -1100,7 +1100,7 @@ Get the total amount of a single currency issued by a single issuer, also known 
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1108,7 +1108,7 @@ Get the total amount of a single currency issued by a single issuer, also known 
 GET /v2/capitaliztion/{:currency}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-capitalization)
 
@@ -1226,7 +1226,7 @@ Get information on which accounts are actively trading in a specific currency pa
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1234,7 +1234,7 @@ Get information on which accounts are actively trading in a specific currency pa
 GET /v2/active_accounts/{:base}/{:counter}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-active-accounts)
 
@@ -1379,7 +1379,7 @@ The API returns results in units of a single _display currency_ rather than many
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1387,7 +1387,7 @@ The API returns results in units of a single _display currency_ rather than many
 GET /v2/network/exchange_volume
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-exchange-volume)
 
@@ -1527,7 +1527,7 @@ The API returns results in units of a single _display currency_ rather than many
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1535,7 +1535,7 @@ The API returns results in units of a single _display currency_ rather than many
 GET /v2/network/payment_volume
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-payment-volume)
 
@@ -1656,7 +1656,7 @@ The API returns results in units of a single _display currency_ rather than many
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1664,7 +1664,7 @@ The API returns results in units of a single _display currency_ rather than many
 GET /v2/network/issued_value
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-issued-value)
 
@@ -1765,7 +1765,7 @@ Returns the top currencies on the Ripple Consensus Ledger, ordered from highest 
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *Most Recent*
 
@@ -1779,7 +1779,7 @@ GET /v2/network/top_currencies
 GET /v2/network/top_currencies/2016-01-01
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-top-currencies)
 
@@ -1865,7 +1865,7 @@ Returns the top exchange markets on the Ripple Consensus Ledger, ordered from hi
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *Most Recent*
 
@@ -1879,7 +1879,7 @@ GET /v2/network/top_markets
 GET /v2/network/top_markets/2016-01-01
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 This method does not accept any query parameters.
 
@@ -1967,7 +1967,7 @@ Get information about [known gateways](https://github.com/ripple/rippled-histori
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -1975,7 +1975,7 @@ Get information about [known gateways](https://github.com/ripple/rippled-histori
 GET /v2/gateways/
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-all-gateways)
 
@@ -2063,7 +2063,7 @@ Get information about a specific gateway from [the Data API's list of known gate
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2071,7 +2071,7 @@ Get information about a specific gateway from [the Data API's list of known gate
 GET /v2/gateways/{:gateway}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-gateway)
 
@@ -2155,7 +2155,7 @@ Retrieve vector icons for various currencies. _(New in [v2.0.4][])_
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2163,7 +2163,7 @@ Retrieve vector icons for various currencies. _(New in [v2.0.4][])_
 GET /v2/currencies/{:currencyimage}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 This method requires the following URL parameter:
 
@@ -2216,7 +2216,7 @@ Retrieve information about the creation of new accounts in the Ripple Consensus 
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2224,7 +2224,7 @@ Retrieve information about the creation of new accounts in the Ripple Consensus 
 GET /v2/accounts
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-accounts)
 
@@ -2313,7 +2313,7 @@ Get creation info for a specific ripple account
 #### Request Format ####
 
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2321,7 +2321,7 @@ Get creation info for a specific ripple account
 GET /v2/accounts/{:address}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account)
 
@@ -2372,7 +2372,7 @@ Response:
 
 Get all balances held or owed by a specific Ripple account.
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2380,7 +2380,7 @@ Get all balances held or owed by a specific Ripple account.
 GET /v2/accounts/{:address}/balances
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-balances)
 
@@ -2458,7 +2458,7 @@ Get orders in the order books, placed by a specific account. This does not retur
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2466,7 +2466,7 @@ Get orders in the order books, placed by a specific account. This does not retur
 GET /v2/account/{:address}/orders
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-orders)
 
@@ -2583,7 +2583,7 @@ Retrieve a history of transactions that affected a specific account. This includ
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2591,7 +2591,7 @@ Retrieve a history of transactions that affected a specific account. This includ
 GET /v2/accounts/{:address}/transactions
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-transaction-history)
 
@@ -2713,7 +2713,7 @@ Retrieve a specifc transaction originating from a specified account
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2721,7 +2721,7 @@ Retrieve a specifc transaction originating from a specified account
 GET /v2/accounts/{:address}/transactions/{:sequence}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-transaction-by-account-and-sequence)
 
@@ -2781,7 +2781,7 @@ Retrieve a payments for a specified account
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -2789,7 +2789,7 @@ Retrieve a payments for a specified account
 GET /v2/accounts/{:address}/payments
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-payments)
 
@@ -2888,7 +2888,7 @@ Retrieve Exchanges for a given account over time.
 
 There are two variations on this method:
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST - All Exchanges*
 
@@ -2902,7 +2902,7 @@ GET /v2/accounts/{:address}/exchanges/
 GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-exchanges-all)
 
@@ -3005,7 +3005,7 @@ Retrieve Balance changes for a given account over time.
 
 #### Request Format ####
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -3013,7 +3013,7 @@ Retrieve Balance changes for a given account over time.
 GET /v2/accounts/{:address}/balance_changes/
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-balance-changes)
 
@@ -3107,7 +3107,7 @@ Response:
 
 Retrieve daily summaries of payment activity for an account.
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST - Date Omitted*
 
@@ -3121,7 +3121,7 @@ GET /v2/accounts/{:address}/reports/
 GET /v2/accounts/{:address}/reports/{:date}
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-reports-by-day)
 
@@ -3219,7 +3219,7 @@ Response:
 
 Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.0][].)_
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -3227,7 +3227,7 @@ Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.
 GET /v2/accounts/{:address}/stats/transactions
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-transaction-stats)
 
@@ -3317,7 +3317,7 @@ Response:
 
 Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.0][].)_
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -3325,7 +3325,7 @@ Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.
 GET /v2/accounts/{:address}/stats/value
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](data-api-v2-tool.html#get-account-value-stats)
 
@@ -3403,7 +3403,7 @@ Response:
 
 Check the health of the API service.
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST*
 
@@ -3411,7 +3411,7 @@ Check the health of the API service.
 GET /v2/health/api
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 Optionally, you can also include the following query parameters:
 
@@ -3464,7 +3464,7 @@ Response:
 
 Check the health of the Ledger Importer Service.
 
-<!--<div class='multicode'>-->
+<!-- MULTICODE_BLOCK_START -->
 
 *REST - Importer Health*
 
@@ -3472,7 +3472,7 @@ Check the health of the Ledger Importer Service.
 GET /v2/health/importer
 ```
 
-<!--</div>-->
+<!-- MULTICODE_BLOCK_END -->
 
 Optionally, you can also include the following query parameters:
 

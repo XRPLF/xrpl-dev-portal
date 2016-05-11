@@ -30,7 +30,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs();
+            $(".multicode").minitabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -276,10 +276,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specific Ledger by hash, index, date, or latest validated.</p>
 <h4 id="request-format">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/ledgers/{:identifier}
-</code></pre>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><pre><code>GET /v2/ledgers/{:identifier}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-ledger">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
@@ -374,10 +374,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specific transaction by its identifying hash.</p>
 <h4 id="request-format-1">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/transactions/{:hash}
-</code></pre>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><pre><code>GET /v2/transactions/{:hash}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transaction">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
@@ -498,10 +498,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve transactions by time</p>
 <h4 id="request-format-2">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/transactions/
-</code></pre>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><pre><code>GET /v2/transactions/
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transactions">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
@@ -699,13 +699,13 @@
 <p>Retrieve Payments over time, where Payments are defined as <code>Payment</code> type transactions where the sender of the transaction is not also the destination. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>Results can be returned as individual payments, or aggregated to a specific list of intervals if currency and issuer are provided.</p>
 <h4 id="request-format-3">Request Format</h4>
-<div class="multicode">
-<p><em>REST - All Currencies</em></p>
-<pre><code>GET /v2/payments/
-</code></pre>
-<p><em>REST - Specific Currency</em></p>
-<pre><code>GET /v2/payments/{:currency}
-</code></pre>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">REST - All Currencies</a></li><li><a href="#code-3-1">REST - Specific Currency</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><pre><code>GET /v2/payments/
+</code></pre></div>
+
+<div class="code_sample" id="code-3-1" style="position: static;"><pre><code>GET /v2/payments/{:currency}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-payments">Try it! &gt;</a></p>
 <p>This method accepts the following URL parameters:</p>
@@ -923,10 +923,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Exchanges for a given currency pair over time.  Results can be returned as individual exchanges or aggregated to a specific list of intervals</p>
 <h4 id="request-format-4">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/exchanges/{:base}/{:counter}
-</code></pre>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-4-0" style="position: static;"><pre><code>GET /v2/exchanges/{:base}/{:counter}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchanges">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -1117,10 +1117,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchangeRate.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve an exchange rate for a given currency pair at a specific time.</p>
 <h4 id="request-format-5">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/exchange_rates/{:base}/{:counter}
-</code></pre>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-5-0" style="position: static;"><pre><code>GET /v2/exchange_rates/{:base}/{:counter}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchange-rates">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -1206,10 +1206,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/normalize.js" title="Source">[Source]<br/></a></p>
 <p>Convert an amount from one currency and issuer to another, using the network exchange rates.</p>
 <h4 id="request-format-6">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/normalize
-</code></pre>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-6-0" style="position: static;"><pre><code>GET /v2/normalize
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#normalize">Try it! &gt;</a></p>
 <p>This method uses the following query parameters:</p>
@@ -1309,10 +1309,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/reports.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve per account per day aggregated payment summaries</p>
 <h4 id="request-format-7">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/reports/{:date}
-</code></pre>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-7-0" style="position: static;"><pre><code>GET /v2/reports/{:date}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-daily-reports">Try it! &gt;</a></p>
 <p>This method uses the following URL parameters:</p>
@@ -1518,10 +1518,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/stats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve statistics about transaction activity in the Ripple Consensus Ledger, divided into intervals of time.</p>
 <h4 id="request-format-8">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/stats
-</code></pre>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-8-0" style="position: static;"><pre><code>GET /v2/stats
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-stats">Try it! &gt;</a></p>
 <p>Optionally, you can also include the following query parameters:</p>
@@ -1716,10 +1716,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js" title="Source">[Source]<br/></a></p>
 <p>Get the total amount of a single currency issued by a single issuer, also known as the <a href="https://en.wikipedia.org/wiki/Market_capitalization">market capitalization</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-9">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/capitaliztion/{:currency}
-</code></pre>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-9-0" style="position: static;"><pre><code>GET /v2/capitaliztion/{:currency}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-capitalization">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -1916,10 +1916,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js" title="Source">[Source]<br/></a></p>
 <p>Get information on which accounts are actively trading in a specific currency pair. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-10">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/active_accounts/{:base}/{:counter}
-</code></pre>
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-10-0" style="position: static;"><pre><code>GET /v2/active_accounts/{:base}/{:counter}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-active-accounts">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -2166,10 +2166,10 @@
 <p>Get aggregated exchange volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-11">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/network/exchange_volume
-</code></pre>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-11-0" style="position: static;"><pre><code>GET /v2/network/exchange_volume
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchange-volume">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
@@ -2381,10 +2381,10 @@
 <p>Get aggregated payment volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-12">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/network/payment_volume
-</code></pre>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-12-0" style="position: static;"><pre><code>GET /v2/network/payment_volume
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-payment-volume">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
@@ -2580,10 +2580,10 @@
 <p>Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-13">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/network/issued_value
-</code></pre>
+<div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-13-0" style="position: static;"><pre><code>GET /v2/network/issued_value
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-issued-value">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
@@ -2749,13 +2749,13 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/topCurrencies.js" title="Source">[Source]<br/></a></p>
 <p>Returns the top currencies on the Ripple Consensus Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>)</em></p>
 <h4 id="request-format-14">Request Format</h4>
-<div class="multicode">
-<p><em>Most Recent</em></p>
-<pre><code>GET /v2/network/top_currencies
-</code></pre>
-<p><em>By Date</em></p>
-<pre><code>GET /v2/network/top_currencies/2016-01-01
-</code></pre>
+<div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0">Most Recent</a></li><li><a href="#code-14-1">By Date</a></li></ul>
+
+<div class="code_sample" id="code-14-0" style="position: static;"><pre><code>GET /v2/network/top_currencies
+</code></pre></div>
+
+<div class="code_sample" id="code-14-1" style="position: static;"><pre><code>GET /v2/network/top_currencies/2016-01-01
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-top-currencies">Try it! &gt;</a></p>
 <p>This method does not accept any query parameters.</p>
@@ -2884,13 +2884,13 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/topMarkets.js" title="Source">[Source]<br/></a></p>
 <p>Returns the top exchange markets on the Ripple Consensus Ledger, ordered from highest rank to lowest. The rank is determined by the number and volume of exchanges and the number of counterparties participating. By default, returns top markets for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>)</em></p>
 <h4 id="request-format-15">Request Format</h4>
-<div class="multicode">
-<p><em>Most Recent</em></p>
-<pre><code>GET /v2/network/top_markets
-</code></pre>
-<p><em>By Date</em></p>
-<pre><code>GET /v2/network/top_markets/2016-01-01
-</code></pre>
+<div class="multicode" id="code-15"><ul class="codetabs"><li><a href="#code-15-0">Most Recent</a></li><li><a href="#code-15-1">By Date</a></li></ul>
+
+<div class="code_sample" id="code-15-0" style="position: static;"><pre><code>GET /v2/network/top_markets
+</code></pre></div>
+
+<div class="code_sample" id="code-15-1" style="position: static;"><pre><code>GET /v2/network/top_markets/2016-01-01
+</code></pre></div>
 </div>
 <p>This method does not accept any query parameters.</p>
 <p><a class="button" href="data-api-v2-tool.html#get-top-markets">Try it! &gt;</a></p>
@@ -3024,10 +3024,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
 <p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-16">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/gateways/
-</code></pre>
+<div class="multicode" id="code-16"><ul class="codetabs"><li><a href="#code-16-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-16-0" style="position: static;"><pre><code>GET /v2/gateways/
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-all-gateways">Try it! &gt;</a></p>
 <p>This method takes no query parameters.</p>
@@ -3125,10 +3125,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
 <p>Get information about a specific gateway from <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">the Data API's list of known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-17">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/gateways/{:gateway}
-</code></pre>
+<div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-17-0" style="position: static;"><pre><code>GET /v2/gateways/{:gateway}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-gateway">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -3256,10 +3256,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/v0.0.4-rc2/api/routesV2/gateways.js#L196" title="Source">[Source]<br/></a></p>
 <p>Retrieve vector icons for various currencies. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-18">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/currencies/{:currencyimage}
-</code></pre>
+<div class="multicode" id="code-18"><ul class="codetabs"><li><a href="#code-18-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-18-0" style="position: static;"><pre><code>GET /v2/currencies/{:currencyimage}
+</code></pre></div>
 </div>
 <p>This method requires the following URL parameter:</p>
 <table>
@@ -3310,10 +3310,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accounts.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve information about the creation of new accounts in the Ripple Consensus Ledger.</p>
 <h4 id="request-format-19">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts
-</code></pre>
+<div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-19-0" style="position: static;"><pre><code>GET /v2/accounts
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-accounts">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
@@ -3469,10 +3469,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getAccount.js" title="Source">[Source]<br/></a></p>
 <p>Get creation info for a specific ripple account</p>
 <h4 id="request-format-20">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}
-</code></pre>
+<div class="multicode" id="code-20"><ul class="codetabs"><li><a href="#code-20-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-20-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -3535,10 +3535,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-balances">Get Account Balances</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountBalances.js" title="Source">[Source]<br/></a></p>
 <p>Get all balances held or owed by a specific Ripple account.</p>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/balances
-</code></pre>
+<div class="multicode" id="code-21"><ul class="codetabs"><li><a href="#code-21-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-21-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balances">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -3681,10 +3681,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountOrders.js" title="Source">[Source]<br/></a></p>
 <p>Get orders in the order books, placed by a specific account. This does not return orders that have already been filled.</p>
 <h4 id="request-format-21">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/account/{:address}/orders
-</code></pre>
+<div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-22-0" style="position: static;"><pre><code>GET /v2/account/{:address}/orders
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-orders">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -3890,10 +3890,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a history of transactions that affected a specific account. This includes all transactions the account sent, payments the account received, and payments that rippled through the account.</p>
 <h4 id="request-format-22">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/transactions
-</code></pre>
+<div class="multicode" id="code-23"><ul class="codetabs"><li><a href="#code-23-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-23-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-history">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4083,10 +4083,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTxSeq.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specifc transaction originating from a specified account</p>
 <h4 id="request-format-23">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
-</code></pre>
+<div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transaction-by-account-and-sequence">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4171,10 +4171,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountPayments.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a payments for a specified account</p>
 <h4 id="request-format-24">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/payments
-</code></pre>
+<div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-25-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/payments
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-payments">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4340,13 +4340,13 @@ Content-Type: image/svg+xml
 <p>Retrieve Exchanges for a given account over time.</p>
 <h4 id="request-format-25">Request Format</h4>
 <p>There are two variations on this method:</p>
-<div class="multicode">
-<p><em>REST - All Exchanges</em></p>
-<pre><code>GET /v2/accounts/{:address}/exchanges/
-</code></pre>
-<p><em>REST - Specific Currency Pair</em></p>
-<pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
-</code></pre>
+<div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0">REST - All Exchanges</a></li><li><a href="#code-26-1">REST - Specific Currency Pair</a></li></ul>
+
+<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/
+</code></pre></div>
+
+<div class="code_sample" id="code-26-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-exchanges-all">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4506,10 +4506,10 @@ Content-Type: image/svg+xml
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountBalanceChanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Balance changes for a given account over time.</p>
 <h4 id="request-format-26">Request Format</h4>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/balance_changes/
-</code></pre>
+<div class="multicode" id="code-27"><ul class="codetabs"><li><a href="#code-27-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-27-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balance_changes/
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balance-changes">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4661,13 +4661,13 @@ Content-Type: image/svg+xml
 <h2 id="get-account-reports">Get Account Reports</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountReports.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of payment activity for an account.</p>
-<div class="multicode">
-<p><em>REST - Date Omitted</em></p>
-<pre><code>GET /v2/accounts/{:address}/reports/
-</code></pre>
-<p><em>REST - Date Specified</em></p>
-<pre><code>GET /v2/accounts/{:address}/reports/{:date}
-</code></pre>
+<div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0">REST - Date Omitted</a></li><li><a href="#code-28-1">REST - Date Specified</a></li></ul>
+
+<div class="code_sample" id="code-28-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/
+</code></pre></div>
+
+<div class="code_sample" id="code-28-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/{:date}
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-reports-by-day">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4816,10 +4816,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-transaction-stats">Get Account Transaction Stats</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/stats/transactions
-</code></pre>
+<div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-29-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/transactions
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-stats">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -4979,10 +4979,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-value-stats">Get Account Value Stats</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/accounts/{:address}/stats/value
-</code></pre>
+<div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/value
+</code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-value-stats">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
@@ -5125,10 +5125,10 @@ Content-Type: image/svg+xml
 <h2 id="health-check-api">Health Check - API</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the API service.</p>
-<div class="multicode">
-<p><em>REST</em></p>
-<pre><code>GET /v2/health/api
-</code></pre>
+<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>GET /v2/health/api
+</code></pre></div>
 </div>
 <p>Optionally, you can also include the following query parameters:</p>
 <table>
@@ -5218,10 +5218,10 @@ Content-Type: image/svg+xml
 <h2 id="health-check-ledger-importer">Health Check - Ledger Importer</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the Ledger Importer Service.</p>
-<div class="multicode">
-<p><em>REST - Importer Health</em></p>
-<pre><code>GET /v2/health/importer
-</code></pre>
+<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">REST - Importer Health</a></li></ul>
+
+<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>GET /v2/health/importer
+</code></pre></div>
 </div>
 <p>Optionally, you can also include the following query parameters:</p>
 <table>

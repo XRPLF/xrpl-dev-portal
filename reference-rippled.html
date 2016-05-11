@@ -30,7 +30,7 @@
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
-            $().multicode_tabs();
+            $(".multicode").minitabs();
             hljs.initHighlighting();
             make_code_expandable();
         });
@@ -340,18 +340,18 @@
 <h4 id="request-formatting-2">Request Formatting</h4>
 <p>The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them.</p>
 <h2 id="example-request">Example Request</h2>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "strict": true,
   "ledger_index": "validated"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>POST http://s1.ripple.com:51234/
+</code></pre></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><pre><code>POST http://s1.ripple.com:51234/
 {
     "method": "account_info",
     "params": [
@@ -362,16 +362,16 @@
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-0-2" style="position: static;"><pre><code>rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
+</code></pre></div>
 </div>
 <h2 id="response-formatting">Response Formatting</h2>
 <h4 id="example-successful-response">Example Successful Response</h4>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -390,9 +390,9 @@
     "ledger_index": 6760970
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>HTTP Status: 200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><pre><code>HTTP Status: 200 OK
 {
     "result": {
         "account_data": {
@@ -410,9 +410,9 @@
         "status": "success"
     }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><pre><code>{
     "result": {
         "account_data": {
             "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -429,7 +429,7 @@
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The fields of a successful response include:</p>
 <table>
@@ -468,9 +468,9 @@
 <h2 id="error-responses">Error Responses</h2>
 <p>It is impossible to enumerate all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results will vary depending on what client and transport you are using. However, if the <code>rippled</code> server successfully receives your request, it will try to respond in a standardized error format.</p>
 <p>Some example errors:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><pre><code>{
   "id": 3,
   "status": "error",
   "type": "response",
@@ -483,9 +483,9 @@
     "strict": true
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>HTTP Status: 200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-2-1" style="position: static;"><pre><code>HTTP Status: 200 OK
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -498,9 +498,9 @@
         "status": "error"
     }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-2-2" style="position: static;"><pre><code>{
     "result": {
         "error": "ledgerIndexMalformed",
         "request": {
@@ -512,7 +512,7 @@
         "status": "error"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <h4 id="websocket-api-error-response-format">WebSocket API Error Response Format</h4>
 <table>
@@ -918,17 +918,17 @@ Null method
 <p>The <code>account_currencies</code> command retrieves a simple list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)</p>
 <h4 id="request-format">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><pre><code>{
     "command": "account_currencies",
     "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
     "strict": true,
     "ledger_index": "validated"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-3-1" style="position: static;"><pre><code>{
     "method": "account_currencies",
     "params": [
         {
@@ -939,7 +939,7 @@ Null method
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#account_currencies">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -977,9 +977,9 @@ Null method
 <p>The following field is deprecated and should not be provided: <code>account_index</code>.</p>
 <h4 id="response-format">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li><li><a href="#code-4-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-4-0" style="position: static;"><pre><code>{
     "result": {
         "ledger_index": 11775844,
         "receive_currencies": [
@@ -1009,9 +1009,9 @@ Null method
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-4-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_index": 11775823,
@@ -1041,7 +1041,7 @@ Null method
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -1093,18 +1093,18 @@ Null method
 <p>The <code>account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger.</p>
 <h4 id="request-format-1">Request Format</h4>
 <p>An example of an account_info request:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-5-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "strict": true,
   "ledger_index": "validated"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-5-1" style="position: static;"><pre><code>{
     "method": "account_info",
     "params": [
         {
@@ -1114,11 +1114,11 @@ Null method
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: account_info account [ledger_index|ledger_hash] [strict]
+</code></pre></div>
+
+<div class="code_sample" id="code-5-2" style="position: static;"><pre><code>#Syntax: account_info account [ledger_index|ledger_hash] [strict]
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#account_info">Try it! &gt;</a></p>
 <p>The request contains the following parameters:</p>
@@ -1161,9 +1161,9 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <p>The following fields are deprecated and should not be provided: <code>ident</code>, <code>ledger</code>.</p>
 <h4 id="response-format-1">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-6-0" style="position: static;"><pre><code>{
   "id": 5,
   "status": "success",
   "type": "response",
@@ -1182,7 +1182,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
     "ledger_current_index": 6507948
   }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:</p>
 <table>
@@ -1233,17 +1233,17 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <p>The <code>account_lines</code> method returns information about the account's lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.</p>
 <h4 id="request-format-2">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-7-0" style="position: static;"><pre><code>{
   "id": 1,
   "command": "account_lines",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "ledger": "current"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-7-1" style="position: static;"><pre><code>{
     "method": "account_lines",
     "params": [
         {
@@ -1252,7 +1252,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#account_lines">Try it! &gt;</a></p>
 <p>The request accepts the following paramters:</p>
@@ -1300,9 +1300,9 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <p>The following parameters are deprecated and may be removed without further notice: <code>ledger</code> and <code>peer_index</code>.</p>
 <h4 id="response-format-2">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-8-0" style="position: static;"><pre><code>{
     "id": 1,
     "status": "success",
     "type": "response",
@@ -1342,9 +1342,9 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
         ]
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-8-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -1383,7 +1383,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:</p>
 <table>
@@ -1507,17 +1507,17 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <p>The <code>account_offers</code> method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.</p>
 <h4 id="request-format-3">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-9-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "account_offers",
   "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
   "ledger": "current"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-9-1" style="position: static;"><pre><code>{
     "method": "account_offers",
     "params": [
         {
@@ -1526,11 +1526,11 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: account_offers account [ledger_index]
+</code></pre></div>
+
+<div class="code_sample" id="code-9-2" style="position: static;"><pre><code>#Syntax: account_offers account [ledger_index]
 rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#account_offers">Try it! &gt;</a></p>
 <p>A request can include the following parameters:</p>
@@ -1578,9 +1578,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <p>The following parameter is deprecated and may be removed without further notice: <code>ledger</code>.</p>
 <h4 id="response-format-3">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">WebSocket</a></li><li><a href="#code-10-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-10-0" style="position: static;"><pre><code>{
   "id": 9,
   "status": "success",
   "type": "response",
@@ -1617,9 +1617,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
     "validated": false
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-10-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
@@ -1663,7 +1663,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
         "validated": false
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -1762,9 +1762,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account, such as <a href="reference-transaction-format.html#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and <a href="reference-transaction-format.html#multi-signing">signer lists</a>. For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
 <h4 id="request-format-4">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">WebSocket</a></li><li><a href="#code-11-1">JSON-RPC</a></li><li><a href="#code-11-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-11-0" style="position: static;"><pre><code>{
   "id": 1,
   "command": "account_objects",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -1772,9 +1772,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
   "type": "state",
   "limit": 10
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-11-1" style="position: static;"><pre><code>{
     "method": "account_objects",
     "params": [
         {
@@ -1785,11 +1785,11 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]
+</code></pre></div>
+
+<div class="code_sample" id="code-11-2" style="position: static;"><pre><code>#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]
 rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -1835,9 +1835,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 </table>
 <h4 id="response-format-4">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0">WebSocket</a></li><li><a href="#code-12-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-12-0" style="position: static;"><pre><code>{
     "id": 8,
     "status": "success",
     "type": "response",
@@ -2092,9 +2092,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
         "validated": true
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-12-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -2348,7 +2348,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -2414,9 +2414,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <p>The <code>account_tx</code> method retrieves a list of transactions that involved the specified account.</p>
 <h4 id="request-format-5">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">WebSocket</a></li><li><a href="#code-13-1">JSON-RPC</a></li><li><a href="#code-13-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-13-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "account_tx",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -2427,9 +2427,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
   "limit": 2,
   "forward": false
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-13-1" style="position: static;"><pre><code>{
     "method": "account_tx",
     "params": [
         {
@@ -2445,11 +2445,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
+</code></pre></div>
+
+<div class="code_sample" id="code-13-2" style="position: static;"><pre><code>#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
 rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#account_tx">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -2516,9 +2516,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <p>In the time between requests, <code>"ledger_index_min": -1</code> and <code>"ledger_index_max": -1</code> may change to refer to different ledger versions than they did before. The <code>marker</code> field can safely paginate even if there are changes in the ledger range from the request, so long as the marker does not indicate a point outside the range of ledgers specified in the request.</p>
 <h4 id="response-format-5">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0">WebSocket</a></li><li><a href="#code-14-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-14-0" style="position: static;"><pre><code>{
     "id": 2,
     "status": "success",
     "type": "response",
@@ -2750,9 +2750,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         "validated": true
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-14-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -2983,7 +2983,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -3088,9 +3088,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <p>The <code>noripple_check</code> command provides a quick way to check the status of <a href="concept-noripple.html">the DefaultRipple field for an account and the NoRipple flag of its trust lines</a>, compared with the recommended settings.</p>
 <h4 id="request-format-6">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-15"><ul class="codetabs"><li><a href="#code-15-0">WebSocket</a></li><li><a href="#code-15-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-15-0" style="position: static;"><pre><code>{
     "id": 0,
     "command": "noripple_check",
     "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -3099,9 +3099,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
     "limit": 2,
     "transactions": true
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-15-1" style="position: static;"><pre><code>{
     "method": "noripple_check",
     "params": [
         {
@@ -3113,7 +3113,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
 <p>The request includes the following parameters:</p>
@@ -3160,9 +3160,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </table>
 <h4 id="response-format-6">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-16"><ul class="codetabs"><li><a href="#code-16-0">WebSocket</a></li><li><a href="#code-16-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-16-0" style="position: static;"><pre><code>{
   "id": 0,
   "status": "success",
   "type": "response",
@@ -3209,9 +3209,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
     "validated": false
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-16-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_current_index": 14380381,
@@ -3257,7 +3257,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         "validated": false
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -3298,9 +3298,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by specific "hot wallet" addresses. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.2">version 0.28.2</a>.)</em></p>
 <h4 id="request-format-7">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">WebSocket</a></li><li><a href="#code-17-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-17-0" style="position: static;"><pre><code>{
     "id": "example_gateway_balances_1",
     "command": "gateway_balances",
     "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
@@ -3308,9 +3308,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
     "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ","ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],
     "ledger_index": "validated"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-17-1" style="position: static;"><pre><code>{
     "method": "gateway_balances",
     "params": [
         {
@@ -3324,7 +3324,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -3365,9 +3365,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </table>
 <h4 id="response-format-7">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-18"><ul class="codetabs"><li><a href="#code-18-0">WebSocket</a></li><li><a href="#code-18-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-18-0" style="position: static;"><pre><code>{
   "id": 3,
   "status": "success",
   "type": "response",
@@ -3430,9 +3430,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
     "validated": true
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-18-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
@@ -3494,7 +3494,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
@@ -3554,22 +3554,22 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <p><em>(Updated in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-8">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket (with key type)</em></p>
-<pre><code>{
+<div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0">WebSocket (with key type)</a></li><li><a href="#code-19-1">WebSocket (no key type)</a></li><li><a href="#code-19-2">JSON-RPC (with key type)</a></li><li><a href="#code-19-3">JSON-RPC (no key type)</a></li><li><a href="#code-19-4">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-19-0" style="position: static;"><pre><code>{
     "command": "wallet_propose",
     "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
     "key_type": "secp256k1"
 }
-</code></pre>
-<p><em>WebSocket (no key type)</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-19-1" style="position: static;"><pre><code>{
     "command": "wallet_propose",
     "passphrase": "masterpassphrase"
 }
-</code></pre>
-<p><em>JSON-RPC (with key type)</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-19-2" style="position: static;"><pre><code>{
     "method": "wallet_propose",
     "params": [
         {
@@ -3578,9 +3578,9 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         }
     ]
 }
-</code></pre>
-<p><em>JSON-RPC (no key type)</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-19-3" style="position: static;"><pre><code>{
     "method": "wallet_propose",
     "params": [
         {
@@ -3588,11 +3588,11 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: wallet_propose [passphrase]
+</code></pre></div>
+
+<div class="code_sample" id="code-19-4" style="position: static;"><pre><code>#Syntax: wallet_propose [passphrase]
 rippled wallet_propose masterpassphrase
-</code></pre>
+</code></pre></div>
 </div>
 <p>There are two valid modes for this command, depending on whether the request specifies the <code>key_type</code> parameter. If you omit the <code>key_type</code>, the request takes <em>only</em> the following parameter (ignoring others):</p>
 <table>
@@ -3661,9 +3661,9 @@ rippled wallet_propose masterpassphrase
 </ul>
 <h4 id="response-format-8">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-20"><ul class="codetabs"><li><a href="#code-20-0">WebSocket</a></li><li><a href="#code-20-1">JSON-RPC</a></li><li><a href="#code-20-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-20-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -3677,9 +3677,9 @@ rippled wallet_propose masterpassphrase
     "public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-20-1" style="position: static;"><pre><code>{
     "result": {
         "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
         "key_type": "secp256k1",
@@ -3691,9 +3691,9 @@ rippled wallet_propose masterpassphrase
         "status": "success"
     }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-20-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -3707,7 +3707,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing various important information about the new account, including the following fields:</p>
 <table>
@@ -3765,9 +3765,9 @@ Connecting to 127.0.0.1:5005
 <p>Retrieve information about the public ledger.</p>
 <h4 id="request-format-9">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-21"><ul class="codetabs"><li><a href="#code-21-0">WebSocket</a></li><li><a href="#code-21-1">JSON-RPC</a></li><li><a href="#code-21-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-21-0" style="position: static;"><pre><code>{
     "id": 14,
     "command": "ledger",
     "ledger_index": "validated",
@@ -3777,9 +3777,9 @@ Connecting to 127.0.0.1:5005
     "expand": false,
     "owner_funds": false
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-21-1" style="position: static;"><pre><code>{
     "method": "ledger",
     "params": [
         {
@@ -3792,13 +3792,13 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: ledger ledger_index|ledger_hash [full|tx]
+</code></pre></div>
+
+<div class="code_sample" id="code-21-2" style="position: static;"><pre><code>#Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
 rippled ledger current
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ledger">Try it! &gt;</a></p>
 <p>The request can contain the following parameters:</p>
@@ -3856,9 +3856,9 @@ rippled ledger current
 <p>The <code>ledger</code> field is deprecated and may be removed without further notice.</p>
 <h4 id="response-format-9">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0">WebSocket</a></li><li><a href="#code-22-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-22-0" style="position: static;"><pre><code>{
   "id": 4,
   "status": "success",
   "type": "response",
@@ -3886,9 +3886,9 @@ rippled ledger current
     "validated": true
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-22-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger": {
@@ -3915,7 +3915,7 @@ rippled ledger current
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing information about the ledger, including the following fields:</p>
 <table>
@@ -4034,33 +4034,33 @@ rippled ledger current
 <p>The <code>ledger_closed</code> method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)</p>
 <h4 id="request-format-10">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-23"><ul class="codetabs"><li><a href="#code-23-0">WebSocket</a></li><li><a href="#code-23-1">JSON-RPC</a></li><li><a href="#code-23-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-23-0" style="position: static;"><pre><code>{
    "id": 2,
    "command": "ledger_closed"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-23-1" style="position: static;"><pre><code>{
     "method": "ledger_closed",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: ledger_closed
+</code></pre></div>
+
+<div class="code_sample" id="code-23-2" style="position: static;"><pre><code>#Syntax: ledger_closed
 rippled ledger_closed
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ledger_closed">Try it! &gt;</a></p>
 <p>This method accepts no parameters.</p>
 <h4 id="response-format-10">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0">WebSocket</a></li><li><a href="#code-24-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>{
   "id": 1,
   "status": "success",
   "type": "response",
@@ -4069,9 +4069,9 @@ rippled ledger_closed
     "ledger_index": 6643099
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-24-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_hash": "8B5A0C5F6B198254A6E411AF55C29EE40AA86251D2E78DD0BB17647047FA9C24",
@@ -4079,7 +4079,7 @@ rippled ledger_closed
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -4112,33 +4112,33 @@ rippled ledger_closed
 <p>The <code>ledger_current</code> method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.</p>
 <h4 id="request-format-11">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0">WebSocket</a></li><li><a href="#code-25-1">JSON-RPC</a></li><li><a href="#code-25-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-25-0" style="position: static;"><pre><code>{
    "id": 2,
    "command": "ledger_current"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-25-1" style="position: static;"><pre><code>{
     "method": "ledger_current",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: ledger_current
+</code></pre></div>
+
+<div class="code_sample" id="code-25-2" style="position: static;"><pre><code>#Syntax: ledger_current
 rippled ledger_current
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ledger_current">Try it! &gt;</a></p>
 <p>The request contains no parameters.</p>
 <h4 id="response-format-11">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0">WebSocket</a></li><li><a href="#code-26-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -4146,16 +4146,16 @@ rippled ledger_current
     "ledger_current_index": 6643240
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-26-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_current_index": 8696233,
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following field:</p>
 <table>
@@ -4184,18 +4184,18 @@ rippled ledger_current
 <p>The <code>ledger_data</code> method retrieves contents of the specified ledger. You can iterate through several calls in order to retrieve the entire contents of a single ledger version.</p>
 <h4 id="request-format-12">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-27"><ul class="codetabs"><li><a href="#code-27-0">WebSocket</a></li><li><a href="#code-27-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-27-0" style="position: static;"><pre><code>{
    "id": 2,
    "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
    "command": "ledger_data",
    "limit": 5,
    "binary": true
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-27-1" style="position: static;"><pre><code>{
     "method": "ledger_data",
     "params": [
         {
@@ -4205,7 +4205,7 @@ rippled ledger_current
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><strong><em>Note:</em></strong> There is no commandline syntax for <code>ledger_data</code>. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <p>A request can include the following fields:</p>
@@ -4253,9 +4253,9 @@ rippled ledger_current
 <p>The <code>ledger</code> field is deprecated and may be removed without further notice.</p>
 <h4 id="response-format-12">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket (binary:true)</em></p>
-<pre><code>{
+<div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0">WebSocket (binary:true)</a></li><li><a href="#code-28-1">WebSocket (binary:false)</a></li><li><a href="#code-28-2">JSON-RPC (binary:true)</a></li></ul>
+
+<div class="code_sample" id="code-28-0" style="position: static;"><pre><code>{
     "id": 2,
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -4287,9 +4287,9 @@ rippled ledger_current
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>WebSocket (binary:false)</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-28-1" style="position: static;"><pre><code>{
     "id": 2,
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -4383,9 +4383,9 @@ rippled ledger_current
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC (binary:true)</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-28-2" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -4416,7 +4416,7 @@ rippled ledger_current
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -4494,18 +4494,18 @@ rippled ledger_current
 <p><strong><em>Note:</em></strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <h4 id="request-format-13">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">WebSocket</a></li><li><a href="#code-29-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-29-0" style="position: static;"><pre><code>{
   "id": 3,
   "command": "ledger_entry",
   "type": "account_root",
   "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "ledger_index": "validated"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-29-1" style="position: static;"><pre><code>{
     "method": "ledger_entry",
     "params": [
         {
@@ -4515,7 +4515,7 @@ rippled ledger_current
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ledger_entry">Try it! &gt;</a></p>
 <p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p>
@@ -4617,9 +4617,9 @@ rippled ledger_current
 <p>The <code>generator</code> and <code>ledger</code> parameters are deprecated and may be removed without further notice.</p>
 <h4 id="response-format-13">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>    "id": 3,
+<div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0">WebSocket</a></li><li><a href="#code-30-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>    "id": 3,
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
         "ledger_index": 6889347,
@@ -4638,9 +4638,9 @@ rippled ledger_current
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-30-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
@@ -4660,7 +4660,7 @@ rippled ledger_current
         "validated": true
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -4706,17 +4706,17 @@ rippled ledger_current
 <p><em>The <code>ledger_request</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-14">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">WebSocket</a></li><li><a href="#code-31-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>{
     "id": 102,
     "command": "ledger_request",
     "ledger_index": 13800000
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled ledger_request 13800000
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-31-1" style="position: static;"><pre><code>rippled ledger_request 13800000
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -4745,9 +4745,9 @@ rippled ledger_current
 <p>The response follows the <a href="#response-formatting">standard format</a>. However, the request returns a failure response if it does not have the specified ledger <em>even if it successfully instructed the <code>rippled</code> server to start retrieving the ledger</em>.</p>
 <p><strong>Note:</strong> In order to retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="#connect"><code>connect</code> command</a> or the <code>fixed_ips</code> section of the config file to add Ripple's full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
 <p>A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the <a href="#ledger"><code>ledger</code> command</a>.</p>
-<div class="multicode">
-<p><em>Commandline (failure)</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">Commandline (failure)</a></li><li><a href="#code-32-1">Commandline (in-progress)</a></li><li><a href="#code-32-2">Commandline (success)</a></li></ul>
+
+<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -4767,9 +4767,9 @@ Connecting to 127.0.0.1:5005
       "status" : "error"
    }
 }
-</code></pre>
-<p><em>Commandline (in-progress)</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-32-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -4810,9 +4810,9 @@ Connecting to 127.0.0.1:5005
       "timeouts" : 1
    }
 }
-</code></pre>
-<p><em>Commandline (success)</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-32-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -4837,7 +4837,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The three possible response formats are as follows:</p>
 <ol>
@@ -4910,17 +4910,17 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>ledger_accept</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-15">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0">WebSocket</a></li><li><a href="#code-33-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-33-0" style="position: static;"><pre><code>{
    "id": "Accept my ledger!",
    "command": "ledger_accept"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: ledger_accept
+</code></pre></div>
+
+<div class="code_sample" id="code-33-1" style="position: static;"><pre><code>#Syntax: ledger_accept
 rippled ledger_accept
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request accepts no parameters.</p>
 <h4 id="response-format-15">Response Format</h4>
@@ -4965,17 +4965,17 @@ rippled ledger_accept
 <p>The <code>tx</code> method retrieves information on a single transaction.</p>
 <h4 id="request-format-16">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-34"><ul class="codetabs"><li><a href="#code-34-0">WebSocket</a></li><li><a href="#code-34-1">JSON-RPC</a></li><li><a href="#code-34-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-34-0" style="position: static;"><pre><code>{
   "id": 1,
   "command": "tx",
   "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
   "binary": false
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-34-1" style="position: static;"><pre><code>{
     "method": "tx",
     "params": [
         {
@@ -4984,11 +4984,11 @@ rippled ledger_accept
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: tx transaction [binary]
+</code></pre></div>
+
+<div class="code_sample" id="code-34-2" style="position: static;"><pre><code>#Syntax: tx transaction [binary]
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#tx">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -5015,9 +5015,9 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 </table>
 <h4 id="response-format-16">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-35-0" style="position: static;"><pre><code>{
     "id": 1,
     "result": {
         "Account": "r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH",
@@ -5140,7 +5140,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
     "status": "success",
     "type": "response"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the fields of the <a href="reference-transaction-format.html">Transaction object</a> as well as the following additional fields:</p>
 <table>
@@ -5195,17 +5195,17 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 <p>The <code>transaction_entry</code> method retrieves information on a single transaction from a specific ledger version. (The <a href="#tx"><code>tx</code></a> command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)</p>
 <h4 id="request-format-17">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0">WebSocket</a></li><li><a href="#code-36-1">JSON-RPC</a></li><li><a href="#code-36-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-36-0" style="position: static;"><pre><code>{
   "id": 4,
   "command": "transaction_entry",
   "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
   "ledger_index": 348734
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-36-1" style="position: static;"><pre><code>{
     "method": "transaction_entry",
     "params": [
         {
@@ -5214,11 +5214,11 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
+</code></pre></div>
+
+<div class="code_sample" id="code-36-2" style="position: static;"><pre><code>#Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#transaction_entry">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -5251,9 +5251,9 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <p><strong><em>Note:</em></strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
 <h4 id="response-format-17">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-37-0" style="position: static;"><pre><code>{
     "id": 4,
     "result": {
         "ledger_index": 348734,
@@ -5378,7 +5378,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
     "status": "success",
     "type": "response"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -5433,16 +5433,16 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <p><strong><em>Caution:</em></strong> This method is deprecated, and may be removed without further notice.</p>
 <h4 id="request-format-18">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">WebSocket</a></li><li><a href="#code-38-1">JSON-RPC</a></li><li><a href="#code-38-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-38-0" style="position: static;"><pre><code>{
   "id": 5,
   "command": "tx_history",
   "start": 0
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-38-1" style="position: static;"><pre><code>{
     "method": "tx_history",
     "params": [
         {
@@ -5450,11 +5450,11 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: tx_history [start]
+</code></pre></div>
+
+<div class="code_sample" id="code-38-2" style="position: static;"><pre><code>#Syntax: tx_history [start]
 rippled tx_history 0
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#tx_history">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -5476,9 +5476,9 @@ rippled tx_history 0
 </table>
 <h4 id="response-format-18">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0">WebSocket</a></li><li><a href="#code-39-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-39-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -5926,9 +5926,9 @@ rippled tx_history 0
     ]
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-39-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "index": 0,
@@ -6290,7 +6290,7 @@ rippled tx_history 0
         ]
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -6337,9 +6337,9 @@ rippled tx_history 0
 <p>A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.</p>
 <h4 id="request-format-19">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-40"><ul class="codetabs"><li><a href="#code-40-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-40-0" style="position: static;"><pre><code>{
     "id": 8,
     "command": "path_find",
     "subcommand": "create",
@@ -6351,7 +6351,7 @@ rippled tx_history 0
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#path_find">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -6399,9 +6399,9 @@ rippled tx_history 0
 <p>The server also recognizes the following fields, but the results of using them are not guaranteed: <code>source_currencies</code>, <code>bridges</code>. These fields should be considered reserved for future use.</p>
 <h4 id="response-format-19">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-41-0" style="position: static;"><pre><code>{
   "id": 1,
   "status": "success",
   "type": "response",
@@ -6764,7 +6764,7 @@ rippled tx_history 0
     "full_reply": false
   }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The initial response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -6840,9 +6840,9 @@ rippled tx_history 0
 <p>In addition to the initial response, the server sends more messages in a similar format to update on the status of <a href="concept-paths.html">payment paths</a> over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
 <p>If the follow-up includes <code>"full_reply": true</code>, then this is the best path that rippled can find as of the current ledger.</p>
 <p>Here is an example of an asychronous follow-up from a path_find create request:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-42"><ul class="codetabs"><li><a href="#code-42-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-42-0" style="position: static;"><pre><code>{
     "id": 1,
     "type": "path_find",
     "alternatives": [
@@ -6856,21 +6856,21 @@ rippled tx_history 0
     },
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <h3 id="path-find-close">path_find close</h3>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L46" title="Source">[Source]<br/></a></p>
 <p>The <code>close</code> subcommand of <code>path_find</code> instructs the server to stop sending information about the current open pathfinding request.</p>
 <h4 id="request-format-20">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-43"><ul class="codetabs"><li><a href="#code-43-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-43-0" style="position: static;"><pre><code>{
   "id": 57,
   "command": "path_find",
   "subcommand": "close"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -6920,14 +6920,14 @@ rippled tx_history 0
 <p>The <code>status</code> subcommand of <code>path_find</code> requests an immediate update about the client's currently-open pathfinding request.</p>
 <h4 id="request-format-21">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-44"><ul class="codetabs"><li><a href="#code-44-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-44-0" style="position: static;"><pre><code>{
   "id": 58,
   "command": "path_find",
   "subcommand": "status"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -6979,9 +6979,9 @@ rippled tx_history 0
 <p><strong>Caution:</strong> Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results.</p>
 <h4 id="request-format-22">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0">WebSocket</a></li><li><a href="#code-45-1">JSON-RPC</a></li><li><a href="#code-45-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-45-0" style="position: static;"><pre><code>{
     "id": 8,
     "command": "ripple_path_find",
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -7000,9 +7000,9 @@ rippled tx_history 0
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-45-1" style="position: static;"><pre><code>{
     "method": "ripple_path_find",
     "params": [
         {
@@ -7024,11 +7024,11 @@ rippled tx_history 0
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax ripple_path_find json ledger_index|ledger_hash
+</code></pre></div>
+
+<div class="code_sample" id="code-45-2" style="position: static;"><pre><code>#Syntax ripple_path_find json ledger_index|ledger_hash
 rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ripple_path_find">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -7080,9 +7080,9 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 </table>
 <h4 id="response-format-22">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0">WebSocket</a></li><li><a href="#code-46-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-46-0" style="position: static;"><pre><code>{
     "id": 8,
     "status": "success",
     "type": "response",
@@ -7186,9 +7186,9 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
         ]
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-46-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "alternatives": [
@@ -7291,7 +7291,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -7361,9 +7361,9 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <p><strong>Caution:</strong> Unless you operate the <code>rippled</code> server, you should do <a href="reference-rippleapi.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
 <h4 id="request-format-23">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0">WebSocket</a></li><li><a href="#code-47-1">JSON-RPC</a></li><li><a href="#code-47-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-47-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "sign",
   "tx_json" : {
@@ -7379,9 +7379,9 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
    "secret" : "sssssssssssssssssssssssssssss",
    "offline": false
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-47-1" style="position: static;"><pre><code>{
     "method": "sign",
     "params": [
         {
@@ -7400,11 +7400,11 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: sign secret tx_json [offline]
+</code></pre></div>
+
+<div class="code_sample" id="code-47-2" style="position: static;"><pre><code>#Syntax: sign secret tx_json [offline]
 rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#sign">Try it! &gt;</a></p>
 <p>To sign a transaction, you must provide a secret key that can <a href="reference-transaction-format.html#authorizing-transactions">authorize the transaction</a>. You can do this in a few ways:</p>
@@ -7485,9 +7485,9 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </ul>
 <h4 id="response-format-23">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">WebSocket</a></li><li><a href="#code-48-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-48-0" style="position: static;"><pre><code>{
     "id": 2,
     "result": {
         "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100BF06B6C01646005DEDD8F4F6D458AF4EE4006205A623FF31E0B5BCCE42564BA1022063C372D476379C109E3C22C5C04071594CD9EF64615C00B048AFFA5D7D6701F981144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
@@ -7511,9 +7511,9 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-48-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "status": "success",
@@ -7536,7 +7536,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
         }
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -7580,9 +7580,9 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-24">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-49"><ul class="codetabs"><li><a href="#code-49-0">WebSocket</a></li><li><a href="#code-49-1">JSON-RPC</a></li><li><a href="#code-49-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-49-0" style="position: static;"><pre><code>{
     "id": "sign_for_example",
     "command": "sign_for",
     "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
@@ -7602,9 +7602,9 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
         "Fee": "30000"
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>POST http://localhost:5005/
+</code></pre></div>
+
+<div class="code_sample" id="code-49-1" style="position: static;"><pre><code>POST http://localhost:5005/
 {
     "method": "sign_for",
     "params": [{
@@ -7626,9 +7626,9 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
         }
     }]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: rippled sign_for &lt;signer_address&gt; &lt;signer_secret&gt; [offline]
+</code></pre></div>
+
+<div class="code_sample" id="code-49-2" style="position: static;"><pre><code>#Syntax: rippled sign_for &lt;signer_address&gt; &lt;signer_secret&gt; [offline]
 rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
     "TransactionType": "TrustSet",
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -7642,7 +7642,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
     "SigningPubKey": "",
     "Fee": "30000"
 }'
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -7694,9 +7694,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 <p>You must provide exactly 1 field with the secret key. You can use any of the following fields: <code>secret</code>, <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code>.</p>
 <h4 id="response-format-24">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-50"><ul class="codetabs"><li><a href="#code-50-0">WebSocket</a></li><li><a href="#code-50-1">JSON-RPC</a></li><li><a href="#code-50-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-50-0" style="position: static;"><pre><code>{
   "id": "sign_for_example",
   "status": "success",
   "type": "response",
@@ -7727,9 +7727,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
     }
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-50-1" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "status" : "success",
@@ -7759,9 +7759,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
       }
    }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-50-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -7792,7 +7792,7 @@ Connecting to 127.0.0.1:5005
       }
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -7858,16 +7858,16 @@ Connecting to 127.0.0.1:5005
 </tbody>
 </table>
 <h4 id="request-format-25">Request Format</h4>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-51"><ul class="codetabs"><li><a href="#code-51-0">WebSocket</a></li><li><a href="#code-51-1">JSON-RPC</a></li><li><a href="#code-51-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-51-0" style="position: static;"><pre><code>{
     "id": 3,
     "command": "submit",
     "tx_blob": "1200002280000000240000001E61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000B732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210095D23D8AF107DF50651F266259CC7139D0CD0C64ABBA3A958156352A0D95A21E02207FCF9B77D7510380E49FF250C21B57169E14E9B4ACFD314CEDC79DDD0A38B8A681144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-51-1" style="position: static;"><pre><code>{
     "method": "submit",
     "params": [
         {
@@ -7875,11 +7875,11 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: submit tx_blob
+</code></pre></div>
+
+<div class="code_sample" id="code-51-2" style="position: static;"><pre><code>#Syntax: submit tx_blob
 submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h3 id="sign-and-submit-mode">Sign-and-Submit Mode</h3>
@@ -7959,9 +7959,9 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <p>See the <a href="#sign">sign command</a> for detailed information on how the server automatically fills in certain fields.</p>
 <h4 id="request-format-26">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-52"><ul class="codetabs"><li><a href="#code-52-0">WebSocket</a></li><li><a href="#code-52-1">JSON-RPC</a></li><li><a href="#code-52-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-52-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "submit",
   "tx_json" : {
@@ -7976,9 +7976,9 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
    },
    "secret" : "sssssssssssssssssssssssssssss"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-52-1" style="position: static;"><pre><code>{
     "method": "submit",
     "params": [
         {
@@ -7996,18 +7996,18 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: submit secret json [offline]
+</code></pre></div>
+
+<div class="code_sample" id="code-52-2" style="position: static;"><pre><code>#Syntax: submit secret json [offline]
 submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h4 id="response-format-25">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-53"><ul class="codetabs"><li><a href="#code-53-0">WebSocket</a></li><li><a href="#code-53-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-53-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -8034,9 +8034,9 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
     }
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-53-1" style="position: static;"><pre><code>{
     "result": {
         "engine_result": "tesSUCCESS",
         "engine_result_code": 0,
@@ -8061,7 +8061,7 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         }
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -8125,9 +8125,9 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 <p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-27">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-54"><ul class="codetabs"><li><a href="#code-54-0">WebSocket</a></li><li><a href="#code-54-1">JSON-RPC</a></li><li><a href="#code-54-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-54-0" style="position: static;"><pre><code>{
     "id": "submit_multisigned_example"
     "command": "submit_multisigned",
     "tx_json": {
@@ -8158,9 +8158,9 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-54-1" style="position: static;"><pre><code>{
     "method": "submit_multisigned",
     "params": [
         {
@@ -8197,9 +8197,9 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: submit_multisigned &lt;tx_json&gt;
+</code></pre></div>
+
+<div class="code_sample" id="code-54-2" style="position: static;"><pre><code>#Syntax: submit_multisigned &lt;tx_json&gt;
 rippled submit_multisigned '{
     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
     "Fee": "30000",
@@ -8230,7 +8230,7 @@ rippled submit_multisigned '{
     "TransactionType": "TrustSet",
     "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
 }'
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -8256,9 +8256,9 @@ rippled submit_multisigned '{
 </table>
 <h4 id="response-format-26">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-55"><ul class="codetabs"><li><a href="#code-55-0">WebSocket</a></li><li><a href="#code-55-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-55-0" style="position: static;"><pre><code>{
   "id": "submit_multisigned_example",
   "status": "success",
   "type": "response",
@@ -8299,9 +8299,9 @@ rippled submit_multisigned '{
     }
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-55-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "engine_result": "tesSUCCESS",
@@ -8341,7 +8341,7 @@ rippled submit_multisigned '{
         }
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -8392,9 +8392,9 @@ rippled submit_multisigned '{
 <p>The <code>book_offers</code> method retrieves a list of offers, also known as the <a href="http://www.investopedia.com/terms/o/order-book.asp">order book</a>, between two currencies. If the results are very large, a partial result is returned with a marker so that subsequent requests can resume from where the previous one left off.</p>
 <h4 id="request-format-28">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-56"><ul class="codetabs"><li><a href="#code-56-0">WebSocket</a></li><li><a href="#code-56-1">JSON-RPC</a></li><li><a href="#code-56-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-56-0" style="position: static;"><pre><code>{
   "id": 4,
   "command": "book_offers",
   "taker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
@@ -8407,9 +8407,9 @@ rippled submit_multisigned '{
   },
   "limit": 10
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-56-1" style="position: static;"><pre><code>{
     "method": "book_offers",
     "params": [
         {
@@ -8425,11 +8425,11 @@ rippled submit_multisigned '{
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
+</code></pre></div>
+
+<div class="code_sample" id="code-56-2" style="position: static;"><pre><code>#Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#book_offers">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -8477,9 +8477,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>Normally, offers that are not funded are omitted; however, offers made by the specified <code>taker</code> account are always displayed. This allows you to look up your own unfunded offers in order to cancel them with an OfferCancel transaction.</p>
 <h4 id="response-format-27">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-57"><ul class="codetabs"><li><a href="#code-57-0">WebSocket</a></li><li><a href="#code-57-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-57-0" style="position: static;"><pre><code>{
   "id": 11,
   "status": "success",
   "type": "response",
@@ -8535,9 +8535,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
     ]
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-57-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "ledger_current_index": 8696243,
@@ -8546,7 +8546,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
         "validated": false
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -8626,16 +8626,16 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The <code>subscribe</code> method requests periodic notifications from the server when certain events happen.</p>
 <h4 id="request-format-29">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>Subscribe to accounts</em></p>
-<pre><code>{
+<div class="multicode" id="code-58"><ul class="codetabs"><li><a href="#code-58-0">Subscribe to accounts</a></li><li><a href="#code-58-1">Subscribe to order book</a></li><li><a href="#code-58-2">Subscribe to ledger stream</a></li></ul>
+
+<div class="code_sample" id="code-58-0" style="position: static;"><pre><code>{
   "id": "Example watch Bitstamp's hot wallet",
   "command": "subscribe",
   "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
 }
-</code></pre>
-<p><em>Subscribe to order book</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-58-1" style="position: static;"><pre><code>{
     "id": "Example subscribe to XRP/GateHub USD order book",
     "command": "subscribe",
     "books": [
@@ -8651,14 +8651,14 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
         }
     ]
 }
-</code></pre>
-<p><em>Subscribe to ledger stream</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-58-2" style="position: static;"><pre><code>{
   "id": "Example watch for new validated ledgers",
   "command": "subscribe",
   "streams": ["ledger"]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#subscribe">Try it! &gt;</a></p>
 <p>The request includes the following parameters:</p>
@@ -8757,15 +8757,15 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </table>
 <h4 id="response-format-28">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-59"><ul class="codetabs"><li><a href="#code-59-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-59-0" style="position: static;"><pre><code>{
   "id": "Example watch Bitstamp's hot wallet",
   "status": "success",
   "type": "response",
   "result": {}
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. The fields contained in the response vary depending on what subscriptions were included in the request.</p>
 <ul>
@@ -9329,9 +9329,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The <code>unsubscribe</code> command tells the server to stop sending messages for a particular subscription or set of subscriptions.</p>
 <h4 id="request-format-30">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-60"><ul class="codetabs"><li><a href="#code-60-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-60-0" style="position: static;"><pre><code>{
     "id": "Unsubscribe a lot of stuff",
     "command": "unsubscribe",
     "streams": ["ledger","server","transactions","transactions_proposed"],
@@ -9350,7 +9350,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#unsubscribe">Try it! &gt;</a></p>
 <p>The parameters in the request are specified almost exactly like the parameters to <a href="#subscribe"><code>subscribe</code></a>, except that they are used to define which subscriptions to end instead. The parameters are:</p>
@@ -9415,15 +9415,15 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </table>
 <h4 id="response-format-29">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-61"><ul class="codetabs"><li><a href="#code-61-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-61-0" style="position: static;"><pre><code>{
     "id": "Unsubscribe a lot of stuff",
     "result": {},
     "status": "success",
     "type": "response"
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields.</p>
 <h4 id="possible-errors-29">Possible Errors</h4>
@@ -9446,33 +9446,33 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p>The <code>server_info</code> command asks the server for a human-readable version of various information about the <code>rippled</code> server being queried.</p>
 <h4 id="request-format-31">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-62"><ul class="codetabs"><li><a href="#code-62-0">WebSocket</a></li><li><a href="#code-62-1">JSON-RPC</a></li><li><a href="#code-62-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-62-0" style="position: static;"><pre><code>{
   "id": 1,
   "command": "server_info"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-62-1" style="position: static;"><pre><code>{
     "method": "server_info",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: server_info
+</code></pre></div>
+
+<div class="code_sample" id="code-62-2" style="position: static;"><pre><code>#Syntax: server_info
 rippled server_info
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#server_info">Try it! &gt;</a></p>
 <p>The request does not takes any parameters.</p>
 <h4 id="response-format-30">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-63"><ul class="codetabs"><li><a href="#code-63-0">WebSocket</a></li><li><a href="#code-63-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-63-0" style="position: static;"><pre><code>{
   "id": 1,
   "status": "success",
   "type": "response",
@@ -9572,9 +9572,9 @@ rippled server_info
     }
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-63-1" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "info" : {
@@ -9657,7 +9657,7 @@ rippled server_info
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing an <code>info</code> object as its only field.</p>
 <p>The <code>info</code> object may have some arrangement of the following fields:</p>
@@ -9806,33 +9806,33 @@ rippled server_info
 <p>The <code>server_state</code> command asks the server for various machine-readable information about the <code>rippled</code> server's current state. The results are very similar to <a href="#server-info"><code>server_info</code></a>, but generally the units are chosen to be easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)</p>
 <h4 id="request-format-32">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-64"><ul class="codetabs"><li><a href="#code-64-0">WebSocket</a></li><li><a href="#code-64-1">JSON-RPC</a></li><li><a href="#code-64-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-64-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "server_state"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-64-1" style="position: static;"><pre><code>{
     "method": "server_state",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: server_state
+</code></pre></div>
+
+<div class="code_sample" id="code-64-2" style="position: static;"><pre><code>#Syntax: server_state
 rippled server_state
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#server_state">Try it! &gt;</a></p>
 <p>The request does not takes any parameters.</p>
 <h4 id="response-format-31">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-65"><ul class="codetabs"><li><a href="#code-65-0">WebSocket</a></li><li><a href="#code-65-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-65-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -9923,9 +9923,9 @@ rippled server_state
     }
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-65-1" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "state" : {
@@ -10017,7 +10017,7 @@ rippled server_state
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a <code>state</code> object as its only field.</p>
 <p>The <code>state</code> object may have some arrangement of the following fields:</p>
@@ -10162,16 +10162,16 @@ rippled server_state
 <p><em>The <code>can_delete</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-33">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-66"><ul class="codetabs"><li><a href="#code-66-0">WebSocket</a></li><li><a href="#code-66-1">JSON-RPC</a></li><li><a href="#code-66-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-66-0" style="position: static;"><pre><code>{
   "id": 2,
   "command": "can_delete",
   "can_delete": 11320417
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-66-1" style="position: static;"><pre><code>{
     "method": "can_delete",
     "params": [
         {
@@ -10179,11 +10179,11 @@ rippled server_state
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax can_delete [&lt;ledger_index&gt;|&lt;ledger_hash&gt;|now|always|never]
+</code></pre></div>
+
+<div class="code_sample" id="code-66-2" style="position: static;"><pre><code>#Syntax can_delete [&lt;ledger_index&gt;|&lt;ledger_hash&gt;|now|always|never]
 rippled can_delete 11320417
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following optional parameter:</p>
 <table>
@@ -10236,32 +10236,32 @@ a successful result containing the following fields:</p>
 <p><em>The <code>consensus_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-34">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-67"><ul class="codetabs"><li><a href="#code-67-0">WebSocket</a></li><li><a href="#code-67-1">JSON-RPC</a></li><li><a href="#code-67-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-67-0" style="position: static;"><pre><code>{
     "id": 99,
     "command": "consensus_info"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-67-1" style="position: static;"><pre><code>{
     "method": "consensus_info",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: consensus_info
+</code></pre></div>
+
+<div class="code_sample" id="code-67-2" style="position: static;"><pre><code>#Syntax: consensus_info
 rippled consensus_info
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request has no parameters.</p>
 <h4 id="response-format-32">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-68"><ul class="codetabs"><li><a href="#code-68-0">JSON-RPC</a></li><li><a href="#code-68-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-68-0" style="position: static;"><pre><code>{
    "result" : {
       "info" : {
          "acquired" : {
@@ -10332,9 +10332,9 @@ rippled consensus_info
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-68-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -10406,7 +10406,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -10479,16 +10479,16 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>fetch_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-35">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-69"><ul class="codetabs"><li><a href="#code-69-0">WebSocket</a></li><li><a href="#code-69-1">JSON-RPC</a></li><li><a href="#code-69-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-69-0" style="position: static;"><pre><code>{
     "id": 91,
     "command": "fetch_info",
     "clear": false
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-69-1" style="position: static;"><pre><code>{
     "method": "fetch_info",
     "params": [
         {
@@ -10496,11 +10496,11 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: fetch_info [clear]
+</code></pre></div>
+
+<div class="code_sample" id="code-69-2" style="position: static;"><pre><code>#Syntax: fetch_info [clear]
 rippled fetch_info
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -10521,9 +10521,9 @@ rippled fetch_info
 </table>
 <h4 id="response-format-33">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-70"><ul class="codetabs"><li><a href="#code-70-0">JSON-RPC</a></li><li><a href="#code-70-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-70-0" style="position: static;"><pre><code>{
    "result" : {
       "info" : {
          "348928" : {
@@ -10557,9 +10557,9 @@ rippled fetch_info
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-70-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -10594,7 +10594,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -10666,23 +10666,23 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-36">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket - list all</em></p>
-<pre><code>{
+<div class="multicode" id="code-71"><ul class="codetabs"><li><a href="#code-71-0">WebSocket - list all</a></li><li><a href="#code-71-1">WebSocket - reject</a></li><li><a href="#code-71-2">JSON-RPC</a></li><li><a href="#code-71-3">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-71-0" style="position: static;"><pre><code>{
   "id": "list_all_features",
   "command": "feature"
 }
-</code></pre>
-<p><em>WebSocket - reject</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-71-1" style="position: static;"><pre><code>{
   "id": "reject_multi_sign",
   "command": "feature",
   "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
   "vetoed": true
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-71-2" style="position: static;"><pre><code>{
     "method": "feature",
     "params": [
         {
@@ -10691,11 +10691,11 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: feature [&lt;feature_id&gt; [accept|reject]]
+</code></pre></div>
+
+<div class="code_sample" id="code-71-3" style="position: static;"><pre><code>#Syntax: feature [&lt;feature_id&gt; [accept|reject]]
 rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -10722,9 +10722,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 <p><strong>Note:</strong> You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the <code>feature</code> field. For example, you might want to do this if you plan to upgrade soon to a new <code>rippled</code> version that <em>does</em> support the amendment.</p>
 <h4 id="response-format-34">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket - list all</em></p>
-<pre><code>{
+<div class="multicode" id="code-72"><ul class="codetabs"><li><a href="#code-72-0">WebSocket - list all</a></li><li><a href="#code-72-1">WebSocket - reject</a></li><li><a href="#code-72-2">JSON-RPC</a></li><li><a href="#code-72-3">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-72-0" style="position: static;"><pre><code>{
   "id": "list_all_features",
   "status": "success",
   "type": "response",
@@ -10763,9 +10763,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
     }
   }
 }
-</code></pre>
-<p><em>WebSocket - reject</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-72-1" style="position: static;"><pre><code>{
     "id": "reject_multi_sign",
     "status": "success",
     "type": "response",
@@ -10780,9 +10780,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
         }
     }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-72-2" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
@@ -10794,9 +10794,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
         "status": "success"
     }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-72-3" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
     "result": {
@@ -10809,7 +10809,7 @@ Connecting to 127.0.0.1:5005
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing <strong>a map of amendments</strong> as a JSON object. The keys of the object are amendment IDs. The values for each key are <em>amendment objects</em> that describe the status of the amendment with that ID. If the request specified a <code>feature</code>, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:</p>
 <table>
@@ -10855,30 +10855,30 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>fee</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-73"><ul class="codetabs"><li><a href="#code-73-0">WebSocket</a></li><li><a href="#code-73-1">JSON-RPC</a></li><li><a href="#code-73-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-73-0" style="position: static;"><pre><code>{
   "id": "fee_websocket_example",
   "command": "fee"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-73-1" style="position: static;"><pre><code>{
     "method": "fee",
     "params": [{}]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: fee
+</code></pre></div>
+
+<div class="code_sample" id="code-73-2" style="position: static;"><pre><code>#Syntax: fee
 rippled fee
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request does not include any parameters.</p>
 <h4 id="response-format-35">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-74"><ul class="codetabs"><li><a href="#code-74-0">WebSocket</a></li><li><a href="#code-74-1">JSON-RPC</a></li><li><a href="#code-74-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-74-0" style="position: static;"><pre><code>{
   "id": "fee_websocket_example",
   "status": "success",
   "type": "response",
@@ -10901,9 +10901,9 @@ rippled fee
     "max_queue_size": "480"
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-74-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "current_ledger_size": "56",
@@ -10925,9 +10925,9 @@ rippled fee
         "status": "success"
     }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-74-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -10950,7 +10950,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -11044,16 +11044,16 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-75"><ul class="codetabs"><li><a href="#code-75-0">WebSocket</a></li><li><a href="#code-75-1">JSON-RPC</a></li><li><a href="#code-75-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-75-0" style="position: static;"><pre><code>{
     "id": 90,
     "command": "get_counts",
     "min_count": 100
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-75-1" style="position: static;"><pre><code>{
     "method": "get_counts",
     "params": [
         {
@@ -11061,11 +11061,11 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: get_counts [min_count]
+</code></pre></div>
+
+<div class="code_sample" id="code-75-2" style="position: static;"><pre><code>#Syntax: get_counts [min_count]
 rippled get_counts 100
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -11086,9 +11086,9 @@ rippled get_counts 100
 </table>
 <h4 id="response-format-36">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-76"><ul class="codetabs"><li><a href="#code-76-0">JSON-RPC</a></li><li><a href="#code-76-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-76-0" style="position: static;"><pre><code>{
    "result" : {
       "AL_hit_rate" : 48.36725616455078,
       "HashRouterEntry" : 3048,
@@ -11121,9 +11121,9 @@ rippled get_counts 100
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-76-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -11157,7 +11157,7 @@ Connecting to 127.0.0.1:5005
       "write_load" : 0
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):</p>
 <table>
@@ -11198,15 +11198,15 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-39">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-77"><ul class="codetabs"><li><a href="#code-77-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-77-0" style="position: static;"><pre><code>{
     "command": "ledger_cleaner",
     "max_ledger": 13818756,
     "min_ledger": 13818000,
     "stop": false
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -11257,9 +11257,9 @@ Connecting to 127.0.0.1:5005
 </table>
 <h4 id="response-format-37">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+<div class="multicode" id="code-78"><ul class="codetabs"><li><a href="#code-78-0">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-78-0" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "message" : "Cleaner configured",
@@ -11267,7 +11267,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -11297,19 +11297,19 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-40">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-79"><ul class="codetabs"><li><a href="#code-79-0">WebSocket</a></li><li><a href="#code-79-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-79-0" style="position: static;"><pre><code>{
     "id": "ll1",
     "command": "log_level",
     "severity": "debug",
     "partition": "PathRequest"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: log_level [[partition] severity]
+</code></pre></div>
+
+<div class="code_sample" id="code-79-1" style="position: static;"><pre><code>#Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -11335,18 +11335,18 @@ rippled log_level PathRequest debug
 </table>
 <h4 id="response-format-38">Response Format</h4>
 <p>Examples of successful responses:</p>
-<div class="multicode">
-<p><em>Commandline (set log level)</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+<div class="multicode" id="code-80"><ul class="codetabs"><li><a href="#code-80-0">Commandline (set log level)</a></li><li><a href="#code-80-1">Commandline (check log levels)</a></li></ul>
+
+<div class="code_sample" id="code-80-0" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
       "status" : "success"
    }
 }
-</code></pre>
-<p><em>Commandline (check log levels)</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-80-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -11405,7 +11405,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. The response format depends on whether the request specified a <code>severity</code>. If it did, the log level is changed and a successful result contains no additional fields.</p>
 <p>Otherwise, the request contains the following field:</p>
@@ -11436,23 +11436,23 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-41">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-81"><ul class="codetabs"><li><a href="#code-81-0">WebSocket</a></li><li><a href="#code-81-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-81-0" style="position: static;"><pre><code>{
     "id": "lr1",
     "command": "logrotate"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled logrotate
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-81-1" style="position: static;"><pre><code>rippled logrotate
+</code></pre></div>
 </div>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-39">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+<div class="multicode" id="code-82"><ul class="codetabs"><li><a href="#code-82-0">JSON-RPC</a></li><li><a href="#code-82-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-82-0" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "message" : "The log file was closed and reopened.",
@@ -11460,9 +11460,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-82-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -11471,7 +11471,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -11500,16 +11500,16 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
 <h4 id="request-format-42">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-83"><ul class="codetabs"><li><a href="#code-83-0">WebSocket</a></li><li><a href="#code-83-1">JSON-RPC</a></li><li><a href="#code-83-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-83-0" style="position: static;"><pre><code>{
     "id": 0,
     "command": "validation_create",
     "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-83-1" style="position: static;"><pre><code>{
     "method": "validation_create",
     "params": [
         {
@@ -11517,11 +11517,11 @@ Connecting to 127.0.0.1:5005
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: validation_create [secret]
+</code></pre></div>
+
+<div class="code_sample" id="code-83-2" style="position: static;"><pre><code>#Syntax: validation_create [secret]
 rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -11543,9 +11543,9 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 <p><strong>Note:</strong> The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the <code>secret</code> when generating new credentials for the first time.</p>
 <h4 id="response-format-40">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-84"><ul class="codetabs"><li><a href="#code-84-0">JSON-RPC</a></li><li><a href="#code-84-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-84-0" style="position: static;"><pre><code>{
    "result" : {
       "status" : "success",
       "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
@@ -11553,9 +11553,9 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
       "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
    }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-84-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -11565,7 +11565,7 @@ Connecting to 127.0.0.1:5005
       "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -11605,18 +11605,18 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-43">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-85"><ul class="codetabs"><li><a href="#code-85-0">WebSocket</a></li><li><a href="#code-85-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-85-0" style="position: static;"><pre><code>{
     "id": "set_seed_1",
     "command": "validation_seed",
     "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: validation_seed [secret]
+</code></pre></div>
+
+<div class="code_sample" id="code-85-1" style="position: static;"><pre><code>#Syntax: validation_seed [secret]
 rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -11637,9 +11637,9 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 </table>
 <h4 id="response-format-41">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+<div class="multicode" id="code-86"><ul class="codetabs"><li><a href="#code-86-0">JSON-RPC</a></li><li><a href="#code-86-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-86-0" style="position: static;"><pre><code>200 OK
 {
    "result" : {
       "status" : "success",
@@ -11648,9 +11648,9 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
       "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
    }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-86-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -11660,7 +11660,7 @@ Connecting to 127.0.0.1:5005
       "validation_seed" : "snjJkyBGogTem5dFGbcRaThKq2Rt3"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -11700,23 +11700,23 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-44">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-87"><ul class="codetabs"><li><a href="#code-87-0">WebSocket</a></li><li><a href="#code-87-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-87-0" style="position: static;"><pre><code>{
     "id": 2,
     "command": "peers"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled peers
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-87-1" style="position: static;"><pre><code>rippled peers
+</code></pre></div>
 </div>
 <p>The request includes no additional parameters.</p>
 <h4 id="response-format-42">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-88"><ul class="codetabs"><li><a href="#code-88-0">WebSocket</a></li><li><a href="#code-88-1">JSON-RPC</a></li><li><a href="#code-88-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-88-0" style="position: static;"><pre><code>{
   "id": 2,
   "status": "success",
   "type": "response",
@@ -11826,9 +11826,9 @@ Connecting to 127.0.0.1:5005
     ]
   }
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-88-1" style="position: static;"><pre><code>{
    "result" : {
       "cluster" : {},
       "peers" : [
@@ -11937,9 +11937,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-88-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -12039,7 +12039,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing a JSON object with the following fields:</p>
 <table>
@@ -12182,23 +12182,23 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-45">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-89"><ul class="codetabs"><li><a href="#code-89-0">WebSocket</a></li><li><a href="#code-89-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-89-0" style="position: static;"><pre><code>{
     "id": "print_req_1",
     "command": "print"
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled print
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-89-1" style="position: static;"><pre><code>rippled print
+</code></pre></div>
 </div>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-43">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+<div class="multicode" id="code-90"><ul class="codetabs"><li><a href="#code-90-0">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-90-0" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -12380,7 +12380,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>. Additional fields in the result depend on the internal state of the <code>rippled</code> server. The results of this command are subject to change without notice.</p>
 <h4 id="possible-errors-44">Possible Errors</h4>
@@ -12394,47 +12394,47 @@ Connecting to 127.0.0.1:5005
 <p>The <code>ping</code> command returns an acknowledgement, so that clients can test the connection status and latency.</p>
 <h4 id="request-format-46">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-91"><ul class="codetabs"><li><a href="#code-91-0">WebSocket</a></li><li><a href="#code-91-1">JSON-RPC</a></li><li><a href="#code-91-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-91-0" style="position: static;"><pre><code>{
     "id": 1,
     "command": "ping"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-91-1" style="position: static;"><pre><code>{
     "method": "ping",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: ping
+</code></pre></div>
+
+<div class="code_sample" id="code-91-2" style="position: static;"><pre><code>#Syntax: ping
 rippled ping
-</code></pre>
+</code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#ping">Try it! &gt;</a></p>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-44">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-92"><ul class="codetabs"><li><a href="#code-92-0">WebSocket</a></li><li><a href="#code-92-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-92-0" style="position: static;"><pre><code>{
     "id": 1,
     "result": {},
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-92-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.</p>
 <h4 id="possible-errors-45">Possible Errors</h4>
@@ -12446,32 +12446,32 @@ rippled ping
 <p>The <code>random</code> command provides a random number to be used as a source of entropy for random number generation by clients.</p>
 <h4 id="request-format-47">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-93"><ul class="codetabs"><li><a href="#code-93-0">WebSocket</a></li><li><a href="#code-93-1">JSON-RPC</a></li><li><a href="#code-93-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-93-0" style="position: static;"><pre><code>{
     "id": 1,
     "command": "random"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-93-1" style="position: static;"><pre><code>{
     "method": "random",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: random
+</code></pre></div>
+
+<div class="code_sample" id="code-93-2" style="position: static;"><pre><code>#Syntax: random
 rippled random
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-45">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-94"><ul class="codetabs"><li><a href="#code-94-0">WebSocket</a></li><li><a href="#code-94-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample" id="code-94-0" style="position: static;"><pre><code>{
     "id": 1,
     "result": {
         "random": "8ED765AEBBD6767603C2C9375B2679AEC76E6A8133EF59F04F9FC1AAA70E41AF"
@@ -12479,16 +12479,16 @@ rippled random
     "status": "success",
     "type": "response"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>200 OK
+</code></pre></div>
+
+<div class="code_sample" id="code-94-1" style="position: static;"><pre><code>200 OK
 {
     "result": {
         "random": "4E57146AA47BC6E88FDFE8BAA235B900126C916B6CC521550996F590487B837A",
         "status": "success"
     }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following field:</p>
 <table>
@@ -12516,24 +12516,24 @@ rippled random
 <p>The <code>json</code> method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is <em>exclusive to the Commandline client</em>, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.</p>
 <h4 id="request-format-48">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>Commandline</em></p>
-<pre><code># Syntax: json method json_stanza
+<div class="multicode" id="code-95"><ul class="codetabs"><li><a href="#code-95-0">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-95-0" style="position: static;"><pre><code># Syntax: json method json_stanza
 rippled -q json ledger_closed '{}'
-</code></pre>
+</code></pre></div>
 </div>
 <h4 id="response-format-46">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-96"><ul class="codetabs"><li><a href="#code-96-0">WebSocket</a></li></ul>
+
+<div class="code_sample" id="code-96-0" style="position: static;"><pre><code>{
    "result" : {
       "ledger_hash" : "8047C3ECF1FA66326C1E57694F6814A1C32867C04D3D68A851367EE2F89BBEF3",
       "ledger_index" : 390308,
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with whichever fields are appropriate to the type of command made.</p>
 <h2 id="connect">connect</h2>
@@ -12542,16 +12542,16 @@ rippled -q json ledger_closed '{}'
 <p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-49">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-97"><ul class="codetabs"><li><a href="#code-97-0">WebSocket</a></li><li><a href="#code-97-1">JSON-RPC</a></li><li><a href="#code-97-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-97-0" style="position: static;"><pre><code>{
     "command": "connect",
     "ip": "192.170.145.88",
     "port": 51235
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-97-1" style="position: static;"><pre><code>{
     "method": "connect",
     "params": [
         {
@@ -12560,11 +12560,11 @@ rippled -q json ledger_closed '{}'
         }
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>#Syntax: connect ip [port]
+</code></pre></div>
+
+<div class="code_sample" id="code-97-2" style="position: static;"><pre><code>#Syntax: connect ip [port]
 rippled connect 192.170.145.88 51235
-</code></pre>
+</code></pre></div>
 </div>
 <p>The request includes the following parameters:</p>
 <table>
@@ -12590,18 +12590,18 @@ rippled connect 192.170.145.88 51235
 </table>
 <h4 id="response-format-47">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-98"><ul class="codetabs"><li><a href="#code-98-0">JSON-RPC</a></li><li><a href="#code-98-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-98-0" style="position: static;"><pre><code>{
    "result" : {
       "message" : "connecting",
       "status" : "success"
    }
 }
 
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-98-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -12609,7 +12609,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
@@ -12640,39 +12640,39 @@ Connecting to 127.0.0.1:5005
 <p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
 <h4 id="request-format-50">Request Format</h4>
 <p>An example of the request format:</p>
-<div class="multicode">
-<p><em>WebSocket</em></p>
-<pre><code>{
+<div class="multicode" id="code-99"><ul class="codetabs"><li><a href="#code-99-0">WebSocket</a></li><li><a href="#code-99-1">JSON-RPC</a></li><li><a href="#code-99-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-99-0" style="position: static;"><pre><code>{
     "id": 0,
     "command": "stop"
 }
-</code></pre>
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+</code></pre></div>
+
+<div class="code_sample" id="code-99-1" style="position: static;"><pre><code>{
     "method": "stop",
     "params": [
         {}
     ]
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>rippled stop
-</code></pre>
+</code></pre></div>
+
+<div class="code_sample" id="code-99-2" style="position: static;"><pre><code>rippled stop
+</code></pre></div>
 </div>
 <p>The request includes no parameters.</p>
 <h4 id="response-format-48">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode">
-<p><em>JSON-RPC</em></p>
-<pre><code>{
+<div class="multicode" id="code-100"><ul class="codetabs"><li><a href="#code-100-0">JSON-RPC</a></li><li><a href="#code-100-1">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-100-0" style="position: static;"><pre><code>{
    "result" : {
       "message" : "ripple server stopping",
       "status" : "success"
    }
 }
-</code></pre>
-<p><em>Commandline</em></p>
-<pre><code>Loading: "/etc/rippled.cfg"
+</code></pre></div>
+
+<div class="code_sample" id="code-100-1" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
    "result" : {
@@ -12680,7 +12680,7 @@ Connecting to 127.0.0.1:5005
       "status" : "success"
    }
 }
-</code></pre>
+</code></pre></div>
 </div>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>

@@ -1,3 +1,4 @@
+//-------- this multicode stuff has been migrated to a Dactyl filter ---------
 // Expects markup in the form of:
 // <div class='multicode'>
 //   <p><em>tab 1 title</em></p>
@@ -5,29 +6,29 @@
 //   <p><em>tab 2 title</em></p>
 //   <pre><code>tab 2 code block</code></pre>
 // </div>
-jQuery.fn.multicode_tabs = function() {
-    $('.multicode').each(function(index,el) {
-        cb_area = $(el);
-        cb_area.attr('id', "code-"+index);
-        // make a ul to house the tab headers
-        cb_area.prepend("<ul class='codetabs'></ul>");
-        
-        cb_area.children('pre').each(function(index2,el2) {
-            var linkid = 'code-'+index+'-'+index2;
-            $(el2).wrap("<div id='"+linkid+"' class='code_sample'>");
-            //also put in a link to this in the tab header ul
-            $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
-        });
-        
-        $(el).find('em').each(function(index2, el2) {
-            $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
-        });
-    });
-    $('.multicode p').hide();
-    $('.multicode .code_sample').css("position","static");
-    
-    $('.multicode').minitabs();
-}
+// jQuery.fn.multicode_tabs = function() {
+//     $('.multicode').each(function(index,el) {
+//         cb_area = $(el);
+//         cb_area.attr('id', "code-"+index);
+//         // make a ul to house the tab headers
+//         cb_area.prepend("<ul class='codetabs'></ul>");
+//
+//         cb_area.children('pre').each(function(index2,el2) {
+//             var linkid = 'code-'+index+'-'+index2;
+//             $(el2).wrap("<div id='"+linkid+"' class='code_sample'>");
+//             //also put in a link to this in the tab header ul
+//             $('ul', cb_area).append("<li><a href='#"+linkid+"'></a></li>");
+//         });
+//
+//         $(el).find('em').each(function(index2, el2) {
+//             $('ul li:eq('+index2+') a', cb_area).text($(el2).text());
+//         });
+//     });
+//     $('.multicode p').hide();
+//     $('.multicode .code_sample').css("position","static");
+//
+//     $('.multicode').minitabs();
+// }
 
 // Minitabs adapted from https://code.google.com/p/minitabs/
 // Changes made: support multiple tab booklets in one page
@@ -64,10 +65,10 @@ jQuery.fn.minitabs = function(speed,effect) {
               target.fadeIn(speed);
               break;
             case 'slide':
-              old.slideUp(speed);  
+              old.slideUp(speed);
               target.fadeOut(speed).fadeIn(speed);
               break;
-            default : 
+            default :
               old.hide(speed);
               target.show(speed)
           }
