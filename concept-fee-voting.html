@@ -127,6 +127,7 @@
       <aside class="sidebar" role="complementary">
     <div class="dev_nav_wrapper">
         <div id="cont">
+            <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: Concepts</a></li>
                 <li class="level-2"><a href="concept-paths.html">Paths</a></li>
@@ -142,8 +143,12 @@
             </ul>
             <hr />
             <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#fee-voting">Fee Voting</a></li>
+<li class="level-2"><a href="#voting-process">Voting Process</a></li>
+
+            </ul>
         </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
       </aside>
       <main class="main" role="main">
@@ -177,9 +182,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="voting-process">Voting Process</h3>
+<h2 id="voting-process">Voting Process</h2>
 <p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
-<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust. </p>
+<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust.</p>
 <p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
 <p>In short:</p>
 <ul>

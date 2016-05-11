@@ -35,7 +35,7 @@ targets:
             - multicode_tabs
             - standardize_header_ids
             - buttonize
-        template: template-contentonly.html
+        template: template-contentwithtoc.html
         image_subs:
             "img/funds_flow_diagram.png": https://ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
@@ -75,7 +75,7 @@ pages:
         html: reference-rippled.html
         md: reference-rippled.md
         ripple.com: https://ripple.com/build/rippled-apis/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -95,7 +95,7 @@ pages:
         html: reference-ledger-format.html
         md: reference-ledger-format.md
         ripple.com: https://ripple.com/build/ledger-format/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -109,7 +109,7 @@ pages:
         filters:
             - remove_doctoc
             - add_version
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -119,7 +119,7 @@ pages:
         html: reference-data-api.html
         md: reference-data-api.md
         ripple.com: https://ripple.com/build/data-api-v2/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -130,7 +130,7 @@ pages:
         html: tutorial-rippleapi-beginners-guide.html
         md: tutorial-rippleapi-beginners-guide.md
         ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -140,7 +140,7 @@ pages:
         html: tutorial-rippled-setup.html
         md: tutorial-rippled-setup.md
         ripple.com: https://ripple.com/build/rippled-setup/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -151,7 +151,7 @@ pages:
         html: tutorial-reliable-transaction-submission.html
         md: tutorial-reliable-transaction-submission.md
         ripple.com: https://ripple.com/build/reliable-transaction-submission/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -161,7 +161,7 @@ pages:
         html: tutorial-multisign.html
         md: tutorial-multisign.md
         ripple.com: https://ripple.com/build/how-to-multi-sign/
-        sidebar: true
+        sidebar: toc
 
 # Concepts are introductions that explain a topic.
 # In the Dev Portal, these are mostly summaries of RCL features.
@@ -170,7 +170,7 @@ pages:
         html: concept-paths.html
         md: concept-paths.md
         ripple.com: https://ripple.com/build/paths/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -180,7 +180,7 @@ pages:
         html: concept-fees.html
         md: concept-fees.md
         ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -190,7 +190,7 @@ pages:
         html: concept-transfer-fees.html
         md: concept-transfer-fees.md
         ripple.com: https://ripple.com/knowledge_center/transfer-fees/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -200,7 +200,7 @@ pages:
         html: concept-transaction-cost.html
         md: concept-transaction-cost.md
         ripple.com: https://ripple.com/build/transaction-cost/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -210,7 +210,7 @@ pages:
         html: concept-fee-voting.html
         md: concept-fee-voting.md
         ripple.com: https://ripple.com/build/fee-voting/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -220,7 +220,7 @@ pages:
         html: concept-reserves.html
         md: concept-reserves.md
         ripple.com: https://ripple.com/build/reserves/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -230,7 +230,7 @@ pages:
         html: concept-freeze.html
         md: concept-freeze.md
         ripple.com: https://ripple.com/build/freeze/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -240,7 +240,7 @@ pages:
         html: concept-amendments.html
         md: concept-amendments.md
         ripple.com: https://ripple.com/build/amendments/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -250,7 +250,7 @@ pages:
         html: concept-stand-alone-mode.html
         md: concept-stand-alone-mode.md
         ripple.com: https://ripple.com/build/stand-alone-mode/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -260,7 +260,7 @@ pages:
         html: concept-noripple.html
         md: concept-noripple.md
         ripple.com: https://ripple.com/knowledge_center/understanding-the-noripple-flag/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -271,7 +271,7 @@ pages:
         html: concept-issuing-and-operational-addresses.html
         md: concept-issuing-and-operational-addresses.md
         ripple.com: https://ripple.com/knowledge_center/issuing-operational-addresses/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -282,7 +282,7 @@ pages:
         html: tutorial-gateway-guide.html
         md: tutorial-gateway-guide.md
         ripple.com: https://ripple.com/build/gateway-guide/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
@@ -292,7 +292,7 @@ pages:
         category: API Tools
         html: ripple-api-tool.html
         ripple.com: https://ripple.com/build/websocket-tool/
-        sidebar: true
+        sidebar: custom
         targets:
             - local
             - ripple.com
@@ -305,7 +305,7 @@ pages:
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
         doc_page: reference-data-api.html
-        sidebar: true
+        sidebar: custom
         targets:
             - local
             - ripple.com
@@ -318,7 +318,7 @@ pages:
         methods_js: js/apitool-methods-jsonrpc.js
         rest_host: http://localhost/rippled
         doc_page: reference-rippled.html
-        sidebar: true
+        sidebar: custom
         targets:
             - local
             - ripple.com

@@ -44,7 +44,8 @@ logger = logging.getLogger()
 RESERVED_KEYS_TARGET = [
     "name",
     "display_name",
-    "filters"
+    "filters",
+    "image_subs",
 ]
 filters = {}
 def load_config(config_file=DEFAULT_CONFIG_FILE):
@@ -76,15 +77,16 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         for filter_name in filternames:
             filters[filter_name] = import_module("filter_"+filter_name)
 
-        # Make pages inherit arbitrary keys from targets
-        for target in config["targets"]:
-            pages = get_pages(target)
-            for p in pages:
-                for key,val in target.items():
-                    if key in RESERVED_KEYS_TARGET:
-                        continue
-                    elif key not in p:
-                        p[key] = val
+def page_keys_from_target(target):
+    """Make pages inherit arbitrary keys from a target"""
+    target = get_target(target)
+    pages = get_pages(target)
+    for p in pages:
+        for key,val in target.items():
+            if key in RESERVED_KEYS_TARGET:
+                continue
+            elif key not in p:
+                p[key] = val
 
 
 def substitute_links_for_target(soup, target):
@@ -360,28 +362,55 @@ def setup_html_env():
     env.trim_blocks = True
     return env
 
+def toc_from_headers(html_string):
+    """make a table of contents from headers"""
+    soup = BeautifulSoup(html_string, "html.parser")
+    headers = soup.find_all(name=re.compile("h[1-3]"), id=True)
+    toc_s = ""
+    for h in headers:
+        if h.name == "h1":
+            toc_level = "level-1"
+        elif h.name == "h2":
+            toc_level = "level-2"
+        else:
+            toc_level = "level-3"
+
+        new_a = soup.new_tag("a", href="#"+h["id"])
+        if h.string:
+            new_a.string = h.string
+        else:
+            new_a.string = " ".join(h.strings)
+        new_li = soup.new_tag("li")
+        new_li["class"] = toc_level
+        new_li.append(new_a)
+
+        toc_s += str(new_li)+"\n"
+
+    return str(toc_s)
+
 def render_pages(target=None, for_pdf=False, bypass_errors=False):
     """Parse and render all pages in target, writing files to out_path."""
     target = get_target(target)
     pages = get_pages(target)
     categories = get_categories(pages)
+    page_keys_from_target(target)
 
     # Insert generated HTML into templates using this Jinja environment
     env = setup_html_env()
 
     if for_pdf:
         if "pdf_template" in target:
-            logging.info("reading pdf template from target...")
+            logging.debug("reading pdf template %s from target..." % target["pdf_template"])
             default_template = env.get_template(target["pdf_template"])
         else:
-            logging.info("reading default pdf template...")
+            logging.debug("reading default pdf template %s..." % config["pdf_template"])
             default_template = env.get_template(config["pdf_template"])
     else:
         if "template" in target:
-            logging.info("reading HTML template from target...")
+            logging.debug("reading HTML template %s from target..." % target["template"])
             default_template = env.get_template(target["template"])
         else:
-            logging.info("reading default HTML template...")
+            logging.debug("reading default HTML template %s..." % config["default_template"])
             default_template = env.get_template(config["default_template"])
 
     for currentpage in pages:
@@ -404,14 +433,21 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         else:
             html_content = ""
 
+        if "sidebar" in currentpage and currentpage["sidebar"] == "toc":
+            sidebar_content = toc_from_headers(html_content)
+        else:
+            sidebar_content = None
+
         # Prepare some parameters for rendering
         substitute_parameter_links("doc_page", currentpage, target)
         current_time = time.strftime("%B %d, %Y")
 
         # Figure out which template to use
         if "template" in currentpage and not for_pdf:
+            logging.info("using template %s from page" % currentpage["template"])
             use_template = env.get_template(currentpage["template"])
         elif "pdf_template" in currentpage and for_pdf:
+            logging.info("using pdf_template %s from page" % currentpage["pdf_template"])
             use_template = env.get_template(currentpage["pdf_template"])
         else:
             use_template = default_template
@@ -422,13 +458,9 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
                                            pages=pages,
                                            content=html_content,
                                            target=target,
-                                           current_time=current_time)
+                                           current_time=current_time,
+                                           sidebar_content=sidebar_content)
 
-        # # Experimental: replace links in full HTML, not just content
-        # soup = BeautifulSoup(out_html, "html.parser")
-        # if target["name"] != config["targets"][0]["name"]:
-        #     substitute_links_for_target(soup, target)
-        # out_html = str(soup)
 
         if for_pdf:
             out_path = config["temporary_files_path"]
@@ -447,6 +479,7 @@ def watch(pdf_file, target):
     """Look for changed files and re-generate HTML (and optionally
        PDF whenever there's an update. Runs until interrupted."""
     target = get_target(target)
+    page_keys_from_target(target)
 
     class UpdaterHandler(PatternMatchingEventHandler):
         """Updates to pattern-matched files means rendering."""
@@ -483,6 +516,7 @@ def make_pdf(outfile, target=None, bypass_errors=False):
     """Use prince to convert several HTML files into a PDF"""
     logging.info("rendering PDF-able versions of pages...")
     target = get_target(target)
+    page_keys_from_target(target)
     render_pages(target=target, for_pdf=True, bypass_errors=bypass_errors)
 
     temp_files_path = config["temporary_files_path"]
@@ -515,6 +549,7 @@ def githubify(md_file_name, target=None):
 #    with open(filein, "r") as f:
 #        md = f.read()
     pages = get_pages()
+    page_keys_from_target(target)
     logging.info("getting markdown for page %s" % md_file_name)
     md = get_markdown_for_page(md_file_name,
                                pp_env=setup_pp_env(),

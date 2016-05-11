@@ -127,6 +127,7 @@
       <aside class="sidebar" role="complementary">
     <div class="dev_nav_wrapper">
         <div id="cont">
+            <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: References</a></li>
                 <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
@@ -137,8 +138,178 @@
             </ul>
             <hr />
             <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#introduction">Introduction</a></li>
+<li class="level-2"><a href="#boilerplate">Boilerplate</a></li>
+<li class="level-3"><a href="#parameters">Parameters</a></li>
+<li class="level-3"><a href="#installation">Installation</a></li>
+<li class="level-2"><a href="#offline-functionality">Offline functionality</a></li>
+<li class="level-1"><a href="#basic-types">Basic Types</a></li>
+<li class="level-2"><a href="#ripple-address">Ripple Address</a></li>
+<li class="level-2"><a href="#account-sequence-number">Account Sequence Number</a></li>
+<li class="level-2"><a href="#currency">Currency</a></li>
+<li class="level-2"><a href="#value">Value</a></li>
+<li class="level-2"><a href="#amount">Amount</a></li>
+<li class="level-1"><a href="#transaction-overview">Transaction Overview</a></li>
+<li class="level-2"><a href="#transaction-types">Transaction Types</a></li>
+<li class="level-2"><a href="#transaction-flow">Transaction Flow</a></li>
+<li class="level-2"><a href="#transaction-fees">Transaction Fees</a></li>
+<li class="level-2"><a href="#transaction-instructions">Transaction Instructions</a></li>
+<li class="level-2"><a href="#transaction-id">Transaction ID</a></li>
+<li class="level-2"><a href="#transaction-memos">Transaction Memos</a></li>
+<li class="level-1"><a href="#transaction-specifications">Transaction Specifications</a></li>
+<li class="level-2"><a href="#payment">Payment</a></li>
+<li class="level-3"><a href="#example">Example</a></li>
+<li class="level-2"><a href="#trustline">Trustline</a></li>
+<li class="level-3"><a href="#example-1">Example</a></li>
+<li class="level-2"><a href="#order">Order</a></li>
+<li class="level-3"><a href="#example-2">Example</a></li>
+<li class="level-2"><a href="#order-cancellation">Order Cancellation</a></li>
+<li class="level-3"><a href="#example-3">Example</a></li>
+<li class="level-2"><a href="#settings">Settings</a></li>
+<li class="level-3"><a href="#example-4">Example</a></li>
+<li class="level-2"><a href="#suspended-payment-creation">Suspended Payment Creation</a></li>
+<li class="level-3"><a href="#example-5">Example</a></li>
+<li class="level-2"><a href="#suspended-payment-cancellation">Suspended Payment Cancellation</a></li>
+<li class="level-3"><a href="#example-6">Example</a></li>
+<li class="level-2"><a href="#suspended-payment-execution">Suspended Payment Execution</a></li>
+<li class="level-3"><a href="#example-7">Example</a></li>
+<li class="level-1"><a href="#api-methods">API Methods</a></li>
+<li class="level-2"><a href="#connect">connect</a></li>
+<li class="level-3"><a href="#parameters-1">Parameters</a></li>
+<li class="level-3"><a href="#return-value">Return Value</a></li>
+<li class="level-3"><a href="#example-8">Example</a></li>
+<li class="level-2"><a href="#disconnect">disconnect</a></li>
+<li class="level-3"><a href="#parameters-2">Parameters</a></li>
+<li class="level-3"><a href="#return-value-1">Return Value</a></li>
+<li class="level-3"><a href="#example-9">Example</a></li>
+<li class="level-2"><a href="#isconnected">isConnected</a></li>
+<li class="level-3"><a href="#parameters-3">Parameters</a></li>
+<li class="level-3"><a href="#return-value-2">Return Value</a></li>
+<li class="level-3"><a href="#example-10">Example</a></li>
+<li class="level-2"><a href="#getserverinfo">getServerInfo</a></li>
+<li class="level-3"><a href="#parameters-4">Parameters</a></li>
+<li class="level-3"><a href="#return-value-3">Return Value</a></li>
+<li class="level-3"><a href="#example-11">Example</a></li>
+<li class="level-2"><a href="#getfee">getFee</a></li>
+<li class="level-3"><a href="#parameters-5">Parameters</a></li>
+<li class="level-3"><a href="#return-value-4">Return Value</a></li>
+<li class="level-3"><a href="#example-12">Example</a></li>
+<li class="level-2"><a href="#getledgerversion">getLedgerVersion</a></li>
+<li class="level-3"><a href="#parameters-6">Parameters</a></li>
+<li class="level-3"><a href="#return-value-5">Return Value</a></li>
+<li class="level-3"><a href="#example-13">Example</a></li>
+<li class="level-2"><a href="#gettransaction">getTransaction</a></li>
+<li class="level-3"><a href="#parameters-7">Parameters</a></li>
+<li class="level-3"><a href="#return-value-6">Return Value</a></li>
+<li class="level-3"><a href="#example-14">Example</a></li>
+<li class="level-2"><a href="#gettransactions">getTransactions</a></li>
+<li class="level-3"><a href="#parameters-8">Parameters</a></li>
+<li class="level-3"><a href="#return-value-7">Return Value</a></li>
+<li class="level-3"><a href="#example-15">Example</a></li>
+<li class="level-2"><a href="#gettrustlines">getTrustlines</a></li>
+<li class="level-3"><a href="#parameters-9">Parameters</a></li>
+<li class="level-3"><a href="#return-value-8">Return Value</a></li>
+<li class="level-3"><a href="#example-16">Example</a></li>
+<li class="level-2"><a href="#getbalances">getBalances</a></li>
+<li class="level-3"><a href="#parameters-10">Parameters</a></li>
+<li class="level-3"><a href="#return-value-9">Return Value</a></li>
+<li class="level-3"><a href="#example-17">Example</a></li>
+<li class="level-2"><a href="#getbalancesheet">getBalanceSheet</a></li>
+<li class="level-3"><a href="#parameters-11">Parameters</a></li>
+<li class="level-3"><a href="#return-value-10">Return Value</a></li>
+<li class="level-3"><a href="#example-18">Example</a></li>
+<li class="level-2"><a href="#getpaths">getPaths</a></li>
+<li class="level-3"><a href="#parameters-12">Parameters</a></li>
+<li class="level-3"><a href="#return-value-11">Return Value</a></li>
+<li class="level-3"><a href="#example-19">Example</a></li>
+<li class="level-2"><a href="#getorders">getOrders</a></li>
+<li class="level-3"><a href="#parameters-13">Parameters</a></li>
+<li class="level-3"><a href="#return-value-12">Return Value</a></li>
+<li class="level-3"><a href="#example-20">Example</a></li>
+<li class="level-2"><a href="#getorderbook">getOrderbook</a></li>
+<li class="level-3"><a href="#parameters-14">Parameters</a></li>
+<li class="level-3"><a href="#return-value-13">Return Value</a></li>
+<li class="level-3"><a href="#example-21">Example</a></li>
+<li class="level-2"><a href="#getsettings">getSettings</a></li>
+<li class="level-3"><a href="#parameters-15">Parameters</a></li>
+<li class="level-3"><a href="#return-value-14">Return Value</a></li>
+<li class="level-3"><a href="#example-22">Example</a></li>
+<li class="level-2"><a href="#getaccountinfo">getAccountInfo</a></li>
+<li class="level-3"><a href="#parameters-16">Parameters</a></li>
+<li class="level-3"><a href="#return-value-15">Return Value</a></li>
+<li class="level-3"><a href="#example-23">Example</a></li>
+<li class="level-2"><a href="#getledger">getLedger</a></li>
+<li class="level-3"><a href="#parameters-17">Parameters</a></li>
+<li class="level-3"><a href="#return-value-16">Return Value</a></li>
+<li class="level-3"><a href="#example-24">Example</a></li>
+<li class="level-2"><a href="#preparepayment">preparePayment</a></li>
+<li class="level-3"><a href="#parameters-18">Parameters</a></li>
+<li class="level-3"><a href="#return-value-17">Return Value</a></li>
+<li class="level-3"><a href="#example-25">Example</a></li>
+<li class="level-2"><a href="#preparetrustline">prepareTrustline</a></li>
+<li class="level-3"><a href="#parameters-19">Parameters</a></li>
+<li class="level-3"><a href="#return-value-18">Return Value</a></li>
+<li class="level-3"><a href="#example-26">Example</a></li>
+<li class="level-2"><a href="#prepareorder">prepareOrder</a></li>
+<li class="level-3"><a href="#parameters-20">Parameters</a></li>
+<li class="level-3"><a href="#return-value-19">Return Value</a></li>
+<li class="level-3"><a href="#example-27">Example</a></li>
+<li class="level-2"><a href="#prepareordercancellation">prepareOrderCancellation</a></li>
+<li class="level-3"><a href="#parameters-21">Parameters</a></li>
+<li class="level-3"><a href="#return-value-20">Return Value</a></li>
+<li class="level-3"><a href="#example-28">Example</a></li>
+<li class="level-2"><a href="#preparesettings">prepareSettings</a></li>
+<li class="level-3"><a href="#parameters-22">Parameters</a></li>
+<li class="level-3"><a href="#return-value-21">Return Value</a></li>
+<li class="level-3"><a href="#example-29">Example</a></li>
+<li class="level-2"><a href="#preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</a></li>
+<li class="level-3"><a href="#parameters-23">Parameters</a></li>
+<li class="level-3"><a href="#return-value-22">Return Value</a></li>
+<li class="level-3"><a href="#example-30">Example</a></li>
+<li class="level-2"><a href="#preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</a></li>
+<li class="level-3"><a href="#parameters-24">Parameters</a></li>
+<li class="level-3"><a href="#return-value-23">Return Value</a></li>
+<li class="level-3"><a href="#example-31">Example</a></li>
+<li class="level-2"><a href="#preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</a></li>
+<li class="level-3"><a href="#parameters-25">Parameters</a></li>
+<li class="level-3"><a href="#return-value-24">Return Value</a></li>
+<li class="level-3"><a href="#example-32">Example</a></li>
+<li class="level-2"><a href="#sign">sign</a></li>
+<li class="level-3"><a href="#parameters-26">Parameters</a></li>
+<li class="level-3"><a href="#return-value-25">Return Value</a></li>
+<li class="level-3"><a href="#example-33">Example</a></li>
+<li class="level-2"><a href="#combine">combine</a></li>
+<li class="level-3"><a href="#parameters-27">Parameters</a></li>
+<li class="level-3"><a href="#return-value-26">Return Value</a></li>
+<li class="level-3"><a href="#example-34">Example</a></li>
+<li class="level-2"><a href="#submit">submit</a></li>
+<li class="level-3"><a href="#parameters-28">Parameters</a></li>
+<li class="level-3"><a href="#return-value-27">Return Value</a></li>
+<li class="level-3"><a href="#example-35">Example</a></li>
+<li class="level-2"><a href="#generateaddress">generateAddress</a></li>
+<li class="level-3"><a href="#parameters-29">Parameters</a></li>
+<li class="level-3"><a href="#return-value-28">Return Value</a></li>
+<li class="level-3"><a href="#example-36">Example</a></li>
+<li class="level-2"><a href="#computeledgerhash">computeLedgerHash</a></li>
+<li class="level-3"><a href="#parameters-30">Parameters</a></li>
+<li class="level-3"><a href="#return-value-29">Return Value</a></li>
+<li class="level-3"><a href="#example-37">Example</a></li>
+<li class="level-1"><a href="#api-events">API Events</a></li>
+<li class="level-2"><a href="#ledger">ledger</a></li>
+<li class="level-3"><a href="#return-value-30">Return Value</a></li>
+<li class="level-3"><a href="#example-38">Example</a></li>
+<li class="level-2"><a href="#error">error</a></li>
+<li class="level-3"><a href="#return-value-31">Return Value</a></li>
+<li class="level-3"><a href="#example-39">Example</a></li>
+<li class="level-2"><a href="#connected">connected</a></li>
+<li class="level-3"><a href="#example-40">Example</a></li>
+<li class="level-2"><a href="#disconnected">disconnected</a></li>
+<li class="level-3"><a href="#return-value-32">Return Value</a></li>
+<li class="level-3"><a href="#example-41">Example</a></li>
+
+            </ul>
         </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
       </aside>
       <main class="main" role="main">

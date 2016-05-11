@@ -127,6 +127,7 @@
       <aside class="sidebar" role="complementary">
     <div class="dev_nav_wrapper">
         <div id="cont">
+            <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: References</a></li>
                 <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
@@ -137,8 +138,104 @@
             </ul>
             <hr />
             <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#rippled">rippled</a></li>
+<li class="level-1"><a href="#websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</a></li>
+<li class="level-2"><a href="#changes-to-the-apis">Changes to the APIs</a></li>
+<li class="level-2"><a href="#connecting-to-rippled">Connecting to rippled</a></li>
+<li class="level-3"><a href="#websocket-api">WebSocket API</a></li>
+<li class="level-3"><a href="#json-rpc">JSON-RPC</a></li>
+<li class="level-3"><a href="#commandline">Commandline</a></li>
+<li class="level-2"><a href="#example-request">Example Request</a></li>
+<li class="level-2"><a href="#response-formatting">Response Formatting</a></li>
+<li class="level-2"><a href="#error-responses">Error Responses</a></li>
+<li class="level-3"><a href="#caution-on-errors">Caution on Errors</a></li>
+<li class="level-3"><a href="#universal-errors">Universal Errors</a></li>
+<li class="level-2"><a href="#formatting-conventions">Formatting Conventions</a></li>
+<li class="level-2"><a href="#basic-data-types">Basic Data Types</a></li>
+<li class="level-3"><a href="#addresses">Addresses</a></li>
+<li class="level-3"><a href="#hashes">Hashes</a></li>
+<li class="level-3"><a href="#account-sequence">Account Sequence</a></li>
+<li class="level-3"><a href="#ledger-index">Ledger Index</a></li>
+<li class="level-3"><a href="#specifying-ledgers">Specifying Ledgers</a></li>
+<li class="level-2"><a href="#currencies">Currencies</a></li>
+<li class="level-3"><a href="#specifying-currency-amounts">Specifying Currency Amounts</a></li>
+<li class="level-3"><a href="#currency-codes">Currency Codes</a></li>
+<li class="level-2"><a href="#specifying-time">Specifying Time</a></li>
+<li class="level-2"><a href="#possible-server-states">Possible Server States</a></li>
+<li class="level-2"><a href="#markers-and-pagination">Markers and Pagination</a></li>
+<li class="level-2"><a href="#modifying-the-ledger">Modifying the Ledger</a></li>
+<li class="level-1"><a href="#api-methods">API Methods</a></li>
+<li class="level-2"><a href="#list-of-public-commands">List of Public Commands</a></li>
+<li class="level-2"><a href="#list-of-admin-commands">List of Admin Commands</a></li>
+<li class="level-2"><a href="#commandline-access">Commandline Access</a></li>
+<li class="level-1"><a href="#account-information">Account Information</a></li>
+<li class="level-2"><a href="#account-currencies">account_currencies</a></li>
+<li class="level-2"><a href="#account-info">account_info</a></li>
+<li class="level-2"><a href="#account-lines">account_lines</a></li>
+<li class="level-2"><a href="#account-offers">account_offers</a></li>
+<li class="level-2"><a href="#account-objects">account_objects</a></li>
+<li class="level-2"><a href="#account-tx">account_tx</a></li>
+<li class="level-2"><a href="#noripple-check">noripple_check</a></li>
+<li class="level-2"><a href="#gateway-balances">gateway_balances</a></li>
+<li class="level-2"><a href="#wallet-propose">wallet_propose</a></li>
+<li class="level-1"><a href="#ledger-information">Ledger Information</a></li>
+<li class="level-2"><a href="#ledger">ledger</a></li>
+<li class="level-2"><a href="#ledger-closed">ledger_closed</a></li>
+<li class="level-2"><a href="#ledger-current">ledger_current</a></li>
+<li class="level-2"><a href="#ledger-data">ledger_data</a></li>
+<li class="level-2"><a href="#ledger-entry">ledger_entry</a></li>
+<li class="level-2"><a href="#ledger-request">ledger_request</a></li>
+<li class="level-2"><a href="#ledger-accept">ledger_accept</a></li>
+<li class="level-1"><a href="#transactions">Transactions</a></li>
+<li class="level-2"><a href="#tx">tx</a></li>
+<li class="level-2"><a href="#transaction-entry">transaction_entry</a></li>
+<li class="level-2"><a href="#tx-history">tx_history</a></li>
+<li class="level-2"><a href="#path-find">path_find</a></li>
+<li class="level-3"><a href="#path-find-create">path_find create</a></li>
+<li class="level-3"><a href="#path-find-close">path_find close</a></li>
+<li class="level-3"><a href="#path-find-status">path_find status</a></li>
+<li class="level-2"><a href="#ripple-path-find">ripple_path_find</a></li>
+<li class="level-2"><a href="#sign">sign</a></li>
+<li class="level-2"><a href="#sign-for">sign_for</a></li>
+<li class="level-2"><a href="#submit">submit</a></li>
+<li class="level-3"><a href="#submit-only-mode">Submit-Only Mode</a></li>
+<li class="level-3"><a href="#sign-and-submit-mode">Sign-and-Submit Mode</a></li>
+<li class="level-2"><a href="#submit-multisigned">submit_multisigned</a></li>
+<li class="level-2"><a href="#book-offers">book_offers</a></li>
+<li class="level-1"><a href="#subscriptions">Subscriptions</a></li>
+<li class="level-2"><a href="#subscribe">subscribe</a></li>
+<li class="level-3"><a href="#ledger-stream">Ledger Stream</a></li>
+<li class="level-3"><a href="#validations-stream">Validations Stream</a></li>
+<li class="level-3"><a href="#transaction-streams">Transaction Streams</a></li>
+<li class="level-3"><a href="#peer-status-stream">Peer Status Stream</a></li>
+<li class="level-3"><a href="#order-book-streams">Order Book Streams</a></li>
+<li class="level-2"><a href="#unsubscribe">unsubscribe</a></li>
+<li class="level-1"><a href="#server-information">Server Information</a></li>
+<li class="level-2"><a href="#server-info">server_info</a></li>
+<li class="level-2"><a href="#server-state">server_state</a></li>
+<li class="level-2"><a href="#can-delete">can_delete</a></li>
+<li class="level-2"><a href="#consensus-info">consensus_info</a></li>
+<li class="level-2"><a href="#fetch-info">fetch_info</a></li>
+<li class="level-2"><a href="#feature">feature</a></li>
+<li class="level-2"><a href="#fee">fee</a></li>
+<li class="level-2"><a href="#get-counts">get_counts</a></li>
+<li class="level-2"><a href="#ledger-cleaner">ledger_cleaner</a></li>
+<li class="level-2"><a href="#log-level">log_level</a></li>
+<li class="level-2"><a href="#logrotate">logrotate</a></li>
+<li class="level-2"><a href="#validation-create">validation_create</a></li>
+<li class="level-2"><a href="#validation-seed">validation_seed</a></li>
+<li class="level-2"><a href="#peers">peers</a></li>
+<li class="level-2"><a href="#print">print</a></li>
+<li class="level-1"><a href="#convenience-functions">Convenience Functions</a></li>
+<li class="level-2"><a href="#ping">ping</a></li>
+<li class="level-2"><a href="#random">random</a></li>
+<li class="level-2"><a href="#json">json</a></li>
+<li class="level-2"><a href="#connect">connect</a></li>
+<li class="level-2"><a href="#stop">stop</a></li>
+
+            </ul>
         </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
       </aside>
       <main class="main" role="main">

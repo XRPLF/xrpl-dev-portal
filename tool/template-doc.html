@@ -23,6 +23,7 @@
   {% if currentpage.sidebar %}
     <div class="dev_nav_wrapper">
         <div id="cont">
+            <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: {{ currentpage.category }}</a></li>
             {% for page in pages %}
@@ -33,8 +34,10 @@
             </ul>
             <hr />
             <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                {{ sidebar_content }}
+            </ul>
         </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
   {% endif %}
 {% endblock %}
@@ -44,4 +47,3 @@
         {{ content }}
     </div>
 {% endblock %}
-

@@ -127,6 +127,7 @@
       <aside class="sidebar" role="complementary">
     <div class="dev_nav_wrapper">
         <div id="cont">
+            <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: References</a></li>
                 <li class="level-2"><a href="reference-rippled.html">rippled</a></li>
@@ -137,8 +138,79 @@
             </ul>
             <hr />
             <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#ripple-data-api-v2">Ripple Data API v2</a></li>
+<li class="level-2"><a href="#more-information">More Information</a></li>
+<li class="level-1"><a href="#api-method-reference">API Method Reference</a></li>
+<li class="level-2"><a href="#get-ledger">Get Ledger</a></li>
+<li class="level-2"><a href="#get-transaction">Get Transaction</a></li>
+<li class="level-2"><a href="#get-transactions">Get Transactions</a></li>
+<li class="level-2"><a href="#get-payments">Get Payments</a></li>
+<li class="level-2"><a href="#get-exchanges">Get Exchanges</a></li>
+<li class="level-2"><a href="#get-exchange-rates">Get Exchange Rates</a></li>
+<li class="level-2"><a href="#normalize">Normalize</a></li>
+<li class="level-2"><a href="#get-daily-reports">Get Daily Reports</a></li>
+<li class="level-2"><a href="#get-stats">Get Stats</a></li>
+<li class="level-2"><a href="#get-capitalization">Get Capitalization</a></li>
+<li class="level-2"><a href="#get-active-accounts">Get Active Accounts</a></li>
+<li class="level-2"><a href="#get-exchange-volume">Get Exchange Volume</a></li>
+<li class="level-2"><a href="#get-payment-volume">Get Payment Volume</a></li>
+<li class="level-2"><a href="#get-issued-value">Get Issued Value</a></li>
+<li class="level-2"><a href="#get-top-currencies">Get Top Currencies</a></li>
+<li class="level-2"><a href="#get-top-markets">Get Top Markets</a></li>
+<li class="level-2"><a href="#get-all-gateways">Get All Gateways</a></li>
+<li class="level-2"><a href="#get-gateway">Get Gateway</a></li>
+<li class="level-2"><a href="#get-currency-image">Get Currency Image</a></li>
+<li class="level-2"><a href="#get-accounts">Get Accounts</a></li>
+<li class="level-2"><a href="#get-account">Get Account</a></li>
+<li class="level-2"><a href="#get-account-balances">Get Account Balances</a></li>
+<li class="level-2"><a href="#get-account-orders">Get Account Orders</a></li>
+<li class="level-2"><a href="#get-account-transaction-history">Get Account Transaction History</a></li>
+<li class="level-2"><a href="#get-transaction-by-account-and-sequence">Get Transaction By Account And Sequence</a></li>
+<li class="level-2"><a href="#get-account-payments">Get Account Payments</a></li>
+<li class="level-2"><a href="#get-account-exchanges">Get Account Exchanges</a></li>
+<li class="level-2"><a href="#get-account-balance-changes">Get Account Balance Changes</a></li>
+<li class="level-2"><a href="#get-account-reports">Get Account Reports</a></li>
+<li class="level-2"><a href="#get-account-transaction-stats">Get Account Transaction Stats</a></li>
+<li class="level-2"><a href="#get-account-value-stats">Get Account Value Stats</a></li>
+<li class="level-2"><a href="#health-check-api">Health Check - API</a></li>
+<li class="level-2"><a href="#health-check-ledger-importer">Health Check - Ledger Importer</a></li>
+<li class="level-1"><a href="#api-conventions">API Conventions</a></li>
+<li class="level-2"><a href="#basic-types">Basic Types</a></li>
+<li class="level-3"><a href="#numbers-and-precision">Numbers and Precision</a></li>
+<li class="level-3"><a href="#addresses">Addresses</a></li>
+<li class="level-3"><a href="#hashes">Hashes</a></li>
+<li class="level-3"><a href="#timestamps">Timestamps</a></li>
+<li class="level-3"><a href="#ledger-index">Ledger Index</a></li>
+<li class="level-3"><a href="#account-sequence">Account Sequence</a></li>
+<li class="level-3"><a href="#currency-code">Currency Code</a></li>
+<li class="level-2"><a href="#pagination">Pagination</a></li>
+<li class="level-2"><a href="#transaction-objects">Transaction Objects</a></li>
+<li class="level-3"><a href="#full-json-format">Full JSON Format</a></li>
+<li class="level-3"><a href="#binary-format">Binary Format</a></li>
+<li class="level-2"><a href="#ledger-objects">Ledger Objects</a></li>
+<li class="level-3"><a href="#genesis-ledger">Genesis Ledger</a></li>
+<li class="level-2"><a href="#account-creation-objects">Account Creation Objects</a></li>
+<li class="level-2"><a href="#exchange-objects">Exchange Objects</a></li>
+<li class="level-2"><a href="#reports-objects">Reports Objects</a></li>
+<li class="level-2"><a href="#payment-summary-objects">Payment Summary Objects</a></li>
+<li class="level-2"><a href="#payment-objects">Payment Objects</a></li>
+<li class="level-2"><a href="#balance-objects-and-balance-change-objects">Balance Objects and Balance Change Objects</a></li>
+<li class="level-2"><a href="#balance-change-descriptors">Balance Change Descriptors</a></li>
+<li class="level-3"><a href="#change-types">Change Types</a></li>
+<li class="level-2"><a href="#volume-objects">Volume Objects</a></li>
+<li class="level-1"><a href="#running-the-historical-database">Running the Historical Database</a></li>
+<li class="level-2"><a href="#installation">Installation</a></li>
+<li class="level-3"><a href="#dependencies">Dependencies</a></li>
+<li class="level-3"><a href="#installation-process">Installation Process</a></li>
+<li class="level-3"><a href="#tests">Tests</a></li>
+<li class="level-3"><a href="#services">Services</a></li>
+<li class="level-2"><a href="#importing-data">Importing Data</a></li>
+<li class="level-3"><a href="#live-ledger-importer">Live Ledger Importer</a></li>
+<li class="level-3"><a href="#backfiller">Backfiller</a></li>
+
+            </ul>
         </div>
-    <script type="text/javascript" src="assets/js/jquery.gensidebar.js"></script>
     </div>
       </aside>
       <main class="main" role="main">
