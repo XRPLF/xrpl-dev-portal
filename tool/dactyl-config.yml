@@ -70,6 +70,20 @@ pages:
             - ripple.com
 
 # References are exhaustive lists of commands and options
+    -   name: RippleAPI
+        category: References
+        html: reference-rippleapi.html
+        # Currently this is the only page that's fetched remotely.
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.17.0/docs/index.md
+        ripple.com: https://ripple.com/build/rippleapi/
+        filters:
+            - remove_doctoc
+            - add_version
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
     -   name: rippled
         category: References
         html: reference-rippled.html
@@ -100,20 +114,6 @@ pages:
             - local
             - ripple.com
 
-    -   name: RippleAPI
-        category: References
-        html: reference-rippleapi.html
-        # Currently this is the only page that's fetched remotely.
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.17.0/docs/index.md
-        ripple.com: https://ripple.com/build/rippleapi/
-        filters:
-            - remove_doctoc
-            - add_version
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
     -   name: Ripple Data API v2
         category: References
         html: reference-data-api.html
@@ -125,6 +125,34 @@ pages:
             - ripple.com
 
 # Tutorials are step-by-step guides to a specific goal
+    -   name: How to Multi-Sign
+        category: Tutorials
+        html: tutorial-multisign.html
+        md: tutorial-multisign.md
+        ripple.com: https://ripple.com/build/how-to-multi-sign/
+        sidebar: toc
+
+        # This is more like a "best practices" doc than Tutorials...
+    -   name: Issuing and Operational Addresses
+        category: Tutorials
+        html: concept-issuing-and-operational-addresses.html
+        md: concept-issuing-and-operational-addresses.md
+        ripple.com: https://ripple.com/build/issuing-operational-addresses/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Reliable Transaction Submission
+        category: Tutorials
+        html: tutorial-reliable-transaction-submission.html
+        md: tutorial-reliable-transaction-submission.md
+        ripple.com: https://ripple.com/build/reliable-transaction-submission/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
     -   name: RippleAPI Beginners Guide
         category: Tutorials
         html: tutorial-rippleapi-beginners-guide.html
@@ -146,97 +174,20 @@ pages:
             - ripple.com
             - rippled-setup
 
-    -   name: Reliable Transaction Submission
+        # The Gateway Guide is also a poor fit for the "tutorials" category
+    -   name: Gateway Guide
         category: Tutorials
-        html: tutorial-reliable-transaction-submission.html
-        md: tutorial-reliable-transaction-submission.md
-        ripple.com: https://ripple.com/build/reliable-transaction-submission/
+        html: tutorial-gateway-guide.html
+        md: tutorial-gateway-guide.md
+        ripple.com: https://ripple.com/build/gateway-guide/
         sidebar: toc
         targets:
             - local
             - ripple.com
 
-    -   name: How to Multi-Sign
-        category: Tutorials
-        html: tutorial-multisign.html
-        md: tutorial-multisign.md
-        ripple.com: https://ripple.com/build/how-to-multi-sign/
-        sidebar: toc
-
-# Concepts are introductions that explain a topic.
-# In the Dev Portal, these are mostly summaries of RCL features.
-    -   name: Paths
-        category: Concepts
-        html: concept-paths.html
-        md: concept-paths.md
-        ripple.com: https://ripple.com/build/paths/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Fees (Disambiguation)
-        category: Concepts
-        html: concept-fees.html
-        md: concept-fees.md
-        ripple.com: https://ripple.com/build/fees-disambiguation/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Transfer Fees
-        category: Concepts
-        html: concept-transfer-fees.html
-        md: concept-transfer-fees.md
-        ripple.com: https://ripple.com/build/transfer-fees/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Transaction Cost
-        category: Concepts
-        html: concept-transaction-cost.html
-        md: concept-transaction-cost.md
-        ripple.com: https://ripple.com/build/transaction-cost/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Fee Voting
-        category: Concepts
-        html: concept-fee-voting.html
-        md: concept-fee-voting.md
-        ripple.com: https://ripple.com/build/fee-voting/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Reserves
-        category: Concepts
-        html: concept-reserves.html
-        md: concept-reserves.md
-        ripple.com: https://ripple.com/build/reserves/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Freeze
-        category: Concepts
-        html: concept-freeze.html
-        md: concept-freeze.md
-        ripple.com: https://ripple.com/build/freeze/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
+#RCL Features describe how the RCL works in a mostly conceptual manner
     -   name: Amendments
-        category: Concepts
+        category: RCL Features
         html: concept-amendments.html
         md: concept-amendments.md
         ripple.com: https://ripple.com/build/amendments/
@@ -245,8 +196,58 @@ pages:
             - local
             - ripple.com
 
+    -   name: Fee Voting
+        category: RCL Features
+        html: concept-fee-voting.html
+        md: concept-fee-voting.md
+        ripple.com: https://ripple.com/build/fee-voting/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Fees (Disambiguation)
+        category: RCL Features
+        html: concept-fees.html
+        md: concept-fees.md
+        ripple.com: https://ripple.com/build/fees-disambiguation/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Freeze
+        category: RCL Features
+        html: concept-freeze.html
+        md: concept-freeze.md
+        ripple.com: https://ripple.com/build/freeze/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Paths
+        category: RCL Features
+        html: concept-paths.html
+        md: concept-paths.md
+        ripple.com: https://ripple.com/build/paths/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Reserves
+        category: RCL Features
+        html: concept-reserves.html
+        md: concept-reserves.md
+        ripple.com: https://ripple.com/build/reserves/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
     -   name: Stand-Alone Mode
-        category: Concepts
+        category: RCL Features
         html: concept-stand-alone-mode.html
         md: concept-stand-alone-mode.md
         ripple.com: https://ripple.com/build/stand-alone-mode/
@@ -255,8 +256,28 @@ pages:
             - local
             - ripple.com
 
+    -   name: Transaction Cost
+        category: RCL Features
+        html: concept-transaction-cost.html
+        md: concept-transaction-cost.md
+        ripple.com: https://ripple.com/build/transaction-cost/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Transfer Fees
+        category: RCL Features
+        html: concept-transfer-fees.html
+        md: concept-transfer-fees.md
+        ripple.com: https://ripple.com/build/transfer-fees/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
     -   name: Understanding the NoRipple flag
-        category: Concepts
+        category: RCL Features
         html: concept-noripple.html
         md: concept-noripple.md
         ripple.com: https://ripple.com/build/understanding-the-noripple-flag/
@@ -265,27 +286,6 @@ pages:
             - local
             - ripple.com
 
-# "Best Practices" documents are mostly in the same category as tutorials
-    -   name: Issuing and Operational Addresses
-        category: Best Practices
-        html: concept-issuing-and-operational-addresses.html
-        md: concept-issuing-and-operational-addresses.md
-        ripple.com: https://ripple.com/build/issuing-operational-addresses/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
-
-        # The Gateway Guide is kind of a poor fit for the "tutorials" category
-    -   name: Gateway Guide
-        category: Best Practices
-        html: tutorial-gateway-guide.html
-        md: tutorial-gateway-guide.md
-        ripple.com: https://ripple.com/build/gateway-guide/
-        sidebar: toc
-        targets:
-            - local
-            - ripple.com
 
 # API tools are interactive software for interfacing with real APIs
     -   name: WebSocket API Tool
