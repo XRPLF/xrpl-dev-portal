@@ -50,7 +50,7 @@ The Ripple Consensus Ledger contains a distributed financial exchange, where any
 
 When adding a new gateway to the RCL, it is important to establish liquidity to other popular currencies. Because third parties provide the Liquidity, a gateway's customers can exchange currencies through the RCL, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of financial exchange.
 
-Third-party liquidity providers can use [RippleAPI](reference-rippleapi.html), [Ripple Stream](https://ripple.com/knowledge_center/ripple-stream-product-overview/), or a [third-party client application](https://ripple.com/knowledge_center/wallet-providers/) to participate in the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
+Third-party liquidity providers can use [RippleAPI](reference-rippleapi.html), [Ripple Stream](https://ripple.com/technology/), or a [third-party client application](https://ripple.com/knowledge_center/wallet-providers/) to participate in the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
 
 Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing a market between your gateway and others.
 
