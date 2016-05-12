@@ -179,7 +179,7 @@ pages:
         category: Concepts
         html: concept-fees.html
         md: concept-fees.md
-        ripple.com: https://ripple.com/knowledge_center/fees-disambiguation/
+        ripple.com: https://ripple.com/build/fees-disambiguation/
         sidebar: toc
         targets:
             - local
@@ -189,7 +189,7 @@ pages:
         category: Concepts
         html: concept-transfer-fees.html
         md: concept-transfer-fees.md
-        ripple.com: https://ripple.com/knowledge_center/transfer-fees/
+        ripple.com: https://ripple.com/build/transfer-fees/
         sidebar: toc
         targets:
             - local
@@ -259,7 +259,7 @@ pages:
         category: Concepts
         html: concept-noripple.html
         md: concept-noripple.md
-        ripple.com: https://ripple.com/knowledge_center/understanding-the-noripple-flag/
+        ripple.com: https://ripple.com/build/understanding-the-noripple-flag/
         sidebar: toc
         targets:
             - local
@@ -270,7 +270,7 @@ pages:
         category: Best Practices
         html: concept-issuing-and-operational-addresses.html
         md: concept-issuing-and-operational-addresses.md
-        ripple.com: https://ripple.com/knowledge_center/issuing-operational-addresses/
+        ripple.com: https://ripple.com/build/issuing-operational-addresses/
         sidebar: toc
         targets:
             - local
