@@ -85,7 +85,7 @@ pages:
         html: reference-transaction-format.html
         md: reference-transaction-format.md
         ripple.com: https://ripple.com/build/transactions/
-        sidebar: true
+        sidebar: toc
         targets:
             - local
             - ripple.com
