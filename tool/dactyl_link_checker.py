@@ -3,6 +3,7 @@ import requests
 import os
 import yaml
 import argparse
+import logging
 from bs4 import BeautifulSoup
 
 DEFAULT_CONFIG_FILE = "dactyl-config.yml"
@@ -28,7 +29,7 @@ def checkLinks(offline=False):
       for fname in filenames:
         fullPath = os.path.join(dirpath, fname)
         if "/node_modules/" in fullPath or ".git" in fullPath:
-          print("skipping ignored dir:", fullPath)
+          logging.info("skipping ignored dir: %s" % fullPath)
           continue
         if fullPath.endswith(".html"):
           soup = getSoup(fullPath)
@@ -40,7 +41,7 @@ def checkLinks(offline=False):
 
             endpoint = link['href']
             if not endpoint.strip():
-              print("Empty link in",fullPath)
+              logging.warning("Empty link in %s" % fullPath)
               broken_links.append( (fullPath, endpoint) )
               num_links_checked += 1
 
@@ -48,43 +49,43 @@ def checkLinks(offline=False):
               continue
 
             elif "mailto:" in endpoint:
-              print("Skipping email link in %s to %s"%(fullPath, endpoint))
+              logging.info("Skipping email link in %s to %s"%(fullPath, endpoint))
               continue
 
             elif "://" in endpoint:
               if offline:
-                print("Offline - Skipping remote URL %s"%(endpoint))
+                logging.info("Offline - Skipping remote URL %s"%(endpoint))
                 continue
 
               num_links_checked += 1
               if endpoint not in externalCache:
-                print("Testing remote URL %s"%(endpoint))
+                logging.info("Testing remote URL %s"%(endpoint))
                 try:
                   code = requests.head(endpoint).status_code
                 except Exception as e:
-                  print("Error occurred:",e)
+                  logging.warning("Error occurred: %s" % e)
                   code = 500
                 if code == 405 or code == 404:
                   #HEAD didn't work, maybe GET will?
                   try:
                     code = requests.get(endpoint).status_code
                   except Exception as e:
-                    print("Error occurred:",e)
+                    logging.warning("Error occurred: %s" % e)
                     code = 500
 
                 if code < 200 or code >= 400:
-                  print("Broken remote link in %s to %s"%(fullPath, endpoint))
+                  logging.warning("Broken remote link in %s to %s"%(fullPath, endpoint))
                   broken_links.append( (fullPath, endpoint) )
                 else:
-                  print("...success.")
+                  logging.info("...success.")
                   externalCache.append(endpoint)
 
 
             elif '#' in endpoint:
               if fname in config["ignore_anchors_in"]:
-                print("Ignoring anchor %s in dynamic page %s"%(endpoint,fname))
+                logging.info("Ignoring anchor %s in dynamic page %s"%(endpoint,fname))
                 continue
-              print("Testing local link %s from %s"%(endpoint, fullPath))
+              logging.info("Testing local link %s from %s"%(endpoint, fullPath))
               num_links_checked += 1
               filename,anchor = endpoint.split("#",1)
               if filename == "":
@@ -92,13 +93,13 @@ def checkLinks(offline=False):
               else:
                 fullTargetPath = os.path.join(dirpath, filename)
               if not os.path.exists(fullTargetPath):
-                print("Broken local link in %s to %s"%(fullPath, endpoint))
+                logging.warning("Broken local link in %s to %s"%(fullPath, endpoint))
                 broken_links.append( (fullPath, endpoint) )
 
               elif filename in config["ignore_anchors_in"]:
                   #Some pages are populated dynamically, so BeatifulSoup wouldn't
                   # be able to find anchors in them anyway
-                  print("Skipping anchor link in %s to dynamic page %s" %
+                  logging.info("Skipping anchor link in %s to dynamic page %s" %
                         (fullPath, endpoint))
                   continue
 
@@ -107,21 +108,21 @@ def checkLinks(offline=False):
                 targetSoup = getSoup(fullTargetPath)
                 if not targetSoup.find(id=anchor) and not targetSoup.find(
                         "a",attrs={"name":anchor}):
-                  print("Broken anchor link in %s to %s"%(fullPath, endpoint))
+                  logging.warning("Broken anchor link in %s to %s"%(fullPath, endpoint))
                   broken_links.append( (fullPath, endpoint) )
                 else:
-                  print("...anchor found.")
+                  logging.info("...anchor found.")
                 continue
 
             elif endpoint[0] == '/':
               #can't really test links out of the local field
-              print("Skipping absolute link in %s to %s"%(fullPath, endpoint))
+              logging.info("Skipping absolute link in %s to %s"%(fullPath, endpoint))
               continue
 
             else:
               num_links_checked += 1
               if not os.path.exists(os.path.join(dirpath, endpoint)):
-                print("Broken local link in %s to %s"%(fullPath, endpoint))
+                logging.warning("Broken local link in %s to %s"%(fullPath, endpoint))
                 broken_links.append( (fullPath, endpoint) )
     return broken_links, num_links_checked
 
@@ -130,7 +131,7 @@ def checkLinks(offline=False):
 def load_config(config_file=DEFAULT_CONFIG_FILE):
     """Reload config from a YAML file."""
     global config
-    print("loading config file %s..." % config_file)
+    logging.info("loading config file %s..." % config_file)
     with open(config_file, "r") as f:
         config = yaml.load(f)
         assert(config["out_path"])
@@ -147,14 +148,17 @@ if __name__ == "__main__":
                         help="Exit with error even on known problems")
     parser.add_argument("--config", "-c", type=str,
                         help="Specify path to an alternate config file.")
+    parser.add_argument("--quiet", "-q", action="store_true",
+                        help="Reduce output to just failures and final report")
     args = parser.parse_args()
-    
+
+    if not args.quiet:
+        logging.basicConfig(level=logging.INFO)
+
     if args.config:
         load_config(args.config)
     else:
         load_config()
-
-
 
     broken_links, num_links_checked = checkLinks(args.offline)
 
