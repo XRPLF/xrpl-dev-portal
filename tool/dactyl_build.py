@@ -77,16 +77,6 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         for filter_name in filternames:
             filters[filter_name] = import_module("filter_"+filter_name)
 
-def page_keys_from_target(target):
-    """Make pages inherit arbitrary keys from a target"""
-    target = get_target(target)
-    pages = get_pages(target)
-    for p in pages:
-        for key,val in target.items():
-            if key in RESERVED_KEYS_TARGET:
-                continue
-            elif key not in p:
-                p[key] = val
 
 
 def substitute_links_for_target(soup, target):
@@ -290,6 +280,14 @@ def get_pages(target=None):
                 return False
         pages = [page for page in pages
                  if should_include(page, target["name"])]
+
+    # Pages should inherit non-reserved keys from the target
+    for p in pages:
+        for key,val in target.items():
+            if key in RESERVED_KEYS_TARGET:
+                continue
+            elif key not in p:
+                p[key] = val
     return pages
 
 
@@ -393,7 +391,6 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
     target = get_target(target)
     pages = get_pages(target)
     categories = get_categories(pages)
-    page_keys_from_target(target)
 
     # Insert generated HTML into templates using this Jinja environment
     env = setup_html_env()
@@ -479,7 +476,6 @@ def watch(pdf_file, target):
     """Look for changed files and re-generate HTML (and optionally
        PDF whenever there's an update. Runs until interrupted."""
     target = get_target(target)
-    page_keys_from_target(target)
 
     class UpdaterHandler(PatternMatchingEventHandler):
         """Updates to pattern-matched files means rendering."""
@@ -516,7 +512,6 @@ def make_pdf(outfile, target=None, bypass_errors=False):
     """Use prince to convert several HTML files into a PDF"""
     logging.info("rendering PDF-able versions of pages...")
     target = get_target(target)
-    page_keys_from_target(target)
     render_pages(target=target, for_pdf=True, bypass_errors=bypass_errors)
 
     temp_files_path = config["temporary_files_path"]
@@ -549,7 +544,6 @@ def githubify(md_file_name, target=None):
 #    with open(filein, "r") as f:
 #        md = f.read()
     pages = get_pages()
-    page_keys_from_target(target)
     logging.info("getting markdown for page %s" % md_file_name)
     md = get_markdown_for_page(md_file_name,
                                pp_env=setup_pp_env(),
