@@ -543,7 +543,7 @@
 <tr>
 <td>request</td>
 <td>Object</td>
-<td>A copy of the request that prompted this error, in JSON format. <strong><em>Caution:</em></strong> If the request contained any account secrets, they are copied here!</td>
+<td>A copy of the request that prompted this error, in JSON format. <strong>Caution:</strong> If the request contained any account secrets, they are copied here!</td>
 </tr>
 </tbody>
 </table>
@@ -699,7 +699,7 @@ Null method
 </li>
 </ol>
 <p>There is also a deprecated <code>ledger</code> parameter which accepts any of the above three formats. <em>Do not</em> use this parameter; it may be removed without further notice.</p>
-<p>If you do not specify a ledger, the <code>current</code> (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated <code>ledger</code> field will be used first if it exists, falling back to <code>ledger_hash</code>. The <code>ledger_index</code> field is ignored unless neither of the other two are present. <strong><em>Note:</em></strong> Do not rely on this default behavior; it is subject to change. Instead, you should always specify a ledger version in each call.</p>
+<p>If you do not specify a ledger, the <code>current</code> (in-progress) ledger will be chosen by default. If you provide more than one field specifying ledgers, the deprecated <code>ledger</code> field will be used first if it exists, falling back to <code>ledger_hash</code>. The <code>ledger_index</code> field is ignored unless neither of the other two are present. <strong>Note:</strong> Do not rely on this default behavior; it is subject to change. Instead, you should always specify a ledger version in each call.</p>
 <h2 id="currencies">Currencies</h2>
 <p>There are two kinds of currencies in the Ripple Consensus Ledger: XRP, and everything else. There are many differences between the two:</p>
 <table>
@@ -833,7 +833,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note:</em></strong> The distinction between <code>full</code>, <code>validating</code>, and <code>proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p>
+<p><strong>Note:</strong> The distinction between <code>full</code>, <code>validating</code>, and <code>proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p>
 <h2 id="markers-and-pagination">Markers and Pagination</h2>
 <p>Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a <code>marker</code> field. You can use this to retrieve more pages of data across multiple calls. In each subsequent request, pass the <code>marker</code> value from the previous response in order to resume from the point where you left off. If the <code>marker</code> is omitted from a response, then you have reached the end of the data set.</p>
 <p>The format of the <code>marker</code> field is intentionally undefined. Each server can define a <code>marker</code> field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server, can have different <code>marker</code> definitions. Each <code>marker</code> is ephemeral, and may not work as expected after 10 minutes.</p>
@@ -3033,7 +3033,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note:</em></strong> The server may respond with different values of <code>ledger_index_min</code> and <code>ledger_index_max</code> than you provided in the request, for example if it did not have the versions you specified on hand.</p>
+<p><strong>Note:</strong> The server may respond with different values of <code>ledger_index_min</code> and <code>ledger_index_max</code> than you provided in the request, for example if it did not have the versions you specified on hand.</p>
 <p>Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (<code>"binary":true</code>) format.</p>
 <table>
 <thead>
@@ -4203,7 +4203,7 @@ rippled ledger_current
 }
 </code></pre></div>
 </div>
-<p><strong><em>Note:</em></strong> There is no commandline syntax for <code>ledger_data</code>. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
+<p><strong>Note:</strong> There is no commandline syntax for <code>ledger_data</code>. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <p>A request can include the following fields:</p>
 <table>
 <thead>
@@ -4487,7 +4487,7 @@ rippled ledger_current
 <h2 id="ledger-entry">ledger_entry</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_entry</code> method returns a single ledger node from the Ripple Consensus Ledger in its raw format. See <a href="reference-ledger-format.html">ledger format</a> for information on the different types of objects you can retrieve.</p>
-<p><strong><em>Note:</em></strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
+<p><strong>Note:</strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <h4 id="request-format-13">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">WebSocket</a></li><li><a href="#code-29-1">JSON-RPC</a></li></ul>
@@ -5244,7 +5244,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 </tr>
 </tbody>
 </table>
-<p><strong><em>Note:</em></strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
+<p><strong>Note:</strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
 <h4 id="response-format-17">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">WebSocket</a></li></ul>
@@ -5426,7 +5426,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <h2 id="tx-history">tx_history</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>tx_history</code> method retrieves a selection of the most recent transactions made.</p>
-<p><strong><em>Caution:</em></strong> This method is deprecated, and may be removed without further notice.</p>
+<p><strong>Caution:</strong> This method is deprecated, and may be removed without further notice.</p>
 <h4 id="request-format-18">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">WebSocket</a></li><li><a href="#code-38-1">JSON-RPC</a></li><li><a href="#code-38-2">Commandline</a></li></ul>
@@ -6326,7 +6326,7 @@ rippled tx_history 0
 <li><code>close</code> - Stop sending pathfinding information</li>
 <li><code>status</code> - Get the information of the currently-open pathfinding request</li>
 </ul>
-<p>Although the <code>rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<strong><em>Note:</em></strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
+<p>Although the <code>rippled</code> server attempts to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths in order to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers operated by different parties, to minimize the risk of a single server returning poor results. (<strong>Note:</strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
 <h3 id="path-find-create">path_find create</h3>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L38" title="Source">[Source]<br/></a></p>
 <p>The <code>create</code> subcommand of <code>path_find</code> creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with <code>"type": "path_find"</code>, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.</p>
@@ -7372,8 +7372,9 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
       }
    },
-   "secret" : "sssssssssssssssssssssssssssss",
-   "offline": false
+   "secret" : "s████████████████████████████",
+   "offline": false,
+   "fee_mult_max": 1000
 }
 </code></pre></div>
 
@@ -7382,7 +7383,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
     "params": [
         {
             "offline": false,
-            "secret": "sssssssssssssssssssssssssssss",
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                 "Amount": {
@@ -7392,14 +7393,15 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
                 },
                 "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
                 "TransactionType": "Payment"
-            }
+            },
+            "fee_mult_max": 1000
         }
     ]
 }
 </code></pre></div>
 
 <div class="code_sample" id="code-47-2" style="position: static;"><pre><code>#Syntax: sign secret tx_json [offline]
-rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }}' false
+rippled sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
 </code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#sign">Try it! &gt;</a></p>
@@ -7456,7 +7458,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>build_path</td>
 <td>Boolean</td>
-<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
+<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td>fee_mult_max</td>
@@ -7473,9 +7475,13 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <h3 id="auto-fillable-fields">Auto-Fillable Fields</h3>
 <p>The server automatically attempts to fill in certain fields in <code>tx_json</code> (the <a href="reference-transaction-format.html">Transaction object</a>) automatically if you omit them. The server provides the following fields before signing, unless the request specified <code>offline</code> as <code>true</code>:</p>
 <ul>
-<li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request.</li>
+<li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information.<ul>
+<li><strong>Caution:</strong> The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.</li>
+</ul>
+</li>
 <li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server tries to fill in an appropriate transaction cost automatically. On the production Ripple Consensus Ledger, this fails with <code>rpcHIGH_FEE</code> unless you provide an appropriate <code>fee_mult_max</code> value.<ul>
-<li>The <code>fee_mult_max</code> and <code>fee_div_max</code> parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the <a href="concept-transaction-cost.html#reference-transaction-cost">reference transaction cost</a>. The default values return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger <a href="concept-transaction-cost.html#current-transaction-cost">typically has a 1000× load multiplier</a>.</li>
+<li>The <code>fee_mult_max</code> and <code>fee_div_max</code> parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the <a href="concept-transaction-cost.html#reference-transaction-cost">reference transaction cost</a>. The default settings return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger <a href="concept-transaction-cost.html#current-transaction-cost">typically has a 1000× load multiplier</a>.</li>
+<li>The commandline syntax does not support <code>fee_mult_max</code> and <code>fee_div_max</code>. For the production Ripple Consensus Ledger, you must provide a <code>Fee</code> value.</li>
 <li><strong>Caution:</strong> A malicious server can specify an excessively high transaction cost, ignoring the values of <code>fee_mult_max</code> and <code>fee_div_max</code>.</li>
 </ul>
 </li>
@@ -7483,31 +7489,31 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </ul>
 <h4 id="response-format-23">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">WebSocket</a></li><li><a href="#code-48-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">WebSocket</a></li><li><a href="#code-48-1">JSON-RPC</a></li><li><a href="#code-48-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-48-0" style="position: static;"><pre><code>{
-    "id": 2,
-    "result": {
-        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100BF06B6C01646005DEDD8F4F6D458AF4EE4006205A623FF31E0B5BCCE42564BA1022063C372D476379C109E3C22C5C04071594CD9EF64615C00B048AFFA5D7D6701F981144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-        "tx_json": {
-            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Amount": {
-                "currency": "USD",
-                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "value": "1"
-            },
-            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "Fee": "10",
-            "Flags": 2147483648,
-            "Sequence": 3,
-            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-            "TransactionType": "Payment",
-            "TxnSignature": "3045022100BF06B6C01646005DEDD8F4F6D458AF4EE4006205A623FF31E0B5BCCE42564BA1022063C372D476379C109E3C22C5C04071594CD9EF64615C00B048AFFA5D7D6701F9",
-            "hash": "B4CBEBBA9E65A5BED25205806797600149599AAF2FD8103B3B75AE97B1B5F3E2"
-        }
-    },
-    "status": "success",
-    "type": "response"
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Amount": {
+        "currency": "USD",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "value": "1"
+      },
+      "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Fee": "10000",
+      "Flags": 2147483648,
+      "Sequence": 360,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "Payment",
+      "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+      "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
+    }
+  }
 }
 </code></pre></div>
 
@@ -7515,7 +7521,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 {
     "result": {
         "status": "success",
-        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
         "tx_json": {
             "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
             "Amount": {
@@ -7524,15 +7530,41 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
                 "value": "1"
             },
             "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "Fee": "10",
+            "Fee": "10000",
             "Flags": 2147483648,
-            "Sequence": 3,
+            "Sequence": 360,
             "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
             "TransactionType": "Payment",
-            "TxnSignature": "3045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE",
-            "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208"
+            "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+            "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
         }
     }
+}
+</code></pre></div>
+
+<div class="code_sample" id="code-48-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210094D24C795CFFA8E46FE338AF63421DA5CE5E171ED56F8E4CE70FFABA15D3CFA2022063994C52BF0393C8157EBFFCDE6A7E7EDC7B16A462CA53214F64CC8FCBB5E54A81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+      "tx_json" : {
+         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+         "Amount" : {
+            "currency" : "USD",
+            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "value" : "1"
+         },
+         "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+         "Fee" : "10000",
+         "Flags" : 2147483648,
+         "Sequence" : 360,
+         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+         "TransactionType" : "Payment",
+         "TxnSignature" : "304502210094D24C795CFFA8E46FE338AF63421DA5CE5E171ED56F8E4CE70FFABA15D3CFA2022063994C52BF0393C8157EBFFCDE6A7E7EDC7B16A462CA53214F64CC8FCBB5E54A",
+         "hash" : "DE80DA6FF9F93FE4CE87C99441F403E0290E35867FF48382204CB89975BF343E"
+      }
+   }
 }
 </code></pre></div>
 </div>
@@ -7558,7 +7590,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 </tr>
 </tbody>
 </table>
-<p><strong><em>Caution:</em></strong> If this command results in an error messages, the message can contain the account secret from the request. Make sure that these errors are not visible to others, including:</p>
+<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others, including:</p>
 <ul>
 <li>Do not write this error to a log file that can be seen by multiple people</li>
 <li>Do not paste this error to a public place for debugging</li>
@@ -7940,17 +7972,17 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>build_path</td>
 <td>Boolean</td>
-<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong><em>Caution:</em></strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
+<td>(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td>fee_mult_max</td>
 <td>Integer</td>
-<td>(Optional) If the <code>Fee</code> parameter is omitted, this field limits the automatically-provided <code>Fee</code> value so that it is less than or equal to the long-term base transaction cost times this value.</td>
+<td>(Optional, defaults to 10, recommended value 1000) If the <code>Fee</code> parameter is omitted, this field limits the automatically-provided <code>Fee</code> value so that it is less than or equal to the long-term base transaction cost times this value.</td>
 </tr>
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional, defaults to 1) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -7972,7 +8004,9 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
       }
    },
-   "secret" : "sssssssssssssssssssssssssssss"
+   "secret" : "s████████████████████████████",
+   "offline": false,
+   "fee_mult_max": 1000
 }
 </code></pre></div>
 
@@ -7980,7 +8014,8 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
     "method": "submit",
     "params": [
         {
-            "secret": "sssssssssssssssssssssssssssss",
+            "offline": false,
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                 "Amount": {
@@ -7990,30 +8025,31 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
                 },
                 "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
                 "TransactionType": "Payment"
-            }
+            },
+            "fee_mult_max": 1000
         }
     ]
 }
 </code></pre></div>
 
 <div class="code_sample" id="code-52-2" style="position: static;"><pre><code>#Syntax: submit secret json [offline]
-submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"rJYMACXJd1eejwzZA53VncYmiK2kZSBxyD", "Amount":"200000000","Destination":"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV" }'
+rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Amount": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 </code></pre></div>
 </div>
 <p><a class="button" href="ripple-api-tool.html#submit">Try it! &gt;</a></p>
 <h4 id="response-format-25">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-53"><ul class="codetabs"><li><a href="#code-53-0">WebSocket</a></li><li><a href="#code-53-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-53"><ul class="codetabs"><li><a href="#code-53-0">WebSocket</a></li><li><a href="#code-53-1">JSON-RPC</a></li><li><a href="#code-53-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-53-0" style="position: static;"><pre><code>{
-  "id": 2,
+  "id": 1,
   "status": "success",
   "type": "response",
   "result": {
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
-    "engine_result_message": "The transaction was applied.",
-    "tx_blob": "1200002280000000240000000161D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100F8A650C1D58325FE8D74634C1DC0802BB2271EB84773793EF34085CFC7E32B1302206ECE43AFE94B7F9F0359D53E6B195C2D526DFDFBBBF328D6FE3A598F1D51DEBA81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
     "tx_json": {
       "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Amount": {
@@ -8022,13 +8058,13 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
         "value": "1"
       },
       "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Fee": "10",
+      "Fee": "10000",
       "Flags": 2147483648,
-      "Sequence": 1,
+      "Sequence": 360,
       "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
       "TransactionType": "Payment",
-      "TxnSignature": "3045022100F8A650C1D58325FE8D74634C1DC0802BB2271EB84773793EF34085CFC7E32B1302206ECE43AFE94B7F9F0359D53E6B195C2D526DFDFBBBF328D6FE3A598F1D51DEBA",
-      "hash": "7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E"
+      "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+      "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
     }
   }
 }
@@ -8038,9 +8074,9 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
     "result": {
         "engine_result": "tesSUCCESS",
         "engine_result_code": 0,
-        "engine_result_message": "The transaction was applied.",
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
         "status": "success",
-        "tx_blob": "1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
         "tx_json": {
             "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
             "Amount": {
@@ -8049,15 +8085,44 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
                 "value": "1"
             },
             "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "Fee": "10",
+            "Fee": "10000",
             "Flags": 2147483648,
-            "Sequence": 3,
+            "Sequence": 361,
             "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
             "TransactionType": "Payment",
-            "TxnSignature": "3045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE",
-            "hash": "82230B9D489370504B39BC2CE46216176CAC9E752E5C1774A8CBEC9FBB819208"
+            "TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
+            "hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
         }
     }
+}
+</code></pre></div>
+
+<div class="code_sample" id="code-53-2" style="position: static;"><pre><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "engine_result" : "tesSUCCESS",
+      "engine_result_code" : 0,
+      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
+      "status" : "success",
+      "tx_blob" : "1200002280000000240000016A61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100FBBF74057359EC31C3647AD3B33D8954730E9879C35034374858A76B7CFA643102200EAA08C61071396E9CF0987FBEA16CF113CBD8068AA221214D165F151285EECD81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+      "tx_json" : {
+         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+         "Amount" : {
+            "currency" : "USD",
+            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "value" : "1"
+         },
+         "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+         "Fee" : "10000",
+         "Flags" : 2147483648,
+         "Sequence" : 362,
+         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+         "TransactionType" : "Payment",
+         "TxnSignature" : "3045022100FBBF74057359EC31C3647AD3B33D8954730E9879C35034374858A76B7CFA643102200EAA08C61071396E9CF0987FBEA16CF113CBD8068AA221214D165F151285EECD",
+         "hash" : "CB98A6FA1FAC47F9FCC6A233EB46F8F9AF59CC69BD69AE6D06F298F6FF52162A"
+      }
+   }
 }
 </code></pre></div>
 </div>
@@ -8098,8 +8163,8 @@ submit sssssssssssssssssssssssssssss '{"TransactionType":"Payment", "Account":"r
 </tr>
 </tbody>
 </table>
-<p><strong><em>Caution:</em></strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does <em>not</em> indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
-<p><strong><em>Caution:</em></strong> If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:</p>
+<p><strong>Caution:</strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does <em>not</em> indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
+<p><strong>Caution:</strong> If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:</p>
 <ul>
 <li>Do not write an error including your secret to a log file that can be seen by multiple people</li>
 <li>Do not paste an error including your secret to a public place for debugging</li>
@@ -8712,7 +8777,8 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes</li>
 <li><code>ledger</code> - Sends a message whenever the consensus process declares a new validated ledger</li>
 <li><code>transactions</code> - Sends a message whenever a transaction is included in a closed ledger</li>
-<li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation, however. (<strong><em>Note:</em></strong> <a href="reference-transaction-format.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.)</li>
+<li><code>transactions_proposed</code> - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
+    <strong>Note:</strong> <a href="reference-transaction-format.html#result-categories">Even some transactions that don't succeed are included</a> in validated ledgers, because they take the anti-spam transaction fee.</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message from a server it trusts. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 <li><code>peer_status</code> - <strong>(Admin only)</strong> Information about connected peer <code>rippled</code> servers, especially with regards to the consensus process.</li>
 </ul>
@@ -8780,7 +8846,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
 <li><code>unknownStream</code> - One or more the members of the <code>streams</code> field in the request was not recognized as a valid stream name.</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
-<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong><em>Note</em></strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)</li>
+<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)</li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>dstAmtMalformed</code> - One or more <code>taker_gets</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>srcIsrMalformed</code> - The <code>issuer</code> field of one or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not valid.</li>
@@ -9430,7 +9496,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
-<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong><em>Note</em></strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)</li>
+<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger; if your subscription is still active, you will get a message when that account receives the payment that creates it.)</li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>dstAmtMalformed</code> - One or more <code>taker_gets</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>srcIsrMalformed</code> - The <code>issuer</code> field of one or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not valid.</li>
