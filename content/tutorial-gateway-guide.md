@@ -67,11 +67,7 @@ The value of a gateway's issuances in the Ripple Consensus Ledger comes directly
 
 ### Hot and Cold Wallets ###
 
-We strongly recommend that gateways use multiple Ripple addresses with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:
-
-* An **issuing address** (also known as a "cold wallet") with high value, used as rarely as possible.
-* One or more **operational addresses** (also known as a "hot wallets") with low value, used frequently by automated processes.
-* Optional **standby addresses** (also known as "warm wallets"), used infrequently by human operators.
+{% include 'snippets/issuing-and-operational-addresses-intro.md' %}
 
 For more information, see [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html)
 

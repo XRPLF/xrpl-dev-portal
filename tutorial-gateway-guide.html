@@ -225,11 +225,11 @@
 <li>Clearly publicize all your policies and fees.</li>
 </ul>
 <h3 id="hot-and-cold-wallets">Hot and Cold Wallets</h3>
-<p>We strongly recommend that gateways use multiple Ripple addresses with a separation of roles. This promotes strong security and minimizes risk. We recommend the following setup:</p>
+<p>In the Ripple Consensus Ledger, financial institutions typically use multiple Ripple addresses to minimize the risk associated with a compromised secret key. Ripple strongly recommends the following separation of roles:</p>
 <ul>
-<li>An <strong>issuing address</strong> (also known as a "cold wallet") with high value, used as rarely as possible.</li>
-<li>One or more <strong>operational addresses</strong> (also known as a "hot wallets") with low value, used frequently by automated processes.</li>
-<li>Optional <strong>standby addresses</strong> (also known as "warm wallets"), used infrequently by human operators.</li>
+<li>One <strong>issuing address</strong>, also known as a "cold wallet." This address is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible.</li>
+<li>One or more <strong>operational addresses</strong>, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners.</li>
+<li>Optional <strong>standby addresses</strong>, also known as "warm wallets." Trusted human operators use these addresses to transfer money to the operational addresses.</li>
 </ul>
 <p>For more information, see <a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></p>
 <h2 id="fees-and-revenue-sources">Fees and Revenue Sources</h2>
