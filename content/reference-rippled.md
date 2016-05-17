@@ -6244,6 +6244,8 @@ The `sign` method takes a [transaction in JSON format](reference-transaction-for
 #### Request Format ####
 An example of the request format:
 
+<!--{# TODO: update the examples here and in sign-and-submit #}-->
+
 <!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
@@ -6316,14 +6318,17 @@ The request includes the following parameters:
 | key\_type | String | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not attempt to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. __*Caution:*__ The server looks for the presence or absence of this field, not its value. This behavior may change. |
-| fee\_mult\_max | Integer | (Optional) If the `Fee` parameter ([transaction cost](concept-transaction-cost.html)) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value. |
-| fee\_div\_max | Integer | (Optional) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, signing fails. _(New in [version 0.30.1][])_ |
+| fee\_mult\_max | Integer | (Optional, defaults to 10; recommended value 1000) Limits how high the [automatically-provided `Fee` field](reference-transaction-format.html#auto-fillable-fields) can be. Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). |
+| fee\_div\_max | Integer | (Optional, defaults to 1) Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). _(New in [version 0.30.1][])_ |
 
-The server automatically attempts to fill in certain fields from the `tx_json` object if they are omitted, unless you specified `offline` as true. Otherwise, the following fields from the [transaction format](reference-transaction-format.html) are automatically filled in:
+### Auto-Fillable Fields ###
 
-* `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless `offline` is true.
-* `Fee` - If you omit the `Fee` parameter, the server [automatically provides an appropriate transaction cost](concept-transaction-cost.html#automatically-specifying-the-transaction-cost) unless you specified `offline` as true. If you specify `offline` as true, you must fill in the transaction cost in the `Fee` parameter. Be careful: a malicious server can specify an excessively high transaction cost.
-    * If `fee_mult_max` is included, and the automatically provided `Fee` value is greater than the long-term base transaction cost times `fee_mult_max`, then the transaction fails with the error `rpcHIGH_FEE`. This way, you can let the server fill in the current minimum `Fee` value as long as the current load-based transaction cost is not too high.
+The server automatically attempts to fill in certain fields in `tx_json` (the [Transaction object](reference-transaction-format.html)) automatically if you omit them. The server provides the following fields before signing, unless the request specified `offline` as `true`:
+
+* `Sequence` - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request.
+* `Fee` - If you omit the `Fee` parameter, the server tries to fill in an appropriate transaction cost automatically. On the production Ripple Consensus Ledger, this fails with `rpcHIGH_FEE` unless you provide an appropriate `fee_mult_max` value.
+    * The `fee_mult_max` and `fee_div_max` parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the [reference transaction cost](concept-transaction-cost.html#reference-transaction-cost). The default values return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger [typically has a 1000× load multiplier](concept-transaction-cost.html#current-transaction-cost).
+    * **Caution:** A malicious server can specify an excessively high transaction cost, ignoring the values of `fee_mult_max` and `fee_div_max`.
 * `Paths` - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a [ripple_path_find](#ripple-path-find). Only filled if `build_path` is provided.
 
 #### Response Format ####
@@ -6406,7 +6411,7 @@ __*Caution:*__ If this command results in an error messages, the message can con
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `highFee` - The `fee_mult_max` parameter was specified, but the server's current transaction cost multiplier exceeds the specified one.
+* `highFee` - The current load-based multiplier to the transaction cost exceeds the limit for an automatically-provided transaction cost. Either specify a higher `fee_mult_max` (at least 1000) in the request or manually provide a value in the `Fee` field of the `tx_json`.
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
 

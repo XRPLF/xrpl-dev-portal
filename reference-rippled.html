@@ -192,6 +192,7 @@
 <li class="level-3"><a href="#path-find-status">path_find status</a></li>
 <li class="level-2"><a href="#ripple-path-find">ripple_path_find</a></li>
 <li class="level-2"><a href="#sign">sign</a></li>
+<li class="level-3"><a href="#auto-fillable-fields">Auto-Fillable Fields</a></li>
 <li class="level-2"><a href="#sign-for">sign_for</a></li>
 <li class="level-2"><a href="#submit">submit</a></li>
 <li class="level-3"><a href="#submit-only-mode">Submit-Only Mode</a></li>
@@ -7460,20 +7461,22 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <tr>
 <td>fee_mult_max</td>
 <td>Integer</td>
-<td>(Optional) If the <code>Fee</code> parameter (<a href="concept-transaction-cost.html">transaction cost</a>) is omitted, this field limits the automatically-provided value so that it is less than or equal to the base transaction cost times this value.</td>
+<td>(Optional, defaults to 10; recommended value 1000) Limits how high the <a href="reference-transaction-format.html#auto-fillable-fields">automatically-provided <code>Fee</code> field</a> can be. Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="concept-transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="concept-transaction-cost.html">transaction cost</a>).</td>
 </tr>
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, signing fails. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional, defaults to 1) Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="concept-transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="concept-transaction-cost.html">transaction cost</a>). <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
 </tr>
 </tbody>
 </table>
-<p>The server automatically attempts to fill in certain fields from the <code>tx_json</code> object if they are omitted, unless you specified <code>offline</code> as true. Otherwise, the following fields from the <a href="reference-transaction-format.html">transaction format</a> are automatically filled in:</p>
+<h3 id="auto-fillable-fields">Auto-Fillable Fields</h3>
+<p>The server automatically attempts to fill in certain fields in <code>tx_json</code> (the <a href="reference-transaction-format.html">Transaction object</a>) automatically if you omit them. The server provides the following fields before signing, unless the request specified <code>offline</code> as <code>true</code>:</p>
 <ul>
-<li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request. Automatically filled unless <code>offline</code> is true.</li>
-<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">automatically provides an appropriate transaction cost</a> unless you specified <code>offline</code> as true. If you specify <code>offline</code> as true, you must fill in the transaction cost in the <code>Fee</code> parameter. Be careful: a malicious server can specify an excessively high transaction cost.<ul>
-<li>If <code>fee_mult_max</code> is included, and the automatically provided <code>Fee</code> value is greater than the long-term base transaction cost times <code>fee_mult_max</code>, then the transaction fails with the error <code>rpcHIGH_FEE</code>. This way, you can let the server fill in the current minimum <code>Fee</code> value as long as the current load-based transaction cost is not too high.</li>
+<li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information. Be careful: the next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must provide the correct sequence numbers in the request.</li>
+<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server tries to fill in an appropriate transaction cost automatically. On the production Ripple Consensus Ledger, this fails with <code>rpcHIGH_FEE</code> unless you provide an appropriate <code>fee_mult_max</code> value.<ul>
+<li>The <code>fee_mult_max</code> and <code>fee_div_max</code> parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the <a href="concept-transaction-cost.html#reference-transaction-cost">reference transaction cost</a>. The default values return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger <a href="concept-transaction-cost.html#current-transaction-cost">typically has a 1000× load multiplier</a>.</li>
+<li><strong>Caution:</strong> A malicious server can specify an excessively high transaction cost, ignoring the values of <code>fee_mult_max</code> and <code>fee_div_max</code>.</li>
 </ul>
 </li>
 <li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a <a href="#ripple-path-find">ripple_path_find</a>. Only filled if <code>build_path</code> is provided.</li>
@@ -7565,7 +7568,7 @@ rippled sign sssssssssssssssssssssssssssss '{"TransactionType": "Payment", "Acco
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>highFee</code> - The <code>fee_mult_max</code> parameter was specified, but the server's current transaction cost multiplier exceeds the specified one.</li>
+<li><code>highFee</code> - The current load-based multiplier to the transaction cost exceeds the limit for an automatically-provided transaction cost. Either specify a higher <code>fee_mult_max</code> (at least 1000) in the request or manually provide a value in the <code>Fee</code> field of the <code>tx_json</code>.</li>
 <li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.</li>
 <li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.</li>
 </ul>
