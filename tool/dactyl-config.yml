@@ -74,7 +74,7 @@ pages:
         category: References
         html: reference-rippleapi.html
         # Currently this is the only page that's fetched remotely.
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.17.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.17.1/docs/index.md
         ripple.com: https://ripple.com/build/rippleapi/
         filters:
             - remove_doctoc
