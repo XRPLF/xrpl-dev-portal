@@ -6488,11 +6488,11 @@ The response follows the [standard format](#response-formatting), with a success
 | tx_blob | String | Binary representation of the fully-qualified, signed transaction, as hex |
 | tx_json | Object | JSON specification of the [complete transaction](reference-transaction-format.html) as signed, including any fields that were automatically filled in |
 
-**Caution:** If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others, including:
+**Caution:** If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.
 
-* Do not write this error to a log file that can be seen by multiple people
-* Do not paste this error to a public place for debugging
-* Do not display the error message on a website, even by accident
+* Do not write this error to a log file that can be seen by multiple people.
+* Do not paste this error to a public place for debugging.
+* Do not display the error message on a website, even by accident.
 
 #### Possible Errors ####
 
@@ -6999,11 +6999,11 @@ The response follows the [standard format](#response-formatting), with a success
 
 **Caution:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](reference-transaction-format.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
-**Caution:** If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:
+**Caution:** If this command results in an error messages, the message can contain the secret key from the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others.
 
-* Do not write an error including your secret to a log file that can be seen by multiple people
-* Do not paste an error including your secret to a public place for debugging
-* Do not display an error message including your secret on a website, even by accident
+* Do not write an error including your secret key to a log file that can be seen by multiple people.
+* Do not paste an error including your secret key to a public place for debugging.
+* Do not display an error message including your secret key on a website, even by accident.
 
 
 #### Possible Errors ####

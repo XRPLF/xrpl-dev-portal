@@ -7590,11 +7590,11 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others, including:</p>
+<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.</p>
 <ul>
-<li>Do not write this error to a log file that can be seen by multiple people</li>
-<li>Do not paste this error to a public place for debugging</li>
-<li>Do not display the error message on a website, even by accident</li>
+<li>Do not write this error to a log file that can be seen by multiple people.</li>
+<li>Do not paste this error to a public place for debugging.</li>
+<li>Do not display the error message on a website, even by accident.</li>
 </ul>
 <h4 id="possible-errors-23">Possible Errors</h4>
 <ul>
@@ -8164,11 +8164,11 @@ Connecting to 127.0.0.1:5005
 </tbody>
 </table>
 <p><strong>Caution:</strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does <em>not</em> indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
-<p><strong>Caution:</strong> If this command results in an error messages, the message can contain an account secret, if one was provided in the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others, including:</p>
+<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others.</p>
 <ul>
-<li>Do not write an error including your secret to a log file that can be seen by multiple people</li>
-<li>Do not paste an error including your secret to a public place for debugging</li>
-<li>Do not display an error message including your secret on a website, even by accident</li>
+<li>Do not write an error including your secret key to a log file that can be seen by multiple people.</li>
+<li>Do not paste an error including your secret key to a public place for debugging.</li>
+<li>Do not display an error message including your secret key on a website, even by accident.</li>
 </ul>
 <h4 id="possible-errors-25">Possible Errors</h4>
 <ul>
