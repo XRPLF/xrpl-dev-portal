@@ -228,6 +228,10 @@
 <li class="level-2"><a href="#json">json</a></li>
 <li class="level-2"><a href="#connect">connect</a></li>
 <li class="level-2"><a href="#stop">stop</a></li>
+<li class="level-1"><a href="#peer-protocol">Peer Protocol</a></li>
+<li class="level-2"><a href="#configuring-the-peer-protocol">Configuring the Peer Protocol</a></li>
+<li class="level-2"><a href="#peer-crawler">Peer Crawler</a></li>
+<li class="level-3"><a href="#concealing-peer-information">Concealing Peer Information</a></li>
 
             </ul>
         </div>
@@ -255,7 +259,7 @@
 <p>The WebSocket and JSON-RPC APIs are still in development, and are subject to change. If you want to be notified of upcoming changes and future versions of <code>rippled</code>, subscribe to the Ripple Server mailing list:</p>
 <p><a href="https://groups.google.com/forum/#!forum/ripple-server">https://groups.google.com/forum/#!forum/ripple-server</a></p>
 <h2 id="connecting-to-rippled">Connecting to rippled</h2>
-<p>Before you can run any commands against a <code>rippled</code> server, you must know which server you are connecting to. Most servers are configured not to accept requests directly from the outside network.</p>
+<p>Before you can run any commands against a <code>rippled</code> server, you must know which server you are connecting to. Most servers are configured not to accept API requests directly from the outside network.</p>
 <p>Alternatively, you can <a href="tutorial-rippled-setup.html">run your own local copy of <code>rippled</code></a>. This is required if you want to access any of the <a href="#list-of-admin-commands">Admin Commands</a>. In this case, you should use whatever IP and port you configured the server to bind. (For example, <code>127.0.0.1:54321</code>) Additionally, in order to access admin functionality, you must connect from a port/IP address marked as admin in the config file.</p>
 <p>The <a href="https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854">example config file</a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
 <h3 id="websocket-api">WebSocket API</h3>
@@ -12698,6 +12702,189 @@ Connecting to 127.0.0.1:5005
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
+<h1 id="peer-protocol">Peer Protocol</h1>
+<p>Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then <em>upgrade</em> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network article in the <code>rippled</code> repository</a>.)</p>
+<h2 id="configuring-the-peer-protocol">Configuring the Peer Protocol</h2>
+<p>In order to participate in the Ripple Consensus Ledger, <code>rippled</code> servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted.)</p>
+<p>Ideally, the server should be able to send <em>and</em> receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the <code>rippled</code> server. The <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">default <code>rippled</code> configuration file</a> listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your <code>rippled.cfg</code> file.</p>
+<p>Example:</p>
+<pre><code>[port_peer]
+port = 51235
+ip = 0.0.0.0
+protocol = peer
+</code></pre>
+<h2 id="peer-crawler">Peer Crawler</h2>
+<p>The Peer Crawler reports information about other servers a <code>rippled</code> server is connected to as peers. The <a href="#peers"><code>peers</code> command</a> in the <a href="#websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</a> also returns a similar, more comprehensive set of information, but requires admin access to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.</p>
+<h4 id="request-format-51">Request Format</h4>
+<p>To request the Peer Crawler information, make the following HTTP request:</p>
+<ul>
+<li><strong>Protocol:</strong> https</li>
+<li><strong>HTTP Method:</strong> GET</li>
+<li><strong>Host:</strong> (any <code>rippled</code> server, by hostname or IP address)</li>
+<li><strong>Port:</strong> (port number where the <code>rippled</code> server uses the Peer Protocol, typically 51235)</li>
+<li><strong>Path:</strong> <code>/crawl</code></li>
+<li><strong>Notes:</strong> Most <code>rippled</code> servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the <code>--insecure</code> flag) to display a response from those servers.</li>
+</ul>
+<h4 id="response-format-49">Response Format</h4>
+<p>The response has the status code <strong>200 OK</strong> and a JSON object in the message body.</p>
+<p>The JSON object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>overlay.active</td>
+<td>Array</td>
+<td>Array of Peer Objects, where each member is a peer that is connected to this server.</td>
+</tr>
+</tbody>
+</table>
+<p>Each member of the <code>active</code> array is a Peer Object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ip</td>
+<td>String (IPv4 Address)</td>
+<td>The IP address of this connected peer.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>String (Number)</td>
+<td>The port number on the peer server that serves RTXP. Typically 51235.</td>
+</tr>
+<tr>
+<td>public_key</td>
+<td>String (Base-64 Encoded)</td>
+<td>The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the <code>pubkey_node</code> reported in the peer server's <a href="#server-info"><code>server_info</code> command</a>.)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>The value <code>in</code> or <code>out</code>, indicating whether the TCP connection to the peer is incoming or outgoing.</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>Number</td>
+<td>The number of seconds the server has been has been connected to this peer.</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>The <code>rippled</code> version number the peer reports to be using.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example">Example</h4>
+<p>Request:</p>
+<div class="multicode" id="code-101"><ul class="codetabs"><li><a href="#code-101-0">HTTP</a></li><li><a href="#code-101-1">cURL</a></li></ul>
+
+<div class="code_sample" id="code-101-0" style="position: static;"><pre><code>GET https://s1.ripple.com:51235/crawl
+</code></pre></div>
+
+<div class="code_sample" id="code-101-1" style="position: static;"><pre><code>curl -k https://s1.ripple.com:51235/crawl
+</code></pre></div>
+</div>
+<p>Response:</p>
+<pre><code class="json">200 OK
+{
+    "overlay": {
+        "active": [{
+            "ip": "208.43.252.243",
+            "port": "51235",
+            "public_key": "A2GayQNaj7qbqLFiCFW2UXtAnEPghP/KWVqix2gUa6dM",
+            "type": "out",
+            "uptime": 107926,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "184.172.237.226",
+            "port": "51235",
+            "public_key": "Asv/wKq/dqMWbP2M4eR+QvkuojYMLRXhKhIPnW40bsaF",
+            "type": "out",
+            "uptime": 247376,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "54.186.73.52",
+            "port": "51235",
+            "public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.59",
+            "port": "51235",
+            "public_key": "AyIcVhAhOGnP0vtfCt+HKUrx9B2fDvP/4XUkOtVQ37g/",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.1"
+        }, {
+            "ip": "169.53.155.44",
+            "port": "51235",
+            "public_key": "AuVZszWXgMgM8YuTVhQsGE9OciEeBD8aMVe1mFid3n63",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b12"
+        }, {
+            "ip": "184.173.45.39",
+            "port": "51235",
+            "public_key": "Ao2GbGbp2QYQ2B4S9ckCtON7CsZdXqdK5Yon4x7qmWFm",
+            "type": "out",
+            "uptime": 63336,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.34",
+            "port": "51235",
+            "public_key": "A3inNJsIQzO7z7SS7uB9DyvN0wsiS9it/RGY/kNx6KEG",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.45",
+            "port": "51235",
+            "public_key": "AglUUjwXTC2kUlK41WjDs2eAVN0SnlMpzYA9lEgB0UGP",
+            "type": "out",
+            "uptime": 65443,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "99.110.49.91",
+            "port": "51301",
+            "public_key": "AuQDH0o+4fpl2n+pR5U0Y4FTj0oGr4iEKe0MObPcSYj9",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b9"
+        }, {
+            "ip": "169.53.155.36",
+            "port": "51235",
+            "public_key": "AsR4xub7MLg2Zl5Fwd/n7dTz7mhbBoSyCc/v9bnubrVy",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }]
+    }
+}
+</code></pre>
+<h3 id="concealing-peer-information">Concealing Peer Information</h3>
+<p>You can use the <code>[peer_private]</code> stanza of the <code>rippled</code> config file to request that peer servers do not report your IP address in the Peer Crawler response. You cannot force peers you do not control to follow this request, if they run custom software. However, you can use this to hide the IP addresses of <code>rippled</code> servers you control that <em>only</em> connect to peers you control (using <code>[ips_fixed]</code> and a firewall). This can help to protect important <a href="tutorial-rippled-setup.html#types-of-rippled-servers">validating servers</a>.</p>
+<p>Example:</p>
+<pre><code># Configuration on a private server that only connects through
+# a second rippled server at IP address 10.1.10.55
+[ips_fixed]
+10.1.10.55
+
+[peer_private]
+1
+</code></pre>
 <!---- rippled release notes links ---->
     </div>
       </main>
