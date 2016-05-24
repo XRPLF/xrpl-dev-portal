@@ -11114,9 +11114,19 @@ The response follows the [standard format](#response-formatting), with a success
 * Any of the [universal error types](#universal-errors).
 
 <!---- rippled release notes links ---->
-[version 0.26.0]: https://wiki.ripple.com/Rippled-0.26.0
-[version 0.26.4]: https://wiki.ripple.com/Rippled-0.26.4
+[version 0.26.0]: https://github.com/ripple/rippled/releases/tag/0.26.0
+[version 0.26.1]: https://github.com/ripple/rippled/releases/tag/0.26.1
+[version 0.26.2]: https://github.com/ripple/rippled/releases/tag/0.26.2
+[version 0.26.3-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.3-sp1
+[version 0.26.4]: https://github.com/ripple/rippled/releases/tag/0.26.4
 [version 0.26.4-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.4-sp1
+[version 0.27.0]: https://github.com/ripple/rippled/releases/tag/0.27.0
+[version 0.27.1]: https://github.com/ripple/rippled/releases/tag/0.27.1
+[version 0.27.2]: https://github.com/ripple/rippled/releases/tag/0.27.2
+[version 0.27.3]: https://github.com/ripple/rippled/releases/tag/0.27.3
+[version 0.27.3-sp1]: https://github.com/ripple/rippled/releases/tag/0.27.3-sp1
+[version 0.27.3-sp2]: https://github.com/ripple/rippled/releases/tag/0.27.3-sp2
+[version 0.27.4]: https://github.com/ripple/rippled/releases/tag/0.27.4
 [version 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0
 [version 0.28.2]: https://github.com/ripple/rippled/releases/tag/0.28.2
 [version 0.29.0]: https://github.com/ripple/rippled/releases/tag/0.29.0
