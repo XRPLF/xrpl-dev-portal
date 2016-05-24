@@ -12703,9 +12703,9 @@ Connecting to 127.0.0.1:5005
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <h1 id="peer-protocol">Peer Protocol</h1>
-<p>Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then <em>upgrade</em> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network article in the <code>rippled</code> repository</a>.)</p>
+<p>Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an <a href="https://tools.ietf.org/html/rfc7230#section-6.7">HTTP upgrade</a> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network article in the <code>rippled</code> repository</a>.)</p>
 <h2 id="configuring-the-peer-protocol">Configuring the Peer Protocol</h2>
-<p>In order to participate in the Ripple Consensus Ledger, <code>rippled</code> servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted.)</p>
+<p>In order to participate in the Ripple Consensus Ledger, <code>rippled</code> servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are <a href="tutorial-rippled-setup.html#clustering">clustered</a> with the current server.)</p>
 <p>Ideally, the server should be able to send <em>and</em> receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the <code>rippled</code> server. The <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">default <code>rippled</code> configuration file</a> listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your <code>rippled.cfg</code> file.</p>
 <p>Example:</p>
 <pre><code>[port_peer]

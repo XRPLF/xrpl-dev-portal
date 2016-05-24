@@ -10962,11 +10962,11 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Peer Protocol #
 
-Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then _upgrade_ to RTXP. (For more information, see the [Overlay Network article in the `rippled` repository](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake).)
+Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network article in the `rippled` repository](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake).)
 
 ## Configuring the Peer Protocol ##
 
-In order to participate in the Ripple Consensus Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted.)
+In order to participate in the Ripple Consensus Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the `rippled` server. The [default `rippled` configuration file](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your `rippled.cfg` file.
 
