@@ -1,8 +1,9 @@
 #Ripple Style Guide suggestions
+consult: see
 gateway: financial institution, issuer
 gateways: financial institutions, issuers
 wallet: address, client application, account
-consult: see
+ious: issuances
 will: (avoid future tense)
 
 #Plainlanguage.gov suggestions (adapted for Ripple)
@@ -91,7 +92,6 @@ indication: sign
 #initial: first
 initiate: start
 insane: (omit)
-ious: issuances
 just: (omit)
 liaison: discussion
 magnitude: size
@@ -146,7 +146,6 @@ terminate: end, stop
 therefore: so
 therein: there
 thereof: its, their
-this activity, command: us, we
 timely: prompt
 transmit: send
 utilize: use

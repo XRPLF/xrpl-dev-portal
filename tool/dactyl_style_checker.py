@@ -17,6 +17,7 @@ import yaml
 
 from bs4 import BeautifulSoup
 from bs4 import Comment
+from bs4 import NavigableString
 
 import dactyl_build
 
@@ -69,13 +70,22 @@ def check_all_pages(target=None):
 
         overrides = get_overrides(soup)
 
-        content_elements = ["p","li","a","td","h1","h2","h3","h4","h5","h6"]
-        passages = []
-        for el in soup.find_all(content_elements):
-            for passage in el.stripped_strings:
+        content_elements = ["p","li","a","em","strong","th","td",
+                            "h1","h2","h3","h4","h5","h6"]
+        for el in soup.descendants:
+            if (type(el) == NavigableString and
+                el.parent.name in content_elements and
+                str(el).strip()):
+                passage = str(el).strip()
                 passage_issues = check_passage(passage, overrides)
                 if passage_issues:
                     page_issues += passage_issues
+                #print("'%s' (%s)" % (el, el.parent.name))
+        # for el in soup.find_all(content_elements):
+        #     for passage in el.stripped_strings:
+        #         passage_issues = check_passage(passage, overrides)
+        #         if passage_issues:
+        #             page_issues += passage_issues
 
         if page_issues:
             style_issues.append( (page["name"], page_issues) )
