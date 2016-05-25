@@ -292,7 +292,7 @@ POST http://localhost:8088/
 }
 ```
 
-_(**Reminder:** Don't send your secret to a server you do not control.)_
+{% include 'snippets/secret-key-warning.md' %}
 
 Response:
 
@@ -364,7 +364,7 @@ POST http://localhost:8088/
 }
 ```
 
-_(**Reminder:** Don't send your secret to a server you do not control.)_
+{% include 'snippets/secret-key-warning.md' %}
 
 Response:
 
@@ -422,7 +422,7 @@ Content-Type: application/json
 }
 ```
 
-_(**Reminder:** Don't send your secret to a server you do not control.)_
+{% include 'snippets/secret-key-warning.md' %}
 
 Response:
 
@@ -485,7 +485,7 @@ POST http://localhost:5005/
 }
 ```
 
-_(**Reminder:** Don't send your secret to a server you do not control.)_
+{% include 'snippets/secret-key-warning.md' %}
 
 ### Authorizing Trust Lines ###
 
@@ -520,7 +520,7 @@ POST http://localhost:8088/
 }
 ```
 
-_(**Reminder:** Don't send your secret to a server you do not control.)_
+{% include 'snippets/secret-key-warning.md' %}
 
 
 ## Robustly Monitoring for Payments ##

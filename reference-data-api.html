@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -1402,7 +1405,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>WARNING:</strong> This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.</p>
+<p class="devportal-callout warning"><strong>WARNING:</strong> This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.</p>
 <h4 id="example-7">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/reports/2015-08-19T00:00:00Z?accounts=true&amp;payments=true
@@ -5418,7 +5421,7 @@ Content-Type: image/svg+xml
 <li><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a> character set: 0-9 and A-F.</li>
 <li>Typically written in upper case.</li>
 </ul>
-<p><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="timestamps">Timestamps</h3>
 <p>All dates and times are written in ISO 8601 Timestamp Format, using UTC. This format is summarized as:</p>
 <p><code>YYYY-MM-DDThh:mm:ssZ</code></p>
@@ -5589,7 +5592,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
 <h3 id="genesis-ledger">Genesis Ledger</h3>
 <p>Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the <em>genesis ledger</em>.</p>
 <h2 id="account-creation-objects">Account Creation Objects</h2>
@@ -6186,7 +6189,7 @@ $ node import/live
 <p>The Backfiller retrieves old ledgers from a <code>rippled</code> instance by moving backwards in time. You can optionally provide start and stop indexes to retrieve a specific range of ledgers, by their sequence number.</p>
 <p>The <code>--startIndex</code> parameter defines the most-recent ledger to retrieve. The Backfiller retrieves this ledger first and then continues retrieving progressively older ledgers. If this parameter is omitted, the Backfiller begins with the newest validated ledger.</p>
 <p>The <code>--stopIndex</code> parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.</p>
-<p><strong>Warning:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
 <p>Example usage:</p>
 <pre><code>// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000

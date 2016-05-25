@@ -29,6 +29,7 @@ targets:
             - multicode_tabs
             - standardize_header_ids
             - buttonize
+            - callouts
 
     -   name: ripple.com
         filters:

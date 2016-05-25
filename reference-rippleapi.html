@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -4745,7 +4748,7 @@ return api.prepareSettings(address, settings)
 <h2 id="preparesuspendedpaymentcreation">prepareSuspendedPaymentCreation</h2>
 <p><code>prepareSuspendedPaymentCreation(address: string, suspendedPaymentCreation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment creation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-23">Parameters</h3>
 <table>
 <thead>
@@ -4850,7 +4853,7 @@ return api.prepareSuspendedPaymentCreation(address, suspendedPaymentCreation).th
 <h2 id="preparesuspendedpaymentcancellation">prepareSuspendedPaymentCancellation</h2>
 <p><code>prepareSuspendedPaymentCancellation(address: string, suspendedPaymentCancellation: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment cancellation transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-24">Parameters</h3>
 <table>
 <thead>
@@ -4940,7 +4943,7 @@ return api.prepareSuspendedPaymentCancellation(address, suspendedPaymentCancella
 <h2 id="preparesuspendedpaymentexecution">prepareSuspendedPaymentExecution</h2>
 <p><code>prepareSuspendedPaymentExecution(address: string, suspendedPaymentExecution: Object, instructions: Object): Promise&lt;Object&gt;</code></p>
 <p>Prepare a suspended payment execution transaction. The prepared transaction must subsequently be <a href="#sign">signed</a> and <a href="#submit">submitted</a>.</p>
-<p><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Suspended Payments are currently available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> only.</p>
 <h3 id="parameters-25">Parameters</h3>
 <table>
 <thead>

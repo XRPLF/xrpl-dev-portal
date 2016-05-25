@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -163,7 +166,7 @@
 <li>Create a <a href="#new-genesis-ledger">new genesis ledger</a> from scratch.</li>
 <li><a href="#load-saved-ledger">Load an existing ledger version</a> from disk.</li>
 </ul>
-<p><strong>Caution:</strong> In stand-alone mode, you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> In stand-alone mode, you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>.</p>
 <h2 id="new-genesis-ledger">New Genesis Ledger</h2>
 <p>In stand-alone mode, you can have <code>rippled</code> create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)</p>
 <ul>
@@ -174,7 +177,7 @@
 <p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
 <p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
 <p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
-<p><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
 <h2 id="load-saved-ledger">Load Saved Ledger</h2>
 <p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
 <h3 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h3>
