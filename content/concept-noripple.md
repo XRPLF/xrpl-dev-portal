@@ -4,11 +4,11 @@ In the Ripple Consensus Ledger (RCL), the "NoRipple" flag is a setting on a trus
 
 ## Background ##
 
-"Rippling" occurs when more than one trust line is adjusted in order to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in Ripple with trust lines like so:
+"Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in Ripple with trust lines like so:
 
 ![Charlie --($10)-- Alice -- ($20) -- Bob](img/noripple-01.png)
 
-If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice simply transfers some of the debt from Bob to Charlie. In the end, the Ripple trust lines work out like so:
+If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice transfers some of the debt from Bob to Charlie. In the end, the Ripple trust lines work out like so:
 
 ![Charlie --($13)-- Alice --($17)-- Bob](img/noripple-02.png)
 
@@ -16,19 +16,19 @@ We call this process, where two addresses pay each other by adjusting the balanc
 
 ## Justification ##
 
-Sometimes you do not want your balances to ripple. For example, imagine Emily has money at two different Gateways, like so
+Sometimes you do not want your balances to ripple. For example, imagine Emily has money issued by two different financial institutions, like so
 
-![Charlie --($10)-- Gateway A --($1)-- Emily --($100)-- Gateway B --($2)-- Daniel](img/noripple-03.png)
+![Charlie --($10)-- Institution A --($1)-- Emily --($100)-- Institution B --($2)-- Daniel](img/noripple-03.png)
 
 Now Charlie can pay Daniel by rippling through Emily's address. For example, if Charlie pays Daniel $10:
 
-![Charlie --($0)-- Gateway A --($11)-- Emily --($90)-- Gateway B --($12)-- Daniel](img/noripple-04.png)
+![Charlie --($0)-- Institution A --($11)-- Emily --($90)-- Institution B --($12)-- Daniel](img/noripple-04.png)
 
-This may surprise Emily, who does not know Charlie or Daniel. Even worse, if Gateway A charges her higher fees to withdraw her money than Gateway B, this could cost Emily money. The NoRipple flag exists to avoid this scenario. If Emily sets it on both trust lines, then payments cannot ripple through her address using those two trust lines.
+This may surprise Emily, who does not know Charlie or Daniel. Even worse, if Institution A charges her higher fees to withdraw her money than Institution B, this could cost Emily money. The NoRipple flag exists to avoid this scenario. If Emily sets it on both trust lines, then payments cannot ripple through her address using those two trust lines.
 
 For example:
 
-![Charlie --($10)-- Gateway A --($1, NoRipple)-- Emily --($100,NoRipple)-- Gateway B --($2)-- Daniel](img/noripple-05.png)
+![Charlie --($10)-- Institution A --($1, NoRipple)-- Emily --($100,NoRipple)-- Institution B --($2)-- Daniel](img/noripple-05.png)
 
 Now the above scenario, where Charlie pays Daniel while rippling through Emily's address, is no longer possible.
 

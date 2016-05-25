@@ -9,16 +9,16 @@ When an Amendment has been enabled, it applies permanently to all ledger version
 
 ## Background ##
 
-Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If only a portion of _validators_ (`rippled` servers [participating in consensus](tutorial-rippled-setup.html#reasons-to-run-a-validator)) have upgraded to a new version of the software, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
+Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some _validators_ (`rippled` servers [participating in consensus](tutorial-rippled-setup.html#reasons-to-run-a-validator)) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
 
-Amendments provide a solution to this problem, so that new features can be enabled only when enough validators support those features.
+Amendments solve this problem, so that new features can be enabled only when enough validators support those features.
 
-Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) do not require Amendments.
+Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or [the consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) do not need Amendments.
 
 
 ## About Amendments ##
 
-An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A `rippled` server that wants to use an amendment has code for two modes: without the amendment (previous behavior) and with the amendment (new behavior).
+An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A `rippled` server that wants to use an amendment has code for two modes: without the amendment (old behavior) and with the amendment (new behavior).
 
 Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.
 
@@ -28,7 +28,7 @@ See also: [Known Amendments](#known-amendments)
 
 Every 256th ledger is called a "flag" ledger. The process of approving an amendment starts in the ledger version immediately before the flag ledger. When `rippled` validator servers send validation messages for that ledger, those servers also submit votes in favor of specific amendments. ([Fee Voting](concept-fee-voting.html) also occurs around flag ledgers.)
 
-The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an [`EnableAmendment` pseudo-transaction](reference-transaction-format.html#enableamendment) into the following ledger. The flags of an EnableAmendment pseudo-transaction indicate what the server thinks happened:
+The flag ledger itself has no special contents. However, during that time, the servers look at the votes of the validators they trust, and decide whether to insert an [`EnableAmendment` pseudo-transaction](reference-transaction-format.html#enableamendment) into the following ledger. The flags of an EnableAmendment pseudo-transaction show what the server thinks happened:
 
 * The `tfGotMajority` flag means that support for the amendment has increased to at least 80% of trusted validators.
 * The `tfLostMajority` flag means that support for the amendment has decreased to less than 80% of trusted validators.
@@ -42,7 +42,7 @@ A server only inserts the pseudo-transaction to enable an amendment if all of th
 * The previous ledger in question has a close time that is at least **two weeks** before the close time of the latest flag ledger.
 * There are no EnableAmendment pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the consensus ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
 
-It is theoretically possible (but extremely unlikely) that a `tfLostMajority` EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the `tfLostMajority` pseudo-transaction has no effect.
+Theoretically, a `tfLostMajority` EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the `tfLostMajority` pseudo-transaction has no effect.
 
 ## Amendment Voting ##
 
@@ -50,11 +50,11 @@ Operators of `rippled` validators can choose which amendments to support or reje
 
 The operator of a `rippled` validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.
 
-As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Currently, Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is sufficient to coordinate with Ripple (the company) on releasing new features.
+As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is enough to coordinate with Ripple (the company) on releasing new features.
 
 ### Configuring Amendment Voting ###
 
-You can temporarily configure an amendment using the [`feature` command](reference-rippled.html#feature). To make a persistent change to your server's support for an amendment, modify your server's `rippled.cfg` file.
+You can temporarily configure an amendment using the [`feature` command](reference-rippled.html#feature). To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
 
 Use the `[veto_amendments]` stanza to list amendments you do not want the server to vote for. Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:
 
@@ -109,7 +109,7 @@ The following is a comprehensive list of all known amendments and their status o
 |--------------|
 | 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE |
 
-Changes the way the [transaction cost](concept-transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost.
+Changes the way the [transaction cost](concept-transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
 
 This amendment introduces a fixed-size transaction queue for transactions that were not able to be included in the previous consensus round. If the `rippled` servers in the consensus network are under heavy load, they queue the transactions with the lowest transaction cost for later ledgers. Each consensus round prioritizes transactions from the queue with the largest transaction cost (`Fee` value), and includes as many transactions as the consensus network can process. If the transaction queue is full, transactions drop from the queue entirely, starting with the ones that have the lowest transaction cost.
 
@@ -127,13 +127,13 @@ A transaction remains in the queue until one of the following happens:
 |--------------|
 | 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 |
 
-Introduces simple [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger node type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
+Introduces [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger node type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
 This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."
 
 Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.
 
-An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. Therefore, the `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](reference-transaction-format.html#result-categories):
+An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](reference-transaction-format.html#result-categories):
 
 * `temBAD_SIGNER`
 * `temBAD_QUORUM`
@@ -149,7 +149,7 @@ An address with a SignerList can disable the master key even if a regular key is
 |--------------|
 | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |
 
-Provides "Suspended Payments" for XRP as a means of escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
+Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
 
 This amendment is still in development. The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
 
@@ -161,7 +161,7 @@ This amendment is still in development. The current version is enabled on the [R
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger node](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled accordingly. The sender of the transaction must have [`lsfRequireAuth` enabled](reference-ledger-format.html#accountroot-flags).
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger node](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled appropriately. The sender of the transaction must have [`lsfRequireAuth` enabled](reference-ledger-format.html#accountroot-flags).
 
 ## Tickets ##
 

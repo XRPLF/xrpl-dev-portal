@@ -192,7 +192,7 @@
 <h3 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions.</h3>
 <p>If you only want the most recent ledger, you can skip this step.</p>
 <p>If you want to load a specific historical ledger version, use the <a href="reference-rippled.html#ledger-request"><code>ledger_request</code> command</a> to make <code>rippled</code> fetch it. If <code>rippled</code> does not already have the ledger version, you may have to run the <code>ledger_request</code> command multiple times until it has finished retrieving the ledger.</p>
-<p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)</p>
+<p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)</p>
 <h3 id="4-shut-down-rippled">4. Shut down <code>rippled</code>.</h3>
 <p>Use the <a href="reference-rippled.html#stop"><code>stop</code> command</a>:</p>
 <pre><code>rippled stop --conf=/path/to/rippled.cfg

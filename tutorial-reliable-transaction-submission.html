@@ -154,10 +154,10 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="reliable-transaction-submission">Reliable Transaction Submission</h1>
-<p>Gateways and back-end applications should use the best practices described here to ensure that transactions are validated or rejected in a verifiable and timely fashion.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
+<p>Financial institutions and other services using the Ripple Consensus Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
 <p>The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:</p>
 <ol>
-<li><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotency</a> - Transactions will be processed once and only once, or not at all.</li>
+<li><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotency</a> - Transactions should be processed once and only once, or not at all.</li>
 <li>Verifiability - Applications can determine the final result of a transaction.</li>
 </ol>
 <p>Applications which fail to implement best practices are at risk of the following errors:</p>
@@ -169,8 +169,8 @@
 <p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
 <h2 id="background">Background</h2>
 <p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
-<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction will not be included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction may become viable again. If the transaction does not include expiration, there is no limit to how much later this can occur.</p>
-<p>Applications face additional challenges, in the event of power or network loss, ascertaining the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly ascertain its authoritative results.</p>
+<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.</p>
+<p>If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.</p>
 <h3 id="transaction-timeline">Transaction Timeline</h3>
 <p>Ripple provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
 <ol>
@@ -180,29 +180,29 @@
 <li>Well-formed transactions may provisionally succeed, then later fail.</li>
 <li>Well-formed transactions may provisionally fail, then later succeed.</li>
 <li>Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, by consuming a different offer and achieving a better or worse exchange rate than the provisional execution.)</li>
-<li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, in order to enforce a cost for being propagated through the network.</li>
+<li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, to enforce a cost for being propagated through the network.</li>
 <li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.</li>
 <li>Transaction results are no longer provisional, success or failure is now final and immutable.</li>
 </ol>
-<p><em>Note:</em> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction, and does not indicate the transaction will be finally applied to the ledger.</p>
+<p><strong>Note:</strong> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.</p>
 <p>APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, <em>immutable</em>, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.</p>
-<p>While applying transactions, <code>rippled</code> servers use the <em>last validated ledger</em>, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it comprise the ledger history.</p>
+<p>While applying transactions, <code>rippled</code> servers use the <em>last validated ledger</em>, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it form the ledger history.</p>
 <p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>
 <p>Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each <code>rippled</code> server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
 <p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
-<p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not promptly validated yet could become viable at some point in the future. Gateways and other back-end applications should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the sequence number of the last validated ledger[1] to ensure that a transaction is validated or rejected in a predictable and timely fashion.</p>
-<p>Applications using rippled APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
+<p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger. You should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.</p>
+<p>Applications using <code>rippled</code> APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="reliable-transactions-submission">Reliable Transactions Submission</h3>
-<p>Applications submitting transactions should employ the following practices in order to submit reliably even in the event that a process dies or other failure occurs.  Application transaction results must be verified so that applications can act on the final, validated results.</p>
+<p>Applications submitting transactions should use the following practices to submit reliably even in the event that a process dies or other failure occurs.  Application transaction results must be verified so that applications can act on the final, validated results.</p>
 <p>Submission and verification are two separate procedures which may be implemented using the logic described in this document.</p>
 <ol>
 <li>Submission - The transaction is submitted to the network and a provisional result is returned.</li>
 <li>Verification - The authoritative result is determined by examining validated ledgers.</li>
 </ol>
 <h3 id="submission">Submission</h3>
-<p><a href="https://en.wikipedia.org/wiki/Persistence_%28computer_science%29">Persist</a> details of the transaction prior to submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.</p>
+<p><a href="https://en.wikipedia.org/wiki/Persistence_%28computer_science%29">Persist</a> details of the transaction before submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.</p>
 <p>The submission process:</p>
 <ol>
 <li>Construct and sign the transaction</li>
@@ -210,12 +210,12 @@
 <li>Persist the transaction details, saving:</li>
 <li>Transaction hash</li>
 <li><code>LastLedgerSequence</code></li>
-<li>Account ID and sequence number</li>
+<li>Sender address and sequence number</li>
 <li>Application-specific data, as needed</li>
 <li>Submit the transaction</li>
 </ol>
 <h3 id="verification">Verification</h3>
-<p>During normal operation, applications may check the status of submitted transactions by their hashes; or, depending on the API used, receive notifications when transactions have been validated (or failed).  This normal operation may be interrupted, for example by network failures or power failures.  In case of such interruption applications need to reliably verify the status of transactions which may or may not have been submitted to the network prior to the interruption.</p>
+<p>During normal operation, applications may check the status of submitted transactions by their hashes; or, depending on the API used, receive notifications when transactions have been validated (or failed).  This normal operation may be interrupted, for example by network failures or power failures.  In case of such interruption applications need to reliably verify the status of transactions which may or may not have been submitted to the network before the interruption.</p>
 <p>On restart, or the determination of a new last validated ledger (pseudocode):</p>
 <pre><code>For each persisted transaction without validated result:
     Query transaction by hash
@@ -237,7 +237,7 @@
             Repeat submission of original transaction
 </code></pre>
 <h2 id="technical-application">Technical Application</h2>
-<p>In order to implement the transaction submission and verification best practices, applications need to perform the following actions.</p>
+<p>To implement the transaction submission and verification best practices, applications need to do the following:</p>
 <ol>
 <li>Determine the signing account's next sequence number<ul>
 <li>Each transaction has an account-specific sequence number.  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.</li>
@@ -260,7 +260,7 @@
 </ul>
 </li>
 </ol>
-<p>An application's means of performing these actions depends on the API the application uses.  An application may use any of the following interfaces:</p>
+<p>How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:</p>
 <ol>
 <li><a href="reference-rippled.html"><code>rippled</code>'s internal APIs</a></li>
 <li><a href="reference-rippleapi.html">RippleAPI</a></li>
@@ -301,7 +301,7 @@
 }
 </code></pre>
 <p>In this example, the account's sequence is <strong>4</strong> (note <code>"Sequence": 4</code>, in <code>"account_data"</code>) as of the last validated ledger (note <code>"ledger": "validated"</code> in the request, and <code>"validated": "true"</code> in the response).</p>
-<p>If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  In order to submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.</p>
+<p>If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  To submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.</p>
 <h4 id="determine-the-last-validated-ledger">Determine the Last Validated Ledger</h4>
 <p><code>rippled</code> provides the <a href="reference-rippled.html#server-state">server_state</a> command which returns the ledger sequence number of the last validated ledger.</p>
 <p>Request:</p>
@@ -342,9 +342,9 @@
     }
 }
 </code></pre>
-<p>In this example the last validated ledger sequence number is 10268596 (found under <code>result.state.validated_ledger</code> in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server will eventually retrieve that portion of the ledger history.</p>
+<p>In this example the last validated ledger sequence number is 10268596 (found under <code>result.state.validated_ledger</code> in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.</p>
 <h4 id="construct-the-transaction">Construct the Transaction</h4>
-<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) from a gateway to another Ripple account.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) to another Ripple address.</p>
 <p>Request:</p>
 <pre><code>{
     "method": "sign",
@@ -370,7 +370,7 @@
 }
 </code></pre>
 <p>Notice the application specifies the account sequence <code>"Sequence": 4</code>, learned from an earlier call to <code>account_info</code>, to avoid <code>tefPAST_SEQ</code> errors.</p>
-<p>Notice also the <code>LastLedgerSequence</code> based on the last validated ledger our application learned from <code>server_state</code>.  The recommendation for backend applications is to use <em>(last validated ledger sequence + 4)</em>. Alternately, use a value of <em>(current ledger + 3)</em>.  If <code>LastLedgerSequence</code> is miscalculated and less than the last validated ledger, the transaction will fail with <code>tefMAX_LEDGER</code> error.</p>
+<p>Notice also the <code>LastLedgerSequence</code> based on the last validated ledger our application learned from <code>server_state</code>.  The recommendation for backend applications is to use <em>(last validated ledger sequence + 4)</em>. Alternately, use a value of <em>(current ledger + 3)</em>.  If <code>LastLedgerSequence</code> is miscalculated and less than the last validated ledger, the transaction fails with <code>tefMAX_LEDGER</code> error.</p>
 <p>Response:</p>
 <pre><code>{
     "result": {
@@ -482,8 +482,8 @@
     }
 }
 </code></pre>
-<p>This example response shows <code>"validated": true</code>, indicating the transaction has been included in a validated ledger and therefore the result of the transaction is immutable.  Further, the metadata includes <code>"TransactionResult": "tesSUCCESS"</code>, indicating the transaction was applied to the ledger.</p>
-<p>If the response does not include <code>"validated": true</code>, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the <code>tx</code> method again, allowing enough time for the network to validate subsequent ledger instances.  It may be necessary to wait for the ledger specified in <code>LastLedgerSequence</code> to be validated, although if the transaction is included in an earlier validated ledger the result become immutable at that time.</p>
+<p>This example response shows <code>"validated": true</code>, indicating the transaction has been included in a validated ledger, so the result of the transaction is immutable.  Further, the metadata includes <code>"TransactionResult": "tesSUCCESS"</code>, indicating the transaction was applied to the ledger.</p>
+<p>If the response does not include <code>"validated": true</code>, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the <code>tx</code> method again, allowing enough time for the network to validate more ledger instances.  It may be necessary to wait for the ledger specified in <code>LastLedgerSequence</code> to be validated, although if the transaction is included in an earlier validated ledger the result become immutable at that time.</p>
 <h4 id="verify-missing-transaction">Verify Missing Transaction</h4>
 <p>Applications must handle cases where a call to the <a href="reference-rippled.html#tx"><code>tx</code> method</a> returns a <code>txnNotFound</code> error.</p>
 <pre><code>{
@@ -500,7 +500,7 @@
     }
 }
 </code></pre>
-<p>The <code>txnNotFound</code> result code occurs in cases where the transaction has failed to be included in any ledger.  However, it could also occur when a rippled instance does not have a complete ledger history, or if the transaction has not yet propagated to the rippled instance.  Applications should make further queries to determine how to react.</p>
+<p>The <code>txnNotFound</code> result code occurs in cases where the transaction is not included in any ledger.  However, it could also occur when a <code>rippled</code> instance does not have a complete ledger history, or if the transaction has not yet propagated to the <code>rippled</code> instance.  Applications should make further queries to determine how to react.</p>
 <p>The <a href="reference-rippled.html#server-state"><code>server_state</code> method</a> (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under <code>result.state.complete_ledgers</code>.</p>
 <pre><code>{
     "result": {
@@ -531,9 +531,9 @@
     }
 }
 </code></pre>
-<p>Our example transaction specified <code>LastLedgerSequence</code> 10268600, based on the last validated ledger at the time, plus four.  So to determine whether our missing transaction has permanently failed, our <code>rippled</code> server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, <strong>and</strong> <code>tx</code> returns <code>txnNotFound</code>, then the transaction has failed and will never be included in any ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated <code>LastLedgerSequence</code>.</p>
-<p>The server state may indicate a last validated ledger sequence number less than the specified <code>LastLedgerSequence</code>.  If so, the <code>txnNotFound</code> indicates either (a) the submitted transaction failed to be distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it will be processed at most once.</p>
-<p>Finally the server state might indicate one or more gaps in the transaction history. The <code>completed_ledgers</code> field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and <code>LastLedgerSequence</code>), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) in order to determine that a <code>txnNotFound</code> result is immutable.</p>
+<p>Our example transaction specified <code>LastLedgerSequence</code> 10268600, based on the last validated ledger at the time, plus four.  To determine whether our missing transaction has permanently failed, our <code>rippled</code> server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, <strong>and</strong> <code>tx</code> returns <code>txnNotFound</code>, then the transaction has failed and cannot be included in any future ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated <code>LastLedgerSequence</code>.</p>
+<p>The server may report a last validated ledger sequence number less than the specified <code>LastLedgerSequence</code>.  If so, the <code>txnNotFound</code> indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.</p>
+<p>Finally the server may show one or more gaps in the transaction history. The <code>completed_ledgers</code> field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and <code>LastLedgerSequence</code>), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) to determine that a <code>txnNotFound</code> result is immutable.</p>
 <h2 id="additional-resources">Additional Resources</h2>
 <ul>
 <li><a href="reference-transaction-format.html">Transaction Format</a></li>

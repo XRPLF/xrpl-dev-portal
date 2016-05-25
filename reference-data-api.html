@@ -211,7 +211,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="ripple-data-api-v2">Ripple Data API v2</h1>
-<p>The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a database for easy access, which frees <code>rippled</code> servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as data source for applications such as <a href="https://www.ripplecharts.com/">Ripple Charts</a> and <a href="https://www.ripple.com">ripple.com</a>.</p>
+<p>The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees <code>rippled</code> servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as <a href="https://www.ripplecharts.com/">Ripple Charts</a> and <a href="https://www.ripple.com">ripple.com</a>.</p>
 <p>Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:</p>
 <p><a href="https://data.ripple.com"><strong>https://data.ripple.com</strong></a></p>
 <h2 id="more-information">More Information</h2>
@@ -716,7 +716,7 @@
 <tr>
 <td>:currency</td>
 <td>String</td>
-<td>(Optional) Currency code, followed by <code>+</code> and a counterparty address. (Or just <code>XRP</code>.) If omitted, return payments for all currencies.</td>
+<td>(Optional) Currency code, followed by <code>+</code> and a counterparty address. (Or <code>XRP</code> with no counterparty.) If omitted, return payments for all currencies.</td>
 </tr>
 </tbody>
 </table>
@@ -801,7 +801,7 @@
 </tbody>
 </table>
 <h5 id="aggregate-results">Aggregate Results</h5>
-<p>If the request specifies a <code>currency</code> and an <code>interval</code>, the result includes objects summarizing activity over a specific time period instead of listing individual payments. Each interval summary object has the following fields:</p>
+<p>If the request specifies a <code>currency</code> and an <code>interval</code>, the result includes objects summarizing activity over a specific time period instead of listing individual payments. <!-- STYLE_OVERRIDE: time period --> Each interval summary object has the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -1777,7 +1777,7 @@
 <tr>
 <td>adjusted</td>
 <td>Boolean</td>
-<td>If true, do not count known issuer-owned wallets towards market capitalization. Defaults to true.</td>
+<td>If true, do not count known issuer-owned addresses towards market capitalization. Defaults to true.</td>
 </tr>
 <tr>
 <td>format</td>
@@ -2004,7 +2004,7 @@
 </tr>
 </tbody>
 </table>
-<p>Each "Account Trading Object" describes the activity of a single account during the period, and has the following fields:</p>
+<p>Each "Account Trading Object" describes the activity of a single account during this time period, and has the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -2275,12 +2275,12 @@
 <tr>
 <td>base</td>
 <td>Object</td>
-<td>The <code>currency</code> and <code>issuer</code> that identify the base currency of this market. There is no <code>issuer</code> for XRP.</td>
+<td>The <code>currency</code> and <code>issuer</code> of the base currency of this market. There is no <code>issuer</code> for XRP.</td>
 </tr>
 <tr>
 <td>counter</td>
 <td>Object</td>
-<td>The <code>currency</code> and <code>issuer</code> that identify the counter currency of this market. There is no <code>issuer</code> for XRP.</td>
+<td>The <code>currency</code> and <code>issuer</code> of the counter currency of this market. There is no <code>issuer</code> for XRP.</td>
 </tr>
 <tr>
 <td>converted_amount</td>
@@ -2572,7 +2572,7 @@
 </code></pre>
 <h2 id="get-issued-value">Get Issued Value</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
-<p>Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
+<p>Get the total value of all currencies issued by major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
 <h4 id="request-format-13">Request Format</h4>
 <div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">REST</a></li></ul>
@@ -3046,7 +3046,7 @@
 <tr>
 <td>account</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The issuing account (cold wallet) that issues the currency.</td>
+<td>The <a href="concept-issuing-and-operational-addresses.html">issuing address</a> of this currency.</td>
 </tr>
 <tr>
 <td>featured</td>
@@ -3118,6 +3118,7 @@
 </code></pre>
 <h2 id="get-gateway">Get Gateway</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
+<!-- STYLE_OVERRIDE: gateway, gateways -->
 <p>Get information about a specific gateway from <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">the Data API's list of known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h4 id="request-format-17">Request Format</h4>
 <div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">REST</a></li></ul>
@@ -3168,12 +3169,12 @@
 <tr>
 <td>accounts</td>
 <td>Array</td>
-<td>A list of <a href="concept-issuing-and-operational-addresses.html">issuing addresses</a> (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
+<td>A list of <a href="concept-issuing-and-operational-addresses.html">issuing addresses</a> used by this gateway. (Gateways may use different issuing accounts for different currencies.)</td>
 </tr>
 <tr>
 <td>hotwallets</td>
 <td>Array of <a href="#addresses">Address</a>es</td>
-<td>The addresses of the Ripple accounts this gateway uses as <a href="concept-issuing-and-operational-addresses.html">operational addresses</a> (hot wallets).</td>
+<td>This gateway's <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>.</td>
 </tr>
 <tr>
 <td>domain</td>
@@ -3205,7 +3206,7 @@
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The <a href="#addresses">Address</a> of an <a href="concept-issuing-and-operational-addresses.html">issuing address</a> (cold wallet) used by this gateway.</td>
+<td>The <a href="concept-issuing-and-operational-addresses.html">issuing address</a> used by this gateway.</td>
 </tr>
 <tr>
 <td>currencies</td>
@@ -3591,7 +3592,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value <code>all</code> to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results.)</td>
+<td>Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value <code>all</code> to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. For large issuers, there can be several tens of thousands of results.)</td>
 </tr>
 <tr>
 <td>format</td>
@@ -3803,7 +3804,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>specification.totalPrice</td>
 <td><a href="#balance-objects-and-balance-change-objects">Balance Object</a></td>
-<td>The maximum amount of the counter currency that will be spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled.</td>
+<td>The maximum amount of the counter currency the order can spend or gain to buy or sell the base currency. This value decreases as the order gets partially filled.</td>
 </tr>
 <tr>
 <td>properties</td>
@@ -5350,7 +5351,7 @@ Content-Type: image/svg+xml
 <li>Minimum value: <code>-9999999999999999e80</code></li>
 <li>15 decimal digits of precision</li>
 </ul>
-<p><strong>XRP</strong> has a different internal representation, and consequently its precision is different:</p>
+<p><strong>XRP</strong> has a different internal representation, and its precision is different:</p>
 <ul>
 <li>Minimum value: <code>0</code></li>
 <li>Maximum value: <code>100000000000</code> (<code>1e11</code>)</li>
@@ -5367,7 +5368,7 @@ Content-Type: image/svg+xml
 <li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.</li>
 </ul>
 <h4 id="special-addresses">Special Addresses</h4>
-<p>Some addresses have special meaning, or historical uses, in the Ripple Consensus Ledger. In many cases, these are "black hole" addresses, meaning the address is not derived from a known secret key. Since it is almost impossible to guess a secret key from just an address, any XRP possessed by those addresses is lost forever.</p>
+<p>Some addresses have special meaning, or historical uses, in the Ripple Consensus Ledger. In many cases, these are "black hole" addresses, meaning the address is not derived from a known secret key. Since it is almost impossible to guess a secret key from only an address, any XRP possessed by those addresses is lost forever.</p>
 <table>
 <thead>
 <tr>
@@ -5411,7 +5412,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h3 id="hashes">Hashes</h3>
-<p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered identical.</p>
+<p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
 <p>A Ripple hash value has the following characteristics:</p>
 <ul>
 <li>Exactly 64 characters in length</li>
@@ -5426,23 +5427,23 @@ Content-Type: image/svg+xml
 <li>Four-digit year</li>
 <li>Two-digit month</li>
 <li>Two-digit day</li>
-<li>The letter <code>T</code> indicating the beginning of the time portion</li>
+<li>The letter <code>T</code> separating the date part and the time part</li>
 <li>Two-digit hour using a 24-hour clock</li>
 <li>Two digit minute</li>
 <li>The letter <code>Z</code> indicating zero offset from UTC.</li>
 </ul>
 <p>(As of <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>, the offset <code>+00:00</code> is no longer used.)</p>
 <h3 id="ledger-index">Ledger Index</h3>
-<p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
-<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
+<p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each new ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
+<p>The ledger index indicates the order of the ledgers; the <a href="#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always the same. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
 <ul>
 <li>Two different <code>rippled</code> servers may have different contents for a current ledger with the same ledger index, due to latency in propagating transactions throughout the network.</li>
 <li>There may be multiple closed ledger versions competing to be validated by consensus. These ledger versions have the same sequence number but different contents (and different hashes). Only one of these closed ledgers can become validated.</li>
-<li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. Therefore, the hash of a ledger is not calculated until the ledger is closed.</li>
+<li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. The hash of a ledger is not calculated until the ledger is closed.</li>
 </ul>
 <h3 id="account-sequence">Account Sequence</h3>
 <p>A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.</p>
-<p>Every <a href="reference-ledger-format.html#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be identical.</p>
+<p>Every <a href="reference-ledger-format.html#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be the same.</p>
 <p>Every <a href="reference-ledger-format.html#offer">Offer node in the Ripple Consensus Ledger</a> is marked with the sending <code>Account</code> <a href="#addresses">Address</a> and the <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that created it. These two fields, together, uniquely identify the Offer.</p>
 <h3 id="currency-code">Currency Code</h3>
 <p>There are two kinds of currency code in the Ripple Consensus Ledger:</p>
@@ -5453,7 +5454,7 @@ Content-Type: image/svg+xml
 <h2 id="pagination">Pagination</h2>
 <p>Many queries may return more data than is reasonable to return in a single HTTP response. The Data API uses a "limit and marker" system to control how much is returned in a single response ("page") and to query for additional content.</p>
 <p>The <code>limit</code> query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the <code>limit</code> is <strong>200</strong> by default, and can be set as high as <strong>1000</strong>. If you specify a <code>limit</code> larger than the maximum, the API uses the maximum value instead.</p>
-<p>When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field <code>marker</code> which indicates that you can retrieve additional results by including the contents of the <code>marker</code> field as the <code>marker</code> query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the <code>marker</code> parameter, that indicates that you have reached the end of the queryable data.</p>
+<p>When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field <code>marker</code> which indicates that you can retrieve additional results. To do so, make more requests with the previous value of the <code>marker</code> field as the <code>marker</code> query parameter. For each additional request, use the same parameters as the first request (except <code>marker</code>). When the response omits the <code>marker</code> parameter, that indicates that you have reached the end of the queryable data.</p>
 <p>When a <code>marker</code> is or would be present, the response contains a <a href="https://tools.ietf.org/html/rfc5988#section-5"><code>Link</code> header</a> with <code>rel="next"</code>. This is a full URL to the next page of results. You can use this to paginate over results when the response is in <code>csv</code> format instead of <code>json</code>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <h2 id="transaction-objects">Transaction Objects</h2>
 <p>Transactions have two formats - a compact "binary" format where the defining fields of the transaction are encoded as strings of hex, and an expanded format where the defining fields of the transaction are nested as complete JSON objects.</p>
@@ -5565,7 +5566,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>close_time_res</td>
 <td>Number</td>
-<td>The ledger close time is rounded to approximately this many seconds.</td>
+<td>The ledger close time is rounded to this many seconds.</td>
 </tr>
 <tr>
 <td>accounts_hash</td>
@@ -5589,7 +5590,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
+<p><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same <code>close_time</code> values, when their actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
 <h3 id="genesis-ledger">Genesis Ledger</h3>
 <p>Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the <em>genesis ledger</em>.</p>
 <h2 id="account-creation-objects">Account Creation Objects</h2>
@@ -5611,7 +5612,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>inception</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570.</td>
+<td>The UTC timestamp when the address was funded. For genesis accounts, this is the timestamp of ledger 32570. <!-- STYLE_OVERRIDE: inception --></td>
 </tr>
 <tr>
 <td>ledger_index</td>
@@ -5621,7 +5622,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>parent</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account.</td>
+<td>(Omitted for genesis accounts) The address that provided the XRP to fund this address.</td>
 </tr>
 <tr>
 <td>tx_hash</td>
@@ -5647,7 +5648,7 @@ Content-Type: image/svg+xml
 </table>
 <h2 id="exchange-objects">Exchange Objects</h2>
 <p>An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.</p>
-<p>A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.</p>
+<p>A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange has a different provider, currency pair, or both.</p>
 <table>
 <thead>
 <tr>
@@ -6072,7 +6073,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="volume-objects">Volume Objects</h2>
-<p>Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given time period.</p>
+<p>Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given period.</p>
 <table>
 <thead>
 <tr>
@@ -6110,17 +6111,17 @@ Content-Type: image/svg+xml
 <tr>
 <td>startTime</td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The start of this time period.</td>
+<td>The start of this period.</td>
 </tr>
 <tr>
 <td>total</td>
 <td>Number</td>
-<td>Total volume of all recorded exchanges in the time period.</td>
+<td>Total volume of all recorded exchanges in the period.</td>
 </tr>
 </tbody>
 </table>
 <h1 id="running-the-historical-database">Running the Historical Database</h1>
-<p>You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own <code>rippled</code> instance. This is useful if you do not want to depend on Ripple to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.</p>
+<p>You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own <code>rippled</code> instance. This is useful if you do not want to depend on Ripple to run the historical database indefinitely, or you want access to historical transactions from within your own intranet.</p>
 <h2 id="installation">Installation</h2>
 <h3 id="dependencies">Dependencies</h3>
 <p>The Historical Database requires the following software installed first:</p>
@@ -6132,19 +6133,23 @@ Content-Type: image/svg+xml
 </ul>
 <p>Version 2 of the Historical Database requires HBase instead of <a href="http://www.postgresql.org/">PostgreSQL</a>. Postgres support is deprecated.</p>
 <h3 id="installation-process">Installation Process</h3>
-<p>Starting in</p>
+<p>To install the Data API v2:</p>
 <ol>
 <li>Install HBase. For production use, configure it in distributed mode.</li>
-<li>Clone the rippled Historical Database Git Repository:
-    <code>git clone https://github.com/ripple/rippled-historical-database.git</code>
-    (You can also download and extract a zipped release instead.)</li>
-<li>Use npm to install additional modules:
-    <code>cd rippled-historical-database</code>
-<code>npm install</code>
-    The install script will also create the required config files: <code>config/api.config.json</code> and <code>config/import.config.json</code></li>
-<li>Modify the API and import config files as needed. Remove the <code>postgres</code> section from <code>api.config.json</code>.</li>
+<li>
+<p>Clone the rippled Historical Database Git Repository:</p>
+<pre><code>git clone https://github.com/ripple/rippled-historical-database.git
+</code></pre>
+<p>(You can also download and extract a zipped release instead.)
+  3. Use npm to install additional modules:</p>
+<pre><code>cd rippled-historical-database
+npm install
+</code></pre>
+<p>The install script creates the required config files: <code>config/api.config.json</code> and <code>config/import.config.json</code>
+  4. Change the config files as needed. Remove the <code>postgres</code> section from <code>api.config.json</code>.</p>
+</li>
 </ol>
-<p>Reports, stats, and aggregated exchange data needs additional processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See <a href="https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md">Storm Setup</a> for more information.</p>
+<p>Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See <a href="https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md">Storm Setup</a> for more information.</p>
 <p>At this point, the rippled Historical Database is installed. See <a href="#services">Services</a> for the different components that you can run.</p>
 <h3 id="tests">Tests</h3>
 <p>Dependencies:
@@ -6162,12 +6167,12 @@ $ docker-compose run webapp npm test
     Command: <code>node import/postgres/backfill</code></li>
 <li>API Server - Provides <a href="#api-method-reference">REST API access</a> to the data.
     Command:  <code>npm start</code> (restarts the server automatically when source files change),
-    or <code>node api/server.js</code> (simple start)</li>
+    or <code>node api/server.js</code> (start once)</li>
 </ul>
 <h2 id="importing-data">Importing Data</h2>
 <p>In order to retrieve data from the <code>rippled</code> Historical Database, you must first populate it with data. Broadly speaking, there are two ways this can happen:</p>
 <ul>
-<li>Connect to a <code>rippled</code> server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the <code>rippled</code> server not to maintain history older than what you have in your Historical Database.)<ul>
+<li>Connect to a <code>rippled</code> server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the <code>rippled</code> server not to keep history older than what you have in your Historical Database.)<ul>
 <li>You can choose to retrieve only new ledgers as they are validated, or you can retrieve old ledgers, too.</li>
 </ul>
 </li>
@@ -6175,7 +6180,7 @@ $ docker-compose run webapp npm test
 </ul>
 <p>In all cases, keep in mind that the integrity of the data is only as good as the original source. If you retrieve data from a public server, you are assuming that the operator of that server is trustworthy. If you load from a database dump, you are assuming that the provider of the dump has not corrupted or tampered with the data.</p>
 <h3 id="live-ledger-importer">Live Ledger Importer</h3>
-<p>The Live Ledger Importer is a service that connects to a <code>rippled</code> server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, it is still possible that the Importer may miss ledgers.</p>
+<p>The Live Ledger Importer is a service that connects to a <code>rippled</code> server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, the Importer may still miss ledgers.</p>
 <p>The Live Ledger Importer includes a secondary process that runs periodically to validate the data already imported and check for gaps in the ledger history.</p>
 <p>The Live Ledger Importer can import to one or more different data stores concurrently. If you have configured the historical database to use another storage scheme, you can use the <code>--type</code> parameter to specify the database type or types to use.</p>
 <p>Example usage:</p>

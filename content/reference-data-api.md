@@ -1,7 +1,7 @@
 Ripple Data API v2
 ==================
 
-The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a database for easy access, which frees `rippled` servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
 
 Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
@@ -439,7 +439,7 @@ This method accepts the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| :currency | String | (Optional) Currency code, followed by `+` and a counterparty address. (Or just `XRP`.) If omitted, return payments for all currencies. |
+| :currency | String | (Optional) Currency code, followed by `+` and a counterparty address. (Or `XRP` with no counterparty.) If omitted, return payments for all currencies. |
 
 Optionally, you can also include the following query parameters:
 
@@ -468,7 +468,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 ##### Aggregate Results #####
 
-If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. Each interval summary object has the following fields:
+If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. <!-- STYLE_OVERRIDE: time period --> Each interval summary object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
@@ -1129,7 +1129,7 @@ Optionally, you can also include the following query parameters:
 | limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
 | marker     | String  | [Pagination](#pagination) key from previously returned response |
 | descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| adjusted   | Boolean | If true, do not count known issuer-owned wallets towards market capitalization. Defaults to true. |
+| adjusted   | Boolean | If true, do not count known issuer-owned addresses towards market capitalization. Defaults to true. |
 | format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 If the request omits both `start` and `end`, the API returns only the most recent sample.
@@ -1264,7 +1264,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | exchanges\_count | Integer | Total number of exchanges in the period. |
 | accounts | Array of active Account Trading Objects | Active trading accounts for the period |
 
-Each "Account Trading Object" describes the activity of a single account during the period, and has the following fields:
+Each "Account Trading Object" describes the activity of a single account during this time period, and has the following fields:
 
 | Field           | Value            | Description |
 |-----------------|------------------|-------------|
@@ -1420,8 +1420,8 @@ Each object in the `components` array of the Volume Objects represent the volume
 | count  | Number | The number of exchanges in this market during this interval. |
 | rate   | Number | The exchange rate from the base currency to the display currency. |
 | amount | Number | The amount of volume in the market, in units of the base currency. |
-| base   | Object | The `currency` and `issuer` that identify the base currency of this market. There is no `issuer` for XRP. |
-| counter | Object | The `currency` and `issuer` that identify the counter currency of this market. There is no `issuer` for XRP. |
+| base   | Object | The `currency` and `issuer` of the base currency of this market. There is no `issuer` for XRP. |
+| counter | Object | The `currency` and `issuer` of the counter currency of this market. There is no `issuer` for XRP. |
 | converted\_amount | Number | The total amount of volume in the market, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
 
 #### Example ####
@@ -1650,7 +1650,7 @@ Response:
 ## Get Issued Value ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
+Get the total value of all currencies issued by major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
 
 The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
 
@@ -1991,7 +1991,7 @@ Each field in the top level JSON object is a [Currency Code][]. The content of e
 | Field    | Value   | Description |
 |----------|---------|-------------|
 | name     | String  | A human-readable proper name for the gateway. |
-| account  | String - [Address][] | The issuing account (cold wallet) that issues the currency. |
+| account  | String - [Address][] | The [issuing address](concept-issuing-and-operational-addresses.html) of this currency. |
 | featured | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple decides which gateways to feature based on responsible business practices, volume, and other measures. |
 | label    | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
 | assets   | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
@@ -2059,6 +2059,7 @@ Response:
 ## Get Gateway ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
+<!-- STYLE_OVERRIDE: gateway, gateways -->
 Get information about a specific gateway from [the Data API's list of known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
 
 #### Request Format ####
@@ -2089,10 +2090,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field       | Value  | Description |
 |-------------|--------|-------------|
-| name        | String | Human-readable name of the gateway
+| name        | String | Human-readable name of the gateway |
 | start\_date | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
-| accounts    | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
-| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as [operational addresses](concept-issuing-and-operational-addresses.html) (hot wallets). |
+| accounts    | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| hotwallets  | Array of [Address][]es | This gateway's [operational addresses](concept-issuing-and-operational-addresses.html). |
 | domain      | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
 | normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
 | assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
@@ -2101,7 +2102,7 @@ Each object in the `accounts` field array has the following fields:
 
 | Field      | Value  | Description |
 |------------|--------|-------------|
-| address    | String | The [Address][] of an [issuing address](concept-issuing-and-operational-addresses.html) (cold wallet) used by this gateway. |
+| address    | String | The [issuing address](concept-issuing-and-operational-addresses.html) used by this gateway. |
 | currencies | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
 
 #### Example ####
@@ -2399,7 +2400,7 @@ Optionally, you can also include the following query parameters:
 | date         | String  | UTC date for historical balances. |
 | currency     | String  | Restrict results to specified currency. |
 | counterparty | String  | Restrict results to specified counterparty/issuer. |
-| limit        | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results.) |
+| limit        | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. For large issuers, there can be several tens of thousands of results.) |
 | format       | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
@@ -2506,7 +2507,7 @@ Each order object has the following fields:
 | specification                | Object | Details of this order's current state. |
 | specification.direction      | String | Either `buy` or `sell`. |
 | specification.quantity       | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
-| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency that will be spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled. |
+| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency the order can spend or gain to buy or sell the base currency. This value decreases as the order gets partially filled. |
 | properties                   | Object | Details of how the order was placed. |
 | properties.maker             | String - [Address][] | The Ripple account that placed the order. |
 | properties.sequence          | Number | The sequence number of the transaction that placed this order. |
@@ -3556,7 +3557,7 @@ The precision for amounts of **non-XRP currency** in Ripple is as follows:
 * Minimum value: `-9999999999999999e80`
 * 15 decimal digits of precision
 
-**XRP** has a different internal representation, and consequently its precision is different:
+**XRP** has a different internal representation, and its precision is different:
 
 * Minimum value: `0`
 * Maximum value: `100000000000` (`1e11`)
@@ -3586,7 +3587,7 @@ All dates and times are written in ISO 8601 Timestamp Format, using UTC. This fo
 * Four-digit year
 * Two-digit month
 * Two-digit day
-* The letter `T` indicating the beginning of the time portion
+* The letter `T` separating the date part and the time part
 * Two-digit hour using a 24-hour clock
 * Two digit minute
 * The letter `Z` indicating zero offset from UTC.
@@ -3614,7 +3615,7 @@ Many queries may return more data than is reasonable to return in a single HTTP 
 
 The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the `limit` is **200** by default, and can be set as high as **1000**. If you specify a `limit` larger than the maximum, the API uses the maximum value instead.
 
-When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results by including the contents of the `marker` field as the `marker` query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
+When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results. To do so, make more requests with the previous value of the `marker` field as the `marker` query parameter. For each additional request, use the same parameters as the first request (except `marker`). When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
 
 When a `marker` is or would be present, the response contains a [`Link` header](https://tools.ietf.org/html/rfc5988#section-5) with `rel="next"`. This is a full URL to the next page of results. You can use this to paginate over results when the response is in `csv` format instead of `json`. _(New in [v2.0.4][])_
 
@@ -3652,13 +3653,13 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
 | parent\_hash  | String - [Hash][] | The identifying hash of the previous ledger. |
 | total\_coins  | [String - Number][] | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
-| close\_time\_res | Number | The ledger close time is rounded to approximately this many seconds. |
+| close\_time\_res | Number | The ledger close time is rounded to this many seconds. |
 | accounts\_hash | String - [Hash][] | Hash of the account information contained in this ledger, as hex. |
 | transactions\_hash | String - [Hash][] | Hash of the transaction information contained in this ledger, as hex. |
 | close\_time | Number | The time at which this ledger was closed, in UNIX time. |
 | close\_time\_human | String - [Timestamp][] | The time at which this ledger was closed. |
 
-**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
+**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same `close_time` values, when their actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
 
 ### Genesis Ledger ###
 
@@ -3671,9 +3672,9 @@ An account creation object represents the action of creating an account in the R
 | Field | Value | Description |
 |-------|-------|-------------|
 | address | String - [Address][] | The identifying address of this account, in base-58. |
-| inception | String - [Timestamp][] | The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570. |
+| inception | String - [Timestamp][] | The UTC timestamp when the address was funded. For genesis accounts, this is the timestamp of ledger 32570. <!-- STYLE_OVERRIDE: inception --> |
 | ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
-| parent | String - [Address][] | (Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account. |
+| parent | String - [Address][] | (Omitted for genesis accounts) The address that provided the XRP to fund this address. |
 | tx\_hash | String - [Hash][] | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
 | initial\_balance | [String - Number][] | (Omitted for genesis accounts) The amount of XRP that funded this account. |
 | genesis\_balance | [String - Number][] | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
@@ -3685,7 +3686,7 @@ An account creation object represents the action of creating an account in the R
 
 An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
 
-A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.
+A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange has a different provider, currency pair, or both.
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -3820,7 +3821,7 @@ The following values are valid for the `change_type` field of a Balance Change D
 ## Volume Objects ##
 [Volume Objects]: #volume-objects
 
-Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given time period.
+Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given period.
 
 | Field  | Value | Description |
 |--------|-------|-------------|
@@ -3829,8 +3830,8 @@ Volume objects represent the total volumes of money moved, in either payments or
 | endTime | String - [Timestamp][] | The end time of this interval. |
 | exchange | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
 | exchangeRate | Number | The exchange rate to the displayed currency from XRP.
-| startTime | String - [Timestamp][] | The start of this time period. |
-| total | Number | Total volume of all recorded exchanges in the time period. |
+| startTime | String - [Timestamp][] | The start of this period. |
+| total | Number | Total volume of all recorded exchanges in the period. |
 
 
 
@@ -3838,7 +3839,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 
 # Running the Historical Database #
 
-You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
+You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to run the historical database indefinitely, or you want access to historical transactions from within your own intranet.
 
 ## Installation ##
 
@@ -3855,19 +3856,23 @@ Version 2 of the Historical Database requires HBase instead of [PostgreSQL](http
 
 ### Installation Process ###
 
-Starting in
+To install the Data API v2:
 
   1. Install HBase. For production use, configure it in distributed mode.
   2. Clone the rippled Historical Database Git Repository:
-    `git clone https://github.com/ripple/rippled-historical-database.git`
+
+        git clone https://github.com/ripple/rippled-historical-database.git
+
     (You can also download and extract a zipped release instead.)
   3. Use npm to install additional modules:
-    `cd rippled-historical-database`
-    `npm install`
-    The install script will also create the required config files: `config/api.config.json` and `config/import.config.json`
-  4. Modify the API and import config files as needed. Remove the `postgres` section from `api.config.json`.
 
-Reports, stats, and aggregated exchange data needs additional processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
+        cd rippled-historical-database
+        npm install
+
+    The install script creates the required config files: `config/api.config.json` and `config/import.config.json`
+  4. Change the config files as needed. Remove the `postgres` section from `api.config.json`.
+
+Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
 
 At this point, the rippled Historical Database is installed. See [Services](#services) for the different components that you can run.
 
@@ -3892,13 +3897,13 @@ The `rippled` Historical Database consists of several processes that can be run 
     Command: `node import/postgres/backfill`
 * API Server - Provides [REST API access](#api-method-reference) to the data.
     Command:  `npm start` (restarts the server automatically when source files change),
-    or `node api/server.js` (simple start)
+    or `node api/server.js` (start once)
 
 ## Importing Data ##
 
 In order to retrieve data from the `rippled` Historical Database, you must first populate it with data. Broadly speaking, there are two ways this can happen:
 
-* Connect to a `rippled` server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the `rippled` server not to maintain history older than what you have in your Historical Database.)
+* Connect to a `rippled` server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the `rippled` server not to keep history older than what you have in your Historical Database.)
     * You can choose to retrieve only new ledgers as they are validated, or you can retrieve old ledgers, too.
 * Or, you can load a dump from a database that already has the historical ledger data. (At this time, there are no publicly-available database dumps of historical data.) Use the standard process for your database.
 
@@ -3906,7 +3911,7 @@ In all cases, keep in mind that the integrity of the data is only as good as the
 
 ### Live Ledger Importer ###
 
-The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, it is still possible that the Importer may miss ledgers.
+The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, the Importer may still miss ledgers.
 
 The Live Ledger Importer includes a secondary process that runs periodically to validate the data already imported and check for gaps in the ledger history.
 

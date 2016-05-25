@@ -59,7 +59,7 @@ If you only want the most recent ledger, you can skip this step.
 
 If you want to load a specific historical ledger version, use the [`ledger_request` command](reference-rippled.html#ledger-request) to make `rippled` fetch it. If `rippled` does not already have the ledger version, you may have to run the `ledger_request` command multiple times until it has finished retrieving the ledger.
 
-If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version immediately before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)
+If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)
 
 ### 4. Shut down `rippled`. ###
 

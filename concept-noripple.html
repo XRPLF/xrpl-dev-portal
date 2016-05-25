@@ -156,19 +156,19 @@
         <h1 id="understanding-the-noripple-flag">Understanding the NoRipple Flag</h1>
 <p>In the Ripple Consensus Ledger (RCL), the "NoRipple" flag is a setting on a trust line. When an address enables the NoRipple flag on two trust lines, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.</p>
 <h2 id="background">Background</h2>
-<p>"Rippling" occurs when more than one trust line is adjusted in order to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in Ripple with trust lines like so:</p>
+<p>"Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in Ripple with trust lines like so:</p>
 <p><img alt="Charlie --($10)-- Alice -- ($20) -- Bob" src="img/noripple-01.png"/></p>
-<p>If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice simply transfers some of the debt from Bob to Charlie. In the end, the Ripple trust lines work out like so:</p>
+<p>If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice transfers some of the debt from Bob to Charlie. In the end, the Ripple trust lines work out like so:</p>
 <p><img alt="Charlie --($13)-- Alice --($17)-- Bob" src="img/noripple-02.png"/></p>
 <p>We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the Ripple Consensus Ledger. Rippling occurs when are linked by trust lines that use the same <a href="reference-rippled.html#currency-codes">currency code</a>. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.</p>
 <h2 id="justification">Justification</h2>
-<p>Sometimes you do not want your balances to ripple. For example, imagine Emily has money at two different Gateways, like so</p>
-<p><img alt="Charlie --($10)-- Gateway A --($1)-- Emily --($100)-- Gateway B --($2)-- Daniel" src="img/noripple-03.png"/></p>
+<p>Sometimes you do not want your balances to ripple. For example, imagine Emily has money issued by two different financial institutions, like so</p>
+<p><img alt="Charlie --($10)-- Institution A --($1)-- Emily --($100)-- Institution B --($2)-- Daniel" src="img/noripple-03.png"/></p>
 <p>Now Charlie can pay Daniel by rippling through Emily's address. For example, if Charlie pays Daniel $10:</p>
-<p><img alt="Charlie --($0)-- Gateway A --($11)-- Emily --($90)-- Gateway B --($12)-- Daniel" src="img/noripple-04.png"/></p>
-<p>This may surprise Emily, who does not know Charlie or Daniel. Even worse, if Gateway A charges her higher fees to withdraw her money than Gateway B, this could cost Emily money. The NoRipple flag exists to avoid this scenario. If Emily sets it on both trust lines, then payments cannot ripple through her address using those two trust lines.</p>
+<p><img alt="Charlie --($0)-- Institution A --($11)-- Emily --($90)-- Institution B --($12)-- Daniel" src="img/noripple-04.png"/></p>
+<p>This may surprise Emily, who does not know Charlie or Daniel. Even worse, if Institution A charges her higher fees to withdraw her money than Institution B, this could cost Emily money. The NoRipple flag exists to avoid this scenario. If Emily sets it on both trust lines, then payments cannot ripple through her address using those two trust lines.</p>
 <p>For example:</p>
-<p><img alt="Charlie --($10)-- Gateway A --($1, NoRipple)-- Emily --($100,NoRipple)-- Gateway B --($2)-- Daniel" src="img/noripple-05.png"/></p>
+<p><img alt="Charlie --($10)-- Institution A --($1, NoRipple)-- Emily --($100,NoRipple)-- Institution B --($2)-- Daniel" src="img/noripple-05.png"/></p>
 <p>Now the above scenario, where Charlie pays Daniel while rippling through Emily's address, is no longer possible.</p>
 <h2 id="specifics">Specifics</h2>
 <p>The NoRipple flag makes certain paths invalid, so that they cannot be used to make payments. A path is considered invalid if and only if it enters <strong>and</strong> exits an address node through trust lines where NoRipple has been enabled for that address.</p>

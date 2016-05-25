@@ -154,41 +154,42 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="paths">Paths</h1>
-<p>In the Ripple Consensus Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver via market makers. Paths also enable complex settlement of offsetting debts.</p>
+<p>In the Ripple Consensus Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Paths also enable complex settlement of offsetting debts.</p>
 <p>A single Payment transaction in the Ripple Consensus Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a <em>path set</em>, which is a collection of possible paths to take. The paths in a path set must start and end with the same currency.</p>
 <p>Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.</p>
 <h2 id="path-steps">Path Steps</h2>
 <p>A path is made of steps that connect the sender to the receiver of the payment. Every step is either:</p>
 <ul>
-<li>Rippling through another account in the same currency</li>
+<li>Rippling through another address with the same currency</li>
 <li>Exchanging currency at an order book</li>
 </ul>
-<p>Rippling through another account is the process of moving debt around. In the typical case, this involves reducing a gateway's obligation to one party and increasing the gateway's obligation to another party. Rippling can occur between any accounts that are connected by trust lines. See <a href="concept-noripple.html">Understanding the NoRipple Flag</a> for more examples of rippling.</p>
-<p>In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the orders in the order book. Since the order of transactions is not finalized until a ledger is validated, it is impossible to determine for certain which offers a transaction will execute, until after the transaction has been validated. Consequently, you cannot know in advance which offers a transaction will take: only which order books the transaction will use. (You can make an educated guess, since each transaction takes the best available offers at the time it executes in the final ledger.)</p>
-<p>In both types of steps, each intermediate account gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to <a href="concept-transfer-fees.html">transfer fees</a>, trust line quality, or rounding.</p>
+<p>Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See <a href="concept-noripple.html">Understanding the NoRipple Flag</a> for more examples of rippling.</p>
+<p>In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will --></p>
+<p>In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to <a href="concept-transfer-fees.html">transfer fees</a>, trust line quality, or rounding.</p>
 <p><a href="img/paths-examples.png"><img alt="Diagram of three example paths" src="img/paths-examples.png"/></a></p>
 <h1 id="technical-details">Technical Details</h1>
 <h2 id="pathfinding">Pathfinding</h2>
-<p>The <code>rippled</code> API has two methods that can be used for pathfinding. The <a href="reference-rippled.html#ripple-path-find"><code>ripple_path_find</code> command</a> does a one-time lookup of possible path sets. The <a href="reference-rippled.html#path-find"><code>path_find</code> command</a> (WebSocket only) expands on the initial search with follow-up responses whenever a ledger closes or the server finds a better path.</p>
-<p>You can have <code>rippled</code> automatically fill in paths when you sign it, by including the <code>build_path</code> field in a request to the <a href="reference-rippled.html#sign"><code>sign</code> command</a> or <a href="reference-rippled.html#sign-and-submit-mode"><code>submit</code> command (sign-and-submit mode)</a>. However, we recommend pathfinding separately and confirming the results prior to signing, in order to avoid surprises. There are no guarantees on how expensive the paths the server finds will be at the time of submission. (Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit.)</p>
+<p>The <code>rippled</code> API has two methods that can be used for pathfinding. The <a href="reference-rippled.html#ripple-path-find"><code>ripple_path_find</code> command</a> does a one-time lookup of possible path sets. The <a href="reference-rippled.html#path-find"><code>path_find</code> command</a> (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.</p>
+<p>You can have <code>rippled</code> automatically fill in paths when you sign it, by including the <code>build_path</code> field in a request to the <a href="reference-rippled.html#sign"><code>sign</code> command</a> or <a href="reference-rippled.html#sign-and-submit-mode"><code>submit</code> command (sign-and-submit mode)</a>. However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.</p>
+<p><strong>Caution:</strong> Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.</p>
 <p>Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so <code>rippled</code> is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.</p>
 <h2 id="implied-steps">Implied Steps</h2>
 <p>By convention, several steps of a path are implied by the <a href="reference-transaction-format.html#payment">fields of the Payment transaction</a>: specifically, the <code>Account</code> (sender), <code>Destination</code> (receiver), <code>Amount</code> (currency and amount to be delivered) and <code>SendMax</code> (currency and amount to be sent, if specified). The implied steps are as follows:</p>
 <ul>
 <li>The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's <code>Account</code> field.</li>
 <li>If the transaction includes a <code>SendMax</code> field with an <code>issuer</code> that is not the sender of the transaction, that issuer is implied to be the second step of the path.<ul>
-<li>If <code>issuer</code> of the <code>SendMax</code> <em>is</em> the sending account, then the path starts at the sending account, and may use any of that account's trust lines in the given currency. See <a href="reference-transaction-format.html#special-issuer-values-for-sendmax-and-amount">special values for SendMax and Amount</a> for details.</li>
+<li>If <code>issuer</code> of the <code>SendMax</code> <em>is</em> the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See <a href="reference-transaction-format.html#special-issuer-values-for-sendmax-and-amount">special values for SendMax and Amount</a> for details.</li>
 </ul>
 </li>
 <li>If the <code>Amount</code> field of the transaction includes an <code>issuer</code> that is not the same as the <code>Destination</code> of the transaction, that issuer is implied to be the second-to-last step of the path.</li>
 <li>Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's <code>Destination</code> field.</li>
 </ul>
 <h2 id="default-paths">Default Paths</h2>
-<p>In addition to any paths that are specified in the transaction, a transaction can also execute along the <em>default path</em>. The default path is the simplest possible way to connect the <a href="#implied-steps">implied steps</a> of the transaction.</p>
+<p>In addition to explicitly specified paths, a transaction can execute along the <em>default path</em>. The default path is the simplest possible way to connect the <a href="#implied-steps">implied steps</a> of the transaction.</p>
 <p>The default path could be any of the following:</p>
 <ul>
-<li>If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment will ripple through the accounts involved. This path will only work if there are trust lines connecting those accounts.<ul>
-<li>If <code>SendMax</code> is omitted, or the <code>issuer</code> of the <code>SendMax</code> is the sender, the default path needs a trust line from the sending <code>Account</code> to the <code>issuer</code> of the destination <code>Amount</code> in order to work.</li>
+<li>If the transaction is uses only one currency (regardless of issuer), then the default path assumes the payment should ripple through the addresses involved. This path only works if those addresses are connected by trust lines.<ul>
+<li>If <code>SendMax</code> is omitted, or the <code>issuer</code> of the <code>SendMax</code> is the sender, the default path needs a trust line from the sending <code>Account</code> to the <code>issuer</code> of the destination <code>Amount</code> to work.</li>
 <li>If the <code>SendMax</code> and <code>Amount</code> have different <code>issuer</code> values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple (the company) typically discourages issuers from trusting one another directly.</li>
 </ul>
 </li>
@@ -211,7 +212,7 @@
 <tr>
 <td>account</td>
 <td>String - Address</td>
-<td>(Optional) If present, this path step represents rippling through the specified account.</td>
+<td>(Optional) If present, this path step represents rippling through the specified address.</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -248,7 +249,7 @@
 <tr>
 <td>0x01</td>
 <td>1</td>
-<td>A change of account (rippling): the <code>account</code> field is present.</td>
+<td>A change of address (rippling): the <code>account</code> field is present.</td>
 </tr>
 <tr>
 <td>0x10</td>
