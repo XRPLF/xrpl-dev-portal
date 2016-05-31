@@ -149,7 +149,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="fee-voting">Fee Voting</h1>
-<p>Validators can vote for changes to basic <a href="concept-transaction-cost.html">transaction cost</a> as well as <a href="concept-reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to reflect long-term changes in the value of XRP.</p>
+<p>Validators can vote for changes to basic <a href="concept-transaction-cost.html">transaction cost</a> as well as <a href="concept-reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.</p>
 <p>Operators of <a href="tutorial-rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
 <table>
 <thead>
@@ -172,7 +172,7 @@
 </tr>
 <tr>
 <td>owner_reserve</td>
-<td>Additional amount of XRP, in <em>drops</em>, that an account must have on reserve for <em>each</em> object it owns in the ledger.</td>
+<td>How much more XRP, in <em>drops</em>, that an address must hold for <em>each</em> object it owns in the ledger.</td>
 <td><code>5000000</code> (5 XRP)</td>
 </tr>
 </tbody>
@@ -180,7 +180,7 @@
 <h2 id="voting-process">Voting Process</h2>
 <p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
 <p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust.</p>
-<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert an identical SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
+<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert the same SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
 <p>In short:</p>
 <ul>
 <li><strong>Flag ledger -1</strong>: Validators submit votes.</li>

@@ -212,7 +212,7 @@ Connecting to 127.0.0.1:5005
 <h3 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction</h3>
 <p><a href="reference-transaction-format.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="reference-transaction-format.html#signerlistset">SignerListSet transaction</a> in the normal (single-signature) way. This associates a SignerList with your Ripple address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.</p>
 <p>In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.</p>
-<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <pre><code>$ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
 &gt;     "Flags": 0,
 &gt;     "TransactionType": "SignerListSet",
@@ -357,7 +357,7 @@ Connecting to 127.0.0.1:5005
 <p>Before you can multi-sign a transaction, first  <a href="#setting-up-multi-signing">set up multi-signing</a> for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.</p>
 <h3 id="1-create-the-transaction">1. Create the transaction</h3>
 <p>Create a JSON object that represents the transaction you want to submit. You have to specify <em>everything</em> about this transaction, including <code>Fee</code> and <code>Sequence</code>. Also include the field <code>SigningPubKey</code> as an empty string, to indicate that the transaction is multi-signed.</p>
-<p>Keep in mind that the <code>Fee</code> for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal <a href="concept-transaction-cost.html">transaction cost</a>, where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the <a href="concept-transaction-cost.html">transaction cost</a> increases in that time.</p>
+<p>Keep in mind that the <code>Fee</code> for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be at least (N+1) times the normal <a href="concept-transaction-cost.html">transaction cost</a>, where N is the number of signatures you plan to provide. Since it sometimes takes a while to collect signatures from multiple sources, you may want to specify more than the current minimum, in case the <a href="concept-transaction-cost.html">transaction cost</a> increases in that time.</p>
 <p>Here's an example transaction ready to be multi-signed:</p>
 <pre><code>{
     "TransactionType": "TrustSet",
@@ -376,7 +376,7 @@ Connecting to 127.0.0.1:5005
 <p>(This transaction creates an accounting relationship from rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC to rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh with a maximum balance of 100 USD.)</p>
 <h3 id="2-get-one-signature">2. Get one signature</h3>
 <p>Use the <a href="reference-rippled.html#sign-for"><code>sign_for</code> command</a> with the secret key and address of one of the members of your SignerList to get a signature for that member.</p>
-<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <pre><code>$ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW &lt;rsA2L..'s secret&gt; '{
 &gt;     "TransactionType": "TrustSet",
 &gt;     "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -429,7 +429,7 @@ Connecting to 127.0.0.1:5005
 <li>In parallel: Use the <code>sign_for</code> command with the original JSON for the transaction. Each response has a single signature in the <code>Signers</code> array.</li>
 <li>In serial: Use the <code>sign_for</code> command with the <code>tx_json</code> value from the previous <code>sign_for</code> response. Each response adds a new signature to the existing <code>Signers</code> array.</li>
 </ul>
-<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.</p>
+<p><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <pre><code>$ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v &lt;rUpy..'s secret&gt; '{
 &gt;    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
 &gt;    "Fee" : "30000",

@@ -1,7 +1,7 @@
 Ripple Data API v2
 ==================
 
-The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a database for easy access, which frees `rippled` servers to maintain fewer historical ledger versions. Additionally, the Data API v2 acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
 
 Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
@@ -95,15 +95,15 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| ledger_identifier | Ledger [Hash][], [Ledger Index][], or [Timestamp][] | (Optional) An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
+| `ledger_identifier` | Ledger [Hash][], [Ledger Index][], or [Timestamp][] | (Optional) An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
 
 Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| transactions | Boolean | If `true`, include the identifying hashes of all transactions that are part of this ledger. |
-| binary | Boolean | If `true`, include all transactions from this ledger as hex-formatted binary data. (If provided, overrides `transactions`.) |
-| expand | Boolean | If `true`, include all transactions from this ledger as nested JSON objects. (If provided, overrides `binary` and `transactions`.) |
+| `transactions` | Boolean | If `true`, include the identifying hashes of all transactions that are part of this ledger. |
+| `binary` | Boolean | If `true`, include all transactions from this ledger as hex-formatted binary data. (If provided, overrides `transactions`.) |
+| `expand` | Boolean | If `true`, include all transactions from this ledger as nested JSON objects. (If provided, overrides `binary` and `transactions`.) |
 
 #### Response Format ####
 
@@ -111,8 +111,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| ledger | [Ledger object](#ledger-objects) | The requested ledger |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `ledger` | [Ledger object](#ledger-objects) | The requested ledger |
 
 #### Example ####
 
@@ -167,13 +167,13 @@ The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | String - [Hash][] | The identifying hash of the transaction. |
+| `hash` | String - [Hash][] | The identifying hash of the transaction. |
 
 Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| binary | Boolean | If `true`, return transaction data in binary format, as a hex string. Otherwise, return transaction data as nested JSON. Defaults to false. |
+| `binary` | Boolean | If `true`, return transaction data in binary format, as a hex string. Otherwise, return transaction data as nested JSON. Defaults to false. |
 
 #### Response Format ####
 
@@ -181,8 +181,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| transaction | [Transaction object](#transaction-objects) | The requested transaction |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `transaction` | [Transaction object](#transaction-objects) | The requested transaction |
 
 #### Example ####
 
@@ -275,24 +275,24 @@ Optionally, you can include the following query parameters:
 
 | Field      | Value | Description |
 |------------|-------|-------------|
-| start      | String - [Timestamp][]  | Filter results to this time and later. |
-| end        | String - [Timestamp][]  | Filter results to this time and earlier. |
-| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| type       | String | Filter transactions to a specific [transaction type](reference-transaction-format.html). |
-| result     | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
-| binary     | Boolean | If true, return transactions in binary form. Defaults to false. |
-| limit      | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
-| marker     | String | [Pagination](#pagination) marker from a previous response. |
+| `start` | String - [Timestamp][]  | Filter results to this time and later. |
+| `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
+| `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| `type` | String | Filter transactions to a specific [transaction type](reference-transaction-format.html). |
+| `result` | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
+| `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
+| `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
+| `marker` | String | [Pagination](#pagination) marker from a previous response. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of Transactions returned. |
-| marker | String | (May be omitted) Pagination marker |
-| transactions | Array of [Transaction object](#transaction-objects) | The requested transactions |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of Transactions returned. |
+| `marker` | String | (May be omitted) Pagination marker |
+| `transactions` | Array of [Transaction object](#transaction-objects) | The requested transactions |
 
 #### Example ####
 
@@ -439,19 +439,19 @@ This method accepts the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| :currency | String | (Optional) Currency code, followed by `+` and a counterparty address. (Or just `XRP`.) If omitted, return payments for all currencies. |
+| :currency | String | (Optional) Currency code, followed by `+` and a counterparty address. (Or `XRP` with no counterparty.) If omitted, return payments for all currencies. |
 
 Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][]  | Filter results to this time and later. |
-| end        | String - [Timestamp][]  | Filter results to this time and earlier. |
-| interval   | String  | If provided and `currency` is also specified, return results aggregated into intervals of the specified length instead of individual payments. Valid intervals are `day`, `week`, or `month`. |
-| descending | Boolean | Reverse chronological order. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Filter results to this time and later. |
+| `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
+| `interval` | String  | If provided and `currency` is also specified, return results aggregated into intervals of the specified length instead of individual payments. Valid intervals are `day`, `week`, or `month`. |
+| `descending` | Boolean | Reverse chronological order. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -460,24 +460,24 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of Transactions returned |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| payments | Array of [Payment Objects][], or array of aggregate objects | The requested payments |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of Transactions returned |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `payments` | Array of [Payment Objects][], or array of aggregate objects | The requested payments |
 
 
 ##### Aggregate Results #####
 
-If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. Each interval summary object has the following fields:
+If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. <!-- STYLE_OVERRIDE: time period --> Each interval summary object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| count | Number | The number of payments that occurred during this interval. |
-| currency | String - Currency Code | This summary describes payments that delivered the specified currency. |
-| issuer | String - Address | (Omitted for XRP) This summary describes payments that delivered the currency issued by this address. |
-| start | String - [Timestamp][] | The start time of this interval |
-| total\_amount | Number | The amount of the `currency` delivered during this interval. |
-| average\_amount | Number | The average amount of currency delivered by a single payment during this interval. |
+| `count` | Number | The number of payments that occurred during this interval. |
+| `currency` | String - Currency Code | This summary describes payments that delivered the specified currency. |
+| `issuer` | String - Address | (Omitted for XRP) This summary describes payments that delivered the currency issued by this address. |
+| `start` | String - [Timestamp][] | The start time of this interval |
+| `total_amount` | Number | The amount of the `currency` delivered during this interval. |
+| `average_amount` | Number | The average amount of currency delivered by a single payment during this interval. |
 
 #### Example ####
 
@@ -584,32 +584,32 @@ This method requires the following URL parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| base  | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
-| counter | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| `base` | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
+| `counter` | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 
 Optionally, you can also include the following query parameters:
 
 | Field       | Value | Description |
 |-------------|-------|-------------|
-| start       | String - [Timestamp][] | Filter results to this time and later. |
-| end         | String - [Timestamp][] | Filter results to this time and earlier. |
-| interval    | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month`. Defaults to non-aggregated results. |
-| descending  | Boolean | If true, return results in reverse chronological order. |
-| reduce      | Boolean | Aggregate all individual results. Defaults to false. |
-| limit       | Integer | Maximum results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
-| marker      | String | [Pagination](#pagination) key from previously returned response. |
-| autobridged | Boolean | If true, filter results to autobridged exchanges only. |
-| format      | String | Format of returned results: `csv` or `json`. Defaults to `json` |
+| `start` | String - [Timestamp][] | Filter results to this time and later. |
+| `end` | String - [Timestamp][] | Filter results to this time and earlier. |
+| `interval` | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month`. Defaults to non-aggregated results. |
+| `descending` | Boolean | If true, return results in reverse chronological order. |
+| `reduce` | Boolean | Aggregate all individual results. Defaults to false. |
+| `limit` | Integer | Maximum results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
+| `marker` | String | [Pagination](#pagination) key from previously returned response. |
+| `autobridged` | Boolean | If true, filter results to autobridged exchanges only. |
+| `format` | String | Format of returned results: `csv` or `json`. Defaults to `json` |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of Transactions returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| exchanges | Array of [Exchange Objects][] | The requested exchanges |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of Transactions returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `exchanges` | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
 
@@ -723,8 +723,8 @@ Optionally, you can also include the following query parameters:
 
 | Field  | Value   | Description |
 |--------|---------|-------------|
-| date   | String - [Timestamp][] | Return an exchange rate for the specified time. Defaults to the current time. |
-| strict | Boolean | If false, allow rates derived from less than 10 exchanges. Defaults to true. |
+| `date` | String - [Timestamp][] | Return an exchange rate for the specified time. Defaults to the current time. |
+| `strict` | Boolean | If false, allow rates derived from less than 10 exchanges. Defaults to true. |
 
 
 #### Response Format ####
@@ -732,8 +732,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| rate | Number | The requested exchange rate, or `0` if the exchange rate could not be determined. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `rate` | Number | The requested exchange rate, or `0` if the exchange rate could not be determined. |
 
 All exchange rates are calcuated by converting the base currency and counter currency to XRP.
 
@@ -782,13 +782,13 @@ This method uses the following query parameters:
 
 | Field             | Value   | Description |
 |-------------------|---------|-------------|
-| amount            | Number  | (Required) Amount of currency to normalize |
-| currency          | String - [Currency Code][] | The currency code of the `amount` to convert from. (Defaults to XRP.) |
-| issuer            | String - [Address][] | The issuer of the currency to convert from. (Required if `currency` is not XRP.) |
-| exchange\_currency | String - [Currency Code][] | The currency to convert to. (Defaults to XRP.) |
-| exchange\_issuer   | String - [Address][] | The issuer of the currency to convert to. (Required if `exchange_currency` is not XRP.) |
-| date              | String - [Timestamp][] | Convert according to the exchange rate at this time. (Defaults to the current time.) |
-| strict            | Boolean | If true, do not use exchange rates that are determined by less than 10 exchanges. (Defaults to true.) |
+| `amount` | Number  | (Required) Amount of currency to normalize |
+| `currency` | String - [Currency Code][] | The currency code of the `amount` to convert from. (Defaults to XRP.) |
+| `issuer` | String - [Address][] | The issuer of the currency to convert from. (Required if `currency` is not XRP.) |
+| `exchange_currency` | String - [Currency Code][] | The currency to convert to. (Defaults to XRP.) |
+| `exchange_issuer` | String - [Address][] | The issuer of the currency to convert to. (Required if `exchange_currency` is not XRP.) |
+| `date` | String - [Timestamp][] | Convert according to the exchange rate at this time. (Defaults to the current time.) |
+| `strict` | Boolean | If true, do not use exchange rates that are determined by less than 10 exchanges. (Defaults to true.) |
 
 
 #### Response Format ####
@@ -796,10 +796,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| amount | Number | Pre-conversion amount specified in the request |
-| converted | Number | Post-conversion amount of the `exchange_currency`, or `0` if the exchange rate could not be determined. |
-| rate | Number | Exchange rate used to calculate the conversion, or `0` if the exchange rate could not be determined. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `amount` | Number | Pre-conversion amount specified in the request |
+| `converted` | Number | Post-conversion amount of the `exchange_currency`, or `0` if the exchange rate could not be determined. |
+| `rate` | Number | Exchange rate used to calculate the conversion, or `0` if the exchange rate could not be determined. |
 
 All exchange rates are calculating by converting both currencies to XRP.
 
@@ -848,17 +848,17 @@ This method uses the following URL parameters:
 
 | Field | Value  | Description |
 |-------|--------|-------------|
-| date  | String | (Optional) UTC query date. If omitted, use the current day. |
+| `date` | String | (Optional) UTC query date. If omitted, use the current day. |
 
 Optionally, you can also include the following query parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| accounts | Boolean | If true, include lists of counterparty accounts. Defaults to false. |
-| payments | Boolean | If true, include lists of individual payments. Defaults to false. |
-| format   | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response |
+| `accounts` | Boolean | If true, include lists of counterparty accounts. Defaults to false. |
+| `payments` | Boolean | If true, include lists of individual payments. Defaults to false. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
 
 #### Response Format ####
 
@@ -866,13 +866,13 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| date   | String - [Timestamp][] | The date for which this report applies. |
-| count | Integer | Number of reports returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker. |
-| reports | Array of [Reports Objects][] | The requested reports. Each report pertains to a single account. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `date` | String - [Timestamp][] | The date for which this report applies. |
+| `count` | Integer | Number of reports returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker. |
+| `reports` | Array of [Reports Objects][] | The requested reports. Each report pertains to a single account. |
 
-**WARNING:** This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.
+**Caution:** This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.
 
 #### Example ####
 
@@ -1012,15 +1012,15 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| family     | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
-| metrics    | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
-| start        | String - [Timestamp][] | Filter results to this time and later. |
-| end        | String - [Timestamp][] | Filter results to this time and earlier |
-| interval   | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `family` | String  | If provided, filter results to a single family of stats: `type`, `result`, or `metric`. By default, provides all stats from all families. |
+| `metrics` | String  | Filter results to one or more metrics (in a comma-separated list). Requires the `family` of the metrics to be specified. By default, provides all metrics in the family. |
+| `start` | String - [Timestamp][] | Filter results to this time and later. |
+| `end` | String - [Timestamp][] | Filter results to this time and earlier |
+| `interval` | String  | Aggregation interval (`hour`,`day`,`week`, defaults to `day`) |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 ##### Families and Metrics #####
 
@@ -1028,9 +1028,9 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
-| type | All Ripple [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
-| result | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
-| metric | Data-API defined Special Transaction Metrics. | (Varies) |
+| `type` | All Ripple [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
+| `result` | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
+| `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
 ##### Special Transaction Metrics #####
 
@@ -1038,12 +1038,12 @@ The Data API derives the following values for every interval. These metrics are 
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| accounts\_created | Number | The number of new accounts funded during this interval. |
-| exchanges\_count | Number | The number of currency exchanges that occurred during this interval. |
-| ledger\_count | Number | The number of ledgers closed during this interval. |
-| ledger\_interval | Number | The average number of seconds between ledgers closing during this interval. |
-| payments\_count | Number | The number of payments from one account to another during this interval. |
-| tx\_per\_ledger | Number | The average number of transactions per ledger in this interval. |
+| `accounts_created` | Number | The number of new accounts funded during this interval. |
+| `exchanges_count` | Number | The number of currency exchanges that occurred during this interval. |
+| `ledger_count` | Number | The number of ledgers closed during this interval. |
+| `ledger_interval` | Number | The average number of seconds between ledgers closing during this interval. |
+| `payments_count` | Number | The number of payments from one account to another during this interval. |
+| `tx_per_ledger` | Number | The average number of transactions per ledger in this interval. |
 
 If any of the metrics have a value of 0, they are omitted from the results.
 
@@ -1052,10 +1052,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of reports returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| stats | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of reports returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `stats` | Array of stats objects | The requested stats. Omits metrics with a value of 0, and intervals that have no nonzero metrics. |
 
 #### Example ####
 
@@ -1123,14 +1123,14 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to `2013-01-01T00:00:00Z`. |
-| end        | String - [Timestamp][] | End time of query range. Defaults to the current time. |
-| interval   | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response |
-| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| adjusted   | Boolean | If true, do not count known issuer-owned wallets towards market capitalization. Defaults to true. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][] | Start time of query range. Defaults to `2013-01-01T00:00:00Z`. |
+| `end` | String - [Timestamp][] | End time of query range. Defaults to the current time. |
+| `interval` | String  | Aggregation interval - `day`, `week`, or `month`. Defaults to `day`. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| `adjusted` | Boolean | If true, do not count known issuer-owned addresses towards market capitalization. Defaults to true. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 If the request omits both `start` and `end`, the API returns only the most recent sample.
 
@@ -1140,19 +1140,19 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of reports returned. |
-| currency | String | Currency requested |
-| issuer | String | Issuer requested |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| rows | Array of issuer capitalization objects | The requested capitalization data |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of reports returned. |
+| `currency` | String | Currency requested |
+| `issuer` | String | Issuer requested |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `rows` | Array of issuer capitalization objects | The requested capitalization data |
 
 Each **issuer capitalization object** has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| date   | String - [Timestamp][] | The start time of the interval this object represents. |
-| amount | [String - Number][] | The total amount of currency issued by the issuer as of the start of this interval. |
+| `date` | String - [Timestamp][] | The start time of the interval this object represents. |
+| `amount` | [String - Number][] | The total amount of currency issued by the issuer as of the start of this interval. |
 
 #### Example ####
 
@@ -1249,37 +1249,37 @@ Optionally, you can also include the following query parameters:
 
 | Field              | Value   | Description |
 |--------------------|---------|-------------|
-| period             | String  | Get results for trading activity during a chosen time period. Valid periods are `1day`, `3day`, or `7day`. Defaults to `1day`. |
-| date               | String  | Get results for the period starting at this time. Defaults to the most recent period available. |
-| include\_exchanges | Boolean | Include individual exchanges for each account in the results. |
-| format             | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `period` | String  | Get results for trading activity during a chosen time period. Valid periods are `1day`, `3day`, or `7day`. Defaults to `1day`. |
+| `date` | String  | Get results for the period starting at this time. Defaults to the most recent period available. |
+| `include_exchanges` | Boolean | Include individual exchanges for each account in the results. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of accounts returned. |
-| exchanges\_count | Integer | Total number of exchanges in the period. |
-| accounts | Array of active Account Trading Objects | Active trading accounts for the period |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of accounts returned. |
+| `exchanges_count` | Integer | Total number of exchanges in the period. |
+| `accounts` | Array of active Account Trading Objects | Active trading accounts for the period |
 
-Each "Account Trading Object" describes the activity of a single account during the period, and has the following fields:
+Each "Account Trading Object" describes the activity of a single account during this time period, and has the following fields:
 
 | Field           | Value            | Description |
 |-----------------|------------------|-------------|
-| buy             | Object | Summary of currency exchanges buying the base currency|
-| buy.base\_volume | Number | Amount of base currency the account bought in this period. |
-| buy.counter\_volume | Number | Amount of counter currency the account sold in this period. |
-| buy.count       | Number | Number of trades that bought the base currency in this period. |
-| sell            | Object | Summary of currency changes selling the base currency |
-| sell.base\_volume | Number | Amount of the base currency the account sold this period. |
-| sell.counter\_volume | Number | Amount of the counter currency the account bought this period. |
-| sell.count      | Number | Number of trades that sold the base currency. |
-| account         | String - Address | The address whose activity this object describes |
-| base\_volume    | Number | The total volume of the base currency the account bought and sold in this period. |
-| counter\_volume | Number | The total volume of the counter currency the account bought and sold in this period. |
-| count           | Number | The total number of exchanges the account made during this period. |
+| `buy` | Object | Summary of currency exchanges buying the base currency|
+| `buy.base_volume` | Number | Amount of base currency the account bought in this period. |
+| `buy.counter_volume` | Number | Amount of counter currency the account sold in this period. |
+| `buy.count` | Number | Number of trades that bought the base currency in this period. |
+| `sell` | Object | Summary of currency changes selling the base currency |
+| `sell.base_volume` | Number | Amount of the base currency the account sold this period. |
+| `sell.counter_volume` | Number | Amount of the counter currency the account bought this period. |
+| `sell.count` | Number | Number of trades that sold the base currency. |
+| `account` | String - Address | The address whose activity this object describes |
+| `base_volume` | Number | The total volume of the base currency the account bought and sold in this period. |
+| `counter_volume` | Number | The total volume of the counter currency the account bought and sold in this period. |
+| `count` | Number | The total number of exchanges the account made during this period. |
 
 #### Example ####
 
@@ -1395,34 +1395,34 @@ Optionally, you can include the following query parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
-| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
-| interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
-| limit    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | [Pagination](#pagination) key from previously returned response |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of results returned. |
-| rows | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of results returned. |
+| `rows` | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of exchanges in a market between two currencies, and has the following fields:
 
 | Field  | Value  | Description |
 |--------|--------|-------------|
-| count  | Number | The number of exchanges in this market during this interval. |
-| rate   | Number | The exchange rate from the base currency to the display currency. |
-| amount | Number | The amount of volume in the market, in units of the base currency. |
-| base   | Object | The `currency` and `issuer` that identify the base currency of this market. There is no `issuer` for XRP. |
-| counter | Object | The `currency` and `issuer` that identify the counter currency of this market. There is no `issuer` for XRP. |
-| converted\_amount | Number | The total amount of volume in the market, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
+| `count` | Number | The number of exchanges in this market during this interval. |
+| `rate` | Number | The exchange rate from the base currency to the display currency. |
+| `amount` | Number | The amount of volume in the market, in units of the base currency. |
+| `base` | Object | The `currency` and `issuer` of the base currency of this market. There is no `issuer` for XRP. |
+| `counter` | Object | The `currency` and `issuer` of the counter currency of this market. There is no `issuer` for XRP. |
+| `converted_amount` | Number | The total amount of volume in the market, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
 
 #### Example ####
 
@@ -1543,34 +1543,34 @@ Optionally, you can include the following query parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
-| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
-| interval | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
-| limit    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | [Pagination](#pagination) key from previously returned response |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of results returned. |
-| rows | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of results returned. |
+| `rows` | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of payments for one currencies and issuer, and has the following fields:
 
 | Field  | Value  | Description |
 |--------|--------|-------------|
-| currency | String - [Currency Code][] | The currency of this payment volume object. |
-| issuer | String - [Address][] | (Omitted for XRP) The issuer of this payment volume object. |
-| amount | Number | Total payment volume for this currency during the interval, in units of the currency itself. |
-| count  | Number | The total number of payments in this currency |
-| rate   | Number | The exchange rate between this currency and the display currency. |
-| converted\_amount | Number | Total payment volume for this currency, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
+| `currency` | String - [Currency Code][] | The currency of this payment volume object. |
+| `issuer` | String - [Address][] | (Omitted for XRP) The issuer of this payment volume object. |
+| `amount` | Number | Total payment volume for this currency during the interval, in units of the currency itself. |
+| `count` | Number | The total number of payments in this currency |
+| `rate` | Number | The exchange rate between this currency and the display currency. |
+| `converted_amount` | Number | Total payment volume for this currency, converted to the display currency. _(Before [v2.1.0][], this was `convertedAmount`.)_ |
 
 #### Example ####
 
@@ -1650,7 +1650,7 @@ Response:
 ## Get Issued Value ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js "Source")
 
-Get the total value of all currencies issued by a selection of major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
+Get the total value of all currencies issued by major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
 
 The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
 
@@ -1672,13 +1672,13 @@ Optionally, you can include the following query parameters:
 
 | Field  | Value   | Description |
 |--------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
-| end        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
-| exchange\_currency | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
-| exchange\_issuer | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
-| limit    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker   | String  | [Pagination](#pagination) key from previously returned response |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 
@@ -1686,19 +1686,19 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of results returned. |
-| rows | Array of Issued Value Objects | Aggregated capitalization at the requested point(s) in time. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of results returned. |
+| `rows` | Array of Issued Value Objects | Aggregated capitalization at the requested point(s) in time. |
 
 Each Issued Value Object represents the total value issued at one point in time, and has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| components | Array of Objects | The data on individual issuers that was used to assemble this total. |
-| exchange | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
-| exchangeRate | Number | The exchange rate to the displayed currency from XRP.
-| time | String - [Timestamp][] | The time at which this data was measured. |
-| total | Number | Total value of all issued assets at this time, in units of the display currency. |
+| `components` | Array of Objects | The data on individual issuers that was used to assemble this total. |
+| `exchange` | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
+| `exchangeRate` | Number | The exchange rate to the displayed currency from XRP.
+| `time` | String - [Timestamp][] | The time at which this data was measured. |
+| `total` | Number | Total value of all issued assets at this time, in units of the display currency. |
 
 #### Example ####
 
@@ -1791,22 +1791,22 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| date   | String - [Timestamp][] | The time at which this data was measured. |
-| count  | Integer | Number of objects in the `currencies` field. |
-| currencies | Array of Top Currency Objects | The top currencies for this data sample. Each member represents one currency, by currency code and issuer. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `date` | String - [Timestamp][] | The time at which this data was measured. |
+| `count` | Integer | Number of objects in the `currencies` field. |
+| `currencies` | Array of Top Currency Objects | The top currencies for this data sample. Each member represents one currency, by currency code and issuer. |
 
 Each Top Currency Object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| currency | String - [Currency Code][] | The currency this object describes |
-| issuer | String - [Address][] | The Ripple address that issues this currency |
-| avg_exchange_count | [String - Number][] | Daily average number of [exchanges](#exchange-objects) |
-| avg_exchange_volume | [String - Number][] | Daily average volume of exchanges, normalized to XRP |
-| avg_payment_count | [String - Number][] | Daily average number of [payments](#payment-objects) |
-| avg_payment_volume | [String - Number][] | Daily average volume of payments, normalized to XRP |
-| issued_value | [String - Number][] | Total amount of this currency issued by this issuer, normalized to XRP |
+| `currency` | String - [Currency Code][] | The currency this object describes |
+| `issuer` | String - [Address][] | The Ripple address that issues this currency |
+| `avg_exchange_count` | [String - Number][] | Daily average number of [exchanges](#exchange-objects) |
+| `avg_exchange_volume` | [String - Number][] | Daily average volume of exchanges, normalized to XRP |
+| `avg_payment_count` | [String - Number][] | Daily average number of [payments](#payment-objects) |
+| `avg_payment_volume` | [String - Number][] | Daily average volume of payments, normalized to XRP |
+| `issued_value` | [String - Number][] | Total amount of this currency issued by this issuer, normalized to XRP |
 
 #### Example ####
 
@@ -1892,23 +1892,23 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| date   | String - [Timestamp][] | The end of the rolling window over which this data was calculated. |
-| count  | Integer | Number of results in the `markets` field. |
-| markets | Array of Top Market Objects | The top markets for this data sample. Each member represents a currency pair. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `date` | String - [Timestamp][] | The end of the rolling window over which this data was calculated. |
+| `count` | Integer | Number of results in the `markets` field. |
+| `markets` | Array of Top Market Objects | The top markets for this data sample. Each member represents a currency pair. |
 
 Each Top Market object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| base_currency | String - [Currency Code][] | The base currency for this market |
-| base_issuer | String - [Address][] | (Omitted if `base_currency` is XRP) The Ripple address that issues the base currency |
-| counter_currency | String - [Currency Code][] | The counter currency for this market |
-| counter_issuer | String - [Address][] | (Omitted if `counter_currency` is XRP) The Ripple address that issues the counter currency |
-| avg_base_volume | String | Daily average volume in terms of the base currency |
-| avg_counter_volume | String | Daily average volume in terms of the counter currency |
-| avg_exchange_count | String | Daily average number of [exchanges](#exchange-objects) |
-| avg_volume | String | Daily average volume, normalized to XRP |
+| `base_currency` | String - [Currency Code][] | The base currency for this market |
+| `base_issuer` | String - [Address][] | (Omitted if `base_currency` is XRP) The Ripple address that issues the base currency |
+| `counter_currency` | String - [Currency Code][] | The counter currency for this market |
+| `counter_issuer` | String - [Address][] | (Omitted if `counter_currency` is XRP) The Ripple address that issues the counter currency |
+| `avg_base_volume` | String | Daily average volume in terms of the base currency |
+| `avg_counter_volume` | String | Daily average volume in terms of the counter currency |
+| `avg_exchange_count` | String | Daily average number of [exchanges](#exchange-objects) |
+| `avg_volume` | String | Daily average volume, normalized to XRP |
 
 #### Example ####
 
@@ -1990,11 +1990,11 @@ Each field in the top level JSON object is a [Currency Code][]. The content of e
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| name     | String  | A human-readable proper name for the gateway. |
-| account  | String - [Address][] | The issuing account (cold wallet) that issues the currency. |
-| featured | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple decides which gateways to feature based on responsible business practices, volume, and other measures. |
-| label    | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
-| assets   | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+| `name` | String  | A human-readable proper name for the gateway. |
+| `account` | String - [Address][] | The [issuing address](concept-issuing-and-operational-addresses.html) of this currency. |
+| `featured` | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple decides which gateways to feature based on responsible business practices, volume, and other measures. |
+| `label` | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
+| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
 
 #### Example ####
 
@@ -2059,6 +2059,7 @@ Response:
 ## Get Gateway ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js "Source")
 
+<!-- STYLE_OVERRIDE: gateway, gateways -->
 Get information about a specific gateway from [the Data API's list of known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
 
 #### Request Format ####
@@ -2089,20 +2090,20 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field       | Value  | Description |
 |-------------|--------|-------------|
-| name        | String | Human-readable name of the gateway
-| start\_date | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
-| accounts    | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) (cold wallets) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
-| hotwallets  | Array of [Address][]es | The addresses of the Ripple accounts this gateway uses as [operational addresses](concept-issuing-and-operational-addresses.html) (hot wallets). |
-| domain      | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
-| normalized  | String | A normalized version of the `name` field suitable for including in URLs. |
-| assets      | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+| `name` | String | Human-readable name of the gateway |
+| `start_date` | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
+| `accounts` | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| `hotwallets` | Array of [Address][]es | This gateway's [operational addresses](concept-issuing-and-operational-addresses.html). |
+| `domain` | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
+| `normalized` | String | A normalized version of the `name` field suitable for including in URLs. |
+| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
 
 Each object in the `accounts` field array has the following fields:
 
 | Field      | Value  | Description |
 |------------|--------|-------------|
-| address    | String | The [Address][] of an [issuing address](concept-issuing-and-operational-addresses.html) (cold wallet) used by this gateway. |
-| currencies | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
+| `address` | String | The [issuing address](concept-issuing-and-operational-addresses.html) used by this gateway. |
+| `currencies` | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
 
 #### Example ####
 
@@ -2232,25 +2233,25 @@ Optionally, you can include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range |
-| end        | String - [Timestamp][]  | End time of query range |
-| interval   | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1,000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response |
-| descending | Boolean | Reverse chronological order |
-| parent     | String  | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
-| reduce     | Boolean | Return a count of results only |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range |
+| `end` | String - [Timestamp][]  | End time of query range |
+| `interval` | String  | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1,000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `descending` | Boolean | Reverse chronological order |
+| `parent` | String  | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
+| `reduce` | Boolean | Return a count of results only |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count  | Integer | Number of accounts returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| accounts | Array | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of accounts returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `accounts` | Array | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
 
 ##### Interval Objects #####
 
@@ -2258,8 +2259,8 @@ If the request uses the `interval` query parameter, the response has an array of
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| date   | String - [Timestamp] | The time at which this interval starts. (The length of the interval is determined by the request.) |
-| count  | Number | How many accounts were created in this interval. |
+| `date` | String - [Timestamp] | The time at which this interval starts. (The length of the interval is determined by the request.) |
+| `count` | Number | How many accounts were created in this interval. |
 
 #### Example ####
 
@@ -2330,7 +2331,7 @@ This method requires the following URL parameters:
 
 | Field   | Value  | Description |
 |---------|--------|-------------|
-| address | String | Ripple address to query |
+| `address` | String | Ripple address to query |
 
 #### Response Format ####
 
@@ -2338,8 +2339,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| account | Object - [Account Creation](#account-creation-objects) | The requested account |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `account` | Object - [Account Creation](#account-creation-objects) | The requested account |
 
 #### Example ####
 
@@ -2388,31 +2389,31 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| address | String | Ripple address to query |
+| `address` | String | Ripple address to query |
 
 Optionally, you can also include the following query parameters:
 
 | Field        | Value   | Description |
 |--------------|---------|-------------|
-| ledger_index | Integer | Index of ledger for historical balances. |
-| ledger_hash  | String  | Ledger hash for historical balances. |
-| date         | String  | UTC date for historical balances. |
-| currency     | String  | Restrict results to specified currency. |
-| counterparty | String  | Restrict results to specified counterparty/issuer. |
-| limit        | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. Large gateways can have several tens of thousands of results.) |
-| format       | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `ledger_index` | Integer | Index of ledger for historical balances. |
+| `ledger_hash` | String  | Ledger hash for historical balances. |
+| `date` | String  | UTC date for historical balances. |
+| `currency` | String  | Restrict results to specified currency. |
+| `counterparty` | String  | Restrict results to specified counterparty/issuer. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400, but you can use the value `all` to return all results. (Caution: When using limit=all to retrieve very many results, the request may time out. For large issuers, there can be several tens of thousands of results.) |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| ledger_index | Integer | ledger index for balances query. |
-| close_time | String | close time of the ledger. |
-| limit | String | number of results returned, if limit was exceeded. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker. |
-| balances | Array of [Balance Object][]s | The requested balances. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `ledger_index` | Integer | ledger index for balances query. |
+| `close_time` | String | close time of the ledger. |
+| `limit` | String | number of results returned, if limit was exceeded. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker. |
+| `balances` | Array of [Balance Object][]s | The requested balances. |
 
 #### Example ####
 
@@ -2474,17 +2475,17 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| address  | String - [Address][] | Ripple address to query |
+| `address` | String - [Address][] | Ripple address to query |
 
 Optionally, you can also include the following query parameters:
 
 | Field         | Value   | Description |
 |---------------|---------|-------------|
-| ledger\_index | Integer | Get orders as of this ledger. Not compatible with `ledger_hash` or `date`. |
-| ledger\_hash  | String  | Get orders as of this ledger. Not compatible with `ledger_index` or `date`. |
-| date          | String - [Timestamp][] | Get orders at this time. Not compatible with `ledger_index` or `ledger_hash`. |
-| limit         | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400. |
-| format        | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `ledger_index` | Integer | Get orders as of this ledger. Not compatible with `ledger_hash` or `date`. |
+| `ledger_hash` | String  | Get orders as of this ledger. Not compatible with `ledger_index` or `date`. |
+| `date` | String - [Timestamp][] | Get orders at this time. Not compatible with `ledger_index` or `ledger_hash`. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be greater than 400. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 If none of `ledger_index`, `ledger_hash`, or `date` are specified, the API uses the most current data available.
 
@@ -2493,24 +2494,24 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| ledger\_index | Integer | `ledger_index` of the ledger version used. |
-| close\_time | String | Close time of the ledger version used. |
-| limit | String | The `limit` from the request. |
-| orders | Array of order objects | The requested orders. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `ledger_index` | Integer | `ledger_index` of the ledger version used. |
+| `close_time` | String | Close time of the ledger version used. |
+| `limit` | String | The `limit` from the request. |
+| `orders` | Array of order objects | The requested orders. |
 
 Each order object has the following fields:
 
 | Field                        | Value  | Description |
 |------------------------------|--------|-------------|
-| specification                | Object | Details of this order's current state. |
-| specification.direction      | String | Either `buy` or `sell`. |
-| specification.quantity       | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
-| specification.totalPrice     | [Balance Object][] | The maximum amount of the counter currency that will be spent or gained in order to buy or sell the base currency. This value decreases as the order gets partially filled. |
-| properties                   | Object | Details of how the order was placed. |
-| properties.maker             | String - [Address][] | The Ripple account that placed the order. |
-| properties.sequence          | Number | The sequence number of the transaction that placed this order. |
-| properties.makerExchangeRate | [String - Number][] | The exchange rate from the point of view of the account that submitted the order. |
+| `specification` | Object | Details of this order's current state. |
+| `specification.direction` | String | Either `buy` or `sell`. |
+| `specification.quantity` | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
+| `specification.totalPrice` | [Balance Object][] | The maximum amount of the counter currency the order can spend or gain to buy or sell the base currency. This value decreases as the order gets partially filled. |
+| `properties` | Object | Details of how the order was placed. |
+| `properties.maker` | String - [Address][] | The Ripple account that placed the order. |
+| `properties.sequence` | Number | The sequence number of the transaction that placed this order. |
+| `properties.makerExchangeRate` | [String - Number][] | The exchange rate from the point of view of the account that submitted the order. |
 
 #### Example ####
 
@@ -2606,17 +2607,17 @@ Optionally, you can also include the following query parameters:
 
 | Field        | Value   | Description |
 |--------------|---------|-------------|
-| start        | String - [Timestamp][] | Start time of query range. Defaults to the earliest date available. |
-| end          | String - [Timestamp][]  | End time of query range. Defaults to the current date. |
-| min_sequence | String  | Minimum sequence number to query |
-| max_sequence | String  | Max sequence number to query |
-| type         | String  | Restrict results to a specified [transaction type](reference-transaction-format.html) |
-| result       | String  | Restrict results to specified transaction result |
-| binary       | Boolean | Return results in binary format |
-| descending   | Boolean | Reverse chronological order |
-| limit        | Integer | Maximum results per page. Defaults to 20. Cannot be more than 1,000. |
-| marker       | String  | [Pagination](#pagination) key from previously returned response |
-| format       | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][] | Start time of query range. Defaults to the earliest date available. |
+| `end` | String - [Timestamp][]  | End time of query range. Defaults to the current date. |
+| `min_sequence` | String  | Minimum sequence number to query |
+| `max_sequence` | String  | Max sequence number to query |
+| `type` | String  | Restrict results to a specified [transaction type](reference-transaction-format.html) |
+| `result` | String  | Restrict results to specified transaction result |
+| `binary` | Boolean | Return results in binary format |
+| `descending` | Boolean | Reverse chronological order |
+| `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 1,000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -2625,10 +2626,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count  | Integer | The number of objects contained in the `transactions` field. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| transactions | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | The number of objects contained in the `transactions` field. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `transactions` | Array of [transaction objects](#transaction-objects) | All transactions matching the request. |
 
 #### Example ####
 
@@ -2737,7 +2738,7 @@ Optionally, you can also include the following query parameters:
 
 | Field  | Value   | Description |
 |--------|---------|-------------|
-| binary | Boolean | Return transaction in binary format |
+| `binary` | Boolean | Return transaction in binary format |
 
 
 #### Response Format ####
@@ -2746,8 +2747,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| transaction | [transaction object](#transaction-objects) | requested transaction |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `transaction` | [transaction object](#transaction-objects) | requested transaction |
 
 #### Example ####
 
@@ -2804,17 +2805,17 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range |
-| end        | String - [Timestamp][]  | End time of query range |
-| type       | String  | Type of payment - `sent` or `received` |
-| currency   | String - [Currency Code][] | Filter results to specified currency |
-| issuer     | String - [Address][] | Filter results to specified issuer |
-| source\_tag | Integer | Filter results to specified source tag |
-| destination\_tag | Integer | Filter results to specified destination tag |
-| descending | Boolean | Reverse chronological order |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1,000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range |
+| `end` | String - [Timestamp][]  | End time of query range |
+| `type` | String  | Type of payment - `sent` or `received` |
+| `currency` | String - [Currency Code][] | Filter results to specified currency |
+| `issuer` | String - [Address][] | Filter results to specified issuer |
+| `source_tag` | Integer | Filter results to specified source tag |
+| `destination_tag` | Integer | Filter results to specified destination tag |
+| `descending` | Boolean | Reverse chronological order |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1,000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -2823,10 +2824,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count  | Integer | The number of objects contained in the `payments` field. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| payments | Array of [payment objects][] | All payments matching the request. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | The number of objects contained in the `payments` field. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `payments` | Array of [payment objects][] | All payments matching the request. |
 
 #### Example ####
 
@@ -2919,12 +2920,12 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][]  | Start time of query range |
-| end        | String - [Timestamp][]  | End time of query range |
-| descending | Boolean | Reverse chronological order |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][]  | Start time of query range |
+| `end` | String - [Timestamp][]  | End time of query range |
+| `descending` | Boolean | Reverse chronological order |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -2932,10 +2933,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of exchanges returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| exchanges | Array of [Exchange Objects][] | The requested exchanges |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of exchanges returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `exchanges` | Array of [Exchange Objects][] | The requested exchanges |
 
 #### Example ####
 
@@ -3028,14 +3029,14 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| currency   | String  | Restrict results to specified currency. |
-| counterparty | String  | Restrict results to specified counterparty/issuer. |
-| start      | String - [Timestamp][]  | Start time of query range. |
-| end        | String - [Timestamp][]  | End time of query range. |
-| descending | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| format     | String  | Format of returned results: `csv` or`json`. Defaults to `json`. |
+| `currency` | String  | Restrict results to specified currency. |
+| `counterparty` | String  | Restrict results to specified counterparty/issuer. |
+| `start` | String - [Timestamp][]  | Start time of query range. |
+| `end` | String - [Timestamp][]  | End time of query range. |
+| `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `format` | String  | Format of returned results: `csv` or`json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -3043,10 +3044,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of balance changes returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker. |
-| exchanges | Array of [balance change descriptors][] | The requested balance changes. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of balance changes returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker. |
+| `exchanges` | Array of [balance change descriptors][] | The requested balance changes. |
 
 #### Example ####
 
@@ -3137,12 +3138,12 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to start of current date. Ignored if `date` specified. |
-| end        | String - [Timestamp][] | End time of query range. Defaults to current date. Ignored if `date` specified. |
-| accounts   | Boolean | If true, provide lists with addresses of all `sending_counterparties` and `receiving_counterparties` in results. Otherwise, return only the number of sending and receiving counterparties. |
-| payments   | Boolean | Include [Payment Summary Objects][] in the `payments` field for each interval, with the payments that occurred during that interval. |
-| descending | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][] | Start time of query range. Defaults to start of current date. Ignored if `date` specified. |
+| `end` | String - [Timestamp][] | End time of query range. Defaults to current date. Ignored if `date` specified. |
+| `accounts` | Boolean | If true, provide lists with addresses of all `sending_counterparties` and `receiving_counterparties` in results. Otherwise, return only the number of sending and receiving counterparties. |
+| `payments` | Boolean | Include [Payment Summary Objects][] in the `payments` field for each interval, with the payments that occurred during that interval. |
+| `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -3150,9 +3151,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of reports in the `reports` field. |
-| reports | Array of [Reports Objects][] | Daily summaries of account activity for the given account and date range. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of reports in the `reports` field. |
+| `reports` | Array of [Reports Objects][] | Daily summaries of account activity for the given account and date range. |
 
 #### Example ####
 
@@ -3242,12 +3243,12 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to the earliest date available. |
-| end        | String - [Timestamp][] | End time of query range. Defaults to the current date. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| descending | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][] | Start time of query range. Defaults to the earliest date available. |
+| `end` | String - [Timestamp][] | End time of query range. Defaults to the current date. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -3255,18 +3256,18 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of transaction stats objects in the `rows` field. |
-| rows | Array of Transaction Stats Objects | Daily summaries of account transaction activity for the given account. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of transaction stats objects in the `rows` field. |
+| `rows` | Array of Transaction Stats Objects | Daily summaries of account transaction activity for the given account. |
 
 Each Transaction Stats Object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| date   | String - [Timestamp][] | This object describes activity on this date. |
-| transaction\_count | Integer | The total number of transactions sent by the account on this date. |
-| result | Object | Map of [transaction result codes](reference-transaction-format.html#transaction-results), indicating how many of each result code occurred in the transactions sent by this account on this date. |
-| type | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
+| `date` | String - [Timestamp][] | This object describes activity on this date. |
+| `transaction_count` | Integer | The total number of transactions sent by the account on this date. |
+| `result` | Object | Map of [transaction result codes](reference-transaction-format.html#transaction-results), indicating how many of each result code occurred in the transactions sent by this account on this date. |
+| `type` | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
 
 #### Example ####
 
@@ -3340,12 +3341,12 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| start      | String - [Timestamp][] | Start time of query range. Defaults to the start of the most recent interval. |
-| end        | String - [Timestamp][] | End time of query range. Defaults to the end of the most recent interval. |
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| descending | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | String - [Timestamp][] | Start time of query range. Defaults to the start of the most recent interval. |
+| `end` | String - [Timestamp][] | End time of query range. Defaults to the end of the most recent interval. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 
 #### Response Format ####
@@ -3353,17 +3354,17 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | String | The value `success` indicates that this is a successful response. |
-| count | Integer | Number of value stats objects in the `rows` field. |
-| rows | Array of Value Stats Objects | Daily summaries of account value for the given account. |
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `count` | Integer | Number of value stats objects in the `rows` field. |
+| `rows` | Array of Value Stats Objects | Daily summaries of account value for the given account. |
 
 Each Value Stats Object has the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| date   | String - [Timestamp][] | This object describes activity on this date. |
-| value  | [String - Number][] | The total of all currency held by this account, normalized to XRP. |
-| balance_change_count | Number | The number of times the account's balance changed on this date. |
+| `date` | String - [Timestamp][] | This object describes activity on this date. |
+| `value` | [String - Number][] | The total of all currency held by this account, normalized to XRP. |
+| `balance_change_count` | Number | The number of times the account's balance changed on this date. |
 
 #### Example ####
 
@@ -3417,8 +3418,8 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| threshold  | Integer  | Consider the API unhealthy if the database does not respond within this amount of time, in seconds. Defaults to 5 seconds. |
-| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+| `threshold` | Integer  | Consider the API unhealthy if the database does not respond within this amount of time, in seconds. Defaults to 5 seconds. |
+| `verbose` | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
 
 #### Response Format ####
 
@@ -3436,9 +3437,9 @@ If the request specifies `verbose=true` in the query parameters, the response bo
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| score | 0-2 | Health value, as defined above. |
-| response\_time | String - Human-readable time | The actual response time of the database. |
-| response\_time\_threshold | String - Human-readable time | The maximum response time to be considered healthy. |
+| `score` | 0-2 | Health value, as defined above. |
+| `response_time` | String - Human-readable time | The actual response time of the database. |
+| `response_time_threshold` | String - Human-readable time | The maximum response time to be considered healthy. |
 
 #### Example ####
 
@@ -3478,9 +3479,9 @@ Optionally, you can also include the following query parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| threshold  | Integer | Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest validated ledger was imported. Defaults to 300 seconds. |
+| `threshold` | Integer | Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest validated ledger was imported. Defaults to 300 seconds. |
 | threshold2 | Integer | Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest ledger of any kind was imported. Defaults to 60 seconds. |
-| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+| `verbose` | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
 
 #### Response Format ####
 
@@ -3499,12 +3500,12 @@ If the request specifies `verbose=true` in the query parameters, the response bo
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| score  | 0-3 | Health value, as defined above. |
-| response\_time | String | The actual response time of the database. |
-| ledger\_gap | String - Human-readable time | Difference between the close time of the last saved ledger and the current time. |
-| ledger\_gap\_threshold | String - Human-readable time | Maximum ledger gap to be considered healthy. |
-| valildation\_gap | String - Human-readable time | Difference between the close time of the last imported validated ledger and the current time. |
-| validation\_gap\_threshold | String - Human-readable time | Maximum validation gap to be considered healthy. |
+| `score` | 0-3 | Health value, as defined above. |
+| `response_time` | String | The actual response time of the database. |
+| `ledger_gap` | String - Human-readable time | Difference between the close time of the last saved ledger and the current time. |
+| `ledger_gap_threshold` | String - Human-readable time | Maximum ledger gap to be considered healthy. |
+| `valildation_gap` | String - Human-readable time | Difference between the close time of the last imported validated ledger and the current time. |
+| `validation_gap_threshold` | String - Human-readable time | Maximum validation gap to be considered healthy. |
 
 #### Example ####
 
@@ -3556,7 +3557,7 @@ The precision for amounts of **non-XRP currency** in Ripple is as follows:
 * Minimum value: `-9999999999999999e80`
 * 15 decimal digits of precision
 
-**XRP** has a different internal representation, and consequently its precision is different:
+**XRP** has a different internal representation, and its precision is different:
 
 * Minimum value: `0`
 * Maximum value: `100000000000` (`1e11`)
@@ -3586,7 +3587,7 @@ All dates and times are written in ISO 8601 Timestamp Format, using UTC. This fo
 * Four-digit year
 * Two-digit month
 * Two-digit day
-* The letter `T` indicating the beginning of the time portion
+* The letter `T` separating the date part and the time part
 * Two-digit hour using a 24-hour clock
 * Two digit minute
 * The letter `Z` indicating zero offset from UTC.
@@ -3614,7 +3615,7 @@ Many queries may return more data than is reasonable to return in a single HTTP 
 
 The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the `limit` is **200** by default, and can be set as high as **1000**. If you specify a `limit` larger than the maximum, the API uses the maximum value instead.
 
-When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results by including the contents of the `marker` field as the `marker` query parameter of a subsequent request. For the follow-up request, you should use the same parameters as the initial request. When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
+When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results. To do so, make more requests with the previous value of the `marker` field as the `marker` query parameter. For each additional request, use the same parameters as the first request (except `marker`). When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
 
 When a `marker` is or would be present, the response contains a [`Link` header](https://tools.ietf.org/html/rfc5988#section-5) with `rel="next"`. This is a full URL to the next page of results. You can use this to paginate over results when the response is in `csv` format instead of `json`. _(New in [v2.0.4][])_
 
@@ -3626,21 +3627,21 @@ Transactions have two formats - a compact "binary" format where the defining fie
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
-| date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
-| ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
-| tx    | Object | The fields of this transaction object, as defined by the [Transaction Format](reference-transaction-format.html) |
-| meta  | Object | Metadata about the results of this transaction. |
+| `hash`  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
+| `date`  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| `tx`    | Object | The fields of this transaction object, as defined by the [Transaction Format](reference-transaction-format.html) |
+| `meta`  | Object | Metadata about the results of this transaction. |
 
 ### Binary Format ###
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| hash  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
-| date  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
-| ledger_index | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
-| tx    | String | The binary data that represents this transaction, as a hexadecimal string. |
-| meta  | String | The binary data that represents this transaction's metadata, as a hex string. |
+| `hash`  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
+| `date`  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| `tx`    | String | The binary data that represents this transaction, as a hexadecimal string. |
+| `meta`  | String | The binary data that represents this transaction's metadata, as a hex string. |
 
 ## Ledger Objects ##
 
@@ -3648,17 +3649,17 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 
 | Field        | Value | Description |
 |--------------|-------|-------------|
-| ledger\_hash  | String - [Hash][] | An identifying hash unique to this ledger, as a hex string. |
-| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
-| parent\_hash  | String - [Hash][] | The identifying hash of the previous ledger. |
-| total\_coins  | [String - Number][] | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
-| close\_time\_res | Number | The ledger close time is rounded to approximately this many seconds. |
-| accounts\_hash | String - [Hash][] | Hash of the account information contained in this ledger, as hex. |
-| transactions\_hash | String - [Hash][] | Hash of the transaction information contained in this ledger, as hex. |
-| close\_time | Number | The time at which this ledger was closed, in UNIX time. |
-| close\_time\_human | String - [Timestamp][] | The time at which this ledger was closed. |
+| `ledger_hash`  | String - [Hash][] | An identifying hash unique to this ledger, as a hex string. |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
+| `parent_hash`  | String - [Hash][] | The identifying hash of the previous ledger. |
+| `total_coins`  | [String - Number][] | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
+| `close_time_res` | Number | The ledger close time is rounded to this many seconds. |
+| `accounts_hash` | String - [Hash][] | Hash of the account information contained in this ledger, as hex. |
+| `transactions_hash` | String - [Hash][] | Hash of the transaction information contained in this ledger, as hex. |
+| `close_time` | Number | The time at which this ledger was closed, in UNIX time. |
+| `close_time_human` | String - [Timestamp][] | The time at which this ledger was closed. |
 
-**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Consequently, two subsequent ledgers could have the same close time recorded, when actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
+**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same `close_time` values, when their actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
 
 ### Genesis Ledger ###
 
@@ -3670,14 +3671,14 @@ An account creation object represents the action of creating an account in the R
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| address | String - [Address][] | The identifying address of this account, in base-58. |
-| inception | String - [Timestamp][] | The UTC timestamp that the account was created. For genesis accounts, this is the timestamp of ledger 32570. |
-| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
-| parent | String - [Address][] | (Omitted for genesis accounts) The identifying address of the account that provided the initial funding for this account. |
-| tx\_hash | String - [Hash][] | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
-| initial\_balance | [String - Number][] | (Omitted for genesis accounts) The amount of XRP that funded this account. |
-| genesis\_balance | [String - Number][] | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
-| genesis\_index | Number - [Sequence Number][] | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
+| `address` | String - [Address][] | The identifying address of this account, in base-58. |
+| `inception` | String - [Timestamp][] | The UTC timestamp when the address was funded. For genesis accounts, this is the timestamp of ledger 32570. |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
+| `parent` | String - [Address][] | (Omitted for genesis accounts) The address that provided the XRP to fund this address. |
+| `tx_hash` | String - [Hash][] | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
+| `initial_balance` | [String - Number][] | (Omitted for genesis accounts) The amount of XRP that funded this account. |
+| `genesis_balance` | [String - Number][] | (Genesis accounts only) The amount of XRP this account held as of ledger #32570. |
+| `genesis_index` | Number - [Sequence Number][] | (Genesis accounts only) The transaction sequence number of the account as of ledger #32570. |
 
 
 ## Exchange Objects ##
@@ -3685,29 +3686,29 @@ An account creation object represents the action of creating an account in the R
 
 An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
 
-A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange will have a different provider, currency pair, or both.
+A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange has a different provider, currency pair, or both.
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| base\_amount | Number | The amount of the base currency that was traded |
-| counter\_amount | Number | The amount of the counter currency that was traded |
-| rate | Number | The amount of the counter currency acquired per 1 unit of the base currency |
-| autobridged\_currency | String - [Currency Code][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
-| autobridged\_issuer | String - [Address][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
-| base\_currency | String - [Currency Code][] | The base currency |
-| base\_issuer | String - [Address][] | (Omitted for XRP) The account that issued the base currency |
-| buyer | String - [Address][] | The account that acquired the base currency |
-| client | String | (May be omitted) If the transaction contains a memo indicating what client application sent it, this is the contents of the memo. |
-| counter\_currency | String - [Currency Code][] | The counter currency |
-| counter\_issuer | String - [Address][] | (Omitted for XRP) The account that issued the counter currency |
-| executed\_time | String - [Timestamp][] | The time the exchange occurred |
-| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this transaction |
-| offer\_sequence | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
-| provider | String - [Address][] | The account that had an existing Offer in the ledger |
-| seller | String - [Address][] | The account that acquired the counter currency |
-| taker | String - [Address][] | The account that sent the transaction which executed this exchange |
-| tx\_hash | String - [Hash][] | The identifying hash of the transaction that executed this exchange. (**Note:** This exchange may be one of several executed in a single transaction.) |
-| tx\_type | String | The type of transaction that executed this exchange, either `Payment` or `OfferCreate`. |
+| `base_amount` | Number | The amount of the base currency that was traded |
+| `counter_amount` | Number | The amount of the counter currency that was traded |
+| `rate` | Number | The amount of the counter currency acquired per 1 unit of the base currency |
+| `autobridged_currency` | String - [Currency Code][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| `autobridged_issuer` | String - [Address][] | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| `base_currency` | String - [Currency Code][] | The base currency |
+| `base_issuer` | String - [Address][] | (Omitted for XRP) The account that issued the base currency |
+| `buyer` | String - [Address][] | The account that acquired the base currency |
+| `client` | String | (May be omitted) If the transaction contains a memo indicating what client application sent it, this is the contents of the memo. |
+| `counter_currency` | String - [Currency Code][] | The counter currency |
+| `counter_issuer` | String - [Address][] | (Omitted for XRP) The account that issued the counter currency |
+| `executed_time` | String - [Timestamp][] | The time the exchange occurred |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this transaction |
+| `offer_sequence` | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
+| `provider` | String - [Address][] | The account that had an existing Offer in the ledger |
+| `seller` | String - [Address][] | The account that acquired the counter currency |
+| `taker` | String - [Address][] | The account that sent the transaction which executed this exchange |
+| `tx_hash` | String - [Hash][] | The identifying hash of the transaction that executed this exchange. (**Note:** This exchange may be one of several executed in a single transaction.) |
+| `tx_type` | String | The type of transaction that executed this exchange, either `Payment` or `OfferCreate`. |
 
 
 ## Reports Objects ##
@@ -3717,18 +3718,18 @@ Reports objects show the activity of a given account over a specific interval of
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| account | String - [Address][] | The address of the account to which this report pertains. |
-| date | String - [Timestamp][] | The start of the interval to which this report pertains. |
-| high\_value\_received | [String - Number][] | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
-| high\_value\_sent | [String - Number][] | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
-| payments | Array of [Payment Summary Objects][] | (May be omitted) Array with information on each payment sent or received by the account during this interval. |
-| payments\_received | Number | The number of payments sent to this account. (This only includes payments for which this account was the destination, not payments that only rippled through the account or consumed the account's offers.) |
-| payments\_sent | Number | The number of payments sent by this account. |
-| receiving\_counterparties | Array or Number | If account lists requested, an array of addresses that received payments from this account. Otherwise, the number of different accounts that received payments from this account. |
-| sending\_counterparties | Array or Number |  If account lists requested, an array of addresses that sent payments to this account. Otherwise, the number of different accounts that sent payments to this account. |
-| total\_value | [String - Number][] | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
-| total\_value\_received | [String - Number][] | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
-| total\_value\_sent | [String - Number][] | Sum value of all payments from this account, normalized to XRP (as closely as possible).
+| `account` | String - [Address][] | The address of the account to which this report pertains. |
+| `date` | String - [Timestamp][] | The start of the interval to which this report pertains. |
+| `high_value_received` | [String - Number][] | Largest amount received in a single transaction, normalized to XRP (as closely as possible). This includes payments and exchanges. |
+| `high_value_sent` | [String - Number][] | The largest amount sent in a single transaction, normalized to XRP (as closely as possible). |
+| `payments` | Array of [Payment Summary Objects][] | (May be omitted) Array with information on each payment sent or received by the account during this interval. |
+| `payments_received` | Number | The number of payments sent to this account. (This only includes payments for which this account was the destination, not payments that only rippled through the account or consumed the account's offers.) |
+| `payments_sent` | Number | The number of payments sent by this account. |
+| `receiving_counterparties` | Array or Number | If account lists requested, an array of addresses that received payments from this account. Otherwise, the number of different accounts that received payments from this account. |
+| `sending_counterparties` | Array or Number |  If account lists requested, an array of addresses that sent payments to this account. Otherwise, the number of different accounts that sent payments to this account. |
+| `total_value` | [String - Number][] | Sum of total value received and sent in payments, normalized to XRP (as closely as possible). |
+| `total_value_received` | [String - Number][] | Sum value of all payments to this account, normalized to XRP (as closely as possible). |
+| `total_value_sent` | [String - Number][] | Sum value of all payments from this account, normalized to XRP (as closely as possible).
 
 ## Payment Summary Objects ##
 [Payment Summary Objects]: #payment-summary-objects
@@ -3737,11 +3738,11 @@ A Payment Summary Object contains a reduced amount of information about a single
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| tx\_hash | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
-| delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
-| currency | String - [Currency Code][] | The currency delivered to the recipient of the transaction. |
-| issuer | String - [Address][] | The gateway issuing the currency, or an empty string for XRP. |
-| type | String | Either `sent` or `received`, indicating whether the perspective account is sender or receiver of this transaction. |
+| `tx_hash` | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
+| `delivered_amount` | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
+| `currency` | String - [Currency Code][] | The currency delivered to the recipient of the transaction. |
+| `issuer` | String - [Address][] | The gateway issuing the currency, or an empty string for XRP. |
+| `type` | String | Either `sent` or `received`, indicating whether the perspective account is sender or receiver of this transaction. |
 
 
 ## Payment Objects ##
@@ -3753,20 +3754,20 @@ Payment objects have the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| amount | [String - Number][] | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
-| delivered\_amount | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
-| destination\_balance\_changes | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
-| source\_balance\_changes | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
-| transaction\_cost | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
-| destination\_tag | Integer | (May be omitted) A [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
-| source\_tag | Integer | (May be omitted) A [source tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
-| currency | String - [Currency Code][] | The currency that the `destination` account received. |
-| destination | String - [Address][] | The account that received the payment. |
-| executed\_time | String - [Timestamp][] | The time the ledger that included this payment closed. |
-| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included this payment. |
-| source | String - [Address][] | The account that sent the payment. |
-| source\_currency | String - [Currency Code][] | The currency that the `source` account spent. |
-| tx\_hash | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
+| `amount` | [String - Number][] | The amount of the destination `currency` that the transaction was instructed to send. In the case of Partial Payments, this is a "maximum" amount. |
+| `delivered_amount` | [String - Number][] | The amount of the destination `currency` actually received by the destination account. |
+| `destination_balance_changes` | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
+| `source_balance_changes` | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
+| `transaction_cost` | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
+| `destination_tag` | Integer | (May be omitted) A [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
+| `source_tag` | Integer | (May be omitted) A [source tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
+| `currency` | String - [Currency Code][] | The currency that the `destination` account received. |
+| `destination` | String - [Address][] | The account that received the payment. |
+| `executed_time` | String - [Timestamp][] | The time the ledger that included this payment closed. |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this payment. |
+| `source` | String - [Address][] | The account that sent the payment. |
+| `source_currency` | String - [Currency Code][] | The currency that the `source` account spent. |
+| `tx_hash` | String - [Hash][] | The identifying hash of the transaction that caused the payment. |
 
 
 ## Balance Objects and Balance Change Objects ##
@@ -3781,9 +3782,9 @@ Balance objects and Balance Change objects have the same format, with the follow
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| counterparty | String - [Address][] | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
-| currency | String - [Currency Code][] | The currency for which this balance changed. |
-| value | [String - Number][] | The amount of the `currency` that the associated account gained or lost. In balance change objects, this value can be positive (for amounts gained) or negative (for amounts lost). In balance objects, this value can be positive (for amounts the counterparty owes the account) or negative (for amounts owed to the counterparty). |
+| `counterparty` | String - [Address][] | The counterparty, or issuer, of the `currency`. In the case of XRP, this is an empty string. |
+| `currency` | String - [Currency Code][] | The currency for which this balance changed. |
+| `value` | [String - Number][] | The amount of the `currency` that the associated account gained or lost. In balance change objects, this value can be positive (for amounts gained) or negative (for amounts lost). In balance objects, this value can be positive (for amounts the counterparty owes the account) or negative (for amounts owed to the counterparty). |
 
 
 ## Balance Change Descriptors ##
@@ -3795,16 +3796,16 @@ Balance Change Descriptors have the following fields:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| amount\_change | [String - Number][] | The difference in the amount of currency held before and after this change. _(Prior to [v2.0.6][], this field was called `change`.)_ |
-| final\_balance | [String - Number][] | The balance after the change occurred. |
-| node\_index | Number (or `null`)| This balance change is represented by the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
-| tx\_index | Number | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
-| change\_type | String | One of several [](#change-types) describing what caused this balance change to occur. |
-| currency | String - [Currency Code][] | The change affected this currency. |
-| executed\_time | String - [Timestamp][] | The time the change occurred. (This is based on the close time of the ledger that included the transaction that executed the change. |
-| counterparty | String - [Address][] | (Omitted for XRP) The `currency` is held in a trust line to or from this account. _(Prior to [v2.0.6][], this field was called `issuer`.)_ |
-| ledger\_index | Number - [Ledger Index][] | The sequence number of the ledger that included the transaction that executed this balance change. |
-| tx\_hash | String - [Hash][] | The identifying hash of the transaction that executed this balance change. |
+| `amount_change` | [String - Number][] | The difference in the amount of currency held before and after this change. _(Prior to [v2.0.6][], this field was called `change`.)_ |
+| `final_balance` | [String - Number][] | The balance after the change occurred. |
+| `node_index` | Number (or `null`)| This balance change is represented by the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
+| `tx_index` | Number | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
+| `change_type` | String | One of several [](#change-types) describing what caused this balance change to occur. |
+| `currency` | String - [Currency Code][] | The change affected this currency. |
+| `executed_time` | String - [Timestamp][] | The time the change occurred. (This is based on the close time of the ledger that included the transaction that executed the change. |
+| `counterparty` | String - [Address][] | (Omitted for XRP) The `currency` is held in a trust line to or from this account. _(Prior to [v2.0.6][], this field was called `issuer`.)_ |
+| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included the transaction that executed this balance change. |
+| `tx_hash` | String - [Hash][] | The identifying hash of the transaction that executed this balance change. |
 
 ### Change Types ###
 
@@ -3820,17 +3821,17 @@ The following values are valid for the `change_type` field of a Balance Change D
 ## Volume Objects ##
 [Volume Objects]: #volume-objects
 
-Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given time period.
+Volume objects represent the total volumes of money moved, in either payments or exchanges, during a given period.
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| components | Array of Objects | The data that was used to assemble this total. For payment volume, each object represents payments in a particular currency and issuer. For exchange volume, each object represents a market between two currencies. |
-| count | Number | The total number of exchanges in this period. |
-| endTime | String - [Timestamp][] | The end time of this interval. |
-| exchange | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
-| exchangeRate | Number | The exchange rate to the displayed currency from XRP.
-| startTime | String - [Timestamp][] | The start of this time period. |
-| total | Number | Total volume of all recorded exchanges in the time period. |
+| `components` | Array of Objects | The data that was used to assemble this total. For payment volume, each object represents payments in a particular currency and issuer. For exchange volume, each object represents a market between two currencies. |
+| `count` | Number | The total number of exchanges in this period. |
+| `endTime` | String - [Timestamp][] | The end time of this interval. |
+| `exchange` | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
+| `exchangeRate` | Number | The exchange rate to the displayed currency from XRP.
+| `startTime` | String - [Timestamp][] | The start of this period. |
+| `total` | Number | Total volume of all recorded exchanges in the period. |
 
 
 
@@ -3838,7 +3839,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 
 # Running the Historical Database #
 
-You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to operate the historical database indefinitely, or you want access to historical transactions from within your own intranet.
+You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to run the historical database indefinitely, or you want access to historical transactions from within your own intranet.
 
 ## Installation ##
 
@@ -3855,19 +3856,23 @@ Version 2 of the Historical Database requires HBase instead of [PostgreSQL](http
 
 ### Installation Process ###
 
-Starting in
+To install the Data API v2:
 
   1. Install HBase. For production use, configure it in distributed mode.
   2. Clone the rippled Historical Database Git Repository:
-    `git clone https://github.com/ripple/rippled-historical-database.git`
+
+        git clone https://github.com/ripple/rippled-historical-database.git
+
     (You can also download and extract a zipped release instead.)
   3. Use npm to install additional modules:
-    `cd rippled-historical-database`
-    `npm install`
-    The install script will also create the required config files: `config/api.config.json` and `config/import.config.json`
-  4. Modify the API and import config files as needed. Remove the `postgres` section from `api.config.json`.
 
-Reports, stats, and aggregated exchange data needs additional processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
+        cd rippled-historical-database
+        npm install
+
+    The install script creates the required config files: `config/api.config.json` and `config/import.config.json`
+  4. Change the config files as needed. Remove the `postgres` section from `api.config.json`.
+
+Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
 
 At this point, the rippled Historical Database is installed. See [Services](#services) for the different components that you can run.
 
@@ -3892,13 +3897,13 @@ The `rippled` Historical Database consists of several processes that can be run 
     Command: `node import/postgres/backfill`
 * API Server - Provides [REST API access](#api-method-reference) to the data.
     Command:  `npm start` (restarts the server automatically when source files change),
-    or `node api/server.js` (simple start)
+    or `node api/server.js` (start once)
 
 ## Importing Data ##
 
 In order to retrieve data from the `rippled` Historical Database, you must first populate it with data. Broadly speaking, there are two ways this can happen:
 
-* Connect to a `rippled` server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the `rippled` server not to maintain history older than what you have in your Historical Database.)
+* Connect to a `rippled` server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the `rippled` server not to keep history older than what you have in your Historical Database.)
     * You can choose to retrieve only new ledgers as they are validated, or you can retrieve old ledgers, too.
 * Or, you can load a dump from a database that already has the historical ledger data. (At this time, there are no publicly-available database dumps of historical data.) Use the standard process for your database.
 
@@ -3906,7 +3911,7 @@ In all cases, keep in mind that the integrity of the data is only as good as the
 
 ### Live Ledger Importer ###
 
-The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, it is still possible that the Importer may miss ledgers.
+The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, the Importer may still miss ledgers.
 
 The Live Ledger Importer includes a secondary process that runs periodically to validate the data already imported and check for gaps in the ledger history.
 
@@ -3927,7 +3932,7 @@ The `--startIndex` parameter defines the most-recent ledger to retrieve. The Bac
 
 The `--stopIndex` parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.
 
-**Warning:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
+**Caution:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
 
 Example usage:
 

@@ -1,3 +1,11 @@
+#Ripple style guidelines
+cold wallet: issuing address
+hot wallet: operational address
+market maker: liquidity provider
+warm wallet: standby address
+ripple network: Ripple Consensus Ledger, Ripple peer-to-peer network
+
+#Plainlanguage.gov guidelines (adapted)
 and/or: __ or __ or both
 addressees are requested: (omit), please
 adjacent to: next to
@@ -11,7 +19,6 @@ at the present time: at present, now
 be advised: (omit)
 by means of: by, with
 close proximity: near
-cold wallet: issuing address
 combat environment: combat
 comply with: follow
 due to the fact that: due to, since
@@ -20,7 +27,6 @@ effect modifications: make changes
 failed to: didn't
 for a period of: for
 has a requirement for: needs
-hot wallet: operational address
 in accordance with: by, following, per, under
 in addition: also, besides, too
 in an effort to: to
@@ -30,10 +36,11 @@ in lieu of: instead
 in order that: for, so
 inter alia: (omit)
 interpose no objection: don't object
+in order for: for
 in order to: to
 in regard to: about, concerning, on
 in relation to: about, with, to
-in the amount of: for
+#in the amount of: for
 in the event of: if
 in the near future: shortly, soon
 in the process of: (omit)
@@ -44,12 +51,11 @@ is applicable to: applies to
 is authorized to: may
 is in consonance with: agrees with, follows
 is responsible for: (omit) handles
-it appears: seems
-it is: (omit)
+#it appears: seems
+#it is: (omit)
 it is essential: must, need to
 it is requested: please, we request, I request
 limited number: limits
-market maker: liquidity provider
 not later than: by, before
 not later than: by
 pertaining to: about, of, on
@@ -57,20 +63,17 @@ prior to: before
 provided that: if
 provides guidance for: guides
 pursuant to: by, following, per, under
-ripple network: Ripple Consensus Ledger, Ripple peer-to-peer network
 set forth in: in
 similar to: like
 successfully complete: complete, pass
 take action to: (omit)
 the month of: (omit)
-there are: (omit)
-there is: (omit)
+#there is: (omit)
 the undersigned: I
 the use of: (omit)
 time period: (either one)
 under the provisions of: under
 until such time as: until
-warm wallet: standby address
 with reference to: about
 with the exception of: except for
 your office: you

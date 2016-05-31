@@ -76,7 +76,7 @@ Take note of the `account_id` (Ripple Address) and `master_seed` (Ripple secret 
 
 In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
+**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
 
     $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
     >     "Flags": 0,
@@ -240,7 +240,7 @@ Before you can multi-sign a transaction, first  [set up multi-signing](#setting-
 
 Create a JSON object that represents the transaction you want to submit. You have to specify _everything_ about this transaction, including `Fee` and `Sequence`. Also include the field `SigningPubKey` as an empty string, to indicate that the transaction is multi-signed.
 
-Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be (N+1) times the normal [transaction cost](concept-transaction-cost.html), where N is the number of signatures you plan to provide. Given that it sometimes takes a while to collect signatures from multiple sources, you may want to include additional buffer in case the [transaction cost](concept-transaction-cost.html) increases in that time.
+Keep in mind that the `Fee` for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be at least (N+1) times the normal [transaction cost](concept-transaction-cost.html), where N is the number of signatures you plan to provide. Since it sometimes takes a while to collect signatures from multiple sources, you may want to specify more than the current minimum, in case the [transaction cost](concept-transaction-cost.html) increases in that time.
 
 Here's an example transaction ready to be multi-signed:
 
@@ -265,7 +265,7 @@ Here's an example transaction ready to be multi-signed:
 
 Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
+**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
 
     $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{
     >     "TransactionType": "TrustSet",
@@ -322,7 +322,7 @@ You can collect additional signatures in parallel or in serial:
 * In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
 * In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not transmit a secret key unencrypted over the network.
+**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
 
     $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
     >    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",

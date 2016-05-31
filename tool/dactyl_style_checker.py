@@ -16,10 +16,13 @@ import collections
 import yaml
 
 from bs4 import BeautifulSoup
+from bs4 import Comment
+from bs4 import NavigableString
 
 import dactyl_build
 
 DEFAULT_CONFIG_FILE = "dactyl-config.yml"
+OVERRIDE_COMMENT_REGEX = r" *STYLE_OVERRIDE: *([\w, -]+)"
 
 logger = logging.getLogger()
 
@@ -40,6 +43,14 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
 	else:
 		logging.warning("No 'phrase_substitutions_file' found in config.")
 
+def tokenize(passage):
+    words = re.split(r"[\s,.;()!'\"]+", passage)
+    return [w for w in words if w]
+
+def depunctuate(passage):
+    punctuation = re.compile(r"[,.;()!'\"]")
+    return re.sub(punctuation, "", passage)
+
 def check_all_pages(target=None):
     """Reads all pages for a target and checks them for style."""
     target = dactyl_build.get_target(target)
@@ -57,34 +68,62 @@ def check_all_pages(target=None):
         html = dactyl_build.parse_markdown(page, pages=pages, target=target)
         soup = BeautifulSoup(html, "html.parser")
 
-        content_elements = ["p","li", "td","h1","h2","h3","h4","h5","h6"]
-        passages = []
-        for el in soup.find_all(content_elements):
-            for passage in el.stripped_strings:
-                passage_issues = check_passage(passage)
+        overrides = get_overrides(soup)
+
+        content_elements = ["p","li","a","em","strong","th","td",
+                            "h1","h2","h3","h4","h5","h6"]
+        for el in soup.descendants:
+            if (type(el) == NavigableString and
+                el.parent.name in content_elements and
+                str(el).strip()):
+                passage = str(el).strip()
+                passage_issues = check_passage(passage, overrides)
                 if passage_issues:
                     page_issues += passage_issues
+                #print("'%s' (%s)" % (el, el.parent.name))
+        # for el in soup.find_all(content_elements):
+        #     for passage in el.stripped_strings:
+        #         passage_issues = check_passage(passage, overrides)
+        #         if passage_issues:
+        #             page_issues += passage_issues
 
         if page_issues:
             style_issues.append( (page["name"], page_issues) )
 
     return style_issues
 
-def check_passage(passage):
+def get_overrides(soup):
+    overrides = []
+    comments = soup.find_all(string=lambda text:isinstance(text,Comment))
+    for comment in comments:
+        m = re.match(OVERRIDE_COMMENT_REGEX, comment)
+        if m:
+            new_overrides = m.group(1).split(",")
+            new_overrides = [o.strip() for o in new_overrides]
+            logging.info("Overrides found: %s" % new_overrides)
+            overrides += new_overrides
+    return overrides
+
+def check_passage(passage, overrides):
     """Checks an individual string of text for style issues."""
     issues = []
     logging.debug("Checking passage %s" % passage)
     #tokens = nltk.word_tokenize(passage)
-    tokens = re.split(r"\s+", passage)
+    tokens = tokenize(passage)
     for t in tokens:
-        logging.debug
         if t.lower() in config["disallowed_words"]:
-            issues.append( ("Unplain Word", t) )
+            if t.lower() in overrides:
+                logging.info("Unplain word violation %s overridden" % t)
+                continue
+            issues.append( ("Unplain Word", t.lower()) )
 
     for phrase,sub in config["disallowed_phrases"].items():
-        if phrase in passage.lower():
+        if phrase.lower() in depunctuate(passage):
+            if phrase.lower() in overrides:
+                logging.info("Unplain phrase violation %s overridden" % t)
+                continue
             #logging.warn("Unplain phrase: %s; suggest %s instead" % (phrase, sub))
-            issues.append( ("Unplain Phrase", phrase) )
+            issues.append( ("Unplain Phrase", phrase.lower()) )
 
     return issues
 

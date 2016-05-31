@@ -14,7 +14,7 @@ The issuing address sends issuances to a standby address, or directly to an oper
 
 ## Issuing Address ##
 
-The issuing address is like a vault. Partners, customers, and operational addresses create accounting relationships (trust lines) to the issuing address, but this address sends as few transactions as possible. Periodically, a human operator creates and signs a transaction from the issuing address in order to refill the balances of a standby or operational address. Ideally, the secret key used to sign these transactions should never be accessible from any internet-connected computer.
+The issuing address is like a vault. Partners, customers, and operational addresses create accounting relationships (trust lines) to the issuing address, but this address sends as few transactions as possible. Periodically, a human operator creates and signs a transaction from the issuing address to refill the balances of a standby or operational address. Ideally, the secret key used to sign these transactions should never be accessible from any internet-connected computer.
 
 Unlike a vault, the issuing address can receive payments directly from customers and partners. Since all transactions in the Ripple Consensus Ledger are public, automated systems can monitor for payments to the issuing address without needing a secret key.
 
@@ -29,7 +29,7 @@ A financial institution can issue more than one currency in the Ripple Consensus
 
 ## Operational Addresses ##
 
-An operational address is like a cash register. It makes payments on behalf of the institution by transferring issuances to customers and partners. In order to sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it in order to sign transactions.) Customers and partners do not, and should not, create accounting relationships with an operational address.
+An operational address is like a cash register. It makes payments on behalf of the institution by transferring issuances to customers and partners. To sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it to sign transactions.) Customers and partners do not, and should not, create accounting relationships with an operational address.
 
 Each operational address has a limited balance of issuances. When the balance of an operational address gets low, the financial institution refills it by sending a payment from the issuing address or a standby address.
 
@@ -48,4 +48,4 @@ As with operational addresses, a standby address must have an accounting relatio
 
 ### Standby Address Compromise ###
 
-If a standby address is compromised, the results are similar to an operational address being compromised. A malicious actor can steal any balances possessed by the standby address, and the financial institution can change to a new standby address with no action from customers and partners.
+If a standby address is compromised, the consequences are like an operational address being compromised. A malicious actor can steal any balances possessed by the standby address, and the financial institution can change to a new standby address with no action from customers and partners.

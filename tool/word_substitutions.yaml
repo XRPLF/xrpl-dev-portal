@@ -1,21 +1,28 @@
+#Ripple Style Guide suggestions
+consult: see
+gateway: financial institution, issuer
+gateways: financial institutions, issuers
+wallet: address, client application, account
+ious: issuances
+will: (avoid future tense)
+
+#Plainlanguage.gov suggestions (adapted for Ripple)
 accompany: go with
 accomplish: carry out, do
 accorded: given
 accordingly: so
 accrue: add, gain
 accurate: correct, exact, right
-additional: added, more, other
+#additional: added, more, other
 addressees: you
 advantageous: helpful
 advise: recommend, tell
 aircraft: plane
 allocate: divide
 anticipate: expect
-api's: APIs
 apparent: clear, plain
 appreciable: many
-appropriate: (omit), proper, right
-approximate: about
+#approximate: about
 ascertain: find out, learn
 assist: aid, help
 assistance: aid, help
@@ -26,7 +33,7 @@ benefit: help
 capability: ability
 caveat: warning
 clearly: (omit)
-combined: joint
+#combined: joint
 commence: begin, start
 component: part
 comprise: form, include, make up
@@ -35,14 +42,14 @@ consequently: so
 consolidate: combine, join, merge
 constitutes: is, forms, makes up
 convene: meet
-currently: (omit), now
+#currently: (omit), now
 deem: believe, consider, think
-delete: cut, drop
+#delete: cut, drop
 demonstrate: prove, show
 depart: leave
 designate: appoint, choose, name
 desire: want, wish
-determine: decide, figure, find
+#determine: decide, figure, find
 disclose: show
 discontinue: drop, stop
 disseminate: give, issue, pass, send
@@ -53,11 +60,11 @@ eliminate: cut, drop, end
 employ: use
 encounter: meet
 endeavor: try
-ensure: make sure
+#ensure: make sure
 enumerate: count
 equipments: equipment
 equitable: fair
-establish: set up, prove, show
+establish: set up, create, prove
 evidenced: showed
 evident: clear
 exhibit: show
@@ -65,38 +72,34 @@ expedite: hasten, speed up
 expeditious: fast, quick
 expend: spend
 expertise: ability
-expiration: end
+#expiration: end
 facilitate: ease, help
 feasible: can be done, workable
 females: women
 finalize: complete, finish
 forfeit: give up, lose
-forward: send
+#forward: send
 frequently: often
 furnish: give, send
-gateway: financial institution
 herein: here
 heretofore: until now
 herewith: below, here
 identical: same
-identify: find, name, show
-immediately: at once
+#identify: find, name, show
 impacted: affected, changed
 inception: start
-indicate: show, write down
 indication: sign
-initial: first
+#initial: first
 initiate: start
 insane: (omit)
-ious: issuances
 just: (omit)
 liaison: discussion
 magnitude: size
 maintain: keep, support
 methodology: method
-minimize: decrease, method
-modify: change
-monitor: check, watch
+#minimize: decrease, method
+#modify: change
+#monitor: check, watch
 necessitate: cause, need
 notify: let know, tell
 notwithstanding: inspite of, still
@@ -107,21 +110,18 @@ observe: see
 obviously: (omit)
 operate: run, use, work
 optimum: best, greatest, most
-participate: take part
 perform: do
+performed: done
 permit: let
 portion: part
 possess: have, own
 practicable: practical
 preclude: prevent
-previous: earlier
-previously: before
 prioritize: rank
 proceed: do, go ahead, try
 procure: (omit)
 proficiency: skill
 promulgate: issue, publish
-provide: give, offer, say
 purchase: buy
 reflect: say, show
 regarding: about, of, on
@@ -130,9 +130,6 @@ remain: stay
 remainder: rest
 remuneration: pay, payment
 render: give, make
-represents: is
-require: must, need
-requirement: need
 reside: live
 retain: keep
 selection: choice
@@ -149,14 +146,12 @@ terminate: end, stop
 therefore: so
 therein: there
 thereof: its, their
-this activity, command: us, we
 timely: prompt
 transmit: send
 utilize: use
 utilization: use
 viable: practical, workable
 vice: instead of, versus
-wallet: address, client application, account
 warrant: call for, permit
 whereas: because, since
 witnessed: saw

@@ -164,7 +164,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="operating-rippled-servers">Operating rippled Servers</h1>
-<p>The core server of the Ripple peer-to-peer network is <a href="reference-rippled.html"><code>rippled</code></a>. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server perform validations and participate in the consensus process.</p>
+<p>The core server of the Ripple peer-to-peer network is <a href="reference-rippled.html"><code>rippled</code></a>. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server take part in the consensus process.</p>
 <p>This page contains instructions for:</p>
 <ul>
 <li><a href="#installing-rippled">Installing <code>rippled</code></a></li>
@@ -175,28 +175,28 @@
 <ul>
 <li>Stock server - follows the network with a local copy of the ledger.</li>
 <li>Validating server, or <em>validator</em> for short - participates in consensus.</li>
-<li><code>rippled</code> server in stand-alone mode - for basic testing. Does not communicate to other <code>rippled</code> servers.</li>
+<li><code>rippled</code> server in stand-alone mode - for testing. Does not communicate to other <code>rippled</code> servers.</li>
 </ul>
 <p>You can also run the <code>rippled</code> executable as a client application for accessing <a href="reference-rippled.html"><code>rippled</code> APIs</a> locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)</p>
 <h2 id="reasons-to-run-a-stock-server">Reasons to Run a Stock Server</h2>
-<p>There are lots of reasons you might want to run your own <code>rippled</code> server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it.</p>
-<p>It is important that you can trust the <code>rippled</code> you use, so you can be certain that the software you are running will behave in the manner specified in its source code. Of course, you must also practice good network security to protect your server from malicious hackers. If you connect to a malicious server, there are myriad ways that it can take advantage of you or cause you to lose money. For example:</p>
+<p>There are lots of reasons you might want to run your own <code>rippled</code> server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. Of course, you must practice good network security to protect your server from malicious hackers.</p>
+<p>You need to trust the <code>rippled</code> you use. If you connect to a malicious server, there are many ways that it can take advantage of you or cause you to lose money. For example:</p>
 <ul>
-<li>A malicious server could report that you were paid when no such payment was made</li>
-<li>It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal</li>
-<li>If you sent it your account's secret, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money in your account's balances.</li>
+<li>A malicious server could report that you were paid when no such payment was made.</li>
+<li>It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal.</li>
+<li>If you sent it your address's secret key, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money your address holds.</li>
 </ul>
 <p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code>rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p>
 <p>Finally, if you run a validating server, you can use a stock server as a proxy to the public network while keeping your validating server on a private subnet only accessible to the outside world through the stock server. This makes it more difficult to compromise the integrity of your validating server.</p>
 <h2 id="reasons-to-run-a-validator">Reasons to Run a Validator</h2>
 <p>The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators <em>not to collude</em>. The more operators with different interests there are who run validators, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple peer-to-peer network, it is in your interest to contribute to the consensus process.</p>
-<p>Not all <code>rippled</code> servers need to be validators: trusting additional servers from the same operator does not provide additional protection against collusion. It could be useful for an organization to run validators in multiple regions in order to provide better redundancy in case of natural disasters and other emergencies.</p>
+<p>Not all <code>rippled</code> servers need to be validators: trusting more servers from the same operator does not offer better protection against collusion. An organization might run validators in multiple regions for redundancy in case of natural disasters and other emergencies.</p>
 <p>If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.</p>
 <h3 id="properties-of-a-good-validator">Properties of a Good Validator</h3>
 <p>There are several properties that define a good validator. The more of these properties your server embodies, the more reason others have to include your server in their list of trusted validators:</p>
 <ul>
 <li><strong>Availability</strong>. An ideal validator should always be running, submitting validation votes for every proposed ledger.<ul>
-<li>Basically, strive for 100% uptime.</li>
+<li>Strive for 100% uptime.</li>
 </ul>
 </li>
 <li><strong>Agreement</strong>. A validator's votes should match the outcome of the consensus process as often as possible. To do otherwise could indicate that the validator's software is outdated, buggy, or intentionally biased.<ul>
@@ -212,12 +212,12 @@
 </ul>
 </li>
 </ul>
-<p>At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple (the company): these validators are included in the default <code>rippled</code> configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on the validators currently operating, see <a href="https://validators.ripple.com">validators.ripple.com</a>.</p>
+<p>At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple (the company): these validators are included in the default <code>rippled</code> configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see <a href="https://validators.ripple.com">validators.ripple.com</a>.</p>
 <h1 id="installing-rippled">Installing rippled</h1>
 <p>For development, you can <a href="https://wiki.ripple.com/Rippled_build_instructions">compile <code>rippled</code> from source</a>.</p>
 <p>Production <code>rippled</code> instances can <a href="#installation-on-centosred-hat-with-yum">use Ripple's binary executable</a>, available from the Ripple <a href="https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified">yum</a> repository.</p>
 <h2 id="system-requirements">System Requirements</h2>
-<p>A <code>rippled</code> server should run comfortably on commodity hardware, to make it easy to participate in the network. At present, we recommend the following:</p>
+<p>A <code>rippled</code> server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following:</p>
 <ul>
 <li>Operating System:<ul>
 <li>Production: CentOS or RedHat Enterprise Linux (latest release) supported</li>
@@ -263,7 +263,7 @@
 <p>Automatic rippled updates can be enabled with a one-time Cron configuration:</p>
 <ol>
 <li>
-<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, perform a <a href="#manual">manual update</a>.</p>
+<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, <a href="#manual">update manually</a>.</p>
 </li>
 <li>
 <p>Install <code>crond</code>:</p>
@@ -282,7 +282,7 @@
 </code></pre>
 </li>
 </ol>
-<p>The installed <code>rippled</code> package will be updated within an hour of a new release.</p>
+<p>The script updates the installed <code>rippled</code> package within an hour of each new release.</p>
 <h3 id="manual">Manual</h3>
 <p>Run the following commands to update to the latest release of <code>rippled</code>:</p>
 <pre><code>    $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
@@ -352,7 +352,7 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <li>
 <p>Make the following configuration changes to your validator:</p>
 <ul>
-<li>Copy the <code>[ips_fixed]</code> list and paste it under <code>[ips]</code>. These fields should contain only the IP addresses and ports of the public-facing rippled(s). The validator will connect to only these peers.</li>
+<li>Copy the <code>[ips_fixed]</code> list and paste it under <code>[ips]</code>. These fields should contain only the IP addresses and ports of the public-facing rippled(s). The validator connects to only these peers.</li>
 <li>Change <code>[peer_private]</code> to <code>1</code> to prevent its IP address from being forwarded.</li>
 </ul>
 </li>
@@ -363,7 +363,7 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <p>Remember to restart <code>rippled</code> for config changes to take effect.</p>
 <p>Take care not to publish the IP address of your validator.</p>
 <h2 id="domain-verification">Domain Verification</h2>
-<p>Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate. <a href="#ripple-txt">Publishing a ripple.txt</a> and <a href="#account-domain">setting the validator's account domain</a> allows services like <a href="https://validators.ripple.com">validators.ripple.com</a> to detect the domain associated with the validator.</p>
+<p>Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they control. <a href="#ripple-txt">Publishing a ripple.txt</a> and <a href="#account-domain">setting the validator's account domain</a> allows services like <a href="https://validators.ripple.com">validators.ripple.com</a> to detect the domain associated with the validator.</p>
 <h3 id="rippletxt">ripple.txt <a name="ripple-txt"></a></h3>
 <p>Publish a <a href="https://wiki.ripple.com/Ripple.txt">ripple.txt</a> page at your domain with a signed SSL certificate.</p>
 <p>List the validator's <code>validation_public_key</code> (generated <a href="#validator-setup">above</a> in step 3) in the <code>[validation_public_key]</code> section.</p>
@@ -406,29 +406,29 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 </li>
 </ol>
 <h1 id="additional-configuration">Additional Configuration</h1>
-<p><code>rippled</code> should connect to the Ripple network with the default configuration. However, you can modify your settings by editing the <code>rippled.cfg</code> file (located at <code>/opt/ripple/etc/rippled.cfg</code> when installing <code>rippled</code> with yum).</p>
+<p><code>rippled</code> should connect to the Ripple network with the default configuration. However, you can change your settings by editing the <code>rippled.cfg</code> file (located at <code>/opt/ripple/etc/rippled.cfg</code> when installing <code>rippled</code> with yum).</p>
 <p>See <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">the <code>rippled</code> GitHub repository</a> for a description of all configuration options.</p>
 <p>Changes to the <code>[debug_logfile]</code> or <code>[database_path]</code> sections may require you to give the <code>rippled</code> user and group ownership to your new configured path:</p>
 <pre><code>    $ chown -R rippled:rippled &lt;configured path&gt;
 </code></pre>
-<p>You will need to restart <code>rippled</code> for any configuration changes to take effect:</p>
+<p>Restart <code>rippled</code> for any configuration changes to take effect:</p>
 <pre><code>    $ sudo service rippled restart
 </code></pre>
 <h2 id="parallel-networks">Parallel Networks</h2>
 <p>Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.</p>
 <p>However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>, an "alternate universe" network, which can act as a testing ground for applications and the <code>rippled</code> server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple <a href="https://ripple.com/build/ripple-test-net/">gives away for free</a> to parties interested in developing applications on the Test Net.</p>
 <p><strong>Caution:</strong> Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.</p>
-<p>Over time, there may also be additional, smaller test networks for specific purposes.</p>
+<p>Over time, there may also be smaller, temporary test networks for specific purposes.</p>
 <h3 id="parallel-networks-and-consensus">Parallel Networks and Consensus</h3>
-<p>There is no <code>rippled</code> setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues to operate as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
+<p>There is no <code>rippled</code> setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
 <h2 id="clustering">Clustering</h2>
-<p>If you are running multiple <code>rippled</code> servers in a single datacenter, you can configure those servers to operate in a cluster to maximize efficiency. Operating your <code>rippled</code> servers in a cluster provides the following benefits:</p>
+<p>If you are running multiple <code>rippled</code> servers in a single datacenter, you can configure those servers into a cluster to maximize efficiency. Running your <code>rippled</code> servers in a cluster provides the following benefits:</p>
 <ul>
 <li>Clustered <code>rippled</code> servers share the work of cryptography. If one server has verified the authenticity of a message, the other servers in the cluster trust it and do not re-verify.</li>
 <li>Clustered servers share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all servers of the cluster at once.</li>
 <li>Clustered servers always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.</li>
 </ul>
-<p>To enable clustering, modify the following sections of your <a href="https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346">config file</a> for each server:</p>
+<p>To enable clustering, change the following sections of your <a href="https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346">config file</a> for each server:</p>
 <ul>
 <li>
 <p>List the IP address and port of each other server under the <code>[ips_fixed]</code> section. The port should be the one from the other servers' <code>protocol = peer</code> setting in their <code>rippled.cfg</code>. Example:</p>
@@ -438,7 +438,10 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 </code></pre>
 </li>
 <li>
-<p>Generate a unique seed (using the <a href="reference-rippled.html#validation-seed"><code>validation_create</code> command</a>) for each of your servers, and configure it under the <code>[node_seed]</code> section. The <code>rippled</code> server uses this key to sign its messages to other servers in the peer-to-peer network. <strong>Note:</strong> This is a different key than the one <code>rippled</code> uses to sign ledger proposals for consensus, but it is in the same format.</p>
+<p>Generate a unique seed (using the <a href="reference-rippled.html#validation-seed"><code>validation_create</code> command</a>) for each of your servers, and configure it under the <code>[node_seed]</code> section. The <code>rippled</code> server uses this key to sign its messages to other servers in the peer-to-peer network.</p>
+<ul>
+<li><strong>Note:</strong> This is a different key than the validation seed <code>rippled</code> uses to sign ledger proposals for consensus, in the same format.</li>
+</ul>
 </li>
 <li>Add the public keys (for peer communication) of each of your other servers under the <code>[cluster_nodes]</code> section.</li>
 </ul>

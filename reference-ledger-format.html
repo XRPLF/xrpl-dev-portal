@@ -163,14 +163,14 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="the-ledger">The Ledger</h1>
-<p>The point of the Ripple software is to maintain a shared, global ledger that is open to all, so that individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by maintaining a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> maintains a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
+<p>The Ripple Consensus Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> keeps a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
 <p><img alt="Diagram: Each ledger is the result of applying transactions to the previous ledger version." src="img/ledger-process.png"/></p>
-<p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a <a href="#ledger-index">ledger index</a> which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be accurate and immutable.</p>
-<p>A single ledger version consists of several components:</p>
+<p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a <a href="#ledger-index">ledger index</a> which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be correct and immutable.</p>
+<p>A single ledger version consists of several parts:</p>
 <p><img alt="Diagram: A ledger has transactions, a state node, and a header with the close time and validation info" src="img/ledger-components.png"/></p>
 <ul>
 <li>A <strong>header</strong> - The <a href="#ledger-index">ledger index</a>, hashes of its other contents, and other metadata.</li>
-<li>A <strong>transaction tree</strong> - The <a href="reference-transaction-format.html">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to modify the ledger.</li>
+<li>A <strong>transaction tree</strong> - The <a href="reference-transaction-format.html">transactions</a> that were applied to the previous ledger to make this one. Transactions are the <em>only</em> way to change the ledger.</li>
 <li>A <strong>state tree</strong> - All the <a href="#ledger-node-types">ledger nodes</a> that contain the settings, balances, and objects in the ledger as of this version.</li>
 </ul>
 <h2 id="tree-format">Tree Format</h2>
@@ -213,7 +213,7 @@
 <td>close_time</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the <code>close_time_resolution</code>, so it is possible for subsequent ledgers to have the same value.</td>
+<td>The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the <code>close_time_resolution</code>, so later ledgers can have the same value.</td>
 </tr>
 <tr>
 <td>closed</td>
@@ -254,16 +254,16 @@
 </tbody>
 </table>
 <h3 id="ledger-index">Ledger Index</h3>
-<p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each subsequent ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
-<p>The ledger index indicates the order of the ledgers; the <a href="reference-rippled.html#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always identical. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
+<p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is also known as the ledger's sequence number. The very first ledger was ledger index 1, and each new ledger has a ledger index 1 higher than that of the ledger immediately before it.</p>
+<p>The ledger index indicates the order of the ledgers; the <a href="reference-rippled.html#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always the same. For validated ledgers, hash values and sequence numbers are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
 <ul>
 <li>Two different <code>rippled</code> servers may have different contents for a current ledger with the same ledger index, due to latency in propagating transactions throughout the network.</li>
 <li>There may be multiple closed ledger versions competing to be validated by consensus. These ledger versions have the same sequence number but different contents (and different hashes). Only one of these closed ledgers can become validated.</li>
-<li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. Therefore, the hash of a ledger is not calculated until the ledger is closed.</li>
+<li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. The hash of a ledger is not calculated until the ledger is closed.</li>
 </ul>
 <h3 id="close-flags">Close Flags</h3>
-<p>Currently, the ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
-<p>The <code>closeFlags</code> field is not included in any JSON representations of a ledger, but it is a part of the binary representation of a ledger, and is one of the fields that determine the ledger's hash.</p>
+<p>The ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators had different close times for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
+<p>The <code>closeFlags</code> field is not included in any JSON representations of a ledger, but is included in the binary representation of a ledger, and is one of the fields that determine the ledger's hash.</p>
 <h1 id="ledger-node-types">Ledger Node Types</h1>
 <p>There are several different kinds of nodes that can appear in the ledger's state tree:</p>
 <ul>
@@ -434,7 +434,7 @@
 <td>lsfRequireAuth</td>
 <td>0x00040000</td>
 <td>262144</td>
-<td>This account must individually approve other users in order for those users to hold this account's issuances.</td>
+<td>This account must individually approve other users for those users to hold this account's issuances.</td>
 <td>asfRequireAuth</td>
 </tr>
 <tr>
@@ -455,21 +455,21 @@
 <td>lsfNoFreeze</td>
 <td>0x00200000</td>
 <td>209715</td>
-<td>This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
+<td>This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
 <td>asfNoFreeze</td>
 </tr>
 <tr>
 <td>lsfGlobalFreeze</td>
 <td>0x00400000</td>
 <td>4194304</td>
-<td>All assets issued by this account are frozen.</td>
+<td>All assets issued by this address are frozen.</td>
 <td>asfGlobalFreeze</td>
 </tr>
 <tr>
 <td>lsfDefaultRipple</td>
 <td>0x00800000</td>
 <td>8388608</td>
-<td>Enable <a href="concept-noripple.html">rippling</a> on this account's trust lines by default. Required for gateways; discouraged for other accounts.</td>
+<td>Enable <a href="concept-noripple.html">rippling</a> on this addresses's trust lines by default. Required for issuing addresses; discouraged for others.</td>
 <td>asfDefaultRipple</td>
 </tr>
 </tbody>
@@ -486,7 +486,7 @@
 <p>There are two kinds of Directories:</p>
 <ul>
 <li><strong>Owner directories</strong> list other nodes owned by an account, such as RippleState or Offer nodes.</li>
-<li><strong>Offer directories</strong> list the offers currently available in the distributed exchange. A single Offer Directory contains all the offers that have the same exchange rate for the same issuances.</li>
+<li><strong>Offer directories</strong> list the offers available in the distributed exchange. A single Offer Directory contains all the offers that have the same exchange rate for the same issuances.</li>
 </ul>
 <p>Example Directories:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">Offer Directory</a></li><li><a href="#code-0-1">Owner Directory</a></li></ul>
@@ -609,7 +609,7 @@
 <ul>
 <li>The first page (also called the root) of an Owner Directory,</li>
 <li>The first page of an Offer Directory, <em>or</em></li>
-<li>Subsequent pages of either type</li>
+<li>Later pages of either type</li>
 </ul>
 <p><strong>The first page of an Owner Directory</strong> has an <code>index</code> that is the SHA-512Half of the following values put together:</p>
 <ul>
@@ -633,8 +633,8 @@
 </ul>
 <h2 id="offer">Offer</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
-<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, which is currently in an order book in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
-<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> will automatically prune any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
+<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
+<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> automatically prunes any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
 <p>Example Offer node:</p>
 <pre><code>{
     "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
@@ -736,7 +736,7 @@
 <td>Expiration</td>
 <td>Number</td>
 <td>UInt32</td>
-<td>(Optional) Indicates the time after which this offer will be considered unfunded. See <a href="reference-rippled.html#specifying-time">Specifying Time</a> for details.</td>
+<td>(Optional) Indicates the time after which this offer is considered unfunded. See <a href="reference-rippled.html#specifying-time">Specifying Time</a> for details.</td>
 </tr>
 </tbody>
 </table>
@@ -779,7 +779,7 @@
 </ul>
 <h2 id="ripplestate">RippleState</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" title="Source">[Source]<br/></a></p>
-<p>The <code>RippleState</code> node type connects two accounts in a single currency. Conceptually, a RippleState node represents two <em>trust lines</em> between the accounts, one from each side. Each account can modify the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so <code>rippled</code> deletes RippleState nodes when their properties are entirely default.</p>
+<p>The <code>RippleState</code> node type connects two accounts in a single currency. Conceptually, a RippleState node represents two <em>trust lines</em> between the accounts, one from each side. Each account can change the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so <code>rippled</code> deletes RippleState nodes when their properties are entirely default.</p>
 <p>Since no account is privileged in the Ripple ledger, a RippleState node sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".</p>
 <p>Example RippleState node:</p>
 <pre><code>{
@@ -1129,7 +1129,7 @@
 </tr>
 </tbody>
 </table>
-<p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as a component of another multi-signature.</p>
+<p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>
 <h3 id="signerlists-and-reserves">SignerLists and Reserves</h3>
 <p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
     </div>

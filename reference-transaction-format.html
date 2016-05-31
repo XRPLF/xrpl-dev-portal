@@ -206,7 +206,7 @@
 <ul>
 <li><a href="#common-fields">Common Fields</a></li>
 </ul>
-<p>There are several different types of transactions that perform different actions, each with additional fields relevant to that type of action:</p>
+<p>There are several different types of transactions that do different actions, each with additional fields relevant to that type of action:</p>
 <ul>
 <li><a href="#payment">Payment - Send funds from one account to another</a></li>
 <li><a href="#accountset">AccountSet - Set options on an account</a></li>
@@ -229,7 +229,7 @@
 <li><a href="#full-transaction-response-list">Full Transaction Response List - Complete table of all error codes</a></li>
 </ul>
 <h2 id="authorizing-transactions">Authorizing Transactions</h2>
-<p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to perform a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction.</p>
+<p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to --></p>
 <p>A transaction can be authorized by any of the following types of signatures:</p>
 <ul>
 <li>A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
@@ -271,7 +271,7 @@
 <p>The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
 <ol>
 <li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
-<li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> to perform offline signing.</li>
+<li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> for offline signing.</li>
 </ul>
 </li>
 <li>Have a <code>rippled</code> server sign the transaction for you. The <a href="reference-rippled.html#sign">sign command</a> takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)<ul>
@@ -393,12 +393,12 @@
 <h3 id="reliable-transaction-submission">Reliable Transaction Submission</h3>
 <p>Reliably submitting transactions is the process of achieving both of the following:</p>
 <ul>
-<li>Idempotency - A transaction will be processed once and only once, or not at all.</li>
+<li>Idempotency - A transaction should be processed once and only once, or not at all.</li>
 <li>Verifiability - Applications can determine the final result of a transaction.</li>
 </ul>
-<p>To accomplish both of these, your application should:</p>
+<p>To have both qualities when submitting a transaction, an application should:</p>
 <ol>
-<li>Construct and sign the transaction first, including a <a href="#lastledgersequence"><code>LastLedgerSequence</code></a> parameter that gives the transaction a limited viable lifespan.</li>
+<li>Construct and sign the transaction first, including a <a href="#lastledgersequence"><code>LastLedgerSequence</code></a> parameter that gives the transaction a limited lifespan.</li>
 <li>Persist details of the transaction before submitting.</li>
 <li>Submit the transaction.</li>
 <li>Confirm that the transaction was either included in a validated ledger, or that it has expired due to <code>LastLedgerSequence</code>.</li>
@@ -407,7 +407,7 @@
 <p>Main article: <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></p>
 <h3 id="identifying-transactions">Identifying Transactions</h3>
 <p>The <code>"hash"</code> is the unique value that identifies a particular transaction. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the <a href="reference-rippled.html#account-tx">account_tx command</a>.</p>
-<p>The transaction hash can be used as a "proof of payment" since anyone can <a href="#looking-up-transaction-results">look up the transaction by its hash</a> in order to verify its final status.</p>
+<p>The transaction hash can be used as a "proof of payment" since anyone can <a href="#looking-up-transaction-results">look up the transaction by its hash</a> to verify its final status.</p>
 <h2 id="common-fields">Common Fields</h2>
 <p>Every transaction type has the same set of fundamental fields:</p>
 <table>
@@ -478,7 +478,7 @@
 <td>SourceTag</td>
 <td>Unsigned Integer</td>
 <td>UInt32</td>
-<td>(Optional) Arbitrary integer used to identify the reason for this payment, or the hosted wallet on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's <code>SourceTag</code> as the refund payment's <code>DestinationTag</code>.</td>
+<td>(Optional) Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's <code>SourceTag</code> as the refund payment's <code>DestinationTag</code>.</td>
 </tr>
 <tr>
 <td>TransactionType</td>
@@ -504,24 +504,24 @@
 <p>For a production system, we recommend <em>not</em> leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.</p>
 <p>The <a href="#paths"><code>Paths</code> field</a> of the <a href="#payment">Payment</a> transaction type can also be automatically filled in.</p>
 <h3 id="transaction-cost">Transaction Cost</h3>
-<p>In order to protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
 <p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
 <p><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
 <p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
-<p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want to perform the same transaction again, you can perform an <a href="#accountset">AccountSet</a> transaction with no options.</p>
-<p>For example, if you attempted to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough <a href="#transaction-cost">transaction cost</a> to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction cost for the new transaction 11), but it allows transactions 12 and 13 to become valid.</p>
+<p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want the replacement transaction to do anything, send an <a href="#accountset">AccountSet</a> transaction with no options.</p>
+<p>For example, if you try to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough <a href="#transaction-cost">transaction cost</a> to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction cost for the new transaction 11), but it allows transactions 12 and 13 to become valid.</p>
 <p>This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.</p>
 <p>In this way, an AccountSet transaction with no options is the canonical "<a href="http://en.wikipedia.org/wiki/NOP">no-op</a>" transaction.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
 <p>We strongly recommend that you specify the <code>LastLedgerSequence</code> parameter on every transaction. Provide a value of about 3 higher than <a href="reference-rippled.html#ledger">the most recent ledger index</a> to ensure that your transaction is either validated or rejected within a matter of seconds.</p>
-<p>Without the <code>LastLedgerSequence</code> parameter, there is a particular situation that can occur and cause your transaction to be stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the load-based <a href="#transaction-cost">transaction cost</a> of the network increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) transaction cost in order to send another transaction canceling it. Later, if the transaction cost decreases again, the transaction may become viable again. The <code>LastLedgerSequence</code> places a hard upper limit on how long the transaction can wait to be validated or rejected.</p>
+<p>Without the <code>LastLedgerSequence</code> parameter, a transaction can become stuck in an undesirable state where it is neither validated nor rejected for a long time. Specifically, if the load-based <a href="#transaction-cost">transaction cost</a> of the network increases after you send a transaction, your transaction may not get propagated enough to be included in a validated ledger, but you would have to pay the (increased) transaction cost to <a href="#canceling-or-skipping-a-transaction">send another transaction canceling it</a>. Later, if the transaction cost decreases again, the transaction can become included in a future ledger. The <code>LastLedgerSequence</code> places a hard upper limit on how long the transaction can wait to be validated or rejected.</p>
 <h3 id="accounttxnid">AccountTxnID</h3>
 <p>The <code>AccountTxnID</code> field lets you chain your transactions together, so that a current transaction is not valid unless the previous one (by Sequence Number) is also valid and matches the transaction you expected.</p>
-<p>One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially encounter serious problems like some transactions sending twice and others not at all. Chaining your transactions together with <code>AccountTxnID</code> ensures that, even if both systems are active, only one of them can submit valid transactions at a time.</p>
-<p>In order to use AccountTxnID, you must first set the <a href="#accountset-flags">asfAccountTxnID</a> flag, so that the ledger keeps track of the ID for the account's previous transaction.</p>
+<p>One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with <code>AccountTxnID</code> ensures that, even if both systems are active, only one of them can submit valid transactions at a time.</p>
+<p>To use AccountTxnID, you must first set the <a href="#accountset-flags">asfAccountTxnID</a> flag, so that the ledger keeps track of the ID for the account's previous transaction.</p>
 <h3 id="memos">Memos</h3>
-<p>The <code>Memos</code> field allows for arbitrary messaging data that can accompany the transaction. It is presented as an array of objects. Each object has only one field, <code>Memo</code>, which in turn contains another object with <em>one or more</em> of the following fields:</p>
+<p>The <code>Memos</code> field includes arbitrary messaging data with the transaction. It is presented as an array of objects. Each object has only one field, <code>Memo</code>, which in turn contains another object with <em>one or more</em> of the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -553,7 +553,7 @@
 </tbody>
 </table>
 <p>The MemoType and MemoFormat fields should only consist of the following characters: <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&amp;'()*+,;=%</code></p>
-<p>The <code>Memos</code> field is currently limited to no more than 1KB in size (when serialized in binary format).</p>
+<p>The <code>Memos</code> field is limited to no more than 1KB in size (when serialized in binary format).</p>
 <p>Example of a transaction with a Memos field:</p>
 <pre><code>{
     "TransactionType": "Payment",
@@ -605,7 +605,7 @@
 <p>The <code>SigningPubKey</code> must be a key that is associated with the <code>Account</code> address. If the referenced <code>Account</code> is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the <a href="reference-ledger-format.html#accountroot-flags">lsfDisableMaster</a> flag is enabled. If the referenced <code>Account</code> address is not a funded account in the ledger, then the <code>SigningPubKey</code> must be the master key associated with that address.</p>
 <p>Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the <a href="concept-transaction-cost.html">transaction cost</a> required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is <code>10000</code> drops, then a multi-signed transaction with 3 entries in the <code>Signers</code> array would need a <code>Fee</code> value of at least <code>40000</code> drops to relay.</p>
 <h3 id="flags">Flags</h3>
-<p>The <code>Flags</code> field allows for additional boolean options regarding the behavior of a transaction. They are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
+<p>The <code>Flags</code> field can contain various options that affect how a transaction should behave. The options are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
 <p>Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the <code>TransactionType</code> field when setting and reading flags.</p>
 <p>The only flag that applies globally to all transactions is as follows:</p>
 <table>
@@ -628,7 +628,7 @@
 </table>
 <h2 id="payment">Payment</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp" title="Source">[Source]<br/></a></p>
-<p>A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, additional exchanges of value may occur atomically to facilitate the payment.)</p>
+<p>A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.)</p>
 <p>Payments are also the only way to <a href="#creating-accounts">create accounts</a>.</p>
 <p>Example payment:</p>
 <pre><code>{
@@ -671,7 +671,7 @@
 <td>DestinationTag</td>
 <td>Unsigned Integer</td>
 <td>UInt32</td>
-<td>(Optional) Arbitrary tag that identifies the reason for the payment to the destination, or the hosted wallet to make a payment to.</td>
+<td>(Optional) Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay.</td>
 </tr>
 <tr>
 <td>InvoiceID</td>
@@ -700,23 +700,23 @@
 </tbody>
 </table>
 <h3 id="special-issuer-values-for-sendmax-and-amount">Special issuer Values for SendMax and Amount</h3>
-<p>Most of the time, the <code>issuer</code> field of a non-XRP <a href="reference-rippled.html#specifying-currency-amounts">currency amount</a> indicates the account of the gateway that issues that currency. However, when describing payments, there are special rules for the <code>issuer</code> field in the <code>Amount</code> and <code>SendMax</code> fields of a payment.</p>
+<p>Most of the time, the <code>issuer</code> field of a non-XRP <a href="reference-rippled.html#specifying-currency-amounts">currency amount</a> indicates a financial institution's <a href="concept-issuing-and-operational-addresses.html">issuing address</a>. However, when describing payments, there are special rules for the <code>issuer</code> field in the <code>Amount</code> and <code>SendMax</code> fields of a payment.</p>
 <ul>
-<li>There is only ever one balance for the same currency between two accounts. This means that, sometimes, the <code>issuer</code> field of an amount actually refers to a counterparty that is redeeming issuances, instead of the account that created the issuances.</li>
-<li>When the <code>issuer</code> field of the destination <code>Amount</code> field matches the <code>Destination</code> account address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all accounts to which the destination has extended trust lines, as well as issuances created by the destination which may be held on other trust lines.</li>
-<li>When the <code>issuer</code> field of the <code>SendMax</code> field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, as well as issuances from other accounts that the source account possesses.</li>
+<li>There is only ever one balance for the same currency between two addresses. This means that, sometimes, the <code>issuer</code> field of an amount actually refers to a counterparty that is redeeming issuances, instead of the address that created the issuances.</li>
+<li>When the <code>issuer</code> field of the destination <code>Amount</code> field matches the <code>Destination</code> address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has extended trust lines, as well as issuances created by the destination which are held on other trust lines.</li>
+<li>When the <code>issuer</code> field of the <code>SendMax</code> field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, and sending issuances the source account holds from other issuers.</li>
 </ul>
 <h3 id="creating-accounts">Creating Accounts</h3>
-<p>The Payment transaction type is the only way to create new accounts in the shared Ripple ledger. To do so, send an amount of XRP that is equal or greater than the <a href="concept-reserves.html">account reserve</a> to a mathematically-valid account address that does not exist yet. When the payment is processed, a new <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> will be added to the ledger to reflect the newly-created account.</p>
-<p>If you attempt to send an insufficient amount of XRP, or any other currency, the Payment will fail.</p>
+<p>The Payment transaction type is the only way to create new accounts in the Ripple Consensus Ledger. To do so, send an amount of XRP that is equal or greater than the <a href="concept-reserves.html">account reserve</a> to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> is added to the ledger.</p>
+<p>If you send an insufficient amount of XRP, or any other currency, the Payment fails.</p>
 <h3 id="paths">Paths</h3>
-<p>If present, the <code>Paths</code> field must contain a <em>path set</em> - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books in order to achieve the best rate.</p>
+<p>If present, the <code>Paths</code> field must contain a <em>path set</em> - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books to achieve the best rate.</p>
 <p>You must omit the <code>Paths</code> field for direct payments, including:</p>
 <ul>
 <li>An XRP-to-XRP transfer.</li>
-<li>A simple transfer on a trust line that connects the sender and receiver.</li>
+<li>A direct transfer on a trust line that connects the sender and receiver.</li>
 </ul>
-<p>If the <code>Paths</code> field is provided, the server decides at transaction processing time which paths to use, from the provided set plus a <em>default path</em> (the simplest possible way to connect the specified accounts). This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.</p>
+<p>If the <code>Paths</code> field is provided, the server decides at transaction processing time which paths to use, from the provided set plus a <em>default path</em> (the most direct way possible to connect the specified accounts). This decision is deterministic and attempts to minimize costs, but it is not guaranteed to be perfect.</p>
 <p>The <code>Paths</code> field must not be an empty array, nor an array whose members are all empty arrays.</p>
 <p>For more information, see <a href="concept-paths.html">Paths</a>.</p>
 <h3 id="payment-flags">Payment Flags</h3>
@@ -753,17 +753,17 @@
 </table>
 <h3 id="partial-payments">Partial Payments</h3>
 <p>A partial payment allows a payment to succeed by reducing the amount received, instead of increasing the <code>SendMax</code>. Partial payments are useful for <a href="https://wiki.ripple.com/Returning_payments">returning payments</a> without incurring additional costs to oneself.</p>
-<p>By default, the <code>Amount</code> field of a Payment transaction specifies the amount of currency that is <em>received</em> by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account's balances, up to the <code>SendMax</code> amount. (If <code>SendMax</code> is not specified, that is equivalent to setting the <code>SendMax</code> to the <code>Amount</code> field.) If the amount needed in order to make the payment exceeds the <code>SendMax</code> parameter, or the full amount cannot be delivered for any other reason, the transaction fails.</p>
+<p>By default, the <code>Amount</code> field of a Payment transaction specifies the amount of currency that is <em>received</em> by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account's balances, up to the <code>SendMax</code> amount. (If <code>SendMax</code> is not specified, that is equivalent to setting the <code>SendMax</code> to the <code>Amount</code> field.) If the amount needed to make the payment exceeds the <code>SendMax</code> parameter, or the full amount cannot be delivered for any other reason, the transaction fails.</p>
 <p>The <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> allows you to make a "partial payment" instead. When this flag is enabled for a payment, it delivers as much as possible, up to the <code>Amount</code> value, without exceeding the <code>SendMax</code> value. Fees and currency exchange rates are calculated the same way, but the amount being sent automatically scales down until the total amount deducted from the sending account's balances is within <code>SendMax</code>. The transaction is considered successful as long as it delivers equal or more than the <code>DeliverMin</code> value; if DeliverMin is omitted, then any positive amount is considered a success. This means that partial payments can succeed at sending <em>some</em> of the intended value despite limitations including fees, lack of liquidity, insufficient space in the receiving account's trustlines, or other reasons.</p>
-<p>A partial payment cannot provide the initial XRP to fund an account; this case returns the error code <code>telNO_DST_PARTIAL</code>. Direct XRP-to-XRP payments also cannot be partial payments <code>temBAD_SEND_XRP_PARTIAL</code>.</p>
+<p>A partial payment cannot provide the XRP to fund an address; this case returns the error code <code>telNO_DST_PARTIAL</code>. Direct XRP-to-XRP payments also cannot be partial payments <code>temBAD_SEND_XRP_PARTIAL</code>.</p>
 <p>The amount of XRP used for the <a href="#transaction-cost">transaction cost</a> is always deducted from the sender’s account, regardless of the <em>tfPartialPayment</em> flag.</p>
 <h4 id="partial-payments-warning">Partial Payments Warning</h4>
 <p>When the <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the <code>Amount</code> field to determine how much your account received instead.</p>
 <h3 id="limit-quality">Limit Quality</h3>
 <p>Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
-<p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (just the numeric amounts, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
+<p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
 <p>By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average <em>average</em> quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the <a href="#transaction-results">transaction result</a> is <code>tecPATH_DRY</code>.</p>
-<p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one market maker is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers in order to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>.</p>
+<p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one trader is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>.</p>
 <p>Without the tfLimitQuality flag set, this transaction would succeed, because the $17 it costs me is within my specified <code>SendMax</code>. However, with the tfLimitQuality flag enabled, the transaction would fail instead, because the path to take the second offer has a quality of <code>2.5</code>, which is worse than the limit quality of <code>5</code>.</p>
 <p>The tfLimitQuality flag is most useful when combined with <a href="#partial-payments">partial payments</a>. When both <em>tfPartialPayment</em> and <em>tfLimitQuality</em> are set on a transaction, then the transaction delivers as much of the destination <code>Amount</code> as it can, without using any conversions that are worse than the limit quality.</p>
 <p>In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my <code>SendMax</code> of 20 USD and a destination <code>Amount</code> of 100 CNY, then the limit quality is still <code>5</code>. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about <code>6.3</code>, but it rejects the ¥5/$2 offer because that offer's quality of <code>2.5</code> is worse than the quality limit of <code>5</code>. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.</p>
@@ -849,11 +849,11 @@
 <h3 id="accountset-flags">AccountSet Flags</h3>
 <p>There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:</p>
 <ul>
-<li>The <code>AccountSet</code> transaction type has several "AccountSet Flags" (prefixed <em>asf</em>) that can enable an option when passed as the <code>SetFlag</code> parameter, or disable an option when passed as the <code>ClearFlag</code> parameter.</li>
-<li>The <code>AccountSet</code> transaction type has several transaction flags (prefixed <em>tf</em>) that can be used to enable or disable specific account options when passed in the <code>Flags</code> parameter. This style is discouraged, and new account options will not have new corresponding transaction flags.</li>
-<li>The <code>AccountRoot</code> ledger node type has several ledger-specific-flags (prefixed <em>lsf</em>) which represent the state of particular account options within a particular ledger. Naturally, the values apply until a later ledger version changes them.</li>
+<li>The <code>AccountSet</code> transaction type has several "AccountSet Flags" (prefixed <strong>asf</strong>) that can enable an option when passed as the <code>SetFlag</code> parameter, or disable an option when passed as the <code>ClearFlag</code> parameter.</li>
+<li>The <code>AccountSet</code> transaction type has several transaction flags (prefixed <strong>tf</strong>) that can be used to enable or disable specific account options when passed in the <code>Flags</code> parameter. This style is discouraged. New account options do not have corresponding transaction (tf) flags.</li>
+<li>The <code>AccountRoot</code> ledger node type has several ledger-specific-flags (prefixed <strong>lsf</strong>) which represent the state of particular account options within a particular ledger. Naturally, the values apply until a later ledger version changes them.</li>
 </ul>
-<p>The preferred way to enable and disable Account Flags is using the <code>SetFlag</code> and <code>ClearFlag</code> parameters of an AccountSet transaction. AccountSet flags have names that begin with <em>asf</em>.</p>
+<p>The preferred way to enable and disable Account Flags is using the <code>SetFlag</code> and <code>ClearFlag</code> parameters of an AccountSet transaction. AccountSet flags have names that begin with <strong>asf</strong>.</p>
 <p>All flags are off by default.</p>
 <p>The available AccountSet flags are:</p>
 <table>
@@ -875,7 +875,7 @@
 <tr>
 <td>asfRequireAuth</td>
 <td>2</td>
-<td>Require authorization for users to hold balances issued by this account. (This prevents users unknown to a gateway from holding funds issued by that gateway.)</td>
+<td>Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it.</td>
 <td>lsfRequireAuth</td>
 </tr>
 <tr>
@@ -916,7 +916,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> In order to enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature.</p>
+<p><em>New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>:</em> To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature.</p>
 <p>The following <a href="#flags">Transaction flags</a>, specific to the AccountSet transaction type, serve the same purpose, but are discouraged:</p>
 <table>
 <thead>
@@ -967,12 +967,12 @@
 </tbody>
 </table>
 <h4 id="blocking-incoming-transactions">Blocking Incoming Transactions</h4>
-<p>Incoming transactions with unclear purposes may be an inconvenience for some gateways, which would have to identify whether a mistake was made, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds to a gateway in a way that is unclear about the reason the funds were sent.</p>
-<p>For example, a destination tag is typically used to identify which hosted balance should be credited when the gateway receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, the gateway (or any account) can ensure that every incoming payment has a destination tag, which makes it harder to send an ambiguous payment by accident.</p>
-<p>Accounts can protect against unwanted incoming payments for non-XRP currencies simply by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
+<p>Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.</p>
+<p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
+<p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
 <h3 id="transferrate">TransferRate</h3>
-<p>The TransferRate field specifies a fee to charge whenever a gateway's issuances change hands. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees article</a> in the Knowledge Center for more information.</p>
-<p>In rippled's WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent in order for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
+<p>The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees article</a> in the Knowledge Center for more information.</p>
+<p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
 <p>A SetRegularKey transaction changes the regular key associated with an address.</p>
@@ -1061,9 +1061,9 @@
 </tbody>
 </table>
 <h3 id="lifecycle-of-an-offer">Lifecycle of an Offer</h3>
-<p>When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full <code>TakerGets</code> amount in order to receive the entire <code>TakerPays</code> amount.) If that does not completely fulfill the <code>TakerPays</code> amount, then the offer becomes an Offer node in the ledger. (You can use <a href="#offercreate-flags">OfferCreate Flags</a> to modify this behavior.)</p>
+<p>When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full <code>TakerGets</code> amount to receive the entire <code>TakerPays</code> amount.) If that does not completely fulfill the <code>TakerPays</code> amount, then the offer becomes an Offer node in the ledger. (You can use <a href="#offercreate-flags">OfferCreate Flags</a> to modify this behavior.)</p>
 <p>An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by <a href="#payment">Payments</a> that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded. A single transaction can consume up to 850 Offers from the ledger. (Any more than that, and the metadata becomes too large, resulting in <a href="#tec-codes"><code>tecOVERSIZE</code></a>.)</p>
-<p>You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the <code>TakerGets</code> parameter of the offer. Any amount of that currency you have, up to the <code>TakerGets</code> amount, will be sold until the <code>TakerPays</code> amount is satisfied. An offer cannot place anyone in debt.</p>
+<p>You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the <code>TakerGets</code> parameter of the offer. The offer sells as much of the currency as you have, up to the <code>TakerGets</code> amount, until the <code>TakerPays</code> amount is satisfied. An offer cannot place anyone in debt.</p>
 <p>It is possible for an offer to become temporarily or permanently <em>unfunded</em>:</p>
 <ul>
 <li>If the creator no longer has any of the <code>TakerGets</code> currency.</li>
@@ -1074,32 +1074,34 @@
 <li>The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.</li>
 <li>If the Expiration time included in the offer is before the close time of the most recently-closed ledger. (See <a href="#expiration">Expiration</a>.)</li>
 </ul>
-<p>An unfunded offer can remain on the ledger indefinitely, but it does not have any effect. The only ways an offer can be <em>permanently</em> removed from the ledger are:</p>
+<p>An unfunded offer can stay on the ledger indefinitely, but it does not have any effect. The only ways an offer can be <em>permanently</em> removed from the ledger are:</p>
 <ul>
 <li>It becomes fully claimed by a Payment or a matching OfferCreate transaction.</li>
-<li>A subsequent OfferCancel or OfferCreate transaction explicitly cancels the offer.</li>
-<li>A subsequent OfferCreate from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)</li>
-<li>An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook.</li>
+<li>An OfferCancel or OfferCreate transaction explicitly cancels the offer.</li>
+<li>An OfferCreate transaction from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)</li>
+<li>An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook.<ul>
 <li>This includes cases where one side or the other of an offer is found to be closer to 0 than <code>rippled</code>'s precision supports.</li>
-<li><em>Note:</em> there is a bug that can cause offers to be removed incorrectly in rare circumstances. (See <a href="https://ripplelabs.atlassian.net/browse/RIPD-456">RIPD-456</a> for status.)</li>
+</ul>
+</li>
 </ul>
 <h4 id="tracking-unfunded-offers">Tracking Unfunded Offers</h4>
-<p>Tracking the funding status of all offers can be computationally taxing. In particular, accounts that are actively trading may have a large number of offers open and be frequently involved in transactions that affect the funding status of their offers. Because of this, <code>rippled</code> does not proactively find and remove offers.</p>
+<p>Tracking the funding status of all offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of offers open. A single balance can affect the funding status of many offers to buy different currencies. Because of this, <code>rippled</code> does not proactively find and remove offers.</p>
 <p>A client application can locally track the funding status of offers. To do this, first retreive an order book using the <a href="reference-rippled.html#book-offers"><code>book_offers</code> command</a> and check the <code>taker_gets_funded</code> field of offers. Then,  <a href="reference-rippled.html#subscribe">subscribe</a> to the <code>transactions</code> stream and watch the transaction metadata to see which offers are modified.</p>
 <h3 id="offers-and-trust">Offers and Trust</h3>
-<p>The limit values of trust lines (See <a href="#trustset">TrustSet</a>) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuing gateway to redeem.</p>
-<p>However, possessing non-XRP balances still requires a trust line to the account issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because <a href="concept-reserves.html">trust lines increase the reserve an account must hold</a>, any offers that would require a new trust line also require the account to have the necessary XRP to pay the reserve for that trust line.</p>
+<p>The limit values of trust lines (See <a href="#trustset">TrustSet</a>) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuer to redeem.</p>
+<p>However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because <a href="concept-reserves.html">trust lines increase the reserve an account must hold</a>, any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.</p>
 <p>A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.</p>
 <h3 id="offer-preference">Offer Preference</h3>
 <p>Existing offers are grouped by "quality", which is measured as the ratio between <code>TakerGets</code> and <code>TakerPays</code>. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.</p>
 <p>When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the <a href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp" title="Source: Transaction ordering">canonical order</a> in which the transactions were <a href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" title="Source: Applying transactions">applied to the ledger</a>. This behavior is designed to be deterministic, efficient, and hard to game.</p>
 <h3 id="expiration">Expiration</h3>
-<p>Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time occurs prior to the most-recently validated ledger. In other words, an offer with an <code>Expiration</code> field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.</p>
+<p>Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time is before the most-recently validated ledger. In other words, an offer with an <code>Expiration</code> field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.</p>
 <p>You can determine the final disposition of an offer with an <code>Expiration</code> as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.</p>
-<p><em>Note:</em> Since only new transactions can modify the ledger, an expired offer can remain on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server encounters it while processing.</p>
+<p><strong>Note:</strong> Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.</p>
+<p>If an OfferCreate transaction has an <code>Expiration</code> time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer but still results in a <code>tesSUCCESS</code> transaction code. (This is because such a transaction could still successfully cancel another offer.)</p>
 <h3 id="auto-bridging">Auto-Bridging</h3>
 <p>Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
-<p>Example: <em>Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader in order to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers.</em></p>
+<p>Example: <em>Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers.</em></p>
 <p>Auto-bridging happens automatically on any OfferCreate transaction. <a href="#payment">Payment transactions</a> <em>do not</em> autobridge by default, but path-finding can find paths that have the same effect.</p>
 <h3 id="offercreate-flags">OfferCreate Flags</h3>
 <p>Transactions of the OfferCreate type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
@@ -1117,19 +1119,19 @@
 <td>tfPassive</td>
 <td>0x00010000</td>
 <td>65536</td>
-<td>If enabled, the offer will not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It will still consume offers that cross it.</td>
+<td>If enabled, the offer does not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It still consumes offers that cross it.</td>
 </tr>
 <tr>
 <td>tfImmediateOrCancel</td>
 <td>0x00020000</td>
 <td>131072</td>
-<td>Treat the offer as an <a href="http://en.wikipedia.org/wiki/Immediate_or_cancel">Immediate or Cancel order</a>. If enabled, the offer will never become a ledger node: it only attempts to match existing offers in the ledger.</td>
+<td>Treat the offer as an <a href="http://en.wikipedia.org/wiki/Immediate_or_cancel">Immediate or Cancel order</a>. If enabled, the offer never becomes a ledger node: it only tries to match existing offers in the ledger.</td>
 </tr>
 <tr>
 <td>tfFillOrKill</td>
 <td>0x00040000</td>
 <td>262144</td>
-<td>Treat the offer as a <a href="http://en.wikipedia.org/wiki/Fill_or_kill">Fill or Kill order</a>. Only attempt to match existing offers in the ledger, and only do so if the entire <code>TakerPays</code> quantity can be obtained.</td>
+<td>Treat the offer as a <a href="http://en.wikipedia.org/wiki/Fill_or_kill">Fill or Kill order</a>. Only try to match existing offers in the ledger, and only do so if the entire <code>TakerPays</code> quantity can be obtained.</td>
 </tr>
 <tr>
 <td>tfSell</td>
@@ -1242,8 +1244,8 @@
 </tbody>
 </table>
 <h3 id="trust-limits">Trust Limits</h3>
-<p>All balances on the Ripple Network, except for XRP, represent value owed in the world outside the Ripple Ledger. The account that issues those funds in Ripple (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is responsible for paying the balance back, outside of the Ripple Network, when users redeem their Ripple balances by returning them to the issuing account.</p>
-<p>Since a computer program cannot force the gateway to keep its promise and not default in real life, trust lines represent a way of configuring how much you are willing to trust the issuing account to hold on your behalf. Since a large, reputable issuing gateway is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuing account "owe" you (off the network) for the funds that you hold on the network. In the case that the issuing gateway defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Network can no longer be exchanged for equivalent balances off the network. (The Ripple Ledger will still reflect that you possess the same balance with that issuing gateway, but you won't be able to redeem, making it unlikely to be worth anything.)</p>
+<p>All balances on the Ripple Consensus Ledger (RCL), except for XRP, represent value owed in the world outside the Ripple Ledger. The address that issues those funds in Ripple (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is expected to pay the balance back, outside of the Ripple Consensus LEdger, when users redeem their Ripple balances by returning them to the issuer.</p>
+<p>Since a computer program cannot force a someone to keep its promise and not default in real life, trust lines represent a way of configuring how much you trust issuing address to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the RCL. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Consensus Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the RCL, but they no longer have any reason to be worth anything.)</p>
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="#offercreate">trading</a>, or when you decrease the limit on your trust line.</p>
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
@@ -1388,7 +1390,7 @@
 </table>
 <h2 id="setfee">SetFee</h2>
 <p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements as a result of <a href="concept-fee-voting.html">Fee Voting</a>.</p>
-<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
 <pre><code>{
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",
@@ -1448,7 +1450,7 @@
 </table>
 <h2 id="enableamendment">EnableAmendment</h2>
 <p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">amendment process</a> for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.</p>
-<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may encounter one when processing ledgers.</p>
+<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
 <table>
 <thead>
 <tr>
@@ -1530,7 +1532,7 @@
 </tr>
 </tbody>
 </table>
-<p>If nothing went wrong in the process of submitting and applying the transaction locally, the response looks like this:</p>
+<p>If nothing went wrong when submitting and applying the transaction locally, the response looks like this:</p>
 <pre><code class="js">    "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
@@ -1600,12 +1602,12 @@
 <tr>
 <td>Success</td>
 <td><a href="#tes-success">tes</a></td>
-<td>(Not an error) The transaction succeeded. This result is not final unless it appears in a validated ledger.</td>
+<td>(Not an error) The transaction succeeded. This result only final in a validated ledger.</td>
 </tr>
 <tr>
 <td>Claimed cost only</td>
 <td><a href="#tec-codes">tec</a></td>
-<td>The transaction did not achieve its intended purpose, but the <a href="concept-transaction-cost.html">transaction cost</a> was destroyed. This result is not final unless it appears in a validated ledger.</td>
+<td>The transaction did not achieve its intended purpose, but the <a href="concept-transaction-cost.html">transaction cost</a> was destroyed. This result is only final in a validated ledger.</td>
 </tr>
 <tr>
 <td>Client library error</td>
@@ -1624,7 +1626,7 @@
 <li>The transaction cost is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.</li>
 </ul>
 <h2 id="finality-of-results">Finality of Results</h2>
-<p>The order in which transactions apply to the consensus ledger is not final until a ledger is closed and the exact transaction set is approved by the consensus process. Therefore, a transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a subsequent round.</p>
+<p>The order in which transactions apply to the consensus ledger is not final until a ledger is closed and the exact transaction set is approved by the consensus process. A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.</p>
 <p>A validated ledger can include successful transactions (<code>tes</code> result codes) as well as failed transactions (<code>tec</code> result codes). No transaction with any other result is included in a ledger.</p>
 <p>For any other result code, it can be difficult to determine if the result is final. The following table summarizes when a transaction's outcome is final, based on the result code from submitting the transaction:</p>
 <table>
@@ -1657,7 +1659,7 @@
 </tr>
 </tbody>
 </table>
-<p>Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, attempting to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.</p>
+<p>Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, trying to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.</p>
 <h2 id="understanding-transaction-metadata">Understanding Transaction Metadata</h2>
 <p>The metadata section of a transaction includes detailed information about all the changes to the shared Ripple Consensus Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.</p>
 <p>Some fields that may appear in transaction metadata include:</p>
@@ -1702,7 +1704,7 @@
 <p>The <code>delivered_amount</code> field of transaction metadata is included in all successful Payment transactions, and is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:</p>
 <ul>
 <li>Is a partial payment, and</li>
-<li>Included in a validated ledger prior to 2014-01-20</li>
+<li>Included in a validated ledger before 2014-01-20</li>
 </ul>
 <p>If both conditions are true, then <code>delivered_amount</code> contains the string value <code>unavailable</code> instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the AffectedNodes in the transaction's metadata.</p>
 <h2 id="full-transaction-response-list">Full Transaction Response List</h2>
@@ -1855,7 +1857,7 @@
 </tr>
 <tr>
 <td>temREDUNDANT</td>
-<td>The transaction would accomplish nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
+<td>The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
 </tr>
 <tr>
 <td>temREDUNDANT_SEND_MAX</td>
@@ -1887,12 +1889,12 @@
 </tr>
 <tr>
 <td>temDISABLED</td>
-<td>The transaction requires logic that is currently disabled. Typically this means you are trying to use an <a href="concept-amendments.html">amendment</a> that is not enabled for the current ledger.</td>
+<td>The transaction requires logic that is disabled. Typically this means you are trying to use an <a href="concept-amendments.html">amendment</a> that is not enabled for the current ledger.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="tef-codes">tef Codes</h3>
-<p>These codes indicate that the transaction failed to apply, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.</p>
+<p>These codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.</p>
 <table>
 <thead>
 <tr>
@@ -1943,7 +1945,7 @@
 </tr>
 <tr>
 <td>tefINTERNAL</td>
-<td>While attempting to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
+<td>When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
 <td>tefMASTER_DISABLED</td>
@@ -1955,7 +1957,7 @@
 </tr>
 <tr>
 <td>tefNO_AUTH_REQUIRED</td>
-<td>The <a href="#trustset">TrustSet</a> transaction attempted to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
+<td>The <a href="#trustset">TrustSet</a> transaction tried to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
 </tr>
 <tr>
 <td>tefNOT_MULTI_SIGNING</td>
@@ -1972,7 +1974,7 @@
 </tbody>
 </table>
 <h3 id="ter-codes">ter Codes</h3>
-<p>These codes indicate that the transaction failed to apply, but it could apply successfully if some other transaction was applied first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.</p>
+<p>These codes indicate that the transaction failed, but it could apply successfully if some other transaction was applied first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.</p>
 <table>
 <thead>
 <tr>
@@ -2024,7 +2026,7 @@
 </tbody>
 </table>
 <h3 id="tes-success">tes Success</h3>
-<p>The code <code>tesSUCCESS</code> is the only code that indicates a transaction succeeded. This does not necessarily mean it accomplished its goal (for example, an <a href="#offercancel">OfferCancel</a> can "succeed" if there is no offer for it to cancel). Success uses the numerical value 0.</p>
+<p>The code <code>tesSUCCESS</code> is the only code that indicates a transaction succeeded. This does not always mean it did what it was supposed to do. (For example, an <a href="#offercancel">OfferCancel</a> can "succeed" even if there is no offer for it to cancel.) Success uses the numerical value 0.</p>
 <table>
 <thead>
 <tr>
@@ -2040,7 +2042,7 @@
 </tbody>
 </table>
 <h3 id="tec-codes">tec Codes</h3>
-<p>These codes indicate that the transaction failed, but it was applied to a ledger in order to apply the <a href="concept-transaction-cost.html">transaction cost</a>. They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.</p>
+<p>These codes indicate that the transaction failed, but it was applied to a ledger to apply the <a href="concept-transaction-cost.html">transaction cost</a>. They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.</p>
 <table>
 <thead>
 <tr>
@@ -2098,7 +2100,7 @@
 <tr>
 <td>tecNEED_MASTER_KEY</td>
 <td>142</td>
-<td>This transaction attempted to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
+<td>This transaction tried to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>)</em></td>
 </tr>
 <tr>
 <td>tecNO_ALTERNATIVE_KEY</td>
@@ -2113,7 +2115,7 @@
 <tr>
 <td>tecNO_DST</td>
 <td>124</td>
-<td>The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received sufficient XRP.)</td>
+<td>The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received enough XRP.)</td>
 </tr>
 <tr>
 <td>tecNO_DST_INSUF_XRP</td>
@@ -2143,7 +2145,7 @@
 <tr>
 <td>tecNO_LINE_REDUNDANT</td>
 <td>127</td>
-<td>The transaction failed because it attempted to set a trust line to its default state, but the trust line did not exist.</td>
+<td>The transaction failed because it tried to set a trust line to its default state, but the trust line did not exist.</td>
 </tr>
 <tr>
 <td>tecNO_PERMISSION</td>
@@ -2163,7 +2165,7 @@
 <tr>
 <td>tecOVERSIZE</td>
 <td>145</td>
-<td>This transaction could not be processed, because attempted transaction processing created an excessively large amount of metadata. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1">rippled 0.29.0-hf1</a> )</em></td>
+<td>This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1">rippled 0.29.0-hf1</a> )</em></td>
 </tr>
 <tr>
 <td>tecOWNERS</td>
@@ -2234,7 +2236,7 @@
 </tr>
 <tr>
 <td>tejMaxLedger</td>
-<td>Currently-validated ledgers have surpassed the <code>LastLedgerSequence</code> parameter of the transaction without including it, so it can no longer succeed. (Also see <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a>.) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes.</td>
+<td>Validated ledgers have surpassed the <code>LastLedgerSequence</code> parameter of the transaction without including it, so it can no longer succeed. (Also see <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a>.) When using ripple-lib, this error effectively replaces all non-final errors, including tel-, tef-, and ter-class response codes.</td>
 </tr>
 <tr>
 <td>tejSecretInvalid</td>
@@ -2250,7 +2252,7 @@
 </tr>
 <tr>
 <td>tejUnconnected</td>
-<td>The application is not connected to a <code>rippled</code> server, but it needs to be in order to process the transaction.</td>
+<td>The application is not connected to a <code>rippled</code> server, but it needs to be to process the transaction.</td>
 </tr>
 </tbody>
 </table>

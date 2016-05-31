@@ -1,6 +1,6 @@
 # RippleAPI Beginners Guide #
 
-This tutorial guides you through the basics of building a simple Ripple-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](reference-rippleapi.html), a simple JavaScript API for accessing the Ripple Consensus Ledger.
+This tutorial guides you through the basics of building a Ripple-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](reference-rippleapi.html), a JavaScript API for accessing the Ripple Consensus Ledger.
 
 The scripts and configuration files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart).
 
@@ -29,7 +29,7 @@ nodejs --version
 
 ## Use NPM to install RippleAPI and dependencies ##
 
-RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). In order to use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
+RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). To use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
 
 #### 1. Create a new directory for your project
 
@@ -39,13 +39,13 @@ Create a folder called (for example) `my_ripple_experiment`:
 mkdir my_ripple_experiment && cd my_ripple_experiment
 ```
 
-Optionally, initiate a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) repository in that directory so you can track changes to your code.
+Optionally, start a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) repository in that directory so you can track changes to your code.
 
 ```
 git init
 ```
 
-Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) in order to version and share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
+Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) to version and share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
 
 #### 2. Create a new `package.json` file for your project.
 
@@ -81,7 +81,7 @@ npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 
 # First RippleAPI Script ##
 
-This script, `get-account-info.js`, simply fetches information about a hard-coded account. Use it to test that RippleAPI works:
+This script, `get-account-info.js`, fetches information about a hard-coded account. Use it to test that RippleAPI works:
 
 ```
 {% include 'code_samples/rippleapi_quickstart/get-account-info.js' %}
@@ -122,7 +122,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 
 The opening line enables [strict mode](https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/). This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: [Restrictions on Code in Strict Mode](https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1).
 
-The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is just one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.js).
+The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.js).
 
 ### Instantiating the API ###
 
@@ -147,13 +147,13 @@ The one argument to the constructor is an options object, which has [a variety o
 api.connect().then(() => {
 ```
 
-The [connect() method](reference-rippleapi.html#connect) is one of many RippleAPI methods that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), which is a special kind of JavaScript object. A Promise is designed to perform an asynchronous operation that returns a value later, such as querying the Ripple Consensus Ledger.
+The [connect() method](reference-rippleapi.html#connect) is one of many RippleAPI methods that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), which is a special kind of JavaScript object. A Promise is designed to do an asynchronous operation that returns a value later, such as querying the Ripple Consensus Ledger.
 
 When you get a Promise back from some expression (like `api.connect()`), you call the Promise's `then` method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are [first-class objects](https://en.wikipedia.org/wiki/First-class_function).
 
-When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the `then` method is another Promise object, so you can "chain" that into another `then` method, or the Promise's `catch` method, which also takes a callback. The callback you provide to `catch` gets called if something goes wrong.
+When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the `then` method is another Promise object, so you can "chain" that into another `then` method, or the Promise's `catch` method, which also takes a callback. The callback you pass to `catch` gets called if something goes wrong.
 
-Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is basically just `function(info) {...}` as well.
+Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
 
 ### Custom code ###
 
@@ -171,7 +171,7 @@ Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://deve
   /* end custom code -------------------------------------- */
 ```
 
-This is the part that really defines what this script does, so this is the part you will probably spend the most time customizing.
+This is the part that you change to do whatever you want the script to do.
 
 The example code looks up a Ripple account by its address. Try running the code with different addresses to see different results.
 
@@ -191,7 +191,7 @@ The `getAccountInfo` API method returns another Promise, so the line `}).then( i
 }).catch(console.error);
 ```
 
-The remainder of the sample code is mostly more [boilerplate code](reference-rippleapi.html#boilerplate). The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on [RippleAPI events](reference-rippleapi.html#api-events), do not disconnect until you are done waiting for events.
+The rest of the sample code is mostly more [boilerplate code](reference-rippleapi.html#boilerplate). The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on [RippleAPI events](reference-rippleapi.html#api-events), do not disconnect until you are done waiting for events.
 
 The `catch` method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard `console.error` function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.
 
@@ -286,9 +286,8 @@ The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (w
 
 The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
-To use this example, you must first [build RippleAPI](#build-instructions) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Modify the first `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
+To use this example, you must first [build RippleAPI](#build-instructions) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the first `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
 
 ```
 {% include 'code_samples/rippleapi_quickstart/browser-demo.html' %}
 ```
-
