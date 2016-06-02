@@ -1121,7 +1121,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 
 ### ter Codes ###
 
-These codes indicate that the transaction failed, but it could apply successfully if some other transaction was applied first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.
+These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.
 
 | Code | Explanation |
 |------|-------------|
@@ -1135,6 +1135,7 @@ These codes indicate that the transaction failed, but it could apply successfull
 | terOWNERS | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | terPRE\_SEQ | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
 | terRETRY | Unspecified retriable error. |
+| terQUEUED | The transaction met the load-scaled [transaction cost](concept-transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 
 ### tes Success ###
 

@@ -1974,7 +1974,7 @@
 </tbody>
 </table>
 <h3 id="ter-codes">ter Codes</h3>
-<p>These codes indicate that the transaction failed, but it could apply successfully if some other transaction was applied first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.</p>
+<p>These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.</p>
 <table>
 <thead>
 <tr>
@@ -2022,6 +2022,10 @@
 <tr>
 <td>terRETRY</td>
 <td>Unspecified retriable error.</td>
+</tr>
+<tr>
+<td>terQUEUED</td>
+<td>The transaction met the load-scaled <a href="concept-transaction-cost.html">transaction cost</a> but did not meet the open ledger requirement, so the transaction has been queued for a future ledger.</td>
 </tr>
 </tbody>
 </table>
