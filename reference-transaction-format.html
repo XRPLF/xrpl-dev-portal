@@ -1732,6 +1732,10 @@
 <td>The transaction specified a public key value (for example, as the <code>MessageKey</code> field of an <a href="#accountset">AccountSet transaction</a>) that cannot be used, probably because it is too long.</td>
 </tr>
 <tr>
+<td>telCAN_NOT_QUEUE</td>
+<td>The transaction did not meet the <a href="concept-transaction-cost.html">open ledger cost</a>, but this server did not queue it because it failed one of the server's heuristics for being "likely to succeed". You can try again later or sign and submit a replacement transaction with a higher transaction cost in the <code>Fee</code> field.</td>
+</tr>
+<tr>
 <td>telFAILED_PROCESSING</td>
 <td>An unspecified error occurred when processing the transaction.</td>
 </tr>
