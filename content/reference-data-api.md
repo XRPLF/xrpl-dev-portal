@@ -23,13 +23,14 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.0.7]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.7
 [v2.0.8]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.8
 [v2.1.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
+[v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
 
 
 # API Method Reference #
 
 The Data API v2 provides a REST API with the following methods:
 
-General Methods:
+Ledger Contents Methods:
 
 * [Get Ledger - `GET /v2/ledgers/{:ledger_identifier}`](#get-ledger)
 * [Get Transaction - `GET /v2/transactions/{:hash}`](#get-transaction)
@@ -45,11 +46,9 @@ General Methods:
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
 * [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
+* [Get XRP Distribution - `GET /v2/network/xrp_distribution`](#get-xrp-distribution)
 * [Get Top Currencies - `GET /v2/network/top_currencies`](#get-top-currencies)
 * [Get Top Markets - `GET /v2/network/top_markets`](#get-top-markets)
-* [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
-* [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
-* [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
 
 Account Methods:
 
@@ -66,10 +65,32 @@ Account Methods:
 * [Get Account Transaction Stats - `GET /v2/accounts/{:address}/stats/transactions`](#get-account-transaction-stats)
 * [Get Account Value Stats - `GET /v2/accounts/{:address}/stats/value`](#get-account-value-stats)
 
+Gateway Information Methods:
+
+* [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
+* [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
+* [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
+
+Validation Network Methods:
+
+* [Get Network Fees - `GET /v2/network/fees`](#get-network-fees)
+* [Get Ledger Validations - `GET /v2/ledger/{:hash}/validations`](#get-ledger-validations)
+* [Get Ledger Validation - `GET /v2/ledger/{:hash}/validations/:validation_pubkey`](#get-ledger-validation)
+* [Get Topology - `GET /v2/network/topology`](#get-topology)
+* [Get Topology Nodes - `GET /v2/network/topology/nodes`](#get-topology-nodes)
+* [Get Topology Links - `GET /v2/network/topology/links`](#get-topology-links)
+* [Get Validator  - `GET /v2/network/validators/{:pubkey}`](#get-validator)
+* [Get Validators  - `GET /v2/network/validators`](#get-validators)
+* [Get Validator Validations - `GET /v2/network/validators/{:pubkey}/validations`](#get-validator-validations)
+* [Get Single Validator Reports - `GET /v2/network/validators/{:pubkey}/reports`](#get-single-validator-reports)
+* [Get Daily Validator Reports - `GET /v2/network/validator_reports`](#get-validator-reports)
+
 Health Checks:
 
 * [API Health Check - `GET /v2/health/api`](#health-check-api)
 * [Importer Health Check - `GET /v2/health/importer`](#health-check-ledger-importer)
+* [Nodes ETL Health Check - `GET /v2/health/nodes_etl`](#health-check-nodes-etl)
+* [Validations ETL Health Check - `GET /v2/health/validations_etl`](#health-check-validations-etl)
 
 
 ## Get Ledger ##
@@ -139,6 +160,163 @@ Response:
         "close_time": 1408047740,
         "close_time_human": "2014-08-14T20:22:20+00:00"
     }
+}
+```
+
+
+
+## Get Ledger Validations ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
+
+Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/ledgers/{:ledger_hash}/validations
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-ledger-validations)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| ledger_hash | [Hash][] | Ledger hash to retrieve validations for. |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| ledger_hash | [hash][] | ledger hash of the requested ledger. |
+| count | Integer | Number of validations returned. |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
+| validations | Array of Validation Objects | The requested validations. |
+
+Each object in the `validations` array represents a validation report received, and has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| count  | Integer | The number of rippleds that reported this validation. |
+| ledger_hash | [Hash][]  | Ledger hash validated. |
+| reporter_public_key | String | Public key of the node that first reported this validation. |
+| validation_public_key | Object | Public key of the validator. |
+| signature | String | Validator signature of the validation details, as hexadecimal. |
+| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
+| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/ledgers/EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5/validations
+```
+
+Response:
+
+```
+200 OK
+{
+  result: "success",
+  ledger_hash: "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+  count: 18,
+  validations: [
+    {
+      count: 2,
+      first_datetime: "2016-03-28T18:24:24.846Z",
+      last_datetime: "2016-03-28T18:24:24.945Z",
+      ledger_hash: "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+      reporter_public_key: "n9LGDURtWWoaayddmJpjKwTC7p4AKde2L7mC8o5kx1CFDSZdQjcd",
+      signature: "304402206F77C7688199343FD911B2ABB0232DBEEC6E30A94F4E00CF7B99CEF444E17FC1022018FF6B21A2A6CB2784429CAAB647AF336E383B5E1630C4B6321616050508306F",
+      validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Ledger Validation ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
+
+Retrieve a validation recorded for a specific ledger hash by a specific validator.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/ledgers/{:ledger_hash}/validations/{:validation_public_key}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-ledger-validation)
+
+The following URL parameters are required by this API endpoint:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| ledger_hash | [Hash][] | Ledger hash to retrieve validations for. |
+| validation_public_key | String| Validator public key identifier |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count  | Integer | The number of rippleds that reported this validation. |
+| ledger_hash | [hash][]  | Ledger hash validated. |
+| reporter_public_key | String | Public key of the node that first reported this validation. |
+| validation_public_key | Object | Public key of the validator. |
+| signature | String | Validator signature of the validation details, as hexadecimal. |
+| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
+| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/ledgers/EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5/validations/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+```
+
+Response:
+
+```
+200 OK
+{
+  count: 2,
+  first_datetime: "2016-03-28T18:24:24.846Z",
+  last_datetime: "2016-03-28T18:24:24.945Z",
+  ledger_hash: "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+  reporter_public_key: "n9LGDURtWWoaayddmJpjKwTC7p4AKde2L7mC8o5kx1CFDSZdQjcd",
+  signature: "304402206F77C7688199343FD911B2ABB0232DBEEC6E30A94F4E00CF7B99CEF444E17FC1022018FF6B21A2A6CB2784429CAAB647AF336E383B5E1630C4B6321616050508306F",
+  validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+  result: "success"
 }
 ```
 
@@ -596,7 +774,7 @@ Optionally, you can also include the following query parameters:
 | `interval` | String | Aggregation interval: `1minute`, `5minute`, `15minute`, `30minute`, `1hour`, `2hour`, `4hour`, `1day`, `3day`, `7day`, or `1month`. Defaults to non-aggregated results. |
 | `descending` | Boolean | If true, return results in reverse chronological order. |
 | `reduce` | Boolean | Aggregate all individual results. Defaults to false. |
-| `limit` | Integer | Maximum results per page (defaults to 200). Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
+| `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
 | `marker` | String | [Pagination](#pagination) key from previously returned response. |
 | `autobridged` | Boolean | If true, filter results to autobridged exchanges only. |
 | `format` | String | Format of returned results: `csv` or `json`. Defaults to `json` |
@@ -1756,6 +1934,82 @@ Response:
 
 
 
+## Get XRP distribution ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/xrpDistribution.js "Source")
+
+Get total XRP, aggregate amount held by Ripple (the company), and aggregate amount held by others. _(New in [v2.2.0][])_
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/xrp_distribution
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-xrp-distribution)
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| `start`      | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| `end`        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| `limit`    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker`   | String  | [Pagination](#pagination) key from previously returned response. |
+| `descending` | Boolean | Reverse chronological order | |
+| `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `count` | Integer | Number of rows returned. |
+| `rows` | Array of Distribution Objects | Weekly distribution snapshots. |
+
+Each Distribution Object has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `date` | String - [Timestamp][] | The time at which this data was measured. |
+| `total` | String | Total XRP in existence. |
+| `undistributed` | String | Aggregate amount of XRP held by Ripple (the company) |
+| `distributed` | String | Aggregate amount of XRP held by others.  |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/xrp_distribution
+```
+
+Response:
+
+```
+{
+  "result": "success",
+  "count": 171,
+  "rows": [
+    {
+      "date": "2016-04-10T00:00:00Z",
+      "distributed": "34918644255.77274",
+      "total": "99997725821.25714",
+      "undistributed": "65079081565.4844"
+    },
+    ...
+  ]
+}
+```
+
+
 
 ## Get Top Currencies ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/topCurrencies.js "Source")
@@ -1952,6 +2206,815 @@ Response:
       base_currency: "BTC",
       base_issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
       counter_currency: "XRP"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Network Fees ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getFees.js "Source")
+
+Returns [transaction cost](concept-transaction-cost.html) stats per ledger, hour, or day.  The data shows the average, minimum, maximum, and total transaction costs paid for the given interval/ledger. _(New in [v2.2.0][])_
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/fees
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| `start`     | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
+| `end`       | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
+| `interval` | String  | Aggregation interval - valid intervals are `ledger`, `hour`, or `day`. Defaults to `ledger`. |
+| `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
+| limit    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker`   | String  | [Pagination](#pagination) key from previously returned response. |
+| `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-network-fees)
+
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker. |
+| `count`  | Integer | Number of results in the `markets` field. |
+| `rows` | Array of Fee Summary Objects | Network fee statistics for each specific interval. |
+
+Each Fee Summary object has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `avg` | Number | Average network fee |
+| `min` | Number | Minimum network fee |
+| `max` | Number | Maximum network fee |
+| `total` | Number | Total XRP destroyed by transaction costs. |
+| `tx_count` | Number | Number of transactions in this interval |
+| `date` | String - [Timestamp][] | The start time of this interval (time intervals), or the close time of this ledger (`ledger` interval). |
+| `ledger_index` | Integer - [Ledger Index][] | (Only present in `ledger` interval) The ledger this object describes |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/fees?interval=hour
+```
+
+Response:
+
+```
+{
+  result: "success",
+  marker: "hour|20130124080000",
+  count: 200,
+  rows: [
+    {
+      avg: 0.00001,
+      max: 0.00001,
+      min: 0.00001,
+      total: 0.00001,
+      tx_count: 1,
+      date: "2013-01-02T06:00:00Z"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Topology ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getTopology.js "Source")
+
+Get known `rippled` servers and connections between them.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/topology
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| `date` | String - [Timestamp][]  | Date and time for historical query. By default, uses the most recent data available. |
+| `verbose` | Boolean | If true, include additional details about each node in the topology. (Defaults to false.) |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `date`   | String - [Timestamp][] | The time at which this data was measured. |
+| `node_count`  | Integer | Number of nodes returned. |
+| `link_count`  | Integer | Number of links returned. |
+| `nodes` | Array of [Server Objects][] | `rippled` nodes and details |
+| `links` | Array of Link Objects | Links between `rippled` nodes |
+
+
+
+Link Object fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `source` | String | Source node public key |
+| `target` | String | Target node public key |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/topology
+```
+
+Response:
+
+```
+{
+  result: "success",
+  date: "2016-03-21T16:38:52Z",
+  node_count: 99,
+  link_count: 1632,
+  nodes: [
+    {
+      node_public_key: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      version: "rippled-0.30.1-hf2",
+      uptime: 1729008,
+      inbound_count: 4,
+      outbound_count: 20
+    },
+    ...
+  ],
+  links: [
+    {
+      source: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      target: "n9JccBLfrDJBLBF2X5N7bUW8251riCwSf9e3VQ3P5fK4gYr5LBu4"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Topology Nodes ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getNodes.js "Source")
+
+Get known `rippled` nodes.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/topology/nodes
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| date | String - [Timestamp][]  | Date and time for historical query (defaults to latest) |
+| verbose | Boolean | Option to include full details for each node (defaults to false) |
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `date`  | String - [Timestamp][] | The time at which this data was measured. |
+| `count` | Integer | Number of `rippled` servers described. |
+| `nodes` | Array of [Server Objects][] | Details of the `rippled` servers in the topology. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/topology/nodes
+```
+
+Response:
+
+```
+{
+  result: "success",
+  date: "2016-03-21T16:38:52Z",
+  count: 99,
+  nodes: [
+    {
+      node_public_key: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      version: "rippled-0.30.1-hf2",
+      uptime: 1729008,
+      inbound_count: 4,
+      outbound_count: 20
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Topology Node ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getNodes.js "Source")
+
+Get a single `rippled` node by node public key.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/topology/nodes
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| date | String - [Timestamp][]  | Date and time for historical query (defaults to latest) |
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with a [Server Object][] in the response.
+
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/topology/nodes/n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8
+```
+
+Response:
+
+```
+{
+  result: "success",
+  date: "2016-03-21T16:38:52Z",
+  node_public_key: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+  version: "rippled-0.30.1-hf2",
+  uptime: 1729008,
+  inbound_count: 4,
+  outbound_count: 20
+}
+```
+
+
+
+## Get Topology Links ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getLinks.js "Source")
+
+Get known Rippled nodes and connections between them.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/topology/links
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| date | String - [Timestamp][]  | Date and time for historical query (defaults to latest) |
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| date   | String - [Timestamp][] | The time at which this data was measured. |
+| count  | Integer | Number of links returned. |
+| links | Array of Link Objects | Links between rippled nodes |
+
+Link Object fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| source | String | Source node public key |
+| target | String | Target node public key |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/topology/links
+```
+
+Response:
+
+```
+{
+  result: "success",
+  date: "2016-03-21T16:38:52Z",
+  count: 1632,
+  links: [
+    {
+      source: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      target: "n9JccBLfrDJBLBF2X5N7bUW8251riCwSf9e3VQ3P5fK4gYr5LBu4"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Validator ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators "Source")
+
+Get details of a single validator by validation public key
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validators/:pubkey
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+This method requires the following URL parameters:
+
+| Field     | Value   | Description |
+|-----------|---------|-------------|
+| :pubkey  | String  | Validator public key |
+
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| last_datetime  | Integer | Number of links returned. |
+| validation_public_key | String | Validator public key identifier |
+
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+```
+
+Response:
+
+```
+{
+  result: "success",
+  last_datetime: "2016-02-11T23:20:41.319Z",
+  validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+}
+```
+
+
+
+## Get Validators ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators "Source")
+
+Get a list of known validators
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validators
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| last_datetime  | Integer | Number of links returned. |
+| validation_public_key | String | Validator public key identifier |
+
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+```
+
+Response:
+
+```
+{
+  result: "success",
+  last_datetime: "2016-02-11T23:20:41.319Z",
+  validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+}
+```
+
+
+
+## Get Validator Validations ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValdations.js "Source")
+
+Retrieve a validations for a specified validator.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validators/:pubkey/validations
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-validator-validations)
+
+This method requires the following URL parameters:
+
+| Field     | Value   | Description |
+|-----------|---------|-------------|
+| :pubkey  | String  | Validator public key |
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| start | [Timestamp][] | Start date and time of range to query. |
+| end | [Timestamp][] | End date and time of range to query. |
+| limit      | Integer | Maximum results per page (defaults to 200). Cannot be more than 1000. |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of validations returned. |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
+| validations | Array of Validation Objects | The requested validations. |
+
+Each object in the `validations` array represents a validation report received, and has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| count  | Integer | The number of rippleds that reported this validation. |
+| ledger_hash | [hash][]  | Ledger hash validated. |
+| reporter_public_key | String | Public key of the node that first reported this validation. |
+| validation_public_key   | Object | Public key of the validator. |
+| signature | String | Validator signature of the validation details, as hexadecimal. |
+| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
+| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validator/n9KDWeLbHfZuXDfdJoe5wVXtHxLwWVTp5QE7PnWL6LctqoaFsVox/validations
+```
+
+Response:
+
+```
+200 OK
+{
+  result: "success",
+  count: 18,
+  marker: "n9KDWeLbHfZuXDfdJoe5wVXtHxLwWVTp5QE7PnWL6LctqoaFsVox|20160321222943|8D75A43EF0AA72E6FF5908855F35D88145E042D9AEB6B40B2E66AB3CC5BF5AEF",
+  validations: [
+    {
+      count: 2,
+      first_datetime: "2016-03-28T18:24:24.846Z",
+      last_datetime: "2016-03-28T18:24:24.945Z",
+      ledger_hash: "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+      reporter_public_key: "n9LGDURtWWoaayddmJpjKwTC7p4AKde2L7mC8o5kx1CFDSZdQjcd",
+      signature: "304402206F77C7688199343FD911B2ABB0232DBEEC6E30A94F4E00CF7B99CEF444E17FC1022018FF6B21A2A6CB2784429CAAB647AF336E383B5E1630C4B6321616050508306F",
+      validation_public_key: "n9KDWeLbHfZuXDfdJoe5wVXtHxLwWVTp5QE7PnWL6LctqoaFsVox"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Validations ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValdations.js "Source")
+
+Retrieve validations.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validations
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://ripple.com/build/data-api-tool/#get-validations)
+
+Optionally, you can also include the following query parameters:
+
+| Field | Value | Description |
+|-------|-------|-------------|
+| start | [Timestamp][] | Start date and time of range to query. |
+| end | [Timestamp][] | End date and time of range to query. |
+| limit      | Integer | Maximum results per page (defaults to 200). Cannot be more than 1000. |
+| marker     | String  | [Pagination](#pagination) key from previously returned response. |
+| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count | Integer | Number of validations returned. |
+| marker | String | (May be omitted) [Pagination](#pagination) marker |
+| validations | Array of Validation Objects | The requested validations. |
+
+Each object in the `validations` array represents a validation report received, and has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| count  | Integer | The number of rippleds that reported this validation. |
+| ledger_hash | [hash][]  | Ledger hash validated. |
+| reporter_public_key | String | Public key of the node that first reported this validation. |
+| validation_public_key   | Object | Public key of the validator. |
+| signature | String | Validator signature of the validation details, as hexadecimal. |
+| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
+| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validations
+```
+
+Response:
+
+```
+200 OK
+{
+  result: "success",
+  count: 18,
+  marker: "20160321220050|n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C|FEDEB98F78265AB3DBAE95C316101CAD583E348144AFC41A410D598BD79DD5C2",
+  validations: [
+    {
+      count: 2,
+      first_datetime: "2016-03-28T18:24:24.846Z",
+      last_datetime: "2016-03-28T18:24:24.945Z",
+      ledger_hash: "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+      reporter_public_key: "n9LGDURtWWoaayddmJpjKwTC7p4AKde2L7mC8o5kx1CFDSZdQjcd",
+      signature: "304402206F77C7688199343FD911B2ABB0232DBEEC6E30A94F4E00CF7B99CEF444E17FC1022018FF6B21A2A6CB2784429CAAB647AF336E383B5E1630C4B6321616050508306F",
+      validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Single Validator Reports ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidatorReports "Source")
+
+Get Daily reports for a single validator by validation public key.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validators/:pubkey/reports
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+This method requires the following URL parameters:
+
+| Field     | Value   | Description |
+|-----------|---------|-------------|
+| :pubkey  | String  | Validator public key |
+
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| start | String - [Timestamp][]  | Start date and time for historical query (defaults to 200 days before now) |
+| end | String - [Timestamp][]  | End date and time for historical query (defaults to now) |
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count  | Integer | Number of validators returned. |
+| validators | Array of Validator Objects | Details of each validator. |
+
+Validator Report Object fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| validation_public_key | String | public key identifier of the validator |
+| last_datetime | String - [Timestamp][]  | date of last reported validation |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7/reports
+```
+
+Response:
+
+```
+{
+  result: "success",
+  count: 2,
+  validators: [
+    {
+    last_datetime: "2016-02-11T23:20:41.779Z",
+    validation_public_key: "n94a8g8RVLQR3jTRJRatdSvWM7JYmeH433jizBHFaezPVWendSoo"
+    },
+    ...
+  ]
+}
+```
+
+
+
+## Get Daily Validator Reports ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidatorReports "Source")
+
+Get Daily reports for known validators.
+
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/validator_reports
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can include the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| date | String - [Timestamp][]  | Date and time for historical query (defaults to latest) |
+| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| result | `success` | Indicates that the body represents a successful response. |
+| count  | Integer | Number of reports returned. |
+| reports | Array of Validator Report Objects | daily summaries for each validator |
+
+Validator Report Object fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| validation_public_key | String | public key identifier of the validator |
+| date | String - [Timestamp][]  | date of the report |
+| total_ledgers | Integer | number of ledgers validated |
+| main_net_ledgers | Integer | number of main net ledgers validated |
+| main_net_agreeement | String | coeeficient of agreement with main net ledgers |
+| alt_net_ledgers | Integer | number of alt net ledgers validated |
+| alt_net_agreeement | String | coeeficient of agreement with alt net ledgers |
+| other_ledgers | Integer | number of other ledgers validated |
+
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/validator_reports
+```
+
+Response:
+
+```
+{
+  result: "success",
+  count: 25,
+  reports: [
+    {
+      validation_public_key: "n9L81uNCaPgtUJfaHh89gmdvXKAmSt5Gdsw2g1iPWaPkAHW5Nm4C",
+      date: "2016-03-25T00:00:00Z",
+      total_ledgers: 1035,
+      main_net_agreeement: "1.0000",
+      main_net_ledgers: 1035,
+      alt_net_agreeement: "0.0000",
+      alt_net_ledgers: 0,
+      other_ledgers: 0
     },
     ...
   ]
@@ -3431,13 +4494,12 @@ The health value `0` always indicates a healthy status. Other health values are 
 |-------|---------|
 | `0`   | API service is up, and response time to HBase is less than `threshold` value from request. |
 | `1`   | API service is up, but response time to HBase is greater than `threshold` value from request. |
-| `2`   | API service was unable to contact HBase, or received an error in connecting. |
 
 If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| `score` | 0-2 | Health value, as defined above. |
+| `score` | 0-1 | Health value, as defined above. |
 | `response_time` | String - Human-readable time | The actual response time of the database. |
 | `response_time_threshold` | String - Human-readable time | The maximum response time to be considered healthy. |
 
@@ -3494,13 +4556,12 @@ The health value `0` always indicates a healthy status. Other health values are 
 | `0`   | The most recent imported ledger was less than `threshold2` (Default: 60) seconds ago, and most recent validated ledger was less than `threshold` seconds ago. |
 | `1`   | The most recent imported ledger was less than `threshold2` (Default: 60) seconds ago, but the most recent validated ledger is older than `threshold` seconds. |
 | `2`   | The most recent imported ledger was more than `threshold2` seconds ago. |
-| `3`   | An error occurred when connecting to HBase, or the API was unable to determine when a ledger was most recently imported. |
 
 If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| `score` | 0-3 | Health value, as defined above. |
+| `score` | 0-2 | Health value, as defined above. |
 | `response_time` | String | The actual response time of the database. |
 | `ledger_gap` | String - Human-readable time | Difference between the close time of the last saved ledger and the current time. |
 | `ledger_gap_threshold` | String - Human-readable time | Maximum ledger gap to be considered healthy. |
@@ -3525,6 +4586,131 @@ Response:
     "ledger_gap_threshold": "5.00m",
     "validation_gap": "29.894s",
     "validation_gap_threshold": "15.00m"
+}
+```
+
+
+
+## Health Check - Nodes ETL ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js "Source")
+
+Check the health of the Topology Nodes Extract, Transform, Load (ETL) Service.
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST - Nodes ETL Health*
+
+```
+GET /v2/health/nodes_etl
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| threshold  | Integer | Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds. |
+| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK**. By default, the response body is an **integer health value only**.
+
+The health value `0` always indicates a healthy status. Other health values are defined as follows:
+
+| Value | Meaning |
+|-------|---------|
+| `0`   | The most recent imported topology data was less than `threshold` (Default: 120) seconds ago |
+| `1`   | The most recent imported topology data was more than `threshold` seconds ago. |
+
+
+If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| score  | 0-1 | Health value, as defined above. |
+| gap | String - Human-readable time | Difference between the latest imported data and the current time. |
+| gap_threshold | String - Human-readable time | Maximum gap to be considered healthy. |
+| message | String | Description of the reason for a non-zero score (if applicable) |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/health/nodes_etl?verbose=true
+```
+
+Response:
+
+```
+{
+  "score": 0,
+  "gap": "1.891s",
+  "gap_threshold": "2.00m",
+}
+```
+
+
+
+## Health Check - Validations ETL ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js "Source")
+
+Check the health of the Validations Extract, Transform, Load (ETL) Service.
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST - Validations ETL Health*
+
+```
+GET /v2/health/validations_etl
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Optionally, you can also include the following query parameters:
+
+| Field      | Value   | Description |
+|------------|---------|-------------|
+| threshold  | Integer | Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds. |
+| verbose    | Boolean | If true, return a JSON response with data points. By default, return an integer value only. |
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK**. By default, the response body is an **integer health value only**.
+
+The health value `0` always indicates a healthy status. Other health values are defined as follows:
+
+| Value | Meaning |
+|-------|---------|
+| `0`   | The most recent imported topology data was less than `threshold` (Default: 120) seconds ago |
+| `1`   | The most recent imported topology data was more than `threshold` seconds ago. |
+
+If the request specifies `verbose=true` in the query parameters, the response body is a JSON object, with the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| score  | 0-1 | Health value, as defined above. |
+| gap | String - Human-readable time | Difference between the latest imported data and the current time. |
+| gap_threshold | String - Human-readable time | Maximum gap to be considered healthy. |
+| message | String | Description of the reason for a non-zero score (if applicable) |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/health/nodes_etl?verbose=true
+```
+
+Response:
+
+```
+{
+  "score": 0,
+  "gap": "1.891s",
+  "gap_threshold": "2.00m",
 }
 ```
 
@@ -3834,6 +5020,39 @@ Volume objects represent the total volumes of money moved, in either payments or
 | `total` | Number | Total volume of all recorded exchanges in the period. |
 
 
+## Server Objects ##
+[Server Object]: #server-objects
+[Server Objects]: #server-objects
+
+A "Server Object" describes one `rippled` server in the Ripple peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods.
+
+Server objects have the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `node_public_key` | String | The public key used by this server to sign its peer-to-peer communications, not including validations. |
+| `version` | String | The `rippled` version of this server (when it was last asked). |
+| `uptime` | Integer | Number of seconds this server has been connected to the network. |
+| `ip` | String | IP address of the node (may be omitted) |
+| `port` | Integer | Host port (may be omitted) |
+| `inbound_count` | Integer | Number of inbound connections (may be omitted) |
+| `inbound_added` | String | Number of inbound connections added (may be omitted) |
+| `inbound_dropped` | String | Number of inbound connections dropped (may be omitted) |
+| `outbound_count` | Integer | Number of outbound connections (may be omitted) |
+| `outbound_added` | String | Number of outbound connections added (may be omitted) |
+| `outbound_dropped` | String | Number of outbound connections dropped (may be omitted) |
+| `city` | String | (Verbose only) city (IP geolocation) |
+| `region` | String | (Verbose only) region (IP geolocation) |
+| `country` | String | (Verbose only) country (IP geolocation) |
+| `region_code` | String | (Verbose only) ISO region code (IP geolocation) |
+| `country_code` | String | (Verbose only) ISO country code (IP geolocation) |
+| `postal_code` | String | (Verbose only) Postal Code (IP geolocation) |
+| `timezone` | String | (Verbose only) ISO timezone (IP geolocation) |
+| `lat` | String | (Verbose only) Latitude (IP geolocation) |
+| `long` | String | (Verbose only) Longitude (IP geolocation) |
+| `isp` | String | (Verbose only) Internet Service Provider (IP lookup) |
+| `org` | String | (Verbose only) Organization (IP lookup) |
+
 
 
 
@@ -3884,7 +5103,7 @@ Dependencies:
 ```
 $ docker-compose build
 $ docker-compose up -d hbase
-$ docker-compose run webapp npm test
+$ docker-compose run --rm webapp npm test
 ```
 
 ### Services ###
