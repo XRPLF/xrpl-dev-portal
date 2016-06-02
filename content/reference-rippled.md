@@ -10962,7 +10962,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Peer Protocol #
 
-Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network article in the `rippled` repository](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake).)
+Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Configuring the Peer Protocol ##
 
@@ -10981,7 +10981,7 @@ protocol = peer
 
 ## Peer Crawler ##
 
-The Peer Crawler reports information about other servers a `rippled` server is connected to as peers. The [`peers` command](#peers) in the [WebSocket and JSON-RPC APIs](#websocket-and-json-rpc-apis) also returns a similar, more comprehensive set of information, but requires admin access to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.
+The Peer Crawler asks a `rippled` server to report information about the other `rippled` servers it is connected to as peers. The [`peers` command](#peers) in the [WebSocket and JSON-RPC APIs](#websocket-and-json-rpc-apis) also returns a similar, more comprehensive set of information, but requires [administrative access](#connecting-to-rippled) to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.
 
 #### Request Format ####
 
@@ -11002,18 +11002,18 @@ The JSON object has the following fields:
 
 | Field          | Value  | Description |
 |----------------|--------|-------------|
-| overlay.active | Array  | Array of Peer Objects, where each member is a peer that is connected to this server. |
+| `overlay.active` | Array  | Array of Peer Objects, where each member is a peer that is connected to this server. |
 
 Each member of the `active` array is a Peer Object with the following fields:
 
 | Field       | Value  | Description |
 |-------------|--------|-------------|
-| ip          | String (IPv4 Address) | The IP address of this connected peer. |
-| port        | String (Number) | The port number on the peer server that serves RTXP. Typically 51235. |
-| public\_key | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](#server-info).) |
-| type        | String | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
-| uptime      | Number | The number of seconds the server has been has been connected to this peer. |
-| version     | String | The `rippled` version number the peer reports to be using. |
+| `ip`        | String (IPv4 Address) | The IP address of this connected peer. |
+| `port`      | String (Number) | The port number on the peer server that serves RTXP. Typically 51235. |
+| `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](#server-info).) |
+| `type`      | String | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
+| `uptime`    | Number | The number of seconds the server has been has been connected to this peer. |
+| `version`   | String | The `rippled` version number the peer reports to be using. |
 
 #### Example ####
 

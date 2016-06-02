@@ -12703,7 +12703,7 @@ Connecting to 127.0.0.1:5005
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <h1 id="peer-protocol">Peer Protocol</h1>
-<p>Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an <a href="https://tools.ietf.org/html/rfc7230#section-6.7">HTTP upgrade</a> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network article in the <code>rippled</code> repository</a>.)</p>
+<p>Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an <a href="https://tools.ietf.org/html/rfc7230#section-6.7">HTTP upgrade</a> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network</a> article in the <a href="https://github.com/ripple/rippled"><code>rippled</code> repository</a>.)</p>
 <h2 id="configuring-the-peer-protocol">Configuring the Peer Protocol</h2>
 <p>In order to participate in the Ripple Consensus Ledger, <code>rippled</code> servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are <a href="tutorial-rippled-setup.html#clustering">clustered</a> with the current server.)</p>
 <p>Ideally, the server should be able to send <em>and</em> receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the <code>rippled</code> server. The <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">default <code>rippled</code> configuration file</a> listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your <code>rippled.cfg</code> file.</p>
@@ -12714,7 +12714,7 @@ ip = 0.0.0.0
 protocol = peer
 </code></pre>
 <h2 id="peer-crawler">Peer Crawler</h2>
-<p>The Peer Crawler reports information about other servers a <code>rippled</code> server is connected to as peers. The <a href="#peers"><code>peers</code> command</a> in the <a href="#websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</a> also returns a similar, more comprehensive set of information, but requires admin access to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.</p>
+<p>The Peer Crawler asks a <code>rippled</code> server to report information about the other <code>rippled</code> servers it is connected to as peers. The <a href="#peers"><code>peers</code> command</a> in the <a href="#websocket-and-json-rpc-apis">WebSocket and JSON-RPC APIs</a> also returns a similar, more comprehensive set of information, but requires <a href="#connecting-to-rippled">administrative access</a> to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.</p>
 <h4 id="request-format-51">Request Format</h4>
 <p>To request the Peer Crawler information, make the following HTTP request:</p>
 <ul>
@@ -12738,7 +12738,7 @@ protocol = peer
 </thead>
 <tbody>
 <tr>
-<td>overlay.active</td>
+<td><code>overlay.active</code></td>
 <td>Array</td>
 <td>Array of Peer Objects, where each member is a peer that is connected to this server.</td>
 </tr>
@@ -12755,32 +12755,32 @@ protocol = peer
 </thead>
 <tbody>
 <tr>
-<td>ip</td>
+<td><code>ip</code></td>
 <td>String (IPv4 Address)</td>
 <td>The IP address of this connected peer.</td>
 </tr>
 <tr>
-<td>port</td>
+<td><code>port</code></td>
 <td>String (Number)</td>
 <td>The port number on the peer server that serves RTXP. Typically 51235.</td>
 </tr>
 <tr>
-<td>public_key</td>
+<td><code>public_key</code></td>
 <td>String (Base-64 Encoded)</td>
 <td>The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the <code>pubkey_node</code> reported in the peer server's <a href="#server-info"><code>server_info</code> command</a>.)</td>
 </tr>
 <tr>
-<td>type</td>
+<td><code>type</code></td>
 <td>String</td>
 <td>The value <code>in</code> or <code>out</code>, indicating whether the TCP connection to the peer is incoming or outgoing.</td>
 </tr>
 <tr>
-<td>uptime</td>
+<td><code>uptime</code></td>
 <td>Number</td>
 <td>The number of seconds the server has been has been connected to this peer.</td>
 </tr>
 <tr>
-<td>version</td>
+<td><code>version</code></td>
 <td>String</td>
 <td>The <code>rippled</code> version number the peer reports to be using.</td>
 </tr>
