@@ -168,7 +168,9 @@ Response:
 ## Get Ledger Validations ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
-Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledger versions that are outside the validated ledger chain.
+
+**Note:** The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.
 
 #### Request Format ####
 
@@ -182,21 +184,21 @@ GET /v2/ledgers/{:ledger_hash}/validations
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-ledger-validations)
+[Try it! >](data-api-v2-tool.html#get-ledger-validations)
 
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| ledger_hash | [Hash][] | Ledger hash to retrieve validations for. |
+| `ledger_hash` | [Hash][] | Ledger hash to retrieve validations for. |
 
 Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| limit      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `limit`      | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker`     | String  | [Pagination](#pagination) key from previously returned response. |
+| `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 
@@ -204,23 +206,12 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| ledger_hash | [hash][] | ledger hash of the requested ledger. |
-| count | Integer | Number of validations returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| validations | Array of Validation Objects | The requested validations. |
+| `result` | String - `success` | Indicates that the body represents a successful response. |
+| `ledger_hash` | String - [Hash][] | The identifying hash of the ledger version requested. |
+| `count` | Integer | Number of validations returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `validations` | Array of [Validation Objects][] | All known validation votes for the ledger version. |
 
-Each object in the `validations` array represents a validation report received, and has the following fields:
-
-| Field  | Value  | Description |
-|--------|--------|-------------|
-| count  | Integer | The number of rippleds that reported this validation. |
-| ledger_hash | [Hash][]  | Ledger hash validated. |
-| reporter_public_key | String | Public key of the node that first reported this validation. |
-| validation_public_key | Object | Public key of the validator. |
-| signature | String | Validator signature of the validation details, as hexadecimal. |
-| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
-| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
 
 #### Example ####
 
@@ -258,7 +249,9 @@ Response:
 ## Get Ledger Validation ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js "Source")
 
-Retrieve a validation recorded for a specific ledger hash by a specific validator.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.
+Retrieve a validation vote recorded for a specific ledger hash by a specific validator.  This dataset includes ledger versions that are outside the validated ledger chain.
+
+**Note:** The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.
 
 #### Request Format ####
 
@@ -272,14 +265,14 @@ GET /v2/ledgers/{:ledger_hash}/validations/{:validation_public_key}
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-ledger-validation)
+[Try it! >](data-api-v2-tool.html#get-ledger-validation)
 
 The following URL parameters are required by this API endpoint:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| ledger_hash | [Hash][] | Ledger hash to retrieve validations for. |
-| validation_public_key | String| Validator public key identifier |
+| `ledger_hash` | [Hash][] | Ledger hash to retrieve validations for. |
+| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key, in base-58. |
 
 #### Response Format ####
 
@@ -287,14 +280,14 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count  | Integer | The number of rippleds that reported this validation. |
-| ledger_hash | [hash][]  | Ledger hash validated. |
-| reporter_public_key | String | Public key of the node that first reported this validation. |
-| validation_public_key | Object | Public key of the validator. |
-| signature | String | Validator signature of the validation details, as hexadecimal. |
-| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
-| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
+| `result` | String - `success` | Indicates that the body represents a successful response. |
+| `count`  | Integer | The number of `rippled` servers that reported seeing this validation. |
+| `ledger_hash` | String - [Hash][] | The hash of the ledger version this validation applies to. |
+| `reporter_public_key` | String - Base-58 [Public Key][] | The node public key of the `rippled` server that first reported this validation, in base-58. |
+| `validation_public_key` | String - Base-58 [Public Key][] | The validator public key of the validator that signed this validation vote, in base-58. |
+| `signature` | String | The validator's signature of the validation details, in hexadecimal. |
+| `first_datetime` | String - [Timestamp][] | Date and time of the first report of this validation. |
+| `last_datetime` | String - [Timestamp][] | Date and time of the last report of this validation. |
 
 #### Example ####
 
@@ -1951,7 +1944,7 @@ GET /v2/network/xrp_distribution
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-xrp-distribution)
+[Try it! >](data-api-v2-tool.html#get-xrp-distribution)
 
 Optionally, you can include the following query parameters:
 
@@ -1961,7 +1954,7 @@ Optionally, you can include the following query parameters:
 | `end`        | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `limit`    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
 | `marker`   | String  | [Pagination](#pagination) key from previously returned response. |
-| `descending` | Boolean | Reverse chronological order | |
+| `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
@@ -1972,7 +1965,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | `result` | `success` | Indicates that the body represents a successful response. |
 | `count` | Integer | Number of rows returned. |
-| `rows` | Array of Distribution Objects | Weekly distribution snapshots. |
+| `rows` | Array of Distribution Objects | Weekly snapshots of the XRP distribution. |
 
 Each Distribution Object has the following fields:
 
@@ -1980,7 +1973,7 @@ Each Distribution Object has the following fields:
 |--------|-------|-------------|
 | `date` | String - [Timestamp][] | The time at which this data was measured. |
 | `total` | String | Total XRP in existence. |
-| `undistributed` | String | Aggregate amount of XRP held by Ripple (the company) |
+| `undistributed` | String | Aggregate amount of XRP held by Ripple (the company). |
 | `distributed` | String | Aggregate amount of XRP held by others.  |
 
 #### Example ####
@@ -2239,11 +2232,11 @@ Optionally, you can include the following query parameters:
 | `end`       | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `ledger`, `hour`, or `day`. Defaults to `ledger`. |
 | `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
-| limit    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `limit`    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
 | `marker`   | String  | [Pagination](#pagination) key from previously returned response. |
 | `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-network-fees)
+[Try it! >](data-api-v2-tool.html#get-network-fees)
 
 
 #### Response Format ####
@@ -2344,8 +2337,8 @@ Link Object fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| `source` | String | Source node public key |
-| `target` | String | Target node public key |
+| `source` | String - Base-58 [Public Key][] | Source node public key |
+| `target` | String - Base-58 [Public Key][] | Target node public key |
 
 #### Example ####
 
@@ -2453,7 +2446,7 @@ Response:
 ## Get Topology Node ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getNodes.js "Source")
 
-Get a single `rippled` node by node public key.
+Get a single `rippled` node by its node public key.
 
 
 #### Request Format ####
@@ -2542,8 +2535,8 @@ Link Object fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| source | String | Source node public key |
-| target | String | Target node public key |
+| source | String - Base-58 [Public Key][] | Source node public key |
+| target | String - Base-58 [Public Key][] | Target node public key |
 
 #### Example ####
 
@@ -2575,7 +2568,7 @@ Response:
 ## Get Validator ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators "Source")
 
-Get details of a single validator by validation public key
+Get details of a single validator by its validator public key
 
 
 #### Request Format ####
@@ -2585,7 +2578,7 @@ Get details of a single validator by validation public key
 *REST*
 
 ```
-GET /v2/network/validators/:pubkey
+GET /v2/network/validators/{:validation_public_key}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -2594,14 +2587,14 @@ This method requires the following URL parameters:
 
 | Field     | Value   | Description |
 |-----------|---------|-------------|
-| :pubkey  | String  | Validator public key |
+| `:validation_public_key`  | String - Base-58 [Public Key][] | Validator public key |
 
 
 Optionally, you can include the following query parameters:
 
 | Field  | Value   | Description |
 |--------|---------|-------------|
-| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 
@@ -2609,9 +2602,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| last_datetime  | Integer | Number of links returned. |
-| validation_public_key | String | Validator public key identifier |
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `last_datetime`  | Integer | Number of links returned. |
+| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key identifier |
 
 
 #### Example ####
@@ -2637,7 +2630,7 @@ Response:
 ## Get Validators ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators "Source")
 
-Get a list of known validators
+Get a list of known validators.
 
 
 #### Request Format ####
@@ -2657,7 +2650,7 @@ Optionally, you can include the following query parameters:
 
 | Field  | Value   | Description |
 |--------|---------|-------------|
-| format | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 
@@ -2665,9 +2658,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| last_datetime  | Integer | Number of links returned. |
-| validation_public_key | String | Validator public key identifier |
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `last_datetime`  | Integer | Number of links returned. |
+| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key identifier |
 
 
 #### Example ####
@@ -2702,28 +2695,28 @@ Retrieve a validations for a specified validator.  This dataset includes ledgers
 *REST*
 
 ```
-GET /v2/network/validators/:pubkey/validations
+GET /v2/network/validators/:validation_public_key/validations
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-validator-validations)
+[Try it! >](data-api-v2-tool.html#get-validator-validations)
 
 This method requires the following URL parameters:
 
 | Field     | Value   | Description |
 |-----------|---------|-------------|
-| :pubkey  | String  | Validator public key |
+| `:validation_public_key`  | String - Base-58 [Public Key][] | Validator public key |
 
 Optionally, you can also include the following query parameters:
 
 | Field | Value | Description |
 |-------|-------|-------------|
-| start | [Timestamp][] | Start date and time of range to query. |
-| end | [Timestamp][] | End date and time of range to query. |
-| limit      | Integer | Maximum results per page (defaults to 200). Cannot be more than 1000. |
-| marker     | String  | [Pagination](#pagination) key from previously returned response. |
-| format     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+| `start` | [Timestamp][] | Start date and time of range to query. |
+| `end` | [Timestamp][] | End date and time of range to query. |
+| `limit`      | Integer | Maximum results per page (defaults to 200). Cannot be more than 1000. |
+| `marker`     | String  | [Pagination](#pagination) key from previously returned response. |
+| `format`     | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format ####
 
@@ -2731,22 +2724,11 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of validations returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| validations | Array of Validation Objects | The requested validations. |
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `count` | Integer | Number of validations returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `validations` | Array of [Validation Objects][] | The requested validations. |
 
-Each object in the `validations` array represents a validation report received, and has the following fields:
-
-| Field  | Value  | Description |
-|--------|--------|-------------|
-| count  | Integer | The number of rippleds that reported this validation. |
-| ledger_hash | [hash][]  | Ledger hash validated. |
-| reporter_public_key | String | Public key of the node that first reported this validation. |
-| validation_public_key   | Object | Public key of the validator. |
-| signature | String | Validator signature of the validation details, as hexadecimal. |
-| first_datetime | [Timestamp][] | Date and time of the first report of this validation |
-| last_datetime | [Timestamp][] | Date and time of the last report of this validation |
 
 #### Example ####
 
@@ -2798,7 +2780,7 @@ GET /v2/network/validations
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://ripple.com/build/data-api-tool/#get-validations)
+[Try it! >](data-api-v2-tool.html#get-validations)
 
 Optionally, you can also include the following query parameters:
 
@@ -2816,10 +2798,10 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| result | `success` | Indicates that the body represents a successful response. |
-| count | Integer | Number of validations returned. |
-| marker | String | (May be omitted) [Pagination](#pagination) marker |
-| validations | Array of Validation Objects | The requested validations. |
+| `result` | `success` | Indicates that the body represents a successful response. |
+| `count` | Integer | Number of validations returned. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker |
+| `validations` | Array of [Validation Objects][] | The requested validations. |
 
 Each object in the `validations` array represents a validation report received, and has the following fields:
 
@@ -4757,6 +4739,12 @@ In other words, XRP has the same precision as a 64-bit unsigned integer where ea
 {% include 'data_types/address.md' %}
 
 
+### Public Keys ###
+[Public Key]: #public-keys
+
+{% include 'data_types/public_key.md' %}
+
+
 ### Hashes ###
 [Hash]: #hashes
 
@@ -5030,7 +5018,7 @@ Server objects have the following fields:
 
 | Field  | Value | Description |
 |--------|-------|-------------|
-| `node_public_key` | String | The public key used by this server to sign its peer-to-peer communications, not including validations. |
+| `node_public_key` | String - Base-58 [Public Key][] | The public key used by this server to sign its peer-to-peer communications, not including validations. |
 | `version` | String | The `rippled` version of this server (when it was last asked). |
 | `uptime` | Integer | Number of seconds this server has been connected to the network. |
 | `ip` | String | IP address of the node (may be omitted) |
@@ -5053,6 +5041,24 @@ Server objects have the following fields:
 | `isp` | String | (Verbose only) Internet Service Provider (IP lookup) |
 | `org` | String | (Verbose only) Organization (IP lookup) |
 
+
+## Validation Object ##
+[Validation Object]: #validation-object
+[Validation Objects]: #validation-object
+
+A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)
+
+A Validation Object has the following fields:
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| `count`  | Integer | The number of `rippled` servers that reported seeing this validation. |
+| `ledger_hash` | String - [Hash][]  | The hash of the ledger version this validation applies to. |
+| `reporter_public_key` | String - Base-58 [Public Key][] | The public key of the `rippled` server that first reported this validation, in base-58. |
+| `validation_public_key` | String - Base-58 [Public Key][] | The public key of the validator used to sign this validation, in base-58. |
+| `signature` | String | The validator's signature of the validation details, in hexadecimal. |
+| `first_datetime` | String - [Timestamp][] | Date and time of the first report of this validation. |
+| `last_datetime` | String - [Timestamp][] | Date and time of the last report of this validation. |
 
 
 

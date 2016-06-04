@@ -190,6 +190,7 @@
 <li class="level-2"><a href="#basic-types">Basic Types</a></li>
 <li class="level-3"><a href="#numbers-and-precision">Numbers and Precision</a></li>
 <li class="level-3"><a href="#addresses">Addresses</a></li>
+<li class="level-3"><a href="#public-keys">Public Keys</a></li>
 <li class="level-3"><a href="#hashes">Hashes</a></li>
 <li class="level-3"><a href="#timestamps">Timestamps</a></li>
 <li class="level-3"><a href="#ledger-index">Ledger Index</a></li>
@@ -211,6 +212,7 @@
 <li class="level-3"><a href="#change-types">Change Types</a></li>
 <li class="level-2"><a href="#volume-objects">Volume Objects</a></li>
 <li class="level-2"><a href="#server-objects">Server Objects</a></li>
+<li class="level-2"><a href="#validation-object">Validation Object</a></li>
 <li class="level-1"><a href="#running-the-historical-database">Running the Historical Database</a></li>
 <li class="level-2"><a href="#installation">Installation</a></li>
 <li class="level-3"><a href="#dependencies">Dependencies</a></li>
@@ -404,14 +406,15 @@
 </code></pre>
 <h2 id="get-ledger-validations">Get Ledger Validations</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js" title="Source">[Source]<br/></a></p>
-<p>Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.</p>
+<p>Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledger versions that are outside the validated ledger chain.</p>
+<p><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
 <h4 id="request-format-1">Request Format</h4>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">REST</a></li></ul>
 
 <div class="code_sample" id="code-1-0" style="position: static;"><pre><code>GET /v2/ledgers/{:ledger_hash}/validations
 </code></pre></div>
 </div>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-ledger-validations">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-ledger-validations">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
 <table>
 <thead>
@@ -423,7 +426,7 @@
 </thead>
 <tbody>
 <tr>
-<td>ledger_hash</td>
+<td><code>ledger_hash</code></td>
 <td><a href="#hashes">Hash</a></td>
 <td>Ledger hash to retrieve validations for.</td>
 </tr>
@@ -440,17 +443,17 @@
 </thead>
 <tbody>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
 <td>Integer</td>
 <td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
 </tr>
 <tr>
-<td>marker</td>
+<td><code>marker</code></td>
 <td>String</td>
 <td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
-<td>format</td>
+<td><code>format</code></td>
 <td>String</td>
 <td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
@@ -468,76 +471,29 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
-<td><code>success</code></td>
+<td><code>result</code></td>
+<td>String - <code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>ledger_hash</td>
-<td><a href="#hashes">hash</a></td>
-<td>ledger hash of the requested ledger.</td>
+<td><code>ledger_hash</code></td>
+<td>String - <a href="#hashes">Hash</a></td>
+<td>The identifying hash of the ledger version requested.</td>
 </tr>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td>Integer</td>
 <td>Number of validations returned.</td>
 </tr>
 <tr>
-<td>marker</td>
+<td><code>marker</code></td>
 <td>String</td>
 <td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
-<td>validations</td>
-<td>Array of Validation Objects</td>
-<td>The requested validations.</td>
-</tr>
-</tbody>
-</table>
-<p>Each object in the <code>validations</code> array represents a validation report received, and has the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>Integer</td>
-<td>The number of rippleds that reported this validation.</td>
-</tr>
-<tr>
-<td>ledger_hash</td>
-<td><a href="#hashes">Hash</a></td>
-<td>Ledger hash validated.</td>
-</tr>
-<tr>
-<td>reporter_public_key</td>
-<td>String</td>
-<td>Public key of the node that first reported this validation.</td>
-</tr>
-<tr>
-<td>validation_public_key</td>
-<td>Object</td>
-<td>Public key of the validator.</td>
-</tr>
-<tr>
-<td>signature</td>
-<td>String</td>
-<td>Validator signature of the validation details, as hexadecimal.</td>
-</tr>
-<tr>
-<td>first_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the first report of this validation</td>
-</tr>
-<tr>
-<td>last_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the last report of this validation</td>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-object">Validation Objects</a></td>
+<td>All known validation votes for the ledger version.</td>
 </tr>
 </tbody>
 </table>
@@ -567,14 +523,15 @@
 </code></pre>
 <h2 id="get-ledger-validation">Get Ledger Validation</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js" title="Source">[Source]<br/></a></p>
-<p>Retrieve a validation recorded for a specific ledger hash by a specific validator.  This dataset includes ledgers that are outside the main ledger chain, and only includes data that we have recorded. As such, some ledgers may have no validations even though they were validated by consensus.</p>
+<p>Retrieve a validation vote recorded for a specific ledger hash by a specific validator.  This dataset includes ledger versions that are outside the validated ledger chain.</p>
+<p><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
 <h4 id="request-format-2">Request Format</h4>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">REST</a></li></ul>
 
 <div class="code_sample" id="code-2-0" style="position: static;"><pre><code>GET /v2/ledgers/{:ledger_hash}/validations/{:validation_public_key}
 </code></pre></div>
 </div>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-ledger-validation">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-ledger-validation">Try it! &gt;</a></p>
 <p>The following URL parameters are required by this API endpoint:</p>
 <table>
 <thead>
@@ -586,14 +543,14 @@
 </thead>
 <tbody>
 <tr>
-<td>ledger_hash</td>
+<td><code>ledger_hash</code></td>
 <td><a href="#hashes">Hash</a></td>
 <td>Ledger hash to retrieve validations for.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
-<td>String</td>
-<td>Validator public key identifier</td>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Validator public key, in base-58.</td>
 </tr>
 </tbody>
 </table>
@@ -609,44 +566,44 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
-<td><code>success</code></td>
+<td><code>result</code></td>
+<td>String - <code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td>Integer</td>
-<td>The number of rippleds that reported this validation.</td>
+<td>The number of <code>rippled</code> servers that reported seeing this validation.</td>
 </tr>
 <tr>
-<td>ledger_hash</td>
-<td><a href="#hashes">hash</a></td>
-<td>Ledger hash validated.</td>
+<td><code>ledger_hash</code></td>
+<td>String - <a href="#hashes">Hash</a></td>
+<td>The hash of the ledger version this validation applies to.</td>
 </tr>
 <tr>
-<td>reporter_public_key</td>
+<td><code>reporter_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The node public key of the <code>rippled</code> server that first reported this validation, in base-58.</td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The validator public key of the validator that signed this validation vote, in base-58.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
 <td>String</td>
-<td>Public key of the node that first reported this validation.</td>
+<td>The validator's signature of the validation details, in hexadecimal.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
-<td>Object</td>
-<td>Public key of the validator.</td>
+<td><code>first_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the first report of this validation.</td>
 </tr>
 <tr>
-<td>signature</td>
-<td>String</td>
-<td>Validator signature of the validation details, as hexadecimal.</td>
-</tr>
-<tr>
-<td>first_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the first report of this validation</td>
-</tr>
-<tr>
-<td>last_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the last report of this validation</td>
+<td><code>last_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the last report of this validation.</td>
 </tr>
 </tbody>
 </table>
@@ -3051,7 +3008,7 @@
 <div class="code_sample" id="code-16-0" style="position: static;"><pre><code>GET /v2/network/xrp_distribution
 </code></pre></div>
 </div>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-xrp-distribution">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-xrp-distribution">Try it! &gt;</a></p>
 <p>Optionally, you can include the following query parameters:</p>
 <table>
 <thead>
@@ -3085,7 +3042,7 @@
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -3118,7 +3075,7 @@
 <tr>
 <td><code>rows</code></td>
 <td>Array of Distribution Objects</td>
-<td>Weekly distribution snapshots.</td>
+<td>Weekly snapshots of the XRP distribution.</td>
 </tr>
 </tbody>
 </table>
@@ -3145,7 +3102,7 @@
 <tr>
 <td><code>undistributed</code></td>
 <td>String</td>
-<td>Aggregate amount of XRP held by Ripple (the company)</td>
+<td>Aggregate amount of XRP held by Ripple (the company).</td>
 </tr>
 <tr>
 <td><code>distributed</code></td>
@@ -3488,7 +3445,7 @@
 <td>If true, sort results with most recent first. By default, sort results with oldest first.</td>
 </tr>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
 <td>Integer</td>
 <td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
 </tr>
@@ -3504,7 +3461,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-network-fees">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-network-fees">Try it! &gt;</a></p>
 <h4 id="response-format-19">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
@@ -3693,12 +3650,12 @@
 <tbody>
 <tr>
 <td><code>source</code></td>
-<td>String</td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Source node public key</td>
 </tr>
 <tr>
 <td><code>target</code></td>
-<td>String</td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Target node public key</td>
 </tr>
 </tbody>
@@ -3823,7 +3780,7 @@
 </code></pre>
 <h2 id="get-topology-node">Get Topology Node</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getNodes.js" title="Source">[Source]<br/></a></p>
-<p>Get a single <code>rippled</code> node by node public key.</p>
+<p>Get a single <code>rippled</code> node by its node public key.</p>
 <h4 id="request-format-22">Request Format</h4>
 <div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0">REST</a></li></ul>
 
@@ -3944,12 +3901,12 @@
 <tbody>
 <tr>
 <td>source</td>
-<td>String</td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Source node public key</td>
 </tr>
 <tr>
 <td>target</td>
-<td>String</td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Target node public key</td>
 </tr>
 </tbody>
@@ -3974,11 +3931,11 @@
 </code></pre>
 <h2 id="get-validator">Get Validator</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators" title="Source">[Source]<br/></a></p>
-<p>Get details of a single validator by validation public key</p>
+<p>Get details of a single validator by its validator public key</p>
 <h4 id="request-format-24">Request Format</h4>
 <div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>GET /v2/network/validators/:pubkey
+<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>GET /v2/network/validators/{:validation_public_key}
 </code></pre></div>
 </div>
 <p>This method requires the following URL parameters:</p>
@@ -3992,8 +3949,8 @@
 </thead>
 <tbody>
 <tr>
-<td>:pubkey</td>
-<td>String</td>
+<td><code>:validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Validator public key</td>
 </tr>
 </tbody>
@@ -4009,7 +3966,7 @@
 </thead>
 <tbody>
 <tr>
-<td>format</td>
+<td><code>format</code></td>
 <td>String</td>
 <td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
@@ -4027,18 +3984,18 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
+<td><code>result</code></td>
 <td><code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>last_datetime</td>
+<td><code>last_datetime</code></td>
 <td>Integer</td>
 <td>Number of links returned.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
-<td>String</td>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Validator public key identifier</td>
 </tr>
 </tbody>
@@ -4056,7 +4013,7 @@
 </code></pre>
 <h2 id="get-validators">Get Validators</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getValidators" title="Source">[Source]<br/></a></p>
-<p>Get a list of known validators</p>
+<p>Get a list of known validators.</p>
 <h4 id="request-format-25">Request Format</h4>
 <div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0">REST</a></li></ul>
 
@@ -4074,7 +4031,7 @@
 </thead>
 <tbody>
 <tr>
-<td>format</td>
+<td><code>format</code></td>
 <td>String</td>
 <td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
@@ -4092,18 +4049,18 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
+<td><code>result</code></td>
 <td><code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>last_datetime</td>
+<td><code>last_datetime</code></td>
 <td>Integer</td>
 <td>Number of links returned.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
-<td>String</td>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Validator public key identifier</td>
 </tr>
 </tbody>
@@ -4125,10 +4082,10 @@
 <h4 id="request-format-26">Request Format</h4>
 <div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>GET /v2/network/validators/:pubkey/validations
+<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>GET /v2/network/validators/:validation_public_key/validations
 </code></pre></div>
 </div>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-validator-validations">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-validator-validations">Try it! &gt;</a></p>
 <p>This method requires the following URL parameters:</p>
 <table>
 <thead>
@@ -4140,8 +4097,8 @@
 </thead>
 <tbody>
 <tr>
-<td>:pubkey</td>
-<td>String</td>
+<td><code>:validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>Validator public key</td>
 </tr>
 </tbody>
@@ -4157,27 +4114,27 @@
 </thead>
 <tbody>
 <tr>
-<td>start</td>
+<td><code>start</code></td>
 <td><a href="#timestamps">Timestamp</a></td>
 <td>Start date and time of range to query.</td>
 </tr>
 <tr>
-<td>end</td>
+<td><code>end</code></td>
 <td><a href="#timestamps">Timestamp</a></td>
 <td>End date and time of range to query.</td>
 </tr>
 <tr>
-<td>limit</td>
+<td><code>limit</code></td>
 <td>Integer</td>
 <td>Maximum results per page (defaults to 200). Cannot be more than 1000.</td>
 </tr>
 <tr>
-<td>marker</td>
+<td><code>marker</code></td>
 <td>String</td>
 <td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
-<td>format</td>
+<td><code>format</code></td>
 <td>String</td>
 <td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
 </tr>
@@ -4195,71 +4152,24 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
+<td><code>result</code></td>
 <td><code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td>Integer</td>
 <td>Number of validations returned.</td>
 </tr>
 <tr>
-<td>marker</td>
+<td><code>marker</code></td>
 <td>String</td>
 <td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
-<td>validations</td>
-<td>Array of Validation Objects</td>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-object">Validation Objects</a></td>
 <td>The requested validations.</td>
-</tr>
-</tbody>
-</table>
-<p>Each object in the <code>validations</code> array represents a validation report received, and has the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>Integer</td>
-<td>The number of rippleds that reported this validation.</td>
-</tr>
-<tr>
-<td>ledger_hash</td>
-<td><a href="#hashes">hash</a></td>
-<td>Ledger hash validated.</td>
-</tr>
-<tr>
-<td>reporter_public_key</td>
-<td>String</td>
-<td>Public key of the node that first reported this validation.</td>
-</tr>
-<tr>
-<td>validation_public_key</td>
-<td>Object</td>
-<td>Public key of the validator.</td>
-</tr>
-<tr>
-<td>signature</td>
-<td>String</td>
-<td>Validator signature of the validation details, as hexadecimal.</td>
-</tr>
-<tr>
-<td>first_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the first report of this validation</td>
-</tr>
-<tr>
-<td>last_datetime</td>
-<td><a href="#timestamps">Timestamp</a></td>
-<td>Date and time of the last report of this validation</td>
 </tr>
 </tbody>
 </table>
@@ -4296,7 +4206,7 @@
 <div class="code_sample" id="code-27-0" style="position: static;"><pre><code>GET /v2/network/validations
 </code></pre></div>
 </div>
-<p><a class="button" href="https://ripple.com/build/data-api-tool/#get-validations">Try it! &gt;</a></p>
+<p><a class="button" href="data-api-v2-tool.html#get-validations">Try it! &gt;</a></p>
 <p>Optionally, you can also include the following query parameters:</p>
 <table>
 <thead>
@@ -4346,23 +4256,23 @@
 </thead>
 <tbody>
 <tr>
-<td>result</td>
+<td><code>result</code></td>
 <td><code>success</code></td>
 <td>Indicates that the body represents a successful response.</td>
 </tr>
 <tr>
-<td>count</td>
+<td><code>count</code></td>
 <td>Integer</td>
 <td>Number of validations returned.</td>
 </tr>
 <tr>
-<td>marker</td>
+<td><code>marker</code></td>
 <td>String</td>
 <td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
 </tr>
 <tr>
-<td>validations</td>
-<td>Array of Validation Objects</td>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-object">Validation Objects</a></td>
 <td>The requested validations.</td>
 </tr>
 </tbody>
@@ -7268,6 +7178,17 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
+<h3 id="public-keys">Public Keys</h3>
+<p>The Ripple Consensus Ledger (RCL) uses public keys to verify cryptographic signatures in several places:</p>
+<ul>
+<li>To authorize transactions, a public key is attached to the transaction. The public key must be mathematically associated with the sending Ripple address or the sender's regular key address.</li>
+<li>To secure peer-to-peer communications between <code>rippled</code> servers. This uses a "node public key" that the server generates randomly when it starts with an empty database.</li>
+<li>To sign validation votes as part of the consensus process. This uses a "validator public key" that the server operator <a href="tutorial-rippled-setup.html#validator-setup">defines in the config file</a>.</li>
+</ul>
+<p>Validator public keys and node public keys use the exact same format.</p>
+<p>Public keys can be represented in hexadecimal or in base-58. In hexadecimal, all three types of public keys are 33 bytes (66 characters) long.</p>
+<p>In base-58 format, validator public keys and node public keys always start with the character <code>n</code>, commonly followed by the character <code>9</code>. A validator public key in base-58 format can be up to 53 characters long. Example node public key: <code>n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG</code>.</p>
+<p>Ripple addresses are mathematically associated with a public key. This public key is rarely encoded in base-58, but when it is, it starts with the character <code>a</code>.</p>
 <h3 id="hashes">Hashes</h3>
 <p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
 <p>A Ripple hash value has the following characteristics:</p>
@@ -7991,7 +7912,7 @@ Content-Type: image/svg+xml
 <tbody>
 <tr>
 <td><code>node_public_key</code></td>
-<td>String</td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
 <td>The public key used by this server to sign its peer-to-peer communications, not including validations.</td>
 </tr>
 <tr>
@@ -8098,6 +8019,55 @@ Content-Type: image/svg+xml
 <td><code>org</code></td>
 <td>String</td>
 <td>(Verbose only) Organization (IP lookup)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validation-object">Validation Object</h2>
+<p>A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)</p>
+<p>A Validation Object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>The number of <code>rippled</code> servers that reported seeing this validation.</td>
+</tr>
+<tr>
+<td><code>ledger_hash</code></td>
+<td>String - <a href="#hashes">Hash</a></td>
+<td>The hash of the ledger version this validation applies to.</td>
+</tr>
+<tr>
+<td><code>reporter_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The public key of the <code>rippled</code> server that first reported this validation, in base-58.</td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The public key of the validator used to sign this validation, in base-58.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>String</td>
+<td>The validator's signature of the validation details, in hexadecimal.</td>
+</tr>
+<tr>
+<td><code>first_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the first report of this validation.</td>
+</tr>
+<tr>
+<td><code>last_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the last report of this validation.</td>
 </tr>
 </tbody>
 </table>
