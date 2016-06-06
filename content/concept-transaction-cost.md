@@ -7,7 +7,7 @@ Every transaction must [specify how much XRP to destroy](#specifying-the-transac
 
 ## Current Transaction Cost ##
 
-The current transaction cost required by the network for a standard transaction is typically **0.01 XRP** (10,000 drops), after load scaling. It sometimes increases due to higher than usual load.
+The current minimum transaction cost required by the network for a standard transaction is **0.00001 XRP** (10 drops). It sometimes increases due to higher than usual load.
 
 You can also [query `rippled` for the current transaction cost](#querying-the-transaction-cost).
 
