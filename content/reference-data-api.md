@@ -1942,7 +1942,7 @@ Response:
 
 
 
-## Get XRP distribution ##
+## Get XRP Distribution ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/xrpDistribution.js "Source")
 
 Get information on the total amount of XRP in existence and in circulation, by weekly intervals. _(New in [v2.2.0][])_
@@ -2981,8 +2981,6 @@ Response:
 
 Get a single validator's validation vote stats for 24-hour intervals.
 
-**Note:** The DataAPI only keeps about 6 months of validator reports.
-
 #### Request Format ####
 
 <!-- MULTICODE_BLOCK_START -->
@@ -3079,8 +3077,6 @@ Response:
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js "Source")
 
 Get a validation vote stats and validator information for all known validators in a 24-hour period.
-
-**Note:** The DataAPI only keeps about 6 months of validator reports.
 
 #### Request Format ####
 
@@ -5251,13 +5247,13 @@ A Link Object represents a peer-to-peer network connection between two `rippled`
 | `target` | String - Base-58 [Public Key][] | The node public key of the `rippled` receiving the incoming connection. |
 
 
-## Validation Object ##
-[Validation Object]: #validation-object
-[Validation Objects]: #validation-object
+## Validation Objects ##
+[Validation Object]: #validation-objects
+[Validation Objects]: #validation-objects
 
 A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)
 
-**Note:** The Data API retain only about 6 months of validation data.
+**Note:** The Data API retain only about 6 months of validation vote data.
 
 A Validation Object has the following fields:
 

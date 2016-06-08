@@ -153,7 +153,7 @@
 <li class="level-2"><a href="#get-exchange-volume">Get Exchange Volume</a></li>
 <li class="level-2"><a href="#get-payment-volume">Get Payment Volume</a></li>
 <li class="level-2"><a href="#get-issued-value">Get Issued Value</a></li>
-<li class="level-2"><a href="#get-xrp-distribution">Get XRP distribution</a></li>
+<li class="level-2"><a href="#get-xrp-distribution">Get XRP Distribution</a></li>
 <li class="level-2"><a href="#get-top-currencies">Get Top Currencies</a></li>
 <li class="level-2"><a href="#get-top-markets">Get Top Markets</a></li>
 <li class="level-2"><a href="#get-transaction-costs">Get Transaction Costs</a></li>
@@ -213,7 +213,7 @@
 <li class="level-2"><a href="#volume-objects">Volume Objects</a></li>
 <li class="level-2"><a href="#server-objects">Server Objects</a></li>
 <li class="level-2"><a href="#link-objects">Link Objects</a></li>
-<li class="level-2"><a href="#validation-object">Validation Object</a></li>
+<li class="level-2"><a href="#validation-objects">Validation Objects</a></li>
 <li class="level-1"><a href="#running-the-historical-database">Running the Historical Database</a></li>
 <li class="level-2"><a href="#installation">Installation</a></li>
 <li class="level-3"><a href="#dependencies">Dependencies</a></li>
@@ -495,7 +495,7 @@
 </tr>
 <tr>
 <td><code>validations</code></td>
-<td>Array of <a href="#validation-object">Validation Objects</a></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
 <td>All known validation votes for the ledger version.</td>
 </tr>
 </tbody>
@@ -568,7 +568,7 @@
 </table>
 <p>This request takes no query parameters.</p>
 <h4 id="response-format-2">Response Format</h4>
-<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body containing a <strong><a href="#validation-object">Validation Object</a></strong> with the following additional field:</p>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body containing a <strong><a href="#validation-objects">Validation Object</a></strong> with the following additional field:</p>
 <table>
 <thead>
 <tr>
@@ -2986,7 +2986,7 @@
   ]
 }
 </code></pre>
-<h2 id="get-xrp-distribution">Get XRP distribution</h2>
+<h2 id="get-xrp-distribution">Get XRP Distribution</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/xrpDistribution.js" title="Source">[Source]<br/></a></p>
 <p>Get information on the total amount of XRP in existence and in circulation, by weekly intervals. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
 <h4 id="request-format-16">Request Format</h4>
@@ -4285,7 +4285,7 @@
 </tr>
 <tr>
 <td><code>validations</code></td>
-<td>Array of <a href="#validation-object">Validation Objects</a></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
 <td>The requested validations.</td>
 </tr>
 </tbody>
@@ -4412,7 +4412,7 @@
 </tr>
 <tr>
 <td><code>validations</code></td>
-<td>Array of <a href="#validation-object">Validation Objects</a></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
 <td>The requested validation votes.</td>
 </tr>
 </tbody>
@@ -4461,7 +4461,6 @@
 <h2 id="get-single-validator-reports">Get Single Validator Reports</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js" title="Source">[Source]<br/></a></p>
 <p>Get a single validator's validation vote stats for 24-hour intervals.</p>
-<p><strong>Note:</strong> The DataAPI only keeps about 6 months of validator reports.</p>
 <h4 id="request-format-28">Request Format</h4>
 <div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0">REST</a></li></ul>
 
@@ -4624,7 +4623,6 @@
 <h2 id="get-daily-validator-reports">Get Daily Validator Reports</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js" title="Source">[Source]<br/></a></p>
 <p>Get a validation vote stats and validator information for all known validators in a 24-hour period.</p>
-<p><strong>Note:</strong> The DataAPI only keeps about 6 months of validator reports.</p>
 <h4 id="request-format-29">Request Format</h4>
 <div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">REST</a></li></ul>
 
@@ -8254,9 +8252,9 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h2 id="validation-object">Validation Object</h2>
+<h2 id="validation-objects">Validation Objects</h2>
 <p>A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)</p>
-<p><strong>Note:</strong> The Data API retain only about 6 months of validation data.</p>
+<p><strong>Note:</strong> The Data API retain only about 6 months of validation vote data.</p>
 <p>A Validation Object has the following fields:</p>
 <table>
 <thead>
