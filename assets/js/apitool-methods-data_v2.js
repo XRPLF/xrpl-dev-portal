@@ -8,6 +8,9 @@ var KRW_TRADER_ADDRESS = "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw";
 var JPY_TRADER_ADDRESS = "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
+var VALIDATOR_PUBKEY = "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7";
+//var LEDGER_WITH_VALIDATIONS = "AD7A46823D5D13FD1C285E177CD5321BB9ED43BBAFB724F2DFF6ECD9B25F58D6";
+var LEDGER_WITH_VALIDATIONS = "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7";
 
 // general methods -----------------------------------//
 
@@ -178,11 +181,12 @@ Request('Get XRP Distribution', {
 
 Request('Get Top Currencies', {
     method: GET,
-    path: "/v2/network/top_currencies/{:date}",
+    path: "/v2/network/top_currencies/{:date}?{:query_params}",
     description: "Get most used currencies for a given date.",
     link: "#get-top-currencies",
     params: {
-        "{:date}": "2016-04-14"
+        "{:date}": "2016-04-14",
+        "{:query_params}": "limit=2"
     }
 });
 
@@ -362,7 +366,7 @@ Request('Get Account Value Stats', {
 Request("VALIDATION NETWORK");
 
 
-Request('Get Network Fees', {
+Request('Get Transaction Costs', {
     method: GET,
     path: "/v2/network/fees?{:query_params}",
     description: "Get stats on the transaction cost.",
@@ -378,20 +382,19 @@ Request('Get Ledger Validations', {
     description: "Get data on validations for a specific ledger hash.",
     link: "#get-ledger-validations",
     params: {
-        "{:ledger_hash}": "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
+        "{:ledger_hash}": LEDGER_WITH_VALIDATIONS,
         "{:query_params}": "limit=2"
     }
 });
 
 Request('Get Ledger Validation', {
     method: GET,
-    path: "/v2/ledger/{:ledger_hash}/validations/{:validation_public_key}?{:query_params}",
+    path: "/v2/ledgers/{:ledger_hash}/validations/{:validation_public_key}",
     description: "Get data on validation for a specific ledger hash by a specific validator.",
     link: "#get-ledger-validation",
     params: {
-        "{:ledger_hash}": "EB26614C5E171C5A141734BAFFA63A080955811BB7AAE00D76D26FDBE9BC07A5",
-        "{:validation_public_key}": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
-        "{:query_params}": "limit=2"
+        "{:ledger_hash}": LEDGER_WITH_VALIDATIONS,
+        "{:validation_public_key}": VALIDATOR_PUBKEY
     }
 });
 
@@ -415,6 +418,16 @@ Request('Get Topology Nodes', {
     }
 });
 
+Request('Get Topology Node', {
+    method: GET,
+    path: "/v2/network/topology/nodes/{:pubkey}",
+    description: "Get data on servers running the Ripple peer-to-peer network.",
+    link: "#get-topology-nodes",
+    params: {
+        "{:pubkey}": "n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6Lor"
+    }
+});
+
 Request('Get Topology Links', {
     method: GET,
     path: "/v2/network/topology/links?{:query_params}",
@@ -425,14 +438,67 @@ Request('Get Topology Links', {
     }
 });
 
+Request('Get Validations', {
+    method: GET,
+    path: "/v2/network/validations?{:query_params}",
+    description: "Get validation votes.",
+    link: "#get-validations",
+    params: {
+        "{:query_params}": "limit=3&descending=true"
+    }
+});
+
 Request('Get Validator', {
     method: GET,
     path: "/v2/network/validators/{:validation_public_key}?{:query_params}",
     description: "Get details of a single validator by validation public key.",
     link: "#get-validator",
     params: {
-        "{:validation_public_key}": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
         "{:query_params}": "verbose=true"
+    }
+});
+
+Request('Get Validators', {
+    method: GET,
+    path: "/v2/network/validators?{:query_params}",
+    description: "Get details of known validators.",
+    link: "#get-validators",
+    params: {
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
+        "{:query_params}": "format=json"
+    }
+});
+
+Request('Get Validator Validations', {
+    method: GET,
+    path: "/v2/network/validators/{:validation_public_key}/validations?{:query_params}",
+    description: "Get validation votes from a single validator.",
+    link: "#get-validator-validations",
+    params: {
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
+        "{:query_params}": "limit=3"
+    }
+});
+
+Request('Get Single Validator Reports', {
+    method: GET,
+    path: "/v2/network/validators/{:validation_public_key}/reports?{:query_params}",
+    description: "Get validation vote stats for a single validator over time.",
+    link: "#get-single-validator-reports",
+    params: {
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
+        "{:query_params}": "format=json"
+    }
+});
+
+Request('Get Daily Validator Reports', {
+    method: GET,
+    path: "/v2/network/validator_reports?{:query_params}",
+    description: "Get validation vote stats for all validators for a single day.",
+    link: "#get-single-validator-reports",
+    params: {
+        "{:query_params}": "format=json"
     }
 });
 
