@@ -9,7 +9,6 @@ var JPY_TRADER_ADDRESS = "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
 var VALIDATOR_PUBKEY = "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7";
-//var LEDGER_WITH_VALIDATIONS = "AD7A46823D5D13FD1C285E177CD5321BB9ED43BBAFB724F2DFF6ECD9B25F58D6";
 var LEDGER_WITH_VALIDATIONS = "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7";
 
 // general methods -----------------------------------//
@@ -30,7 +29,7 @@ Request('Get Ledger', {
 Request('Get Transaction', {
     method: GET,
     path: "/v2/transactions/{:hash}?{:query_params}",
-    description: "Get a transactions by its identifying hash.",
+    description: "Get a transaction by its identifying hash.",
     link: "#get-transaction",
     params: {
         "{:hash}": DEFAULT_HASH,
