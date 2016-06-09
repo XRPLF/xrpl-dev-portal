@@ -348,7 +348,7 @@ All field names are case-sensitive. In responses, fields that are taken directly
 
 Different types of objects are uniquely identified in different ways:
 
-*Accounts* are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept an un-encoded hex representation.
+*Accounts* are identified by their base-58 [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
 *Transactions* are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
@@ -409,6 +409,8 @@ There are two kinds of currencies in the Ripple Consensus Ledger: XRP, and every
 | Maximum value `100000000000` (`1e11`) | Maximum value `9999999999999999e80` |
 | Precise to the nearest ["drop"](#xrp) (0.000001 XRP) | 15 decimal digits of precision, with a minimum nonzero absolute value of `1000000000000000e-96` |
 
+**Caution:** Ripple uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.
+
 ### Specifying Currency Amounts ###
 
 Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (called _issuances_), the style for specifying it is very different.
@@ -432,9 +434,11 @@ If you are specifying non-XRP currency (including fiat dollars, precious metals,
 
 | Field | Type | Description |
 |-------|------|-------------|
-| currency | String - [Currency Code][] | Arbitrary code for currency to issue. Cannot be `XRP`. |
-| value | String | Quoted decimal representation of the amount of currency |
-| issuer | String | Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed. |
+| `currency` | String - [Currency Code][] | Arbitrary code for currency to issue. Cannot be `XRP`. |
+| `value` | String | Quoted decimal representation of the amount of currency. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. |
+| `issuer` | String | Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed. |
+
+**Caution:** These field names are case-sensitive.
 
 For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`, you would specify:
 
