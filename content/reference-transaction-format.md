@@ -230,7 +230,7 @@ The transaction hash can be used as a "proof of payment" since anyone can [look 
 
 ## Common Fields ##
 
-Every transaction type has the same set of fundamental fields:
+Every transaction type has the same set of fundamental fields. Field names are case-sensitive. The common fields for all transactions are:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|---------------|-------------|
@@ -388,13 +388,13 @@ Example payment:
 
 | Field | JSON Type | [Internal Type](https://wiki.ripple.com/Binary_Format) | Description |
 |-------|-----------|--------------------------------------------------------|-------------|
-| Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency to deliver. *Note:* If the [*tfPartialPayment* flag](#payment-flags) is set, this is not the amount actually received. (Formatted as per [Specifying Currency Amounts](reference-rippled.html#specifying-currency-amounts).) |
+| Amount | String (XRP)<br/>Object (Otherwise) | Amount | The amount of currency to deliver. Formatted as per [Specifying Currency Amounts](reference-rippled.html#specifying-currency-amounts). For non-XRP amounts, the nested field names are lower-case. If the [*tfPartialPayment* flag](#payment-flags) is set, deliver _up to_ this amount instead. |
 | Destination | String | Account | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer | UInt32 | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
 | InvoiceID | String | Hash256 | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths | Array of path arrays | PathSet | (Optional, auto-fillable) Array of [payment paths](https://ripple.com/wiki/Payment_paths) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). (Also see [Specifying Currency Amounts](reference-rippled.html#specifying-currency-amounts)) Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
-| DeliverMin | String/Object | Amount | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). _(This field is part of [rippled 0.29.0](https://github.com/ripple/rippled/releases/tag/0.29.0), and becomes valid August 17 at 17:00 UTC.)_ |
+| SendMax | String/Object | Amount | (Optional) Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). See also: [Specifying Currency Amounts](reference-rippled.html#specifying-currency-amounts). For non-XRP amounts, the nested field names are lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| DeliverMin | String/Object | Amount | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
 
 ### Special issuer Values for SendMax and Amount ###
 

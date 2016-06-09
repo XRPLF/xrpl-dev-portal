@@ -613,7 +613,7 @@ Null method
 <p>All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.</p>
 <h2 id="basic-data-types">Basic Data Types</h2>
 <p>Different types of objects are uniquely identified in different ways:</p>
-<p><em>Accounts</em> are identified by their <a href="#addresses">Address</a>, for example <code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with "r". Many <code>rippled</code> methods also accept an un-encoded hex representation.</p>
+<p><em>Accounts</em> are identified by their base-58 <a href="#addresses">Address</a>, for example <code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with "r". Many <code>rippled</code> methods also accept a hexadecimal representation.</p>
 <p><em>Transactions</em> are identified by a <a href="#hashes">Hash</a> of the transaction's binary format. You can also identify a transaction by its sending account and <a href="#account-sequence">Sequence Number</a>.</p>
 <p>Each closed <em>Ledger</em> has a <a href="#ledger-index">Ledger Index</a> and a <a href="#hashes">Hash</a> value. When <a href="#specifying-ledgers">Specifying a Ledger Instance</a> you can use either one.</p>
 <h3 id="addresses">Addresses</h3>
@@ -741,6 +741,7 @@ Null method
 </tr>
 </tbody>
 </table>
+<p><strong>Caution:</strong> Ripple uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.</p>
 <h3 id="specifying-currency-amounts">Specifying Currency Amounts</h3>
 <p>Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (called <em>issuances</em>), the style for specifying it is very different.</p>
 <h4 id="xrp">XRP</h4>
@@ -761,22 +762,23 @@ Null method
 </thead>
 <tbody>
 <tr>
-<td>currency</td>
+<td><code>currency</code></td>
 <td>String - <a href="#currency-codes">Currency Code</a></td>
 <td>Arbitrary code for currency to issue. Cannot be <code>XRP</code>.</td>
 </tr>
 <tr>
-<td>value</td>
+<td><code>value</code></td>
 <td>String</td>
-<td>Quoted decimal representation of the amount of currency</td>
+<td>Quoted decimal representation of the amount of currency. This can include scientific notation, such as <code>1.23e11</code> meaning 123,000,000,000. Both <code>e</code> and <code>E</code> may be used.</td>
 </tr>
 <tr>
-<td>issuer</td>
+<td><code>issuer</code></td>
 <td>String</td>
 <td>Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed.</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Caution:</strong> These field names are case-sensitive.</p>
 <p>For example, to represent $153.75 US dollars issued by account <code>r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</code>, you would specify:</p>
 <pre><code>{
     "currency": "USD",
