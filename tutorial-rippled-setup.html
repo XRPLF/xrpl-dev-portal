@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -417,7 +420,7 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <h2 id="parallel-networks">Parallel Networks</h2>
 <p>Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.</p>
 <p>However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>, an "alternate universe" network, which can act as a testing ground for applications and the <code>rippled</code> server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple <a href="https://ripple.com/build/ripple-test-net/">gives away for free</a> to parties interested in developing applications on the Test Net.</p>
-<p><strong>Caution:</strong> Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.</p>
 <p>Over time, there may also be smaller, temporary test networks for specific purposes.</p>
 <h3 id="parallel-networks-and-consensus">Parallel Networks and Consensus</h3>
 <p>There is no <code>rippled</code> setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
@@ -440,7 +443,7 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <li>
 <p>Generate a unique seed (using the <a href="reference-rippled.html#validation-seed"><code>validation_create</code> command</a>) for each of your servers, and configure it under the <code>[node_seed]</code> section. The <code>rippled</code> server uses this key to sign its messages to other servers in the peer-to-peer network.</p>
 <ul>
-<li><strong>Note:</strong> This is a different key than the validation seed <code>rippled</code> uses to sign ledger proposals for consensus, in the same format.</li>
+<li class="devportal-callout note"><strong>Note:</strong> This is a different key than the validation seed <code>rippled</code> uses to sign ledger proposals for consensus, in the same format.</li>
 </ul>
 </li>
 <li>Add the public keys (for peer communication) of each of your other servers under the <code>[cluster_nodes]</code> section.</li>

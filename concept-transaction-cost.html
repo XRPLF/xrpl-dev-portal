@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -221,8 +224,8 @@
 <p>When <code>rippled</code> receives a transaction that meet the server's local load cost but not the open ledger cost, the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries minimize the amount of network load caused by transactions that would not pay a transaction cost, since <a href="#transaction-costs-and-failed-transactions">the transaction cost only applies when a transaction is included in a validated ledger</a>.</p>
 <p>The <code>rippled</code> server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger."  Most importantly, those transactions must be properly-formed and <a href="reference-transaction-format.html#authorizing-transactions">authorized</a> with valid signatures.</p>
 <p>When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first, proportional to the un-scaled cost of those transactions. Transactions that pay the same transaction cost are queued in the order the server receives them.</p>
-<p><strong>Note:</strong> As of <code>rippled</code> <strong>version 0.31.0</strong>, the transaction queue supports at most 1 transaction per sending address. This is expected to change in later versions.</p>
-<p><strong>Caution:</strong> The current implementation does not allow transactions with an <code>AccountTxnID</code> field in the transaction queue.</p>
+<p class="devportal-callout note"><strong>Note:</strong> As of <code>rippled</code> <strong>version 0.31.0</strong>, the transaction queue supports at most 1 transaction per sending address. This is expected to change in later versions.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The current implementation does not allow transactions with an <code>AccountTxnID</code> field in the transaction queue.</p>
 <h2 id="reference-transaction-cost">Reference Transaction Cost</h2>
 <p>The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary <a href="concept-transaction-cost.html">transaction cost</a> before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as <a href="reference-transaction-format.html#multi-signing">multi-signed transactions</a>, require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.</p>
 <h3 id="fee-levels">Fee Levels</h3>

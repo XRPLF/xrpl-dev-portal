@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -287,7 +290,7 @@
 }
 </code></pre>
 <p>After a transaction has been submitted, you can check its status using the API, for example using the <a href="reference-rippled.html#tx">tx command</a>.</p>
-<p><strong>Caution:</strong> The success of a transaction is not final unless the transaction appears in a <strong>validated</strong> ledger with the result code <code>tesSUCCESS</code>. See also: <a href="#finality-of-results">Finality of Results</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The success of a transaction is not final unless the transaction appears in a <strong>validated</strong> ledger with the result code <code>tesSUCCESS</code>. See also: <a href="#finality-of-results">Finality of Results</a>.</p>
 <p>Example response from the <code>tx</code> command:</p>
 <pre><code>{
   "id": 6,
@@ -494,7 +497,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> The deprecated <code>PreviousTxnID</code> transaction parameter was removed entirely in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>. Use <code>AccountTxnID</code> instead.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The deprecated <code>PreviousTxnID</code> transaction parameter was removed entirely in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0-rc1">rippled 0.28.0</a>. Use <code>AccountTxnID</code> instead.</p>
 <h3 id="auto-fillable-fields">Auto-fillable Fields</h3>
 <p>Some fields can be automatically filled in before the transaction is signed, either by a <code>rippled</code> server or by the library used for offline signing. Both <a href="https://github.com/ripple/ripple-lib">ripple-lib</a> and <code>rippled</code> can automatically provide the following values:</p>
 <ul>
@@ -506,7 +509,7 @@
 <h3 id="transaction-cost">Transaction Cost</h3>
 <p>To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
 <p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
-<p><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
+<p class="devportal-callout note"><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
 <p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
 <p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want the replacement transaction to do anything, send an <a href="#accountset">AccountSet</a> transaction with no options.</p>
@@ -1097,7 +1100,7 @@
 <h3 id="expiration">Expiration</h3>
 <p>Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time is before the most-recently validated ledger. In other words, an offer with an <code>Expiration</code> field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.</p>
 <p>You can determine the final disposition of an offer with an <code>Expiration</code> as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.</p>
-<p><strong>Note:</strong> Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.</p>
 <p>If an OfferCreate transaction has an <code>Expiration</code> time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer but still results in a <code>tesSUCCESS</code> transaction code. (This is because such a transaction could still successfully cancel another offer.)</p>
 <h3 id="auto-bridging">Auto-Bridging</h3>
 <p>Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
@@ -1176,7 +1179,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>Tip:</em> To remove an old offer and replace it with a new one, you can use an <a href="#offercreate">OfferCreate</a> transaction with an <code>OfferSequence</code> parameter, instead of using OfferCancel and another OfferCreate.</p>
+<p class="devportal-callout tip"><em>Tip:</em> To remove an old offer and replace it with a new one, you can use an <a href="#offercreate">OfferCreate</a> transaction with an <code>OfferSequence</code> parameter, instead of using OfferCancel and another OfferCreate.</p>
 <p>The OfferCancel method returns <a href="#transaction-results">tesSUCCESS</a> even if it did not find an offer with the matching sequence number.</p>
 <h2 id="trustset">TrustSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp" title="Source">[Source]<br/></a></p>
@@ -1390,7 +1393,7 @@
 </table>
 <h2 id="setfee">SetFee</h2>
 <p>A change in <a href="concept-transaction-cost.html">transaction cost</a> or <a href="concept-reserves.html">account reserve</a> requirements as a result of <a href="concept-fee-voting.html">Fee Voting</a>.</p>
-<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
+<p class="devportal-callout note"><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
 <pre><code>{
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",
@@ -1450,7 +1453,7 @@
 </table>
 <h2 id="enableamendment">EnableAmendment</h2>
 <p>Tracks the progress of the <a href="concept-amendments.html#amendment-process">amendment process</a> for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.</p>
-<p><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
+<p class="devportal-callout note"><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
 <table>
 <thead>
 <tr>
@@ -1537,7 +1540,7 @@
     "engine_result_code": 0,
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 </code></pre>
-<p><strong><em>Note:</em></strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
+<p class="devportal-callout note"><strong class="devportal-callout note"><em>Note:</em></strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
 <h2 id="looking-up-transaction-results">Looking up Transaction Results</h2>
 <p>To see the final result of a transaction, use the <a href="reference-rippled.html#tx"><code>tx</code> command</a>, <a href="reference-rippled.html#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus.</p>
 <table>

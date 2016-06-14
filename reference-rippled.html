@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -677,7 +680,7 @@ Null method
 <li><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a> character set: 0-9 and A-F.</li>
 <li>Typically written in upper case.</li>
 </ul>
-<p><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="account-sequence">Account Sequence</h3>
 <p>A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.</p>
 <p>Every <a href="reference-ledger-format.html#accountroot">account object in the Ripple Consensus Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be the same.</p>
@@ -704,7 +707,7 @@ Null method
 </ol>
 <p>There is also a deprecated <code>ledger</code> parameter which accepts any of the above three formats. <em>Do not</em> use this parameter; it may be removed without further notice.</p>
 <p>If you do not specify a ledger, the <code>current</code> (in-progress) ledger is chosen by default. If you provide more than one field specifying ledgers, the deprecated <code>ledger</code> field is used first if it exists, falling back to <code>ledger_hash</code>. The <code>ledger_index</code> field is ignored unless neither of the other two are present.</p>
-<p><strong>Note:</strong> Do not rely on this default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Do not rely on this default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.</p>
 <h2 id="currencies">Currencies</h2>
 <p>There are two kinds of currencies in the Ripple Consensus Ledger: XRP, and everything else. There are many differences between the two:</p>
 <table>
@@ -741,7 +744,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> Ripple uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Ripple uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.</p>
 <h3 id="specifying-currency-amounts">Specifying Currency Amounts</h3>
 <p>Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (called <em>issuances</em>), the style for specifying it is very different.</p>
 <h4 id="xrp">XRP</h4>
@@ -778,7 +781,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> These field names are case-sensitive.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> These field names are case-sensitive.</p>
 <p>For example, to represent $153.75 US dollars issued by account <code>r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</code>, you would specify:</p>
 <pre><code>{
     "currency": "USD",
@@ -840,7 +843,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> The distinction between <code>full</code>, <code>validating</code>, and <code>proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The distinction between <code>full</code>, <code>validating</code>, and <code>proposing</code> is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.</p>
 <h2 id="markers-and-pagination">Markers and Pagination</h2>
 <p>Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a <code>marker</code> field. You can use this to retrieve more pages of data across multiple calls. In each request, pass the <code>marker</code> value from the previous response to resume from the point where you left off. If the <code>marker</code> is omitted from a response, then you have reached the end of the data set.</p>
 <p>The format of the <code>marker</code> field is intentionally undefined. Each server can define a <code>marker</code> field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server, can have different <code>marker</code> definitions. Each <code>marker</code> is ephemeral, and may not work as expected after 10 minutes.</p>
@@ -1083,7 +1086,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>doesn't</em> check whether the trust line is <a href="concept-freeze.html">frozen</a> or authorized.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method <em>doesn't</em> check whether the trust line is <a href="concept-freeze.html">frozen</a> or authorized.</p>
 <h4 id="possible-errors">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -3040,7 +3043,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> The server may respond with different values of <code>ledger_index_min</code> and <code>ledger_index_max</code> than you provided in the request, for example if it did not have the versions you specified on hand.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The server may respond with different values of <code>ledger_index_min</code> and <code>ledger_index_max</code> than you provided in the request, for example if it did not have the versions you specified on hand.</p>
 <p>Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (<code>"binary":true</code>) format.</p>
 <table>
 <thead>
@@ -3118,7 +3121,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 }
 </code></pre></div>
 </div>
-<p><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
+<p class="devportal-callout note"><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
 <p>The request includes the following parameters:</p>
 <table>
 <thead>
@@ -3499,7 +3502,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 }
 </code></pre></div>
 </div>
-<p><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
+<p class="devportal-callout note"><strong>Note:</strong> There is no command-line syntax for this method. Use the <a href="#json"><code>json</code> command</a> to access this from the command line.</p>
 <p>The response follows the <a href="#response-formatting">standard format</a>, with a successful result containing the following fields:</p>
 <table>
 <thead>
@@ -3648,7 +3651,7 @@ rippled wallet_propose masterpassphrase
 </table>
 <p>The commandline version of this command cannot generate Ed25519 keys.</p>
 <h5 id="specifying-a-seed">Specifying a Seed</h5>
-<p><strong>Caution:</strong> For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to <a href="reference-transaction-format.html#authorizing-transactions">send transactions signed by that address</a>. Generally, running this command with no parameters is a good way to generate a random seed.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to <a href="reference-transaction-format.html#authorizing-transactions">send transactions signed by that address</a>. Generally, running this command with no parameters is a good way to generate a random seed.</p>
 <p>Cases where you would specify a known seed include:</p>
 <ul>
 <li>Re-calculating your address when you only know the seed associated with that address</li>
@@ -4210,7 +4213,7 @@ rippled ledger_current
 }
 </code></pre></div>
 </div>
-<p><strong>Note:</strong> There is no commandline syntax for <code>ledger_data</code>. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
+<p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for <code>ledger_data</code>. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <p>A request can include the following fields:</p>
 <table>
 <thead>
@@ -4494,7 +4497,7 @@ rippled ledger_current
 <h2 id="ledger-entry">ledger_entry</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_entry</code> method returns a single ledger node from the Ripple Consensus Ledger in its raw format. See <a href="reference-ledger-format.html">ledger format</a> for information on the different types of objects you can retrieve.</p>
-<p><strong>Note:</strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
+<p class="devportal-callout note"><strong>Note:</strong> There is no commandline version of this method. You can use the <a href="#json"><code>json</code> command</a> to access this method from the commandline instead.</p>
 <h4 id="request-format-13">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">WebSocket</a></li><li><a href="#code-29-1">JSON-RPC</a></li></ul>
@@ -4746,7 +4749,7 @@ rippled ledger_current
 <p>You must provide either <code>ledger_index</code> or <code>ledger_hash</code> but not both.</p>
 <h4 id="response-format-14">Response Format</h4>
 <p>The response follows the <a href="#response-formatting">standard format</a>. However, the request returns a failure response if it does not have the specified ledger <em>even if it successfully instructed the <code>rippled</code> server to start retrieving the ledger</em>.</p>
-<p><strong>Note:</strong> To retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="#connect"><code>connect</code> command</a> or the <code>fixed_ips</code> section of the config file to add Ripple's full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
+<p class="devportal-callout note"><strong>Note:</strong> To retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the <a href="#connect"><code>connect</code> command</a> or the <code>fixed_ips</code> section of the config file to add Ripple's full-history server at <code>s2.ripple.com</code> and then make the <code>ledger_request</code> request again.</p>
 <p>A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the <a href="#ledger"><code>ledger</code> command</a>.</p>
 <div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">Commandline (failure)</a></li><li><a href="#code-32-1">Commandline (in-progress)</a></li><li><a href="#code-32-2">Commandline (success)</a></li></ul>
 
@@ -4954,7 +4957,7 @@ rippled ledger_accept
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> When you close a ledger, <code>rippled</code> determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.</p>
+<p class="devportal-callout note"><strong>Note:</strong> When you close a ledger, <code>rippled</code> determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.</p>
 <h4 id="possible-errors-15">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -5251,7 +5254,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
+<p class="devportal-callout note"><strong>Note:</strong> This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either <code>ledger_index</code> or <code>ledger_hash</code>.</p>
 <h4 id="response-format-17">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">WebSocket</a></li></ul>
@@ -5433,7 +5436,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <h2 id="tx-history">tx_history</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>tx_history</code> method retrieves some of the most recent transactions made.</p>
-<p><strong>Caution:</strong> This method is deprecated, and may be removed without further notice.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> This method is deprecated, and may be removed without further notice.</p>
 <h4 id="request-format-18">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">WebSocket</a></li><li><a href="#code-38-1">JSON-RPC</a></li><li><a href="#code-38-2">Commandline</a></li></ul>
@@ -6979,7 +6982,7 @@ rippled tx_history 0
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ripple_path_find</code> method is a simplified version of <a href="#path-find"><code>path_find</code></a> that provides a single response with a <a href="concept-paths.html">payment path</a> you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should use <a href="#path-find"><code>path_find</code></a> instead where possible.</p>
 <p>Although the <code>rippled</code> server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.</p>
-<p><strong>Caution:</strong> Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results.</p>
 <h4 id="request-format-22">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0">WebSocket</a></li><li><a href="#code-45-1">JSON-RPC</a></li><li><a href="#code-45-2">Commandline</a></li></ul>
@@ -7361,7 +7364,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <h2 id="sign">sign</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>sign</code> method takes a <a href="reference-transaction-format.html">transaction in JSON format</a> and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the <a href="#sign-for"><code>sign_for</code> command</a> instead.</p>
-<p><strong>Caution:</strong> Unless you run the <code>rippled</code> server yourself, you should do <a href="reference-rippleapi.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Unless you run the <code>rippled</code> server yourself, you should do <a href="reference-rippleapi.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
 <h4 id="request-format-23">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0">WebSocket</a></li><li><a href="#code-47-1">JSON-RPC</a></li><li><a href="#code-47-2">Commandline</a></li></ul>
@@ -7483,13 +7486,13 @@ rippled sign s██████████████████████
 <p>The server automatically tries to fill in certain fields in <code>tx_json</code> (the <a href="reference-transaction-format.html">Transaction object</a>) automatically if you omit them. The server provides the following fields before signing, unless the request specified <code>offline</code> as <code>true</code>:</p>
 <ul>
 <li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information.<ul>
-<li><strong>Caution:</strong> The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.</li>
+<li class="devportal-callout caution"><strong>Caution:</strong> The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.</li>
 </ul>
 </li>
 <li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server tries to fill in an appropriate transaction cost automatically. On the production Ripple Consensus Ledger, this fails with <code>rpcHIGH_FEE</code> unless you provide an appropriate <code>fee_mult_max</code> value.<ul>
 <li>The <code>fee_mult_max</code> and <code>fee_div_max</code> parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the <a href="concept-transaction-cost.html#reference-transaction-cost">reference transaction cost</a>. The default settings return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger <a href="concept-transaction-cost.html#current-transaction-cost">typically has a 1000× load multiplier</a>.</li>
 <li>The commandline syntax does not support <code>fee_mult_max</code> and <code>fee_div_max</code>. For the production Ripple Consensus Ledger, you must provide a <code>Fee</code> value.</li>
-<li><strong>Caution:</strong> A malicious server can specify an excessively high transaction cost, ignoring the values of <code>fee_mult_max</code> and <code>fee_div_max</code>.</li>
+<li class="devportal-callout caution"><strong>Caution:</strong> A malicious server can specify an excessively high transaction cost, ignoring the values of <code>fee_mult_max</code> and <code>fee_div_max</code>.</li>
 </ul>
 </li>
 <li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a <a href="#ripple-path-find">ripple_path_find</a>. Only filled if <code>build_path</code> is provided.</li>
@@ -7597,7 +7600,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.</p>
 <ul>
 <li>Do not write this error to a log file that can be seen by multiple people.</li>
 <li>Do not paste this error to a public place for debugging.</li>
@@ -8170,8 +8173,8 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does <em>not</em> indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
-<p><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Even if the WebSocket response has <code>"status":"success"</code>, indicating that the command was successfully received, that does <em>not</em> indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the <a href="reference-transaction-format.html#full-transaction-response-list">full list of transaction responses</a> for details, and do not consider the transaction's results final until they appear in a validated ledger version.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others.</p>
 <ul>
 <li>Do not write an error including your secret key to a log file that can be seen by multiple people.</li>
 <li>Do not paste an error including your secret key to a public place for debugging.</li>
@@ -9504,7 +9507,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
 <li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address.<ul>
-<li><strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.</li>
+<li class="devportal-callout note"><strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.</li>
 </ul>
 </li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
@@ -10793,7 +10796,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the <code>feature</code> field. For example, you might want to do this if you plan to upgrade soon to a new <code>rippled</code> version that <em>does</em> support the amendment.</p>
+<p class="devportal-callout note"><strong>Note:</strong> You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the <code>feature</code> field. For example, you might want to do this if you plan to upgrade soon to a new <code>rippled</code> version that <em>does</em> support the amendment.</p>
 <h4 id="response-format-34">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-72"><ul class="codetabs"><li><a href="#code-72-0">WebSocket - list all</a></li><li><a href="#code-72-1">WebSocket - reject</a></li><li><a href="#code-72-2">JSON-RPC</a></li><li><a href="#code-72-3">Commandline</a></li></ul>
@@ -10917,7 +10920,7 @@ Connecting to 127.0.0.1:5005
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> The <code>name</code> for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The <code>name</code> for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.</p>
 <h4 id="possible-errors-35">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -11614,7 +11617,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the <code>secret</code> when generating new credentials for the first time.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the <code>secret</code> when generating new credentials for the first time.</p>
 <h4 id="response-format-40">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-84"><ul class="codetabs"><li><a href="#code-84-0">JSON-RPC</a></li><li><a href="#code-84-1">Commandline</a></li></ul>

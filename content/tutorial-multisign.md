@@ -76,7 +76,7 @@ Take note of the `account_id` (Ripple Address) and `master_seed` (Ripple secret 
 
 In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
+{% include 'snippets/secret-key-warning.md' %}
 
     $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
     >     "Flags": 0,
@@ -227,8 +227,8 @@ If the SignerList is present with the expected contents, then your address is re
 
 At this point, your address is ready to [send a multi-signed transaction](#sending-a-multi-signed-transaction). You may also want to:
 
-* Disable the address's master key by sending an [AccountSet transaction](reference-transaction-format.html#accountset) using the `asfDisableMaster` flag.
-* Remove the address's regular key (if you previously set one) by sending a [SetRegularKey transaction](reference-transaction-format.html#setregularkey).
+* Disable the address's master key pair by sending an [AccountSet transaction](reference-transaction-format.html#accountset) using the `asfDisableMaster` flag.
+* Remove the address's regular key pair (if you previously set one) by sending a [SetRegularKey transaction](reference-transaction-format.html#setregularkey).
 
 
 Sending a Multi-Signed Transaction
@@ -265,7 +265,7 @@ Here's an example transaction ready to be multi-signed:
 
 Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
+{% include 'snippets/secret-key-warning.md' %}
 
     $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{
     >     "TransactionType": "TrustSet",
@@ -322,7 +322,7 @@ You can collect additional signatures in parallel or in serial:
 * In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
 * In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
 
-**Caution:** Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.
+{% include 'snippets/secret-key-warning.md' %}
 
     $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
     >    "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
