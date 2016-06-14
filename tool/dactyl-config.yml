@@ -38,6 +38,7 @@ targets:
             - multicode_tabs
             - standardize_header_ids
             - buttonize
+            - callouts
         template: template-contentwithtoc.html
         image_subs:
             "img/funds_flow_diagram.png": https://ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
