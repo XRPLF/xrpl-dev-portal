@@ -131,6 +131,9 @@ pages:
         md: tutorial-multisign.md
         ripple.com: https://ripple.com/build/how-to-multi-sign/
         sidebar: toc
+        targets:
+            - local
+            - ripple.com
 
         # This is more like a "best practices" doc than Tutorials...
     -   name: Issuing and Operational Addresses
