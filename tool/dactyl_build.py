@@ -174,7 +174,7 @@ def get_target(target):
 def make_adhoc_target(inpages, no_cover):
     t = {
         "name": ADHOC_TARGET,
-        "display_name": "Adhoc Target Display Name",
+        "display_name": "(Untitled)",
         "sidebar": "toc" # should probably make this default anyway?
     }
 
@@ -182,6 +182,9 @@ def make_adhoc_target(inpages, no_cover):
         indexpage = next(p for p in config["pages"]
             if p["html"] == "index.html")
         indexpage["targets"].append(ADHOC_TARGET)
+
+    if len(inpages) == 1:
+        t["display_name"] = guess_title_from_md_file(inpages[0])
 
     for inpage in inpages:
         # Figure out the actual filename and location of this infile
@@ -210,6 +213,7 @@ def make_adhoc_target(inpages, no_cover):
         config["pages"].append(new_page)
 
     config["targets"].append(t)
+
     return t
 
 def guess_title_from_md_file(filepath):
@@ -677,8 +681,10 @@ if __name__ == "__main__":
     parser.add_argument("--pages", type=str, help="Build markdown page(s) "+\
                         "that aren't described in the config.", nargs="+")
     parser.add_argument("--no_cover", "-n", action="store_true",
-                        help="(with --page only) Don't automatically add a "+\
+                        help="(with --pages only) Don't automatically add a "+\
                         "cover page / index.html file.")
+    parser.add_argument("--title", type=str, help="Override target display "+\
+                        "name. Useful when passing multiple args to --pages.")
     parser.add_argument("--list_targets_only", "-l", action="store_true",
                         help="Don't build anything, just display list of "+
                         "known targets from the config file.")
@@ -707,8 +713,12 @@ if __name__ == "__main__":
         config["out_path"] = cli_args.out_dir
 
     if cli_args.pages:
-        target = make_adhoc_target(cli_args.pages, cli_args.no_cover)
+        make_adhoc_target(cli_args.pages, cli_args.no_cover)
         cli_args.target = ADHOC_TARGET
+
+    if cli_args.title:
+        target = get_target(cli_args.target)
+        target["display_name"] = cli_args.title
 
     if cli_args.githubify:
         githubify(cli_args.githubify, cli_args.target)

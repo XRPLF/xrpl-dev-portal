@@ -25,6 +25,7 @@ prince_executable: prince
 targets:
     # First member is the default that gets built when target not specified
     -   name: local
+        display_name: Ripple Developer Portal
         filters:
             - multicode_tabs
             - standardize_header_ids
@@ -32,6 +33,7 @@ targets:
             - callouts
 
     -   name: ripple.com
+        display_name: Ripple Developer Center
         filters:
             - multicode_tabs
             - standardize_header_ids
