@@ -6373,7 +6373,7 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format |
-| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
@@ -6817,7 +6817,7 @@ The request includes the following parameters:
 | Field | Type | Description |
 |-------|------|-------------|
 | tx_json | Object | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
-| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, seed_hex`, or `passphrase`. |
+| secret | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | seed | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | seed\_hex | String | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | passphrase | String | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
