@@ -146,9 +146,12 @@
 <li class="level-1"><a href="#installing-rippled">Installing rippled</a></li>
 <li class="level-2"><a href="#system-requirements">System Requirements</a></li>
 <li class="level-2"><a href="#installation-on-centosred-hat-with-yum">Installation on CentOS/Red Hat with yum</a></li>
+<li class="level-2"><a href="#installation-on-ubuntu-with-alien">Installation on Ubuntu with alien</a></li>
+<li class="level-2"><a href="#postinstall">Postinstall</a></li>
 <li class="level-2"><a href="#updating-rippled">Updating rippled</a></li>
-<li class="level-3"><a href="#automatic">Automatic</a></li>
-<li class="level-3"><a href="#manual">Manual</a></li>
+<li class="level-3"><a href="#automatic-update-on-centosred-hat">Automatic Update on CentOS/Red Hat</a></li>
+<li class="level-3"><a href="#manual-update-on-centosred-hat">Manual Update on CentOS/Red Hat</a></li>
+<li class="level-3"><a href="#manual-update-on-ubuntu">Manual Update on Ubuntu</a></li>
 <li class="level-1"><a href="#running-a-validator">Running a Validator</a></li>
 <li class="level-2"><a href="#validator-setup">Validator Setup</a></li>
 <li class="level-2"><a href="#public-facing-server">Public-Facing Server</a></li>
@@ -223,7 +226,7 @@
 <p>A <code>rippled</code> server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following:</p>
 <ul>
 <li>Operating System:<ul>
-<li>Production: CentOS or RedHat Enterprise Linux (latest release) supported</li>
+<li>Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (15.04+) supported</li>
 <li>Development: Mac OS X, Windows (64-bit), or most Linux distributions</li>
 </ul>
 </li>
@@ -257,16 +260,58 @@
 </code></pre>
 </li>
 </ol>
+<h2 id="installation-on-ubuntu-with-alien">Installation on Ubuntu with alien</h2>
+<p>This section assumes that you are using Ubuntu 15.04 or later.</p>
+<ol>
+<li>
+<p>Install yum-utils and alien:</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install yum-utils alien
+</code></pre>
+</li>
+<li>
+<p>Install the Ripple rpm repository:</p>
+<pre><code>$ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
+</code></pre>
+</li>
+<li>
+<p>Download the <code>rippled</code> software package:</p>
+<pre><code>$ yumdownloader --enablerepo=ripple-stable --releasever=el7 rippled
+</code></pre>
+</li>
+<li>
+<p>Verify the signature on the <code>rippled</code> software package:</p>
+<pre><code>$ sudo rpm --import https://mirrors.ripple.com/rpm/RPM-GPG-KEY-ripple-release &amp;&amp; rpm -K rippled*.rpm
+</code></pre>
+</li>
+<li>
+<p>Install the <code>rippled</code> software package:</p>
+<pre><code>$ sudo alien -i --scripts rippled*.rpm &amp;&amp; rm rippled*.rpm
+</code></pre>
+</li>
+<li>
+<p>Configure the <code>rippled</code> service to start on system boot:</p>
+<pre><code>$ sudo systemctl enable rippled.service
+</code></pre>
+</li>
+<li>
+<p>Start the <code>rippled</code> service</p>
+<pre><code>$ sudo systemctl start rippled.service
+</code></pre>
+</li>
+</ol>
+<h2 id="postinstall">Postinstall</h2>
 <p>It can take several minutes for <code>rippled</code> to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock <code>rippled</code> server that you can use for local signing and API access to the Ripple peer-to-peer network.</p>
 <p><a href="reference-rippled.html#list-of-public-commands">rippled commands</a> can be run with:</p>
-<pre><code>    $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg &lt;command&gt;
+<pre><code>    $ /opt/ripple/bin/rippled &lt;command&gt;
 </code></pre>
 <h2 id="updating-rippled">Updating rippled</h2>
-<h3 id="automatic">Automatic</h3>
+<p>You can subscribe to the <a href="https://groups.google.com/forum/#!forum/ripple-server">rippled Google Group</a> to receive notifications of new <code>rippled</code> releases.</p>
+<h3 id="automatic-update-on-centosred-hat">Automatic Update on CentOS/Red Hat</h3>
 <p>Automatic rippled updates can be enabled with a one-time Cron configuration:</p>
 <ol>
 <li>
-<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, <a href="#manual">update manually</a>.</p>
+<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, <a href="#manual-update-on-centosred-hat">update manually</a>.</p>
 </li>
 <li>
 <p>Install <code>crond</code>:</p>
@@ -286,14 +331,22 @@
 </li>
 </ol>
 <p>The script updates the installed <code>rippled</code> package within an hour of each new release.</p>
-<h3 id="manual">Manual</h3>
+<h3 id="manual-update-on-centosred-hat">Manual Update on CentOS/Red Hat</h3>
 <p>Run the following commands to update to the latest release of <code>rippled</code>:</p>
 <pre><code>    $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
     $ sudo yum update --enablerepo=ripple-stable rippled
     $ sudo systemctl daemon-reload
     $ sudo service rippled restart
 </code></pre>
-<p>You can subscribe to the <a href="https://groups.google.com/forum/#!forum/ripple-server">rippled Google Group</a> to receive notifications of new <code>rippled</code> releases.</p>
+<h3 id="manual-update-on-ubuntu">Manual Update on Ubuntu</h3>
+<p>Run the following commands to update to the latest release of <code>rippled</code>:</p>
+<pre><code>    $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
+    $ yumdownloader --enablerepo=ripple-stable --releasever=el7 rippled
+    $ rpm -K rippled*.rpm
+    $ sudo alien -i --scripts rippled*.rpm
+    $ sudo systemctl daemon-reload
+    $ sudo service rippled restart
+</code></pre>
 <h1 id="running-a-validator">Running a Validator</h1>
 <p>Running a <code>rippled</code> validator that participates in the Consensus process is simple:</p>
 <ol>
@@ -319,7 +372,7 @@
 </li>
 <li>
 <p>Generate a validation public key and seed, and save the output to a secure place:</p>
-<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg -q validation_create
+<pre><code>$ /opt/ripple/bin/rippled -q validation_create
 {
     "status" : "success",
     "validation_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
@@ -376,7 +429,7 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 <ol>
 <li>
 <p>Get the validator's account address (<code>account_id</code>) using the <code>validation_seed</code> generated <a href="#validator-setup">above</a> in step 3:</p>
-<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose &lt;your-validation-seed&gt;
+<pre><code>$ /opt/ripple/bin/rippled -q wallet_propose &lt;your-validation-seed&gt;
 {
    "result" : {
       "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -399,12 +452,12 @@ ssdecohJMDPFuUPDkmG1w4objZyp4
 </li>
 <li>
 <p>Set the <a href="reference-transaction-format.html#domain"><code>Domain</code> field</a> of the account to match the domain hosting your ripple.txt</p>
-<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg submit &lt;your-secret-key&gt; '{"TransactionType": "AccountSet", "Account": "&lt;your-account-id&gt;", "Domain": "&lt;your-hex-encoded-domain&gt;", "Fee": "10000"}'
+<pre><code>$ /opt/ripple/bin/rippled -q submit &lt;your-secret-key&gt; '{"TransactionType": "AccountSet", "Account": "&lt;your-account-id&gt;", "Domain": "&lt;your-hex-encoded-domain&gt;", "Fee": "10000"}'
 </code></pre>
 </li>
 <li>
 <p>Verify that your account's domain has been set.</p>
-<pre><code>$ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg account_info &lt;your-account-id&gt;
+<pre><code>$ /opt/ripple/bin/rippled -q account_info &lt;your-account-id&gt;
 </code></pre>
 </li>
 </ol>

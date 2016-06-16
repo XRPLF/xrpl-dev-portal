@@ -69,7 +69,7 @@ Production `rippled` instances can [use Ripple's binary executable](#installatio
 A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following:
 
 - Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (15.04+) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
@@ -80,7 +80,7 @@ Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Va
 Naturally, a fast network connection is preferable.
 
 
-## Installation on CentOS/Red Hat with yum  ##
+## Installation on CentOS/Red Hat with yum ##
 
 This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
@@ -100,20 +100,57 @@ This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
         $ sudo systemctl start rippled.service
 
+## Installation on Ubuntu with alien ##
+
+This section assumes that you are using Ubuntu 15.04 or later.
+
+1. Install yum-utils and alien:
+
+        $ sudo apt-get update
+        $ sudo apt-get install yum-utils alien
+
+2. Install the Ripple rpm repository:
+
+        $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
+
+3. Download the `rippled` software package:
+
+        $ yumdownloader --enablerepo=ripple-stable --releasever=el7 rippled
+
+4. Verify the signature on the `rippled` software package:
+
+        $ sudo rpm --import https://mirrors.ripple.com/rpm/RPM-GPG-KEY-ripple-release && rpm -K rippled*.rpm
+
+5. Install the `rippled` software package:
+
+        $ sudo alien -i --scripts rippled*.rpm && rm rippled*.rpm
+
+6. Configure the `rippled` service to start on system boot:
+
+        $ sudo systemctl enable rippled.service
+
+7. Start the `rippled` service
+
+        $ sudo systemctl start rippled.service
+
+## Postinstall ##
+
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the Ripple peer-to-peer network.
 
 [rippled commands](reference-rippled.html#list-of-public-commands) can be run with:
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg <command>
+        $ /opt/ripple/bin/rippled <command>
 
 
 ## Updating rippled ##
 
-### Automatic ###
+You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
+
+### Automatic Update on CentOS/Red Hat ###
 
 Automatic rippled updates can be enabled with a one-time Cron configuration:
 
-1. Check that `/opt/ripple/bin/update-rippled.sh` exists. If it does not, [update manually](#manual).
+1. Check that `/opt/ripple/bin/update-rippled.sh` exists. If it does not, [update manually](#manual-update-on-centosred-hat).
 
 2. Install `crond`:
 
@@ -131,7 +168,7 @@ Automatic rippled updates can be enabled with a one-time Cron configuration:
 
 The script updates the installed `rippled` package within an hour of each new release.
 
-### Manual ###
+### Manual Update on CentOS/Red Hat ###
 
 Run the following commands to update to the latest release of `rippled`:
 
@@ -140,7 +177,16 @@ Run the following commands to update to the latest release of `rippled`:
         $ sudo systemctl daemon-reload
         $ sudo service rippled restart
 
-You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
+### Manual Update on Ubuntu ###
+
+Run the following commands to update to the latest release of `rippled`:
+
+        $ sudo rpm -Uvh --replacepkgs https://mirrors.ripple.com/ripple-repo-el7.rpm
+        $ yumdownloader --enablerepo=ripple-stable --releasever=el7 rippled
+        $ rpm -K rippled*.rpm
+        $ sudo alien -i --scripts rippled*.rpm
+        $ sudo systemctl daemon-reload
+        $ sudo service rippled restart
 
 
 # Running a Validator #
@@ -164,7 +210,7 @@ Running a `rippled` validator that participates in the Consensus process is simp
 
 3. Generate a validation public key and seed, and save the output to a secure place:
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg -q validation_create
+        $ /opt/ripple/bin/rippled -q validation_create
         {
             "status" : "success",
             "validation_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
@@ -221,7 +267,7 @@ The steps below describe how to set the domain field of a validator's Ripple acc
 
 1. Get the validator's account address (`account_id`) using the `validation_seed` generated [above](#validator-setup) in step 3:
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg wallet_propose <your-validation-seed>
+        $ /opt/ripple/bin/rippled -q wallet_propose <your-validation-seed>
         {
            "result" : {
               "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
@@ -240,11 +286,11 @@ The steps below describe how to set the domain field of a validator's Ripple acc
 
 3. Set the [`Domain` field](reference-transaction-format.html#domain) of the account to match the domain hosting your ripple.txt
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg submit <your-secret-key> '{"TransactionType": "AccountSet", "Account": "<your-account-id>", "Domain": "<your-hex-encoded-domain>", "Fee": "10000"}'
+        $ /opt/ripple/bin/rippled -q submit <your-secret-key> '{"TransactionType": "AccountSet", "Account": "<your-account-id>", "Domain": "<your-hex-encoded-domain>", "Fee": "10000"}'
 
 4. Verify that your account's domain has been set.
 
-        $ /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg account_info <your-account-id>
+        $ /opt/ripple/bin/rippled -q account_info <your-account-id>
 
 # Additional Configuration #
 
