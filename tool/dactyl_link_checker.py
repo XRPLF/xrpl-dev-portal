@@ -18,6 +18,46 @@ def getSoup(fullPath):
       soupsCache[fullPath] = soup
   return soup
 
+def check_remote_url(endpoint, fullPath, broken_links, externalCache, isImg=False):
+    if isImg:
+        linkword = "image"
+    else:
+        linkword = "link"
+    if endpoint in [v for k,v in broken_links]:
+        # We already confirmed this was broken, so just add another instance
+        logging.warning("Broken %s %s appears again in %s" % (linkword, endpoint, fullPath))
+        broken_links.append( (fullPath, endpoint) )
+        return False
+    if endpoint in externalCache:
+        logging.debug("Skipping cached %s %s" % (linkword, endpoint))
+        return True
+    if endpoint in config["known_broken_links"]:
+        logging.warning("Skipping known broken %s %s in %s" % (linkword, endpoint, fullPath))
+        return True
+
+    logging.info("Testing remote %s URL %s"%(linkword, endpoint))
+    try:
+        code = requests.head(endpoint).status_code
+    except Exception as e:
+        logging.warning("Error occurred: %s" % e)
+        code = 500
+    if code == 405 or code == 404:
+        #HEAD didn't work, maybe GET will?
+        try:
+            code = requests.get(endpoint).status_code
+        except Exception as e:
+          logging.warning("Error occurred: %s" % e)
+          code = 500
+
+    if code < 200 or code >= 400:
+        logging.warning("Broken remote %s in %s to %s"%(linkword, fullPath, endpoint))
+        broken_links.append( (fullPath, endpoint) )
+        return False
+    else:
+        logging.info("...success.")
+        externalCache.append(endpoint)
+        return True
+
 def checkLinks(offline=False):
     externalCache = []
     broken_links = []
@@ -29,7 +69,7 @@ def checkLinks(offline=False):
       for fname in filenames:
         fullPath = os.path.join(dirpath, fname)
         if "/node_modules/" in fullPath or ".git" in fullPath:
-          logging.info("skipping ignored dir: %s" % fullPath)
+          logging.debug("skipping ignored dir: %s" % fullPath)
           continue
         if fullPath.endswith(".html"):
           soup = getSoup(fullPath)
@@ -58,27 +98,7 @@ def checkLinks(offline=False):
                 continue
 
               num_links_checked += 1
-              if endpoint not in externalCache:
-                logging.info("Testing remote URL %s"%(endpoint))
-                try:
-                  code = requests.head(endpoint).status_code
-                except Exception as e:
-                  logging.warning("Error occurred: %s" % e)
-                  code = 500
-                if code == 405 or code == 404:
-                  #HEAD didn't work, maybe GET will?
-                  try:
-                    code = requests.get(endpoint).status_code
-                  except Exception as e:
-                    logging.warning("Error occurred: %s" % e)
-                    code = 500
-
-                if code < 200 or code >= 400:
-                  logging.warning("Broken remote link in %s to %s"%(fullPath, endpoint))
-                  broken_links.append( (fullPath, endpoint) )
-                else:
-                  logging.info("...success.")
-                  externalCache.append(endpoint)
+              check_remote_url(endpoint, fullPath, broken_links, externalCache)
 
 
             elif '#' in endpoint:
@@ -124,6 +144,27 @@ def checkLinks(offline=False):
               if not os.path.exists(os.path.join(dirpath, endpoint)):
                 logging.warning("Broken local link in %s to %s"%(fullPath, endpoint))
                 broken_links.append( (fullPath, endpoint) )
+
+          #Now check images
+          imgs = soup.find_all('img')
+          for img in imgs:
+            num_links_checked += 1
+            if "src" not in img.attrs or not img["src"].strip():
+              logging.warning("Broken image with no src in %s" % fullPath)
+              broken_links.append( (fullPath, img["src"]) )
+              continue
+
+            src = img["src"]
+            if "://" in src:
+              check_remote_url(src, fullPath, broken_links, externalCache, isImg=True)
+
+            else:
+              logging.info("Checking local image %s in %s" % (src, fullPath))
+              if os.path.exists(os.path.join(dirpath, src)):
+                logging.info("...success")
+              else:
+                logging.warning("Broken local image %s in %s" % (src, fullPath))
+                broken_links.append( (fullPath, src) )
     return broken_links, num_links_checked
 
 
