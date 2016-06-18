@@ -27,11 +27,11 @@ In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to de
 
 # Technical Details #
 
-The transfer fee is represented by a setting on the [issuing address][]. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% or greater than 100%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different [issuing addresses][issuing address] for each currency.
+The transfer fee is represented by a setting on the [issuing address][]. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different [issuing addresses][issuing address] for each currency.
 
 ## RippleAPI ##
 
-In RippleAPI, the transfer fee is specified in the `transferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `transferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `transferRate` is set to no fee. The value of `transferRate` cannot be less than `1000000000` or more than `2000000000`. The value `null` is a special case for no fee, equivalent to `1000000000`.
+In RippleAPI, the transfer fee is specified in the `transferRate` field, as a decimal which represents the amount you must send for the recipient to get 1 unit of the same currency. A `transferRate` of `1.005` is equivalent to a transfer fee of 0.5%. By default, the `transferRate` is set to no fee. The value of `transferRate` cannot be less than `1.0` or more than `4.294967295`. The value `null` is a special case for no fee, equivalent to `1000000000`.
 
 A financial institution can send a [Settings transaction](reference-rippleapi.html#settings) from its [issuing address][] to change the `transferRate` for its issuances.
 
@@ -39,7 +39,7 @@ You can check an account's `transferRate` with the [getSettings method](referenc
 
 ## rippled ##
 
-In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set at `1000000000`, indicating no fee. The value of `TransferRate` cannot be less than `1000000000` or more than `2000000000`. However, value `0` is special case for no fee, equivalent to `1000000000`.
+In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be less than `1000000000` or more than `4294967295` (the maximum value of a 32-bit unsigned integer). The value `0` is special case for no fee, equivalent to `1000000000`.
 
 A financial institution can submit an [AccountSet transaction](reference-transaction-format.html#accountset) from its [issuing address][] to change the `TransferRate` for its issuances.
 
