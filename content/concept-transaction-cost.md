@@ -144,11 +144,11 @@ When a transaction has already been distributed to the network, but the account 
 
 ## Key Reset Transaction ##
 
-As a special case, an account can send a [SetRegularKey](reference-transaction-format.html#setregularkey) transaction with a transaction cost of `0`, as long as the account's [lsfPasswordSpent flag](reference-ledger-format.html#accountroot-flags) is disabled. This transaction must be signed by the account's _master key_. Sending this transaction enables the lsfPasswordSpent flag.
+As a special case, an account can send a [SetRegularKey](reference-transaction-format.html#setregularkey) transaction with a transaction cost of `0`, as long as the account's [lsfPasswordSpent flag](reference-ledger-format.html#accountroot-flags) is disabled. This transaction must be signed by the account's _master key pair_. Sending this transaction enables the lsfPasswordSpent flag.
 
 This feature is designed to allow you to recover an account if the regular key is compromised, without worrying about whether the compromised account has any XRP available. This way, you can regain control of the account before you send more XRP to it.
 
-The [lsfPasswordSpent flag](reference-ledger-format.html#accountroot-flags) starts out disabled. If enabled, it gets disabled again when the account receives a [Payment](reference-transaction-format.html#payment) of XRP.
+The [lsfPasswordSpent flag](reference-ledger-format.html#accountroot-flags) starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a [Payment](reference-transaction-format.html#payment) of XRP.
 
 When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
