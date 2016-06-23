@@ -861,6 +861,7 @@ Null method
 <li><a href="#account-offers"><code>account_offers</code> - Get info about an account's currency exchange offers</a></li>
 <li><a href="#account-tx"><code>account_tx</code> - Get info about an account's transactions</a></li>
 <li><a href="#book-offers"><code>book_offers</code> - Get info about offers to exchange two currencies</a></li>
+<li><a href="#fee"><code>fee</code> - Get information about transaction cost</a></li>
 <li><a href="#gateway-balances"><code>gateway_balances</code> - Calculate total amounts issued by an account</a></li>
 <li><a href="#ledger"><code>ledger</code> - Get info about a ledger version</a></li>
 <li><a href="#ledger-closed"><code>ledger_closed</code> - Get the latest closed ledger version</a></li>
@@ -891,7 +892,6 @@ Null method
 <li><a href="#connect"><code>connect</code> - Force the rippled server to connect to a specific peer</a></li>
 <li><a href="#consensus-info"><code>consensus_info</code> - Get information about the state of consensus as it happens</a></li>
 <li><a href="#feature"><code>feature</code> - Get information about protocol amendments</a></li>
-<li><a href="#fee"><code>fee</code> - Get information about transaction cost</a></li>
 <li><a href="#fetch-info"><code>fetch_info</code> - Get information about the server's sync with the network</a></li>
 <li><a href="#get-counts"><code>get_counts</code> - Get statistics about the server's internals and memory usage</a></li>
 <li><a href="#ledger-accept"><code>ledger_accept</code> - Close and advance the ledger in stand-alone mode</a></li>
@@ -3754,6 +3754,11 @@ Connecting to 127.0.0.1:5005
 <td>public_key_hex</td>
 <td>String</td>
 <td>The public key of the account, in hex format.</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>String</td>
+<td>(May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -9793,6 +9798,31 @@ rippled server_info
 <td>The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
 </tr>
 <tr>
+<td>load_factor_local</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the [transaction cost][] based on load to this server.</td>
+</tr>
+<tr>
+<td>load_factor_net</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the [transaction cost][] being used by the rest of the network (estimated).</td>
+</tr>
+<tr>
+<td>load_factor_cluster</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the [transaction cost][] based on load to servers in <a href="tutorial-rippled-setup.html#clustering">this cluster</a>.</td>
+</tr>
+<tr>
+<td>load_factor_fee_escalation</td>
+<td>Number</td>
+<td>(May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_queue</td>
+<td>Number</td>
+<td>(May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
 <td>peers</td>
 <td>Number</td>
 <td>How many other <code>rippled</code> servers the node is currently connected to.</td>
@@ -10139,13 +10169,43 @@ rippled server_state
 </tr>
 <tr>
 <td>load_base</td>
-<td>Number</td>
-<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction fees are doubled.</td>
+<td>Integer</td>
+<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction costs are doubled.</td>
 </tr>
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing. The ratio between this value and the load_base determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+<td>The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+</tr>
+<tr>
+<td>load_factor_local</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor based on load to this server.</td>
+</tr>
+<tr>
+<td>load_factor_net</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor being used by the rest of the network (estimated).</td>
+</tr>
+<tr>
+<td>load_factor_cluster</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor based on load to servers in <a href="tutorial-rippled-setup.html#clustering">this cluster</a>.</td>
+</tr>
+<tr>
+<td>load_factor_fee_escalation</td>
+<td>Integer</td>
+<td>(May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_queue</td>
+<td>Integer</td>
+<td>(May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_reference</td>
+<td>Integer</td>
+<td>(May be omitted) The [transaction cost][] with no load scaling, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -10929,7 +10989,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="fee">fee</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
-<p><em>The <code>fee</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>As of <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>, this is a public command available to unprivileged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-73"><ul class="codetabs"><li><a href="#code-73-0">WebSocket</a></li><li><a href="#code-73-1">JSON-RPC</a></li><li><a href="#code-73-2">Commandline</a></li></ul>
