@@ -49,6 +49,18 @@ Alternate usage: `-g` produces a GitHub-flavored Markdown version of a single fi
 
 **Note:** The tool never erases files from the **out_path** or the **temporary_files_path**. You may want to do that yourself, especially if you remove files from your config or rename them.
 
+Ad-Hoc Targets
+--------------
+
+If you want to build output without editing the config file, you can use the `--pages` option, following that with a list of input markdown files. (The `--pages` option is incompatible with the `-t` option.) In this case, Dactyl creates an "ad-hoc" target for the page(s) specified. It includes the `index.html` file (PDF cover in PDF mode) in the ad-hoc target unless you specify `--no_cover` in the command.
+
+For each page, it picks an output filename based on the input filename. It tries to guesses a sensible page title (to use in sidebars, dropdowns, table of contents, and other page navigation) from the first line of the file, falling back to the filename as the page title if the first line isn't a Markdown-formatted header.
+
+Example usage:
+
+```
+./dactyl_build.py --pages ~/Ripple/*.md -o /tmp/dactyl_out/ --pdf scraps.pdf
+```
 
 Multiple Targets
 ----------------
@@ -75,11 +87,45 @@ BeautifulSoup filters implement a `filter_soup(soup)` method, which takes a Beau
 Dactyl comes with the following filters:
 
   * `remove_doctoc` - Remove DOCTOC-generated tables of contents
-  * `multicode_tabs` - Un-comment &lt;div class="multicode"&gt; and &lt;/div&gt; tags
+  * `multicode_tabs` - Lets you group multiple code samples to appear in tabs (HTML only)
   * `standardize_header_ids` - Modify the `id` fields of generated header (&lt;h#&gt;) elements to use dashes instead of underscores. (This is for compatibility with previously-used doc tools.)
   * `buttonize` - Adds the `button` class to links whose text ends in &gt;
   * `markdown_in_divs` - Automatically add the `markdown="1"` element to &lt;div&gt; elements so that their contents get parsed as Markdown. (No longer used by the Dev Portal, but useful for compatibility with Markdown flavors that do this automatically.)
+  * `add_version` - Adds a "Updated for \[Version\]" link to the page. Only works if the page is remotely-sourced from a git tag on GitHub.
+  * ``
 
+Multicode Tabs
+--------------
+
+The `multicode_tabs` filter lets you group multiple related code samples to appear in tabs in the HTML version. It has no meaningful effect when building for PDF.
+
+The syntax for multicode tabs is as follows:
+
+~~~
+(whatever content comes before the multi-code block)
+
+<!-- MULTICODE_BLOCK_START -->
+
+*Tab 1 Name*
+
+```
+Tab 1 code sample
+```
+
+*Tab 2 Name*
+
+```
+Tab 2 code sample
+```
+
+... (repeat for N tabs) ...
+
+<!-- MULTICODE_BLOCK_END -->
+
+(whatever content comes after the multi-code block)
+~~~
+
+This syntax is designed to "gracefully degrade" to a sensible syntax in cases (like PDF) where the [javascript to make the tabs work](assets/js/multicodetab.js) is either unavailable or undesirable.
 
 Contributing
 ------------

@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -408,7 +411,7 @@
     ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <p>Response:</p>
 <pre><code>{
     "result": {
@@ -460,7 +463,7 @@
     ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <p>Response:</p>
 <pre><code>{
     "result": {
@@ -506,7 +509,7 @@ Content-Type: application/json
     ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <p>Response:</p>
 <pre><code>200 OK
 {
@@ -555,7 +558,7 @@ Content-Type: application/json
     ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <h3 id="authorizing-trust-lines">Authorizing Trust Lines</h3>
 <p>If you are using the <a href="#authorized-accounts">Authorized Accounts</a> feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the RCL.</p>
 <p>To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="reference-transaction-format.html#trustset-flags">tfSetfAuth</a> flag for the transaction.</p>
@@ -582,7 +585,7 @@ Content-Type: application/json
     ]
 }
 </code></pre>
-<p><em>(<strong>Reminder:</strong> Don't send your secret to a server you do not control.)</em></p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments</h2>
 <p>To robustly check for incoming payments, gateways should do the following:</p>
 <ul>
@@ -650,7 +653,7 @@ Content-Type: application/json
 <li>In <code>rippled</code>'s APIs, you should set the <a href="reference-transaction-format.html#payment"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter.</li>
 <li>In RippleAPI, you should set the <code>source.maxAmount</code> parameter higher than the <code>destination.amount</code> parameter; or, set the <code>source.amount</code> parameter higher than the <code>destination.minAmount</code> parameter.</li>
 </ul>
-<p><strong>Note:</strong> The TransferRate does not apply when sending issuances directly to the issuing address. The issuing address must always accept its issuances at face value in the RCL. This means that customers don't have to pay the TransferRate if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the TransferRate the customer pays.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The TransferRate does not apply when sending issuances directly to the issuing address. The issuing address must always accept its issuances at face value in the RCL. This means that customers don't have to pay the TransferRate if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the TransferRate the customer pays.</p>
 <p>For example: If ACME sets a transfer fee of 1%, a Ripple payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the RCL decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
 <h2 id="sending-payments-to-customers">Sending Payments to Customers</h2>
 <p>When you build an automated system to send payments into Ripple for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.</p>

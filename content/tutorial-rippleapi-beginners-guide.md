@@ -228,7 +228,7 @@ If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 ```
 git clone https://github.com/ripple/ripple-lib.git
 cd ripple-lib
-checkout release
+git checkout release
 ```
 
 Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.

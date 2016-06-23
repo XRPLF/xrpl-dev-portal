@@ -58,6 +58,8 @@ def check_all_pages(target=None):
 
     pp_env = dactyl_build.setup_pp_env()
 
+    print("Style Checker - checking all pages in target %s" % target["name"])
+
     style_issues = []
     for page in pages:
         if "md" not in page:

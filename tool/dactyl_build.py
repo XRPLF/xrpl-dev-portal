@@ -28,7 +28,7 @@ import subprocess
 import requests
 
 # Various content and template processing stuff
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, TemplateError
 from markdown import markdown
 from bs4 import BeautifulSoup
 
@@ -47,6 +47,8 @@ RESERVED_KEYS_TARGET = [
     "filters",
     "image_subs",
 ]
+ADHOC_TARGET = "__ADHOC__"
+
 filters = {}
 def load_config(config_file=DEFAULT_CONFIG_FILE):
     """Reload config from a YAML file."""
@@ -65,6 +67,19 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         assert(config["content_static_path"])
         if "prince_executable" not in config or not config["prince_executable"]:
             config["prince_executable"] = "prince" # A reasonable default
+
+        # Warn if any pages aren't part of a target
+        for page in config["pages"]:
+            if "targets" not in page:
+                if "name" in page:
+                    logging.warn("Page %s is not part of any targets." %
+                                 page["name"])
+                else:
+                    logging.warn("Page %s is not part of any targets." % page)
+            if "md" in page and "name" not in page:
+                logging.info("Guessing page name for page %s" % page)
+                page_path = os.path.join(config["content_path"], page["md"])
+                page["name"] = guess_title_from_md_file(page_path)
 
         # Figure out which filters we need and import them
         filternames = set()
@@ -156,6 +171,75 @@ def get_target(target):
         # Eh, it's probably a target, just return it
         return target
 
+def make_adhoc_target(inpages, no_cover):
+    t = {
+        "name": ADHOC_TARGET,
+        "display_name": "(Untitled)",
+        "sidebar": "toc" # should probably make this default anyway?
+    }
+
+    if not no_cover:
+        indexpage = next(p for p in config["pages"]
+            if p["html"] == "index.html")
+        indexpage["targets"].append(ADHOC_TARGET)
+
+    if len(inpages) == 1:
+        t["display_name"] = guess_title_from_md_file(inpages[0])
+
+    for inpage in inpages:
+        # Figure out the actual filename and location of this infile
+        # and set the content source dir appropriately
+        in_dir, in_file = os.path.split(inpage)
+        config["content_path"] = in_dir
+
+        # Figure out what html file to output to
+        ENDS_IN_MD = re.compile("\.md$", re.I)
+        if re.search(ENDS_IN_MD, in_file):
+            out_html_file = re.sub(ENDS_IN_MD, ".html", in_file)
+        else:
+            out_html_file = in_file+".html"
+
+        # Try to come up with a reasonable page title
+        page_title = guess_title_from_md_file(inpage)
+
+        new_page = {
+            "name": page_title,
+            "md": in_file,
+            "html": out_html_file,
+            "targets": [ADHOC_TARGET],
+            "category": "Pages",
+            "pp_env": in_dir,
+        }
+        config["pages"].append(new_page)
+
+    config["targets"].append(t)
+
+    return t
+
+def guess_title_from_md_file(filepath):
+    with open(filepath, "r") as f:
+        line1 = f.readline()
+        line2 = f.readline()
+
+        # look for headers in the "followed by ----- or ===== format"
+        ALT_HEADER_REGEX = re.compile("^[=-]{3,}$")
+        if ALT_HEADER_REGEX.match(line2):
+            possible_header = line1
+            if possible_header.strip():
+                return possible_header.strip()
+
+        # look for headers in the "## abc ## format"
+        HEADER_REGEX = re.compile("^#+\s*(.+[^#\s])\s*#*$")
+        m = HEADER_REGEX.match(line1)
+        if m:
+            possible_header = m.group(1)
+            if possible_header.strip():
+                return possible_header.strip()
+
+    #basically if the first line's not a markdown header, we give up and use
+    # the filename instead
+    return os.path.basename(filepath)
+
 def get_filters_for_page(page, target=None):
     ffp = set()
     target = get_target(target)
@@ -171,7 +255,7 @@ def parse_markdown(page, target=None, pages=None):
     logging.info("Preparing page %s" % page["name"])
 
     # Preprocess Markdown using this Jinja environment
-    pp_env = setup_pp_env()
+    pp_env = setup_pp_env(page)
 
     # We'll apply these filters to the page
     page_filters = get_filters_for_page(page, target)
@@ -271,9 +355,8 @@ def get_pages(target=None):
     if target["name"]:
         #filter pages that aren't part of this target
         def should_include(page, target_name):
-            #If no target list specified, then include in all targets
             if "targets" not in page:
-                return True
+                return False
             if target_name in page["targets"]:
                 return True
             else:
@@ -308,8 +391,16 @@ def read_markdown_local(filename, pp_env, target=None):
     target = get_target(target)
     pages = get_pages(target)
     logging.info("reading markdown from file: %s" % filename)
-    md_raw = pp_env.get_template(filename)
-    return md_raw.render(target=target, pages=pages)
+    try:
+        md_raw = pp_env.get_template(filename)
+        md_out = md_raw.render(target=target, pages=pages)
+    except TemplateError:
+        logging.warn("Error pre-processing page %s; trying to load it raw"
+                     % filename)
+        fpath = pp_env.loader.searchpath[0]
+        with open(os.path.join(fpath,filename), "r") as f:
+            md_out = f.read()
+    return md_out
 
 
 def read_markdown_remote(url):
@@ -348,8 +439,11 @@ def copy_static_files(template_static=True, content_static=True, out_path=None):
                                            os.path.basename(content_static_src))
         copy_tree(content_static_src, content_static_dst)
 
-def setup_pp_env():
-    pp_env = Environment(loader=FileSystemLoader(config["content_path"]))
+def setup_pp_env(page=None):
+    if not page or "pp_dir" not in page:
+        pp_env = Environment(loader=FileSystemLoader(config["content_path"]))
+    else:
+        pp_env = Environment(loader=FileSystemLoader(page["pp_dir"]))
     #Example: if we want to add custom functions to the md files
     #pp_env.globals['foo'] = lambda x: "FOO %s"%x
     return pp_env
@@ -419,12 +513,15 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
                                               pages=pages)
 
             except Exception as e:
+                import traceback
                 if bypass_errors:
+                    traceback.print_tb(e.__traceback__)
                     logging.warning( ("Skipping page %s " +
                           "due to error fetching contents: %s") %
                            (currentpage["name"], e) )
                     continue
                 else:
+                    traceback.print_tb(e.__traceback__)
                     exit("Error when fetching page %s: %s" %
                          (currentpage["name"], e) )
         else:
@@ -539,10 +636,6 @@ def githubify(md_file_name, target=None):
     """Wrapper - make the markdown resemble GitHub flavor"""
     target = get_target(target)
 
-#    filein = os.path.join(config["content_path"], md_file_name)
-#    logging.info("opening source md file %s"%filein)
-#    with open(filein, "r") as f:
-#        md = f.read()
     pages = get_pages()
     logging.info("getting markdown for page %s" % md_file_name)
     md = get_markdown_for_page(md_file_name,
@@ -566,7 +659,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Generate static site from markdown and templates.')
     parser.add_argument("--watch", "-w", action="store_true",
-                        help="Watch for changes and re-generate output."+\
+                        help="Watch for changes and re-generate output. "+\
                              "This runs until force-quit.")
     parser.add_argument("--pdf", type=str,
                         help="Output a PDF to this file. Requires Prince.")
@@ -585,6 +678,13 @@ if __name__ == "__main__":
     parser.add_argument("--copy_static", "-s", action="store_true",
                         help="Copy static files to the out dir",
                         default=False)
+    parser.add_argument("--pages", type=str, help="Build markdown page(s) "+\
+                        "that aren't described in the config.", nargs="+")
+    parser.add_argument("--no_cover", "-n", action="store_true",
+                        help="(with --pages only) Don't automatically add a "+\
+                        "cover page / index.html file.")
+    parser.add_argument("--title", type=str, help="Override target display "+\
+                        "name. Useful when passing multiple args to --pages.")
     parser.add_argument("--list_targets_only", "-l", action="store_true",
                         help="Don't build anything, just display list of "+
                         "known targets from the config file.")
@@ -611,6 +711,14 @@ if __name__ == "__main__":
 
     if cli_args.out_dir:
         config["out_path"] = cli_args.out_dir
+
+    if cli_args.pages:
+        make_adhoc_target(cli_args.pages, cli_args.no_cover)
+        cli_args.target = ADHOC_TARGET
+
+    if cli_args.title:
+        target = get_target(cli_args.target)
+        target["display_name"] = cli_args.title
 
     if cli_args.githubify:
         githubify(cli_args.githubify, cli_args.target)

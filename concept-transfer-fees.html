@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -167,13 +170,13 @@
 <li>For FXMaker to receive 90.18 EUR.ACME, Salazar must send 91.0818 EUR.ACME.</li>
 </ul>
 <h1 id="technical-details">Technical Details</h1>
-<p>The transfer fee is represented by a setting on the <a href="concept-issuing-and-operational-addresses.html">issuing address</a>. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0% or greater than 100%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different <a href="concept-issuing-and-operational-addresses.html">issuing addresses</a> for each currency.</p>
+<p>The transfer fee is represented by a setting on the <a href="concept-issuing-and-operational-addresses.html">issuing address</a>. The transfer fee has a maximum precision of 9 digits, and cannot be less than 0%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different <a href="concept-issuing-and-operational-addresses.html">issuing addresses</a> for each currency.</p>
 <h2 id="rippleapi">RippleAPI</h2>
-<p>In RippleAPI, the transfer fee is specified in the <code>transferRate</code> field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A <code>transferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transferRate</code> is set to no fee. The value of <code>transferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. The value <code>null</code> is a special case for no fee, equivalent to <code>1000000000</code>.</p>
+<p>In RippleAPI, the transfer fee is specified in the <code>transferRate</code> field, as a decimal which represents the amount you must send for the recipient to get 1 unit of the same currency. A <code>transferRate</code> of <code>1.005</code> is equivalent to a transfer fee of 0.5%. By default, the <code>transferRate</code> is set to no fee. The value of <code>transferRate</code> cannot be less than <code>1.0</code> or more than <code>4.294967295</code>. The value <code>null</code> is a special case for no fee, equivalent to <code>1000000000</code>.</p>
 <p>A financial institution can send a <a href="reference-rippleapi.html#settings">Settings transaction</a> from its <a href="concept-issuing-and-operational-addresses.html">issuing address</a> to change the <code>transferRate</code> for its issuances.</p>
 <p>You can check an account's <code>transferRate</code> with the <a href="reference-rippleapi.html#getsettings">getSettings method</a>.</p>
 <h2 id="rippled">rippled</h2>
-<p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set at <code>1000000000</code>, indicating no fee. The value of <code>TransferRate</code> cannot be less than <code>1000000000</code> or more than <code>2000000000</code>. However, value <code>0</code> is special case for no fee, equivalent to <code>1000000000</code>.</p>
+<p>In <code>rippled</code>'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the <code>TransferRate</code> field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A <code>TransferRate</code> of <code>1005000000</code> is equivalent to a transfer fee of 0.5%. By default, the <code>TransferRate</code> is set to no fee. The value of <code>TransferRate</code> cannot be less than <code>1000000000</code> or more than <code>4294967295</code> (the maximum value of a 32-bit unsigned integer). The value <code>0</code> is special case for no fee, equivalent to <code>1000000000</code>.</p>
 <p>A financial institution can submit an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> from its <a href="concept-issuing-and-operational-addresses.html">issuing address</a> to change the <code>TransferRate</code> for its issuances.</p>
 <p>You can check an account's <code>TransferRate</code> with the <a href="reference-rippled.html#account-info"><code>account_info</code> command</a>. If the <code>TransferRate</code> is omitted, then that indicates no fee.</p>
     </div>

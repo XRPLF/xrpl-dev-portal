@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -184,7 +187,7 @@
 <li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.</li>
 <li>Transaction results are no longer provisional, success or failure is now final and immutable.</li>
 </ol>
-<p><strong>Note:</strong> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.</p>
+<p class="devportal-callout note"><strong>Note:</strong> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.</p>
 <p>APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, <em>immutable</em>, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.</p>
 <p>While applying transactions, <code>rippled</code> servers use the <em>last validated ledger</em>, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it form the ledger history.</p>
 <p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>

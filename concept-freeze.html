@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -281,7 +284,7 @@
   "fee_mult_max": 1000
 }
 </code></pre>
-<p><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
 <h3 id="using-rippleapi">Using RippleAPI</h3>
 <p>To enable or disable Individual Freeze on a specific trust line, prepare a <em>Trustline</em> transaction using the <a href="reference-rippleapi.html#preparetrustline">prepareTrustline</a> method. The fields of the <code>trustline</code> parameter should be set as follows:</p>
 <table>
@@ -396,7 +399,7 @@ api.connect().then(() =&gt; {
   "fee_mult_max": 1000
 }
 </code></pre>
-<p><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
 <h3 id="using-rippleapi-1">Using RippleAPI</h3>
 <p>To enable or disable Global Freeze on an address, prepare a <strong>Settings</strong> transaction using the <a href="reference-rippleapi.html#preparesettings">prepareSettings</a> method. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>
@@ -477,7 +480,7 @@ api.connect().then(() =&gt; {
   "fee_mult_max": 1000
 }
 </code></pre>
-<p><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
 <h3 id="using-rippleapi-2">Using RippleAPI</h3>
 <p>To enable No Freeze on an address, prepare a <strong>Settings</strong> transaction using the <a href="reference-rippleapi.html#preparesettings">prepareSettings</a> method. Once enabled, you cannot disable No Freeze. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>

@@ -98,8 +98,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | TBD |
-| [MultiSign](#multisign)         | v0.31.0    | Expected 2016-06-01 |
-| [FeeEscalation](#feeescalation) | v0.31.0    | Expected 2016-05-18 |
+| [MultiSign](#multisign)         | v0.31.0    | Expected 2016-06-27 |
+| [FeeEscalation](#feeescalation) | v0.31.0    | 2016-05-05T16:33:22Z in ledger 21225473 |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
 

@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -138,6 +141,8 @@
 <li class="level-2"><a href="#more-information">More Information</a></li>
 <li class="level-1"><a href="#api-method-reference">API Method Reference</a></li>
 <li class="level-2"><a href="#get-ledger">Get Ledger</a></li>
+<li class="level-2"><a href="#get-ledger-validations">Get Ledger Validations</a></li>
+<li class="level-2"><a href="#get-ledger-validation">Get Ledger Validation</a></li>
 <li class="level-2"><a href="#get-transaction">Get Transaction</a></li>
 <li class="level-2"><a href="#get-transactions">Get Transactions</a></li>
 <li class="level-2"><a href="#get-payments">Get Payments</a></li>
@@ -151,8 +156,20 @@
 <li class="level-2"><a href="#get-exchange-volume">Get Exchange Volume</a></li>
 <li class="level-2"><a href="#get-payment-volume">Get Payment Volume</a></li>
 <li class="level-2"><a href="#get-issued-value">Get Issued Value</a></li>
+<li class="level-2"><a href="#get-xrp-distribution">Get XRP Distribution</a></li>
 <li class="level-2"><a href="#get-top-currencies">Get Top Currencies</a></li>
 <li class="level-2"><a href="#get-top-markets">Get Top Markets</a></li>
+<li class="level-2"><a href="#get-transaction-costs">Get Transaction Costs</a></li>
+<li class="level-2"><a href="#get-topology">Get Topology</a></li>
+<li class="level-2"><a href="#get-topology-nodes">Get Topology Nodes</a></li>
+<li class="level-2"><a href="#get-topology-node">Get Topology Node</a></li>
+<li class="level-2"><a href="#get-topology-links">Get Topology Links</a></li>
+<li class="level-2"><a href="#get-validator">Get Validator</a></li>
+<li class="level-2"><a href="#get-validators">Get Validators</a></li>
+<li class="level-2"><a href="#get-validator-validations">Get Validator Validations</a></li>
+<li class="level-2"><a href="#get-validations">Get Validations</a></li>
+<li class="level-2"><a href="#get-single-validator-reports">Get Single Validator Reports</a></li>
+<li class="level-2"><a href="#get-daily-validator-reports">Get Daily Validator Reports</a></li>
 <li class="level-2"><a href="#get-all-gateways">Get All Gateways</a></li>
 <li class="level-2"><a href="#get-gateway">Get Gateway</a></li>
 <li class="level-2"><a href="#get-currency-image">Get Currency Image</a></li>
@@ -170,10 +187,13 @@
 <li class="level-2"><a href="#get-account-value-stats">Get Account Value Stats</a></li>
 <li class="level-2"><a href="#health-check-api">Health Check - API</a></li>
 <li class="level-2"><a href="#health-check-ledger-importer">Health Check - Ledger Importer</a></li>
+<li class="level-2"><a href="#health-check-nodes-etl">Health Check - Nodes ETL</a></li>
+<li class="level-2"><a href="#health-check-validations-etl">Health Check - Validations ETL</a></li>
 <li class="level-1"><a href="#api-conventions">API Conventions</a></li>
 <li class="level-2"><a href="#basic-types">Basic Types</a></li>
 <li class="level-3"><a href="#numbers-and-precision">Numbers and Precision</a></li>
 <li class="level-3"><a href="#addresses">Addresses</a></li>
+<li class="level-3"><a href="#public-keys">Public Keys</a></li>
 <li class="level-3"><a href="#hashes">Hashes</a></li>
 <li class="level-3"><a href="#timestamps">Timestamps</a></li>
 <li class="level-3"><a href="#ledger-index">Ledger Index</a></li>
@@ -194,6 +214,9 @@
 <li class="level-2"><a href="#balance-change-descriptors">Balance Change Descriptors</a></li>
 <li class="level-3"><a href="#change-types">Change Types</a></li>
 <li class="level-2"><a href="#volume-objects">Volume Objects</a></li>
+<li class="level-2"><a href="#server-objects">Server Objects</a></li>
+<li class="level-2"><a href="#link-objects">Link Objects</a></li>
+<li class="level-2"><a href="#validation-objects">Validation Objects</a></li>
 <li class="level-1"><a href="#running-the-historical-database">Running the Historical Database</a></li>
 <li class="level-2"><a href="#installation">Installation</a></li>
 <li class="level-3"><a href="#dependencies">Dependencies</a></li>
@@ -225,7 +248,7 @@
 </ul>
 <h1 id="api-method-reference">API Method Reference</h1>
 <p>The Data API v2 provides a REST API with the following methods:</p>
-<p>General Methods:</p>
+<p>Ledger Contents Methods:</p>
 <ul>
 <li><a href="#get-ledger">Get Ledger - <code>GET /v2/ledgers/{:ledger_identifier}</code></a></li>
 <li><a href="#get-transaction">Get Transaction - <code>GET /v2/transactions/{:hash}</code></a></li>
@@ -241,11 +264,9 @@
 <li><a href="#get-exchange-volume">Get Exchange Volume - <code>GET /v2/network/exchange_volume</code></a></li>
 <li><a href="#get-payment-volume">Get Payment Volume - <code>GET /v2/network/payment_volume</code></a></li>
 <li><a href="#get-issued-value">Get Issued Value - <code>GET /v2/network/issued_value</code></a></li>
+<li><a href="#get-xrp-distribution">Get XRP Distribution - <code>GET /v2/network/xrp_distribution</code></a></li>
 <li><a href="#get-top-currencies">Get Top Currencies - <code>GET /v2/network/top_currencies</code></a></li>
 <li><a href="#get-top-markets">Get Top Markets - <code>GET /v2/network/top_markets</code></a></li>
-<li><a href="#get-all-gateways">Get All Gateways - <code>GET /v2/gateways</code></a></li>
-<li><a href="#get-gateway">Get Gateway - <code>GET /v2/gateways/{:gateway}</code></a></li>
-<li><a href="#get-currency-image">Get Currency Image - <code>GET /v2/currencies/{:currencyimage}</code></a></li>
 </ul>
 <p>Account Methods:</p>
 <ul>
@@ -262,13 +283,37 @@
 <li><a href="#get-account-transaction-stats">Get Account Transaction Stats - <code>GET /v2/accounts/{:address}/stats/transactions</code></a></li>
 <li><a href="#get-account-value-stats">Get Account Value Stats - <code>GET /v2/accounts/{:address}/stats/value</code></a></li>
 </ul>
+<p>Gateway Information Methods:</p>
+<ul>
+<li><a href="#get-all-gateways">Get All Gateways - <code>GET /v2/gateways</code></a></li>
+<li><a href="#get-gateway">Get Gateway - <code>GET /v2/gateways/{:gateway}</code></a></li>
+<li><a href="#get-currency-image">Get Currency Image - <code>GET /v2/currencies/{:currencyimage}</code></a></li>
+</ul>
+<p>Validation Network Methods:</p>
+<ul>
+<li><a href="#get-transaction-costs">Get Transaction Costs - <code>GET /v2/network/fees</code></a></li>
+<li><a href="#get-ledger-validations">Get Ledger Validations - <code>GET /v2/ledger/{:hash}/validations</code></a></li>
+<li><a href="#get-ledger-validation">Get Ledger Validation - <code>GET /v2/ledger/{:hash}/validations/{:pubkey}</code></a></li>
+<li><a href="#get-topology">Get Topology - <code>GET /v2/network/topology</code></a></li>
+<li><a href="#get-topology-nodes">Get Topology Nodes - <code>GET /v2/network/topology/nodes</code></a></li>
+<li><a href="#get-topology-node">Get Topology Node - <code>GET /v2/network/topology/nodes/{:pubkey}</code></a></li>
+<li><a href="#get-topology-links">Get Topology Links - <code>GET /v2/network/topology/links</code></a></li>
+<li><a href="#get-validations">Get Validations  - <code>GET /v2/network/validations</code></a></li>
+<li><a href="#get-validator">Get Validator  - <code>GET /v2/network/validators/{:pubkey}</code></a></li>
+<li><a href="#get-validators">Get Validators  - <code>GET /v2/network/validators</code></a></li>
+<li><a href="#get-validator-validations">Get Validator Validations - <code>GET /v2/network/validators/{:pubkey}/validations</code></a></li>
+<li><a href="#get-single-validator-reports">Get Single Validator Reports - <code>GET /v2/network/validators/{:pubkey}/reports</code></a></li>
+<li><a href="#get-daily-validator-reports">Get Daily Validator Reports - <code>GET /v2/network/validator_reports</code></a></li>
+</ul>
 <p>Health Checks:</p>
 <ul>
 <li><a href="#health-check-api">API Health Check - <code>GET /v2/health/api</code></a></li>
 <li><a href="#health-check-ledger-importer">Importer Health Check - <code>GET /v2/health/importer</code></a></li>
+<li><a href="#health-check-nodes-etl">Nodes ETL Health Check - <code>GET /v2/health/nodes_etl</code></a></li>
+<li><a href="#health-check-validations-etl">Validations ETL Health Check - <code>GET /v2/health/validations_etl</code></a></li>
 </ul>
 <h2 id="get-ledger">Get Ledger</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getLedger.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specific Ledger by hash, index, date, or latest validated.</p>
 <h4 id="request-format">Request Format</h4>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">REST</a></li></ul>
@@ -277,7 +322,7 @@
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-ledger">Try it! &gt;</a></p>
-<p>The following URL parameters are required by this API endpoint:</p>
+<p>This method requires the following URL parameters:</p>
 <table>
 <thead>
 <tr>
@@ -294,7 +339,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -340,7 +385,7 @@
 <tr>
 <td><code>ledger</code></td>
 <td><a href="#ledger-objects">Ledger object</a></td>
-<td>The requested ledger</td>
+<td>The requested ledger.</td>
 </tr>
 </tbody>
 </table>
@@ -365,17 +410,212 @@
     }
 }
 </code></pre>
-<h2 id="get-transaction">Get Transaction</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js" title="Source">[Source]<br/></a></p>
-<p>Retrieve a specific transaction by its identifying hash.</p>
+<h2 id="get-ledger-validations">Get Ledger Validations</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledger versions that are outside the validated ledger chain. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<p class="devportal-callout note"><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
 <h4 id="request-format-1">Request Format</h4>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-1-0" style="position: static;"><pre><code>GET /v2/transactions/{:hash}
+<div class="code_sample" id="code-1-0" style="position: static;"><pre><code>GET /v2/ledgers/{:ledger_hash}/validations
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-ledger-validations">Try it! &gt;</a></p>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ledger_hash</code></td>
+<td><a href="#hashes">Hash</a></td>
+<td>Ledger hash to retrieve validations for.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-1">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String - <code>success</code></td>
+<td>Indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>ledger_hash</code></td>
+<td>String - <a href="#hashes">Hash</a></td>
+<td>The identifying hash of the ledger version requested.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of validations returned.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
+</tr>
+<tr>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
+<td>All known validation votes for the ledger version.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-1">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/ledgers/A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7/validations?limit=2
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "ledger_hash": "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7",
+  "count": 2,
+  "marker": "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7|n9KDJnMxfjH5Ez8DeWzWoE9ath3PnsmkUy3GAHiVjE7tn7Q7KhQ2|20160608001732",
+  "validations": [
+    {
+      "count": 27,
+      "first_datetime": "2016-06-08T00:17:32.352Z",
+      "last_datetime": "2016-06-08T00:17:32.463Z",
+      "ledger_hash": "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7",
+      "reporter_public_key": "n9KJb7NMxGySRcjCqh69xEPMUhwJx22qntYYXsnUqYgjsJhNoW7g",
+      "signature": "304402204C751D0033070EBC008786F0ECCA8E29195FD7DD8D22498EB6E4E732905FC7090220091F458976904E7AE4633A1EC405175E6A126798E4896DD452853B887B1E6359",
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    {
+      "count": 3,
+      "first_datetime": "2016-06-08T00:17:32.653Z",
+      "last_datetime": "2016-06-08T00:17:32.673Z",
+      "ledger_hash": "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7",
+      "reporter_public_key": "n9JCK5AML7Ejv3TcJmnvJk5qeYhf7Q9YwScjz5PhtUbtWCKH3NAm",
+      "signature": "3045022100A48E5AF6EA9D0ACA6FDE18536081A7D2182535579EA580C3D0B0F18C2556C5D30220521615A3D677376069F8F3E608B59F14482DDE4CD2A304DE578B6CCE2F5E8D54",
+      "validation_public_key": "n9K6YbD1y9dWSAG2tbdFwVCtcuvUeNkBwoy9Z6BmeMra9ZxsMTuo"
+    }
+  ]
+}
+</code></pre>
+<h2 id="get-ledger-validation">Get Ledger Validation</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve a validation vote recorded for a specific ledger hash by a specific validator.  This dataset includes ledger versions that are outside the validated ledger chain. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<p class="devportal-callout note"><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
+<h4 id="request-format-2">Request Format</h4>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><pre><code>GET /v2/ledgers/{:ledger_hash}/validations/{:pubkey}
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-ledger-validation">Try it! &gt;</a></p>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ledger_hash</code></td>
+<td><a href="#hashes">Hash</a></td>
+<td>Ledger hash to retrieve validations for.</td>
+</tr>
+<tr>
+<td><code>pubkey</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Validator public key.</td>
+</tr>
+</tbody>
+</table>
+<p>This request takes no query parameters.</p>
+<h4 id="response-format-2">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body containing a <strong><a href="#validation-objects">Validation Object</a></strong> with the following additional field:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that this is a successful response.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-2">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/ledgers/A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7/validations/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "count": 27,
+  "first_datetime": "2016-06-08T00:17:32.352Z",
+  "last_datetime": "2016-06-08T00:17:32.463Z",
+  "ledger_hash": "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7",
+  "reporter_public_key": "n9KJb7NMxGySRcjCqh69xEPMUhwJx22qntYYXsnUqYgjsJhNoW7g",
+  "signature": "304402204C751D0033070EBC008786F0ECCA8E29195FD7DD8D22498EB6E4E732905FC7090220091F458976904E7AE4633A1EC405175E6A126798E4896DD452853B887B1E6359",
+  "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+  "result": "success"
+}
+</code></pre>
+<h2 id="get-transaction">Get Transaction</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getTransactions.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve a specific transaction by its identifying hash.</p>
+<h4 id="request-format-3">Request Format</h4>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><pre><code>GET /v2/transactions/{:hash}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transaction">Try it! &gt;</a></p>
-<p>The following URL parameters are required by this API endpoint:</p>
+<p>This method requires the following URL parameters:</p>
 <table>
 <thead>
 <tr>
@@ -392,7 +632,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -409,7 +649,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-1">Response Format</h4>
+<h4 id="response-format-3">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -428,11 +668,11 @@
 <tr>
 <td><code>transaction</code></td>
 <td><a href="#transaction-objects">Transaction object</a></td>
-<td>The requested transaction</td>
+<td>The requested transaction.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-1">Example</h4>
+<h4 id="example-3">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/transactions/03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A
 </code></pre>
@@ -490,16 +730,16 @@
 }
 </code></pre>
 <h2 id="get-transactions">Get Transactions</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getTransactions.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve transactions by time</p>
-<h4 id="request-format-2">Request Format</h4>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">REST</a></li></ul>
+<h4 id="request-format-4">Request Format</h4>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-2-0" style="position: static;"><pre><code>GET /v2/transactions/
+<div class="code_sample" id="code-4-0" style="position: static;"><pre><code>GET /v2/transactions/
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transactions">Try it! &gt;</a></p>
-<p>Optionally, you can include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -551,7 +791,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-2">Response Format</h4>
+<h4 id="response-format-4">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -575,21 +815,22 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) Pagination marker</td>
+<td>(May be omitted) Pagination marker.</td>
 </tr>
 <tr>
 <td><code>transactions</code></td>
 <td>Array of <a href="#transaction-objects">Transaction object</a></td>
-<td>The requested transactions</td>
+<td>The requested transactions.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-2">Example</h4>
+<h4 id="example-4">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/transactions/?result=tecPATH_DRY&amp;limit=2&amp;type=Payment
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 2,
   "marker": "20130106022000|000000053869|00000",
@@ -690,20 +931,20 @@
 }
 </code></pre>
 <h2 id="get-payments">Get Payments</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getPayments.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getPayments.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Payments over time, where Payments are defined as <code>Payment</code> type transactions where the sender of the transaction is not also the destination. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>Results can be returned as individual payments, or aggregated to a specific list of intervals if currency and issuer are provided.</p>
-<h4 id="request-format-3">Request Format</h4>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">REST - All Currencies</a></li><li><a href="#code-3-1">REST - Specific Currency</a></li></ul>
+<h4 id="request-format-5">Request Format</h4>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">REST - All Currencies</a></li><li><a href="#code-5-1">REST - Specific Currency</a></li></ul>
 
-<div class="code_sample" id="code-3-0" style="position: static;"><pre><code>GET /v2/payments/
+<div class="code_sample" id="code-5-0" style="position: static;"><pre><code>GET /v2/payments/
 </code></pre></div>
 
-<div class="code_sample" id="code-3-1" style="position: static;"><pre><code>GET /v2/payments/{:currency}
+<div class="code_sample" id="code-5-1" style="position: static;"><pre><code>GET /v2/payments/{:currency}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-payments">Try it! &gt;</a></p>
-<p>This method accepts the following URL parameters:</p>
+<p>This method uses the following URL parameters:</p>
 <table>
 <thead>
 <tr>
@@ -720,7 +961,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -748,7 +989,7 @@
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order.</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
@@ -767,7 +1008,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-3">Response Format</h4>
+<h4 id="response-format-5">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -786,17 +1027,17 @@
 <tr>
 <td><code>count</code></td>
 <td>Integer</td>
-<td>Number of Transactions returned</td>
+<td>Number of payments returned.</td>
 </tr>
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>payments</code></td>
-<td>Array of <a href="#payment-objects">Payment Objects</a>, or array of aggregate objects</td>
-<td>The requested payments</td>
+<td>Array of <a href="#payment-objects">Payment Objects</a>, or array of aggregate objects.</td>
+<td>The requested payments.</td>
 </tr>
 </tbody>
 </table>
@@ -829,7 +1070,7 @@
 <tr>
 <td><code>start</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The start time of this interval</td>
+<td>The start time of this interval.</td>
 </tr>
 <tr>
 <td><code>total_amount</code></td>
@@ -843,7 +1084,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-3">Example</h4>
+<h4 id="example-5">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/payments/BTC+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q?limit=2
 </code></pre>
@@ -915,12 +1156,12 @@
 }
 </code></pre>
 <h2 id="get-exchanges">Get Exchanges</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchanges.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getExchanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Exchanges for a given currency pair over time.  Results can be returned as individual exchanges or aggregated to a specific list of intervals</p>
-<h4 id="request-format-4">Request Format</h4>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">REST</a></li></ul>
+<h4 id="request-format-6">Request Format</h4>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-4-0" style="position: static;"><pre><code>GET /v2/exchanges/{:base}/{:counter}
+<div class="code_sample" id="code-6-0" style="position: static;"><pre><code>GET /v2/exchanges/{:base}/{:counter}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchanges">Try it! &gt;</a></p>
@@ -946,7 +1187,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -984,7 +1225,7 @@
 <tr>
 <td><code>limit</code></td>
 <td>Integer</td>
-<td>Maximum results per page (defaults to 200). Cannot be more than 20,000 if <code>reduce</code> is true. Otherwise cannot be more than 1,000.</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 20,000 if <code>reduce</code> is true. Otherwise cannot be more than 1,000.</td>
 </tr>
 <tr>
 <td><code>marker</code></td>
@@ -1003,7 +1244,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-4">Response Format</h4>
+<h4 id="response-format-6">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1027,21 +1268,22 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>exchanges</code></td>
 <td>Array of <a href="#exchange-objects">Exchange Objects</a></td>
-<td>The requested exchanges</td>
+<td>The requested exchanges.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-4">Example</h4>
+<h4 id="example-6">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/exchanges/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?descending=true&amp;limit=3&amp;result=tesSUCCESS&amp;type=OfferCreate
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "count": 3,
     "marker": "USD|rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q|XRP||20151021222220|000016612683|00017|00000",
@@ -1109,12 +1351,12 @@
 }
 </code></pre>
 <h2 id="get-exchange-rates">Get Exchange Rates</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getExchangeRate.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getExchangeRate.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve an exchange rate for a given currency pair at a specific time.</p>
-<h4 id="request-format-5">Request Format</h4>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">REST</a></li></ul>
+<h4 id="request-format-7">Request Format</h4>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-5-0" style="position: static;"><pre><code>GET /v2/exchange_rates/{:base}/{:counter}
+<div class="code_sample" id="code-7-0" style="position: static;"><pre><code>GET /v2/exchange_rates/{:base}/{:counter}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchange-rates">Try it! &gt;</a></p>
@@ -1129,18 +1371,18 @@
 </thead>
 <tbody>
 <tr>
-<td>:base</td>
+<td><code>base</code></td>
 <td>String</td>
-<td>Base currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a> unless it's XRP.</td>
+<td>Base currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a>. Omit the <code>+</code> and the issuer for XRP.</td>
 </tr>
 <tr>
-<td>:counter</td>
+<td><code>counter</code></td>
 <td>String</td>
-<td>Counter currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a> unless it's XRP.</td>
+<td>Counter currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a>. Omit the <code>+</code> and the issuer for XRP.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1162,7 +1404,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-5">Response Format</h4>
+<h4 id="response-format-7">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1187,27 +1429,28 @@
 </table>
 <p>All exchange rates are calcuated by converting the base currency and counter currency to XRP.</p>
 <p>The rate is derived from the volume weighted average over the calendar day specified, averaged with the volume weighted average of the last 50 trades within the last 14 days.</p>
-<h4 id="example-5">Example</h4>
+<h4 id="example-7">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/exchange_rates/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?date=2015-11-13T00:00:00Z
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "rate": "224.65709"
 }
 </code></pre>
 <h2 id="normalize">Normalize</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/normalize.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/normalize.js" title="Source">[Source]<br/></a></p>
 <p>Convert an amount from one currency and issuer to another, using the network exchange rates.</p>
-<h4 id="request-format-6">Request Format</h4>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">REST</a></li></ul>
+<h4 id="request-format-8">Request Format</h4>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-6-0" style="position: static;"><pre><code>GET /v2/normalize
+<div class="code_sample" id="code-8-0" style="position: static;"><pre><code>GET /v2/normalize
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#normalize">Try it! &gt;</a></p>
-<p>This method uses the following query parameters:</p>
+<p>You must provide at least some of the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1220,12 +1463,12 @@
 <tr>
 <td><code>amount</code></td>
 <td>Number</td>
-<td>(Required) Amount of currency to normalize</td>
+<td>(Required) Amount of currency to normalize.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The currency code of the <code>amount</code> to convert from. (Defaults to XRP.)</td>
+<td>The currency code of the <code>amount</code> to convert from. Defaults to XRP.</td>
 </tr>
 <tr>
 <td><code>issuer</code></td>
@@ -1235,7 +1478,7 @@
 <tr>
 <td><code>exchange_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The currency to convert to. (Defaults to XRP.)</td>
+<td>The currency to convert to. Defaults to XRP.</td>
 </tr>
 <tr>
 <td><code>exchange_issuer</code></td>
@@ -1245,16 +1488,16 @@
 <tr>
 <td><code>date</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Convert according to the exchange rate at this time. (Defaults to the current time.)</td>
+<td>Convert according to the exchange rate at this time. Defaults to the current time.</td>
 </tr>
 <tr>
 <td><code>strict</code></td>
 <td>Boolean</td>
-<td>If true, do not use exchange rates that are determined by less than 10 exchanges. (Defaults to true.)</td>
+<td>If <code>true</code>, do not use exchange rates that are determined by less than 10 exchanges. Defaults to <code>true</code>.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-6">Response Format</h4>
+<h4 id="response-format-8">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1273,7 +1516,7 @@
 <tr>
 <td><code>amount</code></td>
 <td>Number</td>
-<td>Pre-conversion amount specified in the request</td>
+<td>Pre-conversion amount specified in the request.</td>
 </tr>
 <tr>
 <td><code>converted</code></td>
@@ -1288,12 +1531,13 @@
 </tbody>
 </table>
 <p>All exchange rates are calculating by converting both currencies to XRP.</p>
-<h4 id="example-6">Example</h4>
+<h4 id="example-8">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/normalize?amount=100&amp;currency=XRP&amp;exchange_currency=USD&amp;exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "amount": "100",
   "converted": "0.4267798022744489",
@@ -1301,16 +1545,16 @@
 }
 </code></pre>
 <h2 id="get-daily-reports">Get Daily Reports</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/reports.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/reports.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve per account per day aggregated payment summaries</p>
-<h4 id="request-format-7">Request Format</h4>
-<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">REST</a></li></ul>
+<h4 id="request-format-9">Request Format</h4>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-7-0" style="position: static;"><pre><code>GET /v2/reports/{:date}
+<div class="code_sample" id="code-9-0" style="position: static;"><pre><code>GET /v2/reports/{:date}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-daily-reports">Try it! &gt;</a></p>
-<p>This method uses the following URL parameters:</p>
+<p>This method uses the following URL parameter:</p>
 <table>
 <thead>
 <tr>
@@ -1327,7 +1571,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1360,11 +1604,11 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-7">Response Format</h4>
+<h4 id="response-format-9">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1402,8 +1646,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Caution:</strong> This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.</p>
-<h4 id="example-7">Example</h4>
+<p class="devportal-callout caution"><strong>Caution:</strong> This method may return a very large amount of data (more than 1 megabyte), which may cause poor performance in your client application.</p>
+<h4 id="example-9">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/reports/2015-08-19T00:00:00Z?accounts=true&amp;payments=true
 </code></pre>
@@ -1510,16 +1754,16 @@
 }
 </code></pre>
 <h2 id="get-stats">Get Stats</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/stats.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/stats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve statistics about transaction activity in the Ripple Consensus Ledger, divided into intervals of time.</p>
-<h4 id="request-format-8">Request Format</h4>
-<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">REST</a></li></ul>
+<h4 id="request-format-10">Request Format</h4>
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-8-0" style="position: static;"><pre><code>GET /v2/stats
+<div class="code_sample" id="code-10-0" style="position: static;"><pre><code>GET /v2/stats
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-stats">Try it! &gt;</a></p>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1547,7 +1791,7 @@
 <tr>
 <td><code>end</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Filter results to this time and earlier</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td><code>interval</code></td>
@@ -1648,7 +1892,7 @@
 </tbody>
 </table>
 <p>If any of the metrics have a value of 0, they are omitted from the results.</p>
-<h4 id="response-format-8">Response Format</h4>
+<h4 id="response-format-10">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1672,7 +1916,7 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>stats</code></td>
@@ -1681,12 +1925,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-8">Example</h4>
+<h4 id="example-10">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/stats/?start=2015-08-30&amp;end=2015-08-31&amp;interval=day&amp;family=metric&amp;metrics=accounts_created,exchanges_count,ledger_count,payments_count
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 2,
   "stats": [
@@ -1708,12 +1953,12 @@
 }
 </code></pre>
 <h2 id="get-capitalization">Get Capitalization</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/capitalization.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/capitalization.js" title="Source">[Source]<br/></a></p>
 <p>Get the total amount of a single currency issued by a single issuer, also known as the <a href="https://en.wikipedia.org/wiki/Market_capitalization">market capitalization</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-9">Request Format</h4>
-<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">REST</a></li></ul>
+<h4 id="request-format-11">Request Format</h4>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-9-0" style="position: static;"><pre><code>GET /v2/capitaliztion/{:currency}
+<div class="code_sample" id="code-11-0" style="position: static;"><pre><code>GET /v2/capitaliztion/{:currency}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-capitalization">Try it! &gt;</a></p>
@@ -1734,7 +1979,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1767,7 +2012,7 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>descending</code></td>
@@ -1787,7 +2032,7 @@
 </tbody>
 </table>
 <p>If the request omits both <code>start</code> and <code>end</code>, the API returns only the most recent sample.</p>
-<h4 id="response-format-9">Response Format</h4>
+<h4 id="response-format-11">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -1811,22 +2056,22 @@
 <tr>
 <td><code>currency</code></td>
 <td>String</td>
-<td>Currency requested</td>
+<td>Currency requested.</td>
 </tr>
 <tr>
 <td><code>issuer</code></td>
 <td>String</td>
-<td>Issuer requested</td>
+<td>Issuer requested.</td>
 </tr>
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>rows</code></td>
 <td>Array of issuer capitalization objects</td>
-<td>The requested capitalization data</td>
+<td>The requested capitalization data.</td>
 </tr>
 </tbody>
 </table>
@@ -1852,7 +2097,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-9">Example</h4>
+<h4 id="example-11">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/capitalization/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q?start=2015-01-01T00:00:00Z&amp;end=2015-10-31&amp;interval=month
 </code></pre>
@@ -1908,12 +2153,12 @@
 }
 </code></pre>
 <h2 id="get-active-accounts">Get Active Accounts</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/activeAccounts.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/activeAccounts.js" title="Source">[Source]<br/></a></p>
 <p>Get information on which accounts are actively trading in a specific currency pair. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-10">Request Format</h4>
-<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">REST</a></li></ul>
+<h4 id="request-format-12">Request Format</h4>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-10-0" style="position: static;"><pre><code>GET /v2/active_accounts/{:base}/{:counter}
+<div class="code_sample" id="code-12-0" style="position: static;"><pre><code>GET /v2/active_accounts/{:base}/{:counter}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-active-accounts">Try it! &gt;</a></p>
@@ -1939,7 +2184,7 @@
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1971,7 +2216,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-10">Response Format</h4>
+<h4 id="response-format-12">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2000,7 +2245,7 @@
 <tr>
 <td><code>accounts</code></td>
 <td>Array of active Account Trading Objects</td>
-<td>Active trading accounts for the period</td>
+<td>Active trading accounts for the period.</td>
 </tr>
 </tbody>
 </table>
@@ -2037,7 +2282,7 @@
 <tr>
 <td><code>sell</code></td>
 <td>Object</td>
-<td>Summary of currency changes selling the base currency</td>
+<td>Summary of currency changes selling the base currency.</td>
 </tr>
 <tr>
 <td><code>sell.base_volume</code></td>
@@ -2057,7 +2302,7 @@
 <tr>
 <td><code>account</code></td>
 <td>String - Address</td>
-<td>The address whose activity this object describes</td>
+<td>The address whose activity this object describes.</td>
 </tr>
 <tr>
 <td><code>base_volume</code></td>
@@ -2076,12 +2321,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-10">Example</h4>
+<h4 id="example-12">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/active_accounts/XRP/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "count": 12,
     "exchanges_count": 11,
@@ -2157,17 +2403,17 @@
 }
 </code></pre>
 <h2 id="get-exchange-volume">Get Exchange Volume</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js" title="Source">[Source]<br/></a></p>
 <p>Get aggregated exchange volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
-<h4 id="request-format-11">Request Format</h4>
-<div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">REST</a></li></ul>
+<h4 id="request-format-13">Request Format</h4>
+<div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-11-0" style="position: static;"><pre><code>GET /v2/network/exchange_volume
+<div class="code_sample" id="code-13-0" style="position: static;"><pre><code>GET /v2/network/exchange_volume
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-exchange-volume">Try it! &gt;</a></p>
-<p>Optionally, you can include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -2210,7 +2456,7 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -2219,7 +2465,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-11">Response Format</h4>
+<h4 id="response-format-13">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2289,12 +2535,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-11">Example</h4>
+<h4 id="example-13">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/network/exchange_volume?exchange_currency=USD&amp;exchange_issuer=rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "count": 1,
     "rows": [
@@ -2372,17 +2619,17 @@
 }
 </code></pre>
 <h2 id="get-payment-volume">Get Payment Volume</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js" title="Source">[Source]<br/></a></p>
 <p>Get aggregated payment volume for a given time period. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
-<h4 id="request-format-12">Request Format</h4>
-<div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0">REST</a></li></ul>
+<h4 id="request-format-14">Request Format</h4>
+<div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-12-0" style="position: static;"><pre><code>GET /v2/network/payment_volume
+<div class="code_sample" id="code-14-0" style="position: static;"><pre><code>GET /v2/network/payment_volume
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-payment-volume">Try it! &gt;</a></p>
-<p>Optionally, you can include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -2425,7 +2672,7 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -2434,7 +2681,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-12">Response Format</h4>
+<h4 id="response-format-14">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2490,7 +2737,7 @@
 <tr>
 <td><code>count</code></td>
 <td>Number</td>
-<td>The total number of payments in this currency</td>
+<td>The total number of payments in this currency.</td>
 </tr>
 <tr>
 <td><code>rate</code></td>
@@ -2504,12 +2751,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-12">Example</h4>
+<h4 id="example-14">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/network/payment_volume
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "count": 1,
     "rows": [
@@ -2571,17 +2819,17 @@
 }
 </code></pre>
 <h2 id="get-issued-value">Get Issued Value</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/getMetric.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js" title="Source">[Source]<br/></a></p>
 <p>Get the total value of all currencies issued by major gateways over time. By default, returns only the most recent measurement. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
 <p>The API returns results in units of a single <em>display currency</em> rather than many different currencies. The conversion uses standard rates to and from XRP.</p>
-<h4 id="request-format-13">Request Format</h4>
-<div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">REST</a></li></ul>
+<h4 id="request-format-15">Request Format</h4>
+<div class="multicode" id="code-15"><ul class="codetabs"><li><a href="#code-15-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-13-0" style="position: static;"><pre><code>GET /v2/network/issued_value
+<div class="code_sample" id="code-15-0" style="position: static;"><pre><code>GET /v2/network/issued_value
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-issued-value">Try it! &gt;</a></p>
-<p>Optionally, you can include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -2619,7 +2867,7 @@
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -2628,7 +2876,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-13">Response Format</h4>
+<h4 id="response-format-15">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2684,7 +2932,7 @@
 <tr>
 <td><code>time</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The time at which this data was measured.</td>
+<td>When this data was measured.</td>
 </tr>
 <tr>
 <td><code>total</code></td>
@@ -2693,12 +2941,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-13">Example</h4>
+<h4 id="example-15">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/network/issued_value?start=2015-10-01T00:00:00&amp;end=2015-10-01T00:00:00&amp;exchange_currency=USD&amp;exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 1,
   "rows": [
@@ -2740,21 +2989,191 @@
   ]
 }
 </code></pre>
-<h2 id="get-top-currencies">Get Top Currencies</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/topCurrencies.js" title="Source">[Source]<br/></a></p>
-<p>Returns the top currencies on the Ripple Consensus Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>)</em></p>
-<h4 id="request-format-14">Request Format</h4>
-<div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0">Most Recent</a></li><li><a href="#code-14-1">By Date</a></li></ul>
+<h2 id="get-xrp-distribution">Get XRP Distribution</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/xrpDistribution.js" title="Source">[Source]<br/></a></p>
+<p>Get information on the total amount of XRP in existence and in circulation, by weekly intervals. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-16">Request Format</h4>
+<div class="multicode" id="code-16"><ul class="codetabs"><li><a href="#code-16-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-14-0" style="position: static;"><pre><code>GET /v2/network/top_currencies
+<div class="code_sample" id="code-16-0" style="position: static;"><pre><code>GET /v2/network/xrp_distribution
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-xrp-distribution">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Start time of query range. Defaults to the start of the most recent interval.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>End time of query range. Defaults to the end of the most recent interval.</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
+</tr>
+<tr>
+<td><code>descending</code></td>
+<td>Boolean</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-16">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of rows returned.</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td>Array of Distribution Objects</td>
+<td>Weekly snapshots of the XRP distribution.</td>
+</tr>
+</tbody>
+</table>
+<p>Each Distribution Object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>The time of this snapshot.</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>String</td>
+<td>Total XRP in existence.</td>
+</tr>
+<tr>
+<td><code>undistributed</code></td>
+<td>String</td>
+<td>Aggregate amount of XRP held by Ripple (the company).</td>
+</tr>
+<tr>
+<td><code>distributed</code></td>
+<td>String</td>
+<td>Aggregate amount of XRP held by others.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-16">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/xrp_distribution
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 171,
+  "rows": [
+    {
+      "date": "2016-04-10T00:00:00Z",
+      "distributed": "34918644255.77274",
+      "total": "99997725821.25714",
+      "undistributed": "65079081565.4844"
+    },
+    ...
+  ]
+}
+</code></pre>
+<h2 id="get-top-currencies">Get Top Currencies</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topCurrencies.js" title="Source">[Source]<br/></a></p>
+<p>Returns the top currencies on the Ripple Consensus Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>)</em></p>
+<h4 id="request-format-17">Request Format</h4>
+<div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">Most Recent</a></li><li><a href="#code-17-1">By Date</a></li></ul>
+
+<div class="code_sample" id="code-17-0" style="position: static;"><pre><code>GET /v2/network/top_currencies
 </code></pre></div>
 
-<div class="code_sample" id="code-14-1" style="position: static;"><pre><code>GET /v2/network/top_currencies/2016-01-01
+<div class="code_sample" id="code-17-1" style="position: static;"><pre><code>GET /v2/network/top_currencies/{:date}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-top-currencies">Try it! &gt;</a></p>
-<p>This method does not accept any query parameters.</p>
-<h4 id="response-format-14">Response Format</h4>
+<p>This method uses the following URL parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - ISO 8601 Date</td>
+<td>(Optional) Historical date to query. If omitted, use the most recent date available.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 1000. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-17">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2773,7 +3192,7 @@
 <tr>
 <td><code>date</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The time at which this data was measured.</td>
+<td>When this data was measured.</td>
 </tr>
 <tr>
 <td><code>count</code></td>
@@ -2800,12 +3219,12 @@
 <tr>
 <td><code>currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The currency this object describes</td>
+<td>The currency this object describes.</td>
 </tr>
 <tr>
 <td><code>issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The Ripple address that issues this currency</td>
+<td>The Ripple address that issues this currency.</td>
 </tr>
 <tr>
 <td><code>avg_exchange_count</code></td>
@@ -2834,62 +3253,91 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-14">Example</h4>
+<h4 id="example-17">Example</h4>
 <p>Request:</p>
-<pre><code>GET /v2/network/top_currencies/2015-12-31
+<pre><code>GET /v2/network/top_currencies/2016-04-14?limit=2
 </code></pre>
 <p>Response:</p>
-<pre><code>{
-  result: "success",
-  date: "2015-12-31T00:00:00Z",
-  count: 41,
-  currencies: [
+<pre><code>200 OK
+{
+  "result": "success",
+  "date": "2016-04-14T00:00:00Z",
+  "count": 2,
+  "currencies": [
     {
-      avg_exchange_count: "4652.1612903225805",
-      avg_exchange_volume: "5.872515158748898E7",
-      avg_payment_count: "406.5625",
-      avg_payment_volume: "592537.1043782063",
-      issued_value: "3.3304427137620807E8",
-      currency: "USD",
-      issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+      "avg_exchange_count": "8099.967741935484",
+      "avg_exchange_volume": "3.5952068085531615E7",
+      "avg_payment_count": "624.28125",
+      "avg_payment_volume": "3910190.139488101",
+      "issued_value": "1.5276205395328993E8",
+      "currency": "CNY",
+      "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
     },
     {
-      avg_exchange_count: "6083.193548387097",
-      avg_exchange_volume: "3.558897661266646E7",
-      avg_payment_count: "520.71875",
-      avg_payment_volume: "3507232.307236187",
-      issued_value: "1.1695602455168623E8",
-      currency: "CNY",
-      issuer: "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"
-    },
-    {
-      avg_exchange_count: "3715.0967741935483",
-      avg_exchange_volume: "3.7346262589967564E7",
-      avg_payment_count: "163.1875",
-      avg_payment_volume: "775.0342076125125",
-      issued_value: "1.906530130641547E8",
-      currency: "BTC",
-      issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
-    },
-    ...
+      "avg_exchange_count": "3003.2258064516127",
+      "avg_exchange_volume": "3.430482029838605E7",
+      "avg_payment_count": "257.4375",
+      "avg_payment_volume": "501442.0789529095",
+      "issued_value": "2.6289124450524995E8",
+      "currency": "USD",
+      "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
   ]
 }
 </code></pre>
 <h2 id="get-top-markets">Get Top Markets</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/network/topMarkets.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topMarkets.js" title="Source">[Source]<br/></a></p>
 <p>Returns the top exchange markets on the Ripple Consensus Ledger, ordered from highest rank to lowest. The rank is determined by the number and volume of exchanges and the number of counterparties participating. By default, returns top markets for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>)</em></p>
-<h4 id="request-format-15">Request Format</h4>
-<div class="multicode" id="code-15"><ul class="codetabs"><li><a href="#code-15-0">Most Recent</a></li><li><a href="#code-15-1">By Date</a></li></ul>
+<h4 id="request-format-18">Request Format</h4>
+<div class="multicode" id="code-18"><ul class="codetabs"><li><a href="#code-18-0">Most Recent</a></li><li><a href="#code-18-1">By Date</a></li></ul>
 
-<div class="code_sample" id="code-15-0" style="position: static;"><pre><code>GET /v2/network/top_markets
+<div class="code_sample" id="code-18-0" style="position: static;"><pre><code>GET /v2/network/top_markets
 </code></pre></div>
 
-<div class="code_sample" id="code-15-1" style="position: static;"><pre><code>GET /v2/network/top_markets/2016-01-01
+<div class="code_sample" id="code-18-1" style="position: static;"><pre><code>GET /v2/network/top_markets/{:date}
 </code></pre></div>
 </div>
-<p>This method does not accept any query parameters.</p>
 <p><a class="button" href="data-api-v2-tool.html#get-top-markets">Try it! &gt;</a></p>
-<h4 id="response-format-15">Response Format</h4>
+<p>This method uses the following URL parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - ISO 8601 Date</td>
+<td>(Optional) Historical date to query. If omitted, use the most recent date available.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 1000. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-18">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -2935,32 +3383,32 @@
 <tr>
 <td><code>base_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The base currency for this market</td>
+<td>The base currency for this market.</td>
 </tr>
 <tr>
 <td><code>base_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted if <code>base_currency</code> is XRP) The Ripple address that issues the base currency</td>
+<td>(Omitted if <code>base_currency</code> is XRP) The Ripple address that issues the base currency.</td>
 </tr>
 <tr>
 <td><code>counter_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The counter currency for this market</td>
+<td>The counter currency for this market.</td>
 </tr>
 <tr>
 <td><code>counter_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted if <code>counter_currency</code> is XRP) The Ripple address that issues the counter currency</td>
+<td>(Omitted if <code>counter_currency</code> is XRP) The Ripple address that issues the counter currency.</td>
 </tr>
 <tr>
 <td><code>avg_base_volume</code></td>
 <td>String</td>
-<td>Daily average volume in terms of the base currency</td>
+<td>Daily average volume in terms of the base currency.</td>
 </tr>
 <tr>
 <td><code>avg_counter_volume</code></td>
 <td>String</td>
-<td>Daily average volume in terms of the counter currency</td>
+<td>Daily average volume in terms of the counter currency.</td>
 </tr>
 <tr>
 <td><code>avg_exchange_count</code></td>
@@ -2974,59 +3422,1387 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-15">Example</h4>
+<h4 id="example-18">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/network/top_markets/2015-12-31
 </code></pre>
 <p>Response:</p>
-<pre><code>{
-  result: "success",
-  date: "2015-12-31T00:00:00Z",
-  count: 56,
-  markets: [
+<pre><code>200 OK
+{
+  "result": "success",
+  "date": "2015-12-31T00:00:00Z",
+  "count": 58,
+  "markets": [
     {
-      avg_base_volume: "116180.98607935428",
-      avg_counter_volume: "1.6657039295476614E7",
-      avg_exchange_count: "1521.4603174603174",
-      avg_volume: "1.6657039295476614E7",
-      base_currency: "USD",
-      base_issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      counter_currency: "XRP"
+      "avg_base_volume": "116180.98607935428",
+      "avg_counter_volume": "1.6657039295476614E7",
+      "avg_exchange_count": "1521.4603174603174",
+      "avg_volume": "1.6657039295476614E7",
+      "base_currency": "USD",
+      "base_issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "counter_currency": "XRP"
     },
     {
-      avg_base_volume: "410510.0286920887",
-      avg_counter_volume: "9117398.719214212",
-      avg_exchange_count: "1902.1587301587301",
-      avg_volume: "9117398.719214212",
-      base_currency: "CNY",
-      base_issuer: "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
-      counter_currency: "XRP"
-    },
-    {
-      avg_base_volume: "178.06809101586364",
-      avg_counter_volume: "1.1343000055456754E7",
-      avg_exchange_count: "1224.2857142857142",
-      avg_volume: "1.1343000055456754E7",
-      base_currency: "BTC",
-      base_issuer: "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      counter_currency: "XRP"
+      "avg_base_volume": "410510.0286920887",
+      "avg_counter_volume": "9117398.719214212",
+      "avg_exchange_count": "1902.1587301587301",
+      "avg_volume": "9117398.719214212",
+      "base_currency": "CNY",
+      "base_issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+      "counter_currency": "XRP"
     },
     ...
   ]
 }
 </code></pre>
-<h2 id="get-all-gateways">Get All Gateways</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
-<p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-16">Request Format</h4>
-<div class="multicode" id="code-16"><ul class="codetabs"><li><a href="#code-16-0">REST</a></li></ul>
+<h2 id="get-transaction-costs">Get Transaction Costs</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getFees.js" title="Source">[Source]<br/></a></p>
+<p>Returns <a href="concept-transaction-cost.html">transaction cost</a> stats per ledger, hour, or day.  The data shows the average, minimum, maximum, and total transaction costs paid for the given interval or ledger. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-19">Request Format</h4>
+<div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-16-0" style="position: static;"><pre><code>GET /v2/gateways/
+<div class="code_sample" id="code-19-0" style="position: static;"><pre><code>GET /v2/network/fees
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-transaction-costs">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Start time of query range. Defaults to the earliest data available.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>End time of query range. Defaults to the latest data available.</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>String</td>
+<td>Aggregation interval - valid intervals are <code>ledger</code>, <code>hour</code>, or <code>day</code>. Defaults to <code>ledger</code>.</td>
+</tr>
+<tr>
+<td><code>descending</code></td>
+<td>Boolean</td>
+<td>If true, sort results with most recent first. By default, sort results with oldest first.</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-19">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that this is a successful response.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of results in the <code>markets</code> field.</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td>Array of Fee Summary Objects</td>
+<td>Transaction cost statistics for each interval.</td>
+</tr>
+</tbody>
+</table>
+<p>Each Fee Summary object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avg</code></td>
+<td>Number</td>
+<td>Average transaction cost paid in this interval.</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td>Number</td>
+<td>Minimum  transaction cost paid in this interval.</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>Number</td>
+<td>Maximum  transaction cost paid in this interval.</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>Number</td>
+<td>Total XRP destroyed by transaction costs.</td>
+</tr>
+<tr>
+<td><code>tx_count</code></td>
+<td>Number</td>
+<td>Number of transactions in this interval.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>The start time of this interval (time intervals), or the close time of this ledger (<code>ledger</code> interval).</td>
+</tr>
+<tr>
+<td><code>ledger_index</code></td>
+<td>Integer - <a href="#ledger-index">Ledger Index</a></td>
+<td>(Only present in <code>ledger</code> interval) The ledger this object describes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-19">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/fees?interval=day&amp;limit=3&amp;descending=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "marker": "day|20160603000000",
+  "count": 3,
+  "rows": [
+    {
+      "avg": 0.011829,
+      "max": 15,
+      "min": 0.01,
+      "total": 6682.15335,
+      "tx_count": 564918,
+      "date": "2016-06-06T00:00:00Z"
+    },
+    {
+      "avg": 0.011822,
+      "max": 4.963071,
+      "min": 0.01,
+      "total": 5350.832025,
+      "tx_count": 452609,
+      "date": "2016-06-05T00:00:00Z"
+    },
+    {
+      "avg": 0.012128,
+      "max": 15,
+      "min": 0.01,
+      "total": 5405.126404,
+      "tx_count": 445689,
+      "date": "2016-06-04T00:00:00Z"
+    }
+  ]
+}
+</code></pre>
+<h2 id="get-topology">Get Topology</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getTopology.js" title="Source">[Source]<br/></a></p>
+<p>Get known <code>rippled</code> servers and peer-to-peer connections between them. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-20">Request Format</h4>
+<div class="multicode" id="code-20"><ul class="codetabs"><li><a href="#code-20-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-20-0" style="position: static;"><pre><code>GET /v2/network/topology
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-topology">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time for historical query. By default, uses the most recent data available.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, include additional details about each server where available. Defaults to <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-20">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>The time of this measurement.</td>
+</tr>
+<tr>
+<td><code>node_count</code></td>
+<td>Integer</td>
+<td>Number of <code>rippled</code> servers in the topology.</td>
+</tr>
+<tr>
+<td><code>link_count</code></td>
+<td>Integer</td>
+<td>Number of links in the topology.</td>
+</tr>
+<tr>
+<td><code>nodes</code></td>
+<td>Array of <a href="#server-objects">Server Objects</a></td>
+<td>Details of <code>rippled</code> servers in the peer-to-peer network.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td>Array of <a href="#link-objects">Link Objects</a></td>
+<td>Network connections between <code>rippled</code> servers in the peer-to-peer network.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-20">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/topology
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "date": "2016-06-06T23:51:04Z",
+  "node_count": 115,
+  "link_count": 1913,
+  "nodes": [
+    {
+      "node_public_key": "n94fDXS3ta92gRSi7DKngh47S7Rg4z1FuNsahvbiakFEg51dLeVa",
+      "version": "rippled-0.31.0-rc1",
+      "uptime": 266431,
+      "inbound_count": 24,
+      "last_updated": "2016-06-03T21:50:57Z"
+    },
+    {
+      "node_public_key": "n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6Lor",
+      "ip": "104.247.221.178",
+      "port": 51235,
+      "version": "rippled-0.31.0",
+      "uptime": 608382,
+      "inbound_count": 10,
+      "outbound_count": 11,
+      "city": "Atlanta",
+      "country": "United States",
+      "country_code": "US",
+      "isp": "QuickPacket, LLC",
+      "last_updated": "2016-05-28T06:29:43Z",
+      "lat": "-84.3846",
+      "long": "33.8379",
+      "postal_code": "30305",
+      "region": "Georgia",
+      "region_code": "GA",
+      "timezone": "America/New_York"
+    },
+
+    ...
+  ],
+  "links": [
+    {
+      "source": "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      "target": "n9KcFAX2bCuwF4vGF8gZZcpQQ6nyqm44e5TUygb3zvdZEpiJE5As"
+    },
+    {
+      "source": "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      "target": "n9LGAj7PjvfTmEGQ75JaRKba6GQmVwFCnJTSHgX2HDXzxm6d2JpM"
+    },
+
+    ...
+  ]
+}
+</code></pre>
+<h2 id="get-topology-nodes">Get Topology Nodes</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getNodes.js" title="Source">[Source]<br/></a></p>
+<p>Get known <code>rippled</code> nodes. (This is a subset of the data returned by the <a href="#get-topology">Get Topology method</a>.) <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-21">Request Format</h4>
+<div class="multicode" id="code-21"><ul class="codetabs"><li><a href="#code-21-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-21-0" style="position: static;"><pre><code>GET /v2/network/topology/nodes
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-topology-nodes">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time for historical query. Defaults to most recent data.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, return full details for each server. Defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-21">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>When this the data was measured.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of <code>rippled</code> servers described.</td>
+</tr>
+<tr>
+<td><code>nodes</code></td>
+<td>Array of <a href="#server-objects">Server Objects</a></td>
+<td>Details of the <code>rippled</code> servers in the topology.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-21">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/topology/nodes
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "date": "2016-06-08T00:36:53Z",
+  "count": 116,
+  "nodes": [
+    {
+      "node_public_key": "n94BuARkPiYLrMuAVZqMQFhTAGpo12dqUPiH3yrzEnhaEcXfLAnV",
+      "version": "rippled-0.30.1",
+      "uptime": 122424,
+      "inbound_count": 10,
+      "last_updated": "2016-06-06T14:36:52Z"
+    },
+    {
+      "node_public_key": "n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6Lor",
+      "ip": "104.247.221.178",
+      "port": 51235,
+      "version": "rippled-0.31.2",
+      "uptime": 38649,
+      "inbound_count": 10,
+      "outbound_count": 11,
+      "city": "Atlanta",
+      "country": "United States",
+      "country_code": "US",
+      "isp": "QuickPacket, LLC",
+      "last_updated": "2016-06-07T13:53:12Z",
+      "lat": "-84.3846",
+      "long": "33.8379",
+      "postal_code": "30305",
+      "region": "Georgia",
+      "region_code": "GA",
+      "timezone": "America/New_York"
+    },
+
+    ...
+
+  ]
+}
+</code></pre>
+<h2 id="get-topology-node">Get Topology Node</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getNodes.js" title="Source">[Source]<br/></a></p>
+<p>Get information about a single <code>rippled</code> server by its <a href="#public-keys">node public key</a> (not validator public key). <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-22">Request Format</h4>
+<div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-22-0" style="position: static;"><pre><code>GET /v2/network/topology/nodes/{:pubkey}
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-topology-node">Try it! &gt;</a></p>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pubkey</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Node public key of the server to look up.</td>
+</tr>
+</tbody>
+</table>
+<p>This method takes no query parameters.</p>
+<h4 id="response-format-22">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with a <strong><a href="#server-objects">Server Object</a></strong> in the response with the following additional field:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that this is a successful response.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-22">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/topology/nodes/n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6Lor
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "node_public_key": "n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6Lor",
+  "ip": "104.247.221.178",
+  "port": 51235,
+  "version": "rippled-0.31.2",
+  "uptime": 43342,
+  "inbound_count": 10,
+  "outbound_count": 11,
+  "city": "Atlanta",
+  "country": "United States",
+  "country_code": "US",
+  "isp": "QuickPacket, LLC",
+  "last_updated": "2016-06-07T13:53:12Z",
+  "lat": "-84.3846",
+  "long": "33.8379",
+  "postal_code": "30305",
+  "region": "Georgia",
+  "region_code": "GA",
+  "timezone": "America/New_York",
+  "result": "success"
+}
+</code></pre>
+<h2 id="get-topology-links">Get Topology Links</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getLinks.js" title="Source">[Source]<br/></a></p>
+<p>Get information on peer-to-peer connections between <code>rippled</code> servers. (This is a subset of the data returned by the <a href="#get-topology">Get Topology method</a>.) <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-23">Request Format</h4>
+<div class="multicode" id="code-23"><ul class="codetabs"><li><a href="#code-23-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-23-0" style="position: static;"><pre><code>GET /v2/network/topology/links
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-topology-links">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time for historical query. Defaults to most recent data available.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-23">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>When this data was measured.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of links returned.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td>Array of <a href="#link-objects">Link Objects</a></td>
+<td>Links between <code>rippled</code> servers.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-23">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/topology/links
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  result: "success",
+  date: "2016-03-21T16:38:52Z",
+  count: 1632,
+  links: [
+    {
+      source: "n94Extku8HiQVY8fcgxeot4bY7JqK2pNYfmdnhgf6UbcmgucHFY8",
+      target: "n9JccBLfrDJBLBF2X5N7bUW8251riCwSf9e3VQ3P5fK4gYr5LBu4"
+    },
+    ...
+  ]
+}
+</code></pre>
+<h2 id="get-validator">Get Validator</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js" title="Source">[Source]<br/></a></p>
+<p>Get details of a single validator in the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus network</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-24">Request Format</h4>
+<div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>GET /v2/network/validators/{:pubkey}
+</code></pre></div>
+</div>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pubkey</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Validator public key.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-24">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>last_datetime</code></td>
+<td>Integer</td>
+<td>The last reported validation vote signed by this validator.</td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>This validator's validator public key.</td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>String</td>
+<td>(May be omitted) The DNS domain associated with this validator.</td>
+</tr>
+<tr>
+<td><code>domain_state</code></td>
+<td>String</td>
+<td>The value <code>verified</code> indicates that this validator has a <a href="tutorial-rippled-setup.html#domain-verification">verified domain</a> controlled by the same operator as the validator. The value <code>AccountDomainNotFound</code> indicates that the "Account Domain" part of Domain Verification is not set up properly. The value <code>RippleTxtNotFound</code> indicates that the ripple.txt step of Domain Verification is not set up properly.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-24">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "domain": "ripple.com",
+  "domain_state": "verified",
+  "last_datetime": "2016-06-07T01:22:59.929Z",
+  "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+  "result": "success"
+}
+</code></pre>
+<h2 id="get-validators">Get Validators</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js" title="Source">[Source]<br/></a></p>
+<p>Get a list of known validators. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<h4 id="request-format-25">Request Format</h4>
+<div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-25-0" style="position: static;"><pre><code>GET /v2/network/validators
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-validators">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-25">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>last_datetime</code></td>
+<td>Integer</td>
+<td>Number of links returned.</td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Validator public key of this validator.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-25">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  result: "success",
+  last_datetime: "2016-02-11T23:20:41.319Z",
+  validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+}
+</code></pre>
+<h2 id="get-validator-validations">Get Validator Validations</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidations.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve validation votes signed by a specified validator, including votes for ledger versions that are outside the main ledger chain. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<p class="devportal-callout note"><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
+<h4 id="request-format-26">Request Format</h4>
+<div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>GET /v2/network/validators/{:pubkey}/validations
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-validator-validations">Try it! &gt;</a></p>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pubkey</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>Validator public key.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Filter results to this time and later.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Filter results to this time and earlier.</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-26">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of validations returned.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
+</tr>
+<tr>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
+<td>The requested validations.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-26">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validator/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7/validations?limit=3&amp;descending=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 3,
+  "marker": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7|20160608020910|4499E5D60FD4F3F239C5B274E65B9CAE033398BE976E4FB49E9B30508D95F5A5",
+  "validations": [
+    {
+      "count": 27,
+      "first_datetime": "2016-06-08T02:09:21.280Z",
+      "last_datetime": "2016-06-08T02:09:21.390Z",
+      "ledger_hash": "246C5142A108C7B64F5D700936D31360B7790FA6349A98A2A1F7A14671D70B48",
+      "reporter_public_key": "n9KKTtooV4h2UsmNEhBqPvMRNj6RAHLPS6Baktf4u1AhgKNbyJAF",
+      "signature": "304402204506DD69B831886C4738F97CEED43AAFDBA67254D3EAF4FB5B3BF167A15B1B690220147E366CA53A3EC8B513978F2BA3A0905DC412CCE553E8ECE544236B097F2C8A",
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    {
+      "count": 27,
+      "first_datetime": "2016-06-08T02:09:17.275Z",
+      "last_datetime": "2016-06-08T02:09:17.383Z",
+      "ledger_hash": "1DC9245CDBFE2C640ACD766DB4AF1DE66F6E92A8EE78F628281A6568760DBAB2",
+      "reporter_public_key": "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
+      "signature": "3045022100E07D8CB801EC7AC98DB1DED813D49AE1FFE3C4CB027314EB6ED1BA7796653DE902204E65E96B0961AC09D8D7542EC59B3CE2ECAE6BC02557A4D1C0385DED00445329",
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    {
+      "count": 27,
+      "first_datetime": "2016-06-08T02:09:13.277Z",
+      "last_datetime": "2016-06-08T02:09:13.387Z",
+      "ledger_hash": "0E11FA2052E8D345069CF09F13D76A8EF618C32F2B25A948FF104D59F53371BE",
+      "reporter_public_key": "n9KKTtooV4h2UsmNEhBqPvMRNj6RAHLPS6Baktf4u1AhgKNbyJAF",
+      "signature": "3045022100C1252F3FE8D0683F7FE5261D36876650EE185EEFE558150DEEF67F86E928463F022017237E1D89D5DBD8C4C2CC041C2EA73D96260D44A283D6CFF95359E86008E765",
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    }
+  ]
+}
+</code></pre>
+<h2 id="get-validations">Get Validations</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidations.js" title="Source">[Source]<br/></a></p>
+<p>Retrieve validation votes, including votes for ledger versions that are outside the main ledger chain. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0">v2.2.0</a>)</em></p>
+<p class="devportal-callout note"><strong>Note:</strong> The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.</p>
+<h4 id="request-format-27">Request Format</h4>
+<div class="multicode" id="code-27"><ul class="codetabs"><li><a href="#code-27-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-27-0" style="position: static;"><pre><code>GET /v2/network/validations
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-validations">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Filter results to this time and later.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Filter results to this time and earlier.</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Integer</td>
+<td>Maximum results per page. Defaults to 200. Cannot be more than 1000.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+<tr>
+<td><code>descending</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, return results sorted with earliest first. Otherwise, return oldest results first. Defaults to <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-27">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of validation votes returned.</td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>String</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
+</tr>
+<tr>
+<td><code>validations</code></td>
+<td>Array of <a href="#validation-objects">Validation Objects</a></td>
+<td>The requested validation votes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-27">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validations?limit=3&amp;descending=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 3,
+  "marker": "20160608005421561|nHUBJUyiW7ePZdjoLYrRvLB6JEytaAiX2NFqcmgNqW3CCFgBV7LZ|ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
+  "validations": [
+    {
+      "count": 7,
+      "first_datetime": "2016-06-08T00:54:21.583Z",
+      "last_datetime": "2016-06-08T00:54:21.583Z",
+      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
+      "reporter_public_key": "n9MVezjxa3Wk1vsZ8omj7Hga3tEcFiNH3gjWwx2SsQxkiamBwFw5",
+      "signature": "3044022027DCB43438A27F4F51DFD436FC078933524C6D675DBD7E0033C5A33DA3683699022029A5143EE172CA94AAD706454192CC2EC3CC93182697F0B2C00818C1C43ECE27",
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+    },
+    {
+      "count": 1,
+      "first_datetime": "2016-06-08T00:54:21.574Z",
+      "last_datetime": "2016-06-08T00:54:21.574Z",
+      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
+      "reporter_public_key": "n9MqZ95ENFuf9yCWjZFsvCuvjNv9K3NpYgE9NYLAgzmCkkFpNs9W",
+      "signature": "3044022054FC074D6AFA022316C24EAEAC70644F3646151C164B72FB3B5A509A692ECAA7022038C93B3E282B5475FC9DC962CA4AD15A28796A1C10A978F66B0C8BBFF42A5782",
+      "validation_public_key": "n9MM9o8j5HmjNF2YFcvNWdKxAsMsMf58Ke6WQvcnn7oHLsuvkAtf"
+    },
+    {
+      "count": 1,
+      "first_datetime": "2016-06-08T00:54:21.574Z",
+      "last_datetime": "2016-06-08T00:54:21.574Z",
+      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
+      "reporter_public_key": "n9MexcuoJg7KsVnJkvyPuLCtJNx5DSWnZbuWpcdsZ2jeqbU1ghEA",
+      "signature": "3045022100B6CD4FAFF0B699689885D48AB4CA449FA9E4E51832737E36BE5AA6642F88C52C02202297D2F4EFE41F512A4985A571E4D64F8161651DF3FA94561B2F583769305E27",
+      "validation_public_key": "n9KeL6TaqiQoUGndmyYKFDE868bFSAQQJ6XT1LmsuCDCebBdF5BV"
+    }
+  ]
+}
+</code></pre>
+<h2 id="get-single-validator-reports">Get Single Validator Reports</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js" title="Source">[Source]<br/></a></p>
+<p>Get a single validator's validation vote stats for 24-hour intervals.</p>
+<h4 id="request-format-28">Request Format</h4>
+<div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-28-0" style="position: static;"><pre><code>GET /v2/network/validators/{:pubkey}/reports
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-single-validator-reports">Try it! &gt;</a></p>
+<p>This method requires the following URL parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pubkey</code></td>
+<td>String</td>
+<td>Validator public key.</td>
+</tr>
+</tbody>
+</table>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Start date and time for historical query. Defaults to 200 days before the current date.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>End date and time for historical query. Defaults to most recent data available.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-28">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of validators returned.</td>
+</tr>
+<tr>
+<td><code>validators</code></td>
+<td>Array of Single Validator Report Objects</td>
+<td>Daily reports of this validator's validation votes.</td>
+</tr>
+</tbody>
+</table>
+<p>Each member in the <code>validators</code> array is a Single Validator Report Object with data on that validator's performance on that day. Each has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>The start time of the date this object describes.</td>
+</tr>
+<tr>
+<td><code>total_ledgers</code></td>
+<td>Integer</td>
+<td>Number of ledger hashes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime.</td>
+</tr>
+<tr>
+<td><code>main_net_agreement</code></td>
+<td><a href="#numbers-and-precision">String - Number</a></td>
+<td>The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. <code>"1.0"</code> indicates 100% agreement.</td>
+</tr>
+<tr>
+<td><code>main_net_ledgers</code></td>
+<td>Integer</td>
+<td>Number of consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">production network</a> ledger versions this validator voted for.</td>
+</tr>
+<tr>
+<td><code>alt_net_agreement</code></td>
+<td><a href="#numbers-and-precision">String - Number</a></td>
+<td>The fraction of the consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">Test Network</a> ledger versions this validator voted for. <code>"1.0"</code> indicates 100% agreement.</td>
+</tr>
+<tr>
+<td><code>alt_net_ledgers</code></td>
+<td>Integer</td>
+<td>Number of consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">Test Network</a> ledger versions this validator voted for.</td>
+</tr>
+<tr>
+<td><code>other_ledgers</code></td>
+<td>Integer</td>
+<td>Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-28">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7/reports
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 198,
+  "reports": [
+    {
+      "date": "2015-11-20T00:00:00Z",
+      "total_ledgers": 19601,
+      "main_net_agreement": "1.0",
+      "main_net_ledgers": 19601,
+      "alt_net_agreement": "0.0",
+      "alt_net_ledgers": 0,
+      "other_ledgers": 0
+    },
+    {
+      "date": "2015-11-21T00:00:00Z",
+      "total_ledgers": 19876,
+      "main_net_agreement": "1.0",
+      "main_net_ledgers": 19876,
+      "alt_net_agreement": "0.0",
+      "alt_net_ledgers": 0,
+      "other_ledgers": 0
+    },
+
+    ...
+  ]
+}
+</code></pre>
+<h2 id="get-daily-validator-reports">Get Daily Validator Reports</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js" title="Source">[Source]<br/></a></p>
+<p>Get a validation vote stats and validator information for all known validators in a 24-hour period.</p>
+<h4 id="request-format-29">Request Format</h4>
+<div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-29-0" style="position: static;"><pre><code>GET /v2/network/validator_reports
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-daily-validator-reports">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time to query. By default, uses the most recent data available.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>Format of returned results: <code>csv</code> or <code>json</code>. Defaults to <code>json</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-29">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td>String</td>
+<td>The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>Number of reports returned.</td>
+</tr>
+<tr>
+<td><code>reports</code></td>
+<td>Array of Daily Validator Report Objects</td>
+<td>Summaries of activity for each validator active during this time period.</td>
+</tr>
+</tbody>
+</table>
+<p>Daily Validator Report Object fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>This validator's validator public key.</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>The start time of the date this object describes.</td>
+</tr>
+<tr>
+<td><code>total_ledgers</code></td>
+<td>Integer</td>
+<td>Number of ledger indexes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime.</td>
+</tr>
+<tr>
+<td><code>main_net_agreement</code></td>
+<td><a href="#numbers-and-precision">String - Number</a></td>
+<td>The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. <code>"1.0"</code> indicates 100% agreement.</td>
+</tr>
+<tr>
+<td><code>main_net_ledgers</code></td>
+<td>Integer</td>
+<td>Number of consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">production network</a> ledger versions this validator voted for.</td>
+</tr>
+<tr>
+<td><code>alt_net_agreement</code></td>
+<td><a href="#numbers-and-precision">String - Number</a></td>
+<td>The fraction of the consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">Test Network</a> ledger versions this validator voted for. <code>"1.0"</code> indicates 100% agreement.</td>
+</tr>
+<tr>
+<td><code>alt_net_ledgers</code></td>
+<td>Integer</td>
+<td>Number of consensus-validated <a href="tutorial-rippled-setup.html#parallel-networks">Test Network</a> ledger versions this validator voted for.</td>
+</tr>
+<tr>
+<td><code>other_ledgers</code></td>
+<td>Integer</td>
+<td>Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software.</td>
+</tr>
+<tr>
+<td><code>last_datetime</code></td>
+<td>Integer</td>
+<td>The last reported validation vote signed by this validator.</td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>String</td>
+<td>(May be omitted) The DNS domain associated with this validator.</td>
+</tr>
+<tr>
+<td><code>domain_state</code></td>
+<td>String</td>
+<td>The value <code>verified</code> indicates that this validator has a <a href="tutorial-rippled-setup.html#domain-verification">verified domain</a> controlled by the same operator as the validator. The value <code>AccountDomainNotFound</code> indicates that the "Account Domain" part of Domain Verification is not set up properly. The value <code>RippleTxtNotFound</code> indicates that the ripple.txt step of Domain Verification is not set up properly.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-29">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/validator_reports
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 27,
+  "reports": [
+    {
+      "validation_public_key": "n9KvSsyJiheyFnivzFqChZ58pQgjwWWuc7Tp28WPzXbkdwqL6P5y",
+      "date": "2016-06-07T00:00:00Z",
+      "total_ledgers": 1289,
+      "main_net_agreement": "1.00000",
+      "main_net_ledgers": 1289,
+      "alt_net_agreement": "0.00000",
+      "alt_net_ledgers": 0,
+      "other_ledgers": 0,
+      "domain": "rippled.media.mit.edu",
+      "domain_state": "verified",
+      "last_datetime": "2016-06-07T01:20:20.753Z"
+    },
+    {
+      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+      "date": "2016-06-07T00:00:00Z",
+      "total_ledgers": 1289,
+      "main_net_agreement": "1.00000",
+      "main_net_ledgers": 1289,
+      "alt_net_agreement": "0.00000",
+      "alt_net_ledgers": 0,
+      "other_ledgers": 0,
+      "domain": "ripple.com",
+      "domain_state": "verified",
+      "last_datetime": "2016-06-07T01:20:20.717Z"
+    },
+
+    ...
+  ]
+}
+</code></pre>
+<h2 id="get-all-gateways">Get All Gateways</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js" title="Source">[Source]<br/></a></p>
+<p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
+<h4 id="request-format-30">Request Format</h4>
+<div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>GET /v2/gateways/
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-all-gateways">Try it! &gt;</a></p>
 <p>This method takes no query parameters.</p>
-<h4 id="response-format-16">Response Format</h4>
+<h4 id="response-format-30">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body.</p>
 <p>Each field in the top level JSON object is a <a href="#currency-code">Currency Code</a>. The content of each field is an array of objects, representing gateways that issue that currency. Each object has the following fields:</p>
 <table>
@@ -3065,12 +4841,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-16">Example</h4>
+<h4 id="example-30">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/gateways/
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "AUD": [
         {
             "name": "Bitstamp",
@@ -3117,13 +4894,13 @@
 }
 </code></pre>
 <h2 id="get-gateway">Get Gateway</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/gateways.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js" title="Source">[Source]<br/></a></p>
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 <p>Get information about a specific gateway from <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">the Data API's list of known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-17">Request Format</h4>
-<div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">REST</a></li></ul>
+<h4 id="request-format-31">Request Format</h4>
+<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-17-0" style="position: static;"><pre><code>GET /v2/gateways/{:gateway}
+<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>GET /v2/gateways/{:gateway}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-gateway">Try it! &gt;</a></p>
@@ -3138,14 +4915,14 @@
 </thead>
 <tbody>
 <tr>
-<td>:gateway</td>
+<td><code>gateway</code></td>
 <td>String</td>
 <td>The issuing <a href="#addresses">Address</a>, <a href="https://en.wikipedia.org/wiki/Percent-encoding">URL-encoded name</a>, or normalized name of the gateway.</td>
 </tr>
 </tbody>
 </table>
 <p>This method takes no query parameters.</p>
-<h4 id="response-format-17">Response Format</h4>
+<h4 id="response-format-31">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -3159,7 +4936,7 @@
 <tr>
 <td><code>name</code></td>
 <td>String</td>
-<td>Human-readable name of the gateway</td>
+<td>Human-readable name of the gateway.</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
@@ -3215,7 +4992,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-17">Example</h4>
+<h4 id="example-31">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/gateways/Gatehub
 </code></pre>
@@ -3249,12 +5026,12 @@
 }
 </code></pre>
 <h2 id="get-currency-image">Get Currency Image</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/v0.0.4-rc2/api/routesV2/gateways.js#L196" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js#L199" title="Source">[Source]<br/></a></p>
 <p>Retrieve vector icons for various currencies. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-18">Request Format</h4>
-<div class="multicode" id="code-18"><ul class="codetabs"><li><a href="#code-18-0">REST</a></li></ul>
+<h4 id="request-format-32">Request Format</h4>
+<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-18-0" style="position: static;"><pre><code>GET /v2/currencies/{:currencyimage}
+<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>GET /v2/currencies/{:currencyimage}
 </code></pre></div>
 </div>
 <p>This method requires the following URL parameter:</p>
@@ -3268,15 +5045,15 @@
 </thead>
 <tbody>
 <tr>
-<td>:currencyimage</td>
+<td><code>currencyimage</code></td>
 <td>String</td>
 <td>An image file for a currency, such as <code>xrp.svg</code>. See <a href="https://github.com/ripple/rippled-historical-database/tree/develop/api/gateways/currencyAssets">the source code</a> for a list of available images.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-18">Response Format</h4>
+<h4 id="response-format-32">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a <strong>Content-Type</strong> header of <code>image/svg+xml</code> to indicate that the contents are XML representing a file in <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG format</a>.</p>
-<h4 id="example-18">Example</h4>
+<h4 id="example-32">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/currencies/mxn.svg
 </code></pre>
@@ -3303,16 +5080,16 @@ Content-Type: image/svg+xml
 &lt;/svg&gt;
 </code></pre>
 <h2 id="get-accounts">Get Accounts</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accounts.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accounts.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve information about the creation of new accounts in the Ripple Consensus Ledger.</p>
-<h4 id="request-format-19">Request Format</h4>
-<div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0">REST</a></li></ul>
+<h4 id="request-format-33">Request Format</h4>
+<div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-19-0" style="position: static;"><pre><code>GET /v2/accounts
+<div class="code_sample" id="code-33-0" style="position: static;"><pre><code>GET /v2/accounts
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-accounts">Try it! &gt;</a></p>
-<p>Optionally, you can include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3325,12 +5102,12 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>start</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Start time of query range</td>
+<td>Start time of query range.</td>
 </tr>
 <tr>
 <td><code>end</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>End time of query range</td>
+<td>End time of query range.</td>
 </tr>
 <tr>
 <td><code>interval</code></td>
@@ -3345,12 +5122,12 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>parent</code></td>
@@ -3360,7 +5137,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>reduce</code></td>
 <td>Boolean</td>
-<td>Return a count of results only</td>
+<td>Return a count of results only.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -3369,7 +5146,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-19">Response Format</h4>
+<h4 id="response-format-33">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -3393,7 +5170,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>accounts</code></td>
@@ -3416,7 +5193,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>date</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The time at which this interval starts. (The length of the interval is determined by the request.)</td>
+<td>When this interval starts. (The length of the interval is determined by the request.)</td>
 </tr>
 <tr>
 <td><code>count</code></td>
@@ -3425,12 +5202,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-19">Example</h4>
+<h4 id="example-33">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v1/accounts?parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 3,
   "accounts": [
@@ -3462,12 +5240,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account">Get Account</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/getAccount.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getAccount.js" title="Source">[Source]<br/></a></p>
 <p>Get creation info for a specific ripple account</p>
-<h4 id="request-format-20">Request Format</h4>
-<div class="multicode" id="code-20"><ul class="codetabs"><li><a href="#code-20-0">REST</a></li></ul>
+<h4 id="request-format-34">Request Format</h4>
+<div class="multicode" id="code-34"><ul class="codetabs"><li><a href="#code-34-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-20-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}
+<div class="code_sample" id="code-34-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account">Try it! &gt;</a></p>
@@ -3484,11 +5262,11 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query</td>
+<td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-20">Response Format</h4>
+<h4 id="response-format-34">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -3507,16 +5285,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>account</code></td>
 <td>Object - <a href="#account-creation-objects">Account Creation</a></td>
-<td>The requested account</td>
+<td>The requested account.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-20">Example</h4>
+<h4 id="example-34">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "account": {
         "address": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -3529,11 +5308,11 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-balances">Get Account Balances</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountBalances.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalances.js" title="Source">[Source]<br/></a></p>
 <p>Get all balances held or owed by a specific Ripple account.</p>
-<div class="multicode" id="code-21"><ul class="codetabs"><li><a href="#code-21-0">REST</a></li></ul>
+<div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-21-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
+<div class="code_sample" id="code-35-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balances">Try it! &gt;</a></p>
@@ -3550,11 +5329,11 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query</td>
+<td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3601,7 +5380,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-21">Response Format</h4>
+<h4 id="response-format-35">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -3644,12 +5423,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-21">Example</h4>
+<h4 id="example-35">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?currency=USD&amp;date=2015-01-01T00:00:00Z&amp;limit=3
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "ledger_index": 10852618,
   "close_time": "2015-01-01T00:00:00Z",
@@ -3674,12 +5454,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-orders">Get Account Orders</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountOrders.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountOrders.js" title="Source">[Source]<br/></a></p>
 <p>Get orders in the order books, placed by a specific account. This does not return orders that have already been filled.</p>
-<h4 id="request-format-21">Request Format</h4>
-<div class="multicode" id="code-22"><ul class="codetabs"><li><a href="#code-22-0">REST</a></li></ul>
+<h4 id="request-format-35">Request Format</h4>
+<div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-22-0" style="position: static;"><pre><code>GET /v2/account/{:address}/orders
+<div class="code_sample" id="code-36-0" style="position: static;"><pre><code>GET /v2/account/{:address}/orders
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-orders">Try it! &gt;</a></p>
@@ -3696,11 +5476,11 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>Ripple address to query</td>
+<td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3738,7 +5518,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <p>If none of <code>ledger_index</code>, <code>ledger_hash</code>, or <code>date</code> are specified, the API uses the most current data available.</p>
-<h4 id="response-format-22">Response Format</h4>
+<h4 id="response-format-36">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -3828,12 +5608,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-22">Example</h4>
+<h4 id="example-36">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV/orders?limit=2&amp;date=2015-11-11T00:00:00Z
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "ledger_index": 17007855,
   "close_time": "2015-11-11T00:00:00Z",
@@ -3883,12 +5664,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-transaction-history">Get Account Transaction History</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTransactions.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a history of transactions that affected a specific account. This includes all transactions the account sent, payments the account received, and payments that rippled through the account.</p>
-<h4 id="request-format-22">Request Format</h4>
-<div class="multicode" id="code-23"><ul class="codetabs"><li><a href="#code-23-0">REST</a></li></ul>
+<h4 id="request-format-36">Request Format</h4>
+<div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-23-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions
+<div class="code_sample" id="code-37-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-history">Try it! &gt;</a></p>
@@ -3905,11 +5686,11 @@ Content-Type: image/svg+xml
 <tr>
 <td>:address</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>Ripple address to query</td>
+<td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3932,12 +5713,12 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>min_sequence</code></td>
 <td>String</td>
-<td>Minimum sequence number to query</td>
+<td>Minimum sequence number to query.</td>
 </tr>
 <tr>
 <td><code>max_sequence</code></td>
 <td>String</td>
-<td>Max sequence number to query</td>
+<td>Max sequence number to query.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3947,17 +5728,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>result</code></td>
 <td>String</td>
-<td>Restrict results to specified transaction result</td>
+<td>Restrict results to specified transaction result.</td>
 </tr>
 <tr>
 <td><code>binary</code></td>
 <td>Boolean</td>
-<td>Return results in binary format</td>
+<td>Return results in binary format.</td>
 </tr>
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
@@ -3967,7 +5748,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -3976,7 +5757,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-23">Response Format</h4>
+<h4 id="response-format-37">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4000,7 +5781,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>transactions</code></td>
@@ -4009,12 +5790,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-23">Example</h4>
+<h4 id="example-37">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions?type=Payment&amp;result=tesSUCCESS&amp;limit=1
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 1,
   "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20140602224750|000006979192|00001",
@@ -4076,12 +5858,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-transaction-by-account-and-sequence">Get Transaction By Account And Sequence</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountTxSeq.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTxSeq.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specifc transaction originating from a specified account</p>
-<h4 id="request-format-23">Request Format</h4>
-<div class="multicode" id="code-24"><ul class="codetabs"><li><a href="#code-24-0">REST</a></li></ul>
+<h4 id="request-format-37">Request Format</h4>
+<div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-24-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
+<div class="code_sample" id="code-38-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transaction-by-account-and-sequence">Try it! &gt;</a></p>
@@ -4096,18 +5878,18 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query</td>
+<td>Ripple address to query.</td>
 </tr>
 <tr>
-<td>:sequence</td>
+<td><code>sequence</code></td>
 <td>Integer</td>
-<td>Transaction sequence</td>
+<td>Transaction sequence number.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4120,11 +5902,11 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>binary</code></td>
 <td>Boolean</td>
-<td>Return transaction in binary format</td>
+<td>If <code>true</code>, return transaction in binary format. Defaults to <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-24">Response Format</h4>
+<h4 id="response-format-38">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4143,16 +5925,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>transaction</code></td>
 <td><a href="#transaction-objects">transaction object</a></td>
-<td>requested transaction</td>
+<td>The requested transaction.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-24">Example</h4>
+<h4 id="example-38">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions/10?binary=true
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "transaction": {
     "hash": "4BFFBB86C12659B6C5BB88F0EB859356DE3433EBACBFD9F50F6E70B2C05CCFE0",
@@ -4164,12 +5947,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-payments">Get Account Payments</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountPayments.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountPayments.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a payments for a specified account</p>
-<h4 id="request-format-24">Request Format</h4>
-<div class="multicode" id="code-25"><ul class="codetabs"><li><a href="#code-25-0">REST</a></li></ul>
+<h4 id="request-format-38">Request Format</h4>
+<div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-25-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/payments
+<div class="code_sample" id="code-39-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/payments
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-payments">Try it! &gt;</a></p>
@@ -4184,13 +5967,13 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4203,42 +5986,42 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>start</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Start time of query range</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td><code>end</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>End time of query range</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Type of payment - <code>sent</code> or <code>received</code></td>
+<td>Type of payment - <code>sent</code> or <code>received</code>.</td>
 </tr>
 <tr>
 <td><code>currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>Filter results to specified currency</td>
+<td>Filter results to specified currency.</td>
 </tr>
 <tr>
 <td><code>issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>Filter results to specified issuer</td>
+<td>Filter results to specified issuer.</td>
 </tr>
 <tr>
 <td><code>source_tag</code></td>
 <td>Integer</td>
-<td>Filter results to specified source tag</td>
+<td>Filter results to specified source tag.</td>
 </tr>
 <tr>
 <td><code>destination_tag</code></td>
 <td>Integer</td>
-<td>Filter results to specified destination tag</td>
+<td>Filter results to specified destination tag.</td>
 </tr>
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If <code>true</code>, sort results with most recent first. Otherwise, return oldest results first. Defaults to <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
@@ -4248,7 +6031,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -4257,7 +6040,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-25">Response Format</h4>
+<h4 id="response-format-39">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4281,7 +6064,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>payments</code></td>
@@ -4290,12 +6073,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-25">Example</h4>
+<h4 id="example-39">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments?currency=USD&amp;limit=1
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 1,
   "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20140604191650|000007013674|00000",
@@ -4332,16 +6116,16 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-exchanges">Get Account Exchanges</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountExchanges.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountExchanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Exchanges for a given account over time.</p>
-<h4 id="request-format-25">Request Format</h4>
+<h4 id="request-format-39">Request Format</h4>
 <p>There are two variations on this method:</p>
-<div class="multicode" id="code-26"><ul class="codetabs"><li><a href="#code-26-0">REST - All Exchanges</a></li><li><a href="#code-26-1">REST - Specific Currency Pair</a></li></ul>
+<div class="multicode" id="code-40"><ul class="codetabs"><li><a href="#code-40-0">REST - All Exchanges</a></li><li><a href="#code-40-1">REST - Specific Currency Pair</a></li></ul>
 
-<div class="code_sample" id="code-26-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/
+<div class="code_sample" id="code-40-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/
 </code></pre></div>
 
-<div class="code_sample" id="code-26-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
+<div class="code_sample" id="code-40-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-exchanges-all">Try it! &gt;</a></p>
@@ -4356,23 +6140,23 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 <tr>
-<td>:base</td>
+<td><code>base</code></td>
 <td>String</td>
 <td>Base currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a> unless it's XRP.</td>
 </tr>
 <tr>
-<td>:counter</td>
+<td><code>counter</code></td>
 <td>String</td>
 <td>Counter currency of the pair, as a <a href="#currency-code">Currency Code</a>, followed by <code>+</code> and the issuer <a href="#addresses">Address</a> unless it's XRP.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4385,17 +6169,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>start</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>Start time of query range</td>
+<td>Filter results to this time and later.</td>
 </tr>
 <tr>
 <td><code>end</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>End time of query range</td>
+<td>Filter results to this time and earlier.</td>
 </tr>
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>Reverse chronological order</td>
+<td>If true, return results in reverse chronological order. Defaults to false.</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
@@ -4405,7 +6189,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td><a href="#pagination">Pagination</a> key from previously returned response</td>
+<td><a href="#pagination">Pagination</a> key from previously returned response.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -4414,7 +6198,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-26">Response Format</h4>
+<h4 id="response-format-40">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4438,22 +6222,23 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>marker</code></td>
 <td>String</td>
-<td>(May be omitted) <a href="#pagination">Pagination</a> marker</td>
+<td>(May be omitted) <a href="#pagination">Pagination</a> marker.</td>
 </tr>
 <tr>
 <td><code>exchanges</code></td>
 <td>Array of <a href="#exchange-objects">Exchange Objects</a></td>
-<td>The requested exchanges</td>
+<td>The requested exchanges.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-26">Example</h4>
+<h4 id="example-40">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw/exchanges/KRW+rUkMKjQitpgAM5WTGk79xpjT38DEJY283d/XRP?start=2015-08-08T00:00:00Z&amp;end=2015-08-31T00:00:00Z&amp;limit=2
 
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "result": "success",
     "count": 2,
     "marker": "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw|20150810014200|000015162386|00013|00003",
@@ -4499,12 +6284,12 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-balance-changes">Get Account Balance Changes</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountBalanceChanges.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalanceChanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Balance changes for a given account over time.</p>
-<h4 id="request-format-26">Request Format</h4>
-<div class="multicode" id="code-27"><ul class="codetabs"><li><a href="#code-27-0">REST</a></li></ul>
+<h4 id="request-format-40">Request Format</h4>
+<div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-27-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balance_changes/
+<div class="code_sample" id="code-41-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balance_changes/
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balance-changes">Try it! &gt;</a></p>
@@ -4519,13 +6304,13 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4558,7 +6343,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>descending</code></td>
 <td>Boolean</td>
-<td>If true, return results in reverse chronological order. Defaults to false.</td>
+<td>If <code>true</code>, return results in reverse chronological order. Defaults to <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>limit</code></td>
@@ -4577,7 +6362,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-27">Response Format</h4>
+<h4 id="response-format-41">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4610,12 +6395,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-27">Example</h4>
+<h4 id="example-41">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balance_changes?descending=true&amp;limit=3
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 3,
   "marker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn|20160122235211|000018425487|00010|00001",
@@ -4655,14 +6441,14 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-reports">Get Account Reports</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountReports.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountReports.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of payment activity for an account.</p>
-<div class="multicode" id="code-28"><ul class="codetabs"><li><a href="#code-28-0">REST - Date Omitted</a></li><li><a href="#code-28-1">REST - Date Specified</a></li></ul>
+<div class="multicode" id="code-42"><ul class="codetabs"><li><a href="#code-42-0">REST - Date Omitted</a></li><li><a href="#code-42-1">REST - Date Specified</a></li></ul>
 
-<div class="code_sample" id="code-28-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/
+<div class="code_sample" id="code-42-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/
 </code></pre></div>
 
-<div class="code_sample" id="code-28-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/{:date}
+<div class="code_sample" id="code-42-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/{:date}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-reports-by-day">Try it! &gt;</a></p>
@@ -4677,18 +6463,18 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 <tr>
-<td>:date</td>
+<td><code>date</code></td>
 <td>String</td>
 <td>(Optional) UTC date for single report. If omitted, use the <code>start</code> and <code>end</code> query parameters.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4730,7 +6516,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-28">Response Format</h4>
+<h4 id="response-format-42">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4758,12 +6544,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-28">Example</h4>
+<h4 id="example-42">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:00:00&amp;end=2015-08-28T00:00:00&amp;accounts=true&amp;payments=true&amp;descending=true
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 1,
   "reports": [
@@ -4810,11 +6597,11 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-transaction-stats">Get Account Transaction Stats</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountStats.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode" id="code-29"><ul class="codetabs"><li><a href="#code-29-0">REST</a></li></ul>
+<div class="multicode" id="code-43"><ul class="codetabs"><li><a href="#code-43-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-29-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/transactions
+<div class="code_sample" id="code-43-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/transactions
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-stats">Try it! &gt;</a></p>
@@ -4829,13 +6616,13 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -4877,7 +6664,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-29">Response Format</h4>
+<h4 id="response-format-43">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4937,12 +6724,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-29">Example</h4>
+<h4 id="example-43">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/transactions?start=2015-01-01&amp;limit=2
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 2,
   "marker": "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX|20150116000000",
@@ -4973,11 +6761,11 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="get-account-value-stats">Get Account Value Stats</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/accountStats.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0">REST</a></li></ul>
+<div class="multicode" id="code-44"><ul class="codetabs"><li><a href="#code-44-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/value
+<div class="code_sample" id="code-44-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/value
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-value-stats">Try it! &gt;</a></p>
@@ -4992,13 +6780,13 @@ Content-Type: image/svg+xml
 </thead>
 <tbody>
 <tr>
-<td>:address</td>
+<td><code>address</code></td>
 <td>String</td>
 <td>Ripple address to query.</td>
 </tr>
 </tbody>
 </table>
-<p>Optionally, you can also include the following query parameters:</p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -5040,7 +6828,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-30">Response Format</h4>
+<h4 id="response-format-44">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5095,12 +6883,13 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-30">Example</h4>
+<h4 id="example-44">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/value?limit=2&amp;descending=true
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
   "result": "success",
   "count": 2,
   "marker": "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX|20160412000000",
@@ -5119,14 +6908,15 @@ Content-Type: image/svg+xml
 }
 </code></pre>
 <h2 id="health-check-api">Health Check - API</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the API service.</p>
-<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">REST</a></li></ul>
+<div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>GET /v2/health/api
+<div class="code_sample" id="code-45-0" style="position: static;"><pre><code>GET /v2/health/api
 </code></pre></div>
 </div>
-<p>Optionally, you can also include the following query parameters:</p>
+<p><a class="button" href="data-api-v2-tool.html#api-health-check">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -5148,7 +6938,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-31">Response Format</h4>
+<h4 id="response-format-45">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
 <p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
 <table>
@@ -5167,10 +6957,6 @@ Content-Type: image/svg+xml
 <td><code>1</code></td>
 <td>API service is up, but response time to HBase is greater than <code>threshold</code> value from request.</td>
 </tr>
-<tr>
-<td><code>2</code></td>
-<td>API service was unable to contact HBase, or received an error in connecting.</td>
-</tr>
 </tbody>
 </table>
 <p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
@@ -5185,7 +6971,7 @@ Content-Type: image/svg+xml
 <tbody>
 <tr>
 <td><code>score</code></td>
-<td>0-2</td>
+<td>0-1</td>
 <td>Health value, as defined above.</td>
 </tr>
 <tr>
@@ -5200,26 +6986,28 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-31">Example</h4>
+<h4 id="example-45">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/health/api?verbose=true
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "score": 0,
     "response_time": "0.014s",
     "response_time_threshold": "5s"
 }
 </code></pre>
 <h2 id="health-check-ledger-importer">Health Check - Ledger Importer</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routesV2/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the Ledger Importer Service.</p>
-<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">REST - Importer Health</a></li></ul>
+<div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0">REST - Importer Health</a></li></ul>
 
-<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>GET /v2/health/importer
+<div class="code_sample" id="code-46-0" style="position: static;"><pre><code>GET /v2/health/importer
 </code></pre></div>
 </div>
-<p>Optionally, you can also include the following query parameters:</p>
+<p><a class="button" href="data-api-v2-tool.html#importer-health-check">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
 <table>
 <thead>
 <tr>
@@ -5235,7 +7023,7 @@ Content-Type: image/svg+xml
 <td>Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest validated ledger was imported. Defaults to 300 seconds.</td>
 </tr>
 <tr>
-<td>threshold2</td>
+<td><code>threshold2</code></td>
 <td>Integer</td>
 <td>Consider the Importer unhealthy if more than this amount of time, in seconds, has elapsed since the latest ledger of any kind was imported. Defaults to 60 seconds.</td>
 </tr>
@@ -5246,7 +7034,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-32">Response Format</h4>
+<h4 id="response-format-46">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
 <p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
 <table>
@@ -5269,10 +7057,6 @@ Content-Type: image/svg+xml
 <td><code>2</code></td>
 <td>The most recent imported ledger was more than <code>threshold2</code> seconds ago.</td>
 </tr>
-<tr>
-<td><code>3</code></td>
-<td>An error occurred when connecting to HBase, or the API was unable to determine when a ledger was most recently imported.</td>
-</tr>
 </tbody>
 </table>
 <p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
@@ -5287,7 +7071,7 @@ Content-Type: image/svg+xml
 <tbody>
 <tr>
 <td><code>score</code></td>
-<td>0-3</td>
+<td>0-2</td>
 <td>Health value, as defined above.</td>
 </tr>
 <tr>
@@ -5317,18 +7101,211 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-32">Example</h4>
+<h4 id="example-46">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/health/importer?verbose=true
 </code></pre>
 <p>Response:</p>
-<pre><code>{
+<pre><code>200 OK
+{
     "score": 0,
     "response_time": "0.081s",
     "ledger_gap": "1.891s",
     "ledger_gap_threshold": "5.00m",
     "validation_gap": "29.894s",
     "validation_gap_threshold": "15.00m"
+}
+</code></pre>
+<h2 id="health-check-nodes-etl">Health Check - Nodes ETL</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p>Check the health of the Topology Nodes Extract, Transform, Load (ETL) Service.</p>
+<div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0">REST - Nodes ETL Health</a></li></ul>
+
+<div class="code_sample" id="code-47-0" style="position: static;"><pre><code>GET /v2/health/nodes_etl
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#nodes-etl-health-check">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>threshold</code></td>
+<td>Integer</td>
+<td>Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, return a JSON response with data points. By default, return an integer value only.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-47">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
+<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>The most recent imported topology data was less than <code>threshold</code> (Default: 120) seconds ago.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>The most recent imported topology data was more than <code>threshold</code> seconds ago.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score</code></td>
+<td>0-1</td>
+<td>Health value, as defined above.</td>
+</tr>
+<tr>
+<td><code>gap</code></td>
+<td>String - Human-readable time</td>
+<td>Difference between the latest imported data and the current time.</td>
+</tr>
+<tr>
+<td><code>gap_threshold</code></td>
+<td>String - Human-readable time</td>
+<td>Maximum gap to be considered healthy.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>String</td>
+<td>Description of the reason for a non-zero score, if applicable.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-47">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/health/nodes_etl?verbose=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "score": 0,
+  "gap": "1.891s",
+  "gap_threshold": "2.00m",
+}
+</code></pre>
+<h2 id="health-check-validations-etl">Health Check - Validations ETL</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p>Check the health of the Validations Extract, Transform, Load (ETL) Service.</p>
+<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">REST - Validations ETL Health</a></li></ul>
+
+<div class="code_sample" id="code-48-0" style="position: static;"><pre><code>GET /v2/health/validations_etl
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#validations-etl-health-check">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>threshold</code></td>
+<td>Integer</td>
+<td>Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Boolean</td>
+<td>If true, return a JSON response with data points. By default, return an integer value only.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-48">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
+<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>The most recent imported topology data was less than <code>threshold</code> (Default: 120) seconds ago.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>The most recent imported topology data was more than <code>threshold</code> seconds ago.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score</code></td>
+<td>0-1</td>
+<td>Health value, as defined above.</td>
+</tr>
+<tr>
+<td><code>gap</code></td>
+<td>String - Human-readable time</td>
+<td>Difference between the latest imported data and the current time.</td>
+</tr>
+<tr>
+<td><code>gap_threshold</code></td>
+<td>String - Human-readable time</td>
+<td>Maximum gap to be considered healthy.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>String</td>
+<td>Description of the reason for a non-zero score, if applicable.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-48">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/health/nodes_etl?verbose=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "score": 0,
+  "gap": "1.891s",
+  "gap_threshold": "2.00m",
 }
 </code></pre>
 <h1 id="api-conventions">API Conventions</h1>
@@ -5411,6 +7388,17 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
+<h3 id="public-keys">Public Keys</h3>
+<p>The Ripple Consensus Ledger (RCL) uses public keys to verify cryptographic signatures in several places:</p>
+<ul>
+<li>To authorize transactions, a public key is attached to the transaction. The public key must be mathematically associated with the sending Ripple address or the sender's regular key address.</li>
+<li>To secure peer-to-peer communications between <code>rippled</code> servers. This uses a "node public key" that the server generates randomly when it starts with an empty database.</li>
+<li>To sign validation votes as part of the consensus process. This uses a "validator public key" that the server operator <a href="tutorial-rippled-setup.html#validator-setup">defines in the config file</a>.</li>
+</ul>
+<p>Validator public keys and node public keys use the exact same format.</p>
+<p>Public keys can be represented in hexadecimal or in base-58. In hexadecimal, all three types of public keys are 33 bytes (66 characters) long.</p>
+<p>In base-58 format, validator public keys and node public keys always start with the character <code>n</code>, commonly followed by the character <code>9</code>. A validator public key in base-58 format can be up to 53 characters long. Example node public key: <code>n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG</code>.</p>
+<p>Ripple addresses are mathematically associated with a public key. This public key is rarely encoded in base-58, but when it is, it starts with the character <code>a</code>.</p>
 <h3 id="hashes">Hashes</h3>
 <p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
 <p>A Ripple hash value has the following characteristics:</p>
@@ -5419,7 +7407,7 @@ Content-Type: image/svg+xml
 <li><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a> character set: 0-9 and A-F.</li>
 <li>Typically written in upper case.</li>
 </ul>
-<p><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="timestamps">Timestamps</h3>
 <p>All dates and times are written in ISO 8601 Timestamp Format, using UTC. This format is summarized as:</p>
 <p><code>YYYY-MM-DDThh:mm:ssZ</code></p>
@@ -5581,16 +7569,16 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>close_time</code></td>
 <td>Number</td>
-<td>The time at which this ledger was closed, in UNIX time.</td>
+<td>When this ledger was closed, in UNIX time.</td>
 </tr>
 <tr>
 <td><code>close_time_human</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The time at which this ledger was closed.</td>
+<td>When this ledger was closed.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same <code>close_time</code> values, when their actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same <code>close_time</code> values, when their actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
 <h3 id="genesis-ledger">Genesis Ledger</h3>
 <p>Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the <em>genesis ledger</em>.</p>
 <h2 id="account-creation-objects">Account Creation Objects</h2>
@@ -5661,17 +7649,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>base_amount</code></td>
 <td>Number</td>
-<td>The amount of the base currency that was traded</td>
+<td>The amount of the base currency that was traded.</td>
 </tr>
 <tr>
 <td><code>counter_amount</code></td>
 <td>Number</td>
-<td>The amount of the counter currency that was traded</td>
+<td>The amount of the counter currency that was traded.</td>
 </tr>
 <tr>
 <td><code>rate</code></td>
 <td>Number</td>
-<td>The amount of the counter currency acquired per 1 unit of the base currency</td>
+<td>The amount of the counter currency acquired per 1 unit of the base currency.</td>
 </tr>
 <tr>
 <td><code>autobridged_currency</code></td>
@@ -5686,17 +7674,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>base_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The base currency</td>
+<td>The base currency.</td>
 </tr>
 <tr>
 <td><code>base_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted for XRP) The account that issued the base currency</td>
+<td>(Omitted for XRP) The account that issued the base currency.</td>
 </tr>
 <tr>
 <td><code>buyer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The account that acquired the base currency</td>
+<td>The account that acquired the base currency.</td>
 </tr>
 <tr>
 <td><code>client</code></td>
@@ -5706,22 +7694,22 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>counter_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
-<td>The counter currency</td>
+<td>The counter currency.</td>
 </tr>
 <tr>
 <td><code>counter_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted for XRP) The account that issued the counter currency</td>
+<td>(Omitted for XRP) The account that issued the counter currency.</td>
 </tr>
 <tr>
 <td><code>executed_time</code></td>
 <td>String - <a href="#timestamps">Timestamp</a></td>
-<td>The time the exchange occurred</td>
+<td>The time the exchange occurred.</td>
 </tr>
 <tr>
 <td><code>ledger_index</code></td>
 <td>Number - <a href="#ledger-index">Ledger Index</a></td>
-<td>The sequence number of the ledger that included this transaction</td>
+<td>The sequence number of the ledger that included this transaction.</td>
 </tr>
 <tr>
 <td><code>offer_sequence</code></td>
@@ -5731,17 +7719,17 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>provider</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The account that had an existing Offer in the ledger</td>
+<td>The account that had an existing Offer in the ledger.</td>
 </tr>
 <tr>
 <td><code>seller</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The account that acquired the counter currency</td>
+<td>The account that acquired the counter currency.</td>
 </tr>
 <tr>
 <td><code>taker</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The account that sent the transaction which executed this exchange</td>
+<td>The account that sent the transaction which executed this exchange.</td>
 </tr>
 <tr>
 <td><code>tx_hash</code></td>
@@ -6120,6 +8108,203 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
+<h2 id="server-objects">Server Objects</h2>
+<p>A "Server Object" describes one <code>rippled</code> server in the Ripple peer-to-peer network. Server objects are returned by the <a href="#get-topology">Get Topology</a>, <a href="#get-topology-nodes">Get Toplogy Nodes</a>, and <a href="#get-topology-node">Get Topology Node</a> methods. The Data API collects reported network topology approximately every 30 seconds using the <a href="reference-rippled.html#peer-crawler">peer crawler</a>.</p>
+<p>Server objects have the following fields, with some only appearing if the request specified a verbose response:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The public key used by this server to sign its peer-to-peer communications, not including validations.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>String</td>
+<td>The <code>rippled</code> version of this server, when it was last asked.</td>
+</tr>
+<tr>
+<td><code>uptime</code></td>
+<td>Integer</td>
+<td>Number of seconds this server has been connected to the network.</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td>String</td>
+<td>(May be omitted) IP address of the node (may be omitted)</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>Integer</td>
+<td>(May be omitted) Port where this server speaks the <a href="reference-rippled.html#peer-protocol"><code>rippled</code> Peer Protocol</a>.</td>
+</tr>
+<tr>
+<td><code>inbound_count</code></td>
+<td>Integer</td>
+<td>(May be omitted) Number of inbound peer-to-peer connections to this server.</td>
+</tr>
+<tr>
+<td><code>inbound_added</code></td>
+<td>String</td>
+<td>(May be omitted) Number of new inbound peer-to-peer connections since the last measurement.</td>
+</tr>
+<tr>
+<td><code>inbound_dropped</code></td>
+<td>String</td>
+<td>(May be omitted) Number of inbound peer-to-peer connections dropped since the last measurement.</td>
+</tr>
+<tr>
+<td><code>outbound_count</code></td>
+<td>Integer</td>
+<td>(May be omitted) Number of outbound peer-to-peer connections to this server.</td>
+</tr>
+<tr>
+<td><code>outbound_added</code></td>
+<td>String</td>
+<td>(May be omitted) Number of new outbound peer-to-peer connections since the last measurement.</td>
+</tr>
+<tr>
+<td><code>outbound_dropped</code></td>
+<td>String</td>
+<td>(May be omitted) Number of outbound peer-to-peer connections dropped since the last measurement.</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>String</td>
+<td>(Verbose only) The city where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>(Verbose only) The region where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>String</td>
+<td>(Verbose only) The country where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>region_code</code></td>
+<td>String</td>
+<td>(Verbose only) The ISO code for the region where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>String</td>
+<td>(Verbose only) The ISO code for the country where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>postal_code</code></td>
+<td>String</td>
+<td>(Verbose only) The postal code where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>String</td>
+<td>(Verbose only) The ISO timezone where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>lat</code></td>
+<td>String</td>
+<td>(Verbose only) The latitude where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>String</td>
+<td>(Verbose only) The longitude where this server is located, according to IP geolocation.</td>
+</tr>
+<tr>
+<td><code>isp</code></td>
+<td>String</td>
+<td>(Verbose only) The Internet Service Provider hosting this server's public IP address.</td>
+</tr>
+<tr>
+<td><code>org</code></td>
+<td>String</td>
+<td>(Verbose only) The organization that owns this server's public IP address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="link-objects">Link Objects</h2>
+<p>A Link Object represents a peer-to-peer network connection between two <code>rippled</code> servers. It has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The node public key of the <code>rippled</code> making the outgoing connection.</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The node public key of the <code>rippled</code> receiving the incoming connection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validation-objects">Validation Objects</h2>
+<p>A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> The Data API retain only about 6 months of validation vote data.</p>
+<p>A Validation Object has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td>Integer</td>
+<td>(May be omitted) The number of <code>rippled</code> servers that reported seeing this validation. Not available for old data.</td>
+</tr>
+<tr>
+<td><code>ledger_hash</code></td>
+<td>String - <a href="#hashes">Hash</a></td>
+<td>The hash of the ledger version this validation vote applies to.</td>
+</tr>
+<tr>
+<td><code>reporter_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The public key of the <code>rippled</code> server that first reported this validation, in base-58.</td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
+<td>String - Base-58 <a href="#public-keys">Public Key</a></td>
+<td>The public key of the validator used to sign this validation, in base-58.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>String</td>
+<td>The validator's signature of the validation details, in hexadecimal.</td>
+</tr>
+<tr>
+<td><code>first_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the first report of this validation.</td>
+</tr>
+<tr>
+<td><code>last_datetime</code></td>
+<td>String - <a href="#timestamps">Timestamp</a></td>
+<td>Date and time of the last report of this validation.</td>
+</tr>
+</tbody>
+</table>
 <h1 id="running-the-historical-database">Running the Historical Database</h1>
 <p>You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own <code>rippled</code> instance. This is useful if you do not want to depend on Ripple to run the historical database indefinitely, or you want access to historical transactions from within your own intranet.</p>
 <h2 id="installation">Installation</h2>
@@ -6137,26 +8322,32 @@ Content-Type: image/svg+xml
 <ol>
 <li>Install HBase. For production use, configure it in distributed mode.</li>
 <li>
-<p>Clone the rippled Historical Database Git Repository:</p>
+<p>Clone the Historical Database Git Repository:</p>
 <pre><code>git clone https://github.com/ripple/rippled-historical-database.git
 </code></pre>
-<p>(You can also download and extract a zipped release instead.)
-  3. Use npm to install additional modules:</p>
+<p>(You can also download and extract a zipped release instead.)</p>
+</li>
+<li>
+<p>Use npm to install additional modules:</p>
 <pre><code>cd rippled-historical-database
 npm install
 </code></pre>
-<p>The install script creates the required config files: <code>config/api.config.json</code> and <code>config/import.config.json</code>
-  4. Change the config files as needed. Remove the <code>postgres</code> section from <code>api.config.json</code>.</p>
+<p>The install script creates the required config files: <code>config/api.config.json</code> and <code>config/import.config.json</code></p>
+</li>
+<li>
+<p>Change the config files as needed. Remove the <code>postgres</code> section from <code>api.config.json</code>.</p>
 </li>
 </ol>
 <p>Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See <a href="https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md">Storm Setup</a> for more information.</p>
-<p>At this point, the rippled Historical Database is installed. See <a href="#services">Services</a> for the different components that you can run.</p>
+<p>At this point, the Data API is installed. See <a href="#services">Services</a> for the different components that you can run.</p>
 <h3 id="tests">Tests</h3>
-<p>Dependencies:
-* <a href="https://docs.docker.com/compose/install/">Docker Compose</a></p>
+<p>Dependencies:</p>
+<ul>
+<li><a href="https://docs.docker.com/compose/install/">Docker Compose</a></li>
+</ul>
 <pre><code>$ docker-compose build
 $ docker-compose up -d hbase
-$ docker-compose run webapp npm test
+$ docker-compose run --rm webapp npm test
 </code></pre>
 <h3 id="services">Services</h3>
 <p>The <code>rippled</code> Historical Database consists of several processes that can be run separately.</p>
@@ -6191,7 +8382,7 @@ $ node import/live
 <p>The Backfiller retrieves old ledgers from a <code>rippled</code> instance by moving backwards in time. You can optionally provide start and stop indexes to retrieve a specific range of ledgers, by their sequence number.</p>
 <p>The <code>--startIndex</code> parameter defines the most-recent ledger to retrieve. The Backfiller retrieves this ledger first and then continues retrieving progressively older ledgers. If this parameter is omitted, the Backfiller begins with the newest validated ledger.</p>
 <p>The <code>--stopIndex</code> parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.</p>
-<p><strong>Caution:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
 <p>Example usage:</p>
 <pre><code>// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000

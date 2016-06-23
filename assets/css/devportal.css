@@ -1,3 +1,60 @@
+.devportal-callout {
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-left-width: 4px;
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.devportal-callout > strong:first-child {
+    display: block;
+}
+
+.devportal-callout.tip {
+    border-color: #5cb85c;
+}
+.devportal-callout.tip > strong:first-child:before {
+    content: "\f058"; /* fontawesome check-circle icon */
+    font-family: FontAwesome;
+    color: #5cb85c;
+    margin-left: -20px;
+    padding-right: 5px;
+}
+
+.devportal-callout.note {
+    border-color: #5bc0de;
+}
+.devportal-callout.note > strong:first-child:before {
+    content: "\f05a"; /* fontawesome (i) info-circle icon */
+    font-family: FontAwesome;
+    color: #5bc0de;
+    margin-left: -20px;
+    padding-right: 5px;
+}
+
+.devportal-callout.caution {
+    border-color: #f0ad4e;
+}
+.devportal-callout.caution > strong:first-child:before {
+    content: "\f071"; /* fontawesome /!\ exclamation-triangle icon */
+    font-family: FontAwesome;
+    color: #f0ad4e;
+    margin-left: -20px;
+    padding-right: 5px;
+}
+
+.devportal-callout.warning {
+    border-color: #d9534f;
+}
+.devportal-callout.warning > strong:first-child:before {
+    content: "\f057"; /* fontawesome (x) times-circle icon */
+    font-family: FontAwesome;
+    color: #d9534f;
+    margin-left: -20px;
+    padding-right: 5px;
+}
+
 .navbar-header {
     float: left;
 }

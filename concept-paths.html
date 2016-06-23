@@ -23,7 +23,7 @@
 
 
     <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- syntax selection js -->
@@ -38,6 +38,9 @@
 
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 </head>
 
@@ -171,7 +174,7 @@
 <h2 id="pathfinding">Pathfinding</h2>
 <p>The <code>rippled</code> API has two methods that can be used for pathfinding. The <a href="reference-rippled.html#ripple-path-find"><code>ripple_path_find</code> command</a> does a one-time lookup of possible path sets. The <a href="reference-rippled.html#path-find"><code>path_find</code> command</a> (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.</p>
 <p>You can have <code>rippled</code> automatically fill in paths when you sign it, by including the <code>build_path</code> field in a request to the <a href="reference-rippled.html#sign"><code>sign</code> command</a> or <a href="reference-rippled.html#sign-and-submit-mode"><code>submit</code> command (sign-and-submit mode)</a>. However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.</p>
-<p><strong>Caution:</strong> Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.</p>
 <p>Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so <code>rippled</code> is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.</p>
 <h2 id="implied-steps">Implied Steps</h2>
 <p>By convention, several steps of a path are implied by the <a href="reference-transaction-format.html#payment">fields of the Payment transaction</a>: specifically, the <code>Account</code> (sender), <code>Destination</code> (receiver), <code>Amount</code> (currency and amount to be delivered) and <code>SendMax</code> (currency and amount to be sent, if specified). The implied steps are as follows:</p>
