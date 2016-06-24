@@ -7648,23 +7648,46 @@ The validations stream sends messages whenever it receives validation messages, 
 
 ```
 {
-  "type": "validationReceived",
-  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
-  "ledger_index": "20504721",
-  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
-  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
+    "type": "validationReceived",
+    "amendments":[
+        "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+        "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
+        "C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490",
+        "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13"
+    ],
+    "base_fee":10,
+    "flags":2147483649,
+    "full":true,
+    "ledger_hash":"EC02890710AAA2B71221B0D560CFB22D64317C07B7406B02959AD84BAD33E602",
+    "ledger_index":"6",
+    "load_fee":256000,
+    "reserve_base":20000000,
+    "reserve_inc":5000000,
+    "signature":"3045022100E199B55643F66BC6B37DBC5E185321CF952FD35D13D9E8001EB2564FFB94A07602201746C9A4F7A93647131A2DEB03B76F05E426EC67A5A27D77F4FF2603B9A528E6",
+    "signing_time":515115322,
+    "validation_public_key":"n94Gnc6svmaPPRHUAyyib1gQUov8sYbjLoEwUBYPH39qHZXuo8ZT"
 }
+
 ```
 
 The fields from a validations stream message are as follows:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| type | String | `validationReceived` indicates this is from the validations stream |
-| ledger\_hash | String | The identifying hash of the proposed ledger is being validated. |
-| ledger\_index | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [version 0.31.0][])_ |
-| signature | String | The signature that the validator used to sign its vote for this ledger. |
-| validation\_public\_key | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
+| `type` | String | The value `validationReceived` indicates this is from the validations stream. |
+| `amendments` | Array of Strings | (May be omitted) The [amendments](concept-amendments.html) this server wants to be added to the protocol. _(New in [version 0.32.0][])_ |
+| `base_fee` | Integer | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](concept-fee-voting.html). _(New in [version 0.32.0][])_ |
+| `flags` | Number | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. <!--{# TODO: what's a partial validation? #}--> _(New in [version 0.32.0][])_ |
+| `full` | Boolean | If `true`, this is a full validation. Otherwise, this is a partial validation. _(New in [version 0.32.0][])_ |
+| `ledger_hash` | String | The identifying hash of the proposed ledger is being validated. |
+| `ledger_index` | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [version 0.31.0][])_ |
+| `load_fee` | Integer | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. _(New in [version 0.32.0][])_ |
+| `reserve_base` | Integer | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). _(New in [version 0.32.0][])_ |
+| `reserve_inc` | Integer | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). _(New in [version 0.32.0][])_ |
+| `signature` | String | The signature that the validator used to sign its vote for this ledger. |
+| `signing_time` | Number | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). _(New in [version 0.32.0][])_ |
+| `validation_public_key` | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
 

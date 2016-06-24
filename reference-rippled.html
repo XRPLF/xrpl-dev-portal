@@ -8950,12 +8950,27 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p><em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">version 0.29.0</a>)</em></p>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
 <pre><code>{
-  "type": "validationReceived",
-  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
-  "ledger_index": "20504721",
-  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
-  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
+    "type": "validationReceived",
+    "amendments":[
+        "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+        "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
+        "C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490",
+        "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13"
+    ],
+    "base_fee":10,
+    "flags":2147483649,
+    "full":true,
+    "ledger_hash":"EC02890710AAA2B71221B0D560CFB22D64317C07B7406B02959AD84BAD33E602",
+    "ledger_index":"6",
+    "load_fee":256000,
+    "reserve_base":20000000,
+    "reserve_inc":5000000,
+    "signature":"3045022100E199B55643F66BC6B37DBC5E185321CF952FD35D13D9E8001EB2564FFB94A07602201746C9A4F7A93647131A2DEB03B76F05E426EC67A5A27D77F4FF2603B9A528E6",
+    "signing_time":515115322,
+    "validation_public_key":"n94Gnc6svmaPPRHUAyyib1gQUov8sYbjLoEwUBYPH39qHZXuo8ZT"
 }
+
 </code></pre>
 <p>The fields from a validations stream message are as follows:</p>
 <table>
@@ -8968,27 +8983,67 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </thead>
 <tbody>
 <tr>
-<td>type</td>
+<td><code>type</code></td>
 <td>String</td>
-<td><code>validationReceived</code> indicates this is from the validations stream</td>
+<td>The value <code>validationReceived</code> indicates this is from the validations stream.</td>
 </tr>
 <tr>
-<td>ledger_hash</td>
+<td><code>amendments</code></td>
+<td>Array of Strings</td>
+<td>(May be omitted) The <a href="concept-amendments.html">amendments</a> this server wants to be added to the protocol. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>base_fee</code></td>
+<td>Integer</td>
+<td>(May be omitted) The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>Number</td>
+<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. <!-- --> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>full</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>ledger_hash</code></td>
 <td>String</td>
 <td>The identifying hash of the proposed ledger is being validated.</td>
 </tr>
 <tr>
-<td>ledger_index</td>
+<td><code>ledger_index</code></td>
 <td>String - Integer</td>
 <td>The <a href="#ledger-index">Ledger Index</a> of the proposed ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></td>
 </tr>
 <tr>
-<td>signature</td>
+<td><code>load_fee</code></td>
+<td>Integer</td>
+<td>(May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>reserve_base</code></td>
+<td>Integer</td>
+<td>(May be omitted) The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>reserve_inc</code></td>
+<td>Integer</td>
+<td>(May be omitted) The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>signature</code></td>
 <td>String</td>
 <td>The signature that the validator used to sign its vote for this ledger.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
+<td><code>signing_time</code></td>
+<td>Number</td>
+<td>When this validation vote was signed, in seconds since the <a href="#specifying-time">Ripple Epoch</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
 <td>String</td>
 <td>The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the <code>signature</code>.</td>
 </tr>
