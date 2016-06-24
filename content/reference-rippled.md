@@ -8390,6 +8390,8 @@ The `info` object may have some arrangement of the following fields:
 | validated\_ledger.seq | Number - [Ledger Index][] | The ledger index of the latest validate ledger |
 | validation\_quorum | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
+[transaction cost]: concept-transaction-cost.html
+
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
