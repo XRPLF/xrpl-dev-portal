@@ -861,6 +861,7 @@ Null method
 <li><a href="#account-offers"><code>account_offers</code> - Get info about an account's currency exchange offers</a></li>
 <li><a href="#account-tx"><code>account_tx</code> - Get info about an account's transactions</a></li>
 <li><a href="#book-offers"><code>book_offers</code> - Get info about offers to exchange two currencies</a></li>
+<li><a href="#fee"><code>fee</code> - Get information about transaction cost</a></li>
 <li><a href="#gateway-balances"><code>gateway_balances</code> - Calculate total amounts issued by an account</a></li>
 <li><a href="#ledger"><code>ledger</code> - Get info about a ledger version</a></li>
 <li><a href="#ledger-closed"><code>ledger_closed</code> - Get the latest closed ledger version</a></li>
@@ -891,7 +892,6 @@ Null method
 <li><a href="#connect"><code>connect</code> - Force the rippled server to connect to a specific peer</a></li>
 <li><a href="#consensus-info"><code>consensus_info</code> - Get information about the state of consensus as it happens</a></li>
 <li><a href="#feature"><code>feature</code> - Get information about protocol amendments</a></li>
-<li><a href="#fee"><code>fee</code> - Get information about transaction cost</a></li>
 <li><a href="#fetch-info"><code>fetch_info</code> - Get information about the server's sync with the network</a></li>
 <li><a href="#get-counts"><code>get_counts</code> - Get statistics about the server's internals and memory usage</a></li>
 <li><a href="#ledger-accept"><code>ledger_accept</code> - Close and advance the ledger in stand-alone mode</a></li>
@@ -3754,6 +3754,11 @@ Connecting to 127.0.0.1:5005
 <td>public_key_hex</td>
 <td>String</td>
 <td>The public key of the account, in hex format.</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>String</td>
+<td>(May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 </tbody>
 </table>
@@ -8945,12 +8950,27 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <p><em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">version 0.29.0</a>)</em></p>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
 <pre><code>{
-  "type": "validationReceived",
-  "ledger_hash": "8F77146B9DFE3E48213677DA0826839DFA3666228322684DF5D775A8A4F76401",
-  "ledger_index": "20504721",
-  "signature": "3045022100DFFE4A50B4BD3BD33C280E3DEC9897413C299036531F3156FFDEEDED9E47005702202725D2DDF8F7F8E7C0D89787C0291D3CBE5FE3BF66503FC3AE77ADE15A78B0D9",
-  "validation_public_key": "n9LDGC4SaEgtVXSjFNKHh6BPSUAuccZ8uKdEAoQUDQ1x2jqunEXr"
+    "type": "validationReceived",
+    "amendments":[
+        "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+        "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
+        "C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490",
+        "DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13"
+    ],
+    "base_fee":10,
+    "flags":2147483649,
+    "full":true,
+    "ledger_hash":"EC02890710AAA2B71221B0D560CFB22D64317C07B7406B02959AD84BAD33E602",
+    "ledger_index":"6",
+    "load_fee":256000,
+    "reserve_base":20000000,
+    "reserve_inc":5000000,
+    "signature":"3045022100E199B55643F66BC6B37DBC5E185321CF952FD35D13D9E8001EB2564FFB94A07602201746C9A4F7A93647131A2DEB03B76F05E426EC67A5A27D77F4FF2603B9A528E6",
+    "signing_time":515115322,
+    "validation_public_key":"n94Gnc6svmaPPRHUAyyib1gQUov8sYbjLoEwUBYPH39qHZXuo8ZT"
 }
+
 </code></pre>
 <p>The fields from a validations stream message are as follows:</p>
 <table>
@@ -8963,27 +8983,67 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </thead>
 <tbody>
 <tr>
-<td>type</td>
+<td><code>type</code></td>
 <td>String</td>
-<td><code>validationReceived</code> indicates this is from the validations stream</td>
+<td>The value <code>validationReceived</code> indicates this is from the validations stream.</td>
 </tr>
 <tr>
-<td>ledger_hash</td>
+<td><code>amendments</code></td>
+<td>Array of Strings</td>
+<td>(May be omitted) The <a href="concept-amendments.html">amendments</a> this server wants to be added to the protocol. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>base_fee</code></td>
+<td>Integer</td>
+<td>(May be omitted) The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>Number</td>
+<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. <!-- --> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>full</code></td>
+<td>Boolean</td>
+<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>ledger_hash</code></td>
 <td>String</td>
 <td>The identifying hash of the proposed ledger is being validated.</td>
 </tr>
 <tr>
-<td>ledger_index</td>
+<td><code>ledger_index</code></td>
 <td>String - Integer</td>
 <td>The <a href="#ledger-index">Ledger Index</a> of the proposed ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></td>
 </tr>
 <tr>
-<td>signature</td>
+<td><code>load_fee</code></td>
+<td>Integer</td>
+<td>(May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>reserve_base</code></td>
+<td>Integer</td>
+<td>(May be omitted) The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>reserve_inc</code></td>
+<td>Integer</td>
+<td>(May be omitted) The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>signature</code></td>
 <td>String</td>
 <td>The signature that the validator used to sign its vote for this ledger.</td>
 </tr>
 <tr>
-<td>validation_public_key</td>
+<td><code>signing_time</code></td>
+<td>Number</td>
+<td>When this validation vote was signed, in seconds since the <a href="#specifying-time">Ripple Epoch</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td><code>validation_public_key</code></td>
 <td>String</td>
 <td>The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the <code>signature</code>.</td>
 </tr>
@@ -9793,6 +9853,31 @@ rippled server_info
 <td>The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
 </tr>
 <tr>
+<td>load_factor_local</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> based on load to this server.</td>
+</tr>
+<tr>
+<td>load_factor_net</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> being used by the rest of the network (estimated).</td>
+</tr>
+<tr>
+<td>load_factor_cluster</td>
+<td>Number</td>
+<td>(May be omitted) Current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> based on load to servers in <a href="tutorial-rippled-setup.html#clustering">this cluster</a>.</td>
+</tr>
+<tr>
+<td>load_factor_fee_escalation</td>
+<td>Number</td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_queue</td>
+<td>Number</td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
 <td>peers</td>
 <td>Number</td>
 <td>How many other <code>rippled</code> servers the node is currently connected to.</td>
@@ -10139,13 +10224,43 @@ rippled server_state
 </tr>
 <tr>
 <td>load_base</td>
-<td>Number</td>
-<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction fees are doubled.</td>
+<td>Integer</td>
+<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction costs are doubled.</td>
 </tr>
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing. The ratio between this value and the load_base determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+<td>The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+</tr>
+<tr>
+<td>load_factor_local</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor based on load to this server.</td>
+</tr>
+<tr>
+<td>load_factor_net</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor being used by the rest of the network (estimated).</td>
+</tr>
+<tr>
+<td>load_factor_cluster</td>
+<td>Integer</td>
+<td>(May be omitted) The load factor based on load to servers in <a href="tutorial-rippled-setup.html#clustering">this cluster</a>.</td>
+</tr>
+<tr>
+<td>load_factor_fee_escalation</td>
+<td>Integer</td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_queue</td>
+<td>Integer</td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+</tr>
+<tr>
+<td>load_factor_fee_reference</td>
+<td>Integer</td>
+<td>(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -10929,7 +11044,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="fee">fee</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
-<p><em>The <code>fee</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>As of <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>, this is a public command available to unprivileged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-73"><ul class="codetabs"><li><a href="#code-73-0">WebSocket</a></li><li><a href="#code-73-1">JSON-RPC</a></li><li><a href="#code-73-2">Commandline</a></li></ul>
