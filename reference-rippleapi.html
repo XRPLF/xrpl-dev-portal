@@ -312,7 +312,7 @@
       </aside>
       <main class="main" role="main">
     <div class='content'>
-        <p style="margin-top: 1em; font-style: italic">Updated for <a href="https://github.com/ripple/ripple-lib/releases/0.17.1" title="view on GitHub">version 0.17.1</a></p>
+        <p style="margin-top: 1em; font-style: italic">Updated for <a href="https://github.com/ripple/ripple-lib/releases/0.17.2" title="view on GitHub">version 0.17.2</a></p>
 <h1 id="introduction">Introduction</h1>
 <p>RippleAPI is the official client library to the Ripple Consensus Ledger. Currently, RippleAPI is only available in JavaScript. 
 Using RippleAPI, you can:</p>
@@ -1071,7 +1071,7 @@ const api = new RippleAPI();
 <tr>
 <td>transferRate</td>
 <td>number,null</td>
-<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, represented as billionths of a unit. Use <code>null</code> to set no fee.</td>
+<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, as the decimal amount that must be sent to deliver 1 unit. Has precision up to 9 digits beyond the decimal point. Use <code>null</code> to set no fee.</td>
 </tr>
 </tbody>
 </table>
@@ -4011,7 +4011,7 @@ return api.getOrderbook(address, orderbook)
 <tr>
 <td>transferRate</td>
 <td>number,null</td>
-<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, represented as billionths of a unit. Use <code>null</code> to set no fee.</td>
+<td><em>Optional</em>  The fee to charge when users transfer this account’s issuances, as the decimal amount that must be sent to deliver 1 unit. Has precision up to 9 digits beyond the decimal point. Use <code>null</code> to set no fee.</td>
 </tr>
 </tbody>
 </table>
