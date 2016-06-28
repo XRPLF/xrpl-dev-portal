@@ -98,16 +98,16 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | TBD |
-| [MultiSign](#multisign)         | v0.31.0    | Expected 2016-06-27 |
-| [FeeEscalation](#feeescalation) | v0.31.0    | 2016-05-05T16:33:22Z in ledger 21225473 |
+| [MultiSign](#multisign)         | v0.31.0    | [2016-06-27T11:34:41Z in ledger 22178817](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7) |
+| [FeeEscalation](#feeescalation) | v0.31.0    | [2016-05-19T16:44:51Z in ledger 21225473](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3) |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
 
 ## FeeEscalation ##
 
-| Amendment ID |
-|--------------|
-| 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE |
+| Amendment ID | Status |
+|--------------|--------|
+| 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE | Enabled |
 
 Changes the way the [transaction cost](concept-transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
 
@@ -123,9 +123,9 @@ A transaction remains in the queue until one of the following happens:
 
 ## MultiSign ##
 
-| Amendment ID |
-|--------------|
-| 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 |
+| Amendment ID | Status |
+|--------------|--------|
+| 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | Enabled |
 
 Introduces [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger node type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
@@ -145,19 +145,19 @@ An address with a SignerList can disable the master key even if a regular key is
 
 ## SusPay ##
 
-| Amendment ID |
-|--------------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |
+| Amendment ID | Status |
+|--------------|--------|
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | In Development. <br />Enabled on TestNet |
 
 Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
 
-This amendment is still in development. The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
+**Note:** This amendment is still in development. The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
 
 ## TrustSetAuth ##
 
-| Amendment ID |
-|--------------|
-| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC |
+| Amendment ID | Status |
+|--------------|--------|
+| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | Planned |
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
 
@@ -165,9 +165,9 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 ## Tickets ##
 
-| Amendment ID |
-|--------------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 |
+| Amendment ID | Status |
+|--------------|--------|
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In Development |
 
 Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger node type and the transaction types `TicketCreate` and `TicketCancel`.
 
