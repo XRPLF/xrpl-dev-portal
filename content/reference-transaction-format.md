@@ -1049,7 +1049,7 @@ These codes indicate an error in the local server processing the transaction; it
 | telBAD\_DOMAIN | The transaction specified a domain value (for example, the `Domain` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long to store in the ledger. |
 | telBAD\_PATH_COUNT | The transaction contains too many paths for the local server to process. |
 | telBAD\_PUBLIC\_KEY | The transaction specified a public key value (for example, as the `MessageKey` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long. |
-| telCAN\_NOT\_QUEUE | The transaction did not meet the [open ledger cost](concept-transaction-cost.html), but this server did not queue it because it failed one of the server's heuristics for being "likely to succeed". You can try again later or sign and submit a replacement transaction with a higher transaction cost in the `Fee` field. |
+| telCAN\_NOT\_QUEUE | The transaction did not meet the [open ledger cost](concept-transaction-cost.html), but this server did not queue this transaction because it did not meet the [queuing restrictions](concept-transaction-cost.html#queuing-restrictions). You can try again later or sign and submit a replacement transaction with a higher transaction cost in the `Fee` field. |
 | telFAILED\_PROCESSING | An unspecified error occurred when processing the transaction. |
 | telINSUF\_FEE_P | The `Fee` from the transaction is not high enough to meet the server's current [transaction cost](concept-transaction-cost.html) requirement, which is derived from its load level. |
 | telLOCAL_ERROR | Unspecified local error. |

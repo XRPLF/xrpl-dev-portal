@@ -10233,21 +10233,6 @@ rippled server_state
 <td>The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
 </tr>
 <tr>
-<td>load_factor_local</td>
-<td>Integer</td>
-<td>(May be omitted) The load factor based on load to this server.</td>
-</tr>
-<tr>
-<td>load_factor_net</td>
-<td>Integer</td>
-<td>(May be omitted) The load factor being used by the rest of the network (estimated).</td>
-</tr>
-<tr>
-<td>load_factor_cluster</td>
-<td>Integer</td>
-<td>(May be omitted) The load factor based on load to servers in <a href="tutorial-rippled-setup.html#clustering">this cluster</a>.</td>
-</tr>
-<tr>
 <td>load_factor_fee_escalation</td>
 <td>Integer</td>
 <td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>

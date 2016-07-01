@@ -47,7 +47,7 @@ Each `rippled` server maintains a cost threshold based on its current load. If y
 
 ## Open Ledger Cost ##
 
-The `rippled` server has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost are [queued for a following ledger](#queued-transactions) instead.
+The `rippled` server has a second mechanism for enforcing the transaction cost, called the _open ledger cost_. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost may be [queued for a following ledger](#queued-transactions) instead.
 
 For each new ledger version, the server picks a soft limit on the number of transactions to be included in the open ledger, based on the number of transactions in the previous ledger. The open ledger cost is equal to the minimum un-scaled transaction cost until the number of transactions in the open ledger is equal to the soft limit. After that, the open ledger cost increases exponentially for each transaction included in the open ledger. For the next ledger, the server increases the soft limit if the current ledger contained more transactions than the soft limit, and decreases the soft limit if the consensus process takes more than 5 seconds.
 
@@ -68,7 +68,7 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 * Transactions must be properly-formed and [authorized](reference-transaction-format.html#authorizing-transactions) with valid signatures.
 * Transactions with an `AccountTxnID` field cannot be queued.
 * A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. If a transaction affects how the address authorizes accounts, no other transactions from the same address can be queued behind it. _(New in [`rippled` 0.32.0](https://github.com/ripple/rippled/releases/tag/0.32.0))_
-* If the transaction includes a `LastLedgerSequence` field, the value of that field must not be more than **the current ledger index + 2**.
+* If the transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
 
 
 

@@ -8656,9 +8656,6 @@ The `state` object may have some arrangement of the following fields:
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool. |
 | load\_base | Integer | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction costs are doubled. |
 | load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
-| load\_factor\_local | Integer | (May be omitted) The load factor based on load to this server. |
-| load\_factor\_net | Integer | (May be omitted) The load factor being used by the rest of the network (estimated). |
-| load\_factor\_cluster | Integer | (May be omitted) The load factor based on load to servers in [this cluster](tutorial-rippled-setup.html#clustering). |
 | load\_factor\_fee\_escalation | Integer | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger, in fee levels. _(New in [version 0.32.0][])_ |
 | load\_factor\_fee\_queue | Integer | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full, in fee levels. _(New in [version 0.32.0][])_ |
 | load\_factor\_fee\_reference | Integer | (May be omitted) The [transaction cost][] with no load scaling, in fee levels. _(New in [version 0.32.0][])_ |
