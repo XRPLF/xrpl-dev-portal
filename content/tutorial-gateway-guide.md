@@ -14,7 +14,7 @@ This document explains the concepts and steps necessary to become a Ripple gatew
 You are not on your own. Ripple depends on the success of individual gateways, so we are here to help. Please contact us if you need help building and growing your gateway.
 
 * Contact [partners@ripple.com](mailto:partners@ripple.com) for enterprise-class integrations, infrastructure advice, and other business development needs.
-* Contact [developers@ripple.com](mailto:developers@ripple.com) for technical questions, clarifications, bug reports, and feature requests.
+* Contact [support@ripple.com](mailto:support@ripple.com) for technical questions, clarifications, bug reports, and feature requests.
 
 
 ## Ripple Gateways Explained ##
