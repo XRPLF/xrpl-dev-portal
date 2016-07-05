@@ -97,7 +97,7 @@ The following is a comprehensive list of all known amendments and their status o
 |---------------------------------|------------|---------|
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
-| [TrustSetAuth](#trustsetauth)   | v0.30.0    | TBD |
+| [TrustSetAuth](#trustsetauth)   | v0.30.0    | Expected 2016-07-19 |
 | [MultiSign](#multisign)         | v0.31.0    | [2016-06-27T11:34:41Z in ledger 22178817](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7) |
 | [FeeEscalation](#feeescalation) | v0.31.0    | [2016-05-19T16:44:51Z in ledger 21225473](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3) |
 
@@ -157,7 +157,7 @@ Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Led
 
 | Amendment ID | Status |
 |--------------|--------|
-| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | Planned |
+| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | [Open for voting](https://ripple.com/dev-blog/trustsetauth-amendment-open-voting/). Expected to become enabled on 2016-07-19 |
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
 
