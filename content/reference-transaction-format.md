@@ -943,7 +943,7 @@ If nothing went wrong when submitting and applying the transaction locally, the 
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 ```
 
-__*Note:*__ A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See [Finality of Results](#finality-of-results) for details.
+**Note:** A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See [Finality of Results](#finality-of-results) for details.
 
 ## Looking up Transaction Results ##
 

@@ -887,6 +887,7 @@ Null method
 </ul>
 <p>The <code>owner_info</code> command is deprecated. Use <a href="#account-objects"><code>account_objects</code></a> instead.</p>
 <h2 id="list-of-admin-commands">List of Admin Commands</h2>
+<p>Admin commands are only available if you <a href="#connecting-to-rippled">connect to <code>rippled</code></a> on a host and port that the config file identifies as admin. (By default, the commandline client uses an admin connection.)</p>
 <ul>
 <li><a href="#can-delete"><code>can_delete</code> - Allow online deletion of ledgers up to a specific ledger</a></li>
 <li><a href="#connect"><code>connect</code> - Force the rippled server to connect to a specific peer</a></li>
@@ -3556,7 +3557,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <h2 id="wallet-propose">wallet_propose</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>wallet_propose</code> method to generate a key pair and Ripple <a href="#addresses">address</a>. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must <a href="reference-transaction-format.html#creating-accounts">receive a Payment transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
-<p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em> (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)</p>
+<p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em> (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)</p>
 <p><em>(Updated in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
 <h4 id="request-format-8">Request Format</h4>
 <p>An example of the request format:</p>
@@ -3600,24 +3601,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 rippled wallet_propose masterpassphrase
 </code></pre></div>
 </div>
-<p>There are two valid modes for this command, depending on whether the request specifies the <code>key_type</code> parameter. If you omit the <code>key_type</code>, the request takes <em>only</em> the following parameter (ignoring others):</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>passphrase</td>
-<td>String</td>
-<td>(Optional) Generate a key pair and address from this seed value using the elliptic curve secp256k1. This value can be formatted in hexadecimal, base-58, RFC-1751, or as an arbitrary string. If omitted, use a random seed.</td>
-</tr>
-</tbody>
-</table>
-<p>If you specify the <code>key_type</code>, you must provide at most one of the following fields: <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code>. (If you omit all three, <code>rippled</code> uses a random seed.) In this mode, the request parameters are as follows:</p>
+<p>The request can contain the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -3630,28 +3614,29 @@ rippled wallet_propose masterpassphrase
 <tr>
 <td>key_type</td>
 <td>String</td>
-<td>Which elliptic curve to use for this key pair. Valid values are <code>ed25519</code> and <code>secp256k1</code>. <strong>Caution:</strong> <a href="https://ed25519.cr.yp.to/">Ed25519</a> support is experimental.</td>
+<td>Which elliptic curve to use for this key pair. Valid values are <code>ed25519</code> and <code>secp256k1</code> (all lower case). Defaults to <code>secp256k1</code>.</td>
 </tr>
 <tr>
 <td>passphrase</td>
 <td>String</td>
-<td>(Optional) Generate the key pair and address from this seed value. This is interpreted as a string only. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
+<td>(Optional) Generate a key pair and address from this seed value. This value can be formatted in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>, <a href="https://en.wikipedia.org/wiki/Base58">base-58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as an arbitrary string. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td>seed</td>
 <td>String</td>
-<td>(Optional) Generate the key pair and address from this base-58-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>. Ignored unless <code>key_type</code> is provided.</td>
+<td>(Optional) Generate the key pair and address from this <a href="https://en.wikipedia.org/wiki/Base58">base-58</a>-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td>seed_hex</td>
 <td>String</td>
-<td>(Optional) Generate the key pair and address from this seed value in hexadecimal format. Cannot be used with <code>passphrase</code> or <code>seed</code>. Ignored unless <code>key_type</code> is provided.</td>
+<td>(Optional) Generate the key pair and address from this seed value in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> format. Cannot be used with <code>passphrase</code> or <code>seed</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>The commandline version of this command cannot generate Ed25519 keys.</p>
+<p>You must provide <strong>at most one</strong> of the following fields: <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code>. If you omit all three, <code>rippled</code> uses a random seed.</p>
+<p class="devportal-callout note"><strong>Note:</strong> <a href="https://ed25519.cr.yp.to/">Ed25519</a> support is experimental. The commandline version of this command cannot generate Ed25519 keys.</p>
 <h5 id="specifying-a-seed">Specifying a Seed</h5>
-<p class="devportal-callout caution"><strong>Caution:</strong> For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to <a href="reference-transaction-format.html#authorizing-transactions">send transactions signed by that address</a>. Generally, running this command with no parameters is a good way to generate a random seed.</p>
+<p>For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to <a href="reference-transaction-format.html#authorizing-transactions">send transactions signed by that address</a>. Generally, running this command with no parameters is a good way to generate a random seed.</p>
 <p>Cases where you would specify a known seed include:</p>
 <ul>
 <li>Re-calculating your address when you only know the seed associated with that address</li>
@@ -4714,7 +4699,7 @@ rippled ledger_current
 <h2 id="ledger-request">ledger_request</h2>
 <p><a href="https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_request</code> command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.</p>
-<p><em>The <code>ledger_request</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>ledger_request</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-14">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">WebSocket</a></li><li><a href="#code-31-1">Commandline</a></li></ul>
@@ -4918,7 +4903,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ledger-accept">ledger_accept</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_accept</code> method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the <code>rippled</code> server is running stand-alone mode.</p>
-<p><em>The <code>ledger_accept</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>ledger_accept</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-15">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0">WebSocket</a></li><li><a href="#code-33-1">Commandline</a></li></ul>
@@ -9000,12 +8985,12 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td><code>flags</code></td>
 <td>Number</td>
-<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. <!-- --> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td><code>full</code></td>
 <td>Boolean</td>
-<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td><code>ledger_hash</code></td>
@@ -9850,7 +9835,7 @@ rippled server_info
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
+<td>The load factor the server is currently enforcing, as a multiplier on the base transaction cost. For example, at <code>1000</code> load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
 </tr>
 <tr>
 <td>load_factor_local</td>
@@ -9860,7 +9845,7 @@ rippled server_info
 <tr>
 <td>load_factor_net</td>
 <td>Number</td>
-<td>(May be omitted) Current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> being used by the rest of the network (estimated).</td>
+<td>(May be omitted) Current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> being used by the rest of the network (estimated from other servers' reported load values).</td>
 </tr>
 <tr>
 <td>load_factor_cluster</td>
@@ -10200,7 +10185,7 @@ rippled server_state
 <tr>
 <td>complete_ledgers</td>
 <td>String</td>
-<td>Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432".</td>
+<td>Range expression indicating the sequence numbers of the ledger versions the local <code>rippled</code> has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432".</td>
 </tr>
 <tr>
 <td>io_latency_ms</td>
@@ -10225,27 +10210,27 @@ rippled server_state
 <tr>
 <td>load_base</td>
 <td>Integer</td>
-<td>This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the <code>load_factor</code> is equal to the <code>load_base</code> then only the base fee is enforced; if the <code>load_factor</code> is double the <code>load_base</code> then transaction costs are doubled.</td>
+<td>This is the baseline amount of server load used in <a href="concept-transaction-cost.html">transaction cost</a> calculations. If the <code>load_factor</code> is equal to the <code>load_base</code> then only the base transaction cost is enforced. If the <code>load_factor</code> is higher than the <code>load_base</code>, then transaction costs are multiplied by the ratio between them. For example, if the <code>load_factor</code> is double the <code>load_base</code>, then transaction costs are doubled.</td>
 </tr>
 <tr>
 <td>load_factor</td>
 <td>Number</td>
-<td>The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+<td>The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
 </tr>
 <tr>
 <td>load_factor_fee_escalation</td>
 <td>Integer</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the open ledger, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td>load_factor_fee_queue</td>
 <td>Integer</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the queue, if the queue is full, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td>load_factor_fee_reference</td>
 <td>Integer</td>
-<td>(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in fee levels. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -10336,7 +10321,7 @@ rippled server_state
 <h2 id="can-delete">can_delete</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp" title="Source">[Source]<br/></a></p>
 <p>With <code>online_delete</code> and <code>advisory_delete</code> configuration options enabled, the <code>can_delete</code> method informs the rippled server of the latest ledger which may be deleted.</p>
-<p><em>The <code>can_delete</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>can_delete</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-33">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-66"><ul class="codetabs"><li><a href="#code-66-0">WebSocket</a></li><li><a href="#code-66-1">JSON-RPC</a></li><li><a href="#code-66-2">Commandline</a></li></ul>
@@ -10410,7 +10395,7 @@ a successful result containing the following fields:</p>
 <h2 id="consensus-info">consensus_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>consensus_info</code> command provides information about the consensus process for debugging purposes.</p>
-<p><em>The <code>consensus_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>consensus_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-34">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-67"><ul class="codetabs"><li><a href="#code-67-0">WebSocket</a></li><li><a href="#code-67-1">JSON-RPC</a></li><li><a href="#code-67-2">Commandline</a></li></ul>
@@ -10653,7 +10638,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="fetch-info">fetch_info</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>fetch_info</code> command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.</p>
-<p><em>The <code>fetch_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>fetch_info</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-35">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-69"><ul class="codetabs"><li><a href="#code-69-0">WebSocket</a></li><li><a href="#code-69-1">JSON-RPC</a></li><li><a href="#code-69-2">Commandline</a></li></ul>
@@ -10840,7 +10825,7 @@ Connecting to 127.0.0.1:5005
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
 <p>You can use the <code>feature</code> command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the <code>rippled.cfg</code> file. See <a href="concept-amendments.html#configuring-amendment-voting">Configuring Amendment Voting</a> for more information.</p>
-<p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-36">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-71"><ul class="codetabs"><li><a href="#code-71-0">WebSocket - list all</a></li><li><a href="#code-71-1">WebSocket - reject</a></li><li><a href="#code-71-2">JSON-RPC</a></li><li><a href="#code-71-3">Commandline</a></li></ul>
@@ -11182,27 +11167,27 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>levels</td>
 <td>Object</td>
-<td>Various information about the transaction cost, in <em>fee levels</em>. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction.</td>
+<td>Various information about the transaction cost, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction.</td>
 </tr>
 <tr>
 <td>levels.median_level</td>
 <td>String (Integer)</td>
-<td>The median transaction cost among transactions in the previous validated ledger, represented in fee levels.</td>
+<td>The median transaction cost among transactions in the previous validated ledger, represented in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td>levels.minimum_level</td>
 <td>String (Integer)</td>
-<td>The minimum transaction cost required to be queued for a future ledger, represented in fee levels.</td>
+<td>The minimum transaction cost required to be queued for a future ledger, represented in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td>levels.open_ledger_level</td>
 <td>String (Integer)</td>
-<td>The minimum transaction cost required to be included in the current open ledger, represented in fee levels.</td>
+<td>The minimum transaction cost required to be included in the current open ledger, represented in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td>levels.reference_level</td>
 <td>String (Integer)</td>
-<td>The equivalent of the minimum transaction cost, represented in fee levels.</td>
+<td>The equivalent of the minimum transaction cost, represented in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td>max_queue_size</td>
@@ -11218,7 +11203,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="get-counts">get_counts</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>get_counts</code> command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.</p>
-<p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>get_counts</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-38">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-75"><ul class="codetabs"><li><a href="#code-75-0">WebSocket</a></li><li><a href="#code-75-1">JSON-RPC</a></li><li><a href="#code-75-2">Commandline</a></li></ul>
@@ -11372,7 +11357,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="ledger-cleaner">ledger_cleaner</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.</p>
-<p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-39">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-77"><ul class="codetabs"><li><a href="#code-77-0">WebSocket</a></li></ul>
@@ -11471,7 +11456,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="log-level">log_level</h2>
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>log_level</code> command changes the <code>rippled</code> server's logging verbosity, or returns the current logging level for each category (called a <em>partition</em>) of log messages.</p>
-<p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>log_level</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-40">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-79"><ul class="codetabs"><li><a href="#code-79-0">WebSocket</a></li><li><a href="#code-79-1">Commandline</a></li></ul>
@@ -11610,7 +11595,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="logrotate">logrotate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>logrotate</code> command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.</p>
-<p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>logrotate</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-41">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-81"><ul class="codetabs"><li><a href="#code-81-0">WebSocket</a></li><li><a href="#code-81-1">Commandline</a></li></ul>
@@ -11674,7 +11659,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="validation-create">validation_create</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>validation_create</code> command to generate the keys for a rippled <a href="tutorial-rippled-setup.html#validator-setup">validating node</a>. Similar to the <a href="#wallet-propose">wallet_propose</a> command, this command makes no real changes, but only generates a set of keys in the proper format.</p>
-<p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users.</em></p>
+<p><em>The <code>validation_create</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-42">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-83"><ul class="codetabs"><li><a href="#code-83-0">WebSocket</a></li><li><a href="#code-83-1">JSON-RPC</a></li><li><a href="#code-83-2">Commandline</a></li></ul>
@@ -11779,7 +11764,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="validation-seed">validation_seed</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>validation_seed</code> command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.</p>
-<p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>validation_seed</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-43">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-85"><ul class="codetabs"><li><a href="#code-85-0">WebSocket</a></li><li><a href="#code-85-1">Commandline</a></li></ul>
@@ -11874,7 +11859,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="peers">peers</h2>
 <p><a href="https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>peers</code> command returns a list of all other <code>rippled</code> servers currently connected to this one, including information on their connection and sync status.</p>
-<p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>peers</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-44">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-87"><ul class="codetabs"><li><a href="#code-87-0">WebSocket</a></li><li><a href="#code-87-1">Commandline</a></li></ul>
@@ -12356,7 +12341,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="print">print</h2>
 <p><a href="https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>print</code> command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.</p>
-<p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>print</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-45">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-89"><ul class="codetabs"><li><a href="#code-89-0">WebSocket</a></li><li><a href="#code-89-1">Commandline</a></li></ul>
@@ -12716,7 +12701,7 @@ rippled -q json ledger_closed '{}'
 <h2 id="connect">connect</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>connect</code> command forces the rippled server to connect to a specific peer rippled server.</p>
-<p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>connect</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-49">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-97"><ul class="codetabs"><li><a href="#code-97-0">WebSocket</a></li><li><a href="#code-97-1">JSON-RPC</a></li><li><a href="#code-97-2">Commandline</a></li></ul>
@@ -12814,7 +12799,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="stop">stop</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp" title="Source">[Source]<br/></a></p>
 <p>Gracefully shuts down the server.</p>
-<p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unpriviledged users!</em></p>
+<p><em>The <code>stop</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em></p>
 <h4 id="request-format-50">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-99"><ul class="codetabs"><li><a href="#code-99-0">WebSocket</a></li><li><a href="#code-99-1">JSON-RPC</a></li><li><a href="#code-99-2">Commandline</a></li></ul>

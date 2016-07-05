@@ -546,6 +546,8 @@ The `owner_info` command is deprecated. Use [`account_objects`](#account-objects
 
 ## List of Admin Commands ##
 
+Admin commands are only available if you [connect to `rippled`](#connecting-to-rippled) on a host and port that the config file identifies as admin. (By default, the commandline client uses an admin connection.)
+
 * [`can_delete` - Allow online deletion of ledgers up to a specific ledger](#can-delete)
 * [`connect` - Force the rippled server to connect to a specific peer](#connect)
 * [`consensus_info` - Get information about the state of consensus as it happens](#consensus-info)
@@ -2839,7 +2841,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
-*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
 _(Updated in [version 0.31.0][])_
 
@@ -2904,27 +2906,22 @@ rippled wallet_propose masterpassphrase
 
 <!-- MULTICODE_BLOCK_END -->
 
-There are two valid modes for this command, depending on whether the request specifies the `key_type` parameter. If you omit the `key_type`, the request takes _only_ the following parameter (ignoring others):
+The request can contain the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| passphrase | String | (Optional) Generate a key pair and address from this seed value using the elliptic curve secp256k1. This value can be formatted in hexadecimal, base-58, RFC-1751, or as an arbitrary string. If omitted, use a random seed. |
+| key\_type | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). Defaults to `secp256k1`. |
+| passphrase | String | (Optional) Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base-58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
+| seed | String | (Optional) Generate the key pair and address from this [base-58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
+| seed\_hex | String | (Optional) Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
 
+You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
 
-If you specify the `key_type`, you must provide at most one of the following fields: `passphrase`, `seed`, or `seed_hex`. (If you omit all three, `rippled` uses a random seed.) In this mode, the request parameters are as follows:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| key\_type | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1`. **Caution:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. |
-| passphrase | String | (Optional) Generate the key pair and address from this seed value. This is interpreted as a string only. Cannot be used with `seed` or `seed_hex`. |
-| seed | String | (Optional) Generate the key pair and address from this base-58-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. Ignored unless `key_type` is provided. |
-| seed\_hex | String | (Optional) Generate the key pair and address from this seed value in hexadecimal format. Cannot be used with `passphrase` or `seed`. Ignored unless `key_type` is provided. |
-
-The commandline version of this command cannot generate Ed25519 keys.
+**Note:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. The commandline version of this command cannot generate Ed25519 keys.
 
 ##### Specifying a Seed #####
 
-**Caution:** For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 
@@ -2934,10 +2931,14 @@ Cases where you would specify a known seed include:
 
 If you do specify a seed, you can specify it in any of the following formats:
 
-* As a [base-58](https://en.wikipedia.org/wiki/Base58) secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
-* As an [RFC-1751](https://tools.ietf.org/html/rfc1751) format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
-* As a 128-bit [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
+* As a [base-58][] secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
+* As an [RFC-1751][] format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
+* As a 128-bit [hexadecimal][] string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
 * An arbitrary string to use as a seed value. For example: `masterpassphrase`.
+
+[base-58]: https://en.wikipedia.org/wiki/Base58
+[RFC-1751]: https://tools.ietf.org/html/rfc1751
+[hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
 #### Response Format ####
 
@@ -3800,7 +3801,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
-*The `ledger_request` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `ledger_request` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -3980,7 +3981,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 The `ledger_accept` method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
 
-*The `ledger_accept` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `ledger_accept` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 
@@ -7678,8 +7679,8 @@ The fields from a validations stream message are as follows:
 | `type` | String | The value `validationReceived` indicates this is from the validations stream. |
 | `amendments` | Array of Strings | (May be omitted) The [amendments](concept-amendments.html) this server wants to be added to the protocol. _(New in [version 0.32.0][])_ |
 | `base_fee` | Integer | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](concept-fee-voting.html). _(New in [version 0.32.0][])_ |
-| `flags` | Number | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. <!--{# TODO: what's a partial validation? #}--> _(New in [version 0.32.0][])_ |
-| `full` | Boolean | If `true`, this is a full validation. Otherwise, this is a partial validation. _(New in [version 0.32.0][])_ |
+| `flags` | Number | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. _(New in [version 0.32.0][])_ |
+| `full` | Boolean | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. _(New in [version 0.32.0][])_ |
 | `ledger_hash` | String | The identifying hash of the proposed ledger is being validated. |
 | `ledger_index` | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [version 0.31.0][])_ |
 | `load_fee` | Integer | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. _(New in [version 0.32.0][])_ |
@@ -8367,9 +8368,9 @@ The `info` object may have some arrangement of the following fields:
 | load | Object | *Admin only* Detailed information about the current load state of the server |
 | load.job\_types | Array | *Admin only* Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool. |
-| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier on the base transaction cost. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. **Note:** This `load_factor` is calculated as the ratio of the `load_factor` and the `load_base` that are reported by the [`server_state` command](#server-state) |
+| load\_factor | Number | The load factor the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. **Note:** This `load_factor` is calculated as the ratio of the `load_factor` and the `load_base` that are reported by the [`server_state` command](#server-state) |
 | load\_factor\_local | Number | (May be omitted) Current multiplier to the [transaction cost][] based on load to this server. |
-| load\_factor\_net | Number | (May be omitted) Current multiplier to the [transaction cost][] being used by the rest of the network (estimated). |
+| load\_factor\_net | Number | (May be omitted) Current multiplier to the [transaction cost][] being used by the rest of the network (estimated from other servers' reported load values). |
 | load\_factor\_cluster | Number | (May be omitted) Current multiplier to the [transaction cost][] based on load to servers in [this cluster](tutorial-rippled-setup.html#clustering). |
 | load\_factor\_fee\_escalation | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. _(New in [version 0.32.0][])_ |
 | load\_factor\_fee\_queue | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. _(New in [version 0.32.0][])_ |
@@ -8649,16 +8650,16 @@ The `state` object may have some arrangement of the following fields:
 | Field | Type | Description |
 |-------|------|-------------|
 | build_version | String | The version number of the running `rippled` version. |
-| complete\_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
+| complete\_ledgers | String | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
 | io\_latency\_ms | Number | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
 | load | Object | *Admin only* Detailed information about the current load state of the server |
 | load.job\_types | Array | *Admin only* Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool. |
-| load\_base | Integer | This amount of server load is the baseline that is used to decide how much to charge in transaction fees; if the `load_factor` is equal to the `load_base` then only the base fee is enforced; if the `load_factor` is double the `load_base` then transaction costs are doubled. |
-| load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction fees. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
-| load\_factor\_fee\_escalation | Integer | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger, in fee levels. _(New in [version 0.32.0][])_ |
-| load\_factor\_fee\_queue | Integer | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full, in fee levels. _(New in [version 0.32.0][])_ |
-| load\_factor\_fee\_reference | Integer | (May be omitted) The [transaction cost][] with no load scaling, in fee levels. _(New in [version 0.32.0][])_ |
+| load\_base | Integer | This is the baseline amount of server load used in [transaction cost](concept-transaction-cost.html) calculations. If the `load_factor` is equal to the `load_base` then only the base transaction cost is enforced. If the `load_factor` is higher than the `load_base`, then transaction costs are multiplied by the ratio between them. For example, if the `load_factor` is double the `load_base`, then transaction costs are doubled. |
+| load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
+| load\_factor\_fee\_escalation | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the open ledger, in [fee levels][]. _(New in [version 0.32.0][])_ |
+| load\_factor\_fee\_queue | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the queue, if the queue is full, in [fee levels][]. _(New in [version 0.32.0][])_ |
+| load\_factor\_fee\_reference | Integer | (May be omitted) The [transaction cost][] with no load scaling, in [fee levels][]. _(New in [version 0.32.0][])_ |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey\_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in `rippled`'s local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
 | pubkey\_validator | String | *Admin only* Public key of the keypair used by this server to sign proposed ledgers for validation. |
@@ -8676,6 +8677,8 @@ The `state` object may have some arrangement of the following fields:
 | validated\_ledger.seq | Unsigned Integer | Unique sequence number of this ledger
 | validation\_quorum | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 
+[fee levels]: concept-transaction-cost.html#fee-levels
+
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
@@ -8686,7 +8689,7 @@ The `state` object may have some arrangement of the following fields:
 
 With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted.
 
-_The `can_delete` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `can_delete` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 
@@ -8757,7 +8760,7 @@ Use this command with no parameter to query the existing `can_delete` setting.
 
 The `consensus_info` command provides information about the consensus process for debugging purposes.
 
-_The `consensus_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `consensus_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -8988,7 +8991,7 @@ The results of the `consensus_info` command can vary dramatically if you run it 
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
-_The `fetch_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `fetch_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9149,7 +9152,7 @@ The `feature` command returns information about [amendments](concept-amendments.
 
 You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](concept-amendments.html#configuring-amendment-voting) for more information.
 
-_The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9477,11 +9480,11 @@ The response follows the [standard format](#response-formatting), with a success
 | drops.minimum\_fee         | String (Integer) | The minimum transaction cost for a [reference transaction](concept-transaction-cost.html#reference-transaction-cost) to be queued for a later ledger, represented in drops of XRP. If greater than `base_fee`, the transaction queue is full. |
 | drops.open\_ledger\_fee    | String (Integer) | The minimum transaction cost that a [reference transaction](concept-transaction-cost.html#reference-transaction-cost) must pay to be included in the current open ledger, represented in drops of XRP. |
 | expected\_ledger\_size     | String (Integer) | The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger. |
-| levels                     | Object | Various information about the transaction cost, in _fee levels_. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
-| levels.median\_level       | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in fee levels. |
-| levels.minimum\_level      | String (Integer) | The minimum transaction cost required to be queued for a future ledger, represented in fee levels. |
-| levels.open\_ledger\_level | String (Integer) | The minimum transaction cost required to be included in the current open ledger, represented in fee levels. |
-| levels.reference\_level    | String (Integer) | The equivalent of the minimum transaction cost, represented in fee levels. |
+| levels                     | Object | Various information about the transaction cost, in [fee levels][]. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
+| levels.median\_level       | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in [fee levels][]. |
+| levels.minimum\_level      | String (Integer) | The minimum transaction cost required to be queued for a future ledger, represented in [fee levels][]. |
+| levels.open\_ledger\_level | String (Integer) | The minimum transaction cost required to be included in the current open ledger, represented in [fee levels][]. |
+| levels.reference\_level    | String (Integer) | The equivalent of the minimum transaction cost, represented in [fee levels][]. |
 | max\_queue\_size           | String (Integer) | The maximum number of transactions that the [transaction queue](concept-transaction-cost.html#queued-transactions) can currently hold. |
 
 #### Possible Errors ####
@@ -9495,7 +9498,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 
-_The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9646,7 +9649,7 @@ For most other entries, the value indicates the number of objects of that type c
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.
 
-_The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9716,7 +9719,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
-_The `log_level` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `log_level` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9853,7 +9856,7 @@ Otherwise, the request contains the following field:
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
-_The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -9930,7 +9933,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 Use the `validation_create` command to generate the keys for a rippled [validating node](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
-_The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users._
+_The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
 #### Request Format ####
 An example of the request format:
@@ -10032,7 +10035,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
 
-*The `validation_seed` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `validation_seed` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -10120,7 +10123,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
 
-*The `peers` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `peers` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -10532,7 +10535,7 @@ Each member of the `peers` array is a peer object with the following fields:
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
-*The `print` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `print` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -10977,7 +10980,7 @@ The response follows the [standard format](#response-formatting), with whichever
 
 The `connect` command forces the rippled server to connect to a specific peer rippled server.
 
-*The `connect` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `connect` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -11076,7 +11079,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 Gracefully shuts down the server.
 
-*The `stop` request is an [admin command](#connecting-to-rippled) that cannot be run by unpriviledged users!*
+*The `stop` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:

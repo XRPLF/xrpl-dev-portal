@@ -1540,7 +1540,7 @@
     "engine_result_code": 0,
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 </code></pre>
-<p class="devportal-callout note"><strong class="devportal-callout note"><em>Note:</em></strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
+<p class="devportal-callout note"><strong>Note:</strong> A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. See <a href="#finality-of-results">Finality of Results</a> for details.</p>
 <h2 id="looking-up-transaction-results">Looking up Transaction Results</h2>
 <p>To see the final result of a transaction, use the <a href="reference-rippled.html#tx"><code>tx</code> command</a>, <a href="reference-rippled.html#account-tx"><code>account_tx</code> command</a>, or other response from <code>rippled</code>. Look for <code>"validated": true</code> to indicate that this response uses a ledger version that has been validated by consensus.</p>
 <table>

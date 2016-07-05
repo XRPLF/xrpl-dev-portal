@@ -57,9 +57,11 @@ See also: [Fee Escalation explanation in `rippled` repository](https://github.co
 
 ### Queued Transactions ###
 
-When `rippled` receives a transaction that meet the server's local load cost but not the open ledger cost, the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries minimize the amount of network load caused by transactions that would not pay a transaction cost, since [the transaction cost only applies when a transaction is included in a validated ledger](#transaction-costs-and-failed-transactions).
+When `rippled` receives a transaction that meet the server's local load cost but not the [open ledger cost](#open-ledger-cost), the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries to minimize the amount of network load caused by transactions that would not pay a transaction cost, since [the transaction cost only applies when a transaction is included in a validated ledger](#transaction-costs-and-failed-transactions).
 
-When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first, proportional to the un-scaled cost of those transactions. Transactions that pay the same transaction cost are queued in the order the server receives them.
+When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first, proportional to the [reference cost](#reference-transaction-cost) of those transactions. Transactions that pay the same transaction cost are queued in the order the server receives them.
+
+**Note:** When `rippled` queues a transaction, the provisional [transaction response code](reference-transaction-format.html#transaction-results) is `terQUEUED`. This means that the transaction is likely to succeed in a future. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](reference-transaction-format.html#finality-of-results).
 
 #### Queuing Restrictions ####
 
@@ -69,8 +71,6 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 * Transactions with an `AccountTxnID` field cannot be queued.
 * A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. If a transaction affects how the address authorizes accounts, no other transactions from the same address can be queued behind it. _(New in [`rippled` 0.32.0](https://github.com/ripple/rippled/releases/tag/0.32.0))_
 * If the transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
-
-
 
 ## Reference Transaction Cost ##
 
