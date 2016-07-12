@@ -32,9 +32,9 @@ The Ripple Consensus Ledger considers an [OfferCreate transaction](reference-tra
 
 ## Going Below the Reserve Requirement ##
 
-During transaction processing, a transaction can only be successful if the sending address holds at least the reserve requirement in XRP. In the process, the [transaction cost](concept-transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
+During transaction processing, the [transaction cost](concept-transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
 
-When an address holds less XRP than its current reserve requirement, it cannot send new transactions. Even so, the address continues to exist in the ledger, as all addresses do. Unless the reserve requirements decrease, the only way for the address to become able to send transactions again is for it to receive enough XRP that it meets the reserve requirement.
+When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would increase the reserve. Even so, the address continues to exist in the ledger, as all addresses do. Unless the reserve requirements decrease, the only way for the address to become able to send transactions that increase the reserve again is for it to receive enough XRP that it meets the reserve requirement.
 
 **Exception:** When an address is below the reserve requirement, it can send new [OfferCreate transactions](reference-transaction-format.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
