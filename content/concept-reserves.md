@@ -1,6 +1,6 @@
 # Reserves #
 
-The Ripple Consensus Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match [Moore's Law](https://en.wikipedia.org/wiki/Moore's_law) so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.
+The Ripple Consensus Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.
 
 To submit transactions, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send enough XRP to meet the reserve requirement.
 
@@ -34,9 +34,9 @@ The Ripple Consensus Ledger considers an [OfferCreate transaction](reference-tra
 
 During transaction processing, the [transaction cost](concept-transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
 
-When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would increase the reserve. Even so, the address continues to exist in the ledger, as all addresses do. Unless the reserve requirements decrease, the only way for the address to become able to send transactions that increase the reserve again is for it to receive enough XRP that it meets the reserve requirement.
+When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the [reserve requirement decreases](#changing-the-reserve-requirements) to less than the address's XRP holdings.
 
-**Exception:** When an address is below the reserve requirement, it can send new [OfferCreate transactions](reference-transaction-format.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
+**Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions](reference-transaction-format.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
 ## Changing the Reserve Requirements ##
 
