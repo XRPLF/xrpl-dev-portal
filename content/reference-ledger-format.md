@@ -472,3 +472,8 @@ When processing a multi-signed transaction, the server dereferences the `Account
 ### SignerLists and Reserves ###
 
 A SignerList contributes to its owner's [reserve requirement](concept-reserves.html). The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
+
+
+
+<!---- rippled release notes links ---->
+[version 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
