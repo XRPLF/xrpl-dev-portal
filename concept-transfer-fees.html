@@ -161,6 +161,7 @@
 <p>The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:</p>
 <p><img alt="Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in Ripple" src="img/e2g-with_transferrate.png"/></p>
 <h2 id="transfer-fees-in-payment-paths">Transfer Fees in Payment Paths</h2>
+<!-- -->
 <p>A transfer fee applies whenever an individual transfer would shift issuances from one party to another through the issuing account. In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:</p>
 <p><img alt="Diagram of cross-currency payment with transfer fees" src="img/transfer_fees_example.png"/></p>
 <p>In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to deliver 100 USD issued by WayGate to Rosa (the recipient). FXMaker is a currency trader with the best offer in the order book, at a rate of 1 USD.WayGate for every 0.9 EUR.ACME. If there were no transfer fees, Salazar could deliver 100 USD to Rosa by sending 90 EUR. However, ACME has a transfer fee of 1% and WayGate has a transfer fee of 0.2%. This means:</p>
