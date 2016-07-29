@@ -299,8 +299,8 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Replaces the payment processing engine with a complete rewrite. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.</p>
-<p>FlowV2 also fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between OfferCreate and Payment transaction types. In the old payment processing engine, the initial sender of a transaction paid the transfer fees for offers that were executed as part of payment processing, but the holder of the issuances paid the transfer fee if an offer was executed in offer placement. With FlowV2, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.</p>
+<p>FlowV2 also fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. In the old payment processing engine, the initial sender of a transaction paid the transfer fees for offers that were executed as part of payment processing, but the holder of the issuances paid the transfer fee if an offer was executed in offer placement. With FlowV2, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <h2 id="multisign">MultiSign</h2>
 <table>
 <thead>
