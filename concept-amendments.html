@@ -151,6 +151,7 @@
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
+<li class="level-2"><a href="#flowv2">FlowV2</a></li>
 <li class="level-2"><a href="#multisign">MultiSign</a></li>
 <li class="level-2"><a href="#suspay">SusPay</a></li>
 <li class="level-2"><a href="#trustsetauth">TrustSetAuth</a></li>
@@ -227,6 +228,11 @@ TrustSetAuth
 </thead>
 <tbody>
 <tr>
+<td><a href="#flowv2">FlowV2</a></td>
+<td>v0.32.1</td>
+<td>Expected 2016-08-24</td>
+</tr>
+<tr>
 <td><a href="#tickets">Tickets</a></td>
 <td>v0.31.0</td>
 <td>TBD</td>
@@ -278,6 +284,23 @@ TrustSetAuth
 <li>It becomes invalid (for example, the <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> causes it to expire)</li>
 <li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
 </ul>
+<h2 id="flowv2">FlowV2</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+<td>Planned for voting, expected to be enabled 2016-08-24</td>
+</tr>
+</tbody>
+</table>
+<p>Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.</p>
+<p>FlowV2 also fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. In the old payment processing engine, the initial sender of a transaction paid the transfer fees for offers that were executed as part of payment processing, but the holder of the issuances paid the transfer fee if an offer was executed in offer placement. With FlowV2, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <h2 id="multisign">MultiSign</h2>
 <table>
 <thead>

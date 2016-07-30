@@ -95,6 +95,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Enabled |
 |---------------------------------|------------|---------|
+| [FlowV2](#flowv2)               | v0.32.1    | Expected 2016-08-24 |
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | Expected 2016-07-19 |
@@ -120,6 +121,16 @@ A transaction remains in the queue until one of the following happens:
 * It gets applied to a validated ledger (regardless of success or failure)
 * It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
+
+## FlowV2 ##
+
+| Amendment ID | Status |
+|--------------|--------|
+| 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Planned for voting, expected to be enabled 2016-08-24 |
+
+Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.
+
+FlowV2 also fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. In the old payment processing engine, the initial sender of a transaction paid the transfer fees for offers that were executed as part of payment processing, but the holder of the issuances paid the transfer fee if an offer was executed in offer placement. With FlowV2, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 ## MultiSign ##
 
