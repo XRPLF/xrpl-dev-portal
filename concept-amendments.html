@@ -217,6 +217,7 @@ MultiSign
 TrustSetAuth
 </code></pre>
 <h1 id="known-amendments">Known Amendments</h1>
+<p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/app/main/Amendments.cpp" title="Source">[Source]<br/></a></p>
 <p>The following is a comprehensive list of all known amendments and their status on the production Ripple Consensus Ledger:</p>
 <table>
 <thead>
@@ -245,7 +246,7 @@ TrustSetAuth
 <tr>
 <td><a href="#trustsetauth">TrustSetAuth</a></td>
 <td>v0.30.0</td>
-<td>Expected 2016-07-19</td>
+<td><a href="https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF">2016-07-19T10:10:32Z in ledger 22721281</a></td>
 </tr>
 <tr>
 <td><a href="#multisign">MultiSign</a></td>
@@ -300,7 +301,7 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.</p>
-<p>FlowV2 also fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. In the old payment processing engine, the initial sender of a transaction paid the transfer fees for offers that were executed as part of payment processing, but the holder of the issuances paid the transfer fee if an offer was executed in offer placement. With FlowV2, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>The FlowV2 Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
 <h2 id="multisign">MultiSign</h2>
 <table>
 <thead>
@@ -329,6 +330,7 @@ TrustSetAuth
 <li><code>tefNOT_MULTI_SIGNING</code></li>
 <li><code>tefBAD_AUTH_MASTER</code></li>
 </ul>
+<!-- -->
 <h2 id="suspay">SusPay</h2>
 <table>
 <thead>
@@ -357,7 +359,7 @@ TrustSetAuth
 <tbody>
 <tr>
 <td>6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
-<td><a href="https://ripple.com/dev-blog/trustsetauth-amendment-open-voting/">Open for voting</a>. Expected to become enabled on 2016-07-19</td>
+<td>Enabled</td>
 </tr>
 </tbody>
 </table>
