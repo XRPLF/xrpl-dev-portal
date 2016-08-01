@@ -15,7 +15,7 @@ The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie
 
 ## Transfer Fees in Payment Paths ##
 
-<!--{# TODO: Update this for FlowV2? #}-->
+<!--{# TODO: Update this for OnwerPaysFee amendment when that gets added #}-->
 
 A transfer fee applies whenever an individual transfer would shift issuances from one party to another through the issuing account. In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:
 
