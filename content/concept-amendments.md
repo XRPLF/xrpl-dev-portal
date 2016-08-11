@@ -73,6 +73,20 @@ Use the `[amendments]` stanza to list amendments you want to vote for. (Even if 
 ```
 
 
+### Amendment Blocked ###
+
+When an amendment gets enabled for the network after the voting process, servers running old versions of `rippled` that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:
+
+* Cannot determine the validity of a ledger
+* Cannot submit or process transactions
+* Cannot participate in the consensus process
+* Cannot vote on future amendments
+
+The amendments that a `rippled` server is configured to vote for or against has no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
+
+If your server is amendment blocked, you must upgrade to a new version to sync with the network.
+
+
 ## Testing Amendments ##
 
 If you want to see how `rippled` behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use `rippled`'s configuration file to forcibly enable a feature. This is intended for development purposes only.
@@ -86,7 +100,6 @@ To forcibly enable a feature, add a `[features]` stanza to your `rippled.cfg` fi
 MultiSign
 TrustSetAuth
 ```
-
 
 
 # Known Amendments #
