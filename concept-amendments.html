@@ -214,9 +214,10 @@ DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 SusPay
 <ul>
 <li>Cannot determine the validity of a ledger</li>
 <li>Cannot submit or process transactions</li>
-<li>Cannot participate in the consensus process</li>
-<li>Cannot vote on future amendments</li>
+<li>Do not participate in the consensus process</li>
+<li>Do not vote on future amendments</li>
 </ul>
+<p>Becoming amendment blocked is a security feature, to protect backend applications from a server misinterpreting a ledger after new rules have applied. Rather than guessing, <code>rippled</code> reports that it does not know the state of the ledger because it does not know how the amendment works.</p>
 <p>The amendments that a <code>rippled</code> server is configured to vote for or against has no impact on whether the server becomes amendment blocked. A <code>rippled</code> server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.</p>
 <p>If your server is amendment blocked, you must upgrade to a new version to sync with the network.</p>
 <h2 id="testing-amendments">Testing Amendments</h2>
