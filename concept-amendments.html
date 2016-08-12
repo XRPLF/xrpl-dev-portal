@@ -148,6 +148,7 @@
 <li class="level-2"><a href="#amendment-process">Amendment Process</a></li>
 <li class="level-2"><a href="#amendment-voting">Amendment Voting</a></li>
 <li class="level-3"><a href="#configuring-amendment-voting">Configuring Amendment Voting</a></li>
+<li class="level-3"><a href="#amendment-blocked">Amendment Blocked</a></li>
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
@@ -208,6 +209,17 @@ DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 SusPay
 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 MultiSign
 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE FeeEscalation
 </code></pre>
+<h3 id="amendment-blocked">Amendment Blocked</h3>
+<p>When an amendment gets enabled for the network after the voting process, servers running earlier versions of <code>rippled</code> that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:</p>
+<ul>
+<li>Cannot determine the validity of a ledger</li>
+<li>Cannot submit or process transactions</li>
+<li>Do not participate in the consensus process</li>
+<li>Do not vote on future amendments</li>
+</ul>
+<p>Becoming amendment blocked is a security feature to protect backend applications. Rather than guessing and maybe misinterpreting a ledger after new rules have applied, <code>rippled</code> reports that it does not know the state of the ledger because it does not know how the amendment works.</p>
+<p>The amendments that a <code>rippled</code> server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A <code>rippled</code> server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.</p>
+<p>If your server is amendment blocked, you must <a href="tutorial-rippled-setup.html#updating-rippled">upgrade to a new version</a> to sync with the network.</p>
 <h2 id="testing-amendments">Testing Amendments</h2>
 <p>If you want to see how <code>rippled</code> behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use <code>rippled</code>'s configuration file to forcibly enable a feature. This is intended for development purposes only.</p>
 <p>Because other members of the consensus network probably do not have the feature enabled, you should not use this feature while connecting to the production network. While testing with features forcibly enabled, you should run <code>rippled</code> in <a href="concept-stand-alone-mode.html">Stand-Alone Mode</a>.</p>
