@@ -75,18 +75,18 @@ Use the `[amendments]` stanza to list amendments you want to vote for. (Even if 
 
 ### Amendment Blocked ###
 
-When an amendment gets enabled for the network after the voting process, servers running old versions of `rippled` that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:
+When an amendment gets enabled for the network after the voting process, servers running earlier versions of `rippled` that do not know about the amendment become "amendment blocked" because they no longer understand the rules of the network. Servers that are amendment blocked:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
 * Do not participate in the consensus process
 * Do not vote on future amendments
 
-Becoming amendment blocked is a security feature, to protect backend applications from a server misinterpreting a ledger after new rules have applied. Rather than guessing, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
+Becoming amendment blocked is a security feature to protect backend applications. Rather than guessing and maybe misinterpreting a ledger after new rules have applied, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
 
-The amendments that a `rippled` server is configured to vote for or against has no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
+The amendments that a `rippled` server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
 
-If your server is amendment blocked, you must upgrade to a new version to sync with the network.
+If your server is amendment blocked, you must [upgrade to a new version](tutorial-rippled-setup.html#updating-rippled) to sync with the network.
 
 
 ## Testing Amendments ##
