@@ -5,8 +5,11 @@ import yaml
 import argparse
 import logging
 from bs4 import BeautifulSoup
+from time import time
 
 DEFAULT_CONFIG_FILE = "dactyl-config.yml"
+TIMEOUT_SECS = 5
+CHECK_IN_INTERVAL = 30
 
 soupsCache = {}
 def getSoup(fullPath):
@@ -37,14 +40,14 @@ def check_remote_url(endpoint, fullPath, broken_links, externalCache, isImg=Fals
 
     logging.info("Testing remote %s URL %s"%(linkword, endpoint))
     try:
-        code = requests.head(endpoint).status_code
+        code = requests.head(endpoint, timeout=TIMEOUT_SECS).status_code
     except Exception as e:
         logging.warning("Error occurred: %s" % e)
         code = 500
     if code == 405 or code == 404:
         #HEAD didn't work, maybe GET will?
         try:
-            code = requests.get(endpoint).status_code
+            code = requests.get(endpoint, timeout=TIMEOUT_SECS).status_code
         except Exception as e:
           logging.warning("Error occurred: %s" % e)
           code = 500
@@ -62,11 +65,18 @@ def checkLinks(offline=False):
     externalCache = []
     broken_links = []
     num_links_checked = 0
+    last_checkin = time()
     for dirpath, dirnames, filenames in os.walk(config["out_path"]):
+      if time() - last_checkin > CHECK_IN_INTERVAL:
+        last_checkin = time()
+        print("... still working (dirpath: %s) ..." % dirpath)
       if os.path.abspath(dirpath) == os.path.abspath(config["template_path"]):
         # don't try to parse and linkcheck the templates
         continue
       for fname in filenames:
+        if time() - last_checkin > CHECK_IN_INTERVAL:
+          last_checkin = time()
+          print("... still working (file: %s) ..." % fname)
         fullPath = os.path.join(dirpath, fname)
         if "/node_modules/" in fullPath or ".git" in fullPath:
           logging.debug("skipping ignored dir: %s" % fullPath)
@@ -75,6 +85,9 @@ def checkLinks(offline=False):
           soup = getSoup(fullPath)
           links = soup.find_all('a')
           for link in links:
+            if time() - last_checkin > CHECK_IN_INTERVAL:
+              last_checkin = time()
+              print("... still working (link: %s) ..." % link)
             if "href" not in link.attrs:
               #probably an <a name> type anchor, skip
               continue
