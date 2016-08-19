@@ -1,6 +1,6 @@
 # Amendments #
 
-_(New in [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0))_
+_(Introduced in [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0))_
 
 The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
 
@@ -48,7 +48,9 @@ Theoretically, a `tfLostMajority` EnableAmendment pseudo-transaction could be in
 
 Operators of `rippled` validators can choose which amendments to support or reject using the [`feature` command](reference-rippled.html#feature). This decides which amendments the validator votes for in the [amendment process](#amendment-process). By default, `rippled` votes in favor of every amendment it knows about.
 
-The operator of a `rippled` validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.
+The operator of a `rippled` validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply. The amendment can still become enabled later if an 80% majority of trusted validators support the amendment, either because validator operators changed their minds or new validators that support the amendment became trusted.
+
+An amendment can gain and lose a majority an unlimited number of times before it becomes permanently enabled. As long as there are servers voting in favor of an amendment, the amendment is not permanently rejected. New versions of `rippled` can remove an amendment to ensure that they do not vote for it.
 
 As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is enough to coordinate with Ripple (the company) on releasing new features.
 
@@ -111,7 +113,8 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Enabled |
 |---------------------------------|------------|---------|
-| [FlowV2](#flowv2)               | v0.32.1    | Expected 2016-08-24 |
+| [Flow](#flow)                   | TBD        | TBD |
+| [FlowV2](#flowv2)               | v0.32.1    | Vetoed |
 | [Tickets](#tickets)             | v0.31.0    | TBD |
 | [SusPay](#suspay)               | v0.31.0    | TBD |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | [2016-07-19T10:10:32Z in ledger 22721281](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF) |
@@ -138,16 +141,23 @@ A transaction remains in the queue until one of the following happens:
 * It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
+## Flow ##
+
+| Amendment ID | Status |
+|--------------|--------|
+| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | TBD |
+
+Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment was created to replace the [FlowV2](#flowv2) amendment when a critical bug was found in the FlowV2 amendment.
+
+The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
+
 ## FlowV2 ##
 
 | Amendment ID | Status |
 |--------------|--------|
-| 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Planned for voting, expected to be enabled 2016-08-24 |
+| 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Failed to hold a majority. To be removed. |
 
-Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.
-
-The FlowV2 Engine also makes it easier to improve and expand the payment engine with further Amendments.
-
+This amendment was intended to replace the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. However, a critical bug was found during the voting period, so key validators vetoed the Amendment and it lost its majority. Ripple plans to remove the FlowV2 amendment in future versions of `rippled` and replace it with the [Flow](#flow) amendment.
 
 ## MultiSign ##
 

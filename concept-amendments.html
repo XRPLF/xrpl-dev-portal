@@ -152,6 +152,7 @@
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
+<li class="level-2"><a href="#flow">Flow</a></li>
 <li class="level-2"><a href="#flowv2">FlowV2</a></li>
 <li class="level-2"><a href="#multisign">MultiSign</a></li>
 <li class="level-2"><a href="#suspay">SusPay</a></li>
@@ -165,7 +166,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="amendments">Amendments</h1>
-<p><em>(New in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
+<p><em>(Introduced in <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>)</em></p>
 <p>The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires <strong>80% support for two weeks</strong> before it can apply.</p>
 <p>When an Amendment has been enabled, it applies permanently to all ledger versions after the one that included it. You cannot disable an Amendment, unless you introduce a new Amendment to do so.</p>
 <h2 id="background">Background</h2>
@@ -195,7 +196,8 @@
 <p>Theoretically, a <code>tfLostMajority</code> EnableAmendment pseudo-transaction could be included in the same ledger as the pseudo-transaction to enable an amendment. In this case, the pseudo-transaction with the <code>tfLostMajority</code> pseudo-transaction has no effect.</p>
 <h2 id="amendment-voting">Amendment Voting</h2>
 <p>Operators of <code>rippled</code> validators can choose which amendments to support or reject using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>. This decides which amendments the validator votes for in the <a href="#amendment-process">amendment process</a>. By default, <code>rippled</code> votes in favor of every amendment it knows about.</p>
-<p>The operator of a <code>rippled</code> validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply.</p>
+<p>The operator of a <code>rippled</code> validator can "veto" an amendment. In this case, that validator never sends a vote in favor of the amendment. If enough servers veto an amendment, that prevents it from reaching consistent 80% support, so the amendment does not apply. The amendment can still become enabled later if an 80% majority of trusted validators support the amendment, either because validator operators changed their minds or new validators that support the amendment became trusted.</p>
+<p>An amendment can gain and lose a majority an unlimited number of times before it becomes permanently enabled. As long as there are servers voting in favor of an amendment, the amendment is not permanently rejected. New versions of <code>rippled</code> can remove an amendment to ensure that they do not vote for it.</p>
 <p>As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. Ripple (the company) recommends only trusting the 5 default validators that Ripple (the company) operates. For now, trusting only those validators is enough to coordinate with Ripple (the company) on releasing new features.</p>
 <h3 id="configuring-amendment-voting">Configuring Amendment Voting</h3>
 <p>You can temporarily configure an amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>. To make a persistent change to your server's support for an amendment, change your server's <code>rippled.cfg</code> file.</p>
@@ -241,9 +243,14 @@ TrustSetAuth
 </thead>
 <tbody>
 <tr>
+<td><a href="#flow">Flow</a></td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr>
 <td><a href="#flowv2">FlowV2</a></td>
 <td>v0.32.1</td>
-<td>Expected 2016-08-24</td>
+<td>Vetoed</td>
 </tr>
 <tr>
 <td><a href="#tickets">Tickets</a></td>
@@ -297,6 +304,23 @@ TrustSetAuth
 <li>It becomes invalid (for example, the <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> causes it to expire)</li>
 <li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
 </ul>
+<h2 id="flow">Flow</h2>
+<table>
+<thead>
+<tr>
+<th>Amendment ID</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+<p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment was created to replace the <a href="#flowv2">FlowV2</a> amendment when a critical bug was found in the FlowV2 amendment.</p>
+<p>The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
 <h2 id="flowv2">FlowV2</h2>
 <table>
 <thead>
@@ -308,12 +332,11 @@ TrustSetAuth
 <tbody>
 <tr>
 <td>5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
-<td>Planned for voting, expected to be enabled 2016-08-24</td>
+<td>Failed to hold a majority. To be removed.</td>
 </tr>
 </tbody>
 </table>
-<p>Replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding.</p>
-<p>The FlowV2 Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
+<p>This amendment was intended to replace the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. However, a critical bug was found during the voting period, so key validators vetoed the Amendment and it lost its majority. Ripple plans to remove the FlowV2 amendment in future versions of <code>rippled</code> and replace it with the <a href="#flow">Flow</a> amendment.</p>
 <h2 id="multisign">MultiSign</h2>
 <table>
 <thead>
