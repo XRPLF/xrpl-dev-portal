@@ -1581,6 +1581,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
@@ -1594,7 +1595,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | `result` | String | The value `success` indicates that this is a successful response. |
 | `count` | Integer | Number of results returned. |
-| `rows` | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `rows` | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this array contains only the most recent complete interval. If `live` is specified and `interval` isn't, this array contains the specified rolling window instead.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of exchanges in a market between two currencies, and has the following fields:
 
@@ -1730,6 +1731,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
@@ -1743,7 +1745,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | `result` | String | The value `success` indicates that this is a successful response. |
 | `count` | Integer | Number of results returned. |
-| `rows` | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `rows` | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this array contains only the most recent interval. If `live` is specified and `interval` isn't, this array contains the specified rolling window instead.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of payments for one currencies and issuer, and has the following fields:
 

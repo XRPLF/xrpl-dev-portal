@@ -2439,6 +2439,11 @@
 <td>Aggregation interval - valid intervals are <code>day</code>, <code>week</code>, or <code>month</code>. Defaults to <code>day</code>.</td>
 </tr>
 <tr>
+<td><code>live</code></td>
+<td>String</td>
+<td>Return a live rolling window of this length of time. Valid values are <code>day</code>, <code>hour</code>, or <code>minute</code>. Ignored if <code>interval</code> is provided.</td>
+</tr>
+<tr>
 <td><code>exchange_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
 <td>Normalize all amounts to use this as a display currency. If not XRP, <code>exchange_issuer</code> is also required. Defaults to XRP.</td>
@@ -2489,7 +2494,7 @@
 <tr>
 <td><code>rows</code></td>
 <td>Array of exchange <a href="#volume-objects">Volume Objects</a></td>
-<td>Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.)</td>
+<td>Exchange volumes for each interval in the requested time period. (By default, this array contains only the most recent complete interval. If <code>live</code> is specified and <code>interval</code> isn't, this array contains the specified rolling window instead.)</td>
 </tr>
 </tbody>
 </table>
@@ -2655,6 +2660,11 @@
 <td>Aggregation interval - valid intervals are <code>day</code>, <code>week</code>, or <code>month</code>. Defaults to <code>day</code>.</td>
 </tr>
 <tr>
+<td><code>live</code></td>
+<td>String</td>
+<td>Return a live rolling window of this length of time. Valid values are <code>day</code>, <code>hour</code>, or <code>minute</code>. Ignored if <code>interval</code> is provided.</td>
+</tr>
+<tr>
 <td><code>exchange_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
 <td>Normalize all amounts to use this as a display currency. If not XRP, <code>exchange_issuer</code> is also required. Defaults to XRP.</td>
@@ -2705,7 +2715,7 @@
 <tr>
 <td><code>rows</code></td>
 <td>Array of payment <a href="#volume-objects">Volume Objects</a></td>
-<td>Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.)</td>
+<td>Payment volumes for each interval in the requested time period. (By default, this array contains only the most recent interval. If <code>live</code> is specified and <code>interval</code> isn't, this array contains the specified rolling window instead.)</td>
 </tr>
 </tbody>
 </table>
