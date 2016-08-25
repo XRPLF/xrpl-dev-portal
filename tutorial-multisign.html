@@ -177,13 +177,13 @@
 <li><a href="#sending-a-multi-signed-transaction">Send transactions using multiple signatures.</a></li>
 </ol>
 <h2 id="availability-of-multi-signing">Availability of Multi-Signing</h2>
-<p>Multi-signing is built into <code>rippled</code> starting with <a href="https://wiki.ripple.com/Rippled-0.31.0">version 0.31.0</a>. Because multi-signing is a change in transaction processing, the change is due to be enabled by an <strong>Amendment</strong> to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see <a href="concept-amendments.html">Amendments</a>.</p>
-<p>If you want to test multi-signing before it becomes available in the production network, or without risking real money, you can do so by running <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> with the MultiSign feature enabled. To enable multi-signing for testing, add the following stanza to your <code>rippled.cfg</code>:</p>
+<p>Multi-signing has been enabled by an <a href="concept-amendments.html"><strong>Amendment</strong></a> to the Ripple Consensus Protocol since 2016-06-27.</p>
+<p>If you want to use multi-signing with <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> or on a <a href="tutorial-rippled-setup.html#parallel-networks">parallel network</a>, you must either advance to ledger 256 (past the first amendment vote), or force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>.</p>
+<p>To force the multi-signing feature to be enabled, add the following stanza to your <code>rippled.cfg</code>:</p>
 <pre><code>[features]
 MultiSign
 </code></pre>
 <h2 id="setting-up-multi-signing">Setting up Multi-Signing</h2>
-<p>Before you can set up multi-signing, first check that <a href="#availability-of-multi-signing">multi-signing is available</a>.</p>
 <p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
 <h3 id="1-prepare-a-funded-address">1. Prepare a funded address</h3>
 <p>You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
@@ -286,7 +286,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 </code></pre>
-<p>Make sure that the <a href="reference-transaction-format.html#transaction-results">Transaction Result</a> is <a href="reference-transaction-format.html#tes-success"><strong>tesSUCCESS</strong></a>. Otherwise, the transaction failed.</p>
+<p>Make sure that the <a href="reference-transaction-format.html#transaction-results">Transaction Result</a> is <a href="reference-transaction-format.html#tes-success"><strong>tesSUCCESS</strong></a>. Otherwise, the transaction failed. If you encounter a problem in stand-alone mode or a non-production network, check that <a href="#availability-of-multi-signing">multi-sign is enabled</a>.</p>
 <p class="devportal-callout note"><strong>Note:</strong> The more members in the SignerList, the more XRP your address must have for purposes of the <a href="concept-reserves.html#owner-reserves">owner reserve</a>. If your address does not have enough XRP, the transaction fails with <a href="reference-transaction-format.html#tec-codes">tecINSUFFICIENT_RESERVE</a>. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</p>
 <h3 id="4-close-the-ledger">4. Close the ledger</h3>
 <p>On the live network, you can wait 4-7 seconds for the ledger to close automatically.</p>
@@ -426,6 +426,7 @@ Connecting to 127.0.0.1:5005
 }
 </code></pre>
 <p>Save the <code>tx_json</code> field of the response: it has the new signature in the <code>Signers</code> field. You can discard the value of the <code>tx_blob</code> field.</p>
+<p>If you encounter a problem in stand-alone mode or a non-production network, check that <a href="#availability-of-multi-signing">multi-sign is enabled</a>.</p>
 <h3 id="3-get-additional-signatures">3. Get additional signatures</h3>
 <p>You can collect additional signatures in parallel or in serial:</p>
 <ul>
