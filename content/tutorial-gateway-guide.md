@@ -1,6 +1,6 @@
 # Becoming a Ripple Gateway #
 
-If you have an existing online financial system, you can expand it to act as a gateway in the the Ripple Consensus Ledger (RCL). [Gateways](https://ripple.com/knowledge_center/gateways/) are the businesses that link the Ripple Consensus Ledger to the rest of the world. By becoming a Ripple gateway, existing online financial services, such as payment systems and digital currency exchange, can gain several advantages:
+**Gateways** are the businesses that link the Ripple Consensus Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the Ripple Consensus Ledger (RCL). By becoming a Ripple gateway, a financial services business can gain several advantages:
 
 * By enabling its customers to send and receive value in the Ripple Consensus Ledger, the business increases its value proposition to customers.
 * By accepting payments from the Ripple Consensus Ledger, the business increases the number of ways that customers can fund accounts at its business, even internationally.
@@ -34,9 +34,9 @@ A "trust line" is link between two addresses in Ripple. A trust line represents 
 
 ### XRP ###
 
-XRP is the native [cryptocurrency](https://ripple.com/knowledge_center/math-based-currency/) of the Ripple Consensus Ledger. Like issuances, XRP can be freely sent and exchanged among Ripple addresses. Unlike issuances, XRP is not tied to an accounting relationship. XRP can be sent directly from any Ripple address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient [bridge currency](https://ripple.com/knowledge_center/bridge-currency-2/).
+**XRP** is the native cryptocurrency of the Ripple Consensus Ledger. Like issuances, XRP can be freely sent and exchanged among Ripple addresses. Unlike issuances, XRP is not tied to an accounting relationship. XRP can be sent directly from any Ripple address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp-portal/).
 
-XRP also serves other purposes in the RCL, in particular as [a protective measure against spamming the network](https://ripple.com/knowledge_center/abuse-protection/). All Ripple addresses need a small amount of XRP to pay the costs of maintaining the Ripple Consensus Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees not paid to any party.
+XRP also serves other purposes in the RCL, in particular as a protective measure against spamming the network. All Ripple addresses need a small amount of XRP to pay the costs of maintaining the Ripple Consensus Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denoted in XRP and not paid to any party.
 
 Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to send transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.
 
@@ -542,7 +542,7 @@ As an added precaution, we recommend comparing the balances of your issuing addr
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one Ripple address to another. See [Transfer Fees](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
+The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one Ripple address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
