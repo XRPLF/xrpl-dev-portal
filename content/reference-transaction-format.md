@@ -187,7 +187,7 @@ Example response from the `tx` command:
 
 ### Multi-Signing ###
 
-Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an [Amendment](concept-amendments.html) to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
 
 The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 
@@ -785,7 +785,7 @@ A trust line with settings in the default state is equivalent to no trust line.
 
 The default state of all flags is off, except for the [NoRipple flag](concept-noripple.html), whose default state depends on the DefaultRipple flag.
 
-The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. _(New in [rippled 0.30.0](https://github.com/ripple/rippled/releases/tag/0.30.0))_: The [`TrustSetAuth` Amendment](concept-amendments.html#trustsetauth) would allow you to pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.
+The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. An issuer can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
 ### TrustSet Flags ###
 
@@ -804,7 +804,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 ## SignerListSet ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type is introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [rippled 0.31.0][])_
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type was introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [rippled 0.31.0][])_
 
 [rippled 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
 

@@ -20,9 +20,11 @@ To use multi-signing:
 Availability of Multi-Signing
 -----------------------------
 
-Multi-signing is built into `rippled` starting with [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0). Because multi-signing is a change in transaction processing, the change is due to be enabled by an **Amendment** to the Ripple Consensus Protocol. This Amendment must be approved by a consensus of validators showing consistent support for the feature over a period of time. For more information, see [Amendments](concept-amendments.html).
+Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the Ripple Consensus Protocol since 2016-06-27.
 
-If you want to test multi-signing before it becomes available in the production network, or without risking real money, you can do so by running `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with the MultiSign feature enabled. To enable multi-signing for testing, add the following stanza to your `rippled.cfg`:
+If you want to use multi-signing with `rippled` with a fresh ledger in [stand-alone mode](concept-stand-alone-mode.html), you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [`feature` command](reference-rippled.html#feature).
+
+To force the multi-signing feature to be enabled, add the following stanza to your `rippled.cfg`: <!--{# TODO: Link to rippled.cfg docs when those exist. #}-->
 
     [features]
     MultiSign
@@ -30,8 +32,6 @@ If you want to test multi-signing before it becomes available in the production 
 
 Setting up Multi-Signing
 ------------------------
-
-Before you can set up multi-signing, first check that [multi-signing is available](#availability-of-multi-signing).
 
 To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
@@ -148,7 +148,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
-Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed.
+Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed. If you encounter a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
 **Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](concept-reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 
@@ -314,6 +314,7 @@ Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret ke
 
 Save the `tx_json` field of the response: it has the new signature in the `Signers` field. You can discard the value of the `tx_blob` field.
 
+If you encounter a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
 ### 3. Get additional signatures ###
 

@@ -379,7 +379,7 @@
 }
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
-<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. Multi-signing is due to be enabled by an <a href="concept-amendments.html">Amendment</a> to the Ripple Consensus Protocol. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
+<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
 <p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
 <p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
 <ul>
@@ -1253,7 +1253,7 @@
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
 <p>The default state of all flags is off, except for the <a href="concept-noripple.html">NoRipple flag</a>, whose default state depends on the DefaultRipple flag.</p>
-<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">rippled 0.30.0</a>)</em>: The <a href="concept-amendments.html#trustsetauth"><code>TrustSetAuth</code> Amendment</a> would allow you to pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0. This Amendment is not currently enabled.</p>
+<p>The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. An issuer can pre-authorize a trust line with the <code>tfSetfAuth</code> flag only, even if the limit and balance of the trust line are 0.</p>
 <h3 id="trustset-flags">TrustSet Flags</h3>
 <p>Transactions of the TrustSet type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
 <table>
@@ -1300,7 +1300,7 @@
 </table>
 <h2 id="signerlistset">SignerListSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp" title="Source">[Source]<br/></a></p>
-<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type is introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">rippled 0.31.0</a>)</em></p>
+<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type was introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">rippled 0.31.0</a>)</em></p>
 <p>Example SignerListSet:</p>
 <pre><code>{
     "Flags": 0,
