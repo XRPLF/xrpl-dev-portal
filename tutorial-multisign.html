@@ -178,8 +178,8 @@
 </ol>
 <h2 id="availability-of-multi-signing">Availability of Multi-Signing</h2>
 <p>Multi-signing has been enabled by an <a href="concept-amendments.html"><strong>Amendment</strong></a> to the Ripple Consensus Protocol since 2016-06-27.</p>
-<p>If you want to use multi-signing with <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> or on a <a href="tutorial-rippled-setup.html#parallel-networks">parallel network</a>, you must either advance to ledger 256 (past the first amendment vote), or force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>.</p>
-<p>To force the multi-signing feature to be enabled, add the following stanza to your <code>rippled.cfg</code>:</p>
+<p>If you want to use multi-signing with <code>rippled</code> with a fresh ledger in <a href="concept-stand-alone-mode.html">stand-alone mode</a>, you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>.</p>
+<p>To force the multi-signing feature to be enabled, add the following stanza to your <code>rippled.cfg</code>: <!-- --></p>
 <pre><code>[features]
 MultiSign
 </code></pre>

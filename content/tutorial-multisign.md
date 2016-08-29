@@ -22,9 +22,9 @@ Availability of Multi-Signing
 
 Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the Ripple Consensus Protocol since 2016-06-27.
 
-If you want to use multi-signing with `rippled` in [stand-alone mode](concept-stand-alone-mode.html) or on a [parallel network](tutorial-rippled-setup.html#parallel-networks), you must either advance to ledger 256 (past the first amendment vote), or force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [`feature` command](reference-rippled.html#feature).
+If you want to use multi-signing with `rippled` with a fresh ledger in [stand-alone mode](concept-stand-alone-mode.html), you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [`feature` command](reference-rippled.html#feature).
 
-To force the multi-signing feature to be enabled, add the following stanza to your `rippled.cfg`:
+To force the multi-signing feature to be enabled, add the following stanza to your `rippled.cfg`: <!--{# TODO: Link to rippled.cfg docs when those exist. #}-->
 
     [features]
     MultiSign
