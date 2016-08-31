@@ -24,6 +24,8 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.0.8]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.8
 [v2.1.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
 [v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
+[v2.2.1]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.1
+[v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
 
 
 # API Method Reference #
@@ -65,8 +67,9 @@ Account Methods:
 * [Get Account Transaction Stats - `GET /v2/accounts/{:address}/stats/transactions`](#get-account-transaction-stats)
 * [Get Account Value Stats - `GET /v2/accounts/{:address}/stats/value`](#get-account-value-stats)
 
-Gateway Information Methods:
+External Information Methods:
 
+* [Get rippled Versions - `GET /v2/network/rippled_versions`](#get-rippled-versions)
 * [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
 * [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
 * [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
@@ -3171,6 +3174,80 @@ Response:
     },
 
     ...
+  ]
+}
+```
+
+
+## Get rippled Versions ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getVersions.js "Source")
+
+Reports the latest versions of `rippled` available from the official Ripple Yum repositories. _(New in [v2.3.0][].)_
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/rippled_versions
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](data-api-v2-tool.html#get-rippled-versions)
+
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field    | Value                    | Description                           |
+|:---------|:-------------------------|:--------------------------------------|
+| `result` | String                   | The value `success` indicates that the body represents a successful response. |
+| `count`  | Integer                  | Number of rows returned.              |
+| `rows`   | Array of Version Objects | Description of the latest `rippled` version in each repository. |
+
+Each Version Object contains the following fields:
+
+| Field     | Value                  | Description                            |
+|:----------|:-----------------------|:---------------------------------------|
+| `date`    | String - [Timestamp][] | The date this `rippled` version was released. |
+| `repo`    | String                 | The Yum repository where this `rippled` is available. The `stable` repository has the latest production version. Other versions are for development and testing. |
+| `version` | String                 | The version string for this version of `rippled`. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/rippled_versions
+```
+
+Response:
+
+```
+200 OK
+{
+  "result": "success",
+  "count": 3,
+  "rows": [
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "nightly",
+      "version": "0.32.0-rc2"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "stable",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "unstable",
+      "version": "0.32.0-rc1"
+    }
   ]
 }
 ```
