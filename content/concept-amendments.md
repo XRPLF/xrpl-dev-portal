@@ -1,6 +1,6 @@
 # Amendments #
 
-_(Introduced in [version 0.31.0](https://wiki.ripple.com/Rippled-0.31.0))_
+_(Introduced in [version 0.31.0][])_
 
 The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
 
@@ -221,3 +221,4 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger node type and the transaction types `TicketCreate` and `TicketCancel`.
 
 This amendment is still in development.
+ {% include 'snippets/rippled_versions.md' %}

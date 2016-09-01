@@ -1161,7 +1161,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>signer_lists</td>
 <td>Boolean</td>
-<td>(Optional) If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></td>
+<td>(Optional) If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <em>(New in [<code>rippled</code> 0.31.0][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1209,7 +1209,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>signer_lists</td>
 <td>Array</td>
-<td>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.) Array of <a href="reference-ledger-format.html#signerlist">SignerList ledger nodes</a> associated with this account for <a href="reference-transaction-format.html#multi-signing">Multi-Signing</a>. Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></td>
+<td>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.) Array of <a href="reference-ledger-format.html#signerlist">SignerList ledger nodes</a> associated with this account for <a href="reference-transaction-format.html#multi-signing">Multi-Signing</a>. Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. <em>(New in [<code>rippled</code> 0.31.0][])</em></td>
 </tr>
 <tr>
 <td>ledger_current_index</td>
@@ -1224,7 +1224,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>validated</td>
 <td>Boolean</td>
-<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.0">version 0.26.0</a>)</em></td>
+<td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <em>(New in [<code>rippled</code> 0.26.0][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1295,12 +1295,12 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>(Optional) Server-provided value to specify where to resume retrieving data from. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>(Optional) Server-provided value to specify where to resume retrieving data from. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1415,22 +1415,22 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1573,12 +1573,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>Server-provided value to specify where to resume retrieving data from. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1695,22 +1695,22 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>ledger_current_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided) Sequence number of the ledger version used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>ledger_index</td>
 <td>Integer</td>
-<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(Omitted if <code>ledger_current_index</code> provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>ledger_hash</td>
 <td>String</td>
-<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1">version 0.26.4-sp1</a>)</em></td>
+<td>(May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. <em>(New in [<code>rippled</code> 0.26.4-sp1][])</em></td>
 </tr>
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.26.4">version 0.26.4</a>)</em></td>
+<td>Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <em>(New in [<code>rippled</code> 0.26.4][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -1747,12 +1747,12 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>quality</td>
 <td>Number</td>
-<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">version 0.29.0</a>)</em></td>
+<td>The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <em>(New in [<code>rippled</code> 0.29.0][])</em></td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>Unsigned integer</td>
-<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="reference-transaction-format.html#expiration">Offer Expiration</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>(May be omitted) A time after which this offer is considered unfunded, as <a href="#specifying-time">the number of seconds since the Ripple Epoch</a>. See also: <a href="reference-transaction-format.html#expiration">Offer Expiration</a>. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -3302,7 +3302,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </ul>
 <h2 id="gateway-balances">gateway_balances</h2>
 <p><a href="https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.2">version 0.28.2</a>.)</em></p>
+<p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>. <em>(New in [<code>rippled</code> 0.28.2][].)</em></p>
 <h4 id="request-format-7">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-17"><ul class="codetabs"><li><a href="#code-17-0">WebSocket</a></li><li><a href="#code-17-1">JSON-RPC</a></li></ul>
@@ -3558,7 +3558,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp" title="Source">[Source]<br/></a></p>
 <p>Use the <code>wallet_propose</code> method to generate a key pair and Ripple <a href="#addresses">address</a>. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must <a href="reference-transaction-format.html#creating-accounts">receive a Payment transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
 <p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em> (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)</p>
-<p><em>(Updated in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
+<p><em>(Updated in [<code>rippled</code> 0.31.0][])</em></p>
 <h4 id="request-format-8">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-19"><ul class="codetabs"><li><a href="#code-19-0">WebSocket (with key type)</a></li><li><a href="#code-19-1">WebSocket (no key type)</a></li><li><a href="#code-19-2">JSON-RPC (with key type)</a></li><li><a href="#code-19-3">JSON-RPC (no key type)</a></li><li><a href="#code-19-4">Commandline</a></li></ul>
@@ -3743,7 +3743,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>warning</td>
 <td>String</td>
-<td>(May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -3845,7 +3845,7 @@ rippled ledger current
 <tr>
 <td>binary</td>
 <td>Boolean</td>
-<td>(Optional, defaults to false) If <code>transactions</code> and <code>expand</code> are both true, and this option is also true, return transaction information in binary format instead of JSON format. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.28.0">version 0.28.0</a>)</em></td>
+<td>(Optional, defaults to false) If <code>transactions</code> and <code>expand</code> are both true, and this option is also true, return transaction information in binary format instead of JSON format. <em>(New in [<code>rippled</code> 0.28.0][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -4898,7 +4898,7 @@ Connecting to 127.0.0.1:5005
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.</li>
-<li><code>lgrNotFound</code> - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. <em>(<strong>Note:</strong> Prior to <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>, this error used the code <code>ledgerNotFound</code> instead.)</em></li>
+<li><code>lgrNotFound</code> - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. <em>(<strong>Note:</strong> Prior to [<code>rippled</code> 0.30.1][], this error used the code <code>ledgerNotFound</code> instead.)</em></li>
 </ul>
 <h2 id="ledger-accept">ledger_accept</h2>
 <p><a href="https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp" title="Source">[Source]<br/></a></p>
@@ -6378,12 +6378,12 @@ rippled tx_history 0
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">version 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in [<code>rippled</code> 0.30.0][])</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
 </tr>
 <tr>
 <td>send_max</td>
 <td>String or Object</td>
-<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">version 0.30.0</a>)</em></td>
+<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <em>(New in [<code>rippled</code> 0.30.0][])</em></td>
 </tr>
 <tr>
 <td>paths</td>
@@ -6800,7 +6800,7 @@ rippled tx_history 0
 <tr>
 <td>full_reply</td>
 <td>Boolean</td>
-<td>If <code>false</code>, this is the result of an incomplete search. A later reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but <code>rippled</code> won't find it.) Until you close the pathfinding request, <code>rippled</code> continues to send updates each time a new ledger closes. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">version 0.29.0</a>)</em></td>
+<td>If <code>false</code>, this is the result of an incomplete search. A later reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but <code>rippled</code> won't find it.) Until you close the pathfinding request, <code>rippled</code> continues to send updates each time a new ledger closes. <em>(New in [<code>rippled</code> 0.29.0][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -7050,12 +7050,12 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td>destination_amount</td>
 <td>String or Object</td>
-<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">version 0.30.0</a>)</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
+<td><a href="#specifying-currency-amounts">Currency amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <em>(New in [<code>rippled</code> 0.30.0][])</em> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
 </tr>
 <tr>
 <td>send_max</td>
 <td>String or Object</td>
-<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Cannot be used with <code>source_currencies</code>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.0">version 0.30.0</a>)</em></td>
+<td>(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Cannot be used with <code>source_currencies</code>. <em>(New in [<code>rippled</code> 0.30.0][])</em></td>
 </tr>
 <tr>
 <td>source_currencies</td>
@@ -7468,7 +7468,7 @@ rippled sign s██████████████████████
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional, defaults to 1) Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="concept-transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="concept-transaction-cost.html">transaction cost</a>). <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional, defaults to 1) Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="concept-transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="concept-transaction-cost.html">transaction cost</a>). <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -7607,7 +7607,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="sign-for">sign_for</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>sign_for</code> command provides one signature for a <a href="reference-transaction-format.html#multi-signing">multi-signed transaction</a>.</p>
-<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
+<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in [<code>rippled</code> 0.31.0][])</em></p>
 <h4 id="request-format-24">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-49"><ul class="codetabs"><li><a href="#code-49-0">WebSocket</a></li><li><a href="#code-49-1">JSON-RPC</a></li><li><a href="#code-49-2">Commandline</a></li></ul>
@@ -7982,7 +7982,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td>fee_div_max</td>
 <td>Integer</td>
-<td>(Optional, defaults to 1) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>(Optional, defaults to 1) Used with <code>fee_mult_max</code> to create a fractional multiplier for the limit. Specifically, the server multiplies its base <a href="concept-transaction-cost.html">transaction cost</a> by <code>fee_mult_max</code>, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided <code>Fee</code> value would be over the limit, the submit command fails. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 </tbody>
 </table>
@@ -8185,7 +8185,7 @@ Connecting to 127.0.0.1:5005
 <h2 id="submit-multisigned">submit_multisigned</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>submit_multisigned</code> command applies a <a href="reference-transaction-format.html#multi-signing">multi-signed</a> transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the <a href="#submit-only-mode"><code>submit</code> command in submit-only mode</a>.)</p>
-<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
+<p>This command requires the <a href="concept-amendments.html#multisign">MultiSign amendment</a> to be enabled. <em>(New in [<code>rippled</code> 0.31.0][])</em></p>
 <h4 id="request-format-27">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-54"><ul class="codetabs"><li><a href="#code-54-0">WebSocket</a></li><li><a href="#code-54-1">JSON-RPC</a></li><li><a href="#code-54-2">Commandline</a></li></ul>
@@ -8932,7 +8932,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tbody>
 </table>
 <h3 id="validations-stream">Validations Stream</h3>
-<p><em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.29.0">version 0.29.0</a>)</em></p>
+<p><em>(New in [<code>rippled</code> 0.29.0][])</em></p>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:</p>
 <pre><code>{
     "type": "validationReceived",
@@ -8975,22 +8975,22 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td><code>amendments</code></td>
 <td>Array of Strings</td>
-<td>(May be omitted) The <a href="concept-amendments.html">amendments</a> this server wants to be added to the protocol. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The <a href="concept-amendments.html">amendments</a> this server wants to be added to the protocol. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>base_fee</code></td>
 <td>Integer</td>
-<td>(May be omitted) The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>flags</code></td>
 <td>Number</td>
-<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>full</code></td>
 <td>Boolean</td>
-<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>ledger_hash</code></td>
@@ -9000,22 +9000,22 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td><code>ledger_index</code></td>
 <td>String - Integer</td>
-<td>The <a href="#ledger-index">Ledger Index</a> of the proposed ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></td>
+<td>The <a href="#ledger-index">Ledger Index</a> of the proposed ledger. <em>(New in [<code>rippled</code> 0.31.0][])</em></td>
 </tr>
 <tr>
 <td><code>load_fee</code></td>
 <td>Integer</td>
-<td>(May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>reserve_base</code></td>
 <td>Integer</td>
-<td>(May be omitted) The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>reserve_inc</code></td>
 <td>Integer</td>
-<td>(May be omitted) The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="concept-fee-voting.html">Fee Voting</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>signature</code></td>
@@ -9025,7 +9025,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td><code>signing_time</code></td>
 <td>Number</td>
-<td>When this validation vote was signed, in seconds since the <a href="#specifying-time">Ripple Epoch</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>When this validation vote was signed, in seconds since the <a href="#specifying-time">Ripple Epoch</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td><code>validation_public_key</code></td>
@@ -9855,12 +9855,12 @@ rippled server_info
 <tr>
 <td>load_factor_fee_escalation</td>
 <td>Number</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the open ledger. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td>load_factor_fee_queue</td>
 <td>Number</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -9885,22 +9885,22 @@ rippled server_info
 <tr>
 <td>state_accounting</td>
 <td>Object</td>
-<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.duration_us</td>
 <td>String</td>
-<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.transitions</td>
 <td>Number</td>
-<td>The number of times the server has transitioned into this state. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>The number of times the server has transitioned into this state. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>Number of consecutive seconds that the server has been operational. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>Number of consecutive seconds that the server has been operational. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -10220,17 +10220,17 @@ rippled server_state
 <tr>
 <td>load_factor_fee_escalation</td>
 <td>Integer</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the open ledger, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the open ledger, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td>load_factor_fee_queue</td>
 <td>Integer</td>
-<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the queue, if the queue is full, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> to get into the queue, if the queue is full, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td>load_factor_fee_reference</td>
 <td>Integer</td>
-<td>(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>)</em></td>
+<td>(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <em>(New in [<code>rippled</code> 0.32.0][])</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -10255,22 +10255,22 @@ rippled server_state
 <tr>
 <td>state_accounting</td>
 <td>Object</td>
-<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.duration_us</td>
 <td>String</td>
-<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>state_accounting.*.transitions</td>
 <td>Number</td>
-<td>The number of times the server has transitioned into this state. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>The number of times the server has transitioned into this state. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>Number of consecutive seconds that the server has been operational. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>Number of consecutive seconds that the server has been operational. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>validated_ledger</td>
@@ -10823,7 +10823,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="feature">feature</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
+<p>The <code>feature</code> command returns information about <a href="concept-amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="concept-amendments.html#amendment-process">amendment process</a>. <em>(New in [<code>rippled</code> 0.31.0][])</em></p>
 <p>You can use the <code>feature</code> command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the <code>rippled.cfg</code> file. See <a href="concept-amendments.html#configuring-amendment-voting">Configuring Amendment Voting</a> for more information.</p>
 <p><em>The <code>feature</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-36">Request Format</h4>
@@ -11013,8 +11013,8 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="fee">fee</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> to be enabled. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.31.0">version 0.31.0</a>)</em></p>
-<p><em>As of <a href="https://github.com/ripple/rippled/releases/tag/0.32.0">version 0.32.0</a>, this is a public command available to unprivileged users.</em></p>
+<p>The <code>fee</code> command reports the current state of the open-ledger requirements for the <a href="concept-transaction-cost.html">transaction cost</a>. This requires the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> to be enabled. <em>(New in [<code>rippled</code> 0.31.0][])</em></p>
+<p><em>As of [<code>rippled</code> 0.32.0][], this is a public command available to unprivileged users.</em></p>
 <h4 id="request-format-37">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-73"><ul class="codetabs"><li><a href="#code-73-0">WebSocket</a></li><li><a href="#code-73-1">JSON-RPC</a></li><li><a href="#code-73-2">Commandline</a></li></ul>
@@ -12216,7 +12216,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>cluster</td>
 <td>Object</td>
-<td>Summary of other <code>rippled</code> servers in the same cluster, if <a href="tutorial-rippled-setup.html#clustering">configured as a cluster</a>. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>Summary of other <code>rippled</code> servers in the same cluster, if <a href="tutorial-rippled-setup.html#clustering">configured as a cluster</a>. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>peers</td>
@@ -12325,7 +12325,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td>uptime</td>
 <td>Number</td>
-<td>The number of seconds that your <code>rippled</code> server has been continuously connected to this peer. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.30.1">version 0.30.1</a>)</em></td>
+<td>The number of seconds that your <code>rippled</code> server has been continuously connected to this peer. <em>(New in [<code>rippled</code> 0.30.1][])</em></td>
 </tr>
 <tr>
 <td>version</td>

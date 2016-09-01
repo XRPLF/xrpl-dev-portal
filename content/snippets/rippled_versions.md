@@ -1,0 +1,22 @@
+<!---- rippled release notes links ---->
+[`rippled` 0.26.0]: https://github.com/ripple/rippled/releases/tag/0.26.0
+[`rippled` 0.26.1]: https://github.com/ripple/rippled/releases/tag/0.26.1
+[`rippled` 0.26.2]: https://github.com/ripple/rippled/releases/tag/0.26.2
+[`rippled` 0.26.3-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.3-sp1
+[`rippled` 0.26.4]: https://github.com/ripple/rippled/releases/tag/0.26.4
+[`rippled` 0.26.4-sp1]: https://github.com/ripple/rippled/releases/tag/0.26.4-sp1
+[`rippled` 0.27.0]: https://github.com/ripple/rippled/releases/tag/0.27.0
+[`rippled` 0.27.1]: https://github.com/ripple/rippled/releases/tag/0.27.1
+[`rippled` 0.27.2]: https://github.com/ripple/rippled/releases/tag/0.27.2
+[`rippled` 0.27.3]: https://github.com/ripple/rippled/releases/tag/0.27.3
+[`rippled` 0.27.3-sp1]: https://github.com/ripple/rippled/releases/tag/0.27.3-sp1
+[`rippled` 0.27.3-sp2]: https://github.com/ripple/rippled/releases/tag/0.27.3-sp2
+[`rippled` 0.27.4]: https://github.com/ripple/rippled/releases/tag/0.27.4
+[`rippled` 0.28.0]: https://github.com/ripple/rippled/releases/tag/0.28.0
+[`rippled` 0.28.2]: https://github.com/ripple/rippled/releases/tag/0.28.2
+[`rippled` 0.29.0]: https://github.com/ripple/rippled/releases/tag/0.29.0
+[`rippled` 0.29.0-hf1]: https://github.com/ripple/rippled/releases/tag/0.29.0-hf1
+[`rippled` 0.30.0]: https://github.com/ripple/rippled/releases/tag/0.30.0
+[`rippled` 0.30.1]: https://github.com/ripple/rippled/releases/tag/0.30.1
+[`rippled` 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
+[`rippled` 0.32.0]: https://github.com/ripple/rippled/releases/tag/0.32.0
