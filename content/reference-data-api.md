@@ -24,7 +24,6 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.0.8]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.8
 [v2.1.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
 [v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
-[v2.2.1]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.1
 [v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
 
 
@@ -1584,7 +1583,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.2.1][])_ |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
@@ -1734,7 +1733,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
-| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.2.1][])_ |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
