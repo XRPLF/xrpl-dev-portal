@@ -189,7 +189,7 @@ An address with a SignerList can disable the master key even if a regular key is
 |:-----------------------------------------------------------------|:----------|
 | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development. |
 
-Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing, but the holder of the issuances pays the transfer fee if an offer is executed in offer placement. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -200,9 +200,11 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 |:-----------------------------------------------------------------|:----------|
 | 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | In development. |
 
-Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated unidirectional payments or extensions of credit between two parties, which we expect to be used with the Interledger Protocol. One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
+Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated unidirectional payments or extensions of credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
 
 Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `ChannelClaim`. Creates a new ledger node type, `Channel`. Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: `channel_authorize` (creates a signed Claim), `channel_verify` (verifies a signed Claim), and `account_channels` (lists Channels associated with an account).
+
+<!--{# TODO: Add links to the relevant docs above when they are ready #}-->
 
 
 ## SHAMapV2 ##
@@ -211,7 +213,7 @@ Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `Channe
 |:-----------------------------------------------------------------|:----------|
 | C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | In development. |
 
-Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is smaller and more efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
+Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
 
 ## SusPay ##

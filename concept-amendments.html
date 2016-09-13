@@ -397,7 +397,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. Without this amendment, the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing, but the holder of the issuances pays the transfer fee if an offer is executed in offer placement. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>Fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <p>This Amendment requires the <a href="#flow">Flow Amendment</a> to be enabled.</p>
 <h2 id="paychan">PayChan</h2>
 <table>
@@ -414,8 +414,9 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated unidirectional payments or extensions of credit between two parties, which we expect to be used with the Interledger Protocol. One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.</p>
+<p>Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated unidirectional payments or extensions of credit between two parties. Ripple expects this feature to be useful for the <a href="https://interledger.org/">Interledger Protocol</a>. One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.</p>
 <p>Creates three new transaction types: <code>ChannelCreate</code>, <code>ChannelFund</code>, and <code>ChannelClaim</code>. Creates a new ledger node type, <code>Channel</code>. Defines an off-ledger data structure called a <code>Claim</code>, used in the ChannelClaim transaction. Creates new <code>rippled</code> API methods: <code>channel_authorize</code> (creates a signed Claim), <code>channel_verify</code> (verifies a signed Claim), and <code>account_channels</code> (lists Channels associated with an account).</p>
+<!-- -->
 <h2 id="shamapv2">SHAMapV2</h2>
 <table>
 <thead>
@@ -431,7 +432,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is smaller and more efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
+<p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
 <h2 id="suspay">SusPay</h2>
 <table>
 <thead>
