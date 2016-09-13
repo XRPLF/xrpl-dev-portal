@@ -24,6 +24,7 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.0.8]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.8
 [v2.1.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
 [v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
+[v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
 
 
 # API Method Reference #
@@ -65,8 +66,9 @@ Account Methods:
 * [Get Account Transaction Stats - `GET /v2/accounts/{:address}/stats/transactions`](#get-account-transaction-stats)
 * [Get Account Value Stats - `GET /v2/accounts/{:address}/stats/value`](#get-account-value-stats)
 
-Gateway Information Methods:
+External Information Methods:
 
+* [Get rippled Versions - `GET /v2/network/rippled_versions`](#get-rippled-versions)
 * [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
 * [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
 * [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
@@ -1581,6 +1583,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
@@ -1594,7 +1597,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | `result` | String | The value `success` indicates that this is a successful response. |
 | `count` | Integer | Number of results returned. |
-| `rows` | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `rows` | Array of exchange [Volume Objects][] | Exchange volumes for each interval in the requested time period. (By default, this array contains only the most recent complete interval. If `live` is specified and `interval` isn't, this array contains the specified rolling window instead.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of exchanges in a market between two currencies, and has the following fields:
 
@@ -1730,6 +1733,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Start time of query range. Defaults to the start of the most recent interval. |
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the end of the most recent interval. |
 | `interval` | String  | Aggregation interval - valid intervals are `day`, `week`, or `month`. Defaults to `day`. |
+| `live` | String | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
 | `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
 | `limit` | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
@@ -1743,7 +1747,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |--------|-------|-------------|
 | `result` | String | The value `success` indicates that this is a successful response. |
 | `count` | Integer | Number of results returned. |
-| `rows` | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.) |
+| `rows` | Array of payment [Volume Objects][] | Payment volumes for each interval in the requested time period. (By default, this array contains only the most recent interval. If `live` is specified and `interval` isn't, this array contains the specified rolling window instead.) |
 
 Each object in the `components` array of the Volume Objects represent the volume of payments for one currencies and issuer, and has the following fields:
 
@@ -3169,6 +3173,80 @@ Response:
     },
 
     ...
+  ]
+}
+```
+
+
+## Get rippled Versions ##
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getVersions.js "Source")
+
+Reports the latest versions of `rippled` available from the official Ripple Yum repositories. _(New in [v2.3.0][].)_
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/rippled_versions
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](data-api-v2-tool.html#get-rippled-versions)
+
+
+#### Response Format ####
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field    | Value                    | Description                           |
+|:---------|:-------------------------|:--------------------------------------|
+| `result` | String                   | The value `success` indicates that the body represents a successful response. |
+| `count`  | Integer                  | Number of rows returned.              |
+| `rows`   | Array of Version Objects | Description of the latest `rippled` version in each repository. |
+
+Each Version Object contains the following fields:
+
+| Field     | Value                  | Description                            |
+|:----------|:-----------------------|:---------------------------------------|
+| `date`    | String - [Timestamp][] | The date this `rippled` version was released. |
+| `repo`    | String                 | The Yum repository where this `rippled` is available. The `stable` repository has the latest production version. Other versions are for development and testing. |
+| `version` | String                 | The version string for this version of `rippled`. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/rippled_versions
+```
+
+Response:
+
+```
+200 OK
+{
+  "result": "success",
+  "count": 3,
+  "rows": [
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "nightly",
+      "version": "0.32.0-rc2"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "stable",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "unstable",
+      "version": "0.32.0-rc1"
+    }
   ]
 }
 ```

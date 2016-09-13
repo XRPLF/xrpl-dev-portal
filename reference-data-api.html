@@ -170,6 +170,7 @@
 <li class="level-2"><a href="#get-validations">Get Validations</a></li>
 <li class="level-2"><a href="#get-single-validator-reports">Get Single Validator Reports</a></li>
 <li class="level-2"><a href="#get-daily-validator-reports">Get Daily Validator Reports</a></li>
+<li class="level-2"><a href="#get-rippled-versions">Get rippled Versions</a></li>
 <li class="level-2"><a href="#get-all-gateways">Get All Gateways</a></li>
 <li class="level-2"><a href="#get-gateway">Get Gateway</a></li>
 <li class="level-2"><a href="#get-currency-image">Get Currency Image</a></li>
@@ -283,8 +284,9 @@
 <li><a href="#get-account-transaction-stats">Get Account Transaction Stats - <code>GET /v2/accounts/{:address}/stats/transactions</code></a></li>
 <li><a href="#get-account-value-stats">Get Account Value Stats - <code>GET /v2/accounts/{:address}/stats/value</code></a></li>
 </ul>
-<p>Gateway Information Methods:</p>
+<p>External Information Methods:</p>
 <ul>
+<li><a href="#get-rippled-versions">Get rippled Versions - <code>GET /v2/network/rippled_versions</code></a></li>
 <li><a href="#get-all-gateways">Get All Gateways - <code>GET /v2/gateways</code></a></li>
 <li><a href="#get-gateway">Get Gateway - <code>GET /v2/gateways/{:gateway}</code></a></li>
 <li><a href="#get-currency-image">Get Currency Image - <code>GET /v2/currencies/{:currencyimage}</code></a></li>
@@ -2439,6 +2441,11 @@
 <td>Aggregation interval - valid intervals are <code>day</code>, <code>week</code>, or <code>month</code>. Defaults to <code>day</code>.</td>
 </tr>
 <tr>
+<td><code>live</code></td>
+<td>String</td>
+<td>Return a live rolling window of this length of time. Valid values are <code>day</code>, <code>hour</code>, or <code>minute</code>. Ignored if <code>interval</code> is provided. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0">v2.3.0</a>)</em></td>
+</tr>
+<tr>
 <td><code>exchange_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
 <td>Normalize all amounts to use this as a display currency. If not XRP, <code>exchange_issuer</code> is also required. Defaults to XRP.</td>
@@ -2489,7 +2496,7 @@
 <tr>
 <td><code>rows</code></td>
 <td>Array of exchange <a href="#volume-objects">Volume Objects</a></td>
-<td>Exchange volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.)</td>
+<td>Exchange volumes for each interval in the requested time period. (By default, this array contains only the most recent complete interval. If <code>live</code> is specified and <code>interval</code> isn't, this array contains the specified rolling window instead.)</td>
 </tr>
 </tbody>
 </table>
@@ -2655,6 +2662,11 @@
 <td>Aggregation interval - valid intervals are <code>day</code>, <code>week</code>, or <code>month</code>. Defaults to <code>day</code>.</td>
 </tr>
 <tr>
+<td><code>live</code></td>
+<td>String</td>
+<td>Return a live rolling window of this length of time. Valid values are <code>day</code>, <code>hour</code>, or <code>minute</code>. Ignored if <code>interval</code> is provided. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0">v2.3.0</a>)</em></td>
+</tr>
+<tr>
 <td><code>exchange_currency</code></td>
 <td>String - <a href="#currency-code">Currency Code</a></td>
 <td>Normalize all amounts to use this as a display currency. If not XRP, <code>exchange_issuer</code> is also required. Defaults to XRP.</td>
@@ -2705,7 +2717,7 @@
 <tr>
 <td><code>rows</code></td>
 <td>Array of payment <a href="#volume-objects">Volume Objects</a></td>
-<td>Payment volumes for each interval in the requested time period. (By default, this method only returns the most recent interval.)</td>
+<td>Payment volumes for each interval in the requested time period. (By default, this array contains only the most recent interval. If <code>live</code> is specified and <code>interval</code> isn't, this array contains the specified rolling window instead.)</td>
 </tr>
 </tbody>
 </table>
@@ -4791,18 +4803,111 @@
   ]
 }
 </code></pre>
-<h2 id="get-all-gateways">Get All Gateways</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js" title="Source">[Source]<br/></a></p>
-<p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
+<h2 id="get-rippled-versions">Get rippled Versions</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getVersions.js" title="Source">[Source]<br/></a></p>
+<p>Reports the latest versions of <code>rippled</code> available from the official Ripple Yum repositories. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0">v2.3.0</a>.)</em></p>
 <h4 id="request-format-30">Request Format</h4>
 <div class="multicode" id="code-30"><ul class="codetabs"><li><a href="#code-30-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>GET /v2/gateways/
+<div class="code_sample" id="code-30-0" style="position: static;"><pre><code>GET /v2/network/rippled_versions
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#get-rippled-versions">Try it! &gt;</a></p>
+<h4 id="response-format-30">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>result</code></td>
+<td align="left">String</td>
+<td align="left">The value <code>success</code> indicates that the body represents a successful response.</td>
+</tr>
+<tr>
+<td align="left"><code>count</code></td>
+<td align="left">Integer</td>
+<td align="left">Number of rows returned.</td>
+</tr>
+<tr>
+<td align="left"><code>rows</code></td>
+<td align="left">Array of Version Objects</td>
+<td align="left">Description of the latest <code>rippled</code> version in each repository.</td>
+</tr>
+</tbody>
+</table>
+<p>Each Version Object contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>date</code></td>
+<td align="left">String - <a href="#timestamps">Timestamp</a></td>
+<td align="left">The date this <code>rippled</code> version was released.</td>
+</tr>
+<tr>
+<td align="left"><code>repo</code></td>
+<td align="left">String</td>
+<td align="left">The Yum repository where this <code>rippled</code> is available. The <code>stable</code> repository has the latest production version. Other versions are for development and testing.</td>
+</tr>
+<tr>
+<td align="left"><code>version</code></td>
+<td align="left">String</td>
+<td align="left">The version string for this version of <code>rippled</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-30">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/network/rippled_versions
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "result": "success",
+  "count": 3,
+  "rows": [
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "nightly",
+      "version": "0.32.0-rc2"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "stable",
+      "version": "0.32.0"
+    },
+    {
+      "date": "2016-06-24T00:00:00Z",
+      "repo": "unstable",
+      "version": "0.32.0-rc1"
+    }
+  ]
+}
+</code></pre>
+<h2 id="get-all-gateways">Get All Gateways</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js" title="Source">[Source]<br/></a></p>
+<p>Get information about <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
+<h4 id="request-format-31">Request Format</h4>
+<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">REST</a></li></ul>
+
+<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>GET /v2/gateways/
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-all-gateways">Try it! &gt;</a></p>
 <p>This method takes no query parameters.</p>
-<h4 id="response-format-30">Response Format</h4>
+<h4 id="response-format-31">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body.</p>
 <p>Each field in the top level JSON object is a <a href="#currency-code">Currency Code</a>. The content of each field is an array of objects, representing gateways that issue that currency. Each object has the following fields:</p>
 <table>
@@ -4841,7 +4946,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-30">Example</h4>
+<h4 id="example-31">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/gateways/
 </code></pre>
@@ -4897,10 +5002,10 @@
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js" title="Source">[Source]<br/></a></p>
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 <p>Get information about a specific gateway from <a href="https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json">the Data API's list of known gateways</a>. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-31">Request Format</h4>
-<div class="multicode" id="code-31"><ul class="codetabs"><li><a href="#code-31-0">REST</a></li></ul>
+<h4 id="request-format-32">Request Format</h4>
+<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-31-0" style="position: static;"><pre><code>GET /v2/gateways/{:gateway}
+<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>GET /v2/gateways/{:gateway}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-gateway">Try it! &gt;</a></p>
@@ -4922,7 +5027,7 @@
 </tbody>
 </table>
 <p>This method takes no query parameters.</p>
-<h4 id="response-format-31">Response Format</h4>
+<h4 id="response-format-32">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -4992,7 +5097,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-31">Example</h4>
+<h4 id="example-32">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/gateways/Gatehub
 </code></pre>
@@ -5028,10 +5133,10 @@
 <h2 id="get-currency-image">Get Currency Image</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js#L199" title="Source">[Source]<br/></a></p>
 <p>Retrieve vector icons for various currencies. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.0.4">v2.0.4</a>)</em></p>
-<h4 id="request-format-32">Request Format</h4>
-<div class="multicode" id="code-32"><ul class="codetabs"><li><a href="#code-32-0">REST</a></li></ul>
+<h4 id="request-format-33">Request Format</h4>
+<div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-32-0" style="position: static;"><pre><code>GET /v2/currencies/{:currencyimage}
+<div class="code_sample" id="code-33-0" style="position: static;"><pre><code>GET /v2/currencies/{:currencyimage}
 </code></pre></div>
 </div>
 <p>This method requires the following URL parameter:</p>
@@ -5051,9 +5156,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-32">Response Format</h4>
+<h4 id="response-format-33">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a <strong>Content-Type</strong> header of <code>image/svg+xml</code> to indicate that the contents are XML representing a file in <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG format</a>.</p>
-<h4 id="example-32">Example</h4>
+<h4 id="example-33">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/currencies/mxn.svg
 </code></pre>
@@ -5082,10 +5187,10 @@ Content-Type: image/svg+xml
 <h2 id="get-accounts">Get Accounts</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accounts.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve information about the creation of new accounts in the Ripple Consensus Ledger.</p>
-<h4 id="request-format-33">Request Format</h4>
-<div class="multicode" id="code-33"><ul class="codetabs"><li><a href="#code-33-0">REST</a></li></ul>
+<h4 id="request-format-34">Request Format</h4>
+<div class="multicode" id="code-34"><ul class="codetabs"><li><a href="#code-34-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-33-0" style="position: static;"><pre><code>GET /v2/accounts
+<div class="code_sample" id="code-34-0" style="position: static;"><pre><code>GET /v2/accounts
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-accounts">Try it! &gt;</a></p>
@@ -5146,7 +5251,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-33">Response Format</h4>
+<h4 id="response-format-34">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5202,7 +5307,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-33">Example</h4>
+<h4 id="example-34">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v1/accounts?parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 </code></pre>
@@ -5242,10 +5347,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account">Get Account</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getAccount.js" title="Source">[Source]<br/></a></p>
 <p>Get creation info for a specific ripple account</p>
-<h4 id="request-format-34">Request Format</h4>
-<div class="multicode" id="code-34"><ul class="codetabs"><li><a href="#code-34-0">REST</a></li></ul>
+<h4 id="request-format-35">Request Format</h4>
+<div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-34-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}
+<div class="code_sample" id="code-35-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account">Try it! &gt;</a></p>
@@ -5266,7 +5371,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-34">Response Format</h4>
+<h4 id="response-format-35">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5289,7 +5394,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-34">Example</h4>
+<h4 id="example-35">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 </code></pre>
@@ -5310,9 +5415,9 @@ Content-Type: image/svg+xml
 <h2 id="get-account-balances">Get Account Balances</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalances.js" title="Source">[Source]<br/></a></p>
 <p>Get all balances held or owed by a specific Ripple account.</p>
-<div class="multicode" id="code-35"><ul class="codetabs"><li><a href="#code-35-0">REST</a></li></ul>
+<div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-35-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
+<div class="code_sample" id="code-36-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balances">Try it! &gt;</a></p>
@@ -5380,7 +5485,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-35">Response Format</h4>
+<h4 id="response-format-36">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5423,7 +5528,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-35">Example</h4>
+<h4 id="example-36">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?currency=USD&amp;date=2015-01-01T00:00:00Z&amp;limit=3
 </code></pre>
@@ -5456,10 +5561,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-orders">Get Account Orders</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountOrders.js" title="Source">[Source]<br/></a></p>
 <p>Get orders in the order books, placed by a specific account. This does not return orders that have already been filled.</p>
-<h4 id="request-format-35">Request Format</h4>
-<div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0">REST</a></li></ul>
+<h4 id="request-format-36">Request Format</h4>
+<div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-36-0" style="position: static;"><pre><code>GET /v2/account/{:address}/orders
+<div class="code_sample" id="code-37-0" style="position: static;"><pre><code>GET /v2/account/{:address}/orders
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-orders">Try it! &gt;</a></p>
@@ -5518,7 +5623,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <p>If none of <code>ledger_index</code>, <code>ledger_hash</code>, or <code>date</code> are specified, the API uses the most current data available.</p>
-<h4 id="response-format-36">Response Format</h4>
+<h4 id="response-format-37">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5608,7 +5713,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-36">Example</h4>
+<h4 id="example-37">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV/orders?limit=2&amp;date=2015-11-11T00:00:00Z
 </code></pre>
@@ -5666,10 +5771,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-transaction-history">Get Account Transaction History</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTransactions.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a history of transactions that affected a specific account. This includes all transactions the account sent, payments the account received, and payments that rippled through the account.</p>
-<h4 id="request-format-36">Request Format</h4>
-<div class="multicode" id="code-37"><ul class="codetabs"><li><a href="#code-37-0">REST</a></li></ul>
+<h4 id="request-format-37">Request Format</h4>
+<div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-37-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions
+<div class="code_sample" id="code-38-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-history">Try it! &gt;</a></p>
@@ -5757,7 +5862,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-37">Response Format</h4>
+<h4 id="response-format-38">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5790,7 +5895,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-37">Example</h4>
+<h4 id="example-38">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions?type=Payment&amp;result=tesSUCCESS&amp;limit=1
 </code></pre>
@@ -5860,10 +5965,10 @@ Content-Type: image/svg+xml
 <h2 id="get-transaction-by-account-and-sequence">Get Transaction By Account And Sequence</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTxSeq.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a specifc transaction originating from a specified account</p>
-<h4 id="request-format-37">Request Format</h4>
-<div class="multicode" id="code-38"><ul class="codetabs"><li><a href="#code-38-0">REST</a></li></ul>
+<h4 id="request-format-38">Request Format</h4>
+<div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-38-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
+<div class="code_sample" id="code-39-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/transactions/{:sequence}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-transaction-by-account-and-sequence">Try it! &gt;</a></p>
@@ -5906,7 +6011,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-38">Response Format</h4>
+<h4 id="response-format-39">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -5929,7 +6034,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-38">Example</h4>
+<h4 id="example-39">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions/10?binary=true
 </code></pre>
@@ -5949,10 +6054,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-payments">Get Account Payments</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountPayments.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve a payments for a specified account</p>
-<h4 id="request-format-38">Request Format</h4>
-<div class="multicode" id="code-39"><ul class="codetabs"><li><a href="#code-39-0">REST</a></li></ul>
+<h4 id="request-format-39">Request Format</h4>
+<div class="multicode" id="code-40"><ul class="codetabs"><li><a href="#code-40-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-39-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/payments
+<div class="code_sample" id="code-40-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/payments
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-payments">Try it! &gt;</a></p>
@@ -6040,7 +6145,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-39">Response Format</h4>
+<h4 id="response-format-40">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6073,7 +6178,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-39">Example</h4>
+<h4 id="example-40">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments?currency=USD&amp;limit=1
 </code></pre>
@@ -6118,14 +6223,14 @@ Content-Type: image/svg+xml
 <h2 id="get-account-exchanges">Get Account Exchanges</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountExchanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Exchanges for a given account over time.</p>
-<h4 id="request-format-39">Request Format</h4>
+<h4 id="request-format-40">Request Format</h4>
 <p>There are two variations on this method:</p>
-<div class="multicode" id="code-40"><ul class="codetabs"><li><a href="#code-40-0">REST - All Exchanges</a></li><li><a href="#code-40-1">REST - Specific Currency Pair</a></li></ul>
+<div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0">REST - All Exchanges</a></li><li><a href="#code-41-1">REST - Specific Currency Pair</a></li></ul>
 
-<div class="code_sample" id="code-40-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/
+<div class="code_sample" id="code-41-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/
 </code></pre></div>
 
-<div class="code_sample" id="code-40-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
+<div class="code_sample" id="code-41-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/exchanges/{:base}/{:counter}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-exchanges-all">Try it! &gt;</a></p>
@@ -6198,7 +6303,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-40">Response Format</h4>
+<h4 id="response-format-41">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6231,7 +6336,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-40">Example</h4>
+<h4 id="example-41">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw/exchanges/KRW+rUkMKjQitpgAM5WTGk79xpjT38DEJY283d/XRP?start=2015-08-08T00:00:00Z&amp;end=2015-08-31T00:00:00Z&amp;limit=2
 
@@ -6286,10 +6391,10 @@ Content-Type: image/svg+xml
 <h2 id="get-account-balance-changes">Get Account Balance Changes</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalanceChanges.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve Balance changes for a given account over time.</p>
-<h4 id="request-format-40">Request Format</h4>
-<div class="multicode" id="code-41"><ul class="codetabs"><li><a href="#code-41-0">REST</a></li></ul>
+<h4 id="request-format-41">Request Format</h4>
+<div class="multicode" id="code-42"><ul class="codetabs"><li><a href="#code-42-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-41-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balance_changes/
+<div class="code_sample" id="code-42-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balance_changes/
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-balance-changes">Try it! &gt;</a></p>
@@ -6362,7 +6467,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-41">Response Format</h4>
+<h4 id="response-format-42">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6395,7 +6500,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-41">Example</h4>
+<h4 id="example-42">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balance_changes?descending=true&amp;limit=3
 </code></pre>
@@ -6443,12 +6548,12 @@ Content-Type: image/svg+xml
 <h2 id="get-account-reports">Get Account Reports</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountReports.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of payment activity for an account.</p>
-<div class="multicode" id="code-42"><ul class="codetabs"><li><a href="#code-42-0">REST - Date Omitted</a></li><li><a href="#code-42-1">REST - Date Specified</a></li></ul>
+<div class="multicode" id="code-43"><ul class="codetabs"><li><a href="#code-43-0">REST - Date Omitted</a></li><li><a href="#code-43-1">REST - Date Specified</a></li></ul>
 
-<div class="code_sample" id="code-42-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/
+<div class="code_sample" id="code-43-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/
 </code></pre></div>
 
-<div class="code_sample" id="code-42-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/{:date}
+<div class="code_sample" id="code-43-1" style="position: static;"><pre><code>GET /v2/accounts/{:address}/reports/{:date}
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-reports-by-day">Try it! &gt;</a></p>
@@ -6516,7 +6621,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-42">Response Format</h4>
+<h4 id="response-format-43">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6544,7 +6649,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-42">Example</h4>
+<h4 id="example-43">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:00:00&amp;end=2015-08-28T00:00:00&amp;accounts=true&amp;payments=true&amp;descending=true
 </code></pre>
@@ -6599,9 +6704,9 @@ Content-Type: image/svg+xml
 <h2 id="get-account-transaction-stats">Get Account Transaction Stats</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode" id="code-43"><ul class="codetabs"><li><a href="#code-43-0">REST</a></li></ul>
+<div class="multicode" id="code-44"><ul class="codetabs"><li><a href="#code-44-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-43-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/transactions
+<div class="code_sample" id="code-44-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/transactions
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-transaction-stats">Try it! &gt;</a></p>
@@ -6664,7 +6769,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-43">Response Format</h4>
+<h4 id="response-format-44">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6724,7 +6829,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-43">Example</h4>
+<h4 id="example-44">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/transactions?start=2015-01-01&amp;limit=2
 </code></pre>
@@ -6763,9 +6868,9 @@ Content-Type: image/svg+xml
 <h2 id="get-account-value-stats">Get Account Value Stats</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js" title="Source">[Source]<br/></a></p>
 <p>Retrieve daily summaries of transaction activity for an account. <em>(New in <a href="https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0">v2.1.0</a>.)</em></p>
-<div class="multicode" id="code-44"><ul class="codetabs"><li><a href="#code-44-0">REST</a></li></ul>
+<div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-44-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/value
+<div class="code_sample" id="code-45-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/stats/value
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#get-account-value-stats">Try it! &gt;</a></p>
@@ -6828,7 +6933,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-44">Response Format</h4>
+<h4 id="response-format-45">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong> and has a JSON body with the following:</p>
 <table>
 <thead>
@@ -6883,7 +6988,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-44">Example</h4>
+<h4 id="example-45">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/value?limit=2&amp;descending=true
 </code></pre>
@@ -6910,9 +7015,9 @@ Content-Type: image/svg+xml
 <h2 id="health-check-api">Health Check - API</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the API service.</p>
-<div class="multicode" id="code-45"><ul class="codetabs"><li><a href="#code-45-0">REST</a></li></ul>
+<div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0">REST</a></li></ul>
 
-<div class="code_sample" id="code-45-0" style="position: static;"><pre><code>GET /v2/health/api
+<div class="code_sample" id="code-46-0" style="position: static;"><pre><code>GET /v2/health/api
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#api-health-check">Try it! &gt;</a></p>
@@ -6938,7 +7043,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-45">Response Format</h4>
+<h4 id="response-format-46">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
 <p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
 <table>
@@ -6986,7 +7091,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-45">Example</h4>
+<h4 id="example-46">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/health/api?verbose=true
 </code></pre>
@@ -7001,9 +7106,9 @@ Content-Type: image/svg+xml
 <h2 id="health-check-ledger-importer">Health Check - Ledger Importer</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the Ledger Importer Service.</p>
-<div class="multicode" id="code-46"><ul class="codetabs"><li><a href="#code-46-0">REST - Importer Health</a></li></ul>
+<div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0">REST - Importer Health</a></li></ul>
 
-<div class="code_sample" id="code-46-0" style="position: static;"><pre><code>GET /v2/health/importer
+<div class="code_sample" id="code-47-0" style="position: static;"><pre><code>GET /v2/health/importer
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#importer-health-check">Try it! &gt;</a></p>
@@ -7034,7 +7139,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="response-format-46">Response Format</h4>
+<h4 id="response-format-47">Response Format</h4>
 <p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
 <p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
 <table>
@@ -7101,7 +7206,7 @@ Content-Type: image/svg+xml
 </tr>
 </tbody>
 </table>
-<h4 id="example-46">Example</h4>
+<h4 id="example-47">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/health/importer?verbose=true
 </code></pre>
@@ -7119,9 +7224,9 @@ Content-Type: image/svg+xml
 <h2 id="health-check-nodes-etl">Health Check - Nodes ETL</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
 <p>Check the health of the Topology Nodes Extract, Transform, Load (ETL) Service.</p>
-<div class="multicode" id="code-47"><ul class="codetabs"><li><a href="#code-47-0">REST - Nodes ETL Health</a></li></ul>
+<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">REST - Nodes ETL Health</a></li></ul>
 
-<div class="code_sample" id="code-47-0" style="position: static;"><pre><code>GET /v2/health/nodes_etl
+<div class="code_sample" id="code-48-0" style="position: static;"><pre><code>GET /v2/health/nodes_etl
 </code></pre></div>
 </div>
 <p><a class="button" href="data-api-v2-tool.html#nodes-etl-health-check">Try it! &gt;</a></p>
@@ -7144,102 +7249,6 @@ Content-Type: image/svg+xml
 <td><code>verbose</code></td>
 <td>Boolean</td>
 <td>If <code>true</code>, return a JSON response with data points. By default, return an integer value only.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="response-format-47">Response Format</h4>
-<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
-<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>0</code></td>
-<td>The most recent imported topology data was less than <code>threshold</code> (Default: 120) seconds ago.</td>
-</tr>
-<tr>
-<td><code>1</code></td>
-<td>The most recent imported topology data was more than <code>threshold</code> seconds ago.</td>
-</tr>
-</tbody>
-</table>
-<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>score</code></td>
-<td>0-1</td>
-<td>Health value, as defined above.</td>
-</tr>
-<tr>
-<td><code>gap</code></td>
-<td>String - Human-readable time</td>
-<td>Difference between the latest imported data and the current time.</td>
-</tr>
-<tr>
-<td><code>gap_threshold</code></td>
-<td>String - Human-readable time</td>
-<td>Maximum gap to be considered healthy.</td>
-</tr>
-<tr>
-<td><code>message</code></td>
-<td>String</td>
-<td>Description of the reason for a non-zero score, if applicable.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="example-47">Example</h4>
-<p>Request:</p>
-<pre><code>GET /v2/health/nodes_etl?verbose=true
-</code></pre>
-<p>Response:</p>
-<pre><code>200 OK
-{
-  "score": 0,
-  "gap": "1.891s",
-  "gap_threshold": "2.00m",
-}
-</code></pre>
-<h2 id="health-check-validations-etl">Health Check - Validations ETL</h2>
-<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
-<p>Check the health of the Validations Extract, Transform, Load (ETL) Service.</p>
-<div class="multicode" id="code-48"><ul class="codetabs"><li><a href="#code-48-0">REST - Validations ETL Health</a></li></ul>
-
-<div class="code_sample" id="code-48-0" style="position: static;"><pre><code>GET /v2/health/validations_etl
-</code></pre></div>
-</div>
-<p><a class="button" href="data-api-v2-tool.html#validations-etl-health-check">Try it! &gt;</a></p>
-<p>Optionally, you can provide the following query parameters:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>threshold</code></td>
-<td>Integer</td>
-<td>Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds.</td>
-</tr>
-<tr>
-<td><code>verbose</code></td>
-<td>Boolean</td>
-<td>If true, return a JSON response with data points. By default, return an integer value only.</td>
 </tr>
 </tbody>
 </table>
@@ -7297,6 +7306,102 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h4 id="example-48">Example</h4>
+<p>Request:</p>
+<pre><code>GET /v2/health/nodes_etl?verbose=true
+</code></pre>
+<p>Response:</p>
+<pre><code>200 OK
+{
+  "score": 0,
+  "gap": "1.891s",
+  "gap_threshold": "2.00m",
+}
+</code></pre>
+<h2 id="health-check-validations-etl">Health Check - Validations ETL</h2>
+<p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js" title="Source">[Source]<br/></a></p>
+<p>Check the health of the Validations Extract, Transform, Load (ETL) Service.</p>
+<div class="multicode" id="code-49"><ul class="codetabs"><li><a href="#code-49-0">REST - Validations ETL Health</a></li></ul>
+
+<div class="code_sample" id="code-49-0" style="position: static;"><pre><code>GET /v2/health/validations_etl
+</code></pre></div>
+</div>
+<p><a class="button" href="data-api-v2-tool.html#validations-etl-health-check">Try it! &gt;</a></p>
+<p>Optionally, you can provide the following query parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>threshold</code></td>
+<td>Integer</td>
+<td>Consider the service unhealthy if more than this amount of time, in seconds, has elapsed since the latest data was imported. Defaults to 120 seconds.</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Boolean</td>
+<td>If true, return a JSON response with data points. By default, return an integer value only.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-format-49">Response Format</h4>
+<p>A successful response uses the HTTP code <strong>200 OK</strong>. By default, the response body is an <strong>integer health value only</strong>.</p>
+<p>The health value <code>0</code> always indicates a healthy status. Other health values are defined as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>The most recent imported topology data was less than <code>threshold</code> (Default: 120) seconds ago.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>The most recent imported topology data was more than <code>threshold</code> seconds ago.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specifies <code>verbose=true</code> in the query parameters, the response body is a JSON object, with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score</code></td>
+<td>0-1</td>
+<td>Health value, as defined above.</td>
+</tr>
+<tr>
+<td><code>gap</code></td>
+<td>String - Human-readable time</td>
+<td>Difference between the latest imported data and the current time.</td>
+</tr>
+<tr>
+<td><code>gap_threshold</code></td>
+<td>String - Human-readable time</td>
+<td>Maximum gap to be considered healthy.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>String</td>
+<td>Description of the reason for a non-zero score, if applicable.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-49">Example</h4>
 <p>Request:</p>
 <pre><code>GET /v2/health/nodes_etl?verbose=true
 </code></pre>
