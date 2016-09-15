@@ -109,12 +109,15 @@ TrustSetAuth
 
 The following is a comprehensive list of all known amendments and their status on the production Ripple Consensus Ledger:
 
-| Name                            | Introduced | Status |
-|---------------------------------|------------|---------|
-| [Flow](#flow)                   | TBD        | TBD |
-| [FlowV2](#flowv2)               | v0.32.1    | To be removed |
-| [Tickets](#tickets)             | v0.31.0    | TBD |
-| [SusPay](#suspay)               | v0.31.0    | TBD |
+| Name                            | Introduced | Status                        |
+|:--------------------------------|:-----------|:------------------------------|
+| [SHAMapV2](#shamapv2)           | TBD        | TBD                           |
+| [PayChan](#paychan)             | TBD        | TBD                           |
+| [OwnerPaysFee](#ownerpaysfee)   | TBD        | TBD                           |
+| [Flow](#flow)                   | TBD        | TBD                           |
+| [FlowV2](#flowv2)               | v0.32.1    | To be removed                 |
+| [Tickets](#tickets)             | v0.31.0    | TBD                           |
+| [SusPay](#suspay)               | v0.31.0    | TBD                           |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled 2016-07-19T10:10:32Z in ledger 22721281](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF) |
 | [MultiSign](#multisign)         | v0.31.0    | [Enabled 2016-06-27T11:34:41Z in ledger 22178817](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7) |
 | [FeeEscalation](#feeescalation) | v0.31.0    | [Enabled 2016-05-19T16:44:51Z in ledger 21225473](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3) |
@@ -123,8 +126,8 @@ The following is a comprehensive list of all known amendments and their status o
 
 ## FeeEscalation ##
 
-| Amendment ID | Status |
-|--------------|--------|
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
 | 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE | Enabled |
 
 Changes the way the [transaction cost](concept-transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
@@ -141,9 +144,9 @@ A transaction remains in the queue until one of the following happens:
 
 ## Flow ##
 
-| Amendment ID | Status |
-|--------------|--------|
-| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | TBD |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | In development. |
 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](#flowv2) amendment.
 
@@ -151,16 +154,16 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 
 ## FlowV2 ##
 
-| Amendment ID | Status |
-|--------------|--------|
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
 | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Failed to hold a majority. To be removed. |
 
 This amendment was intended to replace the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. However, Ripple [found a flaw in the FlowV2 amendment](https://github.com/ripple/rippled/commit/b92a7d415eecb07ace2b72b6792d9dfa489c5a04) during the voting period, so key validators vetoed the Amendment and it lost its majority. Ripple plans to remove the FlowV2 amendment in future versions of `rippled` and replace it with the [Flow](#flow) amendment.
 
 ## MultiSign ##
 
-| Amendment ID | Status |
-|--------------|--------|
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
 | 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | Enabled |
 
 Introduces [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger node type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
@@ -179,24 +182,45 @@ An address with a SignerList can disable the master key even if a regular key is
 * `tefNOT_MULTI_SIGNING`
 * `tefBAD_AUTH_MASTER`
 
-<!--{# to be added in a later version:
+
 ## OwnerPaysFee
 
-| Amendment ID | Status |
-|--------------|--------|
-| TBD | Coming soon |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development. |
 
-Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing, but the holder of the issuances pays the transfer fee if an offer is executed in offer placement. With OnwerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
-This Amendment requires the FlowV2 Amendment to be enabled.
+This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
-#}-->
+
+## PayChan ##
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | In development. |
+
+Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
+
+Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `ChannelClaim`. Creates a new ledger node type, `Channel`. Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: `channel_authorize` (creates a signed Claim), `channel_verify` (verifies a signed Claim), and `account_channels` (lists Channels associated with an account).
+
+<!--{# TODO: Add links to the relevant docs above when they are ready #}-->
+
+
+## SHAMapV2 ##
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | In development. |
+
+Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
+
 
 ## SusPay ##
 
-| Amendment ID | Status |
-|--------------|--------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | In Development. <br />Enabled on TestNet |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | In development. <br />Enabled on TestNet |
 
 Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
 
@@ -204,8 +228,8 @@ Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Led
 
 ## TrustSetAuth ##
 
-| Amendment ID | Status |
-|--------------|--------|
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
 | 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | Enabled |
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
@@ -214,9 +238,9 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 ## Tickets ##
 
-| Amendment ID | Status |
-|--------------|--------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In Development |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In development |
 
 Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger node type and the transaction types `TicketCreate` and `TicketCancel`.
 
