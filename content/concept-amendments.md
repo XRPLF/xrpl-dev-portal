@@ -189,7 +189,7 @@ An address with a SignerList can disable the master key even if a regular key is
 |:-----------------------------------------------------------------|:----------|
 | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development. |
 
-Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 

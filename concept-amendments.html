@@ -397,7 +397,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With OwnerPaysFee, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>Fixes an inconsistency in the way <a href="concept-transfer-fees.html">transfer fees</a> are calculated between <a href="reference-transaction-format.html#offercreate">OfferCreate</a> and <a href="reference-transaction-format.html#payment">Payment</a> transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <p>This Amendment requires the <a href="#flow">Flow Amendment</a> to be enabled.</p>
 <h2 id="paychan">PayChan</h2>
 <table>
