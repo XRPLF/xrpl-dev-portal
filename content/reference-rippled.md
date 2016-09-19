@@ -795,7 +795,7 @@ The request contains the following parameters:
 | account | String | A unique identifier for the account, most commonly the account's [Address][]. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or Ripple address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
+| ledger_index | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | queue | Boolean | (Optional) If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. _(New in [`rippled` 0.33.0][])_ |
 | signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. _(New in [`rippled` 0.31.0][])_ |
 
@@ -942,7 +942,7 @@ Each object in the `transactions` array, if present, may contain any or all of t
 | auth\_change | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
 | fee | String | The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
 | fee\_level | String | The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
-| max\_spend\_drops | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
+| max\_spend\_drops | String | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
 | seq | Integer | The [Sequence Number][] of this transaction. |
 
 #### Possible Errors ####
