@@ -344,6 +344,9 @@ known_broken_links:
     # Strangely, Python doesn't like the cert here. Firefox is OK with it.
     - https://validators.ripple.com
 
+    # rippled 0.33.0 is not released yet:
+    - https://github.com/ripple/rippled/releases/tag/0.33.0
+
 # Style Checker Config ------------------------------------------------------ #
 
 word_substitutions_file: word_substitutions.yaml

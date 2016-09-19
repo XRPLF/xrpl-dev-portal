@@ -224,8 +224,9 @@ The fields of a successful response include:
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
-| `status` (WebSocket) <br\> `result.status` (JSON-RPC and Commandline) | String | `"success"` if the request was successful. In the WebSocket API responses, this is included at the top level; in JSON-RPC and Commandline responses, this is included as a sub-field of the `"result"` object. |
-| `type` | String | (WebSocket only) Typically `"response"`, which indicates a successful response to a command. Asynchronous notifications use a different value such as `"ledgerClosed"` or `"transaction"`. |
+| `status` | String | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. |
+| `result.status` | String | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. |
+| `type` | String | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](#subscriptions) use a different value such as `ledgerClosed` or `transaction`. |
 | `result` | Object | The result of the query; contents vary depending on the command. |
 
 #### Commandline ####
@@ -755,7 +756,8 @@ An example of an account_info request:
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "strict": true,
-  "ledger_index": "validated"
+  "ledger_index": "current",
+  "queue": true
 }
 ```
 
@@ -766,9 +768,10 @@ An example of an account_info request:
     "method": "account_info",
     "params": [
         {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
             "strict": true,
-            "ledger_index": "validated"
+            "ledger_index": "current",
+            "queue": true
         }
     ]
 }
@@ -793,6 +796,7 @@ The request contains the following parameters:
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or Ripple address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
+| queue | Boolean | (Optional) If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. _(New in [`rippled` 0.33.0][])_ |
 | signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. _(New in [`rippled` 0.31.0][])_ |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
@@ -807,23 +811,103 @@ An example of a successful response:
 
 ```
 {
-  "id": 5,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "account_data": {
-      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-      "Balance": "27389517749",
-      "Flags": 0,
-      "LedgerEntryType": "AccountRoot",
-      "OwnerCount": 18,
-      "PreviousTxnID": "2F804E1A00DBCBDAFBDB7D001409F79FE196785EB68FBA463E5924002BE4DEE9",
-      "PreviousTxnLgrSeq": 6405716,
-      "Sequence": 1400,
-      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-    },
-    "ledger_current_index": 6507948
-  }
+    "id": 5,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+
+                ... (trimmed for length) ...
+
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "validated": false
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+
+                ... (trimmed for length) ...
+
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "status": "success",
+        "validated": false
+    }
 }
 ```
 
@@ -837,12 +921,34 @@ The response follows the [standard format](#response-formatting), with the resul
 | signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. _(New in [`rippled` 0.31.0][])_ |
 | ledger\_current\_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
+| queue\_data | Object | (Omitted unless `queue` specified as `true`) Information about [queued transactions](concept-transaction-cost.html#queued-transactions) sent by this account. Some information is calculated "lazily" and may not be available. This information describes the state of the local `rippled` server, which may be different from other servers in the consensus network. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. _(New in [`rippled` 0.26.0][])_ |
+
+The `queue_data` parameter, if present, contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| txn\_count | Integer | Number of queued transactions from this address. |
+| auth\_change\_queued | Boolean | (May be omitted) Whether a transaction in the queue changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). If `true`, this address can queue no further transactions until that transaction has been executed or dropped from the queue. |
+| lowest\_sequence | Integer | (May be omitted) The lowest [Sequence Number][] among transactions queued by this address. |
+| highest\_sequence | Integer | (May be omitted) The highest [Sequence Number][] among transactions queued by this address. |
+| max\_spend\_drops\_total | String | (May be omitted) Integer amount of [drops of XRP](#specifying-currency-amounts) that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible. |
+| transactions | Array | (May be omitted) Information about each queued transaction from this address. |
+
+Each object in the `transactions` array, if present, may contain any or all of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| auth\_change | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
+| fee | String | The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
+| fee\_level | String | The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
+| max\_spend\_drops | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
+| seq | Integer | The [Sequence Number][] of this transaction. |
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified `queue` as `true` but specified a `ledger_index` that is not the current open ledger.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
@@ -2969,16 +3075,16 @@ An example of a successful response:
 
 ```
 {
-	"result": {
-		"account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-		"key_type": "secp256k1",
-		"master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
-		"master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-		"master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
-		"public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
-		"public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-		"status": "success"
-	}
+    "result": {
+        "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "key_type": "secp256k1",
+        "master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+        "master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+        "master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+        "public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+        "public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+        "status": "success"
+    }
 }
 ```
 
@@ -6436,26 +6542,26 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"status": "success",
-		"tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Amount": {
-				"currency": "USD",
-				"issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-				"value": "1"
-			},
-			"Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-			"Fee": "10000",
-			"Flags": 2147483648,
-			"Sequence": 360,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "Payment",
-			"TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
-			"hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
-		}
-	}
+    "result": {
+        "status": "success",
+        "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "Sequence": 360,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+            "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
+        }
+    }
 }
 ```
 
@@ -6936,29 +7042,29 @@ An example of a successful response:
 
 ```
 {
-	"result": {
-		"engine_result": "tesSUCCESS",
-		"engine_result_code": 0,
-		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-		"status": "success",
-		"tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Amount": {
-				"currency": "USD",
-				"issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-				"value": "1"
-			},
-			"Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-			"Fee": "10000",
-			"Flags": 2147483648,
-			"Sequence": 361,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "Payment",
-			"TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
-			"hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
-		}
-	}
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "Sequence": 361,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
+            "hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
+        }
+    }
 }
 ```
 
@@ -7045,34 +7151,34 @@ An example of the request format:
 ```
 {
     "id": "submit_multisigned_example"
-	"command": "submit_multisigned",
-	"tx_json": {
-		"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-		"Fee": "30000",
-		"Flags": 262144,
-		"LimitAmount": {
-			"currency": "USD",
-			"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-			"value": "100"
-		},
-		"Sequence": 2,
-		"Signers": [{
-			"Signer": {
-				"Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-				"SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-				"TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
-			}
-		}, {
-			"Signer": {
-				"Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-				"SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-				"TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
-			}
-		}],
-		"SigningPubKey": "",
-		"TransactionType": "TrustSet",
-		"hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
-	}
+    "command": "submit_multisigned",
+    "tx_json": {
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee": "30000",
+        "Flags": 262144,
+        "LimitAmount": {
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "100"
+        },
+        "Sequence": 2,
+        "Signers": [{
+            "Signer": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+            }
+        }, {
+            "Signer": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+            }
+        }],
+        "SigningPubKey": "",
+        "TransactionType": "TrustSet",
+        "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+    }
 }
 ```
 
@@ -9265,19 +9371,19 @@ An example of a successful response:
 
 ```
 {
-	"id": "reject_multi_sign",
-	"status": "success",
-	"type": "response",
-	"result": {
-		"features": {
-			"4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
-				"enabled": false,
-				"name": "MultiSign",
-				"supported": true,
-				"vetoed": true
-			}
-		}
-	}
+    "id": "reject_multi_sign",
+    "status": "success",
+    "type": "response",
+    "result": {
+        "features": {
+            "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+                "enabled": false,
+                "name": "MultiSign",
+                "supported": true,
+                "vetoed": true
+            }
+        }
+    }
 }
 ```
 
@@ -9361,8 +9467,8 @@ An example of the request format:
 
 ```
 {
-	"method": "fee",
-	"params": [{}]
+    "method": "fee",
+    "params": [{}]
 }
 ```
 
@@ -9416,25 +9522,25 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"current_ledger_size": "56",
-		"current_queue_size": "11",
-		"drops": {
-			"base_fee": "10",
-			"median_fee": "10000",
-			"minimum_fee": "10",
-			"open_ledger_fee": "2653937"
-		},
-		"expected_ledger_size": "55",
-		"levels": {
-			"median_level": "256000",
-			"minimum_level": "256",
-			"open_ledger_level": "67940792",
-			"reference_level": "256"
-		},
-		"max_queue_size": "1100",
-		"status": "success"
-	}
+    "result": {
+        "current_ledger_size": "56",
+        "current_queue_size": "11",
+        "drops": {
+            "base_fee": "10",
+            "median_fee": "10000",
+            "minimum_fee": "10",
+            "open_ledger_fee": "2653937"
+        },
+        "expected_ledger_size": "55",
+        "levels": {
+            "median_level": "256000",
+            "minimum_level": "256",
+            "open_ledger_level": "67940792",
+            "reference_level": "256"
+        },
+        "max_queue_size": "1100",
+        "status": "success"
+    }
 }
 ```
 
@@ -11241,79 +11347,79 @@ Response:
 ```json
 200 OK
 {
-	"overlay": {
-		"active": [{
-			"ip": "208.43.252.243",
-			"port": "51235",
-			"public_key": "A2GayQNaj7qbqLFiCFW2UXtAnEPghP/KWVqix2gUa6dM",
-			"type": "out",
-			"uptime": 107926,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "184.172.237.226",
-			"port": "51235",
-			"public_key": "Asv/wKq/dqMWbP2M4eR+QvkuojYMLRXhKhIPnW40bsaF",
-			"type": "out",
-			"uptime": 247376,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "54.186.73.52",
-			"port": "51235",
-			"public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.59",
-			"port": "51235",
-			"public_key": "AyIcVhAhOGnP0vtfCt+HKUrx9B2fDvP/4XUkOtVQ37g/",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.1"
-		}, {
-			"ip": "169.53.155.44",
-			"port": "51235",
-			"public_key": "AuVZszWXgMgM8YuTVhQsGE9OciEeBD8aMVe1mFid3n63",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.32.0-b12"
-		}, {
-			"ip": "184.173.45.39",
-			"port": "51235",
-			"public_key": "Ao2GbGbp2QYQ2B4S9ckCtON7CsZdXqdK5Yon4x7qmWFm",
-			"type": "out",
-			"uptime": 63336,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.34",
-			"port": "51235",
-			"public_key": "A3inNJsIQzO7z7SS7uB9DyvN0wsiS9it/RGY/kNx6KEG",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.45",
-			"port": "51235",
-			"public_key": "AglUUjwXTC2kUlK41WjDs2eAVN0SnlMpzYA9lEgB0UGP",
-			"type": "out",
-			"uptime": 65443,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "99.110.49.91",
-			"port": "51301",
-			"public_key": "AuQDH0o+4fpl2n+pR5U0Y4FTj0oGr4iEKe0MObPcSYj9",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.32.0-b9"
-		}, {
-			"ip": "169.53.155.36",
-			"port": "51235",
-			"public_key": "AsR4xub7MLg2Zl5Fwd/n7dTz7mhbBoSyCc/v9bnubrVy",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}]
-	}
+    "overlay": {
+        "active": [{
+            "ip": "208.43.252.243",
+            "port": "51235",
+            "public_key": "A2GayQNaj7qbqLFiCFW2UXtAnEPghP/KWVqix2gUa6dM",
+            "type": "out",
+            "uptime": 107926,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "184.172.237.226",
+            "port": "51235",
+            "public_key": "Asv/wKq/dqMWbP2M4eR+QvkuojYMLRXhKhIPnW40bsaF",
+            "type": "out",
+            "uptime": 247376,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "54.186.73.52",
+            "port": "51235",
+            "public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.59",
+            "port": "51235",
+            "public_key": "AyIcVhAhOGnP0vtfCt+HKUrx9B2fDvP/4XUkOtVQ37g/",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.1"
+        }, {
+            "ip": "169.53.155.44",
+            "port": "51235",
+            "public_key": "AuVZszWXgMgM8YuTVhQsGE9OciEeBD8aMVe1mFid3n63",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b12"
+        }, {
+            "ip": "184.173.45.39",
+            "port": "51235",
+            "public_key": "Ao2GbGbp2QYQ2B4S9ckCtON7CsZdXqdK5Yon4x7qmWFm",
+            "type": "out",
+            "uptime": 63336,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.34",
+            "port": "51235",
+            "public_key": "A3inNJsIQzO7z7SS7uB9DyvN0wsiS9it/RGY/kNx6KEG",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.45",
+            "port": "51235",
+            "public_key": "AglUUjwXTC2kUlK41WjDs2eAVN0SnlMpzYA9lEgB0UGP",
+            "type": "out",
+            "uptime": 65443,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "99.110.49.91",
+            "port": "51301",
+            "public_key": "AuQDH0o+4fpl2n+pR5U0Y4FTj0oGr4iEKe0MObPcSYj9",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b9"
+        }, {
+            "ip": "169.53.155.36",
+            "port": "51235",
+            "public_key": "AsR4xub7MLg2Zl5Fwd/n7dTz7mhbBoSyCc/v9bnubrVy",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }]
+    }
 }
 ```
 

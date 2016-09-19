@@ -1,4 +1,5 @@
-<!---- rippled release notes links ---->
+<!-- rippled release notes links -->
+
 [`rippled` 0.26.0]: https://github.com/ripple/rippled/releases/tag/0.26.0
 [`rippled` 0.26.1]: https://github.com/ripple/rippled/releases/tag/0.26.1
 [`rippled` 0.26.2]: https://github.com/ripple/rippled/releases/tag/0.26.2
@@ -20,3 +21,6 @@
 [`rippled` 0.30.1]: https://github.com/ripple/rippled/releases/tag/0.30.1
 [`rippled` 0.31.0]: https://github.com/ripple/rippled/releases/tag/0.31.0
 [`rippled` 0.32.0]: https://github.com/ripple/rippled/releases/tag/0.32.0
+[`rippled` 0.32.0]: https://github.com/ripple/rippled/releases/tag/0.32.0
+[`rippled` 0.32.1]: https://github.com/ripple/rippled/releases/tag/0.32.1
+[`rippled` 0.33.0]: https://github.com/ripple/rippled/releases/tag/0.33.0

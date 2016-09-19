@@ -450,14 +450,19 @@
 <td>(WebSocket only) ID provided in the request that prompted this response</td>
 </tr>
 <tr>
-<td><code>status</code> (WebSocket) &lt;br&gt; <code>result.status</code> (JSON-RPC and Commandline)</td>
+<td><code>status</code></td>
 <td>String</td>
-<td><code>"success"</code> if the request was successful. In the WebSocket API responses, this is included at the top level; in JSON-RPC and Commandline responses, this is included as a sub-field of the <code>"result"</code> object.</td>
+<td>(WebSocket only) The value <code>success</code> indicates the request was successfully received and understood by the server.</td>
+</tr>
+<tr>
+<td><code>result.status</code></td>
+<td>String</td>
+<td>(JSON-RPC and Commandline) The value <code>success</code> indicates the request was successfully received and understood by the server.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>(WebSocket only) Typically <code>"response"</code>, which indicates a successful response to a command. Asynchronous notifications use a different value such as <code>"ledgerClosed"</code> or <code>"transaction"</code>.</td>
+<td>(WebSocket only) The value <code>response</code> indicates a successful response to a command. <a href="#subscriptions">Asynchronous notifications</a> use a different value such as <code>ledgerClosed</code> or <code>transaction</code>.</td>
 </tr>
 <tr>
 <td><code>result</code></td>
@@ -1107,7 +1112,8 @@ Null method
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "strict": true,
-  "ledger_index": "validated"
+  "ledger_index": "current",
+  "queue": true
 }
 </code></pre></div>
 
@@ -1115,9 +1121,10 @@ Null method
     "method": "account_info",
     "params": [
         {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
             "strict": true,
-            "ledger_index": "validated"
+            "ledger_index": "current",
+            "queue": true
         }
     ]
 }
@@ -1159,6 +1166,11 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <td>(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
+<td>queue</td>
+<td>Boolean</td>
+<td>(Optional) If <code>true</code>, and the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. <em>(New in [<code>rippled</code> 0.33.0][])</em></td>
+</tr>
+<tr>
 <td>signer_lists</td>
 <td>Boolean</td>
 <td>(Optional) If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <em>(New in [<code>rippled</code> 0.31.0][])</em></td>
@@ -1168,26 +1180,103 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <p>The following fields are deprecated and should not be provided: <code>ident</code>, <code>ledger</code>.</p>
 <h4 id="response-format-1">Response Format</h4>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li></ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample" id="code-6-0" style="position: static;"><pre><code>{
-  "id": 5,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "account_data": {
-      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-      "Balance": "27389517749",
-      "Flags": 0,
-      "LedgerEntryType": "AccountRoot",
-      "OwnerCount": 18,
-      "PreviousTxnID": "2F804E1A00DBCBDAFBDB7D001409F79FE196785EB68FBA463E5924002BE4DEE9",
-      "PreviousTxnLgrSeq": 6405716,
-      "Sequence": 1400,
-      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-    },
-    "ledger_current_index": 6507948
-  }
+    "id": 5,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+
+                ... (trimmed for length) ...
+
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "validated": false
+    }
+}
+</code></pre></div>
+
+<div class="code_sample" id="code-6-1" style="position: static;"><pre><code>{
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+
+                ... (trimmed for length) ...
+
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "status": "success",
+        "validated": false
+    }
 }
 </code></pre></div>
 </div>
@@ -1222,16 +1311,100 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <td>(Omitted if <code>ledger_current_index</code> is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one.</td>
 </tr>
 <tr>
+<td>queue_data</td>
+<td>Object</td>
+<td>(Omitted unless <code>queue</code> specified as <code>true</code>) Information about <a href="concept-transaction-cost.html#queued-transactions">queued transactions</a> sent by this account. Some information is calculated "lazily" and may not be available. This information describes the state of the local <code>rippled</code> server, which may be different from other servers in the consensus network.</td>
+</tr>
+<tr>
 <td>validated</td>
 <td>Boolean</td>
 <td>True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <em>(New in [<code>rippled</code> 0.26.0][])</em></td>
 </tr>
 </tbody>
 </table>
+<p>The <code>queue_data</code> parameter, if present, contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txn_count</td>
+<td>Integer</td>
+<td>Number of queued transactions from this address.</td>
+</tr>
+<tr>
+<td>auth_change_queued</td>
+<td>Boolean</td>
+<td>(May be omitted) Whether a transaction in the queue changes this address's <a href="reference-transaction-format.html#authorizing-transactions">ways of authorizing transactions</a>. If <code>true</code>, this address can queue no further transactions until that transaction has been executed or dropped from the queue.</td>
+</tr>
+<tr>
+<td>lowest_sequence</td>
+<td>Integer</td>
+<td>(May be omitted) The lowest <a href="#account-sequence">Sequence Number</a> among transactions queued by this address.</td>
+</tr>
+<tr>
+<td>highest_sequence</td>
+<td>Integer</td>
+<td>(May be omitted) The highest <a href="#account-sequence">Sequence Number</a> among transactions queued by this address.</td>
+</tr>
+<tr>
+<td>max_spend_drops_total</td>
+<td>String</td>
+<td>(May be omitted) Integer amount of <a href="#specifying-currency-amounts">drops of XRP</a> that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible.</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>Array</td>
+<td>(May be omitted) Information about each queued transaction from this address.</td>
+</tr>
+</tbody>
+</table>
+<p>Each object in the <code>transactions</code> array, if present, may contain any or all of the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth_change</td>
+<td>Boolean</td>
+<td>Whether this transaction changes this address's <a href="reference-transaction-format.html#authorizing-transactions">ways of authorizing transactions</a>.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>String</td>
+<td>The <a href="concept-transaction-cost.html">Transaction Cost</a> of this transaction, in <a href="#specifying-currency-amounts">drops of XRP</a>.</td>
+</tr>
+<tr>
+<td>fee_level</td>
+<td>String</td>
+<td>The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
+</tr>
+<tr>
+<td>max_spend_drops</td>
+<td>The maximum amount of XRP, <a href="#specifying-currency-amounts">in drops</a>, this transaction could send or destroy.</td>
+<td></td>
+</tr>
+<tr>
+<td>seq</td>
+<td>Integer</td>
+<td>The <a href="#account-sequence">Sequence Number</a> of this transaction.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="possible-errors-1">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
+<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified <code>queue</code> as <code>true</code> but specified a <code>ledger_index</code> that is not the current open ledger.</li>
 <li><code>actNotFound</code> - The address specified in the <code>account</code> field of the request does not correspond to an account in the ledger.</li>
 <li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
 </ul>
@@ -13048,7 +13221,7 @@ protocol = peer
 [peer_private]
 1
 </code></pre>
-<!---- rippled release notes links ---->
+<!-- rippled release notes links -->
     </div>
       </main>
   </div>
