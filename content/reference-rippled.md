@@ -4079,7 +4079,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
-* `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. _(**Note:** Prior to [`rippled` 0.30.1][], this error used the code `ledgerNotFound` instead.)_
+* `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1][New in: rippled 0.30.1]
 
 
 ## ledger_accept ##
@@ -7454,7 +7454,7 @@ The request includes the following parameters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | limit | Unsigned Integer | (Optional) If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| taker | String | (Optional, defaults to [ACCOUNT\_ONE][]) The [Address][] of an account to use as a perspective. (This affects which unfunded offers are returned.) |
+| taker | String | (Optional, defaults to [ACCOUNT_ONE][]) The [Address][] of an account to use as a perspective. (This affects which unfunded offers are returned.) |
 | taker\_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | taker\_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 
@@ -9447,7 +9447,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalation) to be enabled. [New in: rippled 0.31.0][]
 
-_As of [`rippled` 0.32.0][], this is a public command available to unprivileged users._
+This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][New in: rippled 0.32.0]
 
 #### Request Format ####
 An example of the request format:

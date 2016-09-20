@@ -1,6 +1,6 @@
 # Amendments #
 
-_(Introduced in [version 0.31.0][])_
+[Introduced in: rippled 0.31.0][New in: rippled 0.31.0]
 
 The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
 
@@ -111,16 +111,16 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
-| [SHAMapV2](#shamapv2)           | TBD        | TBD                           |
-| [PayChan](#paychan)             | TBD        | TBD                           |
-| [OwnerPaysFee](#ownerpaysfee)   | TBD        | TBD                           |
-| [Flow](#flow)                   | TBD        | TBD                           |
-| [FlowV2](#flowv2)               | v0.32.1    | To be removed                 |
-| [Tickets](#tickets)             | v0.31.0    | TBD                           |
-| [SusPay](#suspay)               | v0.31.0    | TBD                           |
-| [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled 2016-07-19T10:10:32Z in ledger 22721281](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF) |
-| [MultiSign](#multisign)         | v0.31.0    | [Enabled 2016-06-27T11:34:41Z in ledger 22178817](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7) |
-| [FeeEscalation](#feeescalation) | v0.31.0    | [Enabled 2016-05-19T16:44:51Z in ledger 21225473](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3) |
+| [SHAMapV2](#shamapv2)           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [PayChan](#paychan)             | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee](#ownerpaysfee)   | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Flow](#flow)                   | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [FlowV2](#flowv2)               | v0.32.1    | [Vetoed: To be removed](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
+| [Tickets](#tickets)             | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SusPay](#suspay)               | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
+| [MultiSign](#multisign)         | v0.31.0    | [Enabled: 2016-06-27](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
+| [FeeEscalation](#feeescalation) | v0.31.0    | [Enabled: 2016-05-19](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
 
