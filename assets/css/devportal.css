@@ -74,6 +74,16 @@
   height: auto;
 }
 
+/* But badge images shouldn't be resized */
+.content img.dactyl_badge {
+    width: initial;
+}
+
+/* dev portal content h5 should stand out from paragraph text */
+.content h5 {
+    font-weight: bold;
+}
+
 /* Underline links in Dev Portal content */
 .page-template-template-dev-portal-php .main a {
   text-decoration: underline !important;
