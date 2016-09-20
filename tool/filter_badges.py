@@ -40,3 +40,5 @@ def filter_soup(soup, target=None, page=None):
         b.clear()
         b.append(img)
         b["title"] = badge_label
+        if not b["href"]:
+            del b["href"]
