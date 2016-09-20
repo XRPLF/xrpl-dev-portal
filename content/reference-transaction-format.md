@@ -242,6 +242,7 @@ Every transaction type has the same set of fundamental fields. Field names are c
 | [Flags][]              | Unsigned Integer | UInt32            | (Optional) Set of bit-flags for this transaction. |
 | [LastLedgerSequence][] | Number           | UInt32            | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
 | [Memos][]              | Array of Objects | Array             | (Optional) Additional arbitrary information used to identify this transaction. |
+| PreviousTxnID | String | Hash256 | [Removed in: rippled 0.28.0][] Use `AccountTxnID` instead. |
 | [Sequence][]           | Unsigned Integer | UInt32            | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey          | String           | PubKey            | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
 | [Signers][]            | Array            | Array             | (Optional) Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
@@ -256,8 +257,6 @@ Every transaction type has the same set of fundamental fields. Field names are c
 [Memos]: #memos
 [Sequence]: #canceling-or-skipping-a-transaction
 [Signers]: #signers-field
-
-**Note:** The deprecated `PreviousTxnID` transaction parameter was removed entirely in [`rippled` 0.28.0][]. Use `AccountTxnID` instead.
 
 ### Auto-fillable Fields ###
 
@@ -544,9 +543,9 @@ The available AccountSet flags are:
 | asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) |
 | asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](concept-freeze.html). This flag can never be disabled after being enabled. |
 | asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](concept-freeze.html) all assets issued by this account. |
-| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](concept-noripple.html) on this account's trust lines by default. _(New in [`rippled` 0.27.3][])_ |
+| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](concept-noripple.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 
-_New in [`rippled` 0.28.0][]:_ To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature.
+To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature. [New in: rippled 0.28.0][]
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 
@@ -812,7 +811,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 ## SignerListSet ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type was introduced by the [MultiSign amendment](concept-amendments.html#multisign). _(New in [`rippled` 0.31.0][])_
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type was introduced by the [MultiSign amendment](concept-amendments.html#multisign). [New in: rippled 0.31.0][]
 
 Example SignerListSet:
 
@@ -1028,7 +1027,7 @@ Some fields that may appear in transaction metadata include:
 | DeliveredAmount                       | [Currency Amount][] | **DEPRECATED.** Replaced by `delivered_amount`. Omitted if not a partial payment. |
 | TransactionIndex                      | Unsigned Integer    | The transaction's position within the ledger that included it. (For example, the value `2` means it was the 2nd transaction in that ledger.) |
 | TransactionResult                     | String              | A [result code](#result-categories) indicating whether the transaction succeeded or how it failed. |
-| [delivered_amount](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](#partial-payments). _(New in [`rippled` 0.27.0][])_ |
+| [delivered_amount](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](#partial-payments). [New in: rippled 0.27.0][] |
 
 ### delivered_amount ###
 
@@ -1093,7 +1092,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | temINVALID\_FLAG             | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
 | temMALFORMED                 | Unspecified problem with the format of the transaction. |
 | temREDUNDANT                 | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
-| temREDUNDANT\_SEND\_MAX      | _(Removed in [`rippled` 0.28.0][])_             |
+| temREDUNDANT\_SEND\_MAX      | [Removed in: rippled 0.28.0][] |
 | temRIPPLE\_EMPTY             | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
 | temBAD_WEIGHT                | The [SignerListSet](#signerlistset) transaction includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | temBAD_SIGNER                | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
@@ -1161,15 +1160,15 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 |:----------------------------|:------|:---------------------------------------|
 | tecCLAIM                    | 100   | Unspecified failure, with transaction cost destroyed. |
 | tecDIR\_FULL                | 121   | The address sending the transaction cannot own any more objects in the ledger. |
-| tecDST\_TAG\_NEEDED         | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. _(New in [`rippled` 0.28.0][])_ |
+| tecDST\_TAG\_NEEDED         | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
 | tecFAILED\_PROCESSING       | 105   | An unspecified error occurred when processing the transaction. |
 | tecFROZEN                   | 137   | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
 | tecINSUF\_RESERVE\_LINE     | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
 | tecINSUF\_RESERVE\_OFFER    | 123   | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](concept-reserves.html)) |
 | tecINSUFFICIENT\_RESERVE    | 141   | The [SignerListSet](#signerlistset) or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves) for more information. |
 | tecINTERNAL                 | 144   | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
-| tecNEED\_MASTER\_KEY        | 142   | This transaction tried to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). _(New in [`rippled` 0.28.0][])_ |
-| tecNO\_ALTERNATIVE\_KEY     | 130   | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to [`rippled` 0.30.0][], this was called `tecMASTER_DISABLED`.) |
+| tecNEED\_MASTER\_KEY        | 142   | This transaction tried to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). [New in: rippled 0.28.0][] |
+| tecNO\_ALTERNATIVE\_KEY     | 130   | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to `rippled` 0.30.0, this was called `tecMASTER_DISABLED`.) |
 | tecNO\_AUTH                 | 134   | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
 | tecNO\_DST                  | 124   | The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received enough XRP.) |
 | tecNO\_DST\_INSUF_XRP       | 125   | The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it. |
@@ -1181,7 +1180,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | tecNO\_PERMISSION           | 139   | Reserved for future use.               |
 | tecNO\_REGULAR\_KEY         | 131   | The [AccountSet transaction](#accountset) tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
 | tecNO\_TARGET               | 138   | Reserved for future use.               |
-| tecOVERSIZE                 | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. _(New in [`rippled` 0.29.0-hf1][] )_ |
+| tecOVERSIZE                 | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
 | tecOWNERS                   | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | tecPATH\_DRY                | 128   | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
 | tecPATH\_PARTIAL            | 101   | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |

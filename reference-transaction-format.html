@@ -459,6 +459,12 @@
 <td align="left">(Optional) Additional arbitrary information used to identify this transaction.</td>
 </tr>
 <tr>
+<td align="left">PreviousTxnID</td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left"><a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/></a> Use <code>AccountTxnID</code> instead.</td>
+</tr>
+<tr>
 <td align="left"><a href="#canceling-or-skipping-a-transaction">Sequence</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
@@ -496,7 +502,6 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> The deprecated <code>PreviousTxnID</code> transaction parameter was removed entirely in [<code>rippled</code> 0.28.0][]. Use <code>AccountTxnID</code> instead.</p>
 <h3 id="auto-fillable-fields">Auto-fillable Fields</h3>
 <p>Some fields can be automatically filled in before the transaction is signed, either by a <code>rippled</code> server or by the library used for offline signing. Both <a href="https://github.com/ripple/ripple-lib">ripple-lib</a> and <code>rippled</code> can automatically provide the following values:</p>
 <ul>
@@ -914,11 +919,11 @@
 <td align="left">asfDefaultRipple</td>
 <td align="left">8</td>
 <td align="left">lsfDefaultRipple</td>
-<td align="left">Enable <a href="concept-noripple.html">rippling</a> on this account's trust lines by default. <em>(New in [<code>rippled</code> 0.27.3][])</em></td>
+<td align="left">Enable <a href="concept-noripple.html">rippling</a> on this account's trust lines by default. <a href="https://github.com/ripple/rippled/releases/tag/0.27.3" title="New in: rippled 0.27.3"><img alt="New in: rippled 0.27.3" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.27.3-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
-<p><em>New in [<code>rippled</code> 0.28.0][]:</em> To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature.</p>
+<p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="#authorizing-transactions">authorize the transaction</a> by signing it with the master key. You cannot use a regular key or a multi-signature. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></p>
 <p>The following <a href="#flags">Transaction flags</a>, specific to the AccountSet transaction type, serve the same purpose, but are discouraged:</p>
 <table>
 <thead>
@@ -1299,7 +1304,7 @@
 </table>
 <h2 id="signerlistset">SignerListSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp" title="Source">[Source]<br/></a></p>
-<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type was introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <em>(New in [<code>rippled</code> 0.31.0][])</em></p>
+<p>The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to <a href="#multi-signing">multi-sign</a> a transaction. This transaction type was introduced by the <a href="concept-amendments.html#multisign">MultiSign amendment</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/></a></p>
 <p>Example SignerListSet:</p>
 <pre><code>{
     "Flags": 0,
@@ -1692,7 +1697,7 @@
 <tr>
 <td align="left"><a href="#delivered-amount">delivered_amount</a></td>
 <td align="left"><a href="reference-rippled.html#specifying-currency-amounts">Currency Amount</a></td>
-<td align="left">The <a href="reference-rippled.html#specifying-currency-amounts">Currency Amount</a> actually received by the <code>Destination</code> account. Use this field to determine how much was delivered, regardless of whether the transaction is a <a href="#partial-payments">partial payment</a>. <em>(New in [<code>rippled</code> 0.27.0][])</em></td>
+<td align="left">The <a href="reference-rippled.html#specifying-currency-amounts">Currency Amount</a> actually received by the <code>Destination</code> account. Use this field to determine how much was delivered, regardless of whether the transaction is a <a href="#partial-payments">partial payment</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.27.0" title="New in: rippled 0.27.0"><img alt="New in: rippled 0.27.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.27.0-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -1862,7 +1867,7 @@
 </tr>
 <tr>
 <td align="left">temREDUNDANT_SEND_MAX</td>
-<td align="left"><em>(Removed in [<code>rippled</code> 0.28.0][])</em></td>
+<td align="left"><a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/></a></td>
 </tr>
 <tr>
 <td align="left">temRIPPLE_EMPTY</td>
@@ -2070,7 +2075,7 @@
 <tr>
 <td align="left">tecDST_TAG_NEEDED</td>
 <td align="left">143</td>
-<td align="left">The <a href="#payment">Payment</a> transaction omitted a destination tag, but the destination account has the <code>lsfRequireDestTag</code> flag enabled. <em>(New in [<code>rippled</code> 0.28.0][])</em></td>
+<td align="left">The <a href="#payment">Payment</a> transaction omitted a destination tag, but the destination account has the <code>lsfRequireDestTag</code> flag enabled. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left">tecFAILED_PROCESSING</td>
@@ -2105,12 +2110,12 @@
 <tr>
 <td align="left">tecNEED_MASTER_KEY</td>
 <td align="left">142</td>
-<td align="left">This transaction tried to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <em>(New in [<code>rippled</code> 0.28.0][])</em></td>
+<td align="left">This transaction tried to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left">tecNO_ALTERNATIVE_KEY</td>
 <td align="left">130</td>
-<td align="left">The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to [<code>rippled</code> 0.30.0][], this was called <code>tecMASTER_DISABLED</code>.)</td>
+<td align="left">The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <code>rippled</code> 0.30.0, this was called <code>tecMASTER_DISABLED</code>.)</td>
 </tr>
 <tr>
 <td align="left">tecNO_AUTH</td>
@@ -2170,7 +2175,7 @@
 <tr>
 <td align="left">tecOVERSIZE</td>
 <td align="left">145</td>
-<td align="left">This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. <em>(New in [<code>rippled</code> 0.29.0-hf1][] )</em></td>
+<td align="left">This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1" title="New in: rippled 0.29.0-hf1"><img alt="New in: rippled 0.29.0-hf1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0--hf1-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left">tecOWNERS</td>
