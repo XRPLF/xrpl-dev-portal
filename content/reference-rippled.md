@@ -833,7 +833,6 @@ An example of a successful response:
             "lowest_sequence": 6,
             "max_spend_drops_total": "500",
             "transactions": [
-
                 {
                     "auth_change": false,
                     "fee": "100",
@@ -841,9 +840,7 @@ An example of a successful response:
                     "max_spend_drops": "100",
                     "seq": 6
                 },
-
                 ... (trimmed for length) ...
-
                 {
                     "LastLedgerSequence": 10,
                     "auth_change": true,
@@ -883,7 +880,6 @@ An example of a successful response:
             "lowest_sequence": 6,
             "max_spend_drops_total": "500",
             "transactions": [
-
                 {
                     "auth_change": false,
                     "fee": "100",
@@ -891,9 +887,7 @@ An example of a successful response:
                     "max_spend_drops": "100",
                     "seq": 6
                 },
-
                 ... (trimmed for length) ...
-
                 {
                     "LastLedgerSequence": 10,
                     "auth_change": true,
@@ -1239,9 +1233,7 @@ An example of a successful response:
           "value": "0.01886995237307572"
         }
       },
-
-      ...
-
+      ... trimmed for length ...
     ],
     "validated": false
   }
@@ -7775,7 +7767,6 @@ The validations stream sends messages whenever it receives validation messages, 
     "signing_time":515115322,
     "validation_public_key":"n94Gnc6svmaPPRHUAyyib1gQUov8sYbjLoEwUBYPH39qHZXuo8ZT"
 }
-
 ```
 
 The fields from a validations stream message are as follows:
@@ -8983,7 +8974,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -9184,7 +9174,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -9690,7 +9679,6 @@ An example of a successful response:
       "write_load" : 0
    }
 }
-
 ```
 
 *Commandline*
@@ -10487,7 +10475,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -11149,7 +11136,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
