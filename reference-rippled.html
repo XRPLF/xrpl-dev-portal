@@ -1292,7 +1292,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>signer_lists</td>
 <td>Array</td>
-<td>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.) Array of <a href="reference-ledger-format.html#signerlist">SignerList ledger nodes</a> associated with this account for <a href="reference-transaction-format.html#multi-signing">Multi-Signing</a>. Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. <a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/></a></td>
+<td>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.) Array of <a href="reference-ledger-format.html#signerlist">SignerList ledger nodes</a> associated with this account for <a href="reference-transaction-format.html#multi-signing">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. <a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td>ledger_current_index</td>
@@ -1307,7 +1307,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>queue_data</td>
 <td>Object</td>
-<td>(Omitted unless <code>queue</code> specified as <code>true</code>) Information about <a href="concept-transaction-cost.html#queued-transactions">queued transactions</a> sent by this account. Some information is calculated "lazily" and may not be available. This information describes the state of the local <code>rippled</code> server, which may be different from other servers in the consensus network.</td>
+<td>(Omitted unless <code>queue</code> specified as <code>true</code> and querying the current open ledger.) Information about <a href="concept-transaction-cost.html#queued-transactions">queued transactions</a> sent by this account. This information describes the state of the local <code>rippled</code> server, which may be different from other servers in the consensus network. Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism.</td>
 </tr>
 <tr>
 <td>validated</td>
@@ -1467,7 +1467,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>(Optional) Server-provided value to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td>(Optional) Value from a previous response to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -1745,7 +1745,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td>Value from a previous response value to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -2001,7 +2001,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>(Optional) Server-provided value to specify where to resume retrieving data from.</td>
+<td>(Optional) Value from a previous response value to specify where to resume retrieving data from.</td>
 </tr>
 </tbody>
 </table>
@@ -2677,7 +2677,7 @@ rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers.</td>
+<td>Value from a previous response value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers.</td>
 </tr>
 </tbody>
 </table>
@@ -4407,7 +4407,7 @@ rippled ledger_current
 <tr>
 <td>marker</td>
 <td><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td>Server-provided value to specify where to resume retrieving data from.</td>
+<td>Value from a previous response value to specify where to resume retrieving data from.</td>
 </tr>
 </tbody>
 </table>

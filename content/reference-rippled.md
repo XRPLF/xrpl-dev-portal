@@ -912,10 +912,10 @@ The response follows the [standard format](#response-formatting), with the resul
 | Field | Type | Description |
 |-------|------|-------------|
 | account_data | Object | The [AccountRoot ledger node](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
-| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. [New in: rippled 0.31.0][] |
+| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most one SignerList, this array must have exactly one member if it is present. [New in: rippled 0.31.0][] |
 | ledger\_current\_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
-| queue\_data | Object | (Omitted unless `queue` specified as `true`) Information about [queued transactions](concept-transaction-cost.html#queued-transactions) sent by this account. Some information is calculated "lazily" and may not be available. This information describes the state of the local `rippled` server, which may be different from other servers in the consensus network. |
+| queue\_data | Object | (Omitted unless `queue` specified as `true` and querying the current open ledger.) Information about [queued transactions](concept-transaction-cost.html#queued-transactions) sent by this account. This information describes the state of the local `rippled` server, which may be different from other servers in the consensus network. Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism. |
 | validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. [New in: rippled 0.26.0][] |
 
 The `queue_data` parameter, if present, contains the following fields:
@@ -997,7 +997,7 @@ The request accepts the following paramters:
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | peer | String | (Optional) The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. [New in: rippled 0.26.4][] |
-| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -1190,7 +1190,7 @@ A request can include the following parameters:
 | ledger\_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger\_index | (Optional) [Ledger Index][] | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. [New in: rippled 0.26.4][] |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1383,7 +1383,7 @@ The request includes the following parameters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | limit   | Unsigned Integer | (Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200. |
-| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response value to specify where to resume retrieving data from. |
 
 #### Response Format ####
 
@@ -2005,7 +2005,7 @@ The request includes the following parameters:
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
@@ -3536,7 +3536,7 @@ A request can include the following fields:
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | binary | Boolean | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
 | limit | Integer | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
