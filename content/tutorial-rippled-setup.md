@@ -282,7 +282,7 @@ The steps below describe how to set the domain field of a validator's Ripple acc
         }
 
 2. Fund the account by sending it at least 25 XRP.
-    * See [How to Get XRP](https://ripple.com/knowledge_center/how-to-get-xrp/)
+    * See [How to Buy XRP](https://ripple.com/xrp-portal/how-to-buy-xrp/)
 
 3. Set the [`Domain` field](reference-transaction-format.html#domain) of the account to match the domain hosting your ripple.txt
 
