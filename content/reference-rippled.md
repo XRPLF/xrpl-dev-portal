@@ -224,8 +224,9 @@ The fields of a successful response include:
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
-| `status` (WebSocket) <br\> `result.status` (JSON-RPC and Commandline) | String | `"success"` if the request was successful. In the WebSocket API responses, this is included at the top level; in JSON-RPC and Commandline responses, this is included as a sub-field of the `"result"` object. |
-| `type` | String | (WebSocket only) Typically `"response"`, which indicates a successful response to a command. Asynchronous notifications use a different value such as `"ledgerClosed"` or `"transaction"`. |
+| `status` | String | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. |
+| `result.status` | String | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. |
+| `type` | String | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](#subscriptions) use a different value such as `ledgerClosed` or `transaction`. |
 | `result` | Object | The result of the query; contents vary depending on the command. |
 
 #### Commandline ####
@@ -755,7 +756,8 @@ An example of an account_info request:
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "strict": true,
-  "ledger_index": "validated"
+  "ledger_index": "current",
+  "queue": true
 }
 ```
 
@@ -766,9 +768,10 @@ An example of an account_info request:
     "method": "account_info",
     "params": [
         {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
             "strict": true,
-            "ledger_index": "validated"
+            "ledger_index": "current",
+            "queue": true
         }
     ]
 }
@@ -792,8 +795,9 @@ The request contains the following parameters:
 | account | String | A unique identifier for the account, most commonly the account's [Address][]. |
 | strict | Boolean | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or Ripple address. |
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
-| signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. _(New in [`rippled` 0.31.0][])_ |
+| ledger_index | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
+| queue | Boolean | (Optional) If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
+| signer\_lists | Boolean | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. [New in: rippled 0.31.0][] |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
@@ -807,23 +811,97 @@ An example of a successful response:
 
 ```
 {
-  "id": 5,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "account_data": {
-      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-      "Balance": "27389517749",
-      "Flags": 0,
-      "LedgerEntryType": "AccountRoot",
-      "OwnerCount": 18,
-      "PreviousTxnID": "2F804E1A00DBCBDAFBDB7D001409F79FE196785EB68FBA463E5924002BE4DEE9",
-      "PreviousTxnLgrSeq": 6405716,
-      "Sequence": 1400,
-      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-    },
-    "ledger_current_index": 6507948
-  }
+    "id": 5,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+                ... (trimmed for length) ...
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "validated": false
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+                ... (trimmed for length) ...
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "status": "success",
+        "validated": false
+    }
 }
 ```
 
@@ -834,15 +912,37 @@ The response follows the [standard format](#response-formatting), with the resul
 | Field | Type | Description |
 |-------|------|-------------|
 | account_data | Object | The [AccountRoot ledger node](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
-| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most 1 SignerList, this array should always have exactly 1 member if it is present. _(New in [`rippled` 0.31.0][])_ |
+| signer\_lists | Array | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most one SignerList, this array must have exactly one member if it is present. [New in: rippled 0.31.0][] |
 | ledger\_current\_index | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one.  |
 | ledger\_index | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
-| validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. _(New in [`rippled` 0.26.0][])_ |
+| queue\_data | Object | (Omitted unless `queue` specified as `true` and querying the current open ledger.) Information about [queued transactions](concept-transaction-cost.html#queued-transactions) sent by this account. This information describes the state of the local `rippled` server, which may be different from other servers in the consensus network. Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism. |
+| validated | Boolean | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. [New in: rippled 0.26.0][] |
+
+The `queue_data` parameter, if present, contains the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| txn\_count | Integer | Number of queued transactions from this address. |
+| auth\_change\_queued | Boolean | (May be omitted) Whether a transaction in the queue changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). If `true`, this address can queue no further transactions until that transaction has been executed or dropped from the queue. |
+| lowest\_sequence | Integer | (May be omitted) The lowest [Sequence Number][] among transactions queued by this address. |
+| highest\_sequence | Integer | (May be omitted) The highest [Sequence Number][] among transactions queued by this address. |
+| max\_spend\_drops\_total | String | (May be omitted) Integer amount of [drops of XRP](#specifying-currency-amounts) that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible. |
+| transactions | Array | (May be omitted) Information about each queued transaction from this address. |
+
+Each object in the `transactions` array, if present, may contain any or all of the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| auth\_change | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
+| fee | String | The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
+| fee\_level | String | The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
+| max\_spend\_drops | String | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
+| seq | Integer | The [Sequence Number][] of this transaction. |
 
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified `queue` as `true` but specified a `ledger_index` that is not the current open ledger.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
@@ -896,8 +996,8 @@ The request accepts the following paramters:
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | peer | String | (Optional) The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
-| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. _(New in [`rippled` 0.26.4][])_ |
-| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. _(New in [`rippled` 0.26.4][])_ |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. [New in: rippled 0.26.4][] |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -1004,10 +1104,10 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
 | lines | Array | Array of trust-line objects, as described below. If the number of trust-lines is large, only returns up to the `limit` at a time. |
-| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. _(New in [`rippled` 0.26.4][])_ |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
 
 Each trust-line object has some combination of the following fields:
 
@@ -1089,8 +1189,8 @@ A request can include the following parameters:
 | ledger | Unsigned integer, or String | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | ledger\_hash | String | (Optional) A 20-byte hex string identifying the ledger version to use. |
 | ledger\_index | (Optional) [Ledger Index][] | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
-| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. _(New in [`rippled` 0.26.4][])_ |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. _(New in [`rippled` 0.26.4][])_ |
+| limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. [New in: rippled 0.26.4][] |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1133,9 +1233,7 @@ An example of a successful response:
           "value": "0.01886995237307572"
         }
       },
-
-      ...
-
+      ... trimmed for length ...
     ],
     "validated": false
   }
@@ -1199,10 +1297,10 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | account | String | Unique [Address][] identifying the account that made the offers |
 | offers | Array | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
-| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. _(New in [`rippled` 0.26.4-sp1][])_ |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. _(New in [`rippled` 0.26.4][])_ |
+| ledger\_current\_index | Integer | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| ledger\_index | Integer | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| ledger\_hash | String | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| marker | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
 
 
 Each offer object contains the following fields:
@@ -1213,8 +1311,8 @@ Each offer object contains the following fields:
 | seq | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](#account-sequence) are relative to accounts.) |
 | taker_gets | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | taker_pays | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
-| quality | Number | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. _(New in [`rippled` 0.29.0][])_ |
-| expiration | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](reference-transaction-format.html#expiration). _(New in [`rippled` 0.30.1][])_ |
+| quality | Number | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0][] |
+| expiration | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](reference-transaction-format.html#expiration). [New in: rippled 0.30.1][] |
 
 #### Possible Errors ####
 
@@ -1285,7 +1383,7 @@ The request includes the following parameters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | limit   | Unsigned Integer | (Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200. |
-| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response value to specify where to resume retrieving data from. |
 
 #### Response Format ####
 
@@ -1907,7 +2005,7 @@ The request includes the following parameters:
 | binary | Boolean | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | forward | boolean | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | limit | Integer | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
@@ -2619,7 +2717,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## gateway_balances ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
-The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](concept-issuing-and-operational-addresses.html). _(New in [`rippled` 0.28.2][].)_
+The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](concept-issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
 
 #### Request Format ####
 An example of the request format:
@@ -2843,7 +2941,7 @@ Use the `wallet_propose` method to generate a key pair and Ripple [address]. Thi
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
-_(Updated in [`rippled` 0.31.0][])_
+[Updated in: rippled 0.31.0][New in: rippled 0.31.0]
 
 #### Request Format ####
 
@@ -2969,16 +3067,16 @@ An example of a successful response:
 
 ```
 {
-	"result": {
-		"account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-		"key_type": "secp256k1",
-		"master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
-		"master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-		"master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
-		"public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
-		"public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-		"status": "success"
-	}
+    "result": {
+        "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "key_type": "secp256k1",
+        "master_key": "I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE",
+        "master_seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+        "master_seed_hex": "DEDCE9CE67B451D852FD4E846FCDE31C",
+        "public_key": "aBQG8RQAzjs1eTKFEAQXr2gS4utcDiEC9wmi7pfUPTi27VCahwgw",
+        "public_key_hex": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+        "status": "success"
+    }
 }
 ```
 
@@ -3013,7 +3111,7 @@ The response follows the [standard format](#response-formatting), with a success
 | account\_id | String | The [Address][] of the account. |
 | public\_key | String | The public key of the account, in encoded string format. |
 | public\_key\_hex | String | The public key of the account, in hex format. |
-| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. _(New in [`rippled` 0.32.0][])_ |
+| warning | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. [New in: rippled 0.32.0][] |
 
 The key generated by this method can also be used as a regular key for an account if you use the [SetRegularKey transaction type](reference-transaction-format.html#setregularkey) to do so.
 
@@ -3096,7 +3194,7 @@ The request can contain the following parameters:
 | transactions | Boolean | (Optional, defaults to false) If true, return information on transactions in the specified ledger version. Ignored if you did not specify a ledger. |
 | expand | Boolean | (Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of only hashes. Ignored unless you requested transactions, accounts, or both. |
 | owner\_funds | Boolean | (Optional, defaults to false) Include `owner_funds` field in the metadata of OfferCreate transactions in the response. Ignored unless transactions are included and `expand` is true. |
-| binary | Boolean | (Optional, defaults to false) If `transactions` and `expand` are both true, and this option is also true, return transaction information in binary format instead of JSON format. _(New in [`rippled` 0.28.0][])_ |
+| binary | Boolean | (Optional, defaults to false) If `transactions` and `expand` are both true, and this option is also true, return transaction information in binary format instead of JSON format. [New in: rippled 0.28.0][] |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -3438,7 +3536,7 @@ A request can include the following fields:
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | binary | Boolean | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
 | limit | Integer | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
-| marker | [(Not Specified)](#markers-and-pagination) | Server-provided value to specify where to resume retrieving data from. |
+| marker | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -3973,7 +4071,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
-* `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. _(**Note:** Prior to [`rippled` 0.30.1][], this error used the code `ledgerNotFound` instead.)_
+* `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1][New in: rippled 0.30.1]
 
 
 ## ledger_accept ##
@@ -5421,8 +5519,8 @@ The request includes the following parameters:
 | subcommand | String | Use `"create"` to send the create subcommand |
 | source\_account | String | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | destination\_account | String | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
-| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [`rippled` 0.30.0][])_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. _(New in [`rippled` 0.30.0][])_ |
+| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
 | paths | Array | (Optional) Array of arrays of objects, representing [payment paths](concept-paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
@@ -5812,7 +5910,7 @@ The initial response follows the [standard format](#response-formatting), with a
 | destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
 | id | (Various) | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
 | source\_account | String | Unique address that would send a transaction |
-| full\_reply | Boolean | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. _(New in [`rippled` 0.29.0][])_ |
+| full\_reply | Boolean | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. [New in: rippled 0.29.0][] |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
@@ -6031,8 +6129,8 @@ The request includes the following parameters:
 |-------|------|-------------|
 | source\_account | String | Unique address of the account that would send funds in a transaction |
 | destination\_account | String | Unique address of the account that would receive funds in a transaction |
-| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** _(New in [`rippled` 0.30.0][])_ You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. _(New in [`rippled` 0.30.0][])_ |
+| destination\_amount | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| send\_max | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0][] |
 | source\_currencies | Array | (Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts](#specifying-currency-amounts) are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | ledger\_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger\_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
@@ -6382,7 +6480,7 @@ The request includes the following parameters:
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values. |
 | build_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional, defaults to 10; recommended value 1000) Limits how high the [automatically-provided `Fee` field](reference-transaction-format.html#auto-fillable-fields) can be. Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). |
-| fee\_div\_max | Integer | (Optional, defaults to 1) Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). _(New in [`rippled` 0.30.1][])_ |
+| fee\_div\_max | Integer | (Optional, defaults to 1) Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). [New in: rippled 0.30.1][] |
 
 ### Auto-Fillable Fields ###
 
@@ -6436,26 +6534,26 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"status": "success",
-		"tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Amount": {
-				"currency": "USD",
-				"issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-				"value": "1"
-			},
-			"Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-			"Fee": "10000",
-			"Flags": 2147483648,
-			"Sequence": 360,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "Payment",
-			"TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
-			"hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
-		}
-	}
+    "result": {
+        "status": "success",
+        "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "Sequence": 360,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+            "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
+        }
+    }
 }
 ```
 
@@ -6517,7 +6615,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. _(New in [`rippled` 0.31.0][])_
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 #### Request Format ####
 An example of the request format:
@@ -6827,7 +6925,7 @@ The request includes the following parameters:
 | offline | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values. |
 | build\_path | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | fee\_mult\_max | Integer | (Optional, defaults to 10, recommended value 1000) If the `Fee` parameter is omitted, this field limits the automatically-provided `Fee` value so that it is less than or equal to the long-term base transaction cost times this value. |
-| fee\_div\_max | Integer | (Optional, defaults to 1) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, the submit command fails. _(New in [`rippled` 0.30.1][])_ |
+| fee\_div\_max | Integer | (Optional, defaults to 1) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, the submit command fails. [New in: rippled 0.30.1][] |
 
 See the [sign command](#sign) for detailed information on how the server automatically fills in certain fields.
 
@@ -6936,29 +7034,29 @@ An example of a successful response:
 
 ```
 {
-	"result": {
-		"engine_result": "tesSUCCESS",
-		"engine_result_code": 0,
-		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-		"status": "success",
-		"tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Amount": {
-				"currency": "USD",
-				"issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-				"value": "1"
-			},
-			"Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-			"Fee": "10000",
-			"Flags": 2147483648,
-			"Sequence": 361,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "Payment",
-			"TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
-			"hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
-		}
-	}
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "Sequence": 361,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
+            "hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
+        }
+    }
 }
 ```
 
@@ -7033,7 +7131,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. _(New in [`rippled` 0.31.0][])_
+This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 #### Request Format ####
 An example of the request format:
@@ -7045,34 +7143,34 @@ An example of the request format:
 ```
 {
     "id": "submit_multisigned_example"
-	"command": "submit_multisigned",
-	"tx_json": {
-		"Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-		"Fee": "30000",
-		"Flags": 262144,
-		"LimitAmount": {
-			"currency": "USD",
-			"issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-			"value": "100"
-		},
-		"Sequence": 2,
-		"Signers": [{
-			"Signer": {
-				"Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-				"SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-				"TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
-			}
-		}, {
-			"Signer": {
-				"Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-				"SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
-				"TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
-			}
-		}],
-		"SigningPubKey": "",
-		"TransactionType": "TrustSet",
-		"hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
-	}
+    "command": "submit_multisigned",
+    "tx_json": {
+        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee": "30000",
+        "Flags": 262144,
+        "LimitAmount": {
+            "currency": "USD",
+            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "value": "100"
+        },
+        "Sequence": 2,
+        "Signers": [{
+            "Signer": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey": "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature": "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+            }
+        }, {
+            "Signer": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SigningPubKey": "028FFB276505F9AC3F57E8D5242B386A597EF6C40A7999F37F1948636FD484E25B",
+                "TxnSignature": "30440220680BBD745004E9CFB6B13A137F505FB92298AD309071D16C7B982825188FD1AE022004200B1F7E4A6A84BB0E4FC09E1E3BA2B66EBD32F0E6D121A34BA3B04AD99BC1"
+            }
+        }],
+        "SigningPubKey": "",
+        "TransactionType": "TrustSet",
+        "hash": "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
+    }
 }
 ```
 
@@ -7348,7 +7446,7 @@ The request includes the following parameters:
 | ledger_hash | String | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | ledger_index | String or Unsigned Integer| (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers))|
 | limit | Unsigned Integer | (Optional) If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| taker | String | (Optional, defaults to [ACCOUNT\_ONE][]) The [Address][] of an account to use as a perspective. (This affects which unfunded offers are returned.) |
+| taker | String | (Optional, defaults to [ACCOUNT_ONE][]) The [Address][] of an account to use as a perspective. (This affects which unfunded offers are returned.) |
 | taker\_gets | Object | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | taker\_pays | Object | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 
@@ -7643,7 +7741,7 @@ The fields from a ledger stream message are as follows:
 
 ### Validations Stream ###
 
-_(New in [`rippled` 0.29.0][])_
+[New in: rippled 0.29.0][]
 
 The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:
 
@@ -7669,7 +7767,6 @@ The validations stream sends messages whenever it receives validation messages, 
     "signing_time":515115322,
     "validation_public_key":"n94Gnc6svmaPPRHUAyyib1gQUov8sYbjLoEwUBYPH39qHZXuo8ZT"
 }
-
 ```
 
 The fields from a validations stream message are as follows:
@@ -7677,17 +7774,17 @@ The fields from a validations stream message are as follows:
 | Field | Type | Description |
 |-------|------|-------------|
 | `type` | String | The value `validationReceived` indicates this is from the validations stream. |
-| `amendments` | Array of Strings | (May be omitted) The [amendments](concept-amendments.html) this server wants to be added to the protocol. _(New in [`rippled` 0.32.0][])_ |
-| `base_fee` | Integer | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](concept-fee-voting.html). _(New in [`rippled` 0.32.0][])_ |
-| `flags` | Number | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. _(New in [`rippled` 0.32.0][])_ |
-| `full` | Boolean | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. _(New in [`rippled` 0.32.0][])_ |
+| `amendments` | Array of Strings | (May be omitted) The [amendments](concept-amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
+| `base_fee` | Integer | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
+| `flags` | Number | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
+| `full` | Boolean | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `ledger_hash` | String | The identifying hash of the proposed ledger is being validated. |
-| `ledger_index` | String - Integer | The [Ledger Index][] of the proposed ledger. _(New in [`rippled` 0.31.0][])_ |
-| `load_fee` | Integer | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. _(New in [`rippled` 0.32.0][])_ |
-| `reserve_base` | Integer | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). _(New in [`rippled` 0.32.0][])_ |
-| `reserve_inc` | Integer | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). _(New in [`rippled` 0.32.0][])_ |
+| `ledger_index` | String - Integer | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |
+| `load_fee` | Integer | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0][] |
+| `reserve_base` | Integer | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
+| `reserve_inc` | Integer | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature` | String | The signature that the validator used to sign its vote for this ledger. |
-| `signing_time` | Number | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). _(New in [`rippled` 0.32.0][])_ |
+| `signing_time` | Number | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). [New in: rippled 0.32.0][] |
 | `validation_public_key` | String | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
@@ -8372,16 +8469,16 @@ The `info` object may have some arrangement of the following fields:
 | load\_factor\_local | Number | (May be omitted) Current multiplier to the [transaction cost][] based on load to this server. |
 | load\_factor\_net | Number | (May be omitted) Current multiplier to the [transaction cost][] being used by the rest of the network (estimated from other servers' reported load values). |
 | load\_factor\_cluster | Number | (May be omitted) Current multiplier to the [transaction cost][] based on load to servers in [this cluster](tutorial-rippled-setup.html#clustering). |
-| load\_factor\_fee\_escalation | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. _(New in [`rippled` 0.32.0][])_ |
-| load\_factor\_fee\_queue | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. _(New in [`rippled` 0.32.0][])_ |
+| load\_factor\_fee\_escalation | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. [New in: rippled 0.32.0][] |
+| load\_factor\_fee\_queue | Number | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. [New in: rippled 0.32.0][] |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey_node | String | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can create a new pair of keys.) |
 | pubkey\_validator | String | *Admin only* Public key used by this node to sign ledger validations. |
 | server\_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
-| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. _(New in [`rippled` 0.30.1][])_ |
-| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) _(New in [`rippled` 0.30.1][])_ |
-| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. _(New in [`rippled` 0.30.1][])_ |
-| uptime | Number | Number of consecutive seconds that the server has been operational. _(New in [`rippled` 0.30.1][])_ |
+| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
+| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
+| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. [New in: rippled 0.30.1][] |
+| uptime | Number | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
 | validated\_ledger | Object | Information about the fully-validated ledger with the highest [Ledger Index][] (the most recent) |
 | validated\_ledger.age | Number | The time since the ledger was closed, in seconds |
 | validated\_ledger.base\_fee\_xrp | Number | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005 |
@@ -8657,17 +8754,17 @@ The `state` object may have some arrangement of the following fields:
 | load.threads | Number | *Admin only* The number of threads in the server's main job pool. |
 | load\_base | Integer | This is the baseline amount of server load used in [transaction cost](concept-transaction-cost.html) calculations. If the `load_factor` is equal to the `load_base` then only the base transaction cost is enforced. If the `load_factor` is higher than the `load_base`, then transaction costs are multiplied by the ratio between them. For example, if the `load_factor` is double the `load_base`, then transaction costs are doubled. |
 | load\_factor | Number | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. |
-| load\_factor\_fee\_escalation | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the open ledger, in [fee levels][]. _(New in [`rippled` 0.32.0][])_ |
-| load\_factor\_fee\_queue | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the queue, if the queue is full, in [fee levels][]. _(New in [`rippled` 0.32.0][])_ |
-| load\_factor\_fee\_reference | Integer | (May be omitted) The [transaction cost][] with no load scaling, in [fee levels][]. _(New in [`rippled` 0.32.0][])_ |
+| load\_factor\_fee\_escalation | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the open ledger, in [fee levels][]. [New in: rippled 0.32.0][] |
+| load\_factor\_fee\_queue | Integer | (May be omitted) The current multiplier to the [transaction cost][] to get into the queue, if the queue is full, in [fee levels][]. [New in: rippled 0.32.0][] |
+| load\_factor\_fee\_reference | Integer | (May be omitted) The [transaction cost][] with no load scaling, in [fee levels][]. [New in: rippled 0.32.0][] |
 | peers | Number | How many other `rippled` servers the node is currently connected to. |
 | pubkey\_node | String | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in `rippled`'s local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
 | pubkey\_validator | String | *Admin only* Public key of the keypair used by this server to sign proposed ledgers for validation. |
 | server\_state | String | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
-| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. _(New in [`rippled` 0.30.1][])_ |
-| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) _(New in [`rippled` 0.30.1][])_ |
-| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. _(New in [`rippled` 0.30.1][])_ |
-| uptime | Number | Number of consecutive seconds that the server has been operational. _(New in [`rippled` 0.30.1][])_ |
+| state\_accounting | Object | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
+| state\_accounting.*.duration\_us | String | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
+| state\_accounting.*.transitions | Number | The number of times the server has transitioned into this state. [New in: rippled 0.30.1][] |
+| uptime | Number | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
 | validated\_ledger | Object | Information about the fully-validated ledger with the highest sequence number (the most recent) |
 | validated\_ledger.base\_fee | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network.
 | validated\_ledger.close_time | Number | Time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
@@ -8877,7 +8974,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -9078,7 +9174,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -9148,7 +9243,7 @@ The fields describing a fetch in progress are subject to change without notice. 
 ## feature ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process). _(New in [`rippled` 0.31.0][])_
+The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process). [New in: rippled 0.31.0][]
 
 You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](concept-amendments.html#configuring-amendment-voting) for more information.
 
@@ -9265,19 +9360,19 @@ An example of a successful response:
 
 ```
 {
-	"id": "reject_multi_sign",
-	"status": "success",
-	"type": "response",
-	"result": {
-		"features": {
-			"4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
-				"enabled": false,
-				"name": "MultiSign",
-				"supported": true,
-				"vetoed": true
-			}
-		}
-	}
+    "id": "reject_multi_sign",
+    "status": "success",
+    "type": "response",
+    "result": {
+        "features": {
+            "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+                "enabled": false,
+                "name": "MultiSign",
+                "supported": true,
+                "vetoed": true
+            }
+        }
+    }
 }
 ```
 
@@ -9339,9 +9434,9 @@ The response follows the [standard format](#response-formatting), with a success
 ## fee ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
-The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalation) to be enabled. _(New in [`rippled` 0.31.0][])_
+The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalation) to be enabled. [New in: rippled 0.31.0][]
 
-_As of [`rippled` 0.32.0][], this is a public command available to unprivileged users._
+This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][New in: rippled 0.32.0]
 
 #### Request Format ####
 An example of the request format:
@@ -9361,8 +9456,8 @@ An example of the request format:
 
 ```
 {
-	"method": "fee",
-	"params": [{}]
+    "method": "fee",
+    "params": [{}]
 }
 ```
 
@@ -9416,25 +9511,25 @@ An example of a successful response:
 ```
 200 OK
 {
-	"result": {
-		"current_ledger_size": "56",
-		"current_queue_size": "11",
-		"drops": {
-			"base_fee": "10",
-			"median_fee": "10000",
-			"minimum_fee": "10",
-			"open_ledger_fee": "2653937"
-		},
-		"expected_ledger_size": "55",
-		"levels": {
-			"median_level": "256000",
-			"minimum_level": "256",
-			"open_ledger_level": "67940792",
-			"reference_level": "256"
-		},
-		"max_queue_size": "1100",
-		"status": "success"
-	}
+    "result": {
+        "current_ledger_size": "56",
+        "current_queue_size": "11",
+        "drops": {
+            "base_fee": "10",
+            "median_fee": "10000",
+            "minimum_fee": "10",
+            "open_ledger_fee": "2653937"
+        },
+        "expected_ledger_size": "55",
+        "levels": {
+            "median_level": "256000",
+            "minimum_level": "256",
+            "open_ledger_level": "67940792",
+            "reference_level": "256"
+        },
+        "max_queue_size": "1100",
+        "status": "success"
+    }
 }
 ```
 
@@ -9584,7 +9679,6 @@ An example of a successful response:
       "write_load" : 0
    }
 }
-
 ```
 
 *Commandline*
@@ -10381,7 +10475,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -10495,7 +10588,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field   | Type   | Description |
 |---------|--------|-------------|
-| cluster | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](tutorial-rippled-setup.html#clustering). _(New in [`rippled` 0.30.1][])_ |
+| cluster | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](tutorial-rippled-setup.html#clustering). [New in: rippled 0.30.1][] |
 | peers   | Array  | Array of peer objects. |
 
 Each field of the `cluster` object is the public key of that `rippled` server's identifying keypair. (This is the same value that that server returns as `pubkey_node` in the [`server_info` command](#server-info).) The contents of that field are an object with the following fields:
@@ -10522,7 +10615,7 @@ Each member of the `peers` array is a peer object with the following fields:
 | public\_key | String | (May be omitted) A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
 | sanity | String | (May be omitted) Whether this peer is following the same rules and ledger sequence as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
 | status | String | (May be omitted) The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
-| uptime | Number | The number of seconds that your `rippled` server has been continuously connected to this peer. _(New in [`rippled` 0.30.1][])_ |
+| uptime | Number | The number of seconds that your `rippled` server has been continuously connected to this peer. [New in: rippled 0.30.1][] |
 | version | string | (May be omitted) The `rippled` version number of the peer server |
 
 #### Possible Errors ####
@@ -11043,7 +11136,6 @@ An example of a successful response:
       "status" : "success"
    }
 }
-
 ```
 
 *Commandline*
@@ -11241,79 +11333,79 @@ Response:
 ```json
 200 OK
 {
-	"overlay": {
-		"active": [{
-			"ip": "208.43.252.243",
-			"port": "51235",
-			"public_key": "A2GayQNaj7qbqLFiCFW2UXtAnEPghP/KWVqix2gUa6dM",
-			"type": "out",
-			"uptime": 107926,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "184.172.237.226",
-			"port": "51235",
-			"public_key": "Asv/wKq/dqMWbP2M4eR+QvkuojYMLRXhKhIPnW40bsaF",
-			"type": "out",
-			"uptime": 247376,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "54.186.73.52",
-			"port": "51235",
-			"public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.59",
-			"port": "51235",
-			"public_key": "AyIcVhAhOGnP0vtfCt+HKUrx9B2fDvP/4XUkOtVQ37g/",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.1"
-		}, {
-			"ip": "169.53.155.44",
-			"port": "51235",
-			"public_key": "AuVZszWXgMgM8YuTVhQsGE9OciEeBD8aMVe1mFid3n63",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.32.0-b12"
-		}, {
-			"ip": "184.173.45.39",
-			"port": "51235",
-			"public_key": "Ao2GbGbp2QYQ2B4S9ckCtON7CsZdXqdK5Yon4x7qmWFm",
-			"type": "out",
-			"uptime": 63336,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.34",
-			"port": "51235",
-			"public_key": "A3inNJsIQzO7z7SS7uB9DyvN0wsiS9it/RGY/kNx6KEG",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "169.53.155.45",
-			"port": "51235",
-			"public_key": "AglUUjwXTC2kUlK41WjDs2eAVN0SnlMpzYA9lEgB0UGP",
-			"type": "out",
-			"uptime": 65443,
-			"version": "rippled-0.31.0-rc1"
-		}, {
-			"ip": "99.110.49.91",
-			"port": "51301",
-			"public_key": "AuQDH0o+4fpl2n+pR5U0Y4FTj0oGr4iEKe0MObPcSYj9",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.32.0-b9"
-		}, {
-			"ip": "169.53.155.36",
-			"port": "51235",
-			"public_key": "AsR4xub7MLg2Zl5Fwd/n7dTz7mhbBoSyCc/v9bnubrVy",
-			"type": "out",
-			"uptime": 328776,
-			"version": "rippled-0.31.0-rc1"
-		}]
-	}
+    "overlay": {
+        "active": [{
+            "ip": "208.43.252.243",
+            "port": "51235",
+            "public_key": "A2GayQNaj7qbqLFiCFW2UXtAnEPghP/KWVqix2gUa6dM",
+            "type": "out",
+            "uptime": 107926,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "184.172.237.226",
+            "port": "51235",
+            "public_key": "Asv/wKq/dqMWbP2M4eR+QvkuojYMLRXhKhIPnW40bsaF",
+            "type": "out",
+            "uptime": 247376,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "54.186.73.52",
+            "port": "51235",
+            "public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.59",
+            "port": "51235",
+            "public_key": "AyIcVhAhOGnP0vtfCt+HKUrx9B2fDvP/4XUkOtVQ37g/",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.1"
+        }, {
+            "ip": "169.53.155.44",
+            "port": "51235",
+            "public_key": "AuVZszWXgMgM8YuTVhQsGE9OciEeBD8aMVe1mFid3n63",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b12"
+        }, {
+            "ip": "184.173.45.39",
+            "port": "51235",
+            "public_key": "Ao2GbGbp2QYQ2B4S9ckCtON7CsZdXqdK5Yon4x7qmWFm",
+            "type": "out",
+            "uptime": 63336,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.34",
+            "port": "51235",
+            "public_key": "A3inNJsIQzO7z7SS7uB9DyvN0wsiS9it/RGY/kNx6KEG",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "169.53.155.45",
+            "port": "51235",
+            "public_key": "AglUUjwXTC2kUlK41WjDs2eAVN0SnlMpzYA9lEgB0UGP",
+            "type": "out",
+            "uptime": 65443,
+            "version": "rippled-0.31.0-rc1"
+        }, {
+            "ip": "99.110.49.91",
+            "port": "51301",
+            "public_key": "AuQDH0o+4fpl2n+pR5U0Y4FTj0oGr4iEKe0MObPcSYj9",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.32.0-b9"
+        }, {
+            "ip": "169.53.155.36",
+            "port": "51235",
+            "public_key": "AsR4xub7MLg2Zl5Fwd/n7dTz7mhbBoSyCc/v9bnubrVy",
+            "type": "out",
+            "uptime": 328776,
+            "version": "rippled-0.31.0-rc1"
+        }]
+    }
 }
 ```
 
