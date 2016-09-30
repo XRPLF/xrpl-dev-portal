@@ -111,11 +111,11 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
-| [SHAMapV2](#shamapv2)           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [PayChan](#paychan)             | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [OwnerPaysFee](#ownerpaysfee)   | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Flow](#flow)                   | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [FlowV2](#flowv2)               | v0.32.1    | [Vetoed: To be removed](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
+| [SHAMapV2](#shamapv2)           | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [PayChan](#paychan)             | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee](#ownerpaysfee)   | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Flow](#flow)                   | v0.33.0    | [Expected: 2016-10-20](https://ripple.com/dev-blog/rippled-version-0-33-0-released/ "BADGE_BLUE") |
+| [FlowV2](#flowv2)               | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
 | [Tickets](#tickets)             | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SusPay](#suspay)               | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
@@ -146,7 +146,7 @@ A transaction remains in the queue until one of the following happens:
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | In development. |
+| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | Open for voting. Expected to be enabled 2016-10-20. |
 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](#flowv2) amendment.
 
@@ -187,7 +187,7 @@ An address with a SignerList can disable the master key even if a regular key is
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development. |
+| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | Released but not enabled |
 
 Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
@@ -198,7 +198,7 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | In development. |
+| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | Released but not enabled |
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
 
@@ -211,7 +211,7 @@ Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `Channe
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | In development. |
+| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | Released but not enabled |
 
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
@@ -220,11 +220,11 @@ Changes the hash tree structure that `rippled` uses to represent a ledger. The n
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | In development. <br />Enabled on TestNet |
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Released but not enabled <br />Enabled on TestNet |
 
 Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
 
-**Note:** This amendment is still in development. The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
+The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
 
 ## TrustSetAuth ##
 
@@ -244,5 +244,6 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger node type and the transaction types `TicketCreate` and `TicketCancel`.
 
-This amendment is still in development.
- {% include 'snippets/rippled_versions.md' %}
+**Caution:** This amendment is still in development.
+
+{% include 'snippets/rippled_versions.md' %}
