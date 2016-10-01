@@ -96,6 +96,13 @@
             </ul>
           </li>
           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
@@ -171,7 +178,7 @@
 </ol>
 <p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
 <h2 id="background">Background</h2>
-<p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
+<p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/build/ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
 <p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.</p>
 <p>If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.</p>
 <h3 id="transaction-timeline">Transaction Timeline</h3>
@@ -542,8 +549,8 @@
 <li><a href="reference-transaction-format.html">Transaction Format</a></li>
 <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
 <li>Documentation of <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a></li>
-<li><a href="http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
-<li><a href="https://ripple.com/knowledge_center/reaching-consensus-in-ripple/">Reaching Consensus in Ripple</a></li>
+<li><a href="https://ripple.com/build/ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
+<li><a href="https://ripple.com/build/reaching-consensus-ripple/">Reaching Consensus in Ripple</a></li>
 </ul>
     </div>
       </main>

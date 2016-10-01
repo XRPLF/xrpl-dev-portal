@@ -49,7 +49,7 @@ Sending a transaction to the Ripple Consensus Ledger involves several steps:
 1. Create an [unsigned transaction in JSON format](#unsigned-transaction-format).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
-4. The [consensus process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.
+4. The [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](tutorial-rippled-setup.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](#transaction-results) in that ledger are immutable.
 

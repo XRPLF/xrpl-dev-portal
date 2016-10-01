@@ -96,6 +96,13 @@
             </ul>
           </li>
           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
@@ -159,6 +166,7 @@
 <li class="level-2"><a href="#freeze">Freeze</a></li>
 <li class="level-2"><a href="#authorized-accounts">Authorized Accounts</a></li>
 <li class="level-2"><a href="#source-and-destination-tags">Source and Destination Tags</a></li>
+<li class="level-2"><a href="#gateway-bulletins">Gateway Bulletins</a></li>
 <li class="level-1"><a href="#technical-details">Technical Details</a></li>
 <li class="level-2"><a href="#infrastructure">Infrastructure</a></li>
 <li class="level-3"><a href="#apis-and-middleware">APIs and Middleware</a></li>
@@ -218,14 +226,14 @@
 <h3 id="liquidity-and-currency-exchange">Liquidity and Currency Exchange</h3>
 <p>The Ripple Consensus Ledger contains a currency exchange, where any user can place and fulfill bids to exchange XRP and <em>issuances</em> in any combination. Cross-currency payments automatically use the currency exchange to convert currency atomically when the transaction is executed. In this way, users who choose make offers in the distributed exchange provide the liquidity that makes the RCL useful.</p>
 <p>Currency traders who hold a gateway's issuances can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of financial exchange. However, a gateway may still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, use a different address for trading than your issuing address.</p>
-<p>Third-party liquidity providers can use <a href="reference-rippleapi.html">RippleAPI</a>, <a href="https://ripple.com/technology/">Ripple Stream</a>, or a <a href="https://ripple.com/knowledge_center/wallet-providers/">third-party client application</a> to access the distributed exchange. Some client applications look up the addresses associated with a gateway using <a href="#rippletxt">ripple.txt</a>, so it can be helpful to publish a good ripple.txt.</p>
+<p>Third-party liquidity providers can use <a href="reference-rippleapi.html">RippleAPI</a>, <a href="https://ripple.com/technology/">Ripple Stream</a>, or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using <a href="#rippletxt">ripple.txt</a>, so it can be helpful to publish a good ripple.txt.</p>
 <p>Contact <a href="mailto:partners@ripple.com">partners@ripple.com</a> for help establishing liquidity between your gateway and others.</p>
 <h2 id="suggested-business-practices">Suggested Business Practices</h2>
 <p>The value of a gateway's issuances in the Ripple Consensus Ledger comes directly from the trust that customers can redeem them with the gateway when needed. We recommend the following precautions to reduce the risk of business interruptions:</p>
 <ul>
 <li>Use separate <a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a> to limit your risk profile on the network.</li>
 <li>Comply with anti-money-laundering regulations for your jurisdiction, such as the <a href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act">Bank Secrecy Act</a>. This usually includes requirements to collect <a href="http://en.wikipedia.org/wiki/Know_your_customer">"Know-Your-Customer" (KYC) information</a>.</li>
-<li>Read and stay up-to-date with <a href="https://ripple.com/knowledge_center/gateway-bulletins/">Gateway Bulletins</a>, which provide news and suggestions for Ripple gateways.</li>
+<li>Read and stay up-to-date with <a href="#gateway-bulletins">Gateway Bulletins</a>, which provide news and suggestions for Ripple gateways.</li>
 <li>Publicize all your policies and fees.</li>
 </ul>
 <h3 id="hot-and-cold-wallets">Hot and Cold Wallets</h3>
@@ -376,6 +384,24 @@
 <li>Other disposable destination tags that customers can generate.</li>
 </ul>
 <p>See <a href="#generating-source-and-destination-tags">Generating Source and Destination Tags</a> for recommendations on the tehnical details of making and using Source Tags and Destination Tags.</p>
+<h2 id="gateway-bulletins">Gateway Bulletins</h2>
+<p>Historically, Ripple issued gateway bulletins to introduce new features or discuss topics related to compliance and risk. Gateway Bulletins are listed here in reverse chronological order.</p>
+<ul>
+<li>May 13, 2015 - <a href="gb-2015-06.html">GB-2015-06 Gateway Bulletin: Corrections to Autobridging</a></li>
+<li>April 17, 2015 - <a href="gb-2015-05.html">GB-2015-05 Historical Ledger Query Migration</a></li>
+<li>March 13, 2015 - <a href="https://ripple.com/files/GB-2015-04.pdf">GB-2015-04 Action Required: Default Ripple Flag (PDF)</a></li>
+<li>March 3, 2015 - <a href="https://ripple.com/files/GB-2015-03.pdf">GB-2015-03 Gateway Advisory: FinCEN Ruling on MoneyGram Compliance Program (PDF)</a></li>
+<li>March 2, 2015 (Updated) - <a href="https://ripple.com/files/GB-2015-02.pdf">GB-2015-02 New Standards: How to be Featured on Ripple Trade and Ripple Charts (PDF)</a></li>
+<li>January 5, 2015 - <a href="https://ripple.com/files/GB-2015-01.pdf">GB-2015-01 Gateway Advisory: Reliable Transaction Submission (PDF)</a></li>
+<li>December 18, 2014 - <a href="https://ripple.com/files/GB-2014-08.pdf">GB-2014-08 Gateway Advisory: Recent FinCEN Rulings (PDF)</a></li>
+<li>November 4, 2014 -<a href="https://ripple.com/files/GB-2014-07.pdf">GB-2014-07 Gateway Advisory: FATF Standards (PDF)</a></li>
+<li>October 17, 2014 -<a href="https://ripple.com/files/GB-2014-06.pdf">GB-2014-06 Gateway Advisory: Partial Payment Flag (PDF)</a></li>
+<li>September 24, 2014 - <a href="https://ripple.com/files/GB-2014-05.pdf">GB-2014-05 Gateway Advisory: EBA Opinion On Virtual Currency (PDF)</a></li>
+<li>September 11, 2014 - <a href="https://ripple.com/files/GB-2014-04.pdf">GB-2014-04 Gateway Advisory: CFPB Opinion on Virtual Currency (PDF)</a></li>
+<li>August 19, 2014 - <a href="https://ripple.com/files/GB-2014-03.pdf">GB-2014-03 Updated Feature: Trust Lines UI (PDF)</a></li>
+<li>August 1, 2014 - <a href="https://ripple.com/files/GB-2014-02.pdf">GB-2014-02 New Feature: Balance Freeze (PDF)</a></li>
+<li>April 23, 2014, Updated August 14, 2014 -<a href="https://ripple.com/files/GB-2014-01.pdf">GB-2014-01 New Feature: Ripple Names (PDF)</a></li>
+</ul>
 <h1 id="technical-details">Technical Details</h1>
 <h2 id="infrastructure">Infrastructure</h2>
 <p>For the gateway's own security as well as the stability of the network, we recommend that each gateway run its own <code>rippled</code> servers. Ripple (the company) provides detailed and individualized recommendations to businesses interested in running a significant Ripple-based business.</p>
@@ -591,7 +617,7 @@ Content-Type: application/json
 <ul>
 <li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
 <li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
-<li><a href="https://ripple.com/knowledge_center/partial-payment-flag/" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments</a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
+<li><a href="https://ripple.com/files/GB-2014-06.pdf" title="Partial Payment Flag Gateway Bulletin">Look out for Partial Payments</a>. Payments with the partial-payment flag enabled can be considered "successful" if any non-zero amount is delivered, even miniscule amounts.<ul>
 <li>In <code>rippled</code>, check the transaction for a <code>meta.delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
 <li>In RippleAPI, you can search the <code>outcome.BalanceChanges</code> field to see how much the destination address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
 </ul>
@@ -724,7 +750,7 @@ Content-Type: application/json
 </ul>
 <h2 id="bouncing-payments">Bouncing Payments</h2>
 <p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
-<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) The <a href="https://ripple.com/knowledge_center/partial-payment-flag/">Partial Payment Flag Gateway Bulletin</a> explains how to avoid a common problem.</p>
+<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) The <a href="https://ripple.com/files/GB-2014-06.pdf">Partial Payment Flag Gateway Bulletin (PDF)</a> explains how to avoid a common problem.</p>
 <p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the Ripple Consensus Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
 <ul>
 <li>To send a Partial Payment using <code>rippled</code>, enable the <a href="reference-transaction-format.html#payment-flags">tfPartialPayment flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field.</li>

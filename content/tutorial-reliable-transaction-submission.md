@@ -17,7 +17,7 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 ## Background
 
-The Ripple protocol provides a ledger shared across all nodes in the network.  Through a [process of consensus and validation](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
+The Ripple protocol provides a ledger shared across all nodes in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
 
 Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](concept-transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
@@ -484,5 +484,5 @@ Finally the server may show one or more gaps in the transaction history. The `co
 - [Transaction Format](reference-transaction-format.html)
 - [Transaction Cost](concept-transaction-cost.html)
 - Documentation of [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence)
-- [Overview of Ripple Ledger Consensus Process](http://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/)
-- [Reaching Consensus in Ripple](https://ripple.com/knowledge_center/reaching-consensus-in-ripple/)
+- [Overview of Ripple Ledger Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/)
+- [Reaching Consensus in Ripple](https://ripple.com/build/reaching-consensus-ripple/)

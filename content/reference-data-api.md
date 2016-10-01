@@ -2668,7 +2668,7 @@ Response:
 ## Get Validator ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
 
-Get details of a single validator in the [consensus network](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/). _(New in [v2.2.0][])_
+Get details of a single validator in the [consensus network](https://ripple.com/build/ripple-ledger-consensus-process/). _(New in [v2.2.0][])_
 
 
 #### Request Format ####

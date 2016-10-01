@@ -96,6 +96,13 @@
             </ul>
           </li>
           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
@@ -173,9 +180,9 @@
 <p>The Amendments system provides a means of introducing new features to the decentralized Ripple consensus network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires <strong>80% support for two weeks</strong> before it can apply.</p>
 <p>When an Amendment has been enabled, it applies permanently to all ledger versions after the one that included it. You cannot disable an Amendment, unless you introduce a new Amendment to do so.</p>
 <h2 id="background">Background</h2>
-<p>Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some <em>validators</em> (<code>rippled</code> servers <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">participating in consensus</a>) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.</p>
+<p>Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some <em>validators</em> (<code>rippled</code> servers <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">participating in consensus</a>) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.</p>
 <p>Amendments solve this problem, so that new features can be enabled only when enough validators support those features.</p>
-<p>Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> do not need Amendments.</p>
+<p>Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> do not need Amendments.</p>
 <h2 id="about-amendments">About Amendments</h2>
 <p>An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A <code>rippled</code> server that wants to use an amendment has code for two modes: without the amendment (old behavior) and with the amendment (new behavior).</p>
 <p>Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.</p>

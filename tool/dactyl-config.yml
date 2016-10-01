@@ -295,6 +295,25 @@ pages:
             - local
             - ripple.com
 
+    -   name: "GB-2015-06: Corrections to Autobridging"
+        category: Gateway Bulletins
+        html: gb-2015-06.html
+        md: gb-2015-06.md
+        ripple.com: https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
+
+    -   name: "GB-2015-05: Historical Ledger Query Migration"
+        category: Gateway Bulletins
+        html: gb-2015-05.html
+        md: gb-2015-05.md
+        ripple.com: https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
+        sidebar: toc
+        targets:
+            - local
+            - ripple.com
 
 # API tools are interactive software for interfacing with real APIs
     -   name: WebSocket API Tool

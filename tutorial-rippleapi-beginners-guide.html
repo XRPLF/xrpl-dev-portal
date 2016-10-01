@@ -96,6 +96,13 @@
             </ul>
           </li>
           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
@@ -318,7 +325,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 <p>The rest of the sample code is mostly more <a href="reference-rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on <a href="reference-rippleapi.html#api-events">RippleAPI events</a>, do not disconnect until you are done waiting for events.</p>
 <p>The <code>catch</code> method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard <code>console.error</code> function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.</p>
 <h1 id="waiting-for-validation">Waiting for Validation</h1>
-<p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
+<p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
 <pre><code>'use strict';
 /* import RippleAPI and support libraries */
 const RippleAPI = require('ripple-lib').RippleAPI;
