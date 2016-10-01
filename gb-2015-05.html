@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Fee Voting - Ripple Developer Portal</title>
+    <title>GB-2015-05: Historical Ledger Query Migration - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
@@ -134,23 +134,14 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
-                <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
-                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
-                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
-                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
-                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
-                <li class="level-2"><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
-                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-                <li class="level-2"><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+                <li class="level-1"><a href="index.html">Category: Gateway Bulletins</a></li>
+                <li class="level-2"><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                <li class="level-2"><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
             </ul>
             <hr />
             <h5>In this page:</h5>
             <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
-                <li class="level-1"><a href="#fee-voting">Fee Voting</a></li>
-<li class="level-2"><a href="#voting-process">Voting Process</a></li>
+                <li class="level-1"><a href="#gb-2015-05-historical-ledger-query-migration">GB-2015-05: Historical Ledger Query Migration</a></li>
 
             </ul>
         </div>
@@ -158,45 +149,34 @@
       </aside>
       <main class="main" role="main">
     <div class='content'>
-        <h1 id="fee-voting">Fee Voting</h1>
-<p>Validators can vote for changes to basic <a href="concept-transaction-cost.html">transaction cost</a> as well as <a href="concept-reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.</p>
-<p>Operators of <a href="tutorial-rippled-setup.html#running-a-validator"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file. <strong>Caution:</strong> insufficient requirements could expose the Ripple peer-to-peer network to denial-of-service attacks. The parameters you can set are as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Recommended Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reference_fee</td>
-<td>Amount of XRP, in <em>drops</em>, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers.</td>
-<td><code>10</code> (0.00001 XRP)</td>
-</tr>
-<tr>
-<td>account_reserve</td>
-<td>Minimum amount of XRP, in <em>drops</em>, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger.</td>
-<td><code>20000000</code> (20 XRP)</td>
-</tr>
-<tr>
-<td>owner_reserve</td>
-<td>How much more XRP, in <em>drops</em>, that an address must hold for <em>each</em> object it owns in the ledger.</td>
-<td><code>5000000</code> (5 XRP)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="voting-process">Voting Process</h2>
-<p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a href="https://en.wikipedia.org/wiki/Modulo_operation">modulo</a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
-<p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust.</p>
-<p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="reference-transaction-format.html#setfee">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert the same SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee psuedo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
-<p>In short:</p>
+        <h1 id="gb-2015-05-historical-ledger-query-migration">GB-2015-05: Historical Ledger Query Migration</h1>
+<p>In the past, Ripple Labs has supplied the rippled cluster,
+s1.ripple.com, with full historical ledgers and transactions for public
+access. Moving forward, we would like to inform our partners and
+community to migrate to the Historical Database. Instructions for
+migration are linked below. <strong>s1.ripple.com will no longer store full
+history and provide the ability to query for historical ledgers and
+transactions.</strong> In order to continue providing interested parties with
+historical data, Ripple Labs will be offering a REST based service that
+will provide the ability to query against all historical transactions
+based upon a specific Ripple address. This however will not address the
+ability to retrieve historical ledger states or historical order books.
+<strong>Action Required For Historical Ledger Queries</strong> Starting on <strong>May 1,
+2015</strong>, the public rippled cluster s1.ripple.com will store 1 month of
+ledger history. Please consider one of the options below if historical
+data is needed:</p>
 <ul>
-<li><strong>Flag ledger -1</strong>: Validators submit votes.</li>
-<li><strong>Flag ledger</strong>: Validators tally votes and decide what SetFee to include, if any.</li>
-<li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
-<li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee psuedotransaction achieved consensus.</li>
+<li>To access historical <strong>transactions</strong> per account (<code>account_tx</code> and <code>tx</code> calls) :<ul>
+<li>Use the Ripple Historical Database service (<a href="https://ripple.com/build/data-api-v2/">https://ripple.com/build/data-api-v2/</a>)</li>
+<li>Configure and start your own full history rippled server</li>
+<li>Use s2.ripple.com public cluster</li>
+</ul>
+</li>
+<li>To access historical <strong>ledgers</strong> and <strong>order books</strong><ul>
+<li>Configure and start your own full history rippled server</li>
+<li>Use s2.ripple.com public cluster.</li>
+</ul>
+</li>
 </ul>
     </div>
       </main>

@@ -96,6 +96,13 @@
             </ul>
           </li>
           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
@@ -213,7 +220,7 @@
 <li>Transactions in between, which get <a href="#queued-transactions">queued for a later ledger version</a>.</li>
 </ul>
 <h2 id="local-load-cost">Local Load Cost</h2>
-<p>Each <code>rippled</code> server maintains a cost threshold based on its current load. If you submit a transaction with a <code>Fee</code> value that is lower than current load-based transaction cost of the <code>rippled</code> server, that server neither applies nor relays the transaction. (<strong>Note:</strong> If you submit a transaction through an <a href="reference-rippled.html#connecting-to-rippled">admin connection</a>, the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive <a href="https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/">the consensus process</a> unless its <code>Fee</code> value meets the requirements of a majority of servers.</p>
+<p>Each <code>rippled</code> server maintains a cost threshold based on its current load. If you submit a transaction with a <code>Fee</code> value that is lower than current load-based transaction cost of the <code>rippled</code> server, that server neither applies nor relays the transaction. (<strong>Note:</strong> If you submit a transaction through an <a href="reference-rippled.html#connecting-to-rippled">admin connection</a>, the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> unless its <code>Fee</code> value meets the requirements of a majority of servers.</p>
 <h2 id="open-ledger-cost">Open Ledger Cost</h2>
 <p>The <code>rippled</code> server has a second mechanism for enforcing the transaction cost, called the <em>open ledger cost</em>. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost may be <a href="#queued-transactions">queued for a following ledger</a> instead.</p>
 <p>For each new ledger version, the server picks a soft limit on the number of transactions to be included in the open ledger, based on the number of transactions in the previous ledger. The open ledger cost is equal to the minimum un-scaled transaction cost until the number of transactions in the open ledger is equal to the soft limit. After that, the open ledger cost increases exponentially for each transaction included in the open ledger. For the next ledger, the server increases the soft limit if the current ledger contained more transactions than the soft limit, and decreases the soft limit if the consensus process takes more than 5 seconds.</p>

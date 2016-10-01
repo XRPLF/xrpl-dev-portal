@@ -101,6 +101,6 @@ In stand-alone mode, `rippled` does not communicate to other members of the peer
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
-In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/knowledge_center/the-ripple-ledger-consensus-process/).)
+In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/).)
 
 Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. **Note:** You can safely submit multiple transactions from a single address to a single ledger, because `rippled` sorts transactions from the same address in ascending order by [`Sequence` number](reference-transaction-format.html#common-fields).
