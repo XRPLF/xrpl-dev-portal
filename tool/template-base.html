@@ -8,12 +8,12 @@
     <title>{{ currentpage.name }} - {{ target.display_name }}</title>
 
     <!-- favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- jQuery -->
     <script src="assets/vendor/jquery-1.11.1.min.js"></script>
-    
+
     <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
     <link href="assets/css/ripple.css" rel="stylesheet" />
     <link href="assets/css/devportal.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
     <script src="assets/vendor/bootstrap.min.js"></script>
 
     {% block head %}
-    
+
     {% endblock %}
 
 </head>
@@ -54,18 +54,8 @@
             </ul>
           </li>
           {% endfor %}
-          
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-			  <li><a href="https://forum.ripple.com/viewforum.php?f=2">Forums</a></li>
-              <li><a href="https://www.bountysource.com/teams/ripple/bounties">Bounties</a></li>
-              <li><a href="https://ripplelabs.atlassian.net/">Bug Tracking</a></li>
-              <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-              <li><a href="https://ripple.com/press-releases/">Press Center</a></li>
-              <li><a href="https://ripple.com/brand-guidelines/">Brand Guidelines</a></li>
-            </ul>
-            <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+
+          <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
         </ul><!-- /#dev-menu -->
       </div><!-- /.subnav .container -->
     </div><!-- /.subnav -->
@@ -88,4 +78,3 @@
 {% block endbody %}{% endblock %}
 </body>
 </html>
-
