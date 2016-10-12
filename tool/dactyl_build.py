@@ -14,6 +14,7 @@ import re
 import yaml
 import argparse
 import logging
+import traceback
 
 # Necessary to copy static files to the output dir
 from distutils.dir_util import copy_tree
@@ -67,6 +68,8 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         assert(config["content_static_path"])
         if "prince_executable" not in config or not config["prince_executable"]:
             config["prince_executable"] = "prince" # A reasonable default
+        if "default_filters" not in config:
+            config["default_filters"] = []
 
         # Warn if any pages aren't part of a target
         for page in config["pages"]:
@@ -77,12 +80,12 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
                 else:
                     logging.warn("Page %s is not part of any targets." % page)
             if "md" in page and "name" not in page:
-                logging.info("Guessing page name for page %s" % page)
+                logging.debug("Guessing page name for page %s" % page)
                 page_path = os.path.join(config["content_path"], page["md"])
                 page["name"] = guess_title_from_md_file(page_path)
 
         # Figure out which filters we need and import them
-        filternames = set()
+        filternames = set(config["default_filters"])
         for target in config["targets"]:
             if "filters" in target:
                 filternames.update(target["filters"])
@@ -175,7 +178,6 @@ def make_adhoc_target(inpages, no_cover):
     t = {
         "name": ADHOC_TARGET,
         "display_name": "(Untitled)",
-        "sidebar": "toc" # should probably make this default anyway?
     }
 
     if not no_cover:
@@ -241,7 +243,7 @@ def guess_title_from_md_file(filepath):
     return os.path.basename(filepath)
 
 def get_filters_for_page(page, target=None):
-    ffp = set()
+    ffp = set(config["default_filters"])
     target = get_target(target)
     if "filters" in target:
         ffp.update(target["filters"])
@@ -249,7 +251,7 @@ def get_filters_for_page(page, target=None):
         ffp.update(page["filters"])
     return ffp
 
-def parse_markdown(page, target=None, pages=None):
+def parse_markdown(page, target=None, pages=None, bypass_errors=False):
     """Take a markdown string and output HTML for that content"""
     target = get_target(target)
     logging.info("Preparing page %s" % page["name"])
@@ -260,7 +262,8 @@ def parse_markdown(page, target=None, pages=None):
     # We'll apply these filters to the page
     page_filters = get_filters_for_page(page, target)
 
-    md = get_markdown_for_page(page["md"], pp_env=pp_env, target=target)
+    md = get_markdown_for_page(page["md"], pp_env=pp_env, target=target,
+                            bypass_errors=bypass_errors, currentpage=page)
 
     # Apply markdown-based filters here
     for filter_name in page_filters:
@@ -385,21 +388,31 @@ def get_categories(pages):
     return categories
 
 
-def read_markdown_local(filename, pp_env, target=None):
+def read_markdown_local(filename, pp_env, target=None, bypass_errors=False, currentpage={}):
     """Read in a markdown file and pre-process any templating lang in it,
        returning the parsed contents."""
     target = get_target(target)
     pages = get_pages(target)
     logging.info("reading markdown from file: %s" % filename)
-    try:
-        md_raw = pp_env.get_template(filename)
-        md_out = md_raw.render(target=target, pages=pages)
-    except TemplateError:
-        logging.warn("Error pre-processing page %s; trying to load it raw"
-                     % filename)
+
+    if config["skip_preprocessor"]:
         fpath = pp_env.loader.searchpath[0]
         with open(os.path.join(fpath,filename), "r") as f:
             md_out = f.read()
+    else:
+        try:
+            md_raw = pp_env.get_template(filename)
+            md_out = md_raw.render(target=target, pages=pages, currentpage=currentpage)
+        except TemplateError as e:
+            traceback.print_tb(e.__traceback__)
+            if bypass_errors:
+                logging.warn("Error pre-processing page %s; trying to load it raw"
+                             % filename)
+                fpath = pp_env.loader.searchpath[0]
+                with open(os.path.join(fpath,filename), "r") as f:
+                    md_out = f.read()
+            else:
+                exit("Error pre-processing page %s: %s" % (filename, e))
     return md_out
 
 
@@ -412,13 +425,21 @@ def read_markdown_remote(url):
         raise requests.RequestException("Status code for page was not 200")
 
 
-def get_markdown_for_page(md_where, pp_env=None, target=None):
+def get_markdown_for_page(md_where, pp_env=None, target=None, bypass_errors=False, currentpage={}):
     """Read/Fetch and pre-process markdown file"""
     target = get_target(target)
     if "http:" in md_where or "https:" in md_where:
-        return read_markdown_remote(md_where)
+        try:
+            mdr = read_markdown_remote(md_where)
+        except requests.RequestException as e:
+            if bypass_errors:
+                mdr = ""
+            else:
+                traceback.print_tb(e.__traceback__)
+                exit("Error fetching page %s: %s" % (md_where, e))
+        return mdr
     else:
-        return read_markdown_local(md_where, pp_env, target)
+        return read_markdown_local(md_where, pp_env, target, bypass_errors, currentpage=currentpage)
 
 
 def copy_static_files(template_static=True, content_static=True, out_path=None):
@@ -510,10 +531,9 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
 
             try:
                 html_content = parse_markdown(currentpage, target=target,
-                                              pages=pages)
+                                      pages=pages, bypass_errors=bypass_errors)
 
             except Exception as e:
-                import traceback
                 if bypass_errors:
                     traceback.print_tb(e.__traceback__)
                     logging.warning( ("Skipping page %s " +
@@ -527,7 +547,10 @@ def render_pages(target=None, for_pdf=False, bypass_errors=False):
         else:
             html_content = ""
 
-        if "sidebar" in currentpage and currentpage["sidebar"] == "toc":
+        # default to a table-of-contents sidebar...
+        if "sidebar" not in currentpage:
+            currentpage["sidebar"] = "toc"
+        if currentpage["sidebar"] == "toc":
             sidebar_content = toc_from_headers(html_content)
         else:
             sidebar_content = None
@@ -683,6 +706,8 @@ if __name__ == "__main__":
     parser.add_argument("--no_cover", "-n", action="store_true",
                         help="(with --pages only) Don't automatically add a "+\
                         "cover page / index.html file.")
+    parser.add_argument("--skip_preprocessor", action="store_true", default=False,
+                        help="Don't pre-process Jinja syntax in markdown files")
     parser.add_argument("--title", type=str, help="Override target display "+\
                         "name. Useful when passing multiple args to --pages.")
     parser.add_argument("--list_targets_only", "-l", action="store_true",
@@ -711,6 +736,8 @@ if __name__ == "__main__":
 
     if cli_args.out_dir:
         config["out_path"] = cli_args.out_dir
+
+    config["skip_preprocessor"] = cli_args.skip_preprocessor
 
     if cli_args.pages:
         make_adhoc_target(cli_args.pages, cli_args.no_cover)
