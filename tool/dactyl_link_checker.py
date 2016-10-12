@@ -4,12 +4,14 @@ import os
 import yaml
 import argparse
 import logging
+import re
 from bs4 import BeautifulSoup
-from time import time
+from time import time, sleep
 
 DEFAULT_CONFIG_FILE = "dactyl-config.yml"
-TIMEOUT_SECS = 5
+TIMEOUT_SECS = 9.1
 CHECK_IN_INTERVAL = 30
+FINAL_RETRY_DELAY = 4 * CHECK_IN_INTERVAL
 
 soupsCache = {}
 def getSoup(fullPath):
@@ -180,7 +182,32 @@ def checkLinks(offline=False):
                 broken_links.append( (fullPath, src) )
     return broken_links, num_links_checked
 
+def final_retry_links(broken_links):
+    """Give the broken remote links a little while to recover in case they're just flaps"""
+    broken_remote_links = [ (page,link) for page,link in broken_links
+                           if re.match(r"^https?://", link) ]
+    if not broken_remote_links:
+        logging.info("(no http/https broken links to retry)")
+        return
 
+    logging.info("Waiting %d seconds to retry broken %d remote links..."
+                % (FINAL_RETRY_DELAY, len(broken_remote_links)))
+    start_wait = time()
+    elapsed = 0
+    while elapsed < FINAL_RETRY_DELAY:
+        sleep(CHECK_IN_INTERVAL)
+        print("...")
+        elapsed = time() - start_wait
+
+    retry_cache = []
+    retry_broken = []
+    for page, link in broken_remote_links:
+        link_works = check_remote_url(link, page, retry_broken, retry_cache)
+        if link_works:
+            logging.info("Link %s in page %s is back online" % (link, page))
+            broken_links.remove( (page,link) )
+        else:
+            logging.info("Link %s in page %s is still down." % (link, page))
 
 def load_config(config_file=DEFAULT_CONFIG_FILE):
     """Reload config from a YAML file."""
@@ -202,6 +229,8 @@ if __name__ == "__main__":
                         help="Exit with error even on known problems")
     parser.add_argument("--config", "-c", type=str,
                         help="Specify path to an alternate config file.")
+    parser.add_argument("-n", "--no_final_retry", action="store_true",
+                        help="Don't wait and retry failed remote links at the end.")
     parser.add_argument("--quiet", "-q", action="store_true",
                         help="Reduce output to just failures and final report")
     args = parser.parse_args()
@@ -215,6 +244,11 @@ if __name__ == "__main__":
         load_config()
 
     broken_links, num_links_checked = checkLinks(args.offline)
+
+    if not args.no_final_retry and not args.offline:
+        final_retry_links(broken_links)
+        #^ sleeps for FINAL_RETRY_DELAY and then retries remote links
+        # Automatically removes from broken_links if they work now
 
     print("---------------------------------------")
     print("Link check report. %d links checked."%num_links_checked)
