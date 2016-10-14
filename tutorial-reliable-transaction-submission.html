@@ -175,14 +175,18 @@
 <p>Ripple provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
 <ol>
 <li>An account owner creates and signs a transaction.</li>
-<li>The owner submits the transaction to the network as a candidate transaction.</li>
+<li>The owner submits the transaction to the network as a candidate transaction.<ul>
 <li>Malformed or nonsensical transactions are rejected immediately.</li>
 <li>Well-formed transactions may provisionally succeed, then later fail.</li>
 <li>Well-formed transactions may provisionally fail, then later succeed.</li>
 <li>Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, by consuming a different offer and achieving a better or worse exchange rate than the provisional execution.)</li>
+</ul>
+</li>
 <li>Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, to enforce a cost for being propagated through the network.</li>
-<li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.</li>
+<li>The validated ledger includes the transaction, and its effects are reflected in the ledger state.<ul>
 <li>Transaction results are no longer provisional, success or failure is now final and immutable.</li>
+</ul>
+</li>
 </ol>
 <p class="devportal-callout note"><strong>Note:</strong> When submitting a transaction via <code>rippled</code>, a successful status code returned from a submit command indicates the <code>rippled</code> server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.</p>
 <p>APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, <em>immutable</em>, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.</p>
@@ -205,13 +209,17 @@
 <p><a href="https://en.wikipedia.org/wiki/Persistence_%28computer_science%29">Persist</a> details of the transaction before submission, in case of power failure or network failure before submission completes.  On restart, the persisted values make it possible to verify the status of the transaction.</p>
 <p>The submission process:</p>
 <ol>
-<li>Construct and sign the transaction</li>
+<li>Construct and sign the transaction<ul>
 <li>Include <code>LastLedgerSequence</code> parameter</li>
-<li>Persist the transaction details, saving:</li>
+</ul>
+</li>
+<li>Persist the transaction details, saving:<ul>
 <li>Transaction hash</li>
 <li><code>LastLedgerSequence</code></li>
 <li>Sender address and sequence number</li>
 <li>Application-specific data, as needed</li>
+</ul>
+</li>
 <li>Submit the transaction</li>
 </ol>
 <h3 id="verification">Verification</h3>
