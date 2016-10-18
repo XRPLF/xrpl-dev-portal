@@ -9989,9 +9989,14 @@ rippled server_info
 <td align="left">The version number of the running <code>rippled</code> version.</td>
 </tr>
 <tr>
+<td align="left"><code>closed_ledger</code></td>
+<td align="left">Object</td>
+<td align="left">(May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes <code>validated_ledger</code> instead. The member fields are the same as the <code>validated_ledger</code> field.</td>
+</tr>
+<tr>
 <td align="left"><code>complete_ledgers</code></td>
 <td align="left">String</td>
-<td align="left">Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432".</td>
+<td align="left">Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. This may be a disjoint sequence, for example <code>24900901-24900984,24901116-24901158</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>hostid</code></td>
@@ -10026,7 +10031,7 @@ rippled server_info
 <tr>
 <td align="left"><code>load_factor</code></td>
 <td align="left">Number</td>
-<td align="left">The load factor the server is currently enforcing, as a multiplier on the base transaction cost. For example, at <code>1000</code> load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor. <strong>Note:</strong> This <code>load_factor</code> is calculated as the ratio of the <code>load_factor</code> and the <code>load_base</code> that are reported by the <a href="#server-state"><code>server_state</code> command</a></td>
+<td align="left">The load factor the server is currently enforcing, as a multiplier on the base transaction cost. For example, at <code>1000</code> load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the <a href="concept-transaction-cost.html#local-load-cost">individual server's load factor</a>, the cluster's load factor, the <a href="concept-transaction-cost.html#open-ledger-cost">open ledger cost</a> and the overall network's load factor.</td>
 </tr>
 <tr>
 <td align="left"><code>load_factor_local</code></td>
@@ -10054,6 +10059,11 @@ rippled server_info
 <td align="left">(May be omitted) The current multiplier to the <a href="concept-transaction-cost.html">transaction cost</a> that a transaction must pay to get into the queue, if the queue is full. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></td>
 </tr>
 <tr>
+<td align="left"><code>load_factor_server</code></td>
+<td align="left">Number</td>
+<td align="left">(May be omitted) The load factor the server is enforcing, not including the <a href="concept-transaction-cost.html#open-ledger-cost">open ledger cost</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><code>peers</code></td>
 <td align="left">Number</td>
 <td align="left">How many other <code>rippled</code> servers the node is currently connected to.</td>
@@ -10079,12 +10089,12 @@ rippled server_info
 <td align="left">A map of various <a href="#possible-server-states">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <a href="https://github.com/ripple/rippled/releases/tag/0.30.1" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">state_accounting.*.duration_us</td>
+<td align="left"><code>state_accounting.*.duration_us</code></td>
 <td align="left">String</td>
 <td align="left">The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <a href="https://github.com/ripple/rippled/releases/tag/0.30.1" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">state_accounting.*.transitions</td>
+<td align="left"><code>state_accounting.*.transitions</code></td>
 <td align="left">Number</td>
 <td align="left">The number of times the server has transitioned into this state. <a href="https://github.com/ripple/rippled/releases/tag/0.30.1" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/></a></td>
 </tr>
@@ -10096,17 +10106,17 @@ rippled server_info
 <tr>
 <td align="left"><code>validated_ledger</code></td>
 <td align="left">Object</td>
-<td align="left">Information about the fully-validated ledger with the highest <a href="#ledger-index">Ledger Index</a> (the most recent)</td>
+<td align="left">(May be omitted) Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes <code>closed_ledger</code> instead.</td>
 </tr>
 <tr>
 <td align="left"><code>validated_ledger.age</code></td>
 <td align="left">Number</td>
-<td align="left">The time since the ledger was closed, in seconds</td>
+<td align="left">The time since the ledger was closed, in seconds.</td>
 </tr>
 <tr>
 <td align="left"><code>validated_ledger.base_fee_xrp</code></td>
 <td align="left">Number</td>
-<td align="left">Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005</td>
+<td align="left">Base fee, in XRP. This may be represented in scientific notation such as <code>1e-05</code> for 0.00005.</td>
 </tr>
 <tr>
 <td align="left"><code>validated_ledger.hash</code></td>
@@ -10135,6 +10145,7 @@ rippled server_info
 </tr>
 </tbody>
 </table>
+<p class="devportal-callout note"><strong>Note:</strong> If the <code>closed_ledger</code> field is present and has a small <code>seq</code> value (less than 8 digits), that indicates <code>rippled</code> does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.</p>
 <h4 id="possible-errors-30">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
@@ -10379,6 +10390,11 @@ rippled server_state
 <td align="left">Range expression indicating the sequence numbers of the ledger versions the local <code>rippled</code> has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432".</td>
 </tr>
 <tr>
+<td align="left"><code>closed_ledger</code></td>
+<td align="left">Object</td>
+<td align="left">(May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes <code>validated_ledger</code> instead. The member fields are the same as the <code>validated_ledger</code> field.</td>
+</tr>
+<tr>
 <td align="left"><code>io_latency_ms</code></td>
 <td align="left">Number</td>
 <td align="left">Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the <code>rippled</code> server is probably having serious load issues.</td>
@@ -10406,7 +10422,7 @@ rippled server_state
 <tr>
 <td align="left"><code>load_factor</code></td>
 <td align="left">Number</td>
-<td align="left">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, and the overall network's load factor.</td>
+<td align="left">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, the <a href="concept-transaction-cost.html#open-ledger-cost">open ledger cost</a>, and the overall network's load factor.</td>
 </tr>
 <tr>
 <td align="left"><code>load_factor_fee_escalation</code></td>
@@ -10422,6 +10438,11 @@ rippled server_state
 <td align="left"><code>load_factor_fee_reference</code></td>
 <td align="left">Integer</td>
 <td align="left">(May be omitted) The <a href="concept-transaction-cost.html">transaction cost</a> with no load scaling, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><code>load_factor_server</code></td>
+<td align="left">Number</td>
+<td align="left">(May be omitted) The load factor the server is enforcing, not including the <a href="concept-transaction-cost.html#open-ledger-cost">open ledger cost</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>peers</code></td>
@@ -10466,7 +10487,7 @@ rippled server_state
 <tr>
 <td align="left"><code>validated_ledger</code></td>
 <td align="left">Object</td>
-<td align="left">Information about the fully-validated ledger with the highest sequence number (the most recent)</td>
+<td align="left">(May be omitted) Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes <code>closed_ledger</code> instead.</td>
 </tr>
 <tr>
 <td align="left"><code>validated_ledger.base_fee</code></td>
