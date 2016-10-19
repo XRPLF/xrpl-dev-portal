@@ -225,9 +225,19 @@
 <ul>
 <li>Transactions must be properly-formed and <a href="reference-transaction-format.html#authorizing-transactions">authorized</a> with valid signatures.</li>
 <li>Transactions with an <code>AccountTxnID</code> field cannot be queued.</li>
-<li>A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the <code>Fee</code> fields and the sum of the XRP that each transaction could send. If a transaction affects how the address authorizes accounts, no other transactions from the same address can be queued behind it. <em>(New in <a href="https://github.com/ripple/rippled/releases/tag/0.32.0"><code>rippled</code> 0.32.0</a>)</em></li>
+<li>A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the <code>Fee</code> fields and the sum of the XRP that each transaction could send. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></li>
+<li>If a transaction affects how the sending address authorizes accounts, no other transactions from the same address can be queued behind it. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></li>
 <li>If the transaction includes a <code>LastLedgerSequence</code> field, the value of that field must be at least <strong>the current ledger index + 2</strong>.</li>
 </ul>
+<h4 id="fee-averaging">Fee Averaging</h4>
+<p><a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a></p>
+<p>If a sending address has one or more transactions queued, that sender can "push" the existing queued transactions into the open ledger by submitting a new transaction with a high enough transaction cost to pay for all of them. Specifically, the new transaction must increase the average transaction cost of the queued transactions from the same sending address, including itself, so that each of those transactions would be included in the open ledger if the <code>Fee</code> value of each of those transactions were equal to the average. The transactions must still follow the other <a href="#queuing-restrictions">queuing restrictions</a> and the sending address must have enough XRP to pay the transaction costs of all the queued transactions.</p>
+<p>This feature helps you work around a particular situation. If you submitted one or more transactions with a low cost, which got queued, you cannot send new transactions from the same address unless you do one of the following:</p>
+<ul>
+<li>Wait for the queued transactions to be included in a validated ledger, <em>or</em></li>
+<li><a href="reference-transaction-format.html#canceling-or-skipping-a-transaction">Cancel the queued transactions</a> by submitting a new transaction with the same sequence number.</li>
+</ul>
+<p>If the transaction cost of the queued transactions is low, you may have to wait a long time for a validated ledger to include the queued transactions, because other senders can "cut in line" by submitting transactions with higher transaction costs. Since signed transactions are immutable, you cannot increase the transaction cost of the queued transactions to increase their priority. If you do not want to invalidate the previously submitted transactions, fee averaging provides a workaround. If you increase the transaction cost of your new transaction to compensate, you can ensure the queued transactions are included in a validated ledger right away.</p>
 <h2 id="reference-transaction-cost">Reference Transaction Cost</h2>
 <p>The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary <a href="concept-transaction-cost.html">transaction cost</a> before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as <a href="reference-transaction-format.html#multi-signing">multi-signed transactions</a>, require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.</p>
 <h3 id="fee-levels">Fee Levels</h3>
@@ -307,6 +317,7 @@
 <p>When the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, <code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
 <h2 id="changing-the-transaction-cost">Changing the Transaction Cost</h2>
 <p>The Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+<!-- rippled release notes links -->
     </div>
       </main>
   </div>
