@@ -70,6 +70,8 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
             config["prince_executable"] = "prince" # A reasonable default
         if "default_filters" not in config:
             config["default_filters"] = []
+        if "skip_preprocessor" not in config:
+            config["skip_preprocessor"] = False
 
         # Warn if any pages aren't part of a target
         for page in config["pages"]:
