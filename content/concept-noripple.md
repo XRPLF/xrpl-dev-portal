@@ -12,7 +12,7 @@ If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the mon
 
 ![Charlie --($13)-- Alice --($17)-- Bob](img/noripple-02.png)
 
-We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the Ripple Consensus Ledger. Rippling occurs when are linked by trust lines that use the same [currency code](reference-rippled.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
+We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the Ripple Consensus Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code](reference-rippled.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
 ## Justification ##
 
