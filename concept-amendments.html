@@ -257,16 +257,6 @@ TrustSetAuth
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flow">Flow</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a href="https://ripple.com/dev-blog/rippled-version-0-33-0-released/" title="Expected: 2016-10-20"><img alt="Expected: 2016-10-20" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2016--10--20-blue.svg"/></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#flowv2">FlowV2</a></td>
-<td align="left">v0.32.1</td>
-<td align="left"><a href="https://ripple.com/dev-blog/flowv2-amendment-vetoed/" title="Vetoed: Removed in v0.33.0"><img alt="Vetoed: Removed in v0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.33.0-red.svg"/></a></td>
-</tr>
-<tr>
 <td align="left"><a href="#tickets">Tickets</a></td>
 <td align="left">v0.31.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
@@ -275,6 +265,16 @@ TrustSetAuth
 <td align="left"><a href="#suspay">SusPay</a></td>
 <td align="left">v0.31.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flow">Flow</a></td>
+<td align="left">v0.33.0</td>
+<td align="left"><a href="https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" title="Enabled: 2016-10-21"><img alt="Enabled: 2016-10-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--10--21-green.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flowv2">FlowV2</a></td>
+<td align="left">v0.32.1</td>
+<td align="left"><a href="https://ripple.com/dev-blog/flowv2-amendment-vetoed/" title="Vetoed: Removed in v0.33.0"><img alt="Vetoed: Removed in v0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.33.0-red.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#trustsetauth">TrustSetAuth</a></td>
@@ -329,11 +329,11 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
-<td align="left">Open for voting. Expected to be enabled 2016-10-20.</td>
+<td align="left">Enabled</td>
 </tr>
 </tbody>
 </table>
-<p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the <a href="#flowv2">FlowV2</a> amendment.</p>
+<p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the <a href="https://ripple.com/dev-blog/flowv2-amendment-vetoed/">FlowV2</a> amendment.</p>
 <p>The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
 <h2 id="flowv2">FlowV2</h2>
 <table>
@@ -346,11 +346,11 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
-<td align="left">Failed to hold a majority. To be removed.</td>
+<td align="left">Withdrawn</td>
 </tr>
 </tbody>
 </table>
-<p>This amendment was intended to replace the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. However, Ripple <a href="https://github.com/ripple/rippled/commit/b92a7d415eecb07ace2b72b6792d9dfa489c5a04">found a flaw in the FlowV2 amendment</a> during the voting period, so key validators vetoed the Amendment and it lost its majority. Ripple plans to remove the FlowV2 amendment in future versions of <code>rippled</code> and replace it with the <a href="#flow">Flow</a> amendment.</p>
+<p>This is a previous version of the <a href="#flow">Flow</a> amendment. It was <a href="https://ripple.com/dev-blog/flowv2-amendment-vetoed/">rejected due to a bug</a> and removed in version 0.33.0.</p>
 <h2 id="multisign">MultiSign</h2>
 <table>
 <thead>
