@@ -117,7 +117,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets](#tickets)             | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SusPay](#suspay)               | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Flow](#flow)                   | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
+| [FlowV2](#flowv2)               | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
 | [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign](#multisign)         | v0.31.0    | [Enabled: 2016-06-27](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation](#feeescalation) | v0.31.0    | [Enabled: 2016-05-19](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
@@ -151,6 +151,16 @@ A transaction remains in the queue until one of the following happens:
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) amendment.
 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
+
+
+## FlowV2 ##
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Withdrawn |
+
+This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) and removed in version 0.33.0.
+
 
 ## MultiSign ##
 
