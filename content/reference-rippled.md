@@ -12,7 +12,7 @@ The core peer-to-peer server that manages the Ripple Consensus Ledger (RCL) is c
 
 If you want to communicate directly with a `rippled` server, you can use either the WebSocket API or the JSON-RPC API. Both APIs use the same list of commands, with almost entirely the same parameters in each command. Alternatively, you can use [RippleAPI](reference-rippleapi.html), which is a simplified JavaScript client library, which communicates directly with a `rippled` server from [Node.js](http://nodejs.org/) or a web browser.
 
-* The WebSocket API uses the [WebSocket protocol](http://www.html5rocks.com/en/tutorials/websockets/basics/), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The `rippled` server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.
+* The WebSocket API uses the [WebSocket protocol](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The `rippled` server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.
 * The JSON-RPC API relies on request-response communication via HTTP or HTTPS. (The `rippled` server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.
 * The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server. This is only intended for administrative purposes, and is not a supported API.
 
@@ -30,13 +30,13 @@ Before you can run any commands against a `rippled` server, you must know which 
 
 Alternatively, you can [run your own local copy of `rippled`](tutorial-rippled-setup.html). This is required if you want to access any of the [Admin Commands](#list-of-admin-commands). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, to access admin functionality, you must connect from a port/IP address marked as admin in the config file.
 
-The [example config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L831-L854) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
+The [example config file](https://github.com/ripple/rippled/blob/release/doc/rippled-example.cfg#L907-L930) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
 
 
 ### WebSocket API ###
 
-If you are looking to try out some methods on the Ripple Consensus Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](ripple-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can build your own client in Javascript to run in a browser (See [this example](http://www.websocket.org/echo.html) ) or possibly [Node.js](https://github.com/einaros/ws).
+If you are looking to try out some methods on the Ripple Consensus Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](ripple-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client in the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications) or [in Node.js](https://www.npmjs.com/package/ws).
 
 #### Request Formatting ####
 
