@@ -69,8 +69,23 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 
 * Transactions must be properly-formed and [authorized](reference-transaction-format.html#authorizing-transactions) with valid signatures.
 * Transactions with an `AccountTxnID` field cannot be queued.
-* A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. If a transaction affects how the address authorizes accounts, no other transactions from the same address can be queued behind it. _(New in [`rippled` 0.32.0](https://github.com/ripple/rippled/releases/tag/0.32.0))_
+* A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. [New in: rippled 0.32.0][]
+* If a transaction affects how the sending address authorizes accounts, no other transactions from the same address can be queued behind it. [New in: rippled 0.32.0][]
 * If the transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
+
+#### Fee Averaging ####
+
+[New in: rippled 0.33.0][]
+
+If a sending address has one or more transactions queued, that sender can "push" the existing queued transactions into the open ledger by submitting a new transaction with a high enough transaction cost to pay for all of them. Specifically, the new transaction must increase the total transaction cost of the queued transactions from the same sending address, including itself, to cover the open ledger cost of each transaction as it gets added to the ledger. The total must include the increased open ledger cost for each new transaction. The transactions must still follow the other [queuing restrictions](#queuing-restrictions) and the sending address must have enough XRP to pay the transaction costs of all the queued transactions.
+
+This feature helps you work around a particular situation. If you submitted one or more transactions with a low cost, which got queued, you cannot send new transactions from the same address unless you do one of the following:
+
+* Wait for the queued transactions to be included in a validated ledger, _or_
+* [Cancel the queued transactions](reference-transaction-format.html#canceling-or-skipping-a-transaction) by submitting a new transaction with the same sequence number.
+
+Queued transactions can wait in the queue for a theoretically unlimited amount of time, unless they have the `LastLedgerSequence` field set, because other senders can "cut in line" by submitting transactions with higher transaction costs. Since signed transactions are immutable, you cannot increase the transaction cost of the queued transactions to increase their priority. If you do not want to invalidate the previously submitted transactions, fee averaging provides a workaround. If you increase the transaction cost of your new transaction to compensate, you can ensure the queued transactions are included in an open ledger right away.
+
 
 ## Reference Transaction Cost ##
 
@@ -159,3 +174,5 @@ When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is ena
 ## Changing the Transaction Cost ##
 
 The Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
+
+{% include 'snippets/rippled_versions.md' %}
