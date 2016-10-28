@@ -17,7 +17,7 @@ The _**reserve requirement**_ is a minimum amount of XRP that an account must ho
 
 _**Transfer fees**_ are optional percentage fees that issuers can charge to transfer the currencies they issue to other addresses within the Ripple Consensus Ledger. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
-_**Trust line quality**_ is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations are like charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.
+_**Trust line quality**_ is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations that are like charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.
 
 
 ## Outside the Ledger ##
