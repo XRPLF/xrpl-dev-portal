@@ -5,10 +5,12 @@
     border-left-width: 4px;
     padding: 5px;
     padding-left: 25px;
+    page-break-inside: avoid;
 }
 
 .devportal-callout > strong:first-child {
     display: block;
+    page-break-after: avoid;
 }
 
 .devportal-callout.tip {
