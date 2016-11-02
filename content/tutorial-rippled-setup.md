@@ -218,10 +218,12 @@ Running a `rippled` validator that participates in the Consensus process is simp
             "validation_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4"
         }
 
-4. Add the generated validator signing key from above to your `rippled.cfg`:
+4. Edit your `rippled.cfg` file to add the `validation_seed` value you generated in step 3:
 
         [validation_seed]
         ssdecohJMDPFuUPDkmG1w4objZyp4
+
+    **Warning:** Be sure to use your own unique random seed, and keep it secure! If others know your `validation_seed`, they can forge validations from your server.
 
 5. Restart `rippled` validator:
 

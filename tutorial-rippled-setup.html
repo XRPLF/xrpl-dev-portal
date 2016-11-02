@@ -379,10 +379,11 @@ $ sudo apt-get install yum-utils alien
 </code></pre>
 </li>
 <li>
-<p>Add the generated validator signing key from above to your <code>rippled.cfg</code>:</p>
+<p>Edit your <code>rippled.cfg</code> file to add the <code>validation_seed</code> value you generated in step 3:</p>
 <pre><code>[validation_seed]
 ssdecohJMDPFuUPDkmG1w4objZyp4
 </code></pre>
+<p class="devportal-callout warning"><strong>Warning:</strong> Be sure to use your own unique random seed, and keep it secure! If others know your <code>validation_seed</code>, they can forge validations from your server.</p>
 </li>
 <li>
 <p>Restart <code>rippled</code> validator:</p>
