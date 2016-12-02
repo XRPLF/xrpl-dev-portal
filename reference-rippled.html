@@ -266,7 +266,7 @@
 <h3 id="websocket-api">WebSocket API</h3>
 <p>If you are looking to try out some methods on the Ripple Consensus Ledger, you can skip writing your own WebSocket code and go straight to using the API at the <a href="ripple-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">build your own client in the browser</a> or <a href="https://www.npmjs.com/package/ws">in Node.js</a>.</p>
 <h4 id="request-formatting">Request Formatting</h4>
-<p>After you open a WebSocket to the <code>rippled</code> server, you can send commands as a <a href="http://www.w3schools.com/json/">JSON</a> object, with the following attributes:</p>
+<p>After you open a WebSocket to the <code>rippled</code> server, you can send commands as a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> object, with the following attributes:</p>
 <ul>
 <li>Put command name in top-level <code>"command"</code> field</li>
 <li>All the relevant parameters for the command are also in the top level</li>
@@ -303,7 +303,7 @@
 <p>To make a JSON-RPC request, send an HTTP <strong>POST</strong> request to the root path (<code>/</code>) on the port and IP where the <code>rippled</code> server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS v1.2. For security reasons, <code>rippled</code> <em>does not support</em> SSL v3 or earlier.</p>
 <p>Always include a <code>Content-Type</code> header with the value <code>application/json</code>.</p>
 <p>If you plan on making multiple requests, use <a href="http://tools.ietf.org/html/rfc7230#section-6.3">Keep-Alives</a> so that you do not have to close and re-open the connection in between requests.</p>
-<p>Send request body as a <a href="http://www.w3schools.com/json/">JSON</a> object with the following attributes:</p>
+<p>Send request body as a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> object with the following attributes:</p>
 <ul>
 <li>Put the command in the top-level <code>"method"</code> field</li>
 <li>Include a top-level <code>"params"</code> field. The contents of this field should be <strong>a one-item array</strong> containing only a nested JSON object with all the parameters for the command.</li>

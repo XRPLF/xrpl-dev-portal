@@ -1,6 +1,6 @@
 # Transactions Overview #
 
-A _Transaction_ is the only way to modify the Ripple Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost](concept-transaction-cost).
+A _Transaction_ is the only way to modify the Ripple Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost](concept-transaction-cost.html).
 
 * [Authorizing Transactions](#authorizing-transactions)
 * [Common Fields of All Transactions](#common-fields)
