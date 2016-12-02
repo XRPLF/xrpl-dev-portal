@@ -134,8 +134,6 @@ If a financial institution suspects that funds may be related to criminal activi
 
 See also:
 
-- [SAR guidance for US-based financial institutions](https://www.fincen.gov/news_room/rp/sar_guidance.html)
-
 - [FATF Recommendation 16: Reporting of suspicious transactions and compliance](http://www.un.org/en/sc/ctc/docs/bestpractices/fatf/40recs-moneylaundering/fatf-rec16.pdf)
 
 ### Travel Rule

@@ -40,7 +40,7 @@ If you are looking to try out some methods on the Ripple Consensus Ledger, you c
 
 #### Request Formatting ####
 
-After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](http://www.w3schools.com/json/) object, with the following attributes:
+After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object, with the following attributes:
 
 * Put command name in top-level `"command"` field
 * All the relevant parameters for the command are also in the top level
@@ -72,7 +72,7 @@ Always include a `Content-Type` header with the value `application/json`.
 
 If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org/html/rfc7230#section-6.3) so that you do not have to close and re-open the connection in between requests.
 
-Send request body as a [JSON](http://www.w3schools.com/json/) object with the following attributes:
+Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following attributes:
 
 * Put the command in the top-level `"method"` field
 * Include a top-level `"params"` field. The contents of this field should be **a one-item array** containing only a nested JSON object with all the parameters for the command.
