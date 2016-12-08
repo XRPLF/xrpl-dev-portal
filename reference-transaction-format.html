@@ -1164,13 +1164,13 @@
 <h2 id="paymentchannelclaim">PaymentChannelClaim</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp" title="Source">[Source]<br/></a></p>
 <p><em>Requires the <a href="concept-amendments.html#paychan">PayChan Amendment</a>.</em></p>
-<p>Claim XRP from a payment channel, adjust its expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:</p>
+<p>Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:</p>
 <p>The <strong>source address</strong> of a channel can:</p>
 <ul>
 <li>Send XRP from the channel to the destination with <em>or without</em> a signed Claim.</li>
 <li>Set the channel to expire as soon as the channel's <code>SettleDelay</code> has passed.</li>
 <li>Clear a pending <code>Expiration</code> time.</li>
-<li>Close a channel immediately if it has no XRP remaining in it.</li>
+<li>Close a channel immediately, with or without processing a claim first. The source address cannot close the channel immediately if the channel has XRP remaining.</li>
 </ul>
 <p>The <strong>destination address</strong> of a channel can:</p>
 <ul>
@@ -1211,7 +1211,7 @@
 <td align="left"><code>Balance</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left"><em>(Optional)</em> Total amount of XRP, in drops, delivered by this channel after processing this claim. Required in order to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the <code>Amount</code> of the signed claim. Must be provided except when closing the channel.</td>
+<td align="left"><em>(Optional)</em> Total amount of XRP, in drops, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the <code>Amount</code> of the signed claim. Must be provided except when closing the channel.</td>
 </tr>
 <tr>
 <td align="left"><code>Amount</code></td>
@@ -1255,7 +1255,7 @@
 <td align="left"><code>tfClose</code></td>
 <td align="left">0x00020000</td>
 <td align="left">131072</td>
-<td align="left">Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after <code>SettleDelay</code> seconds have passed. (Specifically, this sets the sets the <code>Expiration</code> of the channel to the close time of the previous ledger plus the channel's <code>SettleDelay</code> time, unless the channel already has a sooner <code>Expiration</code> time.)</td>
+<td align="left">Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after <code>SettleDelay</code> seconds have passed. (Specifically, this sets the <code>Expiration</code> of the channel to the close time of the previous ledger plus the channel's <code>SettleDelay</code> time, unless the channel already has an earlier <code>Expiration</code> time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address.</td>
 </tr>
 </tbody>
 </table>
@@ -1314,7 +1314,7 @@
 <td align="left"><code>CancelAfter</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed sooner than this time but not later.</td>
+<td align="left">The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time.</td>
 </tr>
 <tr>
 <td align="left"><code>DestinationTag</code></td>
@@ -1369,7 +1369,7 @@
 <td align="left"><code>Expiration</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This cannot be sooner than the close time of the previous ledger plus the <code>SettleDelay</code> of the channel. After the <code>Expiration</code> time, the channel closes automatically and returns any unspent XRP to the sender. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.)</td>
+<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This cannot be earlier than the close time of the previous ledger plus the <code>SettleDelay</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.)</td>
 </tr>
 </tbody>
 </table>

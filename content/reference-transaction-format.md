@@ -730,14 +730,14 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 _Requires the [PayChan Amendment](concept-amendments.html#paychan)._
 
-Claim XRP from a payment channel, adjust its expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
+Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
 The **source address** of a channel can:
 
 - Send XRP from the channel to the destination with _or without_ a signed Claim.
 - Set the channel to expire as soon as the channel's `SettleDelay` has passed.
 - Clear a pending `Expiration` time.
-- Close a channel immediately if it has no XRP remaining in it.
+- Close a channel immediately, with or without processing a claim first. The source address cannot close the channel immediately if the channel has XRP remaining.
 
 The **destination address** of a channel can:
 
@@ -765,7 +765,7 @@ Example PaymentChannelClaim:
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `Channel`   | String    | Hash256           | The unique ID of the channel, as a 64-character hexadecimal string. |
-| `Balance`   | String    | Amount            | _(Optional)_ Total amount of XRP, in drops, delivered by this channel after processing this claim. Required in order to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
+| `Balance`   | String    | Amount            | _(Optional)_ Total amount of XRP, in drops, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
 | `Amount`    | String    | Amount            | _(Optional)_ The amount of XRP, in drops, authorized by the `Signature`. This must match the amount in the signed message.  |
 | `Signature` | String    | VariableLength    | _(Optional)_ The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
 | `PublicKey` | String    | PubKey            | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the PubKey so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
@@ -777,7 +777,7 @@ Transactions of the PaymentChannelClaim type support additional values in the [`
 | Flag Name | Hex Value  | Decimal Value | Description                         |
 |:----------|:-----------|:--------------|:------------------------------------|
 | `tfRenew` | 0x00010000 | 65536         | Clear the channel's `Expiration` time. (`Expiration` is different from the channel's immutable `CancelAfter` time.) Only the source address of the payment channel can use this flag. |
-| `tfClose` | 0x00020000 | 131072        | Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after `SettleDelay` seconds have passed. (Specifically, this sets the sets the `Expiration` of the channel to the close time of the previous ledger plus the channel's `SettleDelay` time, unless the channel already has a sooner `Expiration` time.) |
+| `tfClose` | 0x00020000 | 131072        | Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after `SettleDelay` seconds have passed. (Specifically, this sets the `Expiration` of the channel to the close time of the previous ledger plus the channel's `SettleDelay` time, unless the channel already has an earlier `Expiration` time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address. |
 
 
 
@@ -810,7 +810,7 @@ Example PaymentChannelCreate:
 | `Destination`    | String    | AccountID         | Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel. |
 | `SettleDelay`    | Number    | UInt32            | Amount of time the source address must wait before closing the channel if it has unclaimed XRP. |
 | `PublicKey`      | String    | PubKey            | The public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. |
-| `CancelAfter`    | Number    | UInt32            | The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed sooner than this time but not later. |
+| `CancelAfter`    | Number    | UInt32            | The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
 | `DestinationTag` | Number    | UInt32            | (Optional) Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 | `SourceTag`      | Number    | UInt32            | (Optional) Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address. |
 
@@ -839,7 +839,7 @@ Example PaymentChannelFund:
 |:-------------|:----------|:------------------|:------------------------------|
 | `Channel`    | String    | Hash256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
 | `Amount`     | String    | Amount            | How many [drops of XRP][Currency Amount] to add to the channel. To set the expiration for a channel without adding more XRP, set this to `"0"`. |
-| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in seconds since the Ripple Epoch. This cannot be sooner than the close time of the previous ledger plus the `SettleDelay` of the channel. After the `Expiration` time, the channel closes automatically and returns any unspent XRP to the sender. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) |
+| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in seconds since the Ripple Epoch. This cannot be earlier than the close time of the previous ledger plus the `SettleDelay` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) |
 
 
 
