@@ -148,6 +148,8 @@
 <li class="level-2"><a href="#offer">Offer</a></li>
 <li class="level-3"><a href="#offer-flags">Offer Flags</a></li>
 <li class="level-3"><a href="#offer-index-format">Offer Index Format</a></li>
+<li class="level-2"><a href="#paychannel">PayChannel</a></li>
+<li class="level-3"><a href="#paychannel-index-format">PayChannel Index Format</a></li>
 <li class="level-2"><a href="#ripplestate">RippleState</a></li>
 <li class="level-3"><a href="#ripplestate-flags">RippleState Flags</a></li>
 <li class="level-3"><a href="#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a></li>
@@ -270,7 +272,9 @@
 <li><a href="#accountroot"><strong>AccountRoot</strong> - The settings, XRP balance, and other metadata for one account.</a></li>
 <li><a href="#directorynode"><strong>DirectoryNode</strong> - Contains links to other nodes.</a></li>
 <li><a href="#offer"><strong>Offer</strong> - An offer to exchange currencies, known in finance as an <em>order</em>.</a></li>
+<li><a href="#paychannel"><strong>PayChannel</strong> - A channel for asynchronous XRP payments.</a></li>
 <li><a href="#ripplestate"><strong>RippleState</strong> - Links two accounts, tracking the balance of one currency between them. The concept of a <em>trust line</em> is really an abstraction of this node type.</a></li>
+<li><a href="#signerlist"><strong>SignerList</strong> - A list of addresses for multi-signing transactions.</a></li>
 </ul>
 <p>Each ledger node consists of several fields. In the peer protocol that <code>rippled</code> servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other <a href="reference-rippled.html"><code>rippled</code> APIs</a>, ledger nodes are represented as JSON objects.</p>
 <h2 id="accountroot">AccountRoot</h2>
@@ -776,6 +780,132 @@
 <li>The Offer space key (<code>o</code>)</li>
 <li>The AccountID of the account placing the offer</li>
 <li>The Sequence number of the transaction that created the offer</li>
+</ul>
+<h2 id="paychannel">PayChannel</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L134" title="Source">[Source]<br/></a></p>
+<p><em>(Requires the <a href="concept-amendments.html#paychan">PayChan Amendment</a>.)</em></p>
+<p>The <code>PayChannel</code> node type represents a payment channel, which is a structure that makes it easier to perform asynchronous, rapid payments and micropayments of XRP. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.</p>
+<p>The <code>PaymentChannelCreate</code> transaction type creates a <code>PayChannel</code> node. The PaymentChannelFund and PaymentChannelClaim transaction types modify existing <code>PayChannel</code> nodes.</p>
+<p>When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction that accesses it after the expiration. Therefore, to "finalize" the closing of an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.</p>
+<!-- -->
+<p>Example PayChannel node:</p>
+<pre><code class="json">{
+    "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
+    "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": "4325800",
+    "Balance": "2323423",
+    "PublicKey": "32D2471DB72B27E3310F355BB33E339BF26F8392D5A93D3BC0FC3B566612DA0F0A",
+    "SettleDelay": 3600,
+    "Expiration": 536027313,
+    "CancelAfter": 536891313,
+    "SourceTag": 0,
+    "DestinationTag": 1002341,
+    "Flags": 0,
+    "LedgerEntryType": "PayChannel",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
+    "PreviousTxnLgrSeq": 14524914,
+    "index": "96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"
+}
+</code></pre>
+<p>A <code>PayChannel</code> node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>LedgerEntryType</code></td>
+<td align="left">String</td>
+<td align="left">UInt16</td>
+<td align="left">The value <code>0x78</code>, mapped to the string <code>PayChannel</code>, indicates that this node is an payment channel object.</td>
+</tr>
+<tr>
+<td align="left"><code>Account</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">The source address that owns this payment channel. This comes from the sending address of the transaction that created the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>Destination</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the <code>Destination</code> field of the transaction that created the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>Amount</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left">Total XRP, in drops, that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction.</td>
+</tr>
+<tr>
+<td align="left"><code>Balance</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left">Total XRP, in drops, currently stored in the channel. This XRP can still be paid to the destination address with PaymentChannelClaim transactions. If the channel closes, this XRP is returned to the source address.</td>
+</tr>
+<tr>
+<td align="left"><code>PublicKey</code></td>
+<td align="left">String</td>
+<td align="left">PubKey</td>
+<td align="left">Public key, in hexadecimal, of the key pair that can be used to sign claims against this channel. This can be any valid secp256k1 or Ed25519 public key. This is set by the transaction that created the channel and must match the public key used in claims against the channel. The channel source address can also send XRP to the destination without signed claims.</td>
+</tr>
+<tr>
+<td align="left"><code>SettleDelay</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">Number of seconds the source address must wait to close the channel if it still has any XRP in it. Smaller values mean that the destination address has less time to redeem any outstanding claims after the source address requests to close the channel. Can be any value that fits in a 32-bit unsigned integer (0 to 2^32-1). This is set by the transaction that creates the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>OwnerNode</code></td>
+<td align="left">String</td>
+<td align="left">UInt64</td>
+<td align="left">A hint indicating which page of the source address's owner directory links to this node, in case the directory consists of multiple nodes.</td>
+</tr>
+<tr>
+<td align="left"><code>PreviousTxnID</code></td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left">The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td align="left"><code>PreviousTxnLgrSeq</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td align="left"><code>Flags</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">A bit-map of boolean flags enabled for this payment channel. Currently, the protocol defines no flags for <code>PayChannel</code> nodes.</td>
+</tr>
+<tr>
+<td align="left"><code>Expiration</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> The mutable expiration time for this payment channel, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>. The channel is expired if this value is present and smaller than the previous ledger's <a href="#header-format"><code>close_time</code> field</a>. This starts out omitted, and can be added, removed, or updated by the source address with a PaymentChannelFund or PaymentChannelClaim transaction. When added or updated, this must always be at least <code>SettleDelay</code> seconds after the previous ledger's <a href="#header-format"><code>close_time</code> field</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>CancelAfter</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> The immutable expiration time for this payment channel, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>. This channel is expired if this value is present and smaller than the previous ledger's <a href="#header-format"><code>close_time</code> field</a>. This is optionally set by the transaction that created the channel, and cannot be changed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="paychannel-index-format">PayChannel Index Format</h3>
+<p>The <code>index</code> of a PayChannel node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The PayChannel space key (<code>x</code>)</li>
+<li>The AccountID of the source account</li>
+<li>The AccountID of the destination account</li>
+<li>The Sequence number of the transaction that created the channel</li>
 </ul>
 <h2 id="ripplestate">RippleState</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" title="Source">[Source]<br/></a></p>

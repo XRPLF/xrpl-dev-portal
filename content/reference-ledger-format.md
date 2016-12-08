@@ -66,7 +66,9 @@ There are several different kinds of nodes that can appear in the ledger's state
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
 * [**DirectoryNode** - Contains links to other nodes.](#directorynode)
 * [**Offer** - An offer to exchange currencies, known in finance as an _order_.](#offer)
+* [**PayChannel** - A channel for asynchronous XRP payments.](#paychannel)
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this node type.](#ripplestate)
+* [**SignerList** - A list of addresses for multi-signing transactions.](#signerlist)
 
 Each ledger node consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger nodes are represented in their raw binary format. In other [`rippled` APIs](reference-rippled.html), ledger nodes are represented as JSON objects.
 
@@ -301,6 +303,72 @@ The `index` of an Offer node is the SHA-512Half of the following values put toge
 * The Offer space key (`o`)
 * The AccountID of the account placing the offer
 * The Sequence number of the transaction that created the offer
+
+
+
+## PayChannel ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L134 "Source")
+
+_(Requires the [PayChan Amendment](concept-amendments.html#paychan).)_
+
+The `PayChannel` node type represents a payment channel, which is a structure that makes it easier to perform asynchronous, rapid payments and micropayments of XRP. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.
+
+The `PaymentChannelCreate` transaction type creates a `PayChannel` node. The PaymentChannelFund and PaymentChannelClaim transaction types modify existing `PayChannel` nodes.
+
+When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction that accesses it after the expiration. Therefore, to "finalize" the closing of an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.
+
+<!--{# TODO: provide cross-references to tutorial, concept, and tx types when they are ready #}-->
+
+Example PayChannel node:
+
+```json
+{
+    "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
+    "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": "4325800",
+    "Balance": "2323423",
+    "PublicKey": "32D2471DB72B27E3310F355BB33E339BF26F8392D5A93D3BC0FC3B566612DA0F0A",
+    "SettleDelay": 3600,
+    "Expiration": 536027313,
+    "CancelAfter": 536891313,
+    "SourceTag": 0,
+    "DestinationTag": 1002341,
+    "Flags": 0,
+    "LedgerEntryType": "PayChannel",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
+    "PreviousTxnLgrSeq": 14524914,
+    "index": "96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"
+}
+```
+
+A `PayChannel` node has the following fields:
+
+| Name                | JSON Type | [Internal Type][] | Description            |
+|:--------------------|:----------|:------------------|:-----------------------|
+| `LedgerEntryType`   | String    | UInt16            | The value `0x78`, mapped to the string `PayChannel`, indicates that this node is an payment channel object. |
+| `Account`           | String    | AccountID         | The source address that owns this payment channel. This comes from the sending address of the transaction that created the channel. |
+| `Destination`       | String    | AccountID         | The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the `Destination` field of the transaction that created the channel. |
+| `Amount`            | String    | Amount            | Total XRP, in drops, that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction. |
+| `Balance`           | String    | Amount            | Total XRP, in drops, currently stored in the channel. This XRP can still be paid to the destination address with PaymentChannelClaim transactions. If the channel closes, this XRP is returned to the source address. |
+| `PublicKey`         | String    | PubKey            | Public key, in hexadecimal, of the key pair that can be used to sign claims against this channel. This can be any valid secp256k1 or Ed25519 public key. This is set by the transaction that created the channel and must match the public key used in claims against the channel. The channel source address can also send XRP to the destination without signed claims. |
+| `SettleDelay`       | Number    | UInt32            | Number of seconds the source address must wait to close the channel if it still has any XRP in it. Smaller values mean that the destination address has less time to redeem any outstanding claims after the source address requests to close the channel. Can be any value that fits in a 32-bit unsigned integer (0 to 2^32-1). This is set by the transaction that creates the channel. |
+| `OwnerNode`         | String    | UInt64            | A hint indicating which page of the source address's owner directory links to this node, in case the directory consists of multiple nodes. |
+| `PreviousTxnID`     | String    | Hash256           | The identifying hash of the transaction that most recently modified this node. |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
+| `Flags`             | Number    | UInt32            | A bit-map of boolean flags enabled for this payment channel. Currently, the protocol defines no flags for `PayChannel` nodes. |
+| `Expiration`        | Number    | UInt32            | _(Optional)_ The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). This starts out omitted, and can be added, removed, or updated by the source address with a PaymentChannelFund or PaymentChannelClaim transaction. When added or updated, this must always be at least `SettleDelay` seconds after the previous ledger's [`close_time` field](#header-format). |
+| `CancelAfter`       | Number    | UInt32            | _(Optional)_ The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). This is optionally set by the transaction that created the channel, and cannot be changed. |
+
+### PayChannel Index Format ###
+
+The `index` of a PayChannel node is the SHA-512Half of the following values put together:
+
+* The PayChannel space key (`x`)
+* The AccountID of the source account
+* The AccountID of the destination account
+* The Sequence number of the transaction that created the channel
+
 
 
 ## RippleState ##
