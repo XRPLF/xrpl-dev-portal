@@ -49,6 +49,8 @@ RESERVED_KEYS_TARGET = [
     "image_subs",
 ]
 ADHOC_TARGET = "__ADHOC__"
+DEFAULT_PDF_FILE = "__DEFAULT_FILENAME__"
+NO_PDF = "__NO_PDF__"
 
 filters = {}
 def load_config(config_file=DEFAULT_CONFIG_FILE):
@@ -97,7 +99,26 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
         for filter_name in filternames:
             filters[filter_name] = import_module("filter_"+filter_name)
 
+def default_pdf_name(target):
+    target = get_target(target)
+    if {"product","version","guide"} <= set(target.keys()):
+        p_name = slugify(target["product"])
+        v_num = slugify(target["version"])
+        g_name = slugify(target["guide"])
+        return p_name+"-"+v_num+"-"+g_name+".pdf"
+    elif "display_name" in target:
+        return slugify(target["display_name"])+".pdf"
+    else:
+        return slugify(target["name"])+".pdf"
 
+unacceptable_chars = re.compile(r"[^A-Za-z0-9._ ]+")
+whitespace_regex = re.compile(r"\s+")
+def slugify(s):
+    s = re.sub(unacceptable_chars, "", s)
+    s = re.sub(whitespace_regex, "_", s)
+    if not s:
+        s = "_"
+    return s
 
 def substitute_links_for_target(soup, target):
     """Replaces local-html-links with appropriate substitutions
@@ -686,7 +707,8 @@ if __name__ == "__main__":
     parser.add_argument("--watch", "-w", action="store_true",
                         help="Watch for changes and re-generate output. "+\
                              "This runs until force-quit.")
-    parser.add_argument("--pdf", type=str,
+    parser.add_argument("--pdf", nargs="?", type=str,
+                        const=DEFAULT_PDF_FILE, default=NO_PDF,
                         help="Output a PDF to this file. Requires Prince.")
     parser.add_argument("--githubify", "-g", type=str,
                         help="Output md prepared for GitHub")
@@ -729,6 +751,8 @@ if __name__ == "__main__":
         for t in config["targets"]:
             if "display_name" in t:
                 display_name = t["display_name"]
+            elif {"product","version","guide"} <= set(t.keys()):
+                display_name = " ".join([t["product"],t["version"],t["guide"]])
             else:
                 display_name = ""
             print("%s\t\t%s" % (t["name"], display_name))
@@ -755,11 +779,15 @@ if __name__ == "__main__":
             copy_static(template_static=False, content_static=True)
         exit(0)
 
-    if cli_args.pdf:
-        if cli_args.pdf[-4:] != ".pdf":
+    if cli_args.pdf != NO_PDF:
+        if cli_args.pdf == DEFAULT_PDF_FILE:
+            pdf_path = os.path.join(config["out_path"],
+                                    default_pdf_name(cli_args.target))
+        elif cli_args.pdf[-4:] != ".pdf":
             exit("PDF filename must end in .pdf")
+        else:
+            pdf_path = os.path.join(config["out_path"], cli_args.pdf)
         logging.info("making a pdf...")
-        pdf_path = os.path.join(config["out_path"], cli_args.pdf)
         make_pdf(pdf_path, target=cli_args.target,
                  bypass_errors=cli_args.bypass_errors)
         logging.info("pdf done")
