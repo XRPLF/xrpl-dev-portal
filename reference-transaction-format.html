@@ -1211,13 +1211,13 @@
 <td align="left"><code>Balance</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left"><em>(Optional)</em> Total amount of XRP, in drops, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the <code>Amount</code> of the signed claim. Must be provided except when closing the channel.</td>
+<td align="left"><em>(Optional)</em> Total amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the <code>Amount</code> of the signed claim. Must be provided except when closing the channel.</td>
 </tr>
 <tr>
 <td align="left"><code>Amount</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left"><em>(Optional)</em> The amount of XRP, in drops, authorized by the <code>Signature</code>. This must match the amount in the signed message.</td>
+<td align="left"><em>(Optional)</em> The amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, authorized by the <code>Signature</code>. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed.</td>
 </tr>
 <tr>
 <td align="left"><code>Signature</code></td>
@@ -1290,7 +1290,7 @@
 <td align="left"><code>Amount</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left">Amount of XRP to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the <code>Destination</code> address. When the channel closes, any unclaimed XRP is returned to the source address's balance.</td>
+<td align="left">Amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the <code>Destination</code> address. When the channel closes, any unclaimed XRP is returned to the source address's balance.</td>
 </tr>
 <tr>
 <td align="left"><code>Destination</code></td>
@@ -1363,16 +1363,17 @@
 <td align="left"><code>Amount</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left">How many <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a> to add to the channel. To set the expiration for a channel without adding more XRP, set this to <code>"0"</code>.</td>
+<td align="left">Amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a> to add to the channel. To set the expiration for a channel without adding more XRP, set this to <code>"0"</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>Expiration</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This cannot be earlier than the close time of the previous ledger plus the <code>SettleDelay</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.)</td>
+<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This must be later than either the current time plus the <code>SettleDelay</code> of the channel, or the existing <code>Expiration</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.)</td>
 </tr>
 </tbody>
 </table>
+<!-- TODO: add a cross-reference in expiration row to the expiration explanation in ledger format page when both are merged -->
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
 <p>A SetRegularKey transaction changes the regular key associated with an address.</p>

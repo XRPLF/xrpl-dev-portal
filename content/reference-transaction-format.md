@@ -765,10 +765,11 @@ Example PaymentChannelClaim:
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `Channel`   | String    | Hash256           | The unique ID of the channel, as a 64-character hexadecimal string. |
-| `Balance`   | String    | Amount            | _(Optional)_ Total amount of XRP, in drops, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
-| `Amount`    | String    | Amount            | _(Optional)_ The amount of XRP, in drops, authorized by the `Signature`. This must match the amount in the signed message.  |
+| `Balance`   | String    | Amount            | _(Optional)_ Total amount of [XRP, in drops][Currency Amount], delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
+| `Amount`    | String    | Amount            | _(Optional)_ The amount of [XRP, in drops][Currency Amount], authorized by the `Signature`. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed. |
 | `Signature` | String    | VariableLength    | _(Optional)_ The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
 | `PublicKey` | String    | PubKey            | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the PubKey so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
+
 
 ### PaymentChannelClaim Flags
 
@@ -806,7 +807,7 @@ Example PaymentChannelCreate:
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | String    | Amount            | Amount of XRP to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the `Destination` address. When the channel closes, any unclaimed XRP is returned to the source address's balance. |
+| `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the `Destination` address. When the channel closes, any unclaimed XRP is returned to the source address's balance. |
 | `Destination`    | String    | AccountID         | Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel. |
 | `SettleDelay`    | Number    | UInt32            | Amount of time the source address must wait before closing the channel if it has unclaimed XRP. |
 | `PublicKey`      | String    | PubKey            | The public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. |
@@ -838,9 +839,10 @@ Example PaymentChannelFund:
 | Field        | JSON Type | [Internal Type][] | Description                   |
 |:-------------|:----------|:------------------|:------------------------------|
 | `Channel`    | String    | Hash256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
-| `Amount`     | String    | Amount            | How many [drops of XRP][Currency Amount] to add to the channel. To set the expiration for a channel without adding more XRP, set this to `"0"`. |
-| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in seconds since the Ripple Epoch. This cannot be earlier than the close time of the previous ledger plus the `SettleDelay` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) |
+| `Amount`     | String    | Amount            | Amount of [XRP, in drops][Currency Amount] to add to the channel. To set the expiration for a channel without adding more XRP, set this to `"0"`. |
+| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in seconds since the Ripple Epoch. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) |
 
+<!-- TODO: add a cross-reference in expiration row to the expiration explanation in ledger format page when both are merged -->
 
 
 
