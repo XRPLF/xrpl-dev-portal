@@ -364,7 +364,9 @@ A `PayChannel` node has the following fields:
 
 ### Setting Channel Expiration
 
-The `Expiration` field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the `CancelAfter` field. The `Expiration` field is always omitted when a `PayChannel` node is created. There are several ways the `Expiration` field of a `PayChannel` node can be updated. Generally, the source address can set the `Expiration` of a channel freely as long as the channel always remains open at least `SettleDelay` seconds after the first attempt to close it. The expiration of a channel is always considered relative to the [`close_time` field](#header-format) of the previous ledger.
+The `Expiration` field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the `CancelAfter` field. The expiration of a channel is always considered relative to the [`close_time` field](#header-format) of the previous ledger. The `Expiration` field is omitted when a `PayChannel` node is created. There are several ways the `Expiration` field of a `PayChannel` node can be updated, which can be summarized as follows: a channel's source address can set the `Expiration` of the channel freely as long as the channel always remains open at least `SettleDelay` seconds after the first attempt to close it.
+
+#### Source Address
 
 The source address can set the `Expiration` directly with the PaymentChannelFund transaction type. The new value must not be earlier than whichever of the following values is earliest:
 
@@ -380,9 +382,13 @@ The source address can also set the `Expiration` with the `tfClose` flag of the 
 
 The source address can remove the `Expiration` with the `tfRenew` flag of the PaymentChannelClaim transaction type.
 
+#### Destination Address
+
 The destination address cannot set the `Expiration` field. However, the destination address can use the PaymentChannelClaim's `tfClose` flag to close a channel immediately.
 
-If any other address attempts to set an `Expiration` field, the transaction fails with the `tecNO_PERMISSION` error code.
+#### Other Addresses
+
+If any other address attempts to set an `Expiration` field, the transaction fails with the `tecNO_PERMISSION` error code. However, if the channel is already expired, the transaction causes the channel to close and results in `tesSUCCESS` instead.
 
 
 ### PayChannel Index Format ###
