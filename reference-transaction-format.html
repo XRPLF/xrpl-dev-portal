@@ -170,6 +170,10 @@
 <li class="level-3"><a href="#payment-flags">Payment Flags</a></li>
 <li class="level-3"><a href="#partial-payments">Partial Payments</a></li>
 <li class="level-3"><a href="#limit-quality">Limit Quality</a></li>
+<li class="level-2"><a href="#paymentchannelclaim">PaymentChannelClaim</a></li>
+<li class="level-3"><a href="#paymentchannelclaim-flags">PaymentChannelClaim Flags</a></li>
+<li class="level-2"><a href="#paymentchannelcreate">PaymentChannelCreate</a></li>
+<li class="level-2"><a href="#paymentchannelfund">PaymentChannelFund</a></li>
 <li class="level-2"><a href="#setregularkey">SetRegularKey</a></li>
 <li class="level-2"><a href="#signerlistset">SignerListSet</a></li>
 <li class="level-2"><a href="#trustset">TrustSet</a></li>
@@ -623,9 +627,12 @@
 <p>Each transaction type has additional fields relevant to the type of action it causes:</p>
 <ul>
 <li><a href="#accountset">AccountSet - Set options on an account</a></li>
-<li><a href="#offercreate">OfferCreate - Submit an order to exchange currency</a></li>
 <li><a href="#offercancel">OfferCancel - Withdraw a currency-exchange order</a></li>
+<li><a href="#offercreate">OfferCreate - Submit an order to exchange currency</a></li>
 <li><a href="#payment">Payment - Send funds from one account to another</a></li>
+<li><a href="#paymentchannelclaim">PaymentChannelClaim - Claim money from a payment channel</a></li>
+<li><a href="#paymentchannelcreate">PaymentChannelCreate - Open a new payment channel</a></li>
+<li><a href="#paymentchannelfund">PaymentChannelFund - Add more XRP to a payment channel</a></li>
 <li><a href="#setregularkey">SetRegularKey - Set an account's regular key</a></li>
 <li><a href="#signerlistset">SignerListSet - Set multi-signing settings</a></li>
 <li><a href="#trustset">TrustSet - Add or modify a trust line</a></li>
@@ -1154,6 +1161,219 @@
 <p>Without the tfLimitQuality flag set, this transaction would succeed, because the $17 it costs me is within my specified <code>SendMax</code>. However, with the tfLimitQuality flag enabled, the transaction would fail instead, because the path to take the second offer has a quality of <code>2.5</code>, which is worse than the limit quality of <code>5</code>.</p>
 <p>The tfLimitQuality flag is most useful when combined with <a href="#partial-payments">partial payments</a>. When both <em>tfPartialPayment</em> and <em>tfLimitQuality</em> are set on a transaction, then the transaction delivers as much of the destination <code>Amount</code> as it can, without using any conversions that are worse than the limit quality.</p>
 <p>In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my <code>SendMax</code> of 20 USD and a destination <code>Amount</code> of 100 CNY, then the limit quality is still <code>5</code>. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about <code>6.3</code>, but it rejects the ¥5/$2 offer because that offer's quality of <code>2.5</code> is worse than the quality limit of <code>5</code>. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.</p>
+<h2 id="paymentchannelclaim">PaymentChannelClaim</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#paychan">PayChan Amendment</a>.</em></p>
+<p>Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:</p>
+<p>The <strong>source address</strong> of a channel can:</p>
+<ul>
+<li>Send XRP from the channel to the destination with <em>or without</em> a signed Claim.</li>
+<li>Set the channel to expire as soon as the channel's <code>SettleDelay</code> has passed.</li>
+<li>Clear a pending <code>Expiration</code> time.</li>
+<li>Close a channel immediately, with or without processing a claim first. The source address cannot close the channel immediately if the channel has XRP remaining.</li>
+</ul>
+<p>The <strong>destination address</strong> of a channel can:</p>
+<ul>
+<li>Receive XRP from the channel using a signed Claim.</li>
+<li>Close the channel immediately after processing a Claim, refunding any unclaimed XRP to the channel's source.</li>
+</ul>
+<p><strong>Any address</strong> sending this transaction can:</p>
+<ul>
+<li>Cause a channel to be closed if its <code>Expiration</code> or <code>CancelAfter</code> time is older than the previous ledger's close time. Any validly-formed PaymentChannelClaim transaction has this effect regardless of the contents of the transaction.</li>
+</ul>
+<p>Example PaymentChannelClaim:</p>
+<pre><code class="json">{
+  "Channel": "C1AE6DDDEEC05CF2978C0BAD6FE302948E9533691DC749DCDD3B9E5992CA6198",
+  "Balance": "1000000",
+  "Amount": "1000000",
+  "Signature": "30440220718D264EF05CAED7C781FF6DE298DCAC68D002562C9BF3A07C1E721B420C0DAB02203A5A4779EF4D2CCC7BC3EF886676D803A9981B928D3B8ACA483B80ECA3CD7B9B",
+  "PublicKey": "32D2471DB72B27E3310F355BB33E339BF26F8392D5A93D3BC0FC3B566612DA0F0A"
+}
+</code></pre>
+<!-- -->
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Channel</code></td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left">The unique ID of the channel, as a 64-character hexadecimal string.</td>
+</tr>
+<tr>
+<td align="left"><code>Balance</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left"><em>(Optional)</em> Total amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the <code>Amount</code> of the signed claim. Must be provided except when closing the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>Amount</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left"><em>(Optional)</em> The amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, authorized by the <code>Signature</code>. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed.</td>
+</tr>
+<tr>
+<td align="left"><code>Signature</code></td>
+<td align="left">String</td>
+<td align="left">VariableLength</td>
+<td align="left"><em>(Optional)</em> The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>PublicKey</code></td>
+<td align="left">String</td>
+<td align="left">PubKey</td>
+<td align="left"><em>(Optional)</em> The public key used for the signature, as hexadecimal. This must match the <code>PublicKey</code> stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the <code>Signature</code> field is omitted. (The transaction includes the PubKey so that <code>rippled</code> can check the validity of the signature before trying to apply the transaction to the ledger.)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="paymentchannelclaim-flags">PaymentChannelClaim Flags</h3>
+<p>Transactions of the PaymentChannelClaim type support additional values in the <a href="#flags"><code>Flags</code> field</a>, as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Flag Name</th>
+<th align="left">Hex Value</th>
+<th align="left">Decimal Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>tfRenew</code></td>
+<td align="left">0x00010000</td>
+<td align="left">65536</td>
+<td align="left">Clear the channel's <code>Expiration</code> time. (<code>Expiration</code> is different from the channel's immutable <code>CancelAfter</code> time.) Only the source address of the payment channel can use this flag.</td>
+</tr>
+<tr>
+<td align="left"><code>tfClose</code></td>
+<td align="left">0x00020000</td>
+<td align="left">131072</td>
+<td align="left">Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after <code>SettleDelay</code> seconds have passed. (Specifically, this sets the <code>Expiration</code> of the channel to the close time of the previous ledger plus the channel's <code>SettleDelay</code> time, unless the channel already has an earlier <code>Expiration</code> time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paymentchannelcreate">PaymentChannelCreate</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#paychan">PayChan Amendment</a>.</em></p>
+<p>Create a unidirectional channel and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.</p>
+<p>Example PaymentChannelCreate:</p>
+<pre><code class="json">{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "PaymentChannelCreate",
+    "Amount": "10000",
+    "Destination": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "SettleDelay": 86400,
+    "PublicKey": "32D2471DB72B27E3310F355BB33E339BF26F8392D5A93D3BC0FC3B566612DA0F0A",
+    "CancelAfter": 533171558,
+    "DestinationTag": 23480,
+    "SourceTag": 11747
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Amount</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left">Amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the <code>Destination</code> address. When the channel closes, any unclaimed XRP is returned to the source address's balance.</td>
+</tr>
+<tr>
+<td align="left"><code>Destination</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>SettleDelay</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">Amount of time the source address must wait before closing the channel if it has unclaimed XRP.</td>
+</tr>
+<tr>
+<td align="left"><code>PublicKey</code></td>
+<td align="left">String</td>
+<td align="left">PubKey</td>
+<td align="left">The public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key.</td>
+</tr>
+<tr>
+<td align="left"><code>CancelAfter</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time.</td>
+</tr>
+<tr>
+<td align="left"><code>DestinationTag</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
+</tr>
+<tr>
+<td align="left"><code>SourceTag</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paymentchannelfund">PaymentChannelFund</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#paychan">PayChan Amendment</a>.</em></p>
+<p>Add additional XRP to an open payment channel, update the expiration time of the channel, or both. Only the source address of the channel can use this transaction. (Transactions from other addresses fail with the error <code>tecNO_PERMISSION</code>.)</p>
+<p>Example PaymentChannelFund:</p>
+<pre><code class="json">{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "PaymentChannelFund",
+    "Channel": "C1AE6DDDEEC05CF2978C0BAD6FE302948E9533691DC749DCDD3B9E5992CA6198",
+    "Amount": "200000",
+    "Expiration": 543171558
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Channel</code></td>
+<td align="left">String</td>
+<td align="left">Hash256</td>
+<td align="left">The unique ID of the channel to fund, as a 64-character hexadecimal string.</td>
+</tr>
+<tr>
+<td align="left"><code>Amount</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left">Amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a> to add to the channel. To set the expiration for a channel without adding more XRP, set this to <code>"0"</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>Expiration</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This must be later than either the current time plus the <code>SettleDelay</code> of the channel, or the existing <code>Expiration</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.)</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: add a cross-reference in expiration row to the expiration explanation in ledger format page when both are merged -->
 <h2 id="setregularkey">SetRegularKey</h2>
 <p><a href="https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp" title="Source">[Source]<br/></a></p>
 <p>A SetRegularKey transaction changes the regular key associated with an address.</p>
