@@ -298,7 +298,7 @@
 </table>
 <p>These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own <code>rippled</code> server or contract someone you trust to do so.</p>
 <h3 id="json-rpc">JSON-RPC</h3>
-<p>You can use any HTTP client (like <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Poster for Firefox</a> or <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">Postman for Chrome</a>) to make JSON-RPC calls a <code>rippled</code> server. Most programming languages have a library for making HTTP requests built in.</p>
+<p>You can use any HTTP client (like <a href="https://addons.mozilla.org/en-US/firefox/addon/poster/">Poster for Firefox</a> or <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en">Postman for Chrome</a>) to make JSON-RPC calls a <code>rippled</code> server. Most programming languages have a library for making HTTP requests built in.</p>
 <h4 id="request-formatting-1">Request Formatting</h4>
 <p>To make a JSON-RPC request, send an HTTP <strong>POST</strong> request to the root path (<code>/</code>) on the port and IP where the <code>rippled</code> server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS v1.2. For security reasons, <code>rippled</code> <em>does not support</em> SSL v3 or earlier.</p>
 <p>Always include a <code>Content-Type</code> header with the value <code>application/json</code>.</p>
