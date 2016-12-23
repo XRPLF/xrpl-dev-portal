@@ -23,6 +23,16 @@ def getSoup(fullPath):
       soupsCache[fullPath] = soup
   return soup
 
+def check_for_unparsed_reference_links(soup):
+    #unmatched_reflink_regex = re.compile(r"\[[^\]]+\]\[(\w| )*\]")
+    unmatched_reflink_regex = re.compile(r"(\[[^\]]+)?\]\[(\w| )*\]")
+    unparsed_links = []
+    for s in soup.strings:
+        m = re.search(unmatched_reflink_regex, s)
+        if m:
+            unparsed_links.append(m.group(0))
+    return unparsed_links
+
 def check_remote_url(endpoint, fullPath, broken_links, externalCache, isImg=False):
     if isImg:
         linkword = "image"
@@ -85,6 +95,11 @@ def checkLinks(offline=False):
           continue
         if fullPath.endswith(".html"):
           soup = getSoup(fullPath)
+          unparsed_links = check_for_unparsed_reference_links(soup)
+          if unparsed_links:
+            logging.warning("Found %d unparsed Markdown reference links: %s" %
+                        (len(unparsed_links), "\n... ".join(unparsed_links)))
+            [broken_links.append( (fullPath, u) ) for u in unparsed_links]
           links = soup.find_all('a')
           for link in links:
             if time() - last_checkin > CHECK_IN_INTERVAL:
