@@ -130,7 +130,7 @@ AccountRoot nodes can have the following flag values:
 | lsfRequireAuth | 0x00040000 | 262144 | This account must individually approve other users for those users to hold this account's issuances. | asfRequireAuth |
 | lsfDisallowXRP | 0x00080000 | 524288 | Client applications should not send XRP to this account. Not enforced by `rippled`. | asfDisallowXRP |
 | lsfDisableMaster | 0x00100000 | 1048576 | Disallows use of the master key to sign transactions for this account. | asfDisableMaster |
-| lsfNoFreeze | 0x00200000 | 209715　| This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
+| lsfNoFreeze | 0x00200000 | 2097152 | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this address are frozen. | asfGlobalFreeze |
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](concept-noripple.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
 
