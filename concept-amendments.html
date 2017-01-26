@@ -148,6 +148,7 @@
 <li class="level-3"><a href="#amendment-blocked">Amendment Blocked</a></li>
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
+<li class="level-2"><a href="#cryptoconditions">CryptoConditions</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
 <li class="level-2"><a href="#flow">Flow</a></li>
 <li class="level-2"><a href="#flowv2">FlowV2</a></li>
@@ -157,6 +158,7 @@
 <li class="level-2"><a href="#shamapv2">SHAMapV2</a></li>
 <li class="level-2"><a href="#suspay">SusPay</a></li>
 <li class="level-2"><a href="#trustsetauth">TrustSetAuth</a></li>
+<li class="level-2"><a href="#ticksize">TickSize</a></li>
 <li class="level-2"><a href="#tickets">Tickets</a></li>
 
             </ul>
@@ -242,6 +244,11 @@ TrustSetAuth
 </thead>
 <tbody>
 <tr>
+<td align="left"><a href="#ticksize">TickSize</a></td>
+<td align="left">v0.50.0</td>
+<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#shamapv2">SHAMapV2</a></td>
 <td align="left">v0.33.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
@@ -252,18 +259,23 @@ TrustSetAuth
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
+<td align="left"><a href="#suspay">SusPay</a></td>
+<td align="left">v0.31.0</td>
+<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td align="left">v0.33.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#tickets">Tickets</a></td>
-<td align="left">v0.31.0</td>
+<td align="left">N/A</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#suspay">SusPay</a></td>
-<td align="left">v0.31.0</td>
+<td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
+<td align="left">N/A</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
@@ -294,6 +306,23 @@ TrustSetAuth
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.</p>
+<h2 id="cryptoconditions">CryptoConditions</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+<td align="left">In development</td>
+</tr>
+</tbody>
+</table>
+<p>Adds conditional payments that are directly compatible with the <a href="https://interledger.org/">Interledger Protocol Crypto-Conditions specification</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still in development.</p>
 <h2 id="feeescalation">FeeEscalation</h2>
 <table>
 <thead>
@@ -464,6 +493,23 @@ TrustSetAuth
 </table>
 <p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="tutorial-gateway-guide.html#authorized-accounts">Authorized Accounts</a>.</p>
 <p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="reference-transaction-format.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="reference-ledger-format.html#ripplestate"><code>RippleState</code> ledger node</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="reference-ledger-format.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="reference-ledger-format.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> with the <a href="reference-transaction-format.html#accountset-flags">asfRequireAuth flag enabled</a>.</p>
+<h2 id="ticksize">TickSize</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+<td align="left">Released but not enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the way Offers are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
+<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the AccountSet transaction type. If a currency issuer sets the <code>TickSize</code> field, the Ripple Consensus Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
 <h2 id="tickets">Tickets</h2>
 <table>
 <thead>
