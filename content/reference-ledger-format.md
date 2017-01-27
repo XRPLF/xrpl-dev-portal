@@ -114,6 +114,7 @@ The `AccountRoot` node has the following fields:
 | WalletLocator   | String | Hash256 | (Optional) **DEPRECATED**. Do not use. |
 | WalletSize      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. |
 | MessageKey      | String | VariableLength  | (Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes. |
+| TickSize        | Number | UInt8   | (Optional) How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Requires the [TickSize amendment](concept-amendments.html#ticksize).)_ |
 | TransferRate    | Number | UInt32  | (Optional) A [transfer fee](https://ripple.com/knowledge_center/transfer-fees/) to charge other users for sending currency issued by this account to each other. |
 | Domain          | String | VariableLength | (Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. |
 

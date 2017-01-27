@@ -703,6 +703,12 @@
 <td align="left">(Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use <code>0</code> to set no fee.</td>
 </tr>
 <tr>
+<td align="left"><a href="#ticksize">TickSize</a></td>
+<td align="left">Unsigned Integer</td>
+<td align="left">UInt8</td>
+<td align="left">(Optional) Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+</tr>
+<tr>
 <td align="left">WalletLocator</td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
@@ -941,12 +947,18 @@
 <p>You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the <code>TakerGets</code> parameter of the offer. The offer sells as much of the currency as you have, up to the <code>TakerGets</code> amount, until the <code>TakerPays</code> amount is satisfied. An offer cannot place anyone in debt.</p>
 <p>It is possible for an offer to become temporarily or permanently <em>unfunded</em>:</p>
 <ul>
-<li>If the creator no longer has any of the <code>TakerGets</code> currency.</li>
+<li>If the creator no longer has any of the <code>TakerGets</code> currency.<ul>
 <li>The offer becomes funded again when the creator obtains more of that currency.</li>
-<li>If the currency required to fund the offer is held in a <a href="concept-freeze.html">frozen trust line</a>.</li>
+</ul>
+</li>
+<li>If the currency required to fund the offer is held in a <a href="concept-freeze.html">frozen trust line</a>.<ul>
 <li>The offer becomes funded again when the trust line is no longer frozen.</li>
-<li>If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See <a href="#offers-and-trust">Offers and Trust</a>.)</li>
+</ul>
+</li>
+<li>If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See <a href="#offers-and-trust">Offers and Trust</a>.)<ul>
 <li>The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.</li>
+</ul>
+</li>
 <li>If the Expiration time included in the offer is before the close time of the most recently-closed ledger. (See <a href="#expiration">Expiration</a>.)</li>
 </ul>
 <p>An unfunded offer can stay on the ledger indefinitely, but it does not have any effect. The only ways an offer can be <em>permanently</em> removed from the ledger are:</p>
@@ -967,8 +979,13 @@
 <p>However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because <a href="concept-reserves.html">trust lines increase the reserve an account must hold</a>, any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.</p>
 <p>A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.</p>
 <h3 id="offer-preference">Offer Preference</h3>
-<p>Existing offers are grouped by "quality", which is measured as the ratio between <code>TakerGets</code> and <code>TakerPays</code>. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.</p>
-<p>When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the <a href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp" title="Source: Transaction ordering">canonical order</a> in which the transactions were <a href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" title="Source: Applying transactions">applied to the ledger</a>. This behavior is designed to be deterministic, efficient, and hard to game.</p>
+<p>Existing offers are grouped by exchange rate (sometimes called "offer quality"), which is measured as the ratio between <code>TakerGets</code> and <code>TakerPays</code>. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed in the earliest ledger version.</p>
+<p>When offers of the same exchange rate are placed in the same ledger version, the order in which they are taken is determined by the <a href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp" title="Source: Transaction ordering">canonical order</a> in which the transactions were <a href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" title="Source: Applying transactions">applied to the ledger</a>. This behavior is designed to be deterministic, efficient, and hard to game.</p>
+<h4 id="ticksize">TickSize</h4>
+<p><em>Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.</em></p>
+<p>When an Offer is placed into an order book, its exchange rate is truncated based on the <code>TickSize</code> values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the <code>TickSize</code> from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller <code>TickSize</code> value (that is, the one with fewer significant digits). If neither currency has a <code>TickSize</code> set, the default behavior applies.</p>
+<p>The <code>TickSize</code> value truncates the number of <em>significant digits</em> in the exchange rate of an offer when it gets placed in an order book. Issuers can set <code>TickSize</code> to an integer from <code>3</code> to <code>15</code> using an <a href="#accountset">AccountSet transaction</a>. The exchange rate is represented as a number of significant digits plus an exponent; the <code>TickSize</code> does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that value greatly in absolute amounts (for example, a hyperinflated currency compared to a rare commodity). The lower the <code>TickSize</code> an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.</p>
+<p>The <code>TickSize</code> does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with <code>tfImmediateOrCancel</code> are unaffected by <code>TickSize</code> values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on <code>TickSize</code>. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the <code>TakerGets</code> amount (the amount being bought) gets rounded. If the <code>tfSell</code> flag is enabled (a "sell" Offer) the <code>TakerPays</code> amount (the amount being sold) gets rounded.</p>
 <h3 id="expiration">Expiration</h3>
 <p>Since transactions can take time to propagate and confirm, the timestamp of a ledger is used to determine offer validity. An offer only expires when its Expiration time is before the most-recently validated ledger. In other words, an offer with an <code>Expiration</code> field is still considered "active" if its expiration time is later than the timestamp of the most-recently validated ledger, regardless of what your local clock says.</p>
 <p>You can determine the final disposition of an offer with an <code>Expiration</code> as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.</p>
