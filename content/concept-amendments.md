@@ -109,20 +109,33 @@ TrustSetAuth
 
 The following is a comprehensive list of all known amendments and their status on the production Ripple Consensus Ledger:
 
-| Name                            | Introduced | Status                        |
-|:--------------------------------|:-----------|:------------------------------|
-| [SHAMapV2](#shamapv2)           | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [PayChan](#paychan)             | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [OwnerPaysFee](#ownerpaysfee)   | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Tickets](#tickets)             | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [SusPay](#suspay)               | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Flow](#flow)                   | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [FlowV2](#flowv2)               | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
-| [TrustSetAuth](#trustsetauth)   | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
-| [MultiSign](#multisign)         | v0.31.0    | [Enabled: 2016-06-27](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
-| [FeeEscalation](#feeescalation) | v0.31.0    | [Enabled: 2016-05-19](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| Name                                  | Introduced | Status                  |
+|:--------------------------------------|:-----------|:------------------------|
+| [TickSize](#ticksize)                 | v0.50.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [PayChan](#paychan)                   | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SusPay](#suspay)                     | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [CryptoConditions](#cryptoconditions) | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
+| [FlowV2](#flowv2)                     | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
+| [TrustSetAuth](#trustsetauth)         | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
+| [MultiSign](#multisign)               | v0.31.0    | [Enabled: 2016-06-27](https://www.ripplecharts.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
+| [FeeEscalation](#feeescalation)       | v0.31.0    | [Enabled: 2016-05-19](https://www.ripplecharts.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
+
+## CryptoConditions
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | In development |
+
+Adds conditional payments that are directly compatible with the [Interledger Protocol Crypto-Conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02).
+
+**Caution:** This amendment is still in development.
+
 
 ## FeeEscalation ##
 
@@ -237,6 +250,17 @@ The current version is enabled on the [Ripple Test Net](https://ripple.com/build
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
 
 With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger node](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](reference-ledger-format.html#accountroot-flags) by sending an [AccountSet transaction](reference-transaction-format.html#accountset) with the [asfRequireAuth flag enabled](reference-transaction-format.html#accountset-flags).
+
+## TickSize
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Released but not enabled |
+
+Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
+
+Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](reference-transaction-format.html#accountset). If a currency issuer sets the `TickSize` field, the Ripple Consensus Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
+
 
 ## Tickets ##
 
