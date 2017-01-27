@@ -321,7 +321,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Adds conditional payments that are directly compatible with the <a href="https://interledger.org/">Interledger Protocol Crypto-Conditions specification</a>.</p>
+<p>Adds conditional payments that are directly compatible with the <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions specification</a>.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still in development.</p>
 <h2 id="feeescalation">FeeEscalation</h2>
 <table>
@@ -508,8 +508,8 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Changes the way Offers are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
-<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the AccountSet transaction type. If a currency issuer sets the <code>TickSize</code> field, the Ripple Consensus Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
+<p>Changes the way <a href="reference-transaction-format.html#lifecycle-of-an-offer">Offers</a> are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
+<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the <a href="reference-transaction-format.html#accountset">AccountSet transaction type</a>. If a currency issuer sets the <code>TickSize</code> field, the Ripple Consensus Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
 <h2 id="tickets">Tickets</h2>
 <table>
 <thead>
