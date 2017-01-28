@@ -186,6 +186,10 @@ def checkLinks(offline=False):
 
             src = img["src"]
             if "://" in src:
+              if offline:
+                logging.info("Offline - Skipping remote image %s"%(endpoint))
+                continue
+
               check_remote_url(src, fullPath, broken_links, externalCache, isImg=True)
 
             else:
