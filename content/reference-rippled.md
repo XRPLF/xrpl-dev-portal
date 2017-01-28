@@ -9531,6 +9531,7 @@ An example of a successful response:
       "open_ledger_fee": "10"
     },
     "expected_ledger_size": "24",
+    "ledger_current_index": 26575101,
     "levels": {
       "median_level": "281600",
       "minimum_level": "256",
@@ -9557,6 +9558,7 @@ An example of a successful response:
             "open_ledger_fee": "2653937"
         },
         "expected_ledger_size": "55",
+        "ledger_current_index": 26575101,
         "levels": {
             "median_level": "256000",
             "minimum_level": "256",
@@ -9585,6 +9587,7 @@ Connecting to 127.0.0.1:5005
          "open_ledger_fee" : "3203982"
       },
       "expected_ledger_size" : "15",
+      "ledger_current_index": 26575101,
       "levels" : {
          "median_level" : "281600",
          "minimum_level" : "256",
@@ -9611,6 +9614,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `drops.minimum_fee`        | String (Integer) | The minimum transaction cost for a [reference transaction](concept-transaction-cost.html#reference-transaction-cost) to be queued for a later ledger, represented in drops of XRP. If greater than `base_fee`, the transaction queue is full. |
 | `drops.open_ledger_fee`    | String (Integer) | The minimum transaction cost that a [reference transaction](concept-transaction-cost.html#reference-transaction-cost) must pay to be included in the current open ledger, represented in drops of XRP. |
 | `expected_ledger_size`     | String (Integer) | The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger. |
+| `ledger_current_index`     | Number           | The [Ledger Index][] of the current open ledger these stats describe. [New in: rippled 0.50.0][] |
 | `levels`                   | Object           | Various information about the transaction cost, in [fee levels][]. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
 | `levels.median_level`      | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in [fee levels][]. |
 | `levels.minimum_level`     | String (Integer) | The minimum transaction cost required to be queued for a future ledger, represented in [fee levels][]. |
