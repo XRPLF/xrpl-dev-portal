@@ -297,7 +297,8 @@ def parse_markdown(page, target=None, pages=None, bypass_errors=False):
     # Actually parse the markdown
     logger.info("... parsing markdown...")
     html = markdown(md, extensions=["markdown.extensions.extra",
-                                    "markdown.extensions.toc"])
+                                    "markdown.extensions.toc"],
+                    lazy_ol=False)
 
     # Apply raw-HTML-string-based filters here
     for filter_name in page_filters:
