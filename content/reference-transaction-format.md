@@ -591,6 +591,8 @@ The `TickSize` value truncates the number of _significant digits_ in the exchang
 
 The `TickSize` does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on `TickSize`. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the `TakerGets` amount (the amount being bought) gets rounded. If the `tfSell` flag is enabled (a "sell" Offer) the `TakerPays` amount (the amount being sold) gets rounded.
 
+When an issuer enables, disables, or changes the `TickSize`, Offers that were placed under the previous setting are unaffected.
+
 
 ### Expiration ###
 
