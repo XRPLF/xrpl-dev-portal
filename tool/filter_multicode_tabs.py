@@ -9,7 +9,7 @@
 import re
 import logging
 
-def filter_html(html, target=None, page=None):
+def filter_html(html, target=None, page=None, config=None):
     """Turn multicode comments into a div (after markdown inside is parsed)"""
     MC_START_REGEX = re.compile(r"<!--\s*MULTICODE_BLOCK_START\s*-->")
     MC_END_REGEX = re.compile(r"<!--\s*MULTICODE_BLOCK_END\s*-->")
@@ -18,7 +18,7 @@ def filter_html(html, target=None, page=None):
     html = re.sub(MC_END_REGEX, "</div>", html)
     return html
 
-def filter_soup(soup, target=None, page=None):
+def filter_soup(soup, target=None, page=None, config=None):
     """Turn a multicode block into the correct syntax for minitabs"""
     multicodes = soup.find_all(class_="multicode")
     index1 = 0
