@@ -74,6 +74,11 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
             config["default_filters"] = []
         if "skip_preprocessor" not in config:
             config["skip_preprocessor"] = False
+        if "pdf_filename_fields" not in config:
+            config["pdf_filename_fields"] = "display_name"
+        if "pdf_filename_separator" not in config:
+            config["pdf_filename_separator"] = "-"
+
 
         # Warn if any pages aren't part of a target
         for page in config["pages"]:
@@ -101,16 +106,29 @@ def load_config(config_file=DEFAULT_CONFIG_FILE):
 
 def default_pdf_name(target):
     target = get_target(target)
-    if {"product","version","guide"} <= set(target.keys()):
-        p_name = slugify(target["product"])
-        v_num = slugify(target["version"])
-        g_name = slugify(target["guide"])
-        return p_name+"-"+v_num+"-"+g_name+".pdf"
-    elif "display_name" in target:
-        return slugify(target["display_name"])+".pdf"
+    filename_segments = []
+    for fieldname in config["pdf_filename_fields"]:
+        if fieldname in target.keys():
+            filename_segments.append(slugify(target[fieldname]))
+
+    if filename_segments:
+        return config["pdf_filename_separator"].join(filename_segments) + ".pdf"
     else:
         return slugify(target["name"])+".pdf"
 
+# old default_pdf_name(target)
+    # if {"product","version","guide"} <= set(target.keys()):
+    #     p_name = slugify(target["product"])
+    #     v_num = slugify(target["version"])
+    #     g_name = slugify(target["guide"])
+    #     return p_name+"-"+v_num+"-"+g_name+".pdf"
+    # elif "display_name" in target:
+    #     return slugify(target["display_name"])+".pdf"
+    # else:
+    #     return slugify(target["name"])+".pdf"
+
+# Note: this regex means non-ascii characters get stripped from filenames,
+#  which is not preferable when making non-English filenames.
 unacceptable_chars = re.compile(r"[^A-Za-z0-9._ ]+")
 whitespace_regex = re.compile(r"\s+")
 def slugify(s):
