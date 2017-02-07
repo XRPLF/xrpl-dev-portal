@@ -8,7 +8,7 @@
 ################################################################################
 import re
 
-def filter_soup(soup, target=None, page=None):
+def filter_soup(soup, target=None, page=None, config=None):
     """make links ending in > render like buttons"""
     buttonlinks = soup.find_all("a", string=re.compile(">$"))
     for link in buttonlinks:

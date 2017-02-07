@@ -15,7 +15,7 @@ CALLOUT_CLASS_MAPPING = {
     "tip": "devportal-callout tip",
 }
 
-def filter_soup(soup, target=None, page=None):
+def filter_soup(soup, target=None, page=None, config=None):
     """replace underscores with dashes in h1,h2,etc. for backwards compatibility"""
     callout_intro = re.compile(r"(Note|Warning|Tip|Caution):?$", re.I)
     callouts = soup.find_all(name=["strong","em"], string=callout_intro)

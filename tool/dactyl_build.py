@@ -47,6 +47,7 @@ RESERVED_KEYS_TARGET = [
     "display_name",
     "filters",
     "image_subs",
+    "pages",
 ]
 ADHOC_TARGET = "__ADHOC__"
 DEFAULT_PDF_FILE = "__DEFAULT_FILENAME__"
@@ -310,7 +311,8 @@ def parse_markdown(page, target=None, pages=None, bypass_errors=False):
     for filter_name in page_filters:
         if "filter_markdown" in dir(filters[filter_name]):
             logging.info("... applying markdown filter %s" % filter_name)
-            md = filters[filter_name].filter_markdown(md, target=target, page=page)
+            md = filters[filter_name].filter_markdown(md, target=target,
+                            page=page, config=config)
 
     # Actually parse the markdown
     logger.info("... parsing markdown...")
@@ -322,7 +324,8 @@ def parse_markdown(page, target=None, pages=None, bypass_errors=False):
     for filter_name in page_filters:
         if "filter_html" in dir(filters[filter_name]):
             logging.info("... applying HTML filter %s" % filter_name)
-            html = filters[filter_name].filter_html(html, target=target, page=page)
+            html = filters[filter_name].filter_html(html, target=target,
+                            page=page, config=config)
 
     # Some filters would rather operate on a soup than a string.
     # May as well parse once and re-serialize once.
@@ -332,7 +335,8 @@ def parse_markdown(page, target=None, pages=None, bypass_errors=False):
     for filter_name in page_filters:
         if "filter_soup" in dir(filters[filter_name]):
             logging.info("... applying soup filter %s" % filter_name)
-            filters[filter_name].filter_soup(soup, target=target, page=page)
+            filters[filter_name].filter_soup(soup, target=target,
+                            page=page, config=config)
             # ^ the soup filters apply to the same object, passed by reference
 
     # Replace links for any non-default target

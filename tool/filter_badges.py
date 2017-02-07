@@ -13,7 +13,7 @@ from urllib.parse import quote as urlescape
 
 BADGE_REGEX = re.compile("BADGE_(BRIGHTGREEN|GREEN|YELLOWGREEN|YELLOW|ORANGE|RED|LIGHTGREY|BLUE|[0-9A-Fa-f]{6})")
 
-def filter_soup(soup, target=None, page=None):
+def filter_soup(soup, target=None, page=None, config=None):
     """replace underscores with dashes in h1,h2,etc. for backwards compatibility"""
 
     badge_links = soup.find_all(name="a", title=BADGE_REGEX)
