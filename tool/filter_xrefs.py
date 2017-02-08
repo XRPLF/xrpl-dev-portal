@@ -50,7 +50,7 @@ def find_file_in_target(fname, targetname, config):
 
 def find_file_in_any_target(fname, config):
     if fname[-3:] == ".md":
-        print("finding in any target by md")
+        #print("finding in any target by md")
         # look by markdown file first
         for page in config["pages"]:
             if "md" not in page:
