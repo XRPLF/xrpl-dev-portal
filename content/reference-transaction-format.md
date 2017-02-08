@@ -406,6 +406,7 @@ Example AccountSet:
 | MessageKey                     | String           | PubKey            | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple. |
 | [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | (Optional) Integer flag to enable for this account. |
 | [TransferRate](#transferrate)  | Unsigned Integer | UInt32            | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
+| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | (Optional) Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](concept-amendments.html#ticksize).)_ |
 | WalletLocator                  | String           | Hash256           | (Optional) Not used. |
 | WalletSize                     | Unsigned Integer | UInt32            | (Optional) Not used. |
 
@@ -541,14 +542,14 @@ An offer in the ledger can be fulfilled either by additional OfferCreate transac
 
 You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. The offer sells as much of the currency as you have, up to the `TakerGets` amount, until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
 
-It is possible for an offer to become temporarily or permanently *unfunded*:
+It is possible for an offer to become temporarily or permanently _unfunded_:
 
 * If the creator no longer has any of the `TakerGets` currency.
-  * The offer becomes funded again when the creator obtains more of that currency.
+    * The offer becomes funded again when the creator obtains more of that currency.
 * If the currency required to fund the offer is held in a [frozen trust line](concept-freeze.html).
-  * The offer becomes funded again when the trust line is no longer frozen.
+    * The offer becomes funded again when the trust line is no longer frozen.
 * If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
-  * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
+    * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
 * If the Expiration time included in the offer is before the close time of the most recently-closed ledger. (See [Expiration](#expiration).)
 
 An unfunded offer can stay on the ledger indefinitely, but it does not have any effect. The only ways an offer can be *permanently* removed from the ledger are:
@@ -576,9 +577,22 @@ A trust line indicates an issuer you trust enough to accept their issuances as p
 
 ### Offer Preference ###
 
-Existing offers are grouped by "quality", which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher quality are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same quality are taken on the basis of which offer was placed in the earliest ledger version.
+Existing offers are grouped by exchange rate (sometimes called "offer quality"), which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed in the earliest ledger version.
 
-When offers of the same quality are placed in the same ledger version, the order in which they are taken is determined by the [canonical order](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/misc/CanonicalTXSet.cpp "Source: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
+When offers of the same exchange rate are placed in the same ledger version, the order in which they are taken is determined by the [canonical order](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Source: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
+
+#### TickSize
+
+_Requires the [TickSize amendment](concept-amendments.html#ticksize)._
+
+When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the `TickSize` from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither currency has a `TickSize` set, the default behavior applies.
+
+The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction](#accountset). The exchange rate is represented as a number of significant digits plus an exponent; the `TickSize` does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
+
+The `TickSize` does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on `TickSize`. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the `TakerPays` amount (the amount being bought) gets rounded. If the `tfSell` flag is enabled (a "sell" Offer) the `TakerGets` amount (the amount being sold) gets rounded.
+
+When an issuer enables, disables, or changes the `TickSize`, Offers that were placed under the previous setting are unaffected.
+
 
 ### Expiration ###
 
