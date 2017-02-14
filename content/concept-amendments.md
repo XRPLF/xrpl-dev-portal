@@ -22,6 +22,8 @@ An amendment is a fully-functional feature or change, waiting to be enabled by t
 
 Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.
 
+By convention, Ripple's developers use the SHA-512Half hash of the amendment name as the amendment ID.
+
 See also: [Known Amendments](#known-amendments)
 
 ## Amendment Process ##
@@ -111,13 +113,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                                  | Introduced | Status                  |
 |:--------------------------------------|:-----------|:------------------------|
-| [TickSize](#ticksize)                 | v0.50.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [PayChan](#paychan)                   | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [SusPay](#suspay)                     | v0.31.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [CryptoConditions](#cryptoconditions) | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Escrow](#escrow)                     | TBD        | [In Development: Expected March 2017]( "BADGE_LIGHTGREY")
+| [TickSize](#ticksize)                 | v0.50.0    | [Expected: 2017-02-21](https://ripple.com/dev-blog/ticksize-amendment-open-voting/ "BADGE_BLUE") |
+| [SusPay](#suspay)                     | v0.31.0    | [Vetoed: To be removed](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
+| [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://www.ripplecharts.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
 | [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
 | [FlowV2](#flowv2)                     | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
 | [TrustSetAuth](#trustsetauth)         | v0.30.0    | [Enabled: 2016-07-19](https://www.ripplecharts.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
@@ -130,11 +133,21 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Amendment ID                                                     | Status  |
 |:-----------------------------------------------------------------|:--------|
-| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | In development |
+| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled |
 
-Adds conditional payments that are directly compatible with the [Interledger Protocol Crypto-Conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02).
+Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
 
-**Caution:** This amendment is still in development.
+
+## Escrow
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | In Development |
+
+Replaces the [SusPay](#suspay) and [CryptoConditions](#cryptoconditions) amendments.
+
+Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger, including support for [Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). Creates a new ledger node type for suspended payments and new transaction types to create, execute, and cancel suspended payments.
+
 
 
 ## FeeEscalation ##
@@ -235,11 +248,10 @@ Changes the hash tree structure that `rippled` uses to represent a ledger. The n
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Released but not enabled <br />Enabled on TestNet |
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Not intended for production.<br />Enabled on TestNet |
 
-Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
+This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
 
-The current version is enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/).
 
 ## TrustSetAuth ##
 
@@ -255,7 +267,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Released but not enabled |
+| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Voting in progress; expected 2017-02-21 |
 
 Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
