@@ -149,6 +149,7 @@
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
 <li class="level-2"><a href="#cryptoconditions">CryptoConditions</a></li>
+<li class="level-2"><a href="#escrow">Escrow</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
 <li class="level-2"><a href="#flow">Flow</a></li>
 <li class="level-2"><a href="#flowv2">FlowV2</a></li>
@@ -178,6 +179,7 @@
 <h2 id="about-amendments">About Amendments</h2>
 <p>An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A <code>rippled</code> server that wants to use an amendment has code for two modes: without the amendment (old behavior) and with the amendment (new behavior).</p>
 <p>Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.</p>
+<p>By convention, Ripple's developers use the SHA-512Half hash of the amendment name as the amendment ID.</p>
 <p>See also: <a href="#known-amendments">Known Amendments</a></p>
 <h2 id="amendment-process">Amendment Process</h2>
 <p>Every 256th ledger is called a "flag" ledger. The process of approving an amendment starts in the ledger version immediately before the flag ledger. When <code>rippled</code> validator servers send validation messages for that ledger, those servers also submit votes in favor of specific amendments. If a validator does not vote in favor of an amendment, that is the same as voting against the amendment. (<a href="concept-fee-voting.html">Fee Voting</a> also occurs around flag ledgers.)</p>
@@ -244,11 +246,6 @@ TrustSetAuth
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#ticksize">TickSize</a></td>
-<td align="left">v0.50.0</td>
-<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
 <td align="left"><a href="#shamapv2">SHAMapV2</a></td>
 <td align="left">v0.33.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
@@ -256,11 +253,6 @@ TrustSetAuth
 <tr>
 <td align="left"><a href="#paychan">PayChan</a></td>
 <td align="left">v0.33.0</td>
-<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td align="left"><a href="#suspay">SusPay</a></td>
-<td align="left">v0.31.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
@@ -274,9 +266,24 @@ TrustSetAuth
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
+<td align="left"><a href="#escrow">Escrow</a></td>
+<td align="left">TBD</td>
+<td align="left"><a title="In Development: Expected March 2017"><img alt="In Development: Expected March 2017" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-Expected%20March%202017-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#ticksize">TickSize</a></td>
+<td align="left">v0.50.0</td>
+<td align="left"><a href="https://ripple.com/dev-blog/ticksize-amendment-open-voting/" title="Expected: 2017-02-21"><img alt="Expected: 2017-02-21" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--02--21-blue.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#suspay">SusPay</a></td>
+<td align="left">v0.31.0</td>
+<td align="left"><a href="https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features" title="Vetoed: To be removed"><img alt="Vetoed: To be removed" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-To%20be%20removed-red.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
-<td align="left">N/A</td>
-<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+<td align="left">v0.50.0</td>
+<td align="left"><a href="https://www.ripplecharts.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" title="Enabled: 2017-01-03"><img alt="Enabled: 2017-01-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--01--03-green.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#flow">Flow</a></td>
@@ -317,12 +324,28 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
-<td align="left">In development</td>
+<td align="left">Enabled</td>
 </tr>
 </tbody>
 </table>
-<p>Adds conditional payments that are directly compatible with the <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions specification</a>.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still in development.</p>
+<p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. Ripple plans to withdraw SusPay and implement the same functionality as part of the <a href="#escrow">Escrow</a> amendment including crypto-condition support.</p>
+<h2 id="escrow">Escrow</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+<td align="left">In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Replaces the <a href="#suspay">SusPay</a> amendment, incorporating functionality from the <a href="#cryptoconditions">CryptoConditions</a> amendment.</p>
+<p>Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions</a>. Creates the <code>SuspendedPayment</code> ledger node type and the new transaction types <code>SuspendedPaymentCreate</code>, <code>SuspendedPaymentFinish</code>, and <code>SuspendedPaymentCancel</code>.</p>
 <h2 id="feeescalation">FeeEscalation</h2>
 <table>
 <thead>
@@ -470,12 +493,11 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
-<td align="left">Released but not enabled <br/>Enabled on TestNet</td>
+<td align="left">Withdrawn for production.<br/>Enabled on TestNet</td>
 </tr>
 </tbody>
 </table>
-<p>Provides "Suspended Payments" for XRP for escrow within the Ripple Consensus Ledger. Creates the <code>SuspendedPayment</code> ledger node type and the new transaction types <code>SuspendedPaymentCreate</code>, <code>SuspendedPaymentFinish</code>, and <code>SuspendedPaymentCancel</code>.</p>
-<p>The current version is enabled on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>.</p>
+<p>This amendment is currently enabled on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>. In production, Ripple expects to enable the <a href="#escrow">Escrow</a> amendment instead.</p>
 <h2 id="trustsetauth">TrustSetAuth</h2>
 <table>
 <thead>
@@ -504,7 +526,7 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
-<td align="left">Released but not enabled</td>
+<td align="left">Voting in progress; expected 2017-02-21</td>
 </tr>
 </tbody>
 </table>
