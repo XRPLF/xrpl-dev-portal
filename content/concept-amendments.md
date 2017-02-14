@@ -135,7 +135,7 @@ The following is a comprehensive list of all known amendments and their status o
 |:-----------------------------------------------------------------|:--------|
 | 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled |
 
-Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple plans to withdraw SusPay and implement the same functionality as part of the [Escrow](#escrow) amendment including crypto-condition support.
+Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
 
 
 ## Escrow
@@ -144,9 +144,9 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 |:-----------------------------------------------------------------|:--------|
 | 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | In Development |
 
-Replaces the [SusPay](#suspay) amendment, incorporating functionality from the [CryptoConditions](#cryptoconditions) amendment.
+Replaces the [SusPay](#suspay) and [CryptoConditions](#cryptoconditions) amendments.
 
-Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger including support for [Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). Creates the `SuspendedPayment` ledger node type and the new transaction types `SuspendedPaymentCreate`, `SuspendedPaymentFinish`, and `SuspendedPaymentCancel`.
+Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger, including support for [Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). Creates a new ledger node type for suspended payments and new transaction types to create, execute, and cancel suspended payments.
 
 
 
@@ -248,9 +248,9 @@ Changes the hash tree structure that `rippled` uses to represent a ledger. The n
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Withdrawn for production.<br />Enabled on TestNet |
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Not intended for production.<br />Enabled on TestNet |
 
-This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable the [Escrow](#escrow) amendment instead.
+This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
 
 
 ## TrustSetAuth ##

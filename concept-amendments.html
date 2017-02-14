@@ -328,7 +328,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. Ripple plans to withdraw SusPay and implement the same functionality as part of the <a href="#escrow">Escrow</a> amendment including crypto-condition support.</p>
+<p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the <a href="#escrow">Escrow</a> amendment.</p>
 <h2 id="escrow">Escrow</h2>
 <table>
 <thead>
@@ -344,8 +344,8 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Replaces the <a href="#suspay">SusPay</a> amendment, incorporating functionality from the <a href="#cryptoconditions">CryptoConditions</a> amendment.</p>
-<p>Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions</a>. Creates the <code>SuspendedPayment</code> ledger node type and the new transaction types <code>SuspendedPaymentCreate</code>, <code>SuspendedPaymentFinish</code>, and <code>SuspendedPaymentCancel</code>.</p>
+<p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
+<p>Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger, including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions</a>. Creates a new ledger node type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
 <h2 id="feeescalation">FeeEscalation</h2>
 <table>
 <thead>
@@ -493,11 +493,11 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
-<td align="left">Withdrawn for production.<br/>Enabled on TestNet</td>
+<td align="left">Not intended for production.<br/>Enabled on TestNet</td>
 </tr>
 </tbody>
 </table>
-<p>This amendment is currently enabled on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>. In production, Ripple expects to enable the <a href="#escrow">Escrow</a> amendment instead.</p>
+<p>This amendment is currently enabled on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>. In production, Ripple expects to enable similar functionality with the <a href="#escrow">Escrow</a> amendment instead.</p>
 <h2 id="trustsetauth">TrustSetAuth</h2>
 <table>
 <thead>
