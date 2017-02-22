@@ -1,5 +1,0 @@
-Jinja2==2.8
-Markdown==2.6.2
-watchdog==0.8.3
-requests==2.8.1
-beautifulsoup4==4.4.1
