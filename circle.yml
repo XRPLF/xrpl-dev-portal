@@ -4,8 +4,8 @@ dependencies:
   pre:
     - pyenv global 3.4.0
   override:
-    - pip3 install -r packages.txt
+    - pip3 install dactyl
 test:
   override:
-    - ./dactyl_build.py
-    - ./dactyl_link_checker.py
+    - dactyl_build
+    - dactyl_link_checker

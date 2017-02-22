@@ -29,6 +29,12 @@ default_filters:
     - callouts
     - badges
 
+cover_page:
+    name: Overview
+    html: index.html
+    sidebar: false
+    template: template-index.html
+
 targets:
     # First member is the default that gets built when target not specified
     -   name: local
@@ -60,15 +66,6 @@ targets:
         display_name: rippled Setup Guide
 
 pages:
-# Intro pages is not directly replicated on ripple.com at this time
-    -   name: Overview
-        html: index.html
-        sidebar: false
-        template: template-index.html
-        targets:
-            - local
-            - ripple.com
-
 # References are exhaustive lists of commands and options
     -   name: RippleAPI
         category: References
