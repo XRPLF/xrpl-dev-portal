@@ -118,7 +118,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Escrow](#escrow)                     | TBD        | [In Development: Expected March 2017]( "BADGE_LIGHTGREY")
-| [TickSize](#ticksize)                 | v0.50.0    | [Expected: 2017-02-21](https://ripple.com/dev-blog/ticksize-amendment-open-voting/ "BADGE_BLUE") |
+| [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://charts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_BLUE") |
 | [SusPay](#suspay)                     | v0.31.0    | [Vetoed: To be removed](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
 | [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://www.ripplecharts.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
 | [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
@@ -267,7 +267,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Voting in progress; expected 2017-02-21 |
+| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Enabled   |
 
 Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
