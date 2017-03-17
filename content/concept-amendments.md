@@ -119,7 +119,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [fix1368](#fix1368)                   | v0.60.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
 | [PayChan](#paychan)                   | v0.33.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
 | [Escrow](#escrow)                     | v0.60.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
-| [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://charts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_BLUE") |
+| [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://charts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
 | [SusPay](#suspay)                     | v0.31.0    | [Vetoed: Removed in v0.60.0](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
 | [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://www.ripplecharts.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
 | [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
