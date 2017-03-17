@@ -151,6 +151,7 @@
 <li class="level-2"><a href="#cryptoconditions">CryptoConditions</a></li>
 <li class="level-2"><a href="#escrow">Escrow</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
+<li class="level-2"><a href="#fix1368">fix1368</a></li>
 <li class="level-2"><a href="#flow">Flow</a></li>
 <li class="level-2"><a href="#flowv2">FlowV2</a></li>
 <li class="level-2"><a href="#multisign">MultiSign</a></li>
@@ -251,11 +252,6 @@ TrustSetAuth
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#paychan">PayChan</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
 <td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td align="left">v0.33.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
@@ -266,9 +262,19 @@ TrustSetAuth
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
+<td align="left"><a href="#fix1368">fix1368</a></td>
+<td align="left">v0.60.0</td>
+<td align="left"><a href="https://ripple.com/dev-blog/rippled-version-0-60-0/" title="Expected: 2017-03-30"><img alt="Expected: 2017-03-30" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--03--30-blue.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#paychan">PayChan</a></td>
+<td align="left">v0.33.0</td>
+<td align="left"><a href="https://ripple.com/dev-blog/rippled-version-0-60-0/" title="Expected: 2017-03-30"><img alt="Expected: 2017-03-30" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--03--30-blue.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#escrow">Escrow</a></td>
-<td align="left">TBD</td>
-<td align="left"><a title="In Development: Expected March 2017"><img alt="In Development: Expected March 2017" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-Expected%20March%202017-lightgrey.svg"/></a></td>
+<td align="left">v0.60.0</td>
+<td align="left"><a href="https://ripple.com/dev-blog/rippled-version-0-60-0/" title="Expected: 2017-03-30"><img alt="Expected: 2017-03-30" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--03--30-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#ticksize">TickSize</a></td>
@@ -278,7 +284,7 @@ TrustSetAuth
 <tr>
 <td align="left"><a href="#suspay">SusPay</a></td>
 <td align="left">v0.31.0</td>
-<td align="left"><a href="https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features" title="Vetoed: To be removed"><img alt="Vetoed: To be removed" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-To%20be%20removed-red.svg"/></a></td>
+<td align="left"><a href="https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features" title="Vetoed: Removed in v0.60.0"><img alt="Vetoed: Removed in v0.60.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.60.0-red.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
@@ -340,7 +346,7 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
-<td align="left">In Development</td>
+<td align="left">In voting; expected 2017-03-30</td>
 </tr>
 </tbody>
 </table>
@@ -370,6 +376,22 @@ TrustSetAuth
 <li>It becomes invalid (for example, the <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> causes it to expire)</li>
 <li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
 </ul>
+<h2 id="fix1368">fix1368</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+<td align="left">In voting; expected 2017-03-30</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.</p>
 <h2 id="flow">Flow</h2>
 <table>
 <thead>
@@ -459,7 +481,7 @@ TrustSetAuth
 <tbody>
 <tr>
 <td align="left">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
-<td align="left">Released but not enabled</td>
+<td align="left">In voting; expected 2017-03-30</td>
 </tr>
 </tbody>
 </table>
@@ -482,6 +504,7 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
+<p>When this amendment is activated, the Ripple Consensus Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure.</p>
 <h2 id="suspay">SusPay</h2>
 <table>
 <thead>

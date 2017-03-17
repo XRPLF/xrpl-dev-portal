@@ -114,12 +114,13 @@ The following is a comprehensive list of all known amendments and their status o
 | Name                                  | Introduced | Status                  |
 |:--------------------------------------|:-----------|:------------------------|
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [PayChan](#paychan)                   | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Escrow](#escrow)                     | TBD        | [In Development: Expected March 2017]( "BADGE_LIGHTGREY")
+| [fix1368](#fix1368)                   | v0.60.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
+| [PayChan](#paychan)                   | v0.33.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
+| [Escrow](#escrow)                     | v0.60.0    | [Expected: 2017-03-30](https://ripple.com/dev-blog/rippled-version-0-60-0/ "BADGE_BLUE") |
 | [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://charts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_BLUE") |
-| [SusPay](#suspay)                     | v0.31.0    | [Vetoed: To be removed](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
+| [SusPay](#suspay)                     | v0.31.0    | [Vetoed: Removed in v0.60.0](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
 | [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://www.ripplecharts.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
 | [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://www.ripplecharts.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
 | [FlowV2](#flowv2)                     | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
@@ -142,7 +143,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 
 | Amendment ID                                                     | Status  |
 |:-----------------------------------------------------------------|:--------|
-| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | In Development |
+| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | In voting; expected 2017-03-30 |
 
 Replaces the [SusPay](#suspay) and [CryptoConditions](#cryptoconditions) amendments.
 
@@ -150,7 +151,7 @@ Provides "suspended payments" for XRP for escrow within the Ripple Consensus Led
 
 
 
-## FeeEscalation ##
+## FeeEscalation
 
 | Amendment ID                                                     | Status  |
 |:-----------------------------------------------------------------|:--------|
@@ -168,7 +169,15 @@ A transaction remains in the queue until one of the following happens:
 * It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
-## Flow ##
+## fix1368
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA | In voting; expected 2017-03-30 |
+
+Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.
+
+## Flow
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
@@ -179,7 +188,7 @@ Replaces the payment processing engine with a more robust and efficient rewrite 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
 
 
-## FlowV2 ##
+## FlowV2
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
@@ -188,7 +197,7 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) and removed in version 0.33.0.
 
 
-## MultiSign ##
+## MultiSign
 
 | Amendment ID                                                     | Status  |
 |:-----------------------------------------------------------------|:--------|
@@ -222,11 +231,11 @@ Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) ar
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 
-## PayChan ##
+## PayChan
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | Released but not enabled |
+| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | In voting; expected 2017-03-30 |
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
 
@@ -235,7 +244,7 @@ Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `Channe
 <!--{# TODO: Add links to the relevant docs above when they are ready #}-->
 
 
-## SHAMapV2 ##
+## SHAMapV2
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
@@ -243,8 +252,10 @@ Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `Channe
 
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
+When this amendment is activated, the Ripple Consensus Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure.
 
-## SusPay ##
+
+## SusPay
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
