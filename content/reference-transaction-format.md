@@ -230,7 +230,7 @@ Every transaction type has the same set of fundamental fields. Field names are c
 | SigningPubKey          | String           | PubKey            | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
 | [Signers][]            | Array            | Array             | (Optional) Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
 | SourceTag              | Unsigned Integer | UInt32            | (Optional) Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| TransactionType        | String           | UInt16            | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, and `SignerListSet`. |
+| TransactionType        | String           | UInt16            | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, `SignerListSet`, `EscrowCreate`, `EscrowFinish`, `EscrowCancel`, `PaymentChannelCreate`, `PaymentChannelFund`, and `PaymentChannelClaim`. |
 | TxnSignature           | String           | VariableLength    | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
 [AccountTxnID]: #accounttxnid
@@ -362,6 +362,9 @@ All transactions have certain fields in common:
 Each transaction type has additional fields relevant to the type of action it causes:
 
 * [AccountSet - Set options on an account](#accountset)
+* [EscrowCancel - Reclaim escrowed XRP](#escrowcancel)
+* [EscrowCreate - Create an escrowed XRP payment](#escrowcreate)
+* [EscrowFinish - Deliver escrowed XRP to recipient](#escrowfinish)
 * [OfferCancel - Withdraw a currency-exchange order](#offercancel)
 * [OfferCreate - Submit an order to exchange currency](#offercreate)
 * [Payment - Send funds from one account to another](#payment)
@@ -473,6 +476,110 @@ You can protect against unwanted incoming payments for non-XRP currencies by not
 The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees article](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
 
 In `rippled`'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
+
+
+
+## EscrowCancel ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
+
+_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+
+Return escrowed XRP to the sender.
+
+Example EscrowCancel:
+
+```json
+{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowCancel",
+    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "OwnerSequence": 7,
+}
+```
+
+| Field           | JSON Type        | [Internal Type][] | Description               |
+|:----------------|:-----------------|:------------------|:--------------------------|
+| `Owner`         | String           | AccountID         | Address of the source account that funded the escrow payment.
+| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the escrow to cancel.
+
+Any account may submit an EscrowCancel transaction.
+
+* If the corresponding [EscrowCreate transaction](#escrowcreate) did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
+* Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is before the close time of the most recently-closed ledger.
+
+
+
+## EscrowCreate ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
+
+_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+
+Sequester XRP until the escrow process either finishes or is canceled.
+
+Example EscrowCreate:
+
+```json
+{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowCreate",
+    "Amount": "10000",
+    "Destination": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "CancelAfter": 533257958,
+    "FinishAfter": 533171558,
+    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+    "DestinationTag": 23480,
+    "SourceTag": 11747
+}
+```
+
+| Field            | JSON Type | [Internal Type][] | Description               |
+|:-----------------|:----------|:------------------|:--------------------------|
+| `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and escrow. Once escrowed, the XRP can either go to the `Destination` address (after the `FinishAfter` time) or returned to the sender (after the `CancelAfter` time). |
+| `Destination`    | String    | AccountID         | Address to receive escrowed XRP. |
+| `CancelAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this escrow expires. This value is immutable; the funds can only be returned the sender after this time. |
+| `FinishAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached. |
+| `Condition`      | String    | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). The funds can only be delivered to the recipient if this condition is fulfilled. |
+| `DestinationTag` | Number    | UInt32            | (Optional) Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
+| `SourceTag`      | Number    | UInt32            | (Optional) Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address. |
+
+Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must precede that of `CancelAfter`.
+
+
+
+## EscrowFinish ##
+
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
+
+_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+
+Deliver escrowed XRP the recipient.
+
+Example EscrowFinish:
+
+```json
+{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowFinish",
+    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "OwnerSequence": 7,
+    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+    "Fulfillment": "A0028000"
+}
+```
+
+| Field           | JSON Type        | [Internal Type][] | Description               |
+|:----------------|:-----------------|:------------------|:--------------------------|
+| `Owner`         | String           | AccountID         | Address of the source account that funded the escrow payment.
+| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the escrow to finish.
+| `Condition`     | String           | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). This must match the `Condition` specified in the [EscrowCreate transaction](#escrowcreate). |
+| `Fulfillment`   | String           | VariableLength    | (Optional) Hex value of the `Condition` preimage |
+
+Any account may submit an EscrowFinish transaction.
+
+* If the corresponding [EscrowCreate transaction](#escrowcreate) specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+* If the corresponding [EscrowCreate transaction](#escrowcreate) specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 
 
 
