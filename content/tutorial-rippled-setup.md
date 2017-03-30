@@ -84,7 +84,7 @@ Naturally, a fast network connection is preferable.
 
 This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
-1. Install the Ripple rpm repository:
+1. Install the Ripple RPM repository:
 
         $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
 
@@ -109,7 +109,7 @@ This section assumes that you are using Ubuntu 15.04 or later.
         $ sudo apt-get update
         $ sudo apt-get install yum-utils alien
 
-2. Install the Ripple rpm repository:
+2. Install the Ripple RPM repository:
 
         $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
 
@@ -202,32 +202,27 @@ Running a `rippled` validator that participates in the Consensus process is simp
 
 ## Validator Setup ##
 
+The `validator-keys` tool (included in the `rippled` RPM) is the recommended means to securely generate and manage your validator keys.
+
 1. [Install a `rippled` server.](#installing-rippled)
 
-2. Start `rippled`:
+2. Generate a validator key pair:
 
-        $ sudo service rippled start
+        $ /opt/ripple/bin/validator-keys create_keys
 
-3. Generate a validation public key and seed, and save the output to a secure place:
+    **Warning:** Store the generated `validator-keys.json` key file in a secure but recoverable location, such as an encrypted USB flash drive. Do not modify its contents.
 
-        $ /opt/ripple/bin/rippled -q validation_create
-        {
-            "status" : "success",
-            "validation_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
-            "validation_public_key" : "n9KHn8NfbBsZV5q8bLfS72XyGqwFt5mgoPbcTV4c6qKiuPTAtXYk",
-            "validation_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4"
-        }
+3. Generate a validator token and edit your `rippled.cfg` file to add the `[validator_token]` value.
 
-4. Edit your `rippled.cfg` file to add the `validation_seed` value you generated in step 3:
+        $ /opt/ripple/bin/validator-keys create_token --keyfile /path/to/your/validator-keys.json
 
-        [validation_seed]
-        ssdecohJMDPFuUPDkmG1w4objZyp4
+    If you had previously configured your validator without using the `validator-keys` tool, you will need to also delete the `[validation_seed]` from your `rippled.cfg` file. This changes your validator public key.
 
-    **Warning:** Be sure to use your own unique random seed, and keep it secure! If others know your `validation_seed`, they can forge validations from your server.
-
-5. Restart `rippled` validator:
+4. Start `rippled`:
 
         $ sudo service rippled restart
+
+See [the `validator-keys-tool` GitHub repository](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md) for more information about managing validator keys.
 
 
 ## Public-Facing Server ##
@@ -253,46 +248,22 @@ Take care not to publish the IP address of your validator.
 
 ## Domain Verification ##
 
-Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they control. [Publishing a ripple.txt](#ripple-txt) and [setting the validator's account domain](#account-domain) allows services like [validators.ripple.com](https://validators.ripple.com) to detect the domain associated with the validator.
+Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they control.
 
-### ripple.txt <a name="ripple-txt"></a> ###
+1. Find your validator public key by running the following on the validator server:
 
-Publish a [ripple.txt](https://wiki.ripple.com/Ripple.txt) page at your domain with a signed SSL certificate.
+        $ /opt/ripple/bin/rippled server_info -q | grep pubkey_validator
 
-List the validator's `validation_public_key` (generated [above](#validator-setup) in step 3) in the `[validation_public_key]` section.
+2. Sign the validator public key (from step 1) using the SSL private key used for your domain. The SSL private key file does not need to be stored on the validator server.
 
-### Account domain ###
+        $ openssl dgst -sha256 -hex -sign /path/to/your/ssl.key <(echo <your-validator-public-key>)
 
-A master seed can be used to generate both a validation public key and a Ripple account address. Since the same secret key is used for both, whoever operates the validator also controls the account with the corresponding address. (The validator's public key and the account address both represent the public key for the same keypair.)
+3. Using `validator-keys` tool (included in the `rippled` RPM), sign the domain name:
 
-The steps below describe how to set the domain field of a validator's Ripple account.
+        $ /opt/ripple/bin/validator-keys --keyfile /path/to/your/validator-keys.json sign <your-domain-name>
 
-1. Get the validator's account address (`account_id`) using the `validation_seed` generated [above](#validator-setup) in step 3:
+4. In order to have the verified validator domain published, email <validators@ripple.com> with both signatures as well as the validator public key and domain name.
 
-        $ /opt/ripple/bin/rippled -q wallet_propose <your-validation-seed>
-        {
-           "result" : {
-              "account_id" : "rU7bM9ENDkybaxNrefAVjdLTyNLuue1KaJ",
-              "key_type" : "secp256k1",
-              "master_key" : "FOLD WERE CHOW WIT SWIM RANK WED DAN LAIN TRIO MURK NELL",
-              "master_seed" : "ssdecohJMDPFuUPDkmG1w4objZyp4",
-              "master_seed_hex" : "434256443542C27BD1A84A2BACC9B8F0",
-              "public_key" : "aBQzwnRdgHVZmr8gLNugihTf5NsWAUpayGdAHtz8YPk1w3L4fh6S",
-              "public_key_hex" : "038ED9785EE7FC687445E0D94065A74FF6CEC6506A03C7380075D81A2B9E7E8681",
-              "status" : "success"
-           }
-        }
-
-2. Fund the account by sending it at least 25 XRP.
-    * See [How to Buy XRP](https://ripple.com/xrp-portal/how-to-buy-xrp/)
-
-3. Set the [`Domain` field](reference-transaction-format.html#domain) of the account to match the domain hosting your ripple.txt
-
-        $ /opt/ripple/bin/rippled -q submit <your-secret-key> '{"TransactionType": "AccountSet", "Account": "<your-account-id>", "Domain": "<your-hex-encoded-domain>", "Fee": "10000"}'
-
-4. Verify that your account's domain has been set.
-
-        $ /opt/ripple/bin/rippled -q account_info <your-account-id>
 
 # Additional Configuration #
 
@@ -341,5 +312,5 @@ To enable clustering, change the following sections of your [config file](https:
         192.168.0.2 51235
 
 * Generate a unique seed (using the [`validation_create` command](reference-rippled.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
-    * **Note:** This is a different key than the validation seed `rippled` uses to sign ledger proposals for consensus, in the same format.
+
 * Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.
