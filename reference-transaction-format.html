@@ -155,6 +155,9 @@
 <li class="level-3"><a href="#domain">Domain</a></li>
 <li class="level-3"><a href="#accountset-flags">AccountSet Flags</a></li>
 <li class="level-3"><a href="#transferrate">TransferRate</a></li>
+<li class="level-2"><a href="#escrowcancel">EscrowCancel</a></li>
+<li class="level-2"><a href="#escrowcreate">EscrowCreate</a></li>
+<li class="level-2"><a href="#escrowfinish">EscrowFinish</a></li>
 <li class="level-2"><a href="#offercancel">OfferCancel</a></li>
 <li class="level-2"><a href="#offercreate">OfferCreate</a></li>
 <li class="level-3"><a href="#lifecycle-of-an-offer">Lifecycle of an Offer</a></li>
@@ -477,7 +480,7 @@
 <td align="left">TransactionType</td>
 <td align="left">String</td>
 <td align="left">UInt16</td>
-<td align="left">The type of transaction. Valid types include: <code>Payment</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, and <code>SignerListSet</code>.</td>
+<td align="left">The type of transaction. Valid types include: <code>Payment</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>, <code>AccountSet</code>, <code>SetRegularKey</code>, <code>SignerListSet</code>, <code>EscrowCreate</code>, <code>EscrowFinish</code>, <code>EscrowCancel</code>, <code>PaymentChannelCreate</code>, <code>PaymentChannelFund</code>, and <code>PaymentChannelClaim</code>.</td>
 </tr>
 <tr>
 <td align="left">TxnSignature</td>
@@ -627,6 +630,9 @@
 <p>Each transaction type has additional fields relevant to the type of action it causes:</p>
 <ul>
 <li><a href="#accountset">AccountSet - Set options on an account</a></li>
+<li><a href="#escrowcancel">EscrowCancel - Reclaim escrowed XRP</a></li>
+<li><a href="#escrowcreate">EscrowCreate - Create an escrowed XRP payment</a></li>
+<li><a href="#escrowfinish">EscrowFinish - Deliver escrowed XRP to recipient</a></li>
 <li><a href="#offercancel">OfferCancel - Withdraw a currency-exchange order</a></li>
 <li><a href="#offercreate">OfferCreate - Submit an order to exchange currency</a></li>
 <li><a href="#payment">Payment - Send funds from one account to another</a></li>
@@ -854,6 +860,174 @@
 <h3 id="transferrate">TransferRate</h3>
 <p>The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees article</a> in the Knowledge Center for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
+<h2 id="escrowcancel">EscrowCancel</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#escrow">Escrow Amendment</a>.</em></p>
+<p>Return escrowed XRP to the sender.</p>
+<p>Example EscrowCancel:</p>
+<pre><code class="json">{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowCancel",
+    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "OwnerSequence": 7,
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Owner</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">Address of the source account that funded the escrow payment.</td>
+</tr>
+<tr>
+<td align="left"><code>OwnerSequence</code></td>
+<td align="left">Unsigned Integer</td>
+<td align="left">UInt32</td>
+<td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the escrow to cancel.</td>
+</tr>
+</tbody>
+</table>
+<p>Any account may submit an EscrowCancel transaction.</p>
+<ul>
+<li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> did not specify a <code>CancelAfter</code> time, the EscrowCancel transaction fails.</li>
+<li>Otherwise the EscrowCancel transaction fails if the <code>CancelAfter</code> time is before the close time of the most recently-closed ledger.</li>
+</ul>
+<h2 id="escrowcreate">EscrowCreate</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#escrow">Escrow Amendment</a>.</em></p>
+<p>Sequester XRP until the escrow process either finishes or is canceled.</p>
+<p>Example EscrowCreate:</p>
+<pre><code class="json">{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowCreate",
+    "Amount": "10000",
+    "Destination": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "CancelAfter": 533257958,
+    "FinishAfter": 533171558,
+    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+    "DestinationTag": 23480,
+    "SourceTag": 11747
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Amount</code></td>
+<td align="left">String</td>
+<td align="left">Amount</td>
+<td align="left">Amount of <a href="reference-rippled.html#specifying-currency-amounts">XRP, in drops</a>, to deduct from the sender's balance and escrow. Once escrowed, the XRP can either go to the <code>Destination</code> address (after the <code>FinishAfter</code> time) or returned to the sender (after the <code>CancelAfter</code> time).</td>
+</tr>
+<tr>
+<td align="left"><code>Destination</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">Address to receive escrowed XRP.</td>
+</tr>
+<tr>
+<td align="left"><code>CancelAfter</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this escrow expires. This value is immutable; the funds can only be returned the sender after this time.</td>
+</tr>
+<tr>
+<td align="left"><code>FinishAfter</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached.</td>
+</tr>
+<tr>
+<td align="left"><code>Condition</code></td>
+<td align="left">String</td>
+<td align="left">VariableLength</td>
+<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a> <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">crypto-conditions</a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
+</tr>
+<tr>
+<td align="left"><code>DestinationTag</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address.</td>
+</tr>
+<tr>
+<td align="left"><code>SourceTag</code></td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left">(Optional) Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address.</td>
+</tr>
+</tbody>
+</table>
+<p>Either <code>CancelAfter</code> or <code>FinishAfter</code> must be specified. If both are included, the <code>FinishAfter</code> time must precede that of <code>CancelAfter</code>.</p>
+<h2 id="escrowfinish">EscrowFinish</h2>
+<p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
+<p><em>Requires the <a href="concept-amendments.html#escrow">Escrow Amendment</a>.</em></p>
+<p>Deliver escrowed XRP the recipient.</p>
+<p>Example EscrowFinish:</p>
+<pre><code class="json">{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowFinish",
+    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "OwnerSequence": 7,
+    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+    "Fulfillment": "A0028000"
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">JSON Type</th>
+<th align="left"><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Owner</code></td>
+<td align="left">String</td>
+<td align="left">AccountID</td>
+<td align="left">Address of the source account that funded the escrow payment.</td>
+</tr>
+<tr>
+<td align="left"><code>OwnerSequence</code></td>
+<td align="left">Unsigned Integer</td>
+<td align="left">UInt32</td>
+<td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the escrow to finish.</td>
+</tr>
+<tr>
+<td align="left"><code>Condition</code></td>
+<td align="left">String</td>
+<td align="left">VariableLength</td>
+<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a> <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">crypto-conditions</a>. This must match the <code>Condition</code> specified in the <a href="#escrowcreate">EscrowCreate transaction</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>Fulfillment</code></td>
+<td align="left">String</td>
+<td align="left">VariableLength</td>
+<td align="left">(Optional) Hex value of the <code>Condition</code> preimage</td>
+</tr>
+</tbody>
+</table>
+<p>Any account may submit an EscrowFinish transaction.</p>
+<ul>
+<li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>FinishAfter</code> time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
+<li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>CancelAfter</code> time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
+</ul>
 <h2 id="offercancel">OfferCancel</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.</p>
