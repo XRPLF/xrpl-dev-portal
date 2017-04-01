@@ -265,7 +265,7 @@ done and disconnected.
 <pre><code>'use strict';
 const RippleAPI = require('ripple-lib').RippleAPI;
 </code></pre>
-<p>The opening line enables <a href="https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
+<p>The opening line enables <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
 <p>The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of <a href="https://github.com/ripple/ripple-lib/blob/develop/src/index.js">the modules <code>ripple-lib</code> exports</a>.</p>
 <h3 id="instantiating-the-api">Instantiating the API</h3>
 <pre><code>const api = new RippleAPI({

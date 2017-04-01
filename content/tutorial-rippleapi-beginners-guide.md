@@ -120,7 +120,7 @@ In addition to RippleAPI-specific code, this script uses syntax and conventions 
 const RippleAPI = require('ripple-lib').RippleAPI;
 ```
 
-The opening line enables [strict mode](https://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/). This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: [Restrictions on Code in Strict Mode](https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1).
+The opening line enables [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: [Restrictions on Code in Strict Mode](https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1).
 
 The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.js).
 
