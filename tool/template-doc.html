@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% if currentpage.sidebar %}
+  {% if currentpage.sidebar != 'off' %}
     <div class="dev_nav_wrapper">
         <div id="cont">
             <h5>In this category:</h5>
@@ -38,7 +38,7 @@
             <hr />
             <h5>In this page:</h5>
             <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
-                {{ sidebar_content }}
+                {{ page_toc }}
             </ul>
         </div>
     </div>

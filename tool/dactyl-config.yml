@@ -29,10 +29,12 @@ default_filters:
     - callouts
     - badges
 
+callout_class: "devportal-callout"
+
 cover_page:
     name: Overview
     html: index.html
-    sidebar: false
+    sidebar: "off"
     template: template-index.html
 
 targets:
