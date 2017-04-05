@@ -28,6 +28,7 @@ default_filters:
     - buttonize
     - callouts
     - badges
+    - link_replacement
 
 callout_class: "devportal-callout"
 
