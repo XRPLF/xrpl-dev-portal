@@ -43,6 +43,32 @@ targets:
     -   name: ripple.com
         display_name: Ripple Developer Center
         template: template-contentwithtoc.html
+        link_subs:
+            "reference-rippled.html": https://ripple.com/build/rippled-apis/
+            "reference-rippleapi.html": https://ripple.com/build/rippleapi/
+            "reference-transaction-format.html": https://ripple.com/build/transactions/
+            "reference-ledger-format.html": https://ripple.com/build/ledger-format/
+            "reference-data-api.html": https://ripple.com/build/data-api-v2/
+            "tutorial-multisign.html": https://ripple.com/build/how-to-multi-sign/
+            "concept-issuing-and-operational-addresses.html": https://ripple.com/build/issuing-operational-addresses/
+            "tutorial-reliable-transaction-submission.html": https://ripple.com/build/reliable-transaction-submission/
+            "tutorial-rippleapi-beginners-guide.html": https://ripple.com/build/rippleapi-beginners-guide/
+            "tutorial-rippled-setup.html": https://ripple.com/build/rippled-setup/
+            "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
+            "concept-amendments.html": https://ripple.com/build/amendments/
+            "concept-fee-voting.html": https://ripple.com/build/fee-voting/
+            "concept-fees.html": https://ripple.com/build/fees-disambiguation/
+            "concept-freeze.html": https://ripple.com/build/freeze/
+            "concept-paths.html": https://ripple.com/build/paths/
+            "concept-reserves.html": https://ripple.com/build/reserves/
+            "concept-stand-alone-mode.html": https://ripple.com/build/stand-alone-mode/
+            "concept-transaction-cost.html": https://ripple.com/build/transaction-cost/
+            "concept-transfer-fees.html": https://ripple.com/build/transfer-fees/
+            "concept-noripple.html": https://ripple.com/build/understanding-the-noripple-flag/
+            "gb-2015-06.html": https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
+            "gb-2015-05.html": https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
+            "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
+            "data-api-v2-tool.html": https://ripple.com/build/data-api-tool/
         image_subs:
             "img/funds_flow_diagram.png": https://ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
@@ -72,7 +98,6 @@ pages:
         html: reference-rippleapi.html
         # Currently this is the only page that's fetched remotely.
         md: https://raw.githubusercontent.com/ripple/ripple-lib/0.17.2/docs/index.md
-        ripple.com: https://ripple.com/build/rippleapi/
         filters:
             - remove_doctoc
             - add_version
@@ -84,7 +109,6 @@ pages:
         category: References
         html: reference-rippled.html
         md: reference-rippled.md
-        ripple.com: https://ripple.com/build/rippled-apis/
         targets:
             - local
             - ripple.com
@@ -93,7 +117,6 @@ pages:
         category: References
         html: reference-transaction-format.html
         md: reference-transaction-format.md
-        ripple.com: https://ripple.com/build/transactions/
         targets:
             - local
             - ripple.com
@@ -102,7 +125,6 @@ pages:
         category: References
         html: reference-ledger-format.html
         md: reference-ledger-format.md
-        ripple.com: https://ripple.com/build/ledger-format/
         targets:
             - local
             - ripple.com
@@ -111,7 +133,6 @@ pages:
         category: References
         html: reference-data-api.html
         md: reference-data-api.md
-        ripple.com: https://ripple.com/build/data-api-v2/
         targets:
             - local
             - ripple.com
@@ -121,7 +142,6 @@ pages:
         category: Tutorials
         html: tutorial-multisign.html
         md: tutorial-multisign.md
-        ripple.com: https://ripple.com/build/how-to-multi-sign/
         targets:
             - local
             - ripple.com
@@ -131,7 +151,6 @@ pages:
         category: Tutorials
         html: concept-issuing-and-operational-addresses.html
         md: concept-issuing-and-operational-addresses.md
-        ripple.com: https://ripple.com/build/issuing-operational-addresses/
         targets:
             - local
             - ripple.com
@@ -140,7 +159,6 @@ pages:
         category: Tutorials
         html: tutorial-reliable-transaction-submission.html
         md: tutorial-reliable-transaction-submission.md
-        ripple.com: https://ripple.com/build/reliable-transaction-submission/
         targets:
             - local
             - ripple.com
@@ -149,7 +167,6 @@ pages:
         category: Tutorials
         html: tutorial-rippleapi-beginners-guide.html
         md: tutorial-rippleapi-beginners-guide.md
-        ripple.com: https://ripple.com/build/rippleapi-beginners-guide/
         targets:
             - local
             - ripple.com
@@ -158,7 +175,6 @@ pages:
         category: Tutorials
         html: tutorial-rippled-setup.html
         md: tutorial-rippled-setup.md
-        ripple.com: https://ripple.com/build/rippled-setup/
         targets:
             - local
             - ripple.com
@@ -169,7 +185,6 @@ pages:
         category: Tutorials
         html: tutorial-gateway-guide.html
         md: tutorial-gateway-guide.md
-        ripple.com: https://ripple.com/build/gateway-guide/
         targets:
             - local
             - ripple.com
@@ -179,7 +194,6 @@ pages:
         category: RCL Features
         html: concept-amendments.html
         md: concept-amendments.md
-        ripple.com: https://ripple.com/build/amendments/
         targets:
             - local
             - ripple.com
@@ -188,7 +202,6 @@ pages:
         category: RCL Features
         html: concept-fee-voting.html
         md: concept-fee-voting.md
-        ripple.com: https://ripple.com/build/fee-voting/
         targets:
             - local
             - ripple.com
@@ -197,7 +210,6 @@ pages:
         category: RCL Features
         html: concept-fees.html
         md: concept-fees.md
-        ripple.com: https://ripple.com/build/fees-disambiguation/
         targets:
             - local
             - ripple.com
@@ -206,7 +218,6 @@ pages:
         category: RCL Features
         html: concept-freeze.html
         md: concept-freeze.md
-        ripple.com: https://ripple.com/build/freeze/
         targets:
             - local
             - ripple.com
@@ -215,7 +226,6 @@ pages:
         category: RCL Features
         html: concept-paths.html
         md: concept-paths.md
-        ripple.com: https://ripple.com/build/paths/
         targets:
             - local
             - ripple.com
@@ -224,7 +234,6 @@ pages:
         category: RCL Features
         html: concept-reserves.html
         md: concept-reserves.md
-        ripple.com: https://ripple.com/build/reserves/
         targets:
             - local
             - ripple.com
@@ -233,7 +242,6 @@ pages:
         category: RCL Features
         html: concept-stand-alone-mode.html
         md: concept-stand-alone-mode.md
-        ripple.com: https://ripple.com/build/stand-alone-mode/
         targets:
             - local
             - ripple.com
@@ -242,7 +250,6 @@ pages:
         category: RCL Features
         html: concept-transaction-cost.html
         md: concept-transaction-cost.md
-        ripple.com: https://ripple.com/build/transaction-cost/
         targets:
             - local
             - ripple.com
@@ -251,7 +258,6 @@ pages:
         category: RCL Features
         html: concept-transfer-fees.html
         md: concept-transfer-fees.md
-        ripple.com: https://ripple.com/build/transfer-fees/
         targets:
             - local
             - ripple.com
@@ -260,7 +266,6 @@ pages:
         category: RCL Features
         html: concept-noripple.html
         md: concept-noripple.md
-        ripple.com: https://ripple.com/build/understanding-the-noripple-flag/
         targets:
             - local
             - ripple.com
@@ -269,7 +274,6 @@ pages:
         category: Gateway Bulletins
         html: gb-2015-06.html
         md: gb-2015-06.md
-        ripple.com: https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
         targets:
             - local
             - ripple.com
@@ -278,7 +282,6 @@ pages:
         category: Gateway Bulletins
         html: gb-2015-05.html
         md: gb-2015-05.md
-        ripple.com: https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
         targets:
             - local
             - ripple.com
@@ -287,7 +290,6 @@ pages:
     -   name: WebSocket API Tool
         category: API Tools
         html: ripple-api-tool.html
-        ripple.com: https://ripple.com/build/websocket-tool/
         sidebar: custom
         targets:
             - local
@@ -297,7 +299,6 @@ pages:
     -   name: Data API v2 Tool
         category: API Tools
         html: data-api-v2-tool.html
-        ripple.com: https://ripple.com/build/data-api-tool/
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
         doc_page: reference-data-api.html
