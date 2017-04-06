@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php {% if currentpage.sidebar %}sidebar-primary{% endif %} wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php {% if currentpage.sidebar != 'off' %}sidebar-primary{% endif %} wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
   <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
     <div class="container">
       <div class="navbar-header">
@@ -63,7 +63,7 @@
 
 
   <div class="wrap container" role="document">
-      {% if currentpage.sidebar %}
+      {% if currentpage.sidebar != 'off' %}
       <aside class="sidebar" role="complementary">
           {% block sidebar %}{% endblock %}
       </aside>
