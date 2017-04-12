@@ -65,6 +65,7 @@ There are several different kinds of nodes that can appear in the ledger's state
 
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
 * [**DirectoryNode** - Contains links to other nodes.](#directorynode)
+* [**Escrow** - Contains XRP held for a conditional payment](#escrow)
 * [**Offer** - An offer to exchange currencies, known in finance as an _order_.](#offer)
 * [**PayChannel** - A channel for asynchronous XRP payments.](#paychannel)
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this node type.](#ripplestate)
@@ -237,6 +238,41 @@ The lower 64 bits of an Offer Directory's index represent the TakerPays amount d
 * The Directory Node space key (`d`)
 * The `index` of the root DirectoryNode
 * The page number of this node. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
+
+
+## Escrow
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+
+_(Requires the [Escrow Amendment](concept-amendments.html#paychan).)_
+
+The `Escrow` node type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction](reference-transaction-format.html#escrowcreate) creates an Escrow node in the ledger. A successful [EscrowFinish](reference-transaction-format.html#escrowfinish) or [EscrowCancel](reference-transaction-format.html#escrowcancel) transaction deletes the node.
+
+An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a _condition_ (a 256-bit hexadecimal value), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ in the form of a 32-byte value whose SHA-256 hash matches the condition. (In other words, the fulfillment is the SHA-256 preimage of the condition.)
+
+Example Escrow node:
+
+```
+TODO
+```
+
+An Escrow node has the following fields:
+
+| Name              | JSON Type | [Internal Type][] | Description |
+|-------------------|-----------|---------------|-------------|
+| Account           | String | AccountID | The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled. |
+| Destination       | String | AccountID | The destination address where the XRP is paid if the held payment is successful. |
+| Amount            | String | Amount    | The amount of XRP, in drops, to be delivered by the held payment. |
+| Condition         | String | VariableLength | _(Optional)_ A SHA-256 hash, as a hexadecimal string. If present, the [EscrowFinish transaction][] must contain a fulfillment that hashes to this value. |
+| CancelAfter       | Number | UInt32 | _(Optional)_ The time, in [seconds since the Ripple epoch](reference-rippled.html#specifying-time), after which this held payment can only be canceled. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| FinishAfter       | Number | UInt32 | _(Optional)_ The time, in [seconds since the Ripple epoch](reference-rippled.html#specifying-time), after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| SourceTag         | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
+| DestinationTag    | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
+| OwnerNode         | String    | UInt64    | A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple pages. **Note:** The node does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| PreviousTxnID     | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
+| PreviousTxnLgrSeq | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
+
+[EscrowFinish transaction]: reference-transaction-format.html#escrowfinish
+
 
 
 ## Offer ##
