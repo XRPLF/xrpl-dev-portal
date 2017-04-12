@@ -247,7 +247,7 @@ _(Requires the [Escrow Amendment](concept-amendments.html#paychan).)_
 
 The `Escrow` node type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction](reference-transaction-format.html#escrowcreate) creates an Escrow node in the ledger. A successful [EscrowFinish](reference-transaction-format.html#escrowfinish) or [EscrowCancel](reference-transaction-format.html#escrowcancel) transaction deletes the node.
 
-An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a _condition_ (a 256-bit hexadecimal value), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ in the form of a 32-byte value whose SHA-256 hash matches the condition. (In other words, the fulfillment is the SHA-256 preimage of the condition.)
+An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is SHA-256-PREIMAGE.)
 
 Example Escrow node:
 
