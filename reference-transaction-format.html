@@ -899,7 +899,7 @@
 <p>Any account may submit an EscrowCancel transaction.</p>
 <ul>
 <li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> did not specify a <code>CancelAfter</code> time, the EscrowCancel transaction fails.</li>
-<li>Otherwise the EscrowCancel transaction fails if the <code>CancelAfter</code> time is before the close time of the most recently-closed ledger.</li>
+<li>Otherwise the EscrowCancel transaction fails if the <code>CancelAfter</code> time is after the close time of the most recently-closed ledger.</li>
 </ul>
 <h2 id="escrowcreate">EscrowCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
@@ -956,7 +956,7 @@
 <td align="left"><code>Condition</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a> <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">crypto-conditions</a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
+<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
 </tr>
 <tr>
 <td align="left"><code>DestinationTag</code></td>
@@ -1001,25 +1001,25 @@
 <td align="left"><code>Owner</code></td>
 <td align="left">String</td>
 <td align="left">AccountID</td>
-<td align="left">Address of the source account that funded the escrow payment.</td>
+<td align="left">Address of the source account that funded the held payment.</td>
 </tr>
 <tr>
 <td align="left"><code>OwnerSequence</code></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the escrow to finish.</td>
+<td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the held payment to finish.</td>
 </tr>
 <tr>
 <td align="left"><code>Condition</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a> <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">crypto-conditions</a>. This must match the <code>Condition</code> specified in the <a href="#escrowcreate">EscrowCreate transaction</a>.</td>
+<td align="left">(Optional) Hex value matching the previously-supplied <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a> of the held payment.</td>
 </tr>
 <tr>
 <td align="left"><code>Fulfillment</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value of the <code>Condition</code> preimage</td>
+<td align="left">(Optional) Hex value of the <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4">PREIMAGE-SHA-256 crypto-condition fulfillment</a> matching the held payment's <code>Condition</code>.</td>
 </tr>
 </tbody>
 </table>

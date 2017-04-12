@@ -650,7 +650,22 @@
 <p>The <code>Escrow</code> node type represents a held payment of XRP waiting to be executed or canceled. An <a href="reference-transaction-format.html#escrowcreate">EscrowCreate transaction</a> creates an Escrow node in the ledger. A successful <a href="reference-transaction-format.html#escrowfinish">EscrowFinish</a> or <a href="reference-transaction-format.html#escrowcancel">EscrowCancel</a> transaction deletes the node.</p>
 <p>An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a <em>condition</em> (a 256-bit hexadecimal value), the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> in the form of a 32-byte value whose SHA-256 hash matches the condition. (In other words, the fulfillment is the SHA-256 preimage of the condition.)</p>
 <p>Example Escrow node:</p>
-<pre><code>TODO
+<pre><code>{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": "10000",
+    "CancelAfter": 545440232,
+    "Condition": "A0258020A82A88B2DF843A54F58772E4A3861866ECDB4157645DD9AE528C1D3AEEDABAB6810120",
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "DestinationTag": 23480,
+    "FinishAfter": 545354132,
+    "Flags": 0,
+    "LedgerEntryType": "Escrow",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7",
+    "PreviousTxnLgrSeq": 28991004,
+    "SourceTag": 11747,
+    "index": "DC5F3851D8A1AB622F957761E5963BC5BD439D5C24AC6AD7AC4523F0640244AC"
+}
 </code></pre>
 <p>An Escrow node has the following fields:</p>
 <table>
@@ -685,7 +700,7 @@
 <td>Condition</td>
 <td>String</td>
 <td>VariableLength</td>
-<td><em>(Optional)</em> A SHA-256 hash, as a hexadecimal string. If present, the <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> must contain a fulfillment that hashes to this value.</td>
+<td><em>(Optional)</em> A <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>, as hexadecimal. If present, the <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> must contain a fulfillment that satisfies this condition.</td>
 </tr>
 <tr>
 <td>CancelAfter</td>

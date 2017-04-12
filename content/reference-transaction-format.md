@@ -506,7 +506,7 @@ Example EscrowCancel:
 Any account may submit an EscrowCancel transaction.
 
 * If the corresponding [EscrowCreate transaction](#escrowcreate) did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
-* Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is before the close time of the most recently-closed ledger.
+* Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is after the close time of the most recently-closed ledger.
 
 
 
@@ -540,7 +540,7 @@ Example EscrowCreate:
 | `Destination`    | String    | AccountID         | Address to receive escrowed XRP. |
 | `CancelAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this escrow expires. This value is immutable; the funds can only be returned the sender after this time. |
 | `FinishAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached. |
-| `Condition`      | String    | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). The funds can only be delivered to the recipient if this condition is fulfilled. |
+| `Condition`      | String    | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). The funds can only be delivered to the recipient if this condition is fulfilled. |
 | `DestinationTag` | Number    | UInt32            | (Optional) Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
 | `SourceTag`      | Number    | UInt32            | (Optional) Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address. |
 
@@ -571,10 +571,10 @@ Example EscrowFinish:
 
 | Field           | JSON Type        | [Internal Type][] | Description               |
 |:----------------|:-----------------|:------------------|:--------------------------|
-| `Owner`         | String           | AccountID         | Address of the source account that funded the escrow payment.
-| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the escrow to finish.
-| `Condition`     | String           | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). This must match the `Condition` specified in the [EscrowCreate transaction](#escrowcreate). |
-| `Fulfillment`   | String           | VariableLength    | (Optional) Hex value of the `Condition` preimage |
+| `Owner`         | String           | AccountID         | Address of the source account that funded the held payment.
+| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the held payment to finish.
+| `Condition`     | String           | VariableLength    | (Optional) Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
+| `Fulfillment`   | String           | VariableLength    | (Optional) Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 
