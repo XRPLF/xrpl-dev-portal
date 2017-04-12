@@ -146,6 +146,7 @@
 <li class="level-2"><a href="#directorynode">DirectoryNode</a></li>
 <li class="level-3"><a href="#directory-index-formats">Directory Index Formats</a></li>
 <li class="level-2"><a href="#escrow">Escrow</a></li>
+<li class="level-3"><a href="#escrow-index-format">Escrow Index Format</a></li>
 <li class="level-2"><a href="#offer">Offer</a></li>
 <li class="level-3"><a href="#offer-flags">Offer Flags</a></li>
 <li class="level-3"><a href="#offer-index-format">Offer Index Format</a></li>
@@ -746,6 +747,13 @@
 </tr>
 </tbody>
 </table>
+<h3 id="escrow-index-format">Escrow Index Format</h3>
+<p>The <code>index</code> of an Escrow node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Escrow space key (<code>u</code>)</li>
+<li>The AccountID of the sender of the EscrowCreate transaction that created the Escrow node</li>
+<li>The Sequence number of the EscrowCreate transaction that created the Escrow node</li>
+</ul>
 <h2 id="offer">Offer</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
 <p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>

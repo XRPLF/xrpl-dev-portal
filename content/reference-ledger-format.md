@@ -288,6 +288,14 @@ An Escrow node has the following fields:
 
 [EscrowFinish transaction]: reference-transaction-format.html#escrowfinish
 
+### Escrow Index Format ###
+
+The `index` of an Escrow node is the SHA-512Half of the following values put together:
+
+* The Escrow space key (`u`)
+* The AccountID of the sender of the EscrowCreate transaction that created the Escrow node
+* The Sequence number of the EscrowCreate transaction that created the Escrow node
+
 
 
 ## Offer ##
