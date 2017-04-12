@@ -160,6 +160,7 @@
 <li class="level-2"><a href="#signerlist">SignerList</a></li>
 <li class="level-3"><a href="#signerentry-object">SignerEntry Object</a></li>
 <li class="level-3"><a href="#signerlists-and-reserves">SignerLists and Reserves</a></li>
+<li class="level-3"><a href="#signerlist-index-format">SignerList Index Format</a></li>
 
             </ul>
         </div>
@@ -1400,6 +1401,13 @@
 <p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>
 <h3 id="signerlists-and-reserves">SignerLists and Reserves</h3>
 <p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
+<h3 id="signerlist-index-format">SignerList Index Format</h3>
+<p>The <code>index</code> of a SignerList node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The RippleState space key (<code>S</code>)</li>
+<li>The AccountID of the owner of the SignerList</li>
+<li>The SignerListID (currently always <code>0</code>)</li>
+</ul>
 <!-- rippled release notes links -->
     </div>
       </main>

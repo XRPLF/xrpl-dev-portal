@@ -632,5 +632,13 @@ When processing a multi-signed transaction, the server dereferences the `Account
 
 A SignerList contributes to its owner's [reserve requirement](concept-reserves.html). The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) node in the ledger.
 
+### SignerList Index Format
+
+The `index` of a SignerList node is the SHA-512Half of the following values put together:
+
+* The RippleState space key (`S`)
+* The AccountID of the owner of the SignerList
+* The SignerListID (currently always `0`)
+
 
 {% include 'snippets/rippled_versions.md' %}
