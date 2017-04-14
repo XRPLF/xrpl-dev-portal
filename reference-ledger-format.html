@@ -145,6 +145,8 @@
 <li class="level-3"><a href="#accountroot-index-format">AccountRoot Index Format</a></li>
 <li class="level-2"><a href="#directorynode">DirectoryNode</a></li>
 <li class="level-3"><a href="#directory-index-formats">Directory Index Formats</a></li>
+<li class="level-2"><a href="#escrow">Escrow</a></li>
+<li class="level-3"><a href="#escrow-index-format">Escrow Index Format</a></li>
 <li class="level-2"><a href="#offer">Offer</a></li>
 <li class="level-3"><a href="#offer-flags">Offer Flags</a></li>
 <li class="level-3"><a href="#offer-index-format">Offer Index Format</a></li>
@@ -158,6 +160,7 @@
 <li class="level-2"><a href="#signerlist">SignerList</a></li>
 <li class="level-3"><a href="#signerentry-object">SignerEntry Object</a></li>
 <li class="level-3"><a href="#signerlists-and-reserves">SignerLists and Reserves</a></li>
+<li class="level-3"><a href="#signerlist-index-format">SignerList Index Format</a></li>
 
             </ul>
         </div>
@@ -272,6 +275,7 @@
 <ul>
 <li><a href="#accountroot"><strong>AccountRoot</strong> - The settings, XRP balance, and other metadata for one account.</a></li>
 <li><a href="#directorynode"><strong>DirectoryNode</strong> - Contains links to other nodes.</a></li>
+<li><a href="#escrow"><strong>Escrow</strong> - Contains XRP held for a conditional payment</a></li>
 <li><a href="#offer"><strong>Offer</strong> - An offer to exchange currencies, known in finance as an <em>order</em>.</a></li>
 <li><a href="#paychannel"><strong>PayChannel</strong> - A channel for asynchronous XRP payments.</a></li>
 <li><a href="#ripplestate"><strong>RippleState</strong> - Links two accounts, tracking the balance of one currency between them. The concept of a <em>trust line</em> is really an abstraction of this node type.</a></li>
@@ -641,6 +645,119 @@
 <li>The Directory Node space key (<code>d</code>)</li>
 <li>The <code>index</code> of the root DirectoryNode</li>
 <li>The page number of this node. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)</li>
+</ul>
+<h2 id="escrow">Escrow</h2>
+<p><a href="https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" title="Source">[Source]<br/></a></p>
+<p><em>(Requires the <a href="concept-amendments.html#paychan">Escrow Amendment</a>.)</em></p>
+<p>The <code>Escrow</code> node type represents a held payment of XRP waiting to be executed or canceled. An <a href="reference-transaction-format.html#escrowcreate">EscrowCreate transaction</a> creates an Escrow node in the ledger. A successful <a href="reference-transaction-format.html#escrowfinish">EscrowFinish</a> or <a href="reference-transaction-format.html#escrowcancel">EscrowCancel</a> transaction deletes the node. If the Escrow node has a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02"><em>crypto-condition</em></a>, the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> that satisfies the condition. (The only supported crypto-condition type is <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a>.) If the Escrow node has a <code>FinishAfter</code> time, the held payment can only execute after that time.</p>
+<p>An Escrow node is associated with two addresses:</p>
+<ul>
+<li>The owner, who provides the XRP when creating the Escrow node. If the held payment is canceled, the XRP returns to the owner.</li>
+<li>The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.</li>
+</ul>
+<p>Example Escrow node:</p>
+<pre><code>{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Amount": "10000",
+    "CancelAfter": 545440232,
+    "Condition": "A0258020A82A88B2DF843A54F58772E4A3861866ECDB4157645DD9AE528C1D3AEEDABAB6810120",
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "DestinationTag": 23480,
+    "FinishAfter": 545354132,
+    "Flags": 0,
+    "LedgerEntryType": "Escrow",
+    "OwnerNode": "0000000000000000",
+    "PreviousTxnID": "C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7",
+    "PreviousTxnLgrSeq": 28991004,
+    "SourceTag": 11747,
+    "index": "DC5F3851D8A1AB622F957761E5963BC5BD439D5C24AC6AD7AC4523F0640244AC"
+}
+</code></pre>
+<p>An Escrow node has the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Type</th>
+<th><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp">Internal Type</a></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td>String</td>
+<td>AccountID</td>
+<td>The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled.</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>String</td>
+<td>AccountID</td>
+<td>The destination address where the XRP is paid if the held payment is successful.</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>String</td>
+<td>Amount</td>
+<td>The amount of XRP, in drops, to be delivered by the held payment.</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>String</td>
+<td>VariableLength</td>
+<td><em>(Optional)</em> A <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>, as hexadecimal. If present, the <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> must contain a fulfillment that satisfies this condition.</td>
+</tr>
+<tr>
+<td>CancelAfter</td>
+<td>Number</td>
+<td>UInt32</td>
+<td><em>(Optional)</em> The held payment can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
+</tr>
+<tr>
+<td>FinishAfter</td>
+<td>Number</td>
+<td>UInt32</td>
+<td><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a>, after which this held payment can be finished. Any <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
+</tr>
+<tr>
+<td>SourceTag</td>
+<td>Number</td>
+<td>UInt32</td>
+<td><em>(Optional)</em> An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address.</td>
+</tr>
+<tr>
+<td>DestinationTag</td>
+<td>Number</td>
+<td>UInt32</td>
+<td><em>(Optional)</em> An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address.</td>
+</tr>
+<tr>
+<td>OwnerNode</td>
+<td>String</td>
+<td>UInt64</td>
+<td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple pages. <strong>Note:</strong> The node does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+</tr>
+<tr>
+<td>PreviousTxnID</td>
+<td>String</td>
+<td>Hash256</td>
+<td>The identifying hash of the transaction that most recently modified this node.</td>
+</tr>
+<tr>
+<td>PreviousTxnLgrSeq</td>
+<td>Number</td>
+<td>UInt32</td>
+<td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="escrow-index-format">Escrow Index Format</h3>
+<p>The <code>index</code> of an Escrow node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The Escrow space key (<code>u</code>)</li>
+<li>The AccountID of the sender of the EscrowCreate transaction that created the Escrow node</li>
+<li>The Sequence number of the EscrowCreate transaction that created the Escrow node</li>
 </ul>
 <h2 id="offer">Offer</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
@@ -1288,6 +1405,13 @@
 <p>When processing a multi-signed transaction, the server dereferences the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="#accountroot">AccountRoot node</a>, then only the master secret associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>
 <h3 id="signerlists-and-reserves">SignerLists and Reserves</h3>
 <p>A SignerList contributes to its owner's <a href="concept-reserves.html">reserve requirement</a>. The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="#ripplestate">RippleState</a>) or <a href="#offer">Offer</a> node in the ledger.</p>
+<h3 id="signerlist-index-format">SignerList Index Format</h3>
+<p>The <code>index</code> of a SignerList node is the SHA-512Half of the following values put together:</p>
+<ul>
+<li>The RippleState space key (<code>S</code>)</li>
+<li>The AccountID of the owner of the SignerList</li>
+<li>The SignerListID (currently always <code>0</code>)</li>
+</ul>
 <!-- rippled release notes links -->
     </div>
       </main>
