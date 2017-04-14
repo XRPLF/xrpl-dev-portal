@@ -241,13 +241,13 @@ The lower 64 bits of an Offer Directory's index represent the TakerPays amount d
 
 
 ## Escrow
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
 _(Requires the [Escrow Amendment](concept-amendments.html#paychan).)_
 
 The `Escrow` node type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction](reference-transaction-format.html#escrowcreate) creates an Escrow node in the ledger. A successful [EscrowFinish](reference-transaction-format.html#escrowfinish) or [EscrowCancel](reference-transaction-format.html#escrowcancel) transaction deletes the node.
 
-An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is SHA-256-PREIMAGE.)
+An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. (The two addresses can be the same.) If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1).)
 
 Example Escrow node:
 
@@ -278,7 +278,7 @@ An Escrow node has the following fields:
 | Destination       | String | AccountID | The destination address where the XRP is paid if the held payment is successful. |
 | Amount            | String | Amount    | The amount of XRP, in drops, to be delivered by the held payment. |
 | Condition         | String | VariableLength | _(Optional)_ A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
-| CancelAfter       | Number | UInt32 | _(Optional)_ The time, in [seconds since the Ripple epoch](reference-rippled.html#specifying-time), after which this held payment can only be canceled. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| CancelAfter       | Number | UInt32 | _(Optional)_ The held payment can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple epoch](reference-rippled.html#specifying-time) and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | FinishAfter       | Number | UInt32 | _(Optional)_ The time, in [seconds since the Ripple epoch](reference-rippled.html#specifying-time), after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
 | SourceTag         | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
 | DestinationTag    | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
