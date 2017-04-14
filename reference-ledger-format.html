@@ -649,8 +649,12 @@
 <h2 id="escrow">Escrow</h2>
 <p><a href="https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" title="Source">[Source]<br/></a></p>
 <p><em>(Requires the <a href="concept-amendments.html#paychan">Escrow Amendment</a>.)</em></p>
-<p>The <code>Escrow</code> node type represents a held payment of XRP waiting to be executed or canceled. An <a href="reference-transaction-format.html#escrowcreate">EscrowCreate transaction</a> creates an Escrow node in the ledger. A successful <a href="reference-transaction-format.html#escrowfinish">EscrowFinish</a> or <a href="reference-transaction-format.html#escrowcancel">EscrowCancel</a> transaction deletes the node.</p>
-<p>An Escrow node is associated with two addresses: the owner, who provides the XRP when creating the Escrow node; and the destination, where the XRP is paid when the held payment succeeds. (The two addresses can be the same.) If the held payment is canceled, the XRP returns to the owner. If the Escrow node has a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02"><em>crypto-condition</em></a>, the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> that satisfies the condition. (The only supported crypto-condition type is <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a>.)</p>
+<p>The <code>Escrow</code> node type represents a held payment of XRP waiting to be executed or canceled. An <a href="reference-transaction-format.html#escrowcreate">EscrowCreate transaction</a> creates an Escrow node in the ledger. A successful <a href="reference-transaction-format.html#escrowfinish">EscrowFinish</a> or <a href="reference-transaction-format.html#escrowcancel">EscrowCancel</a> transaction deletes the node. If the Escrow node has a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02"><em>crypto-condition</em></a>, the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> that satisfies the condition. (The only supported crypto-condition type is <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256</a>.) If the Escrow node has a <code>FinishAfter</code> time, the held payment can only execute after that time.</p>
+<p>An Escrow node is associated with two addresses:</p>
+<ul>
+<li>The owner, who provides the XRP when creating the Escrow node. If the held payment is canceled, the XRP returns to the owner.</li>
+<li>The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.</li>
+</ul>
 <p>Example Escrow node:</p>
 <pre><code>{
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
