@@ -78,6 +78,7 @@
                   <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
                   <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
                   <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                  <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -226,7 +227,7 @@
 <li>Transactions must be properly-formed and <a href="reference-transaction-format.html#authorizing-transactions">authorized</a> with valid signatures.</li>
 <li>Transactions with an <code>AccountTxnID</code> field cannot be queued.</li>
 <li>A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the <code>Fee</code> fields and the sum of the XRP that each transaction could send. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></li>
-<li>If a transaction affects how the sending address authorizes accounts, no other transactions from the same address can be queued behind it. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></li>
+<li>If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it. <a href="https://github.com/ripple/rippled/releases/tag/0.32.0" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/></a></li>
 <li>If the transaction includes a <code>LastLedgerSequence</code> field, the value of that field must be at least <strong>the current ledger index + 2</strong>.</li>
 </ul>
 <h4 id="fee-averaging">Fee Averaging</h4>

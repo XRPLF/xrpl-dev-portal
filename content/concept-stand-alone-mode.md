@@ -29,6 +29,7 @@ In a genesis ledger, the [genesis address](reference-rippled.html#special-addres
 
 **Caution:** If you create a new genesis ledger, the hard-coded default [Reserve](concept-reserves.html) is **200 XRP** minimum for funding a new address, with an increment of **50 XRP** per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: [Fee Voting](concept-fee-voting.html))
 
+[New in: rippled 0.50.0][] If you start a new genesis ledger with `--start`, all The genesis ledger contains an [EnableAmendment pseudo-transaction](reference-transaction-format.html#enableamendment) to turn on all [Amendments](concept-amendments.html) natively supported by the `rippled` server, except for amendments that you explicitly disable in the configuration file. The effects of those amendments are available starting from the very next ledger version.
 
 
 Load Saved Ledger

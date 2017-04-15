@@ -78,6 +78,7 @@
                   <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
                   <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
                   <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                  <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -175,6 +176,7 @@
 <p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
 <p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
+<p>[New in: rippled 0.50.0][] If you start a new genesis ledger with <code>--start</code>, all The genesis ledger contains an <a href="reference-transaction-format.html#enableamendment">EnableAmendment pseudo-transaction</a> to turn on all <a href="concept-amendments.html">Amendments</a> natively supported by the <code>rippled</code> server, except for amendments that you explicitly disable in the configuration file. The effects of those amendments are available starting from the very next ledger version.</p>
 <h2 id="load-saved-ledger">Load Saved Ledger</h2>
 <p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
 <h3 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h3>

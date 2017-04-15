@@ -70,7 +70,7 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 * Transactions must be properly-formed and [authorized](reference-transaction-format.html#authorizing-transactions) with valid signatures.
 * Transactions with an `AccountTxnID` field cannot be queued.
 * A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. [New in: rippled 0.32.0][]
-* If a transaction affects how the sending address authorizes accounts, no other transactions from the same address can be queued behind it. [New in: rippled 0.32.0][]
+* If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it. [New in: rippled 0.32.0][]
 * If the transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
 
 #### Fee Averaging ####

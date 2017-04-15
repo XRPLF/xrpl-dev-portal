@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Reserves - Ripple Developer Portal</title>
+    <title>Escrow Tutorials - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -125,26 +125,21 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
-                <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
-                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
-                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
-                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
-                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
-                <li class="level-2"><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
-                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-                <li class="level-2"><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+                <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
+                <li class="level-2"><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+                <li class="level-2"><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                <li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                <li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                <li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                <li class="level-2"><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                <li class="level-2"><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
             </ul>
             <hr />
             <h5>In this page:</h5>
             <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
-                <li class="level-1"><a href="#reserves">Reserves</a></li>
-<li class="level-2"><a href="#base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</a></li>
-<li class="level-3"><a href="#owner-reserves">Owner Reserves</a></li>
-<li class="level-2"><a href="#going-below-the-reserve-requirement">Going Below the Reserve Requirement</a></li>
-<li class="level-2"><a href="#changing-the-reserve-requirements">Changing the Reserve Requirements</a></li>
+                <li class="level-1"><a href="#escrow-tutorials">Escrow Tutorials</a></li>
+<li class="level-2"><a href="#availability-of-held-payments">Availability of Held Payments</a></li>
+<li class="level-2"><a href="#todo">TODO</a></li>
 
             </ul>
         </div>
@@ -152,33 +147,22 @@
       </aside>
       <main class="main" role="main">
     <div class='content'>
-        <h1 id="reserves">Reserves</h1>
-<p>The Ripple Consensus Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
-<p>To submit transactions, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send enough XRP to meet the reserve requirement.</p>
-<p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.)</p>
-<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
-<p>The reserve requirement is divided into two parts:</p>
+        <h1 id="escrow-tutorials">Escrow Tutorials</h1>
+<p>The Ripple Consensus Ledger supports held payments that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. You can use these simple features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.</p>
 <ul>
-<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every address in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
-<li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
+<li>Send a time-held payment</li>
+<li>Send a conditionally-held payment</li>
+<li>Look up held payments where you are the destination</li>
+<li>Look up held payments where you are the sender/owner</li>
 </ul>
-<h3 id="owner-reserves">Owner Reserves</h3>
-<p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
-<ul>
-<li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
-<li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
-<li>A single <a href="reference-ledger-format.html#signerlist">SignerList</a> counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</li>
-<li><a href="reference-ledger-format.html#escrow">Held Payments (Escrow)</a> are owned by the address that placed them.</li>
-<li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
-</ul>
-<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
-<p>The Ripple Consensus Ledger considers an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
-<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
-<p>During transaction processing, the <a href="concept-transaction-cost.html">transaction cost</a> destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.</p>
-<p>When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the <a href="#changing-the-reserve-requirements">reserve requirement decreases</a> to less than the address's XRP holdings.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> When an address is below the reserve requirement, it can send new <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="reference-ledger-format.html#ripplestate">trust lines</a>, or <a href="reference-ledger-format.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
-<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
-<p>The Ripple Consensus Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+<h2 id="availability-of-held-payments">Availability of Held Payments</h2>
+<p>Held payments have been enabled by the <a href="concept-amendments.html#escrow">"Escrow" Amendment</a> to the Ripple Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> by the name "Suspended Payments" (SusPay) in 2016.</p>
+<p>When testing in <a href="concept-stand-alone-mode.html">stand-alone mode</a>, you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your <code>rippled.cfg</code>:</p>
+<pre><code>[features]
+Escrow
+</code></pre>
+<p>You can check the status of the Escrow amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>.</p>
+<h2 id="todo">TODO</h2>
     </div>
       </main>
   </div>
