@@ -1326,9 +1326,18 @@ Each offer object contains the following fields:
 ## account_objects ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
-The `account_objects` command returns the raw [ledger format][] for all objects owned by an account, such as [outstanding offers](reference-transaction-format.html#lifecycle-of-an-offer), trust lines in non-default state, and [signer lists](reference-transaction-format.html#multi-signing). For getting the balance of an account's trust lines, we recommend [`account_lines`](#account-lines) instead.
+The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see [`account_lines`](#account-lines) instead.
 
 [ledger format]: reference-ledger-format.html
+
+The types of objects that may appear in the `account_objects` response for an account include:
+
+- [Offer nodes](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
+- [RippleState nodes](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
+- The account's [SignerList node](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
+- [Escrow nodes](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
+- [PayChannel nodes](reference-ledger-format.html#paychannel) for open payment channels.
+
 
 #### Request Format ####
 An example of the request format:
