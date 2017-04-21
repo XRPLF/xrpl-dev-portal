@@ -14,8 +14,14 @@
     "TrustSet"
 ] %}
 
+{% if currentpage.html == "reference-transaction-format.html" %}
+  {% set basepage = "" %}
+{% else %}
+  {% set basepage = "reference-transaction-format.html" %}
+{% endif %}
+
 {% for tx in txtypes %}
-[{{tx}}]: reference-transaction-format.html#{{tx|lower}}
-[{{tx}} transaction]: reference-transaction-format.html#{{tx|lower}}
-[{{tx}} transactions]: reference-transaction-format.html#{{tx|lower}}
+[{{tx}}]: {{basepage}}#{{tx|lower}}
+[{{tx}} transaction]: {{basepage}}#{{tx|lower}}
+[{{tx}} transactions]: {{basepage}}#{{tx|lower}}
 {% endfor %}

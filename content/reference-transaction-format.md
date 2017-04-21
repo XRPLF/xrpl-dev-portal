@@ -1,4 +1,4 @@
-# Transactions Overview #
+# Transactions Overview
 
 A _Transaction_ is the only way to modify the Ripple Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost](concept-transaction-cost.html).
 
@@ -15,9 +15,9 @@ In the decentralized Ripple Consensus Ledger, a digital signature proves that a 
 
 A transaction can be authorized by any of the following types of signatures:
 
-* A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction](#accountset).
-* A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction](#setregularkey).
-* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction](#signerlistset).
+* A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction][].
+* A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction][].
+* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
@@ -38,7 +38,7 @@ Sending a transaction to the Ripple Consensus Ledger involves several steps:
 
 ### Unsigned Transaction Format ###
 
-Here is an example of an unsigned [Payment-type transaction](#payment) in JSON:
+Here is an example of an unsigned [Payment transaction][] in JSON:
 
 ```
 {
@@ -172,7 +172,7 @@ Example response from the `tx` command:
 
 Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
 
-The [SignerListSet transaction](#signerlistset) defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
+The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
@@ -473,7 +473,7 @@ You can protect against unwanted incoming payments for non-XRP currencies by not
 
 ### TransferRate ###
 
-The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees article](https://ripple.com/knowledge_center/transfer-fees/) in the Knowledge Center for more information.
+The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
 In `rippled`'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
 
@@ -494,18 +494,18 @@ Example EscrowCancel:
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "EscrowCancel",
     "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OwnerSequence": 7,
+    "OfferSequence": 7,
 }
 ```
 
 | Field           | JSON Type        | [Internal Type][] | Description               |
 |:----------------|:-----------------|:------------------|:--------------------------|
 | `Owner`         | String           | AccountID         | Address of the source account that funded the escrow payment.
-| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the escrow to cancel.
+| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the escrow to cancel.
 
 Any account may submit an EscrowCancel transaction.
 
-* If the corresponding [EscrowCreate transaction](#escrowcreate) did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
+* If the corresponding [EscrowCreate transaction][] did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
 * Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is after the close time of the most recently-closed ledger.
 
 
@@ -563,7 +563,7 @@ Example EscrowFinish:
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "EscrowFinish",
     "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OwnerSequence": 7,
+    "OfferSequence": 7,
     "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
     "Fulfillment": "A0028000"
 }
@@ -572,14 +572,14 @@ Example EscrowFinish:
 | Field           | JSON Type        | [Internal Type][] | Description               |
 |:----------------|:-----------------|:------------------|:--------------------------|
 | `Owner`         | String           | AccountID         | Address of the source account that funded the held payment.
-| `OwnerSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](#escrowcreate) that created the held payment to finish.
+| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the held payment to finish.
 | `Condition`     | String           | VariableLength    | (Optional) Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
 | `Fulfillment`   | String           | VariableLength    | (Optional) Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 
-* If the corresponding [EscrowCreate transaction](#escrowcreate) specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
-* If the corresponding [EscrowCreate transaction](#escrowcreate) specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+* If the corresponding [EscrowCreate transaction][] specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+* If the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 
 
 
@@ -605,7 +605,7 @@ An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledge
 |:--------------|:-----------------|:------------------|:----------------------|
 | OfferSequence | Unsigned Integer | UInt32            | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 
-*Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate](#offercreate) transaction with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
+*Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate transaction][] with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
 The OfferCancel method returns [tesSUCCESS](#transaction-results) even if it did not find an offer with the matching sequence number.
 
@@ -637,7 +637,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 | Field                     | JSON Type           | [Internal Type][] | Description |
 |:--------------------------|:--------------------|:------------------|:-------|
 | [Expiration](#expiration) | Unsigned Integer    | UInt32            | (Optional) Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
-| OfferSequence             | Unsigned Integer    | UInt32            | (Optional) An offer to delete first, specified in the same way as [OfferCancel](#offercancel). |
+| OfferSequence             | Unsigned Integer    | UInt32            | (Optional) An offer to delete first, specified in the same way as [OfferCancel][]. |
 | TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
 | TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
 
@@ -694,7 +694,7 @@ _Requires the [TickSize amendment](concept-amendments.html#ticksize)._
 
 When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the `TickSize` from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither currency has a `TickSize` set, the default behavior applies.
 
-The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction](#accountset). The exchange rate is represented as a number of significant digits plus an exponent; the `TickSize` does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
+The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction][]. The exchange rate is represented as a number of significant digits plus an exponent; the `TickSize` does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
 
 The `TickSize` does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on `TickSize`. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the `TakerPays` amount (the amount being bought) gets rounded. If the `tfSell` flag is enabled (a "sell" Offer) the `TakerGets` amount (the amount being sold) gets rounded.
 
@@ -731,7 +731,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | tfFillOrKill        | 0x00040000 | 262144        | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only try to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. |
 | tfSell              | 0x00080000 | 524288        | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
 
-The following invalid flag combination prompts a temINVALID_FLAG error:
+The following invalid flag combination prompts a `temINVALID_FLAG` error:
 
 * tfImmediateOrCancel and tfFillOrKill
 
@@ -1045,7 +1045,7 @@ You cannot create a SignerList such that the SignerQuorum could never be met. Th
 
 You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.
 
-You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](reference-ledger-format.html#accountroot-flags) enabled) and the account does not have a [Regular Key](#setregularkey) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [tecNO\_ALTERNATIVE\_KEY](#tec-codes).
+You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](reference-ledger-format.html#accountroot-flags) enabled) and the account does not have a [Regular Key](#setregularkey) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](#tec-codes).
 
 
 
@@ -1195,9 +1195,9 @@ The response from `submit` contains the following fields:
 
 | Field                   | Value          | Description                       |
 |:------------------------|:---------------|:----------------------------------|
-| engine\_result          | String         | A code that categorizes the result, such as `tecPATH_DRY` |
-| engine\_result\_code    | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
-| engine\_result\_message | String         | A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice. |
+| `engine_result`          | String         | A code that categorizes the result, such as `tecPATH_DRY` |
+| `engine_result_code`    | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
+| `engine_result_message` | String         | A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice. |
 
 If nothing went wrong when submitting and applying the transaction locally, the response looks like this:
 
@@ -1288,7 +1288,7 @@ Some fields that may appear in transaction metadata include:
 
 ### delivered_amount ###
 
-The `Amount` of a [Payment transaction](#payment) indicates the amount to deliver to the `Destination`, so if the transaction was successful, then the destination received that much -- **except if the transaction was a [partial payment](#partial-payments)**. (In that case, any positive amount up to `Amount` might have arrived.) Rather than choosing whether or not to trust the `Amount` field, you should use the `delivered_amount` field of the metadata to see how much actually reached its destination.
+The `Amount` of a [Payment transaction][] indicates the amount to deliver to the `Destination`, so if the transaction was successful, then the destination received that much -- **except if the transaction was a [partial payment](#partial-payments)**. (In that case, any positive amount up to `Amount` might have arrived.) Rather than choosing whether or not to trust the `Amount` field, you should use the `delivered_amount` field of the metadata to see how much actually reached its destination.
 
 The `delivered_amount` field of transaction metadata is included in all successful Payment transactions, and is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
 
@@ -1309,14 +1309,14 @@ These codes indicate an error in the local server processing the transaction; it
 
 | Code                  | Explanation                                          |
 |:----------------------|:-----------------------------------------------------|
-| telBAD\_DOMAIN        | The transaction specified a domain value (for example, the `Domain` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long to store in the ledger. |
-| telBAD\_PATH_COUNT    | The transaction contains too many paths for the local server to process. |
-| telBAD\_PUBLIC\_KEY   | The transaction specified a public key value (for example, as the `MessageKey` field of an [AccountSet transaction](#accountset)) that cannot be used, probably because it is too long. |
-| telCAN\_NOT\_QUEUE    | The transaction did not meet the [open ledger cost](concept-transaction-cost.html), but this server did not queue this transaction because it did not meet the [queuing restrictions](concept-transaction-cost.html#queuing-restrictions). You can try again later or sign and submit a replacement transaction with a higher transaction cost in the `Fee` field. |
-| telFAILED\_PROCESSING | An unspecified error occurred when processing the transaction. |
-| telINSUF\_FEE_P       | The `Fee` from the transaction is not high enough to meet the server's current [transaction cost](concept-transaction-cost.html) requirement, which is derived from its load level. |
-| telLOCAL_ERROR        | Unspecified local error.                             |
-| telNO\_DST\_PARTIAL   | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](#partial-payments) was enabled. This is disallowed. |
+| `telBAD_DOMAIN`        | The transaction specified a domain value (for example, the `Domain` field of an [AccountSet transaction][]) that cannot be used, probably because it is too long to store in the ledger. |
+| `telBAD_PATH_COUNT`    | The transaction contains too many paths for the local server to process. |
+| `telBAD_PUBLIC_KEY`   | The transaction specified a public key value (for example, as the `MessageKey` field of an [AccountSet transaction][]) that cannot be used, probably because it is too long. |
+| `telCAN_NOT_QUEUE`    | The transaction did not meet the [open ledger cost](concept-transaction-cost.html), but this server did not queue this transaction because it did not meet the [queuing restrictions](concept-transaction-cost.html#queuing-restrictions). You can try again later or sign and submit a replacement transaction with a higher transaction cost in the `Fee` field. |
+| `telFAILED_PROCESSING` | An unspecified error occurred when processing the transaction. |
+| `telINSUF_FEE_P`       | The `Fee` from the transaction is not high enough to meet the server's current [transaction cost](concept-transaction-cost.html) requirement, which is derived from its load level. |
+| `telLOCAL_ERROR`        | Unspecified local error.                             |
+| `telNO_DST`_`PARTIAL`   | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](#partial-payments) was enabled. This is disallowed. |
 
 ### tem Codes ###
 
@@ -1324,39 +1324,39 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 | Code                         | Explanation                                   |
 |:-----------------------------|:----------------------------------------------|
-| temBAD\_AMOUNT               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment](#payment)) was invalid, possibly because it was a negative number. |
-| temBAD\_AUTH\_MASTER         | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](#setregularkey) set. |
-| temBAD\_CURRENCY             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
-| temBAD\_EXPIRATION           | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction](#offercreate). |
-| temBAD\_FEE                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
-| temBAD\_ISSUER               | The transaction improperly specified the `issuer` field of some currency included in the request. |
-| temBAD\_LIMIT                | The [TrustSet](#trustset) transaction improperly specified the `LimitAmount` value of a trustline. |
-| temBAD\_OFFER                | The [OfferCreate](#offercreate) transaction specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
-| temBAD\_PATH                 | The [Payment](#payment) transaction specifies one or more [Paths](#paths) improperly, for example including an issuer for XRP, or specifying an account differently. |
-| temBAD\_PATH\_LOOP           | One of the [Paths](#paths) in the [Payment](#payment) transaction was flagged as a loop, so it cannot be processed in a bounded amount of time. |
-| temBAD\_SEND\_XRP\_LIMIT     | The [Payment](#payment) transaction used the [tfLimitQuality](#limit-quality) flag in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions. |
-| temBAD\_SEND\_XRP\_MAX       | The [Payment](#payment) transaction included a `SendMax` field in a direct XRP-to-XRP payment, even though sending XRP should never require SendMax. (XRP is only valid in SendMax if the destination `Amount` is not XRP.) |
-| temBAD\_SEND\_XRP\_NO_DIRECT | The [Payment](#payment) transaction used the [tfNoDirectRipple](#payment-flags) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct. |
-| temBAD\_SEND\_XRP\_PARTIAL   | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
-| temBAD\_SEND\_XRP\_PATHS     | The [Payment](#payment) transaction included `Paths` while sending XRP, even though XRP-to-XRP payments should always be direct. |
-| temBAD\_SEQUENCE             | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
-| temBAD\_SIGNATURE            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.) |
-| temBAD\_SRC\_ACCOUNT         | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account. |
-| temBAD\_TRANSFER\_RATE       | The [`TransferRate` field of an AccountSet transaction](#transferrate) is not properly formatted. |
-| temDST\_IS\_SRC              | The [TrustSet](#trustset) transaction improperly specified the destination of the trust line (the `issuer` field of `LimitAmount`) as the `Account` sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.) |
-| temDST\_NEEDED               | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment](#payment) transaction, or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
-| temINVALID                   | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
-| temINVALID\_FLAG             | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
-| temMALFORMED                 | Unspecified problem with the format of the transaction. |
-| temREDUNDANT                 | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
-| temREDUNDANT\_SEND\_MAX      | [Removed in: rippled 0.28.0][] |
-| temRIPPLE\_EMPTY             | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
-| temBAD_WEIGHT                | The [SignerListSet](#signerlistset) transaction includes a `SignerWeight` that is invalid, for example a zero or negative value. |
-| temBAD_SIGNER                | The [SignerListSet](#signerlistset) transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
-| temBAD_QUORUM                | The [SignerListSet](#signerlistset) transaction has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
-| temUNCERTAIN                 | Used internally only. This code should never be returned. |
-| temUNKNOWN                   | Used internally only. This code should never be returned. |
-| temDISABLED                  | The transaction requires logic that is disabled. Typically this means you are trying to use an [amendment](concept-amendments.html) that is not enabled for the current ledger. |
+| `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment](#payment)) was invalid, possibly because it was a negative number. |
+| `temBAD_AUTH_MASTER`         | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](#setregularkey) set. |
+| `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
+| `temBAD_EXPIRATION`           | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction][]. Alternatively, the transaction did not specify a required expiration value, for example as part of an [EscrowCreate transaction][]. |
+| `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
+| `temBAD_ISSUER`               | The transaction improperly specified the `issuer` field of some currency included in the request. |
+| `temBAD_LIMIT`                | The [TrustSet transaction][] improperly specified the `LimitAmount` value of a trustline. |
+| `temBAD_OFFER`                | The [OfferCreate transaction][] specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
+| `temBAD_PATH`                 | The [Payment](#payment) transaction specifies one or more [Paths](#paths) improperly, for example including an issuer for XRP, or specifying an account differently. |
+| `temBAD_PATH_LOOP`           | One of the [Paths](#paths) in the [Payment](#payment) transaction was flagged as a loop, so it cannot be processed in a bounded amount of time. |
+| `temBAD_SEND_XRP_LIMIT`     | The [Payment](#payment) transaction used the [tfLimitQuality](#limit-quality) flag in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions. |
+| `temBAD_SEND_XRP_MAX`       | The [Payment](#payment) transaction included a `SendMax` field in a direct XRP-to-XRP payment, even though sending XRP should never require SendMax. (XRP is only valid in SendMax if the destination `Amount` is not XRP.) |
+| `temBAD_SEND_XRP_NO_DIRECT` | The [Payment](#payment) transaction used the [tfNoDirectRipple](#payment-flags) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct. |
+| `temBAD_SEND_XRP_PARTIAL`   | The [Payment](#payment) transaction used the [tfPartialPayment](#partial-payments) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
+| `temBAD_SEND_XRP_PATHS`     | The [Payment](#payment) transaction included `Paths` while sending XRP, even though XRP-to-XRP payments should always be direct. |
+| `temBAD_SEQUENCE`             | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
+| `temBAD_SIGNATURE`            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.) |
+| `temBAD_SRC_ACCOUNT`         | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account. |
+| `temBAD_TRANSFER_RATE`       | The [`TransferRate` field of an AccountSet transaction](#transferrate) is not properly formatted. |
+| `temDST_IS_SRC`              | The [TrustSet transaction][] improperly specified the destination of the trust line (the `issuer` field of `LimitAmount`) as the `Account` sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.) |
+| `temDST_NEEDED`               | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment](#payment) transaction, or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
+| `temINVALID`                   | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
+| `temINVALID_FLAG`             | The transaction includes a [Flag](#flags) that does not exist, or includes a contradictory combination of flags. |
+| `temMALFORMED`                 | Unspecified problem with the format of the transaction. |
+| `temREDUNDANT`                 | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
+| `temREDUNDANT_SEND_MAX`      | [Removed in: rippled 0.28.0][] |
+| `temRIPPLE_EMPTY`             | The [Payment](#payment) transaction includes an empty `Paths` field, but paths are necessary to complete this payment. |
+| `temBAD_WEIGHT`                | The [SignerListSet transaction][] includes a `SignerWeight` that is invalid, for example a zero or negative value. |
+| `temBAD_SIGNER`                | The [SignerListSet transaction][] includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
+| `temBAD_QUORUM`                | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
+| `temUNCERTAIN`                 | Used internally only. This code should never be returned. |
+| `temUNKNOWN`                   | Used internally only. This code should never be returned. |
+| `temDISABLED`                  | The transaction requires logic that is disabled. Typically this means you are trying to use an [amendment](concept-amendments.html) that is not enabled for the current ledger. |
 
 
 ### tef Codes ###
@@ -1365,23 +1365,23 @@ These codes indicate that the transaction failed and was not included in a ledge
 
 | Code                   | Explanation                                         |
 |:-----------------------|:----------------------------------------------------|
-| tefALREADY             | The same exact transaction has already been applied. |
-| tefBAD\_ADD\_AUTH      | **DEPRECATED.**                                     |
-| tefBAD\_AUTH           | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
-| tefBAD\_AUTH\_MASTER   | The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address. |
-| tefBAD\_LEDGER         | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
-| tefBAD\_QUORUM         | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |
-| tefBAD\_SIGNATURE      | The transaction was [multi-signed](#multi-signing), but contained a signature for an address not part of a SignerList associated with the sending account. |
-| tefCREATED             | **DEPRECATED.**                                     |
-| tefEXCEPTION           | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
-| tefFAILURE             | Unspecified failure in applying the transaction.    |
-| tefINTERNAL            | When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
-| tefMASTER\_DISABLED    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
-| tefMAX\_LEDGER         | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
-| tefNO\_AUTH\_REQUIRED  | The [TrustSet](#trustset) transaction tried to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
-| tefNOT\_MULTI\_SIGNING | The transaction was [multi-signed](#multi-signing), but the sending account has no SignerList defined. |
-| tefPAST\_SEQ           | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |
-| tefWRONG\_PRIOR        | The transaction contained an `AccountTxnID` field (or the deprecated `PreviousTxnID` field), but the transaction specified there does not match the account's previous transaction. |
+| `tefALREADY`             | The same exact transaction has already been applied. |
+| `tefBAD_ADD_AUTH`      | **DEPRECATED.**                                     |
+| `tefBAD_AUTH`           | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
+| `tefBAD_AUTH_MASTER`   | The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address. |
+| `tefBAD_LEDGER`         | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
+| `tefBAD_QUORUM`         | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |
+| `tefBAD_SIGNATURE`      | The transaction was [multi-signed](#multi-signing), but contained a signature for an address not part of a SignerList associated with the sending account. |
+| `tefCREATED`             | **DEPRECATED.**                                     |
+| `tefEXCEPTION`           | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
+| `tefFAILURE`             | Unspecified failure in applying the transaction.    |
+| `tefINTERNAL`            | When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
+| `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
+| `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
+| `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
+| `tefNOT_MULTI_SIGNING` | The transaction was [multi-signed](#multi-signing), but the sending account has no SignerList defined. |
+| `tefPAST_SEQ`           | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |
+| `tefWRONG_PRIOR`        | The transaction contained an `AccountTxnID` field (or the deprecated `PreviousTxnID` field), but the transaction specified there does not match the account's previous transaction. |
 
 ### ter Codes ###
 
@@ -1389,25 +1389,25 @@ These codes indicate that the transaction failed, but it could apply successfull
 
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
-| terFUNDS\_SPENT  | **DEPRECATED.**                                           |
-| terINSUF\_FEE\_B | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
-| terLAST          | Used internally only. This code should never be returned. |
-| terNO\_ACCOUNT   | The address sending the transaction is not funded in the ledger (yet). |
-| terNO\_AUTH      | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
-| terNO\_LINE      | Used internally only. This code should never be returned. |
-| terNO\_RIPPLE    | Used internally only. This code should never be returned. |
-| terOWNERS        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
-| terPRE\_SEQ      | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
-| terRETRY         | Unspecified retriable error.                              |
-| terQUEUED        | The transaction met the load-scaled [transaction cost](concept-transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
+| `terFUNDS_SPENT`  | **DEPRECATED.**                                           |
+| `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
+| `terLAST`          | Used internally only. This code should never be returned. |
+| `terNO_ACCOUNT`   | The address sending the transaction is not funded in the ledger (yet). |
+| `terNO_AUTH`      | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
+| `terNO_LINE`      | Used internally only. This code should never be returned. |
+| `terNO_RIPPLE`    | Used internally only. This code should never be returned. |
+| `terOWNERS`        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
+| `terPRE_SEQ`      | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
+| `terRETRY`         | Unspecified retriable error.                              |
+| `terQUEUED`        | The transaction met the load-scaled [transaction cost](concept-transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 
 ### tes Success ###
 
-The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it did what it was supposed to do. (For example, an [OfferCancel](#offercancel) can "succeed" even if there is no offer for it to cancel.) Success uses the numerical value 0.
+The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it did what it was supposed to do. (For example, an [OfferCancel][] can "succeed" even if there is no offer for it to cancel.) Success uses the numerical value 0.
 
 | Code       | Explanation                                                     |
 |:-----------|:----------------------------------------------------------------|
-| tesSUCCESS | The transaction was applied and forwarded to other servers. If this appears in a validated ledger, then the transaction's success is final. |
+| `tesSUCCESS` | The transaction was applied and forwarded to other servers. If this appears in a validated ledger, then the transaction's success is final. |
 
 ### tec Codes ###
 
@@ -1415,38 +1415,39 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 
 | Code                        | Value | Explanation                            |
 |:----------------------------|:------|:---------------------------------------|
-| tecCLAIM                    | 100   | Unspecified failure, with transaction cost destroyed. |
-| tecDIR\_FULL                | 121   | The address sending the transaction cannot own any more objects in the ledger. |
-| tecDST\_TAG\_NEEDED         | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
-| tecFAILED\_PROCESSING       | 105   | An unspecified error occurred when processing the transaction. |
-| tecFROZEN                   | 137   | The [OfferCreate transaction](#offercreate) failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
-| tecINSUF\_RESERVE\_LINE     | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO\_LINE\_INSUF\_RESERVE for the other case.) |
-| tecINSUF\_RESERVE\_OFFER    | 123   | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](concept-reserves.html)) |
-| tecINSUFFICIENT\_RESERVE    | 141   | The [SignerListSet](#signerlistset) or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves) for more information. |
-| tecINTERNAL                 | 144   | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
-| tecNEED\_MASTER\_KEY        | 142   | This transaction tried to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). [New in: rippled 0.28.0][] |
-| tecNO\_ALTERNATIVE\_KEY     | 130   | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction](#setregularkey) to remove the regular key, a [SignerListSet transaction](#signerlistset) to delete a SignerList, or an [AccountSet transaction](#accountset) to disable the master key. (Prior to `rippled` 0.30.0, this was called `tecMASTER_DISABLED`.) |
-| tecNO\_AUTH                 | 134   | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO\_LINE occurs instead. |
-| tecNO\_DST                  | 124   | The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received enough XRP.) |
-| tecNO\_DST\_INSUF_XRP       | 125   | The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it. |
-| tecNO\_ENTRY                | 140   | Reserved for future use.               |
-| tecNO\_ISSUER               | 133   | The account specified in the `issuer` field of a currency amount does not exist. |
-| tecNO\_LINE                 | 135   | The `TakerPays` field of the [OfferCreate transaction](#offercreate) specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, `tecNO_AUTH` occurs instead. |
-| tecNO\_LINE\_INSUF\_RESERVE | 126   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF\_RESERVE\_LINE for the other case.) |
-| tecNO\_LINE\_REDUNDANT      | 127   | The transaction failed because it tried to set a trust line to its default state, but the trust line did not exist. |
-| tecNO\_PERMISSION           | 139   | Reserved for future use.               |
-| tecNO\_REGULAR\_KEY         | 131   | The [AccountSet transaction](#accountset) tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
-| tecNO\_TARGET               | 138   | Reserved for future use.               |
-| tecOVERSIZE                 | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
-| tecOWNERS                   | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
-| tecPATH\_DRY                | 128   | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
-| tecPATH\_PARTIAL            | 101   | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
-| tecUNFUNDED                 | 129   | **DEPRECATED.** Replaced by tecUNFUNDED\_OFFER and tecUNFUNDED\_PAYMENT. |
-| tecUNFUNDED\_ADD            | 102   | **DEPRECATED.**                        |
-| tecUNFUNDED\_PAYMENT        | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](concept-reserves.html)) |
-| tecUNFUNDED\_OFFER          | 103   | The [OfferCreate transaction](#offercreate) failed because the account creating the offer does not have any of the `TakerGets` currency. |
+| `tecCLAIM`                    | 100   | Unspecified failure, with transaction cost destroyed. |
+| `tecDIR_FULL`                | 121   | The address sending the transaction cannot own any more objects in the ledger. |
+| `tecDST_TAG_NEEDED`         | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
+| `tecFAILED_PROCESSING`       | 105   | An unspecified error occurred when processing the transaction. |
+| `tecFROZEN`                   | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
+| `tecINSUF_RESERVE_LINE`     | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See `tecNO_LINE_INSUF_RESERVE` for the other case.) |
+| `tecINSUF_RESERVE_OFFER`    | 123   | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](concept-reserves.html)) |
+| `tecINSUFFICIENT_RESERVE`    | 141   | The [SignerListSet][] or other transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. See [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves) for more information. |
+| `tecINTERNAL`                 | 144   | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. |
+| `tecNEED_MASTER_KEY`        | 142   | This transaction tried to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). [New in: rippled 0.28.0][] |
+| `tecNO_ALTERNATIVE_KEY`     | 130   | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction][] to remove the regular key, a [SignerListSet transaction][] to delete a SignerList, or an [AccountSet transaction][] to disable the master key. (Prior to `rippled` 0.30.0, this was called `tecMASTER_DISABLED`.) |
+| `tecNO_AUTH`                 | 134   | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, `tecNO_LINE` occurs instead. |
+| `tecNO_DST`                  | 124   | The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received enough XRP.) |
+| `tecNO_DST_INSUF_XRP`       | 125   | The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it. |
+| `tecNO_ENTRY`                | 140   | Reserved for future use.               |
+| `tecNO_ISSUER`               | 133   | The account specified in the `issuer` field of a currency amount does not exist. |
+| `tecNO_LINE`                 | 135   | The `TakerPays` field of the [OfferCreate transaction][] specifies an asset whose issuer has `lsfRequireAuth` enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, `tecNO_AUTH` occurs instead. |
+| `tecNO_LINE_INSUF_RESERVE` | 126   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See `tecINSUF_RESERVE_LINE` for the other case.) |
+| `tecNO_LINE_REDUNDANT`      | 127   | The transaction failed because it tried to set a trust line to its default state, but the trust line did not exist. |
+| `tecNO_PERMISSION`           | 139   | The sender does not have permission to perform this operation. For example, the [EscrowFinish transaction][] tried to release a held payment before its `FinishAfter` time, or someone tried to use [PaymentChannelFund][] on a channel the sender does not own. |
+| `tecNO_REGULAR_KEY`         | 131   | The [AccountSet transaction][] tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
+| `tecNO_TARGET`               | 138   | The destination account does not exist, or it does exist but has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
+| `tecOVERSIZE`                 | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
+| `tecOWNERS`                   | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
+| `tecPATH_DRY`                | 128   | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
+| `tecPATH_PARTIAL`            | 101   | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
+| `tecUNFUNDED`                 | 129   | The transaction failed because the account does not hold enough XRP to satisfy the additional reserve necessary to execute this transaction. (See: [Reserves](concept-reserves.html)) |
+| `tecUNFUNDED_ADD`            | 102   | **DEPRECATED.**                        |
+| `tecUNFUNDED_PAYMENT`        | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](concept-reserves.html)) |
+| `tecUNFUNDED_OFFER`          | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 
 
 {% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}
 
 [Currency Amount]: reference-rippled.html#specifying-currency-amounts
