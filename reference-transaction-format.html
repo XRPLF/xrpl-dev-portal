@@ -2514,7 +2514,7 @@
 <tr>
 <td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
 <td align="left">141</td>
-<td align="left">The <a href="#signerlistset">SignerListSet</a> or other transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
+<td align="left">The transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. <a href="#signerlistset">SignerListSet</a>, <a href="#paymentchannelcreate">PaymentChannelCreate</a>, <a href="#paymentchannelfund">PaymentChannelFund</a>, and <a href="#escrowcreate">EscrowCreate</a> can return this error code or <code>tecUNFUNDED</code>. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
 </tr>
 <tr>
 <td align="left"><code>tecINTERNAL</code></td>
@@ -2584,7 +2584,7 @@
 <tr>
 <td align="left"><code>tecNO_TARGET</code></td>
 <td align="left">138</td>
-<td align="left">The destination account does not exist, or it does exist but has <code>asfDisallowXRP</code> set so it cannot be the destination of this <a href="#paymentchannelcreate">PaymentChannelCreate</a> or <a href="#escrowcreate">EscrowCreate</a> transaction.</td>
+<td align="left">The transaction referenced an Escrow or PayChannel ledger node that doesn't exist, either because it never existed or it has already been deleted. (For example, another <a href="#escrowfinish">EscrowFinish transaction</a> has already executed the held payment.) Alternatively, the destination account has <code>asfDisallowXRP</code> set so it cannot be the destination of this <a href="#paymentchannelcreate">PaymentChannelCreate</a> or <a href="#escrowcreate">EscrowCreate</a> transaction.</td>
 </tr>
 <tr>
 <td align="left"><code>tecOVERSIZE</code></td>
@@ -2609,7 +2609,7 @@
 <tr>
 <td align="left"><code>tecUNFUNDED</code></td>
 <td align="left">129</td>
-<td align="left">The transaction failed because the account does not hold enough XRP to satisfy the additional reserve necessary to execute this transaction. (See: <a href="concept-reserves.html">Reserves</a>)</td>
+<td align="left">The transaction failed because the account does not hold enough XRP to pay the amount in the transaction <em>and</em> satisfy the additional reserve necessary to execute this transaction. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>tecUNFUNDED_ADD</code></td>
