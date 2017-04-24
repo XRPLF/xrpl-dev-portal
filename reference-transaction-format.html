@@ -243,7 +243,7 @@
 <li>If enough <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="#transaction-results">results of the transactions</a> in that ledger are immutable.</li>
 </ol>
 <h3 id="unsigned-transaction-format">Unsigned Transaction Format</h3>
-<p>Here is an example of an unsigned <a href="#payment">Payment-type transaction</a> in JSON:</p>
+<p>Here is an example of an unsigned <a href="#payment">Payment transaction</a> in JSON:</p>
 <pre><code>{
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -858,7 +858,7 @@
 <p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
 <p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
 <h3 id="transferrate">TransferRate</h3>
-<p>The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="https://ripple.com/knowledge_center/transfer-fees/">Transfer Fees article</a> in the Knowledge Center for more information.</p>
+<p>The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="concept-transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <h2 id="escrowcancel">EscrowCancel</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
@@ -869,7 +869,7 @@
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "EscrowCancel",
     "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OwnerSequence": 7,
+    "OfferSequence": 7,
 }
 </code></pre>
 <table>
@@ -889,7 +889,7 @@
 <td align="left">Address of the source account that funded the escrow payment.</td>
 </tr>
 <tr>
-<td align="left"><code>OwnerSequence</code></td>
+<td align="left"><code>OfferSequence</code></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
 <td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the escrow to cancel.</td>
@@ -982,7 +982,7 @@
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "TransactionType": "EscrowFinish",
     "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OwnerSequence": 7,
+    "OfferSequence": 7,
     "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
     "Fulfillment": "A0028000"
 }
@@ -1004,7 +1004,7 @@
 <td align="left">Address of the source account that funded the held payment.</td>
 </tr>
 <tr>
-<td align="left"><code>OwnerSequence</code></td>
+<td align="left"><code>OfferSequence</code></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
 <td align="left">Transaction sequence of <a href="#escrowcreate">EscrowCreate transaction</a> that created the held payment to finish.</td>
@@ -1059,7 +1059,7 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout tip"><em>Tip:</em> To remove an old offer and replace it with a new one, you can use an <a href="#offercreate">OfferCreate</a> transaction with an <code>OfferSequence</code> parameter, instead of using OfferCancel and another OfferCreate.</p>
+<p class="devportal-callout tip"><em>Tip:</em> To remove an old offer and replace it with a new one, you can use an <a href="#offercreate">OfferCreate transaction</a> with an <code>OfferSequence</code> parameter, instead of using OfferCancel and another OfferCreate.</p>
 <p>The OfferCancel method returns <a href="#transaction-results">tesSUCCESS</a> even if it did not find an offer with the matching sequence number.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
@@ -1208,7 +1208,7 @@
 </tr>
 </tbody>
 </table>
-<p>The following invalid flag combination prompts a temINVALID_FLAG error:</p>
+<p>The following invalid flag combination prompts a <code>temINVALID_FLAG</code> error:</p>
 <ul>
 <li>tfImmediateOrCancel and tfFillOrKill</li>
 </ul>
@@ -1658,7 +1658,7 @@
 <p>An account may not have more than one SignerList. A successful SignerListSet transaction replaces the existing SignerList, if one exists. To delete a SignerList, you must set <code>SignerQuorum</code> to <code>0</code> <em>and</em> omit the <code>SignerEntries</code> field. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>. A transaction to delete a SignerList is considered successful even if there was no SignerList to delete.</p>
 <p>You cannot create a SignerList such that the SignerQuorum could never be met. The SignerQuorum must be greater than 0 but less than or equal to the sum of the <code>SignerWeight</code> values in the list. Otherwise, the transaction fails with the error <a href="#tem-codes">temMALFORMED</a>.</p>
 <p>You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.</p>
-<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="reference-ledger-format.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes">tecNO_ALTERNATIVE_KEY</a>.</p>
+<p>You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the <a href="reference-ledger-format.html#accountroot-flags"><code>lsfDisableMaster</code> flag</a> enabled) and the account does not have a <a href="#setregularkey">Regular Key</a> configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error <a href="#tec-codes"><code>tecNO_ALTERNATIVE_KEY</code></a>.</p>
 <h2 id="trustset">TrustSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp" title="Source">[Source]<br/></a></p>
 <p>Create or modify a trust line linking two accounts.</p>
@@ -1937,17 +1937,17 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">engine_result</td>
+<td align="left"><code>engine_result</code></td>
 <td align="left">String</td>
 <td align="left">A code that categorizes the result, such as <code>tecPATH_DRY</code></td>
 </tr>
 <tr>
-<td align="left">engine_result_code</td>
+<td align="left"><code>engine_result_code</code></td>
 <td align="left">Signed Integer</td>
 <td align="left">A number that corresponds to the <code>engine_result</code>, although exact values are subject to change.</td>
 </tr>
 <tr>
-<td align="left">engine_result_message</td>
+<td align="left"><code>engine_result_message</code></td>
 <td align="left">String</td>
 <td align="left">A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice.</td>
 </tr>
@@ -2136,35 +2136,35 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">telBAD_DOMAIN</td>
+<td align="left"><code>telBAD_DOMAIN</code></td>
 <td align="left">The transaction specified a domain value (for example, the <code>Domain</code> field of an <a href="#accountset">AccountSet transaction</a>) that cannot be used, probably because it is too long to store in the ledger.</td>
 </tr>
 <tr>
-<td align="left">telBAD_PATH_COUNT</td>
+<td align="left"><code>telBAD_PATH_COUNT</code></td>
 <td align="left">The transaction contains too many paths for the local server to process.</td>
 </tr>
 <tr>
-<td align="left">telBAD_PUBLIC_KEY</td>
+<td align="left"><code>telBAD_PUBLIC_KEY</code></td>
 <td align="left">The transaction specified a public key value (for example, as the <code>MessageKey</code> field of an <a href="#accountset">AccountSet transaction</a>) that cannot be used, probably because it is too long.</td>
 </tr>
 <tr>
-<td align="left">telCAN_NOT_QUEUE</td>
+<td align="left"><code>telCAN_NOT_QUEUE</code></td>
 <td align="left">The transaction did not meet the <a href="concept-transaction-cost.html">open ledger cost</a>, but this server did not queue this transaction because it did not meet the <a href="concept-transaction-cost.html#queuing-restrictions">queuing restrictions</a>. You can try again later or sign and submit a replacement transaction with a higher transaction cost in the <code>Fee</code> field.</td>
 </tr>
 <tr>
-<td align="left">telFAILED_PROCESSING</td>
+<td align="left"><code>telFAILED_PROCESSING</code></td>
 <td align="left">An unspecified error occurred when processing the transaction.</td>
 </tr>
 <tr>
-<td align="left">telINSUF_FEE_P</td>
+<td align="left"><code>telINSUF_FEE_P</code></td>
 <td align="left">The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="concept-transaction-cost.html">transaction cost</a> requirement, which is derived from its load level.</td>
 </tr>
 <tr>
-<td align="left">telLOCAL_ERROR</td>
+<td align="left"><code>telLOCAL_ERROR</code></td>
 <td align="left">Unspecified local error.</td>
 </tr>
 <tr>
-<td align="left">telNO_DST_PARTIAL</td>
+<td align="left"><code>telNO_DST</code>_<code>PARTIAL</code></td>
 <td align="left">The transaction is an XRP payment that would fund a new account, but the <a href="#partial-payments">tfPartialPayment flag</a> was enabled. This is disallowed.</td>
 </tr>
 </tbody>
@@ -2180,135 +2180,135 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">temBAD_AMOUNT</td>
+<td align="left"><code>temBAD_AMOUNT</code></td>
 <td align="left">An amount specified by the transaction (for example the destination <code>Amount</code> or <code>SendMax</code> values of a <a href="#payment">Payment</a>) was invalid, possibly because it was a negative number.</td>
 </tr>
 <tr>
-<td align="left">temBAD_AUTH_MASTER</td>
+<td align="left"><code>temBAD_AUTH_MASTER</code></td>
 <td align="left">The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a <a href="#setregularkey">Regular Key</a> set.</td>
 </tr>
 <tr>
-<td align="left">temBAD_CURRENCY</td>
+<td align="left"><code>temBAD_CURRENCY</code></td>
 <td align="left">The transaction improperly specified a currency field. See <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a> for the correct format.</td>
 </tr>
 <tr>
-<td align="left">temBAD_EXPIRATION</td>
-<td align="left">The transaction improperly specified an expiration value, for example as part of an <a href="#offercreate">OfferCreate transaction</a>.</td>
+<td align="left"><code>temBAD_EXPIRATION</code></td>
+<td align="left">The transaction improperly specified an expiration value, for example as part of an <a href="#offercreate">OfferCreate transaction</a>. Alternatively, the transaction did not specify a required expiration value, for example as part of an <a href="#escrowcreate">EscrowCreate transaction</a>.</td>
 </tr>
 <tr>
-<td align="left">temBAD_FEE</td>
+<td align="left"><code>temBAD_FEE</code></td>
 <td align="left">The transaction improperly specified its <code>Fee</code> value, for example by listing a non-XRP currency or some negative amount of XRP.</td>
 </tr>
 <tr>
-<td align="left">temBAD_ISSUER</td>
+<td align="left"><code>temBAD_ISSUER</code></td>
 <td align="left">The transaction improperly specified the <code>issuer</code> field of some currency included in the request.</td>
 </tr>
 <tr>
-<td align="left">temBAD_LIMIT</td>
-<td align="left">The <a href="#trustset">TrustSet</a> transaction improperly specified the <code>LimitAmount</code> value of a trustline.</td>
+<td align="left"><code>temBAD_LIMIT</code></td>
+<td align="left">The <a href="#trustset">TrustSet transaction</a> improperly specified the <code>LimitAmount</code> value of a trustline.</td>
 </tr>
 <tr>
-<td align="left">temBAD_OFFER</td>
-<td align="left">The <a href="#offercreate">OfferCreate</a> transaction specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount.</td>
+<td align="left"><code>temBAD_OFFER</code></td>
+<td align="left">The <a href="#offercreate">OfferCreate transaction</a> specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount.</td>
 </tr>
 <tr>
-<td align="left">temBAD_PATH</td>
+<td align="left"><code>temBAD_PATH</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction specifies one or more <a href="#paths">Paths</a> improperly, for example including an issuer for XRP, or specifying an account differently.</td>
 </tr>
 <tr>
-<td align="left">temBAD_PATH_LOOP</td>
+<td align="left"><code>temBAD_PATH_LOOP</code></td>
 <td align="left">One of the <a href="#paths">Paths</a> in the <a href="#payment">Payment</a> transaction was flagged as a loop, so it cannot be processed in a bounded amount of time.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEND_XRP_LIMIT</td>
+<td align="left"><code>temBAD_SEND_XRP_LIMIT</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction used the <a href="#limit-quality">tfLimitQuality</a> flag in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEND_XRP_MAX</td>
+<td align="left"><code>temBAD_SEND_XRP_MAX</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction included a <code>SendMax</code> field in a direct XRP-to-XRP payment, even though sending XRP should never require SendMax. (XRP is only valid in SendMax if the destination <code>Amount</code> is not XRP.)</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEND_XRP_NO_DIRECT</td>
+<td align="left"><code>temBAD_SEND_XRP_NO_DIRECT</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction used the <a href="#payment-flags">tfNoDirectRipple</a> flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEND_XRP_PARTIAL</td>
+<td align="left"><code>temBAD_SEND_XRP_PARTIAL</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction used the <a href="#partial-payments">tfPartialPayment</a> flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEND_XRP_PATHS</td>
+<td align="left"><code>temBAD_SEND_XRP_PATHS</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction included <code>Paths</code> while sending XRP, even though XRP-to-XRP payments should always be direct.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SEQUENCE</td>
+<td align="left"><code>temBAD_SEQUENCE</code></td>
 <td align="left">The transaction is references a sequence number that is higher than its own <code>Sequence</code> number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SIGNATURE</td>
+<td align="left"><code>temBAD_SIGNATURE</code></td>
 <td align="left">The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See <a href="#tec-codes">tecNO_PERMISSION</a> for the case where the signature is properly formed, but not authorized for this account.)</td>
 </tr>
 <tr>
-<td align="left">temBAD_SRC_ACCOUNT</td>
+<td align="left"><code>temBAD_SRC_ACCOUNT</code></td>
 <td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account.</td>
 </tr>
 <tr>
-<td align="left">temBAD_TRANSFER_RATE</td>
+<td align="left"><code>temBAD_TRANSFER_RATE</code></td>
 <td align="left">The <a href="#transferrate"><code>TransferRate</code> field of an AccountSet transaction</a> is not properly formatted.</td>
 </tr>
 <tr>
-<td align="left">temDST_IS_SRC</td>
-<td align="left">The <a href="#trustset">TrustSet</a> transaction improperly specified the destination of the trust line (the <code>issuer</code> field of <code>LimitAmount</code>) as the <code>Account</code> sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.)</td>
+<td align="left"><code>temDST_IS_SRC</code></td>
+<td align="left">The <a href="#trustset">TrustSet transaction</a> improperly specified the destination of the trust line (the <code>issuer</code> field of <code>LimitAmount</code>) as the <code>Account</code> sending the transaction. You cannot extend a trust line to yourself. (In the future, this code could also apply to other cases where the destination of a transaction is not allowed to be the account sending it.)</td>
 </tr>
 <tr>
-<td align="left">temDST_NEEDED</td>
+<td align="left"><code>temDST_NEEDED</code></td>
 <td align="left">The transaction improperly omitted a destination. This could be the <code>Destination</code> field of a <a href="#payment">Payment</a> transaction, or the <code>issuer</code> sub-field of the <code>LimitAmount</code> field fo a <code>TrustSet</code> transaction.</td>
 </tr>
 <tr>
-<td align="left">temINVALID</td>
+<td align="left"><code>temINVALID</code></td>
 <td align="left">The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction.</td>
 </tr>
 <tr>
-<td align="left">temINVALID_FLAG</td>
+<td align="left"><code>temINVALID_FLAG</code></td>
 <td align="left">The transaction includes a <a href="#flags">Flag</a> that does not exist, or includes a contradictory combination of flags.</td>
 </tr>
 <tr>
-<td align="left">temMALFORMED</td>
+<td align="left"><code>temMALFORMED</code></td>
 <td align="left">Unspecified problem with the format of the transaction.</td>
 </tr>
 <tr>
-<td align="left">temREDUNDANT</td>
+<td align="left"><code>temREDUNDANT</code></td>
 <td align="left">The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer.</td>
 </tr>
 <tr>
-<td align="left">temREDUNDANT_SEND_MAX</td>
+<td align="left"><code>temREDUNDANT_SEND_MAX</code></td>
 <td align="left"><a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">temRIPPLE_EMPTY</td>
+<td align="left"><code>temRIPPLE_EMPTY</code></td>
 <td align="left">The <a href="#payment">Payment</a> transaction includes an empty <code>Paths</code> field, but paths are necessary to complete this payment.</td>
 </tr>
 <tr>
-<td align="left">temBAD_WEIGHT</td>
-<td align="left">The <a href="#signerlistset">SignerListSet</a> transaction includes a <code>SignerWeight</code> that is invalid, for example a zero or negative value.</td>
+<td align="left"><code>temBAD_WEIGHT</code></td>
+<td align="left">The <a href="#signerlistset">SignerListSet transaction</a> includes a <code>SignerWeight</code> that is invalid, for example a zero or negative value.</td>
 </tr>
 <tr>
-<td align="left">temBAD_SIGNER</td>
-<td align="left">The <a href="#signerlistset">SignerListSet</a> transaction includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
+<td align="left"><code>temBAD_SIGNER</code></td>
+<td align="left">The <a href="#signerlistset">SignerListSet transaction</a> includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member.</td>
 </tr>
 <tr>
-<td align="left">temBAD_QUORUM</td>
-<td align="left">The <a href="#signerlistset">SignerListSet</a> transaction has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
+<td align="left"><code>temBAD_QUORUM</code></td>
+<td align="left">The <a href="#signerlistset">SignerListSet transaction</a> has an invalid <code>SignerQuorum</code> value. Either the value is not greater than zero, or it is more than the sum of all signers in the list.</td>
 </tr>
 <tr>
-<td align="left">temUNCERTAIN</td>
+<td align="left"><code>temUNCERTAIN</code></td>
 <td align="left">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left">temUNKNOWN</td>
+<td align="left"><code>temUNKNOWN</code></td>
 <td align="left">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left">temDISABLED</td>
+<td align="left"><code>temDISABLED</code></td>
 <td align="left">The transaction requires logic that is disabled. Typically this means you are trying to use an <a href="concept-amendments.html">amendment</a> that is not enabled for the current ledger.</td>
 </tr>
 </tbody>
@@ -2324,71 +2324,71 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">tefALREADY</td>
+<td align="left"><code>tefALREADY</code></td>
 <td align="left">The same exact transaction has already been applied.</td>
 </tr>
 <tr>
-<td align="left">tefBAD_ADD_AUTH</td>
+<td align="left"><code>tefBAD_ADD_AUTH</code></td>
 <td align="left"><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
-<td align="left">tefBAD_AUTH</td>
+<td align="left"><code>tefBAD_AUTH</code></td>
 <td align="left">The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the <a href="#setregularkey">Regular Key</a>.)</td>
 </tr>
 <tr>
-<td align="left">tefBAD_AUTH_MASTER</td>
+<td align="left"><code>tefBAD_AUTH_MASTER</code></td>
 <td align="left">The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address.</td>
 </tr>
 <tr>
-<td align="left">tefBAD_LEDGER</td>
+<td align="left"><code>tefBAD_LEDGER</code></td>
 <td align="left">While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
-<td align="left">tefBAD_QUORUM</td>
+<td align="left"><code>tefBAD_QUORUM</code></td>
 <td align="left">The transaction was <a href="#multi-signing">multi-signed</a>, but the total weights of all included signatures did not meet the quorum.</td>
 </tr>
 <tr>
-<td align="left">tefBAD_SIGNATURE</td>
+<td align="left"><code>tefBAD_SIGNATURE</code></td>
 <td align="left">The transaction was <a href="#multi-signing">multi-signed</a>, but contained a signature for an address not part of a SignerList associated with the sending account.</td>
 </tr>
 <tr>
-<td align="left">tefCREATED</td>
+<td align="left"><code>tefCREATED</code></td>
 <td align="left"><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
-<td align="left">tefEXCEPTION</td>
+<td align="left"><code>tefEXCEPTION</code></td>
 <td align="left">While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
-<td align="left">tefFAILURE</td>
+<td align="left"><code>tefFAILURE</code></td>
 <td align="left">Unspecified failure in applying the transaction.</td>
 </tr>
 <tr>
-<td align="left">tefINTERNAL</td>
+<td align="left"><code>tefINTERNAL</code></td>
 <td align="left">When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
-<td align="left">tefMASTER_DISABLED</td>
+<td align="left"><code>tefMASTER_DISABLED</code></td>
 <td align="left">The transaction was signed with the account's master key, but the account has the <code>lsfDisableMaster</code> field set.</td>
 </tr>
 <tr>
-<td align="left">tefMAX_LEDGER</td>
+<td align="left"><code>tefMAX_LEDGER</code></td>
 <td align="left">The transaction included a <a href="#lastledgersequence"><code>LastLedgerSequence</code></a> parameter, but the current ledger's sequence number is already higher than the specified value.</td>
 </tr>
 <tr>
-<td align="left">tefNO_AUTH_REQUIRED</td>
-<td align="left">The <a href="#trustset">TrustSet</a> transaction tried to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
+<td align="left"><code>tefNO_AUTH_REQUIRED</code></td>
+<td align="left">The <a href="#trustset">TrustSet transaction</a> tried to mark a trustline as authorized, but the <code>lsfRequireAuth</code> flag is not enabled for the corresponding account, so authorization is not necessary.</td>
 </tr>
 <tr>
-<td align="left">tefNOT_MULTI_SIGNING</td>
+<td align="left"><code>tefNOT_MULTI_SIGNING</code></td>
 <td align="left">The transaction was <a href="#multi-signing">multi-signed</a>, but the sending account has no SignerList defined.</td>
 </tr>
 <tr>
-<td align="left">tefPAST_SEQ</td>
+<td align="left"><code>tefPAST_SEQ</code></td>
 <td align="left">The sequence number of the transaction is lower than the current sequence number of the account sending the transaction.</td>
 </tr>
 <tr>
-<td align="left">tefWRONG_PRIOR</td>
+<td align="left"><code>tefWRONG_PRIOR</code></td>
 <td align="left">The transaction contained an <code>AccountTxnID</code> field (or the deprecated <code>PreviousTxnID</code> field), but the transaction specified there does not match the account's previous transaction.</td>
 </tr>
 </tbody>
@@ -2404,47 +2404,47 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">terFUNDS_SPENT</td>
+<td align="left"><code>terFUNDS_SPENT</code></td>
 <td align="left"><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
-<td align="left">terINSUF_FEE_B</td>
+<td align="left"><code>terINSUF_FEE_B</code></td>
 <td align="left">The account sending the transaction does not have enough XRP to pay the <code>Fee</code> specified in the transaction.</td>
 </tr>
 <tr>
-<td align="left">terLAST</td>
+<td align="left"><code>terLAST</code></td>
 <td align="left">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left">terNO_ACCOUNT</td>
+<td align="left"><code>terNO_ACCOUNT</code></td>
 <td align="left">The address sending the transaction is not funded in the ledger (yet).</td>
 </tr>
 <tr>
-<td align="left">terNO_AUTH</td>
+<td align="left"><code>terNO_AUTH</code></td>
 <td align="left">The transaction would involve adding currency issued by an account with <code>lsfRequireAuth</code> enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold.</td>
 </tr>
 <tr>
-<td align="left">terNO_LINE</td>
+<td align="left"><code>terNO_LINE</code></td>
 <td align="left">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left">terNO_RIPPLE</td>
+<td align="left"><code>terNO_RIPPLE</code></td>
 <td align="left">Used internally only. This code should never be returned.</td>
 </tr>
 <tr>
-<td align="left">terOWNERS</td>
+<td align="left"><code>terOWNERS</code></td>
 <td align="left">The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the <a href="#accountset-flags"><code>lsfRequireAuth</code></a> flag if it has any trust lines or available offers.</td>
 </tr>
 <tr>
-<td align="left">terPRE_SEQ</td>
+<td align="left"><code>terPRE_SEQ</code></td>
 <td align="left">The <code>Sequence</code> number of the current transaction is higher than the current sequence number of the account sending the transaction.</td>
 </tr>
 <tr>
-<td align="left">terRETRY</td>
+<td align="left"><code>terRETRY</code></td>
 <td align="left">Unspecified retriable error.</td>
 </tr>
 <tr>
-<td align="left">terQUEUED</td>
+<td align="left"><code>terQUEUED</code></td>
 <td align="left">The transaction met the load-scaled <a href="concept-transaction-cost.html">transaction cost</a> but did not meet the open ledger requirement, so the transaction has been queued for a future ledger.</td>
 </tr>
 </tbody>
@@ -2460,7 +2460,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">tesSUCCESS</td>
+<td align="left"><code>tesSUCCESS</code></td>
 <td align="left">The transaction was applied and forwarded to other servers. If this appears in a validated ledger, then the transaction's success is final.</td>
 </tr>
 </tbody>
@@ -2477,152 +2477,152 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">tecCLAIM</td>
+<td align="left"><code>tecCLAIM</code></td>
 <td align="left">100</td>
 <td align="left">Unspecified failure, with transaction cost destroyed.</td>
 </tr>
 <tr>
-<td align="left">tecDIR_FULL</td>
+<td align="left"><code>tecDIR_FULL</code></td>
 <td align="left">121</td>
 <td align="left">The address sending the transaction cannot own any more objects in the ledger.</td>
 </tr>
 <tr>
-<td align="left">tecDST_TAG_NEEDED</td>
+<td align="left"><code>tecDST_TAG_NEEDED</code></td>
 <td align="left">143</td>
 <td align="left">The <a href="#payment">Payment</a> transaction omitted a destination tag, but the destination account has the <code>lsfRequireDestTag</code> flag enabled. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">tecFAILED_PROCESSING</td>
+<td align="left"><code>tecFAILED_PROCESSING</code></td>
 <td align="left">105</td>
 <td align="left">An unspecified error occurred when processing the transaction.</td>
 </tr>
 <tr>
-<td align="left">tecFROZEN</td>
+<td align="left"><code>tecFROZEN</code></td>
 <td align="left">137</td>
 <td align="left">The <a href="#offercreate">OfferCreate transaction</a> failed because one or both of the assets involved are subject to a <a href="concept-freeze.html">global freeze</a>.</td>
 </tr>
 <tr>
-<td align="left">tecINSUF_RESERVE_LINE</td>
+<td align="left"><code>tecINSUF_RESERVE_LINE</code></td>
 <td align="left">122</td>
-<td align="left">The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See tecNO_LINE_INSUF_RESERVE for the other case.)</td>
+<td align="left">The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See <code>tecNO_LINE_INSUF_RESERVE</code> for the other case.)</td>
 </tr>
 <tr>
-<td align="left">tecINSUF_RESERVE_OFFER</td>
+<td align="left"><code>tecINSUF_RESERVE_OFFER</code></td>
 <td align="left">123</td>
 <td align="left">The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
-<td align="left">tecINSUFFICIENT_RESERVE</td>
+<td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
 <td align="left">141</td>
-<td align="left">The <a href="#signerlistset">SignerListSet</a> or other transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
+<td align="left">The transaction would increase the <a href="concept-reserves.html">reserve requirement</a> higher than the sending account's balance. <a href="#signerlistset">SignerListSet</a>, <a href="#paymentchannelcreate">PaymentChannelCreate</a>, <a href="#paymentchannelfund">PaymentChannelFund</a>, and <a href="#escrowcreate">EscrowCreate</a> can return this error code. See <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a> for more information.</td>
 </tr>
 <tr>
-<td align="left">tecINTERNAL</td>
+<td align="left"><code>tecINTERNAL</code></td>
 <td align="left">144</td>
 <td align="left">Unspecified internal error, with transaction cost applied. This error code should not normally be returned.</td>
 </tr>
 <tr>
-<td align="left">tecNEED_MASTER_KEY</td>
+<td align="left"><code>tecNEED_MASTER_KEY</code></td>
 <td align="left">142</td>
 <td align="left">This transaction tried to cause changes that require the master key, such as <a href="#accountset-flags">disabling the master key or giving up the ability to freeze balances</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">tecNO_ALTERNATIVE_KEY</td>
+<td align="left"><code>tecNO_ALTERNATIVE_KEY</code></td>
 <td align="left">130</td>
 <td align="left">The transaction tried to remove the only available method of <a href="#authorizing-transactions">authorizing transactions</a>. This could be a <a href="#setregularkey">SetRegularKey transaction</a> to remove the regular key, a <a href="#signerlistset">SignerListSet transaction</a> to delete a SignerList, or an <a href="#accountset">AccountSet transaction</a> to disable the master key. (Prior to <code>rippled</code> 0.30.0, this was called <code>tecMASTER_DISABLED</code>.)</td>
 </tr>
 <tr>
-<td align="left">tecNO_AUTH</td>
+<td align="left"><code>tecNO_AUTH</code></td>
 <td align="left">134</td>
-<td align="left">The transaction failed because it needs to add a balance on a trust line to an account with the <code>lsfRequireAuth</code> flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, tecNO_LINE occurs instead.</td>
+<td align="left">The transaction failed because it needs to add a balance on a trust line to an account with the <code>lsfRequireAuth</code> flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, <code>tecNO_LINE</code> occurs instead.</td>
 </tr>
 <tr>
-<td align="left">tecNO_DST</td>
+<td align="left"><code>tecNO_DST</code></td>
 <td align="left">124</td>
 <td align="left">The account on the receiving end of the transaction does not exist. This includes Payment and TrustSet transaction types. (It could be created if it received enough XRP.)</td>
 </tr>
 <tr>
-<td align="left">tecNO_DST_INSUF_XRP</td>
+<td align="left"><code>tecNO_DST_INSUF_XRP</code></td>
 <td align="left">125</td>
 <td align="left">The account on the receiving end of the transaction does not exist, and the transaction is not sending enough XRP to create it.</td>
 </tr>
 <tr>
-<td align="left">tecNO_ENTRY</td>
+<td align="left"><code>tecNO_ENTRY</code></td>
 <td align="left">140</td>
 <td align="left">Reserved for future use.</td>
 </tr>
 <tr>
-<td align="left">tecNO_ISSUER</td>
+<td align="left"><code>tecNO_ISSUER</code></td>
 <td align="left">133</td>
 <td align="left">The account specified in the <code>issuer</code> field of a currency amount does not exist.</td>
 </tr>
 <tr>
-<td align="left">tecNO_LINE</td>
+<td align="left"><code>tecNO_LINE</code></td>
 <td align="left">135</td>
 <td align="left">The <code>TakerPays</code> field of the <a href="#offercreate">OfferCreate transaction</a> specifies an asset whose issuer has <code>lsfRequireAuth</code> enabled, and the account making the offer does not have a trust line for that asset. (Normally, making an offer implicitly creates a trust line if necessary, but in this case it does not bother because you cannot hold the asset without authorization.) If the trust line exists, but is not authorized, <code>tecNO_AUTH</code> occurs instead.</td>
 </tr>
 <tr>
-<td align="left">tecNO_LINE_INSUF_RESERVE</td>
+<td align="left"><code>tecNO_LINE_INSUF_RESERVE</code></td>
 <td align="left">126</td>
-<td align="left">The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See tecINSUF_RESERVE_LINE for the other case.)</td>
+<td align="left">The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: <a href="concept-reserves.html">Reserves</a>) This error occurs when the counterparty does not have a trust line to this account for the same currency. (See <code>tecINSUF_RESERVE_LINE</code> for the other case.)</td>
 </tr>
 <tr>
-<td align="left">tecNO_LINE_REDUNDANT</td>
+<td align="left"><code>tecNO_LINE_REDUNDANT</code></td>
 <td align="left">127</td>
 <td align="left">The transaction failed because it tried to set a trust line to its default state, but the trust line did not exist.</td>
 </tr>
 <tr>
-<td align="left">tecNO_PERMISSION</td>
+<td align="left"><code>tecNO_PERMISSION</code></td>
 <td align="left">139</td>
-<td align="left">Reserved for future use.</td>
+<td align="left">The sender does not have permission to perform this operation. For example, the <a href="#escrowfinish">EscrowFinish transaction</a> tried to release a held payment before its <code>FinishAfter</code> time, or someone tried to use <a href="#paymentchannelfund">PaymentChannelFund</a> on a channel the sender does not own.</td>
 </tr>
 <tr>
-<td align="left">tecNO_REGULAR_KEY</td>
+<td align="left"><code>tecNO_REGULAR_KEY</code></td>
 <td align="left">131</td>
 <td align="left">The <a href="#accountset">AccountSet transaction</a> tried to disable the master key, but the account does not have another way to <a href="#authorizing-transactions">authorize transactions</a>. If <a href="#multi-signing">multi-signing</a> is enabled, this code is deprecated and <code>tecNO_ALTERNATIVE_KEY</code> is used instead.</td>
 </tr>
 <tr>
-<td align="left">tecNO_TARGET</td>
+<td align="left"><code>tecNO_TARGET</code></td>
 <td align="left">138</td>
-<td align="left">Reserved for future use.</td>
+<td align="left">The transaction referenced an Escrow or PayChannel ledger node that doesn't exist, either because it never existed or it has already been deleted. (For example, another <a href="#escrowfinish">EscrowFinish transaction</a> has already executed the held payment.) Alternatively, the destination account has <code>asfDisallowXRP</code> set so it cannot be the destination of this <a href="#paymentchannelcreate">PaymentChannelCreate</a> or <a href="#escrowcreate">EscrowCreate</a> transaction.</td>
 </tr>
 <tr>
-<td align="left">tecOVERSIZE</td>
+<td align="left"><code>tecOVERSIZE</code></td>
 <td align="left">145</td>
 <td align="left">This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. <a href="https://github.com/ripple/rippled/releases/tag/0.29.0-hf1" title="New in: rippled 0.29.0-hf1"><img alt="New in: rippled 0.29.0-hf1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0--hf1-blue.svg"/></a></td>
 </tr>
 <tr>
-<td align="left">tecOWNERS</td>
+<td align="left"><code>tecOWNERS</code></td>
 <td align="left">132</td>
 <td align="left">The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the <a href="#accountset-flags"><code>lsfRequireAuth</code></a> flag if it has any trust lines or available offers.</td>
 </tr>
 <tr>
-<td align="left">tecPATH_DRY</td>
+<td align="left"><code>tecPATH_DRY</code></td>
 <td align="left">128</td>
 <td align="left">The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines.</td>
 </tr>
 <tr>
-<td align="left">tecPATH_PARTIAL</td>
+<td align="left"><code>tecPATH_PARTIAL</code></td>
 <td align="left">101</td>
 <td align="left">The transaction failed because the provided paths did not have enough liquidity to send the full amount.</td>
 </tr>
 <tr>
-<td align="left">tecUNFUNDED</td>
+<td align="left"><code>tecUNFUNDED</code></td>
 <td align="left">129</td>
-<td align="left"><strong>DEPRECATED.</strong> Replaced by tecUNFUNDED_OFFER and tecUNFUNDED_PAYMENT.</td>
+<td align="left">The transaction failed because the account does not hold enough XRP to pay the amount in the transaction <em>and</em> satisfy the additional reserve necessary to execute this transaction. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
-<td align="left">tecUNFUNDED_ADD</td>
+<td align="left"><code>tecUNFUNDED_ADD</code></td>
 <td align="left">102</td>
 <td align="left"><strong>DEPRECATED.</strong></td>
 </tr>
 <tr>
-<td align="left">tecUNFUNDED_PAYMENT</td>
+<td align="left"><code>tecUNFUNDED_PAYMENT</code></td>
 <td align="left">104</td>
 <td align="left">The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: <a href="concept-reserves.html">Reserves</a>)</td>
 </tr>
 <tr>
-<td align="left">tecUNFUNDED_OFFER</td>
+<td align="left"><code>tecUNFUNDED_OFFER</code></td>
 <td align="left">103</td>
 <td align="left">The <a href="#offercreate">OfferCreate transaction</a> failed because the account creating the offer does not have any of the <code>TakerGets</code> currency.</td>
 </tr>

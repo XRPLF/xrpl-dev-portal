@@ -1928,7 +1928,15 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 </ul>
 <h2 id="account-objects">account_objects</h2>
 <p><a href="https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account, such as <a href="reference-transaction-format.html#lifecycle-of-an-offer">outstanding offers</a>, trust lines in non-default state, and <a href="reference-transaction-format.html#multi-signing">signer lists</a>. For getting the balance of an account's trust lines, we recommend <a href="#account-lines"><code>account_lines</code></a> instead.</p>
+<p>The <code>account_objects</code> command returns the raw <a href="reference-ledger-format.html">ledger format</a> for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see <a href="#account-lines"><code>account_lines</code></a> instead.</p>
+<p>The types of objects that may appear in the <code>account_objects</code> response for an account include:</p>
+<ul>
+<li><a href="reference-ledger-format.html#offer">Offer nodes</a> for orders that are currently live, unfunded, or expired but not yet removed. (See <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a> for more information.)</li>
+<li><a href="reference-ledger-format.html#ripplestate">RippleState nodes</a> for trust lines where this account's side is not in the default state.</li>
+<li>The account's <a href="reference-ledger-format.html#signerlist">SignerList node</a>, if the account has <a href="reference-transaction-format.html#multi-signing">multi-signing</a> enabled.</li>
+<li><a href="reference-ledger-format.html#escrow">Escrow nodes</a> for held payments that have not yet been executed or canceled.</li>
+<li><a href="reference-ledger-format.html#paychannel">PayChannel nodes</a> for open payment channels.</li>
+</ul>
 <h4 id="request-format-4">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">WebSocket</a></li><li><a href="#code-11-1">JSON-RPC</a></li><li><a href="#code-11-2">Commandline</a></li></ul>

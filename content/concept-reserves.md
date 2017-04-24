@@ -19,14 +19,15 @@ The reserve requirement is divided into two parts:
 
 Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
 
-* [Offers](reference-ledger-format.html#offer) are owned by the address that placed them. Transaction automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an [OfferCancel transaction](reference-transaction-format.html#offercancel), or by sending an [OfferCreate transaction](reference-transaction-format.html#offercreate) that contains an `OfferSequence` parameter.
-* [Trust lines](reference-ledger-format.html#ripplestate) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](reference-ledger-format.html#contributing-to-the-owner-reserve) for details.
-* A single [SignerList](reference-ledger-format.html#signerlist) counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
-* [Owner directories](reference-ledger-format.html#directorynode) list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
+- [Offers](reference-ledger-format.html#offer) are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an [OfferCancel transaction][], or by sending an [OfferCreate transaction][] that contains an `OfferSequence` parameter.
+- [Trust lines](reference-ledger-format.html#ripplestate) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](reference-ledger-format.html#contributing-to-the-owner-reserve) for details.
+- A single [SignerList](reference-ledger-format.html#signerlist) counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
+- [Held Payments (Escrow)](reference-ledger-format.html#escrow) are owned by the address that placed them.
+- [Owner directories](reference-ledger-format.html#directorynode) list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
 
 #### Owner Reserve Edge Cases ####
 
-The Ripple Consensus Ledger considers an [OfferCreate transaction](reference-transaction-format.html#offercreate) to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the `taker_pays` currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer).
+The Ripple Consensus Ledger considers an [OfferCreate transaction][] to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the `taker_pays` currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer).
 
 
 
@@ -36,8 +37,10 @@ During transaction processing, the [transaction cost](concept-transaction-cost.h
 
 When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the [reserve requirement decreases](#changing-the-reserve-requirements) to less than the address's XRP holdings.
 
-**Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions](reference-transaction-format.html#offercreate) to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
+**Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions][] to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
 ## Changing the Reserve Requirements ##
 
 The Ripple Consensus Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
+
+{% include 'snippets/tx-type-links.md' %}

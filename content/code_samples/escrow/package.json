@@ -1,0 +1,10 @@
+{
+  "name": "escrow-examples",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "ripple-lib": "^0.17.6",
+    "five-bells-condition": "*"
+  },
+  "//": "Intended for Node.js version ?.? and higher"
+}

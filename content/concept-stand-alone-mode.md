@@ -29,6 +29,7 @@ In a genesis ledger, the [genesis address](reference-rippled.html#special-addres
 
 **Caution:** If you create a new genesis ledger, the hard-coded default [Reserve](concept-reserves.html) is **200 XRP** minimum for funding a new address, with an increment of **50 XRP** per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: [Fee Voting](concept-fee-voting.html))
 
+[New in: rippled 0.50.0][] If you start a new genesis ledger with `--start`, all The genesis ledger contains an [EnableAmendment pseudo-transaction](reference-transaction-format.html#enableamendment) to turn on all [Amendments](concept-amendments.html) natively supported by the `rippled` server, except for amendments that you explicitly disable in the configuration file. The effects of those amendments are available starting from the very next ledger version.
 
 
 Load Saved Ledger
@@ -104,3 +105,5 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/).)
 
 Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. **Note:** You can safely submit multiple transactions from a single address to a single ledger, because `rippled` sorts transactions from the same address in ascending order by [`Sequence` number](reference-transaction-format.html#common-fields).
+
+{% include 'snippets/rippled_versions.md' %}
