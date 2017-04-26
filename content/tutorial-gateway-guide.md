@@ -345,7 +345,7 @@ We recommend providing several kinds of Destination Tags for different purposes:
 * Tags for quotes, which expire
 * Other disposable destination tags that customers can generate.
 
-See [Generating Source and Destination Tags](#generating-source-and-destination-tags) for recommendations on the tehnical details of making and using Source Tags and Destination Tags.
+See [Generating Source and Destination Tags](#generating-source-and-destination-tags) for recommendations on the technical details of making and using Source Tags and Destination Tags.
 
 
 ## Gateway Bulletins
