@@ -1,0 +1,9 @@
+{
+  "name": "address_encoding",
+  "version": "0.0.1",
+  "license": "MIT",
+  "//": "Change the license to something appropriate. You may want to use 'UNLICENSED' if you are just starting out.",
+  "dependencies": {
+    "base-x": "*",
+  }
+}
