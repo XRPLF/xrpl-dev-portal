@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>Reserves - Ripple Developer Portal</title>
+    <title>Payment Channels Tutorial - Ripple Developer Portal</title>
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -84,7 +84,6 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                  <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
@@ -126,27 +125,19 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
-                <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
-                <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
-                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
-                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
-                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
-                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
-                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
-                <li class="level-2"><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
-                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
-                <li class="level-2"><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+                <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
+                <li class="level-2"><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+                <li class="level-2"><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+                <li class="level-2"><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                <li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                <li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                <li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                <li class="level-2"><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
             </ul>
             <hr />
             <h5>In this page:</h5>
             <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
-                <li class="level-1"><a href="#reserves">Reserves</a></li>
-<li class="level-2"><a href="#base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</a></li>
-<li class="level-3"><a href="#owner-reserves">Owner Reserves</a></li>
-<li class="level-2"><a href="#going-below-the-reserve-requirement">Going Below the Reserve Requirement</a></li>
-<li class="level-2"><a href="#changing-the-reserve-requirements">Changing the Reserve Requirements</a></li>
+                <li class="level-1"><a href="#payment-channels-tutorial">Payment Channels Tutorial</a></li>
 
             </ul>
         </div>
@@ -154,33 +145,65 @@
       </aside>
       <main class="main" role="main">
     <div class='content'>
-        <h1 id="reserves">Reserves</h1>
-<p>The Ripple Consensus Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
-<p>To submit transactions, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send enough XRP to meet the reserve requirement.</p>
-<p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.)</p>
-<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
-<p>The reserve requirement is divided into two parts:</p>
+        <h1 id="payment-channels-tutorial">Payment Channels Tutorial</h1>
+<p>Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. The basic flow of using a payment channel is as follows:</p>
+<ol>
+<li>
+<p><strong>The payer creates a payment channel to a particular recipient and pre-funds the channel with XRP.</strong></p>
+<p>This is a <a href="reference-transaction-format.html#paymentchannelcreate">PaymentChannelCreate transaction</a>.</p>
+<p>As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel.</p>
+</li>
+<li>
+<p><strong>The payee confirms that the specifics of the payment channel are satisfactory for the situation.</strong></p>
+<p>In particular, the payee should confirm that the settlement delay is long enough that the channel cannot close before the payee has a chance to redeem any outstanding claims against the channel. The settlement delay is defined in seconds in the <code>SettleDelay</code> field of the payment channel.</p>
+<p>You can look up payment channels with the <code>account_channels</code> API method.</p>
+</li>
+<li>
+<p><strong>The payer creates one or more signed <em>claims</em> for the XRP in the channel.</strong> The amounts of these claims depends on the specific goods or services the payer wants to pay for.</p>
+<p>Each claim must be for a cumulative amount. In other words, to purchase two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund</a> transaction can increase the total amount of XRP allocated to the channel.)</p>
+<p>You can create claims with the <code>channel_authorize</code> API method.</p>
+</li>
+<li>
+<p><strong>The payer transmits a claim to the payee as payment for goods or services.</strong></p>
+<p>This communication happens "off-ledger" in any communication system the payer and payee can agree to. It's recommended that the two parties use secure communiations for this, but it's not strictly necessary. Only the payer or payee of a channel can redeem claims against that channel.</p>
+</li>
+<li>
+<p><strong>The payee verifies the claims and provides the goods or services.</strong></p>
+<p>You can verify claims using the <code>channel_verify</code> API method. The payee should confirm that the amount of the claim is equal or greater than the total price of goods and services provided.</p>
+</li>
+<li>
+<p><strong>The payer and payee can repeat steps 3 through 5 (creating, transmitting, and verifying claims in exchange for goods and services) as many times and as often as they like without waiting for the Ripple Consensus Ledger itself.</strong></p>
+<p>The two main limits of this process are:</p>
 <ul>
-<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every address in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
-<li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
+<li>
+<p>The amount of XRP in the payment channel</p>
+</li>
+<li>
+<p>The immutable expiration of the payment channel, if one is set</p>
+</li>
 </ul>
-<h3 id="owner-reserves">Owner Reserves</h3>
-<p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
-<ul>
-<li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
-<li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
-<li>A single <a href="reference-ledger-format.html#signerlist">SignerList</a> counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</li>
-<li><a href="reference-ledger-format.html#escrow">Held Payments (Escrow)</a> are owned by the address that placed them.</li>
-<li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
-</ul>
-<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
-<p>The Ripple Consensus Ledger considers an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
-<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
-<p>During transaction processing, the <a href="concept-transaction-cost.html">transaction cost</a> destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.</p>
-<p>When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the <a href="#changing-the-reserve-requirements">reserve requirement decreases</a> to less than the address's XRP holdings.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> When an address is below the reserve requirement, it can send new <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="reference-ledger-format.html#ripplestate">trust lines</a>, or <a href="reference-ledger-format.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
-<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
-<p>The Ripple Consensus Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+</li>
+<li>
+<p><strong>Whenever the payee is ready, the payee redeems a claim for the authorized amount, receiving that much XRP from the payment channel.</strong></p>
+<p>Because claim values are cumulative, the payee only needs to redeem the largest (most recent) claim to get the full amount. The payee is not required to redeem the claim for the full amount authorized.</p>
+<p>The payee can do this multiple times, to settle partially while still doing business, if desired.</p>
+</li>
+<li>
+<p><strong>Optionally, the payer can fund the channel with additional XRP to continue doing business if the initial amount wasn't sufficient.</strong></p>
+<p>This is a <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund</a> transaction.</p>
+</li>
+<li>
+<p><strong>When the payer and payee are done doing business, the payer requests for the channel to be closed.</strong></p>
+<p>This is a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with the <code>tfClose</code> flag set, or a <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund transaction</a> with the <code>Expiration</code> field set.</p>
+<p>The request to close a channel acts as a final warning to the payee to redeem any outstanding claims right away. The payee has an amount of time no less than the settlement delay before the channel is closed. The exact number of seconds varies slightly based on the close times of ledgers.</p>
+<p>The payee can always close a payment channel immediately after processing a claim. The payer can close the payment channel immediately if it has no XRP remaining in it.</p>
+</li>
+<li>
+<p><strong>After the settlement delay has passed or the channel has reached its planned expiration time, the channel is expired.</strong> Any further transaction that would affect the channel can only close it, returning unclaimed XRP to the payer.</p>
+<p>The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so <em>someone</em> must send a transaction to cause the expired channel to close.</p>
+<p>We recommend the payer sends a second <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with the <code>tfClose</code> flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.</p>
+</li>
+</ol>
     </div>
       </main>
   </div>

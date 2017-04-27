@@ -151,6 +151,13 @@ pages:
             - local
             - ripple.com
 
+    -   category: Tutorials
+        html: tutorial-paychan.html
+        md: tutorial-paychan.md
+        targets:
+            - local
+            - ripple.com
+
         # This is more like a "best practices" doc than Tutorials...
     -   name: Issuing and Operational Addresses
         category: Tutorials

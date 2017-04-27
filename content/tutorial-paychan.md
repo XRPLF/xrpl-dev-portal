@@ -1,0 +1,66 @@
+# Payment Channels Tutorial
+
+Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. The basic flow of using a payment channel is as follows:
+
+1. **The payer creates a payment channel to a particular recipient and pre-funds the channel with XRP.**
+
+    This is a [PaymentChannelCreate transaction][].
+
+    As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel.
+
+2. **The payee confirms that the specifics of the payment channel are satisfactory for the situation.**
+
+    In particular, the payee should confirm that the settlement delay is long enough that the channel cannot close before the payee has a chance to redeem any outstanding claims against the channel. The settlement delay is defined in seconds in the `SettleDelay` field of the payment channel.
+
+    You can look up payment channels with the `account_channels` API method.
+
+3. **The payer creates one or more signed _claims_ for the XRP in the channel.** The amounts of these claims depends on the specific goods or services the payer wants to pay for.
+
+    Each claim must be for a cumulative amount. In other words, to purchase two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund][] transaction can increase the total amount of XRP allocated to the channel.)
+
+    You can create claims with the `channel_authorize` API method.
+
+4. **The payer transmits a claim to the payee as payment for goods or services.**
+
+    This communication happens "off-ledger" in any communication system the payer and payee can agree to. It's recommended that the two parties use secure communiations for this, but it's not strictly necessary. Only the payer or payee of a channel can redeem claims against that channel.
+
+5. **The payee verifies the claims and provides the goods or services.**
+
+    You can verify claims using the `channel_verify` API method. The payee should confirm that the amount of the claim is equal or greater than the total price of goods and services provided.
+
+6. **The payer and payee can repeat steps 3 through 5 (creating, transmitting, and verifying claims in exchange for goods and services) as many times and as often as they like without waiting for the Ripple Consensus Ledger itself.**
+
+    The two main limits of this process are:
+
+    - The amount of XRP in the payment channel
+
+    - The immutable expiration of the payment channel, if one is set
+
+7. **Whenever the payee is ready, the payee redeems a claim for the authorized amount, receiving that much XRP from the payment channel.**
+
+    Because claim values are cumulative, the payee only needs to redeem the largest (most recent) claim to get the full amount. The payee is not required to redeem the claim for the full amount authorized.
+
+    The payee can do this multiple times, to settle partially while still doing business, if desired.
+
+8. **Optionally, the payer can fund the channel with additional XRP to continue doing business if the initial amount wasn't sufficient.**
+
+    This is a [PaymentChannelFund][] transaction.
+
+9. **When the payer and payee are done doing business, the payer requests for the channel to be closed.**
+
+    This is a [PaymentChannelClaim transaction][] with the `tfClose` flag set, or a [PaymentChannelFund transaction][] with the `Expiration` field set.
+
+    The request to close a channel acts as a final warning to the payee to redeem any outstanding claims right away. The payee has an amount of time no less than the settlement delay before the channel is closed. The exact number of seconds varies slightly based on the close times of ledgers.
+
+    The payee can always close a payment channel immediately after processing a claim. The payer can close the payment channel immediately if it has no XRP remaining in it.
+
+10. **After the settlement delay has passed or the channel has reached its planned expiration time, the channel is expired.** Any further transaction that would affect the channel can only close it, returning unclaimed XRP to the payer.
+
+    The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so _someone_ must send a transaction to cause the expired channel to close.
+
+    We recommend the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
+
+
+
+
+{% include 'snippets/tx-type-links.md' %}
