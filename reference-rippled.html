@@ -83,6 +83,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
@@ -627,53 +628,10 @@ Null method
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
 <li>Case-sensitive</li>
-<li><a href="https://wiki.ripple.com/Encodings">Base-58</a> encoded using only the following characters: <code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code> That's alphanumeric characters, excluding zero (<code>0</code>), capital O (<code>O</code>), capital I (<code>I</code>), and lowercase L (<code>l</code>).</li>
 <li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.</li>
+<li><strong>Base58-encoded</strong>, using alphanumeric characters, excluding zero (<code>0</code>), capital O (<code>O</code>), capital I (<code>I</code>), and lowercase L (<code>l</code>).</li>
 </ul>
-<h4 id="special-addresses">Special Addresses</h4>
-<p>Some addresses have special meaning, or historical uses, in the Ripple Consensus Ledger. In many cases, these are "black hole" addresses, meaning the address is not derived from a known secret key. Since it is almost impossible to guess a secret key from only an address, any XRP possessed by those addresses is lost forever.</p>
-<table>
-<thead>
-<tr>
-<th>Address</th>
-<th>Name</th>
-<th>Meaning</th>
-<th>Black Hole?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>rrrrrrrrrrrrrrrrrrrrrhoLvTp</td>
-<td>ACCOUNT_ZERO</td>
-<td>An address that is the base-58 encoding of the value <code>0</code>. In peer-to-peer communications, <code>rippled</code> uses this address as the issuer for XRP.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>rrrrrrrrrrrrrrrrrrrrBZbvji</td>
-<td>ACCOUNT_ONE</td>
-<td>An address that is the base-58 encoding of the value <code>1</code>. In the ledger, <a href="reference-ledger-format.html#ripplestate">RippleState entries</a> use this address as a placeholder for the issuer of a trust line balance.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</td>
-<td>The genesis account</td>
-<td>When <code>rippled</code> starts a new genesis ledger from scratch (for example, in stand-alone mode), this account holds all the XRP. This address is generated from the seed value "masterpassphrase" which is <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hard-coded</a>.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>rrrrrrrrrrrrrrrrrNAMEtxvNvQ</td>
-<td>Ripple Name reservation black-hole</td>
-<td>In the past, Ripple asked users to send XRP to this account to reserve Ripple Names.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>rrrrrrrrrrrrrrrrrrrn5RM1rHd</td>
-<td>NaN Address</td>
-<td>Previous versions of <a href="https://github.com/ripple/ripple-lib">ripple-lib</a> generated this address when base-58 encoding the value <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN">NaN</a>.</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+<p>For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h3 id="hashes">Hashes</h3>
 <p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
 <p>A Ripple hash value has the following characteristics:</p>
@@ -8693,7 +8651,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>taker</code></td>
 <td align="left">String</td>
-<td align="left">(Optional, defaults to <a href="#special-addresses">ACCOUNT_ONE</a>) The <a href="#addresses">Address</a> of an account to use as a perspective. (This affects which unfunded offers are returned.)</td>
+<td align="left">(Optional) The <a href="#addresses">Address</a> of an account to use as a perspective. <a href="reference-transaction-format.html#lifecycle-of-an-offer">Unfunded offers</a> placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.)</td>
 </tr>
 <tr>
 <td align="left"><code>taker_gets</code></td>
@@ -8707,7 +8665,6 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 </tr>
 </tbody>
 </table>
-<p>Normally, offers that are not funded are omitted; however, offers made by the specified <code>taker</code> account are always displayed. This allows you to look up your own unfunded offers to cancel them with an OfferCancel transaction.</p>
 <h4 id="response-format-27">Response Format</h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-57"><ul class="codetabs"><li><a href="#code-57-0">WebSocket</a></li><li><a href="#code-57-1">JSON-RPC</a></li></ul>

@@ -21,7 +21,7 @@ In stand-alone mode, you can have `rippled` create a new genesis ledger. This pr
 rippled -a --start --conf=/path/to/rippled.cfg
 ```
 
-In a genesis ledger, the [genesis address](reference-rippled.html#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184) as follows:
+In a genesis ledger, the [genesis address](concept-accounts.html#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184) as follows:
 
 **Address:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 
