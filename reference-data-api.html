@@ -7439,13 +7439,13 @@ Content-Type: image/svg+xml
 </ul>
 <p>In other words, XRP has the same precision as a 64-bit unsigned integer where each unit is equivalent to 0.000001 XRP.</p>
 <h3 id="addresses">Addresses</h3>
-<p>Ripple Accounts are identified by a base-58 Ripple Address, which is derived from the account's master public key. An address is represented as a String in JSON, with the following characteristics:</p>
+<p>Ripple Accounts are identified by a base58 Ripple Address, which is derived from the account's master public key. An address is represented as a string in JSON, with the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
 <li>Case-sensitive</li>
-<li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.</li>
-<li><strong>Base58-encoded</strong>, using alphanumeric characters, excluding zero (<code>0</code>), capital O (<code>O</code>), capital I (<code>I</code>), and lowercase L (<code>l</code>).</li>
+<li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address</li>
+<li>Uses alphanumeric characters, excluding the number "<code>0</code>" capital letter "<code>O</code>", capital letter "<code>I</code>", and lowercase letter "<code>l</code>"</li>
 </ul>
 <p>For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h3 id="public-keys">Public Keys</h3>

@@ -619,17 +619,17 @@ Null method
 <p>All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.</p>
 <h2 id="basic-data-types">Basic Data Types</h2>
 <p>Different types of objects are uniquely identified in different ways:</p>
-<p><em>Accounts</em> are identified by their base-58 <a href="#addresses">Address</a>, for example <code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with "r". Many <code>rippled</code> methods also accept a hexadecimal representation.</p>
-<p><em>Transactions</em> are identified by a <a href="#hashes">Hash</a> of the transaction's binary format. You can also identify a transaction by its sending account and <a href="#account-sequence">Sequence Number</a>.</p>
-<p>Each closed <em>Ledger</em> has a <a href="#ledger-index">Ledger Index</a> and a <a href="#hashes">Hash</a> value. When <a href="#specifying-ledgers">Specifying a Ledger Instance</a> you can use either one.</p>
+<p><a href="concept-accounts.html">Accounts</a> are identified by their <a href="#addresses">Address</a>, for example <code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with "r". Many <code>rippled</code> methods also accept a hexadecimal representation.</p>
+<p><a href="reference-transaction-format.html">Transactions</a> are identified by a <a href="#hashes">Hash</a> of the transaction's binary format. You can also identify a transaction by its sending account and <a href="#account-sequence">Sequence Number</a>.</p>
+<p>Each closed <a href="reference-ledger-format.html">Ledger</a> has a <a href="#ledger-index">Ledger Index</a> and a <a href="#hashes">Hash</a> value. When <a href="#specifying-ledgers">Specifying a Ledger Instance</a> you can use either one.</p>
 <h3 id="addresses">Addresses</h3>
-<p>Ripple Accounts are identified by a base-58 Ripple Address, which is derived from the account's master public key. An address is represented as a String in JSON, with the following characteristics:</p>
+<p>Ripple Accounts are identified by a base58 Ripple Address, which is derived from the account's master public key. An address is represented as a string in JSON, with the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
 <li>Case-sensitive</li>
-<li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address.</li>
-<li><strong>Base58-encoded</strong>, using alphanumeric characters, excluding zero (<code>0</code>), capital O (<code>O</code>), capital I (<code>I</code>), and lowercase L (<code>l</code>).</li>
+<li>Contains error-checking that makes it unlikely that a randomly-generated string is a valid address</li>
+<li>Uses alphanumeric characters, excluding the number "<code>0</code>" capital letter "<code>O</code>", capital letter "<code>I</code>", and lowercase letter "<code>l</code>"</li>
 </ul>
 <p>For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h3 id="hashes">Hashes</h3>
@@ -879,7 +879,7 @@ Null method
 <li><a href="#json"><code>json</code> - Pass JSON through the commandline</a></li>
 </ul>
 <h1 id="account-information">Account Information</h1>
-<p>Accounts are the core unit of authentication in the Ripple Consensus Ledger. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The <a href="concept-reserves.html">reserve for an account</a> increases with the amount of data it owns in the shared ledger.) It is expected that accounts correspond loosely to individual users.</p>
+<p>An "Account" in the Ripple Consensus Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account. For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h2 id="account-currencies">account_currencies</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>account_currencies</code> command retrieves a list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)</p>
@@ -3747,12 +3747,12 @@ rippled wallet_propose masterpassphrase
 <tr>
 <td align="left"><code>passphrase</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Generate a key pair and address from this seed value. This value can be formatted in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>, <a href="https://en.wikipedia.org/wiki/Base58">base-58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as an arbitrary string. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
+<td align="left">(Optional) Generate a key pair and address from this seed value. This value can be formatted in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>, <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as an arbitrary string. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Generate the key pair and address from this <a href="https://en.wikipedia.org/wiki/Base58">base-58</a>-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
+<td align="left">(Optional) Generate the key pair and address from this <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
@@ -3773,7 +3773,7 @@ rippled wallet_propose masterpassphrase
 </ul>
 <p>If you do specify a seed, you can specify it in any of the following formats:</p>
 <ul>
-<li>As a <a href="https://en.wikipedia.org/wiki/Base58">base-58</a> secret key format string. Example: <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code>.</li>
+<li>As a <a href="https://en.wikipedia.org/wiki/Base58">base58</a> secret key format string. Example: <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code>.</li>
 <li>As an <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a> format string (secp256k1 key pairs only). Example: <code>I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE</code>.</li>
 <li>As a 128-bit <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> string. Example: <code>DEDCE9CE67B451D852FD4E846FCDE31C</code>.</li>
 <li>An arbitrary string to use as a seed value. For example: <code>masterpassphrase</code>.</li>
@@ -3841,7 +3841,7 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td align="left"><code>master_seed</code></td>
 <td align="left">String</td>
-<td align="left">The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. This is the private key of the key pair.</td>
+<td align="left">The master seed from which all other information about this account is derived, in Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded string format. This is the private key of the key pair.</td>
 </tr>
 <tr>
 <td align="left"><code>master_seed_hex</code></td>
@@ -7535,7 +7535,7 @@ rippled sign s██████████████████████
 <p><a class="button" href="ripple-api-tool.html#sign">Try it!</a></p>
 <p>To sign a transaction, you must provide a secret key that can <a href="reference-transaction-format.html#authorizing-transactions">authorize the transaction</a>. You can do this in a few ways:</p>
 <ul>
-<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
+<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as <a href="https://en.wikipedia.org/wiki/Base58">base58</a> seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
 <li>Provide a <code>key_type</code> value and exactly one of <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. Omit the <code>secret</code> field. (Not supported by the commandline syntax.)</li>
 </ul>
 <p>The request includes the following parameters:</p>
@@ -7561,7 +7561,7 @@ rippled sign s██████████████████████
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
@@ -7835,7 +7835,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A base-58-encoded secret key to sign with.</td>
+<td align="left">(Optional) A <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded secret key to sign with.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
@@ -8044,7 +8044,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <p>This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for <a href="reference-transaction-format.html#multi-signing">multi-signed transactions</a>.</p>
 <p>You can provide the secret key used to sign the transaction in the following ways:</p>
 <ul>
-<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
+<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as <a href="https://en.wikipedia.org/wiki/Base58">base58</a> seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
 <li>Provide a <code>key_type</code> value and exactly one of <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. Omit the <code>secret</code> field. (Not supported by the commandline syntax.)</li>
 </ul>
 <p>The request includes the following parameters:</p>
@@ -8070,7 +8070,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
@@ -8869,7 +8869,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts.</td>
+<td align="left">(Optional) Array with the unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts.</td>
 </tr>
 <tr>
 <td align="left"><code>accounts_proposed</code></td>
@@ -8932,7 +8932,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>taker</code></td>
 <td align="left">String</td>
-<td align="left">Unique base-58 account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.)</td>
+<td align="left">Unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.)</td>
 </tr>
 <tr>
 <td align="left"><code>snapshot</code></td>
@@ -9156,7 +9156,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>validation_public_key</code></td>
 <td align="left">String</td>
-<td align="left">The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the <code>signature</code>.</td>
+<td align="left">The <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the <code>signature</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -9616,7 +9616,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of unique base-58 account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
+<td align="left">(Optional) Array of unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
 </tr>
 <tr>
 <td align="left"><code>accounts_proposed</code></td>
@@ -11880,7 +11880,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a> format or Ripple's base-58 format. If omitted, generate a random seed.</td>
+<td align="left">(Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a> format or Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If omitted, generate a random seed.</td>
 </tr>
 </tbody>
 </table>
@@ -11929,12 +11929,12 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td align="left"><code>validation_public_key</code></td>
 <td align="left">String</td>
-<td align="left">The public key for these validation credentials, in Ripple's base-58 encoded string format.</td>
+<td align="left">The public key for these validation credentials, in Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded string format.</td>
 </tr>
 <tr>
 <td align="left"><code>validation_seed</code></td>
 <td align="left">String</td>
-<td align="left">The secret key for these validation credentials, in Ripple's base-58 encoded string format.</td>
+<td align="left">The secret key for these validation credentials, in Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded string format.</td>
 </tr>
 </tbody>
 </table>
@@ -11975,7 +11975,7 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as a passphrase. If omitted, disables proposing validations to the network.</td>
+<td align="left">(Optional) If present, use this value as the secret value for the validating key pair. Valid formats include <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as a passphrase. If omitted, disables proposing validations to the network.</td>
 </tr>
 </tbody>
 </table>
@@ -12024,12 +12024,12 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td align="left"><code>validation_public_key</code></td>
 <td align="left">String</td>
-<td align="left">(Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format.</td>
+<td align="left">(Omitted if proposing disabled) The public key for these validation credentials, in Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded string format.</td>
 </tr>
 <tr>
 <td align="left"><code>validation_seed</code></td>
 <td align="left">String</td>
-<td align="left">(Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format.</td>
+<td align="left">(Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> encoded string format.</td>
 </tr>
 </tbody>
 </table>
