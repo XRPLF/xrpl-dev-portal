@@ -4,15 +4,99 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
 1. **The payer creates a payment channel to a particular recipient and pre-funds the channel with XRP.**
 
-    This is a [PaymentChannelCreate transaction][].
+    This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel.
 
-    As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel.
+    **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
+
+    The following example shows creation of a payment channel by submitting to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from rN7n7... to rf1Bi... with a settlement delay of 1 day. The public key happens to be rN7n7...fzRH's master public key.
+
+    Request:
+
+        POST http://localhost:5005/
+        Content-Type: application/json
+
+        {
+            "method": "submit",
+            "params": [
+                {
+                    "secret": "s████████████████████████████",
+                    "tx_json": {
+                        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                        "TransactionType": "PaymentChannelCreate",
+                        "Amount": "100000000",
+                        "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                        "SettleDelay": 86400,
+                        "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                        "DestinationTag": 20170428
+                    },
+                    "fee_mult_max": 1000
+                }
+            ]
+        }
+
+    Response:
+
+        200 OK
+
+        {
+            "result": {
+                "engine_result": "tesSUCCESS",
+                "engine_result_code": 0,
+                "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+                ...
+                "tx_json": {
+                    ...
+                    "TransactionType": "PaymentChannelCreate",
+                    "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
+                }
+            }
+        }
+
+    **TODO:** The payer should check the transaction's final result with `tx` and get the Channel ID from the metadata.
 
 2. **The payee confirms that the specifics of the payment channel are satisfactory for the situation.**
 
     In particular, the payee should confirm that the settlement delay is long enough that the channel cannot close before the payee has a chance to redeem any outstanding claims against the channel. The settlement delay is defined in seconds in the `SettleDelay` field of the payment channel.
 
-    You can look up payment channels with the `account_channels` API method.
+    You can look up payment channels with the `account_channels` API method, using the payer of the channel, as in the following example (using the JSON-RPC API):
+
+    Request:
+
+        POST http://localhost:5005/
+        Content-Type: application/json
+
+        {
+            "method": "account_channels",
+            "params": [{
+                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "ledger_index": "validated"
+            }]
+        }
+
+    Response:
+
+        200 OK
+
+        {
+            "result": {
+                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "channels": [{
+                    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                    "amount": "100000000",
+                    "balance": "0",
+                    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                    "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "destination_tag": 20170428,
+                    "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+                    "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                    "settle_delay": 86400
+                }],
+                "status": "success"
+            }
+        }
+
+    Since there can be multiple channels between the same two parties, it is important for the payee to check the qualities of the correct channel. If there is any chance of confusion, the payer should clarify the Channel ID (`channel_id`) of the channel to use.
 
 3. **The payer creates one or more signed _claims_ for the XRP in the channel.** The amounts of these claims depends on the specific goods or services the payer wants to pay for.
 
