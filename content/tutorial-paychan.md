@@ -1,8 +1,8 @@
 # Payment Channels Tutorial
 
-Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. The basic flow of using a payment channel is as follows:
+Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
 
-1. **The payer creates a payment channel to a particular recipient and pre-funds the channel with XRP.**
+1. **The payer creates a payment channel to a particular recipient.** In doing so, the payer pre-funds the channel with XRP.
 
     This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel.
 
@@ -308,7 +308,7 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
             }
         }
 
-    ***TODO: Remind to confirm it reaches a validated ledger***
+    The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 
 8. **When the payer and payee are done doing business, the payer requests for the channel to be closed.**
@@ -319,7 +319,73 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
     The payee can always close a payment channel immediately after processing a claim. The payer can close the payment channel immediately if it has no XRP remaining in it.
 
-    ***TODO: PaymentChannelClaim example to request channel close***
+    The following shows a PaymentChannelClaim transaction
+
+    Request:
+
+    {
+        "method": "submit",
+        "params": [{
+            "secret": "s████████████████████████████",
+            "tx_json": {
+                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "TransactionType": "PaymentChannelClaim",
+                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                "Flags": 2147614720
+            },
+            "fee_mult_max": 1000
+        }]
+    }
+
+    Response:
+
+    {
+        "result": {
+            "engine_result": "tesSUCCESS",
+            "engine_result_code": 0,
+            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+            "status": "success",
+            "tx_blob": "12000F2280020000240000002850165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB368400000000000000A7321023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC674473045022100EFAF85836A3EE540D6BCEC16B44819704B1227B6DB125F87EDF0457D1A915A1902201BF9B79A12217B83E6AF685B030C274251A1C373CC5C51E0010A9B232A64E523811493B89AFCAD4C8EAC2B131C1331FEF12AE1522BBE",
+            "tx_json": {
+                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                "Fee": "10",
+                "Flags": 2147614720,
+                "Sequence": 40,
+                "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                "TransactionType": "PaymentChannelClaim",
+                "TxnSignature": "3045022100EFAF85836A3EE540D6BCEC16B44819704B1227B6DB125F87EDF0457D1A915A1902201BF9B79A12217B83E6AF685B030C274251A1C373CC5C51E0010A9B232A64E523",
+                "hash": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4"
+            }
+        }
+    }
+
+    After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel in the latest validated ledger using the `account_channels` method.
+
+    Example `account_channels` response:
+
+        {
+            "result": {
+                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "channels": [
+                    {
+                        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                        "amount": "100000000",
+                        "balance": "1000000",
+                        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                        "destination_tag": 20170428,
+                        "expiration": 547073182,
+                        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+                        "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                        "settle_delay": 86400
+                    }
+                ],
+                "status": "success"
+            }
+        }
+
+    In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time) maps to 2017-05-02T20:46:22Z, so any claims not redeemed by that time are no longer valid.
 
 9. **After the settlement delay has passed or the channel has reached its planned expiration time, the channel is expired.** Any further transaction that would affect the channel can only close it, returning unclaimed XRP to the payer.
 
