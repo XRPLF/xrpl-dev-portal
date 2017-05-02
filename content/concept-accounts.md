@@ -19,11 +19,11 @@ In the ledger's data tree, an account's core data is stored in the [AccountRoot]
 
 ## Addresses
 
-The "address" of an account is derived from the account's master [public key](https://en.wikipedia.org/wiki/Public-key_cryptography), which is in turn derived from a secret key. Ripple account addresses always start with the letter `r` and can be 25 to 35 characters in length. The data of a Ripple address includes a 4-byte checksum so that the probability of generating a valid address from random characters is approximately 1 in 2^32.
+{% include 'data_types/address.md' %}
 
 The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.) For more technical details, see [Address Encoding](#address-encoding).
 
-The process of "creating" an address is the purely mathematical task of generating a key pair and calculating the address from it, so an address can exist separately from its presence as an account object in the ledger. To actually make an account for an address, someone must send the address enough XRP to satisfy the reserve. This is called _funding_ the account. Whether or not the address is a funded account, you can use the address (and the key pair it's derived from) as a regular key or as part of a signer list.
+The process of "creating" an address is the purely mathematical task of generating a key pair and calculating the address from it, so an address can exist separately from its presence as an account object in the ledger. To actually make an account for an address, someone must send the address enough XRP to satisfy the reserve. This is called _funding_ the account. Whether or not the address is a funded account, you can use the address (and the key pair it's derived from) as a [regular key](reference-transaction-format.html#setregularkey) or as part of a [signer list](reference-transaction-format.html#multi-signing).
 
 ### Special Addresses
 
@@ -31,11 +31,11 @@ Some addresses have special meaning, or historical uses, in the Ripple Consensus
 
 | Address                     | Name | Meaning | Black Hole? |
 |-----------------------------|------|---------|-------------|
-| rrrrrrrrrrrrrrrrrrrrrhoLvTp | ACCOUNT\_ZERO | An address that is the base-58 encoding of the value `0`. In peer-to-peer communications, `rippled` uses this address as the issuer for XRP. | Yes |
-| rrrrrrrrrrrrrrrrrrrrBZbvji  | ACCOUNT\_ONE | An address that is the base-58 encoding of the value `1`. In the ledger, [RippleState entries](reference-ledger-format.html#ripplestate) use this address as a placeholder for the issuer of a trust line balance. | Yes |
+| rrrrrrrrrrrrrrrrrrrrrhoLvTp | ACCOUNT\_ZERO | An address that is the base58 encoding of the value `0`. In peer-to-peer communications, `rippled` uses this address as the issuer for XRP. | Yes |
+| rrrrrrrrrrrrrrrrrrrrBZbvji  | ACCOUNT\_ONE | An address that is the base58 encoding of the value `1`. In the ledger, [RippleState entries](reference-ledger-format.html#ripplestate) use this address as a placeholder for the issuer of a trust line balance. | Yes |
 | rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh | The genesis account | When `rippled` starts a new genesis ledger from scratch (for example, in stand-alone mode), this account holds all the XRP. This address is generated from the seed value "masterpassphrase" which is [hard-coded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184). | No |
 | rrrrrrrrrrrrrrrrrNAMEtxvNvQ | Ripple Name reservation black-hole | In the past, Ripple asked users to send XRP to this account to reserve Ripple Names.| Yes |
-| rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaN Address | Previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) generated this address when base-58 encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN). | Yes |
+| rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaN Address | Previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) generated this address when base58 encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN). | Yes |
 
 
 ## Permanence of Accounts
@@ -70,7 +70,7 @@ For more information on each of these objects, see the [Ledger Format Reference]
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Source")
 
-Ripple addresses are encoded using [base-58](https://en.wikipedia.org/wiki/Base58) with the Ripple _dictionary_: `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`. Since Ripple encodes several types of keys with base-58, Ripple prefixes the encoded data with a one-byte "type prefix" (also called a "version prefix") to distinguish them. The type prefix causes addresses to usually start with different letters in base-58 format.
+Ripple addresses are encoded using [base58](https://en.wikipedia.org/wiki/Base58) with the Ripple _dictionary_: `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`. Since Ripple encodes several types of keys with base58, Ripple prefixes the encoded data with a one-byte "type prefix" (also called a "version prefix") to distinguish them. The type prefix causes addresses to usually start with different letters in base58 format.
 
 The following diagram shows the relationship between keys and addresses:
 
@@ -89,14 +89,14 @@ The formula for calculating a Ripple address is as follows. For the complete exa
         assert(crypto.getHashes().includes('sha256'));
         assert(crypto.getHashes().includes('ripemd160'));
 
-2. Start with the 33-byte ECDSA secp256k1 key, or a 32-byte Ed25119 public key. For Ed25519 keys, prefix the key with the byte `0xED`.
+2. Start with a 33-byte ECDSA secp256k1 public key, or a 32-byte Ed25119 public key. For Ed25519 keys, prefix the key with the byte `0xED`.
 
         const pubkey_hex =
           'ED9434799226374926EDA3B54B1B461B4ABF7237962EAE18528FEA67595397FA32';
         const pubkey = Buffer.from(pubkey_hex, 'hex');
         assert(pubkey.length == 33);
 
-3. Calculate the RIPEMD160 hash of the SHA-256 hash of the public key. This value is the "Account ID".
+3. Calculate the [RIPEMD160](https://en.wikipedia.org/wiki/RIPEMD) hash of the SHA-256 hash of the public key. This value is the "Account ID".
 
         const pubkey_inner_hash = crypto.createHash('sha256').update(pubkey);
         const pubkey_outer_hash = crypto.createHash('ripemd160');
@@ -111,7 +111,7 @@ The formula for calculating a Ripple address is as follows. For the complete exa
         const chksum_hash2 = crypto.createHash('sha256').update(chksum_hash1).digest();
         const checksum =  chksum_hash2.slice(0,4);
 
-5. Concatenate the the payload, and the checksum, and calculate the base58 value of the concatenated buffer. The result is the address.
+5. Concatenate the payload and the checksum. Calculate the base58 value of the concatenated buffer. The result is the address.
 
         const dataToEncode = Buffer.concat([payload, checksum]);
         const address = base58.encode(dataToEncode);
