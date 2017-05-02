@@ -190,8 +190,12 @@
 <td>0</td>
 </tr>
 <tr>
-<td><a href="reference-transaction-format.html#multi-signing">Multi-signed transaction</a></td>
+<td><a href="reference-transaction-format.html#multi-signing">Multi-signed Transaction</a></td>
 <td>10 drops × (1 + Number of Signatures Provided)</td>
+</tr>
+<tr>
+<td><a href="reference-transaction-format.html#escrowfinish">EscrowFinish Transaction with Fulfillment</a></td>
+<td>42 drops + (Fulfillment size in bytes divided by 16)</td>
 </tr>
 </tbody>
 </table>
@@ -274,6 +278,13 @@
 <td>(Effectively infinite)</td>
 <td>N/A</td>
 <td>(Effectively infinite)</td>
+</tr>
+<tr>
+<td><a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> with 32-byte preimage.</td>
+<td>44</td>
+<td>245</td>
+<td>88</td>
+<td>512</td>
 </tr>
 </tbody>
 </table>

@@ -581,6 +581,8 @@ Any account may submit an EscrowFinish transaction.
 * If the corresponding [EscrowCreate transaction][] specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 * If the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 
+**Note:** The [transaction cost](concept-transaction-cost.html) to submit an EscrowFinish transaction is higher if it contains a fulfillment. Instead of the usual base cost of 10 [drops of XRP](reference-rippled.html#specifying-currency-amounts), an EscrowFinish transaction costs 42 drops plus another 1 drop for every 16 bytes in size of the preimage. (For example, a fulfillment with a 32-byte preimage would cost 44 drops of XRP.)
+
 
 
 ## OfferCancel ##

@@ -19,7 +19,8 @@ Some transactions have different transaction costs:
 |-----------------------|--------------------------|
 | [Reference Transaction](#reference-transaction-cost) (Most transactions) | 10 drops |
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
-| [Multi-signed transaction](reference-transaction-format.html#multi-signing) | 10 drops × (1 + Number of Signatures Provided) |
+| [Multi-signed Transaction](reference-transaction-format.html#multi-signing) | 10 drops × (1 + Number of Signatures Provided) |
+| [EscrowFinish Transaction with Fulfillment](reference-transaction-format.html#escrowfinish) | 42 drops + (Fulfillment size in bytes divided by 16) |
 
 
 ## Beneficiaries of the Transaction Cost ##
@@ -101,6 +102,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 | Reference transaction (most transactions) | 10 | 256 | 20 | 512 |
 | [Multi-signed transaction](reference-transaction-format.html#multi-signing) with 4 signatures | 50 | 256 | 100 | 512 |
 | [Key reset transaction](concept-transaction-cost.html#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
+| [EscrowFinish transaction](reference-transaction-format.html#escrowfinish) with 32-byte preimage. | 44 | 245 | 88 | 512 |
 
 
 ## Querying the Transaction Cost ##
