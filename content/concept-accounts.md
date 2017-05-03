@@ -1,29 +1,29 @@
 # RCL Accounts
 
-An "Account" in the Ripple Consensus Ledger represents a holder of XRP and a sender of transactions. The core elements of an account are:
+An "Account" in the Ripple Consensus Ledger represents a holder of XRP and a sender of [transactions](reference-transaction-format.html). The core elements of an account are:
 
 - An identifying **address**, such as `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
-- An account can send [transactions](reference-transaction-format.html) to modify the Ripple Consensus Ledger, for a variety of purposes including:
-    - Sending XRP to a recipient, immediately or through locking mechanisms like payment channels and escrow.
-    - Issuing, redeeming, or sending non-XRP assets and currencies.
-    - Trading in the decentralized exchange.
-    - Changing settings such as authorization settings, balance limits, or the behavior of assets issued by the account.
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](concept-reserves.html).
 - A **sequence number**, starting at 1 and increasing with each transaction sent from this account. No transaction can be included in a ledger unless the transaction's sequence number matches its sender's next sequence number.
 - A **history of transactions** that affected this account and its balances.
+- One or more ways to [authorize transactions](reference-transaction-format.html#authorizing-transactions), possibly including:
+    - A master key pair intrinsic to the account. (This can be [disabled](reference-transaction-format.html#accountset-flags) but not changed.)
+    - A "regular" key pair that [can be rotated](reference-transaction-format.html#setregularkey).
+    - A signer list for [multi-signing](reference-transaction-format.html#multi-signing). (Stored separately from the account's core data.)
 
 In the ledger's data tree, an account's core data is stored in the [AccountRoot](reference-ledger-format.html#accountroot) ledger node type. An account can also be the owner (or partial owner) of several other types of data.
 
 **Tip:** An "Account" in the Ripple Consensus Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an RCL Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.
 
-
 ## Addresses
 
 {% include 'data_types/address.md' %}
 
-The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.) For more technical details, see [Address Encoding](#address-encoding).
+Any valid address can become an account in the Ripple Consensus Ledger by receiving a [Payment][] of XRP, as long as the amount of XRP delivered is greater than or equal to the [account reserve](concept-reserves.html). This is called _funding_ the account. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](reference-transaction-format.html#multi-signing). Only a funded account can be the sender of a transaction.
 
-The process of "creating" an address is the purely mathematical task of generating a key pair and calculating the address from it, so an address can exist separately from its presence as an account object in the ledger. To actually make an account for an address, someone must send the address enough XRP to satisfy the reserve. This is called _funding_ the account. Whether or not the address is a funded account, you can use the address (and the key pair it's derived from) as a [regular key](reference-transaction-format.html#setregularkey) or as part of a [signer list](reference-transaction-format.html#multi-signing).
+Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the Ripple Consensus Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
+
+For more technical details of how to calculate a Ripple address, see [Address Encoding](#address-encoding).
 
 ### Special Addresses
 
@@ -42,17 +42,17 @@ Some addresses have special meaning, or historical uses, in the Ripple Consensus
 
 Once created, an account exists in the Ripple Consensus Ledger's data tree forever. This is because the current sequence number for a transaction must be tracked forever, so that old transactions cannot be processed a second time.
 
-Unlike Bitcoin and many other crypto-currencies, each new version of the Ripple Consensus Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use **Source Tags** and **Destination Tags** to distinguish payments from and to their customers while only using one (or a handful) of accounts in the Ripple Consensus Ledger.
+Unlike Bitcoin and many other crypto-currencies, each new version of the Ripple Consensus Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](tutorial-gateway-guide.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the Ripple Consensus Ledger.
 
 
 ## Transaction History
 
-In the Ripple Consensus Ledger, transaction history is tracked by a "thread" of transactions linked by a transaction's identifying hash and the ledger index. The `AccountRoot` ledger node has hash and ledger of the transaction that most recently modified it; the metadata of that transaction includes the previous state of the `AccountRoot` node, so it is possible to iterate through the history of a single account this way. This transaction history includes any transactions that modify the `AccountRoot` node directly, including:
+In the Ripple Consensus Ledger, transaction history is tracked by a "thread" of transactions linked by a transaction's identifying hash and the ledger index. The `AccountRoot` ledger node has the identifying hash and ledger of the transaction that most recently modified it; the metadata of that transaction includes the previous state of the `AccountRoot` node, so it is possible to iterate through the history of a single account this way. This transaction history includes any transactions that modify the `AccountRoot` node directly, including:
 
-- Transactions sent by the account, because the modify the account's `Sequence` number. These transactions also modify the account's XRP balance because of the [transaction cost](concept-transaction-cost.html).
+- Transactions sent by the account, because they modify the account's `Sequence` number. These transactions also modify the account's XRP balance because of the [transaction cost](concept-transaction-cost.html).
 - Transactions that modified the account's XRP balance, including incoming [Payment transactions][] and other types of transactions such as [PaymentChannelClaim][] and [EscrowFinish][].
 
-However, the _conceptual_ transaction history of an account also includes transactions that modified the account's owned objects and non-XRP balances. These objects are separate ledger nodes, each with their own thread of transactions that affected them. If you have an account's full ledger history, you can follow it forward to find the ledger node objects created or modified by it. A "complete" transaction history includes the history of objects owned by a transaction, such as:
+The _conceptual_ transaction history of an account also includes transactions that modified the account's owned objects and non-XRP balances. These objects are separate ledger nodes, each with their own thread of transactions that affected them. If you have an account's full ledger history, you can follow it forward to find the ledger node objects created or modified by it. A "complete" transaction history includes the history of objects owned by a transaction, such as:
 
 - `RippleState` objects (Trust Lines) connected to the account.
 - `DirectoryNode` objects, especially the owner directory tracking the account's owned objects.
