@@ -319,48 +319,23 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
     The payee can always close a payment channel immediately after processing a claim. The payer can close the payment channel immediately if it has no XRP remaining in it.
 
-    The following shows a PaymentChannelClaim transaction
+    Example of submitting a transaction requesting a channel to close:
 
-    Request:
-
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelClaim",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
-            },
-            "fee_mult_max": 1000
-        }]
-    }
-
-    Response:
-
-    {
-        "result": {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-            "status": "success",
-            "tx_blob": "12000F2280020000240000002850165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB368400000000000000A7321023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC674473045022100EFAF85836A3EE540D6BCEC16B44819704B1227B6DB125F87EDF0457D1A915A1902201BF9B79A12217B83E6AF685B030C274251A1C373CC5C51E0010A9B232A64E523811493B89AFCAD4C8EAC2B131C1331FEF12AE1522BBE",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Fee": "10",
-                "Flags": 2147614720,
-                "Sequence": 40,
-                "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "TransactionType": "PaymentChannelClaim",
-                "TxnSignature": "3045022100EFAF85836A3EE540D6BCEC16B44819704B1227B6DB125F87EDF0457D1A915A1902201BF9B79A12217B83E6AF685B030C274251A1C373CC5C51E0010A9B232A64E523",
-                "hash": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4"
-            }
+        {
+            "method": "submit",
+            "params": [{
+                "secret": "s████████████████████████████",
+                "tx_json": {
+                    "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                    "TransactionType": "PaymentChannelClaim",
+                    "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                    "Flags": 2147614720
+                },
+                "fee_mult_max": 1000
+            }]
         }
-    }
 
-    After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel in the latest validated ledger using the `account_channels` method.
+    After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the `account_channels` method. Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
 
     Example `account_channels` response:
 
@@ -393,8 +368,122 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
     We recommend the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 
+    The command to submit the transaction is identical to the previous example requesting channel expiration. (However, its resulting [auto-filled](reference-transaction-format.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
 
-    ***TODO: PaymentChannelClaim example to show closing expired channel***
+    Example of submitting a transaction to close an expired channel:
+
+        {
+            "method": "submit",
+            "params": [{
+                "secret": "s████████████████████████████",
+                "tx_json": {
+                    "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                    "TransactionType": "PaymentChannelClaim",
+                    "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                    "Flags": 2147614720
+                },
+                "fee_mult_max": 1000
+            }]
+        }
+
+    When the transaction has been included in a validated ledger, you can look at the metadata of the transaction to confirm that it deleted the channel and returned the XRP to the sender.
+
+    Example response from using the `tx` command to look up the transaction from this step:
+
+        {
+            "result": {
+                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                "Fee": "5606",
+                "Flags": 2147614720,
+                "Sequence": 41,
+                "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                "TransactionType": "PaymentChannelClaim",
+                "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
+                "date": 547091262,
+                "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
+                "inLedger": 29480670,
+                "ledger_index": 29480670,
+                "meta": {
+                    "AffectedNodes": [
+                        {
+                            "ModifiedNode": {
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+                                "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
+                                "PreviousTxnLgrSeq": 29385089
+                            }
+                        },
+                        {
+                            "DeletedNode": {
+                                "FinalFields": {
+                                    "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                                    "Amount": "100000000",
+                                    "Balance": "1000000",
+                                    "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                                    "DestinationTag": 20170428,
+                                    "Expiration": 547073182,
+                                    "Flags": 0,
+                                    "OwnerNode": "0000000000000000",
+                                    "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                                    "PreviousTxnLgrSeq": 29451256,
+                                    "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                                    "SettleDelay": 86400
+                                },
+                                "LedgerEntryType": "PayChannel",
+                                "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                                    "Balance": "1041862844",
+                                    "Flags": 0,
+                                    "OwnerCount": 2,
+                                    "Sequence": 42
+                                },
+                                "LedgerEntryType": "AccountRoot",
+                                "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
+                                "PreviousFields": {
+                                    "Balance": "942868450",
+                                    "OwnerCount": 3,
+                                    "Sequence": 41
+                                },
+                                "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                                "PreviousTxnLgrSeq": 29451256
+                            }
+                        },
+                        {
+                            "ModifiedNode": {
+                                "FinalFields": {
+                                    "Flags": 0,
+                                    "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                                    "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                                },
+                                "LedgerEntryType": "DirectoryNode",
+                                "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                            }
+                        }
+                    ],
+                    "TransactionIndex": 7,
+                    "TransactionResult": "tesSUCCESS"
+                },
+                "status": "success",
+                "validated": true
+            }
+        }
+
+    In the transaction's metadata, look for the following:
+
+    - A `DeletedNode` entry with `"LedgerEntryType": "PayChannel"`. The `LedgerIndex` field should match the Channel ID. This indicates that the channel was deleted.
+    - A `ModifiedNode` entry with `"LedgerEntryType": "AccountRoot"`. The change in the `Balance` field in `PreviousFields` and `FinalFields` reflects the unspent XRP being returned to the payer.
+
+    Those fields indicate that the payment channel is closed.
+
+This concludes the tutorial of Payment Channel usage. Ripple encourages users to find unique and interesting use cases to take full advantage of the speed and convenience of payment channels.
+
+
 
 
 {% include 'snippets/tx-type-links.md' %}
