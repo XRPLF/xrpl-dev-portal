@@ -1028,7 +1028,7 @@
 <li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>FinishAfter</code> time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
 <li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>CancelAfter</code> time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> The <a href="concept-transaction-cost.html">transaction cost</a> to submit an EscrowFinish transaction increases if it contains a fulfillment. An EscrowFinish transaction has a base cost of 10 <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, plus an additional 32 drops for every 16 bytes in size of the preimage. For example, a fulfillment with a 32-byte preimage would cost 10 + (32 drops × (32 bytes / 16)) = 74 drops of XRP.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The <a href="concept-transaction-cost.html">transaction cost</a> to submit an EscrowFinish transaction increases if it contains a fulfillment. An EscrowFinish transaction has a base cost of 320 <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, plus an additional 10 drops for every 16 bytes in size of the preimage. For example, a fulfillment with a 32-byte preimage would cost 10 × (32 drops + (32 bytes ÷ 16)) = 340 drops of XRP.</p>
 <h2 id="offercancel">OfferCancel</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.</p>
