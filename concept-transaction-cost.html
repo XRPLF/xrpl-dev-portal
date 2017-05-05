@@ -195,7 +195,7 @@
 </tr>
 <tr>
 <td><a href="reference-transaction-format.html#escrowfinish">EscrowFinish Transaction with Fulfillment</a></td>
-<td>42 drops + (Fulfillment size in bytes divided by 16)</td>
+<td>10 drops + (32 drops × (Fulfillment size in bytes ÷ 16))</td>
 </tr>
 </tbody>
 </table>
@@ -281,9 +281,9 @@
 </tr>
 <tr>
 <td><a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> with 32-byte preimage.</td>
-<td>44</td>
+<td>74</td>
 <td>245</td>
-<td>88</td>
+<td>148</td>
 <td>512</td>
 </tr>
 </tbody>
