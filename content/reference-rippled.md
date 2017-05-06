@@ -3034,7 +3034,6 @@ Cases where you would specify a known seed include:
 
 * Re-calculating your address when you only know the seed associated with that address
 * Testing `rippled` functionality
-* [Validator domain verification](tutorial-rippled-setup.html#account-domain)
 
 If you do specify a seed, you can specify it in any of the following formats:
 
