@@ -349,11 +349,11 @@ All field names are case-sensitive. In responses, fields that are taken directly
 
 Different types of objects are uniquely identified in different ways:
 
-*Accounts* are identified by their base-58 [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
+[Accounts](concept-accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
-*Transactions* are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
+[Transactions](reference-transaction-format.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
-Each closed *Ledger* has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
+Each closed [Ledger](reference-ledger-format.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
 
 ### Addresses ###
 [Address]: #addresses
@@ -583,7 +583,7 @@ You can use the `rippled` application (as a separate instance) as a JSON-RPC cli
 
 
 # Account Information #
-Accounts are the core unit of authentication in the Ripple Consensus Ledger. Each account can hold balances in multiple currencies, and all transactions must be signed by an account's secret key. In order for an account to exist in a validated ledger version, it must hold a minimum reserve amount of XRP. (The [reserve for an account](concept-reserves.html) increases with the amount of data it owns in the shared ledger.) It is expected that accounts correspond loosely to individual users.
+An "Account" in the Ripple Consensus Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account. For more information, see [Accounts](concept-accounts.html).
 
 
 ## account_currencies ##
@@ -3018,8 +3018,8 @@ The request can contain the following parameters:
 | `Field`      | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `key_type`   | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). Defaults to `secp256k1`. |
-| `passphrase` | String | (Optional) Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base-58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
-| `seed`       | String | (Optional) Generate the key pair and address from this [base-58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
+| `passphrase` | String | (Optional) Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
+| `seed`       | String | (Optional) Generate the key pair and address from this [base58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
 | `seed_hex`   | String | (Optional) Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
 
 You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
@@ -3037,12 +3037,12 @@ Cases where you would specify a known seed include:
 
 If you do specify a seed, you can specify it in any of the following formats:
 
-* As a [base-58][] secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
+* As a [base58][] secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
 * As an [RFC-1751][] format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
 * As a 128-bit [hexadecimal][] string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
 * An arbitrary string to use as a seed value. For example: `masterpassphrase`.
 
-[base-58]: https://en.wikipedia.org/wiki/Base58
+[base58]: https://en.wikipedia.org/wiki/Base58
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
@@ -3113,7 +3113,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `master_seed`     | String | The master seed from which all other information about this account is derived, in Ripple's base-58 encoded string format. This is the private key of the key pair. |
+| `master_seed`     | String | The master seed from which all other information about this account is derived, in Ripple's [base58][] encoded string format. This is the private key of the key pair. |
 | `master_seed_hex` | String | The master seed, in hex format.                 |
 | `master_key`      | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. |
 | `account_id`      | String | The [Address][] of the account.                 |
@@ -6472,7 +6472,7 @@ rippled sign s██████████████████████
 
 To sign a transaction, you must provide a secret key that can [authorize the transaction](reference-transaction-format.html#authorizing-transactions). You can do this in a few ways:
 
-* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
 
 The request includes the following parameters:
@@ -6481,7 +6481,7 @@ The request includes the following parameters:
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format |
 | `secret`       | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | `passphrase`   | String  | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type`     | String  | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
@@ -6711,7 +6711,7 @@ The request includes the following parameters:
 | `tx_json`    | Object               | The [Transaction](reference-transaction-format.html) to sign. Unlike using the [`sign` command](#sign), all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
 | `secret`     | String               | (Optional) The secret key to sign with. (Cannot be used with `key_type`.) |
 | `passphrase` | String               | (Optional) A passphrase to use as the secret key to sign with. |
-| `seed`       | String               | (Optional) A base-58-encoded secret key to sign with. |
+| `seed`       | String               | (Optional) A [base58][]-encoded secret key to sign with. |
 | `seed_hex`   | String               | (Optional) A hexadecimal secret key to sign with. |
 | `key_type`   | String               | (Optional) The type of key to use for signing. This can be `secp256k1` or `ed25519`. (Ed25519 support is experimental.) |
 
@@ -6916,7 +6916,7 @@ This mode signs a transaction and immediately submits it. This mode is intended 
 
 You can provide the secret key used to sign the transaction in the following ways:
 
-* Provide a `secret` value and omit the `key_type` field. This value can be formatted as base-58 seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
 
 The request includes the following parameters:
@@ -6925,7 +6925,7 @@ The request includes the following parameters:
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
 | `secret`       | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in base-58 format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | `passphrase`   | String  | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type`     | String  | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
@@ -7454,11 +7454,9 @@ The request includes the following parameters:
 | `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `limit`        | Unsigned Integer           | (Optional) If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| `taker`        | String                     | (Optional, defaults to [ACCOUNT_ONE][]) The [Address][] of an account to use as a perspective. (This affects which unfunded offers are returned.) |
+| `taker`        | String                     | (Optional) The [Address][] of an account to use as a perspective. [Unfunded offers](reference-transaction-format.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
 | `taker_gets`   | Object                     | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | `taker_pays`   | Object                     | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
-
-Normally, offers that are not funded are omitted; however, offers made by the specified `taker` account are always displayed. This allows you to look up your own unfunded offers to cancel them with an OfferCancel transaction.
 
 #### Response Format ####
 
@@ -7640,7 +7638,7 @@ The request includes the following parameters:
 | `Field`             | Type   | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
 | `streams`           | Array  | (Optional) Array of string names of generic streams to subscribe to, as explained below |
-| `accounts`          | Array  | (Optional) Array with the unique base-58 addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
+| `accounts`          | Array  | (Optional) Array with the unique [base58][] addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
 | `accounts_proposed` | Array  | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
 | `books`             | Array  | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
 | `url`               | String | (Optional for Websocket; Required otherwise) URL where the server sends a JSON-RPC callbacks for each event. *Admin-only.* |
@@ -7665,7 +7663,7 @@ Each member of the `books` array, if provided, is an object with the following f
 |:-------------|:--------|:----------------------------------------------------|
 | `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as a [currency object with no amount](#specifying-currencies-without-amounts). |
 | `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as a [currency object with no amount](#specifying-currencies-without-amounts). |
-| `taker`      | String  | Unique base-58 account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
+| `taker`      | String  | Unique [base58][] account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
 | `snapshot`   | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | `both`       | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
 
@@ -7793,7 +7791,7 @@ The fields from a validations stream message are as follows:
 | `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
 | `signing_time`          | Number           | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). [New in: rippled 0.32.0][] |
-| `validation_public_key` | String           | The base-58 encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
+| `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
 
@@ -8158,7 +8156,7 @@ The parameters in the request are specified almost exactly like the parameters t
 | `Field`             | Type  | Description                                    |
 |:--------------------|:------|:-----------------------------------------------|
 | `streams`           | Array | (Optional) Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
-| `accounts`          | Array | (Optional) Array of unique base-58 account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| `accounts`          | Array | (Optional) Array of unique [base58][] account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
 | `accounts_proposed` | Array | (Optional) Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
 | `books`             | Array | (Optional) Array of objects defining order books to unsubscribe from, as explained below. |
 
@@ -10118,7 +10116,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | (Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's base-58 format. If omitted, generate a random seed. |
+| `secret` | String | (Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's [base58][] format. If omitted, generate a random seed. |
 
 **Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the `secret` when generating new credentials for the first time.
 
@@ -10163,8 +10161,8 @@ The response follows the [standard format](#response-formatting), with a success
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_key`        | String | The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
-| `validation_public_key` | String | The public key for these validation credentials, in Ripple's base-58 encoded string format. |
-| `validation_seed`       | String | The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+| `validation_public_key` | String | The public key for these validation credentials, in Ripple's [base58][] encoded string format. |
+| `validation_seed`       | String | The secret key for these validation credentials, in Ripple's [base58][] encoded string format. |
 
 #### Possible Errors ####
 
@@ -10207,7 +10205,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include base-58, [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
+| `secret` | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include [base58][], [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
 
 #### Response Format ####
 
@@ -10251,8 +10249,8 @@ The response follows the [standard format](#response-formatting), with a success
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_key`        | String | (Omitted if proposing disabled) The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
-| `validation_public_key` | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's base-58 encoded string format. |
-| `validation_seed`       | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's base-58 encoded string format. |
+| `validation_public_key` | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's [base58][] encoded string format. |
+| `validation_seed`       | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's [base58][] encoded string format. |
 
 #### Possible Errors ####
 

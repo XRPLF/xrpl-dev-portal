@@ -83,6 +83,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
@@ -125,6 +126,7 @@
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
                 <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
                 <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
@@ -171,7 +173,7 @@
 </ul>
 <pre><code>rippled -a --start --conf=/path/to/rippled.cfg
 </code></pre>
-<p>In a genesis ledger, the <a href="reference-rippled.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
+<p>In a genesis ledger, the <a href="concept-accounts.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184">hardcoded</a> as follows:</p>
 <p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
 <p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("masterpassphrase")</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>

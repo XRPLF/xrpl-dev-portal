@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>60</x>
+      <y>60</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Passphrase
+--
+(Optional)
+Any string
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>350</x>
+      <y>60</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Secret Key
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>80</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+SHA-512Half</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>650</x>
+      <y>60</y>
+      <w>220</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Public Key
+--
+33 bytes (secp256k1)
+0xED + 32 bytes (Ed25519)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>80</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Public Key
+Derivation</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>360</x>
+      <y>190</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Account ID
+--
+(20 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>120</y>
+      <w>440</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+                    SHA-256 of RIPEMD160
+
+
+
+
+</panel_attributes>
+    <additional_attributes>60.0;90.0;10.0;90.0;10.0;40.0;420.0;40.0;420.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>690</x>
+      <y>190</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Address
+--
+AccountID (20 bytes)
+Checksum (4 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>60</x>
+      <y>190</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Type Prefix
+--
+0x00
+("r" in Ripple's base58)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>230</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>400</x>
+      <y>320</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Checksum
+--
+(4 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>230</y>
+      <w>120</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;80.0;10.0;80.0;120.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>210</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>590</x>
+      <y>210</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>base58
+type=sender</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>260</y>
+      <w>130</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+SHA-256 twice</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
