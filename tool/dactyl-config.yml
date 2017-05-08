@@ -91,6 +91,7 @@ targets:
             "img/noripple-04.png": https://ripple.com/wp-content/uploads/2015/01/noripple-04.png
             "img/noripple-05.png": https://ripple.com/wp-content/uploads/2015/01/noripple-05.png
             "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
+            "img/key-address-rels.png": https://ripple.com/wp-content/uploads/2017/05/key-address-rels.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
