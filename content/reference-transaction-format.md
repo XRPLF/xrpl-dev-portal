@@ -554,7 +554,7 @@ Either `CancelAfter` or `FinishAfter` must be specified. If both are included, t
 
 _Requires the [Escrow Amendment](concept-amendments.html#escrow)._
 
-Deliver escrowed XRP the recipient.
+Deliver XRP from a held payment to the recipient.
 
 Example EscrowFinish:
 
@@ -578,8 +578,11 @@ Example EscrowFinish:
 
 Any account may submit an EscrowFinish transaction.
 
-* If the corresponding [EscrowCreate transaction][] specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
-* If the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+- If the held payment has a `FinishAfter` time, you cannot execute it before this time. Specifically, if the corresponding [EscrowCreate transaction][] specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+- If the held payment has a `Condition`, you cannot execute it unless you provide a matching `Fulfillment` for the condition.
+- You cannot execute a held payment after it has expired. Specifically, if the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+
+**Note:** The minimum [transaction cost](concept-transaction-cost.html) to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 [drops of XRP](reference-rippled.html#specifying-currency-amounts) plus another 10 drops for every 16 bytes in size of the preimage.
 
 
 

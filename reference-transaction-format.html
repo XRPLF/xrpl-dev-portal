@@ -977,7 +977,7 @@
 <h2 id="escrowfinish">EscrowFinish</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp" title="Source">[Source]<br/></a></p>
 <p><em>Requires the <a href="concept-amendments.html#escrow">Escrow Amendment</a>.</em></p>
-<p>Deliver escrowed XRP the recipient.</p>
+<p>Deliver XRP from a held payment to the recipient.</p>
 <p>Example EscrowFinish:</p>
 <pre><code class="json">{
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -1026,9 +1026,11 @@
 </table>
 <p>Any account may submit an EscrowFinish transaction.</p>
 <ul>
-<li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>FinishAfter</code> time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
-<li>If the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>CancelAfter</code> time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
+<li>If the held payment has a <code>FinishAfter</code> time, you cannot execute it before this time. Specifically, if the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>FinishAfter</code> time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
+<li>If the held payment has a <code>Condition</code>, you cannot execute it unless you provide a matching <code>Fulfillment</code> for the condition.</li>
+<li>You cannot execute a held payment after it has expired. Specifically, if the corresponding <a href="#escrowcreate">EscrowCreate transaction</a> specified a <code>CancelAfter</code> time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.</li>
 </ul>
+<p class="devportal-callout note"><strong>Note:</strong> The minimum <a href="concept-transaction-cost.html">transaction cost</a> to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a> plus another 10 drops for every 16 bytes in size of the preimage.</p>
 <h2 id="offercancel">OfferCancel</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp" title="Source">[Source]<br/></a></p>
 <p>An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.</p>
