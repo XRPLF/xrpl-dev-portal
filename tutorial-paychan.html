@@ -182,24 +182,24 @@
 </thead>
 <tbody>
 <tr>
-<td>Payer's address</td>
+<td><strong>Payer's address</strong></td>
 <td>rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH</td>
 </tr>
 <tr>
-<td>Public key used for channel (in base58)</td>
+<td><strong>Public key used for channel (in base58)</strong></td>
 <td>aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3</td>
 </tr>
 <tr>
-<td>Public key used for channel (in hex)</td>
+<td><strong>Public key used for channel (in hex)</strong></td>
 <td>023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6</td>
 </tr>
 <tr>
-<td>Payee's address</td>
+<td><strong>Payee's address</strong></td>
 <td>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout tip"><strong>Tip:</strong> In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. --></p>
+<p class="devportal-callout tip"><strong>Tip:</strong> In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. --></p>
 <p>Additionally, you'll need a <code>rippled</code> server to send transactions to. The examples in this tutorial assume a <code>rippled</code> server is running on the test machine (<code>localhost</code>) with an unencrypted JSON-RPC API endpoint on port <strong>5005</strong>.</p>
 <p>To test without transferring real XRP, you can use <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> addresses with Test Net XRP. If you do use the Ripple Test Net, you can use the Test Net servers' JSON-RPC API by connecting to <code>https://api.altnet.rippletest.net:51234</code> instead of <code>http://localhost:5005/</code>.</p>
 <p>You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (<code>100000000</code> drops) in a payment channel for at least 1 day.</p>

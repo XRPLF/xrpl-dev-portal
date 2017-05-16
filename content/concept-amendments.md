@@ -239,9 +239,9 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
 
-Creates three new transaction types: `ChannelCreate`, `ChannelFund`, and `ChannelClaim`. Creates a new ledger node type, `Channel`. Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: `channel_authorize` (creates a signed Claim), `channel_verify` (verifies a signed Claim), and `account_channels` (lists Channels associated with an account).
+Creates three new transaction types:[PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger node type, [PayChannel](reference-ledger-format.html#paychannel). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: `channel_authorize` (creates a signed Claim), `channel_verify` (verifies a signed Claim), and `account_channels` (lists Channels associated with an account).
 
-<!--{# TODO: Add links to the relevant docs above when they are ready #}-->
+For more information, see the [Payment Channels Tutorial](tutorial-paychan.html).
 
 
 ## SHAMapV2

@@ -20,12 +20,12 @@ The example addresses used in this tutorial are:
 
 | | |
 |--|--|
-| Payer's address | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH |
-| Public key used for channel (in base58) | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
-| Public key used for channel (in hex) | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
-| Payee's address | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
+| **Payer's address** | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH |
+| **Public key used for channel (in base58)** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
+| **Public key used for channel (in hex)** | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
+| **Payee's address** | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
 
-**Tip:** In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
+**Tip:** In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
