@@ -58,6 +58,7 @@ targets:
             "tutorial-rippleapi-beginners-guide.html": https://ripple.com/build/rippleapi-beginners-guide/
             "tutorial-rippled-setup.html": https://ripple.com/build/rippled-setup/
             "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
+            "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-fee-voting.html": https://ripple.com/build/fee-voting/
@@ -92,6 +93,7 @@ targets:
             "img/noripple-05.png": https://ripple.com/wp-content/uploads/2015/01/noripple-05.png
             "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
             "img/key-address-rels.png": https://ripple.com/wp-content/uploads/2017/05/key-address-rels.png
+            "img/paychan-flow.png": https://ripple.com/wp-content/uploads/2017/05/paychan-flow.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
@@ -147,6 +149,13 @@ pages:
         category: Tutorials
         html: tutorial-multisign.html
         md: tutorial-multisign.md
+        targets:
+            - local
+            - ripple.com
+
+    -   category: Tutorials
+        html: tutorial-paychan.html
+        md: tutorial-paychan.md
         targets:
             - local
             - ripple.com

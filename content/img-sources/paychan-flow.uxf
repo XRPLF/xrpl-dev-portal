@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>451</x>
+      <y>44</y>
+      <w>319</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1. Payer: create channel
+(PaymentChannelCreate transaction)
+fg=#27a2db</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>143</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Channel is created</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>451</x>
+      <y>33</y>
+      <w>22</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>451</x>
+      <y>176</y>
+      <w>264</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+2. Payee: check channel state
+(account_channels command)</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>253</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Both parties are ready 
+to use the channel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>484</x>
+      <y>286</y>
+      <w>242</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+3. Payer: sign claim(s)
+(channel_authorize method)
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>363</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Payer is ready to pay</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>484</x>
+      <y>396</y>
+      <w>341</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+4. Payer: transmit signed claim to payee
+(using any communication method)
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>473</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Payment initiated</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>484</x>
+      <y>506</y>
+      <w>242</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+5. Payee: Verify claim's 
+signature and amount
+(channel_verify and 
+account_channels method)
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>605</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Payment confirmed</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>484</x>
+      <y>638</y>
+      <w>319</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+6. Payee: Provide goods and services
+</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>396</x>
+      <y>693</y>
+      <w>198</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Business transaction
+complete</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>715</y>
+      <w>220</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+8. Payee: Redeem claim
+(PaymentChannelClaim
+transaction)
+Payee receives XRP
+if channel isn't expired.
+fg=#27a2db</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLTimer</id>
+    <coordinates>
+      <x>1100</x>
+      <y>242</y>
+      <w>176</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>Immutable
+Expiration
+("CancelAfter" field)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>583</x>
+      <y>154</y>
+      <w>803</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+(Immutable expiration 
+is defined by 
+PaymentChannelCreate 
+transaction)
+
+</panel_attributes>
+    <additional_attributes>550.0;80.0;550.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLTimer</id>
+    <coordinates>
+      <x>979</x>
+      <y>902</y>
+      <w>154</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>Mutable
+Expiration
+("Expiration" field)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>286</x>
+      <y>847</y>
+      <w>44</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>253</y>
+      <w>308</w>
+      <h>638</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Payee's 
+PaymentChannelClaim 
+transaction did not
+use tfClose flag</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;10.0;10.0;560.0;160.0;560.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>484</x>
+      <y>1111</y>
+      <w>231</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Channel is closed and
+removed from ledger.
+Unclaimed XRP is 
+returned to payer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>583</x>
+      <y>715</y>
+      <w>429</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+9a. Payer: request to
+close channel
+(PaymentChannelClaim 
+transaction with 
+tfClose flag)
+fg=#27a2db</panel_attributes>
+    <additional_attributes>210.0;170.0;210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1133</x>
+      <y>341</y>
+      <w>77</w>
+      <h>825</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+</panel_attributes>
+    <additional_attributes>10.0;720.0;50.0;720.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>1012</y>
+      <w>33</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>957</x>
+      <y>1111</y>
+      <w>187</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>Channel is expired</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>726</y>
+      <w>209</w>
+      <h>407</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+9b. Payee: request to 
+close channel
+(PaymentChannelClaim 
+transaction with 
+tfClose flag)
+fg=#27a2db</panel_attributes>
+    <additional_attributes>10.0;350.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>792</x>
+      <y>902</y>
+      <w>44</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>902</y>
+      <w>231</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Channel has 
+XRP left;
+sets Expiration</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>704</x>
+      <y>1111</y>
+      <w>275</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+10. Anyone: close channel
+(PaymentChannelClose or 
+PaymentChannelFund
+transaction)
+fg=#27a2db</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>671</x>
+      <y>935</y>
+      <w>165</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Channel is 
+out of XRP</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;90.0;130.0;90.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>396</x>
+      <y>1144</y>
+      <w>22</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes>type=final</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>407</x>
+      <y>1144</y>
+      <w>99</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>880</y>
+      <w>242</w>
+      <h>253</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Payee's 
+PaymentChannelClaim 
+transaction
+used tfClose flag</panel_attributes>
+    <additional_attributes>200.0;210.0;200.0;130.0;10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>847</x>
+      <y>297</y>
+      <w>231</w>
+      <h>627</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+(Mutable expiration 
+can be updated by
+PaymentChannelFund
+transaction)</panel_attributes>
+    <additional_attributes>190.0;550.0;190.0;320.0;10.0;320.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>275</y>
+      <w>187</w>
+      <h>451</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+
+
+
+
+
+
+7. Repeat as desired</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0;10.0;390.0;90.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>583</x>
+      <y>253</y>
+      <w>407</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Payer: Add more XRP to channel
+(PaymentChannelFund transaction)
+fg=#27a2db</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0;110.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>121</x>
+      <y>22</y>
+      <w>231</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>Legend
+--
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>55</y>
+      <w>209</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Off-ledger step
+(happens as fast as 
+can be calculated)
+group=2</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>121</y>
+      <w>209</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+RCL transaction
+(needs 3-5 seconds 
+for consensus)
+fg=#27a2db
+group=2</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>187</y>
+      <w>209</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+Transaction effect
+(happens as part
+of a previous step)
+group=2</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>
