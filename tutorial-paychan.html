@@ -84,6 +84,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
@@ -198,7 +199,7 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout tip"><strong>Tip:</strong> In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. --></p>
+<p class="devportal-callout tip"><strong>Tip:</strong> In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. --></p>
 <p>Additionally, you'll need a <code>rippled</code> server to send transactions to. The examples in this tutorial assume a <code>rippled</code> server is running on the test machine (<code>localhost</code>) with an unencrypted JSON-RPC API endpoint on port <strong>5005</strong>.</p>
 <p>To test without transferring real XRP, you can use <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> addresses with Test Net XRP. If you do use the Ripple Test Net, you can use the Test Net servers' JSON-RPC API by connecting to <code>https://api.altnet.rippletest.net:51234</code> instead of <code>http://localhost:5005/</code>.</p>
 <p>You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (<code>100000000</code> drops) in a payment channel for at least 1 day.</p>
@@ -317,7 +318,7 @@ Content-Type: application/json
 <ul>
 <li>In the transaction's <code>meta</code> field, confirm that the <code>TransactionResult</code> is <code>tesSUCCESS</code>.</li>
 <li>Confirm that the response has <code>"validated":true</code> to indicate the data comes from a validated ledger. (The result <code>tesSUCCESS</code> is only <a href="reference-transaction-format.html#finality-of-results">final</a> if it appears in a validated ledger version.)</li>
-<li>In the <code>AffectedNodes</code> array of the transaction's <code>meta</code> field, look for a <code>CreatedNode</code> object with the <code>LedgerEntryType</code> of <code>PayChannel</code>. The <code>LedgerIndex</code> field indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.</li>
+<li>In the <code>AffectedNodes</code> array of the transaction's <code>meta</code> field, look for a <code>CreatedNode</code> object with the <code>LedgerEntryType</code> of <code>PayChannel</code>. The <code>LedgerIndex</code> field of the <code>CreatedNode</code> object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.</li>
 </ul>
 <h2 id="2-the-payee-checks-specifics-of-the-payment-channel">2. The payee checks specifics of the payment channel.</h2>
 <p>You can look up payment channels with the <code>account_channels</code> API method, using the payer of the channel, as in the following example (using the JSON-RPC API):</p>
@@ -361,7 +362,7 @@ Content-Type: application/json
 <li>Confirm the <code>settle_delay</code> field has a settlement delay in seconds that provides enough time for the payee to redeem outstanding claims.</li>
 <li>Confirm the fields <code>cancel_after</code> (immutable expiration) and <code>expiration</code> (mutable expiration), if they are present, are not too soon. The payee should take note of these times so they can be sure to redeem claims before then.</li>
 <li>Take note of the <code>public_key</code> and <code>channel_id</code> fields. These are necessary later to verify and redeem claims.</li>
-<li><em>(Optional)</em> Confirm the <code>destination_tag</code> field, if present, has the correct destination tag (if desired).</li>
+<li><em>(Optional)</em> Confirm the <code>destination_tag</code> field is present and has a desired destination tag.</li>
 </ul>
 <p>Since there can be multiple channels between the same two parties, it is important for the payee to check the qualities of the correct channel. If there is any chance of confusion, the payer should clarify the Channel ID (<code>channel_id</code>) of the channel to use.</p>
 <h2 id="3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel">3. The payer creates one or more signed <em>claims</em> for the XRP in the channel.</h2>
@@ -562,10 +563,10 @@ Content-Type: application/json
 </code></pre>
 <p>The payee should confirm that this transaction is successful in a validated ledger. For the full details, see <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h2 id="9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed">9. When the payer and payee are done doing business, the payer requests for the channel to be closed.</h2>
-<p>This is a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with the <code>tfClose</code> flag set, or a <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund transaction</a> with the <code>Expiration</code> field set. <em>(9a in the [flow diagram][])</em>.</p>
+<p>This is a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with the <code>tfClose</code> flag set, or a <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund transaction</a> with the <code>Expiration</code> field set. <em>(9a in the <a href="#flow-diagram">flow diagram</a>)</em>.</p>
 <p>If the channel has no XRP remaining in it when the payer requests to close the channel, it closes immediately.</p>
 <p>If the channel <em>does</em> have XRP remaining, the request to close a channel acts as a final warning to the payee to redeem any outstanding claims right away. The payee has an amount of time no less than the settlement delay before the channel is closed. The exact number of seconds varies slightly based on the close times of ledgers.</p>
-<p>The payee can also close a payment channel immediately after processing a claim <em>(9b in the [flow diagram][])</em>.</p>
+<p>The payee can also close a payment channel immediately after processing a claim <em>(9b in the <a href="#flow-diagram">flow diagram</a>)</em>.</p>
 <p>Example of submitting a transaction requesting a channel to close:</p>
 <pre><code>{
     "method": "submit",

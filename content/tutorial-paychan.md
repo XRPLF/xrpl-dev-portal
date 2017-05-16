@@ -25,7 +25,7 @@ The example addresses used in this tutorial are:
 | Public key used for channel (in hex) | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
 | Payee's address | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
 
-**Tip:** In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
+**Tip:** In this example, we use the public key from the payer's master key pair as the key pair for the channel. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
@@ -34,6 +34,7 @@ To test without transferring real XRP, you can use [Ripple Test Net](https://rip
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 
 ## Flow Diagram
+[flow diagram]: #flow-diagram
 
 The following diagram summarizes the lifecycle of a payment channel:
 
@@ -161,7 +162,7 @@ In the response from the JSON-RPC, the payer should look for the following:
 
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
 - Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](reference-transaction-format.html#finality-of-results) if it appears in a validated ledger version.)
-- In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.
+- In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.
 
 
 ## 2. The payee checks specifics of the payment channel.
@@ -210,7 +211,7 @@ The payee should check that the parameters of the payment channel are suitable f
 - Confirm the `settle_delay` field has a settlement delay in seconds that provides enough time for the payee to redeem outstanding claims.
 - Confirm the fields `cancel_after` (immutable expiration) and `expiration` (mutable expiration), if they are present, are not too soon. The payee should take note of these times so they can be sure to redeem claims before then.
 - Take note of the `public_key` and `channel_id` fields. These are necessary later to verify and redeem claims.
-- _(Optional)_ Confirm the `destination_tag` field, if present, has the correct destination tag (if desired).
+- _(Optional)_ Confirm the `destination_tag` field is present and has a desired destination tag.
 
 Since there can be multiple channels between the same two parties, it is important for the payee to check the qualities of the correct channel. If there is any chance of confusion, the payer should clarify the Channel ID (`channel_id`) of the channel to use.
 
