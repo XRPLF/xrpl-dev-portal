@@ -296,3 +296,4 @@ Introduces Tickets as a way to reserve a transaction sequence number for later e
 **Caution:** This amendment is still in development.
 
 {% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}

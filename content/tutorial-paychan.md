@@ -258,7 +258,7 @@ The exact format of the claim is not important as long as it communicates the fo
 |:------------------------|:---------------------------------------------------|
 | Channel ID              | `5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3` |
 | Amount of XRP, in drops | `1000000`                                          |
-| Signature               | `304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064` |
+| Signature               | `304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A` <br/> `400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064` _(Note: this long string has been broken to fit on one line.)_ |
 
 The payee also needs to know the Public Key associated with the channel, which is the same throughout the channel's life.
 
