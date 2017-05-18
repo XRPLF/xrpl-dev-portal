@@ -3913,7 +3913,8 @@ Optionally, you can provide the following query parameters:
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 1,000. |
 | `marker` | String  | [Pagination](#pagination) key from previously returned response. |
-| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+**Note:** This method cannot return CSV format; only JSON results are supported for raw RCL transactions.
 
 
 #### Response Format ####
