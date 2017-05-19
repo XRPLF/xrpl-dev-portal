@@ -418,6 +418,7 @@ Some API methods require you to specify an amount of currency. Depending on whet
 
 #### XRP ####
 [drops of XRP]: #xrp
+[XRP, in drops]: #xrp
 
 Amounts of XRP are represented as strings. (XRP has precision equivalent to a 64-bit integer, but JSON integers are limited to 32 bits, so XRP can overflow if represented in a JSON integer.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write:
 
@@ -513,12 +514,15 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 ## List of Public Commands ##
 
 * [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
+* [`account_channels` - Get a list of payment channels where the account is the source](#account-channels)
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
 * [`account_objects` - Get all ledger objects owned by an account](#account-objects)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
 * [`account_tx` - Get info about an account's transactions](#account-tx)
 * [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
+* [`channel_authorize` - Sign a claim for money from a payment channel](#channel-authorize)
+* [`channel_verify` - Check a payment channel claim's signature](#channel-verify)
 * [`fee` - Get information about transaction cost](#fee)
 * [`gateway_balances` - Calculate total amounts issued by an account](#gateway-balances)
 * [`ledger` - Get info about a ledger version](#ledger)
@@ -729,6 +733,181 @@ The response follows the [standard format](#response-formatting), with a success
 **Note:** The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](concept-freeze.html) or authorized.
 
 #### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+
+## account_channels
+[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the source, not the destination. All information retrieved is relative to a particular version of the ledger.
+
+#### Request Format
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 1,
+  "command": "account_channels",
+  "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+  "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
+
+*Commandline*
+
+```bash
+#Syntax: account_channels <account> [<destination_account>] [<ledger>]
+rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field                 | Type                                       | Description |
+|:----------------------|:-------------------------------------------|:--------|
+| `account`             | String                                     | A unique identifier for the account whose channels to retrieve. Typically this is the account's [Address][]. |
+| `destination_account` | String                                     | _(Optional)_ If provided, filter results to payment channels where the destination of the channel. Typically this is an [Address][]. |
+| `ledger_hash`         | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index`        | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `limit`               | Integer                                    | _(Optional)_ Limit the number of transactions to retrieve. The server is not required to honor this value. The default is 200. Cannot be smaller than 10 or larger than 400. |
+| `marker`              | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous response to specify where to resume retrieving data from. |
+
+#### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "channels": [
+      {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "amount": "100000000",
+        "balance": "1000000",
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": 20170428,
+        "expiration": 547073182,
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+        "settle_delay": 86400
+      }
+    ]
+  }
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
+            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
+    }
+}
+```
+
+*Commandline*
+
+```json
+200 OK
+
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
+            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field      | Type                                       | Description        |
+|:-----------|:-------------------------------------------|:-------------------|
+| `account`  | String                                     | The address of the account from the request; the owner of the payment channels. |
+| `channels` | Array of Channel Objects                   | Payment channels owned by this `account`. |
+| `limit`    | Number                                     | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
+| `marker`   | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
+
+Each Channel Object has the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `account` | String | The owner of the channel, as an [Address][]. |
+| `amount` | String | The amount of [XRP, in drops](#specifying-currency-amounts) allocated to this channel in total. |
+| `balance` | String | The total amount of XRP, in drops, paid out from this channel so far. (You can calculate the amount of XRP remaining in the channel by subtracting `balance` from `amount`.) |
+| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [index of the channel](reference-ledger-format.html#paychannel-index-format) in the ledger's state data. |
+| `destination_account` | String | The destination of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it remains open. |
+| `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
+| `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
+| `settle_delay` | Unsigned Integer | The number of seconds the payment channel must remain open after the owner of the channel requests to close it. |
+| `expiration` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
+| `cancel_after` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
+| `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value as the destination of the return payment. |
+| `destination_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
+
+#### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
@@ -951,7 +1130,7 @@ Each object in the `transactions` array, if present, may contain any or all of t
 ## account_lines ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
 
-The `account_lines` method returns information about the account's lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
+The `account_lines` method returns information about an account's trust lines, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 
 #### Request Format ####
 
@@ -7571,6 +7750,247 @@ In addition to the standard Offer fields, the following fields may be included i
 
 
 
+## channel_authorize
+[[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `account_channels` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
+
+#### Request Format
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": "channel_authorize_example_id1",
+    "command": "channel_authorize",
+    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+    "secret": "s████████████████████████████",
+    "amount": "1000000"
+}
+```
+
+*JSON-RPC*
+
+```json
+POST http://localhost:5005/
+Content-Type: application/json
+
+{
+    "method": "channel_authorize",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "secret": "s████████████████████████████",
+        "amount": "1000000"
+    }]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: channel_authorize <private_key> <channel_id> <drops>
+rippled channel_authorize s████████████████████████████ 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `channel_id` | String | The unique ID of the payment channel to use.
+| `secret` | String | The secret key to use to sign the claim. This must be the same key pair as the public key specified in the channel. |
+| `amount` | String | Cumulative amount of XRP, in drops, to authorize. If the destination has already received a lesser amount of XRP from this channel, the signature created by this method can be redeemed for the difference. |
+
+**Note:** You cannot use Ed25519 keys to sign claims with this method. This is a known bug.
+
+#### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": "channel_authorize_example_id1",
+    "status": "success"
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+    }
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `signature` | String | The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
+
+#### Possible Errors
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The value specified in the `secret` field was not a valid secret key.
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid XRP amount. See [Specifying Currency Amounts](#specifying-currency-amounts) for details.
+* `channelMalformed` - The value specified in the `channel_id` field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
+
+
+
+## channel_verify
+[[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
+
+#### Request Format ####
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "command": "channel_verify",
+    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+    "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+    "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+    "amount": "1000000"
+}
+```
+
+*JSON-RPC*
+
+```
+POST http://localhost:5005/
+Content-Type: application/json
+
+{
+    "method": "channel_verify",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "amount": "1000000"
+    }]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: channel_verify <public_key> <channel_id> <amount> <signature>
+rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000 304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
+| `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is from the [`wallet_propose` command](#wallet-propose).) |
+| `signature` |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "signature_verified":true
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `signature_verified` | Boolean | If `true`, the signature is valid for the stated amount, channel, and public key. |
+
+**Caution:** This does not indicate check that the channel has sufficient XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [`account_channels` method](#account-channels).
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `publicMalformed` - The value specified in the `public_key` field of the request was not a valid public key in the correct format. Public keys should be 33 bytes, represented in base58. The base58 representation should start with letter `a`.
+* `channelMalformed` - The value specified in the `channel_id` field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid XRP amount. See [Specifying Currency Amounts](#specifying-currency-amounts) for details.
+
+
+
 
 # Subscriptions #
 
@@ -11473,3 +11893,4 @@ Example:
 
 
 {% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}
