@@ -7926,7 +7926,7 @@ The request includes the following parameters:
 | `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
 | `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
 | `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is from the [`wallet_propose` command](#wallet-propose).) |
-| `signature` |
+| `signature` | String | The signature to verify, in hexadecimal. |
 
 #### Response Format ####
 
