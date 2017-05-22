@@ -819,7 +819,7 @@ Null method
 <h2 id="list-of-public-commands">List of Public Commands</h2>
 <ul>
 <li><a href="#account-currencies"><code>account_currencies</code> - Get a list of currencies an account can send or receive</a></li>
-<li><a href="#account-channels"><code>account_channels</code> - Get a list of payment channels where the account is the source</a></li>
+<li><a href="#account-channels"><code>account_channels</code> - Get a list of payment channels where the account is the source of the channel</a></li>
 <li><a href="#account-info"><code>account_info</code> - Get basic data about an account</a></li>
 <li><a href="#account-lines"><code>account_lines</code> - Get info about an account's trust lines</a></li>
 <li><a href="#account-objects"><code>account_objects</code> - Get all ledger objects owned by an account</a></li>
@@ -934,17 +934,17 @@ Null method
 <tr>
 <td align="left"><code>strict</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, only accept an address or public key for the account parameter. Defaults to false.</td>
+<td align="left"><em>(Optional)</em> If true, only accept an address or public key for the account parameter. Defaults to false.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1065,7 +1065,7 @@ Null method
 <h2 id="account-channels">account_channels</h2>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp" title="Source">[Source]<br/></a></p>
 <p><em>(Requires the <a href="concept-amendments.html#paychan">PayChan amendment</a> to be enabled. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a>)</em></p>
-<p>The <code>account_channels</code> method returns information about an account's Payment Channels. This includes only channels where the specified account is the source, not the destination. All information retrieved is relative to a particular version of the ledger.</p>
+<p>The <code>account_channels</code> method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.</p>
 <h4 id="request-format-1">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
@@ -1106,12 +1106,12 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td align="left"><code>account</code></td>
 <td align="left">String</td>
-<td align="left">A unique identifier for the account whose channels to retrieve. Typically this is the account's <a href="#addresses">Address</a>.</td>
+<td align="left">The unique identifier of an account, typically the account's <a href="#addresses">Address</a>. The request returns channels where this account is the channel's owner/source.</td>
 </tr>
 <tr>
 <td align="left"><code>destination_account</code></td>
 <td align="left">String</td>
-<td align="left"><em>(Optional)</em> If provided, filter results to payment channels where the destination of the channel. Typically this is an <a href="#addresses">Address</a>.</td>
+<td align="left"><em>(Optional)</em> The unique identifier of an account, typically the account's <a href="#addresses">Address</a>. If provided, filter results to payment channels whose destination is this account.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
@@ -1126,12 +1126,12 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Integer</td>
-<td align="left"><em>(Optional)</em> Limit the number of transactions to retrieve. The server is not required to honor this value. The default is 200. Cannot be smaller than 10 or larger than 400.</td>
+<td align="left"><em>(Optional)</em> Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. Defaults to 200.</td>
 </tr>
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left"><em>(Optional)</em> Value from a previous response to specify where to resume retrieving data from.</td>
+<td align="left"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>
@@ -1218,7 +1218,7 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td align="left"><code>account</code></td>
 <td align="left">String</td>
-<td align="left">The address of the account from the request; the owner of the payment channels.</td>
+<td align="left">The address of the source/owner of the payment channels. This corresponds to the <code>account</code> field of the request.</td>
 </tr>
 <tr>
 <td align="left"><code>channels</code></td>
@@ -1255,12 +1255,12 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td><code>amount</code></td>
 <td>String</td>
-<td>The amount of <a href="#specifying-currency-amounts">XRP, in drops</a> allocated to this channel in total.</td>
+<td>The total amount of <a href="#specifying-currency-amounts">XRP, in drops</a> allocated to this channel.</td>
 </tr>
 <tr>
 <td><code>balance</code></td>
 <td>String</td>
-<td>The total amount of XRP, in drops, paid out from this channel so far. (You can calculate the amount of XRP remaining in the channel by subtracting <code>balance</code> from <code>amount</code>.)</td>
+<td>The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP remaining in the channel by subtracting <code>balance</code> from <code>amount</code>.)</td>
 </tr>
 <tr>
 <td><code>channel_id</code></td>
@@ -1270,12 +1270,12 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td><code>destination_account</code></td>
 <td>String</td>
-<td>The destination of the channel, as an <a href="#addresses">Address</a>. Only this account can receive the XRP in the channel while it remains open.</td>
+<td>the destination account of the channel, as an <a href="#addresses">Address</a>. Only this account can receive the XRP in the channel while it remains open.</td>
 </tr>
 <tr>
 <td><code>public_key</code></td>
 <td>String</td>
-<td><em>(May be omitted)</em> The public key for the payment channel in base58 format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair.</td>
+<td><em>(May be omitted)</em> The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair.</td>
 </tr>
 <tr>
 <td><code>public_key_hex</code></td>
@@ -1300,7 +1300,7 @@ rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFY
 <tr>
 <td><code>source_tag</code></td>
 <td>Unsigned Integer</td>
-<td><em>(May be omitted)</em> A 32-bit unsigned integer to use as a <a href="tutorial-gateway-guide.html#source-and-destination-tags">source tag</a> for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value as the destination of the return payment.</td>
+<td><em>(May be omitted)</em> A 32-bit unsigned integer to use as a <a href="tutorial-gateway-guide.html#source-and-destination-tags">source tag</a> for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the <code>DestinationTag</code> of the return payment.</td>
 </tr>
 <tr>
 <td><code>destination_tag</code></td>
@@ -1374,22 +1374,22 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>queue</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If <code>true</code>, and the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, and the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>signer_lists</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, and the <a href="concept-amendments.html#multisign">MultiSign amendment</a> is enabled, also returns any <a href="reference-ledger-format.html#signerlist">SignerList objects</a> associated with this account. <a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -1663,27 +1663,27 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>peer</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) The <a href="#addresses">Address</a> of a second account. If provided, show only lines of trust connecting the two accounts.</td>
+<td align="left"><em>(Optional)</em> The <a href="#addresses">Address</a> of a second account. If provided, show only lines of trust connecting the two accounts.</td>
 </tr>
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Integer</td>
-<td align="left">(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left">(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">(Optional) Value from a previous response to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -1813,7 +1813,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -1946,22 +1946,22 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string identifying the ledger version to use.</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string identifying the ledger version to use.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
-<td align="left">(Optional) <a href="#ledger-index">Ledger Index</a></td>
+<td align="left"><em>(Optional)</em> <a href="#ledger-index">Ledger Index</a></td>
 <td align="left">(Optional, defaults to <code>current</code>) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See <a href="#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Integer</td>
-<td align="left">(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left">(Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Value from a previous response value to specify where to resume retrieving data from. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left">Value from a previous paginated response. Resume retrieving data where that response left off. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -2091,7 +2091,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
+<td align="left">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <a href="https://github.com/ripple/rippled/releases/tag/0.26.4" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -2205,27 +2205,27 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <tr>
 <td align="left"><code>type</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) If included, filter results to include only this type of ledger node. Valid types include <code>state</code> (trust lines), <code>offer</code> (offers), and <code>ticket</code> (part of the forthcoming signing process).</td>
+<td align="left"><em>(Optional)</em> If included, filter results to include only this type of ledger node. Valid types include <code>state</code> (trust lines), <code>offer</code> (offers), and <code>ticket</code> (part of the forthcoming signing process).</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Unsigned Integer</td>
-<td align="left">(Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200.</td>
+<td align="left"><em>(Optional)</em> The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200.</td>
 </tr>
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">(Optional) Value from a previous response value to specify where to resume retrieving data from.</td>
+<td align="left"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>
@@ -2789,7 +2789,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one.</td>
+<td align="left">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one.</td>
 </tr>
 <tr>
 <td align="left"><code>validated</code></td>
@@ -2876,12 +2876,12 @@ rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> Use instead of ledger_index_min and ledger_index_max to look for transactions from a single ledger only. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>binary</code></td>
@@ -2901,7 +2901,7 @@ rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Value from a previous response value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers.</td>
+<td align="left">Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers.</td>
 </tr>
 </tbody>
 </table>
@@ -3414,7 +3414,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Server-defined value. Pass this to the next call to resume where this call left off.</td>
+<td align="left">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off.</td>
 </tr>
 <tr>
 <td align="left"><code>offset</code></td>
@@ -3535,22 +3535,22 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td align="left"><code>transactions</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If <code>true</code>, include an array of suggested <a href="reference-transaction-format.html">transactions</a>, as JSON objects, that you can sign and submit to fix the problems. Defaults to false.</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, include an array of suggested <a href="reference-transaction-format.html">transactions</a>, as JSON objects, that you can sign and submit to fix the problems. Defaults to false.</td>
 </tr>
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Unsigned Integer</td>
-<td align="left">(Optional) The maximum number of trust line problems to include in the results. Defaults to 300.</td>
+<td align="left"><em>(Optional)</em> The maximum number of trust line problems to include in the results. Defaults to 300.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -3740,7 +3740,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td align="left"><code>strict</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, only accept an address or public key for the account parameter. Defaults to false.</td>
+<td align="left"><em>(Optional)</em> If true, only accept an address or public key for the account parameter. Defaults to false.</td>
 </tr>
 <tr>
 <td align="left"><code>hotwallet</code></td>
@@ -3750,12 +3750,12 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -4008,17 +4008,17 @@ rippled wallet_propose masterpassphrase
 <tr>
 <td align="left"><code>passphrase</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Generate a key pair and address from this seed value. This value can be formatted in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>, <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as an arbitrary string. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
+<td align="left"><em>(Optional)</em> Generate a key pair and address from this seed value. This value can be formatted in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>, <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as an arbitrary string. Cannot be used with <code>seed</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Generate the key pair and address from this <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
+<td align="left"><em>(Optional)</em> Generate the key pair and address from this <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded seed value. Cannot be used with <code>passphrase</code> or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Generate the key pair and address from this seed value in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> format. Cannot be used with <code>passphrase</code> or <code>seed</code>.</td>
+<td align="left"><em>(Optional)</em> Generate the key pair and address from this seed value in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> format. Cannot be used with <code>passphrase</code> or <code>seed</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -4198,12 +4198,12 @@ rippled ledger current
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>).</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>).</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>full</code></td>
@@ -4610,12 +4610,12 @@ rippled ledger_current
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>binary</code></td>
@@ -4630,7 +4630,7 @@ rippled ledger_current
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Value from a previous response value to specify where to resume retrieving data from.</td>
+<td align="left">Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>
@@ -4830,7 +4830,7 @@ rippled ledger_current
 <tr>
 <td align="left"><code>marker</code></td>
 <td align="left"><a href="#markers-and-pagination">(Not Specified)</a></td>
-<td align="left">Server-defined value. Pass this to the next call to resume where this call left off.</td>
+<td align="left">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off.</td>
 </tr>
 </tbody>
 </table>
@@ -4924,22 +4924,22 @@ rippled ledger_current
 <tr>
 <td align="left"><code>index</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Specify the unique identifier of a single ledger entry to retrieve.</td>
+<td align="left"><em>(Optional)</em> Specify the unique identifier of a single ledger entry to retrieve.</td>
 </tr>
 <tr>
 <td align="left"><code>account_root</code></td>
 <td align="left">String - <a href="#addresses">Address</a></td>
-<td align="left">(Optional) Specify an <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> to retrieve.</td>
+<td align="left"><em>(Optional)</em> Specify an <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> to retrieve.</td>
 </tr>
 <tr>
 <td align="left"><code>directory</code></td>
 <td align="left">Object or String</td>
-<td align="left">(Optional) Specify a <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the directory, in hex. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
+<td align="left"><em>(Optional)</em> Specify a <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>. (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the directory, in hex. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
 </tr>
 <tr>
 <td align="left"><code>directory.sub_index</code></td>
 <td align="left">Unsigned Integer</td>
-<td align="left">(Optional) If provided, jumps to a further sub-node in the <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>.</td>
+<td align="left"><em>(Optional)</em> If provided, jumps to a further sub-node in the <a href="reference-ledger-format.html#directorynode">DirectoryNode</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>directory.dir_root</code></td>
@@ -4954,7 +4954,7 @@ rippled ledger_current
 <tr>
 <td align="left"><code>offer</code></td>
 <td align="left">Object or String</td>
-<td align="left">(Optional) Specify an <a href="reference-ledger-format.html#offer">Offer node</a> to retrieve. If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
+<td align="left"><em>(Optional)</em> Specify an <a href="reference-ledger-format.html#offer">Offer node</a> to retrieve. If a string, interpret as the <a href="reference-ledger-format.html#tree-format">unique index</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
 </tr>
 <tr>
 <td align="left"><code>offer.account</code></td>
@@ -4969,7 +4969,7 @@ rippled ledger_current
 <tr>
 <td align="left"><code>ripple_state</code></td>
 <td align="left">Object</td>
-<td align="left">(Optional) Object specifying the RippleState (trust line) node to retrieve. The <code>accounts</code> and <code>currency</code> sub-fields are required to uniquely specify the RippleState entry to retrieve.</td>
+<td align="left"><em>(Optional)</em> Object specifying the RippleState (trust line) node to retrieve. The <code>accounts</code> and <code>currency</code> sub-fields are required to uniquely specify the RippleState entry to retrieve.</td>
 </tr>
 <tr>
 <td align="left"><code>ripple_state.accounts</code></td>
@@ -4989,12 +4989,12 @@ rippled ledger_current
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -5115,12 +5115,12 @@ rippled ledger_current
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">Number</td>
-<td align="left">(Optional) Retrieve the specified ledger by its <a href="#ledger-index">Ledger Index</a>.</td>
+<td align="left"><em>(Optional)</em> Retrieve the specified ledger by its <a href="#ledger-index">Ledger Index</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Retrieve the specified ledger by its identifying <a href="#hashes">Hash</a>.</td>
+<td align="left"><em>(Optional)</em> Retrieve the specified ledger by its identifying <a href="#hashes">Hash</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -5618,12 +5618,12 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>tx_hash</code></td>
@@ -6771,12 +6771,12 @@ rippled tx_history 0
 <tr>
 <td align="left"><code>send_max</code></td>
 <td align="left">String or Object</td>
-<td align="left">(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <a href="https://github.com/ripple/rippled/releases/tag/0.30.0" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <a href="https://github.com/ripple/rippled/releases/tag/0.30.0" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>paths</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of arrays of objects, representing <a href="concept-paths.html">payment paths</a> to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
+<td align="left"><em>(Optional)</em> Array of arrays of objects, representing <a href="concept-paths.html">payment paths</a> to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path.</td>
 </tr>
 </tbody>
 </table>
@@ -7443,22 +7443,22 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td align="left"><code>send_max</code></td>
 <td align="left">String or Object</td>
-<td align="left">(Optional) <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Cannot be used with <code>source_currencies</code>. <a href="https://github.com/ripple/rippled/releases/tag/0.30.0" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> <a href="#specifying-currency-amounts">Currency amount</a> that would be spent in the transaction. Cannot be used with <code>source_currencies</code>. <a href="https://github.com/ripple/rippled/releases/tag/0.30.0" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/></a></td>
 </tr>
 <tr>
 <td align="left"><code>source_currencies</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code>currency</code> field and optional <code>issuer</code> field, like how <a href="#specifying-currency-amounts">currency amounts</a> are specified. Cannot contain more than <strong>18</strong> source currencies. By default, uses all source currencies available up to a maximum of <strong>88</strong> different currency/issuer pairs.</td>
+<td align="left"><em>(Optional)</em> Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory <code>currency</code> field and optional <code>issuer</code> field, like how <a href="#specifying-currency-amounts">currency amounts</a> are specified. Cannot contain more than <strong>18</strong> source currencies. By default, uses all source currencies available up to a maximum of <strong>88</strong> different currency/issuer pairs.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -7816,27 +7816,27 @@ rippled sign s██████████████████████
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>passphrase</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>key_type</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
+<td align="left"><em>(Optional)</em> Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
 </tr>
 <tr>
 <td align="left"><code>offline</code></td>
@@ -7846,7 +7846,7 @@ rippled sign s██████████████████████
 <tr>
 <td align="left"><code>build_path</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
+<td align="left"><em>(Optional)</em> If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td align="left"><code>fee_mult_max</code></td>
@@ -8085,27 +8085,27 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) The secret key to sign with. (Cannot be used with <code>key_type</code>.)</td>
+<td align="left"><em>(Optional)</em> The secret key to sign with. (Cannot be used with <code>key_type</code>.)</td>
 </tr>
 <tr>
 <td align="left"><code>passphrase</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A passphrase to use as the secret key to sign with.</td>
+<td align="left"><em>(Optional)</em> A passphrase to use as the secret key to sign with.</td>
 </tr>
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded secret key to sign with.</td>
+<td align="left"><em>(Optional)</em> A <a href="https://en.wikipedia.org/wiki/Base58">base58</a>-encoded secret key to sign with.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A hexadecimal secret key to sign with.</td>
+<td align="left"><em>(Optional)</em> A hexadecimal secret key to sign with.</td>
 </tr>
 <tr>
 <td align="left"><code>key_type</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) The type of key to use for signing. This can be <code>secp256k1</code> or <code>ed25519</code>. (Ed25519 support is experimental.)</td>
+<td align="left"><em>(Optional)</em> The type of key to use for signing. This can be <code>secp256k1</code> or <code>ed25519</code>. (Ed25519 support is experimental.)</td>
 </tr>
 </tbody>
 </table>
@@ -8325,27 +8325,27 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>seed_hex</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>passphrase</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>key_type</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
+<td align="left"><em>(Optional)</em> Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
 </tr>
 <tr>
 <td align="left"><code>fail_hard</code></td>
@@ -8360,7 +8360,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 <tr>
 <td align="left"><code>build_path</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
+<td align="left"><em>(Optional)</em> If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
 </tr>
 <tr>
 <td align="left"><code>fee_mult_max</code></td>
@@ -8896,22 +8896,22 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <tr>
 <td align="left"><code>ledger_hash</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_index</code></td>
 <td align="left">String or Unsigned Integer</td>
-<td align="left">(Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
+<td align="left"><em>(Optional)</em> The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="#specifying-ledgers">Specifying a Ledger</a>)</td>
 </tr>
 <tr>
 <td align="left"><code>limit</code></td>
 <td align="left">Unsigned Integer</td>
-<td align="left">(Optional) If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers.</td>
+<td align="left"><em>(Optional)</em> If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers.</td>
 </tr>
 <tr>
 <td align="left"><code>taker</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) The <a href="#addresses">Address</a> of an account to use as a perspective. <a href="reference-transaction-format.html#lifecycle-of-an-offer">Unfunded offers</a> placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.)</td>
+<td align="left"><em>(Optional)</em> The <a href="#addresses">Address</a> of an account to use as a perspective. <a href="reference-transaction-format.html#lifecycle-of-an-offer">Unfunded offers</a> placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.)</td>
 </tr>
 <tr>
 <td align="left"><code>taker_gets</code></td>
@@ -9071,7 +9071,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 <h2 id="channel-authorize">channel_authorize</h2>
 <p><a href="https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41" title="Source">[Source]<br/></a></p>
 <p><em>(Requires the <a href="concept-amendments.html#paychan">PayChan amendment</a> to be enabled. <a href="https://github.com/ripple/rippled/releases/tag/0.33.0" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/></a>)</em></p>
-<p>The <code>account_channels</code> method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.</p>
+<p>The <code>channel_authorize</code> method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.</p>
 <h4 id="request-format-30">Request Format</h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-60"><ul class="codetabs"><li><a href="#code-60-0">WebSocket</a></li><li><a href="#code-60-1">JSON-RPC</a></li><li><a href="#code-60-2">Commandline</a></li></ul>
@@ -9174,7 +9174,7 @@ rippled channel_authorize s█████████████████�
 <tr>
 <td><code>signature</code></td>
 <td>String</td>
-<td>The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination of the payment channel must send a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with this signature, the exact Channel ID, XRP amount, and public key of the channel.</td>
+<td>The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination account of the payment channel must send a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with this signature, the exact Channel ID, XRP amount, and public key of the channel.</td>
 </tr>
 </tbody>
 </table>
@@ -9244,7 +9244,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <tr>
 <td><code>public_key</code></td>
 <td>String</td>
-<td>The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is from the <a href="#wallet-propose"><code>wallet_propose</code> command</a>.)</td>
+<td>The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is to use the <a href="#wallet-propose"><code>wallet_propose</code> command</a>.)</td>
 </tr>
 <tr>
 <td><code>signature</code></td>
@@ -9307,7 +9307,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>publicMalformed</code> - The value specified in the <code>public_key</code> field of the request was not a valid public key in the correct format. Public keys should be 33 bytes, represented in base58. The base58 representation should start with letter <code>a</code>.</li>
+<li><code>publicMalformed</code> - The value specified in the <code>public_key</code> field of the request was not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter <code>a</code>.</li>
 <li><code>channelMalformed</code> - The value specified in the <code>channel_id</code> field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.</li>
 <li><code>channelAmtMalformed</code> - The value specified in the <code>amount</code> field was not a valid XRP amount. See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a> for details.</li>
 </ul>
@@ -9367,22 +9367,22 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <tr>
 <td align="left"><code>streams</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of string names of generic streams to subscribe to, as explained below</td>
+<td align="left"><em>(Optional)</em> Array of string names of generic streams to subscribe to, as explained below</td>
 </tr>
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array with the unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts.</td>
+<td align="left"><em>(Optional)</em> Array with the unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts.</td>
 </tr>
 <tr>
 <td align="left"><code>accounts_proposed</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Like <code>accounts</code>, but include transactions that are not yet finalized.</td>
+<td align="left"><em>(Optional)</em> Like <code>accounts</code>, but include transactions that are not yet finalized.</td>
 </tr>
 <tr>
 <td align="left"><code>books</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of objects defining <a href="http://www.investopedia.com/terms/o/order-book.asp">order books</a> to monitor for updates, as detailed below.</td>
+<td align="left"><em>(Optional)</em> Array of objects defining <a href="http://www.investopedia.com/terms/o/order-book.asp">order books</a> to monitor for updates, as detailed below.</td>
 </tr>
 <tr>
 <td align="left"><code>url</code></td>
@@ -9392,12 +9392,12 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <tr>
 <td align="left"><code>url_username</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Username to provide for basic authentication at the callback URL.</td>
+<td align="left"><em>(Optional)</em> Username to provide for basic authentication at the callback URL.</td>
 </tr>
 <tr>
 <td align="left"><code>url_password</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Password to provide for basic authentication at the callback URL.</td>
+<td align="left"><em>(Optional)</em> Password to provide for basic authentication at the callback URL.</td>
 </tr>
 </tbody>
 </table>
@@ -10114,22 +10114,22 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <tr>
 <td align="left"><code>streams</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of string names of generic streams to unsubscribe from, including <code>ledger</code>, <code>server</code>, <code>transactions</code>, and <code>transactions_proposed</code>.</td>
+<td align="left"><em>(Optional)</em> Array of string names of generic streams to unsubscribe from, including <code>ledger</code>, <code>server</code>, <code>transactions</code>, and <code>transactions_proposed</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
+<td align="left"><em>(Optional)</em> Array of unique <a href="https://en.wikipedia.org/wiki/Base58">base58</a> account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.)</td>
 </tr>
 <tr>
 <td align="left"><code>accounts_proposed</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Like <code>accounts</code>, but for <code>accounts_proposed</code> subscriptions that included not-yet-validated transactions.</td>
+<td align="left"><em>(Optional)</em> Like <code>accounts</code>, but for <code>accounts_proposed</code> subscriptions that included not-yet-validated transactions.</td>
 </tr>
 <tr>
 <td align="left"><code>books</code></td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of objects defining order books to unsubscribe from, as explained below.</td>
+<td align="left"><em>(Optional)</em> Array of objects defining order books to unsubscribe from, as explained below.</td>
 </tr>
 </tbody>
 </table>
@@ -11550,7 +11550,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 <tr>
 <td align="left"><code>feature</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments.</td>
+<td align="left"><em>(Optional)</em> The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments.</td>
 </tr>
 <tr>
 <td align="left"><code>vetoed</code></td>
@@ -12068,37 +12068,37 @@ Connecting to 127.0.0.1:5005
 <tr>
 <td align="left"><code>ledger</code></td>
 <td align="left">Number (Ledger Sequence Number)</td>
-<td align="left">(Optional) If provided, check and correct this specific ledger only.</td>
+<td align="left"><em>(Optional)</em> If provided, check and correct this specific ledger only.</td>
 </tr>
 <tr>
 <td align="left"><code>max_ledger</code></td>
 <td align="left">Number (Ledger Sequence Number)</td>
-<td align="left">(Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this.</td>
+<td align="left"><em>(Optional)</em> Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this.</td>
 </tr>
 <tr>
 <td align="left"><code>min_ledger</code></td>
 <td align="left">Number (Ledger Sequence Number)</td>
-<td align="left">(Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this.</td>
+<td align="left"><em>(Optional)</em> Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this.</td>
 </tr>
 <tr>
 <td align="left"><code>full</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to <code>true</code> if <code>ledger</code> is provided.</td>
+<td align="left"><em>(Optional)</em> If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to <code>true</code> if <code>ledger</code> is provided.</td>
 </tr>
 <tr>
 <td align="left"><code>fix_txns</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, correct transaction in the specified ledger(s). Overrides <code>full</code> if provided.</td>
+<td align="left"><em>(Optional)</em> If true, correct transaction in the specified ledger(s). Overrides <code>full</code> if provided.</td>
 </tr>
 <tr>
 <td align="left"><code>check_nodes</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, correct ledger state nodes in the specified ledger(s). Overrides <code>full</code> if provided.</td>
+<td align="left"><em>(Optional)</em> If true, correct ledger state nodes in the specified ledger(s). Overrides <code>full</code> if provided.</td>
 </tr>
 <tr>
 <td align="left"><code>stop</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional) If true, disable the ledger cleaner.</td>
+<td align="left"><em>(Optional)</em> If true, disable the ledger cleaner.</td>
 </tr>
 </tbody>
 </table>
@@ -12171,12 +12171,12 @@ rippled log_level PathRequest debug
 <tr>
 <td align="left"><code>severity</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) What level of verbosity to set logging at. Valid values are, in order from least to most verbose: <code>fatal</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, and <code>trace</code>. If omitted, return current log verbosity for all categories.</td>
+<td align="left"><em>(Optional)</em> What level of verbosity to set logging at. Valid values are, in order from least to most verbose: <code>fatal</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, and <code>trace</code>. If omitted, return current log verbosity for all categories.</td>
 </tr>
 <tr>
 <td align="left"><code>partition</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Ignored unless <code>severity</code> is provided. Which logging category to modify. If omitted, or if provided with the value <code>base</code>, set logging level for all categories.</td>
+<td align="left"><em>(Optional)</em> Ignored unless <code>severity</code> is provided. Which logging category to modify. If omitted, or if provided with the value <code>base</code>, set logging level for all categories.</td>
 </tr>
 </tbody>
 </table>
@@ -12383,7 +12383,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a> format or Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If omitted, generate a random seed.</td>
+<td align="left"><em>(Optional)</em> Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a> format or Ripple's <a href="https://en.wikipedia.org/wiki/Base58">base58</a> format. If omitted, generate a random seed.</td>
 </tr>
 </tbody>
 </table>
@@ -12478,7 +12478,7 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 <tr>
 <td align="left"><code>secret</code></td>
 <td align="left">String</td>
-<td align="left">(Optional) If present, use this value as the secret value for the validating key pair. Valid formats include <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as a passphrase. If omitted, disables proposing validations to the network.</td>
+<td align="left"><em>(Optional)</em> If present, use this value as the secret value for the validating key pair. Valid formats include <a href="https://en.wikipedia.org/wiki/Base58">base58</a>, <a href="https://tools.ietf.org/html/rfc1751">RFC-1751</a>, or as a passphrase. If omitted, disables proposing validations to the network.</td>
 </tr>
 </tbody>
 </table>
@@ -13430,7 +13430,7 @@ rippled connect 192.170.145.88 51235
 <tr>
 <td align="left"><code>port</code></td>
 <td align="left">Number</td>
-<td align="left">(Optional) Port number to use when connecting. Defaults to 6561.</td>
+<td align="left"><em>(Optional)</em> Port number to use when connecting. Defaults to 6561.</td>
 </tr>
 </tbody>
 </table>
