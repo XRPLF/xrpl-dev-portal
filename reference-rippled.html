@@ -9307,9 +9307,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>publicMalformed</code> - The value specified in the <code>public_key</code> field of the request was not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter <code>a</code>.</li>
-<li><code>channelMalformed</code> - The value specified in the <code>channel_id</code> field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.</li>
-<li><code>channelAmtMalformed</code> - The value specified in the <code>amount</code> field was not a valid XRP amount. See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a> for details.</li>
+<li><code>publicMalformed</code> - The <code>public_key</code> field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter <code>a</code>.</li>
+<li><code>channelMalformed</code> - The <code>channel_id</code> field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.</li>
+<li><code>channelAmtMalformed</code> - The value specified in the <code>amount</code> field was not a valid <a href="#specifying-currency-amounts">XRP amount</a>.</li>
 </ul>
 <h1 id="subscriptions">Subscriptions</h1>
 <p>Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know and react right away. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel.</p>
@@ -9474,8 +9474,8 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
-<li><code>unknownStream</code> - One or more the members of the <code>streams</code> field in the request was not recognized as a valid stream name.</li>
-<li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
+<li><code>unknownStream</code> - One or more the members of the <code>streams</code> field of the request is not a valid stream name.</li>
+<li><code>malformedStream</code> - The <code>streams</code> field of the request is not formatted properly.</li>
 <li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.)</li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>dstAmtMalformed</code> - One or more <code>taker_gets</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
@@ -10179,7 +10179,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
-<li><code>malformedStream</code> - The <code>streams</code> field of the request was not formatted properly.</li>
+<li><code>malformedStream</code> - The <code>streams</code> field of the request is not formatted properly.</li>
 <li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address.<ul>
 <li class="devportal-callout note"><strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.</li>
 </ul>
@@ -12041,7 +12041,7 @@ Connecting to 127.0.0.1:5005
 </ul>
 <h2 id="ledger-cleaner">ledger_cleaner</h2>
 <p><a href="https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp" title="Source">[Source]<br/></a></p>
-<p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.</p>
+<p>The <code>ledger_cleaner</code> command controls the <a href="https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner">Ledger Cleaner</a>, an asynchronous maintenance process that can find and repair corruption in <code>rippled</code>'s database of ledgers.</p>
 <p><em>The <code>ledger_cleaner</code> method is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users.</em></p>
 <h4 id="request-format-42">Request Format</h4>
 <p>An example of the request format:</p>
@@ -12136,7 +12136,7 @@ Connecting to 127.0.0.1:5005
 <h4 id="possible-errors-41">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>internal</code> if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return <code>invalidParams</code> instead.)</li>
+<li><code>internal</code> if one the parameters is specified incorrectly. (This is a bug; the intended error code is <code>invalidParams</code>.)</li>
 </ul>
 <h2 id="log-level">log_level</h2>
 <p><a href="https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp" title="Source">[Source]<br/></a></p>

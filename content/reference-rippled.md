@@ -7985,9 +7985,9 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `publicMalformed` - The value specified in the `public_key` field of the request was not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter `a`.
-* `channelMalformed` - The value specified in the `channel_id` field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
-* `channelAmtMalformed` - The value specified in the `amount` field was not a valid XRP amount. See [Specifying Currency Amounts](#specifying-currency-amounts) for details.
+* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter `a`.
+* `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount](#specifying-currency-amounts).
 
 
 
@@ -8119,8 +8119,8 @@ The response follows the [standard format](#response-formatting). The fields con
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
-* `unknownStream` - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
-* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `unknownStream` - One or more the members of the `streams` field of the request is not a valid stream name.
+* `malformedStream` - The `streams` field of the request is not formatted properly.
 * `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (**Note:**: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.)
 * `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
 * `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
@@ -8616,7 +8616,7 @@ The response follows the [standard format](#response-formatting), with a success
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
-* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedStream` - The `streams` field of the request is not formatted properly.
 * `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address.
     * **Note:**: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.
 * `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
@@ -10207,7 +10207,7 @@ For most other entries, the value indicates the number of objects of that type c
 ## ledger_cleaner ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp "Source")
 
-The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.
+The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
 _The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
@@ -10271,7 +10271,7 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `internal` if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return `invalidParams` instead.)
+* `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
 
 
 ## log_level ##
