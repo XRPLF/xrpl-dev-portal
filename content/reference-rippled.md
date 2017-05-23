@@ -418,6 +418,7 @@ Some API methods require you to specify an amount of currency. Depending on whet
 
 #### XRP ####
 [drops of XRP]: #xrp
+[XRP, in drops]: #xrp
 
 Amounts of XRP are represented as strings. (XRP has precision equivalent to a 64-bit integer, but JSON integers are limited to 32 bits, so XRP can overflow if represented in a JSON integer.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write:
 
@@ -513,12 +514,15 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 ## List of Public Commands ##
 
 * [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
+* [`account_channels` - Get a list of payment channels where the account is the source of the channel](#account-channels)
 * [`account_info` - Get basic data about an account](#account-info)
 * [`account_lines` - Get info about an account's trust lines](#account-lines)
 * [`account_objects` - Get all ledger objects owned by an account](#account-objects)
 * [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
 * [`account_tx` - Get info about an account's transactions](#account-tx)
 * [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
+* [`channel_authorize` - Sign a claim for money from a payment channel](#channel-authorize)
+* [`channel_verify` - Check a payment channel claim's signature](#channel-verify)
 * [`fee` - Get information about transaction cost](#fee)
 * [`gateway_balances` - Calculate total amounts issued by an account](#gateway-balances)
 * [`ledger` - Get info about a ledger version](#ledger)
@@ -632,9 +636,9 @@ The request includes the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `strict`       | Boolean                    | (Optional) If true, only accept an address or public key for the account parameter. Defaults to false. |
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
 The following field is deprecated and should not be provided: `account_index`.
 
@@ -737,6 +741,181 @@ The response follows the [standard format](#response-formatting), with a success
 
 
 
+## account_channels
+[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
+
+#### Request Format
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 1,
+  "command": "account_channels",
+  "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+  "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
+
+*Commandline*
+
+```bash
+#Syntax: account_channels <account> [<destination_account>] [<ledger>]
+rippled account_channels rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field                 | Type                                       | Description |
+|:----------------------|:-------------------------------------------|:--------|
+| `account`             | String                                     | The unique identifier of an account, typically the account's [Address][]. The request returns channels where this account is the channel's owner/source. |
+| `destination_account` | String                                     | _(Optional)_ The unique identifier of an account, typically the account's [Address][]. If provided, filter results to payment channels whose destination is this account. |
+| `ledger_hash`         | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index`        | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `limit`               | Integer                                    | _(Optional)_ Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. Defaults to 200. |
+| `marker`              | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+
+#### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "channels": [
+      {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "amount": "100000000",
+        "balance": "1000000",
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": 20170428,
+        "expiration": 547073182,
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+        "settle_delay": 86400
+      }
+    ]
+  }
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
+            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
+    }
+}
+```
+
+*Commandline*
+
+```json
+200 OK
+
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
+            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field      | Type                                       | Description        |
+|:-----------|:-------------------------------------------|:-------------------|
+| `account`  | String                                     | The address of the source/owner of the payment channels. This corresponds to the `account` field of the request. |
+| `channels` | Array of Channel Objects                   | Payment channels owned by this `account`. |
+| `limit`    | Number                                     | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
+| `marker`   | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
+
+Each Channel Object has the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `account` | String | The owner of the channel, as an [Address][]. |
+| `amount` | String | The total amount of [XRP, in drops](#specifying-currency-amounts) allocated to this channel. |
+| `balance` | String | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP remaining in the channel by subtracting `balance` from `amount`.) |
+| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [index of the channel](reference-ledger-format.html#paychannel-index-format) in the ledger's state data. |
+| `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it remains open. |
+| `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair. |
+| `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
+| `settle_delay` | Unsigned Integer | The number of seconds the payment channel must remain open after the owner of the channel requests to close it. |
+| `expiration` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
+| `cancel_after` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
+| `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
+| `destination_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
+
+#### Possible Errors
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
+* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+
 ## account_info ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
 
@@ -794,10 +973,10 @@ The request contains the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's [Address][]. |
 | `strict`       | Boolean                    | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or Ripple address. |
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `queue`        | Boolean                    | (Optional) If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
-| `signer_lists` | Boolean                    | (Optional) If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. [New in: rippled 0.31.0][] |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
+| `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. [New in: rippled 0.31.0][] |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
@@ -951,7 +1130,7 @@ Each object in the `transactions` array, if present, may contain any or all of t
 ## account_lines ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
 
-The `account_lines` method returns information about the account's lines of trust, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
+The `account_lines` method returns information about an account's trust lines, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 
 #### Request Format ####
 
@@ -993,11 +1172,11 @@ The request accepts the following paramters:
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger_hash`  | String                                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer                 | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `peer`         | String                                     | (Optional) The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be smaller than 10 or larger than 400. [New in: rippled 0.26.4][] |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
+| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `peer`         | String                                     | _(Optional)_ The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
+| `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
+| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -1098,18 +1277,18 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust-line objects. Specifically, the result object contains the following fields:
+The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
 
 | `Field`                | Type                                       | Description |
 |:-----------------------|:-------------------------------------------|:-------|
 | `account`              | String                                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
-| `lines`                | Array                                      | Array of trust-line objects, as described below. If the number of trust-lines is large, only returns up to the `limit` at a time. |
+| `lines`                | Array                                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
 | `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_hash`          | String                                     | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
+| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
 
-Each trust-line object has some combination of the following fields:
+Each trust line object has some combination of the following fields:
 
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
@@ -1187,10 +1366,10 @@ A request can include the following parameters:
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
 | `ledger`       | Unsigned integer, or String                | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
-| `ledger_hash`  | String                                     | (Optional) A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | (Optional) [Ledger Index][]                | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Cannot be lower than 10 or higher than 400. [New in: rippled 0.26.4][] |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. [New in: rippled 0.26.4][] |
+| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
+| `ledger_index` | _(Optional)_ [Ledger Index][]                | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
+| `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
+| `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -1300,7 +1479,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_hash`          | String                                     | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
+| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
 
 
 Each offer object contains the following fields:
@@ -1388,11 +1567,11 @@ The request includes the following parameters:
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `type`         | String                                     | (Optional) If included, filter results to include only this type of ledger node. Valid types include `state` (trust lines), `offer` (offers), and `ticket` (part of the forthcoming signing process). |
-| `ledger_hash`  | String                                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer                 | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `limit`        | Unsigned Integer                           | (Optional) The maximum number of objects to include in the results. Cannot be less than 10 or higher than 400 on non-admin connections. Defaults to 200. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | (Optional) Value from a previous response value to specify where to resume retrieving data from. |
+| `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger node. Valid types include `state` (trust lines), `offer` (offers), and `ticket` (part of the forthcoming signing process). |
+| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
+| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 #### Response Format ####
 
@@ -1931,7 +2110,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index`         | Number                                     | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number                                     | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 | `limit`                | Number                                     | (May be omitted) The limit that was used in this request, if any. |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 | `validated`            | Boolean                                    | If `true`, this information comes from ledger version that has been validated by consensus. |
 
 #### Possible Errors ####
@@ -2009,12 +2188,12 @@ The request includes the following parameters:
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `ledger_index_min` | Integer                                    | Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
 | `ledger_index_max` | Integer                                    | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                                     | (Optional) Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index`     | String or Unsigned Integer                 | (Optional) Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`      | String                                     | _(Optional)_ Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `binary`           | Boolean                                    | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
 | `forward`          | boolean                                    | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | `limit`            | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| `marker`           | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. This value is stable even if there is a change in the server's range of available ledgers. |
+| `marker`           | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
 There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
@@ -2514,7 +2693,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index_min` | Integer                                    | The sequence number of the earliest ledger actually searched for transactions. |
 | `ledger_index_max` | Integer                                    | The sequence number of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. |
+| `marker`           | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 | `offset`           | Integer                                    | The `offset` value used in the request. |
 | `transactions`     | Array                                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                                    | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
@@ -2591,10 +2770,10 @@ The request includes the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's address. |
 | `role`         | String                     | Whether the address refers to a `gateway` or `user`. Recommendations depend on the role of the account. Issuers must have DefaultRipple enabled and must disable NoRipple on all trust lines. Users should have DefaultRipple disabled, and should enable NoRipple on all trust lines. |
-| `transactions` | Boolean                    | (Optional) If `true`, include an array of suggested [transactions](reference-transaction-format.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
-| `limit`        | Unsigned Integer           | (Optional) The maximum number of trust line problems to include in the results. Defaults to 300. |
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `transactions` | Boolean                    | _(Optional)_ If `true`, include an array of suggested [transactions](reference-transaction-format.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
+| `limit`        | Unsigned Integer           | _(Optional)_ The maximum number of trust line problems to include in the results. Defaults to 300. |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
 #### Response Format ####
 
@@ -2772,10 +2951,10 @@ The request includes the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | The [Address][] to check. This should be the [issuing address](concept-issuing-and-operational-addresses.html) |
-| `strict`       | Boolean                    | (Optional) If true, only accept an address or public key for the account parameter. Defaults to false. |
+| `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
 | `hotwallet`    | String or Array            | An [operational address](concept-issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
 #### Response Format ####
 
@@ -3018,9 +3197,9 @@ The request can contain the following parameters:
 | `Field`      | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `key_type`   | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). Defaults to `secp256k1`. |
-| `passphrase` | String | (Optional) Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
-| `seed`       | String | (Optional) Generate the key pair and address from this [base58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
-| `seed_hex`   | String | (Optional) Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
+| `passphrase` | String | _(Optional)_ Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
+| `seed`       | String | _(Optional)_ Generate the key pair and address from this [base58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
+| `seed_hex`   | String | _(Optional)_ Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
 
 You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
 
@@ -3195,8 +3374,8 @@ The request can contain the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)). |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)). |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `full`         | Boolean                    | (Optional, defaults to false) **Admin required** If true, return full information on the entire ledger. Ignored if you did not specify a ledger. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) **Caution:** This is a very large amount of data -- on the order of several hundred megabytes! |
 | `accounts`     | Boolean                    | (Optional, defaults to false) **Admin required.** If true, return information on accounts in the ledger. Ignored if you did not specify a ledger. **Caution:** This returns a very large amount of data! |
 | `transactions` | Boolean                    | (Optional, defaults to false) If true, return information on transactions in the specified ledger version. Ignored if you did not specify a ledger. |
@@ -3540,11 +3719,11 @@ A request can include the following fields:
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
 | `id`           | (Arbitrary)                                | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
-| `ledger_hash`  | String                                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer                 | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `binary`       | Boolean                                    | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous response value to specify where to resume retrieving data from. |
+| `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -3735,7 +3914,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index` | Unsigned Integer                           | Sequence number of this ledger |
 | `ledger_hash`  | String                                     | Unique identifying hash of the entire ledger. |
 | `state`        | Array                                      | Array of JSON objects containing data from the tree, as defined below |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | Server-defined value. Pass this to the next call to resume where this call left off. |
+| `marker`       | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 
 The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
 
@@ -3811,21 +3990,21 @@ The full list of parameters recognized by this method is as follows:
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `index`                 | String                     | (Optional) Specify the unique identifier of a single ledger entry to retrieve. |
-| `account_root`          | String - [Address][]       | (Optional) Specify an [AccountRoot node](reference-ledger-format.html#accountroot) to retrieve. |
-| `directory`             | Object or String           | (Optional) Specify a [DirectoryNode](reference-ledger-format.html#directorynode). (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
-| `directory.sub_index`   | Unsigned Integer           | (Optional) If provided, jumps to a further sub-node in the [DirectoryNode](reference-ledger-format.html#directorynode). |
+| `index`                 | String                     | _(Optional)_ Specify the unique identifier of a single ledger entry to retrieve. |
+| `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot node](reference-ledger-format.html#accountroot) to retrieve. |
+| `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](reference-ledger-format.html#directorynode). (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a further sub-node in the [DirectoryNode](reference-ledger-format.html#directorynode). |
 | `directory.dir_root`    | String                     | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |
 | `directory.owner`       | String                     | (Required if `directory` is specified as an object and `directory.dir_root` is not provided) Unique address of the account associated with this directory |
-| `offer`                 | Object or String           | (Optional) Specify an [Offer node](reference-ledger-format.html#offer) to retrieve. If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer`                 | Object or String           | _(Optional)_ Specify an [Offer node](reference-ledger-format.html#offer) to retrieve. If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | (Required if `offer` specified) The account that placed the offer. |
 | `offer.seq`             | Unsigned Integer           | (Required if `offer` specified) The sequence number of the transaction that created the Offer node. |
-| `ripple_state`          | Object                     | (Optional) Object specifying the RippleState (trust line) node to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
+| `ripple_state`          | Object                     | _(Optional)_ Object specifying the RippleState (trust line) node to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | (Required if `ripple_state` specified) 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState node](reference-ledger-format.html#ripplestate) |
 | `ripple_state.currency` | String                     | (Required if `ripple_state` specified) [Currency Code][] of the [RippleState node](reference-ledger-format.html#ripplestate) to retrieve. |
 | `binary`                | Boolean                    | (Optional, defaults to false) If true, return the requested ledger node's contents as a hex string. Otherwise, return data in JSON format. |
-| `ledger_hash`           | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index`          | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
@@ -3936,8 +4115,8 @@ The request includes the following parameters:
 
 | `Field`        | Type   | Description                                        |
 |:---------------|:-------|:---------------------------------------------------|
-| `ledger_index` | Number | (Optional) Retrieve the specified ledger by its [Ledger Index][]. |
-| `ledger_hash`  | String | (Optional) Retrieve the specified ledger by its identifying [Hash][]. |
+| `ledger_index` | Number | _(Optional)_ Retrieve the specified ledger by its [Ledger Index][]. |
+| `ledger_hash`  | String | _(Optional)_ Retrieve the specified ledger by its identifying [Hash][]. |
 
 You must provide either `ledger_index` or `ledger_hash` but not both.
 
@@ -4408,8 +4587,8 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
 
 **Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
@@ -5528,8 +5707,8 @@ The request includes the following parameters:
 | `source_account`      | String           | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | `destination_account` | String           | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
 | `destination_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
-| `paths`               | Array            | (Optional) Array of arrays of objects, representing [payment paths](concept-paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `send_max`            | String or Object | _(Optional)_ [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
+| `paths`               | Array            | _(Optional)_ Array of arrays of objects, representing [payment paths](concept-paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -6138,10 +6317,10 @@ The request includes the following parameters:
 | `source_account`      | String                     | Unique address of the account that would send funds in a transaction |
 | `destination_account` | String                     | Unique address of the account that would receive funds in a transaction |
 | `destination_amount`  | String or Object           | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object           | (Optional) [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0][] |
-| `source_currencies`   | Array                      | (Optional) Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts](#specifying-currency-amounts) are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
-| `ledger_hash`         | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index`        | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `send_max`            | String or Object           | _(Optional)_ [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0][] |
+| `source_currencies`   | Array                      | _(Optional)_ Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts](#specifying-currency-amounts) are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
+| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
 #### Response Format ####
 
@@ -6480,13 +6659,13 @@ The request includes the following parameters:
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format |
-| `secret`       | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
-| `seed_hex`     | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
-| `passphrase`   | String  | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
-| `key_type`     | String  | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
+| `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| `passphrase`   | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| `key_type`     | String  | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | `offline`      | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values. |
-| `build_path`   | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
+| `build_path`   | Boolean | _(Optional)_ If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | `fee_mult_max` | Integer | (Optional, defaults to 10; recommended value 1000) Limits how high the [automatically-provided `Fee` field](reference-transaction-format.html#auto-fillable-fields) can be. Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). |
 | `fee_div_max`  | Integer | (Optional, defaults to 1) Signing fails with the error `rpcHIGH_FEE` if the current [load multiplier on the transaction cost](concept-transaction-cost.html#local-load-cost) is greater than (`fee_mult_max` ÷ `fee_div_max`). Ignored if you specify the `Fee` field of the transaction ([transaction cost](concept-transaction-cost.html)). [New in: rippled 0.30.1][] |
 
@@ -6709,11 +6888,11 @@ The request includes the following parameters:
 |:-------------|:---------------------|:---------------------------------------|
 | `account`    | String - [Address][] | The address which is providing the signature. |
 | `tx_json`    | Object               | The [Transaction](reference-transaction-format.html) to sign. Unlike using the [`sign` command](#sign), all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
-| `secret`     | String               | (Optional) The secret key to sign with. (Cannot be used with `key_type`.) |
-| `passphrase` | String               | (Optional) A passphrase to use as the secret key to sign with. |
-| `seed`       | String               | (Optional) A [base58][]-encoded secret key to sign with. |
-| `seed_hex`   | String               | (Optional) A hexadecimal secret key to sign with. |
-| `key_type`   | String               | (Optional) The type of key to use for signing. This can be `secp256k1` or `ed25519`. (Ed25519 support is experimental.) |
+| `secret`     | String               | _(Optional)_ The secret key to sign with. (Cannot be used with `key_type`.) |
+| `passphrase` | String               | _(Optional)_ A passphrase to use as the secret key to sign with. |
+| `seed`       | String               | _(Optional)_ A [base58][]-encoded secret key to sign with. |
+| `seed_hex`   | String               | _(Optional)_ A hexadecimal secret key to sign with. |
+| `key_type`   | String               | _(Optional)_ The type of key to use for signing. This can be `secp256k1` or `ed25519`. (Ed25519 support is experimental.) |
 
 You must provide exactly 1 field with the secret key. You can use any of the following fields: `secret`, `passphrase`, `seed`, or `seed_hex`.
 
@@ -6924,14 +7103,14 @@ The request includes the following parameters:
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
-| `secret`       | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
-| `seed_hex`     | String  | (Optional) Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
-| `passphrase`   | String  | (Optional) Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
-| `key_type`     | String  | (Optional) Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
+| `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
+| `passphrase`   | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
+| `key_type`     | String  | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
 | `fail_hard`    | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 | `offline`      | Boolean | (Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values. |
-| `build_path`   | Boolean | (Optional) If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
+| `build_path`   | Boolean | _(Optional)_ If provided for a Payment-type transaction, automatically fill in the `Paths` field before signing. You must omit this field if the transaction is a direct XRP-to-XRP transfer. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. |
 | `fee_mult_max` | Integer | (Optional, defaults to 10, recommended value 1000) If the `Fee` parameter is omitted, this field limits the automatically-provided `Fee` value so that it is less than or equal to the long-term base transaction cost times this value. |
 | `fee_div_max`  | Integer | (Optional, defaults to 1) Used with `fee_mult_max` to create a fractional multiplier for the limit. Specifically, the server multiplies its base [transaction cost](concept-transaction-cost.html) by `fee_mult_max`, then divides by this value (rounding down to an integer) to get a limit. If the automatically-provided `Fee` value would be over the limit, the submit command fails. [New in: rippled 0.30.1][] |
 
@@ -7451,10 +7630,10 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | (Optional) A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | (Optional) The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `limit`        | Unsigned Integer           | (Optional) If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| `taker`        | String                     | (Optional) The [Address][] of an account to use as a perspective. [Unfunded offers](reference-transaction-format.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `limit`        | Unsigned Integer           | _(Optional)_ If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
+| `taker`        | String                     | _(Optional)_ The [Address][] of an account to use as a perspective. [Unfunded offers](reference-transaction-format.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
 | `taker_gets`   | Object                     | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | `taker_pays`   | Object                     | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 
@@ -7571,6 +7750,247 @@ In addition to the standard Offer fields, the following fields may be included i
 
 
 
+## channel_authorize
+[[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
+
+#### Request Format
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": "channel_authorize_example_id1",
+    "command": "channel_authorize",
+    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+    "secret": "s████████████████████████████",
+    "amount": "1000000"
+}
+```
+
+*JSON-RPC*
+
+```json
+POST http://localhost:5005/
+Content-Type: application/json
+
+{
+    "method": "channel_authorize",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "secret": "s████████████████████████████",
+        "amount": "1000000"
+    }]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: channel_authorize <private_key> <channel_id> <drops>
+rippled channel_authorize s████████████████████████████ 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `channel_id` | String | The unique ID of the payment channel to use.
+| `secret` | String | The secret key to use to sign the claim. This must be the same key pair as the public key specified in the channel. |
+| `amount` | String | Cumulative amount of XRP, in drops, to authorize. If the destination has already received a lesser amount of XRP from this channel, the signature created by this method can be redeemed for the difference. |
+
+**Note:** You cannot use Ed25519 keys to sign claims with this method. This is a known bug.
+
+#### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": "channel_authorize_example_id1",
+    "status": "success"
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+    }
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `signature` | String | The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
+
+#### Possible Errors
+
+* Any of the [universal error types](#universal-errors).
+* `badSeed` - The value specified in the `secret` field was not a valid secret key.
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid XRP amount. See [Specifying Currency Amounts](#specifying-currency-amounts) for details.
+* `channelMalformed` - The value specified in the `channel_id` field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
+
+
+
+## channel_verify
+[[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
+
+_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+
+The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
+
+#### Request Format ####
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "command": "channel_verify",
+    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+    "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+    "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+    "amount": "1000000"
+}
+```
+
+*JSON-RPC*
+
+```
+POST http://localhost:5005/
+Content-Type: application/json
+
+{
+    "method": "channel_verify",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "amount": "1000000"
+    }]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: channel_verify <public_key> <channel_id> <amount> <signature>
+rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000 304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes the following parameters:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
+| `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is to use the [`wallet_propose` command](#wallet-propose).) |
+| `signature` | String | The signature to verify, in hexadecimal. |
+
+#### Response Format ####
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "signature_verified":true
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `signature_verified` | Boolean | If `true`, the signature is valid for the stated amount, channel, and public key. |
+
+**Caution:** This does not indicate check that the channel has sufficient XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [`account_channels` method](#account-channels).
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter `a`.
+* `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount](#specifying-currency-amounts).
+
+
+
 
 # Subscriptions #
 
@@ -7637,13 +8057,13 @@ The request includes the following parameters:
 
 | `Field`             | Type   | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
-| `streams`           | Array  | (Optional) Array of string names of generic streams to subscribe to, as explained below |
-| `accounts`          | Array  | (Optional) Array with the unique [base58][] addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
-| `accounts_proposed` | Array  | (Optional) Like `accounts`, but include transactions that are not yet finalized. |
-| `books`             | Array  | (Optional) Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
+| `streams`           | Array  | _(Optional)_ Array of string names of generic streams to subscribe to, as explained below |
+| `accounts`          | Array  | _(Optional)_ Array with the unique [base58][] addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
+| `accounts_proposed` | Array  | _(Optional)_ Like `accounts`, but include transactions that are not yet finalized. |
+| `books`             | Array  | _(Optional)_ Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
 | `url`               | String | (Optional for Websocket; Required otherwise) URL where the server sends a JSON-RPC callbacks for each event. *Admin-only.* |
-| `url_username`      | String | (Optional) Username to provide for basic authentication at the callback URL. |
-| `url_password`      | String | (Optional) Password to provide for basic authentication at the callback URL. |
+| `url_username`      | String | _(Optional)_ Username to provide for basic authentication at the callback URL. |
+| `url_password`      | String | _(Optional)_ Password to provide for basic authentication at the callback URL. |
 
 The following parameters are deprecated and may be removed without further notice: `user`, `password`, `rt_accounts`.
 
@@ -7699,8 +8119,8 @@ The response follows the [standard format](#response-formatting). The fields con
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
-* `unknownStream` - One or more the members of the `streams` field in the request was not recognized as a valid stream name.
-* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `unknownStream` - One or more the members of the `streams` field of the request is not a valid stream name.
+* `malformedStream` - The `streams` field of the request is not formatted properly.
 * `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address. (**Note:**: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.)
 * `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
 * `dstAmtMalformed` - One or more `taker_gets` sub-fields of the `books` field in the request is not formatted properly.
@@ -8155,10 +8575,10 @@ The parameters in the request are specified almost exactly like the parameters t
 
 | `Field`             | Type  | Description                                    |
 |:--------------------|:------|:-----------------------------------------------|
-| `streams`           | Array | (Optional) Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
-| `accounts`          | Array | (Optional) Array of unique [base58][] account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
-| `accounts_proposed` | Array | (Optional) Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
-| `books`             | Array | (Optional) Array of objects defining order books to unsubscribe from, as explained below. |
+| `streams`           | Array | _(Optional)_ Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
+| `accounts`          | Array | _(Optional)_ Array of unique [base58][] account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| `accounts_proposed` | Array | _(Optional)_ Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
+| `books`             | Array | _(Optional)_ Array of objects defining order books to unsubscribe from, as explained below. |
 
 The `rt_accounts` and `url` parameters, and the `rt_transactions` stream name, are deprecated and may be removed without further notice.
 
@@ -8196,7 +8616,7 @@ The response follows the [standard format](#response-formatting), with a success
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
-* `malformedStream` - The `streams` field of the request was not formatted properly.
+* `malformedStream` - The `streams` field of the request is not formatted properly.
 * `malformedAccount` - One of the addresses in the `accounts` or `accounts_proposed` fields of the request is not a properly-formatted Ripple address.
     * **Note:**: You _can_ subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.
 * `srcCurMalformed` - One or more `taker_pays` sub-fields of the `books` field in the request is not formatted properly.
@@ -9343,7 +9763,7 @@ The request includes the following parameters:
 
 | `Field`   | Type    | Description                                            |
 |:----------|:--------|:-------------------------------------------------------|
-| `feature` | String  | (Optional) The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
+| `feature` | String  | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
 | `vetoed`  | Boolean | (Optional; ignored unless `feature` also specified) If true, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. |
 
 **Note:** You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `rippled` version that _does_ support the amendment.
@@ -9787,7 +10207,7 @@ For most other entries, the value indicates the number of objects of that type c
 ## ledger_cleaner ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp "Source")
 
-The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in rippled's database of ledgers.
+The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
 _The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
@@ -9813,13 +10233,13 @@ The request includes the following parameters:
 
 | `Field`       | Type                            | Description                |
 |:--------------|:--------------------------------|:---------------------------|
-| `ledger`      | Number (Ledger Sequence Number) | (Optional) If provided, check and correct this specific ledger only. |
-| `max_ledger`  | Number (Ledger Sequence Number) | (Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this. |
-| `min_ledger`  | Number (Ledger Sequence Number) | (Optional) Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this. |
-| `full`        | Boolean                         | (Optional) If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
-| `fix_txns`    | Boolean                         | (Optional) If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
-| `check_nodes` | Boolean                         | (Optional) If true, correct ledger state nodes in the specified ledger(s). Overrides `full` if provided. |
-| `stop`        | Boolean                         | (Optional) If true, disable the ledger cleaner. |
+| `ledger`      | Number (Ledger Sequence Number) | _(Optional)_ If provided, check and correct this specific ledger only. |
+| `max_ledger`  | Number (Ledger Sequence Number) | _(Optional)_ Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this. |
+| `min_ledger`  | Number (Ledger Sequence Number) | _(Optional)_ Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this. |
+| `full`        | Boolean                         | _(Optional)_ If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
+| `fix_txns`    | Boolean                         | _(Optional)_ If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
+| `check_nodes` | Boolean                         | _(Optional)_ If true, correct ledger state nodes in the specified ledger(s). Overrides `full` if provided. |
+| `stop`        | Boolean                         | _(Optional)_ If true, disable the ledger cleaner. |
 
 #### Response Format ####
 
@@ -9851,7 +10271,7 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors ####
 
 * Any of the [universal error types](#universal-errors).
-* `internal` if one the parameters was specified in a way that the server couldn't interpret. (This is a bug, and it should return `invalidParams` instead.)
+* `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
 
 
 ## log_level ##
@@ -9890,8 +10310,8 @@ The request includes the following parameters:
 
 | `Field`     | Type   | Description                                           |
 |:------------|:-------|:------------------------------------------------------|
-| `severity`  | String | (Optional) What level of verbosity to set logging at. Valid values are, in order from least to most verbose: `fatal`, `error`, `warn`, `info`, `debug`, and `trace`. If omitted, return current log verbosity for all categories. |
-| `partition` | String | (Optional) Ignored unless `severity` is provided. Which logging category to modify. If omitted, or if provided with the value `base`, set logging level for all categories. |
+| `severity`  | String | _(Optional)_ What level of verbosity to set logging at. Valid values are, in order from least to most verbose: `fatal`, `error`, `warn`, `info`, `debug`, and `trace`. If omitted, return current log verbosity for all categories. |
+| `partition` | String | _(Optional)_ Ignored unless `severity` is provided. Which logging category to modify. If omitted, or if provided with the value `base`, set logging level for all categories. |
 
 #### Response Format ####
 
@@ -10116,7 +10536,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | (Optional) Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's [base58][] format. If omitted, generate a random seed. |
+| `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's [base58][] format. If omitted, generate a random seed. |
 
 **Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the `secret` when generating new credentials for the first time.
 
@@ -10205,7 +10625,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | (Optional) If present, use this value as the secret value for the validating key pair. Valid formats include [base58][], [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
+| `secret` | String | _(Optional)_ If present, use this value as the secret value for the validating key pair. Valid formats include [base58][], [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
 
 #### Response Format ####
 
@@ -11165,7 +11585,7 @@ The request includes the following parameters:
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `ip`    | String | IP address of the server to connect to                    |
-| `port`  | Number | (Optional) Port number to use when connecting. Defaults to 6561. |
+| `port`  | Number | _(Optional)_ Port number to use when connecting. Defaults to 6561. |
 
 #### Response Format ####
 
@@ -11473,3 +11893,4 @@ Example:
 
 
 {% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}
