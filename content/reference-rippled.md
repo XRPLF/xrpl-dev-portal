@@ -7857,14 +7857,14 @@ The response follows the [standard format](#response-formatting), with a success
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `signature` | String | The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
+| `signature` | String | The signature for this claim, as a hexadecimal value. To process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
 
 #### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
-* `badSeed` - The value specified in the `secret` field was not a valid secret key.
-* `channelAmtMalformed` - The value specified in the `amount` field was not a valid XRP amount. See [Specifying Currency Amounts](#specifying-currency-amounts) for details.
-* `channelMalformed` - The value specified in the `channel_id` field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
+* `badSeed` - The `secret` in the request is not a valid secret key.
+* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount](#specifying-currency-amounts).
+* `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
 
 
 
