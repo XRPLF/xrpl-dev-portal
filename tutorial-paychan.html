@@ -222,7 +222,7 @@
 <h2 id="1-the-payer-creates-a-payment-channel-to-a-particular-recipient">1. The payer creates a payment channel to a particular recipient.</h2>
 <p>This is a <a href="reference-transaction-format.html#paymentchannelcreate">PaymentChannelCreate transaction</a>. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.</p>
-<p>The following example shows creation of a payment channel by submitting to a local <code>rippled</code> server with the JSON-RPC API. The payment channel allocates 100 XRP from the <a href="#example-values">example payer</a> (rN7n7...) to the <a href="#example-values">example payee</a> (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.</p>
+<p>The following example shows creation of a payment channel by <a href="reference-rippled.html#sign-and-submit-mode">submitting</a> to a local <code>rippled</code> server with the JSON-RPC API. The payment channel allocates 100 XRP from the <a href="#example-values">example payer</a> (rN7n7...) to the <a href="#example-values">example payee</a> (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
 Content-Type: application/json
@@ -318,10 +318,11 @@ Content-Type: application/json
 <ul>
 <li>In the transaction's <code>meta</code> field, confirm that the <code>TransactionResult</code> is <code>tesSUCCESS</code>.</li>
 <li>Confirm that the response has <code>"validated":true</code> to indicate the data comes from a validated ledger. (The result <code>tesSUCCESS</code> is only <a href="reference-transaction-format.html#finality-of-results">final</a> if it appears in a validated ledger version.)</li>
-<li>In the <code>AffectedNodes</code> array of the transaction's <code>meta</code> field, look for a <code>CreatedNode</code> object with the <code>LedgerEntryType</code> of <code>PayChannel</code>. The <code>LedgerIndex</code> field of the <code>CreatedNode</code> object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.</li>
+<li>In the <code>AffectedNodes</code> array of the transaction's <code>meta</code> field, look for a <code>CreatedNode</code> object with the <code>LedgerEntryType</code> of <code>PayChannel</code>. The <code>LedgerIndex</code> field of the <code>CreatedNode</code> object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.
+    For more information on the PayChannel ledger object type, see <a href="reference-ledger-format.html#paychannel">PayChannel ledger node type</a>.</li>
 </ul>
 <h2 id="2-the-payee-checks-specifics-of-the-payment-channel">2. The payee checks specifics of the payment channel.</h2>
-<p>You can look up payment channels with the <code>account_channels</code> API method, using the payer of the channel, as in the following example (using the JSON-RPC API):</p>
+<p>You can look up payment channels with the <a href="reference-rippled.html#account-channels"><code>account_channels</code> API method</a>, using the payer of the channel, as in the following example (using the JSON-RPC API):</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
 Content-Type: application/json
@@ -368,7 +369,7 @@ Content-Type: application/json
 <h2 id="3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel">3. The payer creates one or more signed <em>claims</em> for the XRP in the channel.</h2>
 <p>The amounts of these claims depends on the specific goods or services the payer wants to pay for.</p>
 <p>Each claim must be for a cumulative amount. In other words, to purchase two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund</a> transaction can increase the total amount of XRP allocated to the channel.)</p>
-<p>You can create claims with the <code>channel_authorize</code> API method. The following example authorizes 1 XRP from the channel:</p>
+<p>You can create claims with the <a href="reference-rippled.html#channel-authorize"><code>channel_authorize</code> API method</a>. The following example authorizes 1 XRP from the channel:</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
 Content-Type: application/json
@@ -417,7 +418,7 @@ Content-Type: application/json
 </table>
 <p>The payee also needs to know the Public Key associated with the channel, which is the same throughout the channel's life.</p>
 <h2 id="5-the-payee-verifies-the-claims">5. The payee verifies the claims.</h2>
-<p>You can verify claims using the <code>channel_verify</code> API method. The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services purchased so far.)</p>
+<p>You can verify claims using the <a href="reference-rippled.html#channel-verify"><code>channel_verify</code> API method</a>. The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services purchased so far.)</p>
 <p>Example of using <code>channel_verify</code> with the JSON-RPC API:</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
@@ -443,7 +444,7 @@ Content-Type: application/json
     }
 }
 </code></pre>
-<p>If the response shows <code>"signature_verified": true</code> then the claim's signature is genuine. The payee must <strong>also</strong> confirm that the channel has enough XRP available to honor the claim. To do this, the payee makes an <code>account_channels</code> request to confirm the most recent validated state of the payment channel.</p>
+<p>If the response shows <code>"signature_verified": true</code> then the claim's signature is genuine. The payee must <strong>also</strong> confirm that the channel has enough XRP available to honor the claim. To do this, the payee makes an <a href="reference-rippled.html#account-channels"><code>account_channels</code> request</a> to confirm the most recent validated state of the payment channel.</p>
 <p>Request:</p>
 <pre><code>POST http://localhost:5005/
 Content-Type: application/json
@@ -486,7 +487,7 @@ Content-Type: application/json
 <li>Confirm that the <code>balance</code> of the channel matches the amount the payee expects to have already received from the channel. If these do not match up, the payee should double-check the channel's transaction history. Some possible explanations for a mismatch include:<ul>
 <li>The payer used a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim</a> transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.</li>
 <li>The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the <a href="reference-rippled.html#tx"><code>tx</code> command</a> to look up the state of individual transactions to check this.</li>
-<li>The <code>account_channels</code> request did not specify the correct ledger version. (Use <code>"ledger_index": "validated"</code> to get the latest validated leger version)</li>
+<li>The <code>account_channels</code> request did not specify the correct ledger version. (Use <code>"ledger_index": "validated"</code> to get the latest validated ledger version)</li>
 <li>The payee previously redeemed XRP but forgot to record it.</li>
 <li>The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.</li>
 <li>The <code>rippled</code> server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the <a href="reference-rippled.html#server-info"><code>server_info</code> command</a> to check the state of the server. (If you can reproduce this situation, please <a href="https://github.com/ripple/rippled/issues/">report an issue</a>.)</li>
@@ -504,7 +505,7 @@ Content-Type: application/json
 <p>The amount of XRP in the payment channel. (If necessary, the payer can send a <a href="reference-transaction-format.html#paymentchannelfund">PaymentChannelFund transaction</a> to increase the total amount of XRP available to the channel.)</p>
 </li>
 <li>
-<p>The immutable expiration of the payment channel, if one is set. (The <code>cancel_after</code> field in the <code>account_channels</code> response shows this.)</p>
+<p>The immutable expiration of the payment channel, if one is set. (The <code>cancel_after</code> field in the <a href="reference-rippled.html#account-channels"><code>account_channels</code></a> response shows this.)</p>
 </li>
 </ul>
 <h2 id="8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount">8. When ready, the payee redeems a claim for the authorized amount.</h2>
@@ -567,7 +568,7 @@ Content-Type: application/json
 <p>If the channel has no XRP remaining in it when the payer requests to close the channel, it closes immediately.</p>
 <p>If the channel <em>does</em> have XRP remaining, the request to close a channel acts as a final warning to the payee to redeem any outstanding claims right away. The payee has an amount of time no less than the settlement delay before the channel is closed. The exact number of seconds varies slightly based on the close times of ledgers.</p>
 <p>The payee can also close a payment channel immediately after processing a claim <em>(9b in the <a href="#flow-diagram">flow diagram</a>)</em>.</p>
-<p>Example of submitting a transaction requesting a channel to close:</p>
+<p>Example of <a href="reference-rippled.html#sign-and-submit-mode">submitting a transaction</a> requesting a channel to close:</p>
 <pre><code>{
     "method": "submit",
     "params": [{
@@ -582,7 +583,7 @@ Content-Type: application/json
     }]
 }
 </code></pre>
-<p>After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the <code>account_channels</code> method. Be sure to specify <code>"ledger_index": "validated"</code> to get data from the latest validated ledger version.</p>
+<p>After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the <a href="reference-rippled.html#account-channels"><code>account_channels</code> method</a>. Be sure to specify <code>"ledger_index": "validated"</code> to get data from the latest validated ledger version.</p>
 <p>Example <code>account_channels</code> response:</p>
 <pre><code>{
     "result": {
@@ -611,7 +612,7 @@ Content-Type: application/json
 <p>The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so <em>someone</em> must send a transaction to cause the expired channel to close. As long as the channel remains on the ledger, it counts as an object owned by the payer for purposes of the <a href="concept-reserves.html#owner-reserves">owner reserve</a>.</p>
 <p>Ripple recommends that the payer sends a second <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with the <code>tfClose</code> flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.</p>
 <p>The command to submit the transaction is identical to the previous example requesting channel expiration. (However, its resulting <a href="reference-transaction-format.html#auto-fillable-fields">auto-filled</a> <code>Sequence</code> number, signature, and identifying hash are unique.)</p>
-<p>Example of submitting a transaction to close an expired channel:</p>
+<p>Example of <a href="reference-rippled.html#sign-and-submit-mode">submitting</a> a transaction to close an expired channel:</p>
 <pre><code>{
     "method": "submit",
     "params": [{
@@ -627,7 +628,7 @@ Content-Type: application/json
 }
 </code></pre>
 <p>When the transaction has been included in a validated ledger, you can look at the metadata of the transaction to confirm that it deleted the channel and returned the XRP to the sender.</p>
-<p>Example response from using the <code>tx</code> command to look up the transaction from this step:</p>
+<p>Example response from using the <a href="reference-rippled.html#tx"><code>tx</code> command</a> to look up the transaction from this step:</p>
 <pre><code>{
     "result": {
         "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",

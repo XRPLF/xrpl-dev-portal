@@ -9174,16 +9174,16 @@ rippled channel_authorize s█████████████████�
 <tr>
 <td><code>signature</code></td>
 <td>String</td>
-<td>The signature for this claim, as a hexadecimal value. To verify this signature or process the claim, the destination account of the payment channel must send a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with this signature, the exact Channel ID, XRP amount, and public key of the channel.</td>
+<td>The signature for this claim, as a hexadecimal value. To process the claim, the destination account of the payment channel must send a <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transaction</a> with this signature, the exact Channel ID, XRP amount, and public key of the channel.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="possible-errors-29">Possible Errors</h4>
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
-<li><code>badSeed</code> - The value specified in the <code>secret</code> field was not a valid secret key.</li>
-<li><code>channelAmtMalformed</code> - The value specified in the <code>amount</code> field was not a valid XRP amount. See <a href="#specifying-currency-amounts">Specifying Currency Amounts</a> for details.</li>
-<li><code>channelMalformed</code> - The value specified in the <code>channel_id</code> field of the reqeuest was not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.</li>
+<li><code>badSeed</code> - The <code>secret</code> in the request is not a valid secret key.</li>
+<li><code>channelAmtMalformed</code> - The <code>amount</code> in the request is not a valid <a href="#specifying-currency-amounts">XRP amount</a>.</li>
+<li><code>channelMalformed</code> - The <code>channel_id</code> in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.</li>
 </ul>
 <h2 id="channel-verify">channel_verify</h2>
 <p><a href="https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89" title="Source">[Source]<br/></a></p>
