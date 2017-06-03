@@ -4,16 +4,19 @@ This document describes the steps that an exchange needs to take to list XRP. Fo
 
 ## Alpha Exchange
 
-For illustrative purposes, this document uses a fictitious change called _Alpha Exchange_ that has the following characteristics:
+For illustrative purposes, this document uses a fictitious business called _Alpha Exchange_ that has the following characteristics:
 
 * Currently specializes in listing BTC/USD
+
 * Wants to add BTC/XRP and XRP/USD trading pairs
+
 * Maintains balances for all of its customers
+
 * Maintains balances for each of its supported currencies
 
 ### User Benefits
 
-By supporting the BTC/XRP and XRP/USD trading pairs, Alpha Exchange allows its users to:
+Alpha Exchange wants to list BTC/XRP and XRP/USD trading pairs partially because listing these pairs will benefit its users. Specifically, this support will allow its users to:
 
 * Deposit XRP _to_ Alpha Exchange _from_ the RCL
 
@@ -21,27 +24,117 @@ By supporting the BTC/XRP and XRP/USD trading pairs, Alpha Exchange allows its u
 
 * Trade XRP with other currencies, such as BTC, USD, amongst others
 
-### Prerequisites for Supporting XRP
+## Prerequisites for Supporting XRP
 
-To support XRP, Alpha Exchange must create and maintain new accounts and balance sheets.
+To support XRP, Alpha Exchange must:
 
-#### Accounts
+* Create and maintain new [accounts](#accounts)
 
-Alpha Exchange must create at least two new [accounts](https://ripple.com/build/accounts/) (also referred to as "wallets") on the RCL. To minimize the risk associated with a compromised secret key, Ripple recommends creating [_issuing_ and _operational_ accounts](https://ripple.com/build/issuing-operational-addresses/):
+* Create and maintain [balance sheets](#balance-sheets)
 
-    * An _issuing_ account to securely hold the majority of XRP and customers' funds
+### Accounts
 
-    * One or more _operational_ (and, perhaps, _standby_) accounts to conduct the day-to-day business of accepting customers' XRP withdrawals and deposits
+Alpha Exchange must create at least two new [accounts](https://ripple.com/build/accounts/) (also referred to as "wallets") on the RCL. To minimize the risk associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). This model is intended to balance security and convenience.
 
-#### Balance Sheets
+    * An _issuing_ account to securely hold the majority of XRP and customers' funds. This account should be offline.
 
-* An additional balance sheet to track each customer’s XRP held at Alpha Exchange
+    * One or more _operational_ (and, perhaps, _standby_) accounts to conduct the day-to-day business of accepting customers' XRP withdrawals and deposits. Standby accounts can be online if you use the [Multisign](https://ripple.com/build/how-to-multi-sign/) feature. Operational accounts need to be online to service instant withdrawal requests.
 
-The new RCL wallets are represented on the left-hand side of Figure 1. A  model of hot, cold and warm wallets is intended to balance security and convenience for users deposits and withdrawals. Cold wallets are understood to be offline, warm may be online using the [Ripple Multisign](https://ripple.com/build/how-to-multi-sign/) technology, and hot wallets are developed to service instant withdrawal requests.  For more information about secure wallets and  additional best practices, see the Ripple Developer Portal :
+For more information, see:
 
-[https://ripple.com/build/gateway-guide/#suggested-business-practices](https://ripple.com/build/gateway-guide/#suggested-business-practices)
+* ["Suggested Business Practices" in the _Gateway Guide_](https://ripple.com/build/gateway-guide/#suggested-business-practices)
 
-The additional balance sheet is represented on the right-hand side of Figure 1.  Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.  The remainder of this document describes the flow of funds as Alpha Exchange allows users to deposit, trade, and redeem XRP balances.
+* [Issuing and Operational Addresses](https://ripple.com/build/issuing-operational-addresses/)
+
+### Balance Sheets
+
+Alpha Exchange will custody its customers' XRP, so it needs to track each customer's balance. To do this, Alpha Exchange must create and maintain an additional balance sheet. The following table illustrates what this balance sheet might look like.
+
+<table>
+  <tr>
+    <td><b>XRP Balances
+on RCL</b></td>
+    <td></td>
+    <td></td>
+    <td><b>Alpha Exchange
+XRP Balances</b></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
+    <td></td>
+    <td><b>Acct #</b></td>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
+  </tr>
+  <tr>
+    <td>Dave</td>
+    <td>25,000</td>
+    <td></td>
+    <td>123</td>
+    <td>Alice</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Edward</td>
+    <td>45,000</td>
+    <td></td>
+    <td>456</td>
+    <td>Bob</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Charlie</td>
+    <td>50,000</td>
+    <td></td>
+    <td>789</td>
+    <td>Charlie</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><i>Alpha Operational</i></td>
+    <td>0</td>
+    <td></td>
+    <td>...</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><i>Alpha Standby</i></td>
+    <td>0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><i>Alpha Issuing</i></td>
+    <td>0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
+The new RCL accounts (_Alpha Operational_, _Alpha Standby_, _Alpha Issuing_) are in the *User* column of the *XRP Balances on RCL* table.
+
+The *Alpha Exchange XRP Balances* table represents new, additional balance sheet. Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.
+
+## Flow of Funds
+
+The remainder of this document describes the flow of funds as Alpha Exchange allows users to deposit, trade, and redeem XRP balances.
 
 <table>
   <tr>

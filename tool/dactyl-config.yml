@@ -204,6 +204,14 @@ pages:
             - local
             - ripple.com
 
+# Listing XRP as an Exchange
+    -   category: Tutorials
+        html: xrp-listing-guide.html
+        md: exchange-guide.md
+        targets:
+            - local
+            - ripple.com
+
     ## Escrow Tutorial is a work in progress
     # -   md: tutorial-escrow.md
     #     html: tutorial-escrow.html

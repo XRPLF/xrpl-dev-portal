@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Listing XRP as an Exchange - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+                  <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+                  <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                  <li><a href="xrp-listing-guide.html">Listing XRP as an Exchange</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-accounts.html">Accounts</a></li>
+                  <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+                  <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
+            </ul>
+          </li>
+
+          <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper">
+        <div id="cont">
+            <h5>In this category:</h5>
+            <ul class="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: Tutorials</a></li>
+                <li class="level-2"><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+                <li class="level-2"><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+                <li class="level-2"><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                <li class="level-2"><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                <li class="level-2"><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                <li class="level-2"><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                <li class="level-2"><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                <li class="level-2"><a href="xrp-listing-guide.html">Listing XRP as an Exchange</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#listing-xrp-as-an-exchange">Listing XRP as an Exchange</a></li>
+<li class="level-2"><a href="#alpha-exchange">Alpha Exchange</a></li>
+<li class="level-3"><a href="#user-benefits">User Benefits</a></li>
+<li class="level-2"><a href="#prerequisites-for-supporting-xrp">Prerequisites for Supporting XRP</a></li>
+<li class="level-3"><a href="#accounts">Accounts</a></li>
+<li class="level-3"><a href="#balance-sheets">Balance Sheets</a></li>
+<li class="level-2"><a href="#flow-of-funds">Flow of Funds</a></li>
+<li class="level-2"><a href="#key-definitions">Key Definitions</a></li>
+<li class="level-2"><a href="#deposit-xrp-into-exchange">Deposit XRP into Exchange</a></li>
+<li class="level-2"><a href="#rebalancing-xrp-holdings">Rebalancing XRP Holdings</a></li>
+<li class="level-2"><a href="#withdraw-xrp-from-exchange">Withdraw XRP from Exchange</a></li>
+<li class="level-2"><a href="#trade-xrp-on-the-exchange">Trade XRP on The Exchange</a></li>
+<li class="level-1"><a href="#about-xrp-accounts">About XRP Accounts</a></li>
+<li class="level-1"><a href="#about-xrp-balances">About XRP Balances</a></li>
+
+            </ul>
+        </div>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="listing-xrp-as-an-exchange">Listing XRP as an Exchange</h1>
+<p>This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of <code>rippled</code> and the Ripple Consensus Ledger (RCL), see <a href="https://ripple.com/build">https://ripple.com/build</a>.</p>
+<h2 id="alpha-exchange">Alpha Exchange</h2>
+<p>For illustrative purposes, this document uses a fictitious business called <em>Alpha Exchange</em> that has the following characteristics:</p>
+<ul>
+<li>
+<p>Currently specializes in listing BTC/USD</p>
+</li>
+<li>
+<p>Wants to add BTC/XRP and XRP/USD trading pairs</p>
+</li>
+<li>
+<p>Maintains balances for all of its customers</p>
+</li>
+<li>
+<p>Maintains balances for each of its supported currencies</p>
+</li>
+</ul>
+<h3 id="user-benefits">User Benefits</h3>
+<p>Alpha Exchange wants to list BTC/XRP and XRP/USD trading pairs partially because listing these pairs will benefit its users. Specifically, this support will allow its users to:</p>
+<ul>
+<li>
+<p>Deposit XRP <em>to</em> Alpha Exchange <em>from</em> the RCL</p>
+</li>
+<li>
+<p>Withdraw XRP <em>from</em> Alpha Exchange <em>to</em> the RCL</p>
+</li>
+<li>
+<p>Trade XRP with other currencies, such as BTC, USD, amongst others</p>
+</li>
+</ul>
+<h2 id="prerequisites-for-supporting-xrp">Prerequisites for Supporting XRP</h2>
+<p>To support XRP, Alpha Exchange must:</p>
+<ul>
+<li>
+<p>Create and maintain new <a href="#accounts">accounts</a></p>
+</li>
+<li>
+<p>Create and maintain <a href="#balance-sheets">balance sheets</a></p>
+</li>
+</ul>
+<h3 id="accounts">Accounts</h3>
+<p>Alpha Exchange must create at least two new <a href="https://ripple.com/build/accounts/">accounts</a> (also referred to as "wallets") on the RCL. To minimize the risk associated with a compromised secret key, Ripple recommends creating <a href="https://ripple.com/build/issuing-operational-addresses/"><em>issuing</em>, <em>operational</em>, and <em>standby</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). This model is intended to balance security and convenience.</p>
+<pre><code>* An _issuing_ account to securely hold the majority of XRP and customers' funds. This account should be offline.
+
+* One or more _operational_ (and, perhaps, _standby_) accounts to conduct the day-to-day business of accepting customers' XRP withdrawals and deposits. Standby accounts can be online if you use the [Multisign](https://ripple.com/build/how-to-multi-sign/) feature. Operational accounts need to be online to service instant withdrawal requests.
+</code></pre>
+<p>For more information, see:</p>
+<ul>
+<li>
+<p><a href="https://ripple.com/build/gateway-guide/#suggested-business-practices">"Suggested Business Practices" in the <em>Gateway Guide</em></a></p>
+</li>
+<li>
+<p><a href="https://ripple.com/build/issuing-operational-addresses/">Issuing and Operational Addresses</a></p>
+</li>
+</ul>
+<h3 id="balance-sheets">Balance Sheets</h3>
+<p>Alpha Exchange will custody its customers' XRP, so it needs to track each customer's balance. To do this, Alpha Exchange must create and maintain an additional balance sheet. The following table illustrates what this balance sheet might look like.</p>
+<table>
+<tr>
+<td><b>XRP Balances
+on RCL</b></td>
+<td></td>
+<td></td>
+<td><b>Alpha Exchange
+XRP Balances</b></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><b>User</b></td>
+<td><b>Balance</b></td>
+<td></td>
+<td><b>Acct #</b></td>
+<td><b>User</b></td>
+<td><b>Balance</b></td>
+</tr>
+<tr>
+<td>Dave</td>
+<td>25,000</td>
+<td></td>
+<td>123</td>
+<td>Alice</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Edward</td>
+<td>45,000</td>
+<td></td>
+<td>456</td>
+<td>Bob</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Charlie</td>
+<td>50,000</td>
+<td></td>
+<td>789</td>
+<td>Charlie</td>
+<td>0</td>
+</tr>
+<tr>
+<td><i>Alpha Operational</i></td>
+<td>0</td>
+<td></td>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><i>Alpha Standby</i></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><i>Alpha Issuing</i></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>The new RCL accounts (<em>Alpha Operational</em>, <em>Alpha Standby</em>, <em>Alpha Issuing</em>) are in the <em>User</em> column of the <em>XRP Balances on RCL</em> table.</p>
+<p>The <em>Alpha Exchange XRP Balances</em> table represents new, additional balance sheet. Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.</p>
+<h2 id="flow-of-funds">Flow of Funds</h2>
+<p>The remainder of this document describes the flow of funds as Alpha Exchange allows users to deposit, trade, and redeem XRP balances.</p>
+<table>
+<tr>
+<td>XRP Balances
+on RCL</td>
+<td></td>
+<td></td>
+<td>Alpha Exchange
+XRP Balances</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>User</td>
+<td>Balance</td>
+<td></td>
+<td>Acct #</td>
+<td>User</td>
+<td>Balance</td>
+</tr>
+<tr>
+<td>Dave</td>
+<td>25,000</td>
+<td></td>
+<td>123</td>
+<td>Alice</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Edward</td>
+<td>45,000</td>
+<td></td>
+<td>456</td>
+<td>Bob</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Charlie</td>
+<td>50,000</td>
+<td></td>
+<td>789</td>
+<td>Charlie</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Alpha Hot</td>
+<td>0</td>
+<td></td>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha Warm</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha Cold</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>Figure 1 : Initial requirements for listing XRP, denoted by green table cells</p>
+<h2 id="key-definitions">Key Definitions</h2>
+<p><strong>On Ledger XRP</strong>: XRP that is visible by querying the public RCL blockchain via the public address of the XRP holder. The counterparty to these balances is the global, decentralized and distributed, RCL.</p>
+<p><strong>Off Ledger XRP</strong>: XRP that is held by the accounting system of an exchange that is visible by querying the exchange interface. These balances are credit based, and have a counterparty as the exchange. While these XRP balances are traded between participants in an exchange, the exchange is obligated to hold a balance of On Ledger XRP equal to the aggregate amount of Off Ledger XRP available for trade.</p>
+<h2 id="deposit-xrp-into-exchange">Deposit XRP into Exchange</h2>
+<p>The exchange is required to create a new accounting system to track off ledger XRP balances. Figure 1 shows the initial condition of this new account system, where all user balances start with a value of zero.</p>
+<p>Example deposit : The user Charlie wishes to deposit 50,000 XRP to Alpha Exchange. Through the interface that Alpha Exchange provides, Charlie is instructed to submit a payment (via Ripple API or wallet software) for that amount to Alpha Exchange’s cold wallet address, and to associate a numerical identifier (say 789) with the payment.</p>
+<table>
+<tr>
+<td>XRP Balances
+on RCL</td>
+<td></td>
+<td></td>
+<td>Alpha Exchange
+XRP Balances</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>User</td>
+<td>Balance</td>
+<td></td>
+<td>Acct #</td>
+<td>User</td>
+<td>Balance</td>
+</tr>
+<tr>
+<td>Dave</td>
+<td>25,000</td>
+<td></td>
+<td>123</td>
+<td>Alice</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Edward</td>
+<td>45,000</td>
+<td></td>
+<td>456</td>
+<td>Bob</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Charlie</td>
+<td>100,000
+50,000</td>
+<td></td>
+<td>789</td>
+<td>Charlie</td>
+<td> 0
+50,000</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha Hot</td>
+<td>0</td>
+<td></td>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha Warm</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha Cold</td>
+<td> 0
+50,000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>Figure 2 : Before and after a XRP deposit is made by Charlie to Alpha Exchange</p>
+<p>The software at Alpha Exchange detects the incoming payment, and recognizes 789 as the identifier associated with Charlie’s account. The number 789 is a field known as a "Destination Tag" on the RCL. (Alpha Exchange has set a flag, called asfRequireDest, on its wallets to ensure that all incoming payment have a destination tag.)</p>
+<p><a href="https://ripple.com/build/transactions/#accountset-flags">https://ripple.com/build/transactions/#accountset-flags</a></p>
+<p>Upon detecting the incoming payment, Alpha Exchange software updates the balance sheet to reflect the 50,000 XRP received is controlled by Charlie.  Charlie is now able to use up to 50,000 XRP on the exchange, for example to create orders trading XRP to other supported currencies on Alpha Exchange.</p>
+<h2 id="rebalancing-xrp-holdings">Rebalancing XRP Holdings</h2>
+<p>In order to securely support automated transfers of XRP, the exchange will keep a portion of XRP holdings in one (or more) operational "hot" wallets. In most XRP integrations, an exchange will elect to have their middleware software make payments automatically from the hot wallet (a withdrawal payment, for example), while a cold wallet will require human intervention.</p>
+<table>
+<tr>
+<td>Alpha Exchange XRP
+Off Ledger Balances</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Alpha Exchange XRP On Ledger Balances</td>
+<td></td>
+</tr>
+<tr>
+<td>Acct #</td>
+<td>User</td>
+<td>Balance</td>
+<td></td>
+<td>Wallet</td>
+<td>Balance</td>
+</tr>
+<tr>
+<td>123</td>
+<td>Alice</td>
+<td>80,000</td>
+<td></td>
+<td>Hot</td>
+<td>0
+80,000</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Bob</td>
+<td>50,000</td>
+<td></td>
+<td>Warm</td>
+<td>0</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+<td></td>
+<td></td>
+<td>….</td>
+<td></td>
+</tr>
+<tr>
+<td>789</td>
+<td>Charlie</td>
+<td>50,000</td>
+<td></td>
+<td>Cold</td>
+<td>180,000
+100,000</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+<td></td>
+</tr>
+</table>
+<p>Figure 3 : Without fractional reserve, XRP moves to operational hot wallet</p>
+<p>The exchange can adjust balances between hot and cold wallets at any time.  While each such adjustment consumes a fee, it does not otherwise affect the overall balance, which is an aggregate of all the holding wallets.  This aggregate On Ledger balance should at all times exceed the total available for trade on the exchange.  (Where the excess is sufficient to cover ledger transaction fees.)</p>
+<p>Figure 3 shows a balance adjustment via a payment of 80,000 XRP from Cold wallet to Hot wallet.  A payment made in reverse (debit the hot wallet, credit the cold wallet; not shown) would decrease the hot wallet balance. These balance adjustments allow an exchange to limit the risk associated with holding XRP in an online Hot wallet, by holding a balance in an offline Cold wallet.</p>
+<h2 id="withdraw-xrp-from-exchange">Withdraw XRP from Exchange</h2>
+<p>The <em>withdraw</em> feature allows customers to move XRP from Alpha Exchange to a wallet on the Ripple Consensus Ledger.</p>
+<p>In this example, Charlie initiates the process on the Alpha Exchange’s website.  He provides instructions to transfer 25,000 XRP to a specific Ripple wallet on RCL (named "Charlie" in figure 4).</p>
+<table>
+<tr>
+<td>RCL On Ledger XRP Balances</td>
+<td></td>
+<td></td>
+<td>Alpha Exchange XRP
+Off Ledger Balances</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Alpha Exchange XRP On Ledger Balances</td>
+<td></td>
+</tr>
+<tr>
+<td>User</td>
+<td>Balance</td>
+<td></td>
+<td>Acct #</td>
+<td>User</td>
+<td>Balance</td>
+<td></td>
+<td>Wallet</td>
+<td>Balance</td>
+</tr>
+<tr>
+<td>Dave</td>
+<td>25,000</td>
+<td></td>
+<td>123</td>
+<td>Alice</td>
+<td>80,000</td>
+<td></td>
+<td>Hot</td>
+<td>80,000
+55,000</td>
+</tr>
+<tr>
+<td>Edward</td>
+<td>45,000</td>
+<td></td>
+<td>456</td>
+<td>Bob</td>
+<td>50,000</td>
+<td></td>
+<td>Warm</td>
+<td>0</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+<td></td>
+<td>….</td>
+<td></td>
+<td></td>
+<td></td>
+<td>….</td>
+<td></td>
+</tr>
+<tr>
+<td>Charlie</td>
+<td>50,000
+75,000</td>
+<td></td>
+<td>789</td>
+<td>Charlie</td>
+<td>50,000
+25,000</td>
+<td></td>
+<td>Cold</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td>...</td>
+<td></td>
+</tr>
+</table>
+<p>Figure 4 : Before and after a XRP withdrawal by Charlie</p>
+<p>In response to Charlie’s instruction to withdraw 25,000 XRP, Alpha Exchange performs the following tasks, shown in figure 4, in this order:</p>
+<ul>
+<li>
+<p>Debit the amount from Charlie’s row on the balance sheet</p>
+</li>
+<li>
+<p>Submit a Ripple payment for the same amount, from Alpha Exchange hot wallet to Charlie’s RCL wallet</p>
+</li>
+</ul>
+<h2 id="trade-xrp-on-the-exchange">Trade XRP on The Exchange</h2>
+<p>Users of Alpha Exchange can trade the credit based balances on Alpha Exchange, and Alpha should be expected to keep track of all users balances as the trades are made. These trades are independent of, and not reflected on, RCL.</p>
+<h1 id="about-xrp-accounts">About XRP Accounts</h1>
+<p>XRP is held in Ripple Consensus Ledger <em>accounts</em> (sometimes referred to as <em>wallets</em> or <em>addresses</em>).  This document shows that an exchange is able to store all of the customers’ XRP in relatively few wallets.  (Technically, all the XRP could be managed in a single wallet.  It is for security reasons that an exchange should manage a set of hot, warm, and cold wallets.)</p>
+<p>An exchange should not create a Ripple wallet for each customer who holds XRP with the exchange.  The RCL differs from other blockchains such as Bitcoin where additional wallets incur essentially no overhead.  A Bitcoin balance is a collation of multiple UTXOs from prior blocks.  A Ripple account, in contrast, is represented in each iteration of the ledger, and can never be destroyed or removed (similar to Ethereum).  The Ripple account object includes an XRP balance as well as other properties.  Also, each Ripple account requires an XRP reserve, which adds a cost to creating a large number of wallets.</p>
+<p>See <a href="https://ripple.com/build/transactions/#creating-accounts">https://ripple.com/build/transactions/#creating-accounts</a> and <a href="https://ripple.com/build/reserves/">https://ripple.com/build/reserves/</a>.</p>
+<h1 id="about-xrp-balances">About XRP Balances</h1>
+<p>Amounts of XRP are represented on the Ripple Consensus Ledger as an unsigned integer count of <em>drops</em>, where one XRP == 1,000,000 drops.  Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values.  However all user interfaces should present balances in units of XRP.</p>
+<p>One drop (or .000001 XRP) cannot be further subdivided.  Bear this in mind when calculating and displaying FX rates between XRP and other assets.</p>
+<p>See <a href="https://ripple.com/build/rippled-apis/#specifying-currency-amounts">https://ripple.com/build/rippled-apis/#specifying-currency-amounts</a> for additional detail.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+                <h4>Resources<hr></h4>
+                <ul id="menu-resources" class="menu">
+                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
+                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
+                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu">
+                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span><a href="/terms-of-use/">Terms</a></span>
+                    <span><a href="/privacy-policy/">Privacy</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+</body>
+</html>
