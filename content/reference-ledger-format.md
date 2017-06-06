@@ -422,6 +422,8 @@ A `PayChannel` node has the following fields:
 | `Flags`             | Number    | UInt32            | A bit-map of boolean flags enabled for this payment channel. Currently, the protocol defines no flags for `PayChannel` nodes. |
 | `Expiration`        | Number    | UInt32            | _(Optional)_ The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). See [Setting Channel Expiration](#setting-channel-expiration) for more details. |
 | `CancelAfter`       | Number    | UInt32            | _(Optional)_ The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). This is optionally set by the transaction that created the channel, and cannot be changed. |
+| SourceTag           | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address. |
+| DestinationTag      | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 
 [XRP, in drops]: reference-rippled.html#specifying-currency-amounts
 

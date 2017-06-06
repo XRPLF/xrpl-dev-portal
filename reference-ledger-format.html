@@ -1023,6 +1023,18 @@
 <td align="left">UInt32</td>
 <td align="left"><em>(Optional)</em> The immutable expiration time for this payment channel, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>. This channel is expired if this value is present and smaller than the previous ledger's <a href="#header-format"><code>close_time</code> field</a>. This is optionally set by the transaction that created the channel, and cannot be changed.</td>
 </tr>
+<tr>
+<td align="left">SourceTag</td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address.</td>
+</tr>
+<tr>
+<td align="left">DestinationTag</td>
+<td align="left">Number</td>
+<td align="left">UInt32</td>
+<td align="left"><em>(Optional)</em> An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="setting-channel-expiration">Setting Channel Expiration</h3>
