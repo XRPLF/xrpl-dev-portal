@@ -32,15 +32,27 @@ To support XRP, Alpha Exchange must:
 
 * Create and maintain [balance sheets](#balance-sheets)
 
+See also:
+
+* [Gateway Compliance](https://ripple.com/build/gateway-guide/#gateway-compliance) — Gateways and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+
+* [Requirements for Sending to RCL](https://ripple.com/build/gateway-guide/#requirements-for-sending-to-rcl)
+
+* [Requirements for Sending to RCL](https://ripple.com/build/gateway-guide/#requirements-for-sending-to-rcl)
+
+* [Gateway Precautions](https://ripple.com/build/gateway-guide/#precautions)
+
 ### Accounts
 
-Alpha Exchange must create at least two new [accounts](https://ripple.com/build/accounts/) (also referred to as "wallets") on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The operational/standby/issuing model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+XRP is held in *accounts* (sometimes referred to as *wallets* ) on the Ripple Consensus Ledger (RCL). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. To submit transactions (for example, [OfferCreate](https://ripple.com/build/transactions/#offercreate) and others used for trading), RCL accounts require XRP [reserves](https://ripple.com/build/reserves/) to protect the ledger against spam and malicious usage. On other blockchains, balances are derived from the previous block. On the RCL, [account objects](https://ripple.com/build/ledger-format/#accountroot) describe several other properties of the account in addition to balances, so accounts are represented in each ledger and can never be destroyed or removed. Exchanges do not need to create accounts for each customer that holds XRP; they can store all of their customers’ XRP in just a few RCL accounts. For more information about RCL accounts, see the [Accounts](https://ripple.com/build/accounts/) article.
+
+To comply with Ripple's recommend best practices, Alpha Exchange should create at least two new [accounts](https://ripple.com/build/accounts/) on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The operational/standby/issuing model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
 * An [_issuing_ account](https://ripple.com/build/issuing-operational-addresses/#issuing-address) to securely hold the majority of XRP and customers' funds. To provide optimal security, this account should be offline.
 
     For more information about the possible consequences of a compromised issuing account, see [Issuing Account Compromise](https://ripple.com/build/issuing-operational-addresses/#issuing-address-compromise).
 
-* One or more [_operational_ accounts](https://ripple.com/build/issuing-operational-addresses/#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. Operational accounts need to be online to service instant withdrawal requests.
+* One or more [_operational_ accounts](https://ripple.com/build/issuing-operational-addresses/#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with an opertaitional wallet, exchanges can securely support these types of automated XRP transfers. Operational accounts need to be online to service instant withdrawal requests.
 
     For more information about the possible consequences of a compromised operational account, see [Operational Account Compromise](https://ripple.com/build/issuing-operational-addresses/#operational-address-compromise).
 
@@ -48,11 +60,16 @@ Alpha Exchange must create at least two new [accounts](https://ripple.com/build/
 
     For more information about the possible consequences of a compromised standby account, see [Standby Account Compromise](https://ripple.com/build/issuing-operational-addresses/#standby-address-compromise).
 
-For more information, see:
+
+See also:
 
 * ["Suggested Business Practices" in the _Gateway Guide_](https://ripple.com/build/gateway-guide/#suggested-business-practices)
 
 * [Issuing and Operational Addresses](https://ripple.com/build/issuing-operational-addresses/)
+
+* [Creating Accounts](https://ripple.com/build/transactions/#creating-accounts)
+
+* [Reserves](https://ripple.com/build/reserves/)
 
 ### Balance Sheets
 
@@ -140,7 +157,15 @@ XRP Balances</i></b></td>
   </tr>
 </table>
 
-## On-Ledger and Off-Ledger
+#### XRP Amounts
+
+Amounts of XRP are represented on the RCL as an unsigned integer count of *drops*, where one XRP == 1,000,000 drops. Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values. However, user interfaces should present balances in units of XRP.
+
+One drop (.000001 XRP) cannot be further subdivided. Bear this in mind when calculating and displaying FX rates between XRP and other assets.
+
+For more informtion, see [Specifying Currency Amounts](https://ripple.com/build/rippled-apis/#specifying-currency-amounts).
+
+#### On-Ledger and Off-Ledger
 
 With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
 
@@ -153,9 +178,9 @@ With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
 
 ## Flow of Funds
 
-The remaining sections describe how funds flow through the accounts managed by Alpha Exchange as its users begin to deposit, trade, and redeem XRP balances. To illustrate the flow of funds, this document uses the tables introduced in a [previous section](#balance-sheets).
+The remaining sections describe how funds flow through the accounts managed by Alpha Exchange as its users begin to deposit, trade, and redeem XRP balances. To illustrate the flow of funds, this document uses the tables introduced in the ["Balance Sheets" section](#balance-sheets).
 
-There are three main steps involved in an exchange's typical flow of funds:
+There are four main steps involved in an exchange's typical flow of funds:
 
 1. [Deposit XRP into Exchange](#deposit-xrp-into-an-exchange)
 
@@ -166,9 +191,9 @@ There are three main steps involved in an exchange's typical flow of funds:
 4. [Trade XRP on the Exchange](#trade-xrp-on-the-exchange)
 
 
-This list does not include the [prerequisites](#prerequisites for Supporting XRP) required of an exchange.
+This list does not include the [prerequisites](#prerequisites-for-supporting-xrp) required of an exchange.
 
-At this point, _Alpha Exchange_ has created [operational, standby, and issuing accounts](#accounts) on the RCL and added them to its balance sheet, but has not funded the new accounts.
+At this point, _Alpha Exchange_ has created [operational, standby, and issuing accounts](#accounts) on the RCL and added them to its balance sheet, but has not accepted any deposits from its users.
 
 
 <table>
@@ -249,32 +274,40 @@ XRP Balances</i></b></td>
 </table>
 
 
+### Deposit XRP into Exchange
 
+To track [off-ledger XRP balances](#on-ledger-and-off-ledger) exchanges need to create new [balance sheets](#balance-sheets) (or similar accounting systems). The following table illustrates the balance changes that take place on Alpha Exchange's new balance sheet as users begin to deposit XRP.
 
-## Deposit XRP into Exchange
+A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this involves the following steps:
 
-The exchange is required to create a new accounting system to track off ledger XRP balances. Figure 1 shows the initial condition of this new account system, where all user balances start with a value of zero.
+1. Charlie submits a payment of 50,000  XRP (by using [RippleAPI](https://ripple.com/build/rippleapi/) or similar software) to Alpha Exchange's [issuing account](#accounts).
 
-Example deposit : The user Charlie wishes to deposit 50,000 XRP to Alpha Exchange. Through the interface that Alpha Exchange provides, Charlie is instructed to submit a payment (via Ripple API or wallet software) for that amount to Alpha Exchange’s cold wallet address, and to associate a numerical identifier (say 789) with the payment.
+    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](https://ripple.com/build/gateway-guide/#source-and-destination-tags). (To use this, Alpha Exchange must have set the asfRequireDest flag on all of its accounts. This flag requires all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](https://ripple.com/build/transactions/#accountset-flags).
+
+2. The software at Alpha Exchange detects the incoming payment, and recognizes `789` as the destination tag for Charlie’s account.
+
+3. When it detects the incoming payment, Alpha Exchange's software updates its balance sheet to indicate that the 50,000 XRP it received is controlled by Charlie.
+
+    Charlie can now use up to 50,000 XRP on the exchange. For example, he can create offers to trade XRP with BTC or any of the other currencies Alpha Exchange supports.
 
 <table>
   <tr>
-    <td>XRP Balances
-on RCL</td>
+    <td><b><i>XRP Balances
+on RCL</i></b></td>
     <td></td>
     <td></td>
-    <td>Alpha Exchange
-XRP Balances</td>
+    <td><b><i>Alpha Exchange
+XRP Balances</i></b></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td>User</td>
-    <td>Balance</td>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
     <td></td>
-    <td>Acct #</td>
-    <td>User</td>
-    <td>Balance</td>
+    <td><b>Acct #</b></td>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
   </tr>
   <tr>
     <td>Dave</td>
@@ -294,13 +327,13 @@ XRP Balances</td>
   </tr>
   <tr>
     <td>Charlie</td>
-    <td>100,000
-50,000</td>
+    <td><s>100,000</s>
+<br>50,000</td>
     <td></td>
     <td>789</td>
     <td>Charlie</td>
-    <td> 0
-50,000</td>
+    <td><s>0</s>
+<br>50,000</td>
   </tr>
   <tr>
     <td></td>
@@ -311,7 +344,7 @@ XRP Balances</td>
     <td></td>
   </tr>
   <tr>
-    <td>Alpha Hot</td>
+    <td>Alpha Operational</td>
     <td>0</td>
     <td></td>
     <td>...</td>
@@ -319,7 +352,7 @@ XRP Balances</td>
     <td></td>
   </tr>
   <tr>
-    <td>Alpha Warm</td>
+    <td>Alpha Standby</td>
     <td>0</td>
     <td></td>
     <td></td>
@@ -327,9 +360,9 @@ XRP Balances</td>
     <td></td>
   </tr>
   <tr>
-    <td>Alpha Cold</td>
-    <td> 0
-50,000</td>
+    <td>Alpha Issuing</td>
+    <td><s>0</s>
+<br>50,000</td>
     <td></td>
     <td></td>
     <td></td>
@@ -346,51 +379,53 @@ XRP Balances</td>
 </table>
 
 
-Figure 2 : Before and after a XRP deposit is made by Charlie to Alpha Exchange
+### Trade XRP on The Exchange
 
-The software at Alpha Exchange detects the incoming payment, and recognizes 789 as the identifier associated with Charlie’s account. The number 789 is a field known as a "Destination Tag" on the RCL. (Alpha Exchange has set a flag, called asfRequireDest, on its wallets to ensure that all incoming payment have a destination tag.)
+Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exchange. Alpha Exchange should keep track of user balances on its new balance sheet as these trades are made. These trades are _off-ledger_ and independent from the RCL, so the balance changes are not recorded there.
 
-[https://ripple.com/build/transactions/#accountset-flags](https://ripple.com/build/transactions/#accountset-flags)
+For more information about trading _on_ the RCL, see [Lifecycle of an Offer](https://ripple.com/build/transactions/#lifecycle-of-an-offer).
 
-Upon detecting the incoming payment, Alpha Exchange software updates the balance sheet to reflect the 50,000 XRP received is controlled by Charlie.  Charlie is now able to use up to 50,000 XRP on the exchange, for example to create orders trading XRP to other supported currencies on Alpha Exchange.
 
-## Rebalancing XRP Holdings
+### Rebalancing XRP Holdings
 
-In order to securely support automated transfers of XRP, the exchange will keep a portion of XRP holdings in one (or more) operational "hot" wallets. In most XRP integrations, an exchange will elect to have their middleware software make payments automatically from the hot wallet (a withdrawal payment, for example), while a cold wallet will require human intervention.
+Exchanges can adjust the balances between their operational and issuing accounts at any time. Each balance adjustment consumes a [transaction fee](https://ripple.com/build/fees-disambiguation/), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's [transaction fees](https://ripple.com/build/transaction-cost/).)
+
+The following table demonstrates balance adjustment of 80,000 XRP (via a [_payment_](https://ripple.com/build/transactions/#payment) on the RCL) between Alpha Exchange's issuing account and its operational account, where the issuing account was debited and the operational account was debited. If the payment were reversed (debit the operational account and credit the issuing account), the operational account balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online operational accounts.
+
 
 <table>
   <tr>
-    <td>Alpha Exchange XRP
-Off Ledger Balances</td>
+    <td><b><i>Alpha Exchange XRP
+Off-Ledger Balances</i></b></td>
     <td></td>
     <td></td>
     <td></td>
-    <td>Alpha Exchange XRP On Ledger Balances</td>
+    <td><b><i>Alpha Exchange XRP On-Ledger Balances</i></b></td>
     <td></td>
   </tr>
   <tr>
-    <td>Acct #</td>
-    <td>User</td>
-    <td>Balance</td>
+    <td><b>Acct #</b></td>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
     <td></td>
-    <td>Wallet</td>
-    <td>Balance</td>
+    <td><b>RCL Account</b></td>
+    <td><b>Balance</b></td>
   </tr>
   <tr>
     <td>123</td>
     <td>Alice</td>
     <td>80,000</td>
     <td></td>
-    <td>Hot</td>
-    <td>0
-80,000</td>
+    <td>Operational</td>
+    <td><s>0</s>
+<br>80,000</td>
   </tr>
   <tr>
     <td>456</td>
     <td>Bob</td>
     <td>50,000</td>
     <td></td>
-    <td>Warm</td>
+    <td>Standby</td>
     <td>0</td>
   </tr>
   <tr>
@@ -406,9 +441,9 @@ Off Ledger Balances</td>
     <td>Charlie</td>
     <td>50,000</td>
     <td></td>
-    <td>Cold</td>
-    <td>180,000
-100,000</td>
+    <td>Issuing</td>
+    <td><s>180,000</s>
+<br>100,000</td>
   </tr>
   <tr>
     <td></td>
@@ -429,41 +464,44 @@ Off Ledger Balances</td>
 </table>
 
 
-Figure 3 : Without fractional reserve, XRP moves to operational hot wallet
+### Withdraw XRP from Exchange
 
-The exchange can adjust balances between hot and cold wallets at any time.  While each such adjustment consumes a fee, it does not otherwise affect the overall balance, which is an aggregate of all the holding wallets.  This aggregate On Ledger balance should at all times exceed the total available for trade on the exchange.  (Where the excess is sufficient to cover ledger transaction fees.)
+Withdrawals allow an exchange's users to move XRP from the exchange's off-ledger balance sheet to an account on the RCL.
 
-Figure 3 shows a balance adjustment via a payment of 80,000 XRP from Cold wallet to Hot wallet.  A payment made in reverse (debit the hot wallet, credit the cold wallet; not shown) would decrease the hot wallet balance. These balance adjustments allow an exchange to limit the risk associated with holding XRP in an online Hot wallet, by holding a balance in an offline Cold wallet.
+In this example, Charlie withdraws 25,000 XRP from Alpha Exchange. This involves the following steps:
 
-## Withdraw XRP from Exchange
+1. Charlie initiates the process on Alpha Exchange’s website. He provides instructions to transfer 25,000 XRP to a specific account on the RCL (named "Charlie RCL" in the following table).
 
-The *withdraw* feature allows customers to move XRP from Alpha Exchange to a wallet on the Ripple Consensus Ledger.
+2. In response to Charlie’s instructions, Alpha Exchange does the following:
 
-In this example, Charlie initiates the process on the Alpha Exchange’s website.  He provides instructions to transfer 25,000 XRP to a specific Ripple wallet on RCL (named "Charlie" in figure 4).
+    a. Debits the amount (25,000 XRP) from Charlie’s account on its off-ledger balance sheet
+
+    b. Submits a payment on the RCL for the same amount (25,000 XRP), from Alpha Exchange's operational account to Charlie’s RCL account
+
 
 <table>
   <tr>
-    <td>RCL On Ledger XRP Balances</td>
+    <td><b><i>RCL On-Ledger XRP Balances</td>
     <td></td>
     <td></td>
-    <td>Alpha Exchange XRP
-Off Ledger Balances</td>
+    <td><b><i>Alpha Exchange XRP
+Off-Ledger Balances</td>
     <td></td>
     <td></td>
     <td></td>
-    <td>Alpha Exchange XRP On Ledger Balances</td>
+    <td><b><i>Alpha Exchange XRP On-Ledger Balances</td>
     <td></td>
   </tr>
   <tr>
-    <td>User</td>
-    <td>Balance</td>
+    <td><b>User</td>
+    <td><b>Balance</td>
     <td></td>
-    <td>Acct #</td>
-    <td>User</td>
-    <td>Balance</td>
+    <td><b>Acct #</td>
+    <td><b>User</td>
+    <td><b>Balance</td>
     <td></td>
-    <td>Wallet</td>
-    <td>Balance</td>
+    <td><b>RCL Account</td>
+    <td><b>Balance</td>
   </tr>
   <tr>
     <td>Dave</td>
@@ -473,9 +511,9 @@ Off Ledger Balances</td>
     <td>Alice</td>
     <td>80,000</td>
     <td></td>
-    <td>Hot</td>
-    <td>80,000
-55,000</td>
+    <td>Operational</td>
+    <td><s>80,000</s>
+<br>55,000</td>
   </tr>
   <tr>
     <td>Edward</td>
@@ -485,7 +523,7 @@ Off Ledger Balances</td>
     <td>Bob</td>
     <td>50,000</td>
     <td></td>
-    <td>Warm</td>
+    <td>Standby</td>
     <td>0</td>
   </tr>
   <tr>
@@ -500,16 +538,16 @@ Off Ledger Balances</td>
     <td></td>
   </tr>
   <tr>
-    <td>Charlie</td>
-    <td>50,000
-75,000</td>
+    <td>Charlie RCL</td>
+    <td><s>50,000</s>
+<br>75,000</td>
     <td></td>
     <td>789</td>
     <td>Charlie</td>
-    <td>50,000
-25,000</td>
+    <td><s>50,000</s>
+<br>25,000</td>
     <td></td>
-    <td>Cold</td>
+    <td>Issuing</td>
     <td>100,000</td>
   </tr>
   <tr>
@@ -535,32 +573,3 @@ Off Ledger Balances</td>
     <td></td>
   </tr>
 </table>
-
-
-Figure 4 : Before and after a XRP withdrawal by Charlie
-
-In response to Charlie’s instruction to withdraw 25,000 XRP, Alpha Exchange performs the following tasks, shown in figure 4, in this order:
-
-* Debit the amount from Charlie’s row on the balance sheet
-
-* Submit a Ripple payment for the same amount, from Alpha Exchange hot wallet to Charlie’s RCL wallet
-
-## Trade XRP on The Exchange
-
-Users of Alpha Exchange can trade the credit based balances on Alpha Exchange, and Alpha should be expected to keep track of all users balances as the trades are made. These trades are independent of, and not reflected on, RCL.
-
-# About XRP Accounts
-
-XRP is held in Ripple Consensus Ledger *accounts* (sometimes referred to as *wallets* or *addresses*).  This document shows that an exchange is able to store all of the customers’ XRP in relatively few wallets.  (Technically, all the XRP could be managed in a single wallet.  It is for security reasons that an exchange should manage a set of hot, warm, and cold wallets.)
-
-An exchange should not create a Ripple wallet for each customer who holds XRP with the exchange.  The RCL differs from other blockchains such as Bitcoin where additional wallets incur essentially no overhead.  A Bitcoin balance is a collation of multiple UTXOs from prior blocks.  A Ripple account, in contrast, is represented in each iteration of the ledger, and can never be destroyed or removed (similar to Ethereum).  The Ripple account object includes an XRP balance as well as other properties.  Also, each Ripple account requires an XRP reserve, which adds a cost to creating a large number of wallets.
-
-See [https://ripple.com/build/transactions/#creating-accounts](https://ripple.com/build/transactions/#creating-accounts) and [https://ripple.com/build/reserves/](https://ripple.com/build/reserves/).
-
-# About XRP Balances
-
-Amounts of XRP are represented on the Ripple Consensus Ledger as an unsigned integer count of *drops*, where one XRP == 1,000,000 drops.  Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values.  However all user interfaces should present balances in units of XRP.
-
-One drop (or .000001 XRP) cannot be further subdivided.  Bear this in mind when calculating and displaying FX rates between XRP and other assets.
-
-See [https://ripple.com/build/rippled-apis/#specifying-currency-amounts](https://ripple.com/build/rippled-apis/#specifying-currency-amounts) for additional detail.
