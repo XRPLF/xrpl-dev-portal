@@ -200,61 +200,61 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="#ledger-index">ledger_index</a></td>
+<td><a href="#ledger-index"><code>ledger_index</code></a></td>
 <td>String</td>
 <td>UInt32</td>
 <td>The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number.</td>
 </tr>
 <tr>
-<td>ledger_hash</td>
+<td><code>ledger_hash</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The SHA-512Half of the ledger header, excluding the <code>ledger_hash</code> itself. This serves as a unique identifier for this ledger and all its contents.</td>
 </tr>
 <tr>
-<td>account_hash</td>
+<td><code>account_hash</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The SHA-512Half of this ledger's state tree information.</td>
 </tr>
 <tr>
-<td>close_time</td>
+<td><code>close_time</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the <code>close_time_resolution</code>, so later ledgers can have the same value.</td>
 </tr>
 <tr>
-<td>closed</td>
+<td><code>closed</code></td>
 <td>Boolean</td>
 <td>bool</td>
 <td>If true, this transaction is no longer accepting new transactions. (However, unless this ledger is validated, it might be replaced by a different ledger with a different set of transactions.)</td>
 </tr>
 <tr>
-<td>parent_hash</td>
+<td><code>parent_hash</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The <code>ledger_hash</code> value of the previous ledger that was used to build this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived.</td>
 </tr>
 <tr>
-<td>total_coins</td>
+<td><code>total_coins</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>The total number of <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a> owned by accounts in the ledger. This omits XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone.</td>
 </tr>
 <tr>
-<td>transaction_hash</td>
+<td><code>transaction_hash</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The SHA-512Half of the transactions included in this ledger.</td>
 </tr>
 <tr>
-<td>close_time_resolution</td>
+<td><code>close_time_resolution</code></td>
 <td>Number</td>
 <td>Uint8</td>
 <td>An integer in the range [2,120] indicating the maximum number of seconds by which the <code>close_time</code> could be rounded.</td>
 </tr>
 <tr>
-<td><a href="#close-flags">closeFlags</a></td>
+<td><a href="#close-flags"><code>closeFlags</code></a></td>
 <td>(Omitted)</td>
 <td>UInt8</td>
 <td>A bit-map of flags relating to the closing of this ledger.</td>
@@ -316,13 +316,13 @@
 </thead>
 <tbody>
 <tr>
-<td>LedgerEntryType</td>
+<td><code>LedgerEntryType</code></td>
 <td>String</td>
 <td>UInt16</td>
 <td>The value <code>0x61</code>, mapped to the string <code>AccountRoot</code>, indicates that this node is an AccountRoot object.</td>
 </tr>
 <tr>
-<td>Account</td>
+<td><code>Account</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>The identifying address of this account, such as rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn.</td>
@@ -334,85 +334,85 @@
 <td>A bit-map of boolean flags enabled for this account.</td>
 </tr>
 <tr>
-<td>Sequence</td>
+<td><code>Sequence</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.)</td>
 </tr>
 <tr>
-<td>Balance</td>
+<td><code>Balance</code></td>
 <td>String</td>
 <td>Amount</td>
 <td>The account's current <a href="reference-rippled.html#specifying-currency-amounts">XRP balance in drops</a>, represented as a string.</td>
 </tr>
 <tr>
-<td>OwnerCount</td>
+<td><code>OwnerCount</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The number of objects this account owns in the ledger, which contributes to its owner reserve.</td>
 </tr>
 <tr>
-<td>PreviousTxnID</td>
+<td><code>PreviousTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The identifying hash of the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>PreviousTxnLgrSeq</td>
+<td><code>PreviousTxnLgrSeq</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>AccountTxnID</td>
+<td><code>AccountTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>(Optional) The identifying hash of the transaction most recently submitted by this account.</td>
 </tr>
 <tr>
-<td>RegularKey</td>
+<td><code>RegularKey</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>(Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a <a href="reference-transaction-format.html#setregularkey">SetRegularKey transaction</a> to change this value.</td>
 </tr>
 <tr>
-<td>EmailHash</td>
+<td><code>EmailHash</code></td>
 <td>String</td>
 <td>Hash128</td>
 <td>(Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a href="https://en.gravatar.com/">Gravatar</a>.</td>
 </tr>
 <tr>
-<td>WalletLocator</td>
+<td><code>WalletLocator</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>(Optional) <strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 <tr>
-<td>WalletSize</td>
+<td><code>WalletSize</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) <strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 <tr>
-<td>MessageKey</td>
+<td><code>MessageKey</code></td>
 <td>String</td>
 <td>VariableLength</td>
 <td>(Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes.</td>
 </tr>
 <tr>
-<td>TickSize</td>
+<td><code>TickSize</code></td>
 <td>Number</td>
 <td>UInt8</td>
 <td>(Optional) How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are <code>3</code> to <code>15</code>, inclusive. <em>(Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
 </tr>
 <tr>
-<td>TransferRate</td>
+<td><code>TransferRate</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) A <a href="https://ripple.com/knowledge_center/transfer-fees/">transfer fee</a> to charge other users for sending currency issued by this account to each other.</td>
 </tr>
 <tr>
-<td>Domain</td>
+<td><code>Domain</code></td>
 <td>String</td>
 <td>VariableLength</td>
 <td>(Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain.</td>
@@ -548,73 +548,73 @@
 </thead>
 <tbody>
 <tr>
-<td>LedgerEntryType</td>
+<td><code>LedgerEntryType</code></td>
 <td>Number</td>
 <td>UInt16</td>
 <td>The value <code>0x64</code>, mapped to the string <code>DirectoryNode</code>, indicates that this node is part of a Directory.</td>
 </tr>
 <tr>
-<td>Flags</td>
+<td><code>Flags</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects.</td>
 </tr>
 <tr>
-<td>RootIndex</td>
+<td><code>RootIndex</code></td>
 <td>Number</td>
 <td>Hash256</td>
 <td>The index of root node for this directory.</td>
 </tr>
 <tr>
-<td>Indexes</td>
+<td><code>Indexes</code></td>
 <td>Array</td>
 <td>Vector256</td>
 <td>The contents of this Directory: an array of indexes to other nodes.</td>
 </tr>
 <tr>
-<td>IndexNext</td>
+<td><code>IndexNext</code></td>
 <td>Number</td>
 <td>UInt64</td>
 <td>(Optional) If this Directory consists of multiple pages, this index links to the next node in the chain, wrapping around at the end.</td>
 </tr>
 <tr>
-<td>IndexPrevious</td>
+<td><code>IndexPrevious</code></td>
 <td>Number</td>
 <td>UInt64</td>
 <td>(Optional) If this Directory consists of multiple pages, this index links to the previous node in the chain, wrapping around at the beginning.</td>
 </tr>
 <tr>
-<td>Owner</td>
+<td><code>Owner</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>(Owner Directories only) The address of the account that owns the objects in this directory.</td>
 </tr>
 <tr>
-<td>ExchangeRate</td>
+<td><code>ExchangeRate</code></td>
 <td>Number</td>
 <td>UInt64</td>
 <td>(Offer Directories only) <strong>DEPRECATED</strong>. Do not use.</td>
 </tr>
 <tr>
-<td>TakerPaysCurrency</td>
+<td><code>TakerPaysCurrency</code></td>
 <td>String</td>
 <td>Hash160</td>
 <td>(Offer Directories only) The currency code of the TakerPays amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td>TakerPaysIssuer</td>
+<td><code>TakerPaysIssuer</code></td>
 <td>String</td>
 <td>Hash160</td>
 <td>(Offer Directories only) The issuer of the TakerPays amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td>TakerGetsCurrency</td>
+<td><code>TakerGetsCurrency</code></td>
 <td>String</td>
 <td>Hash160</td>
 <td>(Offer Directories only) The currency code of the TakerGets amount from the offers in this directory.</td>
 </tr>
 <tr>
-<td>TakerGetsIssuer</td>
+<td><code>TakerGetsIssuer</code></td>
 <td>String</td>
 <td>Hash160</td>
 <td>(Offer Directories only) The issuer of the TakerGets amount from the offers in this directory.</td>
@@ -687,67 +687,67 @@
 </thead>
 <tbody>
 <tr>
-<td>Account</td>
+<td><code>Account</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled.</td>
 </tr>
 <tr>
-<td>Destination</td>
+<td><code>Destination</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>The destination address where the XRP is paid if the held payment is successful.</td>
 </tr>
 <tr>
-<td>Amount</td>
+<td><code>Amount</code></td>
 <td>String</td>
 <td>Amount</td>
 <td>The amount of XRP, in drops, to be delivered by the held payment.</td>
 </tr>
 <tr>
-<td>Condition</td>
+<td><code>Condition</code></td>
 <td>String</td>
 <td>VariableLength</td>
 <td><em>(Optional)</em> A <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>, as hexadecimal. If present, the <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> must contain a fulfillment that satisfies this condition.</td>
 </tr>
 <tr>
-<td>CancelAfter</td>
+<td><code>CancelAfter</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td><em>(Optional)</em> The held payment can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
 </tr>
 <tr>
-<td>FinishAfter</td>
+<td><code>FinishAfter</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a>, after which this held payment can be finished. Any <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
 </tr>
 <tr>
-<td>SourceTag</td>
+<td><code>SourceTag</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td><em>(Optional)</em> An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address.</td>
 </tr>
 <tr>
-<td>DestinationTag</td>
+<td><code>DestinationTag</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td><em>(Optional)</em> An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address.</td>
 </tr>
 <tr>
-<td>OwnerNode</td>
+<td><code>OwnerNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple pages. <strong>Note:</strong> The node does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
 </tr>
 <tr>
-<td>PreviousTxnID</td>
+<td><code>PreviousTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The identifying hash of the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>PreviousTxnLgrSeq</td>
+<td><code>PreviousTxnLgrSeq</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
@@ -797,73 +797,73 @@
 </thead>
 <tbody>
 <tr>
-<td>LedgerEntryType</td>
+<td><code>LedgerEntryType</code></td>
 <td>String</td>
 <td>UInt16</td>
 <td>The value <code>0x6F</code>, mapped to the string <code>Offer</code>, indicates that this node is an Offer object.</td>
 </tr>
 <tr>
-<td>Flags</td>
+<td><code>Flags</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>A bit-map of boolean flags enabled for this offer.</td>
 </tr>
 <tr>
-<td>Account</td>
+<td><code>Account</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>The address of the account that owns this offer.</td>
 </tr>
 <tr>
-<td>Sequence</td>
+<td><code>Sequence</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <code>Sequence</code> value of the <a href="reference-transaction-format.html#offercreate">OfferCreate</a> transaction that created this Offer node. Used in combination with the <code>Account</code> to identify this Offer.</td>
 </tr>
 <tr>
-<td>TakerPays</td>
+<td><code>TakerPays</code></td>
 <td>String or Object</td>
 <td>Amount</td>
 <td>The remaining amount and type of currency requested by the offer creator.</td>
 </tr>
 <tr>
-<td>TakerGets</td>
+<td><code>TakerGets</code></td>
 <td>String or Object</td>
 <td>Amount</td>
 <td>The remaining amount and type of currency being provided by the offer creator.</td>
 </tr>
 <tr>
-<td>BookDirectory</td>
+<td><code>BookDirectory</code></td>
 <td>String</td>
 <td>UInt256</td>
 <td>The index of the <a href="#directorynode">Offer Directory</a> that links to this offer.</td>
 </tr>
 <tr>
-<td>BookNode</td>
+<td><code>BookNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>A hint indicating which page of the offer directory links to this node, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
-<td>OwnerNode</td>
+<td><code>OwnerNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple pages. <strong>Note:</strong> The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
 </tr>
 <tr>
-<td>PreviousTxnID</td>
+<td><code>PreviousTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The identifying hash of the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>PreviousTxnLgrSeq</td>
+<td><code>PreviousTxnLgrSeq</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>Expiration</td>
+<td><code>Expiration</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) Indicates the time after which this offer is considered unfunded. See <a href="reference-rippled.html#specifying-time">Specifying Time</a> for details.</td>
@@ -1024,13 +1024,13 @@
 <td align="left"><em>(Optional)</em> The immutable expiration time for this payment channel, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>. This channel is expired if this value is present and smaller than the previous ledger's <a href="#header-format"><code>close_time</code> field</a>. This is optionally set by the transaction that created the channel, and cannot be changed.</td>
 </tr>
 <tr>
-<td align="left">SourceTag</td>
+<td align="left"><code>SourceTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
 <td align="left"><em>(Optional)</em> An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address.</td>
 </tr>
 <tr>
-<td align="left">DestinationTag</td>
+<td align="left"><code>DestinationTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
 <td align="left"><em>(Optional)</em> An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
@@ -1106,79 +1106,79 @@
 </thead>
 <tbody>
 <tr>
-<td>LedgerEntryType</td>
+<td><code>LedgerEntryType</code></td>
 <td>String</td>
 <td>UInt16</td>
 <td>The value <code>0x72</code>, mapped to the string <code>RippleState</code>, indicates that this node is a RippleState object.</td>
 </tr>
 <tr>
-<td>Flags</td>
+<td><code>Flags</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>A bit-map of boolean options enabled for this node.</td>
 </tr>
 <tr>
-<td>Balance</td>
+<td><code>Balance</code></td>
 <td>Object</td>
 <td>Amount</td>
 <td>The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value <a href="concept-accounts.html#special-addresses">ACCOUNT_ONE</a>.</td>
 </tr>
 <tr>
-<td>LowLimit</td>
+<td><code>LowLimit</code></td>
 <td>Object</td>
 <td>Amount</td>
 <td>The limit that the low account has set on the trust line. The <code>issuer</code> is the address of the low account that set this limit.</td>
 </tr>
 <tr>
-<td>HighLimit</td>
+<td><code>HighLimit</code></td>
 <td>Object</td>
 <td>Amount</td>
 <td>The limit that the high account has set on the trust line. The <code>issuer</code> is the address of the high account that set this limit.</td>
 </tr>
 <tr>
-<td>PreviousTxnID</td>
+<td><code>PreviousTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The identifying hash of the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>PreviousTxnLgrSeq</td>
+<td><code>PreviousTxnLgrSeq</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>LowNode</td>
+<td><code>LowNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>(Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this node, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
-<td>HighNode</td>
+<td><code>HighNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>(Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this node, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
-<td>LowQualityIn</td>
+<td><code>LowQualityIn</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
 </tr>
 <tr>
-<td>LowQualityOut</td>
+<td><code>LowQualityOut</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) The outbound quality set by the low account, as an integer in the implied ratio LowQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
 </tr>
 <tr>
-<td>HighQualityIn</td>
+<td><code>HighQualityIn</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
 </tr>
 <tr>
-<td>HighQualityOut</td>
+<td><code>HighQualityOut</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>(Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value.</td>
@@ -1352,37 +1352,37 @@
 </thead>
 <tbody>
 <tr>
-<td>OwnerNode</td>
+<td><code>OwnerNode</code></td>
 <td>String</td>
 <td>UInt64</td>
 <td>A hint indicating which page of the owner directory links to this node, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
-<td>SignerQuorum</td>
+<td><code>SignerQuorum</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more.</td>
 </tr>
 <tr>
-<td>SignerEntries</td>
+<td><code>SignerEntries</code></td>
 <td>Array</td>
 <td>Array</td>
 <td>An array of SignerEntry objects representing the parties who are part of this signer list.</td>
 </tr>
 <tr>
-<td>SignerListID</td>
+<td><code>SignerListID</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>An ID for this signer list. Currently always set to <code>0</code>. If a future <a href="concept-amendments.html">amendment</a> allows multiple signer lists for an account, this may change.</td>
 </tr>
 <tr>
-<td>PreviousTxnID</td>
+<td><code>PreviousTxnID</code></td>
 <td>String</td>
 <td>Hash256</td>
 <td>The identifying hash of the transaction that most recently modified this node.</td>
 </tr>
 <tr>
-<td>PreviousTxnLgrSeq</td>
+<td><code>PreviousTxnLgrSeq</code></td>
 <td>Number</td>
 <td>UInt32</td>
 <td>The <a href="#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this node.</td>
@@ -1403,13 +1403,13 @@
 </thead>
 <tbody>
 <tr>
-<td>Account</td>
+<td><code>Account</code></td>
 <td>String</td>
 <td>AccountID</td>
 <td>A  Ripple address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger.</td>
 </tr>
 <tr>
-<td>SignerWeight</td>
+<td><code>SignerWeight</code></td>
 <td>Number</td>
 <td>UInt16</td>
 <td>The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the SignerList's <code>SignerQuorum</code> value.</td>
