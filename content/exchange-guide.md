@@ -1,10 +1,10 @@
 # Listing XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the Ripple Consensus Ledger (RCL), see [https://ripple.com/build](https://ripple.com/build).
+This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the Ripple Consensus Ledger (RCL), see the  [Ripple Developer Center](https://ripple.com/build).
 
 ## Alpha Exchange
 
-For illustrative purposes, this document uses a fictitious business called _Alpha Exchange_ that has the following characteristics:
+For illustrative purposes, this document uses a fictitious business called _Alpha Exchange_ to explain the high-level steps required to list XRP. For the purposes of this document, Alpha Exchange:
 
 * Currently specializes in listing BTC/USD
 
@@ -34,11 +34,19 @@ To support XRP, Alpha Exchange must:
 
 ### Accounts
 
-Alpha Exchange must create at least two new [accounts](https://ripple.com/build/accounts/) (also referred to as "wallets") on the RCL. To minimize the risk associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). This model is intended to balance security and convenience.
+Alpha Exchange must create at least two new [accounts](https://ripple.com/build/accounts/) (also referred to as "wallets") on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The operational/standby/issuing model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
-    * An _issuing_ account to securely hold the majority of XRP and customers' funds. This account should be offline.
+* An [_issuing_ account](https://ripple.com/build/issuing-operational-addresses/#issuing-address) to securely hold the majority of XRP and customers' funds. To provide optimal security, this account should be offline.
 
-    * One or more _operational_ (and, perhaps, _standby_) accounts to conduct the day-to-day business of accepting customers' XRP withdrawals and deposits. Standby accounts can be online if you use the [Multisign](https://ripple.com/build/how-to-multi-sign/) feature. Operational accounts need to be online to service instant withdrawal requests.
+    For more information about the possible consequences of a compromised issuing account, see [Issuing Account Compromise](https://ripple.com/build/issuing-operational-addresses/#issuing-address-compromise).
+
+* One or more [_operational_ accounts](https://ripple.com/build/issuing-operational-addresses/#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. Operational accounts need to be online to service instant withdrawal requests.
+
+    For more information about the possible consequences of a compromised operational account, see [Operational Account Compromise](https://ripple.com/build/issuing-operational-addresses/#operational-address-compromise).
+
+* Optionally, one or more standby accounts to provide an additional layer of security between the issuing and operational accounts. Unlike an operational account, the secret key of a standby account does not need to be online. Additionally, you can distribute the secret keys for the standby account to several different people and implement  [multisigning](https://ripple.com/build/how-to-multi-sign/) to increase security.
+
+    For more information about the possible consequences of a compromised standby account, see [Standby Account Compromise](https://ripple.com/build/issuing-operational-addresses/#standby-address-compromise).
 
 For more information, see:
 
@@ -48,16 +56,129 @@ For more information, see:
 
 ### Balance Sheets
 
-Alpha Exchange will custody its customers' XRP, so it needs to track each customer's balance. To do this, Alpha Exchange must create and maintain an additional balance sheet. The following table illustrates what this balance sheet might look like.
+Alpha Exchange will custody its customers' XRP, so it needs to track each customer's balance(s). To do this, Alpha Exchange must create and maintain an additional balance sheet. The following table illustrates what this balance sheet might look like.
+
+The new RCL accounts (_Alpha Operational_, _Alpha Standby_, _Alpha Issuing_) are in the *User* column of the *XRP Balances on RCL* table.
+
+The *Alpha Exchange XRP Balances* table represents new, additional balance sheet. Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.
+
 
 <table>
   <tr>
-    <td><b>XRP Balances
-on RCL</b></td>
+    <td><b><i>XRP Balances
+on RCL</i></b></td>
     <td></td>
     <td></td>
-    <td><b>Alpha Exchange
-XRP Balances</b></td>
+    <td><b><i>Alpha Exchange
+XRP Balances</i></b></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
+    <td></td>
+    <td><b>Acct #</b></td>
+    <td><b>User</b></td>
+    <td><b>Balance</b></td>
+  </tr>
+  <tr>
+    <td>Dave</td>
+    <td>25,000</td>
+    <td></td>
+    <td>123</td>
+    <td>Alice</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Edward</td>
+    <td>45,000</td>
+    <td></td>
+    <td>456</td>
+    <td>Bob</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Charlie</td>
+    <td>50,000</td>
+    <td></td>
+    <td>789</td>
+    <td>Charlie</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><i>Alpha Operational</i></td>
+    <td>0</td>
+    <td></td>
+    <td>...</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><i>Alpha Standby</i></td>
+    <td>0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><i>Alpha Issuing</i></td>
+    <td>0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+## On-Ledger and Off-Ledger
+
+With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
+
+* **On-Ledger XRP**: XRP that can be queried through the public RCL by specifying the public [address](https://ripple.com/build/accounts/#addresses) of the XRP holder. The counterparty to these balances is the RCL. For more information, see [Currencies](https://ripple.com/build/rippled-apis/#currencies).
+
+* **Off-Ledger XRP**: XRP that is held by the accounting system of an exchange and can be queried through the exchange interface. Off-ledger XRP balances are credit-based. The counterparty is the exchange holding the XRP.
+
+    Off-ledger XRP balances are traded between the participants of an exchange. To support these trades, the exchange must hold a balance of _on-ledger XRP_ equal to the aggregate amount of _off-ledger XRP_ that it makes available for trade.
+
+
+## Flow of Funds
+
+The remaining sections describe how funds flow through the accounts managed by Alpha Exchange as its users begin to deposit, trade, and redeem XRP balances. To illustrate the flow of funds, this document uses the tables introduced in a [previous section](#balance-sheets).
+
+There are three main steps involved in an exchange's typical flow of funds:
+
+1. [Deposit XRP into Exchange](#deposit-xrp-into-an-exchange)
+
+2. [Rebalance XRP Holdings](#rebalance-xrp-holdings)
+
+3. [Withdraw XRP from Exchange](#withdraw-xrp-from-exchange)
+
+4. [Trade XRP on the Exchange](#trade-xrp-on-the-exchange)
+
+
+This list does not include the [prerequisites](#prerequisites for Supporting XRP) required of an exchange.
+
+At this point, _Alpha Exchange_ has created [operational, standby, and issuing accounts](#accounts) on the RCL and added them to its balance sheet, but has not funded the new accounts.
+
+
+<table>
+  <tr>
+    <td><b><i>XRP Balances
+on RCL</i></b></td>
+    <td></td>
+    <td></td>
+    <td><b><i>Alpha Exchange
+XRP Balances</i></b></td>
     <td></td>
     <td></td>
   </tr>
@@ -128,99 +249,7 @@ XRP Balances</b></td>
 </table>
 
 
-The new RCL accounts (_Alpha Operational_, _Alpha Standby_, _Alpha Issuing_) are in the *User* column of the *XRP Balances on RCL* table.
 
-The *Alpha Exchange XRP Balances* table represents new, additional balance sheet. Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.
-
-## Flow of Funds
-
-The remainder of this document describes the flow of funds as Alpha Exchange allows users to deposit, trade, and redeem XRP balances.
-
-<table>
-  <tr>
-    <td>XRP Balances
-on RCL</td>
-    <td></td>
-    <td></td>
-    <td>Alpha Exchange
-XRP Balances</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>User</td>
-    <td>Balance</td>
-    <td></td>
-    <td>Acct #</td>
-    <td>User</td>
-    <td>Balance</td>
-  </tr>
-  <tr>
-    <td>Dave</td>
-    <td>25,000</td>
-    <td></td>
-    <td>123</td>
-    <td>Alice</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Edward</td>
-    <td>45,000</td>
-    <td></td>
-    <td>456</td>
-    <td>Bob</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Charlie</td>
-    <td>50,000</td>
-    <td></td>
-    <td>789</td>
-    <td>Charlie</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Alpha Hot</td>
-    <td>0</td>
-    <td></td>
-    <td>...</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Alpha Warm</td>
-    <td>0</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Alpha Cold</td>
-    <td>0</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>...</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-
-Figure 1 : Initial requirements for listing XRP, denoted by green table cells
-
-## Key Definitions
-
-**On Ledger XRP**: XRP that is visible by querying the public RCL blockchain via the public address of the XRP holder. The counterparty to these balances is the global, decentralized and distributed, RCL.
-
-**Off Ledger XRP**: XRP that is held by the accounting system of an exchange that is visible by querying the exchange interface. These balances are credit based, and have a counterparty as the exchange. While these XRP balances are traded between participants in an exchange, the exchange is obligated to hold a balance of On Ledger XRP equal to the aggregate amount of Off Ledger XRP available for trade.
 
 ## Deposit XRP into Exchange
 
