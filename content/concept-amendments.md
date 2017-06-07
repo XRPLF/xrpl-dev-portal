@@ -259,7 +259,7 @@ When this amendment is activated, the Ripple Consensus Ledger will undergo a bri
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Not intended for production.<br />Enabled on TestNet |
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |Enabled on TestNet; not intended for production.  |
 
 This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
 
