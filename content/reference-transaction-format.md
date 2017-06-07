@@ -220,16 +220,16 @@ Every transaction type has the same set of fundamental fields. Field names are c
 | Field                  | JSON Type        | [Internal Type][] | Description  |
 |:-----------------------|:-----------------|:------------------|:-------------|
 | Account                | String           | Account           | The unique address of the account that initiated the transaction. |
-| [AccountTxnID][]       | String           | Hash256           | (Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
+| [AccountTxnID][]       | String           | Hash256           | _(Optional)_ Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
 | [Fee][]                | String           | Amount            | (Required, but [auto-fillable](#auto-fillable-fields)) Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. |
-| [Flags][]              | Unsigned Integer | UInt32            | (Optional) Set of bit-flags for this transaction. |
+| [Flags][]              | Unsigned Integer | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
 | [LastLedgerSequence][] | Number           | UInt32            | (Optional, but strongly recommended) Highest ledger sequence number that a transaction can appear in. |
-| [Memos][]              | Array of Objects | Array             | (Optional) Additional arbitrary information used to identify this transaction. |
+| [Memos][]              | Array of Objects | Array             | _(Optional)_ Additional arbitrary information used to identify this transaction. |
 | PreviousTxnID | String | Hash256 | [Removed in: rippled 0.28.0][] Use `AccountTxnID` instead. |
 | [Sequence][]           | Unsigned Integer | UInt32            | (Required, but [auto-fillable](#auto-fillable-fields)) The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the last-valided transaction from the same account. |
 | SigningPubKey          | String           | PubKey            | (Automatically added when signing) Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| [Signers][]            | Array            | Array             | (Optional) Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
-| SourceTag              | Unsigned Integer | UInt32            | (Optional) Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
+| [Signers][]            | Array            | Array             | _(Optional)_ Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
+| SourceTag              | Unsigned Integer | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | TransactionType        | String           | UInt16            | The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, `SignerListSet`, `EscrowCreate`, `EscrowFinish`, `EscrowCancel`, `PaymentChannelCreate`, `PaymentChannelFund`, and `PaymentChannelClaim`. |
 | TxnSignature           | String           | VariableLength    | (Automatically added when signing) The signature that verifies this transaction as originating from the account it says it is from. |
 
@@ -403,15 +403,15 @@ Example AccountSet:
 
 | Field                          | JSON Type        | [Internal Type][] | Description |
 |:-------------------------------|:-----------------|:------------------|:-----|
-| [ClearFlag](#accountset-flags) | Unsigned Integer | UInt32            | (Optional) Unique identifier of a flag to disable for this account. |
-| [Domain](#domain)              | String           | VariableLength    | (Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
-| EmailHash                      | String           | Hash128           | (Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| MessageKey                     | String           | PubKey            | (Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple. |
-| [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | (Optional) Integer flag to enable for this account. |
-| [TransferRate](#transferrate)  | Unsigned Integer | UInt32            | (Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
-| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | (Optional) Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](concept-amendments.html#ticksize).)_ |
-| WalletLocator                  | String           | Hash256           | (Optional) Not used. |
-| WalletSize                     | Unsigned Integer | UInt32            | (Optional) Not used. |
+| [ClearFlag](#accountset-flags) | Unsigned Integer | UInt32            | _(Optional)_ Unique identifier of a flag to disable for this account. |
+| [Domain](#domain)              | String           | VariableLength    | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
+| EmailHash                      | String           | Hash128           | _(Optional)_ Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
+| MessageKey                     | String           | PubKey            | _(Optional)_ Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple. |
+| [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | _(Optional)_ Integer flag to enable for this account. |
+| [TransferRate](#transferrate)  | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use `0` to set no fee. |
+| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](concept-amendments.html#ticksize).)_ |
+| WalletLocator                  | String           | Hash256           | _(Optional)_ Not used. |
+| WalletSize                     | Unsigned Integer | UInt32            | _(Optional)_ Not used. |
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
 
@@ -538,11 +538,11 @@ Example EscrowCreate:
 |:-----------------|:----------|:------------------|:--------------------------|
 | `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and escrow. Once escrowed, the XRP can either go to the `Destination` address (after the `FinishAfter` time) or returned to the sender (after the `CancelAfter` time). |
 | `Destination`    | String    | AccountID         | Address to receive escrowed XRP. |
-| `CancelAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this escrow expires. This value is immutable; the funds can only be returned the sender after this time. |
-| `FinishAfter`    | Number    | UInt32            | (Optional) The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached. |
-| `Condition`      | String    | VariableLength    | (Optional) Hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). The funds can only be delivered to the recipient if this condition is fulfilled. |
-| `DestinationTag` | Number    | UInt32            | (Optional) Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
-| `SourceTag`      | Number    | UInt32            | (Optional) Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address. |
+| `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this escrow expires. This value is immutable; the funds can only be returned the sender after this time. |
+| `FinishAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached. |
+| `Condition`      | String    | VariableLength    | _(Optional)_ Hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). The funds can only be delivered to the recipient if this condition is fulfilled. |
+| `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
+| `SourceTag`      | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address. |
 
 Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must precede that of `CancelAfter`.
 
@@ -573,8 +573,8 @@ Example EscrowFinish:
 |:----------------|:-----------------|:------------------|:--------------------------|
 | `Owner`         | String           | AccountID         | Address of the source account that funded the held payment.
 | `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the held payment to finish.
-| `Condition`     | String           | VariableLength    | (Optional) Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
-| `Fulfillment`   | String           | VariableLength    | (Optional) Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
+| `Condition`     | String           | VariableLength    | _(Optional)_ Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
+| `Fulfillment`   | String           | VariableLength    | _(Optional)_ Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 
@@ -639,8 +639,8 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 | Field                     | JSON Type           | [Internal Type][] | Description |
 |:--------------------------|:--------------------|:------------------|:-------|
-| [Expiration](#expiration) | Unsigned Integer    | UInt32            | (Optional) Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
-| OfferSequence             | Unsigned Integer    | UInt32            | (Optional) An offer to delete first, specified in the same way as [OfferCancel][]. |
+| [Expiration](#expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| OfferSequence             | Unsigned Integer    | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
 | TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
 | TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
 
@@ -769,11 +769,11 @@ Example payment:
 |:---------------|:---------------------|:------------------|:-----------------|
 | Amount         | [Currency Amount][]  | Amount            | The amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [**tfPartialPayment** flag](#payment-flags) is set, deliver _up to_ this amount instead. |
 | Destination    | String               | Account           | The unique address of the account receiving the payment. |
-| DestinationTag | Unsigned Integer     | UInt32            | (Optional) Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
-| InvoiceID      | String               | Hash256           | (Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
+| DestinationTag | Unsigned Integer     | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
+| InvoiceID      | String               | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](concept-paths.html) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax        | [Currency Amount][]  | Amount            | (Optional) Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
-| DeliverMin     | [Currency Amount][]  | Amount            | (Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
+| SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| DeliverMin     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
 
 ### Special issuer Values for SendMax and Amount ###
 
@@ -935,9 +935,9 @@ Example PaymentChannelCreate:
 | `Destination`    | String    | AccountID         | Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel. |
 | `SettleDelay`    | Number    | UInt32            | Amount of time the source address must wait before closing the channel if it has unclaimed XRP. |
 | `PublicKey`      | String    | PubKey            | The public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. |
-| `CancelAfter`    | Number    | UInt32            | The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
-| `DestinationTag` | Number    | UInt32            | (Optional) Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
-| `SourceTag`      | Number    | UInt32            | (Optional) Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address. |
+| `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
+| `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
+| `SourceTag`      | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address. |
 
 
 
@@ -988,7 +988,7 @@ A SetRegularKey transaction changes the regular key associated with an address.
 
 | Field      | JSON Type | [Internal Type][] | Description                     |
 |:-----------|:----------|:------------------|:--------------------------------|
-| RegularKey | String    | AccountID         | (Optional) A base-58-encoded [Ripple address](reference-rippled.html#addresses) to use as the regular key. If omitted, removes the existing regular key. |
+| RegularKey | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](reference-rippled.html#addresses) to use as the regular key. If omitted, removes the existing regular key. |
 
 In addition to the master key, which is mathematically-related to an address, you can associate **at most 1 additional key pair** with an address using this type of transaction. The additional key pair is called a _regular key_. If your address has a regular key pair defined, you can use the secret key of the regular key pair to [authorize transactions](#authorizing-transactions).
 
@@ -1080,8 +1080,8 @@ Create or modify a trust line linking two accounts.
 | LimitAmount.currency         | String           | (Amount.currency) | The currency to this trust line applies to, as a three-letter [ISO 4217 Currency Code](http://www.xe.com/iso4217.php) or a 160-bit hex value according to [currency format](https://wiki.ripple.com/Currency_format). "XRP" is invalid. |
 | LimitAmount.value            | String           | (Amount.value)    | Quoted decimal representation of the limit to set on this trust line. |
 | LimitAmount.issuer           | String           | (Amount.issuer)   | The address of the account to extend trust to. |
-| QualityIn                    | Unsigned Integer | UInt32            | (Optional) Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
-| QualityOut                   | Unsigned Integer | UInt32            | (Optional) Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
+| QualityIn                    | Unsigned Integer | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
+| QualityOut                   | Unsigned Integer | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
 ### Trust Limits ###
 

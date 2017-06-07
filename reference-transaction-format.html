@@ -422,7 +422,7 @@
 <td align="left"><a href="#accounttxnid">AccountTxnID</a></td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
-<td align="left">(Optional) Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash.</td>
+<td align="left"><em>(Optional)</em> Hash value identifying another transaction. This transaction is only valid if the sending account's previously-sent transaction matches the provided hash.</td>
 </tr>
 <tr>
 <td align="left"><a href="#transaction-cost">Fee</a></td>
@@ -434,7 +434,7 @@
 <td align="left"><a href="#flags">Flags</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Set of bit-flags for this transaction.</td>
+<td align="left"><em>(Optional)</em> Set of bit-flags for this transaction.</td>
 </tr>
 <tr>
 <td align="left"><a href="#lastledgersequence">LastLedgerSequence</a></td>
@@ -446,7 +446,7 @@
 <td align="left"><a href="#memos">Memos</a></td>
 <td align="left">Array of Objects</td>
 <td align="left">Array</td>
-<td align="left">(Optional) Additional arbitrary information used to identify this transaction.</td>
+<td align="left"><em>(Optional)</em> Additional arbitrary information used to identify this transaction.</td>
 </tr>
 <tr>
 <td align="left">PreviousTxnID</td>
@@ -470,13 +470,13 @@
 <td align="left"><a href="#signers-field">Signers</a></td>
 <td align="left">Array</td>
 <td align="left">Array</td>
-<td align="left">(Optional) Array of objects that represent a <a href="#multi-signing">multi-signature</a> which authorizes this transaction.</td>
+<td align="left"><em>(Optional)</em> Array of objects that represent a <a href="#multi-signing">multi-signature</a> which authorizes this transaction.</td>
 </tr>
 <tr>
 <td align="left">SourceTag</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's <code>SourceTag</code> as the refund payment's <code>DestinationTag</code>.</td>
+<td align="left"><em>(Optional)</em> Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's <code>SourceTag</code> as the refund payment's <code>DestinationTag</code>.</td>
 </tr>
 <tr>
 <td align="left">TransactionType</td>
@@ -678,55 +678,55 @@
 <td align="left"><a href="#accountset-flags">ClearFlag</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Unique identifier of a flag to disable for this account.</td>
+<td align="left"><em>(Optional)</em> Unique identifier of a flag to disable for this account.</td>
 </tr>
 <tr>
 <td align="left"><a href="#domain">Domain</a></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase.</td>
+<td align="left"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase.</td>
 </tr>
 <tr>
 <td align="left">EmailHash</td>
 <td align="left">String</td>
 <td align="left">Hash128</td>
-<td align="left">(Optional) Hash of an email address to be used for generating an avatar image. Conventionally, clients use <a href="http://en.gravatar.com/site/implement/hash/">Gravatar</a> to display this image.</td>
+<td align="left"><em>(Optional)</em> Hash of an email address to be used for generating an avatar image. Conventionally, clients use <a href="http://en.gravatar.com/site/implement/hash/">Gravatar</a> to display this image.</td>
 </tr>
 <tr>
 <td align="left">MessageKey</td>
 <td align="left">String</td>
 <td align="left">PubKey</td>
-<td align="left">(Optional) Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
+<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
 </tr>
 <tr>
 <td align="left"><a href="#accountset-flags">SetFlag</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Integer flag to enable for this account.</td>
+<td align="left"><em>(Optional)</em> Integer flag to enable for this account.</td>
 </tr>
 <tr>
 <td align="left"><a href="#transferrate">TransferRate</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use <code>0</code> to set no fee.</td>
+<td align="left"><em>(Optional)</em> The fee to charge when users transfer this account's issuances, represented as billionths of a unit. Use <code>0</code> to set no fee.</td>
 </tr>
 <tr>
 <td align="left"><a href="#ticksize">TickSize</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt8</td>
-<td align="left">(Optional) Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+<td align="left"><em>(Optional)</em> Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
 </tr>
 <tr>
 <td align="left">WalletLocator</td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
-<td align="left">(Optional) Not used.</td>
+<td align="left"><em>(Optional)</em> Not used.</td>
 </tr>
 <tr>
 <td align="left">WalletSize</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Not used.</td>
+<td align="left"><em>(Optional)</em> Not used.</td>
 </tr>
 </tbody>
 </table>
@@ -946,31 +946,31 @@
 <td align="left"><code>CancelAfter</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this escrow expires. This value is immutable; the funds can only be returned the sender after this time.</td>
+<td align="left"><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this escrow expires. This value is immutable; the funds can only be returned the sender after this time.</td>
 </tr>
 <tr>
 <td align="left"><code>FinishAfter</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached.</td>
+<td align="left"><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached.</td>
 </tr>
 <tr>
 <td align="left"><code>Condition</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
+<td align="left"><em>(Optional)</em> Hex value representing a <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
 </tr>
 <tr>
 <td align="left"><code>DestinationTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address.</td>
+<td align="left"><em>(Optional)</em> Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address.</td>
 </tr>
 <tr>
 <td align="left"><code>SourceTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address.</td>
+<td align="left"><em>(Optional)</em> Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address.</td>
 </tr>
 </tbody>
 </table>
@@ -1015,13 +1015,13 @@
 <td align="left"><code>Condition</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value matching the previously-supplied <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a> of the held payment.</td>
+<td align="left"><em>(Optional)</em> Hex value matching the previously-supplied <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1">PREIMAGE-SHA-256 crypto-condition</a> of the held payment.</td>
 </tr>
 <tr>
 <td align="left"><code>Fulfillment</code></td>
 <td align="left">String</td>
 <td align="left">VariableLength</td>
-<td align="left">(Optional) Hex value of the <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4">PREIMAGE-SHA-256 crypto-condition fulfillment</a> matching the held payment's <code>Condition</code>.</td>
+<td align="left"><em>(Optional)</em> Hex value of the <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4">PREIMAGE-SHA-256 crypto-condition fulfillment</a> matching the held payment's <code>Condition</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1097,13 +1097,13 @@
 <td align="left"><a href="#expiration">Expiration</a></td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Time after which the offer is no longer active, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
+<td align="left"><em>(Optional)</em> Time after which the offer is no longer active, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td align="left">OfferSequence</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) An offer to delete first, specified in the same way as <a href="#offercancel">OfferCancel</a>.</td>
+<td align="left"><em>(Optional)</em> An offer to delete first, specified in the same way as <a href="#offercancel">OfferCancel</a>.</td>
 </tr>
 <tr>
 <td align="left">TakerGets</td>
@@ -1261,13 +1261,13 @@
 <td align="left">DestinationTag</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay.</td>
+<td align="left"><em>(Optional)</em> Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay.</td>
 </tr>
 <tr>
 <td align="left">InvoiceID</td>
 <td align="left">String</td>
 <td align="left">Hash256</td>
-<td align="left">(Optional) Arbitrary 256-bit hash representing a specific reason or identifier for this payment.</td>
+<td align="left"><em>(Optional)</em> Arbitrary 256-bit hash representing a specific reason or identifier for this payment.</td>
 </tr>
 <tr>
 <td align="left">Paths</td>
@@ -1279,13 +1279,13 @@
 <td align="left">SendMax</td>
 <td align="left"><a href="reference-rippled.html#specifying-currency-amounts">Currency Amount</a></td>
 <td align="left">Amount</td>
-<td align="left">(Optional) Highest amount of source currency this transaction is allowed to cost, including <a href="concept-transfer-fees.html">transfer fees</a>, exchange rates, and <a href="http://en.wikipedia.org/wiki/Slippage_%28finance%29">slippage</a>. Does not include the <a href="#transaction-cost">XRP destroyed as a cost for submitting the transaction</a>. For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments.</td>
+<td align="left"><em>(Optional)</em> Highest amount of source currency this transaction is allowed to cost, including <a href="concept-transfer-fees.html">transfer fees</a>, exchange rates, and <a href="http://en.wikipedia.org/wiki/Slippage_%28finance%29">slippage</a>. Does not include the <a href="#transaction-cost">XRP destroyed as a cost for submitting the transaction</a>. For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments.</td>
 </tr>
 <tr>
 <td align="left">DeliverMin</td>
 <td align="left"><a href="reference-rippled.html#specifying-currency-amounts">Currency Amount</a></td>
 <td align="left">Amount</td>
-<td align="left">(Optional) Minimum amount of destination currency this transaction should deliver. Only valid if this is a <a href="#partial-payments">partial payment</a>. For non-XRP amounts, the nested field names are lower-case.</td>
+<td align="left"><em>(Optional)</em> Minimum amount of destination currency this transaction should deliver. Only valid if this is a <a href="#partial-payments">partial payment</a>. For non-XRP amounts, the nested field names are lower-case.</td>
 </tr>
 </tbody>
 </table>
@@ -1510,19 +1510,19 @@
 <td align="left"><code>CancelAfter</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time.</td>
+<td align="left"><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time.</td>
 </tr>
 <tr>
 <td align="left"><code>DestinationTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
+<td align="left"><em>(Optional)</em> Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address.</td>
 </tr>
 <tr>
 <td align="left"><code>SourceTag</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address.</td>
+<td align="left"><em>(Optional)</em> Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address.</td>
 </tr>
 </tbody>
 </table>
@@ -1595,7 +1595,7 @@
 <td align="left">RegularKey</td>
 <td align="left">String</td>
 <td align="left">AccountID</td>
-<td align="left">(Optional) A base-58-encoded <a href="reference-rippled.html#addresses">Ripple address</a> to use as the regular key. If omitted, removes the existing regular key.</td>
+<td align="left"><em>(Optional)</em> A base-58-encoded <a href="reference-rippled.html#addresses">Ripple address</a> to use as the regular key. If omitted, removes the existing regular key.</td>
 </tr>
 </tbody>
 </table>
@@ -1718,13 +1718,13 @@
 <td align="left">QualityIn</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of <code>0</code> is shorthand for treating balances at face value.</td>
+<td align="left"><em>(Optional)</em> Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of <code>0</code> is shorthand for treating balances at face value.</td>
 </tr>
 <tr>
 <td align="left">QualityOut</td>
 <td align="left">Unsigned Integer</td>
 <td align="left">UInt32</td>
-<td align="left">(Optional) Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of <code>0</code> is shorthand for treating balances at face value.</td>
+<td align="left"><em>(Optional)</em> Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of <code>0</code> is shorthand for treating balances at face value.</td>
 </tr>
 </tbody>
 </table>
