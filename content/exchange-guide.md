@@ -38,7 +38,7 @@ See also:
 
 * [Requirements for Sending to RCL](https://ripple.com/build/gateway-guide/#requirements-for-sending-to-rcl)
 
-* [Requirements for Sending to RCL](https://ripple.com/build/gateway-guide/#requirements-for-sending-to-rcl)
+* [Requirements for Receiving from RCL](https://ripple.com/build/gateway-guide/#requirements-for-receiving-from-rcl)
 
 * [Gateway Precautions](https://ripple.com/build/gateway-guide/#precautions)
 
@@ -390,7 +390,7 @@ For more information about trading _on_ the RCL, see [Lifecycle of an Offer](htt
 
 Exchanges can adjust the balances between their operational and issuing accounts at any time. Each balance adjustment consumes a [transaction fee](https://ripple.com/build/fees-disambiguation/), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's [transaction fees](https://ripple.com/build/transaction-cost/).)
 
-The following table demonstrates balance adjustment of 80,000 XRP (via a [_payment_](https://ripple.com/build/transactions/#payment) on the RCL) between Alpha Exchange's issuing account and its operational account, where the issuing account was debited and the operational account was debited. If the payment were reversed (debit the operational account and credit the issuing account), the operational account balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online operational accounts.
+The following table demonstrates a balance adjustment of 80,000 XRP (via a [_payment_](https://ripple.com/build/transactions/#payment) on the RCL) between Alpha Exchange's issuing account and its operational account, where the issuing account was debited and the operational account was credited. If the payment were reversed (debit the operational account and credit the issuing account), the operational account balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online operational accounts.
 
 
 <table>
