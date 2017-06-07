@@ -149,7 +149,7 @@
 <li class="level-2"><a href="#flow-of-funds">Flow of Funds</a></li>
 <li class="level-3"><a href="#deposit-xrp-into-exchange">Deposit XRP into Exchange</a></li>
 <li class="level-3"><a href="#trade-xrp-on-the-exchange">Trade XRP on The Exchange</a></li>
-<li class="level-3"><a href="#rebalancing-xrp-holdings">Rebalancing XRP Holdings</a></li>
+<li class="level-3"><a href="#rebalance-xrp-holdings">Rebalance XRP Holdings</a></li>
 <li class="level-3"><a href="#withdraw-xrp-from-exchange">Withdraw XRP from Exchange</a></li>
 
             </ul>
@@ -346,7 +346,7 @@ XRP Balances</i></b></td>
 <p>There are four main steps involved in an exchange's typical flow of funds:</p>
 <ol>
 <li>
-<p><a href="#deposit-xrp-into-an-exchange">Deposit XRP into Exchange</a></p>
+<p><a href="#deposit-xrp-into-exchange">Deposit XRP into Exchange</a></p>
 </li>
 <li>
 <p><a href="#rebalance-xrp-holdings">Rebalance XRP Holdings</a></p>
@@ -542,7 +542,7 @@ XRP Balances</i></b></td>
 <h3 id="trade-xrp-on-the-exchange">Trade XRP on The Exchange</h3>
 <p>Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exchange. Alpha Exchange should keep track of user balances on its new balance sheet as these trades are made. These trades are <em>off-ledger</em> and independent from the RCL, so the balance changes are not recorded there.</p>
 <p>For more information about trading <em>on</em> the RCL, see <a href="https://ripple.com/build/transactions/#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
-<h3 id="rebalancing-xrp-holdings">Rebalancing XRP Holdings</h3>
+<h3 id="rebalance-xrp-holdings">Rebalance XRP Holdings</h3>
 <p>Exchanges can adjust the balances between their operational and issuing accounts at any time. Each balance adjustment consumes a <a href="https://ripple.com/build/fees-disambiguation/">transaction fee</a>, but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's <a href="https://ripple.com/build/transaction-cost/">transaction fees</a>.)</p>
 <p>The following table demonstrates balance adjustment of 80,000 XRP (via a <a href="https://ripple.com/build/transactions/#payment"><em>payment</em></a> on the RCL) between Alpha Exchange's issuing account and its operational account, where the issuing account was debited and the operational account was debited. If the payment were reversed (debit the operational account and credit the issuing account), the operational account balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online operational accounts.</p>
 <table>

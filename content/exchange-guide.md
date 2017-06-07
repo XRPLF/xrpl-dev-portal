@@ -182,7 +182,7 @@ The remaining sections describe how funds flow through the accounts managed by A
 
 There are four main steps involved in an exchange's typical flow of funds:
 
-1. [Deposit XRP into Exchange](#deposit-xrp-into-an-exchange)
+1. [Deposit XRP into Exchange](#deposit-xrp-into-exchange)
 
 2. [Rebalance XRP Holdings](#rebalance-xrp-holdings)
 
@@ -386,7 +386,7 @@ Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exc
 For more information about trading _on_ the RCL, see [Lifecycle of an Offer](https://ripple.com/build/transactions/#lifecycle-of-an-offer).
 
 
-### Rebalancing XRP Holdings
+### Rebalance XRP Holdings
 
 Exchanges can adjust the balances between their operational and issuing accounts at any time. Each balance adjustment consumes a [transaction fee](https://ripple.com/build/fees-disambiguation/), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's [transaction fees](https://ripple.com/build/transaction-cost/).)
 
