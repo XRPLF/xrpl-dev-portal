@@ -814,21 +814,15 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | tfPartialPayment | 0x00020000 | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | tfLimitQuality   | 0x00040000 | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
-### Partial Payments ###
+### Partial Payments
 
-A partial payment allows a payment to succeed by reducing the amount received, instead of increasing the `SendMax`. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
+A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
 
-By default, the `Amount` field of a Payment transaction specifies the amount of currency that is *received* by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account's balances, up to the `SendMax` amount. (If `SendMax` is not specified, that is equivalent to setting the `SendMax` to the `Amount` field.) If the amount needed to make the payment exceeds the `SendMax` parameter, or the full amount cannot be delivered for any other reason, the transaction fails.
+A partial payment is any [Payment transaction][] with the **tfPartialPayment** flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
-The [*tfPartialPayment* flag](#payment-flags) allows you to make a "partial payment" instead. When this flag is enabled for a payment, it delivers as much as possible, up to the `Amount` value, without exceeding the `SendMax` value. Fees and currency exchange rates are calculated the same way, but the amount being sent automatically scales down until the total amount deducted from the sending account's balances is within `SendMax`. The transaction is considered successful as long as it delivers equal or more than the `DeliverMin` value; if DeliverMin is omitted, then any positive amount is considered a success. This means that partial payments can succeed at sending *some* of the intended value despite limitations including fees, lack of liquidity, insufficient space in the receiving account's trustlines, or other reasons.
+The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
 
-A partial payment cannot provide the XRP to fund an address; this case returns the error code `telNO_DST_PARTIAL`. Direct XRP-to-XRP payments also cannot be partial payments `temBAD_SEND_XRP_PARTIAL`.
-
-The amount of XRP used for the [transaction cost](#transaction-cost) is always deducted from the sender’s account, regardless of the *tfPartialPayment* flag.
-
-#### Partial Payments Warning ####
-
-When the [*tfPartialPayment* flag](#payment-flags) is enabled, the `Amount` field __*is not guaranteed to be the amount received*__. The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the `Amount` field to determine how much your account received instead.
+For more information, see the full article on [Partial Payments](concept-partial-payments.html).
 
 
 ### Limit Quality ###
@@ -1300,6 +1294,7 @@ The `delivered_amount` field of transaction metadata is included in all successf
 
 If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the AffectedNodes in the transaction's metadata.
 
+See also: [Partial Payments](concept-partial-payments.html)
 
 ## Full Transaction Response List ##
 
