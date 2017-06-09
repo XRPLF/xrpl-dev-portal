@@ -161,7 +161,7 @@
     <div class='content'>
         <h1 id="partial-payments">Partial Payments</h1>
 <p>In the default case, the <code>Amount</code> field of a <a href="reference-transaction-format.html#payment">Payment transaction</a> in the Ripple Consensus Ledger specifies the exact amount to deliver, after charging for exchange rates and <a href="concept-transfer-fees.html">transfer fees</a>. The "Partial Payment" flag (<a href="reference-transaction-format.html#payment-flags"><strong>tfPartialPayment</strong></a>) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional costs to oneself.</p>
-<p>The amount of XRP used for the <a href="#transaction-cost">transaction cost</a> is always deducted from the sender’s account, regardless of the type of transaction.</p>
+<p>The amount of XRP used for the <a href="concept-transaction-cost.html">transaction cost</a> is always deducted from the sender’s account, regardless of the type of transaction.</p>
 <p>Partial payments can be used to exploit naive integrations with the Ripple Consensus Ledger to steal money from exchanges and gateways. The <a href="#partial-payments-exploit">Partial Payments Exploit</a> section of this document describes how this exploit works and how you can avoid it.</p>
 <h2 id="semantics">Semantics</h2>
 <h3 id="without-partial-payments">Without Partial Payments</h3>
