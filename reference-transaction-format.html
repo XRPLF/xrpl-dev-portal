@@ -1343,7 +1343,7 @@
 </tbody>
 </table>
 <h3 id="partial-payments">Partial Payments</h3>
-<p>A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional costs to oneself, but can also be used to exploit integrations that naively assume the <code>Amount</code> field of a successful transaction always describes the exact amount delivered.</p>
+<p>A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the <code>Amount</code> field of a successful transaction always describes the exact amount delivered.</p>
 <p>A partial payment is any <a href="#payment">Payment transaction</a> with the <strong>tfPartialPayment</strong> flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its <code>DeliverMin</code> field (or any positive amount at all if <code>DeliverMin</code> is not specified) without sending more than the <code>SendMax</code> value.</p>
 <p>The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account.</p>
 <p>For more information, see the full article on <a href="concept-partial-payments.html">Partial Payments</a>.</p>

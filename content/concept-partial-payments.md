@@ -10,7 +10,7 @@ Partial payments can be used to exploit naive integrations with the Ripple Conse
 
 ### Without Partial Payments
 
-When sending a Payment that does not use the Partial Payment flag, the `Amount` field of the transaction specifies the exact amount to deliver, and the `SendMax` field specifies the maximum amount and currency to send. If payment cannot deliver the full `Amount` without exceeding the `SendMax` parameter, or the full amount cannot be delivered for any other reason, the transaction fails. If the `SendMax` field is omitted from the transaction instructions, it is considered to be equal to the `Amount`. In this case, the payment can only succeed if the total amount of fees is 0.
+When sending a Payment that does not use the Partial Payment flag, the `Amount` field of the transaction specifies the exact amount to deliver, and the `SendMax` field specifies the maximum amount and currency to send. If a payment cannot deliver the full `Amount` without exceeding the `SendMax` parameter, or the full amount cannot be delivered for any other reason, the transaction fails. If the `SendMax` field is omitted from the transaction instructions, it is considered to be equal to the `Amount`. In this case, the payment can only succeed if the total amount of fees is 0.
 
 In other words:
 
@@ -44,7 +44,7 @@ Partial Payments have the following limitations:
 
 To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](reference-rippled.html#specifying-currency-amounts) as the `Amount` field.
 
-For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers an issued currency, the `delivered_amount` may be slightly differently than the `Amount` field due to rounding.
+For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers an issued currency, the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
 
 The delivered amount is **not available** for transactions that meet **both** of the following criteria:
 

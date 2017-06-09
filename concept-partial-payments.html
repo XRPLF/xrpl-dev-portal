@@ -165,7 +165,7 @@
 <p>Partial payments can be used to exploit naive integrations with the Ripple Consensus Ledger to steal money from exchanges and gateways. The <a href="#partial-payments-exploit">Partial Payments Exploit</a> section of this document describes how this exploit works and how you can avoid it.</p>
 <h2 id="semantics">Semantics</h2>
 <h3 id="without-partial-payments">Without Partial Payments</h3>
-<p>When sending a Payment that does not use the Partial Payment flag, the <code>Amount</code> field of the transaction specifies the exact amount to deliver, and the <code>SendMax</code> field specifies the maximum amount and currency to send. If payment cannot deliver the full <code>Amount</code> without exceeding the <code>SendMax</code> parameter, or the full amount cannot be delivered for any other reason, the transaction fails. If the <code>SendMax</code> field is omitted from the transaction instructions, it is considered to be equal to the <code>Amount</code>. In this case, the payment can only succeed if the total amount of fees is 0.</p>
+<p>When sending a Payment that does not use the Partial Payment flag, the <code>Amount</code> field of the transaction specifies the exact amount to deliver, and the <code>SendMax</code> field specifies the maximum amount and currency to send. If a payment cannot deliver the full <code>Amount</code> without exceeding the <code>SendMax</code> parameter, or the full amount cannot be delivered for any other reason, the transaction fails. If the <code>SendMax</code> field is omitted from the transaction instructions, it is considered to be equal to the <code>Amount</code>. In this case, the payment can only succeed if the total amount of fees is 0.</p>
 <p>In other words:</p>
 <pre><code>Amount + (fees) = (sent amount) ≤ SendMax
 </code></pre>
@@ -188,7 +188,7 @@
 </ul>
 <h3 id="the-delivered-amount-field">The <code>delivered_amount</code> Field</h3>
 <p>To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a <code>delivered_amount</code> field. This field describes the amount actually delivered, in the <a href="reference-rippled.html#specifying-currency-amounts">same format</a> as the <code>Amount</code> field.</p>
-<p>For non-partial payments, the <code>delivered_amount</code> field of the transaction metadata is equal to the <code>Amount</code> field of the transaction. When a payment delivers an issued currency, the <code>delivered_amount</code> may be slightly differently than the <code>Amount</code> field due to rounding.</p>
+<p>For non-partial payments, the <code>delivered_amount</code> field of the transaction metadata is equal to the <code>Amount</code> field of the transaction. When a payment delivers an issued currency, the <code>delivered_amount</code> may be slightly different than the <code>Amount</code> field due to rounding.</p>
 <p>The delivered amount is <strong>not available</strong> for transactions that meet <strong>both</strong> of the following criteria:</p>
 <ul>
 <li>Is a partial payment</li>
