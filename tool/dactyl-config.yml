@@ -252,6 +252,13 @@ pages:
             - local
             - ripple.com
 
+    -   md: concept-partial-payments.md
+        category: RCL Features
+        html: concept-partial-payments.html
+        targets:
+            - local
+            - ripple.com
+
     -   name: Paths
         category: RCL Features
         html: concept-paths.html

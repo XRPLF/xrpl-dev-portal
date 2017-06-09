@@ -89,6 +89,7 @@
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
+                  <li><a href="concept-partial-payments.html">Partial Payments</a></li>
                   <li><a href="concept-paths.html">Paths</a></li>
                   <li><a href="concept-reserves.html">Reserves</a></li>
                   <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
@@ -1342,13 +1343,10 @@
 </tbody>
 </table>
 <h3 id="partial-payments">Partial Payments</h3>
-<p>A partial payment allows a payment to succeed by reducing the amount received, instead of increasing the <code>SendMax</code>. Partial payments are useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional costs to oneself.</p>
-<p>By default, the <code>Amount</code> field of a Payment transaction specifies the amount of currency that is <em>received</em> by the account that is the destination of the payment. Any additional amount needed for fees or currency exchange is deducted from the sending account's balances, up to the <code>SendMax</code> amount. (If <code>SendMax</code> is not specified, that is equivalent to setting the <code>SendMax</code> to the <code>Amount</code> field.) If the amount needed to make the payment exceeds the <code>SendMax</code> parameter, or the full amount cannot be delivered for any other reason, the transaction fails.</p>
-<p>The <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> allows you to make a "partial payment" instead. When this flag is enabled for a payment, it delivers as much as possible, up to the <code>Amount</code> value, without exceeding the <code>SendMax</code> value. Fees and currency exchange rates are calculated the same way, but the amount being sent automatically scales down until the total amount deducted from the sending account's balances is within <code>SendMax</code>. The transaction is considered successful as long as it delivers equal or more than the <code>DeliverMin</code> value; if DeliverMin is omitted, then any positive amount is considered a success. This means that partial payments can succeed at sending <em>some</em> of the intended value despite limitations including fees, lack of liquidity, insufficient space in the receiving account's trustlines, or other reasons.</p>
-<p>A partial payment cannot provide the XRP to fund an address; this case returns the error code <code>telNO_DST_PARTIAL</code>. Direct XRP-to-XRP payments also cannot be partial payments <code>temBAD_SEND_XRP_PARTIAL</code>.</p>
-<p>The amount of XRP used for the <a href="#transaction-cost">transaction cost</a> is always deducted from the sender’s account, regardless of the <em>tfPartialPayment</em> flag.</p>
-<h4 id="partial-payments-warning">Partial Payments Warning</h4>
-<p>When the <a href="#payment-flags"><em>tfPartialPayment</em> flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the <code>Amount</code> field to determine how much your account received instead.</p>
+<p>A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional costs to oneself, but can also be used to exploit integrations that naively assume the <code>Amount</code> field of a successful transaction always describes the exact amount delivered.</p>
+<p>A partial payment is any <a href="#payment">Payment transaction</a> with the <strong>tfPartialPayment</strong> flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its <code>DeliverMin</code> field (or any positive amount at all if <code>DeliverMin</code> is not specified) without sending more than the <code>SendMax</code> value.</p>
+<p>The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account.</p>
+<p>For more information, see the full article on <a href="concept-partial-payments.html">Partial Payments</a>.</p>
 <h3 id="limit-quality">Limit Quality</h3>
 <p>Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
 <p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
@@ -2127,6 +2125,7 @@
 <li>Included in a validated ledger before 2014-01-20</li>
 </ul>
 <p>If both conditions are true, then <code>delivered_amount</code> contains the string value <code>unavailable</code> instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the AffectedNodes in the transaction's metadata.</p>
+<p>See also: <a href="concept-partial-payments.html">Partial Payments</a></p>
 <h2 id="full-transaction-response-list">Full Transaction Response List</h2>
 <p><a href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/TER.h" title="Source">[Source]<br/></a></p>
 <h3 id="tel-codes">tel Codes</h3>
