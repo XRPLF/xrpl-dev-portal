@@ -22,7 +22,7 @@ Alpha Exchange wants to list BTC/XRP and XRP/USD trading pairs partially because
 
 * Withdraw XRP _from_ Alpha Exchange _to_ the RCL
 
-* Trade XRP with other currencies, such as BTC, USD, amongst others
+* Trade XRP with other currencies, such as BTC, USD, among others
 
 ## Prerequisites for Supporting XRP
 
@@ -46,17 +46,17 @@ See also:
 
 XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the Ripple Consensus Ledger (RCL). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. To submit transactions (for example, [OfferCreate](https://ripple.com/build/transactions/#offercreate) and others used for trading), RCL accounts require XRP [reserves](https://ripple.com/build/reserves/) to protect the ledger against spam and malicious usage. On other blockchains, balances are derived from the previous block. On the RCL, [account objects](https://ripple.com/build/ledger-format/#accountroot) describe several other properties of the account in addition to balances, so accounts are represented in each ledger and can never be destroyed or removed. Exchanges do not need to create accounts for each customer that holds XRP; they can store all of their customers’ XRP in just a few RCL accounts. For more information about RCL accounts, see the [Accounts](https://ripple.com/build/accounts/) article.
 
-To comply with Ripple's recommend best practices, Alpha Exchange should create at least two new [accounts](https://ripple.com/build/accounts/) on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+To comply with Ripple's recommended best practices, Alpha Exchange should create at least two new [accounts](https://ripple.com/build/accounts/) on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
 * A [_cold wallet_](https://ripple.com/build/issuing-operational-addresses/#issuing-address) to securely hold the majority of XRP and customers' funds. To provide optimal security, this account should be offline.
 
     For more information about the possible consequences of a compromised cold wallet, see [Issuing Account Compromise](https://ripple.com/build/issuing-operational-addresses/#issuing-address-compromise).
 
-* One or more [_hot wallets_](https://ripple.com/build/issuing-operational-addresses/#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with an opertaitional wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
+* One or more [_hot wallets_](https://ripple.com/build/issuing-operational-addresses/#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
     For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](https://ripple.com/build/issuing-operational-addresses/#operational-address-compromise).
 
-* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement  [multisigning](https://ripple.com/build/how-to-multi-sign/) to increase security.
+* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multisigning](https://ripple.com/build/how-to-multi-sign/) to increase security.
 
     For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](https://ripple.com/build/issuing-operational-addresses/#standby-address-compromise).
 
@@ -159,7 +159,7 @@ XRP Balances</i></b></td>
 
 #### XRP Amounts
 
-Amounts of XRP are represented on the RCL as an unsigned integer count of *drops*, where one XRP == 1,000,000 drops. Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values. However, user interfaces should present balances in units of XRP.
+Amounts of XRP are represented on the RCL as an unsigned integer count of *drops*, where one XRP = 1,000,000 drops. Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values. However, user interfaces should present balances in units of XRP.
 
 One drop (.000001 XRP) cannot be further subdivided. Bear this in mind when calculating and displaying FX rates between XRP and other assets.
 
@@ -276,7 +276,7 @@ XRP Balances</i></b></td>
 
 ### Deposit XRP into Exchange
 
-To track [off-ledger XRP balances](#on-ledger-and-off-ledger) exchanges need to create new [balance sheets](#balance-sheets) (or similar accounting systems). The following table illustrates the balance changes that take place on Alpha Exchange's new balance sheet as users begin to deposit XRP.
+To track [off-ledger XRP balances](#on-ledger-and-off-ledger), exchanges need to create new [balance sheets](#balance-sheets) (or similar accounting systems). The following table illustrates the balance changes that take place on Alpha Exchange's new balance sheet as users begin to deposit XRP.
 
 A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this involves the following steps:
 
@@ -390,7 +390,7 @@ For more information about trading _on_ the RCL, see [Lifecycle of an Offer](htt
 
 Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a [transaction fee](https://ripple.com/build/fees-disambiguation/), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's [transaction fees](https://ripple.com/build/transaction-cost/).)
 
-The following table demonstrates a balance adjustment of 80,000 XRP (via a [_payment_](https://ripple.com/build/transactions/#payment) on the RCL) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debit the hot wallet and credit the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.
+The following table demonstrates a balance adjustment of 80,000 XRP (via a [_payment_](https://ripple.com/build/transactions/#payment) on the RCL) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.
 
 
 <table>

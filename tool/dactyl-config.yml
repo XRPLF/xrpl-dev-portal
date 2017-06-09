@@ -206,8 +206,8 @@ pages:
 
 # Listing XRP as an Exchange
     -   category: Tutorials
-        html: xrp-listing-guide.html
-        md: exchange-guide.md
+        html: tutorial-listing-xrp.html
+        md: tutorial-listing-xrp.md
         targets:
             - local
             - ripple.com
