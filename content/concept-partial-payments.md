@@ -53,10 +53,27 @@ The delivered amount is **not available** for transactions that meet **both** of
 
 If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only determine the actual delivered amount by reading the AffectedNodes in the transaction's metadata. If the transaction delivered an issued currency and the `issuer` of the `Amount` is the same account as the `Destination` address, the delivered amount may be divided among multiple `AffectedNodes` members representing trust lines to different counterparties.
 
+You can find the `delivered_amount` field in the following places:
+
+| API | Method | Field |
+|-----|--------|-------|
+| [JSON-RPC / WebSocket][] | [`account_tx` command](reference-rippled.html#account-tx) | `result.transactions` array members' `meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [`tx` command](reference-rippled.html#tx) | `result.meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [`transaction_entry` command](reference-rippled.html#transaction-entry) | `result.metadata.delivered_amount` |
+| [RippleAPI][] | [`getTransaction` method](reference-rippleapi.html#gettransaction) | `outcome.deliveredAmount` |
+| [RippleAPI][] | [`getTransactions` method](reference-rippleapi.html#gettransactions) | array members' `outcome.deliveredAmount` |
+
+[JSON-RPC / WebSocket]: reference-rippled.html
+[RippleAPI]: reference-rippleapi.html
 
 ## Partial Payments Exploit
 
 If a financial institution's integration with the Ripple Consensus Ledger assumes that the `Amount` field of a Payment is always the full amount delivered, malicious actors may be able to exploit that assumption to steal money from the institution. This exploit can be used against gateways, exchanges, or merchants as long as those institutions' software does not process partial payments correctly.
+
+**The correct way to process incoming Payment transactions is to use [the `delivered_amount` metadata field](#the-delivered-amount-field),** not the `Amount` field. This way, an institution is never mistaken about how much it _actually_ received.
+
+
+### Exploit Scenario Steps
 
 To exploit a vulnerable financial institution, a malicious actor does something like this:
 
@@ -78,11 +95,9 @@ In the case of a merchant, the order of operations is slightly different, but th
 6. The vulnerable merchant treats the invoice as paid and provides the goods or services to the malicious actor, despite only receiving a much smaller `delivered_amount` in the Ripple Consensus Ledger.
 7. The malicious actor uses, resells, or absconds with the goods and services before the merchant notices the discrepancy.
 
-### Avoiding the Exploit
+### Further Mitigations
 
-The simplest and most effective way to avoid partial payment exploits is to use the `delivered_amount` field of the transaction metadata, not the `Amount` field, when processing incoming transactions. This way, an institution is never mistaken about how much it _actually_ received.
-
-Additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
+Using [the `delivered_amount` field](#the-delivered-amount-field) when processing incoming transactions is sufficient to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
 
 - Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the Ripple Consensus Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.
