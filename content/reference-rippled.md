@@ -3497,7 +3497,7 @@ Each member of the `queue_data` array represents one transaction in the queue. S
 | `max_spend_drops`   | String           | _(May be omitted)_ The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
 | `seq`               | Integer          | _(May be omitted)_ The [Sequence Number][] of this transaction. |
 
-If the request specified `"owner_funds": true` and expanded transactions, the response has a field `owner_funds` in the `metaData` object of each [OfferCreate-type transaction](reference-transaction-format.html#offercreate). The purpose of this field is to make it easier to track the [funding status of offers](reference-transaction-format.html#lifecycle-of-an-offer) with each new validated ledger. This field is defined slightly different than the version of this field in [Order Book subscription streams](#order-book-streams):
+If the request specified `"owner_funds": true` and expanded transactions, the response has a field `owner_funds` in the `metaData` object of each [OfferCreate-type transaction](reference-transaction-format.html#offercreate). The purpose of this field is to make it easier to track the [funding status of offers](reference-transaction-format.html#lifecycle-of-an-offer) with each new validated ledger. This field is defined slightly differently than the version of this field in [Order Book subscription streams](#order-book-streams):
 
 | `Field`       | Value  | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|

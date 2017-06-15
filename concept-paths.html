@@ -228,7 +228,7 @@
 <tr>
 <td align="left"><code>issuer</code></td>
 <td align="left">String - Address</td>
-<td align="left"><em>(Optional)</em> If the path step represents changing currencies through an order book, this field indicates the issuer of the new currency. If omitted in a step with a non-XRP <code>currency</code>, the previous step of the path defines the issuer. MUST be omitted if the <code>currency</code> is XRP. MUST NOT be provided if this step specifies the <code>account</code> field.</td>
+<td align="left"><em>(Optional)</em> If present, this path step represents changing currencies and this address defines the issuer of the new currency. If omitted in a step with a non-XRP <code>currency</code>, a previous step of the path defines the issuer. If present when <code>currency</code> is omitted, indicates a path step that uses an order book between same-named currencies with different issuers. MUST be omitted if the <code>currency</code> is XRP. MUST NOT be provided if this step specifies the <code>account</code> field.</td>
 </tr>
 <tr>
 <td align="left"><code>type</code></td>
@@ -247,6 +247,7 @@
 <li><code>account</code> by itself</li>
 <li><code>currency</code> by itself</li>
 <li><code>currency</code> and <code>issuer</code> as long as the <code>currency</code> is not XRP</li>
+<li><code>issuer</code> by itself</li>
 </ul>
 <p>Any other use of <code>account</code>, <code>currency</code>, and <code>issuer</code> fields in a path step is invalid.</p>
 <p>The <code>type</code> field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:</p>

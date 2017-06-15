@@ -374,8 +374,8 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
-<p>Introduces two new transaction error codes, <code>tecINVARIANT_FAILED</code> and <code>tefINVARIANT_FAILED</code>. Changes transaction processing to add the new checks. Adds a configuration option to disable invariant-checking.</p>
+<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
+<p>Introduces two new transaction error codes, <code>tecINVARIANT_FAILED</code> and <code>tefINVARIANT_FAILED</code>. Changes transaction processing to add the new checks.</p>
 <p>Examples of invariant checks:</p>
 <ul>
 <li>The total amount of XRP destroyed by a transaction must match the <a href="concept-transaction-cost.html">transaction cost</a> exactly.</li>

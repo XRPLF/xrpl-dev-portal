@@ -148,9 +148,9 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 |:-----------------------------------------------------------------|:--------|
 | DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | In voting; expected 2017-06-29 |
 
-Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of `rippled` without additional amendments.
+Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of `rippled` without additional amendments.
 
-Introduces two new transaction error codes, `tecINVARIANT_FAILED` and `tefINVARIANT_FAILED`. Changes transaction processing to add the new checks. Adds a configuration option to disable invariant-checking.
+Introduces two new transaction error codes, `tecINVARIANT_FAILED` and `tefINVARIANT_FAILED`. Changes transaction processing to add the new checks.
 
 Examples of invariant checks:
 
