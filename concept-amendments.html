@@ -155,10 +155,13 @@
 <li class="level-2"><a href="#testing-amendments">Testing Amendments</a></li>
 <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
 <li class="level-2"><a href="#cryptoconditions">CryptoConditions</a></li>
+<li class="level-2"><a href="#enforceinvariants">EnforceInvariants</a></li>
 <li class="level-2"><a href="#escrow">Escrow</a></li>
 <li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
 <li class="level-2"><a href="#fix1368">fix1368</a></li>
+<li class="level-2"><a href="#fix1373">fix1373</a></li>
 <li class="level-2"><a href="#flow">Flow</a></li>
+<li class="level-2"><a href="#flowcross">FlowCross</a></li>
 <li class="level-2"><a href="#flowv2">FlowV2</a></li>
 <li class="level-2"><a href="#multisign">MultiSign</a></li>
 <li class="level-2"><a href="#ownerpaysfee">OwnerPaysFee</a></li>
@@ -253,6 +256,21 @@ TrustSetAuth
 </thead>
 <tbody>
 <tr>
+<td align="left"><a href="#flowcross">FlowCross</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#enforceinvariants">EnforceInvariants</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a title="Expected: 2017-06-29"><img alt="Expected: 2017-06-29" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--06--29-blue.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1373">fix1373</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a title="Expected: 2017-06-29"><img alt="Expected: 2017-06-29" class="dactyl_badge" src="https://img.shields.io/badge/Expected-2017--06--29-blue.svg"/></a></td>
+</tr>
+<tr>
 <td align="left"><a href="#shamapv2">SHAMapV2</a></td>
 <td align="left">v0.33.0</td>
 <td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
@@ -341,6 +359,31 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the <a href="#escrow">Escrow</a> amendment.</p>
+<h2 id="enforceinvariants">EnforceInvariants</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+<td align="left">In voting; expected 2017-06-29</td>
+</tr>
+</tbody>
+</table>
+<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
+<p>Introduces two new transaction error codes, <code>tecINVARIANT_FAILED</code> and <code>tefINVARIANT_FAILED</code>. Changes transaction processing to add the new checks. Adds a configuration option to disable invariant-checking.</p>
+<p>Examples of invariant checks:</p>
+<ul>
+<li>The total amount of XRP destroyed by a transaction must match the <a href="concept-transaction-cost.html">transaction cost</a> exactly.</li>
+<li>XRP cannot be created.</li>
+<li><a href="reference-ledger-format.html#accountroot"><code>AccountRoot</code> objects in the ledger</a> cannot be deleted. (See also: <a href="concept-accounts.html#permanence-of-accounts">Permanence of Accounts</a>.)</li>
+<li><a href="reference-ledger-format.html#ledger-node-types">An object in the ledger</a> cannot change its type. (The <code>LedgerEntryType</code> field is immutable.)</li>
+<li>There cannot be a trust line for XRP.</li>
+</ul>
 <h2 id="escrow">Escrow</h2>
 <table>
 <thead>
@@ -398,6 +441,23 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.</p>
+<h2 id="fix1373">fix1373</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+<td align="left">In voting; expected 2017-06-29</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a minor bug in transaction processing that causes failures when trying to prepare certain <a href="concept-paths.html">payment paths</a> for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.</p>
+<p>The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose <a href="concept-paths.html#path-specifications">steps</a> include conflicting fields and paths that loop through the same object more than once.</p>
 <h2 id="flow">Flow</h2>
 <table>
 <thead>
@@ -415,6 +475,27 @@ TrustSetAuth
 </table>
 <p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the <a href="https://ripple.com/dev-blog/flowv2-amendment-vetoed/">FlowV2</a> amendment.</p>
 <p>The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
+<h2 id="flowcross">FlowCross</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+<td align="left">Released but not enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Streamlines the offer crossing logic in the RCL's decentralized exchange. Uses the updated code from the <a href="#flow">Flow</a> amendment to power offer crossing, so <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> and <a href="reference-transaction-format.html#payment">Payment transactions</a> share more code. This has subtle differences in how offers are processed:</p>
+<ul>
+<li>Rounding is slightly different in some cases.</li>
+<li>Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.</li>
+<li>The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)</li>
+</ul>
 <h2 id="flowv2">FlowV2</h2>
 <table>
 <thead>

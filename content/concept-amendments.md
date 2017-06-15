@@ -113,6 +113,9 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                                  | Introduced | Status                  |
 |:--------------------------------------|:-----------|:------------------------|
+| [FlowCross](#flowcross)               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [EnforceInvariants](#enforceinvariants) | v0.70.0  | [Expected: 2017-06-29]( "BADGE_BLUE") |
+| [fix1373](#fix1373)                   | v0.70.0    | [Expected: 2017-06-29]( "BADGE_BLUE") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
@@ -137,6 +140,25 @@ The following is a comprehensive list of all known amendments and their status o
 | 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled |
 
 Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
+
+
+## EnforceInvariants
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | In voting; expected 2017-06-29 |
+
+Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of `rippled` without additional amendments.
+
+Introduces two new transaction error codes, `tecINVARIANT_FAILED` and `tefINVARIANT_FAILED`. Changes transaction processing to add the new checks. Adds a configuration option to disable invariant-checking.
+
+Examples of invariant checks:
+
+- The total amount of XRP destroyed by a transaction must match the [transaction cost](concept-transaction-cost.html) exactly.
+- XRP cannot be created.
+- [`AccountRoot` objects in the ledger](reference-ledger-format.html#accountroot) cannot be deleted. (See also: [Permanence of Accounts](concept-accounts.html#permanence-of-accounts).)
+- [An object in the ledger](reference-ledger-format.html#ledger-node-types) cannot change its type. (The `LedgerEntryType` field is immutable.)
+- There cannot be a trust line for XRP.
 
 
 ## Escrow
@@ -177,6 +199,17 @@ A transaction remains in the queue until one of the following happens:
 
 Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.
 
+## fix1373
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC | In voting; expected 2017-06-29 |
+
+Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](concept-paths.html) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
+
+The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](concept-paths.html#path-specifications) include conflicting fields and paths that loop through the same object more than once.
+
+
 ## Flow
 
 | Amendment ID                                                     | Status    |
@@ -186,6 +219,19 @@ Fixes a minor bug in transaction processing that causes some payments to fail wh
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) amendment.
 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
+
+
+## FlowCross
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | Released but not enabled |
+
+Streamlines the offer crossing logic in the RCL's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions][] and [Payment transactions][] share more code. This has subtle differences in how offers are processed:
+
+- Rounding is slightly different in some cases.
+- Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.
+- The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)
 
 
 ## FlowV2

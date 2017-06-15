@@ -4210,32 +4210,37 @@ rippled ledger current
 <tr>
 <td align="left"><code>full</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) <strong>Admin required</strong> If true, return full information on the entire ledger. Ignored if you did not specify a ledger. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
+<td align="left"><em>(Optional)</em> <strong>Admin required</strong> If <code>true</code>, return full information on the entire ledger. Ignored if you did not specify a ledger. Defaults to <code>false</code>. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
 </tr>
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) <strong>Admin required.</strong> If true, return information on accounts in the ledger. Ignored if you did not specify a ledger. <strong>Caution:</strong> This returns a very large amount of data!</td>
+<td align="left"><em>(Optional)</em> <strong>Admin required.</strong> If <code>true</code>, return information on accounts in the ledger. Ignored if you did not specify a ledger. Defaults to <code>false</code>. <strong>Caution:</strong> This returns a very large amount of data!</td>
 </tr>
 <tr>
 <td align="left"><code>transactions</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) If true, return information on transactions in the specified ledger version. Ignored if you did not specify a ledger.</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger.</td>
 </tr>
 <tr>
 <td align="left"><code>expand</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) Provide full JSON-formatted information for transaction/account information instead of only hashes. Ignored unless you requested transactions, accounts, or both.</td>
+<td align="left"><em>(Optional)</em> Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to <code>false</code>. Ignored unless you request transactions, accounts, or both.</td>
 </tr>
 <tr>
 <td align="left"><code>owner_funds</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) Include <code>owner_funds</code> field in the metadata of OfferCreate transactions in the response. Ignored unless transactions are included and <code>expand</code> is true.</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, include <code>owner_funds</code> field in the metadata of OfferCreate transactions in the response. Defaults to <code>false</code>. Ignored unless transactions are included and <code>expand</code> is true.</td>
 </tr>
 <tr>
 <td align="left"><code>binary</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to false) If <code>transactions</code> and <code>expand</code> are both true, and this option is also true, return transaction information in binary format instead of JSON format. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, and <code>transactions</code> and <code>expand</code> are both also <code>true</code>, return transaction information in binary format (hexadecimal string) instead of JSON format. <a href="https://github.com/ripple/rippled/releases/tag/0.28.0" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><code>queue</code></td>
+<td align="left">Boolean</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, and the command is requesting the <code>current</code> ledger, includes an array of <a href="concept-transaction-cost.html#queued-transactions">queued transactions</a> in the results.</td>
 </tr>
 </tbody>
 </table>
@@ -4376,7 +4381,7 @@ rippled ledger current
 <tr>
 <td align="left"><code>ledger.transactions</code></td>
 <td align="left">Array</td>
-<td align="left">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="#hashes">Hash</a> strings. If expanded, contains full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+<td align="left">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
@@ -4388,10 +4393,77 @@ rippled ledger current
 <td align="left">Number</td>
 <td align="left">The <a href="#ledger-index">Ledger Index</a> of this ledger.</td>
 </tr>
+<tr>
+<td align="left"><code>queue_data</code></td>
+<td align="left">Array</td>
+<td align="left">(Omitted unless requested with the <code>queue</code> parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified <code>expand</code> as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified <code>binary</code> as true. Requires the <a href="concept-amendments.html#known-amendments">FeeEscalation amendment</a>. <a href="https://github.com/ripple/rippled/releases/tag/0.70.0" title="New in: rippled 0.70.0"><img alt="New in: rippled 0.70.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.0-blue.svg"/></a></td>
+</tr>
 </tbody>
 </table>
 <p>The following fields are deprecated and may be removed without further notice: <code>accepted</code>, <code>hash</code>, <code>seqNum</code>, <code>totalCoins</code>.</p>
-<p><strong>Note on <code>owner_funds</code>:</strong> If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="reference-transaction-format.html#offercreate">OfferCreate-type transaction</a>. The purpose of this field is to make it easier to track the <a href="reference-transaction-format.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly different than the version of this field in <a href="#order-book-streams">Order Book subscription streams</a>:</p>
+<p>Each member of the <code>queue_data</code> array represents one transaction in the queue. Some fields of this object may be omitted because they have not yet been calculated. The fields of this object are as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>account</code></td>
+<td align="left">String</td>
+<td align="left">The <a href="#addresses">Address</a> of the sender for this queued transaction.</td>
+</tr>
+<tr>
+<td align="left"><code>tx</code></td>
+<td align="left">String or Object</td>
+<td align="left">By default, this is a String containing the <a href="#hashes">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="reference-transaction-format.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
+</tr>
+<tr>
+<td align="left"><code>retries_remaining</code></td>
+<td align="left">Number</td>
+<td align="left">How many times this transaction can be retried before being dropped.</td>
+</tr>
+<tr>
+<td align="left"><code>preflight_result</code></td>
+<td align="left">String</td>
+<td align="left">The tentative result from preliminary transaction checking. This is always <code>tesSUCCESS</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>last_result</code></td>
+<td align="left">String</td>
+<td align="left"><em>(May be omitted)</em> If this transaction was put in the queue after getting a <a href="reference-transaction-format.html#result-categories">retriable (<code>ter</code>) result</a>, this is the exact <code>ter</code> result code it got.</td>
+</tr>
+<tr>
+<td align="left"><code>auth_change</code></td>
+<td align="left">Boolean</td>
+<td align="left"><em>(May be omitted)</em> Whether this transaction changes this address's <a href="reference-transaction-format.html#authorizing-transactions">ways of authorizing transactions</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>fee</code></td>
+<td align="left">String</td>
+<td align="left"><em>(May be omitted)</em> The <a href="concept-transaction-cost.html">Transaction Cost</a> of this transaction, in <a href="#specifying-currency-amounts">drops of XRP</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>fee_level</code></td>
+<td align="left">String</td>
+<td align="left"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="concept-transaction-cost.html#fee-levels">fee levels</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>max_spend_drops</code></td>
+<td align="left">String</td>
+<td align="left"><em>(May be omitted)</em> The maximum amount of XRP, <a href="#specifying-currency-amounts">in drops</a>, this transaction could send or destroy.</td>
+</tr>
+<tr>
+<td align="left"><code>seq</code></td>
+<td align="left">Integer</td>
+<td align="left"><em>(May be omitted)</em> The <a href="#account-sequence">Sequence Number</a> of this transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="reference-transaction-format.html#offercreate">OfferCreate-type transaction</a>. The purpose of this field is to make it easier to track the <a href="reference-transaction-format.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly different than the version of this field in <a href="#order-book-streams">Order Book subscription streams</a>:</p>
 <table>
 <thead>
 <tr>
