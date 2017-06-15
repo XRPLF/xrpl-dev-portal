@@ -2372,6 +2372,10 @@
 <td align="left">When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a> to get it fixed.</td>
 </tr>
 <tr>
+<td align="left"><code>tefINVARIANT_FAILED</code></td>
+<td align="left">An invariant check failed when trying to claim the <a href="concept-transaction-cost.html">transaction cost</a>. Requires the <a href="concept-amendments.html#enforceinvariants">EnforceInvariants amendment</a>. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a>.</td>
+</tr>
+<tr>
 <td align="left"><code>tefMASTER_DISABLED</code></td>
 <td align="left">The transaction was signed with the account's master key, but the account has the <code>lsfDisableMaster</code> field set.</td>
 </tr>
@@ -2486,6 +2490,11 @@
 <td align="left">Unspecified failure, with transaction cost destroyed.</td>
 </tr>
 <tr>
+<td align="left"><code>tecCRYPTOCONDITION_ERROR</code></td>
+<td align="left">146</td>
+<td align="left">This <a href="#escrowcreate">EscrowCreate</a> or <a href="#escrowfinish">EscrowFinish</a> transaction contained a malformed or mismatched crypto-condition.</td>
+</tr>
+<tr>
 <td align="left"><code>tecDIR_FULL</code></td>
 <td align="left">121</td>
 <td align="left">The address sending the transaction cannot own any more objects in the ledger.</td>
@@ -2523,7 +2532,12 @@
 <tr>
 <td align="left"><code>tecINTERNAL</code></td>
 <td align="left">144</td>
-<td align="left">Unspecified internal error, with transaction cost applied. This error code should not normally be returned.</td>
+<td align="left">Unspecified internal error, with transaction cost applied. This error code should not normally be returned. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecINVARIANT_FAILED</code></td>
+<td align="left">147</td>
+<td align="left">An invariant check failed when trying to execute this transaction. Requires the <a href="concept-amendments.html#enforceinvariants">EnforceInvariants amendment</a>. If you can reproduce this error, please <a href="https://github.com/ripple/rippled/issues">report an issue</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>tecNEED_MASTER_KEY</code></td>

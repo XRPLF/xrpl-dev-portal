@@ -68,13 +68,22 @@ You can use the [`tfNoDirectRipple` flag](reference-transaction-format.html#paym
 
 A path set is an array. Each member of the path set is another array that represents an individual _path_. Each member of a path is an object that specifies the step. A step has the following fields:
 
-| Field | Value | Description |
-|-------|-------|-------------|
-| account | String - Address | (Optional) If present, this path step represents rippling through the specified address. |
-| currency | String - currency code | (Optional) If present, this path step represents changing currencies through an order book. The currency specified indicates the new currency. |
-| issuer | String - Address | (Optional) If the path step represents changing currencies through an order book, this field indicates the issuer of the new currency. This field is not present when changing to XRP. |
-| type  | Integer | **DEPRECATED** (Optional) An indicator of which other fields are present. |
-| type_hex | String | **DEPRECATED**: (Optional) A hexadecimal representation of the `type` field. |
+| Field      | Value                  | Description                            |
+|:-----------|:-----------------------|:---------------------------------------|
+| `account`  | String - Address       | _(Optional)_ If present, this path step represents rippling through the specified address. MUST NOT be provided if this step specifies the `currency` or `issuer` fields. |
+| `currency` | String - Currency Code | _(Optional)_ If present, this path step represents changing currencies through an order book. The currency specified indicates the new currency. MUST NOT be provided if this step specifies the `account` field. |
+| `issuer`   | String - Address       | _(Optional)_ If present, this path step represents changing currencies and this address defines the issuer of the new currency. If omitted in a step with a non-XRP `currency`, a previous step of the path defines the issuer. If present when `currency` is omitted, indicates a path step that uses an order book between same-named currencies with different issuers. MUST be omitted if the `currency` is XRP. MUST NOT be provided if this step specifies the `account` field. |
+| `type`     | Integer                | **DEPRECATED** _(Optional)_ An indicator of which other fields are present. |
+| `type_hex` | String                 | **DEPRECATED**: _(Optional)_ A hexadecimal representation of the `type` field. |
+
+In summary, the following combination of fields are valid, optionally with `type`, `type_hex`, or both:
+
+- `account` by itself
+- `currency` by itself
+- `currency` and `issuer` as long as the `currency` is not XRP
+- `issuer` by itself
+
+Any other use of `account`, `currency`, and `issuer` fields in a path step is invalid.
 
 The `type` field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:
 
