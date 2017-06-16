@@ -420,9 +420,9 @@ api.connect().then(() =&gt; {
 <p>If you are the administrator of the <code>rippled</code> server, you can <a href="reference-rippled.html#ledger-request">manually request the missing ledger(s)</a>. Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at <code>s2.ripple.com</code> for this purpose.)</p>
 <p>See <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a> for a more thorough explanation.</p>
 <h1 id="rippleapi-in-web-browsers">RippleAPI in Web Browsers</h1>
-<p>The process of using RippleAPI in a web browser is slightly different.</p>
+<p>RippleAPI can also be used in a web browser if you compile a browser-compatible version and include <a href="https://www.npmjs.com/package/lodash">lodash</a> as a dependency before the RippleAPI script.</p>
 <h2 id="build-instructions">Build Instructions</h2>
-<p>Before you can use RippleAPI in a browser, you need to compile a browser-compatible version. The following process creates a single JavaScript file you can include in a webpage.</p>
+<p>To use RippleAPI in a browser, you need to a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.</p>
 <h4 id="1-download-a-copy-of-the-rippleapi-git-repository">1. Download a copy of the RippleAPI git repository.</h4>
 <p>If you have <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> installed, you can clone the repository and check out the <strong>release</strong> branch, which always has the latest official release:</p>
 <pre><code>git clone https://github.com/ripple/ripple-lib.git
@@ -463,10 +463,12 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 <h2 id="example-browser-usage">Example Browser Usage</h2>
 <p>The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public <code>rippled</code> server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named <code>ripple</code>, which contains the <code>RippleAPI</code> class.</p>
 <p>To use this example, you must first <a href="#build-instructions">build RippleAPI</a> and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the first <code>&lt;script&gt;</code> tag in this example to use the correct file name for the version of RippleAPI you built.</p>
+<p><a href="https://github.com/ripple/ripple-dev-portal/blob/master/content/code_samples/rippleapi_quickstart/browser-demo.html" title="Source on GitHub"><strong>browser-demo.html:</strong></a></p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;script src="ripple-0.16.5.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.js"&gt;&lt;/script&gt;
+  &lt;script src="ripple-0.17.7-min.js"&gt;&lt;/script&gt;
   &lt;script&gt;
     console.log(ripple);
     var api = new ripple.RippleAPI({server:'wss://s1.ripple.com/'});
