@@ -4210,17 +4210,17 @@ rippled ledger current
 <tr>
 <td align="left"><code>full</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(Optional)</em> <strong>Admin required</strong> If <code>true</code>, return full information on the entire ledger. Ignored if you did not specify a ledger. Defaults to <code>false</code>. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
+<td align="left"><em>(Optional)</em> <strong>Admin required</strong> If <code>true</code>, return full information on the entire ledger. Ignored if you did not specify a ledger version. Defaults to <code>false</code>. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) <strong>Caution:</strong> This is a very large amount of data -- on the order of several hundred megabytes!</td>
 </tr>
 <tr>
 <td align="left"><code>accounts</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(Optional)</em> <strong>Admin required.</strong> If <code>true</code>, return information on accounts in the ledger. Ignored if you did not specify a ledger. Defaults to <code>false</code>. <strong>Caution:</strong> This returns a very large amount of data!</td>
+<td align="left"><em>(Optional)</em> <strong>Admin required.</strong> If <code>true</code>, return information on accounts in the ledger. Ignored if you did not specify a ledger version. Defaults to <code>false</code>. <strong>Caution:</strong> This returns a very large amount of data!</td>
 </tr>
 <tr>
 <td align="left"><code>transactions</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger.</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger version.</td>
 </tr>
 <tr>
 <td align="left"><code>expand</code></td>
@@ -4434,7 +4434,7 @@ rippled ledger current
 <tr>
 <td align="left"><code>last_result</code></td>
 <td align="left">String</td>
-<td align="left"><em>(May be omitted)</em> If this transaction was put in the queue after getting a <a href="reference-transaction-format.html#result-categories">retriable (<code>ter</code>) result</a>, this is the exact <code>ter</code> result code it got.</td>
+<td align="left"><em>(May be omitted)</em> If this transaction was left in the queue after getting a <a href="reference-transaction-format.html#result-categories">retriable (<code>ter</code>) result</a>, this is the exact <code>ter</code> result code it got.</td>
 </tr>
 <tr>
 <td align="left"><code>auth_change</code></td>
@@ -4454,12 +4454,7 @@ rippled ledger current
 <tr>
 <td align="left"><code>max_spend_drops</code></td>
 <td align="left">String</td>
-<td align="left"><em>(May be omitted)</em> The maximum amount of XRP, <a href="#specifying-currency-amounts">in drops</a>, this transaction could send or destroy.</td>
-</tr>
-<tr>
-<td align="left"><code>seq</code></td>
-<td align="left">Integer</td>
-<td align="left"><em>(May be omitted)</em> The <a href="#account-sequence">Sequence Number</a> of this transaction.</td>
+<td align="left"><em>(May be omitted)</em> The maximum amount of XRP, <a href="#specifying-currency-amounts">in drops</a>, this transaction could potentially send or destroy.</td>
 </tr>
 </tbody>
 </table>
