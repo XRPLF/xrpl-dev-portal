@@ -215,11 +215,11 @@ See [Reliable Transaction Submission](tutorial-reliable-transaction-submission.h
 
 # RippleAPI in Web Browsers #
 
-The process of using RippleAPI in a web browser is slightly different.
+RippleAPI can also be used in a web browser if you compile a browser-compatible version and include [lodash](https://www.npmjs.com/package/lodash) as a dependency before the RippleAPI script.
 
 ## Build Instructions ##
 
-Before you can use RippleAPI in a browser, you need to compile a browser-compatible version. The following process creates a single JavaScript file you can include in a webpage.
+To use RippleAPI in a browser, you need to a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
 
 #### 1. Download a copy of the RippleAPI git repository.
 
@@ -287,6 +287,8 @@ The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (w
 The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
 To use this example, you must first [build RippleAPI](#build-instructions) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the first `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
+
+[**browser-demo.html:**](https://github.com/ripple/ripple-dev-portal/blob/master/content/code_samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
 
 ```
 {% include 'code_samples/rippleapi_quickstart/browser-demo.html' %}
