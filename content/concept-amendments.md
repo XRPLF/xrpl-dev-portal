@@ -114,22 +114,22 @@ The following is a comprehensive list of all known amendments and their status o
 | Name                                  | Introduced | Status                  |
 |:--------------------------------------|:-----------|:------------------------|
 | [FlowCross](#flowcross)               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [EnforceInvariants](#enforceinvariants) | v0.70.0  | [Expected: 2017-06-29]( "BADGE_BLUE") |
-| [fix1373](#fix1373)                   | v0.70.0    | [Expected: 2017-06-29]( "BADGE_BLUE") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fix1368](#fix1368)                   | v0.60.0    | [Enabled: 2017-03-31](https://charts.ripple.com/#/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
-| [PayChan](#paychan)                   | v0.33.0    | [Enabled: 2017-03-31](https://charts.ripple.com/#/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
-| [Escrow](#escrow)                     | v0.60.0    | [Enabled: 2017-03-31](https://charts.ripple.com/#/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
-| [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://charts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
+| [EnforceInvariants](#enforceinvariants) | v0.70.0  | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
+| [fix1373](#fix1373)                   | v0.70.0    | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
+| [fix1368](#fix1368)                   | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
+| [PayChan](#paychan)                   | v0.33.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
+| [Escrow](#escrow)                     | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
+| [TickSize](#ticksize)                 | v0.50.0    | [Enabled: 2017-02-21](https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
 | [SusPay](#suspay)                     | v0.31.0    | [Vetoed: Removed in v0.60.0](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
-| [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://charts.ripple.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
-| [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://charts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
+| [CryptoConditions](#cryptoconditions) | v0.50.0    | [Enabled: 2017-01-03](https://xrpcharts.ripple.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
+| [Flow](#flow)                         | v0.33.0    | [Enabled: 2016-10-21](https://xrpcharts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
 | [FlowV2](#flowv2)                     | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
-| [TrustSetAuth](#trustsetauth)         | v0.30.0    | [Enabled: 2016-07-19](https://charts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
-| [MultiSign](#multisign)               | v0.31.0    | [Enabled: 2016-06-27](https://charts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
-| [FeeEscalation](#feeescalation)       | v0.31.0    | [Enabled: 2016-05-19](https://charts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [TrustSetAuth](#trustsetauth)         | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
+| [MultiSign](#multisign)               | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
+| [FeeEscalation](#feeescalation)       | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
 
