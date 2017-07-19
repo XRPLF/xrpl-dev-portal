@@ -146,7 +146,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 
 | Amendment ID                                                     | Status  |
 |:-----------------------------------------------------------------|:--------|
-| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | In voting; expected 2017-06-29 |
+| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | Enabled |
 
 Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of `rippled` without additional amendments.
 
@@ -203,7 +203,7 @@ Fixes a minor bug in transaction processing that causes some payments to fail wh
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC | In voting; expected 2017-06-29 |
+| 42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC | Enabled   |
 
 Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](concept-paths.html) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
 
@@ -214,7 +214,7 @@ The fix1373 amendment corrects the issue so that the paths are properly prepared
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | Enabled |
+| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | Enabled   |
 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) amendment.
 
