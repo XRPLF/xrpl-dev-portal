@@ -1,10 +1,10 @@
 # Partial Payments
 
-In the default case, the `Amount` field of a [Payment transaction][] in the Ripple Consensus Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](concept-transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](reference-transaction-format.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
+In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](concept-transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](reference-transaction-format.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
 
 The amount of XRP used for the [transaction cost](concept-transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction.
 
-Partial payments can be used to exploit naive integrations with the Ripple Consensus Ledger to steal money from exchanges and gateways. The [Partial Payments Exploit](#partial-payments-exploit) section of this document describes how this exploit works and how you can avoid it.
+Partial payments can be used to exploit naive integrations with the XRP Ledger to steal money from exchanges and gateways. The [Partial Payments Exploit](#partial-payments-exploit) section of this document describes how this exploit works and how you can avoid it.
 
 ## Semantics
 
@@ -16,7 +16,7 @@ In other words:
 
     Amount + (fees) = (sent amount) ≤ SendMax
 
-In this formula, "fees" refers to [transfer fees](concept-transfer-fees.html) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the Ripple Consensus Ledger's decentralized exchange.
+In this formula, "fees" refers to [transfer fees](concept-transfer-fees.html) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the XRP Ledger's decentralized exchange.
 
 **Note:** The `Fee` field of the transaction refers to the XRP [transaction cost](concept-transaction-cost.html), which is destroyed to relay the transaction to the network. The exact transaction cost specified is always debited from the sender and is completely separate from the fee calculations for any type of payment.
 
@@ -68,7 +68,7 @@ You can find the `delivered_amount` field in the following places:
 
 ## Partial Payments Exploit
 
-If a financial institution's integration with the Ripple Consensus Ledger assumes that the `Amount` field of a Payment is always the full amount delivered, malicious actors may be able to exploit that assumption to steal money from the institution. This exploit can be used against gateways, exchanges, or merchants as long as those institutions' software does not process partial payments correctly.
+If a financial institution's integration with the XRP Ledger assumes that the `Amount` field of a Payment is always the full amount delivered, malicious actors may be able to exploit that assumption to steal money from the institution. This exploit can be used against gateways, exchanges, or merchants as long as those institutions' software does not process partial payments correctly.
 
 **The correct way to process incoming Payment transactions is to use [the `delivered_amount` metadata field](#the-delivered-amount-field),** not the `Amount` field. This way, an institution is never mistaken about how much it _actually_ received.
 
@@ -80,10 +80,10 @@ To exploit a vulnerable financial institution, a malicious actor does something 
 1. The malicious actor sends a Payment transaction to the institution. This transaction has a large `Amount` field and has the **tfPartialPayment** flag enabled.
 2. The partial payment succeeds (result code `tesSUCCESS`) but actually delivers a very small amount of the currency specified.
 3. The vulnerable institution reads the transaction's `Amount` field without looking at the `Flags` field or `delivered_amount` metadata field.
-4. The vulnerable institution credits the malicious actor in an external system, such as the institution's own ledger, for the full `Amount`, despite only receiving a much smaller `delivered_amount` in the Ripple Consensus Ledger.
+4. The vulnerable institution credits the malicious actor in an external system, such as the institution's own ledger, for the full `Amount`, despite only receiving a much smaller `delivered_amount` in the XRP Ledger.
 5. The malicious actor withdraws as much of the balance as possible to another system before the vulnerable institution notices the discrepancy.
     - Malicious actors usually prefer to convert the balance to another crypto-currency such as Bitcoin, because blockchain transactions are usually irreversible. With a withdrawal to a fiat currency system, the financial institution may be able to reverse or cancel the transaction several days after it initially executes.
-    - In the case of an exchange, the malicious actor can also withdraw an XRP balance directly back into the Ripple Consensus Ledger.
+    - In the case of an exchange, the malicious actor can also withdraw an XRP balance directly back into the XRP Ledger.
 
 In the case of a merchant, the order of operations is slightly different, but the concept is the same:
 
@@ -92,14 +92,14 @@ In the case of a merchant, the order of operations is slightly different, but th
 3. The malicious actor sends a Payment transaction to the merchant. This transaction has a large `Amount` field and has the **tfPartialPayment** flag enabled.
 4. The partial payment succeeds (result code `tesSUCCESS`) but delivers only a very small amount of the currency specified.
 5. The vulnerable merchant reads the transaction's `Amount` field without looking at the `Flags` field or `delivered_amount` metadata field.
-6. The vulnerable merchant treats the invoice as paid and provides the goods or services to the malicious actor, despite only receiving a much smaller `delivered_amount` in the Ripple Consensus Ledger.
+6. The vulnerable merchant treats the invoice as paid and provides the goods or services to the malicious actor, despite only receiving a much smaller `delivered_amount` in the XRP Ledger.
 7. The malicious actor uses, resells, or absconds with the goods and services before the merchant notices the discrepancy.
 
 ### Further Mitigations
 
 Using [the `delivered_amount` field](#the-delivered-amount-field) when processing incoming transactions is sufficient to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
 
-- Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the Ripple Consensus Ledger does not match your expected assets and obligations.
+- Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the XRP Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.
 
 {% include 'snippets/tx-type-links.md' %}

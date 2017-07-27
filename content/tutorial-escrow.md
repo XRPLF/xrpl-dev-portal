@@ -1,6 +1,6 @@
 # Escrow Tutorials
 
-The Ripple Consensus Ledger supports held payments that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. You can use these simple features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
+The XRP Ledger supports held payments that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. You can use these simple features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
 
 - Send a time-held payment
 - Send a conditionally-held payment

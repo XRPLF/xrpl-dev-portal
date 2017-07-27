@@ -1,6 +1,6 @@
 # rippled #
 
-The core peer-to-peer server that manages the Ripple Consensus Ledger (RCL) is called `rippled`. Each `rippled` server connects to a network of peers, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
+The core peer-to-peer server that manages the XRP Ledger (XRP Ledger) is called `rippled`. Each `rippled` server connects to a network of peers, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. The source code for `rippled` is written in C++, and is [available on GitHub under an open-source license](https://github.com/ripple/rippled).
 
 * [`rippled` Setup](tutorial-rippled-setup.html)
 * [API Reference](#api-methods)
@@ -36,7 +36,7 @@ The [example config file](https://github.com/ripple/rippled/blob/release/doc/rip
 
 ### WebSocket API ###
 
-If you are looking to try out some methods on the Ripple Consensus Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](ripple-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client in the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications) or [in Node.js](https://www.npmjs.com/package/ws).
+If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](ripple-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client in the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications) or [in Node.js](https://www.npmjs.com/package/ws).
 
 #### Request Formatting ####
 
@@ -399,7 +399,7 @@ If you do not specify a ledger, the `current` (in-progress) ledger is chosen by 
 
 ## Currencies ##
 
-There are two kinds of currencies in the Ripple Consensus Ledger: XRP, and everything else. There are many differences between the two:
+There are two kinds of currencies in the XRP Ledger: XRP, and everything else. There are many differences between the two:
 
 | `XRP`                                                           | Issued Currencies |
 |:----------------------------------------------------------------|:-----------|
@@ -499,7 +499,7 @@ The format of the `marker` field is intentionally undefined. Each server can def
 
 ## Modifying the Ledger ##
 
-All changes to the Ripple Consensus Ledger (RCL) happen as the result of transactions. The only API methods that can change the contents of the RCL are the [`submit` command](#submit) and the [`submit_multisigned` command](#submit-multisigned). Most other methods represent different ways to view the data represented in the RCL. The remaining commands generate data for your convenience. (The [`wallet_propose`](#wallet-propose), [`path_find`](#path-find), and [`random`](#random) commands fall into this category.)
+All changes to the XRP Ledger (XRP Ledger) happen as the result of transactions. The only API methods that can change the contents of the RCL are the [`submit` command](#submit) and the [`submit_multisigned` command](#submit-multisigned). Most other methods represent different ways to view the data represented in the RCL. The remaining commands generate data for your convenience. (The [`wallet_propose`](#wallet-propose), [`path_find`](#path-find), and [`random`](#random) commands fall into this category.)
 
 For more information on the various transactions you can submit, see the [Transaction Format](reference-transaction-format.html).
 
@@ -587,7 +587,7 @@ You can use the `rippled` application (as a separate instance) as a JSON-RPC cli
 
 
 # Account Information #
-An "Account" in the Ripple Consensus Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account. For more information, see [Accounts](concept-accounts.html).
+An "Account" in the XRP Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account. For more information, see [Accounts](concept-accounts.html).
 
 
 ## account_currencies ##
@@ -3125,7 +3125,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## wallet_propose ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the Ripple Consensus Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
+Use the `wallet_propose` method to generate a key pair and Ripple [address]. This command only generates keys, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
@@ -3951,7 +3951,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single ledger node from the Ripple Consensus Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
+The `ledger_entry` method returns a single ledger node from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
 **Note:** There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
@@ -6691,9 +6691,9 @@ The server automatically tries to fill in certain fields in `tx_json` (the [Tran
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information.
     * **Caution:** The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.
-* `Fee` - If you omit the `Fee` parameter, the server tries to fill in an appropriate transaction cost automatically. On the production Ripple Consensus Ledger, this fails with `rpcHIGH_FEE` unless you provide an appropriate `fee_mult_max` value.
-    * The `fee_mult_max` and `fee_div_max` parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the [reference transaction cost](concept-transaction-cost.html#reference-transaction-cost). The default settings return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production Ripple Consensus Ledger [typically has a 1000× load multiplier](concept-transaction-cost.html#current-transaction-cost).
-    * The commandline syntax does not support `fee_mult_max` and `fee_div_max`. For the production Ripple Consensus Ledger, you must provide a `Fee` value.
+* `Fee` - If you omit the `Fee` parameter, the server tries to fill in an appropriate transaction cost automatically. On the production XRP Ledger, this fails with `rpcHIGH_FEE` unless you provide an appropriate `fee_mult_max` value.
+    * The `fee_mult_max` and `fee_div_max` parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the [reference transaction cost](concept-transaction-cost.html#reference-transaction-cost). The default settings return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production XRP Ledger [typically has a 1000× load multiplier](concept-transaction-cost.html#current-transaction-cost).
+    * The commandline syntax does not support `fee_mult_max` and `fee_div_max`. For the production XRP Ledger, you must provide a `Fee` value.
     * **Caution:** A malicious server can specify an excessively high transaction cost, ignoring the values of `fee_mult_max` and `fee_div_max`.
 * `Paths` - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you did a [ripple_path_find](#ripple-path-find). Only filled if `build_path` is provided.
 
@@ -11737,11 +11737,11 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Peer Protocol #
 
-Servers in the Ripple Consensus Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
+Servers in the XRP Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Configuring the Peer Protocol ##
 
-In order to participate in the Ripple Consensus Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
+In order to participate in the XRP Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the `rippled` server. The [default `rippled` configuration file](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your `rippled.cfg` file.
 

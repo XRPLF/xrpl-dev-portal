@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -128,7 +128,7 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
@@ -185,7 +185,7 @@
 <h2 id="background">Background</h2>
 <p>Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some <em>validators</em> (<code>rippled</code> servers <a href="tutorial-rippled-setup.html#reasons-to-run-a-validator">participating in consensus</a>) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.</p>
 <p>Amendments solve this problem, so that new features can be enabled only when enough validators support those features.</p>
-<p>Users and businesses who rely on the Ripple Consensus Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> do not need Amendments.</p>
+<p>Users and businesses who rely on the XRP Ledger can also use Amendments to provide advance notice of changes in transaction processing that might affect their business. However, API changes that do not impact transaction processing or <a href="https://ripple.com/build/ripple-ledger-consensus-process/">the consensus process</a> do not need Amendments.</p>
 <h2 id="about-amendments">About Amendments</h2>
 <p>An amendment is a fully-functional feature or change, waiting to be enabled by the peer-to-peer network as a part of the consensus process. A <code>rippled</code> server that wants to use an amendment has code for two modes: without the amendment (old behavior) and with the amendment (new behavior).</p>
 <p>Every amendment has a unique identifying hex value and a short name. The short name is for human use, and is not used in the amendment process. Two servers can support the same amendment ID while using different names to describe it. An amendment's name is not guaranteed to be unique.</p>
@@ -245,7 +245,7 @@ TrustSetAuth
 </code></pre>
 <h1 id="known-amendments">Known Amendments</h1>
 <p><a href="https://github.com/ripple/rippled/blob/release/src/ripple/app/main/Amendments.cpp" title="Source">[Source]<br/></a></p>
-<p>The following is a comprehensive list of all known amendments and their status on the production Ripple Consensus Ledger:</p>
+<p>The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:</p>
 <table>
 <thead>
 <tr>
@@ -374,7 +374,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the Ripple Consensus Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
+<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the XRP Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
 <p>Introduces two new transaction error codes, <code>tecINVARIANT_FAILED</code> and <code>tefINVARIANT_FAILED</code>. Changes transaction processing to add the new checks.</p>
 <p>Examples of invariant checks:</p>
 <ul>
@@ -400,7 +400,7 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
-<p>Provides "suspended payments" for XRP for escrow within the Ripple Consensus Ledger, including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions</a>. Creates a new ledger node type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
+<p>Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02">Interledger Protocol Crypto-Conditions</a>. Creates a new ledger node type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
 <h2 id="feeescalation">FeeEscalation</h2>
 <table>
 <thead>
@@ -490,7 +490,7 @@ TrustSetAuth
 </tr>
 </tbody>
 </table>
-<p>Streamlines the offer crossing logic in the RCL's decentralized exchange. Uses the updated code from the <a href="#flow">Flow</a> amendment to power offer crossing, so <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> and <a href="reference-transaction-format.html#payment">Payment transactions</a> share more code. This has subtle differences in how offers are processed:</p>
+<p>Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the <a href="#flow">Flow</a> amendment to power offer crossing, so <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> and <a href="reference-transaction-format.html#payment">Payment transactions</a> share more code. This has subtle differences in how offers are processed:</p>
 <ul>
 <li>Rounding is slightly different in some cases.</li>
 <li>Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.</li>
@@ -591,7 +591,7 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
-<p>When this amendment is activated, the Ripple Consensus Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure.</p>
+<p>When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure.</p>
 <h2 id="suspay">SusPay</h2>
 <table>
 <thead>
@@ -641,7 +641,7 @@ TrustSetAuth
 </tbody>
 </table>
 <p>Changes the way <a href="reference-transaction-format.html#lifecycle-of-an-offer">Offers</a> are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
-<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the <a href="reference-transaction-format.html#accountset">AccountSet transaction type</a>. If a currency issuer sets the <code>TickSize</code> field, the Ripple Consensus Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
+<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the <a href="reference-transaction-format.html#accountset">AccountSet transaction type</a>. If a currency issuer sets the <code>TickSize</code> field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
 <h2 id="tickets">Tickets</h2>
 <table>
 <thead>

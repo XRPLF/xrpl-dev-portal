@@ -1,4 +1,4 @@
-The Ripple Consensus Ledger (RCL) uses public keys to verify cryptographic signatures in several places:
+The XRP Ledger (XRP Ledger) uses public keys to verify cryptographic signatures in several places:
 
 * To authorize transactions, a public key is attached to the transaction. The public key must be mathematically associated with the sending Ripple address or the sender's regular key address.
 * To secure peer-to-peer communications between `rippled` servers. This uses a "node public key" that the server generates randomly when it starts with an empty database.

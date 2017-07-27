@@ -1,6 +1,6 @@
 # Understanding the NoRipple Flag #
 
-In the Ripple Consensus Ledger (RCL), the "NoRipple" flag is a setting on a trust line. When an address enables the NoRipple flag on two trust lines, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.
+In the XRP Ledger (XRP Ledger), the "NoRipple" flag is a setting on a trust line. When an address enables the NoRipple flag on two trust lines, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.
 
 ## Background ##
 
@@ -12,7 +12,7 @@ If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the mon
 
 ![Charlie --($13)-- Alice --($17)-- Bob](img/noripple-02.png)
 
-We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the Ripple Consensus Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code](reference-rippled.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
+We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code](reference-rippled.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
 ## Justification ##
 

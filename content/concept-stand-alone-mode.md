@@ -13,7 +13,7 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
 
 New Genesis Ledger
 -------------------------------------------------------------------------------
-In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)
+In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production XRP Ledger. (This is very useful for unit tests, among other things.)
 
 * To start `rippled` in stand-alone mode with a new genesis ledger, use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--start`](https://wiki.ripple.com/Rippled#--start) options:
 

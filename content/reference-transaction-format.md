@@ -11,7 +11,7 @@ A _Transaction_ is the only way to modify the Ripple Ledger. Transactions are on
 
 ## Authorizing Transactions ##
 
-In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to -->
+In the decentralized XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to -->
 
 A transaction can be authorized by any of the following types of signatures:
 
@@ -27,7 +27,7 @@ Any signature type can authorize any type of transaction, with the following exc
 
 ## Signing and Submitting Transactions ##
 
-Sending a transaction to the Ripple Consensus Ledger involves several steps:
+Sending a transaction to the XRP Ledger involves several steps:
 
 1. Create an [unsigned transaction in JSON format](#unsigned-transaction-format).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
@@ -56,7 +56,7 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 }
 ```
 
-The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
+The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
     * You can use [RippleAPI](reference-rippleapi.html#sign) for offline signing.
@@ -170,7 +170,7 @@ Example response from the `tx` command:
 
 ### Multi-Signing ###
 
-Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the Ripple Consensus Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in Ripple is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
 
 The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 
@@ -255,7 +255,7 @@ The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also
 
 ### Transaction Cost ###
 
-To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This _[transaction cost](concept-transaction-cost.html)_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
+To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This _[transaction cost](concept-transaction-cost.html)_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
 The `Fee` field specifies an amount, in [drops of XRP][Currency Amount], to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the `Fee` parameter is destroyed forever. You can [look up the transaction cost](concept-transaction-cost.html#querying-the-transaction-cost) in advance, or [let `rippled` set it automatically](concept-transaction-cost.html#automatically-specifying-the-transaction-cost) when you sign a transaction.
 
@@ -385,7 +385,7 @@ _Pseudo-Transactions_ that are not created and submitted in the usual way, but m
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the Ripple Consensus Ledger](reference-ledger-format.html#accountroot).
+An AccountSet transaction modifies the properties of an [account in the XRP Ledger](reference-ledger-format.html#accountroot).
 
 Example AccountSet:
 
@@ -590,7 +590,7 @@ Any account may submit an EscrowFinish transaction.
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
 
-An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.
+An OfferCancel transaction removes an Offer node from the XRP Ledger.
 
 ```
 {
@@ -618,7 +618,7 @@ The OfferCancel method returns [tesSUCCESS](#transaction-results) even if it did
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
-An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the XRP Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
 ```
 {
@@ -697,7 +697,7 @@ _Requires the [TickSize amendment](concept-amendments.html#ticksize)._
 
 When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the `TickSize` from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither currency has a `TickSize` set, the default behavior applies.
 
-The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction][]. The exchange rate is represented as a number of significant digits plus an exponent; the `TickSize` does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
+The `TickSize` value truncates the number of _significant digits_ in the exchange rate of an offer when it gets placed in an order book. Issuers can set `TickSize` to an integer from `3` to `15` using an [AccountSet transaction][]. The exchange rate is represented as a number of significant digits plus an exponent; the `TickSize` does not affect the exponent. This allows the XRP Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the `TickSize` an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.
 
 The `TickSize` does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with `tfImmediateOrCancel` are unaffected by `TickSize` values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on `TickSize`. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the `TakerPays` amount (the amount being bought) gets rounded. If the `tfSell` flag is enabled (a "sell" Offer) the `TakerGets` amount (the amount being sold) gets rounded.
 
@@ -716,7 +716,7 @@ If an OfferCreate transaction has an `Expiration` time that has already passed w
 
 ### Auto-Bridging ###
 
-Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.
+Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the XRP Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.
 
 Example: _Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers._
 
@@ -785,7 +785,7 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 ### Creating Accounts ###
 
-The Payment transaction type is the only way to create new accounts in the Ripple Consensus Ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](concept-reserves.html) to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new [AccountRoot node](reference-ledger-format.html#accountroot) is added to the ledger.
+The Payment transaction type is the only way to create new accounts in the XRP Ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](concept-reserves.html) to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new [AccountRoot node](reference-ledger-format.html#accountroot) is added to the ledger.
 
 If you send an insufficient amount of XRP, or any other currency, the Payment fails.
 
@@ -1079,9 +1079,9 @@ Create or modify a trust line linking two accounts.
 
 ### Trust Limits ###
 
-All balances on the Ripple Consensus Ledger (RCL), except for XRP, represent value owed in the world outside the Ripple Ledger. The address that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is expected to pay the balance back, outside of the Ripple Consensus Ledger, when users redeem their Ripple balances by returning them to the issuer.
+All balances on the XRP Ledger (XRP Ledger), except for XRP, represent value owed in the world outside the Ripple Ledger. The address that issues those funds in Ripple (identified by the `issuer` field of the `LimitAmount` object) is expected to pay the balance back, outside of the Ripple Consensus Ledger, when users redeem their Ripple balances by returning them to the issuer.
 
-Since a computer program cannot force a someone to keep a promise and not default in real life, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the RCL. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Consensus Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the RCL, but they no longer have any reason to be worth anything.)
+Since a computer program cannot force a someone to keep a promise and not default in real life, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the XRP Ledger. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the XRP Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the RCL, but they no longer have any reason to be worth anything.)
 
 There are two cases where you can hold a balance on a trust line that is *greater* than your limit: when you acquire more of that currency through [trading](#offercreate), or when you decrease the limit on your trust line.
 
@@ -1271,7 +1271,7 @@ Any other transaction result is potentially not final. In that case, the transac
 
 ## Understanding Transaction Metadata ##
 
-The metadata section of a transaction includes detailed information about all the changes to the shared Ripple Consensus Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
+The metadata section of a transaction includes detailed information about all the changes to the shared XRP Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.
 
 Some fields that may appear in transaction metadata include:
 

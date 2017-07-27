@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -160,7 +160,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="reliable-transaction-submission">Reliable Transaction Submission</h1>
-<p>Financial institutions and other services using the Ripple Consensus Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
+<p>Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
 <p>The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:</p>
 <ol>
 <li><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotency</a> - Transactions should be processed once and only once, or not at all.</li>
@@ -200,7 +200,7 @@
 <p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>
 <p>Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each <code>rippled</code> server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
-<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
+<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
 <p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger. You should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.</p>
 <p>Applications using <code>rippled</code> APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
 <h2 id="best-practices">Best Practices</h2>

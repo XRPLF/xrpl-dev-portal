@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -173,7 +173,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="the-ledger">The Ledger</h1>
-<p>The Ripple Consensus Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> keeps a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/build/ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
+<p>The XRP Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> keeps a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/build/ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
 <p><img alt="Diagram: Each ledger is the result of applying transactions to the previous ledger version." src="img/ledger-process.png"/></p>
 <p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a <a href="#ledger-index">ledger index</a> which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be correct and immutable.</p>
 <p>A single ledger version consists of several parts:</p>

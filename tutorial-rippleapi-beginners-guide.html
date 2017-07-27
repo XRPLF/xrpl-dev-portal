@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -165,7 +165,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="rippleapi-beginners-guide">RippleAPI Beginners Guide</h1>
-<p>This tutorial guides you through the basics of building a Ripple-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="reference-rippleapi.html">RippleAPI</a>, a JavaScript API for accessing the Ripple Consensus Ledger.</p>
+<p>This tutorial guides you through the basics of building a Ripple-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="reference-rippleapi.html">RippleAPI</a>, a JavaScript API for accessing the XRP Ledger.</p>
 <p>The scripts and configuration files used in this guide are <a href="https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart">available in the Ripple Dev Portal GitHub Repository</a>.</p>
 <h1 id="environment-setup">Environment Setup</h1>
 <p>The first step to using RippleAPI successfully is setting up your development environment.</p>
@@ -283,13 +283,13 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 <ul>
 <li>The example <code>server</code> setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.</li>
 <li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="reference-rippleapi.html#offline-functionality">offline mode</a> instead, which only provides methods that don't need network connectivity.</li>
-<li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production Ripple Consensus Ledger.</li>
+<li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.</li>
 <li>If you <a href="tutorial-rippled-setup.html">run your own <code>rippled</code></a>, you can instruct it to connect to your local server. For example, you might say <code>server: 'ws://localhost:5005'</code> instead.</li>
 </ul>
 <h3 id="connecting-and-promises">Connecting and Promises</h3>
 <pre><code>api.connect().then(() =&gt; {
 </code></pre>
-<p>The <a href="reference-rippleapi.html#connect">connect() method</a> is one of many RippleAPI methods that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, which is a special kind of JavaScript object. A Promise is designed to do an asynchronous operation that returns a value later, such as querying the Ripple Consensus Ledger.</p>
+<p>The <a href="reference-rippleapi.html#connect">connect() method</a> is one of many RippleAPI methods that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, which is a special kind of JavaScript object. A Promise is designed to do an asynchronous operation that returns a value later, such as querying the XRP Ledger.</p>
 <p>When you get a Promise back from some expression (like <code>api.connect()</code>), you call the Promise's <code>then</code> method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class objects</a>.</p>
 <p>When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the <code>then</code> method is another Promise object, so you can "chain" that into another <code>then</code> method, or the Promise's <code>catch</code> method, which also takes a callback. The callback you pass to <code>catch</code> gets called if something goes wrong.</p>
 <p>Finally, we have more new ECMAScript 6 syntax - an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>. Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax <code>()=&gt; {...}</code> is mostly equivalent to <code>function() {...}</code>. If you want an anonymous function with one parameter, you can use a syntax like <code>info =&gt; {...}</code> instead, which is almost the same as <code>function(info) {...}</code> syntax.</p>
@@ -318,10 +318,10 @@ const RippleAPI = require('ripple-lib').RippleAPI;
   console.log('done and disconnected.');
 }).catch(console.error);
 </code></pre>
-<p>The rest of the sample code is mostly more <a href="reference-rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the Ripple Consensus Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on <a href="reference-rippleapi.html#api-events">RippleAPI events</a>, do not disconnect until you are done waiting for events.</p>
+<p>The rest of the sample code is mostly more <a href="reference-rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the XRP Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on <a href="reference-rippleapi.html#api-events">RippleAPI events</a>, do not disconnect until you are done waiting for events.</p>
 <p>The <code>catch</code> method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard <code>console.error</code> function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.</p>
 <h1 id="waiting-for-validation">Waiting for Validation</h1>
-<p>One of the biggest challenges in using the Ripple Consensus Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
+<p>One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
 <pre><code>'use strict';
 /* import RippleAPI and support libraries */
 const RippleAPI = require('ripple-lib').RippleAPI;

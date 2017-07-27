@@ -1,6 +1,6 @@
 # Transaction Cost #
 
-To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/xrp-portal/). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
+To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/xrp-portal/). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
 Every transaction must [specify how much XRP to destroy](#specifying-the-transaction-cost) to pay the transaction cost.
 
@@ -130,7 +130,7 @@ The [`server_state` command](reference-rippled.html#server-state) returns a dire
 
 Every signed transaction must include the transaction cost in the [`Fee` field](reference-transaction-format.html#common-fields). Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.
 
-As a rule, the Ripple Consensus Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's [reserve requirement](concept-reserves.html).
+As a rule, the XRP Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's [reserve requirement](concept-reserves.html).
 
 Before signing a transaction, we recommend [looking up the current load-based transaction cost](#querying-the-transaction-cost). If the transaction cost is high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.
 
@@ -176,6 +176,6 @@ When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is ena
 
 ## Changing the Transaction Cost ##
 
-The Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
+The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
 
 {% include 'snippets/rippled_versions.md' %}

@@ -1,7 +1,7 @@
 Ripple Data API v2
 ==================
 
-The Ripple Data API v2 provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
 
 Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
@@ -1175,7 +1175,7 @@ Response (trimmed for size):
 ## Get Stats ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/stats.js "Source")
 
-Retrieve statistics about transaction activity in the Ripple Consensus Ledger, divided into intervals of time.
+Retrieve statistics about transaction activity in the XRP Ledger, divided into intervals of time.
 
 #### Request Format ####
 
@@ -2027,7 +2027,7 @@ Response:
 ## Get Top Currencies ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topCurrencies.js "Source")
 
-Returns the top currencies on the Ripple Consensus Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
+Returns the top currencies on the XRP Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
 
 
 #### Request Format ####
@@ -2130,7 +2130,7 @@ Response:
 ## Get Top Markets ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topMarkets.js "Source")
 
-Returns the top exchange markets on the Ripple Consensus Ledger, ordered from highest rank to lowest. The rank is determined by the number and volume of exchanges and the number of counterparties participating. By default, returns top markets for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
+Returns the top exchange markets on the XRP Ledger, ordered from highest rank to lowest. The rank is determined by the number and volume of exchanges and the number of counterparties participating. By default, returns top markets for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
 
 #### Request Format ####
 
@@ -3506,7 +3506,7 @@ Content-Type: image/svg+xml
 ## Get Accounts ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accounts.js "Source")
 
-Retrieve information about the creation of new accounts in the Ripple Consensus Ledger.
+Retrieve information about the creation of new accounts in the XRP Ledger.
 
 #### Request Format ####
 
@@ -3914,7 +3914,7 @@ Optionally, you can provide the following query parameters:
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 1,000. |
 | `marker` | String  | [Pagination](#pagination) key from previously returned response. |
 
-**Note:** This method cannot return CSV format; only JSON results are supported for raw RCL transactions.
+**Note:** This method cannot return CSV format; only JSON results are supported for raw XRP Ledger transactions.
 
 
 #### Response Format ####
@@ -5113,7 +5113,7 @@ Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Th
 
 ## Account Creation Objects ##
 
-An account creation object represents the action of creating an account in the Ripple Consensus Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed _genesis accounts_.
+An account creation object represents the action of creating an account in the XRP Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed _genesis accounts_.
 
 | Field | Value | Description |
 |-------|-------|-------------|
@@ -5130,7 +5130,7 @@ An account creation object represents the action of creating an account in the R
 ## Exchange Objects ##
 [Exchange Objects]: #exchange-objects
 
-An exchange object represents an actual exchange of currency, which can occur in the Ripple Consensus Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
+An exchange object represents an actual exchange of currency, which can occur in the XRP Ledger as the result of executing either an OfferCreate transaction or a Payment transaction. In order for currency to actually change hands, there must be a previously-unfilled Offer previously placed in the ledger with an OfferCreate transaction.
 
 A single transaction can cause several exchanges to occur. In this case, the sender of the transaction is the taker for all the exchanges, but each exchange has a different provider, currency pair, or both.
 

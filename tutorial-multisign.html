@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -165,7 +165,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="how-to-multi-sign">How to Multi-Sign</h1>
-<p>Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with <a href="reference-transaction-format.html#setregularkey">regular keys</a> and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
+<p>Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with <a href="reference-transaction-format.html#setregularkey">regular keys</a> and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
 <p>Benefits of multi-signing include:</p>
 <ul>
 <li>You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.</li>
@@ -187,7 +187,7 @@
 MultiSign
 </code></pre>
 <h2 id="setting-up-multi-signing">Setting up Multi-Signing</h2>
-<p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
+<p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the XRP Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
 <h3 id="1-prepare-a-funded-address">1. Prepare a funded address</h3>
 <p>You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
 <p>If you started <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> with a new genesis ledger, you must:</p>

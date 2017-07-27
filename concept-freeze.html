@@ -83,7 +83,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
@@ -128,7 +128,7 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
@@ -174,13 +174,13 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="freeze-features">Freeze Features</h1>
-<p>The Ripple Consensus Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:</p>
+<p>The XRP Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:</p>
 <ul>
 <li><a href="#individual-freeze"><strong>Individual Freeze</strong></a> - Freeze one counterparty.</li>
 <li><a href="#global-freeze"><strong>Global Freeze</strong></a> - Freeze all counterparties.</li>
 <li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.</li>
 </ul>
-<p>Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
+<p>Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
 <p>All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.</p>
 <h2 id="individual-freeze">Individual Freeze</h2>
 <p>The <strong>Individual Freeze</strong> feature is a setting on a trust line. When an issuing address enables the Individual Freeze setting, the following rules apply:</p>
@@ -190,7 +190,7 @@
 <li>The counterparty can still receive payments from others on the frozen trust line.</li>
 <li>The counterparty's offers to sell the currency issued on the frozen trust line are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the Ripple Consensus Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)</p>
+<p>A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)</p>
 <p>An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>, from sending that financial institution's issuances to the individual address. This type of individual freeze has no effect on offers.</p>
 <p>The Individual Freeze applies to a single currency only. To freeze multiple currencies with a particular counterparty, the address must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An address cannot enable the Individual Freeze setting if it has enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
@@ -201,7 +201,7 @@
 <li>Counterparties of the frozen issuing address can still send and receive payments directly to and from the issuing address.</li>
 <li>All offers to sell currencies issued by the frozen address are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>It can be useful to enable Global Freeze on a financial institution's <a href="concept-issuing-and-operational-addresses.html">issuing address</a> if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
+<p>It can be useful to enable Global Freeze on a financial institution's <a href="concept-issuing-and-operational-addresses.html">issuing address</a> if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
 <p>It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new <a href="concept-issuing-and-operational-addresses.html">issuing address</a>, or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
 <p>Global Freeze applies to <em>all</em> currencies issued and held by the address. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different addresses for each currency.</p>
 <p>An address can always enable the Global Freeze setting. However, if the address has enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> Global Freeze.</p>
@@ -211,7 +211,7 @@
 <li>The issuing address can no longer enable Individual Freeze on trust lines to any counterparty.</li>
 <li>The issuing address can still enable Global Freeze to enact a global freeze, but the address cannot <em>disable</em> Global Freeze.</li>
 </ul>
-<p>The Ripple Consensus Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
+<p>The XRP Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
 <p>The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.</p>
 <p>You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a <a href="reference-transaction-format.html#setregularkey">Regular Key</a> or a <a href="reference-transaction-format.html#multi-signing">multi-signed transaction</a> to enable No Freeze.</p>
 <h1 id="technical-details">Technical Details</h1>

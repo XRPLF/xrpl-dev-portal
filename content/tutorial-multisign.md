@@ -1,7 +1,7 @@
 How to Multi-Sign
 =============================
 
-Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
+Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
 
 Benefits of multi-signing include:
 
@@ -33,7 +33,7 @@ To force the multi-signing feature to be enabled, add the following stanza to yo
 Setting up Multi-Signing
 ------------------------
 
-To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
+To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the XRP Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
 
 ### 1. Prepare a funded address ###

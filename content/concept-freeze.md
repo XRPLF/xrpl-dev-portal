@@ -1,13 +1,13 @@
 Freeze Features
 ===============
 
-The Ripple Consensus Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
+The XRP Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
 
 * [**Individual Freeze**](#individual-freeze) - Freeze one counterparty.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
 * [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
-Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.
+Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.
 
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.
 
@@ -22,7 +22,7 @@ The **Individual Freeze** feature is a setting on a trust line. When an issuing 
 * The counterparty can still receive payments from others on the frozen trust line.
 * The counterparty's offers to sell the currency issued on the frozen trust line are [considered unfunded](reference-transaction-format.html#lifecycle-of-an-offer).
 
-A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the Ripple Consensus Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
+A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
 An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](concept-issuing-and-operational-addresses.html), from sending that financial institution's issuances to the individual address. This type of individual freeze has no effect on offers.
 
@@ -40,7 +40,7 @@ The **Global Freeze** feature is a setting on an address. When an issuing addres
 * Counterparties of the frozen issuing address can still send and receive payments directly to and from the issuing address.
 * All offers to sell currencies issued by the frozen address are [considered unfunded](reference-transaction-format.html#lifecycle-of-an-offer).
 
-It can be useful to enable Global Freeze on a financial institution's [issuing address](concept-issuing-and-operational-addresses.html) if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.
+It can be useful to enable Global Freeze on a financial institution's [issuing address](concept-issuing-and-operational-addresses.html) if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, a financial institution should also suspend activities in its connectors to outside systems.
 
 It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new [issuing address](concept-issuing-and-operational-addresses.html), or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
 
@@ -57,7 +57,7 @@ The **No Freeze** feature is a setting on an address that permanently gives up t
 * The issuing address can no longer enable Individual Freeze on trust lines to any counterparty.
 * The issuing address can still enable Global Freeze to enact a global freeze, but the address cannot _disable_ Global Freeze.
 
-The Ripple Consensus Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to _disable_ a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.
+The XRP Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to _disable_ a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.
 
 The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.
 
