@@ -631,7 +631,7 @@ Null method
 <p><a href="reference-transaction-format.html">Transactions</a> are identified by a <a href="#hashes">Hash</a> of the transaction's binary format. You can also identify a transaction by its sending account and <a href="#account-sequence">Sequence Number</a>.</p>
 <p>Each closed <a href="reference-ledger-format.html">Ledger</a> has a <a href="#ledger-index">Ledger Index</a> and a <a href="#hashes">Hash</a> value. When <a href="#specifying-ledgers">Specifying a Ledger Instance</a> you can use either one.</p>
 <h3 id="addresses">Addresses</h3>
-<p>Accounts in the XRP Ledger are identified by a base58 Ripple Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
+<p>Accounts in the XRP Ledger are identified by a base58 XRP Ledger Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
@@ -641,14 +641,14 @@ Null method
 </ul>
 <p>For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h3 id="hashes">Hashes</h3>
-<p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
-<p>A Ripple hash value has the following characteristics:</p>
+<p>Many objects in the XRP Ledger, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
+<p>An XRP Ledger hash value has the following characteristics:</p>
 <ul>
 <li>Exactly 64 characters in length</li>
 <li><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a> character set: 0-9 and A-F.</li>
 <li>Typically written in upper case.</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, the XRP Ledger's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="account-sequence">Account Sequence</h3>
 <p>A Sequence number is a 32-bit unsigned integer used to identify a transaction or Offer relative to a specific account.</p>
 <p>Every <a href="reference-ledger-format.html#accountroot">account object in the XRP Ledger</a> has a Sequence number, which starts at 1. For a transaction to be relayed to the network and possibly included in a validated ledger, it must have a <code>Sequence</code> field that matches the sending account's current <code>Sequence</code> number. An account's Sequence field is incremented whenever a transaction from that account is included in a validated ledger (regardless of whether the transaction succeeded or failed). This preserves the order of transactions submitted by an account, and differentiates transactions that would otherwise be the same.</p>
@@ -766,7 +766,7 @@ Null method
 <p>There are two kinds of currency code in the XRP Ledger:</p>
 <ul>
 <li>Three-character currency code. We recommend using all-uppercase <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Codes</a>. However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols <code>?</code>, <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>&lt;</code>, <code>&gt;</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, and <code>|</code>. The currency code <code>XRP</code> (all-uppercase) is reserved for XRP and cannot be used by issued currencies.</li>
-<li>160-bit hexadecimal values, such as <code>0158415500000000C1F76FF6ECB0BAC600000000</code>, according to Ripple's internal <a href="https://wiki.ripple.com/Currency_format">Currency Format</a>. This representation is uncommon.</li>
+<li>160-bit hexadecimal values, such as <code>0158415500000000C1F76FF6ECB0BAC600000000</code>, according to the XRP Ledger's internal <a href="https://wiki.ripple.com/Currency_format">Currency Format</a>. This representation is uncommon.</li>
 </ul>
 <h2 id="specifying-time">Specifying Time</h2>
 <p>The <code>rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p>

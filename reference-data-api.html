@@ -7440,7 +7440,7 @@ Content-Type: image/svg+xml
 </ul>
 <p>In other words, XRP has the same precision as a 64-bit unsigned integer where each unit is equivalent to 0.000001 XRP.</p>
 <h3 id="addresses">Addresses</h3>
-<p>Accounts in the XRP Ledger are identified by a base58 Ripple Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
+<p>Accounts in the XRP Ledger are identified by a base58 XRP Ledger Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
@@ -7450,25 +7450,25 @@ Content-Type: image/svg+xml
 </ul>
 <p>For more information, see <a href="concept-accounts.html">Accounts</a>.</p>
 <h3 id="public-keys">Public Keys</h3>
-<p>The XRP Ledger (XRP Ledger) uses public keys to verify cryptographic signatures in several places:</p>
+<p>The XRP Ledger uses public keys to verify cryptographic signatures in several places:</p>
 <ul>
-<li>To authorize transactions, a public key is attached to the transaction. The public key must be mathematically associated with the sending Ripple address or the sender's regular key address.</li>
+<li>To authorize transactions, a public key is attached to the transaction. The public key must be mathematically associated with the sending XRP Ledger address or the sender's regular key address.</li>
 <li>To secure peer-to-peer communications between <code>rippled</code> servers. This uses a "node public key" that the server generates randomly when it starts with an empty database.</li>
 <li>To sign validation votes as part of the consensus process. This uses a "validator public key" that the server operator <a href="tutorial-rippled-setup.html#validator-setup">defines in the config file</a>.</li>
 </ul>
 <p>Validator public keys and node public keys use the exact same format.</p>
 <p>Public keys can be represented in hexadecimal or in base-58. In hexadecimal, all three types of public keys are 33 bytes (66 characters) long.</p>
 <p>In base-58 format, validator public keys and node public keys always start with the character <code>n</code>, commonly followed by the character <code>9</code>. A validator public key in base-58 format can be up to 53 characters long. Example node public key: <code>n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG</code>.</p>
-<p>Ripple addresses are mathematically associated with a public key. This public key is rarely encoded in base-58, but when it is, it starts with the character <code>a</code>.</p>
+<p>XRP Ledger addresses are mathematically associated with a public key. This public key is rarely encoded in base-58, but when it is, it starts with the character <code>a</code>.</p>
 <h3 id="hashes">Hashes</h3>
-<p>Many objects in Ripple, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
-<p>A Ripple hash value has the following characteristics:</p>
+<p>Many objects in the XRP Ledger, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a href="http://dx.doi.org/10.6028/NIST.FIPS.180-4">SHA-512</a> hash from some contents, then takes the first 64 characters of the hexadecimal representation. Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
+<p>An XRP Ledger hash value has the following characteristics:</p>
 <ul>
 <li>Exactly 64 characters in length</li>
 <li><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a> character set: 0-9 and A-F.</li>
 <li>Typically written in upper case.</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, Ripple's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
+<p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, the XRP Ledger's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <h3 id="timestamps">Timestamps</h3>
 <p>All dates and times are written in ISO 8601 Timestamp Format, using UTC. This format is summarized as:</p>
 <p><code>YYYY-MM-DDThh:mm:ssZ</code></p>
@@ -7498,7 +7498,7 @@ Content-Type: image/svg+xml
 <p>There are two kinds of currency code in the XRP Ledger:</p>
 <ul>
 <li>Three-character currency code. We recommend using all-uppercase <a href="http://www.xe.com/iso4217.php">ISO 4217 Currency Codes</a>. However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols <code>?</code>, <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>&lt;</code>, <code>&gt;</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, and <code>|</code>. The currency code <code>XRP</code> (all-uppercase) is reserved for XRP and cannot be used by issued currencies.</li>
-<li>160-bit hexadecimal values, such as <code>0158415500000000C1F76FF6ECB0BAC600000000</code>, according to Ripple's internal <a href="https://wiki.ripple.com/Currency_format">Currency Format</a>. This representation is uncommon.</li>
+<li>160-bit hexadecimal values, such as <code>0158415500000000C1F76FF6ECB0BAC600000000</code>, according to the XRP Ledger's internal <a href="https://wiki.ripple.com/Currency_format">Currency Format</a>. This representation is uncommon.</li>
 </ul>
 <h2 id="pagination">Pagination</h2>
 <p>Many queries may return more data than is reasonable to return in a single HTTP response. The Data API uses a "limit and marker" system to control how much is returned in a single response ("page") and to query for additional content.</p>

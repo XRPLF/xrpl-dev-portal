@@ -179,7 +179,7 @@
 <p>In the ledger's data tree, an account's core data is stored in the <a href="reference-ledger-format.html#accountroot">AccountRoot</a> ledger node type. An account can also be the owner (or partial owner) of several other types of data.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> An "Account" in the XRP Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an XRP Ledger Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.</p>
 <h2 id="addresses">Addresses</h2>
-<p>Accounts in the XRP Ledger are identified by a base58 Ripple Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
+<p>Accounts in the XRP Ledger are identified by a base58 XRP Ledger Address. The address is derived from the account's master <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
 <li>Starts with the character <code>r</code></li>
