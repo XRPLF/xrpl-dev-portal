@@ -1,42 +1,42 @@
-# Becoming a Ripple Gateway #
+# Becoming an XRP Ledger Gateway
 
-**Gateways** are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the XRP Ledger (XRP Ledger). By becoming a Ripple gateway, a financial services business can gain several advantages:
+**Gateways** are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the XRP Ledger. By becoming an XRP Ledger gateway, a financial services business can gain several advantages:
 
 * By enabling its customers to send and receive value in the XRP Ledger, the business increases its value proposition to customers.
 * By accepting payments from the XRP Ledger, the business increases the number of ways that customers can fund accounts at its business, even internationally.
-* The business can use Ripple-related services as a new source of revenue.
+* The business can use XRP Ledger-related services as a new source of revenue.
 
-This document explains the concepts and steps necessary to become a Ripple gateway. In this document, we use a fictional online currency exchange named "ACME" and its customers as examples, to show how ACME can expand its business to include being a Ripple gateway.
+This document explains the concepts and steps necessary to become an XRP Ledger gateway. In this document, we use a fictional online currency exchange named "ACME" and its customers as examples, to show how ACME can expand its business to include being an XRP Ledger gateway.
 
 
 ## Contact Information ##
 
-You are not on your own. Ripple depends on the success of individual gateways, so we are here to help. Please contact us if you need help building and growing your gateway.
+You are not on your own. Ripple wants gateways to succeed, so we are here to help. Please contact us if you need help building and growing your gateway.
 
 * Contact [partners@ripple.com](mailto:partners@ripple.com) for enterprise-class integrations, infrastructure advice, and other business development needs.
 * Contact [support@ripple.com](mailto:support@ripple.com) for technical questions, clarifications, bug reports, and feature requests.
 
 
-## Ripple Gateways Explained ##
+## Gateways Explained
 
 {% include 'snippets/gateways-intro.md' %}
 
 This guide focuses on running an **issuing gateway**.
 
-### Ripple Trust Lines and Issuances ###
+### Trust Lines and Issuances
 
-All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as _issuances_, which are digital balances that represent currency or assets of value held by an issuer. Within the XRP Ledger, counterparties can send and trade issuances without requiring intervention from the issuer. Typically, a gateway sends issuances to customers when it receives money in systems and ledgers outside the XRP Ledger, and promises to send money to customers in outside systems in exchange for being repaid in issuances in the XRP Ledger. Issuances get their value from a gateway's agreement to honor the obligation that the issuances represent. No computer system can force a Ripple gateway to honor that obligation.
+All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as _issuances_, which are digital balances that represent currency or assets of value held by an issuer. Within the XRP Ledger, counterparties can send and trade issuances without requiring intervention from the issuer. Typically, a gateway sends issuances to customers when it receives money in systems and ledgers outside the XRP Ledger, and promises to send money to customers in outside systems in exchange for being repaid in issuances in the XRP Ledger. Issuances get their value from a gateway's agreement to honor the obligation that the issuances represent. No computer system can force an XRP Ledger gateway to honor that obligation.
 
 The XRP Ledger has a system of directional accounting relationships, called _trust lines_, to make sure that users only hold issuances from counterparties they trust.
 
-A "trust line" is link between two addresses in Ripple. A trust line represents an explicit statement of willingness to hold gateway debt obligations. When a customer sends money into the XRP Ledger, a gateway takes custody of those assets outside of Ripple, and sends issuances in the XRP Ledger to the customer's address. When a customer sends money out of the XRP Ledger, she makes a Ripple payment to the gateway, and the gateway credits the customer in its own system of record, or in some other account.
+A "trust line" is link between two addresses in the XRP Ledger. A trust line represents an explicit statement of willingness to hold gateway debt obligations. When a customer sends money into the XRP Ledger, a gateway takes custody of those assets outside of Ripple, and sends issuances in the XRP Ledger to the customer's address. When a customer sends money out of the XRP Ledger, she makes an XRP Ledger payment to the gateway, and the gateway credits the customer in its own system of record, or in some other account.
 
 
 ### XRP ###
 
-**XRP** is the native cryptocurrency of the XRP Ledger. Like issuances, XRP can be freely sent and exchanged among Ripple addresses. Unlike issuances, XRP is not tied to an accounting relationship. XRP can be sent directly from any Ripple address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp-portal/).
+**XRP** is the native cryptocurrency of the XRP Ledger. Like issuances, XRP can be freely sent and exchanged among XRP Ledger addresses. Unlike issuances, XRP is not tied to an accounting relationship. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp-portal/).
 
-XRP also serves other purposes in the XRP Ledger, in particular as a protective measure against spamming the network. All Ripple addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denoted in XRP and not paid to any party.
+XRP also serves other purposes in the XRP Ledger, in particular as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denoted in XRP and not paid to any party.
 
 Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to send transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.
 
@@ -59,7 +59,7 @@ The value of a gateway's issuances in the XRP Ledger comes directly from the tru
 
 * Use separate [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html) to limit your risk profile on the network.
 * Comply with anti-money-laundering regulations for your jurisdiction, such as the [Bank Secrecy Act](http://en.wikipedia.org/wiki/Bank_Secrecy_Act). This usually includes requirements to collect ["Know-Your-Customer" (KYC) information](http://en.wikipedia.org/wiki/Know_your_customer).
-* Read and stay up-to-date with [Gateway Bulletins](#gateway-bulletins), which provide news and suggestions for Ripple gateways.
+* Read and stay up-to-date with [Gateway Bulletins](#gateway-bulletins), which provide news and suggestions for XRP Ledger gateways.
 * Publicize all your policies and fees.
 
 
@@ -72,18 +72,18 @@ For more information, see [Issuing and Operational Addresses](concept-issuing-an
 
 ## Fees and Revenue Sources ##
 
-There are several ways in which a gateway can seek to profit from Ripple integration. These can include:
+There are several ways in which a gateway can seek to profit from XRP Ledger integration. These can include:
 
-* Withdrawal and Deposit fees. Gateways typically charge a small fee (such as 1%) for the service of adding or removing money from Ripple. You have the power to determine the rate you credit people when they move money onto and off of Ripple through your gateway.
+* Withdrawal and Deposit fees. Gateways typically charge a small fee (such as 1%) for the service of adding or removing money from the XRP Ledger. You have the power to determine the rate you credit people when they move money onto and off of the XRP Ledger through your gateway.
 * Transfer fees. You can set a percentage fee to charge automatically when customers send each other issuances created by your issuing address. This amount is debited from the XRP Ledger, decreasing your obligation each time your issuances change hands. See [TransferRate](#transferrate) for details.
-* Indirect revenue from value added. Ripple integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
-* Interest on Ripple-backed funds. You can keep the collateral for the funds you issue in XRP Ledger in a bank account that earns interest. Make sure you can always access enough funds to service customer withdrawals.
+* Indirect revenue from value added. XRP Ledger integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
+* Interest on XRP Ledger-backed funds. You can keep the collateral for the funds you issue in XRP Ledger in a bank account that earns interest. Make sure you can always access enough funds to service customer withdrawals.
 * [Financial Exchange](#liquidity-and-currency-exchange). A gateway can also make offers to buy and sell its issuances for other issuances in the XRP Ledger, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)
 
 
 ### Choosing Fee Rates ###
 
-Fees imposed by gateways are optional. Higher fees earn more revenue when a gateway's services are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other gateways, especially ones issuing similar currencies, as well as traditional payment systems outside of Ripple, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.
+Fees imposed by gateways are optional. Higher fees earn more revenue when a gateway's services are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other gateways, especially ones issuing similar currencies, as well as traditional payment systems outside of the XRP Ledger, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.
 
 
 ## Gateway Compliance ##
@@ -197,9 +197,9 @@ See also:
 
 
 
-# Ripple Integration #
+# XRP Ledger Integration
 
-## Before Ripple Integration ##
+## Before Integration
 
 Our example exchange, ACME, already accepts withdrawals and deposits from customers using some existing system, and uses its own system of record to track how much balance each user has with the exchange. Such a system can be modeled with a balance sheet and tracking how much currency each user has with ACME.
 
@@ -207,28 +207,28 @@ In the following diagram, ACME Exchange starts with €5 on hand, including €1
 
 ![Diagram: Alice sends €5 to ACME. ACME adds her balance to its balance sheet.](img/e2g-01.png)
 
-**Assumptions:** To integrate with Ripple, we assume that an exchange such as ACME meets the following assumptions:
+**Assumptions:** To integrate with the XRP Ledger, we assume that an exchange such as ACME meets the following assumptions:
 
 * ACME already has a system to accept deposits and withdrawals from some outside payment source.
 * ACME waits for deposits to clear before crediting them in ACME's system of record.
 * ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.
     * ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.
 
-## Sending from Gateway to Ripple ##
+## Sending from Gateway to the XRP Ledger
 
-Ripple payments can automatically bridge between currencies, but an issuing gateway normally only sends single-currency payments that go directly to customers. This means debiting a customer's current balance in your system, and then sending the equivalent amount of issuances in the XRP Ledger to the customer's Ripple address.
+XRP Ledger payments can automatically bridge between currencies, but an issuing gateway normally only sends single-currency payments that go directly to customers. This means debiting a customer's current balance in your system, and then sending the equivalent amount of issuances in the XRP Ledger to the customer's XRP Ledger address.
 
 An example flow for a payment into the XRP Ledger:
 
 1. Alice asks to send €3 of her ACME balance into the XRP Ledger.
 2. In its system of record, ACME debits Alice's balance €3.
-3. ACME submits a Ripple transaction, sending €3 to Alice's Ripple address. The €3 is marked in the XRP Ledger as being "issued" by ACME (3 EUR.ACME).
+3. ACME submits an XRP Ledger transaction, sending €3 to Alice's XRP Ledger address. The €3 is marked in the XRP Ledger as being "issued" by ACME (3 EUR.ACME).
 
 **Assumptions:**
 
-* Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her Ripple address using a third-party client application.
+* Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her XRP Ledger address using a third-party client application.
 
-![Diagram: ACME issues 3 EUR.ACME to Alice on Ripple](img/e2g-02.png)
+![Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger](img/e2g-02.png)
 
 
 
@@ -238,34 +238,34 @@ There are several prerequisites that ACME must meet for this to happen:
 
 - ACME sets aside money that is issued in the XRP Ledger. ACME can query the XRP Ledger to see who holds its issuances at any time. There are several ways ACME may do this:
     - ACME may create a XRP Ledger collateral account in ACME's system of record.
-    - ACME can store the funds allocated to Ripple in a separate bank account.
-    - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to Ripple, as publicly-verifiable proof to customers that the gateway is solvent.
+    - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
+    - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html) for details.
     - ACME must enable the [DefaultRipple Flag](#defaultripple) on its issuing address for customers to send and receive its issuances.
-- Alice must create an accounting relationship (trust line) from her Ripple address to ACME's issuing address. She can do this from any Ripple client application as long as she knows ACME's issuing address.
+- Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use [ripple.txt](#rippletxt) to publish the issuing address to automated systems.
-- ACME must create a user interface for Alice to send funds from ACME into Ripple.
-    - ACME needs to know Alice's Ripple address. ACME can have Alice input her Ripple addresss as part of the interface, or ACME can require Alice to input and verify her Ripple address in advance.
+- ACME must create a user interface for Alice to send funds from ACME into the XRP Ledger.
+    - ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger addresss as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.
 
-See [Sending Payments to Customers](#sending-payments-to-customers) for an example of how to send payments into Ripple.
+See [Sending Payments to Customers](#sending-payments-to-customers) for an example of how to send payments into the XRP Ledger.
 
 
 ## Sending from XRP Ledger to Gateway ##
 
 A payment out of the XRP Ledger means the Gateway receives a payment in the XRP Ledger, and credits a user in the gateway's system of record.
 
-An example flow of a payment out of Ripple:
+An example flow of a payment out of the XRP Ledger:
 
-1. Bob sends Ripple transaction of €1 to ACME's issuing address.
+1. Bob sends an XRP Ledger transaction of €1 to ACME's issuing address.
 2. In ACME's system of record, ACME credits Bob's balance €1.
 
 Payments going from the XRP Ledger to a gateway can be single-currency or cross-currency payments. The gateway's issuing address can only receive issuances it created (or XRP).
 
 ### Requirements for Receiving from XRP Ledger ###
 
-In addition to the [requirements for sending into Ripple](#requirements-for-sending-to-xrp-ledger), there are several prerequisites that ACME must meet to process payments coming from Ripple:
+In addition to the [requirements for sending into the XRP Ledger](#requirements-for-sending-to-xrp-ledger), there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:
 
-- ACME must monitor its Ripple addresses for incoming payments.
+- ACME must monitor its XRP Ledger addresses for incoming payments.
 - ACME must know which user to credit in its system of record for the incoming payments.
     - We recommend that ACME should [bounce any unrecognized incoming payments](#bouncing-payments) back to their sender.
     - Typically, the preferred method of recognizing incoming payments is through [destination tags](#source-and-destination-tags).
@@ -273,20 +273,20 @@ In addition to the [requirements for sending into Ripple](#requirements-for-send
 
 ## Precautions ##
 
-Processing payments to and from Ripple naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:
+Processing payments to and from the XRP Ledger naturally comes with some risks, so a gateway should be sure to take care in implementing these processes. We recommend the following precautions:
 
-- Protect yourself against reversible deposits. Ripple payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.
-- When sending into Ripple, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
-- Before sending a payment into Ripple, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any [transfer fee](#transferrate) you have set.
+- Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.
+- When sending into the XRP Ledger, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
+- Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any [transfer fee](#transferrate) you have set.
 - Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.
-- Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending Ripple transactions.
+- Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending XRP Ledger transactions.
 - [Robustly monitor for incoming payments](#robustly-monitoring-for-payments), and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](reference-transaction-format.html#partial-payments).
 - Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
 - Avoid ambiguous situations. We recommend the following:
     - Enable the [`DisallowXRP` flag](#disallowxrp) for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should *not* set this flag, since they trade XRP normally.)
     - Enable the [`RequireDest` flag](#requiredest) for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.
     - Enable the [`RequireAuth` flag](#requireauth) on all operational addresses so they cannot issue currency by accident.
-- Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their Ripple payments.
+- Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.
 
 
 ## Trading on Ripple ##
@@ -300,7 +300,7 @@ After the issuances have been created in the XRP Ledger, they can be freely tran
 - XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.
 - All exchanges and balances in the XRP Ledger are publicly viewable.
 
-The following diagram depicts a Ripple payment sending 2EUR.ACME from Alice to Charlie. ACME can query the XRP Ledger to see updates to its balances any time after the transaction has occurred:
+The following diagram depicts an XRP Ledger payment sending 2EUR.ACME from Alice to Charlie. ACME can query the XRP Ledger to see updates to its balances any time after the transaction has occurred:
 
 ![Diagram: Alice's sends 2 EUR.ACME from her trust line to Charlie's](img/e2g-03.png)
 
@@ -319,14 +319,14 @@ For more information, see the [Freeze article](concept-freeze.html).
 
 ## Authorized Accounts ##
 
-The XRP Ledger's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown Ripple addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
+The XRP Ledger's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
 
 To use the Authorized Accounts feature, a gateway enables the `RequireAuth` flag for its issuing address, and then individually approves each accounting relationship. An address can only hold funds issued by a gateway after its accounting relationship with that gateway is approved.
 
 The transaction to authorize an accounting relationship must be signed by the issuing address, which unfortunately means an increased risk exposure for that address. The process for sending funds into the XRP Ledger with RequireAuth enabled looks like the following:
 
 1. ACME publishes its issuing address to customers.
-2. Alice creates an accounting relationship from her Ripple address to ACME's issuing address, indicating that she is willing to hold ACME's issuances.
+2. Alice creates an accounting relationship from her XRP Ledger address to ACME's issuing address, indicating that she is willing to hold ACME's issuances.
 3. ACME's issuing address sends a transaction authorizing Alice's accounting relationship.
 
 See [RequireAuth](#requireauth) for technical details on how to use Authorized Accounts.
@@ -334,7 +334,7 @@ See [RequireAuth](#requireauth) for technical details on how to use Authorized A
 
 ## Source and Destination Tags ##
 
-*Destination Tags* are a feature of Ripple payments can be used to indicate the beneficiary or destination for a payment. For example, a Ripple payment to a gateway may include a destination tag to indicate which customer should be credited for the payment. A gateway should keep a mapping of destination tags to accounts in the gateway's system of record.
+*Destination Tags* are a feature of XRP Ledger payments can be used to indicate the beneficiary or destination for a payment. For example, an XRP Ledger payment to a gateway may include a destination tag to indicate which customer should be credited for the payment. A gateway should keep a mapping of destination tags to accounts in the gateway's system of record.
 
 Similarly, *Source Tags* indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.
 
@@ -350,7 +350,7 @@ See [Generating Source and Destination Tags](#generating-source-and-destination-
 
 ## Gateway Bulletins
 
-Historically, Ripple issued gateway bulletins to introduce new features or discuss topics related to compliance and risk. Gateway Bulletins are listed here in reverse chronological order.
+Historically, Ripple (the company) issued gateway bulletins to introduce new features or discuss topics related to compliance and risk. Gateway Bulletins are listed here in reverse chronological order.
 
 - May 13, 2015 - [GB-2015-06 Gateway Bulletin: Corrections to Autobridging](gb-2015-06.html)
 - April 17, 2015 - [GB-2015-05 Historical Ledger Query Migration](gb-2015-05.html)
@@ -368,11 +368,11 @@ Historically, Ripple issued gateway bulletins to introduce new features or discu
 - April 23, 2014, Updated August 14, 2014 -[GB-2014-01 New Feature: Ripple Names (PDF)](https://ripple.com/files/GB-2014-01.pdf)
 
 
-# Technical Details #
+# Technical Details
 
-## Infrastructure ##
+## Infrastructure
 
-For the gateway's own security as well as the stability of the network, we recommend that each gateway run its own `rippled` servers. Ripple (the company) provides detailed and individualized recommendations to businesses interested in running a significant Ripple-based business.
+For the gateway's own security as well as the stability of the network, Ripple recommends that each gateway run its own `rippled` servers. Ripple provides detailed and individualized recommendations to businesses interested in running a significant XRP-based business.
 
 Contact [partners@ripple.com](mailto:partners@ripple.com) to see how Ripple can help.
 
@@ -380,13 +380,13 @@ Contact [partners@ripple.com](mailto:partners@ripple.com) to see how Ripple can 
 
 There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:
 
-* [`rippled`](reference-rippled.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core Ripple functionality.
+* [`rippled`](reference-rippled.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
 * [RippleAPI](reference-rippleapi.html) provides a simplified API for JavaScript applications.
 
 
 ## Tool Security ##
 
-Any time you submit a Ripple transaction, it must be signed using your secret key. The secret key gives full control over your Ripple address. **Never** send your secret key to a server operated by someone else. Either use your own `rippled` server, or sign the transactions locally before sending them to a `rippled` server.
+Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. **Never** send your secret key to a server operated by someone else. Either use your own `rippled` server, or sign the transactions locally before sending them to a `rippled` server.
 
 The examples in this document show API methods that include a secret key. This is only safe if you control `rippled` server yourself, *and* you connect to it over a connection that is secure from outside listeners. (For example, you could connect over a loopback (localhost) network, a private subnet, or an encrypted VPN.) Alternatively, you could use [RippleAPI](reference-rippleapi.html) to sign transactions locally before submitting them to a third-party server.
 
@@ -460,7 +460,7 @@ After passing the internal numbers through your hash function, you can use the r
 
 We recommend making a user interface to generate a destination tag on-demand when a customer intends to send money to the gateway. Then, consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.
 
-Enable the [RequireDest](#requiredest) flag on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should go when they send Ripple payments to your gateway.
+Enable the [RequireDest](#requiredest) flag on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should go when they send XRP Ledger payments to your gateway.
 
 
 ## DisallowXRP ##
@@ -664,15 +664,15 @@ To robustly check for incoming payments, gateways should do the following:
 
 To make things simpler for your customers, we recommend accepting payments to either operational addresses and issuing addresses.
 
-As an added precaution, we recommend comparing the balances of your issuing address with the Ripple-backing funds in your internal accounting system as of each new Ripple ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
+As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
 
 * Use [`rippled`'s `gateway_balances` command](reference-rippled.html#gateway-balances) or [RippleAPI's `getTrustlines` method](reference-rippleapi.html#gettrustlines) to check your balances.
-* If you have a [TransferRate](#transferrate) set, then your obligations within the XRP Ledger decrease slightly whenever other Ripple addresses transfer your issuances among themselves.
+* If you have a [TransferRate](#transferrate) set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your issuances among themselves.
 
 
 ## TransferRate ##
 
-The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one Ripple address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
+The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one XRP Ledger address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
@@ -724,21 +724,21 @@ Response:
 
 ### TransferRate with Operational and Standby Addresses ###
 
-All Ripple addresses, including operational and standby addresses, are subject to the transfer fee. If you set a nonzero transfer fee, then you must send extra (to pay the TransferRate) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.
+All XRP Ledger addresses, including operational and standby addresses, are subject to the transfer fee. If you set a nonzero transfer fee, then you must send extra (to pay the TransferRate) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.
 
 * In `rippled`'s APIs, you should set the [`SendMax` transaction parameter](reference-transaction-format.html#payment) higher than the destination `Amount` parameter.
 * In RippleAPI, you should set the `source.maxAmount` parameter higher than the `destination.amount` parameter; or, set the `source.amount` parameter higher than the `destination.minAmount` parameter.
 
 **Note:** The TransferRate does not apply when sending issuances directly to the issuing address. The issuing address must always accept its issuances at face value in the XRP Ledger. This means that customers don't have to pay the TransferRate if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the TransferRate the customer pays.
 
-For example: If ACME sets a transfer fee of 1%, a Ripple payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the XRP Ledger decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address _and_ the transfer fee, giving the customer €5,05 in ACME's systems.
+For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the XRP Ledger decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address _and_ the transfer fee, giving the customer €5,05 in ACME's systems.
 
 
 ## Sending Payments to Customers ##
 
-When you build an automated system to send payments into Ripple for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.
+When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.
 
-One common pitfall is performing pathfinding before sending sending a payment to customers in Ripple. If you specify the issuers correctly, the [default paths](concept-paths.html#default-paths) can deliver the currency as intended.
+One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](concept-paths.html#default-paths) can deliver the currency as intended.
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
 
@@ -849,6 +849,6 @@ For more information, see [Reliable Transaction Submission](tutorial-reliable-tr
 
 The [ripple.txt](https://wiki.ripple.com/Ripple.txt) standard provides a way to publish information about your gateway so that automated tools and applications can read and understand it.
 
-For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which Ripple addresses you control, to protect against impostors or confusion.
+For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion.
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->

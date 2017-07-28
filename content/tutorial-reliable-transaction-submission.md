@@ -2,7 +2,7 @@
 
 Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) `rippled` servers.
 
-The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:
+The best practices detailed in this document allow applications to submit transactions to the XRP Ledger while achieving:
 
 1. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) - Transactions should be processed once and only once, or not at all.
 2. Verifiability - Applications can determine the final result of a transaction.
@@ -17,9 +17,9 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 ## Background
 
-The Ripple protocol provides a ledger shared across all nodes in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
+The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
 
-Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](concept-transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
+Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](concept-transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
 If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.
 
@@ -28,7 +28,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-Ripple provides several APIs for submitting transactions, including [`rippled`](reference-rippled.html), and [RippleAPI](reference-rippleapi.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
+The XRP Ledger provides several APIs for submitting transactions, including [`rippled`](reference-rippled.html), and [RippleAPI](reference-rippleapi.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
@@ -244,7 +244,7 @@ In this example the last validated ledger sequence number is 10268596 (found und
 
 #### Construct the Transaction
 
-`rippled` provides the [sign method](reference-rippled.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another Ripple address.
+`rippled` provides the [sign method](reference-rippled.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
 
 Request:
 
@@ -483,6 +483,6 @@ Finally the server may show one or more gaps in the transaction history. The `co
 
 - [Transaction Format](reference-transaction-format.html)
 - [Transaction Cost](concept-transaction-cost.html)
-- Documentation of [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence)
-- [Overview of Ripple Ledger Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/)
-- [Reaching Consensus in Ripple](https://ripple.com/build/reaching-consensus-ripple/)
+- [`LastLedgerSequence` field](reference-transaction-format.html#lastledgersequence)
+- [Overview of XRP Ledger Consensus Process](concept-consensus.html)
+- [Reaching Consensus in the XRP Ledger](concept-reaching-consensus.html)

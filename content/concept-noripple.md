@@ -1,14 +1,14 @@
-# Understanding the NoRipple Flag #
+# Understanding the NoRipple Flag
 
 In the XRP Ledger, the "NoRipple" flag is a setting on a trust line. When an address enables the NoRipple flag on two trust lines, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.
 
 ## Background ##
 
-"Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in Ripple with trust lines like so:
+"Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in the XRP Ledger with trust lines like so:
 
 ![Charlie --($10)-- Alice -- ($20) -- Bob](img/noripple-01.png)
 
-If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice transfers some of the debt from Bob to Charlie. In the end, the Ripple trust lines work out like so:
+If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice transfers some of the debt from Bob to Charlie. In the end, the trust lines work out like so:
 
 ![Charlie --($13)-- Alice --($17)-- Bob](img/noripple-02.png)
 

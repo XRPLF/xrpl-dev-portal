@@ -167,7 +167,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="rippleapi-beginners-guide">RippleAPI Beginners Guide</h1>
-<p>This tutorial guides you through the basics of building a Ripple-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="reference-rippleapi.html">RippleAPI</a>, a JavaScript API for accessing the XRP Ledger.</p>
+<p>This tutorial guides you through the basics of building an XRP Ledger-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="reference-rippleapi.html">RippleAPI</a>, a JavaScript API for accessing the XRP Ledger.</p>
 <p>The scripts and configuration files used in this guide are <a href="https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart">available in the Ripple Dev Portal GitHub Repository</a>.</p>
 <h1 id="environment-setup">Environment Setup</h1>
 <p>The first step to using RippleAPI successfully is setting up your development environment.</p>
@@ -309,7 +309,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
   /* end custom code -------------------------------------- */
 </code></pre>
 <p>This is the part that you change to do whatever you want the script to do.</p>
-<p>The example code looks up a Ripple account by its address. Try running the code with different addresses to see different results.</p>
+<p>The example code looks up an XRP Ledger account by its address. Try running the code with different addresses to see different results.</p>
 <p>The <code>console.log()</code> function is built into both Node.js and web browsers, and writes out to the console. This example includes lots of console output to make it easier to understand what the code is doing.</p>
 <p>Keep in mind that the example code starts in the middle of a callback function (called when RippleAPI finishes connecting). That function calls RippleAPI's <a href="reference-rippleapi.html#getaccountinfo"><code>getAccountInfo</code></a> method, and returns the results.</p>
 <p>The <code>getAccountInfo</code> API method returns another Promise, so the line <code>}).then( info =&gt; {</code> defines another anonymous callback function to run when this Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called <code>info</code>, which holds the asynchronous return value from the <code>getAccountInfo</code> API method. The rest of this callback function outputs that return value to the console.</p>
@@ -356,7 +356,7 @@ const ledgerOffset = 5;
 const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
 
-/* Verify a transaction is in a validated RCL version */
+/* Verify a transaction is in a validated XRP Ledger version */
 function verifyTransaction(hash, options) {
   console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data =&gt; {
@@ -378,7 +378,7 @@ function verifyTransaction(hash, options) {
 }
 
 
-/* function to prepare, sign, and submit a transaction to the RCL
+/* function to prepare, sign, and submit a transaction to the XRP Ledger
 success verifies the transaction is being considered for the next ledger.
 Still requires vlaidation */
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {

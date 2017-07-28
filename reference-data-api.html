@@ -238,7 +238,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="ripple-data-api-v2">Ripple Data API v2</h1>
-<p>The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees <code>rippled</code> servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as <a href="https://www.ripplecharts.com/">Ripple Charts</a> and <a href="https://www.ripple.com">ripple.com</a>.</p>
+<p>The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees <code>rippled</code> servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as <a href="https://xrpcharts.ripple.com/">XRP Charts</a> and <a href="https://www.ripple.com">ripple.com</a>.</p>
 <p>Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:</p>
 <p><a href="https://data.ripple.com"><strong>https://data.ripple.com</strong></a></p>
 <h2 id="more-information">More Information</h2>
@@ -1838,7 +1838,7 @@
 <tbody>
 <tr>
 <td><code>type</code></td>
-<td>All Ripple <a href="reference-transaction-format.html">transaction types</a>, including <code>Payment</code>, <code>AccountSet</code>, <code>OfferCreate</code>, and others.</td>
+<td>All XRP Ledger <a href="reference-transaction-format.html">transaction types</a>, including <code>Payment</code>, <code>AccountSet</code>, <code>OfferCreate</code>, and others.</td>
 <td>Number of transactions of the given type that occurred during the interval.</td>
 </tr>
 <tr>
@@ -3239,7 +3239,7 @@
 <tr>
 <td><code>issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The Ripple address that issues this currency.</td>
+<td>The XRP Ledger address that issues this currency.</td>
 </tr>
 <tr>
 <td><code>avg_exchange_count</code></td>
@@ -3403,7 +3403,7 @@
 <tr>
 <td><code>base_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted if <code>base_currency</code> is XRP) The Ripple address that issues the base currency.</td>
+<td>(Omitted if <code>base_currency</code> is XRP) The XRP Ledger address that issues the base currency.</td>
 </tr>
 <tr>
 <td><code>counter_currency</code></td>
@@ -3413,7 +3413,7 @@
 <tr>
 <td><code>counter_issuer</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>(Omitted if <code>counter_currency</code> is XRP) The Ripple address that issues the counter currency.</td>
+<td>(Omitted if <code>counter_currency</code> is XRP) The XRP Ledger address that issues the counter currency.</td>
 </tr>
 <tr>
 <td><code>avg_base_volume</code></td>
@@ -4945,7 +4945,7 @@
 <tr>
 <td><code>assets</code></td>
 <td>Array of Strings</td>
-<td>Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.)</td>
+<td>Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.)</td>
 </tr>
 </tbody>
 </table>
@@ -5074,7 +5074,7 @@
 <tr>
 <td><code>assets</code></td>
 <td>Array of Strings</td>
-<td>Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.)</td>
+<td>Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.)</td>
 </tr>
 </tbody>
 </table>
@@ -5370,7 +5370,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -5417,7 +5417,7 @@ Content-Type: image/svg+xml
 </code></pre>
 <h2 id="get-account-balances">Get Account Balances</h2>
 <p><a href="https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalances.js" title="Source">[Source]<br/></a></p>
-<p>Get all balances held or owed by a specific Ripple account.</p>
+<p>Get all balances held or owed by a specific XRP Ledger account.</p>
 <div class="multicode" id="code-36"><ul class="codetabs"><li><a href="#code-36-0">REST</a></li></ul>
 
 <div class="code_sample" id="code-36-0" style="position: static;"><pre><code>GET /v2/accounts/{:address}/balances
@@ -5437,7 +5437,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -5584,7 +5584,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -5702,7 +5702,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>properties.maker</code></td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>The Ripple account that placed the order.</td>
+<td>The XRP Ledger account that placed the order.</td>
 </tr>
 <tr>
 <td><code>properties.sequence</code></td>
@@ -5794,7 +5794,7 @@ Content-Type: image/svg+xml
 <tr>
 <td>:address</td>
 <td>String - <a href="#addresses">Address</a></td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -5984,7 +5984,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 <tr>
 <td><code>sequence</code></td>
@@ -6073,7 +6073,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -6246,7 +6246,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 <tr>
 <td><code>base</code></td>
@@ -6410,7 +6410,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -6569,7 +6569,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 <tr>
 <td><code>date</code></td>
@@ -6722,7 +6722,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -6886,7 +6886,7 @@ Content-Type: image/svg+xml
 <tr>
 <td><code>address</code></td>
 <td>String</td>
-<td>Ripple address to query.</td>
+<td>XRP Ledger address to query.</td>
 </tr>
 </tbody>
 </table>
@@ -7416,7 +7416,7 @@ Content-Type: image/svg+xml
 <h2 id="basic-types">Basic Types</h2>
 <p>As a REST API, the Data API v2 uses <a href="http://json.org/">JSON</a>'s native datatypes to represent API fields, with some special cases.</p>
 <h3 id="numbers-and-precision">Numbers and Precision</h3>
-<p>Currency amounts in Ripple require more precision than most native number types, so the Data API v2 uses the String type to represent some values.</p>
+<p>Currency amounts in the XRP Ledger require more precision than most native number types, so the Data API v2 uses the String type to represent some values.</p>
 <p>Within the String value, the numbers are serialized in the same way as native JSON numbers:</p>
 <ul>
 <li>Base-10.</li>
@@ -7425,7 +7425,7 @@ Content-Type: image/svg+xml
 <li>May contain <code>E</code> or <code>e</code> to indicate being raised to a power of 10. For example, <code>1.2E5</code> is equivalent to <code>120000</code>.</li>
 <li>No comma (<code>,</code>) characters are used.</li>
 </ul>
-<p>The precision for amounts of <strong>non-XRP currency</strong> in Ripple is as follows:</p>
+<p>The precision for amounts of <strong>non-XRP currency</strong> in the XRP Ledger is as follows:</p>
 <ul>
 <li>Minimum nonzero absolute value: <code>1000000000000000e-96</code></li>
 <li>Maximum value: <code>9999999999999999e80</code></li>
@@ -7641,7 +7641,7 @@ Content-Type: image/svg+xml
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same <code>close_time</code> values, when their actual close times were several seconds apart. The sequence number (<code>ledger_index</code>) of the ledger makes it unambiguous which ledger closed first.</p>
 <h3 id="genesis-ledger">Genesis Ledger</h3>
-<p>Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the <em>genesis ledger</em>.</p>
+<p>Due to a mishap early in the XRP Ledger's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the <em>genesis ledger</em>.</p>
 <h2 id="account-creation-objects">Account Creation Objects</h2>
 <p>An account creation object represents the action of creating an account in the XRP Ledger. There are two variations, depending on whether the account was already present in ledger 32570, the earliest ledger available. Accounts that were already present in ledger 32570 are termed <em>genesis accounts</em>.</p>
 <table>
@@ -7916,7 +7916,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="payment-objects">Payment Objects</h2>
-<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the <code>Payment</code> <a href="reference-transaction-format.html">transaction type</a>, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
+<p>In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the <code>Payment</code> <a href="reference-transaction-format.html">transaction type</a>, except that the Data API does not consider a transaction to be a payment if the sending <code>Account</code> and the <code>Destination</code> account are the same, or if the transaction failed.</p>
 <p>Payment objects have the following fields:</p>
 <table>
 <thead>
@@ -8000,8 +8000,8 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="balance-objects-and-balance-change-objects">Balance Objects and Balance Change Objects</h2>
-<p>Balance objects represent an Ripple account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.</p>
-<p>A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.</p>
+<p>Balance objects represent an XRP Ledger account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.</p>
+<p>A single XRP Ledger transaction may cause changes to balances with several counterparties, as well as changes to XRP.</p>
 <p>Balance objects and Balance Change objects have the same format, with the following fields:</p>
 <table>
 <thead>
@@ -8170,7 +8170,7 @@ Content-Type: image/svg+xml
 </tbody>
 </table>
 <h2 id="server-objects">Server Objects</h2>
-<p>A "Server Object" describes one <code>rippled</code> server in the Ripple peer-to-peer network. Server objects are returned by the <a href="#get-topology">Get Topology</a>, <a href="#get-topology-nodes">Get Toplogy Nodes</a>, and <a href="#get-topology-node">Get Topology Node</a> methods. The Data API collects reported network topology approximately every 30 seconds using the <a href="reference-rippled.html#peer-crawler">peer crawler</a>.</p>
+<p>A "Server Object" describes one <code>rippled</code> server in the XRP Ledger peer-to-peer network. Server objects are returned by the <a href="#get-topology">Get Topology</a>, <a href="#get-topology-nodes">Get Toplogy Nodes</a>, and <a href="#get-topology-node">Get Topology Node</a> methods. The Data API collects reported network topology approximately every 30 seconds using the <a href="reference-rippled.html#peer-crawler">peer crawler</a>.</p>
 <p>Server objects have the following fields, with some only appearing if the request specified a verbose response:</p>
 <table>
 <thead>
@@ -8443,7 +8443,7 @@ $ node import/live
 <p>The Backfiller retrieves old ledgers from a <code>rippled</code> instance by moving backwards in time. You can optionally provide start and stop indexes to retrieve a specific range of ledgers, by their sequence number.</p>
 <p>The <code>--startIndex</code> parameter defines the most-recent ledger to retrieve. The Backfiller retrieves this ledger first and then continues retrieving progressively older ledgers. If this parameter is omitted, the Backfiller begins with the newest validated ledger.</p>
 <p>The <code>--stopIndex</code> parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all XRP Ledger transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline <code>rippled</code> to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.</p>
 <p>Example usage:</p>
 <pre><code>// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
 node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000

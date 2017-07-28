@@ -215,7 +215,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="transactions-overview">Transactions Overview</h1>
-<p>A <em>Transaction</em> is the only way to modify the Ripple Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a>. Some ledger rules also generate <em><a href="#pseudo-transactions">pseudo-transactions</a></em>, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam <a href="concept-transaction-cost.html">transaction cost</a>.</p>
+<p>A <em>Transaction</em> is the only way to modify the XRP Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a>. Some ledger rules also generate <em><a href="#pseudo-transactions">pseudo-transactions</a></em>, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam <a href="concept-transaction-cost.html">transaction cost</a>.</p>
 <ul>
 <li><a href="#authorizing-transactions">Authorizing Transactions</a></li>
 <li><a href="#common-fields">Common Fields of All Transactions</a></li>
@@ -372,7 +372,7 @@
 }
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
-<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
+<p>Multi-signing in the XRP Ledger is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
 <p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
 <p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
 <ul>
@@ -509,7 +509,7 @@
 <p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
 <p class="devportal-callout note"><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
-<p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
+<p>An important and intentional feature of the XRP Ledger is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
 <p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want the replacement transaction to do anything, send an <a href="#accountset">AccountSet</a> transaction with no options.</p>
 <p>For example, if you try to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough <a href="#transaction-cost">transaction cost</a> to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction cost for the new transaction 11), but it allows transactions 12 and 13 to become valid.</p>
 <p>This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.</p>
@@ -700,7 +700,7 @@
 <td align="left">MessageKey</td>
 <td align="left">String</td>
 <td align="left">PubKey</td>
-<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
+<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account.</td>
 </tr>
 <tr>
 <td align="left"><a href="#accountset-flags">SetFlag</a></td>
@@ -1351,7 +1351,7 @@
 <p>The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account.</p>
 <p>For more information, see the full article on <a href="concept-partial-payments.html">Partial Payments</a>.</p>
 <h3 id="limit-quality">Limit Quality</h3>
-<p>Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
+<p>The XRP Ledger defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
 <p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
 <p>By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average <em>average</em> quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the <a href="#transaction-results">transaction result</a> is <code>tecPATH_DRY</code>.</p>
 <p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one trader is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>.</p>
@@ -1730,7 +1730,7 @@
 </tbody>
 </table>
 <h3 id="trust-limits">Trust Limits</h3>
-<p>All balances on the XRP Ledger, except for XRP, represent value owed in the world outside the Ripple Ledger. The address that issues those funds in Ripple (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is expected to pay the balance back, outside of the XRP Ledger, when users redeem their Ripple balances by returning them to the issuer.</p>
+<p>All balances on the XRP Ledger, except for XRP, represent value owed in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.</p>
 <p>Since a computer program cannot force a someone to keep a promise and not default in real life, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the XRP Ledger. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the XRP Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the XRP Ledger, but they no longer have any reason to be worth anything.)</p>
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="#offercreate">trading</a>, or when you decrease the limit on your trust line.</p>
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
@@ -1765,7 +1765,7 @@
 <td align="left">tfClearNoRipple</td>
 <td align="left">0x00040000</td>
 <td align="left">262144</td>
-<td align="left">Clears the No-Rippling flag. (See <a href="concept-noripple.html">No Ripple</a> for details.)</td>
+<td align="left">Clears the No-Rippling flag. (See <a href="concept-noripple.html">NoRipple</a> for details.)</td>
 </tr>
 <tr>
 <td align="left">tfSetFreeze</td>
@@ -2176,7 +2176,7 @@
 </tbody>
 </table>
 <h3 id="tem-codes">tem Codes</h3>
-<p>These codes indicate that the transaction was malformed, and cannot succeed according to the Ripple protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.</p>
+<p>These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.</p>
 <table>
 <thead>
 <tr>
@@ -2255,7 +2255,7 @@
 </tr>
 <tr>
 <td align="left"><code>temBAD_SRC_ACCOUNT</code></td>
-<td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account.</td>
+<td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed <a href="concept-accounts.html">account</a> address.</td>
 </tr>
 <tr>
 <td align="left"><code>temBAD_TRANSFER_RATE</code></td>

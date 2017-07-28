@@ -7,11 +7,11 @@ The `TransferRate` setting in the XRP Ledger allows [financial institutions that
 
 XRP never has a transfer fee, because it never has an issuer.
 
-For example, ACME Bank might set the transfer fee to 0.5% for ACME issuances. For the recipient of a payment to get 2 EUR.ACME, the sender must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by 0.01€, which means that ACME no longer needs to hold that amount in the account backing its Ripple issuances.
+For example, ACME Bank might set the transfer fee to 0.5% for ACME issuances. For the recipient of a payment to get 2 EUR.ACME, the sender must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in the XRP Ledger have decreased by 0.01€, which means that ACME no longer needs to hold that amount in the account backing its XRP Ledger issuances.
 
-The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
+The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in Ripple](img/e2g-with_transferrate.png)
+![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger](img/e2g-with_transferrate.png)
 
 ## Transfer Fees in Payment Paths ##
 

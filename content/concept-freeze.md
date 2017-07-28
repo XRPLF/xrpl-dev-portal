@@ -74,11 +74,11 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 
 | Field                | Value  | Description |
 |----------------------|--------|-------------|
-| Account              | String | The Ripple address to enable or disable the freeze. |
+| Account              | String | The XRP Ledger address to enable or disable the freeze. |
 | TransactionType      | String | `TrustSet` |
 | LimitAmount          | Object | Object defining the trust line to freeze. |
 | LimitAmount.currency | String | Currency of the trust line |
-| LimitAmount.issuer   | String | The Ripple address of the counterparty to freeze |
+| LimitAmount.issuer   | String | The XRP Ledger address of the counterparty to freeze |
 | LimitAmount.value    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | Flags                | Number | To enable a freeze, use a value with the bit `0x00100000` (tfSetFreeze) enabled. To disable a freeze, use a value with the bit `0x00200000` (tfClearFreeze) enabled instead. |
 
@@ -119,7 +119,7 @@ To enable or disable Individual Freeze on a specific trust line, prepare a *Trus
 | Field        | Value  | Description |
 |--------------|--------|-------------|
 | currency     | String | The [currency](reference-rippleapi.html#currency) of the trust line to freeze |
-| counterparty | String | The [Ripple address](reference-rippleapi.html#ripple-address) of the counterparty |
+| counterparty | String | The [XRP Ledger address](reference-rippleapi.html#ripple-address) of the counterparty |
 | limit        | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | frozen       | Boolean | `true` to enable Individual Freeze on this trust line. `false` to disable Individual Freeze. |
 
@@ -236,8 +236,8 @@ To see if a trust line has an Individual Freeze enabled, use the [`account_lines
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| account  | String  | The Ripple address of the issuer |
-| peer     | String  | The Ripple address of the counterparty |
+| account  | String  | The XRP Ledger address of the issuer |
+| peer     | String  | The XRP Ledger address of the counterparty |
 | ledger\_index | String | Use `validated` to get the most recently validated information. |
 
 The response contains an array of trust lines, for each currency in which the issuing address and the counterparty are linked. Look for the following fields in each trust line object:
@@ -294,8 +294,8 @@ To see if a trust line has an Individual Freeze enabled, use the [`getTrustlines
 
 | Field         | Value   | Description |
 |---------------|---------|-------------|
-| address       | String  | The Ripple address of the issuer |
-| options.counterparty  | String  | The Ripple address of the counterparty |
+| address       | String  | The XRP Ledger address of the issuer |
+| options.counterparty  | String  | The XRP Ledger address of the counterparty |
 
 The response contains an array of trust lines, for each currency in which the issuing address and the counterparty are linked. Look for the following fields in each trust line object:
 
@@ -319,7 +319,7 @@ To see if an address has enabled Global Freeze, No Freeze, or both, use the [`ac
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
-| account  | String  | The Ripple address of the issuing address |
+| account  | String  | The XRP Ledger address of the issuing address |
 | ledger\_index | String | Use `validated` to get the most recently validated information. |
 
 Check the value of the `account_data.Flags` field of the response using the [bitwise-AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND) operator:
@@ -391,7 +391,7 @@ To see if an address has enabled Global Freeze, No Freeze, or both, use the [`ge
 
 | Field         | Value   | Description |
 |---------------|---------|-------------|
-| address       | String  | The Ripple address of the issuing address |
+| address       | String  | The XRP Ledger address of the issuing address |
 
 Look for the following values in the response object:
 

@@ -1,4 +1,4 @@
-# Paths #
+# Paths
 
 In the XRP Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Paths also enable complex settlement of offsetting debts.
 

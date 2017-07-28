@@ -1,7 +1,7 @@
 Stand-Alone Mode
 ===============================================================================
 
-You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the Ripple peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior without being tied to the live network. For example, you can [test the effects of Amendments](concept-amendments.html#testing-amendments) before those Amendments have gone into effect across the decentralized network.
+You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the XRP Ledger peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior without being tied to the live network. For example, you can [test the effects of Amendments](concept-amendments.html#testing-amendments) before those Amendments have gone into effect across the decentralized network.
 
 When you run `rippled` in stand-alone mode, you have to tell it what ledger version to start from:
 
@@ -34,7 +34,7 @@ In a genesis ledger, the [genesis address](concept-accounts.html#special-address
 
 Load Saved Ledger
 -------------------------------------------------------------------------------
-You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the Ripple peer-to-peer network (either the production network or the [Test Net](tutorial-rippled-setup.html#parallel-networks)).
+You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](tutorial-rippled-setup.html#parallel-networks)).
 
 ### 1. Start `rippled` normally. ###
 
@@ -102,7 +102,7 @@ In stand-alone mode, `rippled` does not communicate to other members of the peer
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
-In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The Ripple Ledger Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/).)
+In stand-alone mode, `rippled` makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see [The XRP Ledger Consensus Process](concept-consensus.html).)
 
 Whenever `rippled` closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using `rippled` in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. **Note:** You can safely submit multiple transactions from a single address to a single ledger, because `rippled` sorts transactions from the same address in ascending order by [`Sequence` number](reference-transaction-format.html#common-fields).
 

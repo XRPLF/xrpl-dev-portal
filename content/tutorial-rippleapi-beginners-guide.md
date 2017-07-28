@@ -1,6 +1,6 @@
-# RippleAPI Beginners Guide #
+# RippleAPI Beginners Guide
 
-This tutorial guides you through the basics of building a Ripple-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](reference-rippleapi.html), a JavaScript API for accessing the XRP Ledger.
+This tutorial guides you through the basics of building an XRP Ledger-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](reference-rippleapi.html), a JavaScript API for accessing the XRP Ledger.
 
 The scripts and configuration files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart).
 
@@ -173,7 +173,7 @@ Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://deve
 
 This is the part that you change to do whatever you want the script to do.
 
-The example code looks up a Ripple account by its address. Try running the code with different addresses to see different results.
+The example code looks up an XRP Ledger account by its address. Try running the code with different addresses to see different results.
 
 The `console.log()` function is built into both Node.js and web browsers, and writes out to the console. This example includes lots of console output to make it easier to understand what the code is doing.
 

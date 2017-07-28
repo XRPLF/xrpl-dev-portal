@@ -173,7 +173,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="operating-rippled-servers">Operating rippled Servers</h1>
-<p>The core server of the Ripple peer-to-peer network is <a href="reference-rippled.html"><code>rippled</code></a>. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the Ripple ledger. You can even have your server take part in the consensus process.</p>
+<p>The core server of the XRP Ledger peer-to-peer network is <a href="reference-rippled.html"><code>rippled</code></a>. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the XRP Ledger. You can even have your server take part in the consensus process.</p>
 <p>This page contains instructions for:</p>
 <ul>
 <li><a href="#installing-rippled">Installing <code>rippled</code></a></li>
@@ -198,7 +198,7 @@
 <p>Additionally, running your own server gives you admin control over it, which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so <code>rippled</code> has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.</p>
 <p>Finally, if you run a validating server, you can use a stock server as a proxy to the public network while keeping your validating server on a private subnet only accessible to the outside world through the stock server. This makes it more difficult to compromise the integrity of your validating server.</p>
 <h2 id="reasons-to-run-a-validator">Reasons to Run a Validator</h2>
-<p>The robustness of the Ripple network depends on an interconnected web of validators who each trust a few other validators <em>not to collude</em>. The more operators with different interests there are who run validators, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the Ripple peer-to-peer network, it is in your interest to contribute to the consensus process.</p>
+<p>The robustness of the XRP Ledger depends on an interconnected web of validators who each trust a few other validators <em>not to collude</em>. The more operators with different interests there are who run validators, the more certain each member of the network can be that it continues to run impartially. If you or your organization relies on the XRP Ledger, it is in your interest to contribute to the consensus process.</p>
 <p>Not all <code>rippled</code> servers need to be validators: trusting more servers from the same operator does not offer better protection against collusion. An organization might run validators in multiple regions for redundancy in case of natural disasters and other emergencies.</p>
 <p>If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.</p>
 <h3 id="properties-of-a-good-validator">Properties of a Good Validator</h3>
@@ -221,7 +221,7 @@
 </ul>
 </li>
 </ul>
-<p>At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple (the company): these validators are included in the default <code>rippled</code> configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see <a href="https://validators.ripple.com">validators.ripple.com</a>.</p>
+<p>At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple: these validators are included in the default <code>rippled</code> configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see <a href="https://validators.ripple.com">validators.ripple.com</a>.</p>
 <h1 id="installing-rippled">Installing rippled</h1>
 <p>For development, you can <a href="https://wiki.ripple.com/Rippled_build_instructions">compile <code>rippled</code> from source</a>.</p>
 <p>Production <code>rippled</code> instances can <a href="#installation-on-centosred-hat-with-yum">use Ripple's binary executable</a>, available from the Ripple <a href="https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified">yum</a> repository.</p>
@@ -304,7 +304,7 @@ $ sudo apt-get install yum-utils alien
 </li>
 </ol>
 <h2 id="postinstall">Postinstall</h2>
-<p>It can take several minutes for <code>rippled</code> to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock <code>rippled</code> server that you can use for local signing and API access to the Ripple peer-to-peer network.</p>
+<p>It can take several minutes for <code>rippled</code> to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock <code>rippled</code> server that you can use for local signing and API access to the XRP Ledger.</p>
 <p><a href="reference-rippled.html#list-of-public-commands">rippled commands</a> can be run with:</p>
 <pre><code>    $ /opt/ripple/bin/rippled &lt;command&gt;
 </code></pre>
@@ -436,7 +436,7 @@ $ sudo apt-get install yum-utils alien
 </li>
 </ol>
 <h1 id="additional-configuration">Additional Configuration</h1>
-<p><code>rippled</code> should connect to the Ripple network with the default configuration. However, you can change your settings by editing the <code>rippled.cfg</code> file (located at <code>/opt/ripple/etc/rippled.cfg</code> when installing <code>rippled</code> with yum).</p>
+<p><code>rippled</code> should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the <code>rippled.cfg</code> file (located at <code>/opt/ripple/etc/rippled.cfg</code> when installing <code>rippled</code> with yum).</p>
 <p>See <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">the <code>rippled</code> GitHub repository</a> for a description of all configuration options.</p>
 <p>Changes to the <code>[debug_logfile]</code> or <code>[database_path]</code> sections may require you to give the <code>rippled</code> user and group ownership to your new configured path:</p>
 <pre><code>    $ chown -R rippled:rippled &lt;configured path&gt;
@@ -445,8 +445,8 @@ $ sudo apt-get install yum-utils alien
 <pre><code>    $ sudo service rippled restart
 </code></pre>
 <h2 id="parallel-networks">Parallel Networks</h2>
-<p>Most of the time, we describe the Ripple peer-to-peer network as one collective, singular entity -- and that's mostly true. There is one production Ripple peer-to-peer network, and all business that takes place on Ripple occurs within the production network.</p>
-<p>However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>, an "alternate universe" network, which can act as a testing ground for applications and the <code>rippled</code> server itself, without impacting the business operations of everyday Ripple users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple <a href="https://ripple.com/build/ripple-test-net/">gives away for free</a> to parties interested in developing applications on the Test Net.</p>
+<p>Most of the time, we describe the XRP Ledger as one collective, singular entity -- and that's mostly true. There is one production XRP Ledger peer-to-peer network, and all business that takes place on the XRP Ledger occurs within the production network.</p>
+<p>However, sometimes you may want to do tests and experiments without interacting with the core network. That's why Ripple started the <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a>, an "alternate universe" network, which can act as a testing ground for applications and the <code>rippled</code> server itself, without impacting the business operations of everyday XRP Ledger users. The Ripple Test Net (also known as the AltNet) has a separate supply of TestNet-only XRP, which Ripple <a href="https://ripple.com/build/ripple-test-net/">gives away for free</a> to parties interested in developing applications on the Test Net.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple makes no guarantees about the stability of the test network. It has been and continues to be used to test various properties of server configuration, network topology, and network performance.</p>
 <p>Over time, there may also be smaller, temporary test networks for specific purposes.</p>
 <h3 id="parallel-networks-and-consensus">Parallel Networks and Consensus</h3>

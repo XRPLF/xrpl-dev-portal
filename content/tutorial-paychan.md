@@ -12,7 +12,7 @@ The types of goods and services are not defined by the software or in this tutor
 - Inexpensive things, where the cost of processing a transaction is a non-trivial portion of the price
 - Things normally bought in bulk, where the exact quantity desired is not known in advance
 
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded Ripple account](concept-accounts.html). However, you can also step through the tutorial as one person managing two Ripple addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](concept-accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 

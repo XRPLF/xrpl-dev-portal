@@ -4,7 +4,7 @@
 
 ## Funds Lifecycle ##
 
-All non-XRP currency balances (issuances) in the XRP Ledger are tied to accounting relationships between two Ripple addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.
+All non-XRP currency balances (issuances) in the XRP Ledger are tied to accounting relationships between two XRP Ledger addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.
 
 [![Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.](img/funds_flow_diagram.png)](img/funds_flow_diagram.png)
 
@@ -40,7 +40,7 @@ If a malicious actor learns the secret key behind an operational address, the fi
 
 ## Standby Addresses ##
 
-Another optional step that an institution can take to balance risk and convenience is to use "standby addresses" as an intermediate step between the issuing address and operational addresses. The institution can fund additional Ripple addresses as standby addresses, whose keys are not stored online, but are entrusted to different trusted users.
+Another optional step that an institution can take to balance risk and convenience is to use "standby addresses" as an intermediate step between the issuing address and operational addresses. The institution can fund additional XRP Ledger addresses as standby addresses, whose keys are not stored online, but are entrusted to different trusted users.
 
 When an operational address is running low on funds, a trusted user can use a standby address to refill the operational address's balance. When a standby addresses run low on funds, the institution can use the issuing address to send more currency to a standby address in a single transaction, and the standby addresses can distribute that currency among themselves if necessary. This improves security of the issuing address, allowing it to make fewer total transactions, without leaving too much money in the control of a single automated system.
 

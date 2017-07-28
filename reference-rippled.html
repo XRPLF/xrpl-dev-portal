@@ -617,7 +617,7 @@ Null method
 </ul>
 </li>
 <li><code>tooBusy</code> - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.</li>
-<li><code>noNetwork</code> - The server is having trouble connecting to the rest of the Ripple Network (and is not running in stand-alone mode).</li>
+<li><code>noNetwork</code> - The server is having trouble connecting to the rest of the XRP Ledger peer-to-peer network (and is not running in stand-alone mode).</li>
 <li><code>noCurrent</code> - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.</li>
 <li><code>noClosed</code> - The server does not have a closed ledger, typically because it has not finished starting up.</li>
 <li><code>wsTextRequired</code> - (WebSocket only) The request's <a href="https://tools.ietf.org/html/rfc6455#section-5.2">opcode</a> is not text.</li>
@@ -688,7 +688,7 @@ Null method
 <tbody>
 <tr>
 <td align="left">Has no issuer.</td>
-<td align="left">Always issued by a Ripple account</td>
+<td align="left">Always issued by an XRP Ledger account</td>
 </tr>
 <tr>
 <td align="left">Specified as a string</td>
@@ -712,7 +712,7 @@ Null method
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout caution"><strong>Caution:</strong> Ripple uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The XRP Ledger uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.</p>
 <h3 id="specifying-currency-amounts">Specifying Currency Amounts</h3>
 <p>Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (called <em>issuances</em>), the style for specifying it is very different.</p>
 <h4 id="xrp">XRP</h4>
@@ -772,7 +772,7 @@ Null method
 <p>The <code>rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p>
 <p>Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.</p>
 <h2 id="possible-server-states">Possible Server States</h2>
-<p>Depending on how the <code>rippled</code> server is configured, how long it has been running, and other factors, a server may be participating in the global Ripple Network to different degrees. This is represented as the <code>server_state</code> field in the responses to the <a href="#server-info"><code>server_info</code></a> and <a href="#server-state"><code>server_state</code></a> commands. The possible responses follow a range of ascending interaction, with each later value superseding the previous one. Their definitions are as follows (in order of increasing priority):</p>
+<p>Depending on how the <code>rippled</code> server is configured, how long it has been running, and other factors, a server may be participating in the global XRP Ledger peer-to-peer network to different degrees. This is represented as the <code>server_state</code> field in the responses to the <a href="#server-info"><code>server_info</code></a> and <a href="#server-state"><code>server_state</code></a> commands. The possible responses follow a range of ascending interaction, with each later value superseding the previous one. Their definitions are as follows (in order of increasing priority):</p>
 <table>
 <thead>
 <tr>
@@ -783,7 +783,7 @@ Null method
 <tbody>
 <tr>
 <td align="left"><code>disconnected</code></td>
-<td align="left">The server is not connected to the Ripple Network whatsoever. It may be running in offline mode, or it may not be able to access the network for whatever reason.</td>
+<td align="left">The server is not connected to the XRP Ledger peer-to-peer network whatsoever. It may be running in offline mode, or it may not be able to access the network for whatever reason.</td>
 </tr>
 <tr>
 <td align="left"><code>connected</code></td>
@@ -819,7 +819,7 @@ Null method
 <p>All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the <a href="#submit"><code>submit</code> command</a> and the <a href="#submit-multisigned"><code>submit_multisigned</code> command</a>. Most other methods represent different ways to view the data represented in the XRP Ledger. The remaining commands generate data for your convenience. (The <a href="#wallet-propose"><code>wallet_propose</code></a>, <a href="#path-find"><code>path_find</code></a>, and <a href="#random"><code>random</code></a> commands fall into this category.)</p>
 <p>For more information on the various transactions you can submit, see the <a href="reference-transaction-format.html">Transaction Format</a>.</p>
 <h1 id="api-methods">API Methods</h1>
-<p>API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include the general operations for Ripple use, including checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for the operators of the server, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.</p>
+<p>API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include operations such as checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for trusted server operators, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.</p>
 <h2 id="list-of-public-commands">List of Public Commands</h2>
 <ul>
 <li><a href="#account-currencies"><code>account_currencies</code> - Get a list of currencies an account can send or receive</a></li>
@@ -1373,7 +1373,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 <tr>
 <td align="left"><code>strict</code></td>
 <td align="left">Boolean</td>
-<td align="left">(Optional, defaults to False) If set to True, then the <code>account</code> field only accepts a public key or Ripple address.</td>
+<td align="left">(Optional, defaults to False) If set to True, then the <code>account</code> field only accepts a public key or XRP Ledger address.</td>
 </tr>
 <tr>
 <td align="left"><code>ledger_hash</code></td>
@@ -3480,7 +3480,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>actMalformed</code> - The <a href="#addresses">Address</a> specified in the <code>account</code> field of the request is not formatted properly.</li>
-<li><code>actBitcoin</code> - The <a href="#addresses">Address</a> specified in the <code>account</code> field is formatted like a Bitcoin address instead of a Ripple address.</li>
+<li><code>actBitcoin</code> - The <a href="#addresses">Address</a> specified in the <code>account</code> field is formatted like a Bitcoin address instead of a XRP Ledger address.</li>
 <li><code>lgrIdxsInvalid</code> - The ledger specified by the <code>ledger_index_min</code> or <code>ledger_index_max</code> does not exist, or if it does exist but the server does not have it.</li>
 </ul>
 <h2 id="noripple-check">noripple_check</h2>
@@ -3949,7 +3949,7 @@ There is also a deprecated legacy variation of the <code>account_tx</code> metho
 </ul>
 <h2 id="wallet-propose">wallet_propose</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp" title="Source">[Source]<br/></a></p>
-<p>Use the <code>wallet_propose</code> method to generate a key pair and Ripple <a href="#addresses">address</a>. This command only generates keys, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must <a href="reference-transaction-format.html#creating-accounts">receive a Payment transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
+<p>Use the <code>wallet_propose</code> method to generate a key pair and XRP Ledger address. This command only generates keys, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must <a href="reference-transaction-format.html#creating-accounts">receive a Payment transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
 <p><em>The <code>wallet_propose</code> request is an <a href="#connecting-to-rippled">admin command</a> that cannot be run by unprivileged users!</em> (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)</p>
 <p><a href="https://github.com/ripple/rippled/releases/tag/0.31.0" title="Updated in: rippled 0.31.0"><img alt="Updated in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%200.31.0-blue.svg"/></a></p>
 <h4 id="request-format-9">Request Format</h4>
@@ -4144,10 +4144,10 @@ Connecting to 127.0.0.1:5005
 <ul>
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly.</li>
-<li><code>badSeed</code> - The request specified a disallowed seed value (in the <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code> fields), such as an empty string, or a string resembling a Ripple address.</li>
+<li><code>badSeed</code> - The request specified a disallowed seed value (in the <code>passphrase</code>, <code>seed</code>, or <code>seed_hex</code> fields), such as an empty string, or a string resembling a XRP Ledger address.</li>
 </ul>
 <h1 id="ledger-information">Ledger Information</h1>
-<p>The globally-shared ledger is the core of the Ripple Network. Each <code>rippled</code> server keeps a current version of the ledger, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger become candidates to be included in the next validated version.</p>
+<p>Each <code>rippled</code> server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.</p>
 <h2 id="ledger">ledger</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp" title="Source">[Source]<br/></a></p>
 <p>Retrieve information about the public ledger.</p>
@@ -5413,8 +5413,8 @@ rippled ledger_accept
 <li><code>notStandAlone</code> - If the <code>rippled</code> server is not currently running in stand-alone mode.</li>
 </ul>
 <h1 id="transactions">Transactions</h1>
-<p>Transactions are the only thing that can modify the shared global ledger of the Ripple Network. All business on the Ripple Network takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the network itself (like adopting new features).</p>
-<p>There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the <a href="http://en.wikipedia.org/wiki/Automated_Clearing_House">ACH</a>) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to do the same thing. Sending XRP, the Ripple Network's native crypto-currency, requires no third party aside from the distributed network itself. However, that is missing out on the key feature of Ripple: unlike individual crypto-currencies, the Ripple Network natively supports balances in any currency. This brings far more power, but it also means that the system must account for <a href="http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk">counterparty risk</a>, currency conversions, and other issues. The Ripple Network must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.</p>
+<p>Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the ledger itself (like adopting new features).</p>
+<p>There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the <a href="http://en.wikipedia.org/wiki/Automated_Clearing_House">ACH</a>) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to do the same thing. Sending XRP requires no third party aside from the distributed network itself. However, the XRP Ledger also supports issuing balances in any currency and trading them in a decentralized exchange. This brings far more power, but it also means that the system must account for <a href="http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk">counterparty risk</a>, currency conversions, and other issues. The XRP Ledger must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.</p>
 <h2 id="tx">tx</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp" title="Source">[Source]<br/></a></p>
 <p>The <code>tx</code> method retrieves information on a single transaction.</p>
@@ -9547,7 +9547,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
 <li><code>unknownStream</code> - One or more the members of the <code>streams</code> field of the request is not a valid stream name.</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request is not formatted properly.</li>
-<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address. (<strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.)</li>
+<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted XRP Ledger address. (<strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.)</li>
 <li><code>srcCurMalformed</code> - One or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>dstAmtMalformed</code> - One or more <code>taker_gets</code> sub-fields of the <code>books</code> field in the request is not formatted properly.</li>
 <li><code>srcIsrMalformed</code> - The <code>issuer</code> field of one or more <code>taker_pays</code> sub-fields of the <code>books</code> field in the request is not valid.</li>
@@ -10251,7 +10251,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noPermission</code> - The request included the <code>url</code> field, but you are not connected as an admin.</li>
 <li><code>malformedStream</code> - The <code>streams</code> field of the request is not formatted properly.</li>
-<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted Ripple address.<ul>
+<li><code>malformedAccount</code> - One of the addresses in the <code>accounts</code> or <code>accounts_proposed</code> fields of the request is not a properly-formatted XRP Ledger address.<ul>
 <li class="devportal-callout note"><strong>Note:</strong>: You <em>can</em> subscribe to the stream of an address that does not yet have an entry in the global ledger to get a message when that address becomes funded.</li>
 </ul>
 </li>
@@ -13620,7 +13620,7 @@ Connecting to 127.0.0.1:5005
 <li>Any of the <a href="#universal-errors">universal error types</a>.</li>
 </ul>
 <h1 id="peer-protocol">Peer Protocol</h1>
-<p>Servers in the XRP Ledger communicate to each other using the Ripple peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an <a href="https://tools.ietf.org/html/rfc7230#section-6.7">HTTP upgrade</a> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network</a> article in the <a href="https://github.com/ripple/rippled"><code>rippled</code> repository</a>.)</p>
+<p>Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an <a href="https://tools.ietf.org/html/rfc7230#section-6.7">HTTP upgrade</a> to RTXP. (For more information, see the <a href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake">Overlay Network</a> article in the <a href="https://github.com/ripple/rippled"><code>rippled</code> repository</a>.)</p>
 <h2 id="configuring-the-peer-protocol">Configuring the Peer Protocol</h2>
 <p>In order to participate in the XRP Ledger, <code>rippled</code> servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are <a href="tutorial-rippled-setup.html#clustering">clustered</a> with the current server.)</p>
 <p>Ideally, the server should be able to send <em>and</em> receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the <code>rippled</code> server. The <a href="https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg">default <code>rippled</code> configuration file</a> listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your <code>rippled.cfg</code> file.</p>

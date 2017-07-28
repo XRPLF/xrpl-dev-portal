@@ -1,7 +1,7 @@
 Ripple Data API v2
 ==================
 
-The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [Ripple Charts](https://www.ripplecharts.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [XRP Charts](https://xrpcharts.ripple.com/) and [ripple.com](https://www.ripple.com).
 
 Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
 
@@ -1211,7 +1211,7 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
-| `type` | All Ripple [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
+| `type` | All XRP Ledger [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
 | `result` | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
@@ -2079,7 +2079,7 @@ Each Top Currency Object has the following fields:
 | Field  | Value | Description |
 |--------|-------|-------------|
 | `currency` | String - [Currency Code][] | The currency this object describes. |
-| `issuer` | String - [Address][] | The Ripple address that issues this currency. |
+| `issuer` | String - [Address][] | The XRP Ledger address that issues this currency. |
 | `avg_exchange_count` | [String - Number][] | Daily average number of [exchanges](#exchange-objects) |
 | `avg_exchange_volume` | [String - Number][] | Daily average volume of exchanges, normalized to XRP |
 | `avg_payment_count` | [String - Number][] | Daily average number of [payments](#payment-objects) |
@@ -2181,9 +2181,9 @@ Each Top Market object has the following fields:
 | Field  | Value | Description |
 |--------|-------|-------------|
 | `base_currency` | String - [Currency Code][] | The base currency for this market. |
-| `base_issuer` | String - [Address][] | (Omitted if `base_currency` is XRP) The Ripple address that issues the base currency. |
+| `base_issuer` | String - [Address][] | (Omitted if `base_currency` is XRP) The XRP Ledger address that issues the base currency. |
 | `counter_currency` | String - [Currency Code][] | The counter currency for this market. |
-| `counter_issuer` | String - [Address][] | (Omitted if `counter_currency` is XRP) The Ripple address that issues the counter currency. |
+| `counter_issuer` | String - [Address][] | (Omitted if `counter_currency` is XRP) The XRP Ledger address that issues the counter currency. |
 | `avg_base_volume` | String | Daily average volume in terms of the base currency. |
 | `avg_counter_volume` | String | Daily average volume in terms of the counter currency. |
 | `avg_exchange_count` | String | Daily average number of [exchanges](#exchange-objects) |
@@ -3286,7 +3286,7 @@ Each field in the top level JSON object is a [Currency Code][]. The content of e
 | `account` | String - [Address][] | The [issuing address](concept-issuing-and-operational-addresses.html) of this currency. |
 | `featured` | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple decides which gateways to feature based on responsible business practices, volume, and other measures. |
 | `label` | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
-| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.) |
 
 #### Example ####
 
@@ -3389,7 +3389,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `hotwallets` | Array of [Address][]es | This gateway's [operational addresses](concept-issuing-and-operational-addresses.html). |
 | `domain` | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
 | `normalized` | String | A normalized version of the `name` field suitable for including in URLs. |
-| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by Ripple Charts.) |
+| `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.) |
 
 Each object in the `accounts` field array has the following fields:
 
@@ -3624,7 +3624,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 #### Response Format ####
 
@@ -3665,7 +3665,7 @@ Response:
 ## Get Account Balances ##
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalances.js "Source")
 
-Get all balances held or owed by a specific Ripple account.
+Get all balances held or owed by a specific XRP Ledger account.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -3683,7 +3683,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 Optionally, you can provide the following query parameters:
 
@@ -3770,7 +3770,7 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| `address` | String - [Address][] | Ripple address to query. |
+| `address` | String - [Address][] | XRP Ledger address to query. |
 
 Optionally, you can provide the following query parameters:
 
@@ -3804,7 +3804,7 @@ Each order object has the following fields:
 | `specification.quantity` | [Balance Object][] | The maximum amount of the base currency this order would buy or sell (depending on the direction). This value decreases as the order gets partially filled. |
 | `specification.totalPrice` | [Balance Object][] | The maximum amount of the counter currency the order can spend or gain to buy or sell the base currency. This value decreases as the order gets partially filled. |
 | `properties` | Object | Details of how the order was placed. |
-| `properties.maker` | String - [Address][] | The Ripple account that placed the order. |
+| `properties.maker` | String - [Address][] | The XRP Ledger account that placed the order. |
 | `properties.sequence` | Number | The sequence number of the transaction that placed this order. |
 | `properties.makerExchangeRate` | [String - Number][] | The exchange rate from the point of view of the account that submitted the order. |
 
@@ -3896,7 +3896,7 @@ This method requires the following URL parameters:
 
 | Field    | Value  | Description |
 |----------|--------|-------------|
-| :address | String - [Address][] | Ripple address to query. |
+| :address | String - [Address][] | XRP Ledger address to query. |
 
 
 Optionally, you can provide the following query parameters:
@@ -4028,7 +4028,7 @@ This method requires the following URL parameters:
 
 | Field      | Value   | Description |
 |------------|---------|-------------|
-| `address`  | String  | Ripple address to query. |
+| `address`  | String  | XRP Ledger address to query. |
 | `sequence` | Integer | Transaction sequence number. |
 
 
@@ -4097,7 +4097,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 
 Optionally, you can provide the following query parameters:
@@ -4211,7 +4211,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 | `base`    | String | Base currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 | `counter` | String | Counter currency of the pair, as a [Currency Code][], followed by `+` and the issuer [Address][] unless it's XRP. |
 
@@ -4323,7 +4323,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 
 Optionally, you can provide the following query parameters:
@@ -4432,7 +4432,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 | `date`    | String | (Optional) UTC date for single report. If omitted, use the `start` and `end` query parameters. |
 
 
@@ -4539,7 +4539,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 
 Optionally, you can provide the following query parameters:
@@ -4638,7 +4638,7 @@ This method requires the following URL parameters:
 
 | Field     | Value  | Description |
 |-----------|--------|-------------|
-| `address` | String | Ripple address to query. |
+| `address` | String | XRP Ledger address to query. |
 
 
 Optionally, you can provide the following query parameters:
@@ -4980,7 +4980,7 @@ As a REST API, the Data API v2 uses [JSON](http://json.org/)'s native datatypes 
 ### Numbers and Precision ###
 [String - Number]: #numbers-and-precision
 
-Currency amounts in Ripple require more precision than most native number types, so the Data API v2 uses the String type to represent some values.
+Currency amounts in the XRP Ledger require more precision than most native number types, so the Data API v2 uses the String type to represent some values.
 
 Within the String value, the numbers are serialized in the same way as native JSON numbers:
 
@@ -4990,7 +4990,7 @@ Within the String value, the numbers are serialized in the same way as native JS
 * May contain `E` or `e` to indicate being raised to a power of 10. For example, `1.2E5` is equivalent to `120000`.
 * No comma (`,`) characters are used.
 
-The precision for amounts of **non-XRP currency** in Ripple is as follows:
+The precision for amounts of **non-XRP currency** in the XRP Ledger is as follows:
 
 * Minimum nonzero absolute value: `1000000000000000e-96`
 * Maximum value: `9999999999999999e80`
@@ -5109,7 +5109,7 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 
 ### Genesis Ledger ###
 
-Due to a mishap early in Ripple's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the _genesis ledger_.
+Due to a mishap early in the XRP Ledger's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. For purposes of the Data API v2, ledger #32570 is considered the _genesis ledger_.
 
 ## Account Creation Objects ##
 
@@ -5194,7 +5194,7 @@ A Payment Summary Object contains a reduced amount of information about a single
 ## Payment Objects ##
 [Payment Objects]: #payment-objects
 
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with Ripple transactions of the `Payment` [transaction type](reference-transaction-format.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` [transaction type](reference-transaction-format.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
 Payment objects have the following fields:
 
@@ -5220,9 +5220,9 @@ Payment objects have the following fields:
 [balance change objects]: #balance-objects-and-balance-change-objects
 [Balance Object]: #balance-objects-and-balance-change-objects
 
-Balance objects represent an Ripple account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.
+Balance objects represent an XRP Ledger account's balance in a specific currency with a specific counterparty at a single point in time. Balance change objects represent a change to such balances that occurs in transaction execution.
 
-A single Ripple transaction may cause changes to balances with several counterparties, as well as changes to XRP.
+A single XRP Ledger transaction may cause changes to balances with several counterparties, as well as changes to XRP.
 
 Balance objects and Balance Change objects have the same format, with the following fields:
 
@@ -5284,7 +5284,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 [Server Object]: #server-objects
 [Server Objects]: #server-objects
 
-A "Server Object" describes one `rippled` server in the Ripple peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](reference-rippled.html#peer-crawler).
+A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](reference-rippled.html#peer-crawler).
 
 Server objects have the following fields, with some only appearing if the request specified a verbose response:
 
@@ -5446,7 +5446,7 @@ The `--startIndex` parameter defines the most-recent ledger to retrieve. The Bac
 
 The `--stopIndex` parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.
 
-**Caution:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all Ripple transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
+**Caution:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all XRP Ledger transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
 
 Example usage:
 
