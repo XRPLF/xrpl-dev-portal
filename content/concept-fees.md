@@ -2,7 +2,7 @@
 
 The XRP Ledger is a decentralized ledger, secured by cryptography and operated by a distributed peer-to-peer network of servers. This means that no one party, not even Ripple, can require a fee for access to the network.
 
-However, the rules of the XRP Ledger include several types of fees, including neutral fees which protect the ledger against abuse. These neutral fees are not paid to anyone. There are also several optional ways that users can collect fees from each other, both inside and outside the Ripple Consensus Ledger.
+However, the rules of the XRP Ledger include several types of fees, including neutral fees which protect the ledger against abuse. These neutral fees are not paid to anyone. There are also several optional ways that users can collect fees from each other, both inside and outside the XRP Ledger.
 
 
 ## In the Ledger ##
@@ -22,6 +22,6 @@ _**Trust line quality**_ is a setting that allows an account to value balances o
 
 ## Outside the Ledger ##
 
-Although the fees described above are the only fees built into the XRP Ledger, people can still invent ways to charge fees associated with the ledger. For example, financial institutions commonly charge their customers to send money into and out of the Ripple Consensus Ledger.
+Although the fees described above are the only fees built into the XRP Ledger, people can still invent ways to charge fees associated with the ledger. For example, financial institutions commonly charge their customers to send money into and out of the XRP Ledger.
 
 Many other fees are also possible. Businesses might charge for access to a client application, maintenance of non-Ripple accounts, exchange services (especially when buying XRP on a private market instead of directly within the XRP Ledger) and any number of other services. Always be aware of the fee schedule before doing business with any financial institution.

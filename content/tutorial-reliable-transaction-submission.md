@@ -54,7 +54,7 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 ### LastLedgerSequence
 
-[`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
+[`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger. You should specify the `LastLedgerSequence` parameter on every transaction. Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 

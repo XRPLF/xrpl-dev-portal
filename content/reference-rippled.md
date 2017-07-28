@@ -499,7 +499,7 @@ The format of the `marker` field is intentionally undefined. Each server can def
 
 ## Modifying the Ledger ##
 
-All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the RCL are the [`submit` command](#submit) and the [`submit_multisigned` command](#submit-multisigned). Most other methods represent different ways to view the data represented in the RCL. The remaining commands generate data for your convenience. (The [`wallet_propose`](#wallet-propose), [`path_find`](#path-find), and [`random`](#random) commands fall into this category.)
+All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the [`submit` command](#submit) and the [`submit_multisigned` command](#submit-multisigned). Most other methods represent different ways to view the data represented in the XRP Ledger. The remaining commands generate data for your convenience. (The [`wallet_propose`](#wallet-propose), [`path_find`](#path-find), and [`random`](#random) commands fall into this category.)
 
 For more information on the various transactions you can submit, see the [Transaction Format](reference-transaction-format.html).
 

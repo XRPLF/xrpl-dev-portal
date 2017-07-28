@@ -1,6 +1,6 @@
 # Becoming a Ripple Gateway #
 
-**Gateways** are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the Ripple Consensus Ledger (XRP Ledger). By becoming a Ripple gateway, a financial services business can gain several advantages:
+**Gateways** are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the XRP Ledger (XRP Ledger). By becoming a Ripple gateway, a financial services business can gain several advantages:
 
 * By enabling its customers to send and receive value in the XRP Ledger, the business increases its value proposition to customers.
 * By accepting payments from the XRP Ledger, the business increases the number of ways that customers can fund accounts at its business, even internationally.
@@ -25,11 +25,11 @@ This guide focuses on running an **issuing gateway**.
 
 ### Ripple Trust Lines and Issuances ###
 
-All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as _issuances_, which are digital balances that represent currency or assets of value held by an issuer. Within the XRP Ledger, counterparties can send and trade issuances without requiring intervention from the issuer. Typically, a gateway sends issuances to customers when it receives money in systems and ledgers outside the RCL, and promises to send money to customers in outside systems in exchange for being repaid in issuances in the RCL. Issuances get their value from a gateway's agreement to honor the obligation that the issuances represent. No computer system can force a Ripple gateway to honor that obligation.
+All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as _issuances_, which are digital balances that represent currency or assets of value held by an issuer. Within the XRP Ledger, counterparties can send and trade issuances without requiring intervention from the issuer. Typically, a gateway sends issuances to customers when it receives money in systems and ledgers outside the XRP Ledger, and promises to send money to customers in outside systems in exchange for being repaid in issuances in the XRP Ledger. Issuances get their value from a gateway's agreement to honor the obligation that the issuances represent. No computer system can force a Ripple gateway to honor that obligation.
 
 The XRP Ledger has a system of directional accounting relationships, called _trust lines_, to make sure that users only hold issuances from counterparties they trust.
 
-A "trust line" is link between two addresses in Ripple. A trust line represents an explicit statement of willingness to hold gateway debt obligations. When a customer sends money into the XRP Ledger, a gateway takes custody of those assets outside of Ripple, and sends issuances in the RCL to the customer's address. When a customer sends money out of the RCL, she makes a Ripple payment to the gateway, and the gateway credits the customer in its own system of record, or in some other account.
+A "trust line" is link between two addresses in Ripple. A trust line represents an explicit statement of willingness to hold gateway debt obligations. When a customer sends money into the XRP Ledger, a gateway takes custody of those assets outside of Ripple, and sends issuances in the XRP Ledger to the customer's address. When a customer sends money out of the XRP Ledger, she makes a Ripple payment to the gateway, and the gateway credits the customer in its own system of record, or in some other account.
 
 
 ### XRP ###
@@ -278,7 +278,7 @@ Processing payments to and from Ripple naturally comes with some risks, so a gat
 - Protect yourself against reversible deposits. Ripple payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving Ripple issuances.
 - When sending into Ripple, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
 - Before sending a payment into Ripple, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any [transfer fee](#transferrate) you have set.
-- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the RCL.
+- Before processing a payment out of Ripple, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.
 - Follow the guidelines for [reliable transaction submission](#reliable-transaction-submission) when sending Ripple transactions.
 - [Robustly monitor for incoming payments](#robustly-monitoring-for-payments), and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a [partial payment](reference-transaction-format.html#partial-payments).
 - Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
@@ -319,7 +319,7 @@ For more information, see the [Freeze article](concept-freeze.html).
 
 ## Authorized Accounts ##
 
-The XRP Ledger's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown Ripple addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the Ripple Consensus Ledger.)
+The XRP Ledger's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown Ripple addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
 
 To use the Authorized Accounts feature, a gateway enables the `RequireAuth` flag for its issuing address, and then individually approves each accounting relationship. An address can only hold funds issued by a gateway after its accounting relationship with that gateway is approved.
 
@@ -664,7 +664,7 @@ To robustly check for incoming payments, gateways should do the following:
 
 To make things simpler for your customers, we recommend accepting payments to either operational addresses and issuing addresses.
 
-As an added precaution, we recommend comparing the balances of your issuing address with the Ripple-backing funds in your internal accounting system as of each new Ripple ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the RCL until you have resolved the discrepancy.
+As an added precaution, we recommend comparing the balances of your issuing address with the Ripple-backing funds in your internal accounting system as of each new Ripple ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
 
 * Use [`rippled`'s `gateway_balances` command](reference-rippled.html#gateway-balances) or [RippleAPI's `getTrustlines` method](reference-rippleapi.html#gettrustlines) to check your balances.
 * If you have a [TransferRate](#transferrate) set, then your obligations within the XRP Ledger decrease slightly whenever other Ripple addresses transfer your issuances among themselves.

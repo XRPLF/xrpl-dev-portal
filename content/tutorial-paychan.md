@@ -4,7 +4,7 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
 ## Background
 
-The process of using a payment channel always involves two parties, a payer and a payee. The payer is an individual person or institution using the XRP Ledger who is a customer of the payee. The payee is a person or business who is doing business on the Ripple Consensus Ledger (XRP Ledger), receiving XRP as payment for goods or services.
+The process of using a payment channel always involves two parties, a payer and a payee. The payer is an individual person or institution using the XRP Ledger who is a customer of the payee. The payee is a person or business who is doing business on the XRP Ledger (XRP Ledger), receiving XRP as payment for goods or services.
 
 The types of goods and services are not defined by the software or in this tutorial. However, the types of goods and services that are a good fit for payment channels are:
 

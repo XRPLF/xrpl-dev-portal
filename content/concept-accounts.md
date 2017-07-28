@@ -42,7 +42,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 Once created, an account exists in the XRP Ledger's data tree forever. This is because the current sequence number for a transaction must be tracked forever, so that old transactions cannot be processed a second time.
 
-Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](tutorial-gateway-guide.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the Ripple Consensus Ledger.
+Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](tutorial-gateway-guide.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
 
 ## Transaction History
