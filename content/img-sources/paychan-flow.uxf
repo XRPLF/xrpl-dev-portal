@@ -510,7 +510,7 @@ group=2</panel_attributes>
       <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-RCL transaction
+XRP Ledger transaction
 (needs 3-5 seconds 
 for consensus)
 fg=#27a2db
