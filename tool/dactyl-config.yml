@@ -95,6 +95,11 @@ targets:
             "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
             "img/key-address-rels.png": https://ripple.com/wp-content/uploads/2017/05/key-address-rels.png
             "img/paychan-flow.png": https://ripple.com/wp-content/uploads/2017/05/paychan-flow.png
+            "img/consensus-agreed-transaction-set.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
+            "img/consensus-calculate-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
+            "img/consensus-candidate-transaction-sets.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
+            "img/consensus-declare-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
+            "img/consensus-validated-ledger.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
