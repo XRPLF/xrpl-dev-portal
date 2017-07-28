@@ -237,6 +237,14 @@ pages:
             - local
             - ripple.com
 
+    -   name: Consensus Process
+        category: Features
+        html: concept-consensus.html
+        md: concept-consensus.md
+        targets:
+            - local
+            - ripple.com
+
     -   name: Fee Voting
         category: Features
         html: concept-fee-voting.html

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Consensus Process - Ripple Developer Portal</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- syntax selection js -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+    <script src="assets/js/expandcode.js"></script>
+    <script src="assets/js/fixsidebarscroll.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+</head>
+
+<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php sidebar-primary wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+        <div class="draft-warning">DRAFT PAGE</div>
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+    <div class="subnav dev_nav">
+      <div class="container">
+        <ul id="menu-dev-menu" class="menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">References <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="reference-rippleapi.html">RippleAPI</a></li>
+                  <li><a href="reference-rippled.html">rippled</a></li>
+                  <li><a href="reference-transaction-format.html">Transaction Format</a></li>
+                  <li><a href="reference-ledger-format.html">Ledger Format</a></li>
+                  <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+                  <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+                  <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                  <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                  <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+                  <li><a href="tutorial-rippled-setup.html">rippled Setup</a></li>
+                  <li><a href="tutorial-gateway-guide.html">Gateway Guide</a></li>
+                  <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="concept-accounts.html">Accounts</a></li>
+                  <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+                  <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                  <li><a href="concept-freeze.html">Freeze</a></li>
+                  <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+                  <li><a href="concept-paths.html">Paths</a></li>
+                  <li><a href="concept-reserves.html">Reserves</a></li>
+                  <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                  <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                  <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                  <li><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gateway Bulletins <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+                  <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Tools <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+                  <li><a href="tool-jsonrpc.html">rippled JSON-RPC Tool</a></li>
+            </ul>
+          </li>
+
+          <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
+        </ul><!-- /#dev-menu -->
+      </div><!-- /.subnav .container -->
+    </div><!-- /.subnav -->
+  </header>
+
+
+  <div class="wrap container" role="document">
+      <aside class="sidebar" role="complementary">
+    <div class="dev_nav_wrapper">
+        <div id="cont">
+            <h5>In this category:</h5>
+            <ul class="dev_nav_sidebar">
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
+                <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
+                <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+                <li class="level-2"><a href="concept-consensus.html">Consensus Process</a></li>
+                <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
+                <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+                <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
+                <li class="level-2"><a href="concept-partial-payments.html">Partial Payments</a></li>
+                <li class="level-2"><a href="concept-paths.html">Paths</a></li>
+                <li class="level-2"><a href="concept-reserves.html">Reserves</a></li>
+                <li class="level-2"><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+                <li class="level-2"><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+                <li class="level-2"><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+                <li class="level-2"><a href="concept-noripple.html">Understanding the NoRipple flag</a></li>
+            </ul>
+            <hr />
+            <h5>In this page:</h5>
+            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
+                <li class="level-1"><a href="#the-xrp-ledger-consensus-process">The XRP Ledger Consensus Process</a></li>
+<li class="level-2"><a href="#introduction">Introduction</a></li>
+<li class="level-2"><a href="#the-xrp-ledger-protocol-consensus-and-validation">The XRP Ledger Protocol – Consensus and Validation</a></li>
+<li class="level-3"><a href="#consensus">Consensus</a></li>
+<li class="level-3"><a href="#validation">Validation</a></li>
+<li class="level-2"><a href="#key-takeaways">Key Takeaways</a></li>
+<li class="level-2"><a href="#further-resources">Further Resources</a></li>
+<li class="level-2"><a href="#end-notes">End Notes</a></li>
+
+            </ul>
+        </div>
+    </div>
+      </aside>
+      <main class="main" role="main">
+    <div class='content'>
+        <h1 id="the-xrp-ledger-consensus-process">The XRP Ledger Consensus Process</h1>
+<p><em>Written by Dave Cohen, David Schwartz, and Arthur Britto.</em></p>
+<p>This article provides a high level overview of the XRP Ledger, the information it stores, and how <a href="reference-transaction-format.html">transactions</a> result in changes to the ledger.</p>
+<p>When building applications on the XRP Ledger, it is important to understand this process, so as not to be surprised by the behavior of XRP Ledger APIs and their effects.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Transactions are not applied to the XRP Ledger instantaneously; it takes some time for the effects of transactions to be applied. During this process, <a href="reference-rippled.html"><code>rippled</code> APIs</a> may return provisional results that should not be mistaken for the final, immutable results of a transaction. Immutable results can only be determined by looking at validated ledgers.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which gives applications authoritative information about the state of its contents. This state information includes:</p>
+<ul>
+<li>settings for each <a href="concept-accounts.html">account</a></li>
+<li>balances between accounts (trust lines)</li>
+<li>offers in the distributed exchange</li>
+<li>network settings, such as <a href="concept-transaction-cost.html">transaction costs</a> and <a href="concept-reserves.html">reserve</a> amounts</li>
+<li>a time stamp</li>
+</ul>
+<p>For a full, technical description of which data is included in a ledger version, see the <a href="reference-ledger-format.html">Ledger Format Reference</a>.</p>
+<p><a href="img/ledger-components.png"><img alt="Figure 1: XRP Ledger Elements" src="img/ledger-components.png"/></a></p>
+<p><em>Figure 1: XRP Ledger Elements</em></p>
+<p>The XRP Ledger has a new ledger version every several seconds. The ledger versions that preceded it comprise the ledger history. Even the most recent validated ledger is part of history, as it represents the state of the network as of a short time ago. In the present, the network is evaluating transactions which may be applied and finalized in the next ledger version.</p>
+<p><a href="img/ledger-history.png"><img alt="Figure 2: XRP Ledger Sequence and History" src="img/ledger-history.png"/></a></p>
+<p><em>Figure 2: XRP Ledger Sequence and History</em></p>
+<p>A ledger instance is identified by its <em>sequence number</em> <a href="#footnote_1" id="footnote_from_1"><sup>1</sup></a>, also called a <em>ledger index</em>. Ledgers are numbered incrementally. If the last validated ledger is N, the previous was N-1 and the next will be N+1. The N+1 ledger is produced by applying a set of transactions to ledger N.</p>
+<p>User level changes to the ledger are the results of transactions. Examples of <a href="reference-transaction-format.html">transactions</a> include payments, changes to account settings or trust lines, and offers to trade. Each transaction authorizes changes to the ledger and is cryptographically signed by an account owner. Transactions are the only way to authorize changes to an account.</p>
+<p>A ledger instance also contains a set of transactions and metadata about those transactions. The transactions are those that have been applied to the prior ledger in order to create the new instance. The metadata records precisely the effects of the transaction on the ledger.</p>
+<p><a href="img/ledger-changes.png"><img alt="Figure 3: Transactions Applied to Ledger Version" src="img/ledger-changes.png"/></a></p>
+<p><em>Figure 3: Transactions Applied to Ledger Version</em></p>
+<p>The set of transactions included in a ledger instance are recorded in that ledger and allow auditability of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.</p>
+<p>Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions will have the <strong>tesSUCCESS</strong> <a href="reference-transaction-format.html#transaction-results">result code</a> which indicates the requested changes are applied to the ledger and a fee was claimed. Other transactions in the ledger have <strong>tec</strong> class result codes, which indicate transactions that only claim a fee and perform no other changes <a href="#footnote_2" id="footnote_from_2"><sup>2</sup></a>.</p>
+<p>Transactions of the <strong>tec</strong> class are included with the ledger because they change an account balance when claiming a fee.</p>
+<p>In addition to the <strong>tes</strong> and <strong>tec</strong> class result codes, there are <strong>ter</strong>, <strong>tef</strong> and <strong>tem</strong> class codes. The latter three indicate provisional failures returned by API calls. Only <strong>tes</strong> and <strong>tec</strong> codes appear in ledgers.</p>
+<p>When working with <a href="reference-rippled.html"><code>rippled</code> APIs</a>, applications must distinguish between candidate transactions proposed for inclusion in a ledger versus validated transactions which are included in a validated ledger. Only transaction results found in a validated ledger are immutable. A candidate transaction may or may not ever be included in a validated ledger.</p>
+<p>Important: Some <a href="reference-rippled.html"><code>rippled</code> APIs</a> provide provisional results, based on candidate transactions <a href="#footnote_3" id="footnote_from_3"><sup>3</sup></a>. Applications should never rely on provisional results to determine the final outcome of a transaction. The only way to know with certainty that a transaction finally succeeded is to check the status of the transaction until it is both in a validated ledger and has result code tesSUCCESS. If the transaction is in a validated ledger with any other result code, it has failed. If the ledger specified in a transaction’s <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> has been validated, yet the transaction does not appear in that ledger or any before it, then that transaction has failed and will never appear in any ledger. An outcome is final only for transactions that appear in a validated ledger or can never appear because of <code>LastLedgerSequence</code> restrictions as explained later in this document.</p>
+<h2 id="the-xrp-ledger-protocol-consensus-and-validation">The XRP Ledger Protocol – Consensus and Validation</h2>
+<p>The peer-to-peer XRP Ledger network consists of many distributed servers, called nodes, that accept and process transactions. Client applications sign and send transactions to nodes, which relay these candidate transactions throughout the network for processing. Examples of client applications include mobile and web wallets, gateways to financial institutions, and electronic trading platforms.</p>
+<p><a href="img/xrp-ledger-network.png"><img alt="Figure 4: Participants in the XRP Ledger Protocol" src="img/xrp-ledger-network.png"/></a></p>
+<p><em>Figure 4: Participants in the XRP Ledger Protocol</em></p>
+<p>The nodes that receive, relay and process transactions may be either tracking nodes or validating nodes. Tracking nodes’ primary functions include distributing transactions from clients and responding to queries about the ledger. Validating nodes perform the same functions as tracking nodes and additionally contribute to advancing the ledger sequence <a href="#footnote_4" id="footnote_from_4"><sup>4</sup></a>.</p>
+<p>While accepting transactions submitted by client applications, each tracking node uses the last validated ledger as a starting point. The accepted transactions are candidates. The nodes relay their candidate transactions to their peers, allowing the candidate transactions to propagate throughout the network. Ideally, each candidate transaction would be known to all nodes, allowing each to consider an identical set of transactions to apply to the last validated ledger. As transactions take time to propagate however, the nodes do not work with an identical set of candidate transactions at all times. To account for this, the XRP Ledger uses a process called consensus to ensure that identical transactions are processed and validated ledgers are consistent across the peer-to-peer XRP Ledger network.</p>
+<h3 id="consensus">Consensus</h3>
+<p>The nodes on the network share information about candidate transactions. Through the consensus process, validating nodes agree on a specific subset of the candidate transactions to be considered for the next ledger. Consensus is an iterative process in which nodes relay proposals, or sets of candidate transactions. Nodes communicate and update proposals until a supermajority <a href="#footnote_5" id="footnote_from_5"><sup>5</sup></a> of peers agree on the same set of candidate transactions.</p>
+<p>During consensus, each node evaluates proposals from a specific set of peers, called chosen validators <a href="#footnote_6" id="footnote_from_6"><sup>6</sup></a>. Chosen validators represent a subset of the network which, when taken collectively, is "trusted" not to collude in an attempt to defraud the node evaluating the proposals. This definition of "trust" does not require that each individual chosen validator is trusted. Rather, validators are chosen based on the expectation they will not collude in a coordinated effort to falsify data relayed to the network <a href="#footnote_7" id="footnote_from_7"><sup>7</sup></a>.</p>
+<p><a href="img/consensus-candidate-transaction-sets.png"><img alt="Figure 5: Validators Propose Transaction Sets" src="img/consensus-candidate-transaction-sets.png"/></a></p>
+<p><em>Figure 5: Validators Propose Transaction Sets — At the start of consensus, nodes work with different sets of transactions. Rounds of proposals determine which transactions will be applied to the ledger, and which must wait for a subsequent round of consensus.</em></p>
+<p>Candidate transactions which fail to be included in the agreed-upon proposal remain candidate transactions. They may be considered again in the next round of consensus.</p>
+<p><a href="img/consensus-agreed-transaction-set.png"><img alt="Figure 6: Through Consensus, Nodes Agree on Transaction Set" src="img/consensus-agreed-transaction-set.png"/></a></p>
+<p><em>Figure 6: Through Consensus, Nodes Agree On Transaction Set — Nodes will apply the agreed-upon set of transactions (shown in green) to the last validated ledger. Transactions not in the set (in red) may be agreed upon in the next round.</em></p>
+<p>Typically, a transaction which does not pass one round of consensus will succeed in the following round. However, in some circumstances, a transaction could fail to pass consensus indefinitely. One such circumstance is if the network increases the base fee to a value higher than the transaction provides. The transaction could potentially succeed if the fees are lowered at some point in the future.</p>
+<p>The <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code> transaction field</a> is a mechanism to prevent such a transaction from being viable indefinitely and ensure transaction processing occurs in a timely fashion. Applications should include a <code>LastLedgerSequence</code> parameter with each transaction. This ensures a transaction will either succeed or fail on or before the specified ledger sequence number, thus limiting the amount of time an application must wait before obtaining a definitive transaction result. For more information, see <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<h3 id="validation">Validation</h3>
+<p>When a round of consensus completes, each node computes a new ledger by applying the candidate transactions in the consensus transaction set to the last validated ledger.</p>
+<p><a href="img/consensus-calculate-validation.png"><img alt="Figure 7: A Network Node Calculates a Ledger Validation" src="img/consensus-calculate-validation.png"/></a></p>
+<p><em>Figure 7: A Network Node Calculates a Ledger Validation — Each tracking node applies agreed-upon transactions to the last validated ledger. Validating nodes will transmit their results to the entire network.</em></p>
+<p>The validating nodes calculate a new version of the ledger and relay their results to the network, each transmitting a signed hash of the ledger it calculated based on the candidate transactions proposed during consensus. These signed hashes, called validations, allow each node to compare the ledger it computed with those of its peers.</p>
+<p><a href="img/consensus-declare-validation.png"><img alt="Figure 8: Ledger is Validated When Supermajority of Peers Calculate an Identical Result" src="img/consensus-declare-validation.png"/></a></p>
+<p><em>Figure 8: Ledger is Validated When Supermajority of Peers Calculate an Identical Result — Nodes compare their calculated ledger with the hashes received from chosen validators. If not in agreement, the node must re-calculate or retrieve the correct ledger.</em></p>
+<p>Nodes of the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast an identical validation hash <a href="#footnote_8" id="footnote_from_8"><sup>8</sup></a>. Going forward, transactions will be applied to this updated and now validated ledger with sequence number N+1.</p>
+<p>In cases where a node is in the minority, having computed a ledger that differs from its peers, the node will disregard the ledger it computed <a href="#footnote_9" id="footnote_from_9"><sup>9</sup></a>. It will recompute the correct ledger, or retrieve the correct ledger as needed.</p>
+<p>If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the nodes repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the nodes have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts <a href="concept-transaction-cost.html">transaction costs</a> and the time to wait for consensus in response to these conditions.</p>
+<p><a href="img/consensus-validated-ledger.png"><img alt="Figure 9: Network Recognizes a New Validated Ledger Version" src="img/consensus-validated-ledger.png"/></a></p>
+<p><em>Figure 9: Network Recognises the New Validated Ledger Version — At the end of a round of the consensus process, nodes have an updated validated ledger.</em></p>
+<p>Once they reach supermajority agreement on validations, the nodes work with the new validated ledger, sequence number N+1. The consensus and validation process repeats <a href="#footnote_10" id="footnote_from_10"><sup>10</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>Transactions submitted to the XRP Ledger are not processed instantaneously. For a period of time, each transaction remains a candidate.</p>
+<p>The lifecycle of a single transaction is as follows:</p>
+<ul>
+<li>A transaction is created and signed by an account owner.</li>
+<li>The transaction is submitted to the network.<ul>
+<li>Badly formed transactions may be rejected immediately.</li>
+<li>Well formed transactions may provisionally succeed, then later fail.</li>
+<li>Well formed transactions may provisionally fail, then later succeed.</li>
+</ul>
+</li>
+<li>During consensus, the transaction is included in the ledger.<ul>
+<li>The result of a successful consensus round is a validated ledger.</li>
+<li>If a consensus round fails, the consensus process repeats until it succeeds.</li>
+</ul>
+</li>
+<li>The validated ledger includes the transaction and its effects on the ledger state.</li>
+</ul>
+<p>Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some <a href="reference-rippled.html"><code>rippled</code> APIs</a> initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes <code>LastLedgerSequence</code> and does not appear in any validated ledger with that sequence number or lower.</p>
+<p>Best practices for applications submitting transactions include:</p>
+<ul>
+<li>Use the <code>LastLedgerSequence</code> parameter to ensure that transactions validate or fail in a deterministic and timely fashion.</li>
+<li>Check the results of transactions in validated ledgers.<ul>
+<li>Until a ledger containing the transaction is validated, or <code>LastLedgerSequence</code> has passed, results are provisional.</li>
+<li>Transactions with result code <strong>tesSUCCESS</strong> and <code>"validated": true</code> have immutably succeeded.</li>
+<li>Transactions with other result codes and <code>"validated": true</code> have immutably failed.</li>
+<li>Transactions that fail to appear in any validated ledger up to and including the validated ledger identified by the transaction’s <code>LastLedgerSequence</code> have immutably failed.<ul>
+<li>Take care to use a node with a continuous ledger history to detect this case <a href="#footnote_11" id="footnote_from_11"><sup>11</sup></a>.</li>
+</ul>
+</li>
+<li>It may be necessary to check the status of a transaction repeatedly until the ledger identified by <code>LastLedgerSequence</code> is validated.</li>
+</ul>
+</li>
+</ul>
+<h2 id="further-resources">Further Resources</h2>
+<ul>
+<li><a href="https://ripple.com/files/ripple_consensus_whitepaper.pdf">Consensus White Paper</a></li>
+<li><a href="reference-ledger-format.html">Ledger Format Reference</a></li>
+<li><a href="https://www.youtube.com/watch?v=pj1QVb1vlC0">Ripple Consensus Video</a></li>
+<li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+</ul>
+<h2 id="end-notes">End Notes</h2>
+<p><a href="#footnote_from_1" id="footnote_1"><sup>1</sup></a> – A ledger instance can also be uniquely identified by its hash, which is a digital fingerprint of its contents.</p>
+<p><a href="#footnote_from_2" id="footnote_2"><sup>2</sup></a> – Transactions with <strong>tec</strong> result codes are included in ledgers and not do the requested action. The rationale for this is that multiple transactions may be submitted in sequence, with the order of processing determined by a sequence number associated with an account (not to be confused with the ledger sequence number). To prevent a hold on account sequence numbers which would block subsequent transactions, the transaction is processed to consume the sequence number. Additionally, transactions which are distributed to the network must claim a fee to prevent network abuse.</p>
+<p><a href="#footnote_from_3" id="footnote_3"><sup>3</sup></a> – For example, consider a scenario where Alice has $100, and sends all of it to Bob. If an application first submits that payment transaction, then immediately after checks Alice’s balance, the API will return $0. This value is based on the provisional result of a candidate transaction. There are circumstances in which the payment will fail and Alice’s balance will remain $100 (or, due to other transactions, become some other amount). The only way to know with certainty that Alice’s payment to Bob succeeded is to check the status of the transaction until it is both in a validated ledger and has result code <strong>tesSUCCESS</strong>. If the transaction is in a validated ledger with any other result code, the payment has failed.</p>
+<p><a href="#footnote_from_4" id="footnote_4"><sup>4</sup></a> – Strictly speaking, validating nodes are a subset of tracking nodes. They provide the same features and additionally create "validations." Tracking nodes may be further categorized by whether they maintain full vs. partial ledger history.</p>
+<p><a href="#footnote_from_5" id="footnote_5"><sup>5</sup></a> – Transactions fail to pass a round of consensus when the percentage of peers recognizing the transaction falls below a threshold. Each round is an iterative process. At the start of the first round, at least 50% of peers must agree. The final threshold for a consensus round is 80% agreement. These specific values are subject to change</p>
+<p><a href="#footnote_from_6" id="footnote_6"><sup>6</sup></a> – Sometimes referred to as a Unique Node List (UNL).</p>
+<p><a href="#footnote_from_7" id="footnote_7"><sup>7</sup></a> – If proposals from all validators were evaluated, instead of exclusively from the validators chosen not to collude, a malicious attacker could spin up enough validating nodes to comprise a colluding supermajority to introduce invalid transactions or omit valid transactions from proposals. The chosen validator list defends against Sybil attacks.</p>
+<p><a href="#footnote_from_8" id="footnote_8"><sup>8</sup></a> – The supermajority threshold, as of November 2014, requires that at least 80% of peers must agree for a ledger to be validated. This happens to be the same percentage required by a round of consensus. Both thresholds are subject to change and need not be equal.</p>
+<p><a href="#footnote_from_9" id="footnote_9"><sup>9</sup></a> – In practice, the node detects that it is in the minority before receiving validations from all peers. It knows when it receives non-matching validations from over 20% of peers that its validation will not meet the 80% threshold. At that point, it can begin to recalculate a ledger.</p>
+<p><a href="#footnote_from_10" id="footnote_10"><sup>10</sup></a> – In practice, the XRP Ledger runs more efficiently by starting a new round of consensus concurrently, before validation has completed.</p>
+<p><a href="#footnote_from_11" id="footnote_11"><sup>11</sup></a> – A <code>rippled</code> server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the node’s ledger history. Over time, if configured to, rippled will fill in gaps in its history. When testing for missing transactions, it is important to verify against a node with continuous complete ledgers from the time the transaction was submitted until its LastLedgerSequence. Use the RPC server_state to determine which complete_ledgers are available to a particular node.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
+                <h4>Resources<hr></h4>
+                <ul id="menu-resources" class="menu">
+                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
+                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
+                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
+                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
+                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
+                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
+                <h4>Regulators<hr></h4>
+                <ul id="menu-compliance-regulatory-relations" class="menu">
+                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
+                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
+                <h4>Support<hr></h4>
+                <ul id="menu-dev-footer-menu" class="menu">
+                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
+                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
+                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
+                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
+                </ul>
+            </section>
+            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
+                <h4>About<hr></h4>
+                <ul id="menu-company-footer" class="menu">
+                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
+                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
+                </ul>
+            </section>
+
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span><a href="/terms-of-use/">Terms</a></span>
+                    <span><a href="/privacy-policy/">Privacy</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+</body>
+</html>
