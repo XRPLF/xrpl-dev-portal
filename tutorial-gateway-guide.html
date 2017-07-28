@@ -216,9 +216,9 @@
 <h2 id="gateways-explained">Gateways Explained</h2>
 <p>Gateways are businesses that provide a way for money and other forms of value to move in and out of the XRP Ledger. There are three major models that gateways can follow, with different purposes and modes of operation.</p>
 <ul>
-<li>An <strong>Issuing Gateway</strong> receives money (or other assets of value) outside of Ripple, and creates issuances in the XRP Ledger. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the Ripple Consensus Ledger, except for XRP, take the form of issuances tied to a specific issuing gateway.</li>
+<li>An <strong>Issuing Gateway</strong> receives money (or other assets of value) outside of the XRP Ledger, and creates issuances in the XRP Ledger. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the XRP Ledger, except for XRP, take the form of issuances tied to a specific issuing gateway.</li>
 <li>A <strong>Private Exchange</strong> holds XRP and lets its customers buy and sell that XRP in its own system. Most cryptocurrencies rely on private exchanges to provide a market for the cryptocurrency, but the XRP Ledger has a currency exchange built into the protocol itself.</li>
-<li><strong>Merchants</strong> accept payment within the XRP Ledger in exchange for goods and services in the outside world. Currently, Ripple does not have widespread support for merchant operations.</li>
+<li><strong>Merchants</strong> accept payment within the XRP Ledger in exchange for goods and services in the outside world. Currently, Ripple (the company) does provide support for merchant operations using the XRP Ledger.</li>
 </ul>
 <p>This guide focuses on running an <strong>issuing gateway</strong>.</p>
 <h3 id="trust-lines-and-issuances">Trust Lines and Issuances</h3>
@@ -244,7 +244,7 @@
 <li>Publicize all your policies and fees.</li>
 </ul>
 <h3 id="hot-and-cold-wallets">Hot and Cold Wallets</h3>
-<p>In the XRP Ledger, financial institutions typically use multiple Ripple addresses to minimize the risk associated with a compromised secret key. Ripple strongly recommends the following separation of roles:</p>
+<p>In the XRP Ledger, financial institutions typically use multiple XRP Ledger addresses to minimize the risk associated with a compromised secret key. Ripple strongly recommends the following separation of roles:</p>
 <ul>
 <li>One <strong>issuing address</strong>, also known as a "cold wallet." This address is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible. <!-- STYLE_OVERRIDE: cold wallet, wallet --></li>
 <li>One or more <strong>operational addresses</strong>, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners. <!-- STYLE_OVERRIDE: hot wallet, wallet --></li>
