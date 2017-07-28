@@ -1,6 +1,6 @@
 # Listing XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the XRP Ledger (XRP Ledger), see the  [Ripple Developer Center](https://ripple.com/build).
+This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the XRP Ledger, see the  [Ripple Developer Center](https://ripple.com/build).
 
 ## Alpha Exchange
 
@@ -44,7 +44,7 @@ See also:
 
 ### Accounts
 
-XRP is held in *accounts* (sometimes referred to as *wallets* ) on the XRP Ledger (XRP Ledger). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. To submit transactions (for example, [OfferCreate](https://ripple.com/build/transactions/#offercreate) and others used for trading), RCL accounts require XRP [reserves](https://ripple.com/build/reserves/) to protect the ledger against spam and malicious usage. On other blockchains, balances are derived from the previous block. On the RCL, [account objects](https://ripple.com/build/ledger-format/#accountroot) describe several other properties of the account in addition to balances, so accounts are represented in each ledger and can never be destroyed or removed. Exchanges do not need to create accounts for each customer that holds XRP; they can store all of their customers’ XRP in just a few RCL accounts. For more information about RCL accounts, see the [Accounts](https://ripple.com/build/accounts/) article.
+XRP is held in *accounts* (sometimes referred to as *wallets* ) on the XRP Ledger. Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. To submit transactions (for example, [OfferCreate](https://ripple.com/build/transactions/#offercreate) and others used for trading), RCL accounts require XRP [reserves](https://ripple.com/build/reserves/) to protect the ledger against spam and malicious usage. On other blockchains, balances are derived from the previous block. On the RCL, [account objects](https://ripple.com/build/ledger-format/#accountroot) describe several other properties of the account in addition to balances, so accounts are represented in each ledger and can never be destroyed or removed. Exchanges do not need to create accounts for each customer that holds XRP; they can store all of their customers’ XRP in just a few RCL accounts. For more information about RCL accounts, see the [Accounts](https://ripple.com/build/accounts/) article.
 
 To comply with Ripple's recommend best practices, Alpha Exchange should create at least two new [accounts](https://ripple.com/build/accounts/) on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_issuing_, _operational_, and _standby_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The operational/standby/issuing model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 

@@ -163,7 +163,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="listing-xrp-as-an-exchange">Listing XRP as an Exchange</h1>
-<p>This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of <code>rippled</code> and the XRP Ledger (XRP Ledger), see the  <a href="https://ripple.com/build">Ripple Developer Center</a>.</p>
+<p>This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of <code>rippled</code> and the XRP Ledger, see the  <a href="https://ripple.com/build">Ripple Developer Center</a>.</p>
 <h2 id="alpha-exchange">Alpha Exchange</h2>
 <p>For illustrative purposes, this document uses a fictitious business called <em>Alpha Exchange</em> to explain the high-level steps required to list XRP. For the purposes of this document, Alpha Exchange:</p>
 <ul>
@@ -224,7 +224,7 @@
 <p>When the <a href="reference-transaction-format.html#payment-flags">tfPartialPayment flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <code>delivered_amount</code> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the Amount field to determine how much your account received instead.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Be aware that malicious actors could exploit this. For more information, see <a href="concept-partial-payments.html">Partial Payments</a>.</p>
 <h3 id="accounts">Accounts</h3>
-<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger (XRP Ledger). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the RCL, accounts can <a href="concept-accounts.html#permanence-of-accounts">never be deleted</a>, and each account must hold a separate <a href="concept-reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.</p>
+<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger. Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the RCL, accounts can <a href="concept-accounts.html#permanence-of-accounts">never be deleted</a>, and each account must hold a separate <a href="concept-reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.</p>
 <p>To comply with Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating <a href="https://ripple.com/build/issuing-operational-addresses/"><em>cold</em>, <em>hot</em>, and <em>warm</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:</p>
 <ul>
 <li>

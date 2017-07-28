@@ -1,6 +1,6 @@
 # Listing XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the XRP Ledger (XRP Ledger), see the  [Ripple Developer Center](https://ripple.com/build).
+This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the XRP Ledger, see the  [Ripple Developer Center](https://ripple.com/build).
 
 ## Alpha Exchange
 
@@ -54,7 +54,7 @@ When the [tfPartialPayment flag](reference-transaction-format.html#payment-flags
 
 ### Accounts
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger (XRP Ledger). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the RCL, accounts can [never be deleted](concept-accounts.html#permanence-of-accounts), and each account must hold a separate [reserve of XRP](concept-reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the RCL, accounts can [never be deleted](concept-accounts.html#permanence-of-accounts), and each account must hold a separate [reserve of XRP](concept-reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
 
 To comply with Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
