@@ -245,6 +245,14 @@ pages:
             - local
             - ripple.com
 
+    -   name: Reaching Consensus in the XRP Ledger
+        category: Features
+        html: concept-reaching-consensus.html
+        md: concept-reaching-consensus.md
+        targets:
+            - local
+            - ripple.com
+
     -   name: Fee Voting
         category: Features
         html: concept-fee-voting.html
