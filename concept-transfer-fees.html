@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -128,9 +130,11 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+                <li class="level-2"><a href="concept-consensus.html">Consensus Process</a></li>
+                <li class="level-2"><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
                 <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                 <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
@@ -158,11 +162,11 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="transfer-fees">Transfer Fees</h1>
-<p>The <code>TransferRate</code> setting in the Ripple Consensus Ledger (RCL) allows <a href="tutorial-gateway-guide.html">financial institutions that issue currency in the RCL</a> to charge users a <em>transfer fee</em> for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the Ripple Consensus Ledger. The transfer fee does not apply when sending or receiving <em>directly</em> to and from the issuing account, but it does apply when transferring from an <a href="concept-issuing-and-operational-addresses.html">operational address</a> to another user.</p>
+<p>The <code>TransferRate</code> setting in the XRP Ledger allows <a href="tutorial-gateway-guide.html">financial institutions that issue currency in the XRP Ledger</a> to charge users a <em>transfer fee</em> for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving <em>directly</em> to and from the issuing account, but it does apply when transferring from an <a href="concept-issuing-and-operational-addresses.html">operational address</a> to another user.</p>
 <p>XRP never has a transfer fee, because it never has an issuer.</p>
-<p>For example, ACME Bank might set the transfer fee to 0.5% for ACME issuances. For the recipient of a payment to get 2 EUR.ACME, the sender must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in Ripple have decreased by 0.01€, which means that ACME no longer needs to hold that amount in the account backing its Ripple issuances.</p>
-<p>The following diagram shows a Ripple payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:</p>
-<p><img alt="Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in Ripple" src="img/e2g-with_transferrate.png"/></p>
+<p>For example, ACME Bank might set the transfer fee to 0.5% for ACME issuances. For the recipient of a payment to get 2 EUR.ACME, the sender must send 2.01 EUR.ACME. After the transaction, ACME's outstanding obligations in the XRP Ledger have decreased by 0.01€, which means that ACME no longer needs to hold that amount in the account backing its XRP Ledger issuances.</p>
+<p>The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:</p>
+<p><img alt="Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger" src="img/e2g-with_transferrate.png"/></p>
 <h2 id="transfer-fees-in-payment-paths">Transfer Fees in Payment Paths</h2>
 <!-- -->
 <p>A transfer fee applies whenever an individual transfer would shift issuances from one party to another through the issuing account. In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:</p>
@@ -190,44 +194,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

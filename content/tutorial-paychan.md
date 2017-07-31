@@ -4,7 +4,7 @@ Payment Channels are an advanced feature for sending "asynchronous" XRP payments
 
 ## Background
 
-The process of using a payment channel always involves two parties, a payer and a payee. The payer is an individual person or institution using the Ripple Consensus Ledger who is a customer of the payee. The payee is a person or business who is doing business on the Ripple Consensus Ledger (RCL), receiving XRP as payment for goods or services.
+The process of using a payment channel always involves two parties, a payer and a payee. The payer is an individual person or institution using the XRP Ledger who is a customer of the payee. The payee is a person or business who is doing business on the XRP Ledger (XRP Ledger), receiving XRP as payment for goods or services.
 
 The types of goods and services are not defined by the software or in this tutorial. However, the types of goods and services that are a good fit for payment channels are:
 
@@ -12,7 +12,7 @@ The types of goods and services are not defined by the software or in this tutor
 - Inexpensive things, where the cost of processing a transaction is a non-trivial portion of the price
 - Things normally bought in bulk, where the exact quantity desired is not known in advance
 
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded Ripple account](concept-accounts.html). However, you can also step through the tutorial as one person managing two Ripple addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](concept-accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 
@@ -358,7 +358,7 @@ For purposes of this tutorial, the payee can give the payer a high-five or equiv
 
 ## 7. Repeat steps 3-6 as desired.
 
-The payer and payee can repeat steps 3 through 6 (creating, transmitting, and verifying claims in exchange for goods and services) as many times and as often as they like without waiting for the Ripple Consensus Ledger itself. The two main limits of this process are:
+The payer and payee can repeat steps 3 through 6 (creating, transmitting, and verifying claims in exchange for goods and services) as many times and as often as they like without waiting for the XRP Ledger itself. The two main limits of this process are:
 
 - The amount of XRP in the payment channel. (If necessary, the payer can send a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.)
 

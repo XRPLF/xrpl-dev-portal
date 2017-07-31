@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -158,31 +160,31 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="issuing-and-operational-addresses">Issuing and Operational Addresses</h1>
-<p>In the Ripple Consensus Ledger, financial institutions typically use multiple Ripple addresses to minimize the risk associated with a compromised secret key. Ripple strongly recommends the following separation of roles:</p>
+<p>In the XRP Ledger, financial institutions typically use multiple XRP Ledger addresses to minimize the risk associated with a compromised secret key. Ripple strongly recommends the following separation of roles:</p>
 <ul>
 <li>One <strong>issuing address</strong>, also known as a "cold wallet." This address is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible. <!-- STYLE_OVERRIDE: cold wallet, wallet --></li>
 <li>One or more <strong>operational addresses</strong>, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners. <!-- STYLE_OVERRIDE: hot wallet, wallet --></li>
 <li>Optional <strong>standby addresses</strong>, also known as "warm wallets." Trusted human operators use these addresses to transfer money to the operational addresses. <!-- STYLE_OVERRIDE: warm wallet, wallet --></li>
 </ul>
 <h2 id="funds-lifecycle">Funds Lifecycle</h2>
-<p>All non-XRP currency balances (issuances) in the Ripple Consensus Ledger (RCL) are tied to accounting relationships between two Ripple addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.</p>
+<p>All non-XRP currency balances (issuances) in the XRP Ledger are tied to accounting relationships between two XRP Ledger addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.</p>
 <p><a href="img/funds_flow_diagram.png"><img alt="Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address." src="img/funds_flow_diagram.png"/></a></p>
-<p>When the issuing address sends payments, it creates balances in the accounting relationships in the Ripple Consensus Ledger. Within the RCL, users can exchange balances across different accounting relationships, so we use the term <em>issuances</em> to describe any non-XRP balance. Issuances have negative value from the perspective of the issuing address, since they represent obligations. The same issuances have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issuances that were sent.</p>
-<p>The issuing address sends issuances to a standby address, or directly to an operational address. The standby addresses send those issuances to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issuances are tied to accounting relationships with the issuing address, payments and exchanges of issuances "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The Ripple Consensus Ledger also supports more complicated <a href="concept-paths.html">paths</a> that connect multiple issuers through order books and <a href="concept-noripple.html">liquidity providers who allow their funds to ripple</a>.</p>
+<p>When the issuing address sends payments, it creates balances in the accounting relationships in the XRP Ledger. Within the XRP Ledger, users can exchange balances across different accounting relationships, so we use the term <em>issuances</em> to describe any non-XRP balance. Issuances have negative value from the perspective of the issuing address, since they represent obligations. The same issuances have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issuances that were sent.</p>
+<p>The issuing address sends issuances to a standby address, or directly to an operational address. The standby addresses send those issuances to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issuances are tied to accounting relationships with the issuing address, payments and exchanges of issuances "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The XRP Ledger also supports more complicated <a href="concept-paths.html">paths</a> that connect multiple issuers through order books and <a href="concept-noripple.html">liquidity providers who allow their funds to ripple</a>.</p>
 <h2 id="issuing-address">Issuing Address</h2>
 <p>The issuing address is like a vault. Partners, customers, and operational addresses create accounting relationships (trust lines) to the issuing address, but this address sends as few transactions as possible. Periodically, a human operator creates and signs a transaction from the issuing address to refill the balances of a standby or operational address. Ideally, the secret key used to sign these transactions should never be accessible from any internet-connected computer.</p>
-<p>Unlike a vault, the issuing address can receive payments directly from customers and partners. Since all transactions in the Ripple Consensus Ledger are public, automated systems can monitor for payments to the issuing address without needing a secret key.</p>
+<p>Unlike a vault, the issuing address can receive payments directly from customers and partners. Since all transactions in the XRP Ledger are public, automated systems can monitor for payments to the issuing address without needing a secret key.</p>
 <h3 id="issuing-address-compromise">Issuing Address Compromise</h3>
 <p>If a malicious actor learns the secret key behind a institution's issuing address, that actor can create new issuances without limit and trade them in the decentralized exchange. This would make it difficult for the financial institution to distinguish legitimately-obtained issuances and redeem them fairly. If a financial institution loses control of its issuing address, the institution must create a new issuing address, and all users who have accounting relationships with the old issuing address must create new accounting relationships with the new address.</p>
 <h3 id="multiple-issuing-addresses">Multiple Issuing Addresses</h3>
-<p>A financial institution can issue more than one currency in the Ripple Consensus Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for <a href="concept-transfer-fees.html">transfer fees</a> and the <a href="concept-freeze.html">global freeze</a> status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.</p>
+<p>A financial institution can issue more than one currency in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for <a href="concept-transfer-fees.html">transfer fees</a> and the <a href="concept-freeze.html">global freeze</a> status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.</p>
 <h2 id="operational-addresses">Operational Addresses</h2>
 <p>An operational address is like a cash register. It makes payments on behalf of the institution by transferring issuances to customers and partners. To sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it to sign transactions.) Customers and partners do not, and should not, create accounting relationships with an operational address.</p>
 <p>Each operational address has a limited balance of issuances. When the balance of an operational address gets low, the financial institution refills it by sending a payment from the issuing address or a standby address.</p>
 <h3 id="operational-address-compromise">Operational Address Compromise</h3>
 <p>If a malicious actor learns the secret key behind an operational address, the financial institution can only lose as much currency as that operational address holds. The institution can switch to a new operational address with no action from customers and partners.</p>
 <h2 id="standby-addresses">Standby Addresses</h2>
-<p>Another optional step that an institution can take to balance risk and convenience is to use "standby addresses" as an intermediate step between the issuing address and operational addresses. The institution can fund additional Ripple addresses as standby addresses, whose keys are not stored online, but are entrusted to different trusted users.</p>
+<p>Another optional step that an institution can take to balance risk and convenience is to use "standby addresses" as an intermediate step between the issuing address and operational addresses. The institution can fund additional XRP Ledger addresses as standby addresses, whose keys are not stored online, but are entrusted to different trusted users.</p>
 <p>When an operational address is running low on funds, a trusted user can use a standby address to refill the operational address's balance. When a standby addresses run low on funds, the institution can use the issuing address to send more currency to a standby address in a single transaction, and the standby addresses can distribute that currency among themselves if necessary. This improves security of the issuing address, allowing it to make fewer total transactions, without leaving too much money in the control of a single automated system.</p>
 <p>As with operational addresses, a standby address must have an accounting relationship with the issuing address, and not with customers or partners. All precautions that apply to operational addresses also apply to standby addresses.</p>
 <h3 id="standby-address-compromise">Standby Address Compromise</h3>
@@ -194,44 +196,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

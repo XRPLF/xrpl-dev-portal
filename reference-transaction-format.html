@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -213,7 +215,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="transactions-overview">Transactions Overview</h1>
-<p>A <em>Transaction</em> is the only way to modify the Ripple Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a>. Some ledger rules also generate <em><a href="#pseudo-transactions">pseudo-transactions</a></em>, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam <a href="concept-transaction-cost.html">transaction cost</a>.</p>
+<p>A <em>Transaction</em> is the only way to modify the XRP Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a>. Some ledger rules also generate <em><a href="#pseudo-transactions">pseudo-transactions</a></em>, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam <a href="concept-transaction-cost.html">transaction cost</a>.</p>
 <ul>
 <li><a href="#authorizing-transactions">Authorizing Transactions</a></li>
 <li><a href="#common-fields">Common Fields of All Transactions</a></li>
@@ -223,7 +225,7 @@
 <li><a href="#full-transaction-response-list">Full Transaction Response List - Complete table of all error codes</a></li>
 </ul>
 <h2 id="authorizing-transactions">Authorizing Transactions</h2>
-<p>In the decentralized Ripple Consensus Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to --></p>
+<p>In the decentralized XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to --></p>
 <p>A transaction can be authorized by any of the following types of signatures:</p>
 <ul>
 <li>A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an <a href="#accountset">AccountSet transaction</a>.</li>
@@ -237,7 +239,7 @@
 <li>You can never remove the last method of signing transactions from an address.</li>
 </ul>
 <h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions</h2>
-<p>Sending a transaction to the Ripple Consensus Ledger involves several steps:</p>
+<p>Sending a transaction to the XRP Ledger involves several steps:</p>
 <ol>
 <li>Create an <a href="#unsigned-transaction-format">unsigned transaction in JSON format</a>.</li>
 <li>Use one or more signatures to <a href="#authorizing-transactions">authorize the transaction</a>.</li>
@@ -262,7 +264,7 @@
   "Sequence": 2,
 }
 </code></pre>
-<p>The Ripple Consensus Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
+<p>The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the <code>Account</code>) field. For transactions authorized by only a single signature, you have two options:</p>
 <ol>
 <li>Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.<ul>
 <li>You can use <a href="reference-rippleapi.html#sign">RippleAPI</a> for offline signing.</li>
@@ -370,7 +372,7 @@
 }
 </code></pre>
 <h3 id="multi-signing">Multi-Signing</h3>
-<p>Multi-signing in Ripple is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the Ripple Consensus Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
+<p>Multi-signing in the XRP Ledger is the act of <a href="#authorizing-transactions">authorizing transactions</a> for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a <a href="#setregularkey">regular key</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
 <p>The <a href="#signerlistset">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
 <p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
 <ul>
@@ -503,11 +505,11 @@
 <p>For a production system, we recommend <em>not</em> leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.</p>
 <p>The <a href="#paths"><code>Paths</code> field</a> of the <a href="#payment">Payment</a> transaction type can also be automatically filled in.</p>
 <h3 id="transaction-cost">Transaction Cost</h3>
-<p>To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of XRP. This <em><a href="concept-transaction-cost.html">transaction cost</a></em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
 <p>The <code>Fee</code> field specifies an amount, in <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a>, to destroy as the cost for relaying this transaction. If the transaction is included in a validated ledger (whether or not it achieves its intended purpose), then the amount of XRP specified in the <code>Fee</code> parameter is destroyed forever. You can <a href="concept-transaction-cost.html#querying-the-transaction-cost">look up the transaction cost</a> in advance, or <a href="concept-transaction-cost.html#automatically-specifying-the-transaction-cost">let <code>rippled</code> set it automatically</a> when you sign a transaction.</p>
 <p class="devportal-callout note"><strong>Note:</strong> <a href="#multi-signing">Multi-signed transactions</a> require additional fees to relay to the network.</p>
 <h3 id="canceling-or-skipping-a-transaction">Canceling or Skipping a Transaction</h3>
-<p>An important and intentional feature of the Ripple Network is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
+<p>An important and intentional feature of the XRP Ledger is that a transaction is final as soon as it has been incorporated in a validated ledger.</p>
 <p>However, if a transaction has not yet been included in a validated ledger, you can effectively cancel it by rendering it invalid. Typically, this means sending another transaction with the same <code>Sequence</code> value from the same account. If you do not want the replacement transaction to do anything, send an <a href="#accountset">AccountSet</a> transaction with no options.</p>
 <p>For example, if you try to submit 3 transactions with sequence numbers 11, 12, and 13, but transaction 11 gets lost somehow or does not have a high enough <a href="#transaction-cost">transaction cost</a> to be propagated to the network, then you can cancel transaction 11 by submitting an AccountSet transaction with no options and sequence number 11. This does nothing (except destroying the transaction cost for the new transaction 11), but it allows transactions 12 and 13 to become valid.</p>
 <p>This approach is preferable to renumbering and resubmitting transactions 12 and 13, because it prevents transactions from being effectively duplicated under different sequence numbers.</p>
@@ -654,7 +656,7 @@
 </ul>
 <h2 id="accountset">AccountSet</h2>
 <p><a href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp" title="Source">[Source]<br/></a></p>
-<p>An AccountSet transaction modifies the properties of an <a href="reference-ledger-format.html#accountroot">account in the Ripple Consensus Ledger</a>.</p>
+<p>An AccountSet transaction modifies the properties of an <a href="reference-ledger-format.html#accountroot">account in the XRP Ledger</a>.</p>
 <p>Example AccountSet:</p>
 <pre><code>{
     "TransactionType": "AccountSet",
@@ -698,7 +700,7 @@
 <td align="left">MessageKey</td>
 <td align="left">String</td>
 <td align="left">PubKey</td>
-<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. Conventionally, it should be a secp256k1 key, the same encryption that is used by the rest of Ripple.</td>
+<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account.</td>
 </tr>
 <tr>
 <td align="left"><a href="#accountset-flags">SetFlag</a></td>
@@ -1036,7 +1038,7 @@
 <p class="devportal-callout note"><strong>Note:</strong> The minimum <a href="concept-transaction-cost.html">transaction cost</a> to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 <a href="reference-rippled.html#specifying-currency-amounts">drops of XRP</a> plus another 10 drops for every 16 bytes in size of the preimage.</p>
 <h2 id="offercancel">OfferCancel</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp" title="Source">[Source]<br/></a></p>
-<p>An OfferCancel transaction removes an Offer node from the Ripple Consensus Ledger.</p>
+<p>An OfferCancel transaction removes an Offer node from the XRP Ledger.</p>
 <pre><code>{
     "TransactionType": "OfferCancel",
     "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -1069,7 +1071,7 @@
 <p>The OfferCancel method returns <a href="#transaction-results">tesSUCCESS</a> even if it did not find an offer with the matching sequence number.</p>
 <h2 id="offercreate">OfferCreate</h2>
 <p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp" title="Source">[Source]<br/></a></p>
-<p>An OfferCreate transaction is effectively a <a href="http://en.wikipedia.org/wiki/limit_order">limit order</a>. It defines an intent to exchange currencies, and creates an Offer node in the Ripple Consensus Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
+<p>An OfferCreate transaction is effectively a <a href="http://en.wikipedia.org/wiki/limit_order">limit order</a>. It defines an intent to exchange currencies, and creates an Offer node in the XRP Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.</p>
 <pre><code>{
     "TransactionType": "OfferCreate",
     "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -1164,7 +1166,7 @@
 <h4 id="ticksize">TickSize</h4>
 <p><em>Requires the <a href="concept-amendments.html#ticksize">TickSize amendment</a>.</em></p>
 <p>When an Offer is placed into an order book, its exchange rate is truncated based on the <code>TickSize</code> values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the <code>TickSize</code> from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller <code>TickSize</code> value (that is, the one with fewer significant digits). If neither currency has a <code>TickSize</code> set, the default behavior applies.</p>
-<p>The <code>TickSize</code> value truncates the number of <em>significant digits</em> in the exchange rate of an offer when it gets placed in an order book. Issuers can set <code>TickSize</code> to an integer from <code>3</code> to <code>15</code> using an <a href="#accountset">AccountSet transaction</a>. The exchange rate is represented as a number of significant digits plus an exponent; the <code>TickSize</code> does not affect the exponent. This allows the Ripple Consensus Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the <code>TickSize</code> an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.</p>
+<p>The <code>TickSize</code> value truncates the number of <em>significant digits</em> in the exchange rate of an offer when it gets placed in an order book. Issuers can set <code>TickSize</code> to an integer from <code>3</code> to <code>15</code> using an <a href="#accountset">AccountSet transaction</a>. The exchange rate is represented as a number of significant digits plus an exponent; the <code>TickSize</code> does not affect the exponent. This allows the XRP Ledger to represent exchange rates between assets that vary greatly in value (for example, a hyperinflated currency compared to a rare commodity). The lower the <code>TickSize</code> an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.</p>
 <p>The <code>TickSize</code> does not affect the portion of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with <code>tfImmediateOrCancel</code> are unaffected by <code>TickSize</code> values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on <code>TickSize</code>. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the <code>TakerPays</code> amount (the amount being bought) gets rounded. If the <code>tfSell</code> flag is enabled (a "sell" Offer) the <code>TakerGets</code> amount (the amount being sold) gets rounded.</p>
 <p>When an issuer enables, disables, or changes the <code>TickSize</code>, Offers that were placed under the previous setting are unaffected.</p>
 <h3 id="expiration">Expiration</h3>
@@ -1173,7 +1175,7 @@
 <p class="devportal-callout note"><strong>Note:</strong> Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the <a href="reference-rippled.html#ledger-entry">ledger_entry</a> command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.</p>
 <p>If an OfferCreate transaction has an <code>Expiration</code> time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer but still results in a <code>tesSUCCESS</code> transaction code. (This is because such a transaction could still successfully cancel another offer.)</p>
 <h3 id="auto-bridging">Auto-Bridging</h3>
-<p>Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the Ripple Consensus Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
+<p>Any OfferCreate that would exchange two non-XRP currencies could potentially use XRP as an intermediary currency in a synthetic order book. This is because of auto-bridging, which serves to improve liquidity across all currency pairs by using XRP as a vehicle currency. This works because of XRP's nature as a native cryptocurrency to the XRP Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
 <p>Example: <em>Anita places an offer to sell GBP and buy BRL. She might fund that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. Auto-bridging software finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers.</em></p>
 <p>Auto-bridging happens automatically on any OfferCreate transaction. <a href="#payment">Payment transactions</a> <em>do not</em> autobridge by default, but path-finding can find paths that have the same effect.</p>
 <h3 id="offercreate-flags">OfferCreate Flags</h3>
@@ -1299,7 +1301,7 @@
 <li>When the <code>issuer</code> field of the <code>SendMax</code> field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, and sending issuances the source account holds from other issuers.</li>
 </ul>
 <h3 id="creating-accounts">Creating Accounts</h3>
-<p>The Payment transaction type is the only way to create new accounts in the Ripple Consensus Ledger. To do so, send an amount of XRP that is equal or greater than the <a href="concept-reserves.html">account reserve</a> to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> is added to the ledger.</p>
+<p>The Payment transaction type is the only way to create new accounts in the XRP Ledger. To do so, send an amount of XRP that is equal or greater than the <a href="concept-reserves.html">account reserve</a> to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new <a href="reference-ledger-format.html#accountroot">AccountRoot node</a> is added to the ledger.</p>
 <p>If you send an insufficient amount of XRP, or any other currency, the Payment fails.</p>
 <h3 id="paths">Paths</h3>
 <p>If present, the <code>Paths</code> field must contain a <em>path set</em> - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books to achieve the best rate.</p>
@@ -1349,7 +1351,7 @@
 <p>The <a href="#delivered-amount"><code>delivered_amount</code></a> field of a payment's metadata indicates the amount of currency actually received by the destination account.</p>
 <p>For more information, see the full article on <a href="concept-partial-payments.html">Partial Payments</a>.</p>
 <h3 id="limit-quality">Limit Quality</h3>
-<p>Ripple defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
+<p>The XRP Ledger defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is <code>0.5</code>.</p>
 <p>The <a href="#payment-flags"><em>tfLimitQuality</em> flag</a> allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination <code>Amount</code> divided by the <code>SendMax</code> amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.</p>
 <p>By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average <em>average</em> quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the <a href="#transaction-results">transaction result</a> is <code>tecPATH_DRY</code>.</p>
 <p>Consider the following example. If I am trying to send you 100 Chinese Yuan (<code>Amount</code> = 100 CNY) for 20 United States dollars (<code>SendMax</code> = 20 USD) or less, then the limit quality is <code>5</code>. Imagine one trader is offering ¥95 for $15 (a ratio of about <code>6.3</code> CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of <code>2.5</code> CNY per USD). If I were to take both offers to send you 100 CNY, then it would cost me 17 USD, for an average quality of about <code>5.9</code>.</p>
@@ -1728,8 +1730,8 @@
 </tbody>
 </table>
 <h3 id="trust-limits">Trust Limits</h3>
-<p>All balances on the Ripple Consensus Ledger (RCL), except for XRP, represent value owed in the world outside the Ripple Ledger. The address that issues those funds in Ripple (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is expected to pay the balance back, outside of the Ripple Consensus Ledger, when users redeem their Ripple balances by returning them to the issuer.</p>
-<p>Since a computer program cannot force a someone to keep a promise and not default in real life, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the RCL. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the Ripple Consensus Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the RCL, but they no longer have any reason to be worth anything.)</p>
+<p>All balances on the XRP Ledger, except for XRP, represent value owed in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger (identified by the <code>issuer</code> field of the <code>LimitAmount</code> object) is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.</p>
+<p>Since a computer program cannot force a someone to keep a promise and not default in real life, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the XRP Ledger. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the XRP Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issuances in the XRP Ledger, but they no longer have any reason to be worth anything.)</p>
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="#offercreate">trading</a>, or when you decrease the limit on your trust line.</p>
 <p>Since a trust line occupies space in the ledger, <a href="concept-reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
@@ -1763,7 +1765,7 @@
 <td align="left">tfClearNoRipple</td>
 <td align="left">0x00040000</td>
 <td align="left">262144</td>
-<td align="left">Clears the No-Rippling flag. (See <a href="concept-noripple.html">No Ripple</a> for details.)</td>
+<td align="left">Clears the No-Rippling flag. (See <a href="concept-noripple.html">NoRipple</a> for details.)</td>
 </tr>
 <tr>
 <td align="left">tfSetFreeze</td>
@@ -2080,7 +2082,7 @@
 </table>
 <p>Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, trying to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.</p>
 <h2 id="understanding-transaction-metadata">Understanding Transaction Metadata</h2>
-<p>The metadata section of a transaction includes detailed information about all the changes to the shared Ripple Consensus Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.</p>
+<p>The metadata section of a transaction includes detailed information about all the changes to the shared XRP Ledger that the transaction caused. This is true of any transaction that gets included in a ledger, whether or not it is successful. Naturally, the changes are only final if the transaction is validated.</p>
 <p>Some fields that may appear in transaction metadata include:</p>
 <table>
 <thead>
@@ -2174,7 +2176,7 @@
 </tbody>
 </table>
 <h3 id="tem-codes">tem Codes</h3>
-<p>These codes indicate that the transaction was malformed, and cannot succeed according to the Ripple protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.</p>
+<p>These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.</p>
 <table>
 <thead>
 <tr>
@@ -2253,7 +2255,7 @@
 </tr>
 <tr>
 <td align="left"><code>temBAD_SRC_ACCOUNT</code></td>
-<td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed Ripple account.</td>
+<td align="left">The <code>Account</code> on whose behalf this transaction is being sent (the "source account") is not a properly-formed <a href="concept-accounts.html">account</a> address.</td>
 </tr>
 <tr>
 <td align="left"><code>temBAD_TRANSFER_RATE</code></td>
@@ -2654,44 +2656,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

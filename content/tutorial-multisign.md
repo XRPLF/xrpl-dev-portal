@@ -1,7 +1,7 @@
 How to Multi-Sign
 =============================
 
-Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
+Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
 
 Benefits of multi-signing include:
 
@@ -12,7 +12,7 @@ Benefits of multi-signing include:
 
 To use multi-signing:
 
-1. [The Ripple peer-to-peer network must have multi-signing enabled.](#availability-of-multi-signing)
+1. [The XRP Ledger peer-to-peer network must have multi-signing enabled.](#availability-of-multi-signing)
 2. [Set up a list of signers on your account.](#setting-up-multi-signing)
 3. [Send transactions using multiple signatures.](#sending-a-multi-signed-transaction)
 
@@ -20,7 +20,7 @@ To use multi-signing:
 Availability of Multi-Signing
 -----------------------------
 
-Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the Ripple Consensus Protocol since 2016-06-27.
+Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
 
 If you want to use multi-signing with `rippled` with a fresh ledger in [stand-alone mode](concept-stand-alone-mode.html), you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [`feature` command](reference-rippled.html#feature).
 
@@ -33,12 +33,12 @@ To force the multi-signing feature to be enabled, add the following stanza to yo
 Setting up Multi-Signing
 ------------------------
 
-To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
+To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the XRP Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
 
 ### 1. Prepare a funded address ###
 
-You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](concept-reserves.html) and [transaction cost](concept-transaction-cost.html), increasing with the number of signers and signatures you use.
+You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](concept-reserves.html) and [transaction cost](concept-transaction-cost.html), increasing with the number of signers and signatures you use.
 
 If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with a new genesis ledger, you must:
 
@@ -49,7 +49,7 @@ If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) wi
 
 ### 2. Prepare member keys ###
 
-You need several sets of Ripple keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [`wallet_propose` command](reference-rippled.html#wallet-propose). For example:
+You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [`wallet_propose` command](reference-rippled.html#wallet-propose). For example:
 
     $ rippled wallet_propose
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -67,12 +67,12 @@ You need several sets of Ripple keys (address and secret) to include as members 
         }
     }
 
-Take note of the `account_id` (Ripple Address) and `master_seed` (Ripple secret key) for each one you generate.
+Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key) for each one you generate.
 
 
 ### 3. Send SignerListSet transaction ###
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) a [SignerListSet transaction](reference-transaction-format.html#signerlistset) in the normal (single-signature) way. This associates a SignerList with your Ripple address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) a [SignerListSet transaction](reference-transaction-format.html#signerlistset) in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
 
 In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
 

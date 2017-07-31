@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -165,7 +167,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="how-to-multi-sign">How to Multi-Sign</h1>
-<p>Multi-signing is one of three ways to authorize transactions for the Ripple Consensus Ledger, alongside signing with <a href="reference-transaction-format.html#setregularkey">regular keys</a> and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
+<p>Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with <a href="reference-transaction-format.html#setregularkey">regular keys</a> and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
 <p>Benefits of multi-signing include:</p>
 <ul>
 <li>You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.</li>
@@ -175,21 +177,21 @@
 </ul>
 <p>To use multi-signing:</p>
 <ol>
-<li><a href="#availability-of-multi-signing">The Ripple peer-to-peer network must have multi-signing enabled.</a></li>
+<li><a href="#availability-of-multi-signing">The XRP Ledger peer-to-peer network must have multi-signing enabled.</a></li>
 <li><a href="#setting-up-multi-signing">Set up a list of signers on your account.</a></li>
 <li><a href="#sending-a-multi-signed-transaction">Send transactions using multiple signatures.</a></li>
 </ol>
 <h2 id="availability-of-multi-signing">Availability of Multi-Signing</h2>
-<p>Multi-signing has been enabled by an <a href="concept-amendments.html"><strong>Amendment</strong></a> to the Ripple Consensus Protocol since 2016-06-27.</p>
+<p>Multi-signing has been enabled by an <a href="concept-amendments.html"><strong>Amendment</strong></a> to the XRP Ledger Consensus Protocol since 2016-06-27.</p>
 <p>If you want to use multi-signing with <code>rippled</code> with a fresh ledger in <a href="concept-stand-alone-mode.html">stand-alone mode</a>, you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the <a href="reference-rippled.html#feature"><code>feature</code> command</a>.</p>
 <p>To force the multi-signing feature to be enabled, add the following stanza to your <code>rippled.cfg</code>: <!-- --></p>
 <pre><code>[features]
 MultiSign
 </code></pre>
 <h2 id="setting-up-multi-signing">Setting up Multi-Signing</h2>
-<p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the Ripple Consensus Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
+<p>To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the XRP Ledger as a <a href="reference-ledger-format.html#signerlist">SignerList node</a>. The following procedure demonstrates how to set up a SignerList for your address:</p>
 <h3 id="1-prepare-a-funded-address">1. Prepare a funded address</h3>
-<p>You need a Ripple address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
+<p>You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the <a href="concept-reserves.html">account reserve</a> and <a href="concept-transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
 <p>If you started <code>rippled</code> in <a href="concept-stand-alone-mode.html">stand-alone mode</a> with a new genesis ledger, you must:</p>
 <ol>
 <li>Generate keys for a new address, or reuse keys you already have.</li>
@@ -197,7 +199,7 @@ MultiSign
 <li>Manually close the ledger.</li>
 </ol>
 <h3 id="2-prepare-member-keys">2. Prepare member keys</h3>
-<p>You need several sets of Ripple keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code> command</a>. For example:</p>
+<p>You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code> command</a>. For example:</p>
 <pre><code>$ rippled wallet_propose
 Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -214,9 +216,9 @@ Connecting to 127.0.0.1:5005
     }
 }
 </code></pre>
-<p>Take note of the <code>account_id</code> (Ripple Address) and <code>master_seed</code> (Ripple secret key) for each one you generate.</p>
+<p>Take note of the <code>account_id</code> (XRP Ledger Address) and <code>master_seed</code> (secret key) for each one you generate.</p>
 <h3 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction</h3>
-<p><a href="reference-transaction-format.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="reference-transaction-format.html#signerlistset">SignerListSet transaction</a> in the normal (single-signature) way. This associates a SignerList with your Ripple address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.</p>
+<p><a href="reference-transaction-format.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="reference-transaction-format.html#signerlistset">SignerListSet transaction</a> in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.</p>
 <p>In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <pre><code>$ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
@@ -708,44 +710,9 @@ Connecting to 127.0.0.1:5005
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

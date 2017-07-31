@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -173,7 +175,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="the-ledger">The Ledger</h1>
-<p>The Ripple Consensus Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> keeps a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/build/ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
+<p>The XRP Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The <code>rippled</code> server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of <code>rippled</code> keeps a full copy of the ledger, and the peer-to-peer network of <code>rippled</code> servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: <a href="https://ripple.com/build/ripple-ledger-consensus-process/">The Consensus Process</a>.</p>
 <p><img alt="Diagram: Each ledger is the result of applying transactions to the previous ledger version." src="img/ledger-process.png"/></p>
 <p>The shared global ledger is actually a series of individual ledgers, or ledger versions, which <code>rippled</code> keeps in its internal database. Every ledger version has a <a href="#ledger-index">ledger index</a> which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a <code>rippled</code> instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be correct and immutable.</p>
 <p>A single ledger version consists of several parts:</p>
@@ -272,7 +274,7 @@
 <li>A current ledger's contents change over time, which would cause its hash to change, even though its ledger index number stays the same. The hash of a ledger is not calculated until the ledger is closed.</li>
 </ul>
 <h3 id="close-flags">Close Flags</h3>
-<p>The ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators had different close times for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
+<p>The ledger has only one flag defined for closeFlags: <strong>sLCF_NoConsensusTime</strong> (value <code>1</code>). If this flag is enabled, it means that validators had different close times for the ledger, but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger version contains a <code>close_time</code> value that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified <code>close_time</code>.)</p>
 <p>The <code>closeFlags</code> field is not included in any JSON representations of a ledger, but is included in the binary representation of a ledger, and is one of the fields that determine the ledger's hash.</p>
 <h1 id="ledger-node-types">Ledger Node Types</h1>
 <p>There are several different kinds of nodes that can appear in the ledger's state tree:</p>
@@ -643,7 +645,7 @@
 <li>The AccountID from the <code>TakerPaysIssuer</code></li>
 <li>The AccountID from the <code>TakerGetsIssuer</code></li>
 </ul>
-<p>The lower 64 bits of an Offer Directory's index represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in Ripple's internal amount format.</p>
+<p>The lower 64 bits of an Offer Directory's index represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.</p>
 <p><strong>If the DirectoryNode is not the first page in the Directory</strong> (regardless of whether it is an Owner Directory or an Offer Directory), then it has an <code>index</code> that is the SHA-512Half of the following values put together:</p>
 <ul>
 <li>The Directory Node space key (<code>d</code>)</li>
@@ -716,13 +718,13 @@
 <td><code>CancelAfter</code></td>
 <td>Number</td>
 <td>UInt32</td>
-<td><em>(Optional)</em> The held payment can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
+<td><em>(Optional)</em> The held payment can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
 </tr>
 <tr>
 <td><code>FinishAfter</code></td>
 <td>Number</td>
 <td>UInt32</td>
-<td><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple epoch</a>, after which this held payment can be finished. Any <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
+<td><em>(Optional)</em> The time, in <a href="reference-rippled.html#specifying-time">seconds since the Ripple Epoch</a>, after which this held payment can be finished. Any <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
 </tr>
 <tr>
 <td><code>SourceTag</code></td>
@@ -765,7 +767,7 @@
 </ul>
 <h2 id="offer">Offer</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" title="Source">[Source]<br/></a></p>
-<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in Ripple's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
+<p>The <code>Offer</code> node type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in the XRP Ledger's distributed exchange. An <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
 <p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> automatically prunes any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions). For more information, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">lifecycle of an offer</a>.</p>
 <p>Example Offer node:</p>
 <pre><code>{
@@ -1069,7 +1071,7 @@
 <h2 id="ripplestate">RippleState</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" title="Source">[Source]<br/></a></p>
 <p>The <code>RippleState</code> node type connects two accounts in a single currency. Conceptually, a RippleState node represents two <em>trust lines</em> between the accounts, one from each side. Each account can change the settings for its side of the RippleState node, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so <code>rippled</code> deletes RippleState nodes when their properties are entirely default.</p>
-<p>Since no account is privileged in the Ripple ledger, a RippleState node sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".</p>
+<p>Since no account is privileged in the XRP Ledger, a RippleState node sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".</p>
 <p>Example RippleState node:</p>
 <pre><code>{
     "Balance": {
@@ -1408,7 +1410,7 @@
 <td><code>Account</code></td>
 <td>String</td>
 <td>AccountID</td>
-<td>A  Ripple address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger.</td>
+<td>An XRP Ledger address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger.</td>
 </tr>
 <tr>
 <td><code>SignerWeight</code></td>
@@ -1436,44 +1438,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

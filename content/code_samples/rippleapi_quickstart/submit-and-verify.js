@@ -30,7 +30,7 @@ const ledgerOffset = 5;
 const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
 
-/* Verify a transaction is in a validated RCL version */
+/* Verify a transaction is in a validated XRP Ledger version */
 function verifyTransaction(hash, options) {
   console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data => {
@@ -52,7 +52,7 @@ function verifyTransaction(hash, options) {
 }
 
 
-/* function to prepare, sign, and submit a transaction to the RCL
+/* function to prepare, sign, and submit a transaction to the XRP Ledger
 success verifies the transaction is being considered for the next ledger.
 Still requires vlaidation */
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {

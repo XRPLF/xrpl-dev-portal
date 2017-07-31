@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -128,9 +130,11 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+                <li class="level-2"><a href="concept-consensus.html">Consensus Process</a></li>
+                <li class="level-2"><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
                 <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                 <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
@@ -172,7 +176,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="transaction-cost">Transaction Cost</h1>
-<p>To protect the Ripple Consensus Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of <a href="https://ripple.com/xrp-portal/">XRP</a>. This <em>transaction cost</em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
+<p>To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of <a href="https://ripple.com/xrp-portal/">XRP</a>. This <em>transaction cost</em> is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.</p>
 <p>Every transaction must <a href="#specifying-the-transaction-cost">specify how much XRP to destroy</a> to pay the transaction cost.</p>
 <h2 id="current-transaction-cost">Current Transaction Cost</h2>
 <p>The current minimum transaction cost required by the network for a standard transaction is <strong>0.00001 XRP</strong> (10 drops). It sometimes increases due to higher than usual load.</p>
@@ -305,7 +309,7 @@
 <p><strong>Current Transaction Cost in Drops = (<code>base_fee</code> × <code>load_factor</code>) ÷ <code>load_base</code></strong></p>
 <h2 id="specifying-the-transaction-cost">Specifying the Transaction Cost</h2>
 <p>Every signed transaction must include the transaction cost in the <a href="reference-transaction-format.html#common-fields"><code>Fee</code> field</a>. Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.</p>
-<p>As a rule, the Ripple Consensus Ledger executes transactions <em>exactly</em> as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the <code>Fee</code> field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's <a href="concept-reserves.html">reserve requirement</a>.</p>
+<p>As a rule, the XRP Ledger executes transactions <em>exactly</em> as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the <code>Fee</code> field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's <a href="concept-reserves.html">reserve requirement</a>.</p>
 <p>Before signing a transaction, we recommend <a href="#querying-the-transaction-cost">looking up the current load-based transaction cost</a>. If the transaction cost is high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.</p>
 <h3 id="automatically-specifying-the-transaction-cost">Automatically Specifying the Transaction Cost</h3>
 <p>When you sign a transaction online, you can omit the <code>Fee</code> field. In this case, <code>rippled</code> or <a href="reference-rippleapi.html">RippleAPI</a> checks the state of the peer-to-peer network for the current requirement and adds a <code>Fee</code> value before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:</p>
@@ -322,7 +326,7 @@
 <li>You cannot automatically specify the transaction cost when <a href="reference-transaction-format.html#multi-signing">multi-signing</a>.</li>
 </ul>
 <h2 id="transaction-costs-and-failed-transactions">Transaction Costs and Failed Transactions</h2>
-<p>Since the purpose of the transaction cost is to protect the Ripple peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, <code>rippled</code> servers try to include failed transactions in ledgers, with <a href="reference-transaction-format.html#result-categories"><code>tec</code> status codes</a> ("tec" stands for "Transaction Engine - Claimed fee only").</p>
+<p>Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, <code>rippled</code> servers try to include failed transactions in ledgers, with <a href="reference-transaction-format.html#result-categories"><code>tec</code> status codes</a> ("tec" stands for "Transaction Engine - Claimed fee only").</p>
 <p>The transaction cost is only debited from the sender's XRP balance when the transaction actually becomes included in a validated ledger. This is true whether the transaction is considered successful or fails with a <code>tec</code> code.</p>
 <p>If a transaction's failure is <a href="reference-transaction-format.html#finality-of-results">final</a>, the <code>rippled</code> server does not relay it to the network. The transaction does not get included in a validated ledger, so it cannot have any effect on anyone's XRP balance.</p>
 <h3 id="insufficient-xrp">Insufficient XRP</h3>
@@ -334,7 +338,7 @@
 <p>The <a href="reference-ledger-format.html#accountroot-flags">lsfPasswordSpent flag</a> starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a <a href="reference-transaction-format.html#payment">Payment</a> of XRP.</p>
 <p>When the <a href="concept-amendments.html#feeescalation">FeeEscalation amendment</a> is enabled, <code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
 <h2 id="changing-the-transaction-cost">Changing the Transaction Cost</h2>
-<p>The Ripple Consensus Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+<p>The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
 <!-- rippled release notes links -->
     </div>
       </main>
@@ -343,44 +347,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

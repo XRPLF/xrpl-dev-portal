@@ -61,6 +61,8 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
+            "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
+            "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
             "concept-fee-voting.html": https://ripple.com/build/fee-voting/
             "concept-fees.html": https://ripple.com/build/fees-disambiguation/
             "concept-freeze.html": https://ripple.com/build/freeze/
@@ -85,6 +87,8 @@ targets:
             "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
             "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
             "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
+            "img/ledger-history.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
+            "img/ledger-changes.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
             "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
             "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
             "img/noripple-01.png": https://ripple.com/wp-content/uploads/2015/04/noripple-01.png
@@ -95,6 +99,12 @@ targets:
             "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
             "img/key-address-rels.png": https://ripple.com/wp-content/uploads/2017/05/key-address-rels.png
             "img/paychan-flow.png": https://ripple.com/wp-content/uploads/2017/05/paychan-flow.png
+            "img/consensus-agreed-transaction-set.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
+            "img/consensus-calculate-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
+            "img/consensus-candidate-transaction-sets.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
+            "img/consensus-declare-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
+            "img/consensus-validated-ledger.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
+            "img/xrp-ledger-network.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
@@ -220,9 +230,9 @@ pages:
     #         - local
     #         - ripple.com
 
-#RCL Features describe how the RCL works in a mostly conceptual manner
+#Features describe how the XRP Ledger works in a mostly conceptual manner
     -   name: Accounts
-        category: RCL Features
+        category: Features
         html: concept-accounts.html
         md: concept-accounts.md
         targets:
@@ -230,15 +240,31 @@ pages:
             - ripple.com
 
     -   name: Amendments
-        category: RCL Features
+        category: Features
         html: concept-amendments.html
         md: concept-amendments.md
         targets:
             - local
             - ripple.com
 
+    -   name: Consensus Process
+        category: Features
+        html: concept-consensus.html
+        md: concept-consensus.md
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Reaching Consensus in the XRP Ledger
+        category: Features
+        html: concept-reaching-consensus.html
+        md: concept-reaching-consensus.md
+        targets:
+            - local
+            - ripple.com
+
     -   name: Fee Voting
-        category: RCL Features
+        category: Features
         html: concept-fee-voting.html
         md: concept-fee-voting.md
         targets:
@@ -246,7 +272,7 @@ pages:
             - ripple.com
 
     -   name: Fees (Disambiguation)
-        category: RCL Features
+        category: Features
         html: concept-fees.html
         md: concept-fees.md
         targets:
@@ -254,7 +280,7 @@ pages:
             - ripple.com
 
     -   name: Freeze
-        category: RCL Features
+        category: Features
         html: concept-freeze.html
         md: concept-freeze.md
         targets:
@@ -262,14 +288,14 @@ pages:
             - ripple.com
 
     -   md: concept-partial-payments.md
-        category: RCL Features
+        category: Features
         html: concept-partial-payments.html
         targets:
             - local
             - ripple.com
 
     -   name: Paths
-        category: RCL Features
+        category: Features
         html: concept-paths.html
         md: concept-paths.md
         targets:
@@ -277,7 +303,7 @@ pages:
             - ripple.com
 
     -   name: Reserves
-        category: RCL Features
+        category: Features
         html: concept-reserves.html
         md: concept-reserves.md
         targets:
@@ -285,7 +311,7 @@ pages:
             - ripple.com
 
     -   name: Stand-Alone Mode
-        category: RCL Features
+        category: Features
         html: concept-stand-alone-mode.html
         md: concept-stand-alone-mode.md
         targets:
@@ -293,7 +319,7 @@ pages:
             - ripple.com
 
     -   name: Transaction Cost
-        category: RCL Features
+        category: Features
         html: concept-transaction-cost.html
         md: concept-transaction-cost.md
         targets:
@@ -301,7 +327,7 @@ pages:
             - ripple.com
 
     -   name: Transfer Fees
-        category: RCL Features
+        category: Features
         html: concept-transfer-fees.html
         md: concept-transfer-fees.md
         targets:
@@ -309,7 +335,7 @@ pages:
             - ripple.com
 
     -   name: Understanding the NoRipple flag
-        category: RCL Features
+        category: Features
         html: concept-noripple.html
         md: concept-noripple.md
         targets:

@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -160,8 +162,8 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="reliable-transaction-submission">Reliable Transaction Submission</h1>
-<p>Financial institutions and other services using the Ripple Consensus Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
-<p>The best practices detailed in this document allow applications to submit transactions to the Ripple network while achieving:</p>
+<p>Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) <code>rippled</code> servers.</p>
+<p>The best practices detailed in this document allow applications to submit transactions to the XRP Ledger while achieving:</p>
 <ol>
 <li><a href="https://en.wikipedia.org/wiki/Idempotence">Idempotency</a> - Transactions should be processed once and only once, or not at all.</li>
 <li>Verifiability - Applications can determine the final result of a transaction.</li>
@@ -174,11 +176,11 @@
 </ol>
 <p>These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.</p>
 <h2 id="background">Background</h2>
-<p>The Ripple protocol provides a ledger shared across all nodes in the network.  Through a <a href="https://ripple.com/build/ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
-<p>Well-formed transactions submitted to trusted Ripple network nodes are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.</p>
+<p>The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a <a href="https://ripple.com/build/ripple-ledger-consensus-process/">process of consensus and validation</a>, the network agrees on order in which transactions are applied to (or omitted from) the ledger.</p>
+<p>Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global <a href="concept-transaction-cost.html">transaction cost</a> increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.</p>
 <p>If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.</p>
 <h3 id="transaction-timeline">Transaction Timeline</h3>
-<p>Ripple provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
+<p>The XRP Ledger provides several APIs for submitting transactions, including <a href="reference-rippled.html"><code>rippled</code></a>, and <a href="reference-rippleapi.html">RippleAPI</a>.  Regardless of the API used, the transaction is applied to the ledger as follows.</p>
 <ol>
 <li>An account owner creates and signs a transaction.</li>
 <li>The owner submits the transaction to the network as a candidate transaction.<ul>
@@ -200,7 +202,7 @@
 <p>Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.</p>
 <p>Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each <code>rippled</code> server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.</p>
 <h3 id="lastledgersequence">LastLedgerSequence</h3>
-<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the Ripple Consensus Ledger that a transaction must be validated on or before a specific ledger instance.  The Ripple Consensus Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
+<p><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a> is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's <code>LastLedgerSequence</code> parameter.</p>
 <p>Use the <code>LastLedgerSequence</code> parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger. You should specify the <code>LastLedgerSequence</code> parameter on every transaction. Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.</p>
 <p>Applications using <code>rippled</code> APIs should explicitly specify a <code>LastLedgerSequence</code> when submitting transactions. RippleAPI uses the <code>maxLedgerVersion</code> field of <a href="reference-rippleapi.html#transaction-instructions">Transaction Instructions</a> to specify the <code>LastLedgerSequence</code>. RippleAPI automatically provides an appropriate value by default. You can specify <code>maxLedgerVersion</code> as <code>null</code> to intentionally omit <code>LastLedgerSequence</code>, in case you want a transaction that can be executed after an unlimited amount of time.</p>
 <h2 id="best-practices">Best Practices</h2>
@@ -358,7 +360,7 @@
 </code></pre>
 <p>In this example the last validated ledger sequence number is 10268596 (found under <code>result.state.validated_ledger</code> in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.</p>
 <h4 id="construct-the-transaction">Construct the Transaction</h4>
-<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) to another Ripple address.</p>
+<p><code>rippled</code> provides the <a href="reference-rippled.html#sign">sign method</a> to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted <code>rippled</code> instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.</p>
 <p>Request:</p>
 <pre><code>{
     "method": "sign",
@@ -552,9 +554,9 @@
 <ul>
 <li><a href="reference-transaction-format.html">Transaction Format</a></li>
 <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
-<li>Documentation of <a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code></a></li>
-<li><a href="https://ripple.com/build/ripple-ledger-consensus-process/">Overview of Ripple Ledger Consensus Process</a></li>
-<li><a href="https://ripple.com/build/reaching-consensus-ripple/">Reaching Consensus in Ripple</a></li>
+<li><a href="reference-transaction-format.html#lastledgersequence"><code>LastLedgerSequence</code> field</a></li>
+<li><a href="concept-consensus.html">Overview of XRP Ledger Consensus Process</a></li>
+<li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
 </ul>
     </div>
       </main>
@@ -563,44 +565,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

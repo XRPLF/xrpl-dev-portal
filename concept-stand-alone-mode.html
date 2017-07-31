@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -128,9 +130,11 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+                <li class="level-2"><a href="concept-consensus.html">Consensus Process</a></li>
+                <li class="level-2"><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
                 <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                 <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
@@ -163,7 +167,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="stand-alone-mode">Stand-Alone Mode</h1>
-<p>You can run <code>rippled</code> in stand-alone mode without a consensus of trusted servers. In stand-alone mode, <code>rippled</code> does not communicate with any other servers in the Ripple peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing <code>rippled</code> behavior without being tied to the live network. For example, you can <a href="concept-amendments.html#testing-amendments">test the effects of Amendments</a> before those Amendments have gone into effect across the decentralized network.</p>
+<p>You can run <code>rippled</code> in stand-alone mode without a consensus of trusted servers. In stand-alone mode, <code>rippled</code> does not communicate with any other servers in the XRP Ledger peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing <code>rippled</code> behavior without being tied to the live network. For example, you can <a href="concept-amendments.html#testing-amendments">test the effects of Amendments</a> before those Amendments have gone into effect across the decentralized network.</p>
 <p>When you run <code>rippled</code> in stand-alone mode, you have to tell it what ledger version to start from:</p>
 <ul>
 <li>Create a <a href="#new-genesis-ledger">new genesis ledger</a> from scratch.</li>
@@ -171,7 +175,7 @@
 </ul>
 <p class="devportal-callout caution"><strong>Caution:</strong> In stand-alone mode, you must <a href="#advancing-ledgers-in-stand-alone-mode">manually advance the ledger</a>.</p>
 <h2 id="new-genesis-ledger">New Genesis Ledger</h2>
-<p>In stand-alone mode, you can have <code>rippled</code> create a new genesis ledger. This provides a known state, with none of the ledger history from the production Ripple Consensus Ledger. (This is very useful for unit tests, among other things.)</p>
+<p>In stand-alone mode, you can have <code>rippled</code> create a new genesis ledger. This provides a known state, with none of the ledger history from the production XRP Ledger. (This is very useful for unit tests, among other things.)</p>
 <ul>
 <li>To start <code>rippled</code> in stand-alone mode with a new genesis ledger, use the <a href="https://wiki.ripple.com/Rippled#--standalone.2C_-a"><code>-a</code></a> and <a href="https://wiki.ripple.com/Rippled#--start"><code>--start</code></a> options:</li>
 </ul>
@@ -183,7 +187,7 @@
 <p class="devportal-callout caution"><strong>Caution:</strong> If you create a new genesis ledger, the hard-coded default <a href="concept-reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="concept-fee-voting.html">Fee Voting</a>)</p>
 <p><a href="https://github.com/ripple/rippled/releases/tag/0.50.0" title="New in: rippled 0.50.0"><img alt="New in: rippled 0.50.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.50.0-blue.svg"/></a> If you start a new genesis ledger with <code>--start</code>, all The genesis ledger contains an <a href="reference-transaction-format.html#enableamendment">EnableAmendment pseudo-transaction</a> to turn on all <a href="concept-amendments.html">Amendments</a> natively supported by the <code>rippled</code> server, except for amendments that you explicitly disable in the configuration file. The effects of those amendments are available starting from the very next ledger version.</p>
 <h2 id="load-saved-ledger">Load Saved Ledger</h2>
-<p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the Ripple peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
+<p>You can start with a ledger version that was saved to disk if your <code>rippled</code> server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the <a href="tutorial-rippled-setup.html#parallel-networks">Test Net</a>).</p>
 <h3 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h3>
 <p>To load an existing ledger, you must first retrieve that ledger from the network. Start <code>rippled</code> in online mode as normal:</p>
 <pre><code>rippled --conf=/path/to/rippled.cfg
@@ -219,7 +223,7 @@
 <p>In stand-alone mode, <code>rippled</code> does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a>:</p>
 <pre><code>rippled ledger_accept --conf=/path/to/rippled.cfg
 </code></pre>
-<p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="https://ripple.com/build/ripple-ledger-consensus-process/">The Ripple Ledger Consensus Process</a>.)</p>
+<p>In stand-alone mode, <code>rippled</code> makes no distinction between a "closed" ledger version and a "validated" ledger version. (For more information about the difference, see <a href="concept-consensus.html">The XRP Ledger Consensus Process</a>.)</p>
 <p>Whenever <code>rippled</code> closes a ledger, it reorders the transactions according to a deterministic but hard-to-game algorithm. (This is an important part of consensus, since transactions may arrive at different parts of the network in different order.) When using <code>rippled</code> in stand-alone mode, you should manually advance the ledger before submitting a transaction that depends on the result of a transaction from a different address. Otherwise, the two transactions might be executed in reverse order when the ledger is closed. <strong>Note:</strong> You can safely submit multiple transactions from a single address to a single ledger, because <code>rippled</code> sorts transactions from the same address in ascending order by <a href="reference-transaction-format.html#common-fields"><code>Sequence</code> number</a>.</p>
 <!-- rippled release notes links -->
     </div>
@@ -229,44 +233,9 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

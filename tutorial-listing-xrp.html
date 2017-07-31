@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -161,7 +163,7 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="listing-xrp-as-an-exchange">Listing XRP as an Exchange</h1>
-<p>This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of <code>rippled</code> and the Ripple Consensus Ledger (RCL), see the  <a href="https://ripple.com/build">Ripple Developer Center</a>.</p>
+<p>This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of <code>rippled</code> and the XRP Ledger, see the  <a href="https://ripple.com/build">Ripple Developer Center</a>.</p>
 <h2 id="alpha-exchange">Alpha Exchange</h2>
 <p>For illustrative purposes, this document uses a fictitious business called <em>Alpha Exchange</em> to explain the high-level steps required to list XRP. For the purposes of this document, Alpha Exchange:</p>
 <ul>
@@ -182,10 +184,10 @@
 <p>Alpha Exchange wants to list BTC/XRP and XRP/USD trading pairs partially because listing these pairs will benefit its users. Specifically, this support will allow its users to:</p>
 <ul>
 <li>
-<p>Deposit XRP <em>to</em> Alpha Exchange <em>from</em> the RCL</p>
+<p>Deposit XRP <em>to</em> Alpha Exchange <em>from</em> the XRP Ledger</p>
 </li>
 <li>
-<p>Withdraw XRP <em>from</em> Alpha Exchange <em>to</em> the RCL</p>
+<p>Withdraw XRP <em>from</em> Alpha Exchange <em>to</em> the XRP Ledger</p>
 </li>
 <li>
 <p>Trade XRP with other currencies, such as BTC, USD, among others</p>
@@ -207,23 +209,23 @@
 <p><a href="tutorial-gateway-guide.html#gateway-compliance">Gateway Compliance</a> — Gateways and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.</p>
 </li>
 <li>
-<p><a href="tutorial-gateway-guide.html#requirements-for-sending-to-rcl">Requirements for Sending to RCL</a></p>
+<p><a href="tutorial-gateway-guide.html#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></p>
 </li>
 <li>
-<p><a href="tutorial-gateway-guide.html#requirements-for-receiving-from-rcl">Requirements for Receiving from RCL</a></p>
+<p><a href="tutorial-gateway-guide.html#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></p>
 </li>
 <li>
 <p><a href="tutorial-gateway-guide.html#precautions">Gateway Precautions</a></p>
 </li>
 </ul>
 <h3 id="partial-payments">Partial Payments</h3>
-<p>Before integrating, exchanges should be aware of the <a href="reference-transaction-format.html#partial-payments">partial payments</a> feature. This feature allows RCL users to send successful payments that reduce the amount received instead of increasing the <code>SendMax</code>. This feature can be useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional cost as the sender.</p>
+<p>Before integrating, exchanges should be aware of the <a href="reference-transaction-format.html#partial-payments">partial payments</a> feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the <code>SendMax</code>. This feature can be useful for <a href="tutorial-gateway-guide.html#bouncing-payments">returning payments</a> without incurring additional cost as the sender.</p>
 <h4 id="partial-payments-warning">Partial Payments Warning</h4>
 <p>When the <a href="reference-transaction-format.html#payment-flags">tfPartialPayment flag</a> is enabled, the <code>Amount</code> field <strong><em>is not guaranteed to be the amount received</em></strong>. The <code>delivered_amount</code> field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use <code>delivered_amount</code> instead of the Amount field to determine how much your account received instead.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Be aware that malicious actors could exploit this. For more information, see <a href="concept-partial-payments.html">Partial Payments</a>.</p>
 <h3 id="accounts">Accounts</h3>
-<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the Ripple Consensus Ledger (RCL). Accounts on the RCL are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the RCL, accounts can <a href="concept-accounts.html#permanence-of-accounts">never be deleted</a>, and each account must hold a separate <a href="concept-reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.</p>
-<p>To comply with Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the RCL. To minimize the risks associated with a compromised secret key, Ripple recommends creating <a href="https://ripple.com/build/issuing-operational-addresses/"><em>cold</em>, <em>hot</em>, and <em>warm</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:</p>
+<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, accounts can <a href="concept-accounts.html#permanence-of-accounts">never be deleted</a>, and each account must hold a separate <a href="concept-reserves.html">reserve of XRP</a> that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.</p>
+<p>To comply with Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating <a href="https://ripple.com/build/issuing-operational-addresses/"><em>cold</em>, <em>hot</em>, and <em>warm</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:</p>
 <ul>
 <li>
 <p>A <a href="concept-issuing-and-operational-addresses.html#issuing-address"><em>cold wallet</em></a> to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send <a href="#deposit-xrp-into-exchange">deposits</a>.   To provide optimal security, this account's secret key should be offline.</p>
@@ -242,7 +244,7 @@
 <p>If the regular key or signer list are comromised, the exchange can regain control of the cold wallet. However, some of a malicious actor's actions cannot easily be undone:</p>
 <ul>
 <li>
-<p>The malicious actor could issue currency in the RCL by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).</p>
+<p>The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).</p>
 </li>
 <li>
 <p>If a malicious actor sets the asfRequireAuth flag for the account, that cannot be unset, although this only relates issuing currency and therefore should not affect an exchange that's not also a gateway. Any other settings a malicious actor sets or unsets with a master key can be reverted.</p>
@@ -277,12 +279,12 @@
 </ul>
 <h3 id="balance-sheets">Balance Sheets</h3>
 <p>To custody its ccustomers' XRP, Alpha Exchange must track each customer's XRP balance and its own holdings. To do this, Alpha Exchange must create and maintain an additional balance sheet or accounting system. The following table illustrates what this balance sheet might look like.</p>
-<p>The new RCL accounts (<em>Alpha Hot</em>, <em>Alpha Warm</em>, <em>Alpha Cold</em>) are in the <em>User</em> column of the <em>XRP Balances on RCL</em> table.</p>
+<p>The new XRP Ledger accounts (<em>Alpha Hot</em>, <em>Alpha Warm</em>, <em>Alpha Cold</em>) are in the <em>User</em> column of the <em>XRP Balances on XRP Ledger</em> table.</p>
 <p>The <em>Alpha Exchange XRP Balances</em> table represents new, additional balance sheet. Alpha Exchange’s software manages their users’ balances of XRP on this accounting system.</p>
 <table>
 <tr>
 <td><b><i>XRP Balances
-on RCL</i></b></td>
+on XRP Ledger</i></b></td>
 <td></td>
 <td></td>
 <td><b><i>Alpha Exchange
@@ -356,14 +358,14 @@ XRP Balances</i></b></td>
 </tr>
 </table>
 <h4 id="xrp-amounts">XRP Amounts</h4>
-<p>Amounts of XRP are represented on the RCL as an unsigned integer count of <em>drops</em>, where one XRP is 1,000,000 drops. Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values. However, user interfaces should present balances in units of XRP.</p>
+<p>Amounts of XRP are represented on the XRP Ledger as an unsigned integer count of <em>drops</em>, where one XRP is 1,000,000 drops. Ripple recommends that software store XRP balances as integer amounts of drops, and perform integer arithmetic on these values. However, user interfaces should present balances in units of XRP.</p>
 <p>One drop (.000001 XRP) cannot be further subdivided. Keep this in mind when calculating and displaying FX rates between XRP and other assets.</p>
 <p>For more information, see <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a>.</p>
 <h4 id="on-ledger-and-off-ledger">On-Ledger and Off-Ledger</h4>
 <p>With exchanges like <em>Alpha Exchange</em>, XRP can be "on-ledger" or "off-ledger":</p>
 <ul>
 <li>
-<p><strong>On-Ledger XRP</strong>: XRP that can be queried through the public RCL by specifying the public <a href="concept-accounts.html#addresses">address</a> of the XRP holder. The counterparty to these balances is the RCL. For more information, see <a href="reference-rippled.html#currencies">Currencies</a>.</p>
+<p><strong>On-Ledger XRP</strong>: XRP that can be queried through the public XRP Ledger by specifying the public <a href="concept-accounts.html#addresses">address</a> of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see <a href="reference-rippled.html#currencies">Currencies</a>.</p>
 </li>
 <li>
 <p><strong>Off-Ledger XRP</strong>: XRP that is held by the accounting system of an exchange and can be queried through the exchange interface. Off-ledger XRP balances are credit-based. The counterparty is the exchange holding the XRP.</p>
@@ -388,11 +390,11 @@ XRP Balances</i></b></td>
 </li>
 </ol>
 <p>This list does not include the <a href="#prerequisites-for-supporting-xrp">prerequisites</a> required of an exchange.</p>
-<p>At this point, <em>Alpha Exchange</em> has created <a href="#accounts">hot, warm, and cold wallets</a> on the RCL and added them to its balance sheet, but has not accepted any deposits from its users.</p>
+<p>At this point, <em>Alpha Exchange</em> has created <a href="#accounts">hot, warm, and cold wallets</a> on the XRP Ledger and added them to its balance sheet, but has not accepted any deposits from its users.</p>
 <table>
 <tr>
 <td><b><i>XRP Balances
-on RCL</i></b></td>
+on XRP Ledger</i></b></td>
 <td></td>
 <td></td>
 <td><b><i>Alpha Exchange
@@ -484,7 +486,7 @@ XRP Balances</i></b></td>
 <table>
 <tr>
 <td><b><i>XRP Balances
-on RCL</i></b></td>
+on XRP Ledger</i></b></td>
 <td></td>
 <td></td>
 <td><b><i>Alpha Exchange
@@ -519,12 +521,12 @@ XRP Balances</i></b></td>
 <tr>
 <td>Charlie</td>
 <td><s>100,000</s>
-<br>50,000</br></td>
+<br/>50,000</td>
 <td></td>
 <td>789</td>
 <td>Charlie</td>
 <td><s>0</s>
-<br>50,000</br></td>
+<br/>50,000</td>
 </tr>
 <tr>
 <td></td>
@@ -553,7 +555,7 @@ XRP Balances</i></b></td>
 <tr>
 <td>Alpha Cold</td>
 <td><s>0</s>
-<br>50,000</br></td>
+<br/>50,000</td>
 <td></td>
 <td></td>
 <td></td>
@@ -569,11 +571,11 @@ XRP Balances</i></b></td>
 </tr>
 </table>
 <h3 id="trade-xrp-on-the-exchange">Trade XRP on the Exchange</h3>
-<p>Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exchange. Alpha Exchange should keep track of user balances on its new balance sheet as these trades are made. These trades are <em>off-ledger</em> and independent from the RCL, so the balance changes are not recorded on the RCL.</p>
-<p>Customers who hold XRP in their own RCL accounts can also use the distributed exchange built into the RCL to trade currencies issued by gateways. For more information about trading <em>on</em> the RCL, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
+<p>Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exchange. Alpha Exchange should keep track of user balances on its new balance sheet as these trades are made. These trades are <em>off-ledger</em> and independent from the XRP Ledger, so the balance changes are not recorded on the XRP Ledger.</p>
+<p>Customers who hold XRP in their own XRP Ledger accounts can also use the distributed exchange built into the XRP Ledger to trade currencies issued by gateways. For more information about trading <em>on</em> the XRP Ledger, see <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
 <h3 id="rebalance-xrp-holdings">Rebalance XRP Holdings</h3>
-<p>Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a <a href="concept-transaction-cost.html">transaction cost</a>, but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the RCL's transaction cost.)</p>
-<p>The following table demonstrates a balance adjustment of 80,000 XRP (via a <a href="reference-transaction-format.html#payment"><em>payment</em></a> on the RCL) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.</p>
+<p>Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a <a href="concept-transaction-cost.html">transaction cost</a>, but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be sufficient to cover the XRP Ledger's transaction cost.)</p>
+<p>The following table demonstrates a balance adjustment of 80,000 XRP (via a <a href="reference-transaction-format.html#payment"><em>payment</em></a> on the XRP Ledger) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.</p>
 <table>
 <tr>
 <td><b><i>Alpha Exchange XRP
@@ -589,7 +591,7 @@ Off-Ledger Balances</i></b></td>
 <td><b>User</b></td>
 <td><b>Balance</b></td>
 <td></td>
-<td><b>RCL Account</b></td>
+<td><b>XRP Ledger Account</b></td>
 <td><b>Balance</b></td>
 </tr>
 <tr>
@@ -599,7 +601,7 @@ Off-Ledger Balances</i></b></td>
 <td></td>
 <td>Hot</td>
 <td><s>0</s>
-<br>80,000</br></td>
+<br/>80,000</td>
 </tr>
 <tr>
 <td>456</td>
@@ -624,7 +626,7 @@ Off-Ledger Balances</i></b></td>
 <td></td>
 <td>Cold</td>
 <td><s>180,000</s>
-<br>100,000</br></td>
+<br/>100,000</td>
 </tr>
 <tr>
 <td></td>
@@ -644,21 +646,21 @@ Off-Ledger Balances</i></b></td>
 </tr>
 </table>
 <h3 id="withdraw-xrp-from-exchange">Withdraw XRP from Exchange</h3>
-<p>Withdrawals allow an exchange's users to move XRP from the exchange's off-ledger balance sheet to an account on the RCL.</p>
+<p>Withdrawals allow an exchange's users to move XRP from the exchange's off-ledger balance sheet to an account on the XRP Ledger.</p>
 <p>In this example, Charlie withdraws 25,000 XRP from Alpha Exchange. This involves the following steps:</p>
 <ol>
 <li>
-<p>Charlie initiates the process on Alpha Exchange’s website. He provides instructions to transfer 25,000 XRP to a specific account on the RCL (named "Charlie RCL" in the following table).</p>
+<p>Charlie initiates the process on Alpha Exchange’s website. He provides instructions to transfer 25,000 XRP to a specific account on the XRP Ledger (named "Charlie XRP Ledger" in the following table).</p>
 </li>
 <li>
 <p>In response to Charlie’s instructions, Alpha Exchange does the following:</p>
 <p>a. Debits the amount (25,000 XRP) from Charlie’s account on its off-ledger balance sheet</p>
-<p>b. Submits a payment on the RCL for the same amount (25,000 XRP), from Alpha Exchange's hot wallet to Charlie’s RCL account</p>
+<p>b. Submits a payment on the XRP Ledger for the same amount (25,000 XRP), from Alpha Exchange's hot wallet to Charlie’s XRP Ledger account</p>
 </li>
 </ol>
 <table>
 <tr>
-<td><b><i>RCL On-Ledger XRP Balances</i></b></td>
+<td><b><i>XRP Ledger On-Ledger XRP Balances</i></b></td>
 <td></td>
 <td></td>
 <td><b><i>Alpha Exchange XRP
@@ -677,7 +679,7 @@ Off-Ledger Balances</i></b></td>
 <td><b>User</b></td>
 <td><b>Balance</b></td>
 <td></td>
-<td><b>RCL Account</b></td>
+<td><b>XRP Ledger Account</b></td>
 <td><b>Balance</b></td>
 </tr>
 <tr>
@@ -690,7 +692,7 @@ Off-Ledger Balances</i></b></td>
 <td></td>
 <td>Hot</td>
 <td><s>80,000</s>
-<br>55,000</br></td>
+<br/>55,000</td>
 </tr>
 <tr>
 <td>Edward</td>
@@ -715,14 +717,14 @@ Off-Ledger Balances</i></b></td>
 <td></td>
 </tr>
 <tr>
-<td>Charlie RCL</td>
+<td>Charlie XRP Ledger</td>
 <td><s>50,000</s>
-<br>75,000</br></td>
+<br/>75,000</td>
 <td></td>
 <td>789</td>
 <td>Charlie</td>
 <td><s>50,000</s>
-<br>25,000</br></td>
+<br/>25,000</td>
 <td></td>
 <td>Cold</td>
 <td>100,000</td>
@@ -757,44 +759,9 @@ Off-Ledger Balances</i></b></td>
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>

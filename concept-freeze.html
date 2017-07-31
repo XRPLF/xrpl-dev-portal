@@ -83,10 +83,12 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">RCL Features <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                   <li><a href="concept-accounts.html">Accounts</a></li>
                   <li><a href="concept-amendments.html">Amendments</a></li>
+                  <li><a href="concept-consensus.html">Consensus Process</a></li>
+                  <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                   <li><a href="concept-fee-voting.html">Fee Voting</a></li>
                   <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                   <li><a href="concept-freeze.html">Freeze</a></li>
@@ -128,9 +130,11 @@
         <div id="cont">
             <h5>In this category:</h5>
             <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: RCL Features</a></li>
+                <li class="level-1"><a href="index.html">Category: Features</a></li>
                 <li class="level-2"><a href="concept-accounts.html">Accounts</a></li>
                 <li class="level-2"><a href="concept-amendments.html">Amendments</a></li>
+                <li class="level-2"><a href="concept-consensus.html">Consensus Process</a></li>
+                <li class="level-2"><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
                 <li class="level-2"><a href="concept-fee-voting.html">Fee Voting</a></li>
                 <li class="level-2"><a href="concept-fees.html">Fees (Disambiguation)</a></li>
                 <li class="level-2"><a href="concept-freeze.html">Freeze</a></li>
@@ -174,13 +178,13 @@
       <main class="main" role="main">
     <div class='content'>
         <h1 id="freeze-features">Freeze Features</h1>
-<p>The Ripple Consensus Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:</p>
+<p>The XRP Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:</p>
 <ul>
 <li><a href="#individual-freeze"><strong>Individual Freeze</strong></a> - Freeze one counterparty.</li>
 <li><a href="#global-freeze"><strong>Global Freeze</strong></a> - Freeze all counterparties.</li>
 <li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.</li>
 </ul>
-<p>Because no party has a privileged place in the Ripple Consensus Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
+<p>Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
 <p>All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.</p>
 <h2 id="individual-freeze">Individual Freeze</h2>
 <p>The <strong>Individual Freeze</strong> feature is a setting on a trust line. When an issuing address enables the Individual Freeze setting, the following rules apply:</p>
@@ -190,7 +194,7 @@
 <li>The counterparty can still receive payments from others on the frozen trust line.</li>
 <li>The counterparty's offers to sell the currency issued on the frozen trust line are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the Ripple Consensus Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)</p>
+<p>A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)</p>
 <p>An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including <a href="concept-issuing-and-operational-addresses.html">operational addresses</a>, from sending that financial institution's issuances to the individual address. This type of individual freeze has no effect on offers.</p>
 <p>The Individual Freeze applies to a single currency only. To freeze multiple currencies with a particular counterparty, the address must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An address cannot enable the Individual Freeze setting if it has enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
@@ -201,7 +205,7 @@
 <li>Counterparties of the frozen issuing address can still send and receive payments directly to and from the issuing address.</li>
 <li>All offers to sell currencies issued by the frozen address are <a href="reference-transaction-format.html#lifecycle-of-an-offer">considered unfunded</a>.</li>
 </ul>
-<p>It can be useful to enable Global Freeze on a financial institution's <a href="concept-issuing-and-operational-addresses.html">issuing address</a> if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the Ripple Consensus Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
+<p>It can be useful to enable Global Freeze on a financial institution's <a href="concept-issuing-and-operational-addresses.html">issuing address</a> if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, a financial institution should also suspend activities in its connectors to outside systems.</p>
 <p>It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new <a href="concept-issuing-and-operational-addresses.html">issuing address</a>, or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
 <p>Global Freeze applies to <em>all</em> currencies issued and held by the address. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different addresses for each currency.</p>
 <p>An address can always enable the Global Freeze setting. However, if the address has enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> Global Freeze.</p>
@@ -211,7 +215,7 @@
 <li>The issuing address can no longer enable Individual Freeze on trust lines to any counterparty.</li>
 <li>The issuing address can still enable Global Freeze to enact a global freeze, but the address cannot <em>disable</em> Global Freeze.</li>
 </ul>
-<p>The Ripple Consensus Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
+<p>The XRP Ledger cannot force a financial institution to honor the obligations that its issued funds represent, so giving up the ability to enable a Global Freeze cannot protect customers. However, giving up the ability to <em>disable</em> a Global Freeze ensures that the Global Freeze feature is not used unfairly against some customers.</p>
 <p>The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.</p>
 <p>You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a <a href="reference-transaction-format.html#setregularkey">Regular Key</a> or a <a href="reference-transaction-format.html#multi-signing">multi-signed transaction</a> to enable No Freeze.</p>
 <h1 id="technical-details">Technical Details</h1>
@@ -230,7 +234,7 @@
 <tr>
 <td>Account</td>
 <td>String</td>
-<td>The Ripple address to enable or disable the freeze.</td>
+<td>The XRP Ledger address to enable or disable the freeze.</td>
 </tr>
 <tr>
 <td>TransactionType</td>
@@ -250,7 +254,7 @@
 <tr>
 <td>LimitAmount.issuer</td>
 <td>String</td>
-<td>The Ripple address of the counterparty to freeze</td>
+<td>The XRP Ledger address of the counterparty to freeze</td>
 </tr>
 <tr>
 <td>LimitAmount.value</td>
@@ -307,7 +311,7 @@
 <tr>
 <td>counterparty</td>
 <td>String</td>
-<td>The <a href="reference-rippleapi.html#ripple-address">Ripple address</a> of the counterparty</td>
+<td>The <a href="reference-rippleapi.html#ripple-address">XRP Ledger address</a> of the counterparty</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -556,12 +560,12 @@ api.connect().then(() =&gt; {
 <tr>
 <td>account</td>
 <td>String</td>
-<td>The Ripple address of the issuer</td>
+<td>The XRP Ledger address of the issuer</td>
 </tr>
 <tr>
 <td>peer</td>
 <td>String</td>
-<td>The Ripple address of the counterparty</td>
+<td>The XRP Ledger address of the counterparty</td>
 </tr>
 <tr>
 <td>ledger_index</td>
@@ -639,12 +643,12 @@ api.connect().then(() =&gt; {
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The Ripple address of the issuer</td>
+<td>The XRP Ledger address of the issuer</td>
 </tr>
 <tr>
 <td>options.counterparty</td>
 <td>String</td>
-<td>The Ripple address of the counterparty</td>
+<td>The XRP Ledger address of the counterparty</td>
 </tr>
 </tbody>
 </table>
@@ -724,7 +728,7 @@ api.connect().then(() =&gt; {
 <tr>
 <td>account</td>
 <td>String</td>
-<td>The Ripple address of the issuing address</td>
+<td>The XRP Ledger address of the issuing address</td>
 </tr>
 <tr>
 <td>ledger_index</td>
@@ -801,7 +805,7 @@ console.log(currentFlags &amp; lsfNoFreeze); //0
 <tr>
 <td>address</td>
 <td>String</td>
-<td>The Ripple address of the issuing address</td>
+<td>The XRP Ledger address of the issuing address</td>
 </tr>
 </tbody>
 </table>
@@ -864,44 +868,9 @@ api.connect().then(() =&gt; {
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
-            <section class="col-sm-3 widget nav_menu-3 widget_nav_menu">
-                <h4>Resources<hr></h4>
-                <ul id="menu-resources" class="menu">
-                    <li class="menu-insights"><a href="https://ripple.com/insights/">Insights</a></li>
-                    <li class="menu-events"><a href="https://ripple.com/events/">Events</a></li>
-                    <li class="menu-collateral"><a href="https://ripple.com/collateral/">Collateral</a></li>
-                    <li class="menu-press-center"><a href="https://ripple.com/press-center/">Press Center</a></li>
-                    <li class="menu-media-kit"><a href="https://ripple.com/media-kit/">Media Kit</a></li>
-                    <li class="menu-xrp-portal"><a href="https://ripple.com/xrp-portal/">XRP Portal</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-5 widget_nav_menu">
-                <h4>Regulators<hr></h4>
-                <ul id="menu-compliance-regulatory-relations" class="menu">
-                    <li class="menu-compliance"><a href="https://ripple.com/compliance/">Compliance</a></li>
-                    <li class="menu-policy-framework"><a href="https://ripple.com/policy-framework/">Policy Framework</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-4 widget_nav_menu">
-                <h4>Support<hr></h4>
-                <ul id="menu-dev-footer-menu" class="menu">
-                    <li class="menu-contact-us"><a href="https://ripple.com/contact/">Contact Us</a></li>
-                    <li class="active menu-developer-center"><a href="https://ripple.com/build/">Developer Center</a></li>
-                    <li class="menu-knowledge-center"><a href="https://ripple.com/learn/">Knowledge Center</a></li>
-                    <li class="menu-ripple-forum"><a target="_blank" href="https://forum.ripple.com/">Ripple Forum</a></li>
-                </ul>
-            </section>
-            <section class="col-sm-3 widget nav_menu-2 widget_nav_menu">
-                <h4>About<hr></h4>
-                <ul id="menu-company-footer" class="menu">
-                    <li class="menu-our-company"><a href="https://ripple.com/company/">Our Company</a></li>
-                    <li class="menu-careers"><a href="https://ripple.com/company/careers/">Careers</a></li>
-                </ul>
-            </section>
-
        		<div class="col-sm-12 absolute_bottom_footer">
        			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2016 Ripple Labs, Inc. All Rights Reserved.</span>
+                    <span>&copy; 2013 - 2017 Ripple Labs, Inc. All Rights Reserved.</span>
                     <span><a href="/terms-of-use/">Terms</a></span>
                     <span><a href="/privacy-policy/">Privacy</a></span>
                 </div>
