@@ -48,7 +48,7 @@ The XRP Ledger contains a currency exchange, where any user can place and fulfil
 
 Currency traders who hold a gateway's issuances can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of financial exchange. However, a gateway may still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, use a different address for trading than your issuing address.
 
-Third-party liquidity providers can use [RippleAPI](reference-rippleapi.html), [Ripple Stream](https://ripple.com/technology/), or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
+Third-party liquidity providers can use the [`rippled` APIs](reference-rippled.html), [RippleAPI JavaScript Library](reference-rippleapi.html), or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
 
 Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing liquidity between your gateway and others.
 
