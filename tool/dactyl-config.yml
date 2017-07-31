@@ -61,6 +61,8 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
+            "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
+            "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
             "concept-fee-voting.html": https://ripple.com/build/fee-voting/
             "concept-fees.html": https://ripple.com/build/fees-disambiguation/
             "concept-freeze.html": https://ripple.com/build/freeze/
@@ -85,6 +87,8 @@ targets:
             "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
             "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
             "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
+            "img/ledger-history.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
+            "img/ledger-changes.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
             "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
             "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
             "img/noripple-01.png": https://ripple.com/wp-content/uploads/2015/04/noripple-01.png
@@ -100,6 +104,7 @@ targets:
             "img/consensus-candidate-transaction-sets.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
             "img/consensus-declare-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
             "img/consensus-validated-ledger.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
+            "img/xrp-ledger-network.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
