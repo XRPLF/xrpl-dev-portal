@@ -2,7 +2,7 @@
 
 The XRP Ledger supports held payments, or _escrows_, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these simple features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
 
-- Send a time-held escrow
+- [Send a time-held escrow](#send-a-time-held-escrow)
 - Send a conditionally-held escrow
 - Look up escrows where you are the destination
 - Look up escrows where you are the sender/owner
@@ -126,7 +126,61 @@ You can check the close time of the most recently-closed (not yet validated) led
     >    "OfferSequence": 373,
     > }'
 
+Take note of the transaction's identifying `hash` value so you can easily check its final status when it is included in a validated ledger version.
 
+### 7. Close the ledger
+
+On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.
+
+If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+
+    $ rippled ledger_accept
+    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Connecting to 127.0.0.1:5005
+    {
+       "result" : {
+          "ledger_current_index" : 6,
+          "status" : "success"
+       }
+    }
+
+### 8. Confirm final result
+
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field.
+
+
+## Send a conditionally-held escrow
+
+### 1. Generate condition and fulfillment
+
+XRP Ledger escrows require PREIMGE-SHA-256 [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03). To calculate a condition and fulfillment in the proper format, you should use a Crypto-Conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, Ripple recommends using one of the following methods to generate the fulfillment:
+
+- Use a cryptographically secure source of randomness to generate at least 32 random bytes
+- Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment.
+
+Example JavaScript code for a random fulfillment and condition:
+
+```js
+cc = require('five-bells-condition');
+
+const fulfillment_bytes = crypto.randomBytes(32);
+const myFulfillment = new cc.PreimageSha256();
+myFulfillment.setPreimage(fulfillment_bytes);
+console.log(myFulfillment.serializeBinary().toString('hex'));
+// (Random hexadecimal, 72 chars in length)
+console.log(myFulfillment.getConditionBinary().toString('hex'));
+// (Random hexadecimal, 78 chars in length)
+```
+
+Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment; anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
+
+### 2. Submit EscrowCreate transaction
+
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender.
+
+{% include 'snippets/secret-key-warning.md' %}
+
+    ***TODO: example of conditional escrowcreate***
 
 
 {% include 'snippets/tx-type-links.md' %}
