@@ -1,0 +1,7 @@
+{
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "TransactionType": "EscrowCreate",
+    "Amount": "10000",
+    "Destination": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "Condition": "a02580202ed6c7f59fdda3a01d0d3288dbbb1335ef22e574269ff8ca17ef0d0b5a3902ca810120"
+}

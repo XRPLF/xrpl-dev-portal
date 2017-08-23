@@ -51,6 +51,8 @@ print(release_date_ripple)
 
 <!-- MULTICODE_BLOCK_END -->
 
+**Warning:** If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+
 ### 2. Submit EscrowCreate transaction
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which can be the same address as the sender.
@@ -174,13 +176,67 @@ console.log(myFulfillment.getConditionBinary().toString('hex'));
 
 Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment; anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
 
-### 2. Submit EscrowCreate transaction
+### 2. Calculate release or cancel time
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender.
+A Conditional `Escrow` transaction must contain either a `CancelAfter` or `FinishAfter` field. The `CancelAfter` field lets the XRP revert to the sender if the condition is not fulfilled before the specified time. The `FinishAfter` field specifies a time before which the escrow cannot execute, even if someone sends the correct fulfillment.
+
+***TODO: confirm that this requirement isn't a doc bug.***
+
+**Warning:** If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+
+### 3. Submit EscrowCreate transaction
+
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step.
 
 {% include 'snippets/secret-key-warning.md' %}
 
     ***TODO: example of conditional escrowcreate***
+
+
+### 4. Close the ledger
+
+
+### 5. Confirm that the escrow was created
+
+Use the [`tx` command](reference-rippled.html#tx) with the transaction's identifying hash to check its final status. In particular, look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
+
+
+### 6. Submit EscrowFinish transaction
+
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction.Set the `Condition` and `Fulfillment` fields to the condition and fulfillment values, in hexadecimal, that you generated in step 1.
+
+**Note:** If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](transactions.html#transaction-results) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.
+
+{% include 'snippets/secret-key-warning.md' %}
+
+    $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
+    >    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    >    "TransactionType": "EscrowFinish",
+    >    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    >    "OfferSequence": 373
+    > }'
+
+Take note of the transaction's identifying `hash` value so you can easily check its final status when it is included in a validated ledger version.
+
+### 7. Close the ledger
+
+On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.
+
+If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+
+    $ rippled ledger_accept
+    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Connecting to 127.0.0.1:5005
+    {
+       "result" : {
+          "ledger_current_index" : 7,
+          "status" : "success"
+       }
+    }
+
+### 8. Confirm final result
+
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field.
 
 
 {% include 'snippets/tx-type-links.md' %}
