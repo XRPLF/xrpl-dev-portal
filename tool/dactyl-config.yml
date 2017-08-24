@@ -222,13 +222,13 @@ pages:
             - local
             - ripple.com
 
-    ## Escrow Tutorial is a work in progress
-    # -   md: tutorial-escrow.md
-    #     html: tutorial-escrow.html
-    #     category: Tutorials
-    #     targets:
-    #         - local
-    #         - ripple.com
+    # Escrow Tutorial is a work in progress
+    -   md: tutorial-escrow.md
+        html: tutorial-escrow.html
+        category: Tutorials
+        targets:
+            - local
+            - ripple.com
 
 #Features describe how the XRP Ledger works in a mostly conceptual manner
     -   name: Accounts
