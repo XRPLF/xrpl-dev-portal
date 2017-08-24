@@ -6,7 +6,7 @@ The scripts and configuration files used in this guide are [available in the Rip
 
 # Environment Setup #
 
-The first step to using RippleAPI successfully is setting up your development environment.
+The first step to using RippleAPI is setting up your development environment.
 
 ## Install Node.js and npm ##
 
@@ -14,7 +14,7 @@ RippleAPI is built as an application for the Node.js runtime environment, so the
 
 This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and `npm` (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
 
-After you have installed Node.js, you can check whether it's installed by checking the version of the `node` binary from a commandline:
+After you have installed Node.js, you can check the version of the `node` binary from a command line:
 
 ```
 node --version
@@ -25,7 +25,6 @@ On some platforms, the binary is named `nodejs` instead:
 ```
 nodejs --version
 ```
-
 
 ## Use NPM to install RippleAPI and dependencies ##
 
@@ -77,8 +76,6 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 ```
 
-
-
 # First RippleAPI Script ##
 
 This script, `get-account-info.js`, fetches information about a hard-coded account. Use it to test that RippleAPI works:
@@ -89,7 +86,7 @@ This script, `get-account-info.js`, fetches information about a hard-coded accou
 
 ## Running the script ##
 
-RippleAPI and the script both use the ECMAScript 6 version of JavaScript, which is (at this time) not supported by Node.js natively. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the `babel-node` binary, which NPM installs in the `node_modules/.bin/` directory of your project. Thus, running the script looks like this:
+RippleAPI and the script both use the ECMAScript 6 version of JavaScript. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the `babel-node` binary, which NPM installs in the `node_modules/.bin/` directory of your project. Thus, running the script looks like this:
 
 ```
 ./node_modules/.bin/babel-node get-account-info.js
@@ -211,15 +208,13 @@ If you are the administrator of the `rippled` server, you can [manually request 
 
 See [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html) for a more thorough explanation.
 
-
-
 # RippleAPI in Web Browsers #
 
 RippleAPI can also be used in a web browser if you compile a browser-compatible version and include [lodash](https://www.npmjs.com/package/lodash) as a dependency before the RippleAPI script.
 
 ## Build Instructions ##
 
-To use RippleAPI in a browser, you need to a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
+To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
 
 #### 1. Download a copy of the RippleAPI git repository.
 
@@ -232,7 +227,6 @@ git checkout release
 ```
 
 Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.
-
 
 #### 2. Install dependencies using NPM
 
