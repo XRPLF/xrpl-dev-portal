@@ -25,7 +25,7 @@ const myOrder = {
 const INTERVAL = 1000;
 /* Instantiate RippleAPI. Uses s2 (full history server) */
 const api = new RippleAPI({server: 'wss://s2.ripple.com'});
-/* number of ledgers to check for valid transaction before fail */
+/* Number of ledgers to check for valid transaction before failing */
 const ledgerOffset = 5;
 const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
@@ -39,7 +39,7 @@ function verifyTransaction(hash, options) {
     console.log('Sequence: ', data.sequence);
     return data.outcome.result === 'tesSUCCESS';
   }).catch(error => {
-    /* if transaction not in latest validated ledger,
+    /* If transaction not in latest validated ledger,
        try again until max ledger hit */
     if (error instanceof api.errors.PendingLedgerVersionError) {
       return new Promise((resolve, reject) => {
@@ -52,17 +52,17 @@ function verifyTransaction(hash, options) {
 }
 
 
-/* function to prepare, sign, and submit a transaction to the XRP Ledger
-success verifies the transaction is being considered for the next ledger.
-Still requires vlaidation */
+/* Function to prepare, sign, and submit a transaction to the XRP Ledger. */
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
   const signedData = api.sign(prepared.txJSON, secret);
   return api.submit(signedData.signedTransaction).then(data => {
     console.log('Tentative Result: ', data.resultCode);
     console.log('Tentative Message: ', data.resultMessage);
-    /* if transaction was not successfully submitted throw error */
+    /* If transaction was not successfully submitted throw error */
     assert.strictEqual(data.resultCode, 'tesSUCCESS');
-    /* if successfully submitted fire off validation workflow */
+    /* 'tesSUCCESS' means the transaction is being considered for the next ledger, and requires validation. */
+
+    /* If successfully submitted, begin validation workflow */
     const options = {
       minLedgerVersion: lastClosedLedgerVersion,
       maxLedgerVersion: prepared.instructions.maxLedgerVersion
