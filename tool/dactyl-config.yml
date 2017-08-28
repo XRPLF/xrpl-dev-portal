@@ -78,33 +78,33 @@ targets:
             "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
             "data-api-v2-tool.html": https://ripple.com/build/data-api-tool/
         image_subs:
-            "img/funds_flow_diagram.png": https://ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
+            "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
             "img/e2g-02.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-02.png
             "img/e2g-03.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-03.png
             "img/e2g-with_transferrate.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-with_transferrate.png
-            "img/transfer_fees_example.png": https://ripple.com/wp-content/uploads/2015/06/transfer_fees_example1.png
+            "img/transfer_fees_example.png": https://cdn.ripple.com/wp-content/uploads/2015/06/transfer_fees_example1.png
             "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
             "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
             "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
-            "img/ledger-history.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
-            "img/ledger-changes.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
+            "img/ledger-history.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
+            "img/ledger-changes.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
             "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
             "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
-            "img/noripple-01.png": https://ripple.com/wp-content/uploads/2015/04/noripple-01.png
-            "img/noripple-02.png": https://ripple.com/wp-content/uploads/2015/04/noripple-02.png
-            "img/noripple-03.png": https://ripple.com/wp-content/uploads/2015/01/noripple-03.png
-            "img/noripple-04.png": https://ripple.com/wp-content/uploads/2015/01/noripple-04.png
-            "img/noripple-05.png": https://ripple.com/wp-content/uploads/2015/01/noripple-05.png
-            "img/noripple-06.png": https://ripple.com/wp-content/uploads/2015/01/noripple-06.png
-            "img/key-address-rels.png": https://ripple.com/wp-content/uploads/2017/05/key-address-rels.png
+            "img/noripple-01.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-01.png
+            "img/noripple-02.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-02.png
+            "img/noripple-03.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-03.png
+            "img/noripple-04.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-04.png
+            "img/noripple-05.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-05.png
+            "img/noripple-06.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-06.png
+            "img/key-address-rels.png": https://cdn.ripple.com/wp-content/uploads/2017/05/key-address-rels.png
             "img/paychan-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/05/paychan-flow1.png
-            "img/consensus-agreed-transaction-set.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
-            "img/consensus-calculate-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
-            "img/consensus-candidate-transaction-sets.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
-            "img/consensus-declare-validation.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
-            "img/consensus-validated-ledger.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
-            "img/xrp-ledger-network.png": https://ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
+            "img/consensus-agreed-transaction-set.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
+            "img/consensus-calculate-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
+            "img/consensus-candidate-transaction-sets.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
+            "img/consensus-declare-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
+            "img/consensus-validated-ledger.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
+            "img/xrp-ledger-network.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
