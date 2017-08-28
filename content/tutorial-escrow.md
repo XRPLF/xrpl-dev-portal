@@ -39,6 +39,7 @@ console.log(release_date_ripple);
 // 563846400
 ```
 
+<!--{# //Python code works OK but we don't have full examples, so hiding it
 *Python 3*
 
 ```python
@@ -48,6 +49,8 @@ release_date_ripple = int(release_date_utc.timestamp()) - 946684800
 print(release_date_ripple)
 # 563846400
 ```
+
+#}-->
 
 <!-- MULTICODE_BLOCK_END -->
 

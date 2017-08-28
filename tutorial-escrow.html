@@ -192,7 +192,7 @@ Escrow
 <p>The <a href="reference-transaction-format.html#escrowcreate">EscrowCreate transaction</a> type can create an escrow whose only condition for release is that a specific time has passed. To do this, use the <code>FinishAfter</code> field and omit the <code>Condition</code> field.</p>
 <h3 id="1-calculate-release-time">1. Calculate release time</h3>
 <p>You must <a href="reference-rippled.html#specifying-time">specify the time</a> as whole <strong>seconds since the Ripple Epoch</strong>, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JavaScript</a></li><li><a href="#code-0-1">Python 3</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JavaScript</a></li></ul>
 
 <div class="code_sample" id="code-0-0" style="position: static;"><pre><code class="js">// JavaScript Date() is natively expressed in milliseconds; convert to seconds
 const release_date_unix = Math.floor( new Date("2017-11-13T00:00:00Z") / 1000 );
@@ -200,13 +200,7 @@ const release_date_ripple = release_date_unix - 946684800;
 console.log(release_date_ripple);
 // 563846400
 </code></pre></div>
-
-<div class="code_sample" id="code-0-1" style="position: static;"><pre><code class="python">import datetime
-release_date_utc = datetime.datetime(2017,11,13,0,0,0,tzinfo=datetime.timezone.utc)
-release_date_ripple = int(release_date_utc.timestamp()) - 946684800
-print(release_date_ripple)
-# 563846400
-</code></pre></div>
+<!-- -->
 </div>
 <p class="devportal-callout warning"><strong>Warning:</strong> If you use a UNIX time in the <code>FinishAfter</code> field without converting to the equivalent Ripple time first, that sets the unlock time to an extra <strong>30 years</strong> in the future!</p>
 <h3 id="2-submit-escrowcreate-transaction">2. Submit EscrowCreate transaction</h3>
