@@ -1,6 +1,6 @@
 # Escrow Tutorials
 
-The XRP Ledger supports held payments, or _escrows_, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these simple features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
+The XRP Ledger supports held payments, or _escrows_, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
 
 - [Send a time-held escrow](#send-a-time-held-escrow)
 - [Send a conditionally-held escrow](#send-a-conditionally-held-escrow)
@@ -87,7 +87,7 @@ Response:
 <!-- MULTICODE_BLOCK_END -->
 
 
-Take note of the transaction's identifying `hash` value so you can easily check its final status when it is included in a validated ledger version.
+Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
 
 ### 3. Wait for validation
 
@@ -184,7 +184,7 @@ Response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-Take note of the transaction's identifying `hash` value so you can easily check its final status when it is included in a validated ledger version.
+Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
 
 ### 7. Wait for validation
 
@@ -223,9 +223,9 @@ Response:
 
 ### 1. Generate condition and fulfillment
 
-XRP Ledger escrows require PREIMGE-SHA-256 [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03). To calculate a condition and fulfillment in the proper format, you should use a Crypto-Conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, Ripple recommends using one of the following methods to generate the fulfillment:
+XRP Ledger escrows require PREIMAGE-SHA-256 [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03). To calculate a condition and fulfillment in the proper format, you should use a Crypto-Conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, Ripple recommends using one of the following methods to generate the fulfillment:
 
-- Use a cryptographically secure source of randomness to generate at least 32 random bytes
+- Use a cryptographically secure source of randomness to generate at least 32 random bytes.
 - Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment.
 
 Example JavaScript code for a random fulfillment and condition:
@@ -242,7 +242,7 @@ console.log(myFulfillment.getConditionBinary().toString('hex'));
 // (Random hexadecimal, 78 chars in length)
 ```
 
-Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment; anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
+Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment. Anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
 
 
 ### 2. Calculate release or cancel time
@@ -262,6 +262,7 @@ console.log(CancelAfter);
 // Example: 556927412
 ```
 
+<!--{# Striking Python example for now since we don't have full examples
 _Python 2/3_
 
 ```python
@@ -272,9 +273,11 @@ print(cancel_after)
 # Example: 556927412
 ```
 
+#}-->
+
 <!-- MULTICODE_BLOCK_END -->
 
-**Warning:** In the XRP Ledger, you must specify time as seconds since the Ripple Epoch (2000-01-01T00:00:00Z). If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+**Warning:** In the XRP Ledger, you must specify time as **seconds since the Ripple Epoch** (2000-01-01T00:00:00Z). If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
 
 ### 3. Submit EscrowCreate transaction
 
@@ -368,7 +371,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-Take note of the transaction's identifying `hash` value so you can easily check its final status when it is included in a validated ledger version.
+Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
 
 ### 7. Wait for validation
 

@@ -59,6 +59,7 @@ targets:
             "tutorial-rippled-setup.html": https://ripple.com/build/rippled-setup/
             "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
+            "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
