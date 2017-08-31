@@ -1,4 +1,5 @@
 {
+  "id": 2,
   "command": "submit",
   "secret": "s████████████████████████████",
   "tx_json": {
