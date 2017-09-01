@@ -62,7 +62,7 @@ When `rippled` receives a transaction that meet the server's local load cost but
 
 When the current open ledger closes and the server starts a new open ledger, the server starts taking transactions from the queue to include in the new open ledger. The transaction queue is sorted with the transactions that would pay the highest transaction cost first, proportional to the [reference cost](#reference-transaction-cost) of those transactions. Transactions that pay the same transaction cost are queued in the order the server receives them.
 
-**Note:** When `rippled` queues a transaction, the provisional [transaction response code](reference-transaction-format.html#transaction-results) is `terQUEUED`. This means that the transaction is likely to succeed in a future. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](reference-transaction-format.html#finality-of-results).
+**Note:** When `rippled` queues a transaction, the provisional [transaction response code](reference-transaction-format.html#transaction-results) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](reference-transaction-format.html#finality-of-results).
 
 #### Queuing Restrictions ####
 
