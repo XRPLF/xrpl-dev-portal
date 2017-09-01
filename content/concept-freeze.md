@@ -119,7 +119,7 @@ To enable or disable Individual Freeze on a specific trust line, prepare a *Trus
 | Field        | Value  | Description |
 |--------------|--------|-------------|
 | currency     | String | The [currency](reference-rippleapi.html#currency) of the trust line to freeze |
-| counterparty | String | The [XRP Ledger address](reference-rippleapi.html#ripple-address) of the counterparty |
+| counterparty | String | The [XRP Ledger address](reference-rippleapi.html#address) of the counterparty |
 | limit        | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | frozen       | Boolean | `true` to enable Individual Freeze on this trust line. `false` to disable Individual Freeze. |
 

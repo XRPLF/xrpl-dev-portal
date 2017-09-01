@@ -538,7 +538,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> The Ripple address of the account that owes or is owed the funds (omitted if <code>currency</code> is "XRP")</td>
 </tr>
 <tr>
@@ -711,7 +711,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>source.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to send from.</td>
 </tr>
 <tr>
@@ -736,7 +736,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to receive at.</td>
 </tr>
 <tr>
@@ -751,7 +751,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to send to.</td>
 </tr>
 <tr>
@@ -829,7 +829,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account this trustline extends trust to.</td>
 </tr>
 <tr>
@@ -1057,7 +1057,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>regularKey</td>
-<td><a href="#ripple-address">address</a>,null</td>
+<td><a href="#address">address</a>,null</td>
 <td><em>Optional</em> The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. Use <code>null</code> to remove the regular key.</td>
 </tr>
 <tr>
@@ -1092,7 +1092,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td><em>signers.weights[].</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>A Ripple account address</td>
 </tr>
 <tr>
@@ -1137,7 +1137,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>destination</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>Address to receive escrowed XRP.</td>
 </tr>
 <tr>
@@ -1192,7 +1192,7 @@ const api = new RippleAPI();
 <tbody>
 <tr>
 <td>owner</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the owner of the escrow to cancel.</td>
 </tr>
 <tr>
@@ -1226,7 +1226,7 @@ const api = new RippleAPI();
 <tbody>
 <tr>
 <td>owner</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the owner of the escrow to execute.</td>
 </tr>
 <tr>
@@ -1277,7 +1277,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>destination</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>Address to receive XRP claims against this channel.</td>
 </tr>
 <tr>
@@ -1672,7 +1672,7 @@ const api = new RippleAPI();
 </tr>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that initiated the transaction.</td>
 </tr>
 <tr>
@@ -1891,7 +1891,7 @@ return api.getTransaction(id).then(transaction =&gt; {
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account to get transactions for.</td>
 </tr>
 <tr>
@@ -1906,7 +1906,7 @@ return api.getTransaction(id).then(transaction =&gt; {
 </tr>
 <tr>
 <td><em>options.</em> counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> If provided, only return transactions with this account as a counterparty to the transaction.</td>
 </tr>
 <tr>
@@ -2171,7 +2171,7 @@ return api.getTransactions(address).then(transaction =&gt; {
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account to get trustlines for.</td>
 </tr>
 <tr>
@@ -2181,7 +2181,7 @@ return api.getTransactions(address).then(transaction =&gt; {
 </tr>
 <tr>
 <td><em>options.</em> counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> Only return trustlines with this counterparty.</td>
 </tr>
 <tr>
@@ -2374,7 +2374,7 @@ return api.getTrustlines(address).then(trustlines =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account to get balances for.</td>
 </tr>
 <tr>
@@ -2384,7 +2384,7 @@ return api.getTrustlines(address).then(trustlines =&gt;
 </tr>
 <tr>
 <td><em>options.</em> counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> Only return balances with this counterparty.</td>
 </tr>
 <tr>
@@ -2427,7 +2427,7 @@ return api.getTrustlines(address).then(trustlines =&gt;
 </tr>
 <tr>
 <td>counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> The Ripple address of the account that owes or is owed the funds.</td>
 </tr>
 </tbody>
@@ -2579,7 +2579,7 @@ return api.getBalances(address).then(balances =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The Ripple address of the account to get the balance sheet of.</td>
 </tr>
 <tr>
@@ -2589,7 +2589,7 @@ return api.getBalances(address).then(balances =&gt;
 </tr>
 <tr>
 <td><em>options.</em> excludeAddresses</td>
-<td>array\&lt;<a href="#ripple-address">address</a>&gt;</td>
+<td>array\&lt;<a href="#address">address</a>&gt;</td>
 <td><em>Optional</em> Addresses to exclude from the balance totals.</td>
 </tr>
 <tr>
@@ -2727,7 +2727,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>pathfind.source.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The Ripple address of the account where funds will come from.</td>
 </tr>
 <tr>
@@ -2752,7 +2752,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>pathfind.source.currencies[].</em> counterparty</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> The counterparty for the currency; if omitted any counterparty may be used.</td>
 </tr>
 <tr>
@@ -2762,7 +2762,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>pathfind.destination.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to send to.</td>
 </tr>
 <tr>
@@ -2790,7 +2790,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>source.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to send from.</td>
 </tr>
 <tr>
@@ -2815,7 +2815,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to receive at.</td>
 </tr>
 <tr>
@@ -2830,7 +2830,7 @@ return api.getBalanceSheet(address).then(balanceSheet =&gt;
 </tr>
 <tr>
 <td><em>destination.</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address to send to.</td>
 </tr>
 <tr>
@@ -2934,7 +2934,7 @@ return api.getPaths(pathfind)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The Ripple address of the account to get open orders for.</td>
 </tr>
 <tr>
@@ -2977,7 +2977,7 @@ return api.getPaths(pathfind)
 </tr>
 <tr>
 <td><em>properties.</em> maker</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that submitted the order.</td>
 </tr>
 <tr>
@@ -3353,7 +3353,7 @@ return api.getOrders(address).then(orders =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>Address of an account to use as point-of-view. (This affects which unfunded offers are returned.)</td>
 </tr>
 <tr>
@@ -3421,7 +3421,7 @@ return api.getOrders(address).then(orders =&gt;
 </tr>
 <tr>
 <td><em>bids[].properties.</em> maker</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that submitted the order.</td>
 </tr>
 <tr>
@@ -3471,7 +3471,7 @@ return api.getOrders(address).then(orders =&gt;
 </tr>
 <tr>
 <td><em>asks[].properties.</em> maker</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that submitted the order.</td>
 </tr>
 <tr>
@@ -4017,7 +4017,7 @@ return api.getOrderbook(address, orderbook)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account to get the settings of.</td>
 </tr>
 <tr>
@@ -4100,7 +4100,7 @@ return api.getOrderbook(address, orderbook)
 </tr>
 <tr>
 <td>regularKey</td>
-<td><a href="#ripple-address">address</a>,null</td>
+<td><a href="#address">address</a>,null</td>
 <td><em>Optional</em> The public key of a new keypair, to use as the regular key to this account, as a base-58-encoded string in the same format as an account address. Use <code>null</code> to remove the regular key.</td>
 </tr>
 <tr>
@@ -4135,7 +4135,7 @@ return api.getOrderbook(address, orderbook)
 </tr>
 <tr>
 <td><em>signers.weights[].</em> address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>A Ripple account address</td>
 </tr>
 <tr>
@@ -4178,7 +4178,7 @@ return api.getSettings(address).then(settings =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account to get the account info of.</td>
 </tr>
 <tr>
@@ -4282,12 +4282,12 @@ return api.getAccountInfo(address).then(info =&gt;
 <tbody>
 <tr>
 <td>account</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>Address that created the payment channel.</td>
 </tr>
 <tr>
 <td>destination</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>Address to receive XRP claims against this channel.</td>
 </tr>
 <tr>
@@ -4519,7 +4519,7 @@ return api.getPaymentChannel(channelId).then(channel =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -4622,7 +4622,7 @@ return api.preparePayment(address, payment).then(prepared =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -4723,7 +4723,7 @@ return api.prepareTrustline(address, trustline).then(prepared =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -4822,7 +4822,7 @@ return api.prepareOrder(address, order)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -4908,7 +4908,7 @@ return api.prepareOrderCancellation(address, orderCancellation)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5005,7 +5005,7 @@ return api.prepareSettings(address, settings)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5095,7 +5095,7 @@ return api.prepareEscrowCreation(address, escrowCreation).then(prepared =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5184,7 +5184,7 @@ return api.prepareEscrowCancellation(address, escrowCancellation).then(prepared 
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5275,7 +5275,7 @@ return api.prepareEscrowExecution(address, escrowExecution).then(prepared =&gt;
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5366,7 +5366,7 @@ return api.preparePaymentChannelCreate(address, paymentChannelCreate).then(prepa
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5454,7 +5454,7 @@ return api.preparePaymentChannelClaim(address, paymentChannelClaim).then(prepare
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>The address of the account that is creating the transaction.</td>
 </tr>
 <tr>
@@ -5558,7 +5558,7 @@ return api.preparePaymentChannelFund(address, paymentChannelFund).then(prepared 
 </tr>
 <tr>
 <td><em>options.</em> signAs</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td><em>Optional</em> The account that the signature should count for in multisigning.</td>
 </tr>
 </tbody>
@@ -5745,7 +5745,7 @@ return api.submit(signedTransaction)
 <tbody>
 <tr>
 <td>address</td>
-<td><a href="#ripple-address">address</a></td>
+<td><a href="#address">address</a></td>
 <td>A randomly generated Ripple account address.</td>
 </tr>
 <tr>
@@ -5765,7 +5765,7 @@ return api.submit(signedTransaction)
 </code></pre>
 <h2 id="signpaymentchannelclaim">signPaymentChannelClaim</h2>
 <p><code>signPaymentChannelClaim(channel: string, amount: string, privateKey: string): string</code></p>
-<p>Sign a payment channel claim. The signature can be submitted in a subsequent <a href="#preparePaymmentChannelClaim">PaymentChannelClaim</a> transaction.</p>
+<p>Sign a payment channel claim. The signature can be submitted in a subsequent <a href="#preparepaymentchannelclaim">PaymentChannelClaim</a> transaction.</p>
 <h3 id="parameters-34">Parameters</h3>
 <table>
 <thead>
