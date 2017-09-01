@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "command": "submit",
+  "secret": "s████████████████████████████",
+  "tx_json": {
+      "Account": "rajgkBmMxmz161r8bWYH7CQAFZP5bA9oSG",
+      "TransactionType": "EscrowCreate",
+      "Amount": "10000",
+      "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "FinishAfter": 557020800
+  }
+}

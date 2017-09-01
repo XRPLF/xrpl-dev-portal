@@ -6,6 +6,7 @@ const crypto = require('crypto')
 const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'
 const mySecret = 's████████████████████████████'
 
+// Construct condition and fulfillment
 const preimageData = crypto.randomBytes(32)
 const myFulfillment = new cc.PreimageSha256()
 myFulfillment.setPreimage(preimageData)
@@ -14,6 +15,7 @@ const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperC
 console.log('Condition:', conditionHex)
 console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase())
 
+// Construct transaction
 const currentTime = new Date()
 const myEscrow = {
   "destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", // Destination can be same as source
@@ -26,6 +28,7 @@ const myInstructions = {
   maxLedgerVersionOffset: 5
 }
 
+// Connect and submit
 const api = new RippleAPI({server: 'wss://s2.ripple.com'})
 
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
@@ -36,7 +39,6 @@ function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
     console.log('Tentative Message: ', data.resultMessage)
   })
 }
-
 
 api.connect().then(() => {
   console.log('Connected')

@@ -1,0 +1,7 @@
+{
+  "id": 5,
+  "command": "account_objects",
+  "account": "rEhw9vD98ZrkY4tZPvkZst5H18RysqFdaB",
+  "ledger_index": "validated",
+  "type": "escrow"
+}
