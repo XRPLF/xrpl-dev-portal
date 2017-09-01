@@ -738,6 +738,8 @@ The following invalid flag combination prompts a `temINVALID_FLAG` error:
 
 * tfImmediateOrCancel and tfFillOrKill
 
+**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](#result-categories) `tesSUCCESS`, it pays the [transaction cost](concept-transaction-cost.html) and uses up a `Sequence` number, but has no other effect.
+
 
 
 ## Payment ##

@@ -1221,6 +1221,7 @@
 <ul>
 <li>tfImmediateOrCancel and tfFillOrKill</li>
 </ul>
+<p class="devportal-callout note"><strong>Note:</strong> When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the <a href="#result-categories">result code</a> <code>tesSUCCESS</code>, it pays the <a href="concept-transaction-cost.html">transaction cost</a> and uses up a <code>Sequence</code> number, but has no other effect.</p>
 <h2 id="payment">Payment</h2>
 <p><a href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp" title="Source">[Source]<br/></a></p>
 <p>A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.)</p>
