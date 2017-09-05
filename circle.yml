@@ -1,5 +1,5 @@
 general:
-  build_dir: tool/
+  build_dir: ./
 dependencies:
   pre:
     - pyenv global 3.4.0
@@ -7,5 +7,5 @@ dependencies:
     - pip3 install dactyl
 test:
   override:
-    - dactyl_build
+    - dactyl_build -s
     - dactyl_link_checker
