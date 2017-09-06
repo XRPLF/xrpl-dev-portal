@@ -218,12 +218,12 @@ To use RippleAPI in a browser, you need to build a browser-compatible version. T
 
 #### 1. Download a copy of the RippleAPI git repository.
 
-If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed, you can clone the repository and check out the **release** branch, which always has the latest official release:
+If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed, you can clone the repository and check out the **master** branch, which always has the latest official release:
 
 ```
 git clone https://github.com/ripple/ripple-lib.git
 cd ripple-lib
-git checkout release
+git checkout master
 ```
 
 Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.
