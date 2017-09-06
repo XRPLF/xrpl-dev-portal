@@ -1,26 +1,24 @@
 # Relative paths work OK as long as you start the tool from its local dir
-template_path: .
+template_path: tool
 
 # This folder gets copied into the output directory
-template_static_path: ../assets
+template_static_path: assets
 
 # Templates should have filenames starting in template-
 default_template: template-doc.html
-pdf_template: template-forpdf.html
+default_pdf_template: template-forpdf.html
 
 # HTML, PDF, GFM all get output here
-out_path: ..
+out_path: out
 
 # MD files should be here (and in subdirs)
-content_path: ../content
+content_path: content
 
 # This folder gets copied into the output directory
-content_static_path: ../img
+content_static_path: img
 
 # PDF creation needs a dir for temporary files
 temporary_files_path: /tmp/
-
-prince_executable: prince
 
 default_filters:
     - multicode_tabs
