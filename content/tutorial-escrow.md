@@ -7,17 +7,6 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 - [Look up escrows by sender](#look-up-escrows-by-sender)
 <!-- {# Doesn't work yet:- Look up escrows by destination #}-->
 
-## Availability of Escrow
-
-Held payments been enabled by the ["Escrow" Amendment](concept-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/) by the name "Suspended Payments" (SusPay) in 2016.
-
-When testing in [stand-alone mode](concept-stand-alone-mode.html), you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
-
-    [features]
-    Escrow
-
-You can check the status of the Escrow amendment using the [`feature` command](reference-rippled.html#feature).
-
 
 ## Send a Time-Held Escrow
 
