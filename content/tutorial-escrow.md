@@ -4,6 +4,7 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 
 - [Send a time-held escrow](#send-a-time-held-escrow)
 - [Send a conditionally-held escrow](#send-a-conditionally-held-escrow)
+- [Cancel an expired escrow](#cancel-an-expired-escrow)
 - [Look up escrows by sender](#look-up-escrows-by-sender)
 <!-- {# Doesn't work yet:- Look up escrows by destination #}-->
 
@@ -144,6 +145,8 @@ Response:
 ### 6. Submit EscrowFinish transaction
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
+
+If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
 
 **Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
 
@@ -334,6 +337,8 @@ Response:
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. Set the `Condition` and `Fulfillment` fields to the condition and fulfillment values, in hexadecimal, that you generated in step 1. Set the `Fee` ([transaction cost](concept-transaction-cost.html)) value based on the size of the fulfillment in bytes: a conditional EscrowFinish requires at least 330 drops of XRP plus 10 drops per 16 bytes in the size of the fulfillment.
 
+If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
+
 **Note:** If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](reference-transaction-format.html#transaction-results) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.
 
 {% include 'snippets/secret-key-warning.md' %}
@@ -382,6 +387,129 @@ Response:
 {% include 'code_samples/escrow/websocket/tx-response-escrowfinish-condition.json' %}
 ```
 
+## Cancel an expired escrow
+
+### 1. Confirm the expired escrow
+
+An escrow in the XRP Ledger is expired when its `CancelAfter` time is lower than the `close_time` of a validated ledger version. (If the escrow does not have a `CancelAfter` time, it never expires.) You can look up the close time of the latest validated ledger with the [`ledger` command](reference-rippled.html#ledger):
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/ledger-request-expiration.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/ledger-response-expiration.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+You can look up the escrow and compare to the `CancelAfter` time using the [`account_objects` command](reference-rippled.html#account-objects):
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-request-expiration.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-response-expiration.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+### 2. Submit EscrowCancel transaction
+
+***Anyone*** can cancel an expired escrow in the XRP Ledger by [signing and submitting](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
+
+{% include 'snippets/secret-key-warning.md' %}
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/submit-request-escrowcancel.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/submit-response-escrowcancel.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
+
+### 3. Wait for validation
+
+{% include 'snippets/wait-for-validation.md' %}
+
+### 4. Confirm final result
+
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status.Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field for the returned XRP.
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+
+```json
+{% include 'code_samples/escrow/websocket/tx-request-escrowcancel.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/tx-response-escrowcancel.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the escrow, and the increase in `Balance` from 99999**8**9990 drops to 99999**9**9990 drops represents the return of the escrowed 10,000 drops of XRP (0.01 XRP).
 
 ## Look up escrows by sender
 

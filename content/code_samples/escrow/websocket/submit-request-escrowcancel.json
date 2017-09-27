@@ -1,0 +1,11 @@
+{
+  "id": 5,
+  "command": "submit",
+  "secret": "s████████████████████████████",
+  "tx_json": {
+    "Account": "rhgdnc82FwHFUKXp9ZcpgwXWRAxKf5Buqp",
+    "TransactionType": "EscrowCancel",
+    "Owner": "r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT",
+    "OfferSequence": 1
+  }
+}

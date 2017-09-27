@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "ledger": {
+      ... (trimmed) ...
+
+      "close_time": 560302643,
+      "close_time_human": "2017-Oct-02 23:37:23",
+      "close_time_resolution": 10,
+      
+      ... (trimmed) ...
+    },
+    "ledger_hash": "668F0647A6F3CC277496245DBBE9BD2E3B8E70E7AA824E97EF3237FE7E1EE3F2",
+    "ledger_index": 2906341,
+    "validated": true
+  }
+}
