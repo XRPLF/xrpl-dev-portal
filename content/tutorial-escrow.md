@@ -7,17 +7,6 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 - [Look up escrows by sender](#look-up-escrows-by-sender)
 <!-- {# Doesn't work yet:- Look up escrows by destination #}-->
 
-## Availability of Escrow
-
-Held payments been enabled by the ["Escrow" Amendment](concept-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/) by the name "Suspended Payments" (SusPay) in 2016.
-
-When testing in [stand-alone mode](concept-stand-alone-mode.html), you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
-
-    [features]
-    Escrow
-
-You can check the status of the Escrow amendment using the [`feature` command](reference-rippled.html#feature).
-
 
 ## Send a Time-Held Escrow
 
@@ -58,7 +47,7 @@ print(release_date_ripple)
 
 ### 2. Submit EscrowCreate transaction
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender.
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops](reference-rippled.html#specifying-currency-amounts), to escrow.
 
 {% include 'snippets/secret-key-warning.md' %}
 
@@ -281,7 +270,7 @@ print(cancel_after)
 
 ### 3. Submit EscrowCreate transaction
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step.
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step. Set the `Amount` to the total amount of [XRP, in drops](reference-rippled.html#specifying-currency-amounts), to escrow.
 
 {% include 'snippets/secret-key-warning.md' %}
 
